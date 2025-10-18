@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,36 @@ import javax.annotation.Nullable;
 public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ResourceGroupArgs Empty = new ResourceGroupArgs();
+
+    /**
+     * The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     * 
+     */
+    @Import(name="clusterMode")
+    private @Nullable Output<String> clusterMode;
+
+    /**
+     * @return The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     * 
+     */
+    public Optional<Output<String>> clusterMode() {
+        return Optional.ofNullable(this.clusterMode);
+    }
+
+    /**
+     * The resource specifications of a single compute cluster. Unit: ACU.
+     * 
+     */
+    @Import(name="clusterSizeResource")
+    private @Nullable Output<String> clusterSizeResource;
+
+    /**
+     * @return The resource specifications of a single compute cluster. Unit: ACU.
+     * 
+     */
+    public Optional<Output<String>> clusterSizeResource() {
+        return Optional.ofNullable(this.clusterSizeResource);
+    }
 
     /**
      * The ID of the DBCluster.
@@ -31,6 +62,36 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
+    }
+
+    /**
+     * The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     * 
+     */
+    @Import(name="engine")
+    private @Nullable Output<String> engine;
+
+    /**
+     * @return The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     * 
+     */
+    public Optional<Output<String>> engine() {
+        return Optional.ofNullable(this.engine);
+    }
+
+    /**
+     * The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     * 
+     */
+    @Import(name="engineParams")
+    private @Nullable Output<Map<String,String>> engineParams;
+
+    /**
+     * @return The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> engineParams() {
+        return Optional.ofNullable(this.engineParams);
     }
 
     /**
@@ -61,6 +122,66 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> groupType() {
         return Optional.ofNullable(this.groupType);
+    }
+
+    /**
+     * The maximum number of compute clusters that are allowed in the resource group.
+     * 
+     */
+    @Import(name="maxClusterCount")
+    private @Nullable Output<Integer> maxClusterCount;
+
+    /**
+     * @return The maximum number of compute clusters that are allowed in the resource group.
+     * 
+     */
+    public Optional<Output<Integer>> maxClusterCount() {
+        return Optional.ofNullable(this.maxClusterCount);
+    }
+
+    /**
+     * The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     * 
+     */
+    @Import(name="maxComputeResource")
+    private @Nullable Output<String> maxComputeResource;
+
+    /**
+     * @return The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     * 
+     */
+    public Optional<Output<String>> maxComputeResource() {
+        return Optional.ofNullable(this.maxComputeResource);
+    }
+
+    /**
+     * The minimum number of compute clusters that are required in the resource group.
+     * 
+     */
+    @Import(name="minClusterCount")
+    private @Nullable Output<Integer> minClusterCount;
+
+    /**
+     * @return The minimum number of compute clusters that are required in the resource group.
+     * 
+     */
+    public Optional<Output<Integer>> minClusterCount() {
+        return Optional.ofNullable(this.minClusterCount);
+    }
+
+    /**
+     * The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     * 
+     */
+    @Import(name="minComputeResource")
+    private @Nullable Output<String> minComputeResource;
+
+    /**
+     * @return The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     * 
+     */
+    public Optional<Output<String>> minComputeResource() {
+        return Optional.ofNullable(this.minComputeResource);
     }
 
     /**
@@ -96,9 +217,17 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
     private ResourceGroupArgs() {}
 
     private ResourceGroupArgs(ResourceGroupArgs $) {
+        this.clusterMode = $.clusterMode;
+        this.clusterSizeResource = $.clusterSizeResource;
         this.dbClusterId = $.dbClusterId;
+        this.engine = $.engine;
+        this.engineParams = $.engineParams;
         this.groupName = $.groupName;
         this.groupType = $.groupType;
+        this.maxClusterCount = $.maxClusterCount;
+        this.maxComputeResource = $.maxComputeResource;
+        this.minClusterCount = $.minClusterCount;
+        this.minComputeResource = $.minComputeResource;
         this.nodeNum = $.nodeNum;
         this.users = $.users;
     }
@@ -122,6 +251,48 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param clusterMode The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterMode(@Nullable Output<String> clusterMode) {
+            $.clusterMode = clusterMode;
+            return this;
+        }
+
+        /**
+         * @param clusterMode The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterMode(String clusterMode) {
+            return clusterMode(Output.of(clusterMode));
+        }
+
+        /**
+         * @param clusterSizeResource The resource specifications of a single compute cluster. Unit: ACU.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSizeResource(@Nullable Output<String> clusterSizeResource) {
+            $.clusterSizeResource = clusterSizeResource;
+            return this;
+        }
+
+        /**
+         * @param clusterSizeResource The resource specifications of a single compute cluster. Unit: ACU.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterSizeResource(String clusterSizeResource) {
+            return clusterSizeResource(Output.of(clusterSizeResource));
+        }
+
+        /**
          * @param dbClusterId The ID of the DBCluster.
          * 
          * @return builder
@@ -140,6 +311,48 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbClusterId(String dbClusterId) {
             return dbClusterId(Output.of(dbClusterId));
+        }
+
+        /**
+         * @param engine The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engine(@Nullable Output<String> engine) {
+            $.engine = engine;
+            return this;
+        }
+
+        /**
+         * @param engine The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engine(String engine) {
+            return engine(Output.of(engine));
+        }
+
+        /**
+         * @param engineParams The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineParams(@Nullable Output<Map<String,String>> engineParams) {
+            $.engineParams = engineParams;
+            return this;
+        }
+
+        /**
+         * @param engineParams The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineParams(Map<String,String> engineParams) {
+            return engineParams(Output.of(engineParams));
         }
 
         /**
@@ -182,6 +395,90 @@ public final class ResourceGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupType(String groupType) {
             return groupType(Output.of(groupType));
+        }
+
+        /**
+         * @param maxClusterCount The maximum number of compute clusters that are allowed in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxClusterCount(@Nullable Output<Integer> maxClusterCount) {
+            $.maxClusterCount = maxClusterCount;
+            return this;
+        }
+
+        /**
+         * @param maxClusterCount The maximum number of compute clusters that are allowed in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxClusterCount(Integer maxClusterCount) {
+            return maxClusterCount(Output.of(maxClusterCount));
+        }
+
+        /**
+         * @param maxComputeResource The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxComputeResource(@Nullable Output<String> maxComputeResource) {
+            $.maxComputeResource = maxComputeResource;
+            return this;
+        }
+
+        /**
+         * @param maxComputeResource The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxComputeResource(String maxComputeResource) {
+            return maxComputeResource(Output.of(maxComputeResource));
+        }
+
+        /**
+         * @param minClusterCount The minimum number of compute clusters that are required in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minClusterCount(@Nullable Output<Integer> minClusterCount) {
+            $.minClusterCount = minClusterCount;
+            return this;
+        }
+
+        /**
+         * @param minClusterCount The minimum number of compute clusters that are required in the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minClusterCount(Integer minClusterCount) {
+            return minClusterCount(Output.of(minClusterCount));
+        }
+
+        /**
+         * @param minComputeResource The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minComputeResource(@Nullable Output<String> minComputeResource) {
+            $.minComputeResource = minComputeResource;
+            return this;
+        }
+
+        /**
+         * @param minComputeResource The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minComputeResource(String minComputeResource) {
+            return minComputeResource(Output.of(minComputeResource));
         }
 
         /**

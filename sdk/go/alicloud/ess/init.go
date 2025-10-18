@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Attachment{}
 	case "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration":
 		r = &EciScalingConfiguration{}
+	case "alicloud:ess/instanceRefresh:InstanceRefresh":
+		r = &InstanceRefresh{}
 	case "alicloud:ess/lifecycleHook:LifecycleHook":
 		r = &LifecycleHook{}
 	case "alicloud:ess/notification:Notification":
@@ -80,6 +82,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ess/eciScalingConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ess/instanceRefresh",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

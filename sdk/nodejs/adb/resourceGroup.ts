@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.adb.getZones({});
  * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
@@ -104,6 +104,18 @@ export class ResourceGroup extends pulumi.CustomResource {
     }
 
     /**
+     * The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     */
+    declare public readonly clusterMode: pulumi.Output<string>;
+    /**
+     * The resource specifications of a single compute cluster. Unit: ACU.
+     */
+    declare public readonly clusterSizeResource: pulumi.Output<string>;
+    /**
+     * (Available since v1.261.0) The endpoint of the resource group.
+     */
+    declare public /*out*/ readonly connectionString: pulumi.Output<string>;
+    /**
      * The time when the resource group was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
@@ -111,6 +123,14 @@ export class ResourceGroup extends pulumi.CustomResource {
      * The ID of the DBCluster.
      */
     declare public readonly dbClusterId: pulumi.Output<string>;
+    /**
+     * The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     */
+    declare public readonly engine: pulumi.Output<string>;
+    /**
+     * The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     */
+    declare public readonly engineParams: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
@@ -120,9 +140,33 @@ export class ResourceGroup extends pulumi.CustomResource {
      */
     declare public readonly groupType: pulumi.Output<string>;
     /**
+     * The maximum number of compute clusters that are allowed in the resource group.
+     */
+    declare public readonly maxClusterCount: pulumi.Output<number | undefined>;
+    /**
+     * The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     */
+    declare public readonly maxComputeResource: pulumi.Output<string>;
+    /**
+     * The minimum number of compute clusters that are required in the resource group.
+     */
+    declare public readonly minClusterCount: pulumi.Output<number | undefined>;
+    /**
+     * The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     */
+    declare public readonly minComputeResource: pulumi.Output<string>;
+    /**
      * The number of nodes.
      */
-    declare public readonly nodeNum: pulumi.Output<number | undefined>;
+    declare public readonly nodeNum: pulumi.Output<number>;
+    /**
+     * (Available since v1.261.0) The port number of the resource group.
+     */
+    declare public /*out*/ readonly port: pulumi.Output<string>;
+    /**
+     * (Available since v1.261.0) The status of the resource group.
+     */
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The time when the resource group was updated.
      */
@@ -149,11 +193,22 @@ export class ResourceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceGroupState | undefined;
+            resourceInputs["clusterMode"] = state?.clusterMode;
+            resourceInputs["clusterSizeResource"] = state?.clusterSizeResource;
+            resourceInputs["connectionString"] = state?.connectionString;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dbClusterId"] = state?.dbClusterId;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineParams"] = state?.engineParams;
             resourceInputs["groupName"] = state?.groupName;
             resourceInputs["groupType"] = state?.groupType;
+            resourceInputs["maxClusterCount"] = state?.maxClusterCount;
+            resourceInputs["maxComputeResource"] = state?.maxComputeResource;
+            resourceInputs["minClusterCount"] = state?.minClusterCount;
+            resourceInputs["minComputeResource"] = state?.minComputeResource;
             resourceInputs["nodeNum"] = state?.nodeNum;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["status"] = state?.status;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["user"] = state?.user;
             resourceInputs["users"] = state?.users;
@@ -165,12 +220,23 @@ export class ResourceGroup extends pulumi.CustomResource {
             if (args?.groupName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupName'");
             }
+            resourceInputs["clusterMode"] = args?.clusterMode;
+            resourceInputs["clusterSizeResource"] = args?.clusterSizeResource;
             resourceInputs["dbClusterId"] = args?.dbClusterId;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineParams"] = args?.engineParams;
             resourceInputs["groupName"] = args?.groupName;
             resourceInputs["groupType"] = args?.groupType;
+            resourceInputs["maxClusterCount"] = args?.maxClusterCount;
+            resourceInputs["maxComputeResource"] = args?.maxComputeResource;
+            resourceInputs["minClusterCount"] = args?.minClusterCount;
+            resourceInputs["minComputeResource"] = args?.minComputeResource;
             resourceInputs["nodeNum"] = args?.nodeNum;
             resourceInputs["users"] = args?.users;
+            resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["user"] = undefined /*out*/;
         }
@@ -184,6 +250,18 @@ export class ResourceGroup extends pulumi.CustomResource {
  */
 export interface ResourceGroupState {
     /**
+     * The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     */
+    clusterMode?: pulumi.Input<string>;
+    /**
+     * The resource specifications of a single compute cluster. Unit: ACU.
+     */
+    clusterSizeResource?: pulumi.Input<string>;
+    /**
+     * (Available since v1.261.0) The endpoint of the resource group.
+     */
+    connectionString?: pulumi.Input<string>;
+    /**
      * The time when the resource group was created.
      */
     createTime?: pulumi.Input<string>;
@@ -191,6 +269,14 @@ export interface ResourceGroupState {
      * The ID of the DBCluster.
      */
     dbClusterId?: pulumi.Input<string>;
+    /**
+     * The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     */
+    engineParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
@@ -200,9 +286,33 @@ export interface ResourceGroupState {
      */
     groupType?: pulumi.Input<string>;
     /**
+     * The maximum number of compute clusters that are allowed in the resource group.
+     */
+    maxClusterCount?: pulumi.Input<number>;
+    /**
+     * The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     */
+    maxComputeResource?: pulumi.Input<string>;
+    /**
+     * The minimum number of compute clusters that are required in the resource group.
+     */
+    minClusterCount?: pulumi.Input<number>;
+    /**
+     * The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     */
+    minComputeResource?: pulumi.Input<string>;
+    /**
      * The number of nodes.
      */
     nodeNum?: pulumi.Input<number>;
+    /**
+     * (Available since v1.261.0) The port number of the resource group.
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * (Available since v1.261.0) The status of the resource group.
+     */
+    status?: pulumi.Input<string>;
     /**
      * The time when the resource group was updated.
      */
@@ -222,9 +332,25 @@ export interface ResourceGroupState {
  */
 export interface ResourceGroupArgs {
     /**
+     * The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     */
+    clusterMode?: pulumi.Input<string>;
+    /**
+     * The resource specifications of a single compute cluster. Unit: ACU.
+     */
+    clusterSizeResource?: pulumi.Input<string>;
+    /**
      * The ID of the DBCluster.
      */
     dbClusterId: pulumi.Input<string>;
+    /**
+     * The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     */
+    engineParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
      */
@@ -233,6 +359,22 @@ export interface ResourceGroupArgs {
      * The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
      */
     groupType?: pulumi.Input<string>;
+    /**
+     * The maximum number of compute clusters that are allowed in the resource group.
+     */
+    maxClusterCount?: pulumi.Input<number>;
+    /**
+     * The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     */
+    maxComputeResource?: pulumi.Input<string>;
+    /**
+     * The minimum number of compute clusters that are required in the resource group.
+     */
+    minClusterCount?: pulumi.Input<number>;
+    /**
+     * The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     */
+    minComputeResource?: pulumi.Input<string>;
     /**
      * The number of nodes.
      */

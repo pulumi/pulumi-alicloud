@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
  * 
  * &gt; **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
- * Refer to details.
+ * [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
  * 
  * &gt; **NOTE:** Available since v1.120.0.
  * 
@@ -230,14 +230,14 @@ public class Etl extends com.pulumi.resources.CustomResource {
         return this.etlName;
     }
     /**
-     * Target logstore configuration for delivery after data processing.
+     * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      * 
      */
     @Export(name="etlSinks", refs={List.class,EtlEtlSink.class}, tree="[0,1]")
     private Output<List<EtlEtlSink>> etlSinks;
 
     /**
-     * @return Target logstore configuration for delivery after data processing.
+     * @return Target logstore configuration for delivery after data processing. See `etlSinks` below.
      * 
      */
     public Output<List<EtlEtlSink>> etlSinks() {
@@ -326,6 +326,20 @@ public class Etl extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionAccessKeySecretContext() {
         return Codegen.optional(this.kmsEncryptionAccessKeySecretContext);
+    }
+    /**
+     * The language of the etl job.
+     * 
+     */
+    @Export(name="lang", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> lang;
+
+    /**
+     * @return The language of the etl job.
+     * 
+     */
+    public Output<Optional<String>> lang() {
+        return Codegen.optional(this.lang);
     }
     /**
      * ETL job last modified time.

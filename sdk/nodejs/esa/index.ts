@@ -215,6 +215,11 @@ export type VideoProcessing = import("./videoProcessing").VideoProcessing;
 export const VideoProcessing: typeof import("./videoProcessing").VideoProcessing = null as any;
 utilities.lazyLoad(exports, ["VideoProcessing"], () => require("./videoProcessing"));
 
+export { WafRuleArgs, WafRuleState } from "./wafRule";
+export type WafRule = import("./wafRule").WafRule;
+export const WafRule: typeof import("./wafRule").WafRule = null as any;
+utilities.lazyLoad(exports, ["WafRule"], () => require("./wafRule"));
+
 export { WafRulesetArgs, WafRulesetState } from "./wafRuleset";
 export type WafRuleset = import("./wafRuleset").WafRuleset;
 export const WafRuleset: typeof import("./wafRuleset").WafRuleset = null as any;
@@ -322,6 +327,8 @@ const _module = {
                 return new Version(name, <any>undefined, { urn })
             case "alicloud:esa/videoProcessing:VideoProcessing":
                 return new VideoProcessing(name, <any>undefined, { urn })
+            case "alicloud:esa/wafRule:WafRule":
+                return new WafRule(name, <any>undefined, { urn })
             case "alicloud:esa/wafRuleset:WafRuleset":
                 return new WafRuleset(name, <any>undefined, { urn })
             case "alicloud:esa/waitingRoom:WaitingRoom":
@@ -376,6 +383,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/transportLayerApplication
 pulumi.runtime.registerResourceModule("alicloud", "esa/urlObservation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/version", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/videoProcessing", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/wafRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/wafRuleset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/waitingRoomEvent", _module)

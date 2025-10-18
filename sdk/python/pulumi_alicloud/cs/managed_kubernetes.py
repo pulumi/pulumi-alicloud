@@ -1947,6 +1947,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,
             ip_stack="ipv4",
+            deletion_protection=True,
             auto_mode={
                 "enabled": True,
             },
@@ -1971,6 +1972,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 "alb",
                 "ack-goatscaler",
                 "coredns",
+                "gatekeeper",
             ],
             control_plane_log_ttl="30",
             audit_log_config={
@@ -1978,7 +1980,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             },
             addons=[
                 {
-                    "name": "managed-metrics-server",
+                    "name": "metrics-server",
                 },
                 {
                     "name": "managed-coredns",
@@ -2324,6 +2326,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             proxy_mode=proxy_mode,
             service_cidr=service_cidr,
             ip_stack="ipv4",
+            deletion_protection=True,
             auto_mode={
                 "enabled": True,
             },
@@ -2348,6 +2351,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                 "alb",
                 "ack-goatscaler",
                 "coredns",
+                "gatekeeper",
             ],
             control_plane_log_ttl="30",
             audit_log_config={
@@ -2355,7 +2359,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             },
             addons=[
                 {
-                    "name": "managed-metrics-server",
+                    "name": "metrics-server",
                 },
                 {
                     "name": "managed-coredns",

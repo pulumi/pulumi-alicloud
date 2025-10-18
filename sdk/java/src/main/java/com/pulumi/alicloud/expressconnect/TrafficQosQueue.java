@@ -15,7 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Express Connect Traffic Qos Queue resource. Express Connect Traffic QoS Queue.
+ * Provides a Express Connect Traffic Qos Queue resource.
+ * 
+ * Express Connect Traffic QoS Queue.
  * 
  * For information about Express Connect Traffic Qos Queue and how to use it, see [What is Traffic Qos Queue](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosQueue).
  * 
@@ -97,8 +99,8 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
     /**
      * QoS queue bandwidth percentage.
      * 
-     * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-     * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+     * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+     * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
      * 
      */
     @Export(name="bandwidthPercent", refs={String.class}, tree="[0]")
@@ -107,64 +109,68 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
     /**
      * @return QoS queue bandwidth percentage.
      * 
-     * - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-     * - When the QoS queue type is **Default**, this field is &#34;-&#34;.
+     * - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+     * - When the QoS queue type is `Default`, this field is &#34;-&#34;.
      * 
      */
     public Output<String> bandwidthPercent() {
         return this.bandwidthPercent;
     }
     /**
-     * The QoS policy ID.
+     * The ID of the QoS policy.
      * 
      */
     @Export(name="qosId", refs={String.class}, tree="[0]")
     private Output<String> qosId;
 
     /**
-     * @return The QoS policy ID.
+     * @return The ID of the QoS policy.
      * 
      */
     public Output<String> qosId() {
         return this.qosId;
     }
     /**
-     * The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS queue.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="queueDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueDescription;
 
     /**
-     * @return The description of the QoS queue.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS queue.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> queueDescription() {
         return Codegen.optional(this.queueDescription);
     }
     /**
-     * The QoS queue ID.
+     * The ID of the QoS queue.
      * 
      */
     @Export(name="queueId", refs={String.class}, tree="[0]")
     private Output<String> queueId;
 
     /**
-     * @return The QoS queue ID.
+     * @return The ID of the QoS queue.
      * 
      */
     public Output<String> queueId() {
         return this.queueId;
     }
     /**
-     * The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS queue.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="queueName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueName;
 
     /**
-     * @return The name of the QoS queue.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS queue.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> queueName() {
@@ -172,9 +178,10 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
     }
     /**
      * QoS queue type, value:
-     * - **High**: High priority queue.
-     * - **Medium**: Normal priority queue.
-     * - **Default**: the Default priority queue.
+     * - `High`: High priority queue.
+     * - `Medium`: Normal priority queue.
+     * - `Default`: the Default priority queue.
+     * 
      * &gt; **NOTE:**  Default priority queue cannot be created.
      * 
      */
@@ -183,9 +190,10 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
 
     /**
      * @return QoS queue type, value:
-     * - **High**: High priority queue.
-     * - **Medium**: Normal priority queue.
-     * - **Default**: the Default priority queue.
+     * - `High`: High priority queue.
+     * - `Medium`: Normal priority queue.
+     * - `Default`: the Default priority queue.
+     * 
      * &gt; **NOTE:**  Default priority queue cannot be created.
      * 
      */
@@ -193,14 +201,14 @@ public class TrafficQosQueue extends com.pulumi.resources.CustomResource {
         return this.queueType;
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

@@ -60,6 +60,11 @@ export const getScheduledTasks: typeof import("./getScheduledTasks").getSchedule
 export const getScheduledTasksOutput: typeof import("./getScheduledTasks").getScheduledTasksOutput = null as any;
 utilities.lazyLoad(exports, ["getScheduledTasks","getScheduledTasksOutput"], () => require("./getScheduledTasks"));
 
+export { InstanceRefreshArgs, InstanceRefreshState } from "./instanceRefresh";
+export type InstanceRefresh = import("./instanceRefresh").InstanceRefresh;
+export const InstanceRefresh: typeof import("./instanceRefresh").InstanceRefresh = null as any;
+utilities.lazyLoad(exports, ["InstanceRefresh"], () => require("./instanceRefresh"));
+
 export { LifecycleHookArgs, LifecycleHookState } from "./lifecycleHook";
 export type LifecycleHook = import("./lifecycleHook").LifecycleHook;
 export const LifecycleHook: typeof import("./lifecycleHook").LifecycleHook = null as any;
@@ -123,6 +128,8 @@ const _module = {
                 return new Attachment(name, <any>undefined, { urn })
             case "alicloud:ess/eciScalingConfiguration:EciScalingConfiguration":
                 return new EciScalingConfiguration(name, <any>undefined, { urn })
+            case "alicloud:ess/instanceRefresh:InstanceRefresh":
+                return new InstanceRefresh(name, <any>undefined, { urn })
             case "alicloud:ess/lifecycleHook:LifecycleHook":
                 return new LifecycleHook(name, <any>undefined, { urn })
             case "alicloud:ess/notification:Notification":
@@ -152,6 +159,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ess/alarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/albServerGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/attachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/eciScalingConfiguration", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ess/instanceRefresh", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/lifecycleHook", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/notification", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/scalingConfiguration", _module)

@@ -16,9 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Vbr Ha resource.
+ * Provides a Express Connect Vbr Ha resource.
  * 
- * For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+ * VBR switching Group.
+ * 
+ * For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
  * 
  * &gt; **NOTE:** Available since v1.151.0.
  * 
@@ -126,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Vbr Ha can be imported using the id, e.g.
+ * Express Connect Vbr Ha can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/vbrHa:VbrHa example &lt;id&gt;
@@ -136,84 +138,118 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/vbrHa:VbrHa")
 public class VbrHa extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The creation time of the VBR.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the VBR.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * @return The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the other VBR in the VBR failover group.
+     * The instance ID of another VBR in The VBR switching group.
      * 
      */
     @Export(name="peerVbrId", refs={String.class}, tree="[0]")
     private Output<String> peerVbrId;
 
     /**
-     * @return The ID of the other VBR in the VBR failover group.
+     * @return The instance ID of another VBR in The VBR switching group.
      * 
      */
     public Output<String> peerVbrId() {
         return this.peerVbrId;
     }
     /**
-     * The state of the VBR failover group.
+     * The ID of the region to which the VBR belongs.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return The ID of the region to which the VBR belongs.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Status of VBR switching Group
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The state of the VBR failover group.
+     * @return Status of VBR switching Group
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The name of the VBR failover group.
+     * VBR switch group name.
      * 
      */
     @Export(name="vbrHaName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vbrHaName;
 
     /**
-     * @return The name of the VBR failover group.
+     * @return VBR switch group name.
      * 
      */
     public Output<Optional<String>> vbrHaName() {
         return Codegen.optional(this.vbrHaName);
     }
     /**
-     * The ID of the VBR instance.
+     * The VBR instance ID.
      * 
      */
     @Export(name="vbrId", refs={String.class}, tree="[0]")
     private Output<String> vbrId;
 
     /**
-     * @return The ID of the VBR instance.
+     * @return The VBR instance ID.
      * 
      */
     public Output<String> vbrId() {

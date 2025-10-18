@@ -49,16 +49,24 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node Model
+     * Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
     @Import(name="computingServer")
     private @Nullable Output<String> computingServer;
 
     /**
-     * @return Node Model
+     * @return Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
      * 
      */
+    @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
     public Optional<Output<String>> computingServer() {
         return Optional.ofNullable(this.computingServer);
     }
@@ -109,6 +117,21 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Model
+     * 
+     */
+    @Import(name="machineType")
+    private @Nullable Output<String> machineType;
+
+    /**
+     * @return Model
+     * 
+     */
+    public Optional<Output<String>> machineType() {
+        return Optional.ofNullable(this.machineType);
+    }
+
+    /**
      * Down payment ratio
      * 
      */
@@ -121,6 +144,23 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> paymentRatio() {
         return Optional.ofNullable(this.paymentRatio);
+    }
+
+    /**
+     * The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+     * The default is Subscription.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
     }
 
     /**
@@ -241,14 +281,14 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -294,7 +334,9 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         this.discountLevel = $.discountLevel;
         this.hpnZone = $.hpnZone;
         this.installPai = $.installPai;
+        this.machineType = $.machineType;
         this.paymentRatio = $.paymentRatio;
+        this.paymentType = $.paymentType;
         this.period = $.period;
         this.productForm = $.productForm;
         this.renewPeriod = $.renewPeriod;
@@ -368,22 +410,30 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computingServer Node Model
+         * @param computingServer Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
         public Builder computingServer(@Nullable Output<String> computingServer) {
             $.computingServer = computingServer;
             return this;
         }
 
         /**
-         * @param computingServer Node Model
+         * @param computingServer Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead. */
         public Builder computingServer(String computingServer) {
             return computingServer(Output.of(computingServer));
         }
@@ -452,6 +502,27 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param machineType Model
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(@Nullable Output<String> machineType) {
+            $.machineType = machineType;
+            return this;
+        }
+
+        /**
+         * @param machineType Model
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(String machineType) {
+            return machineType(Output.of(machineType));
+        }
+
+        /**
          * @param paymentRatio Down payment ratio
          * 
          * @return builder
@@ -470,6 +541,29 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder paymentRatio(String paymentRatio) {
             return paymentRatio(Output.of(paymentRatio));
+        }
+
+        /**
+         * @param paymentType The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+         * The default is Subscription.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+         * The default is Subscription.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
         }
 
         /**
@@ -632,7 +726,7 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -643,7 +737,7 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Express Connect Traffic Qos resource. Express Connect Traffic QoS Policy.
+ * Provides a Express Connect Traffic Qos resource.
+ *
+ * Express Connect Traffic QoS Policy.
  *
  * For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
  *
@@ -21,12 +23,9 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.expressconnect.getPhysicalConnections({
- *     nameRegex: "preserved-NODELETING",
- * });
  * const createQos = new alicloud.expressconnect.TrafficQos("createQos", {
  *     qosName: name,
- *     qosDescription: "terraform-example",
+ *     qosDescription: name,
  * });
  * ```
  *
@@ -67,18 +66,27 @@ export class TrafficQos extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+     * The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
      */
     declare public readonly qosDescription: pulumi.Output<string | undefined>;
     /**
-     * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+     * The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
      */
     declare public readonly qosName: pulumi.Output<string | undefined>;
     /**
-     * The status of the QoS policy. Value:
-     * > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * The ID of the resource group.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * The status of the QoS policy.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a TrafficQos resource with the given unique name, arguments, and options.
@@ -95,11 +103,15 @@ export class TrafficQos extends pulumi.CustomResource {
             const state = argsOrState as TrafficQosState | undefined;
             resourceInputs["qosDescription"] = state?.qosDescription;
             resourceInputs["qosName"] = state?.qosName;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as TrafficQosArgs | undefined;
             resourceInputs["qosDescription"] = args?.qosDescription;
             resourceInputs["qosName"] = args?.qosName;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -112,18 +124,27 @@ export class TrafficQos extends pulumi.CustomResource {
  */
 export interface TrafficQosState {
     /**
-     * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+     * The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
      */
     qosDescription?: pulumi.Input<string>;
     /**
-     * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+     * The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
      */
     qosName?: pulumi.Input<string>;
     /**
-     * The status of the QoS policy. Value:
-     * > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the QoS policy.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -131,11 +152,21 @@ export interface TrafficQosState {
  */
 export interface TrafficQosArgs {
     /**
-     * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+     * The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
      */
     qosDescription?: pulumi.Input<string>;
     /**
-     * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+     * The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
      */
     qosName?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

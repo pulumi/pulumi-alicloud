@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of available zones by the enhanced Nat Gateway.
 //
-// > **NOTE:** Available since 1.102.0+.
+// > **NOTE:** Available since v1.102.0.
 //
 // ## Example Usage
 //
@@ -59,7 +59,7 @@ type GetEnhancedNatAvailableZonesArgs struct {
 type GetEnhancedNatAvailableZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (Optional) A list of available zones IDs by the enhanced NAT gateway.
+	// A list of available zones IDs by the enhanced NAT gateway.
 	Ids        []string `pulumi:"ids"`
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of available zones. Each element contains the following attributes:
@@ -105,7 +105,7 @@ func (o GetEnhancedNatAvailableZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Optional) A list of available zones IDs by the enhanced NAT gateway.
+// A list of available zones IDs by the enhanced NAT gateway.
 func (o GetEnhancedNatAvailableZonesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEnhancedNatAvailableZonesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

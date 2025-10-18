@@ -11,11 +11,14 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Express Connect Traffic Qos resource. Express Connect Traffic QoS Policy.
+ * Provides a Express Connect Traffic Qos resource.
+ * 
+ * Express Connect Traffic QoS Policy.
  * 
  * For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
  * 
@@ -32,8 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
- * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.alicloud.expressconnect.TrafficQos;
  * import com.pulumi.alicloud.expressconnect.TrafficQosArgs;
  * import java.util.List;
@@ -51,13 +52,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex("preserved-NODELETING")
- *             .build());
- * 
  *         var createQos = new TrafficQos("createQos", TrafficQosArgs.builder()
  *             .qosName(name)
- *             .qosDescription("terraform-example")
+ *             .qosDescription(name)
  *             .build());
  * 
  *     }
@@ -77,48 +74,78 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/trafficQos:TrafficQos")
 public class TrafficQos extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="qosDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> qosDescription;
 
     /**
-     * @return The description of the QoS policy.  The length is **0** to **256** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS policy.
+     * The length is `0` to `256` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> qosDescription() {
         return Codegen.optional(this.qosDescription);
     }
     /**
-     * The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Export(name="qosName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> qosName;
 
     /**
-     * @return The name of the QoS policy.  The length is **0** to **128** characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS policy.
+     * The length is `0` to `128` characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Output<Optional<String>> qosName() {
         return Codegen.optional(this.qosName);
     }
     /**
-     * The status of the QoS policy. Value:
-     * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the QoS policy.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the QoS policy. Value:
-     * &gt; **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+     * @return The status of the QoS policy.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

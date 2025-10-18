@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Log
     /// [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
     /// 
     /// &gt; **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
-    /// Refer to details.
+    /// [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.120.0.
     /// 
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> EtlName { get; private set; } = null!;
 
         /// <summary>
-        /// Target logstore configuration for delivery after data processing.
+        /// Target logstore configuration for delivery after data processing. See `EtlSinks` below.
         /// </summary>
         [Output("etlSinks")]
         public Output<ImmutableArray<Outputs.EtlEtlSink>> EtlSinks { get; private set; } = null!;
@@ -201,6 +201,12 @@ namespace Pulumi.AliCloud.Log
         /// </summary>
         [Output("kmsEncryptionAccessKeySecretContext")]
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionAccessKeySecretContext { get; private set; } = null!;
+
+        /// <summary>
+        /// The language of the etl job.
+        /// </summary>
+        [Output("lang")]
+        public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
         /// ETL job last modified time.
@@ -373,7 +379,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.EtlEtlSinkArgs>? _etlSinks;
 
         /// <summary>
-        /// Target logstore configuration for delivery after data processing.
+        /// Target logstore configuration for delivery after data processing. See `EtlSinks` below.
         /// </summary>
         public InputList<Inputs.EtlEtlSinkArgs> EtlSinks
         {
@@ -428,6 +434,12 @@ namespace Pulumi.AliCloud.Log
             get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeySecretContext = value;
         }
+
+        /// <summary>
+        /// The language of the etl job.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// ETL job last modified time.
@@ -563,7 +575,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.EtlEtlSinkGetArgs>? _etlSinks;
 
         /// <summary>
-        /// Target logstore configuration for delivery after data processing.
+        /// Target logstore configuration for delivery after data processing. See `EtlSinks` below.
         /// </summary>
         public InputList<Inputs.EtlEtlSinkGetArgs> EtlSinks
         {
@@ -618,6 +630,12 @@ namespace Pulumi.AliCloud.Log
             get => _kmsEncryptionAccessKeySecretContext ?? (_kmsEncryptionAccessKeySecretContext = new InputMap<string>());
             set => _kmsEncryptionAccessKeySecretContext = value;
         }
+
+        /// <summary>
+        /// The language of the etl job.
+        /// </summary>
+        [Input("lang")]
+        public Input<string>? Lang { get; set; }
 
         /// <summary>
         /// ETL job last modified time.

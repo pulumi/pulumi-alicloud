@@ -37,6 +37,7 @@ class EtlArgs:
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -48,7 +49,7 @@ class EtlArgs:
         The set of arguments for constructing a Etl resource.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] logstore: The source logstore of the processing job.
         :param pulumi.Input[_builtins.str] project: The name of the project where the etl job is located.
         :param pulumi.Input[_builtins.str] script: Processing operation grammar.
@@ -62,6 +63,7 @@ class EtlArgs:
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[_builtins.str] lang: The language of the etl job.
         :param pulumi.Input[_builtins.int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Advanced parameter configuration of processing operations.
         :param pulumi.Input[_builtins.str] role_arn: Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
@@ -96,6 +98,8 @@ class EtlArgs:
             pulumi.set(__self__, "kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
         if kms_encryption_access_key_secret_context is not None:
             pulumi.set(__self__, "kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
         if last_modified_time is not None:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if parameters is not None:
@@ -139,7 +143,7 @@ class EtlArgs:
     @pulumi.getter(name="etlSinks")
     def etl_sinks(self) -> pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]:
         """
-        Target logstore configuration for delivery after data processing.
+        Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         """
         return pulumi.get(self, "etl_sinks")
 
@@ -304,6 +308,18 @@ class EtlArgs:
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
 
     @_builtins.property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language of the etl job.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "lang", value)
+
+    @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -404,6 +420,7 @@ class _EtlState:
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -422,13 +439,14 @@ class _EtlState:
         :param pulumi.Input[_builtins.str] description: Description of the log etl job.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[_builtins.int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[_builtins.str] lang: The language of the etl job.
         :param pulumi.Input[_builtins.int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[_builtins.str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Advanced parameter configuration of processing operations.
@@ -466,6 +484,8 @@ class _EtlState:
             pulumi.set(__self__, "kms_encryption_access_key_id_context", kms_encryption_access_key_id_context)
         if kms_encryption_access_key_secret_context is not None:
             pulumi.set(__self__, "kms_encryption_access_key_secret_context", kms_encryption_access_key_secret_context)
+        if lang is not None:
+            pulumi.set(__self__, "lang", lang)
         if last_modified_time is not None:
             pulumi.set(__self__, "last_modified_time", last_modified_time)
         if logstore is not None:
@@ -563,7 +583,7 @@ class _EtlState:
     @pulumi.getter(name="etlSinks")
     def etl_sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EtlEtlSinkArgs']]]]:
         """
-        Target logstore configuration for delivery after data processing.
+        Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         """
         return pulumi.get(self, "etl_sinks")
 
@@ -642,6 +662,18 @@ class _EtlState:
     @kms_encryption_access_key_secret_context.setter
     def kms_encryption_access_key_secret_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_access_key_secret_context", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language of the etl job.
+        """
+        return pulumi.get(self, "lang")
+
+    @lang.setter
+    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
@@ -783,6 +815,7 @@ class Etl(pulumi.CustomResource):
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -800,7 +833,7 @@ class Etl(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
-        Refer to details.
+        [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** Available since v1.120.0.
 
@@ -888,13 +921,14 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log etl job.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[_builtins.int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[_builtins.str] lang: The language of the etl job.
         :param pulumi.Input[_builtins.int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[_builtins.str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Advanced parameter configuration of processing operations.
@@ -918,7 +952,7 @@ class Etl(pulumi.CustomResource):
         [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
-        Refer to details.
+        [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 
         > **NOTE:** Available since v1.120.0.
 
@@ -1026,6 +1060,7 @@ class Etl(pulumi.CustomResource):
                  kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: Optional[pulumi.Input[_builtins.str]] = None,
                  last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1064,6 +1099,7 @@ class Etl(pulumi.CustomResource):
             __props__.__dict__["kms_encrypted_access_key_secret"] = kms_encrypted_access_key_secret
             __props__.__dict__["kms_encryption_access_key_id_context"] = kms_encryption_access_key_id_context
             __props__.__dict__["kms_encryption_access_key_secret_context"] = kms_encryption_access_key_secret_context
+            __props__.__dict__["lang"] = lang
             __props__.__dict__["last_modified_time"] = last_modified_time
             if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")
@@ -1105,6 +1141,7 @@ class Etl(pulumi.CustomResource):
             kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encryption_access_key_id_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             kms_encryption_access_key_secret_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lang: Optional[pulumi.Input[_builtins.str]] = None,
             last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
             logstore: Optional[pulumi.Input[_builtins.str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1128,13 +1165,14 @@ class Etl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the log etl job.
         :param pulumi.Input[_builtins.str] display_name: Log service etl job alias.
         :param pulumi.Input[_builtins.str] etl_name: The name of the log etl job.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EtlEtlSinkArgs', 'EtlEtlSinkArgsDict']]]] etl_sinks: Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         :param pulumi.Input[_builtins.str] etl_type: Log service etl type, the default value is `ETL`.
         :param pulumi.Input[_builtins.int] from_time: The start time of the processing job, if not set the value is 0, indicates to start processing from the oldest data.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_id: An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         :param pulumi.Input[_builtins.str] kms_encrypted_access_key_secret: An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_id_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_id` before creating or updating an instance with `kms_encrypted_access_key_id`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_access_key_secret_context: An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[_builtins.str] lang: The language of the etl job.
         :param pulumi.Input[_builtins.int] last_modified_time: ETL job last modified time.
         :param pulumi.Input[_builtins.str] logstore: The source logstore of the processing job.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Advanced parameter configuration of processing operations.
@@ -1163,6 +1201,7 @@ class Etl(pulumi.CustomResource):
         __props__.__dict__["kms_encrypted_access_key_secret"] = kms_encrypted_access_key_secret
         __props__.__dict__["kms_encryption_access_key_id_context"] = kms_encryption_access_key_id_context
         __props__.__dict__["kms_encryption_access_key_secret_context"] = kms_encryption_access_key_secret_context
+        __props__.__dict__["lang"] = lang
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["logstore"] = logstore
         __props__.__dict__["parameters"] = parameters
@@ -1227,7 +1266,7 @@ class Etl(pulumi.CustomResource):
     @pulumi.getter(name="etlSinks")
     def etl_sinks(self) -> pulumi.Output[Sequence['outputs.EtlEtlSink']]:
         """
-        Target logstore configuration for delivery after data processing.
+        Target logstore configuration for delivery after data processing. See `etl_sinks` below.
         """
         return pulumi.get(self, "etl_sinks")
 
@@ -1278,6 +1317,14 @@ class Etl(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_access_key_secret` before creating or updating an instance with `kms_encrypted_access_key_secret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "kms_encryption_access_key_secret_context")
+
+    @_builtins.property
+    @pulumi.getter
+    def lang(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The language of the etl job.
+        """
+        return pulumi.get(self, "lang")
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")

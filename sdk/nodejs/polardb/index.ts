@@ -100,6 +100,11 @@ export type PrimaryEndpoint = import("./primaryEndpoint").PrimaryEndpoint;
 export const PrimaryEndpoint: typeof import("./primaryEndpoint").PrimaryEndpoint = null as any;
 utilities.lazyLoad(exports, ["PrimaryEndpoint"], () => require("./primaryEndpoint"));
 
+export { ZonalDbClusterArgs, ZonalDbClusterState } from "./zonalDbCluster";
+export type ZonalDbCluster = import("./zonalDbCluster").ZonalDbCluster;
+export const ZonalDbCluster: typeof import("./zonalDbCluster").ZonalDbCluster = null as any;
+utilities.lazyLoad(exports, ["ZonalDbCluster"], () => require("./zonalDbCluster"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -127,6 +132,8 @@ const _module = {
                 return new ParameterGroup(name, <any>undefined, { urn })
             case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
                 return new PrimaryEndpoint(name, <any>undefined, { urn })
+            case "alicloud:polardb/zonalDbCluster:ZonalDbCluster":
+                return new ZonalDbCluster(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -143,3 +150,4 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _mo
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/parameterGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/primaryEndpoint", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/zonalDbCluster", _module)

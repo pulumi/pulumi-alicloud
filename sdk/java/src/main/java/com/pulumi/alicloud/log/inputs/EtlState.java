@@ -110,14 +110,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Target logstore configuration for delivery after data processing.
+     * Target logstore configuration for delivery after data processing. See `etlSinks` below.
      * 
      */
     @Import(name="etlSinks")
     private @Nullable Output<List<EtlEtlSinkArgs>> etlSinks;
 
     /**
-     * @return Target logstore configuration for delivery after data processing.
+     * @return Target logstore configuration for delivery after data processing. See `etlSinks` below.
      * 
      */
     public Optional<Output<List<EtlEtlSinkArgs>>> etlSinks() {
@@ -212,6 +212,21 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionAccessKeySecretContext() {
         return Optional.ofNullable(this.kmsEncryptionAccessKeySecretContext);
+    }
+
+    /**
+     * The language of the etl job.
+     * 
+     */
+    @Import(name="lang")
+    private @Nullable Output<String> lang;
+
+    /**
+     * @return The language of the etl job.
+     * 
+     */
+    public Optional<Output<String>> lang() {
+        return Optional.ofNullable(this.lang);
     }
 
     /**
@@ -380,6 +395,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         this.kmsEncryptedAccessKeySecret = $.kmsEncryptedAccessKeySecret;
         this.kmsEncryptionAccessKeyIdContext = $.kmsEncryptionAccessKeyIdContext;
         this.kmsEncryptionAccessKeySecretContext = $.kmsEncryptionAccessKeySecretContext;
+        this.lang = $.lang;
         this.lastModifiedTime = $.lastModifiedTime;
         this.logstore = $.logstore;
         this.parameters = $.parameters;
@@ -537,7 +553,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etlSinks Target logstore configuration for delivery after data processing.
+         * @param etlSinks Target logstore configuration for delivery after data processing. See `etlSinks` below.
          * 
          * @return builder
          * 
@@ -548,7 +564,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etlSinks Target logstore configuration for delivery after data processing.
+         * @param etlSinks Target logstore configuration for delivery after data processing. See `etlSinks` below.
          * 
          * @return builder
          * 
@@ -558,7 +574,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etlSinks Target logstore configuration for delivery after data processing.
+         * @param etlSinks Target logstore configuration for delivery after data processing. See `etlSinks` below.
          * 
          * @return builder
          * 
@@ -691,6 +707,27 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kmsEncryptionAccessKeySecretContext(Map<String,String> kmsEncryptionAccessKeySecretContext) {
             return kmsEncryptionAccessKeySecretContext(Output.of(kmsEncryptionAccessKeySecretContext));
+        }
+
+        /**
+         * @param lang The language of the etl job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lang(@Nullable Output<String> lang) {
+            $.lang = lang;
+            return this;
+        }
+
+        /**
+         * @param lang The language of the etl job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lang(String lang) {
+            return lang(Output.of(lang));
         }
 
         /**

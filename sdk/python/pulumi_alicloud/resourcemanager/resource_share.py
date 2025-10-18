@@ -13,18 +13,46 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ResourceShareArgs', 'ResourceShare']
 
 @pulumi.input_type
 class ResourceShareArgs:
     def __init__(__self__, *,
-                 resource_share_name: pulumi.Input[_builtins.str]):
+                 resource_share_name: pulumi.Input[_builtins.str],
+                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
+                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceShare resource.
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
+        :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
+               - false (default): Only sharing within the resource directory is allowed.
+               - true: Allow sharing to any account.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_names: Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]] resources: List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] targets: Resource user.
         """
         pulumi.set(__self__, "resource_share_name", resource_share_name)
+        if allow_external_targets is not None:
+            pulumi.set(__self__, "allow_external_targets", allow_external_targets)
+        if permission_names is not None:
+            pulumi.set(__self__, "permission_names", permission_names)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
@@ -38,25 +66,179 @@ class ResourceShareArgs:
     def resource_share_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource_share_name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="allowExternalTargets")
+    def allow_external_targets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow sharing to accounts outside the resource directory. Value:
+        - false (default): Only sharing within the resource directory is allowed.
+        - true: Allow sharing to any account.
+        """
+        return pulumi.get(self, "allow_external_targets")
+
+    @allow_external_targets.setter
+    def allow_external_targets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_external_targets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="permissionNames")
+    def permission_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        """
+        return pulumi.get(self, "permission_names")
+
+    @permission_names.setter
+    def permission_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "permission_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
+        """
+        List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resource user.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "targets", value)
+
 
 @pulumi.input_type
 class _ResourceShareState:
     def __init__(__self__, *,
+                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceShare resources.
+        :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
+               - false (default): Only sharing within the resource directory is allowed.
+               - true: Allow sharing to any account.
+        :param pulumi.Input[_builtins.str] create_time: The create time of resource share.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_names: Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
-        :param pulumi.Input[_builtins.str] resource_share_owner: The owner of the Resource Share.
-        :param pulumi.Input[_builtins.str] status: The status of the Resource Share.
+        :param pulumi.Input[_builtins.str] resource_share_owner: The owner of resource share,  `Self` and `OtherAccounts`.
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]] resources: List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        :param pulumi.Input[_builtins.str] status: The status of resource share.  `Active`,`Deleted` and `Deleting`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] targets: Resource user.
         """
+        if allow_external_targets is not None:
+            pulumi.set(__self__, "allow_external_targets", allow_external_targets)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if permission_names is not None:
+            pulumi.set(__self__, "permission_names", permission_names)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_share_name is not None:
             pulumi.set(__self__, "resource_share_name", resource_share_name)
         if resource_share_owner is not None:
             pulumi.set(__self__, "resource_share_owner", resource_share_owner)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter(name="allowExternalTargets")
+    def allow_external_targets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow sharing to accounts outside the resource directory. Value:
+        - false (default): Only sharing within the resource directory is allowed.
+        - true: Allow sharing to any account.
+        """
+        return pulumi.get(self, "allow_external_targets")
+
+    @allow_external_targets.setter
+    def allow_external_targets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "allow_external_targets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The create time of resource share.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="permissionNames")
+    def permission_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        """
+        return pulumi.get(self, "permission_names")
+
+    @permission_names.setter
+    def permission_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "permission_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
@@ -74,7 +256,7 @@ class _ResourceShareState:
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The owner of the Resource Share.
+        The owner of resource share,  `Self` and `OtherAccounts`.
         """
         return pulumi.get(self, "resource_share_owner")
 
@@ -84,15 +266,51 @@ class _ResourceShareState:
 
     @_builtins.property
     @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
+        """
+        List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the Resource Share.
+        The status of resource share.  `Active`,`Deleted` and `Deleting`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Resource user.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "targets", value)
 
 
 @pulumi.type_token("alicloud:resourcemanager/resourceShare:ResourceShare")
@@ -101,10 +319,18 @@ class ResourceShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
+                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Resource Share resource.
+
+        RS resource sharing.
 
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
@@ -135,7 +361,15 @@ class ResourceShare(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
+               - false (default): Only sharing within the resource directory is allowed.
+               - true: Allow sharing to any account.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_names: Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] targets: Resource user.
         """
         ...
     @overload
@@ -145,6 +379,8 @@ class ResourceShare(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Resource Manager Resource Share resource.
+
+        RS resource sharing.
 
         For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 
@@ -188,7 +424,13 @@ class ResourceShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
+                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -198,9 +440,16 @@ class ResourceShare(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceShareArgs.__new__(ResourceShareArgs)
 
+            __props__.__dict__["allow_external_targets"] = allow_external_targets
+            __props__.__dict__["permission_names"] = permission_names
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if resource_share_name is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_share_name'")
             __props__.__dict__["resource_share_name"] = resource_share_name
+            __props__.__dict__["resources"] = resources
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["targets"] = targets
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["resource_share_owner"] = None
             __props__.__dict__["status"] = None
         super(ResourceShare, __self__).__init__(
@@ -213,9 +462,16 @@ class ResourceShare(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
             resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResourceShare':
+            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceShare':
         """
         Get an existing ResourceShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -223,18 +479,68 @@ class ResourceShare(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] allow_external_targets: Whether to allow sharing to accounts outside the resource directory. Value:
+               - false (default): Only sharing within the resource directory is allowed.
+               - true: Allow sharing to any account.
+        :param pulumi.Input[_builtins.str] create_time: The create time of resource share.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permission_names: Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] resource_share_name: The name of resource share.
-        :param pulumi.Input[_builtins.str] resource_share_owner: The owner of the Resource Share.
-        :param pulumi.Input[_builtins.str] status: The status of the Resource Share.
+        :param pulumi.Input[_builtins.str] resource_share_owner: The owner of resource share,  `Self` and `OtherAccounts`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]] resources: List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        :param pulumi.Input[_builtins.str] status: The status of resource share.  `Active`,`Deleted` and `Deleting`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] targets: Resource user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ResourceShareState.__new__(_ResourceShareState)
 
+        __props__.__dict__["allow_external_targets"] = allow_external_targets
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["permission_names"] = permission_names
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["resource_share_name"] = resource_share_name
         __props__.__dict__["resource_share_owner"] = resource_share_owner
+        __props__.__dict__["resources"] = resources
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
+        __props__.__dict__["targets"] = targets
         return ResourceShare(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="allowExternalTargets")
+    def allow_external_targets(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to allow sharing to accounts outside the resource directory. Value:
+        - false (default): Only sharing within the resource directory is allowed.
+        - true: Allow sharing to any account.
+        """
+        return pulumi.get(self, "allow_external_targets")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The create time of resource share.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="permissionNames")
+    def permission_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+        """
+        return pulumi.get(self, "permission_names")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
@@ -248,15 +554,39 @@ class ResourceShare(pulumi.CustomResource):
     @pulumi.getter(name="resourceShareOwner")
     def resource_share_owner(self) -> pulumi.Output[_builtins.str]:
         """
-        The owner of the Resource Share.
+        The owner of resource share,  `Self` and `OtherAccounts`.
         """
         return pulumi.get(self, "resource_share_owner")
 
     @_builtins.property
     @pulumi.getter
+    def resources(self) -> pulumi.Output[Optional[Sequence['outputs.ResourceShareResource']]]:
+        """
+        List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the Resource Share.
+        The status of resource share.  `Active`,`Deleted` and `Deleting`.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Resource user.
+        """
+        return pulumi.get(self, "targets")
 

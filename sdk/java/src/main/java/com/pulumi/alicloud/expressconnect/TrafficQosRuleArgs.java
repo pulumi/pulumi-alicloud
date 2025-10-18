@@ -19,7 +19,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The traffic of the QoS rule matches the Destination IPv4 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     @Import(name="dstCidr")
@@ -27,7 +28,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The traffic of the QoS rule matches the Destination IPv4 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     public Optional<Output<String>> dstCidr() {
@@ -36,7 +38,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The QoS rule traffic matches the Destination IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     @Import(name="dstIpv6Cidr")
@@ -44,7 +47,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The QoS rule traffic matches the Destination IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     public Optional<Output<String>> dstIpv6Cidr() {
@@ -52,46 +56,46 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-     * - **ALL**:-1/-1, not editable.
+     * QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+     * - `ALL`:-1/-1, not editable.
      * - **ICMP(IPv4)**:-1/-1, non-editable.
      * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-     * - **TCP**:-1/-1, editable.
-     * - **UDP**:-1/-1, editable.
-     * - **GRE**:-1/-1, not editable.
-     * - **SSH**:22/22, not editable.
-     * - **Telnet**:23/23, not editable.
-     * - **HTTP**:80/80, non-editable.
-     * - **HTTPS**:443/443, which cannot be edited.
+     * - `TCP`:-1/-1, editable.
+     * - `UDP`:-1/-1, editable.
+     * - `GRE`:-1/-1, not editable.
+     * - `SSH`:22/22, not editable.
+     * - `Telnet`:23/23, not editable.
+     * - `HTTP`:80/80, non-editable.
+     * - `HTTPS`:443/443, which cannot be edited.
      * - **MS SQL**:1443/1443, which cannot be edited.
-     * - **Oracle**:1521/1521, non-editable.
-     * - **MySql**:3306/3306, non-editable.
-     * - **RDP**:3389/3389, non-editable.
-     * - **PostgreSQL**:5432/5432, non-editable.
-     * - **Redis**:6379/6379, non-editable.
+     * - `Oracle`:1521/1521, non-editable.
+     * - `MySql`:3306/3306, non-editable.
+     * - `RDP`:3389/3389, non-editable.
+     * - `PostgreSQL`:5432/5432, non-editable.
+     * - `Redis`:6379/6379, non-editable.
      * 
      */
     @Import(name="dstPortRange")
     private @Nullable Output<String> dstPortRange;
 
     /**
-     * @return QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-     * - **ALL**:-1/-1, not editable.
+     * @return QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+     * - `ALL`:-1/-1, not editable.
      * - **ICMP(IPv4)**:-1/-1, non-editable.
      * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-     * - **TCP**:-1/-1, editable.
-     * - **UDP**:-1/-1, editable.
-     * - **GRE**:-1/-1, not editable.
-     * - **SSH**:22/22, not editable.
-     * - **Telnet**:23/23, not editable.
-     * - **HTTP**:80/80, non-editable.
-     * - **HTTPS**:443/443, which cannot be edited.
+     * - `TCP`:-1/-1, editable.
+     * - `UDP`:-1/-1, editable.
+     * - `GRE`:-1/-1, not editable.
+     * - `SSH`:22/22, not editable.
+     * - `Telnet`:23/23, not editable.
+     * - `HTTP`:80/80, non-editable.
+     * - `HTTPS`:443/443, which cannot be edited.
      * - **MS SQL**:1443/1443, which cannot be edited.
-     * - **Oracle**:1521/1521, non-editable.
-     * - **MySql**:3306/3306, non-editable.
-     * - **RDP**:3389/3389, non-editable.
-     * - **PostgreSQL**:5432/5432, non-editable.
-     * - **Redis**:6379/6379, non-editable.
+     * - `Oracle`:1521/1521, non-editable.
+     * - `MySql`:3306/3306, non-editable.
+     * - `RDP`:3389/3389, non-editable.
+     * - `PostgreSQL`:5432/5432, non-editable.
+     * - `Redis`:6379/6379, non-editable.
      * 
      */
     public Optional<Output<String>> dstPortRange() {
@@ -99,14 +103,14 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+     * The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      * 
      */
     @Import(name="matchDscp")
     private @Nullable Output<Integer> matchDscp;
 
     /**
-     * @return The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+     * @return The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      * 
      */
     public Optional<Output<Integer>> matchDscp() {
@@ -114,14 +118,14 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+     * QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      * 
      */
     @Import(name="priority", required=true)
     private Output<Integer> priority;
 
     /**
-     * @return QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+     * @return QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      * 
      */
     public Output<Integer> priority() {
@@ -130,22 +134,22 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * QoS rule protocol type, value:
-     * - **ALL**
+     * - `ALL`
      * - **ICMP(IPv4)**
      * - **ICMPv6(IPv6)* *
-     * - **TCP**
-     * - **UDP**
-     * - **GRE**
-     * - **SSH**
-     * - **Telnet**
-     * - **HTTP**
-     * - **HTTPS**
+     * - `TCP`
+     * - `UDP`
+     * - `GRE`
+     * - `SSH`
+     * - `Telnet`
+     * - `HTTP`
+     * - `HTTPS`
      * - **MS SQL**
-     * - **Oracle**
-     * - **MySql**
-     * - **RDP**
-     * - **PostgreSQL**
-     * - **Redis**.
+     * - `Oracle`
+     * - `MySql`
+     * - `RDP`
+     * - `PostgreSQL`
+     * - `Redis`
      * 
      */
     @Import(name="protocol", required=true)
@@ -153,22 +157,22 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return QoS rule protocol type, value:
-     * - **ALL**
+     * - `ALL`
      * - **ICMP(IPv4)**
      * - **ICMPv6(IPv6)* *
-     * - **TCP**
-     * - **UDP**
-     * - **GRE**
-     * - **SSH**
-     * - **Telnet**
-     * - **HTTP**
-     * - **HTTPS**
+     * - `TCP`
+     * - `UDP`
+     * - `GRE`
+     * - `SSH`
+     * - `Telnet`
+     * - `HTTP`
+     * - `HTTPS`
      * - **MS SQL**
-     * - **Oracle**
-     * - **MySql**
-     * - **RDP**
-     * - **PostgreSQL**
-     * - **Redis**.
+     * - `Oracle`
+     * - `MySql`
+     * - `RDP`
+     * - `PostgreSQL`
+     * - `Redis`
      * 
      */
     public Output<String> protocol() {
@@ -206,14 +210,14 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+     * Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      * 
      */
     @Import(name="remarkingDscp")
     private @Nullable Output<Integer> remarkingDscp;
 
     /**
-     * @return Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+     * @return Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      * 
      */
     public Optional<Output<Integer>> remarkingDscp() {
@@ -221,14 +225,16 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The description of the QoS rule.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="ruleDescription")
     private @Nullable Output<String> ruleDescription;
 
     /**
-     * @return The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The description of the QoS rule.
+     * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> ruleDescription() {
@@ -236,14 +242,16 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * The name of the QoS rule.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+     * @return The name of the QoS rule.
+     * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -252,7 +260,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The QoS rule traffic matches the source IPv4 CIDR block.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     @Import(name="srcCidr")
@@ -260,7 +269,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The QoS rule traffic matches the source IPv4 CIDR block.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      * 
      */
     public Optional<Output<String>> srcCidr() {
@@ -269,7 +279,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The QoS rule traffic matches the source IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     @Import(name="srcIpv6Cidr")
@@ -277,7 +288,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The QoS rule traffic matches the source IPv6 network segment.
-     * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+     * 
+     * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      * 
      */
     public Optional<Output<String>> srcIpv6Cidr() {
@@ -285,14 +297,14 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+     * The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      * 
      */
     @Import(name="srcPortRange")
     private @Nullable Output<String> srcPortRange;
 
     /**
-     * @return The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+     * @return The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      * 
      */
     public Optional<Output<String>> srcPortRange() {
@@ -338,7 +350,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dstCidr The traffic of the QoS rule matches the Destination IPv4 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
          * 
          * @return builder
          * 
@@ -350,7 +363,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dstCidr The traffic of the QoS rule matches the Destination IPv4 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
          * 
          * @return builder
          * 
@@ -361,7 +375,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dstIpv6Cidr The QoS rule traffic matches the Destination IPv6 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
          * 
          * @return builder
          * 
@@ -373,7 +388,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param dstIpv6Cidr The QoS rule traffic matches the Destination IPv6 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
          * 
          * @return builder
          * 
@@ -383,23 +399,23 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dstPortRange QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-         * - **ALL**:-1/-1, not editable.
+         * @param dstPortRange QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+         * - `ALL`:-1/-1, not editable.
          * - **ICMP(IPv4)**:-1/-1, non-editable.
          * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-         * - **TCP**:-1/-1, editable.
-         * - **UDP**:-1/-1, editable.
-         * - **GRE**:-1/-1, not editable.
-         * - **SSH**:22/22, not editable.
-         * - **Telnet**:23/23, not editable.
-         * - **HTTP**:80/80, non-editable.
-         * - **HTTPS**:443/443, which cannot be edited.
+         * - `TCP`:-1/-1, editable.
+         * - `UDP`:-1/-1, editable.
+         * - `GRE`:-1/-1, not editable.
+         * - `SSH`:22/22, not editable.
+         * - `Telnet`:23/23, not editable.
+         * - `HTTP`:80/80, non-editable.
+         * - `HTTPS`:443/443, which cannot be edited.
          * - **MS SQL**:1443/1443, which cannot be edited.
-         * - **Oracle**:1521/1521, non-editable.
-         * - **MySql**:3306/3306, non-editable.
-         * - **RDP**:3389/3389, non-editable.
-         * - **PostgreSQL**:5432/5432, non-editable.
-         * - **Redis**:6379/6379, non-editable.
+         * - `Oracle`:1521/1521, non-editable.
+         * - `MySql`:3306/3306, non-editable.
+         * - `RDP`:3389/3389, non-editable.
+         * - `PostgreSQL`:5432/5432, non-editable.
+         * - `Redis`:6379/6379, non-editable.
          * 
          * @return builder
          * 
@@ -410,23 +426,23 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dstPortRange QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-         * - **ALL**:-1/-1, not editable.
+         * @param dstPortRange QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+         * - `ALL`:-1/-1, not editable.
          * - **ICMP(IPv4)**:-1/-1, non-editable.
          * - **ICMPv6(IPv6)**:-1/-1, non-editable.
-         * - **TCP**:-1/-1, editable.
-         * - **UDP**:-1/-1, editable.
-         * - **GRE**:-1/-1, not editable.
-         * - **SSH**:22/22, not editable.
-         * - **Telnet**:23/23, not editable.
-         * - **HTTP**:80/80, non-editable.
-         * - **HTTPS**:443/443, which cannot be edited.
+         * - `TCP`:-1/-1, editable.
+         * - `UDP`:-1/-1, editable.
+         * - `GRE`:-1/-1, not editable.
+         * - `SSH`:22/22, not editable.
+         * - `Telnet`:23/23, not editable.
+         * - `HTTP`:80/80, non-editable.
+         * - `HTTPS`:443/443, which cannot be edited.
          * - **MS SQL**:1443/1443, which cannot be edited.
-         * - **Oracle**:1521/1521, non-editable.
-         * - **MySql**:3306/3306, non-editable.
-         * - **RDP**:3389/3389, non-editable.
-         * - **PostgreSQL**:5432/5432, non-editable.
-         * - **Redis**:6379/6379, non-editable.
+         * - `Oracle`:1521/1521, non-editable.
+         * - `MySql`:3306/3306, non-editable.
+         * - `RDP`:3389/3389, non-editable.
+         * - `PostgreSQL`:5432/5432, non-editable.
+         * - `Redis`:6379/6379, non-editable.
          * 
          * @return builder
          * 
@@ -436,7 +452,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param matchDscp The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+         * @param matchDscp The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
          * 
          * @return builder
          * 
@@ -447,7 +463,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param matchDscp The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+         * @param matchDscp The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
          * 
          * @return builder
          * 
@@ -457,7 +473,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param priority QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+         * @param priority QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
          * 
          * @return builder
          * 
@@ -468,7 +484,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param priority QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+         * @param priority QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
          * 
          * @return builder
          * 
@@ -479,22 +495,22 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param protocol QoS rule protocol type, value:
-         * - **ALL**
+         * - `ALL`
          * - **ICMP(IPv4)**
          * - **ICMPv6(IPv6)* *
-         * - **TCP**
-         * - **UDP**
-         * - **GRE**
-         * - **SSH**
-         * - **Telnet**
-         * - **HTTP**
-         * - **HTTPS**
+         * - `TCP`
+         * - `UDP`
+         * - `GRE`
+         * - `SSH`
+         * - `Telnet`
+         * - `HTTP`
+         * - `HTTPS`
          * - **MS SQL**
-         * - **Oracle**
-         * - **MySql**
-         * - **RDP**
-         * - **PostgreSQL**
-         * - **Redis**.
+         * - `Oracle`
+         * - `MySql`
+         * - `RDP`
+         * - `PostgreSQL`
+         * - `Redis`
          * 
          * @return builder
          * 
@@ -506,22 +522,22 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param protocol QoS rule protocol type, value:
-         * - **ALL**
+         * - `ALL`
          * - **ICMP(IPv4)**
          * - **ICMPv6(IPv6)* *
-         * - **TCP**
-         * - **UDP**
-         * - **GRE**
-         * - **SSH**
-         * - **Telnet**
-         * - **HTTP**
-         * - **HTTPS**
+         * - `TCP`
+         * - `UDP`
+         * - `GRE`
+         * - `SSH`
+         * - `Telnet`
+         * - `HTTP`
+         * - `HTTPS`
          * - **MS SQL**
-         * - **Oracle**
-         * - **MySql**
-         * - **RDP**
-         * - **PostgreSQL**
-         * - **Redis**.
+         * - `Oracle`
+         * - `MySql`
+         * - `RDP`
+         * - `PostgreSQL`
+         * - `Redis`
          * 
          * @return builder
          * 
@@ -573,7 +589,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param remarkingDscp Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+         * @param remarkingDscp Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
          * 
          * @return builder
          * 
@@ -584,7 +600,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param remarkingDscp Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+         * @param remarkingDscp Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
          * 
          * @return builder
          * 
@@ -594,7 +610,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleDescription The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param ruleDescription The description of the QoS rule.
+         * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -605,7 +622,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleDescription The description of the QoS rule.  The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param ruleDescription The description of the QoS rule.
+         * The length is 0 to 256 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -615,7 +633,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleName The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param ruleName The name of the QoS rule.
+         * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -626,7 +645,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleName The name of the QoS rule.  The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
+         * @param ruleName The name of the QoS rule.
+         * The length is 0 to 128 characters and cannot start with &#39;http:// &#39;or &#39;https.
          * 
          * @return builder
          * 
@@ -637,7 +657,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param srcCidr The QoS rule traffic matches the source IPv4 CIDR block.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
          * 
          * @return builder
          * 
@@ -649,7 +670,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param srcCidr The QoS rule traffic matches the source IPv4 CIDR block.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
          * 
          * @return builder
          * 
@@ -660,7 +682,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param srcIpv6Cidr The QoS rule traffic matches the source IPv6 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
          * 
          * @return builder
          * 
@@ -672,7 +695,8 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param srcIpv6Cidr The QoS rule traffic matches the source IPv6 network segment.
-         * &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+         * 
+         * &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
          * 
          * @return builder
          * 
@@ -682,7 +706,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param srcPortRange The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+         * @param srcPortRange The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
          * 
          * @return builder
          * 
@@ -693,7 +717,7 @@ public final class TrafficQosRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param srcPortRange The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+         * @param srcPortRange The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
          * 
          * @return builder
          * 

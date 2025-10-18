@@ -16,6 +16,8 @@ import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsPlainArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetServicePlainArgs;
+import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsPlainArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
 import com.pulumi.alicloud.cloudsso.inputs.GetUsersPlainArgs;
 import com.pulumi.alicloud.cloudsso.outputs.GetAccessAssignmentsResult;
@@ -24,6 +26,7 @@ import com.pulumi.alicloud.cloudsso.outputs.GetDirectoriesResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetGroupsResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetScimServerCredentialsResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetServiceResult;
+import com.pulumi.alicloud.cloudsso.outputs.GetUserProvisioningEventsResult;
 import com.pulumi.alicloud.cloudsso.outputs.GetUsersResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -1696,6 +1699,331 @@ public final class CloudssoFunctions {
      */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
+     * 
+     * &gt; **NOTE:** Available since v1.261.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.Directory;
+     * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultQSrGmc = new Directory("defaultQSrGmc", DirectoryArgs.builder()
+     *             .directoryGlobalAccessStatus("Disabled")
+     *             .passwordPolicy(DirectoryPasswordPolicyArgs.builder()
+     *                 .minPasswordLength(8)
+     *                 .minPasswordDifferentChars(8)
+     *                 .maxPasswordAge(90)
+     *                 .passwordReusePrevention(1)
+     *                 .maxLoginAttempts(5)
+     *                 .build())
+     *             .mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs.builder()
+     *                 .mfaAuthenticationAdvanceSettings("OnlyRiskyLogin")
+     *                 .operationForRiskLogin("EnforceVerify")
+     *                 .build())
+     *             .directoryName("tfexample")
+     *             .build());
+     * 
+     *         final var default = CloudssoFunctions.getUserProvisioningEvents(GetUserProvisioningEventsArgs.builder()
+     *             .directoryId(defaultQSrGmc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserProvisioningEventsResult> getUserProvisioningEvents(GetUserProvisioningEventsArgs args) {
+        return getUserProvisioningEvents(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
+     * 
+     * &gt; **NOTE:** Available since v1.261.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.Directory;
+     * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultQSrGmc = new Directory("defaultQSrGmc", DirectoryArgs.builder()
+     *             .directoryGlobalAccessStatus("Disabled")
+     *             .passwordPolicy(DirectoryPasswordPolicyArgs.builder()
+     *                 .minPasswordLength(8)
+     *                 .minPasswordDifferentChars(8)
+     *                 .maxPasswordAge(90)
+     *                 .passwordReusePrevention(1)
+     *                 .maxLoginAttempts(5)
+     *                 .build())
+     *             .mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs.builder()
+     *                 .mfaAuthenticationAdvanceSettings("OnlyRiskyLogin")
+     *                 .operationForRiskLogin("EnforceVerify")
+     *                 .build())
+     *             .directoryName("tfexample")
+     *             .build());
+     * 
+     *         final var default = CloudssoFunctions.getUserProvisioningEvents(GetUserProvisioningEventsArgs.builder()
+     *             .directoryId(defaultQSrGmc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUserProvisioningEventsResult> getUserProvisioningEventsPlain(GetUserProvisioningEventsPlainArgs args) {
+        return getUserProvisioningEventsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
+     * 
+     * &gt; **NOTE:** Available since v1.261.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.Directory;
+     * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultQSrGmc = new Directory("defaultQSrGmc", DirectoryArgs.builder()
+     *             .directoryGlobalAccessStatus("Disabled")
+     *             .passwordPolicy(DirectoryPasswordPolicyArgs.builder()
+     *                 .minPasswordLength(8)
+     *                 .minPasswordDifferentChars(8)
+     *                 .maxPasswordAge(90)
+     *                 .passwordReusePrevention(1)
+     *                 .maxLoginAttempts(5)
+     *                 .build())
+     *             .mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs.builder()
+     *                 .mfaAuthenticationAdvanceSettings("OnlyRiskyLogin")
+     *                 .operationForRiskLogin("EnforceVerify")
+     *                 .build())
+     *             .directoryName("tfexample")
+     *             .build());
+     * 
+     *         final var default = CloudssoFunctions.getUserProvisioningEvents(GetUserProvisioningEventsArgs.builder()
+     *             .directoryId(defaultQSrGmc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserProvisioningEventsResult> getUserProvisioningEvents(GetUserProvisioningEventsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents", TypeShape.of(GetUserProvisioningEventsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
+     * 
+     * &gt; **NOTE:** Available since v1.261.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.Directory;
+     * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultQSrGmc = new Directory("defaultQSrGmc", DirectoryArgs.builder()
+     *             .directoryGlobalAccessStatus("Disabled")
+     *             .passwordPolicy(DirectoryPasswordPolicyArgs.builder()
+     *                 .minPasswordLength(8)
+     *                 .minPasswordDifferentChars(8)
+     *                 .maxPasswordAge(90)
+     *                 .passwordReusePrevention(1)
+     *                 .maxLoginAttempts(5)
+     *                 .build())
+     *             .mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs.builder()
+     *                 .mfaAuthenticationAdvanceSettings("OnlyRiskyLogin")
+     *                 .operationForRiskLogin("EnforceVerify")
+     *                 .build())
+     *             .directoryName("tfexample")
+     *             .build());
+     * 
+     *         final var default = CloudssoFunctions.getUserProvisioningEvents(GetUserProvisioningEventsArgs.builder()
+     *             .directoryId(defaultQSrGmc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserProvisioningEventsResult> getUserProvisioningEvents(GetUserProvisioningEventsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents", TypeShape.of(GetUserProvisioningEventsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Sso User Provisioning Event available to the user.[What is User Provisioning Event](https://next.api.alibabacloud.com/document/cloudsso/2021-05-15/GetUserProvisioningEvent)
+     * 
+     * &gt; **NOTE:** Available since v1.261.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cloudsso.Directory;
+     * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryPasswordPolicyArgs;
+     * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
+     * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+     * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultQSrGmc = new Directory("defaultQSrGmc", DirectoryArgs.builder()
+     *             .directoryGlobalAccessStatus("Disabled")
+     *             .passwordPolicy(DirectoryPasswordPolicyArgs.builder()
+     *                 .minPasswordLength(8)
+     *                 .minPasswordDifferentChars(8)
+     *                 .maxPasswordAge(90)
+     *                 .passwordReusePrevention(1)
+     *                 .maxLoginAttempts(5)
+     *                 .build())
+     *             .mfaAuthenticationSettingInfo(DirectoryMfaAuthenticationSettingInfoArgs.builder()
+     *                 .mfaAuthenticationAdvanceSettings("OnlyRiskyLogin")
+     *                 .operationForRiskLogin("EnforceVerify")
+     *                 .build())
+     *             .directoryName("tfexample")
+     *             .build());
+     * 
+     *         final var default = CloudssoFunctions.getUserProvisioningEvents(GetUserProvisioningEventsArgs.builder()
+     *             .directoryId(defaultQSrGmc.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudSsoUserProvisioningEventExampleId", default_.applyValue(_default_ -> _default_.events()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUserProvisioningEventsResult> getUserProvisioningEventsPlain(GetUserProvisioningEventsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudsso/getUserProvisioningEvents:getUserProvisioningEvents", TypeShape.of(GetUserProvisioningEventsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides the Cloud Sso Users of the current Alibaba Cloud user.

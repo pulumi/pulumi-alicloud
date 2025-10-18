@@ -34,14 +34,14 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="bgpGroupName")
     private @Nullable Output<String> bgpGroupName;
 
     /**
-     * @return The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> bgpGroupName() {
@@ -49,14 +49,29 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * Specifies whether to clear the secret key. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="clearAuthKey")
+    private @Nullable Output<Boolean> clearAuthKey;
+
+    /**
+     * @return Specifies whether to clear the secret key. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> clearAuthKey() {
+        return Optional.ofNullable(this.clearAuthKey);
+    }
+
+    /**
+     * The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,14 +79,37 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+     * The IP version. Valid values:
+     * - `IPv4`: This is the default value.
+     * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return The IP version. Valid values:
+     * - `IPv4`: This is the default value.
+     * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
+     * Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
      * 
      */
     @Import(name="isFakeAsn")
     private @Nullable Output<Boolean> isFakeAsn;
 
     /**
-     * @return The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+     * @return Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+     * 
+     * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
      * 
      */
     public Optional<Output<Boolean>> isFakeAsn() {
@@ -79,14 +117,14 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The AS number on the Alibaba Cloud side.
+     * The custom ASN on the Alibaba Cloud side. Valid values:
      * 
      */
     @Import(name="localAsn")
     private @Nullable Output<Integer> localAsn;
 
     /**
-     * @return The AS number on the Alibaba Cloud side.
+     * @return The custom ASN on the Alibaba Cloud side. Valid values:
      * 
      */
     public Optional<Output<Integer>> localAsn() {
@@ -94,14 +132,14 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The AS number of the BGP peer.
+     * The ASN of the gateway device in the data center.
      * 
      */
     @Import(name="peerAsn", required=true)
     private Output<Integer> peerAsn;
 
     /**
-     * @return The AS number of the BGP peer.
+     * @return The ASN of the gateway device in the data center.
      * 
      */
     public Output<Integer> peerAsn() {
@@ -109,14 +147,29 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VBR.
+     * The maximum number of routes supported by a BGP peer. Default value: 110.
+     * 
+     */
+    @Import(name="routeLimit")
+    private @Nullable Output<Integer> routeLimit;
+
+    /**
+     * @return The maximum number of routes supported by a BGP peer. Default value: 110.
+     * 
+     */
+    public Optional<Output<Integer>> routeLimit() {
+        return Optional.ofNullable(this.routeLimit);
+    }
+
+    /**
+     * The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     @Import(name="routerId", required=true)
     private Output<String> routerId;
 
     /**
-     * @return The ID of the VBR.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP group.
      * 
      */
     public Output<String> routerId() {
@@ -128,10 +181,13 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
     private BgpGroupArgs(BgpGroupArgs $) {
         this.authKey = $.authKey;
         this.bgpGroupName = $.bgpGroupName;
+        this.clearAuthKey = $.clearAuthKey;
         this.description = $.description;
+        this.ipVersion = $.ipVersion;
         this.isFakeAsn = $.isFakeAsn;
         this.localAsn = $.localAsn;
         this.peerAsn = $.peerAsn;
+        this.routeLimit = $.routeLimit;
         this.routerId = $.routerId;
     }
 
@@ -175,7 +231,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpGroupName The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -186,7 +242,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bgpGroupName The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param bgpGroupName The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -196,7 +252,28 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+         * @param clearAuthKey Specifies whether to clear the secret key. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearAuthKey(@Nullable Output<Boolean> clearAuthKey) {
+            $.clearAuthKey = clearAuthKey;
+            return this;
+        }
+
+        /**
+         * @param clearAuthKey Specifies whether to clear the secret key. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearAuthKey(Boolean clearAuthKey) {
+            return clearAuthKey(Output.of(clearAuthKey));
+        }
+
+        /**
+         * @param description The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -207,7 +284,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+         * @param description The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -217,7 +294,34 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFakeAsn The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+         * @param ipVersion The IP version. Valid values:
+         * - `IPv4`: This is the default value.
+         * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion The IP version. Valid values:
+         * - `IPv4`: This is the default value.
+         * - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
+        }
+
+        /**
+         * @param isFakeAsn Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
          * 
          * @return builder
          * 
@@ -228,7 +332,9 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isFakeAsn The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+         * @param isFakeAsn Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+         * 
+         * &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
          * 
          * @return builder
          * 
@@ -238,7 +344,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAsn The AS number on the Alibaba Cloud side.
+         * @param localAsn The custom ASN on the Alibaba Cloud side. Valid values:
          * 
          * @return builder
          * 
@@ -249,7 +355,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localAsn The AS number on the Alibaba Cloud side.
+         * @param localAsn The custom ASN on the Alibaba Cloud side. Valid values:
          * 
          * @return builder
          * 
@@ -259,7 +365,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerAsn The AS number of the BGP peer.
+         * @param peerAsn The ASN of the gateway device in the data center.
          * 
          * @return builder
          * 
@@ -270,7 +376,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peerAsn The AS number of the BGP peer.
+         * @param peerAsn The ASN of the gateway device in the data center.
          * 
          * @return builder
          * 
@@ -280,7 +386,28 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the VBR.
+         * @param routeLimit The maximum number of routes supported by a BGP peer. Default value: 110.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeLimit(@Nullable Output<Integer> routeLimit) {
+            $.routeLimit = routeLimit;
+            return this;
+        }
+
+        /**
+         * @param routeLimit The maximum number of routes supported by a BGP peer. Default value: 110.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeLimit(Integer routeLimit) {
+            return routeLimit(Output.of(routeLimit));
+        }
+
+        /**
+         * @param routerId The ID of the virtual border router (VBR) that is associated with the BGP group.
          * 
          * @return builder
          * 
@@ -291,7 +418,7 @@ public final class BgpGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId The ID of the VBR.
+         * @param routerId The ID of the virtual border router (VBR) that is associated with the BGP group.
          * 
          * @return builder
          * 

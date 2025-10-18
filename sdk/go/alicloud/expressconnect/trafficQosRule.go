@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Express Connect Traffic Qos Rule resource. Express Connect Traffic QoS Rule.
+// Provides a Express Connect Traffic Qos Rule resource.
+//
+// Express Connect Traffic QoS Rule.
 //
 // For information about Express Connect Traffic Qos Rule and how to use it, see [What is Traffic Qos Rule](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosRule).
 //
@@ -105,70 +107,76 @@ type TrafficQosRule struct {
 	pulumi.CustomResourceState
 
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	DstCidr pulumi.StringPtrOutput `pulumi:"dstCidr"`
 	// The QoS rule traffic matches the Destination IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	DstIpv6Cidr pulumi.StringPtrOutput `pulumi:"dstIpv6Cidr"`
-	// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-	// - **ALL**:-1/-1, not editable.
+	// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+	// - `ALL`:-1/-1, not editable.
 	// - **ICMP(IPv4)**:-1/-1, non-editable.
 	// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-	// - **TCP**:-1/-1, editable.
-	// - **UDP**:-1/-1, editable.
-	// - **GRE**:-1/-1, not editable.
-	// - **SSH**:22/22, not editable.
-	// - **Telnet**:23/23, not editable.
-	// - **HTTP**:80/80, non-editable.
-	// - **HTTPS**:443/443, which cannot be edited.
+	// - `TCP`:-1/-1, editable.
+	// - `UDP`:-1/-1, editable.
+	// - `GRE`:-1/-1, not editable.
+	// - `SSH`:22/22, not editable.
+	// - `Telnet`:23/23, not editable.
+	// - `HTTP`:80/80, non-editable.
+	// - `HTTPS`:443/443, which cannot be edited.
 	// - **MS SQL**:1443/1443, which cannot be edited.
-	// - **Oracle**:1521/1521, non-editable.
-	// - **MySql**:3306/3306, non-editable.
-	// - **RDP**:3389/3389, non-editable.
-	// - **PostgreSQL**:5432/5432, non-editable.
-	// - **Redis**:6379/6379, non-editable.
+	// - `Oracle`:1521/1521, non-editable.
+	// - `MySql`:3306/3306, non-editable.
+	// - `RDP`:3389/3389, non-editable.
+	// - `PostgreSQL`:5432/5432, non-editable.
+	// - `Redis`:6379/6379, non-editable.
 	DstPortRange pulumi.StringOutput `pulumi:"dstPortRange"`
-	// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+	// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 	MatchDscp pulumi.IntOutput `pulumi:"matchDscp"`
-	// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+	// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// QoS rule protocol type, value:
-	// - **ALL**
+	// - `ALL`
 	// - **ICMP(IPv4)**
 	// - **ICMPv6(IPv6)* *
-	// - **TCP**
-	// - **UDP**
-	// - **GRE**
-	// - **SSH**
-	// - **Telnet**
-	// - **HTTP**
-	// - **HTTPS**
+	// - `TCP`
+	// - `UDP`
+	// - `GRE`
+	// - `SSH`
+	// - `Telnet`
+	// - `HTTP`
+	// - `HTTPS`
 	// - **MS SQL**
-	// - **Oracle**
-	// - **MySql**
-	// - **RDP**
-	// - **PostgreSQL**
-	// - **Redis**.
+	// - `Oracle`
+	// - `MySql`
+	// - `RDP`
+	// - `PostgreSQL`
+	// - `Redis`
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The QoS policy ID.
 	QosId pulumi.StringOutput `pulumi:"qosId"`
 	// The QoS queue ID.
 	QueueId pulumi.StringOutput `pulumi:"queueId"`
-	// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+	// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 	RemarkingDscp pulumi.IntOutput `pulumi:"remarkingDscp"`
-	// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS rule.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	RuleDescription pulumi.StringPtrOutput `pulumi:"ruleDescription"`
 	// The ID of the QoS rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
-	// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS rule.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// The QoS rule traffic matches the source IPv4 CIDR block.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	SrcCidr pulumi.StringPtrOutput `pulumi:"srcCidr"`
 	// The QoS rule traffic matches the source IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	SrcIpv6Cidr pulumi.StringPtrOutput `pulumi:"srcIpv6Cidr"`
-	// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+	// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 	SrcPortRange pulumi.StringOutput `pulumi:"srcPortRange"`
 	// The status of the QoS rule. Value:
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -217,70 +225,76 @@ func GetTrafficQosRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TrafficQosRule resources.
 type trafficQosRuleState struct {
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	DstCidr *string `pulumi:"dstCidr"`
 	// The QoS rule traffic matches the Destination IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	DstIpv6Cidr *string `pulumi:"dstIpv6Cidr"`
-	// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-	// - **ALL**:-1/-1, not editable.
+	// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+	// - `ALL`:-1/-1, not editable.
 	// - **ICMP(IPv4)**:-1/-1, non-editable.
 	// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-	// - **TCP**:-1/-1, editable.
-	// - **UDP**:-1/-1, editable.
-	// - **GRE**:-1/-1, not editable.
-	// - **SSH**:22/22, not editable.
-	// - **Telnet**:23/23, not editable.
-	// - **HTTP**:80/80, non-editable.
-	// - **HTTPS**:443/443, which cannot be edited.
+	// - `TCP`:-1/-1, editable.
+	// - `UDP`:-1/-1, editable.
+	// - `GRE`:-1/-1, not editable.
+	// - `SSH`:22/22, not editable.
+	// - `Telnet`:23/23, not editable.
+	// - `HTTP`:80/80, non-editable.
+	// - `HTTPS`:443/443, which cannot be edited.
 	// - **MS SQL**:1443/1443, which cannot be edited.
-	// - **Oracle**:1521/1521, non-editable.
-	// - **MySql**:3306/3306, non-editable.
-	// - **RDP**:3389/3389, non-editable.
-	// - **PostgreSQL**:5432/5432, non-editable.
-	// - **Redis**:6379/6379, non-editable.
+	// - `Oracle`:1521/1521, non-editable.
+	// - `MySql`:3306/3306, non-editable.
+	// - `RDP`:3389/3389, non-editable.
+	// - `PostgreSQL`:5432/5432, non-editable.
+	// - `Redis`:6379/6379, non-editable.
 	DstPortRange *string `pulumi:"dstPortRange"`
-	// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+	// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 	MatchDscp *int `pulumi:"matchDscp"`
-	// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+	// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 	Priority *int `pulumi:"priority"`
 	// QoS rule protocol type, value:
-	// - **ALL**
+	// - `ALL`
 	// - **ICMP(IPv4)**
 	// - **ICMPv6(IPv6)* *
-	// - **TCP**
-	// - **UDP**
-	// - **GRE**
-	// - **SSH**
-	// - **Telnet**
-	// - **HTTP**
-	// - **HTTPS**
+	// - `TCP`
+	// - `UDP`
+	// - `GRE`
+	// - `SSH`
+	// - `Telnet`
+	// - `HTTP`
+	// - `HTTPS`
 	// - **MS SQL**
-	// - **Oracle**
-	// - **MySql**
-	// - **RDP**
-	// - **PostgreSQL**
-	// - **Redis**.
+	// - `Oracle`
+	// - `MySql`
+	// - `RDP`
+	// - `PostgreSQL`
+	// - `Redis`
 	Protocol *string `pulumi:"protocol"`
 	// The QoS policy ID.
 	QosId *string `pulumi:"qosId"`
 	// The QoS queue ID.
 	QueueId *string `pulumi:"queueId"`
-	// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+	// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 	RemarkingDscp *int `pulumi:"remarkingDscp"`
-	// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS rule.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	RuleDescription *string `pulumi:"ruleDescription"`
 	// The ID of the QoS rule.
 	RuleId *string `pulumi:"ruleId"`
-	// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS rule.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	RuleName *string `pulumi:"ruleName"`
 	// The QoS rule traffic matches the source IPv4 CIDR block.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	SrcCidr *string `pulumi:"srcCidr"`
 	// The QoS rule traffic matches the source IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	SrcIpv6Cidr *string `pulumi:"srcIpv6Cidr"`
-	// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+	// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 	SrcPortRange *string `pulumi:"srcPortRange"`
 	// The status of the QoS rule. Value:
 	Status *string `pulumi:"status"`
@@ -288,70 +302,76 @@ type trafficQosRuleState struct {
 
 type TrafficQosRuleState struct {
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	DstCidr pulumi.StringPtrInput
 	// The QoS rule traffic matches the Destination IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	DstIpv6Cidr pulumi.StringPtrInput
-	// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-	// - **ALL**:-1/-1, not editable.
+	// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+	// - `ALL`:-1/-1, not editable.
 	// - **ICMP(IPv4)**:-1/-1, non-editable.
 	// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-	// - **TCP**:-1/-1, editable.
-	// - **UDP**:-1/-1, editable.
-	// - **GRE**:-1/-1, not editable.
-	// - **SSH**:22/22, not editable.
-	// - **Telnet**:23/23, not editable.
-	// - **HTTP**:80/80, non-editable.
-	// - **HTTPS**:443/443, which cannot be edited.
+	// - `TCP`:-1/-1, editable.
+	// - `UDP`:-1/-1, editable.
+	// - `GRE`:-1/-1, not editable.
+	// - `SSH`:22/22, not editable.
+	// - `Telnet`:23/23, not editable.
+	// - `HTTP`:80/80, non-editable.
+	// - `HTTPS`:443/443, which cannot be edited.
 	// - **MS SQL**:1443/1443, which cannot be edited.
-	// - **Oracle**:1521/1521, non-editable.
-	// - **MySql**:3306/3306, non-editable.
-	// - **RDP**:3389/3389, non-editable.
-	// - **PostgreSQL**:5432/5432, non-editable.
-	// - **Redis**:6379/6379, non-editable.
+	// - `Oracle`:1521/1521, non-editable.
+	// - `MySql`:3306/3306, non-editable.
+	// - `RDP`:3389/3389, non-editable.
+	// - `PostgreSQL`:5432/5432, non-editable.
+	// - `Redis`:6379/6379, non-editable.
 	DstPortRange pulumi.StringPtrInput
-	// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+	// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 	MatchDscp pulumi.IntPtrInput
-	// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+	// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 	Priority pulumi.IntPtrInput
 	// QoS rule protocol type, value:
-	// - **ALL**
+	// - `ALL`
 	// - **ICMP(IPv4)**
 	// - **ICMPv6(IPv6)* *
-	// - **TCP**
-	// - **UDP**
-	// - **GRE**
-	// - **SSH**
-	// - **Telnet**
-	// - **HTTP**
-	// - **HTTPS**
+	// - `TCP`
+	// - `UDP`
+	// - `GRE`
+	// - `SSH`
+	// - `Telnet`
+	// - `HTTP`
+	// - `HTTPS`
 	// - **MS SQL**
-	// - **Oracle**
-	// - **MySql**
-	// - **RDP**
-	// - **PostgreSQL**
-	// - **Redis**.
+	// - `Oracle`
+	// - `MySql`
+	// - `RDP`
+	// - `PostgreSQL`
+	// - `Redis`
 	Protocol pulumi.StringPtrInput
 	// The QoS policy ID.
 	QosId pulumi.StringPtrInput
 	// The QoS queue ID.
 	QueueId pulumi.StringPtrInput
-	// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+	// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 	RemarkingDscp pulumi.IntPtrInput
-	// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS rule.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	RuleDescription pulumi.StringPtrInput
 	// The ID of the QoS rule.
 	RuleId pulumi.StringPtrInput
-	// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS rule.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	RuleName pulumi.StringPtrInput
 	// The QoS rule traffic matches the source IPv4 CIDR block.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	SrcCidr pulumi.StringPtrInput
 	// The QoS rule traffic matches the source IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	SrcIpv6Cidr pulumi.StringPtrInput
-	// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+	// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 	SrcPortRange pulumi.StringPtrInput
 	// The status of the QoS rule. Value:
 	Status pulumi.StringPtrInput
@@ -363,136 +383,148 @@ func (TrafficQosRuleState) ElementType() reflect.Type {
 
 type trafficQosRuleArgs struct {
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	DstCidr *string `pulumi:"dstCidr"`
 	// The QoS rule traffic matches the Destination IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	DstIpv6Cidr *string `pulumi:"dstIpv6Cidr"`
-	// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-	// - **ALL**:-1/-1, not editable.
+	// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+	// - `ALL`:-1/-1, not editable.
 	// - **ICMP(IPv4)**:-1/-1, non-editable.
 	// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-	// - **TCP**:-1/-1, editable.
-	// - **UDP**:-1/-1, editable.
-	// - **GRE**:-1/-1, not editable.
-	// - **SSH**:22/22, not editable.
-	// - **Telnet**:23/23, not editable.
-	// - **HTTP**:80/80, non-editable.
-	// - **HTTPS**:443/443, which cannot be edited.
+	// - `TCP`:-1/-1, editable.
+	// - `UDP`:-1/-1, editable.
+	// - `GRE`:-1/-1, not editable.
+	// - `SSH`:22/22, not editable.
+	// - `Telnet`:23/23, not editable.
+	// - `HTTP`:80/80, non-editable.
+	// - `HTTPS`:443/443, which cannot be edited.
 	// - **MS SQL**:1443/1443, which cannot be edited.
-	// - **Oracle**:1521/1521, non-editable.
-	// - **MySql**:3306/3306, non-editable.
-	// - **RDP**:3389/3389, non-editable.
-	// - **PostgreSQL**:5432/5432, non-editable.
-	// - **Redis**:6379/6379, non-editable.
+	// - `Oracle`:1521/1521, non-editable.
+	// - `MySql`:3306/3306, non-editable.
+	// - `RDP`:3389/3389, non-editable.
+	// - `PostgreSQL`:5432/5432, non-editable.
+	// - `Redis`:6379/6379, non-editable.
 	DstPortRange *string `pulumi:"dstPortRange"`
-	// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+	// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 	MatchDscp *int `pulumi:"matchDscp"`
-	// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+	// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 	Priority int `pulumi:"priority"`
 	// QoS rule protocol type, value:
-	// - **ALL**
+	// - `ALL`
 	// - **ICMP(IPv4)**
 	// - **ICMPv6(IPv6)* *
-	// - **TCP**
-	// - **UDP**
-	// - **GRE**
-	// - **SSH**
-	// - **Telnet**
-	// - **HTTP**
-	// - **HTTPS**
+	// - `TCP`
+	// - `UDP`
+	// - `GRE`
+	// - `SSH`
+	// - `Telnet`
+	// - `HTTP`
+	// - `HTTPS`
 	// - **MS SQL**
-	// - **Oracle**
-	// - **MySql**
-	// - **RDP**
-	// - **PostgreSQL**
-	// - **Redis**.
+	// - `Oracle`
+	// - `MySql`
+	// - `RDP`
+	// - `PostgreSQL`
+	// - `Redis`
 	Protocol string `pulumi:"protocol"`
 	// The QoS policy ID.
 	QosId string `pulumi:"qosId"`
 	// The QoS queue ID.
 	QueueId string `pulumi:"queueId"`
-	// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+	// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 	RemarkingDscp *int `pulumi:"remarkingDscp"`
-	// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS rule.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	RuleDescription *string `pulumi:"ruleDescription"`
-	// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS rule.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	RuleName *string `pulumi:"ruleName"`
 	// The QoS rule traffic matches the source IPv4 CIDR block.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	SrcCidr *string `pulumi:"srcCidr"`
 	// The QoS rule traffic matches the source IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	SrcIpv6Cidr *string `pulumi:"srcIpv6Cidr"`
-	// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+	// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 	SrcPortRange *string `pulumi:"srcPortRange"`
 }
 
 // The set of arguments for constructing a TrafficQosRule resource.
 type TrafficQosRuleArgs struct {
 	// The traffic of the QoS rule matches the Destination IPv4 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	DstCidr pulumi.StringPtrInput
 	// The QoS rule traffic matches the Destination IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	DstIpv6Cidr pulumi.StringPtrInput
-	// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-	// - **ALL**:-1/-1, not editable.
+	// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+	// - `ALL`:-1/-1, not editable.
 	// - **ICMP(IPv4)**:-1/-1, non-editable.
 	// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-	// - **TCP**:-1/-1, editable.
-	// - **UDP**:-1/-1, editable.
-	// - **GRE**:-1/-1, not editable.
-	// - **SSH**:22/22, not editable.
-	// - **Telnet**:23/23, not editable.
-	// - **HTTP**:80/80, non-editable.
-	// - **HTTPS**:443/443, which cannot be edited.
+	// - `TCP`:-1/-1, editable.
+	// - `UDP`:-1/-1, editable.
+	// - `GRE`:-1/-1, not editable.
+	// - `SSH`:22/22, not editable.
+	// - `Telnet`:23/23, not editable.
+	// - `HTTP`:80/80, non-editable.
+	// - `HTTPS`:443/443, which cannot be edited.
 	// - **MS SQL**:1443/1443, which cannot be edited.
-	// - **Oracle**:1521/1521, non-editable.
-	// - **MySql**:3306/3306, non-editable.
-	// - **RDP**:3389/3389, non-editable.
-	// - **PostgreSQL**:5432/5432, non-editable.
-	// - **Redis**:6379/6379, non-editable.
+	// - `Oracle`:1521/1521, non-editable.
+	// - `MySql`:3306/3306, non-editable.
+	// - `RDP`:3389/3389, non-editable.
+	// - `PostgreSQL`:5432/5432, non-editable.
+	// - `Redis`:6379/6379, non-editable.
 	DstPortRange pulumi.StringPtrInput
-	// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+	// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 	MatchDscp pulumi.IntPtrInput
-	// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+	// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 	Priority pulumi.IntInput
 	// QoS rule protocol type, value:
-	// - **ALL**
+	// - `ALL`
 	// - **ICMP(IPv4)**
 	// - **ICMPv6(IPv6)* *
-	// - **TCP**
-	// - **UDP**
-	// - **GRE**
-	// - **SSH**
-	// - **Telnet**
-	// - **HTTP**
-	// - **HTTPS**
+	// - `TCP`
+	// - `UDP`
+	// - `GRE`
+	// - `SSH`
+	// - `Telnet`
+	// - `HTTP`
+	// - `HTTPS`
 	// - **MS SQL**
-	// - **Oracle**
-	// - **MySql**
-	// - **RDP**
-	// - **PostgreSQL**
-	// - **Redis**.
+	// - `Oracle`
+	// - `MySql`
+	// - `RDP`
+	// - `PostgreSQL`
+	// - `Redis`
 	Protocol pulumi.StringInput
 	// The QoS policy ID.
 	QosId pulumi.StringInput
 	// The QoS queue ID.
 	QueueId pulumi.StringInput
-	// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+	// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 	RemarkingDscp pulumi.IntPtrInput
-	// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS rule.
+	// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 	RuleDescription pulumi.StringPtrInput
-	// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS rule.
+	// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 	RuleName pulumi.StringPtrInput
 	// The QoS rule traffic matches the source IPv4 CIDR block.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 	SrcCidr pulumi.StringPtrInput
 	// The QoS rule traffic matches the source IPv6 network segment.
-	// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+	//
+	// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 	SrcIpv6Cidr pulumi.StringPtrInput
-	// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+	// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 	SrcPortRange pulumi.StringPtrInput
 }
 
@@ -584,65 +616,67 @@ func (o TrafficQosRuleOutput) ToTrafficQosRuleOutputWithContext(ctx context.Cont
 }
 
 // The traffic of the QoS rule matches the Destination IPv4 network segment.
-// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+//
+// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 func (o TrafficQosRuleOutput) DstCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.DstCidr }).(pulumi.StringPtrOutput)
 }
 
 // The QoS rule traffic matches the Destination IPv6 network segment.
-// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+//
+// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 func (o TrafficQosRuleOutput) DstIpv6Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.DstIpv6Cidr }).(pulumi.StringPtrOutput)
 }
 
-// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-// - **ALL**:-1/-1, not editable.
+// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+// - `ALL`:-1/-1, not editable.
 // - **ICMP(IPv4)**:-1/-1, non-editable.
 // - **ICMPv6(IPv6)**:-1/-1, non-editable.
-// - **TCP**:-1/-1, editable.
-// - **UDP**:-1/-1, editable.
-// - **GRE**:-1/-1, not editable.
-// - **SSH**:22/22, not editable.
-// - **Telnet**:23/23, not editable.
-// - **HTTP**:80/80, non-editable.
-// - **HTTPS**:443/443, which cannot be edited.
+// - `TCP`:-1/-1, editable.
+// - `UDP`:-1/-1, editable.
+// - `GRE`:-1/-1, not editable.
+// - `SSH`:22/22, not editable.
+// - `Telnet`:23/23, not editable.
+// - `HTTP`:80/80, non-editable.
+// - `HTTPS`:443/443, which cannot be edited.
 // - **MS SQL**:1443/1443, which cannot be edited.
-// - **Oracle**:1521/1521, non-editable.
-// - **MySql**:3306/3306, non-editable.
-// - **RDP**:3389/3389, non-editable.
-// - **PostgreSQL**:5432/5432, non-editable.
-// - **Redis**:6379/6379, non-editable.
+// - `Oracle`:1521/1521, non-editable.
+// - `MySql`:3306/3306, non-editable.
+// - `RDP`:3389/3389, non-editable.
+// - `PostgreSQL`:5432/5432, non-editable.
+// - `Redis`:6379/6379, non-editable.
 func (o TrafficQosRuleOutput) DstPortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringOutput { return v.DstPortRange }).(pulumi.StringOutput)
 }
 
-// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
 func (o TrafficQosRuleOutput) MatchDscp() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.IntOutput { return v.MatchDscp }).(pulumi.IntOutput)
 }
 
-// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
 func (o TrafficQosRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 // QoS rule protocol type, value:
-// - **ALL**
+// - `ALL`
 // - **ICMP(IPv4)**
 // - **ICMPv6(IPv6)* *
-// - **TCP**
-// - **UDP**
-// - **GRE**
-// - **SSH**
-// - **Telnet**
-// - **HTTP**
-// - **HTTPS**
+// - `TCP`
+// - `UDP`
+// - `GRE`
+// - `SSH`
+// - `Telnet`
+// - `HTTP`
+// - `HTTPS`
 // - **MS SQL**
-// - **Oracle**
-// - **MySql**
-// - **RDP**
-// - **PostgreSQL**
-// - **Redis**.
+// - `Oracle`
+// - `MySql`
+// - `RDP`
+// - `PostgreSQL`
+// - `Redis`
 func (o TrafficQosRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -657,12 +691,13 @@ func (o TrafficQosRuleOutput) QueueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }
 
-// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
 func (o TrafficQosRuleOutput) RemarkingDscp() pulumi.IntOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.IntOutput { return v.RemarkingDscp }).(pulumi.IntOutput)
 }
 
-// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+// The description of the QoS rule.
+// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosRuleOutput) RuleDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.RuleDescription }).(pulumi.StringPtrOutput)
 }
@@ -672,24 +707,27 @@ func (o TrafficQosRuleOutput) RuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
 }
 
-// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+// The name of the QoS rule.
+// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
 // The QoS rule traffic matches the source IPv4 CIDR block.
-// > **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+//
+// > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
 func (o TrafficQosRuleOutput) SrcCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.SrcCidr }).(pulumi.StringPtrOutput)
 }
 
 // The QoS rule traffic matches the source IPv6 network segment.
-// > **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+//
+// > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
 func (o TrafficQosRuleOutput) SrcIpv6Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringPtrOutput { return v.SrcIpv6Cidr }).(pulumi.StringPtrOutput)
 }
 
-// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
 func (o TrafficQosRuleOutput) SrcPortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQosRule) pulumi.StringOutput { return v.SrcPortRange }).(pulumi.StringOutput)
 }

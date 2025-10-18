@@ -85,8 +85,10 @@ type Node struct {
 	BillingCycle pulumi.StringPtrOutput `pulumi:"billingCycle"`
 	// Classification
 	Classify pulumi.StringPtrOutput `pulumi:"classify"`
-	// Node Model
-	ComputingServer pulumi.StringPtrOutput `pulumi:"computingServer"`
+	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	//
+	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	ComputingServer pulumi.StringOutput `pulumi:"computingServer"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Offer Information
@@ -95,12 +97,19 @@ type Node struct {
 	HpnZone pulumi.StringPtrOutput `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrOutput `pulumi:"installPai"`
+	// Model
+	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrOutput `pulumi:"paymentRatio"`
+	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+	// The default is Subscription.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Form
 	ProductForm pulumi.StringPtrOutput `pulumi:"productForm"`
+	// The region ID of the resource
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// Automatic renewal period, in months.
 	//
 	// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -117,7 +126,7 @@ type Node struct {
 	ServerArch pulumi.StringPtrOutput `pulumi:"serverArch"`
 	// Number of stages
 	StageNum pulumi.StringPtrOutput `pulumi:"stageNum"`
-	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -159,7 +168,9 @@ type nodeState struct {
 	BillingCycle *string `pulumi:"billingCycle"`
 	// Classification
 	Classify *string `pulumi:"classify"`
-	// Node Model
+	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	//
+	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer *string `pulumi:"computingServer"`
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
@@ -169,12 +180,19 @@ type nodeState struct {
 	HpnZone *string `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai *bool `pulumi:"installPai"`
+	// Model
+	MachineType *string `pulumi:"machineType"`
 	// Down payment ratio
 	PaymentRatio *string `pulumi:"paymentRatio"`
+	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+	// The default is Subscription.
+	PaymentType *string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 	Period *int `pulumi:"period"`
 	// Form
 	ProductForm *string `pulumi:"productForm"`
+	// The region ID of the resource
+	RegionId *string `pulumi:"regionId"`
 	// Automatic renewal period, in months.
 	//
 	// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -191,7 +209,7 @@ type nodeState struct {
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
 	StageNum *string `pulumi:"stageNum"`
-	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
@@ -204,7 +222,9 @@ type NodeState struct {
 	BillingCycle pulumi.StringPtrInput
 	// Classification
 	Classify pulumi.StringPtrInput
-	// Node Model
+	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	//
+	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
@@ -214,12 +234,19 @@ type NodeState struct {
 	HpnZone pulumi.StringPtrInput
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrInput
+	// Model
+	MachineType pulumi.StringPtrInput
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrInput
+	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+	// The default is Subscription.
+	PaymentType pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 	Period pulumi.IntPtrInput
 	// Form
 	ProductForm pulumi.StringPtrInput
+	// The region ID of the resource
+	RegionId pulumi.StringPtrInput
 	// Automatic renewal period, in months.
 	//
 	// > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -236,7 +263,7 @@ type NodeState struct {
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
 	StageNum pulumi.StringPtrInput
-	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
@@ -253,7 +280,9 @@ type nodeArgs struct {
 	BillingCycle *string `pulumi:"billingCycle"`
 	// Classification
 	Classify *string `pulumi:"classify"`
-	// Node Model
+	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	//
+	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer *string `pulumi:"computingServer"`
 	// Offer Information
 	DiscountLevel *string `pulumi:"discountLevel"`
@@ -261,8 +290,13 @@ type nodeArgs struct {
 	HpnZone *string `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai *bool `pulumi:"installPai"`
+	// Model
+	MachineType *string `pulumi:"machineType"`
 	// Down payment ratio
 	PaymentRatio *string `pulumi:"paymentRatio"`
+	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+	// The default is Subscription.
+	PaymentType *string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 	Period *int `pulumi:"period"`
 	// Form
@@ -283,7 +317,7 @@ type nodeArgs struct {
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
 	StageNum *string `pulumi:"stageNum"`
-	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
@@ -297,7 +331,9 @@ type NodeArgs struct {
 	BillingCycle pulumi.StringPtrInput
 	// Classification
 	Classify pulumi.StringPtrInput
-	// Node Model
+	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	//
+	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer pulumi.StringPtrInput
 	// Offer Information
 	DiscountLevel pulumi.StringPtrInput
@@ -305,8 +341,13 @@ type NodeArgs struct {
 	HpnZone pulumi.StringPtrInput
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrInput
+	// Model
+	MachineType pulumi.StringPtrInput
 	// Down payment ratio
 	PaymentRatio pulumi.StringPtrInput
+	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+	// The default is Subscription.
+	PaymentType pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 	Period pulumi.IntPtrInput
 	// Form
@@ -327,7 +368,7 @@ type NodeArgs struct {
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
 	StageNum pulumi.StringPtrInput
-	// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
@@ -432,9 +473,11 @@ func (o NodeOutput) Classify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.Classify }).(pulumi.StringPtrOutput)
 }
 
-// Node Model
-func (o NodeOutput) ComputingServer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.ComputingServer }).(pulumi.StringPtrOutput)
+// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+//
+// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+func (o NodeOutput) ComputingServer() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ComputingServer }).(pulumi.StringOutput)
 }
 
 // The creation time of the resource
@@ -457,9 +500,20 @@ func (o NodeOutput) InstallPai() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.BoolPtrOutput { return v.InstallPai }).(pulumi.BoolPtrOutput)
 }
 
+// Model
+func (o NodeOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
+}
+
 // Down payment ratio
 func (o NodeOutput) PaymentRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.PaymentRatio }).(pulumi.StringPtrOutput)
+}
+
+// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
+// The default is Subscription.
+func (o NodeOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
@@ -470,6 +524,11 @@ func (o NodeOutput) Period() pulumi.IntPtrOutput {
 // Form
 func (o NodeOutput) ProductForm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.ProductForm }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the resource
+func (o NodeOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // Automatic renewal period, in months.
@@ -503,7 +562,7 @@ func (o NodeOutput) StageNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.StageNum }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource, but this argument is currently invalid and will be removed in the future. Please do not use it.
+// The status of the resource
 func (o NodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

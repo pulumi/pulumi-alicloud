@@ -17,7 +17,7 @@ import (
 // [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 //
 // > **NOTE:** This resource is no longer maintained. It is recommended to use the new resource alicloud_sls_etl.
-// Refer to details.
+// [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/125384.htm).
 //
 // > **NOTE:** Available since v1.120.0.
 //
@@ -149,7 +149,7 @@ type Etl struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the log etl job.
 	EtlName pulumi.StringOutput `pulumi:"etlName"`
-	// Target logstore configuration for delivery after data processing.
+	// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 	EtlSinks EtlEtlSinkArrayOutput `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrOutput `pulumi:"etlType"`
@@ -163,6 +163,8 @@ type Etl struct {
 	KmsEncryptionAccessKeyIdContext pulumi.StringMapOutput `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionAccessKeySecretContext pulumi.StringMapOutput `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	// The language of the etl job.
+	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -256,7 +258,7 @@ type etlState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the log etl job.
 	EtlName *string `pulumi:"etlName"`
-	// Target logstore configuration for delivery after data processing.
+	// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 	EtlSinks []EtlEtlSink `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType *string `pulumi:"etlType"`
@@ -270,6 +272,8 @@ type etlState struct {
 	KmsEncryptionAccessKeyIdContext map[string]string `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionAccessKeySecretContext map[string]string `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	// The language of the etl job.
+	Lang *string `pulumi:"lang"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -305,7 +309,7 @@ type EtlState struct {
 	DisplayName pulumi.StringPtrInput
 	// The name of the log etl job.
 	EtlName pulumi.StringPtrInput
-	// Target logstore configuration for delivery after data processing.
+	// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 	EtlSinks EtlEtlSinkArrayInput
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrInput
@@ -319,6 +323,8 @@ type EtlState struct {
 	KmsEncryptionAccessKeyIdContext pulumi.StringMapInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionAccessKeySecretContext pulumi.StringMapInput
+	// The language of the etl job.
+	Lang pulumi.StringPtrInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
 	// The source logstore of the processing job.
@@ -358,7 +364,7 @@ type etlArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The name of the log etl job.
 	EtlName string `pulumi:"etlName"`
-	// Target logstore configuration for delivery after data processing.
+	// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 	EtlSinks []EtlEtlSink `pulumi:"etlSinks"`
 	// Log service etl type, the default value is `ETL`.
 	EtlType *string `pulumi:"etlType"`
@@ -372,6 +378,8 @@ type etlArgs struct {
 	KmsEncryptionAccessKeyIdContext map[string]string `pulumi:"kmsEncryptionAccessKeyIdContext"`
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionAccessKeySecretContext map[string]string `pulumi:"kmsEncryptionAccessKeySecretContext"`
+	// The language of the etl job.
+	Lang *string `pulumi:"lang"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The source logstore of the processing job.
@@ -408,7 +416,7 @@ type EtlArgs struct {
 	DisplayName pulumi.StringInput
 	// The name of the log etl job.
 	EtlName pulumi.StringInput
-	// Target logstore configuration for delivery after data processing.
+	// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 	EtlSinks EtlEtlSinkArrayInput
 	// Log service etl type, the default value is `ETL`.
 	EtlType pulumi.StringPtrInput
@@ -422,6 +430,8 @@ type EtlArgs struct {
 	KmsEncryptionAccessKeyIdContext pulumi.StringMapInput
 	// An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 	KmsEncryptionAccessKeySecretContext pulumi.StringMapInput
+	// The language of the etl job.
+	Lang pulumi.StringPtrInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
 	// The source logstore of the processing job.
@@ -561,7 +571,7 @@ func (o EtlOutput) EtlName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.EtlName }).(pulumi.StringOutput)
 }
 
-// Target logstore configuration for delivery after data processing.
+// Target logstore configuration for delivery after data processing. See `etlSinks` below.
 func (o EtlOutput) EtlSinks() EtlEtlSinkArrayOutput {
 	return o.ApplyT(func(v *Etl) EtlEtlSinkArrayOutput { return v.EtlSinks }).(EtlEtlSinkArrayOutput)
 }
@@ -594,6 +604,11 @@ func (o EtlOutput) KmsEncryptionAccessKeyIdContext() pulumi.StringMapOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedAccessKeySecret` before creating or updating an instance with `kmsEncryptedAccessKeySecret`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set. When it is changed, the instance will reboot to make the change take effect.
 func (o EtlOutput) KmsEncryptionAccessKeySecretContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringMapOutput { return v.KmsEncryptionAccessKeySecretContext }).(pulumi.StringMapOutput)
+}
+
+// The language of the etl job.
+func (o EtlOutput) Lang() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
 // ETL job last modified time.

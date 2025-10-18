@@ -2429,6 +2429,450 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
 	}).(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
+type InstanceRefreshCheckpoint struct {
+	// The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// InstanceRefreshCheckpointInput is an input type that accepts InstanceRefreshCheckpointArgs and InstanceRefreshCheckpointOutput values.
+// You can construct a concrete instance of `InstanceRefreshCheckpointInput` via:
+//
+//	InstanceRefreshCheckpointArgs{...}
+type InstanceRefreshCheckpointInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshCheckpointOutput() InstanceRefreshCheckpointOutput
+	ToInstanceRefreshCheckpointOutputWithContext(context.Context) InstanceRefreshCheckpointOutput
+}
+
+type InstanceRefreshCheckpointArgs struct {
+	// The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (InstanceRefreshCheckpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshCheckpoint)(nil)).Elem()
+}
+
+func (i InstanceRefreshCheckpointArgs) ToInstanceRefreshCheckpointOutput() InstanceRefreshCheckpointOutput {
+	return i.ToInstanceRefreshCheckpointOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshCheckpointArgs) ToInstanceRefreshCheckpointOutputWithContext(ctx context.Context) InstanceRefreshCheckpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshCheckpointOutput)
+}
+
+// InstanceRefreshCheckpointArrayInput is an input type that accepts InstanceRefreshCheckpointArray and InstanceRefreshCheckpointArrayOutput values.
+// You can construct a concrete instance of `InstanceRefreshCheckpointArrayInput` via:
+//
+//	InstanceRefreshCheckpointArray{ InstanceRefreshCheckpointArgs{...} }
+type InstanceRefreshCheckpointArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshCheckpointArrayOutput() InstanceRefreshCheckpointArrayOutput
+	ToInstanceRefreshCheckpointArrayOutputWithContext(context.Context) InstanceRefreshCheckpointArrayOutput
+}
+
+type InstanceRefreshCheckpointArray []InstanceRefreshCheckpointInput
+
+func (InstanceRefreshCheckpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshCheckpoint)(nil)).Elem()
+}
+
+func (i InstanceRefreshCheckpointArray) ToInstanceRefreshCheckpointArrayOutput() InstanceRefreshCheckpointArrayOutput {
+	return i.ToInstanceRefreshCheckpointArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshCheckpointArray) ToInstanceRefreshCheckpointArrayOutputWithContext(ctx context.Context) InstanceRefreshCheckpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshCheckpointArrayOutput)
+}
+
+type InstanceRefreshCheckpointOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshCheckpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshCheckpoint)(nil)).Elem()
+}
+
+func (o InstanceRefreshCheckpointOutput) ToInstanceRefreshCheckpointOutput() InstanceRefreshCheckpointOutput {
+	return o
+}
+
+func (o InstanceRefreshCheckpointOutput) ToInstanceRefreshCheckpointOutputWithContext(ctx context.Context) InstanceRefreshCheckpointOutput {
+	return o
+}
+
+// The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+func (o InstanceRefreshCheckpointOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshCheckpoint) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type InstanceRefreshCheckpointArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshCheckpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshCheckpoint)(nil)).Elem()
+}
+
+func (o InstanceRefreshCheckpointArrayOutput) ToInstanceRefreshCheckpointArrayOutput() InstanceRefreshCheckpointArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshCheckpointArrayOutput) ToInstanceRefreshCheckpointArrayOutputWithContext(ctx context.Context) InstanceRefreshCheckpointArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshCheckpointArrayOutput) Index(i pulumi.IntInput) InstanceRefreshCheckpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRefreshCheckpoint {
+		return vs[0].([]InstanceRefreshCheckpoint)[vs[1].(int)]
+	}).(InstanceRefreshCheckpointOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainer struct {
+	// The arguments for the container startup command.
+	Args []string `pulumi:"args"`
+	// The container startup command.
+	Commands []string `pulumi:"commands"`
+	// Information about the environment variables. See `environmentVars` below for details.
+	EnvironmentVars []InstanceRefreshDesiredConfigurationContainerEnvironmentVar `pulumi:"environmentVars"`
+	// The container image.
+	Image *string `pulumi:"image"`
+	// The custom name of the container.
+	Name *string `pulumi:"name"`
+}
+
+// InstanceRefreshDesiredConfigurationContainerInput is an input type that accepts InstanceRefreshDesiredConfigurationContainerArgs and InstanceRefreshDesiredConfigurationContainerOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationContainerInput` via:
+//
+//	InstanceRefreshDesiredConfigurationContainerArgs{...}
+type InstanceRefreshDesiredConfigurationContainerInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationContainerOutput() InstanceRefreshDesiredConfigurationContainerOutput
+	ToInstanceRefreshDesiredConfigurationContainerOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationContainerOutput
+}
+
+type InstanceRefreshDesiredConfigurationContainerArgs struct {
+	// The arguments for the container startup command.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// The container startup command.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Information about the environment variables. See `environmentVars` below for details.
+	EnvironmentVars InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
+	// The container image.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// The custom name of the container.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InstanceRefreshDesiredConfigurationContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainer)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerArgs) ToInstanceRefreshDesiredConfigurationContainerOutput() InstanceRefreshDesiredConfigurationContainerOutput {
+	return i.ToInstanceRefreshDesiredConfigurationContainerOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerArgs) ToInstanceRefreshDesiredConfigurationContainerOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationContainerOutput)
+}
+
+// InstanceRefreshDesiredConfigurationContainerArrayInput is an input type that accepts InstanceRefreshDesiredConfigurationContainerArray and InstanceRefreshDesiredConfigurationContainerArrayOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationContainerArrayInput` via:
+//
+//	InstanceRefreshDesiredConfigurationContainerArray{ InstanceRefreshDesiredConfigurationContainerArgs{...} }
+type InstanceRefreshDesiredConfigurationContainerArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationContainerArrayOutput() InstanceRefreshDesiredConfigurationContainerArrayOutput
+	ToInstanceRefreshDesiredConfigurationContainerArrayOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationContainerArrayOutput
+}
+
+type InstanceRefreshDesiredConfigurationContainerArray []InstanceRefreshDesiredConfigurationContainerInput
+
+func (InstanceRefreshDesiredConfigurationContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationContainer)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerArray) ToInstanceRefreshDesiredConfigurationContainerArrayOutput() InstanceRefreshDesiredConfigurationContainerArrayOutput {
+	return i.ToInstanceRefreshDesiredConfigurationContainerArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerArray) ToInstanceRefreshDesiredConfigurationContainerArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationContainerArrayOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainerOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainer)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerOutput) ToInstanceRefreshDesiredConfigurationContainerOutput() InstanceRefreshDesiredConfigurationContainerOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerOutput) ToInstanceRefreshDesiredConfigurationContainerOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerOutput {
+	return o
+}
+
+// The arguments for the container startup command.
+func (o InstanceRefreshDesiredConfigurationContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// The container startup command.
+func (o InstanceRefreshDesiredConfigurationContainerOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// Information about the environment variables. See `environmentVars` below for details.
+func (o InstanceRefreshDesiredConfigurationContainerOutput) EnvironmentVars() InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainer) []InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
+		return v.EnvironmentVars
+	}).(InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput)
+}
+
+// The container image.
+func (o InstanceRefreshDesiredConfigurationContainerOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The custom name of the container.
+func (o InstanceRefreshDesiredConfigurationContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationContainer)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerArrayOutput) ToInstanceRefreshDesiredConfigurationContainerArrayOutput() InstanceRefreshDesiredConfigurationContainerArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerArrayOutput) ToInstanceRefreshDesiredConfigurationContainerArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerArrayOutput) Index(i pulumi.IntInput) InstanceRefreshDesiredConfigurationContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRefreshDesiredConfigurationContainer {
+		return vs[0].([]InstanceRefreshDesiredConfigurationContainer)[vs[1].(int)]
+	}).(InstanceRefreshDesiredConfigurationContainerOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVar struct {
+	// This parameter is not available for use.
+	FieldRefFieldPath *string `pulumi:"fieldRefFieldPath"`
+	// The name of the environment variable.
+	Key *string `pulumi:"key"`
+	// The value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// InstanceRefreshDesiredConfigurationContainerEnvironmentVarInput is an input type that accepts InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs and InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationContainerEnvironmentVarInput` via:
+//
+//	InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs{...}
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput
+	ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput
+}
+
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs struct {
+	// This parameter is not available for use.
+	FieldRefFieldPath pulumi.StringPtrInput `pulumi:"fieldRefFieldPath"`
+	// The name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput {
+	return i.ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput)
+}
+
+// InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayInput is an input type that accepts InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray and InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayInput` via:
+//
+//	InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray{ InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs{...} }
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput
+	ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput
+}
+
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray []InstanceRefreshDesiredConfigurationContainerEnvironmentVarInput
+
+func (InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput {
+	return i.ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput {
+	return o
+}
+
+// This parameter is not available for use.
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) FieldRefFieldPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainerEnvironmentVar) *string { return v.FieldRefFieldPath }).(pulumi.StringPtrOutput)
+}
+
+// The name of the environment variable.
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the environment variable.
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationContainerEnvironmentVar)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput() InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput) ToInstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput) Index(i pulumi.IntInput) InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
+		return vs[0].([]InstanceRefreshDesiredConfigurationContainerEnvironmentVar)[vs[1].(int)]
+	}).(InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput)
+}
+
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverride struct {
+	// The specified instance type, which overwrites the instance type in the launch template.
+	InstanceType *string `pulumi:"instanceType"`
+}
+
+// InstanceRefreshDesiredConfigurationLaunchTemplateOverrideInput is an input type that accepts InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs and InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationLaunchTemplateOverrideInput` via:
+//
+//	InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs{...}
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput
+	ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput
+}
+
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs struct {
+	// The specified instance type, which overwrites the instance type in the launch template.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+}
+
+func (InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput {
+	return i.ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput)
+}
+
+// InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayInput is an input type that accepts InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray and InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput values.
+// You can construct a concrete instance of `InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayInput` via:
+//
+//	InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray{ InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs{...} }
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayInput interface {
+	pulumi.Input
+
+	ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput
+	ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutputWithContext(context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput
+}
+
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray []InstanceRefreshDesiredConfigurationLaunchTemplateOverrideInput
+
+func (InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (i InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput {
+	return i.ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput)
+}
+
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceRefreshDesiredConfigurationLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput {
+	return o
+}
+
+// The specified instance type, which overwrites the instance type in the launch template.
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceRefreshDesiredConfigurationLaunchTemplateOverride) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+type InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceRefreshDesiredConfigurationLaunchTemplateOverride)(nil)).Elem()
+}
+
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput() InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput) ToInstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutputWithContext(ctx context.Context) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput {
+	return o
+}
+
+func (o InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput) Index(i pulumi.IntInput) InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
+		return vs[0].([]InstanceRefreshDesiredConfigurationLaunchTemplateOverride)[vs[1].(int)]
+	}).(InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput)
+}
+
 type ScalingConfigurationCustomPriority struct {
 	// This parameter takes effect only if you set Scaling Policy to Priority Policy and the instance type specified by CustomPriorities.N.InstanceType is contained in the scaling configuration.
 	InstanceType *string `pulumi:"instanceType"`
@@ -7000,6 +7444,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshCheckpointInput)(nil)).Elem(), InstanceRefreshCheckpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshCheckpointArrayInput)(nil)).Elem(), InstanceRefreshCheckpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerArrayInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerEnvironmentVarInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationContainerEnvironmentVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationLaunchTemplateOverrideInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayInput)(nil)).Elem(), InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationCustomPriorityInput)(nil)).Elem(), ScalingConfigurationCustomPriorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationCustomPriorityArrayInput)(nil)).Elem(), ScalingConfigurationCustomPriorityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationDataDiskInput)(nil)).Elem(), ScalingConfigurationDataDiskArgs{})
@@ -7088,6 +7540,14 @@ func init() {
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeArrayOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput{})
 	pulumi.RegisterOutputType(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshCheckpointOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshCheckpointArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationContainerOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationContainerArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationContainerEnvironmentVarOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationContainerEnvironmentVarArrayOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationLaunchTemplateOverrideOutput{})
+	pulumi.RegisterOutputType(InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationCustomPriorityOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationCustomPriorityArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationDataDiskOutput{})

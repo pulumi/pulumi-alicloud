@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Bgp Group resource.
+    /// Provides a Express Connect Bgp Group resource.
     /// 
-    /// For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+    /// For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
     /// 
     /// &gt; **NOTE:** Available since v1.152.0.
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Bgp Group can be imported using the id, e.g.
+    /// Express Connect Bgp Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example &lt;id&gt;
@@ -86,43 +86,71 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> AuthKey { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("bgpGroupName")]
         public Output<string?> BgpGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        /// Specifies whether to clear the secret key. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("clearAuthKey")]
+        public Output<bool?> ClearAuthKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        /// The IP version. Valid values:
+        /// - `IPv4`: This is the default value.
+        /// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string> IpVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to use a fake AS number. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         /// </summary>
         [Output("isFakeAsn")]
         public Output<bool> IsFakeAsn { get; private set; } = null!;
 
         /// <summary>
-        /// The AS number on the Alibaba Cloud side.
+        /// The custom ASN on the Alibaba Cloud side. Valid values:
         /// </summary>
         [Output("localAsn")]
         public Output<int> LocalAsn { get; private set; } = null!;
 
         /// <summary>
-        /// The AS number of the BGP peer.
+        /// The ASN of the gateway device in the data center.
         /// </summary>
         [Output("peerAsn")]
         public Output<int> PeerAsn { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VBR.
+        /// The Region ID of the BGP group.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of routes supported by a BGP peer. Default value: 110.
+        /// </summary>
+        [Output("routeLimit")]
+        public Output<int> RouteLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -180,37 +208,59 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? AuthKey { get; set; }
 
         /// <summary>
-        /// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("bgpGroupName")]
         public Input<string>? BgpGroupName { get; set; }
 
         /// <summary>
-        /// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        /// Specifies whether to clear the secret key. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("clearAuthKey")]
+        public Input<bool>? ClearAuthKey { get; set; }
+
+        /// <summary>
+        /// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        /// The IP version. Valid values:
+        /// - `IPv4`: This is the default value.
+        /// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use a fake AS number. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         /// </summary>
         [Input("isFakeAsn")]
         public Input<bool>? IsFakeAsn { get; set; }
 
         /// <summary>
-        /// The AS number on the Alibaba Cloud side.
+        /// The custom ASN on the Alibaba Cloud side. Valid values:
         /// </summary>
         [Input("localAsn")]
         public Input<int>? LocalAsn { get; set; }
 
         /// <summary>
-        /// The AS number of the BGP peer.
+        /// The ASN of the gateway device in the data center.
         /// </summary>
         [Input("peerAsn", required: true)]
         public Input<int> PeerAsn { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the VBR.
+        /// The maximum number of routes supported by a BGP peer. Default value: 110.
+        /// </summary>
+        [Input("routeLimit")]
+        public Input<int>? RouteLimit { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         [Input("routerId", required: true)]
         public Input<string> RouterId { get; set; } = null!;
@@ -230,43 +280,71 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? AuthKey { get; set; }
 
         /// <summary>
-        /// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("bgpGroupName")]
         public Input<string>? BgpGroupName { get; set; }
 
         /// <summary>
-        /// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        /// Specifies whether to clear the secret key. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("clearAuthKey")]
+        public Input<bool>? ClearAuthKey { get; set; }
+
+        /// <summary>
+        /// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        /// The IP version. Valid values:
+        /// - `IPv4`: This is the default value.
+        /// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use a fake AS number. Valid values: `True`, `False`.
+        /// 
+        /// &gt; **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         /// </summary>
         [Input("isFakeAsn")]
         public Input<bool>? IsFakeAsn { get; set; }
 
         /// <summary>
-        /// The AS number on the Alibaba Cloud side.
+        /// The custom ASN on the Alibaba Cloud side. Valid values:
         /// </summary>
         [Input("localAsn")]
         public Input<int>? LocalAsn { get; set; }
 
         /// <summary>
-        /// The AS number of the BGP peer.
+        /// The ASN of the gateway device in the data center.
         /// </summary>
         [Input("peerAsn")]
         public Input<int>? PeerAsn { get; set; }
 
         /// <summary>
-        /// The ID of the VBR.
+        /// The Region ID of the BGP group.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The maximum number of routes supported by a BGP peer. Default value: 110.
+        /// </summary>
+        [Input("routeLimit")]
+        public Input<int>? RouteLimit { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

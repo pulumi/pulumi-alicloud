@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Express Connect Vbr Pconn Association resource.
  *
+ * VBR multi-pconn Association.
+ *
  * For information about Express Connect Vbr Pconn Association and how to use it, see [What is Vbr Pconn Association](https://www.alibabacloud.com/help/en/express-connect/latest/associatephysicalconnectiontovirtualborderrouter#doc-api-Vpc-AssociatePhysicalConnectionToVirtualBorderRouter).
  *
  * > **NOTE:** Available since v1.196.0.
@@ -58,7 +60,7 @@ import * as utilities from "../utilities";
  * Express Connect Vbr Pconn Association can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <VbrId>:<PhysicalConnectionId>
+ * $ pulumi import alicloud:expressconnect/vbrPconnAssociation:VbrPconnAssociation example <vbr_id>:<physical_connection_id>
  * ```
  */
 export class VbrPconnAssociation extends pulumi.CustomResource {
@@ -90,13 +92,11 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
     }
 
     /**
-     * The circuit code provided by the operator for the physical connection.
+     * (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      */
     declare public /*out*/ readonly circuitCode: pulumi.Output<string>;
     /**
      * Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      */
     declare public readonly enableIpv6: pulumi.Output<boolean>;
     /**
@@ -108,19 +108,25 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
      */
     declare public readonly localIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
-     * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     declare public readonly peerGatewayIp: pulumi.Output<string | undefined>;
     /**
-     * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     declare public readonly peerIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      */
     declare public readonly peeringIpv6SubnetMask: pulumi.Output<string | undefined>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      */
     declare public readonly peeringSubnetMask: pulumi.Output<string | undefined>;
     /**
@@ -128,7 +134,7 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
      */
     declare public readonly physicalConnectionId: pulumi.Output<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -136,7 +142,9 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
      */
     declare public readonly vbrId: pulumi.Output<string>;
     /**
-     * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * VLAN ID of the VBR. Valid values: **0 to 2999**.
+     *
+     * > **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      */
     declare public readonly vlanId: pulumi.Output<number>;
 
@@ -199,13 +207,11 @@ export class VbrPconnAssociation extends pulumi.CustomResource {
  */
 export interface VbrPconnAssociationState {
     /**
-     * The circuit code provided by the operator for the physical connection.
+     * (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      */
     circuitCode?: pulumi.Input<string>;
     /**
      * Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
@@ -217,19 +223,25 @@ export interface VbrPconnAssociationState {
      */
     localIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     peerGatewayIp?: pulumi.Input<string>;
     /**
-     * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      */
     peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      */
     peeringSubnetMask?: pulumi.Input<string>;
     /**
@@ -237,7 +249,7 @@ export interface VbrPconnAssociationState {
      */
     physicalConnectionId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
@@ -245,7 +257,9 @@ export interface VbrPconnAssociationState {
      */
     vbrId?: pulumi.Input<string>;
     /**
-     * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * VLAN ID of the VBR. Valid values: **0 to 2999**.
+     *
+     * > **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      */
     vlanId?: pulumi.Input<number>;
 }
@@ -256,8 +270,6 @@ export interface VbrPconnAssociationState {
 export interface VbrPconnAssociationArgs {
     /**
      * Whether IPv6 is enabled. Value:
-     * - **true**: on.
-     * - **false** (default): Off.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
@@ -269,19 +281,25 @@ export interface VbrPconnAssociationArgs {
      */
     localIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The client IP address of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     peerGatewayIp?: pulumi.Input<string>;
     /**
-     * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
+     * The IPv6 address of the client side of the VBR instance.
+     * - This attribute only allows the VBR owner to specify or modify.
+     * - Required when creating a VBR instance for the physical connection owner.
      */
     peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * Two IPv6 addresses must be in the same subnet.
      */
     peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
-     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
+     * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
+     * The two IP addresses must be in the same subnet.
      */
     peeringSubnetMask?: pulumi.Input<string>;
     /**
@@ -293,7 +311,9 @@ export interface VbrPconnAssociationArgs {
      */
     vbrId: pulumi.Input<string>;
     /**
-     * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
+     * VLAN ID of the VBR. Valid values: **0 to 2999**.
+     *
+     * > **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      */
     vlanId: pulumi.Input<number>;
 }

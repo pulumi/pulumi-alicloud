@@ -26,11 +26,14 @@ class VbrHaArgs:
                  vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VbrHa resource.
-        :param pulumi.Input[_builtins.str] peer_vbr_id: The ID of the other VBR in the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR instance.
-        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[_builtins.str] vbr_ha_name: The name of the VBR failover group.
+        :param pulumi.Input[_builtins.str] peer_vbr_id: The instance ID of another VBR in The VBR switching group.
+        :param pulumi.Input[_builtins.str] vbr_id: The VBR instance ID.
+        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value range:
+               - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+               - *false** (default): Send a normal request and start the instance directly after passing the check.
+        :param pulumi.Input[_builtins.str] vbr_ha_name: VBR switch group name.
         """
         pulumi.set(__self__, "peer_vbr_id", peer_vbr_id)
         pulumi.set(__self__, "vbr_id", vbr_id)
@@ -45,7 +48,7 @@ class VbrHaArgs:
     @pulumi.getter(name="peerVbrId")
     def peer_vbr_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the other VBR in the VBR failover group.
+        The instance ID of another VBR in The VBR switching group.
         """
         return pulumi.get(self, "peer_vbr_id")
 
@@ -57,7 +60,7 @@ class VbrHaArgs:
     @pulumi.getter(name="vbrId")
     def vbr_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the VBR instance.
+        The VBR instance ID.
         """
         return pulumi.get(self, "vbr_id")
 
@@ -69,7 +72,8 @@ class VbrHaArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        The description of the VBR switching group.
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "description")
 
@@ -81,7 +85,9 @@ class VbrHaArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value range:
+        - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        - *false** (default): Send a normal request and start the instance directly after passing the check.
         """
         return pulumi.get(self, "dry_run")
 
@@ -93,7 +99,7 @@ class VbrHaArgs:
     @pulumi.getter(name="vbrHaName")
     def vbr_ha_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VBR failover group.
+        VBR switch group name.
         """
         return pulumi.get(self, "vbr_ha_name")
 
@@ -105,27 +111,38 @@ class VbrHaArgs:
 @pulumi.input_type
 class _VbrHaState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
                  peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vbr_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VbrHa resources.
-        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[_builtins.str] peer_vbr_id: The ID of the other VBR in the VBR failover group.
-        :param pulumi.Input[_builtins.str] status: The state of the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_ha_name: The name of the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR instance.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the VBR.
+        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value range:
+               - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+               - *false** (default): Send a normal request and start the instance directly after passing the check.
+        :param pulumi.Input[_builtins.str] peer_vbr_id: The instance ID of another VBR in The VBR switching group.
+        :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the VBR belongs.
+        :param pulumi.Input[_builtins.str] status: Status of VBR switching Group
+        :param pulumi.Input[_builtins.str] vbr_ha_name: VBR switch group name.
+        :param pulumi.Input[_builtins.str] vbr_id: The VBR instance ID.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if peer_vbr_id is not None:
             pulumi.set(__self__, "peer_vbr_id", peer_vbr_id)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vbr_ha_name is not None:
@@ -134,10 +151,23 @@ class _VbrHaState:
             pulumi.set(__self__, "vbr_id", vbr_id)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The creation time of the VBR.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        The description of the VBR switching group.
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "description")
 
@@ -149,7 +179,9 @@ class _VbrHaState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value range:
+        - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        - *false** (default): Send a normal request and start the instance directly after passing the check.
         """
         return pulumi.get(self, "dry_run")
 
@@ -161,7 +193,7 @@ class _VbrHaState:
     @pulumi.getter(name="peerVbrId")
     def peer_vbr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the other VBR in the VBR failover group.
+        The instance ID of another VBR in The VBR switching group.
         """
         return pulumi.get(self, "peer_vbr_id")
 
@@ -170,10 +202,22 @@ class _VbrHaState:
         pulumi.set(self, "peer_vbr_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the region to which the VBR belongs.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the VBR failover group.
+        Status of VBR switching Group
         """
         return pulumi.get(self, "status")
 
@@ -185,7 +229,7 @@ class _VbrHaState:
     @pulumi.getter(name="vbrHaName")
     def vbr_ha_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the VBR failover group.
+        VBR switch group name.
         """
         return pulumi.get(self, "vbr_ha_name")
 
@@ -197,7 +241,7 @@ class _VbrHaState:
     @pulumi.getter(name="vbrId")
     def vbr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the VBR instance.
+        The VBR instance ID.
         """
         return pulumi.get(self, "vbr_id")
 
@@ -219,9 +263,11 @@ class VbrHa(pulumi.CustomResource):
                  vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Vbr Ha resource.
+        Provides a Express Connect Vbr Ha resource.
 
-        For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+        VBR switching Group.
+
+        For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
 
         > **NOTE:** Available since v1.151.0.
 
@@ -277,7 +323,7 @@ class VbrHa(pulumi.CustomResource):
 
         ## Import
 
-        VPC Vbr Ha can be imported using the id, e.g.
+        Express Connect Vbr Ha can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
@@ -285,11 +331,14 @@ class VbrHa(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[_builtins.str] peer_vbr_id: The ID of the other VBR in the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_ha_name: The name of the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR instance.
+        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value range:
+               - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+               - *false** (default): Send a normal request and start the instance directly after passing the check.
+        :param pulumi.Input[_builtins.str] peer_vbr_id: The instance ID of another VBR in The VBR switching group.
+        :param pulumi.Input[_builtins.str] vbr_ha_name: VBR switch group name.
+        :param pulumi.Input[_builtins.str] vbr_id: The VBR instance ID.
         """
         ...
     @overload
@@ -298,9 +347,11 @@ class VbrHa(pulumi.CustomResource):
                  args: VbrHaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Vbr Ha resource.
+        Provides a Express Connect Vbr Ha resource.
 
-        For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+        VBR switching Group.
+
+        For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
 
         > **NOTE:** Available since v1.151.0.
 
@@ -356,7 +407,7 @@ class VbrHa(pulumi.CustomResource):
 
         ## Import
 
-        VPC Vbr Ha can be imported using the id, e.g.
+        Express Connect Vbr Ha can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
@@ -400,6 +451,8 @@ class VbrHa(pulumi.CustomResource):
             if vbr_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vbr_id'")
             __props__.__dict__["vbr_id"] = vbr_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(VbrHa, __self__).__init__(
             'alicloud:vpc/vbrHa:VbrHa',
@@ -411,9 +464,11 @@ class VbrHa(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
             peer_vbr_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             vbr_ha_name: Optional[pulumi.Input[_builtins.str]] = None,
             vbr_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VbrHa':
@@ -424,30 +479,46 @@ class VbrHa(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
-        :param pulumi.Input[_builtins.bool] dry_run: The dry run.
-        :param pulumi.Input[_builtins.str] peer_vbr_id: The ID of the other VBR in the VBR failover group.
-        :param pulumi.Input[_builtins.str] status: The state of the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_ha_name: The name of the VBR failover group.
-        :param pulumi.Input[_builtins.str] vbr_id: The ID of the VBR instance.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the VBR.
+        :param pulumi.Input[_builtins.str] description: The description of the VBR switching group.
+               It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.bool] dry_run: Whether to PreCheck only this request. Value range:
+               - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+               - *false** (default): Send a normal request and start the instance directly after passing the check.
+        :param pulumi.Input[_builtins.str] peer_vbr_id: The instance ID of another VBR in The VBR switching group.
+        :param pulumi.Input[_builtins.str] region_id: The ID of the region to which the VBR belongs.
+        :param pulumi.Input[_builtins.str] status: Status of VBR switching Group
+        :param pulumi.Input[_builtins.str] vbr_ha_name: VBR switch group name.
+        :param pulumi.Input[_builtins.str] vbr_id: The VBR instance ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _VbrHaState.__new__(_VbrHaState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["peer_vbr_id"] = peer_vbr_id
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vbr_ha_name"] = vbr_ha_name
         __props__.__dict__["vbr_id"] = vbr_id
         return VbrHa(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation time of the VBR.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        The description of the VBR switching group.
+        It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "description")
 
@@ -455,7 +526,9 @@ class VbrHa(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value range:
+        - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        - *false** (default): Send a normal request and start the instance directly after passing the check.
         """
         return pulumi.get(self, "dry_run")
 
@@ -463,15 +536,23 @@ class VbrHa(pulumi.CustomResource):
     @pulumi.getter(name="peerVbrId")
     def peer_vbr_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the other VBR in the VBR failover group.
+        The instance ID of another VBR in The VBR switching group.
         """
         return pulumi.get(self, "peer_vbr_id")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the region to which the VBR belongs.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the VBR failover group.
+        Status of VBR switching Group
         """
         return pulumi.get(self, "status")
 
@@ -479,7 +560,7 @@ class VbrHa(pulumi.CustomResource):
     @pulumi.getter(name="vbrHaName")
     def vbr_ha_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the VBR failover group.
+        VBR switch group name.
         """
         return pulumi.get(self, "vbr_ha_name")
 
@@ -487,7 +568,7 @@ class VbrHa(pulumi.CustomResource):
     @pulumi.getter(name="vbrId")
     def vbr_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the VBR instance.
+        The VBR instance ID.
         """
         return pulumi.get(self, "vbr_id")
 

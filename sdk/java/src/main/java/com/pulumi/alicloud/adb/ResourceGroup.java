@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -60,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AdbFunctions.getZones(GetZonesArgs.builder()
  *             .build());
  * 
@@ -128,6 +129,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/resourceGroup:ResourceGroup")
 public class ResourceGroup extends com.pulumi.resources.CustomResource {
     /**
+     * The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     * 
+     */
+    @Export(name="clusterMode", refs={String.class}, tree="[0]")
+    private Output<String> clusterMode;
+
+    /**
+     * @return The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+     * 
+     */
+    public Output<String> clusterMode() {
+        return this.clusterMode;
+    }
+    /**
+     * The resource specifications of a single compute cluster. Unit: ACU.
+     * 
+     */
+    @Export(name="clusterSizeResource", refs={String.class}, tree="[0]")
+    private Output<String> clusterSizeResource;
+
+    /**
+     * @return The resource specifications of a single compute cluster. Unit: ACU.
+     * 
+     */
+    public Output<String> clusterSizeResource() {
+        return this.clusterSizeResource;
+    }
+    /**
+     * (Available since v1.261.0) The endpoint of the resource group.
+     * 
+     */
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
+    private Output<String> connectionString;
+
+    /**
+     * @return (Available since v1.261.0) The endpoint of the resource group.
+     * 
+     */
+    public Output<String> connectionString() {
+        return this.connectionString;
+    }
+    /**
      * The time when the resource group was created.
      * 
      */
@@ -154,6 +197,34 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
+    }
+    /**
+     * The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     * 
+     */
+    @Export(name="engine", refs={String.class}, tree="[0]")
+    private Output<String> engine;
+
+    /**
+     * @return The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+     * 
+     */
+    public Output<String> engine() {
+        return this.engine;
+    }
+    /**
+     * The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     * 
+     */
+    @Export(name="engineParams", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> engineParams;
+
+    /**
+     * @return The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> engineParams() {
+        return Codegen.optional(this.engineParams);
     }
     /**
      * The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
@@ -184,18 +255,102 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
         return this.groupType;
     }
     /**
+     * The maximum number of compute clusters that are allowed in the resource group.
+     * 
+     */
+    @Export(name="maxClusterCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxClusterCount;
+
+    /**
+     * @return The maximum number of compute clusters that are allowed in the resource group.
+     * 
+     */
+    public Output<Optional<Integer>> maxClusterCount() {
+        return Codegen.optional(this.maxClusterCount);
+    }
+    /**
+     * The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     * 
+     */
+    @Export(name="maxComputeResource", refs={String.class}, tree="[0]")
+    private Output<String> maxComputeResource;
+
+    /**
+     * @return The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+     * 
+     */
+    public Output<String> maxComputeResource() {
+        return this.maxComputeResource;
+    }
+    /**
+     * The minimum number of compute clusters that are required in the resource group.
+     * 
+     */
+    @Export(name="minClusterCount", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> minClusterCount;
+
+    /**
+     * @return The minimum number of compute clusters that are required in the resource group.
+     * 
+     */
+    public Output<Optional<Integer>> minClusterCount() {
+        return Codegen.optional(this.minClusterCount);
+    }
+    /**
+     * The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     * 
+     */
+    @Export(name="minComputeResource", refs={String.class}, tree="[0]")
+    private Output<String> minComputeResource;
+
+    /**
+     * @return The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+     * 
+     */
+    public Output<String> minComputeResource() {
+        return this.minComputeResource;
+    }
+    /**
      * The number of nodes.
      * 
      */
     @Export(name="nodeNum", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> nodeNum;
+    private Output<Integer> nodeNum;
 
     /**
      * @return The number of nodes.
      * 
      */
-    public Output<Optional<Integer>> nodeNum() {
-        return Codegen.optional(this.nodeNum);
+    public Output<Integer> nodeNum() {
+        return this.nodeNum;
+    }
+    /**
+     * (Available since v1.261.0) The port number of the resource group.
+     * 
+     */
+    @Export(name="port", refs={String.class}, tree="[0]")
+    private Output<String> port;
+
+    /**
+     * @return (Available since v1.261.0) The port number of the resource group.
+     * 
+     */
+    public Output<String> port() {
+        return this.port;
+    }
+    /**
+     * (Available since v1.261.0) The status of the resource group.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.261.0) The status of the resource group.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * The time when the resource group was updated.

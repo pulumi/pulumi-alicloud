@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Bgp Group resource.
+// Provides a Express Connect Bgp Group resource.
 //
-// For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+// For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 //
 // > **NOTE:** Available since v1.152.0.
 //
@@ -88,7 +88,7 @@ import (
 //
 // ## Import
 //
-// VPC Bgp Group can be imported using the id, e.g.
+// Express Connect Bgp Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
@@ -98,19 +98,31 @@ type BgpGroup struct {
 
 	// The authentication key of the BGP group.
 	AuthKey pulumi.StringPtrOutput `pulumi:"authKey"`
-	// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	BgpGroupName pulumi.StringPtrOutput `pulumi:"bgpGroupName"`
-	// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+	ClearAuthKey pulumi.BoolPtrOutput `pulumi:"clearAuthKey"`
+	// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+	// The IP version. Valid values:
+	// - `IPv4`: This is the default value.
+	// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
+	// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 	IsFakeAsn pulumi.BoolOutput `pulumi:"isFakeAsn"`
-	// The AS number on the Alibaba Cloud side.
+	// The custom ASN on the Alibaba Cloud side. Valid values:
 	LocalAsn pulumi.IntOutput `pulumi:"localAsn"`
-	// The AS number of the BGP peer.
+	// The ASN of the gateway device in the data center.
 	PeerAsn pulumi.IntOutput `pulumi:"peerAsn"`
-	// The ID of the VBR.
+	// The Region ID of the BGP group.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The maximum number of routes supported by a BGP peer. Default value: 110.
+	RouteLimit pulumi.IntOutput `pulumi:"routeLimit"`
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -152,38 +164,62 @@ func GetBgpGroup(ctx *pulumi.Context,
 type bgpGroupState struct {
 	// The authentication key of the BGP group.
 	AuthKey *string `pulumi:"authKey"`
-	// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	BgpGroupName *string `pulumi:"bgpGroupName"`
-	// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+	ClearAuthKey *bool `pulumi:"clearAuthKey"`
+	// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+	// The IP version. Valid values:
+	// - `IPv4`: This is the default value.
+	// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+	IpVersion *string `pulumi:"ipVersion"`
+	// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 	IsFakeAsn *bool `pulumi:"isFakeAsn"`
-	// The AS number on the Alibaba Cloud side.
+	// The custom ASN on the Alibaba Cloud side. Valid values:
 	LocalAsn *int `pulumi:"localAsn"`
-	// The AS number of the BGP peer.
+	// The ASN of the gateway device in the data center.
 	PeerAsn *int `pulumi:"peerAsn"`
-	// The ID of the VBR.
+	// The Region ID of the BGP group.
+	RegionId *string `pulumi:"regionId"`
+	// The maximum number of routes supported by a BGP peer. Default value: 110.
+	RouteLimit *int `pulumi:"routeLimit"`
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId *string `pulumi:"routerId"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 }
 
 type BgpGroupState struct {
 	// The authentication key of the BGP group.
 	AuthKey pulumi.StringPtrInput
-	// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	BgpGroupName pulumi.StringPtrInput
-	// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+	ClearAuthKey pulumi.BoolPtrInput
+	// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+	// The IP version. Valid values:
+	// - `IPv4`: This is the default value.
+	// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+	IpVersion pulumi.StringPtrInput
+	// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 	IsFakeAsn pulumi.BoolPtrInput
-	// The AS number on the Alibaba Cloud side.
+	// The custom ASN on the Alibaba Cloud side. Valid values:
 	LocalAsn pulumi.IntPtrInput
-	// The AS number of the BGP peer.
+	// The ASN of the gateway device in the data center.
 	PeerAsn pulumi.IntPtrInput
-	// The ID of the VBR.
+	// The Region ID of the BGP group.
+	RegionId pulumi.StringPtrInput
+	// The maximum number of routes supported by a BGP peer. Default value: 110.
+	RouteLimit pulumi.IntPtrInput
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 }
 
@@ -194,17 +230,27 @@ func (BgpGroupState) ElementType() reflect.Type {
 type bgpGroupArgs struct {
 	// The authentication key of the BGP group.
 	AuthKey *string `pulumi:"authKey"`
-	// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	BgpGroupName *string `pulumi:"bgpGroupName"`
-	// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+	ClearAuthKey *bool `pulumi:"clearAuthKey"`
+	// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+	// The IP version. Valid values:
+	// - `IPv4`: This is the default value.
+	// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+	IpVersion *string `pulumi:"ipVersion"`
+	// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 	IsFakeAsn *bool `pulumi:"isFakeAsn"`
-	// The AS number on the Alibaba Cloud side.
+	// The custom ASN on the Alibaba Cloud side. Valid values:
 	LocalAsn *int `pulumi:"localAsn"`
-	// The AS number of the BGP peer.
+	// The ASN of the gateway device in the data center.
 	PeerAsn int `pulumi:"peerAsn"`
-	// The ID of the VBR.
+	// The maximum number of routes supported by a BGP peer. Default value: 110.
+	RouteLimit *int `pulumi:"routeLimit"`
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId string `pulumi:"routerId"`
 }
 
@@ -212,17 +258,27 @@ type bgpGroupArgs struct {
 type BgpGroupArgs struct {
 	// The authentication key of the BGP group.
 	AuthKey pulumi.StringPtrInput
-	// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	BgpGroupName pulumi.StringPtrInput
-	// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+	// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+	ClearAuthKey pulumi.BoolPtrInput
+	// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+	// The IP version. Valid values:
+	// - `IPv4`: This is the default value.
+	// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+	IpVersion pulumi.StringPtrInput
+	// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+	//
+	// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 	IsFakeAsn pulumi.BoolPtrInput
-	// The AS number on the Alibaba Cloud side.
+	// The custom ASN on the Alibaba Cloud side. Valid values:
 	LocalAsn pulumi.IntPtrInput
-	// The AS number of the BGP peer.
+	// The ASN of the gateway device in the data center.
 	PeerAsn pulumi.IntInput
-	// The ID of the VBR.
+	// The maximum number of routes supported by a BGP peer. Default value: 110.
+	RouteLimit pulumi.IntPtrInput
+	// The ID of the virtual border router (VBR) that is associated with the BGP group.
 	RouterId pulumi.StringInput
 }
 
@@ -318,37 +374,61 @@ func (o BgpGroupOutput) AuthKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.AuthKey }).(pulumi.StringPtrOutput)
 }
 
-// The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+// The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 func (o BgpGroupOutput) BgpGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.BgpGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+// Specifies whether to clear the secret key. Valid values: `true`, `false`.
+func (o BgpGroupOutput) ClearAuthKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.BoolPtrOutput { return v.ClearAuthKey }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
 func (o BgpGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+// The IP version. Valid values:
+// - `IPv4`: This is the default value.
+// - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+func (o BgpGroupOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+//
+// > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
 func (o BgpGroupOutput) IsFakeAsn() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.BoolOutput { return v.IsFakeAsn }).(pulumi.BoolOutput)
 }
 
-// The AS number on the Alibaba Cloud side.
+// The custom ASN on the Alibaba Cloud side. Valid values:
 func (o BgpGroupOutput) LocalAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.IntOutput { return v.LocalAsn }).(pulumi.IntOutput)
 }
 
-// The AS number of the BGP peer.
+// The ASN of the gateway device in the data center.
 func (o BgpGroupOutput) PeerAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.IntOutput { return v.PeerAsn }).(pulumi.IntOutput)
 }
 
-// The ID of the VBR.
+// The Region ID of the BGP group.
+func (o BgpGroupOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The maximum number of routes supported by a BGP peer. Default value: 110.
+func (o BgpGroupOutput) RouteLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *BgpGroup) pulumi.IntOutput { return v.RouteLimit }).(pulumi.IntOutput)
+}
+
+// The ID of the virtual border router (VBR) that is associated with the BGP group.
 func (o BgpGroupOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o BgpGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BgpGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -23,18 +23,28 @@ class BgpGroupArgs:
                  router_id: pulumi.Input[_builtins.str],
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_asn: Optional[pulumi.Input[_builtins.int]] = None):
+                 local_asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 route_limit: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a BgpGroup resource.
-        :param pulumi.Input[_builtins.int] peer_asn: The AS number of the BGP peer.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the VBR.
+        :param pulumi.Input[_builtins.int] peer_asn: The ASN of the gateway device in the data center.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
-        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.bool] is_fake_asn: The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
-        :param pulumi.Input[_builtins.int] local_asn: The AS number on the Alibaba Cloud side.
+        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] clear_auth_key: Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ip_version: The IP version. Valid values:
+               - `IPv4`: This is the default value.
+               - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        :param pulumi.Input[_builtins.bool] is_fake_asn: Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+               
+               > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+        :param pulumi.Input[_builtins.int] local_asn: The custom ASN on the Alibaba Cloud side. Valid values:
+        :param pulumi.Input[_builtins.int] route_limit: The maximum number of routes supported by a BGP peer. Default value: 110.
         """
         pulumi.set(__self__, "peer_asn", peer_asn)
         pulumi.set(__self__, "router_id", router_id)
@@ -42,18 +52,24 @@ class BgpGroupArgs:
             pulumi.set(__self__, "auth_key", auth_key)
         if bgp_group_name is not None:
             pulumi.set(__self__, "bgp_group_name", bgp_group_name)
+        if clear_auth_key is not None:
+            pulumi.set(__self__, "clear_auth_key", clear_auth_key)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_fake_asn is not None:
             pulumi.set(__self__, "is_fake_asn", is_fake_asn)
         if local_asn is not None:
             pulumi.set(__self__, "local_asn", local_asn)
+        if route_limit is not None:
+            pulumi.set(__self__, "route_limit", route_limit)
 
     @_builtins.property
     @pulumi.getter(name="peerAsn")
     def peer_asn(self) -> pulumi.Input[_builtins.int]:
         """
-        The AS number of the BGP peer.
+        The ASN of the gateway device in the data center.
         """
         return pulumi.get(self, "peer_asn")
 
@@ -65,7 +81,7 @@ class BgpGroupArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the VBR.
+        The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         return pulumi.get(self, "router_id")
 
@@ -89,7 +105,7 @@ class BgpGroupArgs:
     @pulumi.getter(name="bgpGroupName")
     def bgp_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "bgp_group_name")
 
@@ -98,10 +114,22 @@ class BgpGroupArgs:
         pulumi.set(self, "bgp_group_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="clearAuthKey")
+    def clear_auth_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "clear_auth_key")
+
+    @clear_auth_key.setter
+    def clear_auth_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "clear_auth_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -110,10 +138,26 @@ class BgpGroupArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IP version. Valid values:
+        - `IPv4`: This is the default value.
+        - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="isFakeAsn")
     def is_fake_asn(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+
+        > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         """
         return pulumi.get(self, "is_fake_asn")
 
@@ -125,7 +169,7 @@ class BgpGroupArgs:
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The AS number on the Alibaba Cloud side.
+        The custom ASN on the Alibaba Cloud side. Valid values:
         """
         return pulumi.get(self, "local_asn")
 
@@ -133,41 +177,73 @@ class BgpGroupArgs:
     def local_asn(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "local_asn", value)
 
+    @_builtins.property
+    @pulumi.getter(name="routeLimit")
+    def route_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of routes supported by a BGP peer. Default value: 110.
+        """
+        return pulumi.get(self, "route_limit")
+
+    @route_limit.setter
+    def route_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "route_limit", value)
+
 
 @pulumi.input_type
 class _BgpGroupState:
     def __init__(__self__, *,
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_asn: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpGroup resources.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
-        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.bool] is_fake_asn: The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
-        :param pulumi.Input[_builtins.int] local_asn: The AS number on the Alibaba Cloud side.
-        :param pulumi.Input[_builtins.int] peer_asn: The AS number of the BGP peer.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the VBR.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] clear_auth_key: Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ip_version: The IP version. Valid values:
+               - `IPv4`: This is the default value.
+               - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        :param pulumi.Input[_builtins.bool] is_fake_asn: Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+               
+               > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+        :param pulumi.Input[_builtins.int] local_asn: The custom ASN on the Alibaba Cloud side. Valid values:
+        :param pulumi.Input[_builtins.int] peer_asn: The ASN of the gateway device in the data center.
+        :param pulumi.Input[_builtins.str] region_id: The Region ID of the BGP group.
+        :param pulumi.Input[_builtins.int] route_limit: The maximum number of routes supported by a BGP peer. Default value: 110.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
         if bgp_group_name is not None:
             pulumi.set(__self__, "bgp_group_name", bgp_group_name)
+        if clear_auth_key is not None:
+            pulumi.set(__self__, "clear_auth_key", clear_auth_key)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_fake_asn is not None:
             pulumi.set(__self__, "is_fake_asn", is_fake_asn)
         if local_asn is not None:
             pulumi.set(__self__, "local_asn", local_asn)
         if peer_asn is not None:
             pulumi.set(__self__, "peer_asn", peer_asn)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if route_limit is not None:
+            pulumi.set(__self__, "route_limit", route_limit)
         if router_id is not None:
             pulumi.set(__self__, "router_id", router_id)
         if status is not None:
@@ -189,7 +265,7 @@ class _BgpGroupState:
     @pulumi.getter(name="bgpGroupName")
     def bgp_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "bgp_group_name")
 
@@ -198,10 +274,22 @@ class _BgpGroupState:
         pulumi.set(self, "bgp_group_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="clearAuthKey")
+    def clear_auth_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "clear_auth_key")
+
+    @clear_auth_key.setter
+    def clear_auth_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "clear_auth_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -210,10 +298,26 @@ class _BgpGroupState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IP version. Valid values:
+        - `IPv4`: This is the default value.
+        - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="isFakeAsn")
     def is_fake_asn(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+
+        > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         """
         return pulumi.get(self, "is_fake_asn")
 
@@ -225,7 +329,7 @@ class _BgpGroupState:
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The AS number on the Alibaba Cloud side.
+        The custom ASN on the Alibaba Cloud side. Valid values:
         """
         return pulumi.get(self, "local_asn")
 
@@ -237,7 +341,7 @@ class _BgpGroupState:
     @pulumi.getter(name="peerAsn")
     def peer_asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The AS number of the BGP peer.
+        The ASN of the gateway device in the data center.
         """
         return pulumi.get(self, "peer_asn")
 
@@ -246,10 +350,34 @@ class _BgpGroupState:
         pulumi.set(self, "peer_asn", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Region ID of the BGP group.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routeLimit")
+    def route_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of routes supported by a BGP peer. Default value: 110.
+        """
+        return pulumi.get(self, "route_limit")
+
+    @route_limit.setter
+    def route_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "route_limit", value)
+
+    @_builtins.property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the VBR.
+        The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         return pulumi.get(self, "router_id")
 
@@ -261,7 +389,7 @@ class _BgpGroupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -278,16 +406,19 @@ class BgpGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_asn: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a VPC Bgp Group resource.
+        Provides a Express Connect Bgp Group resource.
 
-        For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+        For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
         > **NOTE:** Available since v1.152.0.
 
@@ -329,7 +460,7 @@ class BgpGroup(pulumi.CustomResource):
 
         ## Import
 
-        VPC Bgp Group can be imported using the id, e.g.
+        Express Connect Bgp Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
@@ -338,12 +469,19 @@ class BgpGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
-        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.bool] is_fake_asn: The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
-        :param pulumi.Input[_builtins.int] local_asn: The AS number on the Alibaba Cloud side.
-        :param pulumi.Input[_builtins.int] peer_asn: The AS number of the BGP peer.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the VBR.
+        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] clear_auth_key: Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ip_version: The IP version. Valid values:
+               - `IPv4`: This is the default value.
+               - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        :param pulumi.Input[_builtins.bool] is_fake_asn: Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+               
+               > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+        :param pulumi.Input[_builtins.int] local_asn: The custom ASN on the Alibaba Cloud side. Valid values:
+        :param pulumi.Input[_builtins.int] peer_asn: The ASN of the gateway device in the data center.
+        :param pulumi.Input[_builtins.int] route_limit: The maximum number of routes supported by a BGP peer. Default value: 110.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         ...
     @overload
@@ -352,9 +490,9 @@ class BgpGroup(pulumi.CustomResource):
                  args: BgpGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Bgp Group resource.
+        Provides a Express Connect Bgp Group resource.
 
-        For information about VPC Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
+        For information about Express Connect Bgp Group and how to use it, see [What is Bgp Group](https://www.alibabacloud.com/help/en/doc-detail/91267.html).
 
         > **NOTE:** Available since v1.152.0.
 
@@ -396,7 +534,7 @@ class BgpGroup(pulumi.CustomResource):
 
         ## Import
 
-        VPC Bgp Group can be imported using the id, e.g.
+        Express Connect Bgp Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:vpc/bgpGroup:BgpGroup example <id>
@@ -419,10 +557,13 @@ class BgpGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_key: Optional[pulumi.Input[_builtins.str]] = None,
                  bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
                  is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_asn: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
+                 route_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -435,15 +576,19 @@ class BgpGroup(pulumi.CustomResource):
 
             __props__.__dict__["auth_key"] = auth_key
             __props__.__dict__["bgp_group_name"] = bgp_group_name
+            __props__.__dict__["clear_auth_key"] = clear_auth_key
             __props__.__dict__["description"] = description
+            __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_fake_asn"] = is_fake_asn
             __props__.__dict__["local_asn"] = local_asn
             if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
             __props__.__dict__["peer_asn"] = peer_asn
+            __props__.__dict__["route_limit"] = route_limit
             if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__.__dict__["router_id"] = router_id
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(BgpGroup, __self__).__init__(
             'alicloud:vpc/bgpGroup:BgpGroup',
@@ -457,10 +602,14 @@ class BgpGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auth_key: Optional[pulumi.Input[_builtins.str]] = None,
             bgp_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+            clear_auth_key: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
             is_fake_asn: Optional[pulumi.Input[_builtins.bool]] = None,
             local_asn: Optional[pulumi.Input[_builtins.int]] = None,
             peer_asn: Optional[pulumi.Input[_builtins.int]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
+            route_limit: Optional[pulumi.Input[_builtins.int]] = None,
             router_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpGroup':
         """
@@ -471,13 +620,21 @@ class BgpGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_key: The authentication key of the BGP group.
-        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[_builtins.bool] is_fake_asn: The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
-        :param pulumi.Input[_builtins.int] local_asn: The AS number on the Alibaba Cloud side.
-        :param pulumi.Input[_builtins.int] peer_asn: The AS number of the BGP peer.
-        :param pulumi.Input[_builtins.str] router_id: The ID of the VBR.
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+        :param pulumi.Input[_builtins.str] bgp_group_name: The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[_builtins.bool] clear_auth_key: Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] description: The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        :param pulumi.Input[_builtins.str] ip_version: The IP version. Valid values:
+               - `IPv4`: This is the default value.
+               - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        :param pulumi.Input[_builtins.bool] is_fake_asn: Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+               
+               > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
+        :param pulumi.Input[_builtins.int] local_asn: The custom ASN on the Alibaba Cloud side. Valid values:
+        :param pulumi.Input[_builtins.int] peer_asn: The ASN of the gateway device in the data center.
+        :param pulumi.Input[_builtins.str] region_id: The Region ID of the BGP group.
+        :param pulumi.Input[_builtins.int] route_limit: The maximum number of routes supported by a BGP peer. Default value: 110.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the virtual border router (VBR) that is associated with the BGP group.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -485,10 +642,14 @@ class BgpGroup(pulumi.CustomResource):
 
         __props__.__dict__["auth_key"] = auth_key
         __props__.__dict__["bgp_group_name"] = bgp_group_name
+        __props__.__dict__["clear_auth_key"] = clear_auth_key
         __props__.__dict__["description"] = description
+        __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["is_fake_asn"] = is_fake_asn
         __props__.__dict__["local_asn"] = local_asn
         __props__.__dict__["peer_asn"] = peer_asn
+        __props__.__dict__["region_id"] = region_id
+        __props__.__dict__["route_limit"] = route_limit
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["status"] = status
         return BgpGroup(resource_name, opts=opts, __props__=__props__)
@@ -505,23 +666,43 @@ class BgpGroup(pulumi.CustomResource):
     @pulumi.getter(name="bgpGroupName")
     def bgp_group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the BGP group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "bgp_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="clearAuthKey")
+    def clear_auth_key(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to clear the secret key. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "clear_auth_key")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the BGP group. The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The IP version. Valid values:
+        - `IPv4`: This is the default value.
+        - `IPv6`: IPv6 is supported only if the VBR for which you want to create the BGP group has IPv6 enabled.
+        """
+        return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter(name="isFakeAsn")
     def is_fake_asn(self) -> pulumi.Output[_builtins.bool]:
         """
-        The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
+        Specifies whether to use a fake AS number. Valid values: `true`, `false`.
+
+        > **NOTE:** Note A router that runs BGP typically belongs to only one AS. If you need to replace an AS with a new one, but you cannot immediately modify BGP configurations due to business requirements, you can specify a fake AS number to establish a connection with the local end. This ensures service continuity in scenarios such as AS migration or AS merging.
         """
         return pulumi.get(self, "is_fake_asn")
 
@@ -529,7 +710,7 @@ class BgpGroup(pulumi.CustomResource):
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> pulumi.Output[_builtins.int]:
         """
-        The AS number on the Alibaba Cloud side.
+        The custom ASN on the Alibaba Cloud side. Valid values:
         """
         return pulumi.get(self, "local_asn")
 
@@ -537,15 +718,31 @@ class BgpGroup(pulumi.CustomResource):
     @pulumi.getter(name="peerAsn")
     def peer_asn(self) -> pulumi.Output[_builtins.int]:
         """
-        The AS number of the BGP peer.
+        The ASN of the gateway device in the data center.
         """
         return pulumi.get(self, "peer_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Region ID of the BGP group.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="routeLimit")
+    def route_limit(self) -> pulumi.Output[_builtins.int]:
+        """
+        The maximum number of routes supported by a BGP peer. Default value: 110.
+        """
+        return pulumi.get(self, "route_limit")
 
     @_builtins.property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the VBR.
+        The ID of the virtual border router (VBR) that is associated with the BGP group.
         """
         return pulumi.get(self, "router_id")
 
@@ -553,7 +750,7 @@ class BgpGroup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

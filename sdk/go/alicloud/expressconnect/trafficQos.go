@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Express Connect Traffic Qos resource. Express Connect Traffic QoS Policy.
+// Provides a Express Connect Traffic Qos resource.
+//
+// Express Connect Traffic QoS Policy.
 //
 // For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
 //
@@ -39,15 +41,9 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
-//				NameRegex: pulumi.StringRef("preserved-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = expressconnect.NewTrafficQos(ctx, "createQos", &expressconnect.TrafficQosArgs{
+//			_, err := expressconnect.NewTrafficQos(ctx, "createQos", &expressconnect.TrafficQosArgs{
 //				QosName:        pulumi.String(name),
-//				QosDescription: pulumi.String("terraform-example"),
+//				QosDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -68,13 +64,18 @@ import (
 type TrafficQos struct {
 	pulumi.CustomResourceState
 
-	// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS policy.
+	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 	QosDescription pulumi.StringPtrOutput `pulumi:"qosDescription"`
-	// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS policy.
+	// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 	QosName pulumi.StringPtrOutput `pulumi:"qosName"`
-	// The status of the QoS policy. Value:
-	// > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The status of the QoS policy.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewTrafficQos registers a new resource with the given unique name, arguments, and options.
@@ -107,23 +108,33 @@ func GetTrafficQos(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrafficQos resources.
 type trafficQosState struct {
-	// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS policy.
+	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 	QosDescription *string `pulumi:"qosDescription"`
-	// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS policy.
+	// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 	QosName *string `pulumi:"qosName"`
-	// The status of the QoS policy. Value:
-	// > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the QoS policy.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type TrafficQosState struct {
-	// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS policy.
+	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 	QosDescription pulumi.StringPtrInput
-	// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS policy.
+	// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 	QosName pulumi.StringPtrInput
-	// The status of the QoS policy. Value:
-	// > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The status of the QoS policy.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TrafficQosState) ElementType() reflect.Type {
@@ -131,18 +142,30 @@ func (TrafficQosState) ElementType() reflect.Type {
 }
 
 type trafficQosArgs struct {
-	// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS policy.
+	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 	QosDescription *string `pulumi:"qosDescription"`
-	// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS policy.
+	// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 	QosName *string `pulumi:"qosName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a TrafficQos resource.
 type TrafficQosArgs struct {
-	// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+	// The description of the QoS policy.
+	// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 	QosDescription pulumi.StringPtrInput
-	// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+	// The name of the QoS policy.
+	// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 	QosName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 }
 
 func (TrafficQosArgs) ElementType() reflect.Type {
@@ -232,20 +255,31 @@ func (o TrafficQosOutput) ToTrafficQosOutputWithContext(ctx context.Context) Tra
 	return o
 }
 
-// The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+// The description of the QoS policy.
+// The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosOutput) QosDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQos) pulumi.StringPtrOutput { return v.QosDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+// The name of the QoS policy.
+// The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
 func (o TrafficQosOutput) QosName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficQos) pulumi.StringPtrOutput { return v.QosName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the QoS policy. Value:
-// > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+// The ID of the resource group.
+func (o TrafficQosOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficQos) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the QoS policy.
 func (o TrafficQosOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficQos) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o TrafficQosOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrafficQos) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type TrafficQosArrayOutput struct{ *pulumi.OutputState }

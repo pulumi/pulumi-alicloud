@@ -48,6 +48,7 @@ from .transport_layer_application import *
 from .url_observation import *
 from .version import *
 from .video_processing import *
+from .waf_rule import *
 from .waf_ruleset import *
 from .waiting_room import *
 from .waiting_room_event import *

@@ -2754,6 +2754,4537 @@ func (o TransportLayerApplicationRuleArrayOutput) Index(i pulumi.IntInput) Trans
 	}).(TransportLayerApplicationRuleOutput)
 }
 
+type WafRuleConfig struct {
+	// The action performed on requests that match the managed rule.
+	Action *string `pulumi:"action"`
+	// Extended action configurations, including custom responses and bypass settings. See `actions` below.
+	Actions *WafRuleConfigActions `pulumi:"actions"`
+	// Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+	AppPackage *WafRuleConfigAppPackage `pulumi:"appPackage"`
+	// Mobile app SDK-related configurations. See `appSdk` below.
+	AppSdk *WafRuleConfigAppSdk `pulumi:"appSdk"`
+	// The match expression used to evaluate incoming requests.
+	Expression *string `pulumi:"expression"`
+	// The ID of the custom error page, which can be obtained by calling the ListPages operation.
+	Id *int `pulumi:"id"`
+	// The ID of the managed rule group (deprecated).
+	ManagedGroupId *int `pulumi:"managedGroupId"`
+	// The name of the managed list applied to this rule.
+	ManagedList *string `pulumi:"managedList"`
+	// The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+	ManagedRulesets []WafRuleConfigManagedRuleset `pulumi:"managedRulesets"`
+	// The package name of an authorized application.
+	Name *string `pulumi:"name"`
+	// Additional notes about this rule.
+	Notes *string `pulumi:"notes"`
+	// Configuration of the rate limiting rule. See `rateLimit` below.
+	RateLimit *WafRuleConfigRateLimit `pulumi:"rateLimit"`
+	// The overall security protection level of WAF. See `securityLevel` below.
+	SecurityLevel *WafRuleConfigSecurityLevel `pulumi:"securityLevel"`
+	// Configuration items for token verification mechanisms.
+	Sigchls []string `pulumi:"sigchls"`
+	// The status of the managed rule: whether it is enabled or disabled.
+	Status *string `pulumi:"status"`
+	// Configuration for the time schedule when the rule takes effect. See `timer` below.
+	Timer *WafRuleConfigTimer `pulumi:"timer"`
+	// The type category of the WAF rule.
+	Type *string `pulumi:"type"`
+	// The value of the custom signature field used for validation.
+	Value *string `pulumi:"value"`
+}
+
+// WafRuleConfigInput is an input type that accepts WafRuleConfigArgs and WafRuleConfigOutput values.
+// You can construct a concrete instance of `WafRuleConfigInput` via:
+//
+//	WafRuleConfigArgs{...}
+type WafRuleConfigInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigOutput() WafRuleConfigOutput
+	ToWafRuleConfigOutputWithContext(context.Context) WafRuleConfigOutput
+}
+
+type WafRuleConfigArgs struct {
+	// The action performed on requests that match the managed rule.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Extended action configurations, including custom responses and bypass settings. See `actions` below.
+	Actions WafRuleConfigActionsPtrInput `pulumi:"actions"`
+	// Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+	AppPackage WafRuleConfigAppPackagePtrInput `pulumi:"appPackage"`
+	// Mobile app SDK-related configurations. See `appSdk` below.
+	AppSdk WafRuleConfigAppSdkPtrInput `pulumi:"appSdk"`
+	// The match expression used to evaluate incoming requests.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The ID of the custom error page, which can be obtained by calling the ListPages operation.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The ID of the managed rule group (deprecated).
+	ManagedGroupId pulumi.IntPtrInput `pulumi:"managedGroupId"`
+	// The name of the managed list applied to this rule.
+	ManagedList pulumi.StringPtrInput `pulumi:"managedList"`
+	// The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+	ManagedRulesets WafRuleConfigManagedRulesetArrayInput `pulumi:"managedRulesets"`
+	// The package name of an authorized application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Additional notes about this rule.
+	Notes pulumi.StringPtrInput `pulumi:"notes"`
+	// Configuration of the rate limiting rule. See `rateLimit` below.
+	RateLimit WafRuleConfigRateLimitPtrInput `pulumi:"rateLimit"`
+	// The overall security protection level of WAF. See `securityLevel` below.
+	SecurityLevel WafRuleConfigSecurityLevelPtrInput `pulumi:"securityLevel"`
+	// Configuration items for token verification mechanisms.
+	Sigchls pulumi.StringArrayInput `pulumi:"sigchls"`
+	// The status of the managed rule: whether it is enabled or disabled.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Configuration for the time schedule when the rule takes effect. See `timer` below.
+	Timer WafRuleConfigTimerPtrInput `pulumi:"timer"`
+	// The type category of the WAF rule.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The value of the custom signature field used for validation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WafRuleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfig)(nil)).Elem()
+}
+
+func (i WafRuleConfigArgs) ToWafRuleConfigOutput() WafRuleConfigOutput {
+	return i.ToWafRuleConfigOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigArgs) ToWafRuleConfigOutputWithContext(ctx context.Context) WafRuleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigOutput)
+}
+
+func (i WafRuleConfigArgs) ToWafRuleConfigPtrOutput() WafRuleConfigPtrOutput {
+	return i.ToWafRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigArgs) ToWafRuleConfigPtrOutputWithContext(ctx context.Context) WafRuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigOutput).ToWafRuleConfigPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigPtrInput is an input type that accepts WafRuleConfigArgs, WafRuleConfigPtr and WafRuleConfigPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigPtrInput` via:
+//
+//	        WafRuleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigPtrOutput() WafRuleConfigPtrOutput
+	ToWafRuleConfigPtrOutputWithContext(context.Context) WafRuleConfigPtrOutput
+}
+
+type wafRuleConfigPtrType WafRuleConfigArgs
+
+func WafRuleConfigPtr(v *WafRuleConfigArgs) WafRuleConfigPtrInput {
+	return (*wafRuleConfigPtrType)(v)
+}
+
+func (*wafRuleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfig)(nil)).Elem()
+}
+
+func (i *wafRuleConfigPtrType) ToWafRuleConfigPtrOutput() WafRuleConfigPtrOutput {
+	return i.ToWafRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigPtrType) ToWafRuleConfigPtrOutputWithContext(ctx context.Context) WafRuleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigPtrOutput)
+}
+
+type WafRuleConfigOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfig)(nil)).Elem()
+}
+
+func (o WafRuleConfigOutput) ToWafRuleConfigOutput() WafRuleConfigOutput {
+	return o
+}
+
+func (o WafRuleConfigOutput) ToWafRuleConfigOutputWithContext(ctx context.Context) WafRuleConfigOutput {
+	return o
+}
+
+func (o WafRuleConfigOutput) ToWafRuleConfigPtrOutput() WafRuleConfigPtrOutput {
+	return o.ToWafRuleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigOutput) ToWafRuleConfigPtrOutputWithContext(ctx context.Context) WafRuleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfig) *WafRuleConfig {
+		return &v
+	}).(WafRuleConfigPtrOutput)
+}
+
+// The action performed on requests that match the managed rule.
+func (o WafRuleConfigOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Extended action configurations, including custom responses and bypass settings. See `actions` below.
+func (o WafRuleConfigOutput) Actions() WafRuleConfigActionsPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigActions { return v.Actions }).(WafRuleConfigActionsPtrOutput)
+}
+
+// Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+func (o WafRuleConfigOutput) AppPackage() WafRuleConfigAppPackagePtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigAppPackage { return v.AppPackage }).(WafRuleConfigAppPackagePtrOutput)
+}
+
+// Mobile app SDK-related configurations. See `appSdk` below.
+func (o WafRuleConfigOutput) AppSdk() WafRuleConfigAppSdkPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigAppSdk { return v.AppSdk }).(WafRuleConfigAppSdkPtrOutput)
+}
+
+// The match expression used to evaluate incoming requests.
+func (o WafRuleConfigOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the custom error page, which can be obtained by calling the ListPages operation.
+func (o WafRuleConfigOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the managed rule group (deprecated).
+func (o WafRuleConfigOutput) ManagedGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *int { return v.ManagedGroupId }).(pulumi.IntPtrOutput)
+}
+
+// The name of the managed list applied to this rule.
+func (o WafRuleConfigOutput) ManagedList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.ManagedList }).(pulumi.StringPtrOutput)
+}
+
+// The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+func (o WafRuleConfigOutput) ManagedRulesets() WafRuleConfigManagedRulesetArrayOutput {
+	return o.ApplyT(func(v WafRuleConfig) []WafRuleConfigManagedRuleset { return v.ManagedRulesets }).(WafRuleConfigManagedRulesetArrayOutput)
+}
+
+// The package name of an authorized application.
+func (o WafRuleConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Additional notes about this rule.
+func (o WafRuleConfigOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the rate limiting rule. See `rateLimit` below.
+func (o WafRuleConfigOutput) RateLimit() WafRuleConfigRateLimitPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigRateLimit { return v.RateLimit }).(WafRuleConfigRateLimitPtrOutput)
+}
+
+// The overall security protection level of WAF. See `securityLevel` below.
+func (o WafRuleConfigOutput) SecurityLevel() WafRuleConfigSecurityLevelPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigSecurityLevel { return v.SecurityLevel }).(WafRuleConfigSecurityLevelPtrOutput)
+}
+
+// Configuration items for token verification mechanisms.
+func (o WafRuleConfigOutput) Sigchls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WafRuleConfig) []string { return v.Sigchls }).(pulumi.StringArrayOutput)
+}
+
+// The status of the managed rule: whether it is enabled or disabled.
+func (o WafRuleConfigOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for the time schedule when the rule takes effect. See `timer` below.
+func (o WafRuleConfigOutput) Timer() WafRuleConfigTimerPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigTimer { return v.Timer }).(WafRuleConfigTimerPtrOutput)
+}
+
+// The type category of the WAF rule.
+func (o WafRuleConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfig)(nil)).Elem()
+}
+
+func (o WafRuleConfigPtrOutput) ToWafRuleConfigPtrOutput() WafRuleConfigPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigPtrOutput) ToWafRuleConfigPtrOutputWithContext(ctx context.Context) WafRuleConfigPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigPtrOutput) Elem() WafRuleConfigOutput {
+	return o.ApplyT(func(v *WafRuleConfig) WafRuleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfig
+		return ret
+	}).(WafRuleConfigOutput)
+}
+
+// The action performed on requests that match the managed rule.
+func (o WafRuleConfigPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extended action configurations, including custom responses and bypass settings. See `actions` below.
+func (o WafRuleConfigPtrOutput) Actions() WafRuleConfigActionsPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigActions {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(WafRuleConfigActionsPtrOutput)
+}
+
+// Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+func (o WafRuleConfigPtrOutput) AppPackage() WafRuleConfigAppPackagePtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigAppPackage {
+		if v == nil {
+			return nil
+		}
+		return v.AppPackage
+	}).(WafRuleConfigAppPackagePtrOutput)
+}
+
+// Mobile app SDK-related configurations. See `appSdk` below.
+func (o WafRuleConfigPtrOutput) AppSdk() WafRuleConfigAppSdkPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigAppSdk {
+		if v == nil {
+			return nil
+		}
+		return v.AppSdk
+	}).(WafRuleConfigAppSdkPtrOutput)
+}
+
+// The match expression used to evaluate incoming requests.
+func (o WafRuleConfigPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the custom error page, which can be obtained by calling the ListPages operation.
+func (o WafRuleConfigPtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the managed rule group (deprecated).
+func (o WafRuleConfigPtrOutput) ManagedGroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedGroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the managed list applied to this rule.
+func (o WafRuleConfigPtrOutput) ManagedList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedList
+	}).(pulumi.StringPtrOutput)
+}
+
+// The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+func (o WafRuleConfigPtrOutput) ManagedRulesets() WafRuleConfigManagedRulesetArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfig) []WafRuleConfigManagedRuleset {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedRulesets
+	}).(WafRuleConfigManagedRulesetArrayOutput)
+}
+
+// The package name of an authorized application.
+func (o WafRuleConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional notes about this rule.
+func (o WafRuleConfigPtrOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Notes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the rate limiting rule. See `rateLimit` below.
+func (o WafRuleConfigPtrOutput) RateLimit() WafRuleConfigRateLimitPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigRateLimit {
+		if v == nil {
+			return nil
+		}
+		return v.RateLimit
+	}).(WafRuleConfigRateLimitPtrOutput)
+}
+
+// The overall security protection level of WAF. See `securityLevel` below.
+func (o WafRuleConfigPtrOutput) SecurityLevel() WafRuleConfigSecurityLevelPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigSecurityLevel {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(WafRuleConfigSecurityLevelPtrOutput)
+}
+
+// Configuration items for token verification mechanisms.
+func (o WafRuleConfigPtrOutput) Sigchls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Sigchls
+	}).(pulumi.StringArrayOutput)
+}
+
+// The status of the managed rule: whether it is enabled or disabled.
+func (o WafRuleConfigPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for the time schedule when the rule takes effect. See `timer` below.
+func (o WafRuleConfigPtrOutput) Timer() WafRuleConfigTimerPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigTimer {
+		if v == nil {
+			return nil
+		}
+		return v.Timer
+	}).(WafRuleConfigTimerPtrOutput)
+}
+
+// The type category of the WAF rule.
+func (o WafRuleConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigActions struct {
+	// The skip configuration specified by the whitelist rule. See `bypass` below.
+	Bypass   *WafRuleConfigActionsBypass   `pulumi:"bypass"`
+	Response *WafRuleConfigActionsResponse `pulumi:"response"`
+}
+
+// WafRuleConfigActionsInput is an input type that accepts WafRuleConfigActionsArgs and WafRuleConfigActionsOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsInput` via:
+//
+//	WafRuleConfigActionsArgs{...}
+type WafRuleConfigActionsInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsOutput() WafRuleConfigActionsOutput
+	ToWafRuleConfigActionsOutputWithContext(context.Context) WafRuleConfigActionsOutput
+}
+
+type WafRuleConfigActionsArgs struct {
+	// The skip configuration specified by the whitelist rule. See `bypass` below.
+	Bypass   WafRuleConfigActionsBypassPtrInput   `pulumi:"bypass"`
+	Response WafRuleConfigActionsResponsePtrInput `pulumi:"response"`
+}
+
+func (WafRuleConfigActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActions)(nil)).Elem()
+}
+
+func (i WafRuleConfigActionsArgs) ToWafRuleConfigActionsOutput() WafRuleConfigActionsOutput {
+	return i.ToWafRuleConfigActionsOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsArgs) ToWafRuleConfigActionsOutputWithContext(ctx context.Context) WafRuleConfigActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsOutput)
+}
+
+func (i WafRuleConfigActionsArgs) ToWafRuleConfigActionsPtrOutput() WafRuleConfigActionsPtrOutput {
+	return i.ToWafRuleConfigActionsPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsArgs) ToWafRuleConfigActionsPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsOutput).ToWafRuleConfigActionsPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigActionsPtrInput is an input type that accepts WafRuleConfigActionsArgs, WafRuleConfigActionsPtr and WafRuleConfigActionsPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsPtrInput` via:
+//
+//	        WafRuleConfigActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigActionsPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsPtrOutput() WafRuleConfigActionsPtrOutput
+	ToWafRuleConfigActionsPtrOutputWithContext(context.Context) WafRuleConfigActionsPtrOutput
+}
+
+type wafRuleConfigActionsPtrType WafRuleConfigActionsArgs
+
+func WafRuleConfigActionsPtr(v *WafRuleConfigActionsArgs) WafRuleConfigActionsPtrInput {
+	return (*wafRuleConfigActionsPtrType)(v)
+}
+
+func (*wafRuleConfigActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActions)(nil)).Elem()
+}
+
+func (i *wafRuleConfigActionsPtrType) ToWafRuleConfigActionsPtrOutput() WafRuleConfigActionsPtrOutput {
+	return i.ToWafRuleConfigActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigActionsPtrType) ToWafRuleConfigActionsPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsPtrOutput)
+}
+
+type WafRuleConfigActionsOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActions)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsOutput) ToWafRuleConfigActionsOutput() WafRuleConfigActionsOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsOutput) ToWafRuleConfigActionsOutputWithContext(ctx context.Context) WafRuleConfigActionsOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsOutput) ToWafRuleConfigActionsPtrOutput() WafRuleConfigActionsPtrOutput {
+	return o.ToWafRuleConfigActionsPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigActionsOutput) ToWafRuleConfigActionsPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigActions) *WafRuleConfigActions {
+		return &v
+	}).(WafRuleConfigActionsPtrOutput)
+}
+
+// The skip configuration specified by the whitelist rule. See `bypass` below.
+func (o WafRuleConfigActionsOutput) Bypass() WafRuleConfigActionsBypassPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigActions) *WafRuleConfigActionsBypass { return v.Bypass }).(WafRuleConfigActionsBypassPtrOutput)
+}
+
+func (o WafRuleConfigActionsOutput) Response() WafRuleConfigActionsResponsePtrOutput {
+	return o.ApplyT(func(v WafRuleConfigActions) *WafRuleConfigActionsResponse { return v.Response }).(WafRuleConfigActionsResponsePtrOutput)
+}
+
+type WafRuleConfigActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActions)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsPtrOutput) ToWafRuleConfigActionsPtrOutput() WafRuleConfigActionsPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsPtrOutput) ToWafRuleConfigActionsPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsPtrOutput) Elem() WafRuleConfigActionsOutput {
+	return o.ApplyT(func(v *WafRuleConfigActions) WafRuleConfigActions {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigActions
+		return ret
+	}).(WafRuleConfigActionsOutput)
+}
+
+// The skip configuration specified by the whitelist rule. See `bypass` below.
+func (o WafRuleConfigActionsPtrOutput) Bypass() WafRuleConfigActionsBypassPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigActions) *WafRuleConfigActionsBypass {
+		if v == nil {
+			return nil
+		}
+		return v.Bypass
+	}).(WafRuleConfigActionsBypassPtrOutput)
+}
+
+func (o WafRuleConfigActionsPtrOutput) Response() WafRuleConfigActionsResponsePtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigActions) *WafRuleConfigActionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(WafRuleConfigActionsResponsePtrOutput)
+}
+
+type WafRuleConfigActionsBypass struct {
+	// The IDs of custom rules to skip.
+	CustomRules []int `pulumi:"customRules"`
+	// The IDs of specific managed rules to skip.
+	RegularRules []int `pulumi:"regularRules"`
+	// The types of managed rules to skip.
+	RegularTypes []string `pulumi:"regularTypes"`
+	// The scope that is skipped when requests match conditions defined in the whitelist rule.
+	Skip *string `pulumi:"skip"`
+	// The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+	Tags []string `pulumi:"tags"`
+}
+
+// WafRuleConfigActionsBypassInput is an input type that accepts WafRuleConfigActionsBypassArgs and WafRuleConfigActionsBypassOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsBypassInput` via:
+//
+//	WafRuleConfigActionsBypassArgs{...}
+type WafRuleConfigActionsBypassInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsBypassOutput() WafRuleConfigActionsBypassOutput
+	ToWafRuleConfigActionsBypassOutputWithContext(context.Context) WafRuleConfigActionsBypassOutput
+}
+
+type WafRuleConfigActionsBypassArgs struct {
+	// The IDs of custom rules to skip.
+	CustomRules pulumi.IntArrayInput `pulumi:"customRules"`
+	// The IDs of specific managed rules to skip.
+	RegularRules pulumi.IntArrayInput `pulumi:"regularRules"`
+	// The types of managed rules to skip.
+	RegularTypes pulumi.StringArrayInput `pulumi:"regularTypes"`
+	// The scope that is skipped when requests match conditions defined in the whitelist rule.
+	Skip pulumi.StringPtrInput `pulumi:"skip"`
+	// The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (WafRuleConfigActionsBypassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActionsBypass)(nil)).Elem()
+}
+
+func (i WafRuleConfigActionsBypassArgs) ToWafRuleConfigActionsBypassOutput() WafRuleConfigActionsBypassOutput {
+	return i.ToWafRuleConfigActionsBypassOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsBypassArgs) ToWafRuleConfigActionsBypassOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsBypassOutput)
+}
+
+func (i WafRuleConfigActionsBypassArgs) ToWafRuleConfigActionsBypassPtrOutput() WafRuleConfigActionsBypassPtrOutput {
+	return i.ToWafRuleConfigActionsBypassPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsBypassArgs) ToWafRuleConfigActionsBypassPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsBypassOutput).ToWafRuleConfigActionsBypassPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigActionsBypassPtrInput is an input type that accepts WafRuleConfigActionsBypassArgs, WafRuleConfigActionsBypassPtr and WafRuleConfigActionsBypassPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsBypassPtrInput` via:
+//
+//	        WafRuleConfigActionsBypassArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigActionsBypassPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsBypassPtrOutput() WafRuleConfigActionsBypassPtrOutput
+	ToWafRuleConfigActionsBypassPtrOutputWithContext(context.Context) WafRuleConfigActionsBypassPtrOutput
+}
+
+type wafRuleConfigActionsBypassPtrType WafRuleConfigActionsBypassArgs
+
+func WafRuleConfigActionsBypassPtr(v *WafRuleConfigActionsBypassArgs) WafRuleConfigActionsBypassPtrInput {
+	return (*wafRuleConfigActionsBypassPtrType)(v)
+}
+
+func (*wafRuleConfigActionsBypassPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActionsBypass)(nil)).Elem()
+}
+
+func (i *wafRuleConfigActionsBypassPtrType) ToWafRuleConfigActionsBypassPtrOutput() WafRuleConfigActionsBypassPtrOutput {
+	return i.ToWafRuleConfigActionsBypassPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigActionsBypassPtrType) ToWafRuleConfigActionsBypassPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsBypassPtrOutput)
+}
+
+type WafRuleConfigActionsBypassOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsBypassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActionsBypass)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsBypassOutput) ToWafRuleConfigActionsBypassOutput() WafRuleConfigActionsBypassOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsBypassOutput) ToWafRuleConfigActionsBypassOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsBypassOutput) ToWafRuleConfigActionsBypassPtrOutput() WafRuleConfigActionsBypassPtrOutput {
+	return o.ToWafRuleConfigActionsBypassPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigActionsBypassOutput) ToWafRuleConfigActionsBypassPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigActionsBypass) *WafRuleConfigActionsBypass {
+		return &v
+	}).(WafRuleConfigActionsBypassPtrOutput)
+}
+
+// The IDs of custom rules to skip.
+func (o WafRuleConfigActionsBypassOutput) CustomRules() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsBypass) []int { return v.CustomRules }).(pulumi.IntArrayOutput)
+}
+
+// The IDs of specific managed rules to skip.
+func (o WafRuleConfigActionsBypassOutput) RegularRules() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsBypass) []int { return v.RegularRules }).(pulumi.IntArrayOutput)
+}
+
+// The types of managed rules to skip.
+func (o WafRuleConfigActionsBypassOutput) RegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsBypass) []string { return v.RegularTypes }).(pulumi.StringArrayOutput)
+}
+
+// The scope that is skipped when requests match conditions defined in the whitelist rule.
+func (o WafRuleConfigActionsBypassOutput) Skip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsBypass) *string { return v.Skip }).(pulumi.StringPtrOutput)
+}
+
+// The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+func (o WafRuleConfigActionsBypassOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsBypass) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type WafRuleConfigActionsBypassPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsBypassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActionsBypass)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsBypassPtrOutput) ToWafRuleConfigActionsBypassPtrOutput() WafRuleConfigActionsBypassPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsBypassPtrOutput) ToWafRuleConfigActionsBypassPtrOutputWithContext(ctx context.Context) WafRuleConfigActionsBypassPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsBypassPtrOutput) Elem() WafRuleConfigActionsBypassOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) WafRuleConfigActionsBypass {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigActionsBypass
+		return ret
+	}).(WafRuleConfigActionsBypassOutput)
+}
+
+// The IDs of custom rules to skip.
+func (o WafRuleConfigActionsBypassPtrOutput) CustomRules() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) []int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRules
+	}).(pulumi.IntArrayOutput)
+}
+
+// The IDs of specific managed rules to skip.
+func (o WafRuleConfigActionsBypassPtrOutput) RegularRules() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RegularRules
+	}).(pulumi.IntArrayOutput)
+}
+
+// The types of managed rules to skip.
+func (o WafRuleConfigActionsBypassPtrOutput) RegularTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RegularTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The scope that is skipped when requests match conditions defined in the whitelist rule.
+func (o WafRuleConfigActionsBypassPtrOutput) Skip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Skip
+	}).(pulumi.StringPtrOutput)
+}
+
+// The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+func (o WafRuleConfigActionsBypassPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsBypass) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+type WafRuleConfigActionsResponse struct {
+	Code *int `pulumi:"code"`
+	// The internal unique ID of the WAF rule.
+	Id *int `pulumi:"id"`
+}
+
+// WafRuleConfigActionsResponseInput is an input type that accepts WafRuleConfigActionsResponseArgs and WafRuleConfigActionsResponseOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsResponseInput` via:
+//
+//	WafRuleConfigActionsResponseArgs{...}
+type WafRuleConfigActionsResponseInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsResponseOutput() WafRuleConfigActionsResponseOutput
+	ToWafRuleConfigActionsResponseOutputWithContext(context.Context) WafRuleConfigActionsResponseOutput
+}
+
+type WafRuleConfigActionsResponseArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The internal unique ID of the WAF rule.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (WafRuleConfigActionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActionsResponse)(nil)).Elem()
+}
+
+func (i WafRuleConfigActionsResponseArgs) ToWafRuleConfigActionsResponseOutput() WafRuleConfigActionsResponseOutput {
+	return i.ToWafRuleConfigActionsResponseOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsResponseArgs) ToWafRuleConfigActionsResponseOutputWithContext(ctx context.Context) WafRuleConfigActionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsResponseOutput)
+}
+
+func (i WafRuleConfigActionsResponseArgs) ToWafRuleConfigActionsResponsePtrOutput() WafRuleConfigActionsResponsePtrOutput {
+	return i.ToWafRuleConfigActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigActionsResponseArgs) ToWafRuleConfigActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleConfigActionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsResponseOutput).ToWafRuleConfigActionsResponsePtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigActionsResponsePtrInput is an input type that accepts WafRuleConfigActionsResponseArgs, WafRuleConfigActionsResponsePtr and WafRuleConfigActionsResponsePtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigActionsResponsePtrInput` via:
+//
+//	        WafRuleConfigActionsResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigActionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigActionsResponsePtrOutput() WafRuleConfigActionsResponsePtrOutput
+	ToWafRuleConfigActionsResponsePtrOutputWithContext(context.Context) WafRuleConfigActionsResponsePtrOutput
+}
+
+type wafRuleConfigActionsResponsePtrType WafRuleConfigActionsResponseArgs
+
+func WafRuleConfigActionsResponsePtr(v *WafRuleConfigActionsResponseArgs) WafRuleConfigActionsResponsePtrInput {
+	return (*wafRuleConfigActionsResponsePtrType)(v)
+}
+
+func (*wafRuleConfigActionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActionsResponse)(nil)).Elem()
+}
+
+func (i *wafRuleConfigActionsResponsePtrType) ToWafRuleConfigActionsResponsePtrOutput() WafRuleConfigActionsResponsePtrOutput {
+	return i.ToWafRuleConfigActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigActionsResponsePtrType) ToWafRuleConfigActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleConfigActionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigActionsResponsePtrOutput)
+}
+
+type WafRuleConfigActionsResponseOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigActionsResponse)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsResponseOutput) ToWafRuleConfigActionsResponseOutput() WafRuleConfigActionsResponseOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsResponseOutput) ToWafRuleConfigActionsResponseOutputWithContext(ctx context.Context) WafRuleConfigActionsResponseOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsResponseOutput) ToWafRuleConfigActionsResponsePtrOutput() WafRuleConfigActionsResponsePtrOutput {
+	return o.ToWafRuleConfigActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigActionsResponseOutput) ToWafRuleConfigActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleConfigActionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigActionsResponse) *WafRuleConfigActionsResponse {
+		return &v
+	}).(WafRuleConfigActionsResponsePtrOutput)
+}
+
+func (o WafRuleConfigActionsResponseOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsResponse) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The internal unique ID of the WAF rule.
+func (o WafRuleConfigActionsResponseOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigActionsResponse) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigActionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigActionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigActionsResponse)(nil)).Elem()
+}
+
+func (o WafRuleConfigActionsResponsePtrOutput) ToWafRuleConfigActionsResponsePtrOutput() WafRuleConfigActionsResponsePtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsResponsePtrOutput) ToWafRuleConfigActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleConfigActionsResponsePtrOutput {
+	return o
+}
+
+func (o WafRuleConfigActionsResponsePtrOutput) Elem() WafRuleConfigActionsResponseOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsResponse) WafRuleConfigActionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigActionsResponse
+		return ret
+	}).(WafRuleConfigActionsResponseOutput)
+}
+
+func (o WafRuleConfigActionsResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// The internal unique ID of the WAF rule.
+func (o WafRuleConfigActionsResponsePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigActionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigAppPackage struct {
+	// Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+	PackageSigns []WafRuleConfigAppPackagePackageSign `pulumi:"packageSigns"`
+}
+
+// WafRuleConfigAppPackageInput is an input type that accepts WafRuleConfigAppPackageArgs and WafRuleConfigAppPackageOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppPackageInput` via:
+//
+//	WafRuleConfigAppPackageArgs{...}
+type WafRuleConfigAppPackageInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppPackageOutput() WafRuleConfigAppPackageOutput
+	ToWafRuleConfigAppPackageOutputWithContext(context.Context) WafRuleConfigAppPackageOutput
+}
+
+type WafRuleConfigAppPackageArgs struct {
+	// Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+	PackageSigns WafRuleConfigAppPackagePackageSignArrayInput `pulumi:"packageSigns"`
+}
+
+func (WafRuleConfigAppPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppPackage)(nil)).Elem()
+}
+
+func (i WafRuleConfigAppPackageArgs) ToWafRuleConfigAppPackageOutput() WafRuleConfigAppPackageOutput {
+	return i.ToWafRuleConfigAppPackageOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppPackageArgs) ToWafRuleConfigAppPackageOutputWithContext(ctx context.Context) WafRuleConfigAppPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppPackageOutput)
+}
+
+func (i WafRuleConfigAppPackageArgs) ToWafRuleConfigAppPackagePtrOutput() WafRuleConfigAppPackagePtrOutput {
+	return i.ToWafRuleConfigAppPackagePtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppPackageArgs) ToWafRuleConfigAppPackagePtrOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppPackageOutput).ToWafRuleConfigAppPackagePtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigAppPackagePtrInput is an input type that accepts WafRuleConfigAppPackageArgs, WafRuleConfigAppPackagePtr and WafRuleConfigAppPackagePtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppPackagePtrInput` via:
+//
+//	        WafRuleConfigAppPackageArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigAppPackagePtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppPackagePtrOutput() WafRuleConfigAppPackagePtrOutput
+	ToWafRuleConfigAppPackagePtrOutputWithContext(context.Context) WafRuleConfigAppPackagePtrOutput
+}
+
+type wafRuleConfigAppPackagePtrType WafRuleConfigAppPackageArgs
+
+func WafRuleConfigAppPackagePtr(v *WafRuleConfigAppPackageArgs) WafRuleConfigAppPackagePtrInput {
+	return (*wafRuleConfigAppPackagePtrType)(v)
+}
+
+func (*wafRuleConfigAppPackagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppPackage)(nil)).Elem()
+}
+
+func (i *wafRuleConfigAppPackagePtrType) ToWafRuleConfigAppPackagePtrOutput() WafRuleConfigAppPackagePtrOutput {
+	return i.ToWafRuleConfigAppPackagePtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigAppPackagePtrType) ToWafRuleConfigAppPackagePtrOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppPackagePtrOutput)
+}
+
+type WafRuleConfigAppPackageOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppPackage)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppPackageOutput) ToWafRuleConfigAppPackageOutput() WafRuleConfigAppPackageOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackageOutput) ToWafRuleConfigAppPackageOutputWithContext(ctx context.Context) WafRuleConfigAppPackageOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackageOutput) ToWafRuleConfigAppPackagePtrOutput() WafRuleConfigAppPackagePtrOutput {
+	return o.ToWafRuleConfigAppPackagePtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigAppPackageOutput) ToWafRuleConfigAppPackagePtrOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigAppPackage) *WafRuleConfigAppPackage {
+		return &v
+	}).(WafRuleConfigAppPackagePtrOutput)
+}
+
+// Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+func (o WafRuleConfigAppPackageOutput) PackageSigns() WafRuleConfigAppPackagePackageSignArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigAppPackage) []WafRuleConfigAppPackagePackageSign { return v.PackageSigns }).(WafRuleConfigAppPackagePackageSignArrayOutput)
+}
+
+type WafRuleConfigAppPackagePtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppPackagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppPackage)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppPackagePtrOutput) ToWafRuleConfigAppPackagePtrOutput() WafRuleConfigAppPackagePtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePtrOutput) ToWafRuleConfigAppPackagePtrOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePtrOutput) Elem() WafRuleConfigAppPackageOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppPackage) WafRuleConfigAppPackage {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigAppPackage
+		return ret
+	}).(WafRuleConfigAppPackageOutput)
+}
+
+// Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+func (o WafRuleConfigAppPackagePtrOutput) PackageSigns() WafRuleConfigAppPackagePackageSignArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppPackage) []WafRuleConfigAppPackagePackageSign {
+		if v == nil {
+			return nil
+		}
+		return v.PackageSigns
+	}).(WafRuleConfigAppPackagePackageSignArrayOutput)
+}
+
+type WafRuleConfigAppPackagePackageSign struct {
+	Name *string `pulumi:"name"`
+	// The digital signature of a legitimate app package.
+	Sign *string `pulumi:"sign"`
+}
+
+// WafRuleConfigAppPackagePackageSignInput is an input type that accepts WafRuleConfigAppPackagePackageSignArgs and WafRuleConfigAppPackagePackageSignOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppPackagePackageSignInput` via:
+//
+//	WafRuleConfigAppPackagePackageSignArgs{...}
+type WafRuleConfigAppPackagePackageSignInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppPackagePackageSignOutput() WafRuleConfigAppPackagePackageSignOutput
+	ToWafRuleConfigAppPackagePackageSignOutputWithContext(context.Context) WafRuleConfigAppPackagePackageSignOutput
+}
+
+type WafRuleConfigAppPackagePackageSignArgs struct {
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The digital signature of a legitimate app package.
+	Sign pulumi.StringPtrInput `pulumi:"sign"`
+}
+
+func (WafRuleConfigAppPackagePackageSignArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppPackagePackageSign)(nil)).Elem()
+}
+
+func (i WafRuleConfigAppPackagePackageSignArgs) ToWafRuleConfigAppPackagePackageSignOutput() WafRuleConfigAppPackagePackageSignOutput {
+	return i.ToWafRuleConfigAppPackagePackageSignOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppPackagePackageSignArgs) ToWafRuleConfigAppPackagePackageSignOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePackageSignOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppPackagePackageSignOutput)
+}
+
+// WafRuleConfigAppPackagePackageSignArrayInput is an input type that accepts WafRuleConfigAppPackagePackageSignArray and WafRuleConfigAppPackagePackageSignArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppPackagePackageSignArrayInput` via:
+//
+//	WafRuleConfigAppPackagePackageSignArray{ WafRuleConfigAppPackagePackageSignArgs{...} }
+type WafRuleConfigAppPackagePackageSignArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppPackagePackageSignArrayOutput() WafRuleConfigAppPackagePackageSignArrayOutput
+	ToWafRuleConfigAppPackagePackageSignArrayOutputWithContext(context.Context) WafRuleConfigAppPackagePackageSignArrayOutput
+}
+
+type WafRuleConfigAppPackagePackageSignArray []WafRuleConfigAppPackagePackageSignInput
+
+func (WafRuleConfigAppPackagePackageSignArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigAppPackagePackageSign)(nil)).Elem()
+}
+
+func (i WafRuleConfigAppPackagePackageSignArray) ToWafRuleConfigAppPackagePackageSignArrayOutput() WafRuleConfigAppPackagePackageSignArrayOutput {
+	return i.ToWafRuleConfigAppPackagePackageSignArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppPackagePackageSignArray) ToWafRuleConfigAppPackagePackageSignArrayOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePackageSignArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppPackagePackageSignArrayOutput)
+}
+
+type WafRuleConfigAppPackagePackageSignOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppPackagePackageSignOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppPackagePackageSign)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppPackagePackageSignOutput) ToWafRuleConfigAppPackagePackageSignOutput() WafRuleConfigAppPackagePackageSignOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePackageSignOutput) ToWafRuleConfigAppPackagePackageSignOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePackageSignOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePackageSignOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppPackagePackageSign) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The digital signature of a legitimate app package.
+func (o WafRuleConfigAppPackagePackageSignOutput) Sign() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppPackagePackageSign) *string { return v.Sign }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigAppPackagePackageSignArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppPackagePackageSignArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigAppPackagePackageSign)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppPackagePackageSignArrayOutput) ToWafRuleConfigAppPackagePackageSignArrayOutput() WafRuleConfigAppPackagePackageSignArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePackageSignArrayOutput) ToWafRuleConfigAppPackagePackageSignArrayOutputWithContext(ctx context.Context) WafRuleConfigAppPackagePackageSignArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigAppPackagePackageSignArrayOutput) Index(i pulumi.IntInput) WafRuleConfigAppPackagePackageSignOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigAppPackagePackageSign {
+		return vs[0].([]WafRuleConfigAppPackagePackageSign)[vs[1].(int)]
+	}).(WafRuleConfigAppPackagePackageSignOutput)
+}
+
+type WafRuleConfigAppSdk struct {
+	// Custom fields used for mobile app signature validation. See `customSign` below.
+	CustomSign *WafRuleConfigAppSdkCustomSign `pulumi:"customSign"`
+	// Indicates whether the custom signature field validation is enabled.
+	CustomSignStatus *string `pulumi:"customSignStatus"`
+	// Detected abnormal behaviors of the application.
+	FeatureAbnormals []string `pulumi:"featureAbnormals"`
+}
+
+// WafRuleConfigAppSdkInput is an input type that accepts WafRuleConfigAppSdkArgs and WafRuleConfigAppSdkOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppSdkInput` via:
+//
+//	WafRuleConfigAppSdkArgs{...}
+type WafRuleConfigAppSdkInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppSdkOutput() WafRuleConfigAppSdkOutput
+	ToWafRuleConfigAppSdkOutputWithContext(context.Context) WafRuleConfigAppSdkOutput
+}
+
+type WafRuleConfigAppSdkArgs struct {
+	// Custom fields used for mobile app signature validation. See `customSign` below.
+	CustomSign WafRuleConfigAppSdkCustomSignPtrInput `pulumi:"customSign"`
+	// Indicates whether the custom signature field validation is enabled.
+	CustomSignStatus pulumi.StringPtrInput `pulumi:"customSignStatus"`
+	// Detected abnormal behaviors of the application.
+	FeatureAbnormals pulumi.StringArrayInput `pulumi:"featureAbnormals"`
+}
+
+func (WafRuleConfigAppSdkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppSdk)(nil)).Elem()
+}
+
+func (i WafRuleConfigAppSdkArgs) ToWafRuleConfigAppSdkOutput() WafRuleConfigAppSdkOutput {
+	return i.ToWafRuleConfigAppSdkOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppSdkArgs) ToWafRuleConfigAppSdkOutputWithContext(ctx context.Context) WafRuleConfigAppSdkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkOutput)
+}
+
+func (i WafRuleConfigAppSdkArgs) ToWafRuleConfigAppSdkPtrOutput() WafRuleConfigAppSdkPtrOutput {
+	return i.ToWafRuleConfigAppSdkPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppSdkArgs) ToWafRuleConfigAppSdkPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkOutput).ToWafRuleConfigAppSdkPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigAppSdkPtrInput is an input type that accepts WafRuleConfigAppSdkArgs, WafRuleConfigAppSdkPtr and WafRuleConfigAppSdkPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppSdkPtrInput` via:
+//
+//	        WafRuleConfigAppSdkArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigAppSdkPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppSdkPtrOutput() WafRuleConfigAppSdkPtrOutput
+	ToWafRuleConfigAppSdkPtrOutputWithContext(context.Context) WafRuleConfigAppSdkPtrOutput
+}
+
+type wafRuleConfigAppSdkPtrType WafRuleConfigAppSdkArgs
+
+func WafRuleConfigAppSdkPtr(v *WafRuleConfigAppSdkArgs) WafRuleConfigAppSdkPtrInput {
+	return (*wafRuleConfigAppSdkPtrType)(v)
+}
+
+func (*wafRuleConfigAppSdkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppSdk)(nil)).Elem()
+}
+
+func (i *wafRuleConfigAppSdkPtrType) ToWafRuleConfigAppSdkPtrOutput() WafRuleConfigAppSdkPtrOutput {
+	return i.ToWafRuleConfigAppSdkPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigAppSdkPtrType) ToWafRuleConfigAppSdkPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkPtrOutput)
+}
+
+type WafRuleConfigAppSdkOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppSdkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppSdk)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppSdkOutput) ToWafRuleConfigAppSdkOutput() WafRuleConfigAppSdkOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkOutput) ToWafRuleConfigAppSdkOutputWithContext(ctx context.Context) WafRuleConfigAppSdkOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkOutput) ToWafRuleConfigAppSdkPtrOutput() WafRuleConfigAppSdkPtrOutput {
+	return o.ToWafRuleConfigAppSdkPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigAppSdkOutput) ToWafRuleConfigAppSdkPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigAppSdk) *WafRuleConfigAppSdk {
+		return &v
+	}).(WafRuleConfigAppSdkPtrOutput)
+}
+
+// Custom fields used for mobile app signature validation. See `customSign` below.
+func (o WafRuleConfigAppSdkOutput) CustomSign() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppSdk) *WafRuleConfigAppSdkCustomSign { return v.CustomSign }).(WafRuleConfigAppSdkCustomSignPtrOutput)
+}
+
+// Indicates whether the custom signature field validation is enabled.
+func (o WafRuleConfigAppSdkOutput) CustomSignStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppSdk) *string { return v.CustomSignStatus }).(pulumi.StringPtrOutput)
+}
+
+// Detected abnormal behaviors of the application.
+func (o WafRuleConfigAppSdkOutput) FeatureAbnormals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigAppSdk) []string { return v.FeatureAbnormals }).(pulumi.StringArrayOutput)
+}
+
+type WafRuleConfigAppSdkPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppSdkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppSdk)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppSdkPtrOutput) ToWafRuleConfigAppSdkPtrOutput() WafRuleConfigAppSdkPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkPtrOutput) ToWafRuleConfigAppSdkPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkPtrOutput) Elem() WafRuleConfigAppSdkOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdk) WafRuleConfigAppSdk {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigAppSdk
+		return ret
+	}).(WafRuleConfigAppSdkOutput)
+}
+
+// Custom fields used for mobile app signature validation. See `customSign` below.
+func (o WafRuleConfigAppSdkPtrOutput) CustomSign() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdk) *WafRuleConfigAppSdkCustomSign {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSign
+	}).(WafRuleConfigAppSdkCustomSignPtrOutput)
+}
+
+// Indicates whether the custom signature field validation is enabled.
+func (o WafRuleConfigAppSdkPtrOutput) CustomSignStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSignStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Detected abnormal behaviors of the application.
+func (o WafRuleConfigAppSdkPtrOutput) FeatureAbnormals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureAbnormals
+	}).(pulumi.StringArrayOutput)
+}
+
+type WafRuleConfigAppSdkCustomSign struct {
+	// The name of the custom signature field used for validation.
+	Key *string `pulumi:"key"`
+	// The value of the custom signature field used for validation.
+	Value *string `pulumi:"value"`
+}
+
+// WafRuleConfigAppSdkCustomSignInput is an input type that accepts WafRuleConfigAppSdkCustomSignArgs and WafRuleConfigAppSdkCustomSignOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppSdkCustomSignInput` via:
+//
+//	WafRuleConfigAppSdkCustomSignArgs{...}
+type WafRuleConfigAppSdkCustomSignInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppSdkCustomSignOutput() WafRuleConfigAppSdkCustomSignOutput
+	ToWafRuleConfigAppSdkCustomSignOutputWithContext(context.Context) WafRuleConfigAppSdkCustomSignOutput
+}
+
+type WafRuleConfigAppSdkCustomSignArgs struct {
+	// The name of the custom signature field used for validation.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The value of the custom signature field used for validation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WafRuleConfigAppSdkCustomSignArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppSdkCustomSign)(nil)).Elem()
+}
+
+func (i WafRuleConfigAppSdkCustomSignArgs) ToWafRuleConfigAppSdkCustomSignOutput() WafRuleConfigAppSdkCustomSignOutput {
+	return i.ToWafRuleConfigAppSdkCustomSignOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppSdkCustomSignArgs) ToWafRuleConfigAppSdkCustomSignOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkCustomSignOutput)
+}
+
+func (i WafRuleConfigAppSdkCustomSignArgs) ToWafRuleConfigAppSdkCustomSignPtrOutput() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return i.ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigAppSdkCustomSignArgs) ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkCustomSignOutput).ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigAppSdkCustomSignPtrInput is an input type that accepts WafRuleConfigAppSdkCustomSignArgs, WafRuleConfigAppSdkCustomSignPtr and WafRuleConfigAppSdkCustomSignPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigAppSdkCustomSignPtrInput` via:
+//
+//	        WafRuleConfigAppSdkCustomSignArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigAppSdkCustomSignPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigAppSdkCustomSignPtrOutput() WafRuleConfigAppSdkCustomSignPtrOutput
+	ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(context.Context) WafRuleConfigAppSdkCustomSignPtrOutput
+}
+
+type wafRuleConfigAppSdkCustomSignPtrType WafRuleConfigAppSdkCustomSignArgs
+
+func WafRuleConfigAppSdkCustomSignPtr(v *WafRuleConfigAppSdkCustomSignArgs) WafRuleConfigAppSdkCustomSignPtrInput {
+	return (*wafRuleConfigAppSdkCustomSignPtrType)(v)
+}
+
+func (*wafRuleConfigAppSdkCustomSignPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppSdkCustomSign)(nil)).Elem()
+}
+
+func (i *wafRuleConfigAppSdkCustomSignPtrType) ToWafRuleConfigAppSdkCustomSignPtrOutput() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return i.ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigAppSdkCustomSignPtrType) ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigAppSdkCustomSignPtrOutput)
+}
+
+type WafRuleConfigAppSdkCustomSignOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppSdkCustomSignOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigAppSdkCustomSign)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppSdkCustomSignOutput) ToWafRuleConfigAppSdkCustomSignOutput() WafRuleConfigAppSdkCustomSignOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkCustomSignOutput) ToWafRuleConfigAppSdkCustomSignOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkCustomSignOutput) ToWafRuleConfigAppSdkCustomSignPtrOutput() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o.ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigAppSdkCustomSignOutput) ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigAppSdkCustomSign) *WafRuleConfigAppSdkCustomSign {
+		return &v
+	}).(WafRuleConfigAppSdkCustomSignPtrOutput)
+}
+
+// The name of the custom signature field used for validation.
+func (o WafRuleConfigAppSdkCustomSignOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppSdkCustomSign) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigAppSdkCustomSignOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigAppSdkCustomSign) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigAppSdkCustomSignPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigAppSdkCustomSignPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigAppSdkCustomSign)(nil)).Elem()
+}
+
+func (o WafRuleConfigAppSdkCustomSignPtrOutput) ToWafRuleConfigAppSdkCustomSignPtrOutput() WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkCustomSignPtrOutput) ToWafRuleConfigAppSdkCustomSignPtrOutputWithContext(ctx context.Context) WafRuleConfigAppSdkCustomSignPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigAppSdkCustomSignPtrOutput) Elem() WafRuleConfigAppSdkCustomSignOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdkCustomSign) WafRuleConfigAppSdkCustomSign {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigAppSdkCustomSign
+		return ret
+	}).(WafRuleConfigAppSdkCustomSignOutput)
+}
+
+// The name of the custom signature field used for validation.
+func (o WafRuleConfigAppSdkCustomSignPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdkCustomSign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigAppSdkCustomSignPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigAppSdkCustomSign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigManagedRuleset struct {
+	Action *string `pulumi:"action"`
+	// The primary attack type targeted by this ruleset.
+	AttackType *int `pulumi:"attackType"`
+	// The individual managed rules included in this ruleset. See `managedRules` below.
+	ManagedRules []WafRuleConfigManagedRulesetManagedRule `pulumi:"managedRules"`
+	// Number of rules currently enabled.
+	NumberEnabled *int `pulumi:"numberEnabled"`
+	// Total number of rules in this ruleset.
+	NumberTotal *int `pulumi:"numberTotal"`
+	// The protection strength level assigned to this ruleset.
+	ProtectionLevel *int `pulumi:"protectionLevel"`
+}
+
+// WafRuleConfigManagedRulesetInput is an input type that accepts WafRuleConfigManagedRulesetArgs and WafRuleConfigManagedRulesetOutput values.
+// You can construct a concrete instance of `WafRuleConfigManagedRulesetInput` via:
+//
+//	WafRuleConfigManagedRulesetArgs{...}
+type WafRuleConfigManagedRulesetInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigManagedRulesetOutput() WafRuleConfigManagedRulesetOutput
+	ToWafRuleConfigManagedRulesetOutputWithContext(context.Context) WafRuleConfigManagedRulesetOutput
+}
+
+type WafRuleConfigManagedRulesetArgs struct {
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The primary attack type targeted by this ruleset.
+	AttackType pulumi.IntPtrInput `pulumi:"attackType"`
+	// The individual managed rules included in this ruleset. See `managedRules` below.
+	ManagedRules WafRuleConfigManagedRulesetManagedRuleArrayInput `pulumi:"managedRules"`
+	// Number of rules currently enabled.
+	NumberEnabled pulumi.IntPtrInput `pulumi:"numberEnabled"`
+	// Total number of rules in this ruleset.
+	NumberTotal pulumi.IntPtrInput `pulumi:"numberTotal"`
+	// The protection strength level assigned to this ruleset.
+	ProtectionLevel pulumi.IntPtrInput `pulumi:"protectionLevel"`
+}
+
+func (WafRuleConfigManagedRulesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigManagedRuleset)(nil)).Elem()
+}
+
+func (i WafRuleConfigManagedRulesetArgs) ToWafRuleConfigManagedRulesetOutput() WafRuleConfigManagedRulesetOutput {
+	return i.ToWafRuleConfigManagedRulesetOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigManagedRulesetArgs) ToWafRuleConfigManagedRulesetOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigManagedRulesetOutput)
+}
+
+// WafRuleConfigManagedRulesetArrayInput is an input type that accepts WafRuleConfigManagedRulesetArray and WafRuleConfigManagedRulesetArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigManagedRulesetArrayInput` via:
+//
+//	WafRuleConfigManagedRulesetArray{ WafRuleConfigManagedRulesetArgs{...} }
+type WafRuleConfigManagedRulesetArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigManagedRulesetArrayOutput() WafRuleConfigManagedRulesetArrayOutput
+	ToWafRuleConfigManagedRulesetArrayOutputWithContext(context.Context) WafRuleConfigManagedRulesetArrayOutput
+}
+
+type WafRuleConfigManagedRulesetArray []WafRuleConfigManagedRulesetInput
+
+func (WafRuleConfigManagedRulesetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigManagedRuleset)(nil)).Elem()
+}
+
+func (i WafRuleConfigManagedRulesetArray) ToWafRuleConfigManagedRulesetArrayOutput() WafRuleConfigManagedRulesetArrayOutput {
+	return i.ToWafRuleConfigManagedRulesetArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigManagedRulesetArray) ToWafRuleConfigManagedRulesetArrayOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigManagedRulesetArrayOutput)
+}
+
+type WafRuleConfigManagedRulesetOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigManagedRulesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigManagedRuleset)(nil)).Elem()
+}
+
+func (o WafRuleConfigManagedRulesetOutput) ToWafRuleConfigManagedRulesetOutput() WafRuleConfigManagedRulesetOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetOutput) ToWafRuleConfigManagedRulesetOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The primary attack type targeted by this ruleset.
+func (o WafRuleConfigManagedRulesetOutput) AttackType() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) *int { return v.AttackType }).(pulumi.IntPtrOutput)
+}
+
+// The individual managed rules included in this ruleset. See `managedRules` below.
+func (o WafRuleConfigManagedRulesetOutput) ManagedRules() WafRuleConfigManagedRulesetManagedRuleArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) []WafRuleConfigManagedRulesetManagedRule { return v.ManagedRules }).(WafRuleConfigManagedRulesetManagedRuleArrayOutput)
+}
+
+// Number of rules currently enabled.
+func (o WafRuleConfigManagedRulesetOutput) NumberEnabled() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) *int { return v.NumberEnabled }).(pulumi.IntPtrOutput)
+}
+
+// Total number of rules in this ruleset.
+func (o WafRuleConfigManagedRulesetOutput) NumberTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) *int { return v.NumberTotal }).(pulumi.IntPtrOutput)
+}
+
+// The protection strength level assigned to this ruleset.
+func (o WafRuleConfigManagedRulesetOutput) ProtectionLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRuleset) *int { return v.ProtectionLevel }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigManagedRulesetArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigManagedRulesetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigManagedRuleset)(nil)).Elem()
+}
+
+func (o WafRuleConfigManagedRulesetArrayOutput) ToWafRuleConfigManagedRulesetArrayOutput() WafRuleConfigManagedRulesetArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetArrayOutput) ToWafRuleConfigManagedRulesetArrayOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetArrayOutput) Index(i pulumi.IntInput) WafRuleConfigManagedRulesetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigManagedRuleset {
+		return vs[0].([]WafRuleConfigManagedRuleset)[vs[1].(int)]
+	}).(WafRuleConfigManagedRulesetOutput)
+}
+
+type WafRuleConfigManagedRulesetManagedRule struct {
+	Action *string `pulumi:"action"`
+	// The internal unique ID of the WAF rule.
+	Id *int `pulumi:"id"`
+	// The status of the managed rule: whether it is enabled or disabled.
+	Status *string `pulumi:"status"`
+}
+
+// WafRuleConfigManagedRulesetManagedRuleInput is an input type that accepts WafRuleConfigManagedRulesetManagedRuleArgs and WafRuleConfigManagedRulesetManagedRuleOutput values.
+// You can construct a concrete instance of `WafRuleConfigManagedRulesetManagedRuleInput` via:
+//
+//	WafRuleConfigManagedRulesetManagedRuleArgs{...}
+type WafRuleConfigManagedRulesetManagedRuleInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigManagedRulesetManagedRuleOutput() WafRuleConfigManagedRulesetManagedRuleOutput
+	ToWafRuleConfigManagedRulesetManagedRuleOutputWithContext(context.Context) WafRuleConfigManagedRulesetManagedRuleOutput
+}
+
+type WafRuleConfigManagedRulesetManagedRuleArgs struct {
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// The internal unique ID of the WAF rule.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The status of the managed rule: whether it is enabled or disabled.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (WafRuleConfigManagedRulesetManagedRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigManagedRulesetManagedRule)(nil)).Elem()
+}
+
+func (i WafRuleConfigManagedRulesetManagedRuleArgs) ToWafRuleConfigManagedRulesetManagedRuleOutput() WafRuleConfigManagedRulesetManagedRuleOutput {
+	return i.ToWafRuleConfigManagedRulesetManagedRuleOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigManagedRulesetManagedRuleArgs) ToWafRuleConfigManagedRulesetManagedRuleOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetManagedRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigManagedRulesetManagedRuleOutput)
+}
+
+// WafRuleConfigManagedRulesetManagedRuleArrayInput is an input type that accepts WafRuleConfigManagedRulesetManagedRuleArray and WafRuleConfigManagedRulesetManagedRuleArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigManagedRulesetManagedRuleArrayInput` via:
+//
+//	WafRuleConfigManagedRulesetManagedRuleArray{ WafRuleConfigManagedRulesetManagedRuleArgs{...} }
+type WafRuleConfigManagedRulesetManagedRuleArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigManagedRulesetManagedRuleArrayOutput() WafRuleConfigManagedRulesetManagedRuleArrayOutput
+	ToWafRuleConfigManagedRulesetManagedRuleArrayOutputWithContext(context.Context) WafRuleConfigManagedRulesetManagedRuleArrayOutput
+}
+
+type WafRuleConfigManagedRulesetManagedRuleArray []WafRuleConfigManagedRulesetManagedRuleInput
+
+func (WafRuleConfigManagedRulesetManagedRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigManagedRulesetManagedRule)(nil)).Elem()
+}
+
+func (i WafRuleConfigManagedRulesetManagedRuleArray) ToWafRuleConfigManagedRulesetManagedRuleArrayOutput() WafRuleConfigManagedRulesetManagedRuleArrayOutput {
+	return i.ToWafRuleConfigManagedRulesetManagedRuleArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigManagedRulesetManagedRuleArray) ToWafRuleConfigManagedRulesetManagedRuleArrayOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetManagedRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigManagedRulesetManagedRuleArrayOutput)
+}
+
+type WafRuleConfigManagedRulesetManagedRuleOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigManagedRulesetManagedRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigManagedRulesetManagedRule)(nil)).Elem()
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleOutput) ToWafRuleConfigManagedRulesetManagedRuleOutput() WafRuleConfigManagedRulesetManagedRuleOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleOutput) ToWafRuleConfigManagedRulesetManagedRuleOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetManagedRuleOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRulesetManagedRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The internal unique ID of the WAF rule.
+func (o WafRuleConfigManagedRulesetManagedRuleOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRulesetManagedRule) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The status of the managed rule: whether it is enabled or disabled.
+func (o WafRuleConfigManagedRulesetManagedRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigManagedRulesetManagedRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigManagedRulesetManagedRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigManagedRulesetManagedRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigManagedRulesetManagedRule)(nil)).Elem()
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleArrayOutput) ToWafRuleConfigManagedRulesetManagedRuleArrayOutput() WafRuleConfigManagedRulesetManagedRuleArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleArrayOutput) ToWafRuleConfigManagedRulesetManagedRuleArrayOutputWithContext(ctx context.Context) WafRuleConfigManagedRulesetManagedRuleArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigManagedRulesetManagedRuleArrayOutput) Index(i pulumi.IntInput) WafRuleConfigManagedRulesetManagedRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigManagedRulesetManagedRule {
+		return vs[0].([]WafRuleConfigManagedRulesetManagedRule)[vs[1].(int)]
+	}).(WafRuleConfigManagedRulesetManagedRuleOutput)
+}
+
+type WafRuleConfigRateLimit struct {
+	// The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+	Characteristics *WafRuleConfigRateLimitCharacteristics `pulumi:"characteristics"`
+	// The statistical interval.
+	Interval *int `pulumi:"interval"`
+	// Indicates whether the rule applies to requests that hit the cache.
+	OnHit *bool `pulumi:"onHit"`
+	// Threshold settings for the rate limiting rule. See `threshold` below.
+	Threshold *WafRuleConfigRateLimitThreshold `pulumi:"threshold"`
+	// The timeout period for creating the stack used in rate limiting.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// WafRuleConfigRateLimitInput is an input type that accepts WafRuleConfigRateLimitArgs and WafRuleConfigRateLimitOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitInput` via:
+//
+//	WafRuleConfigRateLimitArgs{...}
+type WafRuleConfigRateLimitInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitOutput() WafRuleConfigRateLimitOutput
+	ToWafRuleConfigRateLimitOutputWithContext(context.Context) WafRuleConfigRateLimitOutput
+}
+
+type WafRuleConfigRateLimitArgs struct {
+	// The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+	Characteristics WafRuleConfigRateLimitCharacteristicsPtrInput `pulumi:"characteristics"`
+	// The statistical interval.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// Indicates whether the rule applies to requests that hit the cache.
+	OnHit pulumi.BoolPtrInput `pulumi:"onHit"`
+	// Threshold settings for the rate limiting rule. See `threshold` below.
+	Threshold WafRuleConfigRateLimitThresholdPtrInput `pulumi:"threshold"`
+	// The timeout period for creating the stack used in rate limiting.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (WafRuleConfigRateLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitArgs) ToWafRuleConfigRateLimitOutput() WafRuleConfigRateLimitOutput {
+	return i.ToWafRuleConfigRateLimitOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitArgs) ToWafRuleConfigRateLimitOutputWithContext(ctx context.Context) WafRuleConfigRateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitOutput)
+}
+
+func (i WafRuleConfigRateLimitArgs) ToWafRuleConfigRateLimitPtrOutput() WafRuleConfigRateLimitPtrOutput {
+	return i.ToWafRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitArgs) ToWafRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitOutput).ToWafRuleConfigRateLimitPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigRateLimitPtrInput is an input type that accepts WafRuleConfigRateLimitArgs, WafRuleConfigRateLimitPtr and WafRuleConfigRateLimitPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitPtrInput` via:
+//
+//	        WafRuleConfigRateLimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigRateLimitPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitPtrOutput() WafRuleConfigRateLimitPtrOutput
+	ToWafRuleConfigRateLimitPtrOutputWithContext(context.Context) WafRuleConfigRateLimitPtrOutput
+}
+
+type wafRuleConfigRateLimitPtrType WafRuleConfigRateLimitArgs
+
+func WafRuleConfigRateLimitPtr(v *WafRuleConfigRateLimitArgs) WafRuleConfigRateLimitPtrInput {
+	return (*wafRuleConfigRateLimitPtrType)(v)
+}
+
+func (*wafRuleConfigRateLimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (i *wafRuleConfigRateLimitPtrType) ToWafRuleConfigRateLimitPtrOutput() WafRuleConfigRateLimitPtrOutput {
+	return i.ToWafRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigRateLimitPtrType) ToWafRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitPtrOutput)
+}
+
+type WafRuleConfigRateLimitOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitOutput) ToWafRuleConfigRateLimitOutput() WafRuleConfigRateLimitOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitOutput) ToWafRuleConfigRateLimitOutputWithContext(ctx context.Context) WafRuleConfigRateLimitOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitOutput) ToWafRuleConfigRateLimitPtrOutput() WafRuleConfigRateLimitPtrOutput {
+	return o.ToWafRuleConfigRateLimitPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigRateLimitOutput) ToWafRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigRateLimit) *WafRuleConfigRateLimit {
+		return &v
+	}).(WafRuleConfigRateLimitPtrOutput)
+}
+
+// The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+func (o WafRuleConfigRateLimitOutput) Characteristics() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimit) *WafRuleConfigRateLimitCharacteristics { return v.Characteristics }).(WafRuleConfigRateLimitCharacteristicsPtrOutput)
+}
+
+// The statistical interval.
+func (o WafRuleConfigRateLimitOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimit) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the rule applies to requests that hit the cache.
+func (o WafRuleConfigRateLimitOutput) OnHit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimit) *bool { return v.OnHit }).(pulumi.BoolPtrOutput)
+}
+
+// Threshold settings for the rate limiting rule. See `threshold` below.
+func (o WafRuleConfigRateLimitOutput) Threshold() WafRuleConfigRateLimitThresholdPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimit) *WafRuleConfigRateLimitThreshold { return v.Threshold }).(WafRuleConfigRateLimitThresholdPtrOutput)
+}
+
+// The timeout period for creating the stack used in rate limiting.
+func (o WafRuleConfigRateLimitOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimit) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigRateLimitPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimit)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitPtrOutput) ToWafRuleConfigRateLimitPtrOutput() WafRuleConfigRateLimitPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitPtrOutput) ToWafRuleConfigRateLimitPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitPtrOutput) Elem() WafRuleConfigRateLimitOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) WafRuleConfigRateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigRateLimit
+		return ret
+	}).(WafRuleConfigRateLimitOutput)
+}
+
+// The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+func (o WafRuleConfigRateLimitPtrOutput) Characteristics() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) *WafRuleConfigRateLimitCharacteristics {
+		if v == nil {
+			return nil
+		}
+		return v.Characteristics
+	}).(WafRuleConfigRateLimitCharacteristicsPtrOutput)
+}
+
+// The statistical interval.
+func (o WafRuleConfigRateLimitPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates whether the rule applies to requests that hit the cache.
+func (o WafRuleConfigRateLimitPtrOutput) OnHit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OnHit
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Threshold settings for the rate limiting rule. See `threshold` below.
+func (o WafRuleConfigRateLimitPtrOutput) Threshold() WafRuleConfigRateLimitThresholdPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) *WafRuleConfigRateLimitThreshold {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(WafRuleConfigRateLimitThresholdPtrOutput)
+}
+
+// The timeout period for creating the stack used in rate limiting.
+func (o WafRuleConfigRateLimitPtrOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ttl
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristics struct {
+	Criterias []WafRuleConfigRateLimitCharacteristicsCriteria `pulumi:"criterias"`
+	Logic     *string                                         `pulumi:"logic"`
+}
+
+// WafRuleConfigRateLimitCharacteristicsInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsArgs and WafRuleConfigRateLimitCharacteristicsOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsArgs{...}
+type WafRuleConfigRateLimitCharacteristicsInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsOutput() WafRuleConfigRateLimitCharacteristicsOutput
+	ToWafRuleConfigRateLimitCharacteristicsOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsArgs struct {
+	Criterias WafRuleConfigRateLimitCharacteristicsCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                                   `pulumi:"logic"`
+}
+
+func (WafRuleConfigRateLimitCharacteristicsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristics)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsArgs) ToWafRuleConfigRateLimitCharacteristicsOutput() WafRuleConfigRateLimitCharacteristicsOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsArgs) ToWafRuleConfigRateLimitCharacteristicsOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsOutput)
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsArgs) ToWafRuleConfigRateLimitCharacteristicsPtrOutput() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsArgs) ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsOutput).ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigRateLimitCharacteristicsPtrInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsArgs, WafRuleConfigRateLimitCharacteristicsPtr and WafRuleConfigRateLimitCharacteristicsPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsPtrInput` via:
+//
+//	        WafRuleConfigRateLimitCharacteristicsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigRateLimitCharacteristicsPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsPtrOutput() WafRuleConfigRateLimitCharacteristicsPtrOutput
+	ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsPtrOutput
+}
+
+type wafRuleConfigRateLimitCharacteristicsPtrType WafRuleConfigRateLimitCharacteristicsArgs
+
+func WafRuleConfigRateLimitCharacteristicsPtr(v *WafRuleConfigRateLimitCharacteristicsArgs) WafRuleConfigRateLimitCharacteristicsPtrInput {
+	return (*wafRuleConfigRateLimitCharacteristicsPtrType)(v)
+}
+
+func (*wafRuleConfigRateLimitCharacteristicsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitCharacteristics)(nil)).Elem()
+}
+
+func (i *wafRuleConfigRateLimitCharacteristicsPtrType) ToWafRuleConfigRateLimitCharacteristicsPtrOutput() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigRateLimitCharacteristicsPtrType) ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristics)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) ToWafRuleConfigRateLimitCharacteristicsOutput() WafRuleConfigRateLimitCharacteristicsOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) ToWafRuleConfigRateLimitCharacteristicsOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) ToWafRuleConfigRateLimitCharacteristicsPtrOutput() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o.ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigRateLimitCharacteristics) *WafRuleConfigRateLimitCharacteristics {
+		return &v
+	}).(WafRuleConfigRateLimitCharacteristicsPtrOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) Criterias() WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristics) []WafRuleConfigRateLimitCharacteristicsCriteria {
+		return v.Criterias
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristics) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitCharacteristics)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsPtrOutput) ToWafRuleConfigRateLimitCharacteristicsPtrOutput() WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsPtrOutput) ToWafRuleConfigRateLimitCharacteristicsPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsPtrOutput) Elem() WafRuleConfigRateLimitCharacteristicsOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitCharacteristics) WafRuleConfigRateLimitCharacteristics {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigRateLimitCharacteristics
+		return ret
+	}).(WafRuleConfigRateLimitCharacteristicsOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsPtrOutput) Criterias() WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitCharacteristics) []WafRuleConfigRateLimitCharacteristicsCriteria {
+		if v == nil {
+			return nil
+		}
+		return v.Criterias
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsPtrOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitCharacteristics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logic
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteria struct {
+	Criterias []WafRuleConfigRateLimitCharacteristicsCriteriaCriteria `pulumi:"criterias"`
+	Logic     *string                                                 `pulumi:"logic"`
+	MatchType *string                                                 `pulumi:"matchType"`
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaArgs and WafRuleConfigRateLimitCharacteristicsCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaArgs{...}
+type WafRuleConfigRateLimitCharacteristicsCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaArgs struct {
+	Criterias WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                                           `pulumi:"logic"`
+	MatchType pulumi.StringPtrInput                                           `pulumi:"matchType"`
+}
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaOutput)
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaArrayInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaArray and WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaArrayInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaArray{ WafRuleConfigRateLimitCharacteristicsCriteriaArgs{...} }
+type WafRuleConfigRateLimitCharacteristicsCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaArray []WafRuleConfigRateLimitCharacteristicsCriteriaInput
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaOutput) Criterias() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteria) []WafRuleConfigRateLimitCharacteristicsCriteriaCriteria {
+		return v.Criterias
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteria) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleConfigRateLimitCharacteristicsCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigRateLimitCharacteristicsCriteria {
+		return vs[0].([]WafRuleConfigRateLimitCharacteristicsCriteria)[vs[1].(int)]
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteria struct {
+	Criterias []WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria `pulumi:"criterias"`
+	Logic     *string                                                         `pulumi:"logic"`
+	MatchType *string                                                         `pulumi:"matchType"`
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs and WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs{...}
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs struct {
+	Criterias WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                                                   `pulumi:"logic"`
+	MatchType pulumi.StringPtrInput                                                   `pulumi:"matchType"`
+}
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput)
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray and WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray{ WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs{...} }
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray []WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaInput
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) Criterias() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteriaCriteria) []WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
+		return v.Criterias
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteriaCriteria) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteriaCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigRateLimitCharacteristicsCriteriaCriteria {
+		return vs[0].([]WafRuleConfigRateLimitCharacteristicsCriteriaCriteria)[vs[1].(int)]
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria struct {
+	MatchType *string `pulumi:"matchType"`
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs and WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs{...}
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs struct {
+	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
+}
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput)
+}
+
+// WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayInput is an input type that accepts WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray and WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayInput` via:
+//
+//	WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray{ WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs{...} }
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput
+	ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutputWithContext(context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray []WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaInput
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput {
+	return i.ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput() WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput) ToWafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
+		return vs[0].([]WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria)[vs[1].(int)]
+	}).(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput)
+}
+
+type WafRuleConfigRateLimitThreshold struct {
+	// The maximum number of distinct managed rules that can be triggered.
+	DistinctManagedRules *int `pulumi:"distinctManagedRules"`
+	// The maximum number of times that managed rules can be triggered.
+	ManagedRulesBlocked *int `pulumi:"managedRulesBlocked"`
+	// The maximum number of allowed requests within a time interval.
+	Request *int `pulumi:"request"`
+	// Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+	ResponseStatus *WafRuleConfigRateLimitThresholdResponseStatus `pulumi:"responseStatus"`
+	// The maximum allowed traffic within a time interval (deprecated).
+	Traffic *string `pulumi:"traffic"`
+}
+
+// WafRuleConfigRateLimitThresholdInput is an input type that accepts WafRuleConfigRateLimitThresholdArgs and WafRuleConfigRateLimitThresholdOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitThresholdInput` via:
+//
+//	WafRuleConfigRateLimitThresholdArgs{...}
+type WafRuleConfigRateLimitThresholdInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitThresholdOutput() WafRuleConfigRateLimitThresholdOutput
+	ToWafRuleConfigRateLimitThresholdOutputWithContext(context.Context) WafRuleConfigRateLimitThresholdOutput
+}
+
+type WafRuleConfigRateLimitThresholdArgs struct {
+	// The maximum number of distinct managed rules that can be triggered.
+	DistinctManagedRules pulumi.IntPtrInput `pulumi:"distinctManagedRules"`
+	// The maximum number of times that managed rules can be triggered.
+	ManagedRulesBlocked pulumi.IntPtrInput `pulumi:"managedRulesBlocked"`
+	// The maximum number of allowed requests within a time interval.
+	Request pulumi.IntPtrInput `pulumi:"request"`
+	// Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+	ResponseStatus WafRuleConfigRateLimitThresholdResponseStatusPtrInput `pulumi:"responseStatus"`
+	// The maximum allowed traffic within a time interval (deprecated).
+	Traffic pulumi.StringPtrInput `pulumi:"traffic"`
+}
+
+func (WafRuleConfigRateLimitThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitThreshold)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitThresholdArgs) ToWafRuleConfigRateLimitThresholdOutput() WafRuleConfigRateLimitThresholdOutput {
+	return i.ToWafRuleConfigRateLimitThresholdOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitThresholdArgs) ToWafRuleConfigRateLimitThresholdOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdOutput)
+}
+
+func (i WafRuleConfigRateLimitThresholdArgs) ToWafRuleConfigRateLimitThresholdPtrOutput() WafRuleConfigRateLimitThresholdPtrOutput {
+	return i.ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitThresholdArgs) ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdOutput).ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigRateLimitThresholdPtrInput is an input type that accepts WafRuleConfigRateLimitThresholdArgs, WafRuleConfigRateLimitThresholdPtr and WafRuleConfigRateLimitThresholdPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitThresholdPtrInput` via:
+//
+//	        WafRuleConfigRateLimitThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigRateLimitThresholdPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitThresholdPtrOutput() WafRuleConfigRateLimitThresholdPtrOutput
+	ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(context.Context) WafRuleConfigRateLimitThresholdPtrOutput
+}
+
+type wafRuleConfigRateLimitThresholdPtrType WafRuleConfigRateLimitThresholdArgs
+
+func WafRuleConfigRateLimitThresholdPtr(v *WafRuleConfigRateLimitThresholdArgs) WafRuleConfigRateLimitThresholdPtrInput {
+	return (*wafRuleConfigRateLimitThresholdPtrType)(v)
+}
+
+func (*wafRuleConfigRateLimitThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitThreshold)(nil)).Elem()
+}
+
+func (i *wafRuleConfigRateLimitThresholdPtrType) ToWafRuleConfigRateLimitThresholdPtrOutput() WafRuleConfigRateLimitThresholdPtrOutput {
+	return i.ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigRateLimitThresholdPtrType) ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdPtrOutput)
+}
+
+type WafRuleConfigRateLimitThresholdOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitThreshold)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitThresholdOutput) ToWafRuleConfigRateLimitThresholdOutput() WafRuleConfigRateLimitThresholdOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdOutput) ToWafRuleConfigRateLimitThresholdOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdOutput) ToWafRuleConfigRateLimitThresholdPtrOutput() WafRuleConfigRateLimitThresholdPtrOutput {
+	return o.ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigRateLimitThresholdOutput) ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigRateLimitThreshold) *WafRuleConfigRateLimitThreshold {
+		return &v
+	}).(WafRuleConfigRateLimitThresholdPtrOutput)
+}
+
+// The maximum number of distinct managed rules that can be triggered.
+func (o WafRuleConfigRateLimitThresholdOutput) DistinctManagedRules() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThreshold) *int { return v.DistinctManagedRules }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of times that managed rules can be triggered.
+func (o WafRuleConfigRateLimitThresholdOutput) ManagedRulesBlocked() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThreshold) *int { return v.ManagedRulesBlocked }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of allowed requests within a time interval.
+func (o WafRuleConfigRateLimitThresholdOutput) Request() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThreshold) *int { return v.Request }).(pulumi.IntPtrOutput)
+}
+
+// Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+func (o WafRuleConfigRateLimitThresholdOutput) ResponseStatus() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThreshold) *WafRuleConfigRateLimitThresholdResponseStatus {
+		return v.ResponseStatus
+	}).(WafRuleConfigRateLimitThresholdResponseStatusPtrOutput)
+}
+
+// The maximum allowed traffic within a time interval (deprecated).
+func (o WafRuleConfigRateLimitThresholdOutput) Traffic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThreshold) *string { return v.Traffic }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitThreshold)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitThresholdPtrOutput) ToWafRuleConfigRateLimitThresholdPtrOutput() WafRuleConfigRateLimitThresholdPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdPtrOutput) ToWafRuleConfigRateLimitThresholdPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdPtrOutput) Elem() WafRuleConfigRateLimitThresholdOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) WafRuleConfigRateLimitThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigRateLimitThreshold
+		return ret
+	}).(WafRuleConfigRateLimitThresholdOutput)
+}
+
+// The maximum number of distinct managed rules that can be triggered.
+func (o WafRuleConfigRateLimitThresholdPtrOutput) DistinctManagedRules() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DistinctManagedRules
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of times that managed rules can be triggered.
+func (o WafRuleConfigRateLimitThresholdPtrOutput) ManagedRulesBlocked() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedRulesBlocked
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of allowed requests within a time interval.
+func (o WafRuleConfigRateLimitThresholdPtrOutput) Request() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Request
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+func (o WafRuleConfigRateLimitThresholdPtrOutput) ResponseStatus() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) *WafRuleConfigRateLimitThresholdResponseStatus {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseStatus
+	}).(WafRuleConfigRateLimitThresholdResponseStatusPtrOutput)
+}
+
+// The maximum allowed traffic within a time interval (deprecated).
+func (o WafRuleConfigRateLimitThresholdPtrOutput) Traffic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Traffic
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigRateLimitThresholdResponseStatus struct {
+	Code *int `pulumi:"code"`
+	// The maximum number of times the specified status code can be returned.
+	Count *int `pulumi:"count"`
+	// The upper limit of the percentage of occurrences of the specified status code among all responses.
+	Ratio *int `pulumi:"ratio"`
+}
+
+// WafRuleConfigRateLimitThresholdResponseStatusInput is an input type that accepts WafRuleConfigRateLimitThresholdResponseStatusArgs and WafRuleConfigRateLimitThresholdResponseStatusOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitThresholdResponseStatusInput` via:
+//
+//	WafRuleConfigRateLimitThresholdResponseStatusArgs{...}
+type WafRuleConfigRateLimitThresholdResponseStatusInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitThresholdResponseStatusOutput() WafRuleConfigRateLimitThresholdResponseStatusOutput
+	ToWafRuleConfigRateLimitThresholdResponseStatusOutputWithContext(context.Context) WafRuleConfigRateLimitThresholdResponseStatusOutput
+}
+
+type WafRuleConfigRateLimitThresholdResponseStatusArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The maximum number of times the specified status code can be returned.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// The upper limit of the percentage of occurrences of the specified status code among all responses.
+	Ratio pulumi.IntPtrInput `pulumi:"ratio"`
+}
+
+func (WafRuleConfigRateLimitThresholdResponseStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitThresholdResponseStatus)(nil)).Elem()
+}
+
+func (i WafRuleConfigRateLimitThresholdResponseStatusArgs) ToWafRuleConfigRateLimitThresholdResponseStatusOutput() WafRuleConfigRateLimitThresholdResponseStatusOutput {
+	return i.ToWafRuleConfigRateLimitThresholdResponseStatusOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitThresholdResponseStatusArgs) ToWafRuleConfigRateLimitThresholdResponseStatusOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdResponseStatusOutput)
+}
+
+func (i WafRuleConfigRateLimitThresholdResponseStatusArgs) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutput() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return i.ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigRateLimitThresholdResponseStatusArgs) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdResponseStatusOutput).ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigRateLimitThresholdResponseStatusPtrInput is an input type that accepts WafRuleConfigRateLimitThresholdResponseStatusArgs, WafRuleConfigRateLimitThresholdResponseStatusPtr and WafRuleConfigRateLimitThresholdResponseStatusPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigRateLimitThresholdResponseStatusPtrInput` via:
+//
+//	        WafRuleConfigRateLimitThresholdResponseStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigRateLimitThresholdResponseStatusPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutput() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput
+	ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(context.Context) WafRuleConfigRateLimitThresholdResponseStatusPtrOutput
+}
+
+type wafRuleConfigRateLimitThresholdResponseStatusPtrType WafRuleConfigRateLimitThresholdResponseStatusArgs
+
+func WafRuleConfigRateLimitThresholdResponseStatusPtr(v *WafRuleConfigRateLimitThresholdResponseStatusArgs) WafRuleConfigRateLimitThresholdResponseStatusPtrInput {
+	return (*wafRuleConfigRateLimitThresholdResponseStatusPtrType)(v)
+}
+
+func (*wafRuleConfigRateLimitThresholdResponseStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitThresholdResponseStatus)(nil)).Elem()
+}
+
+func (i *wafRuleConfigRateLimitThresholdResponseStatusPtrType) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutput() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return i.ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigRateLimitThresholdResponseStatusPtrType) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigRateLimitThresholdResponseStatusPtrOutput)
+}
+
+type WafRuleConfigRateLimitThresholdResponseStatusOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitThresholdResponseStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigRateLimitThresholdResponseStatus)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) ToWafRuleConfigRateLimitThresholdResponseStatusOutput() WafRuleConfigRateLimitThresholdResponseStatusOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) ToWafRuleConfigRateLimitThresholdResponseStatusOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutput() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o.ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigRateLimitThresholdResponseStatus) *WafRuleConfigRateLimitThresholdResponseStatus {
+		return &v
+	}).(WafRuleConfigRateLimitThresholdResponseStatusPtrOutput)
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThresholdResponseStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of times the specified status code can be returned.
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThresholdResponseStatus) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// The upper limit of the percentage of occurrences of the specified status code among all responses.
+func (o WafRuleConfigRateLimitThresholdResponseStatusOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigRateLimitThresholdResponseStatus) *int { return v.Ratio }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigRateLimitThresholdResponseStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigRateLimitThresholdResponseStatus)(nil)).Elem()
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutput() WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) ToWafRuleConfigRateLimitThresholdResponseStatusPtrOutputWithContext(ctx context.Context) WafRuleConfigRateLimitThresholdResponseStatusPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) Elem() WafRuleConfigRateLimitThresholdResponseStatusOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThresholdResponseStatus) WafRuleConfigRateLimitThresholdResponseStatus {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigRateLimitThresholdResponseStatus
+		return ret
+	}).(WafRuleConfigRateLimitThresholdResponseStatusOutput)
+}
+
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThresholdResponseStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of times the specified status code can be returned.
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThresholdResponseStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The upper limit of the percentage of occurrences of the specified status code among all responses.
+func (o WafRuleConfigRateLimitThresholdResponseStatusPtrOutput) Ratio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigRateLimitThresholdResponseStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ratio
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigSecurityLevel struct {
+	// The value of the custom signature field used for validation.
+	Value *string `pulumi:"value"`
+}
+
+// WafRuleConfigSecurityLevelInput is an input type that accepts WafRuleConfigSecurityLevelArgs and WafRuleConfigSecurityLevelOutput values.
+// You can construct a concrete instance of `WafRuleConfigSecurityLevelInput` via:
+//
+//	WafRuleConfigSecurityLevelArgs{...}
+type WafRuleConfigSecurityLevelInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigSecurityLevelOutput() WafRuleConfigSecurityLevelOutput
+	ToWafRuleConfigSecurityLevelOutputWithContext(context.Context) WafRuleConfigSecurityLevelOutput
+}
+
+type WafRuleConfigSecurityLevelArgs struct {
+	// The value of the custom signature field used for validation.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (WafRuleConfigSecurityLevelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigSecurityLevel)(nil)).Elem()
+}
+
+func (i WafRuleConfigSecurityLevelArgs) ToWafRuleConfigSecurityLevelOutput() WafRuleConfigSecurityLevelOutput {
+	return i.ToWafRuleConfigSecurityLevelOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigSecurityLevelArgs) ToWafRuleConfigSecurityLevelOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigSecurityLevelOutput)
+}
+
+func (i WafRuleConfigSecurityLevelArgs) ToWafRuleConfigSecurityLevelPtrOutput() WafRuleConfigSecurityLevelPtrOutput {
+	return i.ToWafRuleConfigSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigSecurityLevelArgs) ToWafRuleConfigSecurityLevelPtrOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigSecurityLevelOutput).ToWafRuleConfigSecurityLevelPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigSecurityLevelPtrInput is an input type that accepts WafRuleConfigSecurityLevelArgs, WafRuleConfigSecurityLevelPtr and WafRuleConfigSecurityLevelPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigSecurityLevelPtrInput` via:
+//
+//	        WafRuleConfigSecurityLevelArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigSecurityLevelPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigSecurityLevelPtrOutput() WafRuleConfigSecurityLevelPtrOutput
+	ToWafRuleConfigSecurityLevelPtrOutputWithContext(context.Context) WafRuleConfigSecurityLevelPtrOutput
+}
+
+type wafRuleConfigSecurityLevelPtrType WafRuleConfigSecurityLevelArgs
+
+func WafRuleConfigSecurityLevelPtr(v *WafRuleConfigSecurityLevelArgs) WafRuleConfigSecurityLevelPtrInput {
+	return (*wafRuleConfigSecurityLevelPtrType)(v)
+}
+
+func (*wafRuleConfigSecurityLevelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigSecurityLevel)(nil)).Elem()
+}
+
+func (i *wafRuleConfigSecurityLevelPtrType) ToWafRuleConfigSecurityLevelPtrOutput() WafRuleConfigSecurityLevelPtrOutput {
+	return i.ToWafRuleConfigSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigSecurityLevelPtrType) ToWafRuleConfigSecurityLevelPtrOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigSecurityLevelPtrOutput)
+}
+
+type WafRuleConfigSecurityLevelOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigSecurityLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigSecurityLevel)(nil)).Elem()
+}
+
+func (o WafRuleConfigSecurityLevelOutput) ToWafRuleConfigSecurityLevelOutput() WafRuleConfigSecurityLevelOutput {
+	return o
+}
+
+func (o WafRuleConfigSecurityLevelOutput) ToWafRuleConfigSecurityLevelOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelOutput {
+	return o
+}
+
+func (o WafRuleConfigSecurityLevelOutput) ToWafRuleConfigSecurityLevelPtrOutput() WafRuleConfigSecurityLevelPtrOutput {
+	return o.ToWafRuleConfigSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigSecurityLevelOutput) ToWafRuleConfigSecurityLevelPtrOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigSecurityLevel) *WafRuleConfigSecurityLevel {
+		return &v
+	}).(WafRuleConfigSecurityLevelPtrOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigSecurityLevelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigSecurityLevel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigSecurityLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigSecurityLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigSecurityLevel)(nil)).Elem()
+}
+
+func (o WafRuleConfigSecurityLevelPtrOutput) ToWafRuleConfigSecurityLevelPtrOutput() WafRuleConfigSecurityLevelPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigSecurityLevelPtrOutput) ToWafRuleConfigSecurityLevelPtrOutputWithContext(ctx context.Context) WafRuleConfigSecurityLevelPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigSecurityLevelPtrOutput) Elem() WafRuleConfigSecurityLevelOutput {
+	return o.ApplyT(func(v *WafRuleConfigSecurityLevel) WafRuleConfigSecurityLevel {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigSecurityLevel
+		return ret
+	}).(WafRuleConfigSecurityLevelOutput)
+}
+
+// The value of the custom signature field used for validation.
+func (o WafRuleConfigSecurityLevelPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigSecurityLevel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigTimer struct {
+	Periods []WafRuleConfigTimerPeriod `pulumi:"periods"`
+	// Timing type:
+	Scopes *string `pulumi:"scopes"`
+	// Weekly recurring time schedules. See `weeklyPeriods` below.
+	WeeklyPeriods []WafRuleConfigTimerWeeklyPeriod `pulumi:"weeklyPeriods"`
+	// The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+	Zone *int `pulumi:"zone"`
+}
+
+// WafRuleConfigTimerInput is an input type that accepts WafRuleConfigTimerArgs and WafRuleConfigTimerOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerInput` via:
+//
+//	WafRuleConfigTimerArgs{...}
+type WafRuleConfigTimerInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerOutput() WafRuleConfigTimerOutput
+	ToWafRuleConfigTimerOutputWithContext(context.Context) WafRuleConfigTimerOutput
+}
+
+type WafRuleConfigTimerArgs struct {
+	Periods WafRuleConfigTimerPeriodArrayInput `pulumi:"periods"`
+	// Timing type:
+	Scopes pulumi.StringPtrInput `pulumi:"scopes"`
+	// Weekly recurring time schedules. See `weeklyPeriods` below.
+	WeeklyPeriods WafRuleConfigTimerWeeklyPeriodArrayInput `pulumi:"weeklyPeriods"`
+	// The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+	Zone pulumi.IntPtrInput `pulumi:"zone"`
+}
+
+func (WafRuleConfigTimerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimer)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerArgs) ToWafRuleConfigTimerOutput() WafRuleConfigTimerOutput {
+	return i.ToWafRuleConfigTimerOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerArgs) ToWafRuleConfigTimerOutputWithContext(ctx context.Context) WafRuleConfigTimerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerOutput)
+}
+
+func (i WafRuleConfigTimerArgs) ToWafRuleConfigTimerPtrOutput() WafRuleConfigTimerPtrOutput {
+	return i.ToWafRuleConfigTimerPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerArgs) ToWafRuleConfigTimerPtrOutputWithContext(ctx context.Context) WafRuleConfigTimerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerOutput).ToWafRuleConfigTimerPtrOutputWithContext(ctx)
+}
+
+// WafRuleConfigTimerPtrInput is an input type that accepts WafRuleConfigTimerArgs, WafRuleConfigTimerPtr and WafRuleConfigTimerPtrOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerPtrInput` via:
+//
+//	        WafRuleConfigTimerArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleConfigTimerPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerPtrOutput() WafRuleConfigTimerPtrOutput
+	ToWafRuleConfigTimerPtrOutputWithContext(context.Context) WafRuleConfigTimerPtrOutput
+}
+
+type wafRuleConfigTimerPtrType WafRuleConfigTimerArgs
+
+func WafRuleConfigTimerPtr(v *WafRuleConfigTimerArgs) WafRuleConfigTimerPtrInput {
+	return (*wafRuleConfigTimerPtrType)(v)
+}
+
+func (*wafRuleConfigTimerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigTimer)(nil)).Elem()
+}
+
+func (i *wafRuleConfigTimerPtrType) ToWafRuleConfigTimerPtrOutput() WafRuleConfigTimerPtrOutput {
+	return i.ToWafRuleConfigTimerPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleConfigTimerPtrType) ToWafRuleConfigTimerPtrOutputWithContext(ctx context.Context) WafRuleConfigTimerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerPtrOutput)
+}
+
+type WafRuleConfigTimerOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimer)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerOutput) ToWafRuleConfigTimerOutput() WafRuleConfigTimerOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerOutput) ToWafRuleConfigTimerOutputWithContext(ctx context.Context) WafRuleConfigTimerOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerOutput) ToWafRuleConfigTimerPtrOutput() WafRuleConfigTimerPtrOutput {
+	return o.ToWafRuleConfigTimerPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleConfigTimerOutput) ToWafRuleConfigTimerPtrOutputWithContext(ctx context.Context) WafRuleConfigTimerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleConfigTimer) *WafRuleConfigTimer {
+		return &v
+	}).(WafRuleConfigTimerPtrOutput)
+}
+
+func (o WafRuleConfigTimerOutput) Periods() WafRuleConfigTimerPeriodArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigTimer) []WafRuleConfigTimerPeriod { return v.Periods }).(WafRuleConfigTimerPeriodArrayOutput)
+}
+
+// Timing type:
+func (o WafRuleConfigTimerOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimer) *string { return v.Scopes }).(pulumi.StringPtrOutput)
+}
+
+// Weekly recurring time schedules. See `weeklyPeriods` below.
+func (o WafRuleConfigTimerOutput) WeeklyPeriods() WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigTimer) []WafRuleConfigTimerWeeklyPeriod { return v.WeeklyPeriods }).(WafRuleConfigTimerWeeklyPeriodArrayOutput)
+}
+
+// The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+func (o WafRuleConfigTimerOutput) Zone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimer) *int { return v.Zone }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigTimerPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleConfigTimer)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerPtrOutput) ToWafRuleConfigTimerPtrOutput() WafRuleConfigTimerPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerPtrOutput) ToWafRuleConfigTimerPtrOutputWithContext(ctx context.Context) WafRuleConfigTimerPtrOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerPtrOutput) Elem() WafRuleConfigTimerOutput {
+	return o.ApplyT(func(v *WafRuleConfigTimer) WafRuleConfigTimer {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleConfigTimer
+		return ret
+	}).(WafRuleConfigTimerOutput)
+}
+
+func (o WafRuleConfigTimerPtrOutput) Periods() WafRuleConfigTimerPeriodArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigTimer) []WafRuleConfigTimerPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.Periods
+	}).(WafRuleConfigTimerPeriodArrayOutput)
+}
+
+// Timing type:
+func (o WafRuleConfigTimerPtrOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigTimer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Weekly recurring time schedules. See `weeklyPeriods` below.
+func (o WafRuleConfigTimerPtrOutput) WeeklyPeriods() WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return o.ApplyT(func(v *WafRuleConfigTimer) []WafRuleConfigTimerWeeklyPeriod {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyPeriods
+	}).(WafRuleConfigTimerWeeklyPeriodArrayOutput)
+}
+
+// The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+func (o WafRuleConfigTimerPtrOutput) Zone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleConfigTimer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleConfigTimerPeriod struct {
+	// End time in HH:mm:ss format
+	End *string `pulumi:"end"`
+	// Start time in HH:mm:ss format
+	Start *string `pulumi:"start"`
+}
+
+// WafRuleConfigTimerPeriodInput is an input type that accepts WafRuleConfigTimerPeriodArgs and WafRuleConfigTimerPeriodOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerPeriodInput` via:
+//
+//	WafRuleConfigTimerPeriodArgs{...}
+type WafRuleConfigTimerPeriodInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerPeriodOutput() WafRuleConfigTimerPeriodOutput
+	ToWafRuleConfigTimerPeriodOutputWithContext(context.Context) WafRuleConfigTimerPeriodOutput
+}
+
+type WafRuleConfigTimerPeriodArgs struct {
+	// End time in HH:mm:ss format
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Start time in HH:mm:ss format
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (WafRuleConfigTimerPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerPeriodArgs) ToWafRuleConfigTimerPeriodOutput() WafRuleConfigTimerPeriodOutput {
+	return i.ToWafRuleConfigTimerPeriodOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerPeriodArgs) ToWafRuleConfigTimerPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerPeriodOutput)
+}
+
+// WafRuleConfigTimerPeriodArrayInput is an input type that accepts WafRuleConfigTimerPeriodArray and WafRuleConfigTimerPeriodArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerPeriodArrayInput` via:
+//
+//	WafRuleConfigTimerPeriodArray{ WafRuleConfigTimerPeriodArgs{...} }
+type WafRuleConfigTimerPeriodArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerPeriodArrayOutput() WafRuleConfigTimerPeriodArrayOutput
+	ToWafRuleConfigTimerPeriodArrayOutputWithContext(context.Context) WafRuleConfigTimerPeriodArrayOutput
+}
+
+type WafRuleConfigTimerPeriodArray []WafRuleConfigTimerPeriodInput
+
+func (WafRuleConfigTimerPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerPeriodArray) ToWafRuleConfigTimerPeriodArrayOutput() WafRuleConfigTimerPeriodArrayOutput {
+	return i.ToWafRuleConfigTimerPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerPeriodArray) ToWafRuleConfigTimerPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerPeriodArrayOutput)
+}
+
+type WafRuleConfigTimerPeriodOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerPeriodOutput) ToWafRuleConfigTimerPeriodOutput() WafRuleConfigTimerPeriodOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerPeriodOutput) ToWafRuleConfigTimerPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerPeriodOutput {
+	return o
+}
+
+// End time in HH:mm:ss format
+func (o WafRuleConfigTimerPeriodOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerPeriod) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Start time in HH:mm:ss format
+func (o WafRuleConfigTimerPeriodOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerPeriod) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigTimerPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerPeriodArrayOutput) ToWafRuleConfigTimerPeriodArrayOutput() WafRuleConfigTimerPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerPeriodArrayOutput) ToWafRuleConfigTimerPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerPeriodArrayOutput) Index(i pulumi.IntInput) WafRuleConfigTimerPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigTimerPeriod {
+		return vs[0].([]WafRuleConfigTimerPeriod)[vs[1].(int)]
+	}).(WafRuleConfigTimerPeriodOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriod struct {
+	// Daily effective time periods within a weekly schedule. See `dailyPeriods` below.
+	DailyPeriods []WafRuleConfigTimerWeeklyPeriodDailyPeriod `pulumi:"dailyPeriods"`
+	// Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+	Days *string `pulumi:"days"`
+}
+
+// WafRuleConfigTimerWeeklyPeriodInput is an input type that accepts WafRuleConfigTimerWeeklyPeriodArgs and WafRuleConfigTimerWeeklyPeriodOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerWeeklyPeriodInput` via:
+//
+//	WafRuleConfigTimerWeeklyPeriodArgs{...}
+type WafRuleConfigTimerWeeklyPeriodInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerWeeklyPeriodOutput() WafRuleConfigTimerWeeklyPeriodOutput
+	ToWafRuleConfigTimerWeeklyPeriodOutputWithContext(context.Context) WafRuleConfigTimerWeeklyPeriodOutput
+}
+
+type WafRuleConfigTimerWeeklyPeriodArgs struct {
+	// Daily effective time periods within a weekly schedule. See `dailyPeriods` below.
+	DailyPeriods WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayInput `pulumi:"dailyPeriods"`
+	// Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+	Days pulumi.StringPtrInput `pulumi:"days"`
+}
+
+func (WafRuleConfigTimerWeeklyPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodArgs) ToWafRuleConfigTimerWeeklyPeriodOutput() WafRuleConfigTimerWeeklyPeriodOutput {
+	return i.ToWafRuleConfigTimerWeeklyPeriodOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodArgs) ToWafRuleConfigTimerWeeklyPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerWeeklyPeriodOutput)
+}
+
+// WafRuleConfigTimerWeeklyPeriodArrayInput is an input type that accepts WafRuleConfigTimerWeeklyPeriodArray and WafRuleConfigTimerWeeklyPeriodArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerWeeklyPeriodArrayInput` via:
+//
+//	WafRuleConfigTimerWeeklyPeriodArray{ WafRuleConfigTimerWeeklyPeriodArgs{...} }
+type WafRuleConfigTimerWeeklyPeriodArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerWeeklyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodArrayOutput
+	ToWafRuleConfigTimerWeeklyPeriodArrayOutputWithContext(context.Context) WafRuleConfigTimerWeeklyPeriodArrayOutput
+}
+
+type WafRuleConfigTimerWeeklyPeriodArray []WafRuleConfigTimerWeeklyPeriodInput
+
+func (WafRuleConfigTimerWeeklyPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerWeeklyPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodArray) ToWafRuleConfigTimerWeeklyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return i.ToWafRuleConfigTimerWeeklyPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodArray) ToWafRuleConfigTimerWeeklyPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerWeeklyPeriodArrayOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriodOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerWeeklyPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodOutput) ToWafRuleConfigTimerWeeklyPeriodOutput() WafRuleConfigTimerWeeklyPeriodOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodOutput) ToWafRuleConfigTimerWeeklyPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodOutput {
+	return o
+}
+
+// Daily effective time periods within a weekly schedule. See `dailyPeriods` below.
+func (o WafRuleConfigTimerWeeklyPeriodOutput) DailyPeriods() WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerWeeklyPeriod) []WafRuleConfigTimerWeeklyPeriodDailyPeriod {
+		return v.DailyPeriods
+	}).(WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput)
+}
+
+// Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+func (o WafRuleConfigTimerWeeklyPeriodOutput) Days() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerWeeklyPeriod) *string { return v.Days }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerWeeklyPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerWeeklyPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodArrayOutput) ToWafRuleConfigTimerWeeklyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodArrayOutput) ToWafRuleConfigTimerWeeklyPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodArrayOutput) Index(i pulumi.IntInput) WafRuleConfigTimerWeeklyPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigTimerWeeklyPeriod {
+		return vs[0].([]WafRuleConfigTimerWeeklyPeriod)[vs[1].(int)]
+	}).(WafRuleConfigTimerWeeklyPeriodOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriodDailyPeriod struct {
+	// End time in HH:mm:ss format
+	End *string `pulumi:"end"`
+	// Start time in HH:mm:ss format
+	Start *string `pulumi:"start"`
+}
+
+// WafRuleConfigTimerWeeklyPeriodDailyPeriodInput is an input type that accepts WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs and WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerWeeklyPeriodDailyPeriodInput` via:
+//
+//	WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs{...}
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput
+	ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutputWithContext(context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput
+}
+
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs struct {
+	// End time in HH:mm:ss format
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Start time in HH:mm:ss format
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodDailyPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput {
+	return i.ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput)
+}
+
+// WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayInput is an input type that accepts WafRuleConfigTimerWeeklyPeriodDailyPeriodArray and WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput values.
+// You can construct a concrete instance of `WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayInput` via:
+//
+//	WafRuleConfigTimerWeeklyPeriodDailyPeriodArray{ WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs{...} }
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput
+	ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutputWithContext(context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput
+}
+
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodArray []WafRuleConfigTimerWeeklyPeriodDailyPeriodInput
+
+func (WafRuleConfigTimerWeeklyPeriodDailyPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerWeeklyPeriodDailyPeriod)(nil)).Elem()
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodDailyPeriodArray) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput {
+	return i.ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleConfigTimerWeeklyPeriodDailyPeriodArray) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodDailyPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput {
+	return o
+}
+
+// End time in HH:mm:ss format
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerWeeklyPeriodDailyPeriod) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Start time in HH:mm:ss format
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleConfigTimerWeeklyPeriodDailyPeriod) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleConfigTimerWeeklyPeriodDailyPeriod)(nil)).Elem()
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput() WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput) ToWafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutputWithContext(ctx context.Context) WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput {
+	return o
+}
+
+func (o WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput) Index(i pulumi.IntInput) WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleConfigTimerWeeklyPeriodDailyPeriod {
+		return vs[0].([]WafRuleConfigTimerWeeklyPeriodDailyPeriod)[vs[1].(int)]
+	}).(WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput)
+}
+
+type WafRuleShared struct {
+	// The default action executed under shared configuration.
+	Action *string `pulumi:"action"`
+	// Extended action configurations under shared settings. See `actions` below.
+	Actions *WafRuleSharedActions `pulumi:"actions"`
+	// Specify the cross-domain site ID.
+	CrossSiteId *int `pulumi:"crossSiteId"`
+	// The match expression used in shared configuration.
+	Expression *string `pulumi:"expression"`
+	// Configuration of the request matching logic engine. See `match` below.
+	Match *WafRuleSharedMatch `pulumi:"match"`
+	// The integration mode of the Web SDK:
+	Mode *string `pulumi:"mode"`
+	// The display name of the ruleset.
+	Name *string `pulumi:"name"`
+	// The target type protected by this rule: web or app.
+	Target *string `pulumi:"target"`
+}
+
+// WafRuleSharedInput is an input type that accepts WafRuleSharedArgs and WafRuleSharedOutput values.
+// You can construct a concrete instance of `WafRuleSharedInput` via:
+//
+//	WafRuleSharedArgs{...}
+type WafRuleSharedInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedOutput() WafRuleSharedOutput
+	ToWafRuleSharedOutputWithContext(context.Context) WafRuleSharedOutput
+}
+
+type WafRuleSharedArgs struct {
+	// The default action executed under shared configuration.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Extended action configurations under shared settings. See `actions` below.
+	Actions WafRuleSharedActionsPtrInput `pulumi:"actions"`
+	// Specify the cross-domain site ID.
+	CrossSiteId pulumi.IntPtrInput `pulumi:"crossSiteId"`
+	// The match expression used in shared configuration.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Configuration of the request matching logic engine. See `match` below.
+	Match WafRuleSharedMatchPtrInput `pulumi:"match"`
+	// The integration mode of the Web SDK:
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The display name of the ruleset.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The target type protected by this rule: web or app.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (WafRuleSharedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleShared)(nil)).Elem()
+}
+
+func (i WafRuleSharedArgs) ToWafRuleSharedOutput() WafRuleSharedOutput {
+	return i.ToWafRuleSharedOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedArgs) ToWafRuleSharedOutputWithContext(ctx context.Context) WafRuleSharedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedOutput)
+}
+
+func (i WafRuleSharedArgs) ToWafRuleSharedPtrOutput() WafRuleSharedPtrOutput {
+	return i.ToWafRuleSharedPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedArgs) ToWafRuleSharedPtrOutputWithContext(ctx context.Context) WafRuleSharedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedOutput).ToWafRuleSharedPtrOutputWithContext(ctx)
+}
+
+// WafRuleSharedPtrInput is an input type that accepts WafRuleSharedArgs, WafRuleSharedPtr and WafRuleSharedPtrOutput values.
+// You can construct a concrete instance of `WafRuleSharedPtrInput` via:
+//
+//	        WafRuleSharedArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleSharedPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedPtrOutput() WafRuleSharedPtrOutput
+	ToWafRuleSharedPtrOutputWithContext(context.Context) WafRuleSharedPtrOutput
+}
+
+type wafRuleSharedPtrType WafRuleSharedArgs
+
+func WafRuleSharedPtr(v *WafRuleSharedArgs) WafRuleSharedPtrInput {
+	return (*wafRuleSharedPtrType)(v)
+}
+
+func (*wafRuleSharedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleShared)(nil)).Elem()
+}
+
+func (i *wafRuleSharedPtrType) ToWafRuleSharedPtrOutput() WafRuleSharedPtrOutput {
+	return i.ToWafRuleSharedPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleSharedPtrType) ToWafRuleSharedPtrOutputWithContext(ctx context.Context) WafRuleSharedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedPtrOutput)
+}
+
+type WafRuleSharedOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleShared)(nil)).Elem()
+}
+
+func (o WafRuleSharedOutput) ToWafRuleSharedOutput() WafRuleSharedOutput {
+	return o
+}
+
+func (o WafRuleSharedOutput) ToWafRuleSharedOutputWithContext(ctx context.Context) WafRuleSharedOutput {
+	return o
+}
+
+func (o WafRuleSharedOutput) ToWafRuleSharedPtrOutput() WafRuleSharedPtrOutput {
+	return o.ToWafRuleSharedPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleSharedOutput) ToWafRuleSharedPtrOutputWithContext(ctx context.Context) WafRuleSharedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleShared) *WafRuleShared {
+		return &v
+	}).(WafRuleSharedPtrOutput)
+}
+
+// The default action executed under shared configuration.
+func (o WafRuleSharedOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Extended action configurations under shared settings. See `actions` below.
+func (o WafRuleSharedOutput) Actions() WafRuleSharedActionsPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *WafRuleSharedActions { return v.Actions }).(WafRuleSharedActionsPtrOutput)
+}
+
+// Specify the cross-domain site ID.
+func (o WafRuleSharedOutput) CrossSiteId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *int { return v.CrossSiteId }).(pulumi.IntPtrOutput)
+}
+
+// The match expression used in shared configuration.
+func (o WafRuleSharedOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the request matching logic engine. See `match` below.
+func (o WafRuleSharedOutput) Match() WafRuleSharedMatchPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *WafRuleSharedMatch { return v.Match }).(WafRuleSharedMatchPtrOutput)
+}
+
+// The integration mode of the Web SDK:
+func (o WafRuleSharedOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the ruleset.
+func (o WafRuleSharedOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The target type protected by this rule: web or app.
+func (o WafRuleSharedOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleShared) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleShared)(nil)).Elem()
+}
+
+func (o WafRuleSharedPtrOutput) ToWafRuleSharedPtrOutput() WafRuleSharedPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedPtrOutput) ToWafRuleSharedPtrOutputWithContext(ctx context.Context) WafRuleSharedPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedPtrOutput) Elem() WafRuleSharedOutput {
+	return o.ApplyT(func(v *WafRuleShared) WafRuleShared {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleShared
+		return ret
+	}).(WafRuleSharedOutput)
+}
+
+// The default action executed under shared configuration.
+func (o WafRuleSharedPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extended action configurations under shared settings. See `actions` below.
+func (o WafRuleSharedPtrOutput) Actions() WafRuleSharedActionsPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *WafRuleSharedActions {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(WafRuleSharedActionsPtrOutput)
+}
+
+// Specify the cross-domain site ID.
+func (o WafRuleSharedPtrOutput) CrossSiteId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CrossSiteId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The match expression used in shared configuration.
+func (o WafRuleSharedPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the request matching logic engine. See `match` below.
+func (o WafRuleSharedPtrOutput) Match() WafRuleSharedMatchPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *WafRuleSharedMatch {
+		if v == nil {
+			return nil
+		}
+		return v.Match
+	}).(WafRuleSharedMatchPtrOutput)
+}
+
+// The integration mode of the Web SDK:
+func (o WafRuleSharedPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The display name of the ruleset.
+func (o WafRuleSharedPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target type protected by this rule: web or app.
+func (o WafRuleSharedPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleShared) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedActions struct {
+	Response *WafRuleSharedActionsResponse `pulumi:"response"`
+}
+
+// WafRuleSharedActionsInput is an input type that accepts WafRuleSharedActionsArgs and WafRuleSharedActionsOutput values.
+// You can construct a concrete instance of `WafRuleSharedActionsInput` via:
+//
+//	WafRuleSharedActionsArgs{...}
+type WafRuleSharedActionsInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedActionsOutput() WafRuleSharedActionsOutput
+	ToWafRuleSharedActionsOutputWithContext(context.Context) WafRuleSharedActionsOutput
+}
+
+type WafRuleSharedActionsArgs struct {
+	Response WafRuleSharedActionsResponsePtrInput `pulumi:"response"`
+}
+
+func (WafRuleSharedActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedActions)(nil)).Elem()
+}
+
+func (i WafRuleSharedActionsArgs) ToWafRuleSharedActionsOutput() WafRuleSharedActionsOutput {
+	return i.ToWafRuleSharedActionsOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedActionsArgs) ToWafRuleSharedActionsOutputWithContext(ctx context.Context) WafRuleSharedActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsOutput)
+}
+
+func (i WafRuleSharedActionsArgs) ToWafRuleSharedActionsPtrOutput() WafRuleSharedActionsPtrOutput {
+	return i.ToWafRuleSharedActionsPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedActionsArgs) ToWafRuleSharedActionsPtrOutputWithContext(ctx context.Context) WafRuleSharedActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsOutput).ToWafRuleSharedActionsPtrOutputWithContext(ctx)
+}
+
+// WafRuleSharedActionsPtrInput is an input type that accepts WafRuleSharedActionsArgs, WafRuleSharedActionsPtr and WafRuleSharedActionsPtrOutput values.
+// You can construct a concrete instance of `WafRuleSharedActionsPtrInput` via:
+//
+//	        WafRuleSharedActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleSharedActionsPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedActionsPtrOutput() WafRuleSharedActionsPtrOutput
+	ToWafRuleSharedActionsPtrOutputWithContext(context.Context) WafRuleSharedActionsPtrOutput
+}
+
+type wafRuleSharedActionsPtrType WafRuleSharedActionsArgs
+
+func WafRuleSharedActionsPtr(v *WafRuleSharedActionsArgs) WafRuleSharedActionsPtrInput {
+	return (*wafRuleSharedActionsPtrType)(v)
+}
+
+func (*wafRuleSharedActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedActions)(nil)).Elem()
+}
+
+func (i *wafRuleSharedActionsPtrType) ToWafRuleSharedActionsPtrOutput() WafRuleSharedActionsPtrOutput {
+	return i.ToWafRuleSharedActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleSharedActionsPtrType) ToWafRuleSharedActionsPtrOutputWithContext(ctx context.Context) WafRuleSharedActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsPtrOutput)
+}
+
+type WafRuleSharedActionsOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedActions)(nil)).Elem()
+}
+
+func (o WafRuleSharedActionsOutput) ToWafRuleSharedActionsOutput() WafRuleSharedActionsOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsOutput) ToWafRuleSharedActionsOutputWithContext(ctx context.Context) WafRuleSharedActionsOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsOutput) ToWafRuleSharedActionsPtrOutput() WafRuleSharedActionsPtrOutput {
+	return o.ToWafRuleSharedActionsPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleSharedActionsOutput) ToWafRuleSharedActionsPtrOutputWithContext(ctx context.Context) WafRuleSharedActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleSharedActions) *WafRuleSharedActions {
+		return &v
+	}).(WafRuleSharedActionsPtrOutput)
+}
+
+func (o WafRuleSharedActionsOutput) Response() WafRuleSharedActionsResponsePtrOutput {
+	return o.ApplyT(func(v WafRuleSharedActions) *WafRuleSharedActionsResponse { return v.Response }).(WafRuleSharedActionsResponsePtrOutput)
+}
+
+type WafRuleSharedActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedActions)(nil)).Elem()
+}
+
+func (o WafRuleSharedActionsPtrOutput) ToWafRuleSharedActionsPtrOutput() WafRuleSharedActionsPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsPtrOutput) ToWafRuleSharedActionsPtrOutputWithContext(ctx context.Context) WafRuleSharedActionsPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsPtrOutput) Elem() WafRuleSharedActionsOutput {
+	return o.ApplyT(func(v *WafRuleSharedActions) WafRuleSharedActions {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleSharedActions
+		return ret
+	}).(WafRuleSharedActionsOutput)
+}
+
+func (o WafRuleSharedActionsPtrOutput) Response() WafRuleSharedActionsResponsePtrOutput {
+	return o.ApplyT(func(v *WafRuleSharedActions) *WafRuleSharedActionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(WafRuleSharedActionsResponsePtrOutput)
+}
+
+type WafRuleSharedActionsResponse struct {
+	Code *int `pulumi:"code"`
+	// The internal unique ID of the WAF rule.
+	Id *int `pulumi:"id"`
+}
+
+// WafRuleSharedActionsResponseInput is an input type that accepts WafRuleSharedActionsResponseArgs and WafRuleSharedActionsResponseOutput values.
+// You can construct a concrete instance of `WafRuleSharedActionsResponseInput` via:
+//
+//	WafRuleSharedActionsResponseArgs{...}
+type WafRuleSharedActionsResponseInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedActionsResponseOutput() WafRuleSharedActionsResponseOutput
+	ToWafRuleSharedActionsResponseOutputWithContext(context.Context) WafRuleSharedActionsResponseOutput
+}
+
+type WafRuleSharedActionsResponseArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// The internal unique ID of the WAF rule.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (WafRuleSharedActionsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedActionsResponse)(nil)).Elem()
+}
+
+func (i WafRuleSharedActionsResponseArgs) ToWafRuleSharedActionsResponseOutput() WafRuleSharedActionsResponseOutput {
+	return i.ToWafRuleSharedActionsResponseOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedActionsResponseArgs) ToWafRuleSharedActionsResponseOutputWithContext(ctx context.Context) WafRuleSharedActionsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsResponseOutput)
+}
+
+func (i WafRuleSharedActionsResponseArgs) ToWafRuleSharedActionsResponsePtrOutput() WafRuleSharedActionsResponsePtrOutput {
+	return i.ToWafRuleSharedActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedActionsResponseArgs) ToWafRuleSharedActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleSharedActionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsResponseOutput).ToWafRuleSharedActionsResponsePtrOutputWithContext(ctx)
+}
+
+// WafRuleSharedActionsResponsePtrInput is an input type that accepts WafRuleSharedActionsResponseArgs, WafRuleSharedActionsResponsePtr and WafRuleSharedActionsResponsePtrOutput values.
+// You can construct a concrete instance of `WafRuleSharedActionsResponsePtrInput` via:
+//
+//	        WafRuleSharedActionsResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleSharedActionsResponsePtrInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedActionsResponsePtrOutput() WafRuleSharedActionsResponsePtrOutput
+	ToWafRuleSharedActionsResponsePtrOutputWithContext(context.Context) WafRuleSharedActionsResponsePtrOutput
+}
+
+type wafRuleSharedActionsResponsePtrType WafRuleSharedActionsResponseArgs
+
+func WafRuleSharedActionsResponsePtr(v *WafRuleSharedActionsResponseArgs) WafRuleSharedActionsResponsePtrInput {
+	return (*wafRuleSharedActionsResponsePtrType)(v)
+}
+
+func (*wafRuleSharedActionsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedActionsResponse)(nil)).Elem()
+}
+
+func (i *wafRuleSharedActionsResponsePtrType) ToWafRuleSharedActionsResponsePtrOutput() WafRuleSharedActionsResponsePtrOutput {
+	return i.ToWafRuleSharedActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleSharedActionsResponsePtrType) ToWafRuleSharedActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleSharedActionsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedActionsResponsePtrOutput)
+}
+
+type WafRuleSharedActionsResponseOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedActionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedActionsResponse)(nil)).Elem()
+}
+
+func (o WafRuleSharedActionsResponseOutput) ToWafRuleSharedActionsResponseOutput() WafRuleSharedActionsResponseOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsResponseOutput) ToWafRuleSharedActionsResponseOutputWithContext(ctx context.Context) WafRuleSharedActionsResponseOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsResponseOutput) ToWafRuleSharedActionsResponsePtrOutput() WafRuleSharedActionsResponsePtrOutput {
+	return o.ToWafRuleSharedActionsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleSharedActionsResponseOutput) ToWafRuleSharedActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleSharedActionsResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleSharedActionsResponse) *WafRuleSharedActionsResponse {
+		return &v
+	}).(WafRuleSharedActionsResponsePtrOutput)
+}
+
+func (o WafRuleSharedActionsResponseOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedActionsResponse) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// The internal unique ID of the WAF rule.
+func (o WafRuleSharedActionsResponseOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedActionsResponse) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type WafRuleSharedActionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedActionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedActionsResponse)(nil)).Elem()
+}
+
+func (o WafRuleSharedActionsResponsePtrOutput) ToWafRuleSharedActionsResponsePtrOutput() WafRuleSharedActionsResponsePtrOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsResponsePtrOutput) ToWafRuleSharedActionsResponsePtrOutputWithContext(ctx context.Context) WafRuleSharedActionsResponsePtrOutput {
+	return o
+}
+
+func (o WafRuleSharedActionsResponsePtrOutput) Elem() WafRuleSharedActionsResponseOutput {
+	return o.ApplyT(func(v *WafRuleSharedActionsResponse) WafRuleSharedActionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleSharedActionsResponse
+		return ret
+	}).(WafRuleSharedActionsResponseOutput)
+}
+
+func (o WafRuleSharedActionsResponsePtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleSharedActionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// The internal unique ID of the WAF rule.
+func (o WafRuleSharedActionsResponsePtrOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafRuleSharedActionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.IntPtrOutput)
+}
+
+type WafRuleSharedMatch struct {
+	Criterias []WafRuleSharedMatchCriteria `pulumi:"criterias"`
+	Logic     *string                      `pulumi:"logic"`
+	MatchType *string                      `pulumi:"matchType"`
+}
+
+// WafRuleSharedMatchInput is an input type that accepts WafRuleSharedMatchArgs and WafRuleSharedMatchOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchInput` via:
+//
+//	WafRuleSharedMatchArgs{...}
+type WafRuleSharedMatchInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchOutput() WafRuleSharedMatchOutput
+	ToWafRuleSharedMatchOutputWithContext(context.Context) WafRuleSharedMatchOutput
+}
+
+type WafRuleSharedMatchArgs struct {
+	Criterias WafRuleSharedMatchCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                `pulumi:"logic"`
+	MatchType pulumi.StringPtrInput                `pulumi:"matchType"`
+}
+
+func (WafRuleSharedMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatch)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchArgs) ToWafRuleSharedMatchOutput() WafRuleSharedMatchOutput {
+	return i.ToWafRuleSharedMatchOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchArgs) ToWafRuleSharedMatchOutputWithContext(ctx context.Context) WafRuleSharedMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchOutput)
+}
+
+func (i WafRuleSharedMatchArgs) ToWafRuleSharedMatchPtrOutput() WafRuleSharedMatchPtrOutput {
+	return i.ToWafRuleSharedMatchPtrOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchArgs) ToWafRuleSharedMatchPtrOutputWithContext(ctx context.Context) WafRuleSharedMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchOutput).ToWafRuleSharedMatchPtrOutputWithContext(ctx)
+}
+
+// WafRuleSharedMatchPtrInput is an input type that accepts WafRuleSharedMatchArgs, WafRuleSharedMatchPtr and WafRuleSharedMatchPtrOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchPtrInput` via:
+//
+//	        WafRuleSharedMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type WafRuleSharedMatchPtrInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchPtrOutput() WafRuleSharedMatchPtrOutput
+	ToWafRuleSharedMatchPtrOutputWithContext(context.Context) WafRuleSharedMatchPtrOutput
+}
+
+type wafRuleSharedMatchPtrType WafRuleSharedMatchArgs
+
+func WafRuleSharedMatchPtr(v *WafRuleSharedMatchArgs) WafRuleSharedMatchPtrInput {
+	return (*wafRuleSharedMatchPtrType)(v)
+}
+
+func (*wafRuleSharedMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedMatch)(nil)).Elem()
+}
+
+func (i *wafRuleSharedMatchPtrType) ToWafRuleSharedMatchPtrOutput() WafRuleSharedMatchPtrOutput {
+	return i.ToWafRuleSharedMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *wafRuleSharedMatchPtrType) ToWafRuleSharedMatchPtrOutputWithContext(ctx context.Context) WafRuleSharedMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchPtrOutput)
+}
+
+type WafRuleSharedMatchOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatch)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchOutput) ToWafRuleSharedMatchOutput() WafRuleSharedMatchOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchOutput) ToWafRuleSharedMatchOutputWithContext(ctx context.Context) WafRuleSharedMatchOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchOutput) ToWafRuleSharedMatchPtrOutput() WafRuleSharedMatchPtrOutput {
+	return o.ToWafRuleSharedMatchPtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleSharedMatchOutput) ToWafRuleSharedMatchPtrOutputWithContext(ctx context.Context) WafRuleSharedMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRuleSharedMatch) *WafRuleSharedMatch {
+		return &v
+	}).(WafRuleSharedMatchPtrOutput)
+}
+
+func (o WafRuleSharedMatchOutput) Criterias() WafRuleSharedMatchCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleSharedMatch) []WafRuleSharedMatchCriteria { return v.Criterias }).(WafRuleSharedMatchCriteriaArrayOutput)
+}
+
+func (o WafRuleSharedMatchOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatch) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleSharedMatchOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatch) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRuleSharedMatch)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchPtrOutput) ToWafRuleSharedMatchPtrOutput() WafRuleSharedMatchPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchPtrOutput) ToWafRuleSharedMatchPtrOutputWithContext(ctx context.Context) WafRuleSharedMatchPtrOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchPtrOutput) Elem() WafRuleSharedMatchOutput {
+	return o.ApplyT(func(v *WafRuleSharedMatch) WafRuleSharedMatch {
+		if v != nil {
+			return *v
+		}
+		var ret WafRuleSharedMatch
+		return ret
+	}).(WafRuleSharedMatchOutput)
+}
+
+func (o WafRuleSharedMatchPtrOutput) Criterias() WafRuleSharedMatchCriteriaArrayOutput {
+	return o.ApplyT(func(v *WafRuleSharedMatch) []WafRuleSharedMatchCriteria {
+		if v == nil {
+			return nil
+		}
+		return v.Criterias
+	}).(WafRuleSharedMatchCriteriaArrayOutput)
+}
+
+func (o WafRuleSharedMatchPtrOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleSharedMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logic
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleSharedMatchPtrOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafRuleSharedMatch) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedMatchCriteria struct {
+	Criterias []WafRuleSharedMatchCriteriaCriteria `pulumi:"criterias"`
+	Logic     *string                              `pulumi:"logic"`
+	MatchType *string                              `pulumi:"matchType"`
+}
+
+// WafRuleSharedMatchCriteriaInput is an input type that accepts WafRuleSharedMatchCriteriaArgs and WafRuleSharedMatchCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaInput` via:
+//
+//	WafRuleSharedMatchCriteriaArgs{...}
+type WafRuleSharedMatchCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaOutput() WafRuleSharedMatchCriteriaOutput
+	ToWafRuleSharedMatchCriteriaOutputWithContext(context.Context) WafRuleSharedMatchCriteriaOutput
+}
+
+type WafRuleSharedMatchCriteriaArgs struct {
+	Criterias WafRuleSharedMatchCriteriaCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                        `pulumi:"logic"`
+	MatchType pulumi.StringPtrInput                        `pulumi:"matchType"`
+}
+
+func (WafRuleSharedMatchCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaArgs) ToWafRuleSharedMatchCriteriaOutput() WafRuleSharedMatchCriteriaOutput {
+	return i.ToWafRuleSharedMatchCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaArgs) ToWafRuleSharedMatchCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaOutput)
+}
+
+// WafRuleSharedMatchCriteriaArrayInput is an input type that accepts WafRuleSharedMatchCriteriaArray and WafRuleSharedMatchCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaArrayInput` via:
+//
+//	WafRuleSharedMatchCriteriaArray{ WafRuleSharedMatchCriteriaArgs{...} }
+type WafRuleSharedMatchCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaArrayOutput() WafRuleSharedMatchCriteriaArrayOutput
+	ToWafRuleSharedMatchCriteriaArrayOutputWithContext(context.Context) WafRuleSharedMatchCriteriaArrayOutput
+}
+
+type WafRuleSharedMatchCriteriaArray []WafRuleSharedMatchCriteriaInput
+
+func (WafRuleSharedMatchCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaArray) ToWafRuleSharedMatchCriteriaArrayOutput() WafRuleSharedMatchCriteriaArrayOutput {
+	return i.ToWafRuleSharedMatchCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaArray) ToWafRuleSharedMatchCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaArrayOutput)
+}
+
+type WafRuleSharedMatchCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaOutput) ToWafRuleSharedMatchCriteriaOutput() WafRuleSharedMatchCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaOutput) ToWafRuleSharedMatchCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaOutput) Criterias() WafRuleSharedMatchCriteriaCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteria) []WafRuleSharedMatchCriteriaCriteria { return v.Criterias }).(WafRuleSharedMatchCriteriaCriteriaArrayOutput)
+}
+
+func (o WafRuleSharedMatchCriteriaOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteria) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleSharedMatchCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedMatchCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaArrayOutput() WafRuleSharedMatchCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleSharedMatchCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleSharedMatchCriteria {
+		return vs[0].([]WafRuleSharedMatchCriteria)[vs[1].(int)]
+	}).(WafRuleSharedMatchCriteriaOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteria struct {
+	Criterias []WafRuleSharedMatchCriteriaCriteriaCriteria `pulumi:"criterias"`
+	Logic     *string                                      `pulumi:"logic"`
+	MatchType *string                                      `pulumi:"matchType"`
+}
+
+// WafRuleSharedMatchCriteriaCriteriaInput is an input type that accepts WafRuleSharedMatchCriteriaCriteriaArgs and WafRuleSharedMatchCriteriaCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaCriteriaInput` via:
+//
+//	WafRuleSharedMatchCriteriaCriteriaArgs{...}
+type WafRuleSharedMatchCriteriaCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaOutput
+	ToWafRuleSharedMatchCriteriaCriteriaOutputWithContext(context.Context) WafRuleSharedMatchCriteriaCriteriaOutput
+}
+
+type WafRuleSharedMatchCriteriaCriteriaArgs struct {
+	Criterias WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput `pulumi:"criterias"`
+	Logic     pulumi.StringPtrInput                                `pulumi:"logic"`
+	MatchType pulumi.StringPtrInput                                `pulumi:"matchType"`
+}
+
+func (WafRuleSharedMatchCriteriaCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaArgs) ToWafRuleSharedMatchCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaOutput {
+	return i.ToWafRuleSharedMatchCriteriaCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaArgs) ToWafRuleSharedMatchCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaCriteriaOutput)
+}
+
+// WafRuleSharedMatchCriteriaCriteriaArrayInput is an input type that accepts WafRuleSharedMatchCriteriaCriteriaArray and WafRuleSharedMatchCriteriaCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaCriteriaArrayInput` via:
+//
+//	WafRuleSharedMatchCriteriaCriteriaArray{ WafRuleSharedMatchCriteriaCriteriaArgs{...} }
+type WafRuleSharedMatchCriteriaCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaArrayOutput
+	ToWafRuleSharedMatchCriteriaCriteriaArrayOutputWithContext(context.Context) WafRuleSharedMatchCriteriaCriteriaArrayOutput
+}
+
+type WafRuleSharedMatchCriteriaCriteriaArray []WafRuleSharedMatchCriteriaCriteriaInput
+
+func (WafRuleSharedMatchCriteriaCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaArray) ToWafRuleSharedMatchCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaArrayOutput {
+	return i.ToWafRuleSharedMatchCriteriaCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaArray) ToWafRuleSharedMatchCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaCriteriaArrayOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaOutput) ToWafRuleSharedMatchCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaOutput) ToWafRuleSharedMatchCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaOutput) Criterias() WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteriaCriteria) []WafRuleSharedMatchCriteriaCriteriaCriteria {
+		return v.Criterias
+	}).(WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput)
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaOutput) Logic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteriaCriteria) *string { return v.Logic }).(pulumi.StringPtrOutput)
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteriaCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleSharedMatchCriteriaCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleSharedMatchCriteriaCriteria {
+		return vs[0].([]WafRuleSharedMatchCriteriaCriteria)[vs[1].(int)]
+	}).(WafRuleSharedMatchCriteriaCriteriaOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteriaCriteria struct {
+	MatchType *string `pulumi:"matchType"`
+}
+
+// WafRuleSharedMatchCriteriaCriteriaCriteriaInput is an input type that accepts WafRuleSharedMatchCriteriaCriteriaCriteriaArgs and WafRuleSharedMatchCriteriaCriteriaCriteriaOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaCriteriaCriteriaInput` via:
+//
+//	WafRuleSharedMatchCriteriaCriteriaCriteriaArgs{...}
+type WafRuleSharedMatchCriteriaCriteriaCriteriaInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaOutput
+	ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutputWithContext(context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaOutput
+}
+
+type WafRuleSharedMatchCriteriaCriteriaCriteriaArgs struct {
+	MatchType pulumi.StringPtrInput `pulumi:"matchType"`
+}
+
+func (WafRuleSharedMatchCriteriaCriteriaCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaCriteriaArgs) ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaOutput {
+	return i.ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaCriteriaArgs) ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaCriteriaCriteriaOutput)
+}
+
+// WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput is an input type that accepts WafRuleSharedMatchCriteriaCriteriaCriteriaArray and WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput values.
+// You can construct a concrete instance of `WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput` via:
+//
+//	WafRuleSharedMatchCriteriaCriteriaCriteriaArray{ WafRuleSharedMatchCriteriaCriteriaCriteriaArgs{...} }
+type WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput
+	ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutputWithContext(context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput
+}
+
+type WafRuleSharedMatchCriteriaCriteriaCriteriaArray []WafRuleSharedMatchCriteriaCriteriaCriteriaInput
+
+func (WafRuleSharedMatchCriteriaCriteriaCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaCriteriaArray) ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput {
+	return i.ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleSharedMatchCriteriaCriteriaCriteriaArray) ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteriaCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaCriteriaCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaOutput) ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaOutput) ToWafRuleSharedMatchCriteriaCriteriaCriteriaOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaOutput) MatchType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WafRuleSharedMatchCriteriaCriteriaCriteria) *string { return v.MatchType }).(pulumi.StringPtrOutput)
+}
+
+type WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRuleSharedMatchCriteriaCriteriaCriteria)(nil)).Elem()
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput() WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput) ToWafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutputWithContext(ctx context.Context) WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput {
+	return o
+}
+
+func (o WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput) Index(i pulumi.IntInput) WafRuleSharedMatchCriteriaCriteriaCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRuleSharedMatchCriteriaCriteriaCriteria {
+		return vs[0].([]WafRuleSharedMatchCriteriaCriteriaCriteria)[vs[1].(int)]
+	}).(WafRuleSharedMatchCriteriaCriteriaCriteriaOutput)
+}
+
 type WaitingRoomHostNameAndPath struct {
 	// The domain name.
 	Domain string `pulumi:"domain"`
@@ -3083,6 +7614,64 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteDeliveryTaskSlsDeliveryPtrInput)(nil)).Elem(), SiteDeliveryTaskSlsDeliveryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleInput)(nil)).Elem(), TransportLayerApplicationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransportLayerApplicationRuleArrayInput)(nil)).Elem(), TransportLayerApplicationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigInput)(nil)).Elem(), WafRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigPtrInput)(nil)).Elem(), WafRuleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsInput)(nil)).Elem(), WafRuleConfigActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsPtrInput)(nil)).Elem(), WafRuleConfigActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsBypassInput)(nil)).Elem(), WafRuleConfigActionsBypassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsBypassPtrInput)(nil)).Elem(), WafRuleConfigActionsBypassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsResponseInput)(nil)).Elem(), WafRuleConfigActionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigActionsResponsePtrInput)(nil)).Elem(), WafRuleConfigActionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppPackageInput)(nil)).Elem(), WafRuleConfigAppPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppPackagePtrInput)(nil)).Elem(), WafRuleConfigAppPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppPackagePackageSignInput)(nil)).Elem(), WafRuleConfigAppPackagePackageSignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppPackagePackageSignArrayInput)(nil)).Elem(), WafRuleConfigAppPackagePackageSignArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppSdkInput)(nil)).Elem(), WafRuleConfigAppSdkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppSdkPtrInput)(nil)).Elem(), WafRuleConfigAppSdkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppSdkCustomSignInput)(nil)).Elem(), WafRuleConfigAppSdkCustomSignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigAppSdkCustomSignPtrInput)(nil)).Elem(), WafRuleConfigAppSdkCustomSignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigManagedRulesetInput)(nil)).Elem(), WafRuleConfigManagedRulesetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigManagedRulesetArrayInput)(nil)).Elem(), WafRuleConfigManagedRulesetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigManagedRulesetManagedRuleInput)(nil)).Elem(), WafRuleConfigManagedRulesetManagedRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigManagedRulesetManagedRuleArrayInput)(nil)).Elem(), WafRuleConfigManagedRulesetManagedRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitInput)(nil)).Elem(), WafRuleConfigRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitPtrInput)(nil)).Elem(), WafRuleConfigRateLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsPtrInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaArrayInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayInput)(nil)).Elem(), WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitThresholdInput)(nil)).Elem(), WafRuleConfigRateLimitThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitThresholdPtrInput)(nil)).Elem(), WafRuleConfigRateLimitThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitThresholdResponseStatusInput)(nil)).Elem(), WafRuleConfigRateLimitThresholdResponseStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigRateLimitThresholdResponseStatusPtrInput)(nil)).Elem(), WafRuleConfigRateLimitThresholdResponseStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigSecurityLevelInput)(nil)).Elem(), WafRuleConfigSecurityLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigSecurityLevelPtrInput)(nil)).Elem(), WafRuleConfigSecurityLevelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerInput)(nil)).Elem(), WafRuleConfigTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerPtrInput)(nil)).Elem(), WafRuleConfigTimerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerPeriodInput)(nil)).Elem(), WafRuleConfigTimerPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerPeriodArrayInput)(nil)).Elem(), WafRuleConfigTimerPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodInput)(nil)).Elem(), WafRuleConfigTimerWeeklyPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodArrayInput)(nil)).Elem(), WafRuleConfigTimerWeeklyPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodDailyPeriodInput)(nil)).Elem(), WafRuleConfigTimerWeeklyPeriodDailyPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayInput)(nil)).Elem(), WafRuleConfigTimerWeeklyPeriodDailyPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedInput)(nil)).Elem(), WafRuleSharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedPtrInput)(nil)).Elem(), WafRuleSharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedActionsInput)(nil)).Elem(), WafRuleSharedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedActionsPtrInput)(nil)).Elem(), WafRuleSharedActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedActionsResponseInput)(nil)).Elem(), WafRuleSharedActionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedActionsResponsePtrInput)(nil)).Elem(), WafRuleSharedActionsResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchInput)(nil)).Elem(), WafRuleSharedMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchPtrInput)(nil)).Elem(), WafRuleSharedMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaInput)(nil)).Elem(), WafRuleSharedMatchCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaArrayInput)(nil)).Elem(), WafRuleSharedMatchCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaInput)(nil)).Elem(), WafRuleSharedMatchCriteriaCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaArrayInput)(nil)).Elem(), WafRuleSharedMatchCriteriaCriteriaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaCriteriaInput)(nil)).Elem(), WafRuleSharedMatchCriteriaCriteriaCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleSharedMatchCriteriaCriteriaCriteriaArrayInput)(nil)).Elem(), WafRuleSharedMatchCriteriaCriteriaCriteriaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathInput)(nil)).Elem(), WaitingRoomHostNameAndPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
@@ -3113,6 +7702,64 @@ func init() {
 	pulumi.RegisterOutputType(SiteDeliveryTaskSlsDeliveryPtrOutput{})
 	pulumi.RegisterOutputType(TransportLayerApplicationRuleOutput{})
 	pulumi.RegisterOutputType(TransportLayerApplicationRuleArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsBypassOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsBypassPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsResponseOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigActionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppPackageOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppPackagePtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppPackagePackageSignOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppPackagePackageSignArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppSdkOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppSdkPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppSdkCustomSignOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigAppSdkCustomSignPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigManagedRulesetOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigManagedRulesetArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigManagedRulesetManagedRuleOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigManagedRulesetManagedRuleArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitThresholdOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitThresholdPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitThresholdResponseStatusOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigRateLimitThresholdResponseStatusPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigSecurityLevelOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigSecurityLevelPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerPeriodOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerPeriodArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerWeeklyPeriodOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerWeeklyPeriodArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerWeeklyPeriodDailyPeriodOutput{})
+	pulumi.RegisterOutputType(WafRuleConfigTimerWeeklyPeriodDailyPeriodArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedActionsOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedActionsPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedActionsResponseOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedActionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchPtrOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaCriteriaCriteriaOutput{})
+	pulumi.RegisterOutputType(WafRuleSharedMatchCriteriaCriteriaCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathOutput{})
 	pulumi.RegisterOutputType(WaitingRoomHostNameAndPathArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})

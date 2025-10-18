@@ -20,7 +20,7 @@ public final class GetEnhancedNatAvailableZonesResult {
      */
     private String id;
     /**
-     * @return (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     * @return A list of available zones IDs by the enhanced NAT gateway.
      * 
      */
     private List<String> ids;
@@ -40,7 +40,7 @@ public final class GetEnhancedNatAvailableZonesResult {
         return this.id;
     }
     /**
-     * @return (Optional) A list of available zones IDs by the enhanced NAT gateway.
+     * @return A list of available zones IDs by the enhanced NAT gateway.
      * 
      */
     public List<String> ids() {

@@ -249,6 +249,7 @@ namespace Pulumi.AliCloud.CS
     ///         ProxyMode = proxyMode,
     ///         ServiceCidr = serviceCidr,
     ///         IpStack = "ipv4",
+    ///         DeletionProtection = true,
     ///         AutoMode = new AliCloud.CS.Inputs.ManagedKubernetesAutoModeArgs
     ///         {
     ///             Enabled = true,
@@ -278,6 +279,7 @@ namespace Pulumi.AliCloud.CS
     ///             "alb",
     ///             "ack-goatscaler",
     ///             "coredns",
+    ///             "gatekeeper",
     ///         },
     ///         ControlPlaneLogTtl = "30",
     ///         AuditLogConfig = new AliCloud.CS.Inputs.ManagedKubernetesAuditLogConfigArgs
@@ -288,7 +290,7 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
     ///             {
-    ///                 Name = "managed-metrics-server",
+    ///                 Name = "metrics-server",
     ///             },
     ///             new AliCloud.CS.Inputs.ManagedKubernetesAddonArgs
     ///             {

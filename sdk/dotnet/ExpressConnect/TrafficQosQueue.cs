@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect
 {
     /// <summary>
-    /// Provides a Express Connect Traffic Qos Queue resource. Express Connect Traffic QoS Queue.
+    /// Provides a Express Connect Traffic Qos Queue resource.
+    /// 
+    /// Express Connect Traffic QoS Queue.
     /// 
     /// For information about Express Connect Traffic Qos Queue and how to use it, see [What is Traffic Qos Queue](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosQueue).
     /// 
@@ -74,48 +76,51 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// QoS queue bandwidth percentage.
         /// 
-        /// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        /// - When the QoS queue type is **Default**, this field is "-".
+        /// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        /// - When the QoS queue type is `Default`, this field is "-".
         /// </summary>
         [Output("bandwidthPercent")]
         public Output<string> BandwidthPercent { get; private set; } = null!;
 
         /// <summary>
-        /// The QoS policy ID.
+        /// The ID of the QoS policy.
         /// </summary>
         [Output("qosId")]
         public Output<string> QosId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS queue.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("queueDescription")]
         public Output<string?> QueueDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The QoS queue ID.
+        /// The ID of the QoS queue.
         /// </summary>
         [Output("queueId")]
         public Output<string> QueueId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS queue.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("queueName")]
         public Output<string?> QueueName { get; private set; } = null!;
 
         /// <summary>
         /// QoS queue type, value:
-        /// - **High**: High priority queue.
-        /// - **Medium**: Normal priority queue.
-        /// - **Default**: the Default priority queue.
+        /// - `High`: High priority queue.
+        /// - `Medium`: Normal priority queue.
+        /// - `Default`: the Default priority queue.
+        /// 
         /// &gt; **NOTE:**  Default priority queue cannot be created.
         /// </summary>
         [Output("queueType")]
         public Output<string> QueueType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -169,35 +174,38 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// QoS queue bandwidth percentage.
         /// 
-        /// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        /// - When the QoS queue type is **Default**, this field is "-".
+        /// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        /// - When the QoS queue type is `Default`, this field is "-".
         /// </summary>
         [Input("bandwidthPercent")]
         public Input<string>? BandwidthPercent { get; set; }
 
         /// <summary>
-        /// The QoS policy ID.
+        /// The ID of the QoS policy.
         /// </summary>
         [Input("qosId", required: true)]
         public Input<string> QosId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS queue.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("queueDescription")]
         public Input<string>? QueueDescription { get; set; }
 
         /// <summary>
-        /// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS queue.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
         /// QoS queue type, value:
-        /// - **High**: High priority queue.
-        /// - **Medium**: Normal priority queue.
-        /// - **Default**: the Default priority queue.
+        /// - `High`: High priority queue.
+        /// - `Medium`: Normal priority queue.
+        /// - `Default`: the Default priority queue.
+        /// 
         /// &gt; **NOTE:**  Default priority queue cannot be created.
         /// </summary>
         [Input("queueType", required: true)]
@@ -214,48 +222,51 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// <summary>
         /// QoS queue bandwidth percentage.
         /// 
-        /// - When the QoS queue type is **Medium**, this field must be entered. Valid values: 1 to 100.
-        /// - When the QoS queue type is **Default**, this field is "-".
+        /// - When the QoS queue type is `Medium`, this field must be entered. Valid values: 1 to 100.
+        /// - When the QoS queue type is `Default`, this field is "-".
         /// </summary>
         [Input("bandwidthPercent")]
         public Input<string>? BandwidthPercent { get; set; }
 
         /// <summary>
-        /// The QoS policy ID.
+        /// The ID of the QoS policy.
         /// </summary>
         [Input("qosId")]
         public Input<string>? QosId { get; set; }
 
         /// <summary>
-        /// The description of the QoS queue.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS queue.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("queueDescription")]
         public Input<string>? QueueDescription { get; set; }
 
         /// <summary>
-        /// The QoS queue ID.
+        /// The ID of the QoS queue.
         /// </summary>
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
 
         /// <summary>
-        /// The name of the QoS queue.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS queue.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
         /// QoS queue type, value:
-        /// - **High**: High priority queue.
-        /// - **Medium**: Normal priority queue.
-        /// - **Default**: the Default priority queue.
+        /// - `High`: High priority queue.
+        /// - `Medium`: Normal priority queue.
+        /// - `Default`: the Default priority queue.
+        /// 
         /// &gt; **NOTE:**  Default priority queue cannot be created.
         /// </summary>
         [Input("queueType")]
         public Input<string>? QueueType { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

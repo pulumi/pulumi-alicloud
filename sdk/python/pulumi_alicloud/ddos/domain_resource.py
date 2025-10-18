@@ -30,6 +30,7 @@ class DomainResourceArgs:
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
                  https_ext: Optional[pulumi.Input[_builtins.str]] = None,
                  key: Optional[pulumi.Input[_builtins.str]] = None,
                  ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
@@ -52,6 +53,13 @@ class DomainResourceArgs:
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+               Take note of the following items:
+               - Do not use the following default HTTP headers:
+               - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
         :param pulumi.Input[_builtins.str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
                
                - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
@@ -83,6 +91,8 @@ class DomainResourceArgs:
             pulumi.set(__self__, "cert_name", cert_name)
         if cert_region is not None:
             pulumi.set(__self__, "cert_region", cert_region)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if https_ext is not None:
             pulumi.set(__self__, "https_ext", https_ext)
         if key is not None:
@@ -207,6 +217,24 @@ class DomainResourceArgs:
         pulumi.set(self, "cert_region", value)
 
     @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        Take note of the following items:
+        - Do not use the following default HTTP headers:
+        - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_headers", value)
+
+    @_builtins.property
     @pulumi.getter(name="httpsExt")
     def https_ext(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -265,6 +293,7 @@ class _DomainResourceState:
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_region: Optional[pulumi.Input[_builtins.str]] = None,
                  cname: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  https_ext: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -286,6 +315,13 @@ class _DomainResourceState:
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         :param pulumi.Input[_builtins.str] cname: The CNAME address to query.
+        :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+               Take note of the following items:
+               - Do not use the following default HTTP headers:
+               - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
         :param pulumi.Input[_builtins.str] domain: The domain name for which you want to configure the Static Page Caching policy.
                
                > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
@@ -321,6 +357,8 @@ class _DomainResourceState:
             pulumi.set(__self__, "cert_region", cert_region)
         if cname is not None:
             pulumi.set(__self__, "cname", cname)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if https_ext is not None:
@@ -403,6 +441,24 @@ class _DomainResourceState:
     @cname.setter
     def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        Take note of the following items:
+        - Do not use the following default HTTP headers:
+        - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter
@@ -527,6 +583,7 @@ class DomainResource(pulumi.CustomResource):
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  https_ext: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -604,6 +661,13 @@ class DomainResource(pulumi.CustomResource):
                
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+               Take note of the following items:
+               - Do not use the following default HTTP headers:
+               - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
         :param pulumi.Input[_builtins.str] domain: The domain name for which you want to configure the Static Page Caching policy.
                
                > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
@@ -710,6 +774,7 @@ class DomainResource(pulumi.CustomResource):
                  cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_region: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  https_ext: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -731,6 +796,7 @@ class DomainResource(pulumi.CustomResource):
             __props__.__dict__["cert_identifier"] = cert_identifier
             __props__.__dict__["cert_name"] = cert_name
             __props__.__dict__["cert_region"] = None if cert_region is None else pulumi.Output.secret(cert_region)
+            __props__.__dict__["custom_headers"] = custom_headers
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
@@ -767,6 +833,7 @@ class DomainResource(pulumi.CustomResource):
             cert_name: Optional[pulumi.Input[_builtins.str]] = None,
             cert_region: Optional[pulumi.Input[_builtins.str]] = None,
             cname: Optional[pulumi.Input[_builtins.str]] = None,
+            custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             https_ext: Optional[pulumi.Input[_builtins.str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -793,6 +860,13 @@ class DomainResource(pulumi.CustomResource):
                > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
         :param pulumi.Input[_builtins.str] cert_region: The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         :param pulumi.Input[_builtins.str] cname: The CNAME address to query.
+        :param pulumi.Input[_builtins.str] custom_headers: The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+               Take note of the following items:
+               - Do not use the following default HTTP headers:
+               - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+               - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
         :param pulumi.Input[_builtins.str] domain: The domain name for which you want to configure the Static Page Caching policy.
                
                > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
@@ -827,6 +901,7 @@ class DomainResource(pulumi.CustomResource):
         __props__.__dict__["cert_name"] = cert_name
         __props__.__dict__["cert_region"] = cert_region
         __props__.__dict__["cname"] = cname
+        __props__.__dict__["custom_headers"] = custom_headers
         __props__.__dict__["domain"] = domain
         __props__.__dict__["https_ext"] = https_ext
         __props__.__dict__["instance_ids"] = instance_ids
@@ -882,6 +957,20 @@ class DomainResource(pulumi.CustomResource):
         The CNAME address to query.
         """
         return pulumi.get(self, "cname")
+
+    @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> pulumi.Output[_builtins.str]:
+        """
+        The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+        Take note of the following items:
+        - Do not use the following default HTTP headers:
+        - X-Forwarded-ClientSrcPort: This header is used to obtain the source ports of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-ProxyPort: This header is used to obtain the ports of listeners that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
+        - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
+        """
+        return pulumi.get(self, "custom_headers")
 
     @_builtins.property
     @pulumi.getter

@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Vbr Ha resource.
+    /// Provides a Express Connect Vbr Ha resource.
     /// 
-    /// For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+    /// VBR switching Group.
+    /// 
+    /// For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
     /// 
     /// &gt; **NOTE:** Available since v1.151.0.
     /// 
@@ -104,7 +106,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Vbr Ha can be imported using the id, e.g.
+    /// Express Connect Vbr Ha can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/vbrHa:VbrHa example &lt;id&gt;
@@ -114,37 +116,52 @@ namespace Pulumi.AliCloud.Vpc
     public partial class VbrHa : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The creation time of the VBR.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the VBR switching group.
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value range:
+        /// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        /// - *false** (default): Send a normal request and start the instance directly after passing the check.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the other VBR in the VBR failover group.
+        /// The instance ID of another VBR in The VBR switching group.
         /// </summary>
         [Output("peerVbrId")]
         public Output<string> PeerVbrId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the VBR failover group.
+        /// The ID of the region to which the VBR belongs.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of VBR switching Group
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VBR failover group.
+        /// VBR switch group name.
         /// </summary>
         [Output("vbrHaName")]
         public Output<string?> VbrHaName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VBR instance.
+        /// The VBR instance ID.
         /// </summary>
         [Output("vbrId")]
         public Output<string> VbrId { get; private set; } = null!;
@@ -196,31 +213,34 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class VbrHaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The description of the VBR switching group.
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value range:
+        /// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        /// - *false** (default): Send a normal request and start the instance directly after passing the check.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the other VBR in the VBR failover group.
+        /// The instance ID of another VBR in The VBR switching group.
         /// </summary>
         [Input("peerVbrId", required: true)]
         public Input<string> PeerVbrId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the VBR failover group.
+        /// VBR switch group name.
         /// </summary>
         [Input("vbrHaName")]
         public Input<string>? VbrHaName { get; set; }
 
         /// <summary>
-        /// The ID of the VBR instance.
+        /// The VBR instance ID.
         /// </summary>
         [Input("vbrId", required: true)]
         public Input<string> VbrId { get; set; } = null!;
@@ -234,37 +254,52 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class VbrHaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The creation time of the VBR.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the VBR switching group.
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value range:
+        /// - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+        /// - *false** (default): Send a normal request and start the instance directly after passing the check.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of the other VBR in the VBR failover group.
+        /// The instance ID of another VBR in The VBR switching group.
         /// </summary>
         [Input("peerVbrId")]
         public Input<string>? PeerVbrId { get; set; }
 
         /// <summary>
-        /// The state of the VBR failover group.
+        /// The ID of the region to which the VBR belongs.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// Status of VBR switching Group
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The name of the VBR failover group.
+        /// VBR switch group name.
         /// </summary>
         [Input("vbrHaName")]
         public Input<string>? VbrHaName { get; set; }
 
         /// <summary>
-        /// The ID of the VBR instance.
+        /// The VBR instance ID.
         /// </summary>
         [Input("vbrId")]
         public Input<string>? VbrId { get; set; }

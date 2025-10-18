@@ -116,9 +116,9 @@ type Account struct {
 	pulumi.CustomResourceState
 
 	// The name of the account. The name must meet the following requirements:
-	// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 	// * The name can be up to 100 characters in length.
-	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+	// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
@@ -186,9 +186,9 @@ func GetAccount(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
 	// The name of the account. The name must meet the following requirements:
-	// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 	// * The name can be up to 100 characters in length.
-	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+	// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 	AccountName *string `pulumi:"accountName"`
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -214,9 +214,9 @@ type accountState struct {
 
 type AccountState struct {
 	// The name of the account. The name must meet the following requirements:
-	// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 	// * The name can be up to 100 characters in length.
-	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+	// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 	AccountName pulumi.StringPtrInput
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
@@ -246,9 +246,9 @@ func (AccountState) ElementType() reflect.Type {
 
 type accountArgs struct {
 	// The name of the account. The name must meet the following requirements:
-	// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 	// * The name can be up to 100 characters in length.
-	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+	// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 	AccountName string `pulumi:"accountName"`
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
@@ -273,9 +273,9 @@ type accountArgs struct {
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
 	// The name of the account. The name must meet the following requirements:
-	// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+	// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 	// * The name can be up to 100 characters in length.
-	// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+	// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 	AccountName pulumi.StringInput
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
@@ -385,9 +385,9 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 }
 
 // The name of the account. The name must meet the following requirements:
-// * The name can contain lowercase letters, digits, and hyphens (-), and must start with a lowercase letter.
+// * The name must start with a lowercase letter and can contain lowercase letters, digits, and underscores (_).
 // * The name can be up to 100 characters in length.
-// * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
+// * The name cannot be one of the reserved words listed in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/en/redis/user-guide/create-and-manage-database-accounts) section.
 func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }

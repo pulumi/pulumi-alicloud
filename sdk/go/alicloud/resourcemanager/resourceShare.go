@@ -14,6 +14,8 @@ import (
 
 // Provides a Resource Manager Resource Share resource.
 //
+// RS resource sharing.
+//
 // For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
 //
 // > **NOTE:** Available since v1.111.0.
@@ -62,12 +64,28 @@ import (
 type ResourceShare struct {
 	pulumi.CustomResourceState
 
+	// Whether to allow sharing to accounts outside the resource directory. Value:
+	// - false (default): Only sharing within the resource directory is allowed.
+	// - true: Allow sharing to any account.
+	AllowExternalTargets pulumi.BoolPtrOutput `pulumi:"allowExternalTargets"`
+	// The create time of resource share.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	PermissionNames pulumi.StringArrayOutput `pulumi:"permissionNames"`
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringOutput `pulumi:"resourceShareName"`
-	// The owner of the Resource Share.
+	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringOutput `pulumi:"resourceShareOwner"`
-	// The status of the Resource Share.
+	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	Resources ResourceShareResourceArrayOutput `pulumi:"resources"`
+	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Resource user.
+	Targets pulumi.StringArrayOutput `pulumi:"targets"`
 }
 
 // NewResourceShare registers a new resource with the given unique name, arguments, and options.
@@ -103,21 +121,53 @@ func GetResourceShare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceShare resources.
 type resourceShareState struct {
+	// Whether to allow sharing to accounts outside the resource directory. Value:
+	// - false (default): Only sharing within the resource directory is allowed.
+	// - true: Allow sharing to any account.
+	AllowExternalTargets *bool `pulumi:"allowExternalTargets"`
+	// The create time of resource share.
+	CreateTime *string `pulumi:"createTime"`
+	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	PermissionNames []string `pulumi:"permissionNames"`
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
-	// The owner of the Resource Share.
+	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner *string `pulumi:"resourceShareOwner"`
-	// The status of the Resource Share.
+	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	Resources []ResourceShareResource `pulumi:"resources"`
+	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status *string `pulumi:"status"`
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// Resource user.
+	Targets []string `pulumi:"targets"`
 }
 
 type ResourceShareState struct {
+	// Whether to allow sharing to accounts outside the resource directory. Value:
+	// - false (default): Only sharing within the resource directory is allowed.
+	// - true: Allow sharing to any account.
+	AllowExternalTargets pulumi.BoolPtrInput
+	// The create time of resource share.
+	CreateTime pulumi.StringPtrInput
+	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	PermissionNames pulumi.StringArrayInput
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput
-	// The owner of the Resource Share.
+	// The owner of resource share,  `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringPtrInput
-	// The status of the Resource Share.
+	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	Resources ResourceShareResourceArrayInput
+	// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringPtrInput
+	// The tag of the resource
+	Tags pulumi.StringMapInput
+	// Resource user.
+	Targets pulumi.StringArrayInput
 }
 
 func (ResourceShareState) ElementType() reflect.Type {
@@ -125,14 +175,42 @@ func (ResourceShareState) ElementType() reflect.Type {
 }
 
 type resourceShareArgs struct {
+	// Whether to allow sharing to accounts outside the resource directory. Value:
+	// - false (default): Only sharing within the resource directory is allowed.
+	// - true: Allow sharing to any account.
+	AllowExternalTargets *bool `pulumi:"allowExternalTargets"`
+	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	PermissionNames []string `pulumi:"permissionNames"`
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of resource share.
 	ResourceShareName string `pulumi:"resourceShareName"`
+	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	Resources []ResourceShareResource `pulumi:"resources"`
+	// The tag of the resource
+	Tags map[string]string `pulumi:"tags"`
+	// Resource user.
+	Targets []string `pulumi:"targets"`
 }
 
 // The set of arguments for constructing a ResourceShare resource.
 type ResourceShareArgs struct {
+	// Whether to allow sharing to accounts outside the resource directory. Value:
+	// - false (default): Only sharing within the resource directory is allowed.
+	// - true: Allow sharing to any account.
+	AllowExternalTargets pulumi.BoolPtrInput
+	// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+	PermissionNames pulumi.StringArrayInput
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
 	// The name of resource share.
 	ResourceShareName pulumi.StringInput
+	// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+	Resources ResourceShareResourceArrayInput
+	// The tag of the resource
+	Tags pulumi.StringMapInput
+	// Resource user.
+	Targets pulumi.StringArrayInput
 }
 
 func (ResourceShareArgs) ElementType() reflect.Type {
@@ -222,19 +300,56 @@ func (o ResourceShareOutput) ToResourceShareOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Whether to allow sharing to accounts outside the resource directory. Value:
+// - false (default): Only sharing within the resource directory is allowed.
+// - true: Allow sharing to any account.
+func (o ResourceShareOutput) AllowExternalTargets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.BoolPtrOutput { return v.AllowExternalTargets }).(pulumi.BoolPtrOutput)
+}
+
+// The create time of resource share.
+func (o ResourceShareOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+func (o ResourceShareOutput) PermissionNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringArrayOutput { return v.PermissionNames }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the resource group
+func (o ResourceShareOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The name of resource share.
 func (o ResourceShareOutput) ResourceShareName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareName }).(pulumi.StringOutput)
 }
 
-// The owner of the Resource Share.
+// The owner of resource share,  `Self` and `OtherAccounts`.
 func (o ResourceShareOutput) ResourceShareOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.ResourceShareOwner }).(pulumi.StringOutput)
 }
 
-// The status of the Resource Share.
+// List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+func (o ResourceShareOutput) Resources() ResourceShareResourceArrayOutput {
+	return o.ApplyT(func(v *ResourceShare) ResourceShareResourceArrayOutput { return v.Resources }).(ResourceShareResourceArrayOutput)
+}
+
+// The status of resource share.  `Active`,`Deleted` and `Deleting`.
 func (o ResourceShareOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceShare) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource
+func (o ResourceShareOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource user.
+func (o ResourceShareOutput) Targets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceShare) pulumi.StringArrayOutput { return v.Targets }).(pulumi.StringArrayOutput)
 }
 
 type ResourceShareArrayOutput struct{ *pulumi.OutputState }

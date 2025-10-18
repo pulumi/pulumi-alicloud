@@ -225,6 +225,112 @@ func (o ResourceGroupRegionStatusArrayOutput) Index(i pulumi.IntInput) ResourceG
 	}).(ResourceGroupRegionStatusOutput)
 }
 
+type ResourceShareResource struct {
+	// The ID of the shared resource.
+	ResourceId *string `pulumi:"resourceId"`
+	// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// ResourceShareResourceInput is an input type that accepts ResourceShareResourceArgs and ResourceShareResourceOutput values.
+// You can construct a concrete instance of `ResourceShareResourceInput` via:
+//
+//	ResourceShareResourceArgs{...}
+type ResourceShareResourceInput interface {
+	pulumi.Input
+
+	ToResourceShareResourceOutput() ResourceShareResourceOutput
+	ToResourceShareResourceOutputWithContext(context.Context) ResourceShareResourceOutput
+}
+
+type ResourceShareResourceArgs struct {
+	// The ID of the shared resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (ResourceShareResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareResource)(nil)).Elem()
+}
+
+func (i ResourceShareResourceArgs) ToResourceShareResourceOutput() ResourceShareResourceOutput {
+	return i.ToResourceShareResourceOutputWithContext(context.Background())
+}
+
+func (i ResourceShareResourceArgs) ToResourceShareResourceOutputWithContext(ctx context.Context) ResourceShareResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareResourceOutput)
+}
+
+// ResourceShareResourceArrayInput is an input type that accepts ResourceShareResourceArray and ResourceShareResourceArrayOutput values.
+// You can construct a concrete instance of `ResourceShareResourceArrayInput` via:
+//
+//	ResourceShareResourceArray{ ResourceShareResourceArgs{...} }
+type ResourceShareResourceArrayInput interface {
+	pulumi.Input
+
+	ToResourceShareResourceArrayOutput() ResourceShareResourceArrayOutput
+	ToResourceShareResourceArrayOutputWithContext(context.Context) ResourceShareResourceArrayOutput
+}
+
+type ResourceShareResourceArray []ResourceShareResourceInput
+
+func (ResourceShareResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceShareResource)(nil)).Elem()
+}
+
+func (i ResourceShareResourceArray) ToResourceShareResourceArrayOutput() ResourceShareResourceArrayOutput {
+	return i.ToResourceShareResourceArrayOutputWithContext(context.Background())
+}
+
+func (i ResourceShareResourceArray) ToResourceShareResourceArrayOutputWithContext(ctx context.Context) ResourceShareResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceShareResourceArrayOutput)
+}
+
+type ResourceShareResourceOutput struct{ *pulumi.OutputState }
+
+func (ResourceShareResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceShareResource)(nil)).Elem()
+}
+
+func (o ResourceShareResourceOutput) ToResourceShareResourceOutput() ResourceShareResourceOutput {
+	return o
+}
+
+func (o ResourceShareResourceOutput) ToResourceShareResourceOutputWithContext(ctx context.Context) ResourceShareResourceOutput {
+	return o
+}
+
+// The ID of the shared resource.
+func (o ResourceShareResourceOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceShareResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+func (o ResourceShareResourceOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceShareResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type ResourceShareResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceShareResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceShareResource)(nil)).Elem()
+}
+
+func (o ResourceShareResourceArrayOutput) ToResourceShareResourceArrayOutput() ResourceShareResourceArrayOutput {
+	return o
+}
+
+func (o ResourceShareResourceArrayOutput) ToResourceShareResourceArrayOutputWithContext(ctx context.Context) ResourceShareResourceArrayOutput {
+	return o
+}
+
+func (o ResourceShareResourceArrayOutput) Index(i pulumi.IntInput) ResourceShareResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceShareResource {
+		return vs[0].([]ResourceShareResource)[vs[1].(int)]
+	}).(ResourceShareResourceOutput)
+}
+
 type GetAccountDeletionCheckTaskAbandonAbleCheck struct {
 	// The ID of the check item.
 	CheckId string `pulumi:"checkId"`
@@ -2804,6 +2910,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoGroupingRuleRuleContentArrayInput)(nil)).Elem(), AutoGroupingRuleRuleContentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusInput)(nil)).Elem(), ResourceGroupRegionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusArrayInput)(nil)).Elem(), ResourceGroupRegionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourceInput)(nil)).Elem(), ResourceShareResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourceArrayInput)(nil)).Elem(), ResourceShareResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskAbandonAbleCheckInput)(nil)).Elem(), GetAccountDeletionCheckTaskAbandonAbleCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskAbandonAbleCheckArrayInput)(nil)).Elem(), GetAccountDeletionCheckTaskAbandonAbleCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountDeletionCheckTaskNotAllowReasonInput)(nil)).Elem(), GetAccountDeletionCheckTaskNotAllowReasonArgs{})
@@ -2844,6 +2952,8 @@ func init() {
 	pulumi.RegisterOutputType(AutoGroupingRuleRuleContentArrayOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
+	pulumi.RegisterOutputType(ResourceShareResourceOutput{})
+	pulumi.RegisterOutputType(ResourceShareResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskAbandonAbleCheckOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskAbandonAbleCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountDeletionCheckTaskNotAllowReasonOutput{})

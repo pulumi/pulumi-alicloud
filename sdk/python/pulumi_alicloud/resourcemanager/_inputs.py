@@ -19,6 +19,8 @@ __all__ = [
     'AutoGroupingRuleRuleContentArgsDict',
     'ResourceGroupRegionStatusArgs',
     'ResourceGroupRegionStatusArgsDict',
+    'ResourceShareResourceArgs',
+    'ResourceShareResourceArgsDict',
 ]
 
 MYPY = False
@@ -124,5 +126,57 @@ class ResourceGroupRegionStatusArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class ResourceShareResourceArgsDict(TypedDict):
+        resource_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the shared resource.
+        """
+        resource_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        """
+elif False:
+    ResourceShareResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ResourceShareResourceArgs:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
+        :param pulumi.Input[_builtins.str] resource_type: Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the shared resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_type", value)
 
 

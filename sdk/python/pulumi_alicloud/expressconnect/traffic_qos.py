@@ -20,22 +20,33 @@ __all__ = ['TrafficQosArgs', 'TrafficQos']
 class TrafficQosArgs:
     def __init__(__self__, *,
                  qos_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 qos_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a TrafficQos resource.
-        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
+               The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
+               The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         if qos_description is not None:
             pulumi.set(__self__, "qos_description", qos_description)
         if qos_name is not None:
             pulumi.set(__self__, "qos_name", qos_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="qosDescription")
     def qos_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS policy.
+        The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_description")
 
@@ -47,13 +58,38 @@ class TrafficQosArgs:
     @pulumi.getter(name="qosName")
     def qos_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS policy.
+        The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_name")
 
     @qos_name.setter
     def qos_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "qos_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -61,26 +97,36 @@ class _TrafficQosState:
     def __init__(__self__, *,
                  qos_description: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering TrafficQos resources.
-        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] status: The status of the QoS policy. Value:
-               > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
+               The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
+               The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] status: The status of the QoS policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         if qos_description is not None:
             pulumi.set(__self__, "qos_description", qos_description)
         if qos_name is not None:
             pulumi.set(__self__, "qos_name", qos_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="qosDescription")
     def qos_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS policy.
+        The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_description")
 
@@ -92,7 +138,8 @@ class _TrafficQosState:
     @pulumi.getter(name="qosName")
     def qos_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS policy.
+        The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_name")
 
@@ -101,17 +148,40 @@ class _TrafficQosState:
         pulumi.set(self, "qos_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the QoS policy. Value:
-        > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+        The status of the QoS policy.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.type_token("alicloud:expressconnect/trafficQos:TrafficQos")
@@ -122,9 +192,13 @@ class TrafficQos(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  qos_description: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Express Connect Traffic Qos resource. Express Connect Traffic QoS Policy.
+        Provides a Express Connect Traffic Qos resource.
+
+        Express Connect Traffic QoS Policy.
 
         For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
 
@@ -142,10 +216,9 @@ class TrafficQos(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
         create_qos = alicloud.expressconnect.TrafficQos("createQos",
             qos_name=name,
-            qos_description="terraform-example")
+            qos_description=name)
         ```
 
         ## Import
@@ -158,8 +231,12 @@ class TrafficQos(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
+               The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
+               The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         ...
     @overload
@@ -168,7 +245,9 @@ class TrafficQos(pulumi.CustomResource):
                  args: Optional[TrafficQosArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Express Connect Traffic Qos resource. Express Connect Traffic QoS Policy.
+        Provides a Express Connect Traffic Qos resource.
+
+        Express Connect Traffic QoS Policy.
 
         For information about Express Connect Traffic Qos and how to use it, see [What is Traffic Qos](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQos).
 
@@ -186,10 +265,9 @@ class TrafficQos(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
         create_qos = alicloud.expressconnect.TrafficQos("createQos",
             qos_name=name,
-            qos_description="terraform-example")
+            qos_description=name)
         ```
 
         ## Import
@@ -217,6 +295,8 @@ class TrafficQos(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  qos_description: Optional[pulumi.Input[_builtins.str]] = None,
                  qos_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -228,6 +308,8 @@ class TrafficQos(pulumi.CustomResource):
 
             __props__.__dict__["qos_description"] = qos_description
             __props__.__dict__["qos_name"] = qos_name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(TrafficQos, __self__).__init__(
             'alicloud:expressconnect/trafficQos:TrafficQos',
@@ -241,7 +323,9 @@ class TrafficQos(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             qos_description: Optional[pulumi.Input[_builtins.str]] = None,
             qos_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficQos':
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'TrafficQos':
         """
         Get an existing TrafficQos resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -249,10 +333,13 @@ class TrafficQos(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
-        :param pulumi.Input[_builtins.str] status: The status of the QoS policy. Value:
-               > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+        :param pulumi.Input[_builtins.str] qos_description: The description of the QoS policy.
+               The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] qos_name: The name of the QoS policy.
+               The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.str] status: The status of the QoS policy.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -260,14 +347,17 @@ class TrafficQos(pulumi.CustomResource):
 
         __props__.__dict__["qos_description"] = qos_description
         __props__.__dict__["qos_name"] = qos_name
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return TrafficQos(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="qosDescription")
     def qos_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the QoS policy.  The length is **0** to **256** characters and cannot start with 'http:// 'or 'https.
+        The description of the QoS policy.
+        The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_description")
 
@@ -275,16 +365,32 @@ class TrafficQos(pulumi.CustomResource):
     @pulumi.getter(name="qosName")
     def qos_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the QoS policy.  The length is **0** to **128** characters and cannot start with 'http:// 'or 'https.
+        The name of the QoS policy.
+        The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
         """
         return pulumi.get(self, "qos_name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the QoS policy. Value:
-        > **NOTE:**  QoS in the configuration state will restrict the creation, update, and deletion of most QoS policies, QoS queues, and QoS rules.
+        The status of the QoS policy.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.log.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,6 +23,13 @@ public final class EtlEtlSink {
      * 
      */
     private @Nullable String accessKeySecret;
+    /**
+     * @return LogETL datasets.
+     * 
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+     * 
+     */
+    private @Nullable List<String> datasets;
     /**
      * @return Delivery target logstore region.
      * 
@@ -53,14 +61,12 @@ public final class EtlEtlSink {
      */
     private String project;
     /**
-     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
      * 
      */
     private @Nullable String roleArn;
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
-     * 
-     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     private @Nullable String type;
@@ -79,6 +85,15 @@ public final class EtlEtlSink {
      */
     public Optional<String> accessKeySecret() {
         return Optional.ofNullable(this.accessKeySecret);
+    }
+    /**
+     * @return LogETL datasets.
+     * 
+     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+     * 
+     */
+    public List<String> datasets() {
+        return this.datasets == null ? List.of() : this.datasets;
     }
     /**
      * @return Delivery target logstore region.
@@ -123,7 +138,7 @@ public final class EtlEtlSink {
         return this.project;
     }
     /**
-     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
      * 
      */
     public Optional<String> roleArn() {
@@ -131,8 +146,6 @@ public final class EtlEtlSink {
     }
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
-     * 
-     * &gt; **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
      * 
      */
     public Optional<String> type() {
@@ -150,6 +163,7 @@ public final class EtlEtlSink {
     public static final class Builder {
         private @Nullable String accessKeyId;
         private @Nullable String accessKeySecret;
+        private @Nullable List<String> datasets;
         private String endpoint;
         private @Nullable String kmsEncryptedAccessKeyId;
         private @Nullable String kmsEncryptedAccessKeySecret;
@@ -163,6 +177,7 @@ public final class EtlEtlSink {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
     	      this.accessKeySecret = defaults.accessKeySecret;
+    	      this.datasets = defaults.datasets;
     	      this.endpoint = defaults.endpoint;
     	      this.kmsEncryptedAccessKeyId = defaults.kmsEncryptedAccessKeyId;
     	      this.kmsEncryptedAccessKeySecret = defaults.kmsEncryptedAccessKeySecret;
@@ -184,6 +199,15 @@ public final class EtlEtlSink {
 
             this.accessKeySecret = accessKeySecret;
             return this;
+        }
+        @CustomType.Setter
+        public Builder datasets(@Nullable List<String> datasets) {
+
+            this.datasets = datasets;
+            return this;
+        }
+        public Builder datasets(String... datasets) {
+            return datasets(List.of(datasets));
         }
         @CustomType.Setter
         public Builder endpoint(String endpoint) {
@@ -245,6 +269,7 @@ public final class EtlEtlSink {
             final var _resultValue = new EtlEtlSink();
             _resultValue.accessKeyId = accessKeyId;
             _resultValue.accessKeySecret = accessKeySecret;
+            _resultValue.datasets = datasets;
             _resultValue.endpoint = endpoint;
             _resultValue.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
             _resultValue.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;

@@ -3,16 +3,71 @@
 
 package com.pulumi.alicloud.resourcemanager;
 
+import com.pulumi.alicloud.resourcemanager.inputs.ResourceShareResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ResourceShareArgs Empty = new ResourceShareArgs();
+
+    /**
+     * Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     * 
+     */
+    @Import(name="allowExternalTargets")
+    private @Nullable Output<Boolean> allowExternalTargets;
+
+    /**
+     * @return Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     * 
+     */
+    public Optional<Output<Boolean>> allowExternalTargets() {
+        return Optional.ofNullable(this.allowExternalTargets);
+    }
+
+    /**
+     * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     * 
+     */
+    @Import(name="permissionNames")
+    private @Nullable Output<List<String>> permissionNames;
+
+    /**
+     * @return Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     * 
+     */
+    public Optional<Output<List<String>>> permissionNames() {
+        return Optional.ofNullable(this.permissionNames);
+    }
+
+    /**
+     * The ID of the resource group
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
 
     /**
      * The name of resource share.
@@ -29,10 +84,61 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         return this.resourceShareName;
     }
 
+    /**
+     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<List<ResourceShareResourceArgs>> resources;
+
+    /**
+     * @return List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * 
+     */
+    public Optional<Output<List<ResourceShareResourceArgs>>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Resource user.
+     * 
+     */
+    @Import(name="targets")
+    private @Nullable Output<List<String>> targets;
+
+    /**
+     * @return Resource user.
+     * 
+     */
+    public Optional<Output<List<String>>> targets() {
+        return Optional.ofNullable(this.targets);
+    }
+
     private ResourceShareArgs() {}
 
     private ResourceShareArgs(ResourceShareArgs $) {
+        this.allowExternalTargets = $.allowExternalTargets;
+        this.permissionNames = $.permissionNames;
+        this.resourceGroupId = $.resourceGroupId;
         this.resourceShareName = $.resourceShareName;
+        this.resources = $.resources;
+        this.tags = $.tags;
+        this.targets = $.targets;
     }
 
     public static Builder builder() {
@@ -54,6 +160,83 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param allowExternalTargets Whether to allow sharing to accounts outside the resource directory. Value:
+         * - false (default): Only sharing within the resource directory is allowed.
+         * - true: Allow sharing to any account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowExternalTargets(@Nullable Output<Boolean> allowExternalTargets) {
+            $.allowExternalTargets = allowExternalTargets;
+            return this;
+        }
+
+        /**
+         * @param allowExternalTargets Whether to allow sharing to accounts outside the resource directory. Value:
+         * - false (default): Only sharing within the resource directory is allowed.
+         * - true: Allow sharing to any account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowExternalTargets(Boolean allowExternalTargets) {
+            return allowExternalTargets(Output.of(allowExternalTargets));
+        }
+
+        /**
+         * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionNames(@Nullable Output<List<String>> permissionNames) {
+            $.permissionNames = permissionNames;
+            return this;
+        }
+
+        /**
+         * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionNames(List<String> permissionNames) {
+            return permissionNames(Output.of(permissionNames));
+        }
+
+        /**
+         * @param permissionNames Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionNames(String... permissionNames) {
+            return permissionNames(List.of(permissionNames));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param resourceShareName The name of resource share.
          * 
          * @return builder
@@ -72,6 +255,89 @@ public final class ResourceShareArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceShareName(String resourceShareName) {
             return resourceShareName(Output.of(resourceShareName));
+        }
+
+        /**
+         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<List<ResourceShareResourceArgs>> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(List<ResourceShareResourceArgs> resources) {
+            return resources(Output.of(resources));
+        }
+
+        /**
+         * @param resources List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(ResourceShareResourceArgs... resources) {
+            return resources(List.of(resources));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param targets Resource user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(@Nullable Output<List<String>> targets) {
+            $.targets = targets;
+            return this;
+        }
+
+        /**
+         * @param targets Resource user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(List<String> targets) {
+            return targets(Output.of(targets));
+        }
+
+        /**
+         * @param targets Resource user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targets(String... targets) {
+            return targets(List.of(targets));
         }
 
         public ResourceShareArgs build() {

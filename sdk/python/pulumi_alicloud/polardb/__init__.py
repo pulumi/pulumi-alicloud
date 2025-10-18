@@ -25,5 +25,6 @@ from .get_zones import *
 from .global_database_network import *
 from .parameter_group import *
 from .primary_endpoint import *
+from .zonal_db_cluster import *
 from ._inputs import *
 from . import outputs

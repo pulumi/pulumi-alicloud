@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Ecs Elasticity Assurance resource.
+ * Provides a ECS Elasticity Assurance resource.
  *
- * For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+ * For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
  *
  * > **NOTE:** Available since v1.196.0.
  *
@@ -19,11 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
- * });
- * const defaultGetZones = alicloud.getZones({
- *     availableResourceCreation: "Instance",
  * });
  * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     instanceTypeFamily: "ecs.c6",
@@ -31,8 +30,8 @@ import * as utilities from "../utilities";
  * const defaultElasticityAssurance = new alicloud.ecs.ElasticityAssurance("default", {
  *     instanceAmount: 1,
  *     description: "before",
- *     zoneIds: [defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[2]?.id)],
- *     privatePoolOptionsName: "test_before",
+ *     zoneIds: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0])],
+ *     privatePoolOptionsName: name,
  *     period: 1,
  *     privatePoolOptionsMatchCriteria: "Open",
  *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
@@ -44,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ecs Elasticity Assurance can be imported using the id, e.g.
+ * ECS Elasticity Assurance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example <id>
@@ -83,6 +82,30 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     declare public readonly assuranceTimes: pulumi.Output<string>;
     /**
+     * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     *
+     * Default value: `false`.
+     */
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
+    /**
+     * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     *
+     * > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     */
+    declare public readonly autoRenewPeriod: pulumi.Output<number | undefined>;
+    /**
+     * Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     *
+     * Default value: Year
+     */
+    declare public readonly autoRenewPeriodUnit: pulumi.Output<string>;
+    /**
      * Description of flexible guarantee service.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -95,7 +118,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
-     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      */
     declare public readonly instanceAmount: pulumi.Output<number>;
     /**
@@ -125,9 +148,13 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     declare public readonly privatePoolOptionsName: pulumi.Output<string>;
     /**
+     * (Available since v1.261.0) The region ID of the elasticity assurance.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
      * The ID of the resource group.
      */
-    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Flexible guarantee service effective time.
      */
@@ -167,6 +194,9 @@ export class ElasticityAssurance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ElasticityAssuranceState | undefined;
             resourceInputs["assuranceTimes"] = state?.assuranceTimes;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
+            resourceInputs["autoRenewPeriodUnit"] = state?.autoRenewPeriodUnit;
             resourceInputs["description"] = state?.description;
             resourceInputs["elasticityAssuranceId"] = state?.elasticityAssuranceId;
             resourceInputs["endTime"] = state?.endTime;
@@ -177,6 +207,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
             resourceInputs["periodUnit"] = state?.periodUnit;
             resourceInputs["privatePoolOptionsMatchCriteria"] = state?.privatePoolOptionsMatchCriteria;
             resourceInputs["privatePoolOptionsName"] = state?.privatePoolOptionsName;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["startTime"] = state?.startTime;
             resourceInputs["startTimeType"] = state?.startTimeType;
@@ -196,6 +227,9 @@ export class ElasticityAssurance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneIds'");
             }
             resourceInputs["assuranceTimes"] = args?.assuranceTimes;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
+            resourceInputs["autoRenewPeriodUnit"] = args?.autoRenewPeriodUnit;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceAmount"] = args?.instanceAmount;
             resourceInputs["instanceType"] = args?.instanceType;
@@ -210,6 +244,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
             resourceInputs["elasticityAssuranceId"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["instanceChargeType"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["startTimeType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["usedAssuranceTimes"] = undefined /*out*/;
@@ -228,6 +263,30 @@ export interface ElasticityAssuranceState {
      */
     assuranceTimes?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     *
+     * Default value: `false`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     *
+     * > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     *
+     * Default value: Year
+     */
+    autoRenewPeriodUnit?: pulumi.Input<string>;
+    /**
      * Description of flexible guarantee service.
      */
     description?: pulumi.Input<string>;
@@ -240,7 +299,7 @@ export interface ElasticityAssuranceState {
      */
     endTime?: pulumi.Input<string>;
     /**
-     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      */
     instanceAmount?: pulumi.Input<number>;
     /**
@@ -269,6 +328,10 @@ export interface ElasticityAssuranceState {
      * The name of the flexible protection service.
      */
     privatePoolOptionsName?: pulumi.Input<string>;
+    /**
+     * (Available since v1.261.0) The region ID of the elasticity assurance.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -308,11 +371,35 @@ export interface ElasticityAssuranceArgs {
      */
     assuranceTimes?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     *
+     * Default value: `false`.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
+     * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     *
+     * > **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     */
+    autoRenewPeriod?: pulumi.Input<number>;
+    /**
+     * Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     *
+     * Default value: Year
+     */
+    autoRenewPeriodUnit?: pulumi.Input<string>;
+    /**
      * Description of flexible guarantee service.
      */
     description?: pulumi.Input<string>;
     /**
-     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      */
     instanceAmount: pulumi.Input<number>;
     /**

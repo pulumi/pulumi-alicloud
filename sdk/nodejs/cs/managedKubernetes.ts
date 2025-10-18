@@ -192,6 +192,7 @@ import * as utilities from "../utilities";
  *     proxyMode: proxyMode,
  *     serviceCidr: serviceCidr,
  *     ipStack: "ipv4",
+ *     deletionProtection: true,
  *     autoMode: {
  *         enabled: true,
  *     },
@@ -216,6 +217,7 @@ import * as utilities from "../utilities";
  *         "alb",
  *         "ack-goatscaler",
  *         "coredns",
+ *         "gatekeeper",
  *     ],
  *     controlPlaneLogTtl: "30",
  *     auditLogConfig: {
@@ -223,7 +225,7 @@ import * as utilities from "../utilities";
  *     },
  *     addons: [
  *         {
- *             name: "managed-metrics-server",
+ *             name: "metrics-server",
  *         },
  *         {
  *             name: "managed-coredns",

@@ -2900,6 +2900,274 @@ func (o GetScimServerCredentialsCredentialArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetScimServerCredentialsCredentialOutput)
 }
 
+type GetUserProvisioningEventsEvent struct {
+	// Event content
+	Content string `pulumi:"content"`
+	// The creation time of the resource
+	CreateTime string `pulumi:"createTime"`
+	// Processing policy when you delete a RAM user
+	DeletionStrategy string `pulumi:"deletionStrategy"`
+	// Directory ID
+	DirectoryId string `pulumi:"directoryId"`
+	// Conflict strategy
+	DuplicationStrategy string `pulumi:"duplicationStrategy"`
+	// Number of manual retry failures
+	ErrorCount float64 `pulumi:"errorCount"`
+	// Error message for last failure
+	ErrorInfo string `pulumi:"errorInfo"`
+	// Dead letter event ID
+	EventId string `pulumi:"eventId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Last synchronization time
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// User Provisioning body ID
+	PrincipalId string `pulumi:"principalId"`
+	// User Provisioning body name
+	PrincipalName string `pulumi:"principalName"`
+	// User Provisioning body type
+	PrincipalType string `pulumi:"principalType"`
+	// The type of the source action that triggered the event.
+	SourceType string `pulumi:"sourceType"`
+	// User Provisioning target ID
+	TargetId string `pulumi:"targetId"`
+	// User Provisioning target name
+	TargetName string `pulumi:"targetName"`
+	// RD path of User Provisioning target
+	TargetPath string `pulumi:"targetPath"`
+	// User Provisioning target type
+	TargetType string `pulumi:"targetType"`
+	// Event update time
+	UpdateTime string `pulumi:"updateTime"`
+	// The ID of the User Provisioning.
+	UserProvisioningId string `pulumi:"userProvisioningId"`
+}
+
+// GetUserProvisioningEventsEventInput is an input type that accepts GetUserProvisioningEventsEventArgs and GetUserProvisioningEventsEventOutput values.
+// You can construct a concrete instance of `GetUserProvisioningEventsEventInput` via:
+//
+//	GetUserProvisioningEventsEventArgs{...}
+type GetUserProvisioningEventsEventInput interface {
+	pulumi.Input
+
+	ToGetUserProvisioningEventsEventOutput() GetUserProvisioningEventsEventOutput
+	ToGetUserProvisioningEventsEventOutputWithContext(context.Context) GetUserProvisioningEventsEventOutput
+}
+
+type GetUserProvisioningEventsEventArgs struct {
+	// Event content
+	Content pulumi.StringInput `pulumi:"content"`
+	// The creation time of the resource
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Processing policy when you delete a RAM user
+	DeletionStrategy pulumi.StringInput `pulumi:"deletionStrategy"`
+	// Directory ID
+	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
+	// Conflict strategy
+	DuplicationStrategy pulumi.StringInput `pulumi:"duplicationStrategy"`
+	// Number of manual retry failures
+	ErrorCount pulumi.Float64Input `pulumi:"errorCount"`
+	// Error message for last failure
+	ErrorInfo pulumi.StringInput `pulumi:"errorInfo"`
+	// Dead letter event ID
+	EventId pulumi.StringInput `pulumi:"eventId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Last synchronization time
+	LastSyncTime pulumi.StringInput `pulumi:"lastSyncTime"`
+	// User Provisioning body ID
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// User Provisioning body name
+	PrincipalName pulumi.StringInput `pulumi:"principalName"`
+	// User Provisioning body type
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	// The type of the source action that triggered the event.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+	// User Provisioning target ID
+	TargetId pulumi.StringInput `pulumi:"targetId"`
+	// User Provisioning target name
+	TargetName pulumi.StringInput `pulumi:"targetName"`
+	// RD path of User Provisioning target
+	TargetPath pulumi.StringInput `pulumi:"targetPath"`
+	// User Provisioning target type
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// Event update time
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// The ID of the User Provisioning.
+	UserProvisioningId pulumi.StringInput `pulumi:"userProvisioningId"`
+}
+
+func (GetUserProvisioningEventsEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserProvisioningEventsEvent)(nil)).Elem()
+}
+
+func (i GetUserProvisioningEventsEventArgs) ToGetUserProvisioningEventsEventOutput() GetUserProvisioningEventsEventOutput {
+	return i.ToGetUserProvisioningEventsEventOutputWithContext(context.Background())
+}
+
+func (i GetUserProvisioningEventsEventArgs) ToGetUserProvisioningEventsEventOutputWithContext(ctx context.Context) GetUserProvisioningEventsEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserProvisioningEventsEventOutput)
+}
+
+// GetUserProvisioningEventsEventArrayInput is an input type that accepts GetUserProvisioningEventsEventArray and GetUserProvisioningEventsEventArrayOutput values.
+// You can construct a concrete instance of `GetUserProvisioningEventsEventArrayInput` via:
+//
+//	GetUserProvisioningEventsEventArray{ GetUserProvisioningEventsEventArgs{...} }
+type GetUserProvisioningEventsEventArrayInput interface {
+	pulumi.Input
+
+	ToGetUserProvisioningEventsEventArrayOutput() GetUserProvisioningEventsEventArrayOutput
+	ToGetUserProvisioningEventsEventArrayOutputWithContext(context.Context) GetUserProvisioningEventsEventArrayOutput
+}
+
+type GetUserProvisioningEventsEventArray []GetUserProvisioningEventsEventInput
+
+func (GetUserProvisioningEventsEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserProvisioningEventsEvent)(nil)).Elem()
+}
+
+func (i GetUserProvisioningEventsEventArray) ToGetUserProvisioningEventsEventArrayOutput() GetUserProvisioningEventsEventArrayOutput {
+	return i.ToGetUserProvisioningEventsEventArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserProvisioningEventsEventArray) ToGetUserProvisioningEventsEventArrayOutputWithContext(ctx context.Context) GetUserProvisioningEventsEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserProvisioningEventsEventArrayOutput)
+}
+
+type GetUserProvisioningEventsEventOutput struct{ *pulumi.OutputState }
+
+func (GetUserProvisioningEventsEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserProvisioningEventsEvent)(nil)).Elem()
+}
+
+func (o GetUserProvisioningEventsEventOutput) ToGetUserProvisioningEventsEventOutput() GetUserProvisioningEventsEventOutput {
+	return o
+}
+
+func (o GetUserProvisioningEventsEventOutput) ToGetUserProvisioningEventsEventOutputWithContext(ctx context.Context) GetUserProvisioningEventsEventOutput {
+	return o
+}
+
+// Event content
+func (o GetUserProvisioningEventsEventOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource
+func (o GetUserProvisioningEventsEventOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Processing policy when you delete a RAM user
+func (o GetUserProvisioningEventsEventOutput) DeletionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.DeletionStrategy }).(pulumi.StringOutput)
+}
+
+// Directory ID
+func (o GetUserProvisioningEventsEventOutput) DirectoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.DirectoryId }).(pulumi.StringOutput)
+}
+
+// Conflict strategy
+func (o GetUserProvisioningEventsEventOutput) DuplicationStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.DuplicationStrategy }).(pulumi.StringOutput)
+}
+
+// Number of manual retry failures
+func (o GetUserProvisioningEventsEventOutput) ErrorCount() pulumi.Float64Output {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) float64 { return v.ErrorCount }).(pulumi.Float64Output)
+}
+
+// Error message for last failure
+func (o GetUserProvisioningEventsEventOutput) ErrorInfo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.ErrorInfo }).(pulumi.StringOutput)
+}
+
+// Dead letter event ID
+func (o GetUserProvisioningEventsEventOutput) EventId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.EventId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetUserProvisioningEventsEventOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Last synchronization time
+func (o GetUserProvisioningEventsEventOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// User Provisioning body ID
+func (o GetUserProvisioningEventsEventOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// User Provisioning body name
+func (o GetUserProvisioningEventsEventOutput) PrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.PrincipalName }).(pulumi.StringOutput)
+}
+
+// User Provisioning body type
+func (o GetUserProvisioningEventsEventOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// The type of the source action that triggered the event.
+func (o GetUserProvisioningEventsEventOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// User Provisioning target ID
+func (o GetUserProvisioningEventsEventOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// User Provisioning target name
+func (o GetUserProvisioningEventsEventOutput) TargetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.TargetName }).(pulumi.StringOutput)
+}
+
+// RD path of User Provisioning target
+func (o GetUserProvisioningEventsEventOutput) TargetPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.TargetPath }).(pulumi.StringOutput)
+}
+
+// User Provisioning target type
+func (o GetUserProvisioningEventsEventOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// Event update time
+func (o GetUserProvisioningEventsEventOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The ID of the User Provisioning.
+func (o GetUserProvisioningEventsEventOutput) UserProvisioningId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserProvisioningEventsEvent) string { return v.UserProvisioningId }).(pulumi.StringOutput)
+}
+
+type GetUserProvisioningEventsEventArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserProvisioningEventsEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserProvisioningEventsEvent)(nil)).Elem()
+}
+
+func (o GetUserProvisioningEventsEventArrayOutput) ToGetUserProvisioningEventsEventArrayOutput() GetUserProvisioningEventsEventArrayOutput {
+	return o
+}
+
+func (o GetUserProvisioningEventsEventArrayOutput) ToGetUserProvisioningEventsEventArrayOutputWithContext(ctx context.Context) GetUserProvisioningEventsEventArrayOutput {
+	return o
+}
+
+func (o GetUserProvisioningEventsEventArrayOutput) Index(i pulumi.IntInput) GetUserProvisioningEventsEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserProvisioningEventsEvent {
+		return vs[0].([]GetUserProvisioningEventsEvent)[vs[1].(int)]
+	}).(GetUserProvisioningEventsEventOutput)
+}
+
 type GetUsersUser struct {
 	// The create time of the user.
 	CreateTime string `pulumi:"createTime"`
@@ -3262,6 +3530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScimServerCredentialsCredentialInput)(nil)).Elem(), GetScimServerCredentialsCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetScimServerCredentialsCredentialArrayInput)(nil)).Elem(), GetScimServerCredentialsCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserProvisioningEventsEventInput)(nil)).Elem(), GetUserProvisioningEventsEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserProvisioningEventsEventArrayInput)(nil)).Elem(), GetUserProvisioningEventsEventArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserMfaDeviceInput)(nil)).Elem(), GetUsersUserMfaDeviceArgs{})
@@ -3298,6 +3568,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialOutput{})
 	pulumi.RegisterOutputType(GetScimServerCredentialsCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetUserProvisioningEventsEventOutput{})
+	pulumi.RegisterOutputType(GetUserProvisioningEventsEventArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserMfaDeviceOutput{})

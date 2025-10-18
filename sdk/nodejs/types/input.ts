@@ -10798,6 +10798,401 @@ export namespace esa {
         sourceType: pulumi.Input<string>;
     }
 
+    export interface WafRuleConfig {
+        /**
+         * The action performed on requests that match the managed rule.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Extended action configurations, including custom responses and bypass settings. See `actions` below.
+         */
+        actions?: pulumi.Input<inputs.esa.WafRuleConfigActions>;
+        /**
+         * Security mechanism to prevent apps from being repackaged. See `appPackage` below.
+         */
+        appPackage?: pulumi.Input<inputs.esa.WafRuleConfigAppPackage>;
+        /**
+         * Mobile app SDK-related configurations. See `appSdk` below.
+         */
+        appSdk?: pulumi.Input<inputs.esa.WafRuleConfigAppSdk>;
+        /**
+         * The match expression used to evaluate incoming requests.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * The ID of the custom error page, which can be obtained by calling the ListPages operation.
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * The ID of the managed rule group (deprecated).
+         */
+        managedGroupId?: pulumi.Input<number>;
+        /**
+         * The name of the managed list applied to this rule.
+         */
+        managedList?: pulumi.Input<string>;
+        /**
+         * The managed rulesets referenced by this rule and their configurations. See `managedRulesets` below.
+         */
+        managedRulesets?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigManagedRuleset>[]>;
+        /**
+         * The package name of an authorized application.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Additional notes about this rule.
+         */
+        notes?: pulumi.Input<string>;
+        /**
+         * Configuration of the rate limiting rule. See `rateLimit` below.
+         */
+        rateLimit?: pulumi.Input<inputs.esa.WafRuleConfigRateLimit>;
+        /**
+         * The overall security protection level of WAF. See `securityLevel` below.
+         */
+        securityLevel?: pulumi.Input<inputs.esa.WafRuleConfigSecurityLevel>;
+        /**
+         * Configuration items for token verification mechanisms.
+         */
+        sigchls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The status of the managed rule: whether it is enabled or disabled.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * Configuration for the time schedule when the rule takes effect. See `timer` below.
+         */
+        timer?: pulumi.Input<inputs.esa.WafRuleConfigTimer>;
+        /**
+         * The type category of the WAF rule.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigActions {
+        /**
+         * The skip configuration specified by the whitelist rule. See `bypass` below.
+         */
+        bypass?: pulumi.Input<inputs.esa.WafRuleConfigActionsBypass>;
+        response?: pulumi.Input<inputs.esa.WafRuleConfigActionsResponse>;
+    }
+
+    export interface WafRuleConfigActionsBypass {
+        /**
+         * The IDs of custom rules to skip.
+         */
+        customRules?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The IDs of specific managed rules to skip.
+         */
+        regularRules?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The types of managed rules to skip.
+         */
+        regularTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The scope that is skipped when requests match conditions defined in the whitelist rule.
+         */
+        skip?: pulumi.Input<string>;
+        /**
+         * The rule categories that are skipped when requests match conditions defined in the whitelist rule.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WafRuleConfigActionsResponse {
+        code?: pulumi.Input<number>;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleConfigAppPackage {
+        /**
+         * Security mechanism to prevent apps from being repackaged. See `packageSigns` below.
+         */
+        packageSigns?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigAppPackagePackageSign>[]>;
+    }
+
+    export interface WafRuleConfigAppPackagePackageSign {
+        name?: pulumi.Input<string>;
+        /**
+         * The digital signature of a legitimate app package.
+         */
+        sign?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigAppSdk {
+        /**
+         * Custom fields used for mobile app signature validation. See `customSign` below.
+         */
+        customSign?: pulumi.Input<inputs.esa.WafRuleConfigAppSdkCustomSign>;
+        /**
+         * Indicates whether the custom signature field validation is enabled.
+         */
+        customSignStatus?: pulumi.Input<string>;
+        /**
+         * Detected abnormal behaviors of the application.
+         */
+        featureAbnormals?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WafRuleConfigAppSdkCustomSign {
+        /**
+         * The name of the custom signature field used for validation.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigManagedRuleset {
+        action?: pulumi.Input<string>;
+        /**
+         * The primary attack type targeted by this ruleset.
+         */
+        attackType?: pulumi.Input<number>;
+        /**
+         * The individual managed rules included in this ruleset. See `managedRules` below.
+         */
+        managedRules?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigManagedRulesetManagedRule>[]>;
+        /**
+         * Number of rules currently enabled.
+         */
+        numberEnabled?: pulumi.Input<number>;
+        /**
+         * Total number of rules in this ruleset.
+         */
+        numberTotal?: pulumi.Input<number>;
+        /**
+         * The protection strength level assigned to this ruleset.
+         */
+        protectionLevel?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleConfigManagedRulesetManagedRule {
+        action?: pulumi.Input<string>;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * The status of the managed rule: whether it is enabled or disabled.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimit {
+        /**
+         * The statistical dimensions to which the rate limiting rule applies. See `characteristics` below.
+         */
+        characteristics?: pulumi.Input<inputs.esa.WafRuleConfigRateLimitCharacteristics>;
+        /**
+         * The statistical interval.
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * Indicates whether the rule applies to requests that hit the cache.
+         */
+        onHit?: pulumi.Input<boolean>;
+        /**
+         * Threshold settings for the rate limiting rule. See `threshold` below.
+         */
+        threshold?: pulumi.Input<inputs.esa.WafRuleConfigRateLimitThreshold>;
+        /**
+         * The timeout period for creating the stack used in rate limiting.
+         */
+        ttl?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristics {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigRateLimitCharacteristicsCriteria>[]>;
+        logic?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteria {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigRateLimitCharacteristicsCriteriaCriteria>[]>;
+        logic?: pulumi.Input<string>;
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteriaCriteria {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria>[]>;
+        logic?: pulumi.Input<string>;
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimitCharacteristicsCriteriaCriteriaCriteria {
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimitThreshold {
+        /**
+         * The maximum number of distinct managed rules that can be triggered.
+         */
+        distinctManagedRules?: pulumi.Input<number>;
+        /**
+         * The maximum number of times that managed rules can be triggered.
+         */
+        managedRulesBlocked?: pulumi.Input<number>;
+        /**
+         * The maximum number of allowed requests within a time interval.
+         */
+        request?: pulumi.Input<number>;
+        /**
+         * Limits on the frequency of returning specific HTTP status codes. See `responseStatus` below.
+         */
+        responseStatus?: pulumi.Input<inputs.esa.WafRuleConfigRateLimitThresholdResponseStatus>;
+        /**
+         * The maximum allowed traffic within a time interval (deprecated).
+         */
+        traffic?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigRateLimitThresholdResponseStatus {
+        code?: pulumi.Input<number>;
+        /**
+         * The maximum number of times the specified status code can be returned.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * The upper limit of the percentage of occurrences of the specified status code among all responses.
+         */
+        ratio?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleConfigSecurityLevel {
+        /**
+         * The value of the custom signature field used for validation.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigTimer {
+        periods?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigTimerPeriod>[]>;
+        /**
+         * Timing type:
+         */
+        scopes?: pulumi.Input<string>;
+        /**
+         * Weekly recurring time schedules. See `weeklyPeriods` below.
+         */
+        weeklyPeriods?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigTimerWeeklyPeriod>[]>;
+        /**
+         * The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
+         */
+        zone?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleConfigTimerPeriod {
+        /**
+         * End time in HH:mm:ss format
+         */
+        end?: pulumi.Input<string>;
+        /**
+         * Start time in HH:mm:ss format
+         */
+        start?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigTimerWeeklyPeriod {
+        /**
+         * Daily effective time periods within a weekly schedule. See `dailyPeriods` below.
+         */
+        dailyPeriods?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleConfigTimerWeeklyPeriodDailyPeriod>[]>;
+        /**
+         * Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
+         */
+        days?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleConfigTimerWeeklyPeriodDailyPeriod {
+        /**
+         * End time in HH:mm:ss format
+         */
+        end?: pulumi.Input<string>;
+        /**
+         * Start time in HH:mm:ss format
+         */
+        start?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleShared {
+        /**
+         * The default action executed under shared configuration.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Extended action configurations under shared settings. See `actions` below.
+         */
+        actions?: pulumi.Input<inputs.esa.WafRuleSharedActions>;
+        /**
+         * Specify the cross-domain site ID.
+         */
+        crossSiteId?: pulumi.Input<number>;
+        /**
+         * The match expression used in shared configuration.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Configuration of the request matching logic engine. See `match` below.
+         */
+        match?: pulumi.Input<inputs.esa.WafRuleSharedMatch>;
+        /**
+         * The integration mode of the Web SDK:
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * The display name of the ruleset.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The target type protected by this rule: web or app.
+         */
+        target?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleSharedActions {
+        response?: pulumi.Input<inputs.esa.WafRuleSharedActionsResponse>;
+    }
+
+    export interface WafRuleSharedActionsResponse {
+        code?: pulumi.Input<number>;
+        /**
+         * The internal unique ID of the WAF rule.
+         */
+        id?: pulumi.Input<number>;
+    }
+
+    export interface WafRuleSharedMatch {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleSharedMatchCriteria>[]>;
+        logic?: pulumi.Input<string>;
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleSharedMatchCriteria {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleSharedMatchCriteriaCriteria>[]>;
+        logic?: pulumi.Input<string>;
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleSharedMatchCriteriaCriteria {
+        criterias?: pulumi.Input<pulumi.Input<inputs.esa.WafRuleSharedMatchCriteriaCriteriaCriteria>[]>;
+        logic?: pulumi.Input<string>;
+        matchType?: pulumi.Input<string>;
+    }
+
+    export interface WafRuleSharedMatchCriteriaCriteriaCriteria {
+        matchType?: pulumi.Input<string>;
+    }
+
     export interface WaitingRoomHostNameAndPath {
         /**
          * The domain name.
@@ -11264,6 +11659,58 @@ export namespace ess {
          * The relative file path.
          */
         path?: pulumi.Input<string>;
+    }
+
+    export interface InstanceRefreshCheckpoint {
+        /**
+         * The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+         */
+        percentage?: pulumi.Input<number>;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationContainer {
+        /**
+         * The arguments for the container startup command.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The container startup command.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Information about the environment variables. See `environmentVars` below for details.
+         */
+        environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationContainerEnvironmentVar>[]>;
+        /**
+         * The container image.
+         */
+        image?: pulumi.Input<string>;
+        /**
+         * The custom name of the container.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationContainerEnvironmentVar {
+        /**
+         * This parameter is not available for use.
+         */
+        fieldRefFieldPath?: pulumi.Input<string>;
+        /**
+         * The name of the environment variable.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The value of the environment variable.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
+        /**
+         * The specified instance type, which overwrites the instance type in the launch template.
+         */
+        instanceType?: pulumi.Input<string>;
     }
 
     export interface ScalingConfigurationCustomPriority {
@@ -13871,6 +14318,12 @@ export namespace log {
          */
         accessKeySecret?: pulumi.Input<string>;
         /**
+         * LogETL datasets.
+         *
+         * > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
+         */
+        datasets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Delivery target logstore region.
          */
         endpoint: pulumi.Input<string>;
@@ -13895,13 +14348,11 @@ export namespace log {
          */
         project: pulumi.Input<string>;
         /**
-         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
          */
         roleArn?: pulumi.Input<string>;
         /**
          * ETL sinks type, the default value is AliyunLOG.
-         *
-         * > **Note:** `fromTime` and `toTime` no modification allowed after successful creation.
          */
         type?: pulumi.Input<string>;
     }
@@ -16895,6 +17346,17 @@ export namespace resourcemanager {
          * The status of the resource group.
          */
         status?: pulumi.Input<string>;
+    }
+
+    export interface ResourceShareResource {
+        /**
+         * The ID of the shared resource.
+         */
+        resourceId?: pulumi.Input<string>;
+        /**
+         * Shared resource type. For the types of resources that support sharing, see [Cloud services that support sharing](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/product-overview/services-that-work-with-resource-sharing).
+         */
+        resourceType?: pulumi.Input<string>;
     }
 }
 

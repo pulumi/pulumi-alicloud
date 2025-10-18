@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Vbr Ha resource.
+ * Provides a Express Connect Vbr Ha resource.
  *
- * For information about VPC Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
+ * VBR switching Group.
+ *
+ * For information about Express Connect Vbr Ha and how to use it, see [What is Vbr Ha](https://www.alibabacloud.com/help/doc-detail/212629.html).
  *
  * > **NOTE:** Available since v1.151.0.
  *
@@ -74,7 +76,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * VPC Vbr Ha can be imported using the id, e.g.
+ * Express Connect Vbr Ha can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:vpc/vbrHa:VbrHa example <id>
@@ -109,27 +111,38 @@ export class VbrHa extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The creation time of the VBR.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the other VBR in the VBR failover group.
+     * The instance ID of another VBR in The VBR switching group.
      */
     declare public readonly peerVbrId: pulumi.Output<string>;
     /**
-     * The state of the VBR failover group.
+     * The ID of the region to which the VBR belongs.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
+     * Status of VBR switching Group
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The name of the VBR failover group.
+     * VBR switch group name.
      */
     declare public readonly vbrHaName: pulumi.Output<string | undefined>;
     /**
-     * The ID of the VBR instance.
+     * The VBR instance ID.
      */
     declare public readonly vbrId: pulumi.Output<string>;
 
@@ -146,9 +159,11 @@ export class VbrHa extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VbrHaState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["peerVbrId"] = state?.peerVbrId;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["status"] = state?.status;
             resourceInputs["vbrHaName"] = state?.vbrHaName;
             resourceInputs["vbrId"] = state?.vbrId;
@@ -165,6 +180,8 @@ export class VbrHa extends pulumi.CustomResource {
             resourceInputs["peerVbrId"] = args?.peerVbrId;
             resourceInputs["vbrHaName"] = args?.vbrHaName;
             resourceInputs["vbrId"] = args?.vbrId;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -177,27 +194,38 @@ export class VbrHa extends pulumi.CustomResource {
  */
 export interface VbrHaState {
     /**
-     * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The creation time of the VBR.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
      */
     description?: pulumi.Input<string>;
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the other VBR in the VBR failover group.
+     * The instance ID of another VBR in The VBR switching group.
      */
     peerVbrId?: pulumi.Input<string>;
     /**
-     * The state of the VBR failover group.
+     * The ID of the region to which the VBR belongs.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * Status of VBR switching Group
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of the VBR failover group.
+     * VBR switch group name.
      */
     vbrHaName?: pulumi.Input<string>;
     /**
-     * The ID of the VBR instance.
+     * The VBR instance ID.
      */
     vbrId?: pulumi.Input<string>;
 }
@@ -207,23 +235,26 @@ export interface VbrHaState {
  */
 export interface VbrHaArgs {
     /**
-     * The description of the VBR switching group. It must be `2` to `256` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The description of the VBR switching group.
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with 'http:// 'or 'https.
      */
     description?: pulumi.Input<string>;
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value range:
+     * - *true**: The check request is sent and the instance is not started. Check whether the required parameters, request format, and instance status are filled in. If the check does not pass, the corresponding error is returned. If the check passes, DRYRUN.SUCCESS is returned.
+     * - *false** (default): Send a normal request and start the instance directly after passing the check.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the other VBR in the VBR failover group.
+     * The instance ID of another VBR in The VBR switching group.
      */
     peerVbrId: pulumi.Input<string>;
     /**
-     * The name of the VBR failover group.
+     * VBR switch group name.
      */
     vbrHaName?: pulumi.Input<string>;
     /**
-     * The ID of the VBR instance.
+     * The VBR instance ID.
      */
     vbrId: pulumi.Input<string>;
 }

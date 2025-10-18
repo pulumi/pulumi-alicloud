@@ -47,6 +47,14 @@ __all__ = [
     'EciScalingConfigurationVolumeArgsDict',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict',
+    'InstanceRefreshCheckpointArgs',
+    'InstanceRefreshCheckpointArgsDict',
+    'InstanceRefreshDesiredConfigurationContainerArgs',
+    'InstanceRefreshDesiredConfigurationContainerArgsDict',
+    'InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs',
+    'InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict',
+    'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs',
+    'InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict',
     'ScalingConfigurationCustomPriorityArgs',
     'ScalingConfigurationCustomPriorityArgsDict',
     'ScalingConfigurationDataDiskArgs',
@@ -2394,6 +2402,254 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class InstanceRefreshCheckpointArgsDict(TypedDict):
+        percentage: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        """
+elif False:
+    InstanceRefreshCheckpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceRefreshCheckpointArgs:
+    def __init__(__self__, *,
+                 percentage: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] percentage: The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "percentage", value)
+
+
+if not MYPY:
+    class InstanceRefreshDesiredConfigurationContainerArgsDict(TypedDict):
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The arguments for the container startup command.
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The container startup command.
+        """
+        environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict']]]]
+        """
+        Information about the environment variables. See `environment_vars` below for details.
+        """
+        image: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The container image.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The custom name of the container.
+        """
+elif False:
+    InstanceRefreshDesiredConfigurationContainerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceRefreshDesiredConfigurationContainerArgs:
+    def __init__(__self__, *,
+                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]] = None,
+                 image: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments for the container startup command.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The container startup command.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]] environment_vars: Information about the environment variables. See `environment_vars` below for details.
+        :param pulumi.Input[_builtins.str] image: The container image.
+        :param pulumi.Input[_builtins.str] name: The custom name of the container.
+        """
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if commands is not None:
+            pulumi.set(__self__, "commands", commands)
+        if environment_vars is not None:
+            pulumi.set(__self__, "environment_vars", environment_vars)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The arguments for the container startup command.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "args", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The container startup command.
+        """
+        return pulumi.get(self, "commands")
+
+    @commands.setter
+    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "commands", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVars")
+    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]:
+        """
+        Information about the environment variables. See `environment_vars` below for details.
+        """
+        return pulumi.get(self, "environment_vars")
+
+    @environment_vars.setter
+    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs']]]]):
+        pulumi.set(self, "environment_vars", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The container image.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The custom name of the container.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict(TypedDict):
+        field_ref_field_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This parameter is not available for use.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the environment variable.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value of the environment variable.
+        """
+elif False:
+    InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceRefreshDesiredConfigurationContainerEnvironmentVarArgs:
+    def __init__(__self__, *,
+                 field_ref_field_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] field_ref_field_path: This parameter is not available for use.
+        :param pulumi.Input[_builtins.str] key: The name of the environment variable.
+        :param pulumi.Input[_builtins.str] value: The value of the environment variable.
+        """
+        if field_ref_field_path is not None:
+            pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldRefFieldPath")
+    def field_ref_field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This parameter is not available for use.
+        """
+        return pulumi.get(self, "field_ref_field_path")
+
+    @field_ref_field_path.setter
+    def field_ref_field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "field_ref_field_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value of the environment variable.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The specified instance type, which overwrites the instance type in the launch template.
+        """
+elif False:
+    InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceRefreshDesiredConfigurationLaunchTemplateOverrideArgs:
+    def __init__(__self__, *,
+                 instance_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] instance_type: The specified instance type, which overwrites the instance type in the launch template.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The specified instance type, which overwrites the instance type in the launch template.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_type", value)
 
 
 if not MYPY:

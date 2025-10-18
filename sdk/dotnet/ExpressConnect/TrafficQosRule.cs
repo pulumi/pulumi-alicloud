@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect
 {
     /// <summary>
-    /// Provides a Express Connect Traffic Qos Rule resource. Express Connect Traffic QoS Rule.
+    /// Provides a Express Connect Traffic Qos Rule resource.
+    /// 
+    /// Express Connect Traffic QoS Rule.
     /// 
     /// For information about Express Connect Traffic Qos Rule and how to use it, see [What is Traffic Qos Rule](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateExpressConnectTrafficQosRule).
     /// 
@@ -89,70 +91,72 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         /// <summary>
         /// The traffic of the QoS rule matches the Destination IPv4 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Output("dstCidr")]
         public Output<string?> DstCidr { get; private set; } = null!;
 
         /// <summary>
         /// The QoS rule traffic matches the Destination IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Output("dstIpv6Cidr")]
         public Output<string?> DstIpv6Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        /// - **ALL**:-1/-1, not editable.
+        /// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        /// - `ALL`:-1/-1, not editable.
         /// - **ICMP(IPv4)**:-1/-1, non-editable.
         /// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        /// - **TCP**:-1/-1, editable.
-        /// - **UDP**:-1/-1, editable.
-        /// - **GRE**:-1/-1, not editable.
-        /// - **SSH**:22/22, not editable.
-        /// - **Telnet**:23/23, not editable.
-        /// - **HTTP**:80/80, non-editable.
-        /// - **HTTPS**:443/443, which cannot be edited.
+        /// - `TCP`:-1/-1, editable.
+        /// - `UDP`:-1/-1, editable.
+        /// - `GRE`:-1/-1, not editable.
+        /// - `SSH`:22/22, not editable.
+        /// - `Telnet`:23/23, not editable.
+        /// - `HTTP`:80/80, non-editable.
+        /// - `HTTPS`:443/443, which cannot be edited.
         /// - **MS SQL**:1443/1443, which cannot be edited.
-        /// - **Oracle**:1521/1521, non-editable.
-        /// - **MySql**:3306/3306, non-editable.
-        /// - **RDP**:3389/3389, non-editable.
-        /// - **PostgreSQL**:5432/5432, non-editable.
-        /// - **Redis**:6379/6379, non-editable.
+        /// - `Oracle`:1521/1521, non-editable.
+        /// - `MySql`:3306/3306, non-editable.
+        /// - `RDP`:3389/3389, non-editable.
+        /// - `PostgreSQL`:5432/5432, non-editable.
+        /// - `Redis`:6379/6379, non-editable.
         /// </summary>
         [Output("dstPortRange")]
         public Output<string> DstPortRange { get; private set; } = null!;
 
         /// <summary>
-        /// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        /// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         /// </summary>
         [Output("matchDscp")]
         public Output<int> MatchDscp { get; private set; } = null!;
 
         /// <summary>
-        /// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        /// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
         /// QoS rule protocol type, value:
-        /// - **ALL**
+        /// - `ALL`
         /// - **ICMP(IPv4)**
         /// - **ICMPv6(IPv6)* *
-        /// - **TCP**
-        /// - **UDP**
-        /// - **GRE**
-        /// - **SSH**
-        /// - **Telnet**
-        /// - **HTTP**
-        /// - **HTTPS**
+        /// - `TCP`
+        /// - `UDP`
+        /// - `GRE`
+        /// - `SSH`
+        /// - `Telnet`
+        /// - `HTTP`
+        /// - `HTTPS`
         /// - **MS SQL**
-        /// - **Oracle**
-        /// - **MySql**
-        /// - **RDP**
-        /// - **PostgreSQL**
-        /// - **Redis**.
+        /// - `Oracle`
+        /// - `MySql`
+        /// - `RDP`
+        /// - `PostgreSQL`
+        /// - `Redis`
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -170,13 +174,14 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> QueueId { get; private set; } = null!;
 
         /// <summary>
-        /// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        /// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         /// </summary>
         [Output("remarkingDscp")]
         public Output<int> RemarkingDscp { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS rule.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("ruleDescription")]
         public Output<string?> RuleDescription { get; private set; } = null!;
@@ -188,27 +193,30 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> RuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS rule.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv4 CIDR block.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Output("srcCidr")]
         public Output<string?> SrcCidr { get; private set; } = null!;
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Output("srcIpv6Cidr")]
         public Output<string?> SrcIpv6Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        /// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         /// </summary>
         [Output("srcPortRange")]
         public Output<string> SrcPortRange { get; private set; } = null!;
@@ -267,70 +275,72 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         /// <summary>
         /// The traffic of the QoS rule matches the Destination IPv4 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Input("dstCidr")]
         public Input<string>? DstCidr { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the Destination IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Input("dstIpv6Cidr")]
         public Input<string>? DstIpv6Cidr { get; set; }
 
         /// <summary>
-        /// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        /// - **ALL**:-1/-1, not editable.
+        /// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        /// - `ALL`:-1/-1, not editable.
         /// - **ICMP(IPv4)**:-1/-1, non-editable.
         /// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        /// - **TCP**:-1/-1, editable.
-        /// - **UDP**:-1/-1, editable.
-        /// - **GRE**:-1/-1, not editable.
-        /// - **SSH**:22/22, not editable.
-        /// - **Telnet**:23/23, not editable.
-        /// - **HTTP**:80/80, non-editable.
-        /// - **HTTPS**:443/443, which cannot be edited.
+        /// - `TCP`:-1/-1, editable.
+        /// - `UDP`:-1/-1, editable.
+        /// - `GRE`:-1/-1, not editable.
+        /// - `SSH`:22/22, not editable.
+        /// - `Telnet`:23/23, not editable.
+        /// - `HTTP`:80/80, non-editable.
+        /// - `HTTPS`:443/443, which cannot be edited.
         /// - **MS SQL**:1443/1443, which cannot be edited.
-        /// - **Oracle**:1521/1521, non-editable.
-        /// - **MySql**:3306/3306, non-editable.
-        /// - **RDP**:3389/3389, non-editable.
-        /// - **PostgreSQL**:5432/5432, non-editable.
-        /// - **Redis**:6379/6379, non-editable.
+        /// - `Oracle`:1521/1521, non-editable.
+        /// - `MySql`:3306/3306, non-editable.
+        /// - `RDP`:3389/3389, non-editable.
+        /// - `PostgreSQL`:5432/5432, non-editable.
+        /// - `Redis`:6379/6379, non-editable.
         /// </summary>
         [Input("dstPortRange")]
         public Input<string>? DstPortRange { get; set; }
 
         /// <summary>
-        /// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        /// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         /// </summary>
         [Input("matchDscp")]
         public Input<int>? MatchDscp { get; set; }
 
         /// <summary>
-        /// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        /// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
         /// QoS rule protocol type, value:
-        /// - **ALL**
+        /// - `ALL`
         /// - **ICMP(IPv4)**
         /// - **ICMPv6(IPv6)* *
-        /// - **TCP**
-        /// - **UDP**
-        /// - **GRE**
-        /// - **SSH**
-        /// - **Telnet**
-        /// - **HTTP**
-        /// - **HTTPS**
+        /// - `TCP`
+        /// - `UDP`
+        /// - `GRE`
+        /// - `SSH`
+        /// - `Telnet`
+        /// - `HTTP`
+        /// - `HTTPS`
         /// - **MS SQL**
-        /// - **Oracle**
-        /// - **MySql**
-        /// - **RDP**
-        /// - **PostgreSQL**
-        /// - **Redis**.
+        /// - `Oracle`
+        /// - `MySql`
+        /// - `RDP`
+        /// - `PostgreSQL`
+        /// - `Redis`
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -348,39 +358,43 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string> QueueId { get; set; } = null!;
 
         /// <summary>
-        /// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        /// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         /// </summary>
         [Input("remarkingDscp")]
         public Input<int>? RemarkingDscp { get; set; }
 
         /// <summary>
-        /// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS rule.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ruleDescription")]
         public Input<string>? RuleDescription { get; set; }
 
         /// <summary>
-        /// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS rule.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv4 CIDR block.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Input("srcCidr")]
         public Input<string>? SrcCidr { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Input("srcIpv6Cidr")]
         public Input<string>? SrcIpv6Cidr { get; set; }
 
         /// <summary>
-        /// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        /// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         /// </summary>
         [Input("srcPortRange")]
         public Input<string>? SrcPortRange { get; set; }
@@ -395,70 +409,72 @@ namespace Pulumi.AliCloud.ExpressConnect
     {
         /// <summary>
         /// The traffic of the QoS rule matches the Destination IPv4 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Input("dstCidr")]
         public Input<string>? DstCidr { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the Destination IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Input("dstIpv6Cidr")]
         public Input<string>? DstIpv6Cidr { get; set; }
 
         /// <summary>
-        /// QoS rule traffic matches the destination port number range. Value range: **0** to **65535**. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
-        /// - **ALL**:-1/-1, not editable.
+        /// QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
+        /// - `ALL`:-1/-1, not editable.
         /// - **ICMP(IPv4)**:-1/-1, non-editable.
         /// - **ICMPv6(IPv6)**:-1/-1, non-editable.
-        /// - **TCP**:-1/-1, editable.
-        /// - **UDP**:-1/-1, editable.
-        /// - **GRE**:-1/-1, not editable.
-        /// - **SSH**:22/22, not editable.
-        /// - **Telnet**:23/23, not editable.
-        /// - **HTTP**:80/80, non-editable.
-        /// - **HTTPS**:443/443, which cannot be edited.
+        /// - `TCP`:-1/-1, editable.
+        /// - `UDP`:-1/-1, editable.
+        /// - `GRE`:-1/-1, not editable.
+        /// - `SSH`:22/22, not editable.
+        /// - `Telnet`:23/23, not editable.
+        /// - `HTTP`:80/80, non-editable.
+        /// - `HTTPS`:443/443, which cannot be edited.
         /// - **MS SQL**:1443/1443, which cannot be edited.
-        /// - **Oracle**:1521/1521, non-editable.
-        /// - **MySql**:3306/3306, non-editable.
-        /// - **RDP**:3389/3389, non-editable.
-        /// - **PostgreSQL**:5432/5432, non-editable.
-        /// - **Redis**:6379/6379, non-editable.
+        /// - `Oracle`:1521/1521, non-editable.
+        /// - `MySql`:3306/3306, non-editable.
+        /// - `RDP`:3389/3389, non-editable.
+        /// - `PostgreSQL`:5432/5432, non-editable.
+        /// - `Redis`:6379/6379, non-editable.
         /// </summary>
         [Input("dstPortRange")]
         public Input<string>? DstPortRange { get; set; }
 
         /// <summary>
-        /// The DSCP value of the traffic matched by the QoS rule. Value range: **0** to **63**. If not, the value is - 1.
+        /// The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         /// </summary>
         [Input("matchDscp")]
         public Input<int>? MatchDscp { get; set; }
 
         /// <summary>
-        /// QoS rule priority. Value range: **1** to **9000**. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
+        /// QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// QoS rule protocol type, value:
-        /// - **ALL**
+        /// - `ALL`
         /// - **ICMP(IPv4)**
         /// - **ICMPv6(IPv6)* *
-        /// - **TCP**
-        /// - **UDP**
-        /// - **GRE**
-        /// - **SSH**
-        /// - **Telnet**
-        /// - **HTTP**
-        /// - **HTTPS**
+        /// - `TCP`
+        /// - `UDP`
+        /// - `GRE`
+        /// - `SSH`
+        /// - `Telnet`
+        /// - `HTTP`
+        /// - `HTTPS`
         /// - **MS SQL**
-        /// - **Oracle**
-        /// - **MySql**
-        /// - **RDP**
-        /// - **PostgreSQL**
-        /// - **Redis**.
+        /// - `Oracle`
+        /// - `MySql`
+        /// - `RDP`
+        /// - `PostgreSQL`
+        /// - `Redis`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -476,13 +492,14 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? QueueId { get; set; }
 
         /// <summary>
-        /// Modify The DSCP value in the flow. Value range: **0** to **63**. If the value is not modified, the value is - 1.
+        /// Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         /// </summary>
         [Input("remarkingDscp")]
         public Input<int>? RemarkingDscp { get; set; }
 
         /// <summary>
-        /// The description of the QoS rule.  The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
+        /// The description of the QoS rule.
+        /// The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ruleDescription")]
         public Input<string>? RuleDescription { get; set; }
@@ -494,27 +511,30 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// The name of the QoS rule.  The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
+        /// The name of the QoS rule.
+        /// The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv4 CIDR block.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcIPv6Cidr** or **DstIPv6Cidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
         /// </summary>
         [Input("srcCidr")]
         public Input<string>? SrcCidr { get; set; }
 
         /// <summary>
         /// The QoS rule traffic matches the source IPv6 network segment.
-        /// &gt; **NOTE:**  If this parameter is not supported, enter **SrcCidr** or **DstCidr * *.
+        /// 
+        /// &gt; **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
         /// </summary>
         [Input("srcIpv6Cidr")]
         public Input<string>? SrcIpv6Cidr { get; set; }
 
         /// <summary>
-        /// The source port number of the QoS rule traffic matching. The value range is **0** to **65535**. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
+        /// The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         /// </summary>
         [Input("srcPortRange")]
         public Input<string>? SrcPortRange { get; set; }

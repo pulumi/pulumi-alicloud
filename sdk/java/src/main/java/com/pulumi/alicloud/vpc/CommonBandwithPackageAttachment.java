@@ -83,6 +83,7 @@ import javax.annotation.Nullable;
 public class CommonBandwithPackageAttachment extends com.pulumi.resources.CustomResource {
     /**
      * The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      * 
      */
     @Export(name="bandwidthPackageBandwidth", refs={String.class}, tree="[0]")
@@ -90,6 +91,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
 
     /**
      * @return The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
+     * &gt; **NOTE:**  From version 1.261.0, If you want to cancel the maximum bandwidth configuration for the EIP, you can set `bandwidthPackageBandwidth` to `Cancelled`.
      * 
      */
     public Output<String> bandwidthPackageBandwidth() {
@@ -110,14 +112,18 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
         return this.bandwidthPackageId;
     }
     /**
-     * Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `&#34;Cancelled&#34;`.
+     * 
+     * @deprecated
+     * Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = &#34;Cancelled&#34;
      * 
      */
+    @Deprecated /* Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from version 1.261.0. Replace with bandwidthPackageBandwidth = ""Cancelled"" */
     @Export(name="cancelCommonBandwidthPackageIpBandwidth", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cancelCommonBandwidthPackageIpBandwidth;
 
     /**
-     * @return Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
+     * @return . Field `cancelCommonBandwidthPackageIpBandwidth` has been deprecated from provider version 1.261.0. Replace with `bandwidthPackageBandwidth` = `&#34;Cancelled&#34;`.
      * 
      */
     public Output<Optional<Boolean>> cancelCommonBandwidthPackageIpBandwidth() {
@@ -128,7 +134,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * 
      * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
      * 
-     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+     * &gt; **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
@@ -139,7 +145,7 @@ public class CommonBandwithPackageAttachment extends com.pulumi.resources.Custom
      * 
      * You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
      * 
-     * &gt; **NOTE:**   If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
+     * &gt; **NOTE:** If both `EipAddress` and `AllocationId` are specified, you can specify up to 50 EIP IDs for `AllocationId`, and specify up to 50 EIPs for `EipAddress`.
      * 
      */
     public Output<String> instanceId() {

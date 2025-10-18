@@ -60,6 +60,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { GetUserProvisioningEventsArgs, GetUserProvisioningEventsResult, GetUserProvisioningEventsOutputArgs } from "./getUserProvisioningEvents";
+export const getUserProvisioningEvents: typeof import("./getUserProvisioningEvents").getUserProvisioningEvents = null as any;
+export const getUserProvisioningEventsOutput: typeof import("./getUserProvisioningEvents").getUserProvisioningEventsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserProvisioningEvents","getUserProvisioningEventsOutput"], () => require("./getUserProvisioningEvents"));
+
 export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;

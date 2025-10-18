@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Ecs Elasticity Assurance resource.
+ * Provides a ECS Elasticity Assurance resource.
  * 
- * For information about Ecs Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
+ * For information about ECS Elasticity Assurance and how to use it, see [What is Elasticity Assurance](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createelasticityassurance).
  * 
  * &gt; **NOTE:** Available since v1.196.0.
  * 
@@ -37,8 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.ElasticityAssurance;
@@ -56,12 +55,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status("OK")
- *             .build());
- * 
- *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -71,8 +68,8 @@ import javax.annotation.Nullable;
  *         var defaultElasticityAssurance = new ElasticityAssurance("defaultElasticityAssurance", ElasticityAssuranceArgs.builder()
  *             .instanceAmount(1)
  *             .description("before")
- *             .zoneIds(defaultGetZones.zones()[2].id())
- *             .privatePoolOptionsName("test_before")
+ *             .zoneIds(defaultGetInstanceTypes.instanceTypes()[0].availabilityZones()[0])
+ *             .privatePoolOptionsName(name)
  *             .period(1)
  *             .privatePoolOptionsMatchCriteria("Open")
  *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
@@ -88,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ecs Elasticity Assurance can be imported using the id, e.g.
+ * ECS Elasticity Assurance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:ecs/elasticityAssurance:ElasticityAssurance example &lt;id&gt;
@@ -110,6 +107,72 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> assuranceTimes() {
         return this.assuranceTimes;
+    }
+    /**
+     * Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     * 
+     * Default value: `false`.
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
+     * - true
+     * - false
+     * 
+     * Default value: `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     * 
+     * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     * 
+     */
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> autoRenewPeriod;
+
+    /**
+     * @return The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
+     * - Default value when `PeriodUnit` is set to Month: 1.
+     * - Default value when `PeriodUnit` is set to Year: 12.
+     * 
+     * &gt; **NOTE:**  If you set `AutoRenew` to true, you must specify this parameter.
+     * 
+     */
+    public Output<Optional<Integer>> autoRenewPeriod() {
+        return Codegen.optional(this.autoRenewPeriod);
+    }
+    /**
+     * Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     * 
+     * Default value: Year
+     * 
+     */
+    @Export(name="autoRenewPeriodUnit", refs={String.class}, tree="[0]")
+    private Output<String> autoRenewPeriodUnit;
+
+    /**
+     * @return Unit of duration. Value range:
+     * - Month: Month
+     * - Year: Year
+     * 
+     * Default value: Year
+     * 
+     */
+    public Output<String> autoRenewPeriodUnit() {
+        return this.autoRenewPeriodUnit;
     }
     /**
      * Description of flexible guarantee service.
@@ -154,14 +217,14 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return this.endTime;
     }
     /**
-     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      * 
      */
     @Export(name="instanceAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceAmount;
 
     /**
-     * @return The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
+     * @return The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instanceAmount` can be modified.
      * 
      */
     public Output<Integer> instanceAmount() {
@@ -256,18 +319,32 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return this.privatePoolOptionsName;
     }
     /**
+     * (Available since v1.261.0) The region ID of the elasticity assurance.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.261.0) The region ID of the elasticity assurance.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
      * The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
      * @return The ID of the resource group.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * Flexible guarantee service effective time.

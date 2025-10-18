@@ -6,15 +6,22 @@ package com.pulumi.alicloud.resourcemanager;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.resourcemanager.ResourceShareArgs;
 import com.pulumi.alicloud.resourcemanager.inputs.ResourceShareState;
+import com.pulumi.alicloud.resourcemanager.outputs.ResourceShareResource;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Resource Manager Resource Share resource.
+ * 
+ * RS resource sharing.
  * 
  * For information about Resource Manager Resource Share and how to use it, see [What is Resource Share](https://www.alibabacloud.com/help/en/doc-detail/94475.htm).
  * 
@@ -69,6 +76,66 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:resourcemanager/resourceShare:ResourceShare")
 public class ResourceShare extends com.pulumi.resources.CustomResource {
     /**
+     * Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     * 
+     */
+    @Export(name="allowExternalTargets", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowExternalTargets;
+
+    /**
+     * @return Whether to allow sharing to accounts outside the resource directory. Value:
+     * - false (default): Only sharing within the resource directory is allowed.
+     * - true: Allow sharing to any account.
+     * 
+     */
+    public Output<Optional<Boolean>> allowExternalTargets() {
+        return Codegen.optional(this.allowExternalTargets);
+    }
+    /**
+     * The create time of resource share.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The create time of resource share.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     * 
+     */
+    @Export(name="permissionNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> permissionNames;
+
+    /**
+     * @return Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
+     * 
+     */
+    public Output<Optional<List<String>>> permissionNames() {
+        return Codegen.optional(this.permissionNames);
+    }
+    /**
+     * The ID of the resource group
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The name of resource share.
      * 
      */
@@ -83,32 +150,74 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
         return this.resourceShareName;
     }
     /**
-     * The owner of the Resource Share.
+     * The owner of resource share,  `Self` and `OtherAccounts`.
      * 
      */
     @Export(name="resourceShareOwner", refs={String.class}, tree="[0]")
     private Output<String> resourceShareOwner;
 
     /**
-     * @return The owner of the Resource Share.
+     * @return The owner of resource share,  `Self` and `OtherAccounts`.
      * 
      */
     public Output<String> resourceShareOwner() {
         return this.resourceShareOwner;
     }
     /**
-     * The status of the Resource Share.
+     * List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * 
+     */
+    @Export(name="resources", refs={List.class,ResourceShareResource.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ResourceShareResource>> resources;
+
+    /**
+     * @return List of shared resources. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `resources` below.
+     * 
+     */
+    public Output<Optional<List<ResourceShareResource>>> resources() {
+        return Codegen.optional(this.resources);
+    }
+    /**
+     * The status of resource share.  `Active`,`Deleted` and `Deleting`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Resource Share.
+     * @return The status of resource share.  `Active`,`Deleted` and `Deleting`.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * Resource user.
+     * 
+     */
+    @Export(name="targets", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> targets;
+
+    /**
+     * @return Resource user.
+     * 
+     */
+    public Output<Optional<List<String>>> targets() {
+        return Codegen.optional(this.targets);
     }
 
     /**

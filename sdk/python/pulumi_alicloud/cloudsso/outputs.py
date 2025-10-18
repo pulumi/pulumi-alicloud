@@ -32,6 +32,7 @@ __all__ = [
     'GetDirectoriesDirectoryTaskResult',
     'GetGroupsGroupResult',
     'GetScimServerCredentialsCredentialResult',
+    'GetUserProvisioningEventsEventResult',
     'GetUsersUserResult',
     'GetUsersUserMfaDeviceResult',
 ]
@@ -1555,6 +1556,233 @@ class GetScimServerCredentialsCredentialResult(dict):
         The Status of the resource. Valid values: `Disabled`, `Enabled`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetUserProvisioningEventsEventResult(dict):
+    def __init__(__self__, *,
+                 content: _builtins.str,
+                 create_time: _builtins.str,
+                 deletion_strategy: _builtins.str,
+                 directory_id: _builtins.str,
+                 duplication_strategy: _builtins.str,
+                 error_count: _builtins.float,
+                 error_info: _builtins.str,
+                 event_id: _builtins.str,
+                 id: _builtins.str,
+                 last_sync_time: _builtins.str,
+                 principal_id: _builtins.str,
+                 principal_name: _builtins.str,
+                 principal_type: _builtins.str,
+                 source_type: _builtins.str,
+                 target_id: _builtins.str,
+                 target_name: _builtins.str,
+                 target_path: _builtins.str,
+                 target_type: _builtins.str,
+                 update_time: _builtins.str,
+                 user_provisioning_id: _builtins.str):
+        """
+        :param _builtins.str content: Event content
+        :param _builtins.str create_time: The creation time of the resource
+        :param _builtins.str deletion_strategy: Processing policy when you delete a RAM user
+        :param _builtins.str directory_id: Directory ID
+        :param _builtins.str duplication_strategy: Conflict strategy
+        :param _builtins.float error_count: Number of manual retry failures
+        :param _builtins.str error_info: Error message for last failure
+        :param _builtins.str event_id: Dead letter event ID
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str last_sync_time: Last synchronization time
+        :param _builtins.str principal_id: User Provisioning body ID
+        :param _builtins.str principal_name: User Provisioning body name
+        :param _builtins.str principal_type: User Provisioning body type
+        :param _builtins.str source_type: The type of the source action that triggered the event.
+        :param _builtins.str target_id: User Provisioning target ID
+        :param _builtins.str target_name: User Provisioning target name
+        :param _builtins.str target_path: RD path of User Provisioning target
+        :param _builtins.str target_type: User Provisioning target type
+        :param _builtins.str update_time: Event update time
+        :param _builtins.str user_provisioning_id: The ID of the User Provisioning.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_strategy", deletion_strategy)
+        pulumi.set(__self__, "directory_id", directory_id)
+        pulumi.set(__self__, "duplication_strategy", duplication_strategy)
+        pulumi.set(__self__, "error_count", error_count)
+        pulumi.set(__self__, "error_info", error_info)
+        pulumi.set(__self__, "event_id", event_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_sync_time", last_sync_time)
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_name", principal_name)
+        pulumi.set(__self__, "principal_type", principal_type)
+        pulumi.set(__self__, "source_type", source_type)
+        pulumi.set(__self__, "target_id", target_id)
+        pulumi.set(__self__, "target_name", target_name)
+        pulumi.set(__self__, "target_path", target_path)
+        pulumi.set(__self__, "target_type", target_type)
+        pulumi.set(__self__, "update_time", update_time)
+        pulumi.set(__self__, "user_provisioning_id", user_provisioning_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> _builtins.str:
+        """
+        Event content
+        """
+        return pulumi.get(self, "content")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionStrategy")
+    def deletion_strategy(self) -> _builtins.str:
+        """
+        Processing policy when you delete a RAM user
+        """
+        return pulumi.get(self, "deletion_strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="directoryId")
+    def directory_id(self) -> _builtins.str:
+        """
+        Directory ID
+        """
+        return pulumi.get(self, "directory_id")
+
+    @_builtins.property
+    @pulumi.getter(name="duplicationStrategy")
+    def duplication_strategy(self) -> _builtins.str:
+        """
+        Conflict strategy
+        """
+        return pulumi.get(self, "duplication_strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="errorCount")
+    def error_count(self) -> _builtins.float:
+        """
+        Number of manual retry failures
+        """
+        return pulumi.get(self, "error_count")
+
+    @_builtins.property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> _builtins.str:
+        """
+        Error message for last failure
+        """
+        return pulumi.get(self, "error_info")
+
+    @_builtins.property
+    @pulumi.getter(name="eventId")
+    def event_id(self) -> _builtins.str:
+        """
+        Dead letter event ID
+        """
+        return pulumi.get(self, "event_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lastSyncTime")
+    def last_sync_time(self) -> _builtins.str:
+        """
+        Last synchronization time
+        """
+        return pulumi.get(self, "last_sync_time")
+
+    @_builtins.property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> _builtins.str:
+        """
+        User Provisioning body ID
+        """
+        return pulumi.get(self, "principal_id")
+
+    @_builtins.property
+    @pulumi.getter(name="principalName")
+    def principal_name(self) -> _builtins.str:
+        """
+        User Provisioning body name
+        """
+        return pulumi.get(self, "principal_name")
+
+    @_builtins.property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> _builtins.str:
+        """
+        User Provisioning body type
+        """
+        return pulumi.get(self, "principal_type")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceType")
+    def source_type(self) -> _builtins.str:
+        """
+        The type of the source action that triggered the event.
+        """
+        return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter(name="targetId")
+    def target_id(self) -> _builtins.str:
+        """
+        User Provisioning target ID
+        """
+        return pulumi.get(self, "target_id")
+
+    @_builtins.property
+    @pulumi.getter(name="targetName")
+    def target_name(self) -> _builtins.str:
+        """
+        User Provisioning target name
+        """
+        return pulumi.get(self, "target_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetPath")
+    def target_path(self) -> _builtins.str:
+        """
+        RD path of User Provisioning target
+        """
+        return pulumi.get(self, "target_path")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> _builtins.str:
+        """
+        User Provisioning target type
+        """
+        return pulumi.get(self, "target_type")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> _builtins.str:
+        """
+        Event update time
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="userProvisioningId")
+    def user_provisioning_id(self) -> _builtins.str:
+        """
+        The ID of the User Provisioning.
+        """
+        return pulumi.get(self, "user_provisioning_id")
 
 
 @pulumi.output_type

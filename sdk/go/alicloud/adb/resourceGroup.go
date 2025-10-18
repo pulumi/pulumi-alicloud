@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -120,16 +120,38 @@ import (
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
+	// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+	ClusterMode pulumi.StringOutput `pulumi:"clusterMode"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	ClusterSizeResource pulumi.StringOutput `pulumi:"clusterSizeResource"`
+	// (Available since v1.261.0) The endpoint of the resource group.
+	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The time when the resource group was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the DBCluster.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
+	// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+	Engine pulumi.StringOutput `pulumi:"engine"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+	EngineParams pulumi.StringMapOutput `pulumi:"engineParams"`
 	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
 	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
+	// The maximum number of compute clusters that are allowed in the resource group.
+	MaxClusterCount pulumi.IntPtrOutput `pulumi:"maxClusterCount"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+	MaxComputeResource pulumi.StringOutput `pulumi:"maxComputeResource"`
+	// The minimum number of compute clusters that are required in the resource group.
+	MinClusterCount pulumi.IntPtrOutput `pulumi:"minClusterCount"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	MinComputeResource pulumi.StringOutput `pulumi:"minComputeResource"`
 	// The number of nodes.
-	NodeNum pulumi.IntPtrOutput `pulumi:"nodeNum"`
+	NodeNum pulumi.IntOutput `pulumi:"nodeNum"`
+	// (Available since v1.261.0) The port number of the resource group.
+	Port pulumi.StringOutput `pulumi:"port"`
+	// (Available since v1.261.0) The status of the resource group.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The time when the resource group was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The database accounts that are associated with the resource group.
@@ -174,16 +196,38 @@ func GetResourceGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceGroup resources.
 type resourceGroupState struct {
+	// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+	ClusterMode *string `pulumi:"clusterMode"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	ClusterSizeResource *string `pulumi:"clusterSizeResource"`
+	// (Available since v1.261.0) The endpoint of the resource group.
+	ConnectionString *string `pulumi:"connectionString"`
 	// The time when the resource group was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The ID of the DBCluster.
 	DbClusterId *string `pulumi:"dbClusterId"`
+	// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+	Engine *string `pulumi:"engine"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+	EngineParams map[string]string `pulumi:"engineParams"`
 	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName *string `pulumi:"groupName"`
 	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType *string `pulumi:"groupType"`
+	// The maximum number of compute clusters that are allowed in the resource group.
+	MaxClusterCount *int `pulumi:"maxClusterCount"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+	MaxComputeResource *string `pulumi:"maxComputeResource"`
+	// The minimum number of compute clusters that are required in the resource group.
+	MinClusterCount *int `pulumi:"minClusterCount"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	MinComputeResource *string `pulumi:"minComputeResource"`
 	// The number of nodes.
 	NodeNum *int `pulumi:"nodeNum"`
+	// (Available since v1.261.0) The port number of the resource group.
+	Port *string `pulumi:"port"`
+	// (Available since v1.261.0) The status of the resource group.
+	Status *string `pulumi:"status"`
 	// The time when the resource group was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The database accounts that are associated with the resource group.
@@ -193,16 +237,38 @@ type resourceGroupState struct {
 }
 
 type ResourceGroupState struct {
+	// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+	ClusterMode pulumi.StringPtrInput
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	ClusterSizeResource pulumi.StringPtrInput
+	// (Available since v1.261.0) The endpoint of the resource group.
+	ConnectionString pulumi.StringPtrInput
 	// The time when the resource group was created.
 	CreateTime pulumi.StringPtrInput
 	// The ID of the DBCluster.
 	DbClusterId pulumi.StringPtrInput
+	// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+	Engine pulumi.StringPtrInput
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+	EngineParams pulumi.StringMapInput
 	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringPtrInput
 	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringPtrInput
+	// The maximum number of compute clusters that are allowed in the resource group.
+	MaxClusterCount pulumi.IntPtrInput
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+	MaxComputeResource pulumi.StringPtrInput
+	// The minimum number of compute clusters that are required in the resource group.
+	MinClusterCount pulumi.IntPtrInput
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	MinComputeResource pulumi.StringPtrInput
 	// The number of nodes.
 	NodeNum pulumi.IntPtrInput
+	// (Available since v1.261.0) The port number of the resource group.
+	Port pulumi.StringPtrInput
+	// (Available since v1.261.0) The status of the resource group.
+	Status pulumi.StringPtrInput
 	// The time when the resource group was updated.
 	UpdateTime pulumi.StringPtrInput
 	// The database accounts that are associated with the resource group.
@@ -216,12 +282,28 @@ func (ResourceGroupState) ElementType() reflect.Type {
 }
 
 type resourceGroupArgs struct {
+	// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+	ClusterMode *string `pulumi:"clusterMode"`
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	ClusterSizeResource *string `pulumi:"clusterSizeResource"`
 	// The ID of the DBCluster.
 	DbClusterId string `pulumi:"dbClusterId"`
+	// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+	Engine *string `pulumi:"engine"`
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+	EngineParams map[string]string `pulumi:"engineParams"`
 	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName string `pulumi:"groupName"`
 	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType *string `pulumi:"groupType"`
+	// The maximum number of compute clusters that are allowed in the resource group.
+	MaxClusterCount *int `pulumi:"maxClusterCount"`
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+	MaxComputeResource *string `pulumi:"maxComputeResource"`
+	// The minimum number of compute clusters that are required in the resource group.
+	MinClusterCount *int `pulumi:"minClusterCount"`
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	MinComputeResource *string `pulumi:"minComputeResource"`
 	// The number of nodes.
 	NodeNum *int `pulumi:"nodeNum"`
 	// The database accounts with which to associate the resource group.
@@ -230,12 +312,28 @@ type resourceGroupArgs struct {
 
 // The set of arguments for constructing a ResourceGroup resource.
 type ResourceGroupArgs struct {
+	// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+	ClusterMode pulumi.StringPtrInput
+	// The resource specifications of a single compute cluster. Unit: ACU.
+	ClusterSizeResource pulumi.StringPtrInput
 	// The ID of the DBCluster.
 	DbClusterId pulumi.StringInput
+	// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+	Engine pulumi.StringPtrInput
+	// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+	EngineParams pulumi.StringMapInput
 	// The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
 	GroupName pulumi.StringInput
 	// The query execution mode. Default value: `interactive`. Valid values: `interactive`, `batch`.
 	GroupType pulumi.StringPtrInput
+	// The maximum number of compute clusters that are allowed in the resource group.
+	MaxClusterCount pulumi.IntPtrInput
+	// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+	MaxComputeResource pulumi.StringPtrInput
+	// The minimum number of compute clusters that are required in the resource group.
+	MinClusterCount pulumi.IntPtrInput
+	// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+	MinComputeResource pulumi.StringPtrInput
 	// The number of nodes.
 	NodeNum pulumi.IntPtrInput
 	// The database accounts with which to associate the resource group.
@@ -329,6 +427,21 @@ func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The working mode of the resource group. Default value: `Disable`. Valid values: `Disable`, `AutoScale`.
+func (o ResourceGroupOutput) ClusterMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.ClusterMode }).(pulumi.StringOutput)
+}
+
+// The resource specifications of a single compute cluster. Unit: ACU.
+func (o ResourceGroupOutput) ClusterSizeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.ClusterSizeResource }).(pulumi.StringOutput)
+}
+
+// (Available since v1.261.0) The endpoint of the resource group.
+func (o ResourceGroupOutput) ConnectionString() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
+}
+
 // The time when the resource group was created.
 func (o ResourceGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -337,6 +450,16 @@ func (o ResourceGroupOutput) CreateTime() pulumi.StringOutput {
 // The ID of the DBCluster.
 func (o ResourceGroupOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
+}
+
+// The engine of the resource group. Default value: `AnalyticDB`. Valid values: `AnalyticDB`, `SparkWarehouse`.
+func (o ResourceGroupOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The Spark application configuration parameters that can be applied to all Spark jobs executed in the resource group.
+func (o ResourceGroupOutput) EngineParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringMapOutput { return v.EngineParams }).(pulumi.StringMapOutput)
 }
 
 // The name of the resource group. The `groupName` can be up to 255 characters in length and can contain digits, uppercase letters, hyphens (-), and underscores (_). It must start with a digit or uppercase letter.
@@ -349,9 +472,39 @@ func (o ResourceGroupOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.GroupType }).(pulumi.StringOutput)
 }
 
+// The maximum number of compute clusters that are allowed in the resource group.
+func (o ResourceGroupOutput) MaxClusterCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.IntPtrOutput { return v.MaxClusterCount }).(pulumi.IntPtrOutput)
+}
+
+// The maximum amount of reserved computing resources, which refers to the amount of resources that are not allocated in the cluster.
+func (o ResourceGroupOutput) MaxComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.MaxComputeResource }).(pulumi.StringOutput)
+}
+
+// The minimum number of compute clusters that are required in the resource group.
+func (o ResourceGroupOutput) MinClusterCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.IntPtrOutput { return v.MinClusterCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum amount of reserved computing resources. Unit: AnalyticDB compute unit (ACU).
+func (o ResourceGroupOutput) MinComputeResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.MinComputeResource }).(pulumi.StringOutput)
+}
+
 // The number of nodes.
-func (o ResourceGroupOutput) NodeNum() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ResourceGroup) pulumi.IntPtrOutput { return v.NodeNum }).(pulumi.IntPtrOutput)
+func (o ResourceGroupOutput) NodeNum() pulumi.IntOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.IntOutput { return v.NodeNum }).(pulumi.IntOutput)
+}
+
+// (Available since v1.261.0) The port number of the resource group.
+func (o ResourceGroupOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// (Available since v1.261.0) The status of the resource group.
+func (o ResourceGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The time when the resource group was updated.
