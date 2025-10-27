@@ -9,14 +9,6 @@ env:
     ALICLOUD_REGION: "us-west-1"
     ALICLOUD_SECRET_KEY: ${{ secrets.ALICLOUD_SECRET_KEY }}
 makeTemplate: bridged
-plugins:
-    - name: terraform
-      version: "1.2.4"
-      kind: converter
-    - name: std
-      version: "2.2.0"
-    - name: random
-      version: "4.3.1"
 team: ecosystem
 license:
     ignore:
