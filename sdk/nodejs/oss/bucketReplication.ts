@@ -29,8 +29,8 @@ import * as utilities from "../utilities";
  * const bucketSrc = new alicloud.oss.Bucket("bucket_src", {bucket: `example-src-${_default.result}`});
  * const bucketDest = new alicloud.oss.Bucket("bucket_dest", {bucket: `example-dest-${_default.result}`});
  * const role = new alicloud.ram.Role("role", {
- *     name: `example-role-${_default.result}`,
- *     document: `\\t\\t{
+ *     roleName: `example-role-${_default.result}`,
+ *     assumeRolePolicyDocument: `\\t\\t{
  * \\t\\t  \\"Statement\\": [
  * \\t\\t\\t{
  * \\t\\t\\t  \\"Action\\": \\"sts:AssumeRole\\",
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
  *     policyName: policy.policyName,
  *     policyType: policy.type,
- *     roleName: role.name,
+ *     roleName: role.roleName,
  * });
  * const key = new alicloud.kms.Key("key", {
  *     description: "Hello KMS",
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *         bucket: bucketDest.id,
  *         location: bucketDest.location,
  *     },
- *     syncRole: role.name,
+ *     syncRole: role.roleName,
  *     encryptionConfiguration: {
  *         replicaKmsKeyId: key.id,
  *     },
@@ -169,6 +169,10 @@ export class BucketReplication extends pulumi.CustomResource {
      */
     declare public readonly progress: pulumi.Output<outputs.oss.BucketReplicationProgress>;
     /**
+     * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     */
+    declare public readonly rtc: pulumi.Output<outputs.oss.BucketReplicationRtc>;
+    /**
      * The ID of the data replication rule.
      */
     declare public /*out*/ readonly ruleId: pulumi.Output<string>;
@@ -205,6 +209,7 @@ export class BucketReplication extends pulumi.CustomResource {
             resourceInputs["historicalObjectReplication"] = state?.historicalObjectReplication;
             resourceInputs["prefixSet"] = state?.prefixSet;
             resourceInputs["progress"] = state?.progress;
+            resourceInputs["rtc"] = state?.rtc;
             resourceInputs["ruleId"] = state?.ruleId;
             resourceInputs["sourceSelectionCriteria"] = state?.sourceSelectionCriteria;
             resourceInputs["status"] = state?.status;
@@ -224,6 +229,7 @@ export class BucketReplication extends pulumi.CustomResource {
             resourceInputs["historicalObjectReplication"] = args?.historicalObjectReplication;
             resourceInputs["prefixSet"] = args?.prefixSet;
             resourceInputs["progress"] = args?.progress;
+            resourceInputs["rtc"] = args?.rtc;
             resourceInputs["sourceSelectionCriteria"] = args?.sourceSelectionCriteria;
             resourceInputs["syncRole"] = args?.syncRole;
             resourceInputs["ruleId"] = undefined /*out*/;
@@ -266,6 +272,10 @@ export interface BucketReplicationState {
      * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
     progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
+    /**
+     * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     */
+    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc>;
     /**
      * The ID of the data replication rule.
      */
@@ -316,6 +326,10 @@ export interface BucketReplicationArgs {
      * Specifies the progress for querying the progress of a data replication task of a bucket.
      */
     progress?: pulumi.Input<inputs.oss.BucketReplicationProgress>;
+    /**
+     * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     */
+    rtc?: pulumi.Input<inputs.oss.BucketReplicationRtc>;
     /**
      * Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
      */

@@ -19,14 +19,14 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
     public static final NetworkAclEntriesState Empty = new NetworkAclEntriesState();
 
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      * 
      */
     @Import(name="egresses")
     private @Nullable Output<List<NetworkAclEntriesEgressArgs>> egresses;
 
     /**
-     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      * 
      */
     public Optional<Output<List<NetworkAclEntriesEgressArgs>>> egresses() {
@@ -34,14 +34,14 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      * 
      */
     @Import(name="ingresses")
     private @Nullable Output<List<NetworkAclEntriesIngressArgs>> ingresses;
 
     /**
-     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      * 
      */
     public Optional<Output<List<NetworkAclEntriesIngressArgs>>> ingresses() {
@@ -90,7 +90,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+         * @param egresses List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class NetworkAclEntriesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+         * @param ingresses List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
          * 
          * @return builder
          * 

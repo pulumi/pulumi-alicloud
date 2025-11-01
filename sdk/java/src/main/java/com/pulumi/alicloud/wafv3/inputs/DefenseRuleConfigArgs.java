@@ -5,7 +5,9 @@ package com.pulumi.alicloud.wafv3.inputs;
 
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigAccountIdentifierArgs;
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigConditionArgs;
+import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigGrayConfigArgs;
 import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigRateLimitArgs;
+import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigTimeConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -238,6 +240,40 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+     * 
+     */
+    @Import(name="grayConfig")
+    private @Nullable Output<DefenseRuleConfigGrayConfigArgs> grayConfig;
+
+    /**
+     * @return The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+     * 
+     */
+    public Optional<Output<DefenseRuleConfigGrayConfigArgs>> grayConfig() {
+        return Optional.ofNullable(this.grayConfig);
+    }
+
+    /**
+     * Specifies whether to enable canary release for the rule. Valid values:
+     * - 0 (default): disables canary release.
+     * - 1: enables canary release.
+     * 
+     */
+    @Import(name="grayStatus")
+    private @Nullable Output<Integer> grayStatus;
+
+    /**
+     * @return Specifies whether to enable canary release for the rule. Valid values:
+     * - 0 (default): disables canary release.
+     * - 1: enables canary release.
+     * 
+     */
+    public Optional<Output<Integer>> grayStatus() {
+        return Optional.ofNullable(this.grayStatus);
+    }
+
+    /**
      * The HTTP flood protection mode. Valid values:
      * - 0 (default): indicates normal protection.
      * - 1: indicates emergency protection.
@@ -371,6 +407,21 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+     * 
+     */
+    @Import(name="timeConfig")
+    private @Nullable Output<DefenseRuleConfigTimeConfigArgs> timeConfig;
+
+    /**
+     * @return The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+     * 
+     */
+    public Optional<Output<DefenseRuleConfigTimeConfigArgs>> timeConfig() {
+        return Optional.ofNullable(this.timeConfig);
+    }
+
+    /**
      * The User-Agent string that is allowed for access to the address.
      * 
      */
@@ -412,6 +463,8 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         this.ccStatus = $.ccStatus;
         this.cnRegions = $.cnRegions;
         this.conditions = $.conditions;
+        this.grayConfig = $.grayConfig;
+        this.grayStatus = $.grayStatus;
         this.mode = $.mode;
         this.protocol = $.protocol;
         this.rateLimit = $.rateLimit;
@@ -419,6 +472,7 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         this.ruleAction = $.ruleAction;
         this.throttleThrehold = $.throttleThrehold;
         this.throttleType = $.throttleType;
+        this.timeConfig = $.timeConfig;
         this.ua = $.ua;
         this.url = $.url;
     }
@@ -800,6 +854,52 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param grayConfig The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grayConfig(@Nullable Output<DefenseRuleConfigGrayConfigArgs> grayConfig) {
+            $.grayConfig = grayConfig;
+            return this;
+        }
+
+        /**
+         * @param grayConfig The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grayConfig(DefenseRuleConfigGrayConfigArgs grayConfig) {
+            return grayConfig(Output.of(grayConfig));
+        }
+
+        /**
+         * @param grayStatus Specifies whether to enable canary release for the rule. Valid values:
+         * - 0 (default): disables canary release.
+         * - 1: enables canary release.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grayStatus(@Nullable Output<Integer> grayStatus) {
+            $.grayStatus = grayStatus;
+            return this;
+        }
+
+        /**
+         * @param grayStatus Specifies whether to enable canary release for the rule. Valid values:
+         * - 0 (default): disables canary release.
+         * - 1: enables canary release.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grayStatus(Integer grayStatus) {
+            return grayStatus(Output.of(grayStatus));
+        }
+
+        /**
          * @param mode The HTTP flood protection mode. Valid values:
          * - 0 (default): indicates normal protection.
          * - 1: indicates emergency protection.
@@ -982,6 +1082,27 @@ public final class DefenseRuleConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder throttleType(String throttleType) {
             return throttleType(Output.of(throttleType));
+        }
+
+        /**
+         * @param timeConfig The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeConfig(@Nullable Output<DefenseRuleConfigTimeConfigArgs> timeConfig) {
+            $.timeConfig = timeConfig;
+            return this;
+        }
+
+        /**
+         * @param timeConfig The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeConfig(DefenseRuleConfigTimeConfigArgs timeConfig) {
+            return timeConfig(Output.of(timeConfig));
         }
 
         /**

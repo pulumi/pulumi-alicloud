@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
         /// </summary>
         [Output("routeTables")]
         public Output<ImmutableArray<string>> RouteTables { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _routeTables;
 
         /// <summary>
-        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
         /// </summary>
         public InputList<string> RouteTables
         {
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _routeTables;
 
         /// <summary>
-        /// The ID list of the route table associated with the VPC gateway endpoint.
+        /// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
         /// </summary>
         public InputList<string> RouteTables
         {

@@ -43,8 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ParameterGroup{}
 	case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
 		r = &PrimaryEndpoint{}
+	case "alicloud:polardb/zonalAccount:ZonalAccount":
+		r = &ZonalAccount{}
 	case "alicloud:polardb/zonalDbCluster:ZonalDbCluster":
 		r = &ZonalDbCluster{}
+	case "alicloud:polardb/zonalEndpoint:ZonalEndpoint":
+		r = &ZonalEndpoint{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -115,7 +119,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"polardb/zonalAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"polardb/zonalDbCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/zonalEndpoint",
 		&module{version},
 	)
 }

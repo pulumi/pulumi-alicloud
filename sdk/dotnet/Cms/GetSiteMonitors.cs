@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Cms
         ///         Address = "http://www.alibabacloud.com",
         ///         TaskName = $"terraform-example-{defaultInteger.Result}",
         ///         TaskType = "HTTP",
-        ///         Interval = 5,
+        ///         Interval = "5",
         ///         IspCities = new[]
         ///         {
         ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Cms
         ///         Address = "http://www.alibabacloud.com",
         ///         TaskName = $"terraform-example-{defaultInteger.Result}",
         ///         TaskType = "HTTP",
-        ///         Interval = 5,
+        ///         Interval = "5",
         ///         IspCities = new[]
         ///         {
         ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Cms
         ///         Address = "http://www.alibabacloud.com",
         ///         TaskName = $"terraform-example-{defaultInteger.Result}",
         ///         TaskType = "HTTP",
-        ///         Interval = 5,
+        ///         Interval = "5",
         ///         IspCities = new[]
         ///         {
         ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs

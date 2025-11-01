@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+// Provides a OSS Bucket Logging resource.
 //
-// For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+// After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+//
+// For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
 //
 // > **NOTE:** Available since v1.222.0.
 //
@@ -27,10 +29,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -43,24 +42,25 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
+//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
+//				StorageClass: pulumi.String("Standard"),
+//				Bucket:       pulumi.String("resource-example-logging-806"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
+//			_, err = oss.NewBucket(ctx, "CreateLoggingBucket", &oss.BucketArgs{
 //				StorageClass: pulumi.String("Standard"),
-//				Bucket:       pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Bucket:       pulumi.String("resource-example-logging-153"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucketLogging(ctx, "default", &oss.BucketLoggingArgs{
-//				Bucket:       createBucket.Bucket,
-//				TargetBucket: createBucket.Bucket,
+//				Bucket:       createBucket.ID(),
+//				TargetBucket: createBucket.ID(),
 //				TargetPrefix: pulumi.String("log/"),
+//				LoggingRole:  pulumi.String("example-role"),
 //			})
 //			if err != nil {
 //				return err
@@ -81,8 +81,10 @@ import (
 type BucketLogging struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// Authorization role used for bucket logging
+	LoggingRole pulumi.StringPtrOutput `pulumi:"loggingRole"`
 	// The bucket that stores access logs.
 	TargetBucket pulumi.StringOutput `pulumi:"targetBucket"`
 	// The prefix of the saved log objects. This element can be left empty.
@@ -125,8 +127,10 @@ func GetBucketLogging(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketLogging resources.
 type bucketLoggingState struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket *string `pulumi:"bucket"`
+	// Authorization role used for bucket logging
+	LoggingRole *string `pulumi:"loggingRole"`
 	// The bucket that stores access logs.
 	TargetBucket *string `pulumi:"targetBucket"`
 	// The prefix of the saved log objects. This element can be left empty.
@@ -134,8 +138,10 @@ type bucketLoggingState struct {
 }
 
 type BucketLoggingState struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringPtrInput
+	// Authorization role used for bucket logging
+	LoggingRole pulumi.StringPtrInput
 	// The bucket that stores access logs.
 	TargetBucket pulumi.StringPtrInput
 	// The prefix of the saved log objects. This element can be left empty.
@@ -147,8 +153,10 @@ func (BucketLoggingState) ElementType() reflect.Type {
 }
 
 type bucketLoggingArgs struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket string `pulumi:"bucket"`
+	// Authorization role used for bucket logging
+	LoggingRole *string `pulumi:"loggingRole"`
 	// The bucket that stores access logs.
 	TargetBucket string `pulumi:"targetBucket"`
 	// The prefix of the saved log objects. This element can be left empty.
@@ -157,8 +165,10 @@ type bucketLoggingArgs struct {
 
 // The set of arguments for constructing a BucketLogging resource.
 type BucketLoggingArgs struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringInput
+	// Authorization role used for bucket logging
+	LoggingRole pulumi.StringPtrInput
 	// The bucket that stores access logs.
 	TargetBucket pulumi.StringInput
 	// The prefix of the saved log objects. This element can be left empty.
@@ -252,9 +262,14 @@ func (o BucketLoggingOutput) ToBucketLoggingOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the bucket.
+// The name of the bucket
 func (o BucketLoggingOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketLogging) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Authorization role used for bucket logging
+func (o BucketLoggingOutput) LoggingRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLogging) pulumi.StringPtrOutput { return v.LoggingRole }).(pulumi.StringPtrOutput)
 }
 
 // The bucket that stores access logs.

@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Ens Load Balancer resource.
+// Provides a ENS Load Balancer resource.
+//
+// Load balancing.
 //
 // For information about ENS Load Balancer and how to use it, see [What is Load Balancer](https://www.alibabacloud.com/help/en/ens/developer-reference/api-createloadbalancer).
 //
@@ -78,7 +80,7 @@ import (
 //
 // ## Import
 //
-// Ens Load Balancer can be imported using the id, e.g.
+// ENS Load Balancer can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:ens/loadBalancer:LoadBalancer example <id>

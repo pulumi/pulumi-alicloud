@@ -95,14 +95,14 @@ public final class GatewayEndpointState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID list of the route table associated with the VPC gateway endpoint.
+     * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      * 
      */
     @Import(name="routeTables")
     private @Nullable Output<List<String>> routeTables;
 
     /**
-     * @return The ID list of the route table associated with the VPC gateway endpoint.
+     * @return The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      * 
      */
     public Optional<Output<List<String>>> routeTables() {
@@ -310,7 +310,7 @@ public final class GatewayEndpointState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class GatewayEndpointState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class GatewayEndpointState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint.
+         * @param routeTables The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
          * 
          * @return builder
          * 

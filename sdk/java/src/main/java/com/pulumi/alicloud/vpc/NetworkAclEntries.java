@@ -20,11 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a network acl entries resource to create ingress and egress entries.
  * 
- * &gt; **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+ * &gt; **NOTE:** Available in 1.45.0+.
  * 
  * &gt; **NOTE:** It doesn&#39;t support concurrency and the order of the ingress and egress entries determines the priority.
- * 
- * &gt; **NOTE:** Using this resource need to open a whitelist.
  * 
  * &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
  * 
@@ -129,28 +127,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/networkAclEntries:NetworkAclEntries")
 public class NetworkAclEntries extends com.pulumi.resources.CustomResource {
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      * 
      */
     @Export(name="egresses", refs={List.class,NetworkAclEntriesEgress.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkAclEntriesEgress>> egresses;
 
     /**
-     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      * 
      */
     public Output<Optional<List<NetworkAclEntriesEgress>>> egresses() {
         return Codegen.optional(this.egresses);
     }
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      * 
      */
     @Export(name="ingresses", refs={List.class,NetworkAclEntriesIngress.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkAclEntriesIngress>> ingresses;
 
     /**
-     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      * 
      */
     public Output<Optional<List<NetworkAclEntriesIngress>>> ingresses() {

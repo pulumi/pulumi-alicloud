@@ -119,6 +119,1833 @@ func (o AutoGroupingRuleRuleContentArrayOutput) Index(i pulumi.IntInput) AutoGro
 	}).(AutoGroupingRuleRuleContentOutput)
 }
 
+type DeliveryChannelDeliveryChannelFilter struct {
+	// An array of effective resource types for the delivery channel.
+	// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+	// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+	ResourceTypes []string `pulumi:"resourceTypes"`
+}
+
+// DeliveryChannelDeliveryChannelFilterInput is an input type that accepts DeliveryChannelDeliveryChannelFilterArgs and DeliveryChannelDeliveryChannelFilterOutput values.
+// You can construct a concrete instance of `DeliveryChannelDeliveryChannelFilterInput` via:
+//
+//	DeliveryChannelDeliveryChannelFilterArgs{...}
+type DeliveryChannelDeliveryChannelFilterInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelDeliveryChannelFilterOutput() DeliveryChannelDeliveryChannelFilterOutput
+	ToDeliveryChannelDeliveryChannelFilterOutputWithContext(context.Context) DeliveryChannelDeliveryChannelFilterOutput
+}
+
+type DeliveryChannelDeliveryChannelFilterArgs struct {
+	// An array of effective resource types for the delivery channel.
+	// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+	// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+}
+
+func (DeliveryChannelDeliveryChannelFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (i DeliveryChannelDeliveryChannelFilterArgs) ToDeliveryChannelDeliveryChannelFilterOutput() DeliveryChannelDeliveryChannelFilterOutput {
+	return i.ToDeliveryChannelDeliveryChannelFilterOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelDeliveryChannelFilterArgs) ToDeliveryChannelDeliveryChannelFilterOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelDeliveryChannelFilterOutput)
+}
+
+func (i DeliveryChannelDeliveryChannelFilterArgs) ToDeliveryChannelDeliveryChannelFilterPtrOutput() DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return i.ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelDeliveryChannelFilterArgs) ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelDeliveryChannelFilterOutput).ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx)
+}
+
+// DeliveryChannelDeliveryChannelFilterPtrInput is an input type that accepts DeliveryChannelDeliveryChannelFilterArgs, DeliveryChannelDeliveryChannelFilterPtr and DeliveryChannelDeliveryChannelFilterPtrOutput values.
+// You can construct a concrete instance of `DeliveryChannelDeliveryChannelFilterPtrInput` via:
+//
+//	        DeliveryChannelDeliveryChannelFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryChannelDeliveryChannelFilterPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelDeliveryChannelFilterPtrOutput() DeliveryChannelDeliveryChannelFilterPtrOutput
+	ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Context) DeliveryChannelDeliveryChannelFilterPtrOutput
+}
+
+type deliveryChannelDeliveryChannelFilterPtrType DeliveryChannelDeliveryChannelFilterArgs
+
+func DeliveryChannelDeliveryChannelFilterPtr(v *DeliveryChannelDeliveryChannelFilterArgs) DeliveryChannelDeliveryChannelFilterPtrInput {
+	return (*deliveryChannelDeliveryChannelFilterPtrType)(v)
+}
+
+func (*deliveryChannelDeliveryChannelFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (i *deliveryChannelDeliveryChannelFilterPtrType) ToDeliveryChannelDeliveryChannelFilterPtrOutput() DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return i.ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryChannelDeliveryChannelFilterPtrType) ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelDeliveryChannelFilterPtrOutput)
+}
+
+type DeliveryChannelDeliveryChannelFilterOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelDeliveryChannelFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (o DeliveryChannelDeliveryChannelFilterOutput) ToDeliveryChannelDeliveryChannelFilterOutput() DeliveryChannelDeliveryChannelFilterOutput {
+	return o
+}
+
+func (o DeliveryChannelDeliveryChannelFilterOutput) ToDeliveryChannelDeliveryChannelFilterOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterOutput {
+	return o
+}
+
+func (o DeliveryChannelDeliveryChannelFilterOutput) ToDeliveryChannelDeliveryChannelFilterPtrOutput() DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o.ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryChannelDeliveryChannelFilterOutput) ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannelDeliveryChannelFilter) *DeliveryChannelDeliveryChannelFilter {
+		return &v
+	}).(DeliveryChannelDeliveryChannelFilterPtrOutput)
+}
+
+// An array of effective resource types for the delivery channel.
+// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+func (o DeliveryChannelDeliveryChannelFilterOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryChannelDeliveryChannelFilter) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+type DeliveryChannelDeliveryChannelFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelDeliveryChannelFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (o DeliveryChannelDeliveryChannelFilterPtrOutput) ToDeliveryChannelDeliveryChannelFilterPtrOutput() DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelDeliveryChannelFilterPtrOutput) ToDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) DeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelDeliveryChannelFilterPtrOutput) Elem() DeliveryChannelDeliveryChannelFilterOutput {
+	return o.ApplyT(func(v *DeliveryChannelDeliveryChannelFilter) DeliveryChannelDeliveryChannelFilter {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryChannelDeliveryChannelFilter
+		return ret
+	}).(DeliveryChannelDeliveryChannelFilterOutput)
+}
+
+// An array of effective resource types for the delivery channel.
+// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+func (o DeliveryChannelDeliveryChannelFilterPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryChannelDeliveryChannelFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryChannelResourceChangeDelivery struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	// - true
+	// - false
+	Enabled *bool `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties *DeliveryChannelResourceChangeDeliverySlsProperties `pulumi:"slsProperties"`
+	// The ARN of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn *string `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - SLS
+	TargetType *string `pulumi:"targetType"`
+}
+
+// DeliveryChannelResourceChangeDeliveryInput is an input type that accepts DeliveryChannelResourceChangeDeliveryArgs and DeliveryChannelResourceChangeDeliveryOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceChangeDeliveryInput` via:
+//
+//	DeliveryChannelResourceChangeDeliveryArgs{...}
+type DeliveryChannelResourceChangeDeliveryInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceChangeDeliveryOutput() DeliveryChannelResourceChangeDeliveryOutput
+	ToDeliveryChannelResourceChangeDeliveryOutputWithContext(context.Context) DeliveryChannelResourceChangeDeliveryOutput
+}
+
+type DeliveryChannelResourceChangeDeliveryArgs struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	// - true
+	// - false
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput `pulumi:"slsProperties"`
+	// The ARN of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn pulumi.StringPtrInput `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - SLS
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (DeliveryChannelResourceChangeDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (i DeliveryChannelResourceChangeDeliveryArgs) ToDeliveryChannelResourceChangeDeliveryOutput() DeliveryChannelResourceChangeDeliveryOutput {
+	return i.ToDeliveryChannelResourceChangeDeliveryOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceChangeDeliveryArgs) ToDeliveryChannelResourceChangeDeliveryOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliveryOutput)
+}
+
+func (i DeliveryChannelResourceChangeDeliveryArgs) ToDeliveryChannelResourceChangeDeliveryPtrOutput() DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return i.ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceChangeDeliveryArgs) ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliveryOutput).ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx)
+}
+
+// DeliveryChannelResourceChangeDeliveryPtrInput is an input type that accepts DeliveryChannelResourceChangeDeliveryArgs, DeliveryChannelResourceChangeDeliveryPtr and DeliveryChannelResourceChangeDeliveryPtrOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceChangeDeliveryPtrInput` via:
+//
+//	        DeliveryChannelResourceChangeDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryChannelResourceChangeDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceChangeDeliveryPtrOutput() DeliveryChannelResourceChangeDeliveryPtrOutput
+	ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Context) DeliveryChannelResourceChangeDeliveryPtrOutput
+}
+
+type deliveryChannelResourceChangeDeliveryPtrType DeliveryChannelResourceChangeDeliveryArgs
+
+func DeliveryChannelResourceChangeDeliveryPtr(v *DeliveryChannelResourceChangeDeliveryArgs) DeliveryChannelResourceChangeDeliveryPtrInput {
+	return (*deliveryChannelResourceChangeDeliveryPtrType)(v)
+}
+
+func (*deliveryChannelResourceChangeDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (i *deliveryChannelResourceChangeDeliveryPtrType) ToDeliveryChannelResourceChangeDeliveryPtrOutput() DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return i.ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryChannelResourceChangeDeliveryPtrType) ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliveryPtrOutput)
+}
+
+type DeliveryChannelResourceChangeDeliveryOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceChangeDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceChangeDeliveryOutput) ToDeliveryChannelResourceChangeDeliveryOutput() DeliveryChannelResourceChangeDeliveryOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliveryOutput) ToDeliveryChannelResourceChangeDeliveryOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliveryOutput) ToDeliveryChannelResourceChangeDeliveryPtrOutput() DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o.ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryChannelResourceChangeDeliveryOutput) ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannelResourceChangeDelivery) *DeliveryChannelResourceChangeDelivery {
+		return &v
+	}).(DeliveryChannelResourceChangeDeliveryPtrOutput)
+}
+
+// Specifies whether to enable delivery of resource configuration change events. Valid values:
+// - true
+// - false
+func (o DeliveryChannelResourceChangeDeliveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceChangeDelivery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o DeliveryChannelResourceChangeDeliveryOutput) SlsProperties() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceChangeDelivery) *DeliveryChannelResourceChangeDeliverySlsProperties {
+		return v.SlsProperties
+	}).(DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+// The ARN of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o DeliveryChannelResourceChangeDeliveryOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceChangeDelivery) *string { return v.TargetArn }).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - SLS
+func (o DeliveryChannelResourceChangeDeliveryOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceChangeDelivery) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceChangeDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceChangeDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) ToDeliveryChannelResourceChangeDeliveryPtrOutput() DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) ToDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) Elem() DeliveryChannelResourceChangeDeliveryOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDelivery) DeliveryChannelResourceChangeDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryChannelResourceChangeDelivery
+		return ret
+	}).(DeliveryChannelResourceChangeDeliveryOutput)
+}
+
+// Specifies whether to enable delivery of resource configuration change events. Valid values:
+// - true
+// - false
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) SlsProperties() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDelivery) *DeliveryChannelResourceChangeDeliverySlsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProperties
+	}).(DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+// The ARN of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - SLS
+func (o DeliveryChannelResourceChangeDeliveryPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `pulumi:"oversizedDataOssTargetArn"`
+}
+
+// DeliveryChannelResourceChangeDeliverySlsPropertiesInput is an input type that accepts DeliveryChannelResourceChangeDeliverySlsPropertiesArgs and DeliveryChannelResourceChangeDeliverySlsPropertiesOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceChangeDeliverySlsPropertiesInput` via:
+//
+//	DeliveryChannelResourceChangeDeliverySlsPropertiesArgs{...}
+type DeliveryChannelResourceChangeDeliverySlsPropertiesInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesOutput
+	ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesOutput
+}
+
+type DeliveryChannelResourceChangeDeliverySlsPropertiesArgs struct {
+	OversizedDataOssTargetArn pulumi.StringPtrInput `pulumi:"oversizedDataOssTargetArn"`
+}
+
+func (DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return i.ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliverySlsPropertiesOutput)
+}
+
+func (i DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return i.ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliverySlsPropertiesOutput).ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx)
+}
+
+// DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput is an input type that accepts DeliveryChannelResourceChangeDeliverySlsPropertiesArgs, DeliveryChannelResourceChangeDeliverySlsPropertiesPtr and DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput` via:
+//
+//	        DeliveryChannelResourceChangeDeliverySlsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput
+	ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput
+}
+
+type deliveryChannelResourceChangeDeliverySlsPropertiesPtrType DeliveryChannelResourceChangeDeliverySlsPropertiesArgs
+
+func DeliveryChannelResourceChangeDeliverySlsPropertiesPtr(v *DeliveryChannelResourceChangeDeliverySlsPropertiesArgs) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput {
+	return (*deliveryChannelResourceChangeDeliverySlsPropertiesPtrType)(v)
+}
+
+func (*deliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i *deliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return i.ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+type DeliveryChannelResourceChangeDeliverySlsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannelResourceChangeDeliverySlsProperties) *DeliveryChannelResourceChangeDeliverySlsProperties {
+		return &v
+	}).(DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceChangeDeliverySlsProperties) *string { return v.OversizedDataOssTargetArn }).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ToDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) Elem() DeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDeliverySlsProperties) DeliveryChannelResourceChangeDeliverySlsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryChannelResourceChangeDeliverySlsProperties
+		return ret
+	}).(DeliveryChannelResourceChangeDeliverySlsPropertiesOutput)
+}
+
+func (o DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceChangeDeliverySlsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDelivery struct {
+	// The custom expression.
+	CustomExpression *string `pulumi:"customExpression"`
+	// The delivery time.
+	DeliveryTime *string `pulumi:"deliveryTime"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	// - true
+	// - false
+	Enabled *bool `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties *DeliveryChannelResourceSnapshotDeliverySlsProperties `pulumi:"slsProperties"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn *string `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - `OSS` for standard delivery
+	// - `OSS` or `SLS` for custom delivery
+	TargetType *string `pulumi:"targetType"`
+}
+
+// DeliveryChannelResourceSnapshotDeliveryInput is an input type that accepts DeliveryChannelResourceSnapshotDeliveryArgs and DeliveryChannelResourceSnapshotDeliveryOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceSnapshotDeliveryInput` via:
+//
+//	DeliveryChannelResourceSnapshotDeliveryArgs{...}
+type DeliveryChannelResourceSnapshotDeliveryInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceSnapshotDeliveryOutput() DeliveryChannelResourceSnapshotDeliveryOutput
+	ToDeliveryChannelResourceSnapshotDeliveryOutputWithContext(context.Context) DeliveryChannelResourceSnapshotDeliveryOutput
+}
+
+type DeliveryChannelResourceSnapshotDeliveryArgs struct {
+	// The custom expression.
+	CustomExpression pulumi.StringPtrInput `pulumi:"customExpression"`
+	// The delivery time.
+	DeliveryTime pulumi.StringPtrInput `pulumi:"deliveryTime"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	// - true
+	// - false
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput `pulumi:"slsProperties"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn pulumi.StringPtrInput `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - `OSS` for standard delivery
+	// - `OSS` or `SLS` for custom delivery
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (DeliveryChannelResourceSnapshotDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (i DeliveryChannelResourceSnapshotDeliveryArgs) ToDeliveryChannelResourceSnapshotDeliveryOutput() DeliveryChannelResourceSnapshotDeliveryOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliveryOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceSnapshotDeliveryArgs) ToDeliveryChannelResourceSnapshotDeliveryOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliveryOutput)
+}
+
+func (i DeliveryChannelResourceSnapshotDeliveryArgs) ToDeliveryChannelResourceSnapshotDeliveryPtrOutput() DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceSnapshotDeliveryArgs) ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliveryOutput).ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx)
+}
+
+// DeliveryChannelResourceSnapshotDeliveryPtrInput is an input type that accepts DeliveryChannelResourceSnapshotDeliveryArgs, DeliveryChannelResourceSnapshotDeliveryPtr and DeliveryChannelResourceSnapshotDeliveryPtrOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceSnapshotDeliveryPtrInput` via:
+//
+//	        DeliveryChannelResourceSnapshotDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryChannelResourceSnapshotDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceSnapshotDeliveryPtrOutput() DeliveryChannelResourceSnapshotDeliveryPtrOutput
+	ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Context) DeliveryChannelResourceSnapshotDeliveryPtrOutput
+}
+
+type deliveryChannelResourceSnapshotDeliveryPtrType DeliveryChannelResourceSnapshotDeliveryArgs
+
+func DeliveryChannelResourceSnapshotDeliveryPtr(v *DeliveryChannelResourceSnapshotDeliveryArgs) DeliveryChannelResourceSnapshotDeliveryPtrInput {
+	return (*deliveryChannelResourceSnapshotDeliveryPtrType)(v)
+}
+
+func (*deliveryChannelResourceSnapshotDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (i *deliveryChannelResourceSnapshotDeliveryPtrType) ToDeliveryChannelResourceSnapshotDeliveryPtrOutput() DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryChannelResourceSnapshotDeliveryPtrType) ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliveryPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDeliveryOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceSnapshotDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) ToDeliveryChannelResourceSnapshotDeliveryOutput() DeliveryChannelResourceSnapshotDeliveryOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) ToDeliveryChannelResourceSnapshotDeliveryOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) ToDeliveryChannelResourceSnapshotDeliveryPtrOutput() DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o.ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannelResourceSnapshotDelivery) *DeliveryChannelResourceSnapshotDelivery {
+		return &v
+	}).(DeliveryChannelResourceSnapshotDeliveryPtrOutput)
+}
+
+// The custom expression.
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) CustomExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *string { return v.CustomExpression }).(pulumi.StringPtrOutput)
+}
+
+// The delivery time.
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) DeliveryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *string { return v.DeliveryTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+// - true
+// - false
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) SlsProperties() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *DeliveryChannelResourceSnapshotDeliverySlsProperties {
+		return v.SlsProperties
+	}).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *string { return v.TargetArn }).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - `OSS` for standard delivery
+// - `OSS` or `SLS` for custom delivery
+func (o DeliveryChannelResourceSnapshotDeliveryOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDelivery) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceSnapshotDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) ToDeliveryChannelResourceSnapshotDeliveryPtrOutput() DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) ToDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) Elem() DeliveryChannelResourceSnapshotDeliveryOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) DeliveryChannelResourceSnapshotDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryChannelResourceSnapshotDelivery
+		return ret
+	}).(DeliveryChannelResourceSnapshotDeliveryOutput)
+}
+
+// The custom expression.
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) CustomExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The delivery time.
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) DeliveryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+// - true
+// - false
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) SlsProperties() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *DeliveryChannelResourceSnapshotDeliverySlsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProperties
+	}).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - `OSS` for standard delivery
+// - `OSS` or `SLS` for custom delivery
+func (o DeliveryChannelResourceSnapshotDeliveryPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `pulumi:"oversizedDataOssTargetArn"`
+}
+
+// DeliveryChannelResourceSnapshotDeliverySlsPropertiesInput is an input type that accepts DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs and DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceSnapshotDeliverySlsPropertiesInput` via:
+//
+//	DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{...}
+type DeliveryChannelResourceSnapshotDeliverySlsPropertiesInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput
+	ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput
+}
+
+type DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs struct {
+	OversizedDataOssTargetArn pulumi.StringPtrInput `pulumi:"oversizedDataOssTargetArn"`
+}
+
+func (DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput)
+}
+
+func (i DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput).ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx)
+}
+
+// DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput is an input type that accepts DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs, DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtr and DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput values.
+// You can construct a concrete instance of `DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput` via:
+//
+//	        DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput
+	ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput
+}
+
+type deliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs
+
+func DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtr(v *DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput {
+	return (*deliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType)(v)
+}
+
+func (*deliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i *deliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return i.ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryChannelResourceSnapshotDeliverySlsProperties) *DeliveryChannelResourceSnapshotDeliverySlsProperties {
+		return &v
+	}).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryChannelResourceSnapshotDeliverySlsProperties) *string {
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ToDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) Elem() DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDeliverySlsProperties) DeliveryChannelResourceSnapshotDeliverySlsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryChannelResourceSnapshotDeliverySlsProperties
+		return ret
+	}).(DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput)
+}
+
+func (o DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryChannelResourceSnapshotDeliverySlsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelDeliveryChannelFilter struct {
+	// The account scopes of the delivery channel.
+	AccountScopes []string `pulumi:"accountScopes"`
+	// An array of effective resource types for the delivery channel.
+	// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+	// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+	ResourceTypes []string `pulumi:"resourceTypes"`
+}
+
+// MultiAccountDeliveryChannelDeliveryChannelFilterInput is an input type that accepts MultiAccountDeliveryChannelDeliveryChannelFilterArgs and MultiAccountDeliveryChannelDeliveryChannelFilterOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelDeliveryChannelFilterInput` via:
+//
+//	MultiAccountDeliveryChannelDeliveryChannelFilterArgs{...}
+type MultiAccountDeliveryChannelDeliveryChannelFilterInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelDeliveryChannelFilterOutput() MultiAccountDeliveryChannelDeliveryChannelFilterOutput
+	ToMultiAccountDeliveryChannelDeliveryChannelFilterOutputWithContext(context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterOutput
+}
+
+type MultiAccountDeliveryChannelDeliveryChannelFilterArgs struct {
+	// The account scopes of the delivery channel.
+	AccountScopes pulumi.StringArrayInput `pulumi:"accountScopes"`
+	// An array of effective resource types for the delivery channel.
+	// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+	// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
+}
+
+func (MultiAccountDeliveryChannelDeliveryChannelFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (i MultiAccountDeliveryChannelDeliveryChannelFilterArgs) ToMultiAccountDeliveryChannelDeliveryChannelFilterOutput() MultiAccountDeliveryChannelDeliveryChannelFilterOutput {
+	return i.ToMultiAccountDeliveryChannelDeliveryChannelFilterOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelDeliveryChannelFilterArgs) ToMultiAccountDeliveryChannelDeliveryChannelFilterOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelDeliveryChannelFilterOutput)
+}
+
+func (i MultiAccountDeliveryChannelDeliveryChannelFilterArgs) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput() MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return i.ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelDeliveryChannelFilterArgs) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelDeliveryChannelFilterOutput).ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx)
+}
+
+// MultiAccountDeliveryChannelDeliveryChannelFilterPtrInput is an input type that accepts MultiAccountDeliveryChannelDeliveryChannelFilterArgs, MultiAccountDeliveryChannelDeliveryChannelFilterPtr and MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelDeliveryChannelFilterPtrInput` via:
+//
+//	        MultiAccountDeliveryChannelDeliveryChannelFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiAccountDeliveryChannelDeliveryChannelFilterPtrInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput() MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput
+	ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput
+}
+
+type multiAccountDeliveryChannelDeliveryChannelFilterPtrType MultiAccountDeliveryChannelDeliveryChannelFilterArgs
+
+func MultiAccountDeliveryChannelDeliveryChannelFilterPtr(v *MultiAccountDeliveryChannelDeliveryChannelFilterArgs) MultiAccountDeliveryChannelDeliveryChannelFilterPtrInput {
+	return (*multiAccountDeliveryChannelDeliveryChannelFilterPtrType)(v)
+}
+
+func (*multiAccountDeliveryChannelDeliveryChannelFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (i *multiAccountDeliveryChannelDeliveryChannelFilterPtrType) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput() MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return i.ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *multiAccountDeliveryChannelDeliveryChannelFilterPtrType) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput)
+}
+
+type MultiAccountDeliveryChannelDeliveryChannelFilterOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterOutput() MultiAccountDeliveryChannelDeliveryChannelFilterOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput() MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o.ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(context.Background())
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiAccountDeliveryChannelDeliveryChannelFilter) *MultiAccountDeliveryChannelDeliveryChannelFilter {
+		return &v
+	}).(MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput)
+}
+
+// The account scopes of the delivery channel.
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) AccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelDeliveryChannelFilter) []string { return v.AccountScopes }).(pulumi.StringArrayOutput)
+}
+
+// An array of effective resource types for the delivery channel.
+// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelDeliveryChannelFilter) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
+}
+
+type MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelDeliveryChannelFilter)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput() MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) ToMultiAccountDeliveryChannelDeliveryChannelFilterPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) Elem() MultiAccountDeliveryChannelDeliveryChannelFilterOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelDeliveryChannelFilter) MultiAccountDeliveryChannelDeliveryChannelFilter {
+		if v != nil {
+			return *v
+		}
+		var ret MultiAccountDeliveryChannelDeliveryChannelFilter
+		return ret
+	}).(MultiAccountDeliveryChannelDeliveryChannelFilterOutput)
+}
+
+// The account scopes of the delivery channel.
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) AccountScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelDeliveryChannelFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// An array of effective resource types for the delivery channel.
+// - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+// - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+func (o MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelDeliveryChannelFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDelivery struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	// - true
+	// - false
+	Enabled *bool `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties `pulumi:"slsProperties"`
+	// The ARN of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn *string `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - SLS
+	TargetType *string `pulumi:"targetType"`
+}
+
+// MultiAccountDeliveryChannelResourceChangeDeliveryInput is an input type that accepts MultiAccountDeliveryChannelResourceChangeDeliveryArgs and MultiAccountDeliveryChannelResourceChangeDeliveryOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceChangeDeliveryInput` via:
+//
+//	MultiAccountDeliveryChannelResourceChangeDeliveryArgs{...}
+type MultiAccountDeliveryChannelResourceChangeDeliveryInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceChangeDeliveryOutput() MultiAccountDeliveryChannelResourceChangeDeliveryOutput
+	ToMultiAccountDeliveryChannelResourceChangeDeliveryOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryOutput
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliveryArgs struct {
+	// Specifies whether to enable delivery of resource configuration change events. Valid values:
+	// - true
+	// - false
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput `pulumi:"slsProperties"`
+	// The ARN of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn pulumi.StringPtrInput `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - SLS
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (MultiAccountDeliveryChannelResourceChangeDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliveryArgs) ToMultiAccountDeliveryChannelResourceChangeDeliveryOutput() MultiAccountDeliveryChannelResourceChangeDeliveryOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliveryOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliveryArgs) ToMultiAccountDeliveryChannelResourceChangeDeliveryOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliveryOutput)
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliveryArgs) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliveryArgs) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliveryOutput).ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx)
+}
+
+// MultiAccountDeliveryChannelResourceChangeDeliveryPtrInput is an input type that accepts MultiAccountDeliveryChannelResourceChangeDeliveryArgs, MultiAccountDeliveryChannelResourceChangeDeliveryPtr and MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceChangeDeliveryPtrInput` via:
+//
+//	        MultiAccountDeliveryChannelResourceChangeDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiAccountDeliveryChannelResourceChangeDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput
+	ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput
+}
+
+type multiAccountDeliveryChannelResourceChangeDeliveryPtrType MultiAccountDeliveryChannelResourceChangeDeliveryArgs
+
+func MultiAccountDeliveryChannelResourceChangeDeliveryPtr(v *MultiAccountDeliveryChannelResourceChangeDeliveryArgs) MultiAccountDeliveryChannelResourceChangeDeliveryPtrInput {
+	return (*multiAccountDeliveryChannelResourceChangeDeliveryPtrType)(v)
+}
+
+func (*multiAccountDeliveryChannelResourceChangeDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (i *multiAccountDeliveryChannelResourceChangeDeliveryPtrType) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *multiAccountDeliveryChannelResourceChangeDeliveryPtrType) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliveryOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceChangeDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryOutput() MultiAccountDeliveryChannelResourceChangeDeliveryOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o.ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiAccountDeliveryChannelResourceChangeDelivery) *MultiAccountDeliveryChannelResourceChangeDelivery {
+		return &v
+	}).(MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput)
+}
+
+// Specifies whether to enable delivery of resource configuration change events. Valid values:
+// - true
+// - false
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceChangeDelivery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) SlsProperties() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceChangeDelivery) *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties {
+		return v.SlsProperties
+	}).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+// The ARN of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceChangeDelivery) *string { return v.TargetArn }).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - SLS
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceChangeDelivery) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceChangeDelivery)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) ToMultiAccountDeliveryChannelResourceChangeDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) Elem() MultiAccountDeliveryChannelResourceChangeDeliveryOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDelivery) MultiAccountDeliveryChannelResourceChangeDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret MultiAccountDeliveryChannelResourceChangeDelivery
+		return ret
+	}).(MultiAccountDeliveryChannelResourceChangeDeliveryOutput)
+}
+
+// Specifies whether to enable delivery of resource configuration change events. Valid values:
+// - true
+// - false
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) SlsProperties() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDelivery) *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProperties
+	}).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+// The ARN of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - SLS
+func (o MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `pulumi:"oversizedDataOssTargetArn"`
+}
+
+// MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesInput is an input type that accepts MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs and MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesInput` via:
+//
+//	MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs{...}
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput
+	ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs struct {
+	OversizedDataOssTargetArn pulumi.StringPtrInput `pulumi:"oversizedDataOssTargetArn"`
+}
+
+func (MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput)
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput).ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx)
+}
+
+// MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput is an input type that accepts MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs, MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtr and MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput` via:
+//
+//	        MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput
+	ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput
+}
+
+type multiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrType MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs
+
+func MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtr(v *MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput {
+	return (*multiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrType)(v)
+}
+
+func (*multiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i *multiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *multiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrType) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties) *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties {
+		return &v
+	}).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput)
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties) *string {
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) ToMultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) Elem() MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties) MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties
+		return ret
+	}).(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput)
+}
+
+func (o MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDelivery struct {
+	// The custom expression.
+	CustomExpression *string `pulumi:"customExpression"`
+	// The delivery time.
+	DeliveryTime *string `pulumi:"deliveryTime"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	// - true
+	// - false
+	Enabled *bool `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties `pulumi:"slsProperties"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn *string `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - `OSS` for standard delivery
+	// - `OSS` or `SLS` for custom delivery
+	TargetType *string `pulumi:"targetType"`
+}
+
+// MultiAccountDeliveryChannelResourceSnapshotDeliveryInput is an input type that accepts MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs and MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceSnapshotDeliveryInput` via:
+//
+//	MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs{...}
+type MultiAccountDeliveryChannelResourceSnapshotDeliveryInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs struct {
+	// The custom expression.
+	CustomExpression pulumi.StringPtrInput `pulumi:"customExpression"`
+	// The delivery time.
+	DeliveryTime pulumi.StringPtrInput `pulumi:"deliveryTime"`
+	// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+	// - true
+	// - false
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The Simple Log Service configurations. See `slsProperties` below.
+	SlsProperties MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput `pulumi:"slsProperties"`
+	// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+	// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+	// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+	TargetArn pulumi.StringPtrInput `pulumi:"targetArn"`
+	// The type of the delivery destination.
+	//
+	// Valid values:
+	// - `OSS` for standard delivery
+	// - `OSS` or `SLS` for custom delivery
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput)
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput).ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx)
+}
+
+// MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrInput is an input type that accepts MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs, MultiAccountDeliveryChannelResourceSnapshotDeliveryPtr and MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrInput` via:
+//
+//	        MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput
+}
+
+type multiAccountDeliveryChannelResourceSnapshotDeliveryPtrType MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs
+
+func MultiAccountDeliveryChannelResourceSnapshotDeliveryPtr(v *MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrInput {
+	return (*multiAccountDeliveryChannelResourceSnapshotDeliveryPtrType)(v)
+}
+
+func (*multiAccountDeliveryChannelResourceSnapshotDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (i *multiAccountDeliveryChannelResourceSnapshotDeliveryPtrType) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *multiAccountDeliveryChannelResourceSnapshotDeliveryPtrType) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o.ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiAccountDeliveryChannelResourceSnapshotDelivery) *MultiAccountDeliveryChannelResourceSnapshotDelivery {
+		return &v
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput)
+}
+
+// The custom expression.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) CustomExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *string { return v.CustomExpression }).(pulumi.StringPtrOutput)
+}
+
+// The delivery time.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) DeliveryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *string { return v.DeliveryTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+// - true
+// - false
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) SlsProperties() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
+		return v.SlsProperties
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *string { return v.TargetArn }).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - `OSS` for standard delivery
+// - `OSS` or `SLS` for custom delivery
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDelivery) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceSnapshotDelivery)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) Elem() MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) MultiAccountDeliveryChannelResourceSnapshotDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret MultiAccountDeliveryChannelResourceSnapshotDelivery
+		return ret
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput)
+}
+
+// The custom expression.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) CustomExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The delivery time.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) DeliveryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+// - true
+// - false
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Simple Log Service configurations. See `slsProperties` below.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) SlsProperties() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.SlsProperties
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+// - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+// - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) TargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the delivery destination.
+//
+// Valid values:
+// - `OSS` for standard delivery
+// - `OSS` or `SLS` for custom delivery
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDelivery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties struct {
+	OversizedDataOssTargetArn *string `pulumi:"oversizedDataOssTargetArn"`
+}
+
+// MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesInput is an input type that accepts MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs and MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesInput` via:
+//
+//	MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{...}
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs struct {
+	OversizedDataOssTargetArn pulumi.StringPtrInput `pulumi:"oversizedDataOssTargetArn"`
+}
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput)
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput).ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx)
+}
+
+// MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput is an input type that accepts MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs, MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtr and MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput values.
+// You can construct a concrete instance of `MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput` via:
+//
+//	        MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput
+	ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput
+}
+
+type multiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs
+
+func MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtr(v *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput {
+	return (*multiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType)(v)
+}
+
+func (*multiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (i *multiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return i.ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *multiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrType) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties) *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
+		return &v
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput)
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties) *string {
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties)(nil)).Elem()
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) ToMultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutputWithContext(ctx context.Context) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput {
+	return o
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) Elem() MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties) MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties
+		return ret
+	}).(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput)
+}
+
+func (o MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput) OversizedDataOssTargetArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OversizedDataOssTargetArn
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceGroupRegionStatus struct {
 	// The status of the region.
 	RegionId *string `pulumi:"regionId"`
@@ -2908,6 +4735,26 @@ func (o GetSharedTargetsTargetArrayOutput) Index(i pulumi.IntInput) GetSharedTar
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoGroupingRuleRuleContentInput)(nil)).Elem(), AutoGroupingRuleRuleContentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoGroupingRuleRuleContentArrayInput)(nil)).Elem(), AutoGroupingRuleRuleContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelDeliveryChannelFilterInput)(nil)).Elem(), DeliveryChannelDeliveryChannelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelDeliveryChannelFilterPtrInput)(nil)).Elem(), DeliveryChannelDeliveryChannelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceChangeDeliveryInput)(nil)).Elem(), DeliveryChannelResourceChangeDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceChangeDeliveryPtrInput)(nil)).Elem(), DeliveryChannelResourceChangeDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceChangeDeliverySlsPropertiesInput)(nil)).Elem(), DeliveryChannelResourceChangeDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput)(nil)).Elem(), DeliveryChannelResourceChangeDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliveryInput)(nil)).Elem(), DeliveryChannelResourceSnapshotDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliveryPtrInput)(nil)).Elem(), DeliveryChannelResourceSnapshotDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliverySlsPropertiesInput)(nil)).Elem(), DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput)(nil)).Elem(), DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelDeliveryChannelFilterInput)(nil)).Elem(), MultiAccountDeliveryChannelDeliveryChannelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelDeliveryChannelFilterPtrInput)(nil)).Elem(), MultiAccountDeliveryChannelDeliveryChannelFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliveryInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceChangeDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliveryPtrInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceChangeDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliveryInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrInput)(nil)).Elem(), MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusInput)(nil)).Elem(), ResourceGroupRegionStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupRegionStatusArrayInput)(nil)).Elem(), ResourceGroupRegionStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceShareResourceInput)(nil)).Elem(), ResourceShareResourceArgs{})
@@ -2950,6 +4797,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSharedTargetsTargetArrayInput)(nil)).Elem(), GetSharedTargetsTargetArray{})
 	pulumi.RegisterOutputType(AutoGroupingRuleRuleContentOutput{})
 	pulumi.RegisterOutputType(AutoGroupingRuleRuleContentArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelDeliveryChannelFilterOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelDeliveryChannelFilterPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceChangeDeliveryOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceChangeDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceChangeDeliverySlsPropertiesOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceSnapshotDeliveryOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceSnapshotDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput{})
+	pulumi.RegisterOutputType(DeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelDeliveryChannelFilterOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelDeliveryChannelFilterPtrOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceChangeDeliveryOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceChangeDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceSnapshotDeliveryOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceSnapshotDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesOutput{})
+	pulumi.RegisterOutputType(MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusOutput{})
 	pulumi.RegisterOutputType(ResourceGroupRegionStatusArrayOutput{})
 	pulumi.RegisterOutputType(ResourceShareResourceOutput{})

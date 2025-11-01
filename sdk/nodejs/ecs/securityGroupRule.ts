@@ -88,7 +88,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
      */
     declare public readonly ipProtocol: pulumi.Output<string>;
     /**
@@ -210,7 +210,7 @@ export interface SecurityGroupRuleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -275,7 +275,7 @@ export interface SecurityGroupRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
      */
     ipProtocol: pulumi.Input<string>;
     /**

@@ -12,8 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+// Provides a Cloud Monitor Service Site Monitor resource.
+//
+// Describes the SITE monitoring tasks created by the user.
+//
+// For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
 //
 // > **NOTE:** Available since v1.72.0.
 //
@@ -28,40 +31,64 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := cms.NewSiteMonitor(ctx, "basic", &cms.SiteMonitorArgs{
-//				Address:  pulumi.String("http://www.alibabacloud.com"),
-//				TaskName: pulumi.String("tf-example"),
+//				Address:  pulumi.String("https://www.alibabacloud.com"),
+//				TaskName: pulumi.String(name),
 //				TaskType: pulumi.String("HTTP"),
-//				Interval: pulumi.Int(5),
+//				Interval: pulumi.String("5"),
 //				IspCities: cms.SiteMonitorIspCityArray{
 //					&cms.SiteMonitorIspCityArgs{
-//						City: pulumi.String("546"),
-//						Isp:  pulumi.String("465"),
+//						Isp:  pulumi.String("232"),
+//						City: pulumi.String("641"),
+//						Type: pulumi.String("IDC"),
 //					},
 //				},
-//				OptionsJson: pulumi.String(`{
-//	    \"http_method\": \"get\",
-//	    \"waitTime_after_completion\": null,
-//	    \"ipv6_task\": false,
-//	    \"diagnosis_ping\": false,
-//	    \"diagnosis_mtr\": false,
-//	    \"assertions\": [
-//	        {
-//	            \"operator\": \"lessThan\",
-//	            \"type\": \"response_time\",
-//	            \"target\": 1000
-//	        }
-//	    ],
-//	    \"time_out\": 30000
-//	}
-//
-// `),
-//
+//				OptionJson: &cms.SiteMonitorOptionJsonArgs{
+//					ResponseContent:    pulumi.String("example"),
+//					ExpectValue:        pulumi.String("example"),
+//					Port:               pulumi.Int(81),
+//					IsBaseEncode:       pulumi.Bool(true),
+//					PingNum:            pulumi.Int(5),
+//					MatchRule:          pulumi.Int(1),
+//					FailureRate:        pulumi.String("0.3"),
+//					RequestContent:     pulumi.String("example"),
+//					Attempts:           pulumi.Int(4),
+//					RequestFormat:      pulumi.String("hex"),
+//					Password:           pulumi.String("YourPassword123!"),
+//					DiagnosisPing:      pulumi.Bool(true),
+//					ResponseFormat:     pulumi.String("hex"),
+//					Cookie:             pulumi.String("key2=value2"),
+//					PingPort:           pulumi.Int(443),
+//					UserName:           pulumi.String("example"),
+//					DnsMatchRule:       pulumi.String("DNS_IN"),
+//					Timeout:            pulumi.Int(3000),
+//					DnsServer:          pulumi.String("223.6.6.6"),
+//					DiagnosisMtr:       pulumi.Bool(true),
+//					Header:             pulumi.String("key2:value2"),
+//					MinTlsVersion:      pulumi.String("1.1"),
+//					PingType:           pulumi.String("udp"),
+//					DnsType:            pulumi.String("NS"),
+//					DnsHijackWhitelist: pulumi.String("DnsHijackWhitelist"),
+//					HttpMethod:         pulumi.String("post"),
+//					Assertions: cms.SiteMonitorOptionJsonAssertionArray{
+//						&cms.SiteMonitorOptionJsonAssertionArgs{
+//							Operator: pulumi.String("lessThan"),
+//							Target:   pulumi.String("300"),
+//							Type:     pulumi.String("response_time"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -84,23 +111,41 @@ type SiteMonitor struct {
 
 	// The URL or IP address monitored by the site monitoring task.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The IDs of existing alert rules to be associated with the site monitoring task.
+	// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+	AgentGroup pulumi.StringOutput `pulumi:"agentGroup"`
+	// Field `alertIds` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 	AlertIds pulumi.StringArrayOutput `pulumi:"alertIds"`
-	// The time when the site monitoring task was created.
+	// (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.262.0.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+	CustomSchedule SiteMonitorCustomSchedulePtrOutput `pulumi:"customSchedule"`
 	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-	Interval pulumi.IntPtrOutput `pulumi:"interval"`
+	Interval pulumi.StringOutput `pulumi:"interval"`
 	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
 	IspCities SiteMonitorIspCityArrayOutput `pulumi:"ispCities"`
-	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
-	OptionsJson pulumi.StringPtrOutput `pulumi:"optionsJson"`
+	// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+	OptionJson SiteMonitorOptionJsonOutput `pulumi:"optionJson"`
+	// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+	//
+	// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+	OptionsJson pulumi.StringOutput `pulumi:"optionsJson"`
+	// The status of the site monitoring task. Valid values:
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
 	TaskName pulumi.StringOutput `pulumi:"taskName"`
-	// The status of the site monitoring task.
+	// (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+	//
+	// Deprecated: Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
 	TaskState pulumi.StringOutput `pulumi:"taskState"`
 	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType pulumi.StringOutput `pulumi:"taskType"`
-	// The time when the site monitoring task was updated.
+	// (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `updateTime` has been deprecated from provider version 1.262.0.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -145,46 +190,82 @@ func GetSiteMonitor(ctx *pulumi.Context,
 type siteMonitorState struct {
 	// The URL or IP address monitored by the site monitoring task.
 	Address *string `pulumi:"address"`
-	// The IDs of existing alert rules to be associated with the site monitoring task.
+	// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+	AgentGroup *string `pulumi:"agentGroup"`
+	// Field `alertIds` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 	AlertIds []string `pulumi:"alertIds"`
-	// The time when the site monitoring task was created.
+	// (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.262.0.
 	CreateTime *string `pulumi:"createTime"`
+	// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+	CustomSchedule *SiteMonitorCustomSchedule `pulumi:"customSchedule"`
 	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-	Interval *int `pulumi:"interval"`
+	Interval *string `pulumi:"interval"`
 	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
 	IspCities []SiteMonitorIspCity `pulumi:"ispCities"`
-	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+	// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+	OptionJson *SiteMonitorOptionJson `pulumi:"optionJson"`
+	// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+	//
+	// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
 	OptionsJson *string `pulumi:"optionsJson"`
+	// The status of the site monitoring task. Valid values:
+	Status *string `pulumi:"status"`
 	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
 	TaskName *string `pulumi:"taskName"`
-	// The status of the site monitoring task.
+	// (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+	//
+	// Deprecated: Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
 	TaskState *string `pulumi:"taskState"`
 	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType *string `pulumi:"taskType"`
-	// The time when the site monitoring task was updated.
+	// (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `updateTime` has been deprecated from provider version 1.262.0.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type SiteMonitorState struct {
 	// The URL or IP address monitored by the site monitoring task.
 	Address pulumi.StringPtrInput
-	// The IDs of existing alert rules to be associated with the site monitoring task.
+	// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+	AgentGroup pulumi.StringPtrInput
+	// Field `alertIds` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 	AlertIds pulumi.StringArrayInput
-	// The time when the site monitoring task was created.
+	// (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `createTime` has been deprecated from provider version 1.262.0.
 	CreateTime pulumi.StringPtrInput
+	// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+	CustomSchedule SiteMonitorCustomSchedulePtrInput
 	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-	Interval pulumi.IntPtrInput
+	Interval pulumi.StringPtrInput
 	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
 	IspCities SiteMonitorIspCityArrayInput
-	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+	// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+	OptionJson SiteMonitorOptionJsonPtrInput
+	// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+	//
+	// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
 	OptionsJson pulumi.StringPtrInput
+	// The status of the site monitoring task. Valid values:
+	Status pulumi.StringPtrInput
 	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
 	TaskName pulumi.StringPtrInput
-	// The status of the site monitoring task.
+	// (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+	//
+	// Deprecated: Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
 	TaskState pulumi.StringPtrInput
 	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
 	TaskType pulumi.StringPtrInput
-	// The time when the site monitoring task was updated.
+	// (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `updateTime` has been deprecated from provider version 1.262.0.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -195,14 +276,26 @@ func (SiteMonitorState) ElementType() reflect.Type {
 type siteMonitorArgs struct {
 	// The URL or IP address monitored by the site monitoring task.
 	Address string `pulumi:"address"`
-	// The IDs of existing alert rules to be associated with the site monitoring task.
+	// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+	AgentGroup *string `pulumi:"agentGroup"`
+	// Field `alertIds` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 	AlertIds []string `pulumi:"alertIds"`
+	// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+	CustomSchedule *SiteMonitorCustomSchedule `pulumi:"customSchedule"`
 	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-	Interval *int `pulumi:"interval"`
+	Interval *string `pulumi:"interval"`
 	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
 	IspCities []SiteMonitorIspCity `pulumi:"ispCities"`
-	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+	// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+	OptionJson *SiteMonitorOptionJson `pulumi:"optionJson"`
+	// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+	//
+	// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
 	OptionsJson *string `pulumi:"optionsJson"`
+	// The status of the site monitoring task. Valid values:
+	Status *string `pulumi:"status"`
 	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
 	TaskName string `pulumi:"taskName"`
 	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
@@ -213,14 +306,26 @@ type siteMonitorArgs struct {
 type SiteMonitorArgs struct {
 	// The URL or IP address monitored by the site monitoring task.
 	Address pulumi.StringInput
-	// The IDs of existing alert rules to be associated with the site monitoring task.
+	// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+	AgentGroup pulumi.StringPtrInput
+	// Field `alertIds` has been deprecated from provider version 1.262.0.
+	//
+	// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 	AlertIds pulumi.StringArrayInput
+	// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+	CustomSchedule SiteMonitorCustomSchedulePtrInput
 	// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-	Interval pulumi.IntPtrInput
+	Interval pulumi.StringPtrInput
 	// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
 	IspCities SiteMonitorIspCityArrayInput
-	// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+	// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+	OptionJson SiteMonitorOptionJsonPtrInput
+	// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+	//
+	// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
 	OptionsJson pulumi.StringPtrInput
+	// The status of the site monitoring task. Valid values:
+	Status pulumi.StringPtrInput
 	// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
 	TaskName pulumi.StringInput
 	// The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
@@ -319,19 +424,33 @@ func (o SiteMonitorOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// The IDs of existing alert rules to be associated with the site monitoring task.
+// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+func (o SiteMonitorOutput) AgentGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.AgentGroup }).(pulumi.StringOutput)
+}
+
+// Field `alertIds` has been deprecated from provider version 1.262.0.
+//
+// Deprecated: Field `alertIds` has been deprecated from provider version 1.262.0.
 func (o SiteMonitorOutput) AlertIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringArrayOutput { return v.AlertIds }).(pulumi.StringArrayOutput)
 }
 
-// The time when the site monitoring task was created.
+// (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+//
+// Deprecated: Field `createTime` has been deprecated from provider version 1.262.0.
 func (o SiteMonitorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+func (o SiteMonitorOutput) CustomSchedule() SiteMonitorCustomSchedulePtrOutput {
+	return o.ApplyT(func(v *SiteMonitor) SiteMonitorCustomSchedulePtrOutput { return v.CustomSchedule }).(SiteMonitorCustomSchedulePtrOutput)
+}
+
 // The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
-func (o SiteMonitorOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SiteMonitor) pulumi.IntPtrOutput { return v.Interval }).(pulumi.IntPtrOutput)
+func (o SiteMonitorOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.Interval }).(pulumi.StringOutput)
 }
 
 // The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
@@ -339,9 +458,21 @@ func (o SiteMonitorOutput) IspCities() SiteMonitorIspCityArrayOutput {
 	return o.ApplyT(func(v *SiteMonitor) SiteMonitorIspCityArrayOutput { return v.IspCities }).(SiteMonitorIspCityArrayOutput)
 }
 
-// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
-func (o SiteMonitorOutput) OptionsJson() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SiteMonitor) pulumi.StringPtrOutput { return v.OptionsJson }).(pulumi.StringPtrOutput)
+// The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+func (o SiteMonitorOutput) OptionJson() SiteMonitorOptionJsonOutput {
+	return o.ApplyT(func(v *SiteMonitor) SiteMonitorOptionJsonOutput { return v.OptionJson }).(SiteMonitorOptionJsonOutput)
+}
+
+// Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+//
+// Deprecated: Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+func (o SiteMonitorOutput) OptionsJson() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.OptionsJson }).(pulumi.StringOutput)
+}
+
+// The status of the site monitoring task. Valid values:
+func (o SiteMonitorOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -349,7 +480,9 @@ func (o SiteMonitorOutput) TaskName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskName }).(pulumi.StringOutput)
 }
 
-// The status of the site monitoring task.
+// (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+//
+// Deprecated: Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
 func (o SiteMonitorOutput) TaskState() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskState }).(pulumi.StringOutput)
 }
@@ -359,7 +492,9 @@ func (o SiteMonitorOutput) TaskType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.TaskType }).(pulumi.StringOutput)
 }
 
-// The time when the site monitoring task was updated.
+// (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+//
+// Deprecated: Field `updateTime` has been deprecated from provider version 1.262.0.
 func (o SiteMonitorOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteMonitor) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

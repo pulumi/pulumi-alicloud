@@ -52,14 +52,14 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+     * The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
      * 
      */
     @Import(name="ipProtocol", required=true)
     private Output<String> ipProtocol;
 
     /**
-     * @return The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+     * @return The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
      * 
      */
     public Output<String> ipProtocol() {
@@ -301,7 +301,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class SecurityGroupRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+         * @param ipProtocol The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
          * 
          * @return builder
          * 

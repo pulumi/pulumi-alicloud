@@ -30,6 +30,11 @@ export const getEtls: typeof import("./getEtls").getEtls = null as any;
 export const getEtlsOutput: typeof import("./getEtls").getEtlsOutput = null as any;
 utilities.lazyLoad(exports, ["getEtls","getEtlsOutput"], () => require("./getEtls"));
 
+export { GetIndexsArgs, GetIndexsResult, GetIndexsOutputArgs } from "./getIndexs";
+export const getIndexs: typeof import("./getIndexs").getIndexs = null as any;
+export const getIndexsOutput: typeof import("./getIndexs").getIndexsOutput = null as any;
+utilities.lazyLoad(exports, ["getIndexs","getIndexsOutput"], () => require("./getIndexs"));
+
 export { GetLogtailConfigsArgs, GetLogtailConfigsResult, GetLogtailConfigsOutputArgs } from "./getLogtailConfigs";
 export const getLogtailConfigs: typeof import("./getLogtailConfigs").getLogtailConfigs = null as any;
 export const getLogtailConfigsOutput: typeof import("./getLogtailConfigs").getLogtailConfigsOutput = null as any;

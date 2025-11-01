@@ -25,6 +25,7 @@ from .kv import *
 from .kv_account import *
 from .kv_namespace import *
 from .list import *
+from .load_balancer import *
 from .network_optimization import *
 from .origin_ca_certificate import *
 from .origin_client_certificate import *

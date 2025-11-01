@@ -5,9 +5,10 @@ package com.pulumi.alicloud.cfg.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,48 +16,48 @@ public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.
     public static final AggregatorAggregatorAccountArgs Empty = new AggregatorAggregatorAccountArgs();
 
     /**
-     * Aggregator account Uid.
+     * The member ID.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
-     * @return Aggregator account Uid.
+     * @return The member ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
-     * Aggregator account name.
+     * The member name.
      * 
      */
-    @Import(name="accountName", required=true)
-    private Output<String> accountName;
+    @Import(name="accountName")
+    private @Nullable Output<String> accountName;
 
     /**
-     * @return Aggregator account name.
+     * @return The member name.
      * 
      */
-    public Output<String> accountName() {
-        return this.accountName;
+    public Optional<Output<String>> accountName() {
+        return Optional.ofNullable(this.accountName);
     }
 
     /**
-     * Aggregator account source type. Valid values: `ResourceDirectory`.
+     * The affiliation of the member. Valid values: `ResourceDirectory`.
      * 
      */
-    @Import(name="accountType", required=true)
-    private Output<String> accountType;
+    @Import(name="accountType")
+    private @Nullable Output<String> accountType;
 
     /**
-     * @return Aggregator account source type. Valid values: `ResourceDirectory`.
+     * @return The affiliation of the member. Valid values: `ResourceDirectory`.
      * 
      */
-    public Output<String> accountType() {
-        return this.accountType;
+    public Optional<Output<String>> accountType() {
+        return Optional.ofNullable(this.accountType);
     }
 
     private AggregatorAggregatorAccountArgs() {}
@@ -86,18 +87,18 @@ public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId Aggregator account Uid.
+         * @param accountId The member ID.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Aggregator account Uid.
+         * @param accountId The member ID.
          * 
          * @return builder
          * 
@@ -107,18 +108,18 @@ public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountName Aggregator account name.
+         * @param accountName The member name.
          * 
          * @return builder
          * 
          */
-        public Builder accountName(Output<String> accountName) {
+        public Builder accountName(@Nullable Output<String> accountName) {
             $.accountName = accountName;
             return this;
         }
 
         /**
-         * @param accountName Aggregator account name.
+         * @param accountName The member name.
          * 
          * @return builder
          * 
@@ -128,18 +129,18 @@ public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountType Aggregator account source type. Valid values: `ResourceDirectory`.
+         * @param accountType The affiliation of the member. Valid values: `ResourceDirectory`.
          * 
          * @return builder
          * 
          */
-        public Builder accountType(Output<String> accountType) {
+        public Builder accountType(@Nullable Output<String> accountType) {
             $.accountType = accountType;
             return this;
         }
 
         /**
-         * @param accountType Aggregator account source type. Valid values: `ResourceDirectory`.
+         * @param accountType The affiliation of the member. Valid values: `ResourceDirectory`.
          * 
          * @return builder
          * 
@@ -149,15 +150,6 @@ public final class AggregatorAggregatorAccountArgs extends com.pulumi.resources.
         }
 
         public AggregatorAggregatorAccountArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("AggregatorAggregatorAccountArgs", "accountId");
-            }
-            if ($.accountName == null) {
-                throw new MissingRequiredPropertyException("AggregatorAggregatorAccountArgs", "accountName");
-            }
-            if ($.accountType == null) {
-                throw new MissingRequiredPropertyException("AggregatorAggregatorAccountArgs", "accountType");
-            }
             return $;
         }
     }

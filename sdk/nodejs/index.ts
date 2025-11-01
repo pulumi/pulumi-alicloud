@@ -206,6 +206,7 @@ import * as slb from "./slb";
 import * as sls from "./sls";
 import * as sms from "./sms";
 import * as sslcertificatesservice from "./sslcertificatesservice";
+import * as starrocks from "./starrocks";
 import * as tag from "./tag";
 import * as threatdetection from "./threatdetection";
 import * as tsdb from "./tsdb";
@@ -350,6 +351,7 @@ export {
     sls,
     sms,
     sslcertificatesservice,
+    starrocks,
     tag,
     threatdetection,
     tsdb,

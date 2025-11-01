@@ -256,6 +256,12 @@ namespace Pulumi.AliCloud.Eci
         public Output<string?> EipInstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// The size of the temporary storage space to add. Unit: GiB.
+        /// </summary>
+        [Output("ephemeralStorage")]
+        public Output<int?> EphemeralStorage { get; private set; } = null!;
+
+        /// <summary>
         /// HostAliases. See `HostAliases` below.
         /// </summary>
         [Output("hostAliases")]
@@ -508,6 +514,12 @@ namespace Pulumi.AliCloud.Eci
         [Input("eipInstanceId")]
         public Input<string>? EipInstanceId { get; set; }
 
+        /// <summary>
+        /// The size of the temporary storage space to add. Unit: GiB.
+        /// </summary>
+        [Input("ephemeralStorage")]
+        public Input<int>? EphemeralStorage { get; set; }
+
         [Input("hostAliases")]
         private InputList<Inputs.ContainerGroupHostAliasArgs>? _hostAliases;
 
@@ -734,6 +746,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Input("eipInstanceId")]
         public Input<string>? EipInstanceId { get; set; }
+
+        /// <summary>
+        /// The size of the temporary storage space to add. Unit: GiB.
+        /// </summary>
+        [Input("ephemeralStorage")]
+        public Input<int>? EphemeralStorage { get; set; }
 
         [Input("hostAliases")]
         private InputList<Inputs.ContainerGroupHostAliasGetArgs>? _hostAliases;

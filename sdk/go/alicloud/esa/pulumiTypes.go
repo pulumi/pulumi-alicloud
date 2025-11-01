@@ -243,6 +243,1014 @@ func (o HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput)
 	}).(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput)
 }
 
+type LoadBalancerAdaptiveRouting struct {
+	// Whether to failover across pools.
+	FailoverAcrossPools *bool `pulumi:"failoverAcrossPools"`
+}
+
+// LoadBalancerAdaptiveRoutingInput is an input type that accepts LoadBalancerAdaptiveRoutingArgs and LoadBalancerAdaptiveRoutingOutput values.
+// You can construct a concrete instance of `LoadBalancerAdaptiveRoutingInput` via:
+//
+//	LoadBalancerAdaptiveRoutingArgs{...}
+type LoadBalancerAdaptiveRoutingInput interface {
+	pulumi.Input
+
+	ToLoadBalancerAdaptiveRoutingOutput() LoadBalancerAdaptiveRoutingOutput
+	ToLoadBalancerAdaptiveRoutingOutputWithContext(context.Context) LoadBalancerAdaptiveRoutingOutput
+}
+
+type LoadBalancerAdaptiveRoutingArgs struct {
+	// Whether to failover across pools.
+	FailoverAcrossPools pulumi.BoolPtrInput `pulumi:"failoverAcrossPools"`
+}
+
+func (LoadBalancerAdaptiveRoutingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerAdaptiveRouting)(nil)).Elem()
+}
+
+func (i LoadBalancerAdaptiveRoutingArgs) ToLoadBalancerAdaptiveRoutingOutput() LoadBalancerAdaptiveRoutingOutput {
+	return i.ToLoadBalancerAdaptiveRoutingOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerAdaptiveRoutingArgs) ToLoadBalancerAdaptiveRoutingOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAdaptiveRoutingOutput)
+}
+
+func (i LoadBalancerAdaptiveRoutingArgs) ToLoadBalancerAdaptiveRoutingPtrOutput() LoadBalancerAdaptiveRoutingPtrOutput {
+	return i.ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerAdaptiveRoutingArgs) ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAdaptiveRoutingOutput).ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerAdaptiveRoutingPtrInput is an input type that accepts LoadBalancerAdaptiveRoutingArgs, LoadBalancerAdaptiveRoutingPtr and LoadBalancerAdaptiveRoutingPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerAdaptiveRoutingPtrInput` via:
+//
+//	        LoadBalancerAdaptiveRoutingArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerAdaptiveRoutingPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerAdaptiveRoutingPtrOutput() LoadBalancerAdaptiveRoutingPtrOutput
+	ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(context.Context) LoadBalancerAdaptiveRoutingPtrOutput
+}
+
+type loadBalancerAdaptiveRoutingPtrType LoadBalancerAdaptiveRoutingArgs
+
+func LoadBalancerAdaptiveRoutingPtr(v *LoadBalancerAdaptiveRoutingArgs) LoadBalancerAdaptiveRoutingPtrInput {
+	return (*loadBalancerAdaptiveRoutingPtrType)(v)
+}
+
+func (*loadBalancerAdaptiveRoutingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerAdaptiveRouting)(nil)).Elem()
+}
+
+func (i *loadBalancerAdaptiveRoutingPtrType) ToLoadBalancerAdaptiveRoutingPtrOutput() LoadBalancerAdaptiveRoutingPtrOutput {
+	return i.ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerAdaptiveRoutingPtrType) ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerAdaptiveRoutingPtrOutput)
+}
+
+type LoadBalancerAdaptiveRoutingOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerAdaptiveRoutingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerAdaptiveRouting)(nil)).Elem()
+}
+
+func (o LoadBalancerAdaptiveRoutingOutput) ToLoadBalancerAdaptiveRoutingOutput() LoadBalancerAdaptiveRoutingOutput {
+	return o
+}
+
+func (o LoadBalancerAdaptiveRoutingOutput) ToLoadBalancerAdaptiveRoutingOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingOutput {
+	return o
+}
+
+func (o LoadBalancerAdaptiveRoutingOutput) ToLoadBalancerAdaptiveRoutingPtrOutput() LoadBalancerAdaptiveRoutingPtrOutput {
+	return o.ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerAdaptiveRoutingOutput) ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerAdaptiveRouting) *LoadBalancerAdaptiveRouting {
+		return &v
+	}).(LoadBalancerAdaptiveRoutingPtrOutput)
+}
+
+// Whether to failover across pools.
+func (o LoadBalancerAdaptiveRoutingOutput) FailoverAcrossPools() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerAdaptiveRouting) *bool { return v.FailoverAcrossPools }).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerAdaptiveRoutingPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerAdaptiveRoutingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerAdaptiveRouting)(nil)).Elem()
+}
+
+func (o LoadBalancerAdaptiveRoutingPtrOutput) ToLoadBalancerAdaptiveRoutingPtrOutput() LoadBalancerAdaptiveRoutingPtrOutput {
+	return o
+}
+
+func (o LoadBalancerAdaptiveRoutingPtrOutput) ToLoadBalancerAdaptiveRoutingPtrOutputWithContext(ctx context.Context) LoadBalancerAdaptiveRoutingPtrOutput {
+	return o
+}
+
+func (o LoadBalancerAdaptiveRoutingPtrOutput) Elem() LoadBalancerAdaptiveRoutingOutput {
+	return o.ApplyT(func(v *LoadBalancerAdaptiveRouting) LoadBalancerAdaptiveRouting {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerAdaptiveRouting
+		return ret
+	}).(LoadBalancerAdaptiveRoutingOutput)
+}
+
+// Whether to failover across pools.
+func (o LoadBalancerAdaptiveRoutingPtrOutput) FailoverAcrossPools() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerAdaptiveRouting) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverAcrossPools
+	}).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerMonitor struct {
+	// The number of consecutive failed health checks before the backend is considered down, for example, 5.
+	ConsecutiveDown *int `pulumi:"consecutiveDown"`
+	// The number of consecutive successful probes required to consider the target as up, e.g., 3.
+	ConsecutiveUp *int `pulumi:"consecutiveUp"`
+	// Expected status code, such as 200,202, successful HTTP response.
+	ExpectedCodes *string `pulumi:"expectedCodes"`
+	// Whether to follow the redirect.
+	FollowRedirects *bool `pulumi:"followRedirects"`
+	// The HTTP headers to be included in the health check request.
+	Header *string `pulumi:"header"`
+	// The monitoring interval, such as 60 seconds, checks the frequency.
+	Interval *int `pulumi:"interval"`
+	// Monitor request methods, such as GET, methods in the HTTP protocol.
+	Method *string `pulumi:"method"`
+	// Probe Point Region, default to Global
+	// - `Global`: Global.
+	// - `ChineseMainland`: Chinese mainland.
+	// - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+	MonitoringRegion *string `pulumi:"monitoringRegion"`
+	// The monitor checks the path, such as/healthcheck, the HTTP request path.
+	Path *string `pulumi:"path"`
+	// The target port.
+	Port *int `pulumi:"port"`
+	// The timeout for the health check, in seconds. The value range is 1-10.
+	Timeout *int `pulumi:"timeout"`
+	// The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+	Type *string `pulumi:"type"`
+}
+
+// LoadBalancerMonitorInput is an input type that accepts LoadBalancerMonitorArgs and LoadBalancerMonitorOutput values.
+// You can construct a concrete instance of `LoadBalancerMonitorInput` via:
+//
+//	LoadBalancerMonitorArgs{...}
+type LoadBalancerMonitorInput interface {
+	pulumi.Input
+
+	ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput
+	ToLoadBalancerMonitorOutputWithContext(context.Context) LoadBalancerMonitorOutput
+}
+
+type LoadBalancerMonitorArgs struct {
+	// The number of consecutive failed health checks before the backend is considered down, for example, 5.
+	ConsecutiveDown pulumi.IntPtrInput `pulumi:"consecutiveDown"`
+	// The number of consecutive successful probes required to consider the target as up, e.g., 3.
+	ConsecutiveUp pulumi.IntPtrInput `pulumi:"consecutiveUp"`
+	// Expected status code, such as 200,202, successful HTTP response.
+	ExpectedCodes pulumi.StringPtrInput `pulumi:"expectedCodes"`
+	// Whether to follow the redirect.
+	FollowRedirects pulumi.BoolPtrInput `pulumi:"followRedirects"`
+	// The HTTP headers to be included in the health check request.
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// The monitoring interval, such as 60 seconds, checks the frequency.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// Monitor request methods, such as GET, methods in the HTTP protocol.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// Probe Point Region, default to Global
+	// - `Global`: Global.
+	// - `ChineseMainland`: Chinese mainland.
+	// - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+	MonitoringRegion pulumi.StringPtrInput `pulumi:"monitoringRegion"`
+	// The monitor checks the path, such as/healthcheck, the HTTP request path.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The target port.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The timeout for the health check, in seconds. The value range is 1-10.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (LoadBalancerMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerMonitor)(nil)).Elem()
+}
+
+func (i LoadBalancerMonitorArgs) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
+	return i.ToLoadBalancerMonitorOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerMonitorArgs) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorOutput)
+}
+
+func (i LoadBalancerMonitorArgs) ToLoadBalancerMonitorPtrOutput() LoadBalancerMonitorPtrOutput {
+	return i.ToLoadBalancerMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerMonitorArgs) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorOutput).ToLoadBalancerMonitorPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerMonitorPtrInput is an input type that accepts LoadBalancerMonitorArgs, LoadBalancerMonitorPtr and LoadBalancerMonitorPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerMonitorPtrInput` via:
+//
+//	        LoadBalancerMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerMonitorPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerMonitorPtrOutput() LoadBalancerMonitorPtrOutput
+	ToLoadBalancerMonitorPtrOutputWithContext(context.Context) LoadBalancerMonitorPtrOutput
+}
+
+type loadBalancerMonitorPtrType LoadBalancerMonitorArgs
+
+func LoadBalancerMonitorPtr(v *LoadBalancerMonitorArgs) LoadBalancerMonitorPtrInput {
+	return (*loadBalancerMonitorPtrType)(v)
+}
+
+func (*loadBalancerMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerMonitor)(nil)).Elem()
+}
+
+func (i *loadBalancerMonitorPtrType) ToLoadBalancerMonitorPtrOutput() LoadBalancerMonitorPtrOutput {
+	return i.ToLoadBalancerMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerMonitorPtrType) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorPtrOutput)
+}
+
+type LoadBalancerMonitorOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerMonitor)(nil)).Elem()
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
+	return o
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
+	return o
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorPtrOutput() LoadBalancerMonitorPtrOutput {
+	return o.ToLoadBalancerMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerMonitor) *LoadBalancerMonitor {
+		return &v
+	}).(LoadBalancerMonitorPtrOutput)
+}
+
+// The number of consecutive failed health checks before the backend is considered down, for example, 5.
+func (o LoadBalancerMonitorOutput) ConsecutiveDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *int { return v.ConsecutiveDown }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive successful probes required to consider the target as up, e.g., 3.
+func (o LoadBalancerMonitorOutput) ConsecutiveUp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *int { return v.ConsecutiveUp }).(pulumi.IntPtrOutput)
+}
+
+// Expected status code, such as 200,202, successful HTTP response.
+func (o LoadBalancerMonitorOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+}
+
+// Whether to follow the redirect.
+func (o LoadBalancerMonitorOutput) FollowRedirects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *bool { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
+}
+
+// The HTTP headers to be included in the health check request.
+func (o LoadBalancerMonitorOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// The monitoring interval, such as 60 seconds, checks the frequency.
+func (o LoadBalancerMonitorOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// Monitor request methods, such as GET, methods in the HTTP protocol.
+func (o LoadBalancerMonitorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// Probe Point Region, default to Global
+// - `Global`: Global.
+// - `ChineseMainland`: Chinese mainland.
+// - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+func (o LoadBalancerMonitorOutput) MonitoringRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.MonitoringRegion }).(pulumi.StringPtrOutput)
+}
+
+// The monitor checks the path, such as/healthcheck, the HTTP request path.
+func (o LoadBalancerMonitorOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The target port.
+func (o LoadBalancerMonitorOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The timeout for the health check, in seconds. The value range is 1-10.
+func (o LoadBalancerMonitorOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+func (o LoadBalancerMonitorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerMonitor) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerMonitor)(nil)).Elem()
+}
+
+func (o LoadBalancerMonitorPtrOutput) ToLoadBalancerMonitorPtrOutput() LoadBalancerMonitorPtrOutput {
+	return o
+}
+
+func (o LoadBalancerMonitorPtrOutput) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
+	return o
+}
+
+func (o LoadBalancerMonitorPtrOutput) Elem() LoadBalancerMonitorOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) LoadBalancerMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerMonitor
+		return ret
+	}).(LoadBalancerMonitorOutput)
+}
+
+// The number of consecutive failed health checks before the backend is considered down, for example, 5.
+func (o LoadBalancerMonitorPtrOutput) ConsecutiveDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveDown
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive successful probes required to consider the target as up, e.g., 3.
+func (o LoadBalancerMonitorPtrOutput) ConsecutiveUp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsecutiveUp
+	}).(pulumi.IntPtrOutput)
+}
+
+// Expected status code, such as 200,202, successful HTTP response.
+func (o LoadBalancerMonitorPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to follow the redirect.
+func (o LoadBalancerMonitorPtrOutput) FollowRedirects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FollowRedirects
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The HTTP headers to be included in the health check request.
+func (o LoadBalancerMonitorPtrOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Header
+	}).(pulumi.StringPtrOutput)
+}
+
+// The monitoring interval, such as 60 seconds, checks the frequency.
+func (o LoadBalancerMonitorPtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Monitor request methods, such as GET, methods in the HTTP protocol.
+func (o LoadBalancerMonitorPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// Probe Point Region, default to Global
+// - `Global`: Global.
+// - `ChineseMainland`: Chinese mainland.
+// - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+func (o LoadBalancerMonitorPtrOutput) MonitoringRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The monitor checks the path, such as/healthcheck, the HTTP request path.
+func (o LoadBalancerMonitorPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target port.
+func (o LoadBalancerMonitorPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timeout for the health check, in seconds. The value range is 1-10.
+func (o LoadBalancerMonitorPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+func (o LoadBalancerMonitorPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerRandomSteering struct {
+	// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+	DefaultWeight *int `pulumi:"defaultWeight"`
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	PoolWeights map[string]string `pulumi:"poolWeights"`
+}
+
+// LoadBalancerRandomSteeringInput is an input type that accepts LoadBalancerRandomSteeringArgs and LoadBalancerRandomSteeringOutput values.
+// You can construct a concrete instance of `LoadBalancerRandomSteeringInput` via:
+//
+//	LoadBalancerRandomSteeringArgs{...}
+type LoadBalancerRandomSteeringInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRandomSteeringOutput() LoadBalancerRandomSteeringOutput
+	ToLoadBalancerRandomSteeringOutputWithContext(context.Context) LoadBalancerRandomSteeringOutput
+}
+
+type LoadBalancerRandomSteeringArgs struct {
+	// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+	DefaultWeight pulumi.IntPtrInput `pulumi:"defaultWeight"`
+	// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+	PoolWeights pulumi.StringMapInput `pulumi:"poolWeights"`
+}
+
+func (LoadBalancerRandomSteeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRandomSteering)(nil)).Elem()
+}
+
+func (i LoadBalancerRandomSteeringArgs) ToLoadBalancerRandomSteeringOutput() LoadBalancerRandomSteeringOutput {
+	return i.ToLoadBalancerRandomSteeringOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRandomSteeringArgs) ToLoadBalancerRandomSteeringOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRandomSteeringOutput)
+}
+
+func (i LoadBalancerRandomSteeringArgs) ToLoadBalancerRandomSteeringPtrOutput() LoadBalancerRandomSteeringPtrOutput {
+	return i.ToLoadBalancerRandomSteeringPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRandomSteeringArgs) ToLoadBalancerRandomSteeringPtrOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRandomSteeringOutput).ToLoadBalancerRandomSteeringPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerRandomSteeringPtrInput is an input type that accepts LoadBalancerRandomSteeringArgs, LoadBalancerRandomSteeringPtr and LoadBalancerRandomSteeringPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerRandomSteeringPtrInput` via:
+//
+//	        LoadBalancerRandomSteeringArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerRandomSteeringPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRandomSteeringPtrOutput() LoadBalancerRandomSteeringPtrOutput
+	ToLoadBalancerRandomSteeringPtrOutputWithContext(context.Context) LoadBalancerRandomSteeringPtrOutput
+}
+
+type loadBalancerRandomSteeringPtrType LoadBalancerRandomSteeringArgs
+
+func LoadBalancerRandomSteeringPtr(v *LoadBalancerRandomSteeringArgs) LoadBalancerRandomSteeringPtrInput {
+	return (*loadBalancerRandomSteeringPtrType)(v)
+}
+
+func (*loadBalancerRandomSteeringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRandomSteering)(nil)).Elem()
+}
+
+func (i *loadBalancerRandomSteeringPtrType) ToLoadBalancerRandomSteeringPtrOutput() LoadBalancerRandomSteeringPtrOutput {
+	return i.ToLoadBalancerRandomSteeringPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerRandomSteeringPtrType) ToLoadBalancerRandomSteeringPtrOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRandomSteeringPtrOutput)
+}
+
+type LoadBalancerRandomSteeringOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRandomSteeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRandomSteering)(nil)).Elem()
+}
+
+func (o LoadBalancerRandomSteeringOutput) ToLoadBalancerRandomSteeringOutput() LoadBalancerRandomSteeringOutput {
+	return o
+}
+
+func (o LoadBalancerRandomSteeringOutput) ToLoadBalancerRandomSteeringOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringOutput {
+	return o
+}
+
+func (o LoadBalancerRandomSteeringOutput) ToLoadBalancerRandomSteeringPtrOutput() LoadBalancerRandomSteeringPtrOutput {
+	return o.ToLoadBalancerRandomSteeringPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerRandomSteeringOutput) ToLoadBalancerRandomSteeringPtrOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerRandomSteering) *LoadBalancerRandomSteering {
+		return &v
+	}).(LoadBalancerRandomSteeringPtrOutput)
+}
+
+// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+func (o LoadBalancerRandomSteeringOutput) DefaultWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRandomSteering) *int { return v.DefaultWeight }).(pulumi.IntPtrOutput)
+}
+
+// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+func (o LoadBalancerRandomSteeringOutput) PoolWeights() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LoadBalancerRandomSteering) map[string]string { return v.PoolWeights }).(pulumi.StringMapOutput)
+}
+
+type LoadBalancerRandomSteeringPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRandomSteeringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRandomSteering)(nil)).Elem()
+}
+
+func (o LoadBalancerRandomSteeringPtrOutput) ToLoadBalancerRandomSteeringPtrOutput() LoadBalancerRandomSteeringPtrOutput {
+	return o
+}
+
+func (o LoadBalancerRandomSteeringPtrOutput) ToLoadBalancerRandomSteeringPtrOutputWithContext(ctx context.Context) LoadBalancerRandomSteeringPtrOutput {
+	return o
+}
+
+func (o LoadBalancerRandomSteeringPtrOutput) Elem() LoadBalancerRandomSteeringOutput {
+	return o.ApplyT(func(v *LoadBalancerRandomSteering) LoadBalancerRandomSteering {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerRandomSteering
+		return ret
+	}).(LoadBalancerRandomSteeringOutput)
+}
+
+// The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+func (o LoadBalancerRandomSteeringPtrOutput) DefaultWeight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRandomSteering) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultWeight
+	}).(pulumi.IntPtrOutput)
+}
+
+// Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+func (o LoadBalancerRandomSteeringPtrOutput) PoolWeights() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancerRandomSteering) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolWeights
+	}).(pulumi.StringMapOutput)
+}
+
+type LoadBalancerRule struct {
+	// Executes a specified response after matching the rule. See `fixedResponse` below.
+	FixedResponse *LoadBalancerRuleFixedResponse `pulumi:"fixedResponse"`
+	// Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+	Overrides *string `pulumi:"overrides"`
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	Rule *string `pulumi:"rule"`
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
+	RuleEnable *string `pulumi:"ruleEnable"`
+	// Rule name. When adding global configuration, this parameter does not need to be set.
+	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
+	// Whether to terminate the execution of subsequent rules.
+	Terminates *bool `pulumi:"terminates"`
+}
+
+// LoadBalancerRuleInput is an input type that accepts LoadBalancerRuleArgs and LoadBalancerRuleOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleInput` via:
+//
+//	LoadBalancerRuleArgs{...}
+type LoadBalancerRuleInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOutput() LoadBalancerRuleOutput
+	ToLoadBalancerRuleOutputWithContext(context.Context) LoadBalancerRuleOutput
+}
+
+type LoadBalancerRuleArgs struct {
+	// Executes a specified response after matching the rule. See `fixedResponse` below.
+	FixedResponse LoadBalancerRuleFixedResponsePtrInput `pulumi:"fixedResponse"`
+	// Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+	Overrides pulumi.StringPtrInput `pulumi:"overrides"`
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	Rule pulumi.StringPtrInput `pulumi:"rule"`
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
+	RuleEnable pulumi.StringPtrInput `pulumi:"ruleEnable"`
+	// Rule name. When adding global configuration, this parameter does not need to be set.
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput `pulumi:"sequence"`
+	// Whether to terminate the execution of subsequent rules.
+	Terminates pulumi.BoolPtrInput `pulumi:"terminates"`
+}
+
+func (LoadBalancerRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRule)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleArgs) ToLoadBalancerRuleOutput() LoadBalancerRuleOutput {
+	return i.ToLoadBalancerRuleOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleArgs) ToLoadBalancerRuleOutputWithContext(ctx context.Context) LoadBalancerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOutput)
+}
+
+// LoadBalancerRuleArrayInput is an input type that accepts LoadBalancerRuleArray and LoadBalancerRuleArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleArrayInput` via:
+//
+//	LoadBalancerRuleArray{ LoadBalancerRuleArgs{...} }
+type LoadBalancerRuleArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput
+	ToLoadBalancerRuleArrayOutputWithContext(context.Context) LoadBalancerRuleArrayOutput
+}
+
+type LoadBalancerRuleArray []LoadBalancerRuleInput
+
+func (LoadBalancerRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRule)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleArray) ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput {
+	return i.ToLoadBalancerRuleArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleArray) ToLoadBalancerRuleArrayOutputWithContext(ctx context.Context) LoadBalancerRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleArrayOutput)
+}
+
+type LoadBalancerRuleOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRule)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOutput) ToLoadBalancerRuleOutput() LoadBalancerRuleOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOutput) ToLoadBalancerRuleOutputWithContext(ctx context.Context) LoadBalancerRuleOutput {
+	return o
+}
+
+// Executes a specified response after matching the rule. See `fixedResponse` below.
+func (o LoadBalancerRuleOutput) FixedResponse() LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *LoadBalancerRuleFixedResponse { return v.FixedResponse }).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+// Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+func (o LoadBalancerRuleOutput) Overrides() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *string { return v.Overrides }).(pulumi.StringPtrOutput)
+}
+
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+func (o LoadBalancerRuleOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *string { return v.Rule }).(pulumi.StringPtrOutput)
+}
+
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// - on: open.
+// - off: close.
+func (o LoadBalancerRuleOutput) RuleEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *string { return v.RuleEnable }).(pulumi.StringPtrOutput)
+}
+
+// Rule name. When adding global configuration, this parameter does not need to be set.
+func (o LoadBalancerRuleOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Order of rule execution. The smaller the value, the higher the priority for execution.
+func (o LoadBalancerRuleOutput) Sequence() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *int { return v.Sequence }).(pulumi.IntPtrOutput)
+}
+
+// Whether to terminate the execution of subsequent rules.
+func (o LoadBalancerRuleOutput) Terminates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *bool { return v.Terminates }).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRule)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleArrayOutput) ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleArrayOutput) ToLoadBalancerRuleArrayOutputWithContext(ctx context.Context) LoadBalancerRuleArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRule {
+		return vs[0].([]LoadBalancerRule)[vs[1].(int)]
+	}).(LoadBalancerRuleOutput)
+}
+
+type LoadBalancerRuleFixedResponse struct {
+	// The Content-Type field in the HTTP Header.
+	ContentType *string `pulumi:"contentType"`
+	// The location field in the http return.
+	Location *string `pulumi:"location"`
+	// The body value of the response.
+	MessageBody *string `pulumi:"messageBody"`
+	// Status Code.
+	StatusCode *int `pulumi:"statusCode"`
+}
+
+// LoadBalancerRuleFixedResponseInput is an input type that accepts LoadBalancerRuleFixedResponseArgs and LoadBalancerRuleFixedResponseOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleFixedResponseInput` via:
+//
+//	LoadBalancerRuleFixedResponseArgs{...}
+type LoadBalancerRuleFixedResponseInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput
+	ToLoadBalancerRuleFixedResponseOutputWithContext(context.Context) LoadBalancerRuleFixedResponseOutput
+}
+
+type LoadBalancerRuleFixedResponseArgs struct {
+	// The Content-Type field in the HTTP Header.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// The location field in the http return.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The body value of the response.
+	MessageBody pulumi.StringPtrInput `pulumi:"messageBody"`
+	// Status Code.
+	StatusCode pulumi.IntPtrInput `pulumi:"statusCode"`
+}
+
+func (LoadBalancerRuleFixedResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput {
+	return i.ToLoadBalancerRuleFixedResponseOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponseOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponseOutput)
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return i.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponseOutput).ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx)
+}
+
+// LoadBalancerRuleFixedResponsePtrInput is an input type that accepts LoadBalancerRuleFixedResponseArgs, LoadBalancerRuleFixedResponsePtr and LoadBalancerRuleFixedResponsePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleFixedResponsePtrInput` via:
+//
+//	        LoadBalancerRuleFixedResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerRuleFixedResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput
+	ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Context) LoadBalancerRuleFixedResponsePtrOutput
+}
+
+type loadBalancerRuleFixedResponsePtrType LoadBalancerRuleFixedResponseArgs
+
+func LoadBalancerRuleFixedResponsePtr(v *LoadBalancerRuleFixedResponseArgs) LoadBalancerRuleFixedResponsePtrInput {
+	return (*loadBalancerRuleFixedResponsePtrType)(v)
+}
+
+func (*loadBalancerRuleFixedResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (i *loadBalancerRuleFixedResponsePtrType) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return i.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerRuleFixedResponsePtrType) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+type LoadBalancerRuleFixedResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleFixedResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponseOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponseOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerRuleFixedResponse) *LoadBalancerRuleFixedResponse {
+		return &v
+	}).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+// The Content-Type field in the HTTP Header.
+func (o LoadBalancerRuleFixedResponseOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// The location field in the http return.
+func (o LoadBalancerRuleFixedResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The body value of the response.
+func (o LoadBalancerRuleFixedResponseOutput) MessageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.MessageBody }).(pulumi.StringPtrOutput)
+}
+
+// Status Code.
+func (o LoadBalancerRuleFixedResponseOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerRuleFixedResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleFixedResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) Elem() LoadBalancerRuleFixedResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) LoadBalancerRuleFixedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerRuleFixedResponse
+		return ret
+	}).(LoadBalancerRuleFixedResponseOutput)
+}
+
+// The Content-Type field in the HTTP Header.
+func (o LoadBalancerRuleFixedResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location field in the http return.
+func (o LoadBalancerRuleFixedResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The body value of the response.
+func (o LoadBalancerRuleFixedResponsePtrOutput) MessageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Status Code.
+func (o LoadBalancerRuleFixedResponsePtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
 type OriginPoolOrigin struct {
 	// Origin Address.
 	Address *string `pulumi:"address"`
@@ -7592,6 +8600,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModificationInput)(nil)).Elem(), HttpResponseHeaderModificationRuleResponseHeaderModificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput)(nil)).Elem(), HttpResponseHeaderModificationRuleResponseHeaderModificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAdaptiveRoutingInput)(nil)).Elem(), LoadBalancerAdaptiveRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerAdaptiveRoutingPtrInput)(nil)).Elem(), LoadBalancerAdaptiveRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorInput)(nil)).Elem(), LoadBalancerMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorPtrInput)(nil)).Elem(), LoadBalancerMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRandomSteeringInput)(nil)).Elem(), LoadBalancerRandomSteeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRandomSteeringPtrInput)(nil)).Elem(), LoadBalancerRandomSteeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleInput)(nil)).Elem(), LoadBalancerRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleArrayInput)(nil)).Elem(), LoadBalancerRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleFixedResponseInput)(nil)).Elem(), LoadBalancerRuleFixedResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleFixedResponsePtrInput)(nil)).Elem(), LoadBalancerRuleFixedResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginInput)(nil)).Elem(), OriginPoolOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginArrayInput)(nil)).Elem(), OriginPoolOriginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginPoolOriginAuthConfInput)(nil)).Elem(), OriginPoolOriginAuthConfArgs{})
@@ -7680,6 +8698,16 @@ func init() {
 	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
 	pulumi.RegisterOutputType(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput{})
 	pulumi.RegisterOutputType(HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerAdaptiveRoutingOutput{})
+	pulumi.RegisterOutputType(LoadBalancerAdaptiveRoutingPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerMonitorOutput{})
+	pulumi.RegisterOutputType(LoadBalancerMonitorPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRandomSteeringOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRandomSteeringPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleFixedResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleFixedResponsePtrOutput{})
 	pulumi.RegisterOutputType(OriginPoolOriginOutput{})
 	pulumi.RegisterOutputType(OriginPoolOriginArrayOutput{})
 	pulumi.RegisterOutputType(OriginPoolOriginAuthConfOutput{})

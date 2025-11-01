@@ -15,14 +15,20 @@ namespace Pulumi.AliCloud.Cms.Inputs
         /// <summary>
         /// The ID of the city.
         /// </summary>
-        [Input("city", required: true)]
-        public Input<string> City { get; set; } = null!;
+        [Input("city")]
+        public Input<string>? City { get; set; }
 
         /// <summary>
         /// The ID of the carrier.
         /// </summary>
-        [Input("isp", required: true)]
-        public Input<string> Isp { get; set; } = null!;
+        [Input("isp")]
+        public Input<string>? Isp { get; set; }
+
+        /// <summary>
+        /// The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SiteMonitorIspCityGetArgs()
         {

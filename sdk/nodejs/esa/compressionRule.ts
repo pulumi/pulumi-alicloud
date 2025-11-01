@@ -103,6 +103,10 @@ export class CompressionRule extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
     declare public readonly siteId: pulumi.Output<number>;
@@ -134,6 +138,7 @@ export class CompressionRule extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
             resourceInputs["zstd"] = state?.zstd;
@@ -147,6 +152,7 @@ export class CompressionRule extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["zstd"] = args?.zstd;
@@ -188,6 +194,10 @@ export interface CompressionRuleState {
      */
     ruleName?: pulumi.Input<string>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
     siteId?: pulumi.Input<number>;
@@ -227,6 +237,10 @@ export interface CompressionRuleArgs {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */

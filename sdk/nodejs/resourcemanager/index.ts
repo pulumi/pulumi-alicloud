@@ -30,6 +30,11 @@ export type DelegatedAdministrator = import("./delegatedAdministrator").Delegate
 export const DelegatedAdministrator: typeof import("./delegatedAdministrator").DelegatedAdministrator = null as any;
 utilities.lazyLoad(exports, ["DelegatedAdministrator"], () => require("./delegatedAdministrator"));
 
+export { DeliveryChannelArgs, DeliveryChannelState } from "./deliveryChannel";
+export type DeliveryChannel = import("./deliveryChannel").DeliveryChannel;
+export const DeliveryChannel: typeof import("./deliveryChannel").DeliveryChannel = null as any;
+utilities.lazyLoad(exports, ["DeliveryChannel"], () => require("./deliveryChannel"));
+
 export { FolderArgs, FolderState } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
@@ -125,6 +130,11 @@ export type MessageContact = import("./messageContact").MessageContact;
 export const MessageContact: typeof import("./messageContact").MessageContact = null as any;
 utilities.lazyLoad(exports, ["MessageContact"], () => require("./messageContact"));
 
+export { MultiAccountDeliveryChannelArgs, MultiAccountDeliveryChannelState } from "./multiAccountDeliveryChannel";
+export type MultiAccountDeliveryChannel = import("./multiAccountDeliveryChannel").MultiAccountDeliveryChannel;
+export const MultiAccountDeliveryChannel: typeof import("./multiAccountDeliveryChannel").MultiAccountDeliveryChannel = null as any;
+utilities.lazyLoad(exports, ["MultiAccountDeliveryChannel"], () => require("./multiAccountDeliveryChannel"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;
@@ -195,12 +205,16 @@ const _module = {
                 return new ControlPolicyAttachment(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator":
                 return new DelegatedAdministrator(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/deliveryChannel:DeliveryChannel":
+                return new DeliveryChannel(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/handshake:Handshake":
                 return new Handshake(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/messageContact:MessageContact":
                 return new MessageContact(name, <any>undefined, { urn })
+            case "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel":
+                return new MultiAccountDeliveryChannel(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
@@ -233,9 +247,11 @@ pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/autoGroupingR
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/controlPolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/delegatedAdministrator", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/deliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/folder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/handshake", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/messageContact", _module)
+pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/multiAccountDeliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "resourcemanager/policyVersion", _module)

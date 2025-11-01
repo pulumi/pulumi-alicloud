@@ -16,7 +16,7 @@ import (
 // environment in the cloud. An PolarDB zonal cluster can contain multiple user-created
 // databases.
 //
-// > **NOTE:** Available since v1.66.0.
+// > **NOTE:** Available since v1.261.0.
 //
 // ## Example Usage
 //

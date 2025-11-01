@@ -52,10 +52,16 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Deployment Scenario
-     * &gt; Enumeration value
-     * &gt; - 1.0 Single AZ
-     * &gt; - 2.0 Multi-AZ Basic
-     * &gt; - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:**  Enumeration value
+     * 
+     * &gt; **NOTE:**  - 1.0 Single AZ
+     * 
+     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+     * 
+     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="archVersion", required=true)
@@ -63,10 +69,16 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Deployment Scenario
-     * &gt; Enumeration value
-     * &gt; - 1.0 Single AZ
-     * &gt; - 2.0 Multi-AZ Basic
-     * &gt; - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:**  Enumeration value
+     * 
+     * &gt; **NOTE:**  - 1.0 Single AZ
+     * 
+     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+     * 
+     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<String> archVersion() {
@@ -74,14 +86,41 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto Renew
+     * Automatic renewal duration. Unit: Month.
+     * 
+     * Value range: `1` to **12 * *.
+     * 
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="autoRenewDuration")
+    private @Nullable Output<String> autoRenewDuration;
+
+    /**
+     * @return Automatic renewal duration. Unit: Month.
+     * 
+     * Value range: `1` to **12 * *.
+     * 
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<String>> autoRenewDuration() {
+        return Optional.ofNullable(this.autoRenewDuration);
+    }
+
+    /**
+     * Whether the instance is automatically renewed. Enumerated values:
      * 
      */
     @Import(name="autoRenewal")
     private @Nullable Output<Boolean> autoRenewal;
 
     /**
-     * @return Auto Renew
+     * @return Whether the instance is automatically renewed. Enumerated values:
      * 
      */
     public Optional<Output<Boolean>> autoRenewal() {
@@ -89,14 +128,14 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * &gt; Cloud storage capacity in GB
+     * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     @Import(name="cloudStorageSize")
     private @Nullable Output<Integer> cloudStorageSize;
 
     /**
-     * @return &gt; Cloud storage capacity in GB
+     * @return &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     public Optional<Output<Integer>> cloudStorageSize() {
@@ -104,20 +143,26 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * &gt; &gt; 
-     * &gt; - StandardStorage: Standard cloud storage
-     * &gt; - PerformanceStorage: performance-based cloud storage
-     * &gt; - capacity storage: Capacity-based cloud storage
+     * &gt; **NOTE:** &gt;
+     * 
+     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+     * 
+     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     * 
+     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
      * 
      */
     @Import(name="cloudStorageType")
     private @Nullable Output<String> cloudStorageType;
 
     /**
-     * @return &gt;&gt;
-     * &gt; - StandardStorage: Standard cloud storage
-     * &gt; - PerformanceStorage: performance-based cloud storage
-     * &gt; - capacity storage: Capacity-based cloud storage
+     * @return &gt; **NOTE:** &gt;
+     * 
+     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+     * 
+     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     * 
+     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
      * 
      */
     public Optional<Output<String>> cloudStorageType() {
@@ -137,6 +182,25 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> deletionProtection() {
         return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * The specified duration when the resource is purchased. Only the subscription instances are valid.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<Integer> duration;
+
+    /**
+     * @return The specified duration when the resource is purchased. Only the subscription instances are valid.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<Integer>> duration() {
+        return Optional.ofNullable(this.duration);
     }
 
     /**
@@ -182,6 +246,25 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+
+    /**
+     * Purchase duration unit: Month, Year
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Import(name="pricingCycle")
+    private @Nullable Output<String> pricingCycle;
+
+    /**
+     * @return Purchase duration unit: Month, Year
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Optional<Output<String>> pricingCycle() {
+        return Optional.ofNullable(this.pricingCycle);
     }
 
     /**
@@ -295,13 +378,16 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         this.arbiterVswitchId = $.arbiterVswitchId;
         this.arbiterZoneId = $.arbiterZoneId;
         this.archVersion = $.archVersion;
+        this.autoRenewDuration = $.autoRenewDuration;
         this.autoRenewal = $.autoRenewal;
         this.cloudStorageSize = $.cloudStorageSize;
         this.cloudStorageType = $.cloudStorageType;
         this.deletionProtection = $.deletionProtection;
+        this.duration = $.duration;
         this.engineLists = $.engineLists;
         this.instanceAlias = $.instanceAlias;
         this.paymentType = $.paymentType;
+        this.pricingCycle = $.pricingCycle;
         this.primaryVswitchId = $.primaryVswitchId;
         this.primaryZoneId = $.primaryZoneId;
         this.standbyVswitchId = $.standbyVswitchId;
@@ -373,10 +459,16 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param archVersion Deployment Scenario
-         * &gt; Enumeration value
-         * &gt; - 1.0 Single AZ
-         * &gt; - 2.0 Multi-AZ Basic
-         * &gt; - 3.0 Multi-AZ High Availability Edition
+         * 
+         * &gt; **NOTE:**  Enumeration value
+         * 
+         * &gt; **NOTE:**  - 1.0 Single AZ
+         * 
+         * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+         * 
+         * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -388,10 +480,16 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param archVersion Deployment Scenario
-         * &gt; Enumeration value
-         * &gt; - 1.0 Single AZ
-         * &gt; - 2.0 Multi-AZ Basic
-         * &gt; - 3.0 Multi-AZ High Availability Edition
+         * 
+         * &gt; **NOTE:**  Enumeration value
+         * 
+         * &gt; **NOTE:**  - 1.0 Single AZ
+         * 
+         * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+         * 
+         * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -401,7 +499,40 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewal Auto Renew
+         * @param autoRenewDuration Automatic renewal duration. Unit: Month.
+         * 
+         * Value range: `1` to **12 * *.
+         * 
+         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(@Nullable Output<String> autoRenewDuration) {
+            $.autoRenewDuration = autoRenewDuration;
+            return this;
+        }
+
+        /**
+         * @param autoRenewDuration Automatic renewal duration. Unit: Month.
+         * 
+         * Value range: `1` to **12 * *.
+         * 
+         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenewDuration(String autoRenewDuration) {
+            return autoRenewDuration(Output.of(autoRenewDuration));
+        }
+
+        /**
+         * @param autoRenewal Whether the instance is automatically renewed. Enumerated values:
          * 
          * @return builder
          * 
@@ -412,7 +543,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewal Auto Renew
+         * @param autoRenewal Whether the instance is automatically renewed. Enumerated values:
          * 
          * @return builder
          * 
@@ -422,7 +553,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageSize &gt; Cloud storage capacity in GB
+         * @param cloudStorageSize &gt; **NOTE:**  Cloud storage capacity in GB
          * 
          * @return builder
          * 
@@ -433,7 +564,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageSize &gt; Cloud storage capacity in GB
+         * @param cloudStorageSize &gt; **NOTE:**  Cloud storage capacity in GB
          * 
          * @return builder
          * 
@@ -443,10 +574,13 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageType &gt;&gt;
-         * &gt; - StandardStorage: Standard cloud storage
-         * &gt; - PerformanceStorage: performance-based cloud storage
-         * &gt; - capacity storage: Capacity-based cloud storage
+         * @param cloudStorageType &gt; **NOTE:** &gt;
+         * 
+         * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+         * 
+         * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+         * 
+         * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
          * 
          * @return builder
          * 
@@ -457,10 +591,13 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageType &gt;&gt;
-         * &gt; - StandardStorage: Standard cloud storage
-         * &gt; - PerformanceStorage: performance-based cloud storage
-         * &gt; - capacity storage: Capacity-based cloud storage
+         * @param cloudStorageType &gt; **NOTE:** &gt;
+         * 
+         * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+         * 
+         * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+         * 
+         * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
          * 
          * @return builder
          * 
@@ -488,6 +625,31 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtection(String deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param duration The specified duration when the resource is purchased. Only the subscription instances are valid.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<Integer> duration) {
+            $.duration = duration;
+            return this;
+        }
+
+        /**
+         * @param duration The specified duration when the resource is purchased. Only the subscription instances are valid.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(Integer duration) {
+            return duration(Output.of(duration));
         }
 
         /**
@@ -561,6 +723,31 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder paymentType(String paymentType) {
             return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param pricingCycle Purchase duration unit: Month, Year
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
+            $.pricingCycle = pricingCycle;
+            return this;
+        }
+
+        /**
+         * @param pricingCycle Purchase duration unit: Month, Year
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(String pricingCycle) {
+            return pricingCycle(Output.of(pricingCycle));
         }
 
         /**

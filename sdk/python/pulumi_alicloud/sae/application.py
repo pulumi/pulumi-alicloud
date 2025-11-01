@@ -3102,7 +3102,7 @@ class Application(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="acrAssumeRoleArn")
-    def acr_assume_role_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def acr_assume_role_arn(self) -> pulumi.Output[_builtins.str]:
         """
         The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
         """

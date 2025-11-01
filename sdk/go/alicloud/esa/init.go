@@ -57,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KvNamespace{}
 	case "alicloud:esa/list:List":
 		r = &List{}
+	case "alicloud:esa/loadBalancer:LoadBalancer":
+		r = &LoadBalancer{}
 	case "alicloud:esa/networkOptimization:NetworkOptimization":
 		r = &NetworkOptimization{}
 	case "alicloud:esa/originCaCertificate:OriginCaCertificate":
@@ -214,6 +216,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/list",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/loadBalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

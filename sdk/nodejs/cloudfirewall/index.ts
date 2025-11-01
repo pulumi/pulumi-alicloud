@@ -60,6 +60,11 @@ export const getNatFirewalls: typeof import("./getNatFirewalls").getNatFirewalls
 export const getNatFirewallsOutput: typeof import("./getNatFirewalls").getNatFirewallsOutput = null as any;
 utilities.lazyLoad(exports, ["getNatFirewalls","getNatFirewallsOutput"], () => require("./getNatFirewalls"));
 
+export { GetTlsInspectCaCertificatesArgs, GetTlsInspectCaCertificatesResult, GetTlsInspectCaCertificatesOutputArgs } from "./getTlsInspectCaCertificates";
+export const getTlsInspectCaCertificates: typeof import("./getTlsInspectCaCertificates").getTlsInspectCaCertificates = null as any;
+export const getTlsInspectCaCertificatesOutput: typeof import("./getTlsInspectCaCertificates").getTlsInspectCaCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getTlsInspectCaCertificates","getTlsInspectCaCertificatesOutput"], () => require("./getTlsInspectCaCertificates"));
+
 export { GetVpcCenTrFirewallsArgs, GetVpcCenTrFirewallsResult, GetVpcCenTrFirewallsOutputArgs } from "./getVpcCenTrFirewalls";
 export const getVpcCenTrFirewalls: typeof import("./getVpcCenTrFirewalls").getVpcCenTrFirewalls = null as any;
 export const getVpcCenTrFirewallsOutput: typeof import("./getVpcCenTrFirewalls").getVpcCenTrFirewallsOutput = null as any;

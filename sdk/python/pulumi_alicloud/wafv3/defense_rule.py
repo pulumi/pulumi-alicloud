@@ -396,79 +396,44 @@ class DefenseRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfaccwafv310619"
+            name = "tfexample"
         region_id = config.get("regionId")
         if region_id is None:
             region_id = "cn-hangzhou"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "example.wafqax.top"
         default = alicloud.wafv3.get_instances()
-        default_domain = alicloud.wafv3.Domain("default",
+        default_icm_rhk = alicloud.wafv3.Domain("defaultICMRhk",
+            redirect={
+                "loadbalance": "iphash",
+                "backends": ["39.98.217.197"],
+                "connect_timeout": 5,
+                "read_timeout": 120,
+                "write_timeout": 120,
+            },
+            domain="example.wafqax.top",
+            access_type="share",
             instance_id=default.ids[0],
             listen={
-                "protection_resource": "share",
-                "http_ports": [
-                    81,
-                    82,
-                    83,
-                ],
-                "https_ports": [],
-                "xff_header_mode": 2,
-                "xff_headers": [
-                    "examplea",
-                    "exampleb",
-                    "examplec",
-                ],
-                "custom_ciphers": [],
-                "ipv6_enabled": True,
-            },
-            redirect={
-                "keepalive_timeout": 15,
-                "backends": [
-                    "1.1.1.1",
-                    "3.3.3.3",
-                    "2.2.2.2",
-                ],
-                "write_timeout": 5,
-                "keepalive_requests": 1000,
-                "request_headers": [
-                    {
-                        "key": "examplekey1",
-                        "value": "exampleValue1",
-                    },
-                    {
-                        "key": "key1",
-                        "value": "value1",
-                    },
-                    {
-                        "key": "key22",
-                        "value": "value22",
-                    },
-                ],
-                "loadbalance": "iphash",
-                "focus_http_backend": False,
-                "sni_enabled": False,
-                "connect_timeout": 5,
-                "read_timeout": 5,
-                "keepalive": True,
-                "retry": True,
-            },
-            domain="zcexample_250746.wafqax.top",
-            access_type="share")
+                "http_ports": [80],
+            })
         default_defense_rule = alicloud.wafv3.DefenseRule("default",
+            defense_type="resource",
+            defense_scene="account_identifier",
+            rule_status=1,
+            resource=default_icm_rhk.domain_id,
             defense_origin="custom",
             config={
                 "account_identifiers": [{
+                    "position": "jwt",
                     "priority": 2,
                     "decode_type": "jwt",
                     "key": "Query-Arg",
                     "sub_key": "adb",
-                    "position": "jwt",
                 }],
             },
-            instance_id=default.ids[0],
-            defense_type="resource",
-            defense_scene="account_identifier",
-            rule_status=1,
-            resource=default_domain.domain_id)
+            instance_id=default.ids[0])
         ```
 
         ## Import
@@ -522,79 +487,44 @@ class DefenseRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tfaccwafv310619"
+            name = "tfexample"
         region_id = config.get("regionId")
         if region_id is None:
             region_id = "cn-hangzhou"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "example.wafqax.top"
         default = alicloud.wafv3.get_instances()
-        default_domain = alicloud.wafv3.Domain("default",
+        default_icm_rhk = alicloud.wafv3.Domain("defaultICMRhk",
+            redirect={
+                "loadbalance": "iphash",
+                "backends": ["39.98.217.197"],
+                "connect_timeout": 5,
+                "read_timeout": 120,
+                "write_timeout": 120,
+            },
+            domain="example.wafqax.top",
+            access_type="share",
             instance_id=default.ids[0],
             listen={
-                "protection_resource": "share",
-                "http_ports": [
-                    81,
-                    82,
-                    83,
-                ],
-                "https_ports": [],
-                "xff_header_mode": 2,
-                "xff_headers": [
-                    "examplea",
-                    "exampleb",
-                    "examplec",
-                ],
-                "custom_ciphers": [],
-                "ipv6_enabled": True,
-            },
-            redirect={
-                "keepalive_timeout": 15,
-                "backends": [
-                    "1.1.1.1",
-                    "3.3.3.3",
-                    "2.2.2.2",
-                ],
-                "write_timeout": 5,
-                "keepalive_requests": 1000,
-                "request_headers": [
-                    {
-                        "key": "examplekey1",
-                        "value": "exampleValue1",
-                    },
-                    {
-                        "key": "key1",
-                        "value": "value1",
-                    },
-                    {
-                        "key": "key22",
-                        "value": "value22",
-                    },
-                ],
-                "loadbalance": "iphash",
-                "focus_http_backend": False,
-                "sni_enabled": False,
-                "connect_timeout": 5,
-                "read_timeout": 5,
-                "keepalive": True,
-                "retry": True,
-            },
-            domain="zcexample_250746.wafqax.top",
-            access_type="share")
+                "http_ports": [80],
+            })
         default_defense_rule = alicloud.wafv3.DefenseRule("default",
+            defense_type="resource",
+            defense_scene="account_identifier",
+            rule_status=1,
+            resource=default_icm_rhk.domain_id,
             defense_origin="custom",
             config={
                 "account_identifiers": [{
+                    "position": "jwt",
                     "priority": 2,
                     "decode_type": "jwt",
                     "key": "Query-Arg",
                     "sub_key": "adb",
-                    "position": "jwt",
                 }],
             },
-            instance_id=default.ids[0],
-            defense_type="resource",
-            defense_scene="account_identifier",
-            rule_status=1,
-            resource=default_domain.domain_id)
+            instance_id=default.ids[0])
         ```
 
         ## Import

@@ -5297,11 +5297,207 @@ func (o MonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Monit
 	}).(MonitorGroupInstancesInstanceOutput)
 }
 
+type SiteMonitorCustomSchedule struct {
+	// The days in a week.
+	Days []int `pulumi:"days"`
+	// The end time of the detection. Unit: hours.
+	EndHour *int `pulumi:"endHour"`
+	// The start time of the detection. Unit: hours.
+	StartHour *int `pulumi:"startHour"`
+	// The time zone of the detection.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// SiteMonitorCustomScheduleInput is an input type that accepts SiteMonitorCustomScheduleArgs and SiteMonitorCustomScheduleOutput values.
+// You can construct a concrete instance of `SiteMonitorCustomScheduleInput` via:
+//
+//	SiteMonitorCustomScheduleArgs{...}
+type SiteMonitorCustomScheduleInput interface {
+	pulumi.Input
+
+	ToSiteMonitorCustomScheduleOutput() SiteMonitorCustomScheduleOutput
+	ToSiteMonitorCustomScheduleOutputWithContext(context.Context) SiteMonitorCustomScheduleOutput
+}
+
+type SiteMonitorCustomScheduleArgs struct {
+	// The days in a week.
+	Days pulumi.IntArrayInput `pulumi:"days"`
+	// The end time of the detection. Unit: hours.
+	EndHour pulumi.IntPtrInput `pulumi:"endHour"`
+	// The start time of the detection. Unit: hours.
+	StartHour pulumi.IntPtrInput `pulumi:"startHour"`
+	// The time zone of the detection.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (SiteMonitorCustomScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorCustomSchedule)(nil)).Elem()
+}
+
+func (i SiteMonitorCustomScheduleArgs) ToSiteMonitorCustomScheduleOutput() SiteMonitorCustomScheduleOutput {
+	return i.ToSiteMonitorCustomScheduleOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorCustomScheduleArgs) ToSiteMonitorCustomScheduleOutputWithContext(ctx context.Context) SiteMonitorCustomScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorCustomScheduleOutput)
+}
+
+func (i SiteMonitorCustomScheduleArgs) ToSiteMonitorCustomSchedulePtrOutput() SiteMonitorCustomSchedulePtrOutput {
+	return i.ToSiteMonitorCustomSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorCustomScheduleArgs) ToSiteMonitorCustomSchedulePtrOutputWithContext(ctx context.Context) SiteMonitorCustomSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorCustomScheduleOutput).ToSiteMonitorCustomSchedulePtrOutputWithContext(ctx)
+}
+
+// SiteMonitorCustomSchedulePtrInput is an input type that accepts SiteMonitorCustomScheduleArgs, SiteMonitorCustomSchedulePtr and SiteMonitorCustomSchedulePtrOutput values.
+// You can construct a concrete instance of `SiteMonitorCustomSchedulePtrInput` via:
+//
+//	        SiteMonitorCustomScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteMonitorCustomSchedulePtrInput interface {
+	pulumi.Input
+
+	ToSiteMonitorCustomSchedulePtrOutput() SiteMonitorCustomSchedulePtrOutput
+	ToSiteMonitorCustomSchedulePtrOutputWithContext(context.Context) SiteMonitorCustomSchedulePtrOutput
+}
+
+type siteMonitorCustomSchedulePtrType SiteMonitorCustomScheduleArgs
+
+func SiteMonitorCustomSchedulePtr(v *SiteMonitorCustomScheduleArgs) SiteMonitorCustomSchedulePtrInput {
+	return (*siteMonitorCustomSchedulePtrType)(v)
+}
+
+func (*siteMonitorCustomSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteMonitorCustomSchedule)(nil)).Elem()
+}
+
+func (i *siteMonitorCustomSchedulePtrType) ToSiteMonitorCustomSchedulePtrOutput() SiteMonitorCustomSchedulePtrOutput {
+	return i.ToSiteMonitorCustomSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *siteMonitorCustomSchedulePtrType) ToSiteMonitorCustomSchedulePtrOutputWithContext(ctx context.Context) SiteMonitorCustomSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorCustomSchedulePtrOutput)
+}
+
+type SiteMonitorCustomScheduleOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorCustomScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorCustomSchedule)(nil)).Elem()
+}
+
+func (o SiteMonitorCustomScheduleOutput) ToSiteMonitorCustomScheduleOutput() SiteMonitorCustomScheduleOutput {
+	return o
+}
+
+func (o SiteMonitorCustomScheduleOutput) ToSiteMonitorCustomScheduleOutputWithContext(ctx context.Context) SiteMonitorCustomScheduleOutput {
+	return o
+}
+
+func (o SiteMonitorCustomScheduleOutput) ToSiteMonitorCustomSchedulePtrOutput() SiteMonitorCustomSchedulePtrOutput {
+	return o.ToSiteMonitorCustomSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o SiteMonitorCustomScheduleOutput) ToSiteMonitorCustomSchedulePtrOutputWithContext(ctx context.Context) SiteMonitorCustomSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteMonitorCustomSchedule) *SiteMonitorCustomSchedule {
+		return &v
+	}).(SiteMonitorCustomSchedulePtrOutput)
+}
+
+// The days in a week.
+func (o SiteMonitorCustomScheduleOutput) Days() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SiteMonitorCustomSchedule) []int { return v.Days }).(pulumi.IntArrayOutput)
+}
+
+// The end time of the detection. Unit: hours.
+func (o SiteMonitorCustomScheduleOutput) EndHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorCustomSchedule) *int { return v.EndHour }).(pulumi.IntPtrOutput)
+}
+
+// The start time of the detection. Unit: hours.
+func (o SiteMonitorCustomScheduleOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorCustomSchedule) *int { return v.StartHour }).(pulumi.IntPtrOutput)
+}
+
+// The time zone of the detection.
+func (o SiteMonitorCustomScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorCustomSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type SiteMonitorCustomSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorCustomSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteMonitorCustomSchedule)(nil)).Elem()
+}
+
+func (o SiteMonitorCustomSchedulePtrOutput) ToSiteMonitorCustomSchedulePtrOutput() SiteMonitorCustomSchedulePtrOutput {
+	return o
+}
+
+func (o SiteMonitorCustomSchedulePtrOutput) ToSiteMonitorCustomSchedulePtrOutputWithContext(ctx context.Context) SiteMonitorCustomSchedulePtrOutput {
+	return o
+}
+
+func (o SiteMonitorCustomSchedulePtrOutput) Elem() SiteMonitorCustomScheduleOutput {
+	return o.ApplyT(func(v *SiteMonitorCustomSchedule) SiteMonitorCustomSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret SiteMonitorCustomSchedule
+		return ret
+	}).(SiteMonitorCustomScheduleOutput)
+}
+
+// The days in a week.
+func (o SiteMonitorCustomSchedulePtrOutput) Days() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SiteMonitorCustomSchedule) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntArrayOutput)
+}
+
+// The end time of the detection. Unit: hours.
+func (o SiteMonitorCustomSchedulePtrOutput) EndHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorCustomSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The start time of the detection. Unit: hours.
+func (o SiteMonitorCustomSchedulePtrOutput) StartHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorCustomSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time zone of the detection.
+func (o SiteMonitorCustomSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorCustomSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 type SiteMonitorIspCity struct {
 	// The ID of the city.
-	City string `pulumi:"city"`
+	City *string `pulumi:"city"`
 	// The ID of the carrier.
-	Isp string `pulumi:"isp"`
+	Isp *string `pulumi:"isp"`
+	// The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+	Type *string `pulumi:"type"`
 }
 
 // SiteMonitorIspCityInput is an input type that accepts SiteMonitorIspCityArgs and SiteMonitorIspCityOutput values.
@@ -5317,9 +5513,11 @@ type SiteMonitorIspCityInput interface {
 
 type SiteMonitorIspCityArgs struct {
 	// The ID of the city.
-	City pulumi.StringInput `pulumi:"city"`
+	City pulumi.StringPtrInput `pulumi:"city"`
 	// The ID of the carrier.
-	Isp pulumi.StringInput `pulumi:"isp"`
+	Isp pulumi.StringPtrInput `pulumi:"isp"`
+	// The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (SiteMonitorIspCityArgs) ElementType() reflect.Type {
@@ -5374,13 +5572,18 @@ func (o SiteMonitorIspCityOutput) ToSiteMonitorIspCityOutputWithContext(ctx cont
 }
 
 // The ID of the city.
-func (o SiteMonitorIspCityOutput) City() pulumi.StringOutput {
-	return o.ApplyT(func(v SiteMonitorIspCity) string { return v.City }).(pulumi.StringOutput)
+func (o SiteMonitorIspCityOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorIspCity) *string { return v.City }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the carrier.
-func (o SiteMonitorIspCityOutput) Isp() pulumi.StringOutput {
-	return o.ApplyT(func(v SiteMonitorIspCity) string { return v.Isp }).(pulumi.StringOutput)
+func (o SiteMonitorIspCityOutput) Isp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorIspCity) *string { return v.Isp }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+func (o SiteMonitorIspCityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorIspCity) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type SiteMonitorIspCityArrayOutput struct{ *pulumi.OutputState }
@@ -5401,6 +5604,905 @@ func (o SiteMonitorIspCityArrayOutput) Index(i pulumi.IntInput) SiteMonitorIspCi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteMonitorIspCity {
 		return vs[0].([]SiteMonitorIspCity)[vs[1].(int)]
 	}).(SiteMonitorIspCityOutput)
+}
+
+type SiteMonitorOptionJson struct {
+	// Assertion configuration group. See `assertions` below.
+	Assertions []SiteMonitorOptionJsonAssertion `pulumi:"assertions"`
+	// Number of retries after DNS failed.
+	Attempts *int `pulumi:"attempts"`
+	// The Cookie that sends the HTTP request.
+	Cookie *string `pulumi:"cookie"`
+	// Whether to enable automatic MTR network diagnosis after a task failure. Value:
+	// - false: does not enable automatic MTR network diagnosis.
+	// - true to turn on automatic MTR network diagnostics.
+	DiagnosisMtr *bool `pulumi:"diagnosisMtr"`
+	// Whether to enable the automatic PING network delay detection after the task fails. Value:
+	// - false: does not enable automatic PING network delay detection.
+	// - true: Enable automatic PING network delay detection.
+	DiagnosisPing *bool `pulumi:"diagnosisPing"`
+	// List of DNS hijacking configurations.
+	DnsHijackWhitelist *string `pulumi:"dnsHijackWhitelist"`
+	// Matching Rules for DNS. Value:
+	// - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+	// - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+	// - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+	// - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+	DnsMatchRule *string `pulumi:"dnsMatchRule"`
+	// The IP address of the DNS server.
+	//
+	// > **NOTE:**  only applicable to DNS probe types.
+	DnsServer *string `pulumi:"dnsServer"`
+	// DNS resolution type. Only applicable to DNS probe types. Value:
+	// - A (default): specifies the IP address corresponding to the host name or domain name.
+	// - CNAME: maps multiple domain names to another domain name.
+	// - NS: specifies that the domain name is resolved by a DNS server.
+	// - MX: point domain name to a mail server address.
+	// - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+	DnsType *string `pulumi:"dnsType"`
+	// The alias or address to be resolved.
+	//
+	// > **NOTE:**  This parameter applies only to DNS probe types.
+	ExpectValue *string `pulumi:"expectValue"`
+	// Packet loss rate.
+	//
+	// > **NOTE:**  This parameter only applies to PING probe types.
+	FailureRate *string `pulumi:"failureRate"`
+	// HTTP request header.
+	Header *string `pulumi:"header"`
+	// HTTP request method. Value:
+	// - get
+	// - post
+	// - head
+	HttpMethod *string `pulumi:"httpMethod"`
+	// Whether the parameter' Password' is Base64 encoded.
+	// - true: Yes.
+	// - false: No.
+	IsBaseEncode *bool `pulumi:"isBaseEncode"`
+	// Whether alarm rules are included. Value:
+	// - 0: Yes.
+	// - 1: No.
+	MatchRule *int `pulumi:"matchRule"`
+	// Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+	MinTlsVersion *string `pulumi:"minTlsVersion"`
+	// The password of the SMTP, POP3, or FTP probe type.
+	Password *string `pulumi:"password"`
+	// The heartbeat of the PING probe type.
+	PingNum *int `pulumi:"pingNum"`
+	// PING the port. Applies to TCP PING.
+	PingPort *int `pulumi:"pingPort"`
+	// The PING protocol type. Value:
+	// - icmp
+	// - tcp
+	// - udp
+	PingType *string `pulumi:"pingType"`
+	// Ports of TCP, UDP, SMTP, and POP3 probe types.
+	Port *int `pulumi:"port"`
+	// The request content of the HTTP probe type.
+	RequestContent *string `pulumi:"requestContent"`
+	// HTTP request content format. Value:
+	// - hex: hexadecimal format.
+	// - text: text format.
+	RequestFormat *string `pulumi:"requestFormat"`
+	// Match the response content.
+	ResponseContent *string `pulumi:"responseContent"`
+	// HTTP response content format. Value:
+	// - hex: hexadecimal format.
+	// - text: text format.
+	ResponseFormat *string `pulumi:"responseFormat"`
+	// Timeout time. Unit: milliseconds.
+	Timeout *int `pulumi:"timeout"`
+	// The username of FTP, SMTP, or pop3.
+	UserName *string `pulumi:"userName"`
+}
+
+// SiteMonitorOptionJsonInput is an input type that accepts SiteMonitorOptionJsonArgs and SiteMonitorOptionJsonOutput values.
+// You can construct a concrete instance of `SiteMonitorOptionJsonInput` via:
+//
+//	SiteMonitorOptionJsonArgs{...}
+type SiteMonitorOptionJsonInput interface {
+	pulumi.Input
+
+	ToSiteMonitorOptionJsonOutput() SiteMonitorOptionJsonOutput
+	ToSiteMonitorOptionJsonOutputWithContext(context.Context) SiteMonitorOptionJsonOutput
+}
+
+type SiteMonitorOptionJsonArgs struct {
+	// Assertion configuration group. See `assertions` below.
+	Assertions SiteMonitorOptionJsonAssertionArrayInput `pulumi:"assertions"`
+	// Number of retries after DNS failed.
+	Attempts pulumi.IntPtrInput `pulumi:"attempts"`
+	// The Cookie that sends the HTTP request.
+	Cookie pulumi.StringPtrInput `pulumi:"cookie"`
+	// Whether to enable automatic MTR network diagnosis after a task failure. Value:
+	// - false: does not enable automatic MTR network diagnosis.
+	// - true to turn on automatic MTR network diagnostics.
+	DiagnosisMtr pulumi.BoolPtrInput `pulumi:"diagnosisMtr"`
+	// Whether to enable the automatic PING network delay detection after the task fails. Value:
+	// - false: does not enable automatic PING network delay detection.
+	// - true: Enable automatic PING network delay detection.
+	DiagnosisPing pulumi.BoolPtrInput `pulumi:"diagnosisPing"`
+	// List of DNS hijacking configurations.
+	DnsHijackWhitelist pulumi.StringPtrInput `pulumi:"dnsHijackWhitelist"`
+	// Matching Rules for DNS. Value:
+	// - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+	// - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+	// - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+	// - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+	DnsMatchRule pulumi.StringPtrInput `pulumi:"dnsMatchRule"`
+	// The IP address of the DNS server.
+	//
+	// > **NOTE:**  only applicable to DNS probe types.
+	DnsServer pulumi.StringPtrInput `pulumi:"dnsServer"`
+	// DNS resolution type. Only applicable to DNS probe types. Value:
+	// - A (default): specifies the IP address corresponding to the host name or domain name.
+	// - CNAME: maps multiple domain names to another domain name.
+	// - NS: specifies that the domain name is resolved by a DNS server.
+	// - MX: point domain name to a mail server address.
+	// - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+	DnsType pulumi.StringPtrInput `pulumi:"dnsType"`
+	// The alias or address to be resolved.
+	//
+	// > **NOTE:**  This parameter applies only to DNS probe types.
+	ExpectValue pulumi.StringPtrInput `pulumi:"expectValue"`
+	// Packet loss rate.
+	//
+	// > **NOTE:**  This parameter only applies to PING probe types.
+	FailureRate pulumi.StringPtrInput `pulumi:"failureRate"`
+	// HTTP request header.
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// HTTP request method. Value:
+	// - get
+	// - post
+	// - head
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// Whether the parameter' Password' is Base64 encoded.
+	// - true: Yes.
+	// - false: No.
+	IsBaseEncode pulumi.BoolPtrInput `pulumi:"isBaseEncode"`
+	// Whether alarm rules are included. Value:
+	// - 0: Yes.
+	// - 1: No.
+	MatchRule pulumi.IntPtrInput `pulumi:"matchRule"`
+	// Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+	MinTlsVersion pulumi.StringPtrInput `pulumi:"minTlsVersion"`
+	// The password of the SMTP, POP3, or FTP probe type.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The heartbeat of the PING probe type.
+	PingNum pulumi.IntPtrInput `pulumi:"pingNum"`
+	// PING the port. Applies to TCP PING.
+	PingPort pulumi.IntPtrInput `pulumi:"pingPort"`
+	// The PING protocol type. Value:
+	// - icmp
+	// - tcp
+	// - udp
+	PingType pulumi.StringPtrInput `pulumi:"pingType"`
+	// Ports of TCP, UDP, SMTP, and POP3 probe types.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The request content of the HTTP probe type.
+	RequestContent pulumi.StringPtrInput `pulumi:"requestContent"`
+	// HTTP request content format. Value:
+	// - hex: hexadecimal format.
+	// - text: text format.
+	RequestFormat pulumi.StringPtrInput `pulumi:"requestFormat"`
+	// Match the response content.
+	ResponseContent pulumi.StringPtrInput `pulumi:"responseContent"`
+	// HTTP response content format. Value:
+	// - hex: hexadecimal format.
+	// - text: text format.
+	ResponseFormat pulumi.StringPtrInput `pulumi:"responseFormat"`
+	// Timeout time. Unit: milliseconds.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// The username of FTP, SMTP, or pop3.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (SiteMonitorOptionJsonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorOptionJson)(nil)).Elem()
+}
+
+func (i SiteMonitorOptionJsonArgs) ToSiteMonitorOptionJsonOutput() SiteMonitorOptionJsonOutput {
+	return i.ToSiteMonitorOptionJsonOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorOptionJsonArgs) ToSiteMonitorOptionJsonOutputWithContext(ctx context.Context) SiteMonitorOptionJsonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOptionJsonOutput)
+}
+
+func (i SiteMonitorOptionJsonArgs) ToSiteMonitorOptionJsonPtrOutput() SiteMonitorOptionJsonPtrOutput {
+	return i.ToSiteMonitorOptionJsonPtrOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorOptionJsonArgs) ToSiteMonitorOptionJsonPtrOutputWithContext(ctx context.Context) SiteMonitorOptionJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOptionJsonOutput).ToSiteMonitorOptionJsonPtrOutputWithContext(ctx)
+}
+
+// SiteMonitorOptionJsonPtrInput is an input type that accepts SiteMonitorOptionJsonArgs, SiteMonitorOptionJsonPtr and SiteMonitorOptionJsonPtrOutput values.
+// You can construct a concrete instance of `SiteMonitorOptionJsonPtrInput` via:
+//
+//	        SiteMonitorOptionJsonArgs{...}
+//
+//	or:
+//
+//	        nil
+type SiteMonitorOptionJsonPtrInput interface {
+	pulumi.Input
+
+	ToSiteMonitorOptionJsonPtrOutput() SiteMonitorOptionJsonPtrOutput
+	ToSiteMonitorOptionJsonPtrOutputWithContext(context.Context) SiteMonitorOptionJsonPtrOutput
+}
+
+type siteMonitorOptionJsonPtrType SiteMonitorOptionJsonArgs
+
+func SiteMonitorOptionJsonPtr(v *SiteMonitorOptionJsonArgs) SiteMonitorOptionJsonPtrInput {
+	return (*siteMonitorOptionJsonPtrType)(v)
+}
+
+func (*siteMonitorOptionJsonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteMonitorOptionJson)(nil)).Elem()
+}
+
+func (i *siteMonitorOptionJsonPtrType) ToSiteMonitorOptionJsonPtrOutput() SiteMonitorOptionJsonPtrOutput {
+	return i.ToSiteMonitorOptionJsonPtrOutputWithContext(context.Background())
+}
+
+func (i *siteMonitorOptionJsonPtrType) ToSiteMonitorOptionJsonPtrOutputWithContext(ctx context.Context) SiteMonitorOptionJsonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOptionJsonPtrOutput)
+}
+
+type SiteMonitorOptionJsonOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorOptionJsonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorOptionJson)(nil)).Elem()
+}
+
+func (o SiteMonitorOptionJsonOutput) ToSiteMonitorOptionJsonOutput() SiteMonitorOptionJsonOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonOutput) ToSiteMonitorOptionJsonOutputWithContext(ctx context.Context) SiteMonitorOptionJsonOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonOutput) ToSiteMonitorOptionJsonPtrOutput() SiteMonitorOptionJsonPtrOutput {
+	return o.ToSiteMonitorOptionJsonPtrOutputWithContext(context.Background())
+}
+
+func (o SiteMonitorOptionJsonOutput) ToSiteMonitorOptionJsonPtrOutputWithContext(ctx context.Context) SiteMonitorOptionJsonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteMonitorOptionJson) *SiteMonitorOptionJson {
+		return &v
+	}).(SiteMonitorOptionJsonPtrOutput)
+}
+
+// Assertion configuration group. See `assertions` below.
+func (o SiteMonitorOptionJsonOutput) Assertions() SiteMonitorOptionJsonAssertionArrayOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) []SiteMonitorOptionJsonAssertion { return v.Assertions }).(SiteMonitorOptionJsonAssertionArrayOutput)
+}
+
+// Number of retries after DNS failed.
+func (o SiteMonitorOptionJsonOutput) Attempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.Attempts }).(pulumi.IntPtrOutput)
+}
+
+// The Cookie that sends the HTTP request.
+func (o SiteMonitorOptionJsonOutput) Cookie() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.Cookie }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable automatic MTR network diagnosis after a task failure. Value:
+// - false: does not enable automatic MTR network diagnosis.
+// - true to turn on automatic MTR network diagnostics.
+func (o SiteMonitorOptionJsonOutput) DiagnosisMtr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *bool { return v.DiagnosisMtr }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the automatic PING network delay detection after the task fails. Value:
+// - false: does not enable automatic PING network delay detection.
+// - true: Enable automatic PING network delay detection.
+func (o SiteMonitorOptionJsonOutput) DiagnosisPing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *bool { return v.DiagnosisPing }).(pulumi.BoolPtrOutput)
+}
+
+// List of DNS hijacking configurations.
+func (o SiteMonitorOptionJsonOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.DnsHijackWhitelist }).(pulumi.StringPtrOutput)
+}
+
+// Matching Rules for DNS. Value:
+// - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+// - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+// - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+// - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+func (o SiteMonitorOptionJsonOutput) DnsMatchRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.DnsMatchRule }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the DNS server.
+//
+// > **NOTE:**  only applicable to DNS probe types.
+func (o SiteMonitorOptionJsonOutput) DnsServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.DnsServer }).(pulumi.StringPtrOutput)
+}
+
+// DNS resolution type. Only applicable to DNS probe types. Value:
+// - A (default): specifies the IP address corresponding to the host name or domain name.
+// - CNAME: maps multiple domain names to another domain name.
+// - NS: specifies that the domain name is resolved by a DNS server.
+// - MX: point domain name to a mail server address.
+// - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+func (o SiteMonitorOptionJsonOutput) DnsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.DnsType }).(pulumi.StringPtrOutput)
+}
+
+// The alias or address to be resolved.
+//
+// > **NOTE:**  This parameter applies only to DNS probe types.
+func (o SiteMonitorOptionJsonOutput) ExpectValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.ExpectValue }).(pulumi.StringPtrOutput)
+}
+
+// Packet loss rate.
+//
+// > **NOTE:**  This parameter only applies to PING probe types.
+func (o SiteMonitorOptionJsonOutput) FailureRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.FailureRate }).(pulumi.StringPtrOutput)
+}
+
+// HTTP request header.
+func (o SiteMonitorOptionJsonOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// HTTP request method. Value:
+// - get
+// - post
+// - head
+func (o SiteMonitorOptionJsonOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// Whether the parameter' Password' is Base64 encoded.
+// - true: Yes.
+// - false: No.
+func (o SiteMonitorOptionJsonOutput) IsBaseEncode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *bool { return v.IsBaseEncode }).(pulumi.BoolPtrOutput)
+}
+
+// Whether alarm rules are included. Value:
+// - 0: Yes.
+// - 1: No.
+func (o SiteMonitorOptionJsonOutput) MatchRule() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.MatchRule }).(pulumi.IntPtrOutput)
+}
+
+// Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+func (o SiteMonitorOptionJsonOutput) MinTlsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
+}
+
+// The password of the SMTP, POP3, or FTP probe type.
+func (o SiteMonitorOptionJsonOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The heartbeat of the PING probe type.
+func (o SiteMonitorOptionJsonOutput) PingNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.PingNum }).(pulumi.IntPtrOutput)
+}
+
+// PING the port. Applies to TCP PING.
+func (o SiteMonitorOptionJsonOutput) PingPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.PingPort }).(pulumi.IntPtrOutput)
+}
+
+// The PING protocol type. Value:
+// - icmp
+// - tcp
+// - udp
+func (o SiteMonitorOptionJsonOutput) PingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.PingType }).(pulumi.StringPtrOutput)
+}
+
+// Ports of TCP, UDP, SMTP, and POP3 probe types.
+func (o SiteMonitorOptionJsonOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The request content of the HTTP probe type.
+func (o SiteMonitorOptionJsonOutput) RequestContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.RequestContent }).(pulumi.StringPtrOutput)
+}
+
+// HTTP request content format. Value:
+// - hex: hexadecimal format.
+// - text: text format.
+func (o SiteMonitorOptionJsonOutput) RequestFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.RequestFormat }).(pulumi.StringPtrOutput)
+}
+
+// Match the response content.
+func (o SiteMonitorOptionJsonOutput) ResponseContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.ResponseContent }).(pulumi.StringPtrOutput)
+}
+
+// HTTP response content format. Value:
+// - hex: hexadecimal format.
+// - text: text format.
+func (o SiteMonitorOptionJsonOutput) ResponseFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.ResponseFormat }).(pulumi.StringPtrOutput)
+}
+
+// Timeout time. Unit: milliseconds.
+func (o SiteMonitorOptionJsonOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The username of FTP, SMTP, or pop3.
+func (o SiteMonitorOptionJsonOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJson) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type SiteMonitorOptionJsonPtrOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorOptionJsonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteMonitorOptionJson)(nil)).Elem()
+}
+
+func (o SiteMonitorOptionJsonPtrOutput) ToSiteMonitorOptionJsonPtrOutput() SiteMonitorOptionJsonPtrOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonPtrOutput) ToSiteMonitorOptionJsonPtrOutputWithContext(ctx context.Context) SiteMonitorOptionJsonPtrOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonPtrOutput) Elem() SiteMonitorOptionJsonOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) SiteMonitorOptionJson {
+		if v != nil {
+			return *v
+		}
+		var ret SiteMonitorOptionJson
+		return ret
+	}).(SiteMonitorOptionJsonOutput)
+}
+
+// Assertion configuration group. See `assertions` below.
+func (o SiteMonitorOptionJsonPtrOutput) Assertions() SiteMonitorOptionJsonAssertionArrayOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) []SiteMonitorOptionJsonAssertion {
+		if v == nil {
+			return nil
+		}
+		return v.Assertions
+	}).(SiteMonitorOptionJsonAssertionArrayOutput)
+}
+
+// Number of retries after DNS failed.
+func (o SiteMonitorOptionJsonPtrOutput) Attempts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Attempts
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Cookie that sends the HTTP request.
+func (o SiteMonitorOptionJsonPtrOutput) Cookie() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cookie
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable automatic MTR network diagnosis after a task failure. Value:
+// - false: does not enable automatic MTR network diagnosis.
+// - true to turn on automatic MTR network diagnostics.
+func (o SiteMonitorOptionJsonPtrOutput) DiagnosisMtr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosisMtr
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the automatic PING network delay detection after the task fails. Value:
+// - false: does not enable automatic PING network delay detection.
+// - true: Enable automatic PING network delay detection.
+func (o SiteMonitorOptionJsonPtrOutput) DiagnosisPing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiagnosisPing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of DNS hijacking configurations.
+func (o SiteMonitorOptionJsonPtrOutput) DnsHijackWhitelist() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsHijackWhitelist
+	}).(pulumi.StringPtrOutput)
+}
+
+// Matching Rules for DNS. Value:
+// - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+// - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+// - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+// - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+func (o SiteMonitorOptionJsonPtrOutput) DnsMatchRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsMatchRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the DNS server.
+//
+// > **NOTE:**  only applicable to DNS probe types.
+func (o SiteMonitorOptionJsonPtrOutput) DnsServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServer
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNS resolution type. Only applicable to DNS probe types. Value:
+// - A (default): specifies the IP address corresponding to the host name or domain name.
+// - CNAME: maps multiple domain names to another domain name.
+// - NS: specifies that the domain name is resolved by a DNS server.
+// - MX: point domain name to a mail server address.
+// - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+func (o SiteMonitorOptionJsonPtrOutput) DnsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The alias or address to be resolved.
+//
+// > **NOTE:**  This parameter applies only to DNS probe types.
+func (o SiteMonitorOptionJsonPtrOutput) ExpectValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Packet loss rate.
+//
+// > **NOTE:**  This parameter only applies to PING probe types.
+func (o SiteMonitorOptionJsonPtrOutput) FailureRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureRate
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP request header.
+func (o SiteMonitorOptionJsonPtrOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Header
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP request method. Value:
+// - get
+// - post
+// - head
+func (o SiteMonitorOptionJsonPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the parameter' Password' is Base64 encoded.
+// - true: Yes.
+// - false: No.
+func (o SiteMonitorOptionJsonPtrOutput) IsBaseEncode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsBaseEncode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether alarm rules are included. Value:
+// - 0: Yes.
+// - 1: No.
+func (o SiteMonitorOptionJsonPtrOutput) MatchRule() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MatchRule
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+func (o SiteMonitorOptionJsonPtrOutput) MinTlsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTlsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password of the SMTP, POP3, or FTP probe type.
+func (o SiteMonitorOptionJsonPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The heartbeat of the PING probe type.
+func (o SiteMonitorOptionJsonPtrOutput) PingNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PingNum
+	}).(pulumi.IntPtrOutput)
+}
+
+// PING the port. Applies to TCP PING.
+func (o SiteMonitorOptionJsonPtrOutput) PingPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PingPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The PING protocol type. Value:
+// - icmp
+// - tcp
+// - udp
+func (o SiteMonitorOptionJsonPtrOutput) PingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ports of TCP, UDP, SMTP, and POP3 probe types.
+func (o SiteMonitorOptionJsonPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The request content of the HTTP probe type.
+func (o SiteMonitorOptionJsonPtrOutput) RequestContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP request content format. Value:
+// - hex: hexadecimal format.
+// - text: text format.
+func (o SiteMonitorOptionJsonPtrOutput) RequestFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Match the response content.
+func (o SiteMonitorOptionJsonPtrOutput) ResponseContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP response content format. Value:
+// - hex: hexadecimal format.
+// - text: text format.
+func (o SiteMonitorOptionJsonPtrOutput) ResponseFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout time. Unit: milliseconds.
+func (o SiteMonitorOptionJsonPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The username of FTP, SMTP, or pop3.
+func (o SiteMonitorOptionJsonPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteMonitorOptionJson) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteMonitorOptionJsonAssertion struct {
+	// Assertion comparison operator. Value:
+	// - contains: contains.
+	// - doesNotContain: does not contain.
+	// - matches: regular matching.
+	// - doesNotMatch: regular mismatch.
+	// - is: Numeric equals or character matches equals.
+	// - isNot: not equal.
+	// - Lesthan: less.
+	// - moreThan: Greater.
+	Operator *string `pulumi:"operator"`
+	// Assertion matches the target numeric value or character of the comparison.
+	Target *string `pulumi:"target"`
+	Type   *string `pulumi:"type"`
+}
+
+// SiteMonitorOptionJsonAssertionInput is an input type that accepts SiteMonitorOptionJsonAssertionArgs and SiteMonitorOptionJsonAssertionOutput values.
+// You can construct a concrete instance of `SiteMonitorOptionJsonAssertionInput` via:
+//
+//	SiteMonitorOptionJsonAssertionArgs{...}
+type SiteMonitorOptionJsonAssertionInput interface {
+	pulumi.Input
+
+	ToSiteMonitorOptionJsonAssertionOutput() SiteMonitorOptionJsonAssertionOutput
+	ToSiteMonitorOptionJsonAssertionOutputWithContext(context.Context) SiteMonitorOptionJsonAssertionOutput
+}
+
+type SiteMonitorOptionJsonAssertionArgs struct {
+	// Assertion comparison operator. Value:
+	// - contains: contains.
+	// - doesNotContain: does not contain.
+	// - matches: regular matching.
+	// - doesNotMatch: regular mismatch.
+	// - is: Numeric equals or character matches equals.
+	// - isNot: not equal.
+	// - Lesthan: less.
+	// - moreThan: Greater.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Assertion matches the target numeric value or character of the comparison.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SiteMonitorOptionJsonAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorOptionJsonAssertion)(nil)).Elem()
+}
+
+func (i SiteMonitorOptionJsonAssertionArgs) ToSiteMonitorOptionJsonAssertionOutput() SiteMonitorOptionJsonAssertionOutput {
+	return i.ToSiteMonitorOptionJsonAssertionOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorOptionJsonAssertionArgs) ToSiteMonitorOptionJsonAssertionOutputWithContext(ctx context.Context) SiteMonitorOptionJsonAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOptionJsonAssertionOutput)
+}
+
+// SiteMonitorOptionJsonAssertionArrayInput is an input type that accepts SiteMonitorOptionJsonAssertionArray and SiteMonitorOptionJsonAssertionArrayOutput values.
+// You can construct a concrete instance of `SiteMonitorOptionJsonAssertionArrayInput` via:
+//
+//	SiteMonitorOptionJsonAssertionArray{ SiteMonitorOptionJsonAssertionArgs{...} }
+type SiteMonitorOptionJsonAssertionArrayInput interface {
+	pulumi.Input
+
+	ToSiteMonitorOptionJsonAssertionArrayOutput() SiteMonitorOptionJsonAssertionArrayOutput
+	ToSiteMonitorOptionJsonAssertionArrayOutputWithContext(context.Context) SiteMonitorOptionJsonAssertionArrayOutput
+}
+
+type SiteMonitorOptionJsonAssertionArray []SiteMonitorOptionJsonAssertionInput
+
+func (SiteMonitorOptionJsonAssertionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteMonitorOptionJsonAssertion)(nil)).Elem()
+}
+
+func (i SiteMonitorOptionJsonAssertionArray) ToSiteMonitorOptionJsonAssertionArrayOutput() SiteMonitorOptionJsonAssertionArrayOutput {
+	return i.ToSiteMonitorOptionJsonAssertionArrayOutputWithContext(context.Background())
+}
+
+func (i SiteMonitorOptionJsonAssertionArray) ToSiteMonitorOptionJsonAssertionArrayOutputWithContext(ctx context.Context) SiteMonitorOptionJsonAssertionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SiteMonitorOptionJsonAssertionArrayOutput)
+}
+
+type SiteMonitorOptionJsonAssertionOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorOptionJsonAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteMonitorOptionJsonAssertion)(nil)).Elem()
+}
+
+func (o SiteMonitorOptionJsonAssertionOutput) ToSiteMonitorOptionJsonAssertionOutput() SiteMonitorOptionJsonAssertionOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonAssertionOutput) ToSiteMonitorOptionJsonAssertionOutputWithContext(ctx context.Context) SiteMonitorOptionJsonAssertionOutput {
+	return o
+}
+
+// Assertion comparison operator. Value:
+// - contains: contains.
+// - doesNotContain: does not contain.
+// - matches: regular matching.
+// - doesNotMatch: regular mismatch.
+// - is: Numeric equals or character matches equals.
+// - isNot: not equal.
+// - Lesthan: less.
+// - moreThan: Greater.
+func (o SiteMonitorOptionJsonAssertionOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJsonAssertion) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// Assertion matches the target numeric value or character of the comparison.
+func (o SiteMonitorOptionJsonAssertionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJsonAssertion) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+func (o SiteMonitorOptionJsonAssertionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SiteMonitorOptionJsonAssertion) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SiteMonitorOptionJsonAssertionArrayOutput struct{ *pulumi.OutputState }
+
+func (SiteMonitorOptionJsonAssertionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SiteMonitorOptionJsonAssertion)(nil)).Elem()
+}
+
+func (o SiteMonitorOptionJsonAssertionArrayOutput) ToSiteMonitorOptionJsonAssertionArrayOutput() SiteMonitorOptionJsonAssertionArrayOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonAssertionArrayOutput) ToSiteMonitorOptionJsonAssertionArrayOutputWithContext(ctx context.Context) SiteMonitorOptionJsonAssertionArrayOutput {
+	return o
+}
+
+func (o SiteMonitorOptionJsonAssertionArrayOutput) Index(i pulumi.IntInput) SiteMonitorOptionJsonAssertionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteMonitorOptionJsonAssertion {
+		return vs[0].([]SiteMonitorOptionJsonAssertion)[vs[1].(int)]
+	}).(SiteMonitorOptionJsonAssertionOutput)
 }
 
 type SlsGroupSlsGroupConfig struct {
@@ -11116,8 +12218,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRuleTemplateAlertTemplateEscalationsWarnPtrInput)(nil)).Elem(), MetricRuleTemplateAlertTemplateEscalationsWarnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceInput)(nil)).Elem(), MonitorGroupInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorGroupInstancesInstanceArrayInput)(nil)).Elem(), MonitorGroupInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorCustomScheduleInput)(nil)).Elem(), SiteMonitorCustomScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorCustomSchedulePtrInput)(nil)).Elem(), SiteMonitorCustomScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityInput)(nil)).Elem(), SiteMonitorIspCityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorIspCityArrayInput)(nil)).Elem(), SiteMonitorIspCityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorOptionJsonInput)(nil)).Elem(), SiteMonitorOptionJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorOptionJsonPtrInput)(nil)).Elem(), SiteMonitorOptionJsonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorOptionJsonAssertionInput)(nil)).Elem(), SiteMonitorOptionJsonAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SiteMonitorOptionJsonAssertionArrayInput)(nil)).Elem(), SiteMonitorOptionJsonAssertionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsGroupSlsGroupConfigInput)(nil)).Elem(), SlsGroupSlsGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SlsGroupSlsGroupConfigArrayInput)(nil)).Elem(), SlsGroupSlsGroupConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlarmContactGroupsGroupInput)(nil)).Elem(), GetAlarmContactGroupsGroupArgs{})
@@ -11268,8 +12376,14 @@ func init() {
 	pulumi.RegisterOutputType(MetricRuleTemplateAlertTemplateEscalationsWarnPtrOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(MonitorGroupInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(SiteMonitorCustomScheduleOutput{})
+	pulumi.RegisterOutputType(SiteMonitorCustomSchedulePtrOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityOutput{})
 	pulumi.RegisterOutputType(SiteMonitorIspCityArrayOutput{})
+	pulumi.RegisterOutputType(SiteMonitorOptionJsonOutput{})
+	pulumi.RegisterOutputType(SiteMonitorOptionJsonPtrOutput{})
+	pulumi.RegisterOutputType(SiteMonitorOptionJsonAssertionOutput{})
+	pulumi.RegisterOutputType(SiteMonitorOptionJsonAssertionArrayOutput{})
 	pulumi.RegisterOutputType(SlsGroupSlsGroupConfigOutput{})
 	pulumi.RegisterOutputType(SlsGroupSlsGroupConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetAlarmContactGroupsGroupOutput{})

@@ -208,6 +208,8 @@ type ContainerGroup struct {
 	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrOutput `pulumi:"eipInstanceId"`
+	// The size of the temporary storage space to add. Unit: GiB.
+	EphemeralStorage pulumi.IntPtrOutput `pulumi:"ephemeralStorage"`
 	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayOutput `pulumi:"hostAliases"`
 	// The image registry credential. See `imageRegistryCredential` below.
@@ -319,6 +321,8 @@ type containerGroupState struct {
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId *string `pulumi:"eipInstanceId"`
+	// The size of the temporary storage space to add. Unit: GiB.
+	EphemeralStorage *int `pulumi:"ephemeralStorage"`
 	// HostAliases. See `hostAliases` below.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
 	// The image registry credential. See `imageRegistryCredential` below.
@@ -389,6 +393,8 @@ type ContainerGroupState struct {
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrInput
+	// The size of the temporary storage space to add. Unit: GiB.
+	EphemeralStorage pulumi.IntPtrInput
 	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayInput
 	// The image registry credential. See `imageRegistryCredential` below.
@@ -463,6 +469,8 @@ type containerGroupArgs struct {
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId *string `pulumi:"eipInstanceId"`
+	// The size of the temporary storage space to add. Unit: GiB.
+	EphemeralStorage *int `pulumi:"ephemeralStorage"`
 	// HostAliases. See `hostAliases` below.
 	HostAliases []ContainerGroupHostAlias `pulumi:"hostAliases"`
 	// The image registry credential. See `imageRegistryCredential` below.
@@ -528,6 +536,8 @@ type ContainerGroupArgs struct {
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
 	EipInstanceId pulumi.StringPtrInput
+	// The size of the temporary storage space to add. Unit: GiB.
+	EphemeralStorage pulumi.IntPtrInput
 	// HostAliases. See `hostAliases` below.
 	HostAliases ContainerGroupHostAliasArrayInput
 	// The image registry credential. See `imageRegistryCredential` below.
@@ -706,6 +716,11 @@ func (o ContainerGroupOutput) EipBandwidth() pulumi.IntPtrOutput {
 // The ID of the elastic IP address (EIP).
 func (o ContainerGroupOutput) EipInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.EipInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The size of the temporary storage space to add. Unit: GiB.
+func (o ContainerGroupOutput) EphemeralStorage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.IntPtrOutput { return v.EphemeralStorage }).(pulumi.IntPtrOutput)
 }
 
 // HostAliases. See `hostAliases` below.

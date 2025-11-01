@@ -83,8 +83,14 @@ __all__ = [
     'MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict',
     'MonitorGroupInstancesInstanceArgs',
     'MonitorGroupInstancesInstanceArgsDict',
+    'SiteMonitorCustomScheduleArgs',
+    'SiteMonitorCustomScheduleArgsDict',
     'SiteMonitorIspCityArgs',
     'SiteMonitorIspCityArgsDict',
+    'SiteMonitorOptionJsonArgs',
+    'SiteMonitorOptionJsonArgsDict',
+    'SiteMonitorOptionJsonAssertionArgs',
+    'SiteMonitorOptionJsonAssertionArgsDict',
     'SlsGroupSlsGroupConfigArgs',
     'SlsGroupSlsGroupConfigArgsDict',
 ]
@@ -3168,14 +3174,110 @@ class MonitorGroupInstancesInstanceArgs:
 
 
 if not MYPY:
+    class SiteMonitorCustomScheduleArgsDict(TypedDict):
+        days: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+        """
+        The days in a week.
+        """
+        end_hour: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The end time of the detection. Unit: hours.
+        """
+        start_hour: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The start time of the detection. Unit: hours.
+        """
+        time_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The time zone of the detection.
+        """
+elif False:
+    SiteMonitorCustomScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteMonitorCustomScheduleArgs:
+    def __init__(__self__, *,
+                 days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 end_hour: Optional[pulumi.Input[_builtins.int]] = None,
+                 start_hour: Optional[pulumi.Input[_builtins.int]] = None,
+                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] days: The days in a week.
+        :param pulumi.Input[_builtins.int] end_hour: The end time of the detection. Unit: hours.
+        :param pulumi.Input[_builtins.int] start_hour: The start time of the detection. Unit: hours.
+        :param pulumi.Input[_builtins.str] time_zone: The time zone of the detection.
+        """
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if end_hour is not None:
+            pulumi.set(__self__, "end_hour", end_hour)
+        if start_hour is not None:
+            pulumi.set(__self__, "start_hour", start_hour)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The days in a week.
+        """
+        return pulumi.get(self, "days")
+
+    @days.setter
+    def days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endHour")
+    def end_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The end time of the detection. Unit: hours.
+        """
+        return pulumi.get(self, "end_hour")
+
+    @end_hour.setter
+    def end_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "end_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The start time of the detection. Unit: hours.
+        """
+        return pulumi.get(self, "start_hour")
+
+    @start_hour.setter
+    def start_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "start_hour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time zone of the detection.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "time_zone", value)
+
+
+if not MYPY:
     class SiteMonitorIspCityArgsDict(TypedDict):
-        city: pulumi.Input[_builtins.str]
+        city: NotRequired[pulumi.Input[_builtins.str]]
         """
         The ID of the city.
         """
-        isp: pulumi.Input[_builtins.str]
+        isp: NotRequired[pulumi.Input[_builtins.str]]
         """
         The ID of the carrier.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
         """
 elif False:
     SiteMonitorIspCityArgsDict: TypeAlias = Mapping[str, Any]
@@ -3183,38 +3285,796 @@ elif False:
 @pulumi.input_type
 class SiteMonitorIspCityArgs:
     def __init__(__self__, *,
-                 city: pulumi.Input[_builtins.str],
-                 isp: pulumi.Input[_builtins.str]):
+                 city: Optional[pulumi.Input[_builtins.str]] = None,
+                 isp: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] city: The ID of the city.
         :param pulumi.Input[_builtins.str] isp: The ID of the carrier.
+        :param pulumi.Input[_builtins.str] type: The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
         """
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "isp", isp)
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if isp is not None:
+            pulumi.set(__self__, "isp", isp)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
-    def city(self) -> pulumi.Input[_builtins.str]:
+    def city(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the city.
         """
         return pulumi.get(self, "city")
 
     @city.setter
-    def city(self, value: pulumi.Input[_builtins.str]):
+    def city(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "city", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> pulumi.Input[_builtins.str]:
+    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the carrier.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: pulumi.Input[_builtins.str]):
+    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "isp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class SiteMonitorOptionJsonArgsDict(TypedDict):
+        assertions: NotRequired[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgsDict']]]]
+        """
+        Assertion configuration group. See `assertions` below.
+        """
+        attempts: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of retries after DNS failed.
+        """
+        cookie: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The Cookie that sends the HTTP request.
+        """
+        diagnosis_mtr: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable automatic MTR network diagnosis after a task failure. Value:
+        - false: does not enable automatic MTR network diagnosis.
+        - true to turn on automatic MTR network diagnostics.
+        """
+        diagnosis_ping: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable the automatic PING network delay detection after the task fails. Value:
+        - false: does not enable automatic PING network delay detection.
+        - true: Enable automatic PING network delay detection.
+        """
+        dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        List of DNS hijacking configurations.
+        """
+        dns_match_rule: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Matching Rules for DNS. Value:
+        - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+        - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+        - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+        - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+        """
+        dns_server: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IP address of the DNS server.
+
+        > **NOTE:**  only applicable to DNS probe types.
+        """
+        dns_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        DNS resolution type. Only applicable to DNS probe types. Value:
+        - A (default): specifies the IP address corresponding to the host name or domain name.
+        - CNAME: maps multiple domain names to another domain name.
+        - NS: specifies that the domain name is resolved by a DNS server.
+        - MX: point domain name to a mail server address.
+        - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+        """
+        expect_value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The alias or address to be resolved.
+
+        > **NOTE:**  This parameter applies only to DNS probe types.
+        """
+        failure_rate: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Packet loss rate.
+
+        > **NOTE:**  This parameter only applies to PING probe types.
+        """
+        header: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP request header.
+        """
+        http_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP request method. Value:
+        - get
+        - post
+        - head
+        """
+        is_base_encode: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the parameter' Password' is Base64 encoded.
+        - true: Yes.
+        - false: No.
+        """
+        match_rule: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Whether alarm rules are included. Value:
+        - 0: Yes.
+        - 1: No.
+        """
+        min_tls_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+        """
+        password: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The password of the SMTP, POP3, or FTP probe type.
+        """
+        ping_num: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The heartbeat of the PING probe type.
+        """
+        ping_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        PING the port. Applies to TCP PING.
+        """
+        ping_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The PING protocol type. Value:
+        - icmp
+        - tcp
+        - udp
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Ports of TCP, UDP, SMTP, and POP3 probe types.
+        """
+        request_content: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The request content of the HTTP probe type.
+        """
+        request_format: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP request content format. Value:
+        - hex: hexadecimal format.
+        - text: text format.
+        """
+        response_content: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Match the response content.
+        """
+        response_format: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP response content format. Value:
+        - hex: hexadecimal format.
+        - text: text format.
+        """
+        timeout: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Timeout time. Unit: milliseconds.
+        """
+        user_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The username of FTP, SMTP, or pop3.
+        """
+elif False:
+    SiteMonitorOptionJsonArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteMonitorOptionJsonArgs:
+    def __init__(__self__, *,
+                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]] = None,
+                 attempts: Optional[pulumi.Input[_builtins.int]] = None,
+                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
+                 diagnosis_mtr: Optional[pulumi.Input[_builtins.bool]] = None,
+                 diagnosis_ping: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dns_hijack_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
+                 dns_match_rule: Optional[pulumi.Input[_builtins.str]] = None,
+                 dns_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 dns_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 expect_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 failure_rate: Optional[pulumi.Input[_builtins.str]] = None,
+                 header: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_base_encode: Optional[pulumi.Input[_builtins.bool]] = None,
+                 match_rule: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_tls_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 ping_num: Optional[pulumi.Input[_builtins.int]] = None,
+                 ping_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 ping_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 request_content: Optional[pulumi.Input[_builtins.str]] = None,
+                 request_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 response_content: Optional[pulumi.Input[_builtins.str]] = None,
+                 response_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]] assertions: Assertion configuration group. See `assertions` below.
+        :param pulumi.Input[_builtins.int] attempts: Number of retries after DNS failed.
+        :param pulumi.Input[_builtins.str] cookie: The Cookie that sends the HTTP request.
+        :param pulumi.Input[_builtins.bool] diagnosis_mtr: Whether to enable automatic MTR network diagnosis after a task failure. Value:
+               - false: does not enable automatic MTR network diagnosis.
+               - true to turn on automatic MTR network diagnostics.
+        :param pulumi.Input[_builtins.bool] diagnosis_ping: Whether to enable the automatic PING network delay detection after the task fails. Value:
+               - false: does not enable automatic PING network delay detection.
+               - true: Enable automatic PING network delay detection.
+        :param pulumi.Input[_builtins.str] dns_hijack_whitelist: List of DNS hijacking configurations.
+        :param pulumi.Input[_builtins.str] dns_match_rule: Matching Rules for DNS. Value:
+               - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+               - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+               - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+               - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+        :param pulumi.Input[_builtins.str] dns_server: The IP address of the DNS server.
+               
+               > **NOTE:**  only applicable to DNS probe types.
+        :param pulumi.Input[_builtins.str] dns_type: DNS resolution type. Only applicable to DNS probe types. Value:
+               - A (default): specifies the IP address corresponding to the host name or domain name.
+               - CNAME: maps multiple domain names to another domain name.
+               - NS: specifies that the domain name is resolved by a DNS server.
+               - MX: point domain name to a mail server address.
+               - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+        :param pulumi.Input[_builtins.str] expect_value: The alias or address to be resolved.
+               
+               > **NOTE:**  This parameter applies only to DNS probe types.
+        :param pulumi.Input[_builtins.str] failure_rate: Packet loss rate.
+               
+               > **NOTE:**  This parameter only applies to PING probe types.
+        :param pulumi.Input[_builtins.str] header: HTTP request header.
+        :param pulumi.Input[_builtins.str] http_method: HTTP request method. Value:
+               - get
+               - post
+               - head
+        :param pulumi.Input[_builtins.bool] is_base_encode: Whether the parameter' Password' is Base64 encoded.
+               - true: Yes.
+               - false: No.
+        :param pulumi.Input[_builtins.int] match_rule: Whether alarm rules are included. Value:
+               - 0: Yes.
+               - 1: No.
+        :param pulumi.Input[_builtins.str] min_tls_version: Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+        :param pulumi.Input[_builtins.str] password: The password of the SMTP, POP3, or FTP probe type.
+        :param pulumi.Input[_builtins.int] ping_num: The heartbeat of the PING probe type.
+        :param pulumi.Input[_builtins.int] ping_port: PING the port. Applies to TCP PING.
+        :param pulumi.Input[_builtins.str] ping_type: The PING protocol type. Value:
+               - icmp
+               - tcp
+               - udp
+        :param pulumi.Input[_builtins.int] port: Ports of TCP, UDP, SMTP, and POP3 probe types.
+        :param pulumi.Input[_builtins.str] request_content: The request content of the HTTP probe type.
+        :param pulumi.Input[_builtins.str] request_format: HTTP request content format. Value:
+               - hex: hexadecimal format.
+               - text: text format.
+        :param pulumi.Input[_builtins.str] response_content: Match the response content.
+        :param pulumi.Input[_builtins.str] response_format: HTTP response content format. Value:
+               - hex: hexadecimal format.
+               - text: text format.
+        :param pulumi.Input[_builtins.int] timeout: Timeout time. Unit: milliseconds.
+        :param pulumi.Input[_builtins.str] user_name: The username of FTP, SMTP, or pop3.
+        """
+        if assertions is not None:
+            pulumi.set(__self__, "assertions", assertions)
+        if attempts is not None:
+            pulumi.set(__self__, "attempts", attempts)
+        if cookie is not None:
+            pulumi.set(__self__, "cookie", cookie)
+        if diagnosis_mtr is not None:
+            pulumi.set(__self__, "diagnosis_mtr", diagnosis_mtr)
+        if diagnosis_ping is not None:
+            pulumi.set(__self__, "diagnosis_ping", diagnosis_ping)
+        if dns_hijack_whitelist is not None:
+            pulumi.set(__self__, "dns_hijack_whitelist", dns_hijack_whitelist)
+        if dns_match_rule is not None:
+            pulumi.set(__self__, "dns_match_rule", dns_match_rule)
+        if dns_server is not None:
+            pulumi.set(__self__, "dns_server", dns_server)
+        if dns_type is not None:
+            pulumi.set(__self__, "dns_type", dns_type)
+        if expect_value is not None:
+            pulumi.set(__self__, "expect_value", expect_value)
+        if failure_rate is not None:
+            pulumi.set(__self__, "failure_rate", failure_rate)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if is_base_encode is not None:
+            pulumi.set(__self__, "is_base_encode", is_base_encode)
+        if match_rule is not None:
+            pulumi.set(__self__, "match_rule", match_rule)
+        if min_tls_version is not None:
+            pulumi.set(__self__, "min_tls_version", min_tls_version)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ping_num is not None:
+            pulumi.set(__self__, "ping_num", ping_num)
+        if ping_port is not None:
+            pulumi.set(__self__, "ping_port", ping_port)
+        if ping_type is not None:
+            pulumi.set(__self__, "ping_type", ping_type)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if request_content is not None:
+            pulumi.set(__self__, "request_content", request_content)
+        if request_format is not None:
+            pulumi.set(__self__, "request_format", request_format)
+        if response_content is not None:
+            pulumi.set(__self__, "response_content", response_content)
+        if response_format is not None:
+            pulumi.set(__self__, "response_format", response_format)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if user_name is not None:
+            pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]:
+        """
+        Assertion configuration group. See `assertions` below.
+        """
+        return pulumi.get(self, "assertions")
+
+    @assertions.setter
+    def assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]):
+        pulumi.set(self, "assertions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of retries after DNS failed.
+        """
+        return pulumi.get(self, "attempts")
+
+    @attempts.setter
+    def attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "attempts", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Cookie that sends the HTTP request.
+        """
+        return pulumi.get(self, "cookie")
+
+    @cookie.setter
+    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cookie", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diagnosisMtr")
+    def diagnosis_mtr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable automatic MTR network diagnosis after a task failure. Value:
+        - false: does not enable automatic MTR network diagnosis.
+        - true to turn on automatic MTR network diagnostics.
+        """
+        return pulumi.get(self, "diagnosis_mtr")
+
+    @diagnosis_mtr.setter
+    def diagnosis_mtr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "diagnosis_mtr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diagnosisPing")
+    def diagnosis_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable the automatic PING network delay detection after the task fails. Value:
+        - false: does not enable automatic PING network delay detection.
+        - true: Enable automatic PING network delay detection.
+        """
+        return pulumi.get(self, "diagnosis_ping")
+
+    @diagnosis_ping.setter
+    def diagnosis_ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "diagnosis_ping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsHijackWhitelist")
+    def dns_hijack_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        List of DNS hijacking configurations.
+        """
+        return pulumi.get(self, "dns_hijack_whitelist")
+
+    @dns_hijack_whitelist.setter
+    def dns_hijack_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dns_hijack_whitelist", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsMatchRule")
+    def dns_match_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Matching Rules for DNS. Value:
+        - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+        - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+        - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+        - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+        """
+        return pulumi.get(self, "dns_match_rule")
+
+    @dns_match_rule.setter
+    def dns_match_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dns_match_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsServer")
+    def dns_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IP address of the DNS server.
+
+        > **NOTE:**  only applicable to DNS probe types.
+        """
+        return pulumi.get(self, "dns_server")
+
+    @dns_server.setter
+    def dns_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dns_server", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsType")
+    def dns_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        DNS resolution type. Only applicable to DNS probe types. Value:
+        - A (default): specifies the IP address corresponding to the host name or domain name.
+        - CNAME: maps multiple domain names to another domain name.
+        - NS: specifies that the domain name is resolved by a DNS server.
+        - MX: point domain name to a mail server address.
+        - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+        """
+        return pulumi.get(self, "dns_type")
+
+    @dns_type.setter
+    def dns_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dns_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expectValue")
+    def expect_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The alias or address to be resolved.
+
+        > **NOTE:**  This parameter applies only to DNS probe types.
+        """
+        return pulumi.get(self, "expect_value")
+
+    @expect_value.setter
+    def expect_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expect_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failureRate")
+    def failure_rate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Packet loss rate.
+
+        > **NOTE:**  This parameter only applies to PING probe types.
+        """
+        return pulumi.get(self, "failure_rate")
+
+    @failure_rate.setter
+    def failure_rate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "failure_rate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def header(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP request header.
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP request method. Value:
+        - get
+        - post
+        - head
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isBaseEncode")
+    def is_base_encode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the parameter' Password' is Base64 encoded.
+        - true: Yes.
+        - false: No.
+        """
+        return pulumi.get(self, "is_base_encode")
+
+    @is_base_encode.setter
+    def is_base_encode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_base_encode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchRule")
+    def match_rule(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Whether alarm rules are included. Value:
+        - 0: Yes.
+        - 1: No.
+        """
+        return pulumi.get(self, "match_rule")
+
+    @match_rule.setter
+    def match_rule(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "match_rule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @min_tls_version.setter
+    def min_tls_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "min_tls_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the SMTP, POP3, or FTP probe type.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pingNum")
+    def ping_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The heartbeat of the PING probe type.
+        """
+        return pulumi.get(self, "ping_num")
+
+    @ping_num.setter
+    def ping_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ping_num", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pingPort")
+    def ping_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        PING the port. Applies to TCP PING.
+        """
+        return pulumi.get(self, "ping_port")
+
+    @ping_port.setter
+    def ping_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ping_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pingType")
+    def ping_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The PING protocol type. Value:
+        - icmp
+        - tcp
+        - udp
+        """
+        return pulumi.get(self, "ping_type")
+
+    @ping_type.setter
+    def ping_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ping_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Ports of TCP, UDP, SMTP, and POP3 probe types.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestContent")
+    def request_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The request content of the HTTP probe type.
+        """
+        return pulumi.get(self, "request_content")
+
+    @request_content.setter
+    def request_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_content", value)
+
+    @_builtins.property
+    @pulumi.getter(name="requestFormat")
+    def request_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP request content format. Value:
+        - hex: hexadecimal format.
+        - text: text format.
+        """
+        return pulumi.get(self, "request_format")
+
+    @request_format.setter
+    def request_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "request_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseContent")
+    def response_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Match the response content.
+        """
+        return pulumi.get(self, "response_content")
+
+    @response_content.setter
+    def response_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "response_content", value)
+
+    @_builtins.property
+    @pulumi.getter(name="responseFormat")
+    def response_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP response content format. Value:
+        - hex: hexadecimal format.
+        - text: text format.
+        """
+        return pulumi.get(self, "response_format")
+
+    @response_format.setter
+    def response_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "response_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Timeout time. Unit: milliseconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The username of FTP, SMTP, or pop3.
+        """
+        return pulumi.get(self, "user_name")
+
+    @user_name.setter
+    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_name", value)
+
+
+if not MYPY:
+    class SiteMonitorOptionJsonAssertionArgsDict(TypedDict):
+        operator: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Assertion comparison operator. Value:
+        - contains: contains.
+        - doesNotContain: does not contain.
+        - matches: regular matching.
+        - doesNotMatch: regular mismatch.
+        - is: Numeric equals or character matches equals.
+        - isNot: not equal.
+        - Lesthan: less.
+        - moreThan: Greater.
+        """
+        target: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Assertion matches the target numeric value or character of the comparison.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    SiteMonitorOptionJsonAssertionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SiteMonitorOptionJsonAssertionArgs:
+    def __init__(__self__, *,
+                 operator: Optional[pulumi.Input[_builtins.str]] = None,
+                 target: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operator: Assertion comparison operator. Value:
+               - contains: contains.
+               - doesNotContain: does not contain.
+               - matches: regular matching.
+               - doesNotMatch: regular mismatch.
+               - is: Numeric equals or character matches equals.
+               - isNot: not equal.
+               - Lesthan: less.
+               - moreThan: Greater.
+        :param pulumi.Input[_builtins.str] target: Assertion matches the target numeric value or character of the comparison.
+        """
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Assertion comparison operator. Value:
+        - contains: contains.
+        - doesNotContain: does not contain.
+        - matches: regular matching.
+        - doesNotMatch: regular mismatch.
+        - is: Numeric equals or character matches equals.
+        - isNot: not equal.
+        - Lesthan: less.
+        - moreThan: Greater.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Assertion matches the target numeric value or character of the comparison.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "target", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

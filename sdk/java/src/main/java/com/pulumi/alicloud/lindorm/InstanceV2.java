@@ -154,10 +154,16 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * Deployment Scenario
-     * &gt; Enumeration value
-     * &gt; - 1.0 Single AZ
-     * &gt; - 2.0 Multi-AZ Basic
-     * &gt; - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:**  Enumeration value
+     * 
+     * &gt; **NOTE:**  - 1.0 Single AZ
+     * 
+     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+     * 
+     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="archVersion", refs={String.class}, tree="[0]")
@@ -165,58 +171,96 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Deployment Scenario
-     * &gt; Enumeration value
-     * &gt; - 1.0 Single AZ
-     * &gt; - 2.0 Multi-AZ Basic
-     * &gt; - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:**  Enumeration value
+     * 
+     * &gt; **NOTE:**  - 1.0 Single AZ
+     * 
+     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+     * 
+     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<String> archVersion() {
         return this.archVersion;
     }
     /**
-     * Auto Renew
+     * Automatic renewal duration. Unit: Month.
+     * 
+     * Value range: `1` to **12 * *.
+     * 
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="autoRenewDuration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> autoRenewDuration;
+
+    /**
+     * @return Automatic renewal duration. Unit: Month.
+     * 
+     * Value range: `1` to **12 * *.
+     * 
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<String>> autoRenewDuration() {
+        return Codegen.optional(this.autoRenewDuration);
+    }
+    /**
+     * Whether the instance is automatically renewed. Enumerated values:
      * 
      */
     @Export(name="autoRenewal", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenewal;
 
     /**
-     * @return Auto Renew
+     * @return Whether the instance is automatically renewed. Enumerated values:
      * 
      */
     public Output<Optional<Boolean>> autoRenewal() {
         return Codegen.optional(this.autoRenewal);
     }
     /**
-     * &gt; Cloud storage capacity in GB
+     * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     @Export(name="cloudStorageSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cloudStorageSize;
 
     /**
-     * @return &gt; Cloud storage capacity in GB
+     * @return &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     public Output<Optional<Integer>> cloudStorageSize() {
         return Codegen.optional(this.cloudStorageSize);
     }
     /**
-     * &gt; &gt; 
-     * &gt; - StandardStorage: Standard cloud storage
-     * &gt; - PerformanceStorage: performance-based cloud storage
-     * &gt; - capacity storage: Capacity-based cloud storage
+     * &gt; **NOTE:** &gt;
+     * 
+     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+     * 
+     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     * 
+     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
      * 
      */
     @Export(name="cloudStorageType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudStorageType;
 
     /**
-     * @return &gt;&gt;
-     * &gt; - StandardStorage: Standard cloud storage
-     * &gt; - PerformanceStorage: performance-based cloud storage
-     * &gt; - capacity storage: Capacity-based cloud storage
+     * @return &gt; **NOTE:** &gt;
+     * 
+     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+     * 
+     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     * 
+     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
      * 
      */
     public Output<Optional<String>> cloudStorageType() {
@@ -235,6 +279,24 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deletionProtection() {
         return this.deletionProtection;
+    }
+    /**
+     * The specified duration when the resource is purchased. Only the subscription instances are valid.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> duration;
+
+    /**
+     * @return The specified duration when the resource is purchased. Only the subscription instances are valid.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<Integer>> duration() {
+        return Codegen.optional(this.duration);
     }
     /**
      * Engine List See `engineList` below.
@@ -277,6 +339,24 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> paymentType() {
         return this.paymentType;
+    }
+    /**
+     * Purchase duration unit: Month, Year
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pricingCycle;
+
+    /**
+     * @return Purchase duration unit: Month, Year
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     */
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
     }
     /**
      * Primary zone VswitchId

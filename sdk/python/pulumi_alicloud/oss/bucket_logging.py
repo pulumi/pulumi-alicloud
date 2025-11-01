@@ -21,15 +21,19 @@ class BucketLoggingInitArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  target_bucket: pulumi.Input[_builtins.str],
+                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketLogging resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
+        :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
         :param pulumi.Input[_builtins.str] target_prefix: The prefix of the saved log objects. This element can be left empty.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "target_bucket", target_bucket)
+        if logging_role is not None:
+            pulumi.set(__self__, "logging_role", logging_role)
         if target_prefix is not None:
             pulumi.set(__self__, "target_prefix", target_prefix)
 
@@ -37,7 +41,7 @@ class BucketLoggingInitArgs:
     @pulumi.getter
     def bucket(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
@@ -58,6 +62,18 @@ class BucketLoggingInitArgs:
         pulumi.set(self, "target_bucket", value)
 
     @_builtins.property
+    @pulumi.getter(name="loggingRole")
+    def logging_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authorization role used for bucket logging
+        """
+        return pulumi.get(self, "logging_role")
+
+    @logging_role.setter
+    def logging_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logging_role", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetPrefix")
     def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -74,16 +90,20 @@ class BucketLoggingInitArgs:
 class _BucketLoggingState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
                  target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketLogging resources.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
         :param pulumi.Input[_builtins.str] target_prefix: The prefix of the saved log objects. This element can be left empty.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if logging_role is not None:
+            pulumi.set(__self__, "logging_role", logging_role)
         if target_bucket is not None:
             pulumi.set(__self__, "target_bucket", target_bucket)
         if target_prefix is not None:
@@ -93,13 +113,25 @@ class _BucketLoggingState:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loggingRole")
+    def logging_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Authorization role used for bucket logging
+        """
+        return pulumi.get(self, "logging_role")
+
+    @logging_role.setter
+    def logging_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logging_role", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")
@@ -133,13 +165,16 @@ class BucketLogging(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
                  target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+        Provides a OSS Bucket Logging resource.
 
-        For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+        After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+
+        For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
 
         > **NOTE:** Available since v1.222.0.
 
@@ -150,22 +185,22 @@ class BucketLogging(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=f"{name}-{default['result']}")
-        default_bucket_logging = alicloud.oss.BucketLogging("default",
-            bucket=create_bucket.bucket,
-            target_bucket=create_bucket.bucket,
-            target_prefix="log/")
+            bucket="resource-example-logging-806")
+        create_logging_bucket = alicloud.oss.Bucket("CreateLoggingBucket",
+            storage_class="Standard",
+            bucket="resource-example-logging-153")
+        default = alicloud.oss.BucketLogging("default",
+            bucket=create_bucket.id,
+            target_bucket=create_bucket.id,
+            target_prefix="log/",
+            logging_role="example-role")
         ```
 
         ## Import
@@ -178,7 +213,8 @@ class BucketLogging(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
         :param pulumi.Input[_builtins.str] target_prefix: The prefix of the saved log objects. This element can be left empty.
         """
@@ -189,9 +225,11 @@ class BucketLogging(pulumi.CustomResource):
                  args: BucketLoggingInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+        Provides a OSS Bucket Logging resource.
 
-        For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+        After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+
+        For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
 
         > **NOTE:** Available since v1.222.0.
 
@@ -202,22 +240,22 @@ class BucketLogging(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
         create_bucket = alicloud.oss.Bucket("CreateBucket",
             storage_class="Standard",
-            bucket=f"{name}-{default['result']}")
-        default_bucket_logging = alicloud.oss.BucketLogging("default",
-            bucket=create_bucket.bucket,
-            target_bucket=create_bucket.bucket,
-            target_prefix="log/")
+            bucket="resource-example-logging-806")
+        create_logging_bucket = alicloud.oss.Bucket("CreateLoggingBucket",
+            storage_class="Standard",
+            bucket="resource-example-logging-153")
+        default = alicloud.oss.BucketLogging("default",
+            bucket=create_bucket.id,
+            target_bucket=create_bucket.id,
+            target_prefix="log/",
+            logging_role="example-role")
         ```
 
         ## Import
@@ -244,6 +282,7 @@ class BucketLogging(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 logging_role: Optional[pulumi.Input[_builtins.str]] = None,
                  target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -258,6 +297,7 @@ class BucketLogging(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["logging_role"] = logging_role
             if target_bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'target_bucket'")
             __props__.__dict__["target_bucket"] = target_bucket
@@ -273,6 +313,7 @@ class BucketLogging(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[_builtins.str]] = None,
+            logging_role: Optional[pulumi.Input[_builtins.str]] = None,
             target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
             target_prefix: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketLogging':
         """
@@ -282,7 +323,8 @@ class BucketLogging(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input[_builtins.str] logging_role: Authorization role used for bucket logging
         :param pulumi.Input[_builtins.str] target_bucket: The bucket that stores access logs.
         :param pulumi.Input[_builtins.str] target_prefix: The prefix of the saved log objects. This element can be left empty.
         """
@@ -291,6 +333,7 @@ class BucketLogging(pulumi.CustomResource):
         __props__ = _BucketLoggingState.__new__(_BucketLoggingState)
 
         __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["logging_role"] = logging_role
         __props__.__dict__["target_bucket"] = target_bucket
         __props__.__dict__["target_prefix"] = target_prefix
         return BucketLogging(resource_name, opts=opts, __props__=__props__)
@@ -299,9 +342,17 @@ class BucketLogging(pulumi.CustomResource):
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="loggingRole")
+    def logging_role(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Authorization role used for bucket logging
+        """
+        return pulumi.get(self, "logging_role")
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")

@@ -22,78 +22,41 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tfaccwafv310619";
+ * const name = config.get("name") || "tfexample";
  * const regionId = config.get("regionId") || "cn-hangzhou";
+ * const domain = config.get("domain") || "example.wafqax.top";
  * const _default = alicloud.wafv3.getInstances({});
- * const defaultDomain = new alicloud.wafv3.Domain("default", {
+ * const defaultICMRhk = new alicloud.wafv3.Domain("defaultICMRhk", {
+ *     redirect: {
+ *         loadbalance: "iphash",
+ *         backends: ["39.98.217.197"],
+ *         connectTimeout: 5,
+ *         readTimeout: 120,
+ *         writeTimeout: 120,
+ *     },
+ *     domain: "example.wafqax.top",
+ *     accessType: "share",
  *     instanceId: _default.then(_default => _default.ids?.[0]),
  *     listen: {
- *         protectionResource: "share",
- *         httpPorts: [
- *             81,
- *             82,
- *             83,
- *         ],
- *         httpsPorts: [],
- *         xffHeaderMode: 2,
- *         xffHeaders: [
- *             "examplea",
- *             "exampleb",
- *             "examplec",
- *         ],
- *         customCiphers: [],
- *         ipv6Enabled: true,
+ *         httpPorts: [80],
  *     },
- *     redirect: {
- *         keepaliveTimeout: 15,
- *         backends: [
- *             "1.1.1.1",
- *             "3.3.3.3",
- *             "2.2.2.2",
- *         ],
- *         writeTimeout: 5,
- *         keepaliveRequests: 1000,
- *         requestHeaders: [
- *             {
- *                 key: "examplekey1",
- *                 value: "exampleValue1",
- *             },
- *             {
- *                 key: "key1",
- *                 value: "value1",
- *             },
- *             {
- *                 key: "key22",
- *                 value: "value22",
- *             },
- *         ],
- *         loadbalance: "iphash",
- *         focusHttpBackend: false,
- *         sniEnabled: false,
- *         connectTimeout: 5,
- *         readTimeout: 5,
- *         keepalive: true,
- *         retry: true,
- *     },
- *     domain: "zcexample_250746.wafqax.top",
- *     accessType: "share",
  * });
  * const defaultDefenseRule = new alicloud.wafv3.DefenseRule("default", {
+ *     defenseType: "resource",
+ *     defenseScene: "account_identifier",
+ *     ruleStatus: 1,
+ *     resource: defaultICMRhk.domainId,
  *     defenseOrigin: "custom",
  *     config: {
  *         accountIdentifiers: [{
+ *             position: "jwt",
  *             priority: 2,
  *             decodeType: "jwt",
  *             key: "Query-Arg",
  *             subKey: "adb",
- *             position: "jwt",
  *         }],
  *     },
  *     instanceId: _default.then(_default => _default.ids?.[0]),
- *     defenseType: "resource",
- *     defenseScene: "account_identifier",
- *     ruleStatus: 1,
- *     resource: defaultDomain.domainId,
  * });
  * ```
  *

@@ -9,11 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a network acl entries resource to create ingress and egress entries.
  *
- * > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+ * > **NOTE:** Available in 1.45.0+.
  *
  * > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
- *
- * > **NOTE:** Using this resource need to open a whitelist.
  *
  * > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
  *
@@ -103,11 +101,11 @@ export class NetworkAclEntries extends pulumi.CustomResource {
     }
 
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      */
     declare public readonly egresses: pulumi.Output<outputs.vpc.NetworkAclEntriesEgress[] | undefined>;
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      */
     declare public readonly ingresses: pulumi.Output<outputs.vpc.NetworkAclEntriesIngress[] | undefined>;
     /**
@@ -150,11 +148,11 @@ export class NetworkAclEntries extends pulumi.CustomResource {
  */
 export interface NetworkAclEntriesState {
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      */
     egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
     /**
@@ -168,11 +166,11 @@ export interface NetworkAclEntriesState {
  */
 export interface NetworkAclEntriesArgs {
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+     * List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
      */
     egresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesEgress>[]>;
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
      */
     ingresses?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclEntriesIngress>[]>;
     /**

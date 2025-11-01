@@ -12,11 +12,9 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a network acl entries resource to create ingress and egress entries.
     /// 
-    /// &gt; **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+    /// &gt; **NOTE:** Available in 1.45.0+.
     /// 
     /// &gt; **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-    /// 
-    /// &gt; **NOTE:** Using this resource need to open a whitelist.
     /// 
     /// &gt; **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `IngressAclEntries` and `EgressAclEntries` with the resource alicloud_network_acl.
     /// 
@@ -110,13 +108,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class NetworkAclEntries : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `Egress` below.
         /// </summary>
         [Output("egresses")]
         public Output<ImmutableArray<Outputs.NetworkAclEntriesEgress>> Egresses { get; private set; } = null!;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `Ingress` below.
         /// </summary>
         [Output("ingresses")]
         public Output<ImmutableArray<Outputs.NetworkAclEntriesIngress>> Ingresses { get; private set; } = null!;
@@ -177,7 +175,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEntriesEgressArgs>? _egresses;
 
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `Egress` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEntriesEgressArgs> Egresses
         {
@@ -189,7 +187,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEntriesIngressArgs>? _ingresses;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `Ingress` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEntriesIngressArgs> Ingresses
         {
@@ -215,7 +213,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEntriesEgressGetArgs>? _egresses;
 
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `Egress` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEntriesEgressGetArgs> Egresses
         {
@@ -227,7 +225,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEntriesIngressGetArgs>? _ingresses;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `Ingress` below.
         /// </summary>
         public InputList<Inputs.NetworkAclEntriesIngressGetArgs> Ingresses
         {

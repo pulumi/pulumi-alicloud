@@ -14,6 +14,8 @@ import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetInstancesPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsPlainArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcCenTrFirewallsPlainArgs;
 import com.pulumi.alicloud.cloudfirewall.inputs.GetVpcFirewallCensArgs;
@@ -27,6 +29,7 @@ import com.pulumi.alicloud.cloudfirewall.outputs.GetControlPoliciesResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetInstanceMembersResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetInstancesResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetNatFirewallsResult;
+import com.pulumi.alicloud.cloudfirewall.outputs.GetTlsInspectCaCertificatesResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcCenTrFirewallsResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallCensResult;
 import com.pulumi.alicloud.cloudfirewall.outputs.GetVpcFirewallControlPoliciesResult;
@@ -1343,6 +1346,342 @@ public final class CloudfirewallFunctions {
      */
     public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain(GetNatFirewallsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificates() {
+        return getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificatesPlain() {
+        return getTlsInspectCaCertificatesPlain(GetTlsInspectCaCertificatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs args) {
+        return getTlsInspectCaCertificates(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificatesPlain(GetTlsInspectCaCertificatesPlainArgs args) {
+        return getTlsInspectCaCertificatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates", TypeShape.of(GetTlsInspectCaCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates", TypeShape.of(GetTlsInspectCaCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Cloud Firewall Tls Inspect Ca Certificate available to the user.[What is Tls Inspect Ca Certificate](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/GetTlsInspectCertificateDownloadUrl)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.CloudFirewallTlsInspectCaCertificate;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetTlsInspectCaCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultCloudFirewallTlsInspectCaCertificate = new CloudFirewallTlsInspectCaCertificate("defaultCloudFirewallTlsInspectCaCertificate");
+     * 
+     *         final var default = CloudfirewallFunctions.getTlsInspectCaCertificates(GetTlsInspectCaCertificatesArgs.builder()
+     *             .ids(defaultCloudFirewallTlsInspectCaCertificate.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", default_.certificates()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTlsInspectCaCertificatesResult> getTlsInspectCaCertificatesPlain(GetTlsInspectCaCertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates", TypeShape.of(GetTlsInspectCaCertificatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Cloud Firewall Vpc Cen Tr Firewall available to the user.[What is Vpc Cen Tr Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateTrFirewallV2)

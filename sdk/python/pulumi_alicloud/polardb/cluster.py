@@ -122,7 +122,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+               > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -187,7 +187,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[_builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
                > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
-        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
@@ -566,7 +566,7 @@ class ClusterArgs:
     def deletion_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         """
         return pulumi.get(self, "deletion_lock")
 
@@ -1104,7 +1104,7 @@ class ClusterArgs:
     @pulumi.getter(name="storagePayType")
     def storage_pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         """
         return pulumi.get(self, "storage_pay_type")
 
@@ -1364,7 +1364,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+               > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -1431,7 +1431,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
                > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[_builtins.str] status: (Available since 1.204.1) PolarDB cluster status.
-        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
@@ -1864,7 +1864,7 @@ class _ClusterState:
     def deletion_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         """
         return pulumi.get(self, "deletion_lock")
 
@@ -2426,7 +2426,7 @@ class _ClusterState:
     @pulumi.getter(name="storagePayType")
     def storage_pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         """
         return pulumi.get(self, "storage_pay_type")
 
@@ -2704,7 +2704,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+               > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -2769,7 +2769,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_resource_id: The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         :param pulumi.Input[_builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
                > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
-        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
@@ -3108,7 +3108,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[_builtins.int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-               > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+               > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         :param pulumi.Input[_builtins.str] description: The description of cluster.
         :param pulumi.Input[_builtins.str] encrypt_new_tables: turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
                > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -3175,7 +3175,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] standby_az: The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
                > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
         :param pulumi.Input[_builtins.str] status: (Available since 1.204.1) PolarDB cluster status.
-        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        :param pulumi.Input[_builtins.str] storage_pay_type: The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         :param pulumi.Input[_builtins.int] storage_space: Storage space charged by space (monthly package). Unit: GB.
                > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
                > **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
@@ -3455,7 +3455,7 @@ class Cluster(pulumi.CustomResource):
     def deletion_lock(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        > **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
+        > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
         """
         return pulumi.get(self, "deletion_lock")
 
@@ -3837,7 +3837,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="storagePayType")
     def storage_pay_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         """
         return pulumi.get(self, "storage_pay_type")
 

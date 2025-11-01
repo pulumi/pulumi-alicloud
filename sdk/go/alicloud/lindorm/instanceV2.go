@@ -126,28 +126,53 @@ type InstanceV2 struct {
 	// Coordination Zone ZoneId
 	ArbiterZoneId pulumi.StringPtrOutput `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
-	// > Enumeration value
-	// > - 1.0 Single AZ
-	// > - 2.0 Multi-AZ Basic
-	// > - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:**  Enumeration value
+	//
+	// > **NOTE:**  - 1.0 Single AZ
+	//
+	// > **NOTE:**  - 2.0 Multi-AZ Basic
+	//
+	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringOutput `pulumi:"archVersion"`
-	// Auto Renew
+	// Automatic renewal duration. Unit: Month.
+	//
+	// Value range: `1` to **12 * *.
+	//
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	AutoRenewDuration pulumi.StringPtrOutput `pulumi:"autoRenewDuration"`
+	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrOutput `pulumi:"autoRenewal"`
-	// > Cloud storage capacity in GB
+	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrOutput `pulumi:"cloudStorageSize"`
-	// > >
-	// > - StandardStorage: Standard cloud storage
-	// > - PerformanceStorage: performance-based cloud storage
-	// > - capacity storage: Capacity-based cloud storage
+	// > **NOTE:** >
+	//
+	// > **NOTE:**  - StandardStorage: Standard cloud storage
+	//
+	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+	//
+	// > **NOTE:** - capacity storage: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrOutput `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
+	// The specified duration when the resource is purchased. Only the subscription instances are valid.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	Duration pulumi.IntPtrOutput `pulumi:"duration"`
 	// Engine List See `engineList` below.
 	EngineLists InstanceV2EngineListArrayOutput `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias pulumi.StringOutput `pulumi:"instanceAlias"`
 	// The payment type of the resource
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// Purchase duration unit: Month, Year
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// Primary zone VswitchId
 	PrimaryVswitchId pulumi.StringPtrOutput `pulumi:"primaryVswitchId"`
 	// Primary zone ZoneID
@@ -222,28 +247,53 @@ type instanceV2State struct {
 	// Coordination Zone ZoneId
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
-	// > Enumeration value
-	// > - 1.0 Single AZ
-	// > - 2.0 Multi-AZ Basic
-	// > - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:**  Enumeration value
+	//
+	// > **NOTE:**  - 1.0 Single AZ
+	//
+	// > **NOTE:**  - 2.0 Multi-AZ Basic
+	//
+	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion *string `pulumi:"archVersion"`
-	// Auto Renew
+	// Automatic renewal duration. Unit: Month.
+	//
+	// Value range: `1` to **12 * *.
+	//
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	AutoRenewDuration *string `pulumi:"autoRenewDuration"`
+	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal *bool `pulumi:"autoRenewal"`
-	// > Cloud storage capacity in GB
+	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize *int `pulumi:"cloudStorageSize"`
-	// > >
-	// > - StandardStorage: Standard cloud storage
-	// > - PerformanceStorage: performance-based cloud storage
-	// > - capacity storage: Capacity-based cloud storage
+	// > **NOTE:** >
+	//
+	// > **NOTE:**  - StandardStorage: Standard cloud storage
+	//
+	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+	//
+	// > **NOTE:** - capacity storage: Capacity-based cloud storage
 	CloudStorageType *string `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection *string `pulumi:"deletionProtection"`
+	// The specified duration when the resource is purchased. Only the subscription instances are valid.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	Duration *int `pulumi:"duration"`
 	// Engine List See `engineList` below.
 	EngineLists []InstanceV2EngineList `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias *string `pulumi:"instanceAlias"`
 	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
+	// Purchase duration unit: Month, Year
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PricingCycle *string `pulumi:"pricingCycle"`
 	// Primary zone VswitchId
 	PrimaryVswitchId *string `pulumi:"primaryVswitchId"`
 	// Primary zone ZoneID
@@ -268,28 +318,53 @@ type InstanceV2State struct {
 	// Coordination Zone ZoneId
 	ArbiterZoneId pulumi.StringPtrInput
 	// Deployment Scenario
-	// > Enumeration value
-	// > - 1.0 Single AZ
-	// > - 2.0 Multi-AZ Basic
-	// > - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:**  Enumeration value
+	//
+	// > **NOTE:**  - 1.0 Single AZ
+	//
+	// > **NOTE:**  - 2.0 Multi-AZ Basic
+	//
+	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringPtrInput
-	// Auto Renew
+	// Automatic renewal duration. Unit: Month.
+	//
+	// Value range: `1` to **12 * *.
+	//
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	AutoRenewDuration pulumi.StringPtrInput
+	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrInput
-	// > Cloud storage capacity in GB
+	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrInput
-	// > >
-	// > - StandardStorage: Standard cloud storage
-	// > - PerformanceStorage: performance-based cloud storage
-	// > - capacity storage: Capacity-based cloud storage
+	// > **NOTE:** >
+	//
+	// > **NOTE:**  - StandardStorage: Standard cloud storage
+	//
+	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+	//
+	// > **NOTE:** - capacity storage: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrInput
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringPtrInput
+	// The specified duration when the resource is purchased. Only the subscription instances are valid.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	Duration pulumi.IntPtrInput
 	// Engine List See `engineList` below.
 	EngineLists InstanceV2EngineListArrayInput
 	// Instance name
 	InstanceAlias pulumi.StringPtrInput
 	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
+	// Purchase duration unit: Month, Year
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PricingCycle pulumi.StringPtrInput
 	// Primary zone VswitchId
 	PrimaryVswitchId pulumi.StringPtrInput
 	// Primary zone ZoneID
@@ -318,28 +393,53 @@ type instanceV2Args struct {
 	// Coordination Zone ZoneId
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
-	// > Enumeration value
-	// > - 1.0 Single AZ
-	// > - 2.0 Multi-AZ Basic
-	// > - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:**  Enumeration value
+	//
+	// > **NOTE:**  - 1.0 Single AZ
+	//
+	// > **NOTE:**  - 2.0 Multi-AZ Basic
+	//
+	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion string `pulumi:"archVersion"`
-	// Auto Renew
+	// Automatic renewal duration. Unit: Month.
+	//
+	// Value range: `1` to **12 * *.
+	//
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	AutoRenewDuration *string `pulumi:"autoRenewDuration"`
+	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal *bool `pulumi:"autoRenewal"`
-	// > Cloud storage capacity in GB
+	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize *int `pulumi:"cloudStorageSize"`
-	// > >
-	// > - StandardStorage: Standard cloud storage
-	// > - PerformanceStorage: performance-based cloud storage
-	// > - capacity storage: Capacity-based cloud storage
+	// > **NOTE:** >
+	//
+	// > **NOTE:**  - StandardStorage: Standard cloud storage
+	//
+	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+	//
+	// > **NOTE:** - capacity storage: Capacity-based cloud storage
 	CloudStorageType *string `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection *string `pulumi:"deletionProtection"`
+	// The specified duration when the resource is purchased. Only the subscription instances are valid.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	Duration *int `pulumi:"duration"`
 	// Engine List See `engineList` below.
 	EngineLists []InstanceV2EngineList `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias string `pulumi:"instanceAlias"`
 	// The payment type of the resource
 	PaymentType string `pulumi:"paymentType"`
+	// Purchase duration unit: Month, Year
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PricingCycle *string `pulumi:"pricingCycle"`
 	// Primary zone VswitchId
 	PrimaryVswitchId *string `pulumi:"primaryVswitchId"`
 	// Primary zone ZoneID
@@ -363,28 +463,53 @@ type InstanceV2Args struct {
 	// Coordination Zone ZoneId
 	ArbiterZoneId pulumi.StringPtrInput
 	// Deployment Scenario
-	// > Enumeration value
-	// > - 1.0 Single AZ
-	// > - 2.0 Multi-AZ Basic
-	// > - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:**  Enumeration value
+	//
+	// > **NOTE:**  - 1.0 Single AZ
+	//
+	// > **NOTE:**  - 2.0 Multi-AZ Basic
+	//
+	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringInput
-	// Auto Renew
+	// Automatic renewal duration. Unit: Month.
+	//
+	// Value range: `1` to **12 * *.
+	//
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	AutoRenewDuration pulumi.StringPtrInput
+	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrInput
-	// > Cloud storage capacity in GB
+	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrInput
-	// > >
-	// > - StandardStorage: Standard cloud storage
-	// > - PerformanceStorage: performance-based cloud storage
-	// > - capacity storage: Capacity-based cloud storage
+	// > **NOTE:** >
+	//
+	// > **NOTE:**  - StandardStorage: Standard cloud storage
+	//
+	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+	//
+	// > **NOTE:** - capacity storage: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrInput
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringPtrInput
+	// The specified duration when the resource is purchased. Only the subscription instances are valid.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	Duration pulumi.IntPtrInput
 	// Engine List See `engineList` below.
 	EngineLists InstanceV2EngineListArrayInput
 	// Instance name
 	InstanceAlias pulumi.StringInput
 	// The payment type of the resource
 	PaymentType pulumi.StringInput
+	// Purchase duration unit: Month, Year
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	PricingCycle pulumi.StringPtrInput
 	// Primary zone VswitchId
 	PrimaryVswitchId pulumi.StringPtrInput
 	// Primary zone ZoneID
@@ -499,28 +624,48 @@ func (o InstanceV2Output) ArbiterZoneId() pulumi.StringPtrOutput {
 }
 
 // Deployment Scenario
-// > Enumeration value
-// > - 1.0 Single AZ
-// > - 2.0 Multi-AZ Basic
-// > - 3.0 Multi-AZ High Availability Edition
+//
+// > **NOTE:**  Enumeration value
+//
+// > **NOTE:**  - 1.0 Single AZ
+//
+// > **NOTE:**  - 2.0 Multi-AZ Basic
+//
+// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o InstanceV2Output) ArchVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.ArchVersion }).(pulumi.StringOutput)
 }
 
-// Auto Renew
+// Automatic renewal duration. Unit: Month.
+//
+// Value range: `1` to **12 * *.
+//
+// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o InstanceV2Output) AutoRenewDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceV2) pulumi.StringPtrOutput { return v.AutoRenewDuration }).(pulumi.StringPtrOutput)
+}
+
+// Whether the instance is automatically renewed. Enumerated values:
 func (o InstanceV2Output) AutoRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.BoolPtrOutput { return v.AutoRenewal }).(pulumi.BoolPtrOutput)
 }
 
-// > Cloud storage capacity in GB
+// > **NOTE:**  Cloud storage capacity in GB
 func (o InstanceV2Output) CloudStorageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.IntPtrOutput { return v.CloudStorageSize }).(pulumi.IntPtrOutput)
 }
 
-// > >
-// > - StandardStorage: Standard cloud storage
-// > - PerformanceStorage: performance-based cloud storage
-// > - capacity storage: Capacity-based cloud storage
+// > **NOTE:** >
+//
+// > **NOTE:**  - StandardStorage: Standard cloud storage
+//
+// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+//
+// > **NOTE:** - capacity storage: Capacity-based cloud storage
 func (o InstanceV2Output) CloudStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringPtrOutput { return v.CloudStorageType }).(pulumi.StringPtrOutput)
 }
@@ -528,6 +673,13 @@ func (o InstanceV2Output) CloudStorageType() pulumi.StringPtrOutput {
 // Whether to enable deletion protection
 func (o InstanceV2Output) DeletionProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.DeletionProtection }).(pulumi.StringOutput)
+}
+
+// The specified duration when the resource is purchased. Only the subscription instances are valid.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o InstanceV2Output) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceV2) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
 // Engine List See `engineList` below.
@@ -543,6 +695,13 @@ func (o InstanceV2Output) InstanceAlias() pulumi.StringOutput {
 // The payment type of the resource
 func (o InstanceV2Output) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Purchase duration unit: Month, Year
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+func (o InstanceV2Output) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceV2) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
 
 // Primary zone VswitchId

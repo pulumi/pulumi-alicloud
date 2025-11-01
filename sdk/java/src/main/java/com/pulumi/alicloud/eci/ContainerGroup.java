@@ -323,6 +323,20 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eipInstanceId);
     }
     /**
+     * The size of the temporary storage space to add. Unit: GiB.
+     * 
+     */
+    @Export(name="ephemeralStorage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> ephemeralStorage;
+
+    /**
+     * @return The size of the temporary storage space to add. Unit: GiB.
+     * 
+     */
+    public Output<Optional<Integer>> ephemeralStorage() {
+        return Codegen.optional(this.ephemeralStorage);
+    }
+    /**
      * HostAliases. See `hostAliases` below.
      * 
      */

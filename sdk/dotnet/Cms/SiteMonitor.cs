@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cms
 {
     /// <summary>
-    /// This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-    /// Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+    /// Provides a Cloud Monitor Service Site Monitor resource.
+    /// 
+    /// Describes the SITE monitoring tasks created by the user.
+    /// 
+    /// For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
     /// 
     /// &gt; **NOTE:** Available since v1.72.0.
     /// 
@@ -27,36 +30,61 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var basic = new AliCloud.Cms.SiteMonitor("basic", new()
     ///     {
-    ///         Address = "http://www.alibabacloud.com",
-    ///         TaskName = "tf-example",
+    ///         Address = "https://www.alibabacloud.com",
+    ///         TaskName = name,
     ///         TaskType = "HTTP",
-    ///         Interval = 5,
+    ///         Interval = "5",
     ///         IspCities = new[]
     ///         {
     ///             new AliCloud.Cms.Inputs.SiteMonitorIspCityArgs
     ///             {
-    ///                 City = "546",
-    ///                 Isp = "465",
+    ///                 Isp = "232",
+    ///                 City = "641",
+    ///                 Type = "IDC",
     ///             },
     ///         },
-    ///         OptionsJson = @"{
-    ///     \""http_method\"": \""get\"",
-    ///     \""waitTime_after_completion\"": null,
-    ///     \""ipv6_task\"": false,
-    ///     \""diagnosis_ping\"": false,
-    ///     \""diagnosis_mtr\"": false,
-    ///     \""assertions\"": [
+    ///         OptionJson = new AliCloud.Cms.Inputs.SiteMonitorOptionJsonArgs
     ///         {
-    ///             \""operator\"": \""lessThan\"",
-    ///             \""type\"": \""response_time\"",
-    ///             \""target\"": 1000
-    ///         }
-    ///     ],
-    ///     \""time_out\"": 30000
-    /// }
-    /// ",
+    ///             ResponseContent = "example",
+    ///             ExpectValue = "example",
+    ///             Port = 81,
+    ///             IsBaseEncode = true,
+    ///             PingNum = 5,
+    ///             MatchRule = 1,
+    ///             FailureRate = "0.3",
+    ///             RequestContent = "example",
+    ///             Attempts = 4,
+    ///             RequestFormat = "hex",
+    ///             Password = "YourPassword123!",
+    ///             DiagnosisPing = true,
+    ///             ResponseFormat = "hex",
+    ///             Cookie = "key2=value2",
+    ///             PingPort = 443,
+    ///             UserName = "example",
+    ///             DnsMatchRule = "DNS_IN",
+    ///             Timeout = 3000,
+    ///             DnsServer = "223.6.6.6",
+    ///             DiagnosisMtr = true,
+    ///             Header = "key2:value2",
+    ///             MinTlsVersion = "1.1",
+    ///             PingType = "udp",
+    ///             DnsType = "NS",
+    ///             DnsHijackWhitelist = "DnsHijackWhitelist",
+    ///             HttpMethod = "post",
+    ///             Assertions = new[]
+    ///             {
+    ///                 new AliCloud.Cms.Inputs.SiteMonitorOptionJsonAssertionArgs
+    ///                 {
+    ///                     Operator = "lessThan",
+    ///                     Target = "300",
+    ///                     Type = "response_time",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -80,22 +108,34 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        /// </summary>
+        [Output("agentGroup")]
+        public Output<string> AgentGroup { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `AlertIds` has been deprecated from provider version 1.262.0.
         /// </summary>
         [Output("alertIds")]
         public Output<ImmutableArray<string>> AlertIds { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the site monitoring task was created.
+        /// (Deprecated since v1.262.0) Field `CreateTime` has been deprecated from provider version 1.262.0.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `CustomSchedule` below.
+        /// </summary>
+        [Output("customSchedule")]
+        public Output<Outputs.SiteMonitorCustomSchedule?> CustomSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Output("interval")]
-        public Output<int?> Interval { get; private set; } = null!;
+        public Output<string> Interval { get; private set; } = null!;
 
         /// <summary>
         /// The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `IspCities` below.
@@ -104,10 +144,22 @@ namespace Pulumi.AliCloud.Cms
         public Output<ImmutableArray<Outputs.SiteMonitorIspCity>> IspCities { get; private set; } = null!;
 
         /// <summary>
-        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        /// The extended options of the protocol that is used by the site monitoring task. See `OptionJson` below.
+        /// </summary>
+        [Output("optionJson")]
+        public Output<Outputs.SiteMonitorOptionJson> OptionJson { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `OptionsJson` has been deprecated from provider version 1.262.0. New field `OptionJson` instead.
         /// </summary>
         [Output("optionsJson")]
-        public Output<string?> OptionsJson { get; private set; } = null!;
+        public Output<string> OptionsJson { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the site monitoring task. Valid values:
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -116,7 +168,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> TaskName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the site monitoring task.
+        /// (Deprecated since v1.262.0) Field `TaskState` has been deprecated from provider version 1.262.0. New field `Status` instead.
         /// </summary>
         [Output("taskState")]
         public Output<string> TaskState { get; private set; } = null!;
@@ -128,7 +180,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> TaskType { get; private set; } = null!;
 
         /// <summary>
-        /// The time when the site monitoring task was updated.
+        /// (Deprecated since v1.262.0) Field `UpdateTime` has been deprecated from provider version 1.262.0.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -185,12 +237,19 @@ namespace Pulumi.AliCloud.Cms
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        /// </summary>
+        [Input("agentGroup")]
+        public Input<string>? AgentGroup { get; set; }
+
         [Input("alertIds")]
         private InputList<string>? _alertIds;
 
         /// <summary>
-        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// Field `AlertIds` has been deprecated from provider version 1.262.0.
         /// </summary>
+        [Obsolete(@"Field `AlertIds` has been deprecated from provider version 1.262.0.")]
         public InputList<string> AlertIds
         {
             get => _alertIds ?? (_alertIds = new InputList<string>());
@@ -198,10 +257,16 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
+        /// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `CustomSchedule` below.
+        /// </summary>
+        [Input("customSchedule")]
+        public Input<Inputs.SiteMonitorCustomScheduleArgs>? CustomSchedule { get; set; }
+
+        /// <summary>
         /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Input("interval")]
-        public Input<int>? Interval { get; set; }
+        public Input<string>? Interval { get; set; }
 
         [Input("ispCities")]
         private InputList<Inputs.SiteMonitorIspCityArgs>? _ispCities;
@@ -216,10 +281,22 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        /// The extended options of the protocol that is used by the site monitoring task. See `OptionJson` below.
+        /// </summary>
+        [Input("optionJson")]
+        public Input<Inputs.SiteMonitorOptionJsonArgs>? OptionJson { get; set; }
+
+        /// <summary>
+        /// Field `OptionsJson` has been deprecated from provider version 1.262.0. New field `OptionJson` instead.
         /// </summary>
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
+
+        /// <summary>
+        /// The status of the site monitoring task. Valid values:
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -247,12 +324,19 @@ namespace Pulumi.AliCloud.Cms
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        /// </summary>
+        [Input("agentGroup")]
+        public Input<string>? AgentGroup { get; set; }
+
         [Input("alertIds")]
         private InputList<string>? _alertIds;
 
         /// <summary>
-        /// The IDs of existing alert rules to be associated with the site monitoring task.
+        /// Field `AlertIds` has been deprecated from provider version 1.262.0.
         /// </summary>
+        [Obsolete(@"Field `AlertIds` has been deprecated from provider version 1.262.0.")]
         public InputList<string> AlertIds
         {
             get => _alertIds ?? (_alertIds = new InputList<string>());
@@ -260,16 +344,22 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The time when the site monitoring task was created.
+        /// (Deprecated since v1.262.0) Field `CreateTime` has been deprecated from provider version 1.262.0.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `CustomSchedule` below.
+        /// </summary>
+        [Input("customSchedule")]
+        public Input<Inputs.SiteMonitorCustomScheduleGetArgs>? CustomSchedule { get; set; }
+
+        /// <summary>
         /// The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `Interval` can be set to `30`, `60`.
         /// </summary>
         [Input("interval")]
-        public Input<int>? Interval { get; set; }
+        public Input<string>? Interval { get; set; }
 
         [Input("ispCities")]
         private InputList<Inputs.SiteMonitorIspCityGetArgs>? _ispCities;
@@ -284,10 +374,22 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        /// The extended options of the protocol that is used by the site monitoring task. See `OptionJson` below.
+        /// </summary>
+        [Input("optionJson")]
+        public Input<Inputs.SiteMonitorOptionJsonGetArgs>? OptionJson { get; set; }
+
+        /// <summary>
+        /// Field `OptionsJson` has been deprecated from provider version 1.262.0. New field `OptionJson` instead.
         /// </summary>
         [Input("optionsJson")]
         public Input<string>? OptionsJson { get; set; }
+
+        /// <summary>
+        /// The status of the site monitoring task. Valid values:
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -296,7 +398,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? TaskName { get; set; }
 
         /// <summary>
-        /// The status of the site monitoring task.
+        /// (Deprecated since v1.262.0) Field `TaskState` has been deprecated from provider version 1.262.0. New field `Status` instead.
         /// </summary>
         [Input("taskState")]
         public Input<string>? TaskState { get; set; }
@@ -308,7 +410,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? TaskType { get; set; }
 
         /// <summary>
-        /// The time when the site monitoring task was updated.
+        /// (Deprecated since v1.262.0) Field `UpdateTime` has been deprecated from provider version 1.262.0.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

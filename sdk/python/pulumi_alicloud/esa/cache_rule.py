@@ -38,6 +38,7 @@ class CacheRuleArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  sort_query_string_for_cache: Optional[pulumi.Input[_builtins.str]] = None,
@@ -67,6 +68,7 @@ class CacheRuleArgs:
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] sort_query_string_for_cache: Query string sorting, disabled by default. Possible values:
@@ -111,6 +113,8 @@ class CacheRuleArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if serve_stale is not None:
             pulumi.set(__self__, "serve_stale", serve_stale)
         if site_version is not None:
@@ -355,6 +359,18 @@ class CacheRuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="serveStale")
     def serve_stale(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -449,6 +465,7 @@ class _CacheRuleState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -479,6 +496,7 @@ class _CacheRuleState:
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -525,6 +543,8 @@ class _CacheRuleState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if serve_stale is not None:
             pulumi.set(__self__, "serve_stale", serve_stale)
         if site_id is not None:
@@ -771,6 +791,18 @@ class _CacheRuleState:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="serveStale")
     def serve_stale(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -879,6 +911,7 @@ class CacheRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -961,6 +994,7 @@ class CacheRule(pulumi.CustomResource):
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -1060,6 +1094,7 @@ class CacheRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1094,6 +1129,7 @@ class CacheRule(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             __props__.__dict__["serve_stale"] = serve_stale
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
@@ -1133,6 +1169,7 @@ class CacheRule(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             serve_stale: Optional[pulumi.Input[_builtins.str]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1168,6 +1205,7 @@ class CacheRule(pulumi.CustomResource):
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.str] serve_stale: Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites] API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -1199,6 +1237,7 @@ class CacheRule(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["serve_stale"] = serve_stale
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
@@ -1361,6 +1400,14 @@ class CacheRule(pulumi.CustomResource):
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="serveStale")

@@ -40,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -51,26 +51,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
-//				EventBusName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleQueue, err := mns.NewQueue(ctx, "example", &mns.QueueArgs{
+//			defaultQueue, err := mns.NewQueue(ctx, "default", &mns.QueueArgs{
 //				Name: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eventbridge.NewEventSource(ctx, "example", &eventbridge.EventSourceArgs{
-//				EventBusName:         example.EventBusName,
-//				EventSourceName:      pulumi.String(name),
+//			defaultEventBus, err := eventbridge.NewEventBus(ctx, "default", &eventbridge.EventBusArgs{
+//				EventBusName: pulumi.Sprintf("%v-%v", name, _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = eventbridge.NewEventSource(ctx, "default", &eventbridge.EventSourceArgs{
+//				EventBusName:         defaultEventBus.EventBusName,
+//				EventSourceName:      pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description:          pulumi.String(name),
 //				LinkedExternalSource: pulumi.Bool(true),
 //				ExternalSourceType:   pulumi.String("MNS"),
 //				ExternalSourceConfig: pulumi.StringMap{
-//					"QueueName": exampleQueue.Name,
+//					"QueueName": defaultQueue.Name,
 //				},
 //			})
 //			if err != nil {
@@ -92,13 +92,13 @@ import (
 type EventSource struct {
 	pulumi.CustomResourceState
 
-	// The detail describe of event source.
+	// The description of the event source.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus to which the event source is attached.
 	EventBusName pulumi.StringOutput `pulumi:"eventBusName"`
-	// The code name of event source.
+	// The name of the event source.
 	EventSourceName pulumi.StringOutput `pulumi:"eventSourceName"`
-	// The config of external source.
+	// The configuration of the external data source.
 	// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 	// `RegionId` - The region ID of RabbitMQ.
 	// `InstanceId` - The instance ID of RabbitMQ.
@@ -113,10 +113,10 @@ type EventSource struct {
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
 	ExternalSourceConfig pulumi.StringMapOutput `pulumi:"externalSourceConfig"`
-	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+	// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 	ExternalSourceType pulumi.StringPtrOutput `pulumi:"externalSourceType"`
-	// Whether to connect to an external data source. Default value: `false`
-	LinkedExternalSource pulumi.BoolOutput `pulumi:"linkedExternalSource"`
+	// Specifies whether to connect to an external data source. Default value: `false`.
+	LinkedExternalSource pulumi.BoolPtrOutput `pulumi:"linkedExternalSource"`
 }
 
 // NewEventSource registers a new resource with the given unique name, arguments, and options.
@@ -155,13 +155,13 @@ func GetEventSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventSource resources.
 type eventSourceState struct {
-	// The detail describe of event source.
+	// The description of the event source.
 	Description *string `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus to which the event source is attached.
 	EventBusName *string `pulumi:"eventBusName"`
-	// The code name of event source.
+	// The name of the event source.
 	EventSourceName *string `pulumi:"eventSourceName"`
-	// The config of external source.
+	// The configuration of the external data source.
 	// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 	// `RegionId` - The region ID of RabbitMQ.
 	// `InstanceId` - The instance ID of RabbitMQ.
@@ -176,20 +176,20 @@ type eventSourceState struct {
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
 	ExternalSourceConfig map[string]string `pulumi:"externalSourceConfig"`
-	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+	// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 	ExternalSourceType *string `pulumi:"externalSourceType"`
-	// Whether to connect to an external data source. Default value: `false`
+	// Specifies whether to connect to an external data source. Default value: `false`.
 	LinkedExternalSource *bool `pulumi:"linkedExternalSource"`
 }
 
 type EventSourceState struct {
-	// The detail describe of event source.
+	// The description of the event source.
 	Description pulumi.StringPtrInput
-	// The name of event bus.
+	// The name of the event bus to which the event source is attached.
 	EventBusName pulumi.StringPtrInput
-	// The code name of event source.
+	// The name of the event source.
 	EventSourceName pulumi.StringPtrInput
-	// The config of external source.
+	// The configuration of the external data source.
 	// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 	// `RegionId` - The region ID of RabbitMQ.
 	// `InstanceId` - The instance ID of RabbitMQ.
@@ -204,9 +204,9 @@ type EventSourceState struct {
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
 	ExternalSourceConfig pulumi.StringMapInput
-	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+	// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 	ExternalSourceType pulumi.StringPtrInput
-	// Whether to connect to an external data source. Default value: `false`
+	// Specifies whether to connect to an external data source. Default value: `false`.
 	LinkedExternalSource pulumi.BoolPtrInput
 }
 
@@ -215,13 +215,13 @@ func (EventSourceState) ElementType() reflect.Type {
 }
 
 type eventSourceArgs struct {
-	// The detail describe of event source.
+	// The description of the event source.
 	Description *string `pulumi:"description"`
-	// The name of event bus.
+	// The name of the event bus to which the event source is attached.
 	EventBusName string `pulumi:"eventBusName"`
-	// The code name of event source.
+	// The name of the event source.
 	EventSourceName string `pulumi:"eventSourceName"`
-	// The config of external source.
+	// The configuration of the external data source.
 	// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 	// `RegionId` - The region ID of RabbitMQ.
 	// `InstanceId` - The instance ID of RabbitMQ.
@@ -236,21 +236,21 @@ type eventSourceArgs struct {
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
 	ExternalSourceConfig map[string]string `pulumi:"externalSourceConfig"`
-	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+	// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 	ExternalSourceType *string `pulumi:"externalSourceType"`
-	// Whether to connect to an external data source. Default value: `false`
+	// Specifies whether to connect to an external data source. Default value: `false`.
 	LinkedExternalSource *bool `pulumi:"linkedExternalSource"`
 }
 
 // The set of arguments for constructing a EventSource resource.
 type EventSourceArgs struct {
-	// The detail describe of event source.
+	// The description of the event source.
 	Description pulumi.StringPtrInput
-	// The name of event bus.
+	// The name of the event bus to which the event source is attached.
 	EventBusName pulumi.StringInput
-	// The code name of event source.
+	// The name of the event source.
 	EventSourceName pulumi.StringInput
-	// The config of external source.
+	// The configuration of the external data source.
 	// When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 	// `RegionId` - The region ID of RabbitMQ.
 	// `InstanceId` - The instance ID of RabbitMQ.
@@ -265,9 +265,9 @@ type EventSourceArgs struct {
 	// When `externalSourceType` is `MNS`, The following attributes are supported:
 	// `QueueName` - The queue name of MNS.
 	ExternalSourceConfig pulumi.StringMapInput
-	// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+	// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 	ExternalSourceType pulumi.StringPtrInput
-	// Whether to connect to an external data source. Default value: `false`
+	// Specifies whether to connect to an external data source. Default value: `false`.
 	LinkedExternalSource pulumi.BoolPtrInput
 }
 
@@ -358,22 +358,22 @@ func (o EventSourceOutput) ToEventSourceOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// The detail describe of event source.
+// The description of the event source.
 func (o EventSourceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of event bus.
+// The name of the event bus to which the event source is attached.
 func (o EventSourceOutput) EventBusName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventSource) pulumi.StringOutput { return v.EventBusName }).(pulumi.StringOutput)
 }
 
-// The code name of event source.
+// The name of the event source.
 func (o EventSourceOutput) EventSourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventSource) pulumi.StringOutput { return v.EventSourceName }).(pulumi.StringOutput)
 }
 
-// The config of external source.
+// The configuration of the external data source.
 // When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
 // `RegionId` - The region ID of RabbitMQ.
 // `InstanceId` - The instance ID of RabbitMQ.
@@ -391,14 +391,14 @@ func (o EventSourceOutput) ExternalSourceConfig() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EventSource) pulumi.StringMapOutput { return v.ExternalSourceConfig }).(pulumi.StringMapOutput)
 }
 
-// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
 func (o EventSourceOutput) ExternalSourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventSource) pulumi.StringPtrOutput { return v.ExternalSourceType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to connect to an external data source. Default value: `false`
-func (o EventSourceOutput) LinkedExternalSource() pulumi.BoolOutput {
-	return o.ApplyT(func(v *EventSource) pulumi.BoolOutput { return v.LinkedExternalSource }).(pulumi.BoolOutput)
+// Specifies whether to connect to an external data source. Default value: `false`.
+func (o EventSourceOutput) LinkedExternalSource() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EventSource) pulumi.BoolPtrOutput { return v.LinkedExternalSource }).(pulumi.BoolPtrOutput)
 }
 
 type EventSourceArrayOutput struct{ *pulumi.OutputState }

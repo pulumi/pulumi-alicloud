@@ -20,6 +20,11 @@ public final class ApplicationReadinessV2 {
      */
     private @Nullable ApplicationReadinessV2Exec exec;
     /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    private @Nullable Integer failureThreshold;
+    /**
      * @return The liveness check settings of the container. See `httpGet` below.
      * 
      */
@@ -34,6 +39,11 @@ public final class ApplicationReadinessV2 {
      * 
      */
     private @Nullable Integer periodSeconds;
+    /**
+     * @return The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+     * 
+     */
+    private @Nullable Integer successThreshold;
     /**
      * @return The liveness check settings of the container. See `tcpSocket` below.
      * 
@@ -52,6 +62,13 @@ public final class ApplicationReadinessV2 {
      */
     public Optional<ApplicationReadinessV2Exec> exec() {
         return Optional.ofNullable(this.exec);
+    }
+    /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    public Optional<Integer> failureThreshold() {
+        return Optional.ofNullable(this.failureThreshold);
     }
     /**
      * @return The liveness check settings of the container. See `httpGet` below.
@@ -73,6 +90,13 @@ public final class ApplicationReadinessV2 {
      */
     public Optional<Integer> periodSeconds() {
         return Optional.ofNullable(this.periodSeconds);
+    }
+    /**
+     * @return The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+     * 
+     */
+    public Optional<Integer> successThreshold() {
+        return Optional.ofNullable(this.successThreshold);
     }
     /**
      * @return The liveness check settings of the container. See `tcpSocket` below.
@@ -99,18 +123,22 @@ public final class ApplicationReadinessV2 {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ApplicationReadinessV2Exec exec;
+        private @Nullable Integer failureThreshold;
         private @Nullable ApplicationReadinessV2HttpGet httpGet;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
+        private @Nullable Integer successThreshold;
         private @Nullable ApplicationReadinessV2TcpSocket tcpSocket;
         private @Nullable Integer timeoutSeconds;
         public Builder() {}
         public Builder(ApplicationReadinessV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exec = defaults.exec;
+    	      this.failureThreshold = defaults.failureThreshold;
     	      this.httpGet = defaults.httpGet;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
+    	      this.successThreshold = defaults.successThreshold;
     	      this.tcpSocket = defaults.tcpSocket;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
@@ -119,6 +147,12 @@ public final class ApplicationReadinessV2 {
         public Builder exec(@Nullable ApplicationReadinessV2Exec exec) {
 
             this.exec = exec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder failureThreshold(@Nullable Integer failureThreshold) {
+
+            this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
@@ -140,6 +174,12 @@ public final class ApplicationReadinessV2 {
             return this;
         }
         @CustomType.Setter
+        public Builder successThreshold(@Nullable Integer successThreshold) {
+
+            this.successThreshold = successThreshold;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tcpSocket(@Nullable ApplicationReadinessV2TcpSocket tcpSocket) {
 
             this.tcpSocket = tcpSocket;
@@ -154,9 +194,11 @@ public final class ApplicationReadinessV2 {
         public ApplicationReadinessV2 build() {
             final var _resultValue = new ApplicationReadinessV2();
             _resultValue.exec = exec;
+            _resultValue.failureThreshold = failureThreshold;
             _resultValue.httpGet = httpGet;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;
+            _resultValue.successThreshold = successThreshold;
             _resultValue.tcpSocket = tcpSocket;
             _resultValue.timeoutSeconds = timeoutSeconds;
             return _resultValue;

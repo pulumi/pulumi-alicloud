@@ -584,14 +584,20 @@ func (o NetworkAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclEntriesEgress struct {
+	// The description of the egress entry.
 	Description *string `pulumi:"description"`
 	// The destination ip of the egress entry.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	EntryType         *string `pulumi:"entryType"`
-	Name              *string `pulumi:"name"`
-	Policy            *string `pulumi:"policy"`
-	Port              *string `pulumi:"port"`
-	Protocol          *string `pulumi:"protocol"`
+	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	EntryType *string `pulumi:"entryType"`
+	// The name of the egress entry.
+	Name *string `pulumi:"name"`
+	// The policy of the egress entry. It must be `accept` or `drop`.
+	Policy *string `pulumi:"policy"`
+	// The port of the egress entry.
+	Port *string `pulumi:"port"`
+	// The protocol of the egress entry.
+	Protocol *string `pulumi:"protocol"`
 }
 
 // NetworkAclEntriesEgressInput is an input type that accepts NetworkAclEntriesEgressArgs and NetworkAclEntriesEgressOutput values.
@@ -606,14 +612,20 @@ type NetworkAclEntriesEgressInput interface {
 }
 
 type NetworkAclEntriesEgressArgs struct {
+	// The description of the egress entry.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The destination ip of the egress entry.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	EntryType         pulumi.StringPtrInput `pulumi:"entryType"`
-	Name              pulumi.StringPtrInput `pulumi:"name"`
-	Policy            pulumi.StringPtrInput `pulumi:"policy"`
-	Port              pulumi.StringPtrInput `pulumi:"port"`
-	Protocol          pulumi.StringPtrInput `pulumi:"protocol"`
+	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
+	// The name of the egress entry.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The policy of the egress entry. It must be `accept` or `drop`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The port of the egress entry.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The protocol of the egress entry.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (NetworkAclEntriesEgressArgs) ElementType() reflect.Type {
@@ -667,6 +679,7 @@ func (o NetworkAclEntriesEgressOutput) ToNetworkAclEntriesEgressOutputWithContex
 	return o
 }
 
+// The description of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -676,22 +689,27 @@ func (o NetworkAclEntriesEgressOutput) DestinationCidrIp() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
+// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesEgressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The policy of the egress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesEgressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The port of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The protocol of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -717,12 +735,18 @@ func (o NetworkAclEntriesEgressArrayOutput) Index(i pulumi.IntInput) NetworkAclE
 }
 
 type NetworkAclEntriesIngress struct {
+	// The description of the ingress entry.
 	Description *string `pulumi:"description"`
-	EntryType   *string `pulumi:"entryType"`
-	Name        *string `pulumi:"name"`
-	Policy      *string `pulumi:"policy"`
-	Port        *string `pulumi:"port"`
-	Protocol    *string `pulumi:"protocol"`
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+	EntryType *string `pulumi:"entryType"`
+	// The name of the ingress entry.
+	Name *string `pulumi:"name"`
+	// The policy of the ingress entry. It must be `accept` or `drop`.
+	Policy *string `pulumi:"policy"`
+	// The port of the ingress entry.
+	Port *string `pulumi:"port"`
+	// The protocol of the ingress entry.
+	Protocol *string `pulumi:"protocol"`
 	// The source ip of the ingress entry.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
@@ -739,12 +763,18 @@ type NetworkAclEntriesIngressInput interface {
 }
 
 type NetworkAclEntriesIngressArgs struct {
+	// The description of the ingress entry.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	EntryType   pulumi.StringPtrInput `pulumi:"entryType"`
-	Name        pulumi.StringPtrInput `pulumi:"name"`
-	Policy      pulumi.StringPtrInput `pulumi:"policy"`
-	Port        pulumi.StringPtrInput `pulumi:"port"`
-	Protocol    pulumi.StringPtrInput `pulumi:"protocol"`
+	// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
+	// The name of the ingress entry.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The policy of the ingress entry. It must be `accept` or `drop`.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+	// The port of the ingress entry.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// The protocol of the ingress entry.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The source ip of the ingress entry.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
@@ -800,26 +830,32 @@ func (o NetworkAclEntriesIngressOutput) ToNetworkAclEntriesIngressOutputWithCont
 	return o
 }
 
+// The description of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesIngressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
+// The name of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The policy of the ingress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesIngressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The port of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
+// The protocol of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }

@@ -24,15 +24,19 @@ class AggregatorArgs:
                  aggregator_name: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
-                 aggregator_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 aggregator_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Aggregator resource.
-        :param pulumi.Input[_builtins.str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[_builtins.str] description: The description of aggregator.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
-        :param pulumi.Input[_builtins.str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-               * `CUSTOM` - The custom account group.
-               * `RD` - The global account group.
+        :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
+        :param pulumi.Input[_builtins.str] description: The description of the account group.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+               > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
+        :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:
+               - `RD`: Global account group.
+               - `FOLDER`: Folder account group.
+               - `CUSTOM`: Custom account group.
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
         """
         pulumi.set(__self__, "aggregator_name", aggregator_name)
         pulumi.set(__self__, "description", description)
@@ -40,12 +44,14 @@ class AggregatorArgs:
             pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
         if aggregator_type is not None:
             pulumi.set(__self__, "aggregator_type", aggregator_type)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
 
     @_builtins.property
     @pulumi.getter(name="aggregatorName")
     def aggregator_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of aggregator.
+        The name of the account group.
         """
         return pulumi.get(self, "aggregator_name")
 
@@ -57,7 +63,7 @@ class AggregatorArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
         """
-        The description of aggregator.
+        The description of the account group.
         """
         return pulumi.get(self, "description")
 
@@ -69,7 +75,8 @@ class AggregatorArgs:
     @pulumi.getter(name="aggregatorAccounts")
     def aggregator_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]]:
         """
-        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        The member accounts of the account group. See `aggregator_accounts` below.
+        > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         """
         return pulumi.get(self, "aggregator_accounts")
 
@@ -81,15 +88,28 @@ class AggregatorArgs:
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        * `CUSTOM` - The custom account group.
-        * `RD` - The global account group.
+        The type of the account group. Default value: `CUSTOM`. Valid values:
+        - `RD`: Global account group.
+        - `FOLDER`: Folder account group.
+        - `CUSTOM`: Custom account group.
         """
         return pulumi.get(self, "aggregator_type")
 
     @aggregator_type.setter
     def aggregator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "aggregator_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "folder_id", value)
 
 
 @pulumi.input_type
@@ -98,17 +118,23 @@ class _AggregatorState:
                  aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
                  aggregator_name: Optional[pulumi.Input[_builtins.str]] = None,
                  aggregator_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Aggregator resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
-        :param pulumi.Input[_builtins.str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[_builtins.str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-               * `CUSTOM` - The custom account group.
-               * `RD` - The global account group.
-        :param pulumi.Input[_builtins.str] description: The description of aggregator.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+               > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
+        :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
+        :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:
+               - `RD`: Global account group.
+               - `FOLDER`: Folder account group.
+               - `CUSTOM`: Custom account group.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.262.0) The timestamp when the account group was created.
+        :param pulumi.Input[_builtins.str] description: The description of the account group.
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
+        :param pulumi.Input[_builtins.str] status: The status of the account group.
         """
         if aggregator_accounts is not None:
             pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
@@ -116,8 +142,12 @@ class _AggregatorState:
             pulumi.set(__self__, "aggregator_name", aggregator_name)
         if aggregator_type is not None:
             pulumi.set(__self__, "aggregator_type", aggregator_type)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if folder_id is not None:
+            pulumi.set(__self__, "folder_id", folder_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -125,7 +155,8 @@ class _AggregatorState:
     @pulumi.getter(name="aggregatorAccounts")
     def aggregator_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]]:
         """
-        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        The member accounts of the account group. See `aggregator_accounts` below.
+        > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         """
         return pulumi.get(self, "aggregator_accounts")
 
@@ -137,7 +168,7 @@ class _AggregatorState:
     @pulumi.getter(name="aggregatorName")
     def aggregator_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of aggregator.
+        The name of the account group.
         """
         return pulumi.get(self, "aggregator_name")
 
@@ -149,9 +180,10 @@ class _AggregatorState:
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        * `CUSTOM` - The custom account group.
-        * `RD` - The global account group.
+        The type of the account group. Default value: `CUSTOM`. Valid values:
+        - `RD`: Global account group.
+        - `FOLDER`: Folder account group.
+        - `CUSTOM`: Custom account group.
         """
         return pulumi.get(self, "aggregator_type")
 
@@ -160,10 +192,22 @@ class _AggregatorState:
         pulumi.set(self, "aggregator_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Available since v1.262.0) The timestamp when the account group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of aggregator.
+        The description of the account group.
         """
         return pulumi.get(self, "description")
 
@@ -172,10 +216,22 @@ class _AggregatorState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
+        """
+        return pulumi.get(self, "folder_id")
+
+    @folder_id.setter
+    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "folder_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        The status of the account group.
         """
         return pulumi.get(self, "status")
 
@@ -194,11 +250,12 @@ class Aggregator(pulumi.CustomResource):
                  aggregator_name: Optional[pulumi.Input[_builtins.str]] = None,
                  aggregator_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloud Config Aggregator resource.
+        Provides a Cloud Config (Config) Aggregator resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
+        For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 
         > **NOTE:** Available since v1.124.0.
 
@@ -229,7 +286,7 @@ class Aggregator(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregator can be imported using the id, e.g.
+        Cloud Config (Config) Aggregator can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
@@ -237,12 +294,15 @@ class Aggregator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
-        :param pulumi.Input[_builtins.str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[_builtins.str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-               * `CUSTOM` - The custom account group.
-               * `RD` - The global account group.
-        :param pulumi.Input[_builtins.str] description: The description of aggregator.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+               > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
+        :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
+        :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:
+               - `RD`: Global account group.
+               - `FOLDER`: Folder account group.
+               - `CUSTOM`: Custom account group.
+        :param pulumi.Input[_builtins.str] description: The description of the account group.
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
         """
         ...
     @overload
@@ -251,9 +311,9 @@ class Aggregator(pulumi.CustomResource):
                  args: AggregatorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloud Config Aggregator resource.
+        Provides a Cloud Config (Config) Aggregator resource.
 
-        For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
+        For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 
         > **NOTE:** Available since v1.124.0.
 
@@ -284,7 +344,7 @@ class Aggregator(pulumi.CustomResource):
 
         ## Import
 
-        Cloud Config Aggregator can be imported using the id, e.g.
+        Cloud Config (Config) Aggregator can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
@@ -309,6 +369,7 @@ class Aggregator(pulumi.CustomResource):
                  aggregator_name: Optional[pulumi.Input[_builtins.str]] = None,
                  aggregator_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,6 +387,8 @@ class Aggregator(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["folder_id"] = folder_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(Aggregator, __self__).__init__(
             'alicloud:cfg/aggregator:Aggregator',
@@ -340,7 +403,9 @@ class Aggregator(pulumi.CustomResource):
             aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]]] = None,
             aggregator_name: Optional[pulumi.Input[_builtins.str]] = None,
             aggregator_type: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Aggregator':
         """
         Get an existing Aggregator resource's state with the given name, id, and optional extra
@@ -349,13 +414,17 @@ class Aggregator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
-        :param pulumi.Input[_builtins.str] aggregator_name: The name of aggregator.
-        :param pulumi.Input[_builtins.str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-               * `CUSTOM` - The custom account group.
-               * `RD` - The global account group.
-        :param pulumi.Input[_builtins.str] description: The description of aggregator.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AggregatorAggregatorAccountArgs', 'AggregatorAggregatorAccountArgsDict']]]] aggregator_accounts: The member accounts of the account group. See `aggregator_accounts` below.
+               > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
+        :param pulumi.Input[_builtins.str] aggregator_name: The name of the account group.
+        :param pulumi.Input[_builtins.str] aggregator_type: The type of the account group. Default value: `CUSTOM`. Valid values:
+               - `RD`: Global account group.
+               - `FOLDER`: Folder account group.
+               - `CUSTOM`: Custom account group.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.262.0) The timestamp when the account group was created.
+        :param pulumi.Input[_builtins.str] description: The description of the account group.
+        :param pulumi.Input[_builtins.str] folder_id: The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
+        :param pulumi.Input[_builtins.str] status: The status of the account group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,7 +433,9 @@ class Aggregator(pulumi.CustomResource):
         __props__.__dict__["aggregator_accounts"] = aggregator_accounts
         __props__.__dict__["aggregator_name"] = aggregator_name
         __props__.__dict__["aggregator_type"] = aggregator_type
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["status"] = status
         return Aggregator(resource_name, opts=opts, __props__=__props__)
 
@@ -372,7 +443,8 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter(name="aggregatorAccounts")
     def aggregator_accounts(self) -> pulumi.Output[Sequence['outputs.AggregatorAggregatorAccount']]:
         """
-        The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
+        The member accounts of the account group. See `aggregator_accounts` below.
+        > **NOTE:** If `aggregator_type` is set to `CUSTOM`, `aggregator_accounts` is required.
         """
         return pulumi.get(self, "aggregator_accounts")
 
@@ -380,7 +452,7 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter(name="aggregatorName")
     def aggregator_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of aggregator.
+        The name of the account group.
         """
         return pulumi.get(self, "aggregator_name")
 
@@ -388,25 +460,42 @@ class Aggregator(pulumi.CustomResource):
     @pulumi.getter(name="aggregatorType")
     def aggregator_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        * `CUSTOM` - The custom account group.
-        * `RD` - The global account group.
+        The type of the account group. Default value: `CUSTOM`. Valid values:
+        - `RD`: Global account group.
+        - `FOLDER`: Folder account group.
+        - `CUSTOM`: Custom account group.
         """
         return pulumi.get(self, "aggregator_type")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.262.0) The timestamp when the account group was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description of aggregator.
+        The description of the account group.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
+        """
+        return pulumi.get(self, "folder_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        The status of the account group.
         """
         return pulumi.get(self, "status")
 

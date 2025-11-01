@@ -31,12 +31,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ControlPolicyAttachment{}
 	case "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator":
 		r = &DelegatedAdministrator{}
+	case "alicloud:resourcemanager/deliveryChannel:DeliveryChannel":
+		r = &DeliveryChannel{}
 	case "alicloud:resourcemanager/folder:Folder":
 		r = &Folder{}
 	case "alicloud:resourcemanager/handshake:Handshake":
 		r = &Handshake{}
 	case "alicloud:resourcemanager/messageContact:MessageContact":
 		r = &MessageContact{}
+	case "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel":
+		r = &MultiAccountDeliveryChannel{}
 	case "alicloud:resourcemanager/policy:Policy":
 		r = &Policy{}
 	case "alicloud:resourcemanager/policyAttachment:PolicyAttachment":
@@ -99,6 +103,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"resourcemanager/deliveryChannel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"resourcemanager/folder",
 		&module{version},
 	)
@@ -110,6 +119,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/messageContact",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/multiAccountDeliveryChannel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `PrePaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `PostPaid`.
         /// </summary>
         [Output("deletionLock")]
         public Output<int?> DeletionLock { get; private set; } = null!;
@@ -444,7 +444,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         /// </summary>
         [Output("storagePayType")]
         public Output<string> StoragePayType { get; private set; } = null!;
@@ -694,7 +694,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `PrePaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `PostPaid`.
         /// </summary>
         [Input("deletionLock")]
         public Input<int>? DeletionLock { get; set; }
@@ -992,7 +992,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? StandbyAz { get; set; }
 
         /// <summary>
-        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         /// </summary>
         [Input("storagePayType")]
         public Input<string>? StoragePayType { get; set; }
@@ -1226,7 +1226,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `Prepaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `Postpaid`.
+        /// &gt; **NOTE:**  Cannot modify after created when `PayType` is `PrePaid` .`DeletionLock` the cluster protection lock can be turned on or off when `PayType` is `PostPaid`.
         /// </summary>
         [Input("deletionLock")]
         public Input<int>? DeletionLock { get; set; }
@@ -1536,7 +1536,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+        /// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         /// </summary>
         [Input("storagePayType")]
         public Input<string>? StoragePayType { get; set; }

@@ -75,17 +75,14 @@ type Certificate struct {
 	// Certificate content.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Creation time.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
+	CreateTime  pulumi.StringOutput `pulumi:"createTime"`
 	CreatedType pulumi.StringOutput `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains pulumi.StringPtrOutput `pulumi:"domains"`
-	// The certificate private key.
+	Domains    pulumi.StringPtrOutput `pulumi:"domains"`
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// Geographical information.
+	// Region. This parameter is required if the type is CAS.
+	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
@@ -140,17 +137,14 @@ type certificateState struct {
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
 	// Creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
+	CreateTime  *string `pulumi:"createTime"`
 	CreatedType *string `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains *string `pulumi:"domains"`
-	// The certificate private key.
+	Domains    *string `pulumi:"domains"`
 	PrivateKey *string `pulumi:"privateKey"`
-	// Geographical information.
+	// Region. This parameter is required if the type is CAS.
+	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region *string `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId *int `pulumi:"siteId"`
@@ -170,17 +164,14 @@ type CertificateState struct {
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
 	// Creation time.
-	CreateTime pulumi.StringPtrInput
-	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
+	CreateTime  pulumi.StringPtrInput
 	CreatedType pulumi.StringPtrInput
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains pulumi.StringPtrInput
-	// The certificate private key.
+	Domains    pulumi.StringPtrInput
 	PrivateKey pulumi.StringPtrInput
-	// Geographical information.
+	// Region. This parameter is required if the type is CAS.
+	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntPtrInput
@@ -203,16 +194,13 @@ type certificateArgs struct {
 	CertName *string `pulumi:"certName"`
 	// Certificate content.
 	Certificate *string `pulumi:"certificate"`
-	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
-	CreatedType string `pulumi:"createdType"`
+	CreatedType string  `pulumi:"createdType"`
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains *string `pulumi:"domains"`
-	// The certificate private key.
+	Domains    *string `pulumi:"domains"`
 	PrivateKey *string `pulumi:"privateKey"`
-	// Geographical information.
+	// Region. This parameter is required if the type is CAS.
+	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region *string `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId int `pulumi:"siteId"`
@@ -230,16 +218,13 @@ type CertificateArgs struct {
 	CertName pulumi.StringPtrInput
 	// Certificate content.
 	Certificate pulumi.StringPtrInput
-	// The certificate type.
-	// - cas (Certificate Center Certificate)
-	// - upload (custom upload certificate)
-	// - free( Free certificate).
 	CreatedType pulumi.StringInput
 	// A list of domain names. Multiple domain names are separated by commas.
-	Domains pulumi.StringPtrInput
-	// The certificate private key.
+	Domains    pulumi.StringPtrInput
 	PrivateKey pulumi.StringPtrInput
-	// Geographical information.
+	// Region. This parameter is required if the type is CAS.
+	// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntInput
@@ -359,10 +344,6 @@ func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The certificate type.
-// - cas (Certificate Center Certificate)
-// - upload (custom upload certificate)
-// - free( Free certificate).
 func (o CertificateOutput) CreatedType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreatedType }).(pulumi.StringOutput)
 }
@@ -372,12 +353,13 @@ func (o CertificateOutput) Domains() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Domains }).(pulumi.StringPtrOutput)
 }
 
-// The certificate private key.
 func (o CertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Geographical information.
+// Region. This parameter is required if the type is CAS.
+// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+// For accounts on the international site, this parameter value is: ap-southeast-1
 func (o CertificateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

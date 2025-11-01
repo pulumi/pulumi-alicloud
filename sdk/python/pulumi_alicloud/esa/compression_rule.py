@@ -25,6 +25,7 @@ class CompressionRuleArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  zstd: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -37,6 +38,7 @@ class CompressionRuleArgs:
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] zstd: Zstd compression. Value range:
         """
@@ -51,6 +53,8 @@ class CompressionRuleArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
         if zstd is not None:
@@ -131,6 +135,18 @@ class CompressionRuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -164,6 +180,7 @@ class _CompressionRuleState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  zstd: Optional[pulumi.Input[_builtins.str]] = None):
@@ -177,6 +194,7 @@ class _CompressionRuleState:
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] zstd: Zstd compression. Value range:
@@ -193,6 +211,8 @@ class _CompressionRuleState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -275,6 +295,18 @@ class _CompressionRuleState:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -322,6 +354,7 @@ class CompressionRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  zstd: Optional[pulumi.Input[_builtins.str]] = None,
@@ -375,6 +408,7 @@ class CompressionRule(pulumi.CustomResource):
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] zstd: Zstd compression. Value range:
@@ -445,6 +479,7 @@ class CompressionRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  zstd: Optional[pulumi.Input[_builtins.str]] = None,
@@ -462,6 +497,7 @@ class CompressionRule(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -484,6 +520,7 @@ class CompressionRule(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             zstd: Optional[pulumi.Input[_builtins.str]] = None) -> 'CompressionRule':
@@ -502,6 +539,7 @@ class CompressionRule(pulumi.CustomResource):
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] zstd: Zstd compression. Value range:
@@ -516,6 +554,7 @@ class CompressionRule(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         __props__.__dict__["zstd"] = zstd
@@ -570,6 +609,14 @@ class CompressionRule(pulumi.CustomResource):
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")

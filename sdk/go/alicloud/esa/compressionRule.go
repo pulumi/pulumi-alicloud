@@ -92,6 +92,8 @@ type CompressionRule struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -147,6 +149,8 @@ type compressionRuleState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -170,6 +174,8 @@ type CompressionRuleState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -195,6 +201,8 @@ type compressionRuleArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -217,6 +225,8 @@ type CompressionRuleArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -342,6 +352,11 @@ func (o CompressionRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 // Rule name. When adding global configuration, this parameter does not need to be set.
 func (o CompressionRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CompressionRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Order of rule execution. The smaller the value, the higher the priority for execution.
+func (o CompressionRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *CompressionRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The site ID, which can be obtained by calling the ListSites API.

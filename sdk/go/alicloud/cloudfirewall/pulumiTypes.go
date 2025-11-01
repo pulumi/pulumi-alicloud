@@ -3156,6 +3156,112 @@ func (o GetNatFirewallsFirewallNatRouteEntryListArrayOutput) Index(i pulumi.IntI
 	}).(GetNatFirewallsFirewallNatRouteEntryListOutput)
 }
 
+type GetTlsInspectCaCertificatesCertificate struct {
+	// CA certificate ID
+	CaCertId string `pulumi:"caCertId"`
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+}
+
+// GetTlsInspectCaCertificatesCertificateInput is an input type that accepts GetTlsInspectCaCertificatesCertificateArgs and GetTlsInspectCaCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetTlsInspectCaCertificatesCertificateInput` via:
+//
+//	GetTlsInspectCaCertificatesCertificateArgs{...}
+type GetTlsInspectCaCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetTlsInspectCaCertificatesCertificateOutput() GetTlsInspectCaCertificatesCertificateOutput
+	ToGetTlsInspectCaCertificatesCertificateOutputWithContext(context.Context) GetTlsInspectCaCertificatesCertificateOutput
+}
+
+type GetTlsInspectCaCertificatesCertificateArgs struct {
+	// CA certificate ID
+	CaCertId pulumi.StringInput `pulumi:"caCertId"`
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetTlsInspectCaCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsInspectCaCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetTlsInspectCaCertificatesCertificateArgs) ToGetTlsInspectCaCertificatesCertificateOutput() GetTlsInspectCaCertificatesCertificateOutput {
+	return i.ToGetTlsInspectCaCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetTlsInspectCaCertificatesCertificateArgs) ToGetTlsInspectCaCertificatesCertificateOutputWithContext(ctx context.Context) GetTlsInspectCaCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsInspectCaCertificatesCertificateOutput)
+}
+
+// GetTlsInspectCaCertificatesCertificateArrayInput is an input type that accepts GetTlsInspectCaCertificatesCertificateArray and GetTlsInspectCaCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetTlsInspectCaCertificatesCertificateArrayInput` via:
+//
+//	GetTlsInspectCaCertificatesCertificateArray{ GetTlsInspectCaCertificatesCertificateArgs{...} }
+type GetTlsInspectCaCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetTlsInspectCaCertificatesCertificateArrayOutput() GetTlsInspectCaCertificatesCertificateArrayOutput
+	ToGetTlsInspectCaCertificatesCertificateArrayOutputWithContext(context.Context) GetTlsInspectCaCertificatesCertificateArrayOutput
+}
+
+type GetTlsInspectCaCertificatesCertificateArray []GetTlsInspectCaCertificatesCertificateInput
+
+func (GetTlsInspectCaCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsInspectCaCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetTlsInspectCaCertificatesCertificateArray) ToGetTlsInspectCaCertificatesCertificateArrayOutput() GetTlsInspectCaCertificatesCertificateArrayOutput {
+	return i.ToGetTlsInspectCaCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetTlsInspectCaCertificatesCertificateArray) ToGetTlsInspectCaCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetTlsInspectCaCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTlsInspectCaCertificatesCertificateArrayOutput)
+}
+
+type GetTlsInspectCaCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetTlsInspectCaCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTlsInspectCaCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetTlsInspectCaCertificatesCertificateOutput) ToGetTlsInspectCaCertificatesCertificateOutput() GetTlsInspectCaCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetTlsInspectCaCertificatesCertificateOutput) ToGetTlsInspectCaCertificatesCertificateOutputWithContext(ctx context.Context) GetTlsInspectCaCertificatesCertificateOutput {
+	return o
+}
+
+// CA certificate ID
+func (o GetTlsInspectCaCertificatesCertificateOutput) CaCertId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsInspectCaCertificatesCertificate) string { return v.CaCertId }).(pulumi.StringOutput)
+}
+
+// The ID of the resource supplied above.
+func (o GetTlsInspectCaCertificatesCertificateOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTlsInspectCaCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetTlsInspectCaCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTlsInspectCaCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTlsInspectCaCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetTlsInspectCaCertificatesCertificateArrayOutput) ToGetTlsInspectCaCertificatesCertificateArrayOutput() GetTlsInspectCaCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetTlsInspectCaCertificatesCertificateArrayOutput) ToGetTlsInspectCaCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetTlsInspectCaCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetTlsInspectCaCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetTlsInspectCaCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTlsInspectCaCertificatesCertificate {
+		return vs[0].([]GetTlsInspectCaCertificatesCertificate)[vs[1].(int)]
+	}).(GetTlsInspectCaCertificatesCertificateOutput)
+}
+
 type GetVpcCenTrFirewallsFirewall struct {
 	// The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
@@ -5381,6 +5487,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallArrayInput)(nil)).Elem(), GetNatFirewallsFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryListInput)(nil)).Elem(), GetNatFirewallsFirewallNatRouteEntryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNatFirewallsFirewallNatRouteEntryListArrayInput)(nil)).Elem(), GetNatFirewallsFirewallNatRouteEntryListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsInspectCaCertificatesCertificateInput)(nil)).Elem(), GetTlsInspectCaCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTlsInspectCaCertificatesCertificateArrayInput)(nil)).Elem(), GetTlsInspectCaCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallArrayInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcCenTrFirewallsFirewallIpsConfigInput)(nil)).Elem(), GetVpcCenTrFirewallsFirewallIpsConfigArgs{})
@@ -5448,6 +5556,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNatFirewallsFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetNatFirewallsFirewallNatRouteEntryListOutput{})
 	pulumi.RegisterOutputType(GetNatFirewallsFirewallNatRouteEntryListArrayOutput{})
+	pulumi.RegisterOutputType(GetTlsInspectCaCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetTlsInspectCaCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallOutput{})
 	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcCenTrFirewallsFirewallIpsConfigOutput{})

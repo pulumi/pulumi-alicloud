@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Sae
         /// The ARN of the RAM role required when pulling images across accounts. Only necessary if the ImageUrl is pointing to an ACR EE instance.
         /// </summary>
         [Output("acrAssumeRoleArn")]
-        public Output<string?> AcrAssumeRoleArn { get; private set; } = null!;
+        public Output<string> AcrAssumeRoleArn { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the ACR EE instance. Only necessary if the ImageUrl is pointing to an ACR EE instance.

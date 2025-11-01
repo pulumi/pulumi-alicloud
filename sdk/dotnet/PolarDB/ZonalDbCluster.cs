@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// environment in the cloud. An PolarDB zonal cluster can contain multiple user-created
     /// databases.
     /// 
-    /// &gt; **NOTE:** Available since v1.66.0.
+    /// &gt; **NOTE:** Available since v1.261.0.
     /// 
     /// ## Example Usage
     /// 

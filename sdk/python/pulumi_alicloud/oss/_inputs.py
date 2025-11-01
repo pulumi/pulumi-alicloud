@@ -57,6 +57,8 @@ __all__ = [
     'BucketReplicationPrefixSetArgsDict',
     'BucketReplicationProgressArgs',
     'BucketReplicationProgressArgsDict',
+    'BucketReplicationRtcArgs',
+    'BucketReplicationRtcArgsDict',
     'BucketReplicationSourceSelectionCriteriaArgs',
     'BucketReplicationSourceSelectionCriteriaArgsDict',
     'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs',
@@ -1691,6 +1693,57 @@ class BucketReplicationProgressArgs:
     @new_object.setter
     def new_object(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "new_object", value)
+
+
+if not MYPY:
+    class BucketReplicationRtcArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+        """
+elif False:
+    BucketReplicationRtcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketReplicationRtcArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+        :param pulumi.Input[_builtins.str] status: The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 if not MYPY:

@@ -332,7 +332,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
     @Export(name="deletionLock", refs={Integer.class}, tree="[0]")
@@ -340,7 +340,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
     public Output<Optional<Integer>> deletionLock() {
@@ -1007,14 +1007,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      * 
      */
     @Export(name="storagePayType", refs={String.class}, tree="[0]")
     private Output<String> storagePayType;
 
     /**
-     * @return The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * @return The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      * 
      */
     public Output<String> storagePayType() {

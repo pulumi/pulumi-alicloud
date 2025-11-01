@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,17 +40,27 @@ public final class EndpointGroupEndpointConfiguration {
      * @return The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
+     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
-     * - `ALB`: An Application Load Balancer (ALB) instance.
-     * - `NLB`: A Network Load Balancer (NLB) instance.
-     * - `ENI`: An Elastic Network Interface (ENI).
-     * - `OSS`: An Object Storage Service (OSS) bucket.
-     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+     * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+     * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+     * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+     * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
      * 
      */
     private String type;
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    private @Nullable String vpcId;
+    /**
+     * @return The IDs of vSwitches that are deployed in the VPC.
+     * 
+     */
+    private @Nullable List<String> vswitchIds;
     /**
      * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
      * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
@@ -91,18 +102,32 @@ public final class EndpointGroupEndpointConfiguration {
      * @return The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
+     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
-     * - `ALB`: An Application Load Balancer (ALB) instance.
-     * - `NLB`: A Network Load Balancer (NLB) instance.
-     * - `ENI`: An Elastic Network Interface (ENI).
-     * - `OSS`: An Object Storage Service (OSS) bucket.
-     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+     * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+     * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+     * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+     * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
      * 
      */
     public String type() {
         return this.type;
+    }
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<String> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+    /**
+     * @return The IDs of vSwitches that are deployed in the VPC.
+     * 
+     */
+    public List<String> vswitchIds() {
+        return this.vswitchIds == null ? List.of() : this.vswitchIds;
     }
     /**
      * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
@@ -127,6 +152,8 @@ public final class EndpointGroupEndpointConfiguration {
         private String endpoint;
         private @Nullable String subAddress;
         private String type;
+        private @Nullable String vpcId;
+        private @Nullable List<String> vswitchIds;
         private Integer weight;
         public Builder() {}
         public Builder(EndpointGroupEndpointConfiguration defaults) {
@@ -136,6 +163,8 @@ public final class EndpointGroupEndpointConfiguration {
     	      this.endpoint = defaults.endpoint;
     	      this.subAddress = defaults.subAddress;
     	      this.type = defaults.type;
+    	      this.vpcId = defaults.vpcId;
+    	      this.vswitchIds = defaults.vswitchIds;
     	      this.weight = defaults.weight;
         }
 
@@ -174,6 +203,21 @@ public final class EndpointGroupEndpointConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder vpcId(@Nullable String vpcId) {
+
+            this.vpcId = vpcId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vswitchIds(@Nullable List<String> vswitchIds) {
+
+            this.vswitchIds = vswitchIds;
+            return this;
+        }
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
+        }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             if (weight == null) {
               throw new MissingRequiredPropertyException("EndpointGroupEndpointConfiguration", "weight");
@@ -188,6 +232,8 @@ public final class EndpointGroupEndpointConfiguration {
             _resultValue.endpoint = endpoint;
             _resultValue.subAddress = subAddress;
             _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
             _resultValue.weight = weight;
             return _resultValue;
         }

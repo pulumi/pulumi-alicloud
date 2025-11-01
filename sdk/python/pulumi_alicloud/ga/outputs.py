@@ -177,6 +177,10 @@ class EndpointGroupEndpointConfiguration(dict):
             suggest = "enable_proxy_protocol"
         elif key == "subAddress":
             suggest = "sub_address"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "vswitchIds":
+            suggest = "vswitch_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EndpointGroupEndpointConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -195,26 +199,30 @@ class EndpointGroupEndpointConfiguration(dict):
                  weight: _builtins.int,
                  enable_clientip_preservation: Optional[_builtins.bool] = None,
                  enable_proxy_protocol: Optional[_builtins.bool] = None,
-                 sub_address: Optional[_builtins.str] = None):
+                 sub_address: Optional[_builtins.str] = None,
+                 vpc_id: Optional[_builtins.str] = None,
+                 vswitch_ids: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
         :param _builtins.str type: The type of Endpoint N in the endpoint group. Valid values:
                - `Domain`: A custom domain name.
                - `Ip`: A custom IP address.
+               - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
                - `PublicIp`: An Alibaba Cloud public IP address.
                - `ECS`: An Elastic Compute Service (ECS) instance.
                - `SLB`: A Classic Load Balancer (CLB) instance.
-               - `ALB`: An Application Load Balancer (ALB) instance.
-               - `NLB`: A Network Load Balancer (NLB) instance.
-               - `ENI`: An Elastic Network Interface (ENI).
-               - `OSS`: An Object Storage Service (OSS) bucket.
-               > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+               - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+               - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+               - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+               - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
         :param _builtins.int weight: The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
                > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         :param _builtins.bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         :param _builtins.bool enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         :param _builtins.str sub_address: The private IP address of the ENI.
                > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+        :param _builtins.str vpc_id: The ID of the VPC.
+        :param Sequence[_builtins.str] vswitch_ids: The IDs of vSwitches that are deployed in the VPC.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
@@ -225,6 +233,10 @@ class EndpointGroupEndpointConfiguration(dict):
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
         if sub_address is not None:
             pulumi.set(__self__, "sub_address", sub_address)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_ids is not None:
+            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @_builtins.property
     @pulumi.getter
@@ -241,14 +253,14 @@ class EndpointGroupEndpointConfiguration(dict):
         The type of Endpoint N in the endpoint group. Valid values:
         - `Domain`: A custom domain name.
         - `Ip`: A custom IP address.
+        - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
         - `PublicIp`: An Alibaba Cloud public IP address.
         - `ECS`: An Elastic Compute Service (ECS) instance.
         - `SLB`: A Classic Load Balancer (CLB) instance.
-        - `ALB`: An Application Load Balancer (ALB) instance.
-        - `NLB`: A Network Load Balancer (NLB) instance.
-        - `ENI`: An Elastic Network Interface (ENI).
-        - `OSS`: An Object Storage Service (OSS) bucket.
-        > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+        - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+        - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+        - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+        - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
         """
         return pulumi.get(self, "type")
 
@@ -285,6 +297,22 @@ class EndpointGroupEndpointConfiguration(dict):
         > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
         """
         return pulumi.get(self, "sub_address")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The IDs of vSwitches that are deployed in the VPC.
+        """
+        return pulumi.get(self, "vswitch_ids")
 
 
 @pulumi.output_type

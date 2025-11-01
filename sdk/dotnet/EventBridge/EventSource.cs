@@ -30,33 +30,33 @@ namespace Pulumi.AliCloud.EventBridge
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var example = new AliCloud.EventBridge.EventBus("example", new()
-    ///     {
-    ///         EventBusName = name,
-    ///     });
-    /// 
-    ///     var exampleQueue = new AliCloud.Mns.Queue("example", new()
+    ///     var defaultQueue = new AliCloud.Mns.Queue("default", new()
     ///     {
     ///         Name = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("example", new()
+    ///     var defaultEventBus = new AliCloud.EventBridge.EventBus("default", new()
     ///     {
-    ///         EventBusName = example.EventBusName,
-    ///         EventSourceName = name,
+    ///         EventBusName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    ///     var defaultEventSource = new AliCloud.EventBridge.EventSource("default", new()
+    ///     {
+    ///         EventBusName = defaultEventBus.EventBusName,
+    ///         EventSourceName = $"{name}-{@default.Result}",
     ///         Description = name,
     ///         LinkedExternalSource = true,
     ///         ExternalSourceType = "MNS",
     ///         ExternalSourceConfig = 
     ///         {
-    ///             { "QueueName", exampleQueue.Name },
+    ///             { "QueueName", defaultQueue.Name },
     ///         },
     ///     });
     /// 
@@ -75,25 +75,25 @@ namespace Pulumi.AliCloud.EventBridge
     public partial class EventSource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The detail describe of event source.
+        /// The description of the event source.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus to which the event source is attached.
         /// </summary>
         [Output("eventBusName")]
         public Output<string> EventBusName { get; private set; } = null!;
 
         /// <summary>
-        /// The code name of event source.
+        /// The name of the event source.
         /// </summary>
         [Output("eventSourceName")]
         public Output<string> EventSourceName { get; private set; } = null!;
 
         /// <summary>
-        /// The config of external source.
+        /// The configuration of the external data source.
         /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
@@ -112,16 +112,16 @@ namespace Pulumi.AliCloud.EventBridge
         public Output<ImmutableDictionary<string, string>?> ExternalSourceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
+        /// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         /// </summary>
         [Output("externalSourceType")]
         public Output<string?> ExternalSourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `False`
+        /// Specifies whether to connect to an external data source. Default value: `False`.
         /// </summary>
         [Output("linkedExternalSource")]
-        public Output<bool> LinkedExternalSource { get; private set; } = null!;
+        public Output<bool?> LinkedExternalSource { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,19 +170,19 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class EventSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The detail describe of event source.
+        /// The description of the event source.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus to which the event source is attached.
         /// </summary>
         [Input("eventBusName", required: true)]
         public Input<string> EventBusName { get; set; } = null!;
 
         /// <summary>
-        /// The code name of event source.
+        /// The name of the event source.
         /// </summary>
         [Input("eventSourceName", required: true)]
         public Input<string> EventSourceName { get; set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputMap<string>? _externalSourceConfig;
 
         /// <summary>
-        /// The config of external source.
+        /// The configuration of the external data source.
         /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
@@ -213,13 +213,13 @@ namespace Pulumi.AliCloud.EventBridge
         }
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
+        /// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         /// </summary>
         [Input("externalSourceType")]
         public Input<string>? ExternalSourceType { get; set; }
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `False`
+        /// Specifies whether to connect to an external data source. Default value: `False`.
         /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }
@@ -233,19 +233,19 @@ namespace Pulumi.AliCloud.EventBridge
     public sealed class EventSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The detail describe of event source.
+        /// The description of the event source.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of event bus.
+        /// The name of the event bus to which the event source is attached.
         /// </summary>
         [Input("eventBusName")]
         public Input<string>? EventBusName { get; set; }
 
         /// <summary>
-        /// The code name of event source.
+        /// The name of the event source.
         /// </summary>
         [Input("eventSourceName")]
         public Input<string>? EventSourceName { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.EventBridge
         private InputMap<string>? _externalSourceConfig;
 
         /// <summary>
-        /// The config of external source.
+        /// The configuration of the external data source.
         /// When `ExternalSourceType` is `RabbitMQ`, The following attributes are supported:
         /// `RegionId` - The region ID of RabbitMQ.
         /// `InstanceId` - The instance ID of RabbitMQ.
@@ -276,13 +276,13 @@ namespace Pulumi.AliCloud.EventBridge
         }
 
         /// <summary>
-        /// The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `LinkedExternalSource` is `True`, This field is valid.
+        /// The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         /// </summary>
         [Input("externalSourceType")]
         public Input<string>? ExternalSourceType { get; set; }
 
         /// <summary>
-        /// Whether to connect to an external data source. Default value: `False`
+        /// Specifies whether to connect to an external data source. Default value: `False`.
         /// </summary>
         [Input("linkedExternalSource")]
         public Input<bool>? LinkedExternalSource { get; set; }

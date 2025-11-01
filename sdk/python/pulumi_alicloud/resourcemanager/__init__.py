@@ -11,6 +11,7 @@ from .auto_grouping_rule import *
 from .control_policy import *
 from .control_policy_attachment import *
 from .delegated_administrator import *
+from .delivery_channel import *
 from .folder import *
 from .get_account_deletion_check_task import *
 from .get_accounts import *
@@ -30,6 +31,7 @@ from .get_shared_resources import *
 from .get_shared_targets import *
 from .handshake import *
 from .message_contact import *
+from .multi_account_delivery_channel import *
 from .policy import *
 from .policy_attachment import *
 from .policy_version import *

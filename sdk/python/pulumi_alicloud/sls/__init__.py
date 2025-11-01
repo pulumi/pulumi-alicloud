@@ -11,6 +11,7 @@ from .collection_policy import *
 from .etl import *
 from .get_alerts import *
 from .get_etls import *
+from .get_indexs import *
 from .get_logtail_configs import *
 from .get_machine_groups import *
 from .index import *

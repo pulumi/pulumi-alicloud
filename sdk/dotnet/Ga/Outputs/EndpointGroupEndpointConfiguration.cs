@@ -34,16 +34,24 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// The type of Endpoint N in the endpoint group. Valid values:
         /// - `Domain`: A custom domain name.
         /// - `Ip`: A custom IP address.
+        /// - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
         /// - `PublicIp`: An Alibaba Cloud public IP address.
         /// - `ECS`: An Elastic Compute Service (ECS) instance.
         /// - `SLB`: A Classic Load Balancer (CLB) instance.
-        /// - `ALB`: An Application Load Balancer (ALB) instance.
-        /// - `NLB`: A Network Load Balancer (NLB) instance.
-        /// - `ENI`: An Elastic Network Interface (ENI).
-        /// - `OSS`: An Object Storage Service (OSS) bucket.
-        /// &gt; **NOTE:** From version 1.232.0, `Type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+        /// - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+        /// - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+        /// - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+        /// - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        public readonly string? VpcId;
+        /// <summary>
+        /// The IDs of vSwitches that are deployed in the VPC.
+        /// </summary>
+        public readonly ImmutableArray<string> VswitchIds;
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
         /// &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
@@ -62,6 +70,10 @@ namespace Pulumi.AliCloud.Ga.Outputs
 
             string type,
 
+            string? vpcId,
+
+            ImmutableArray<string> vswitchIds,
+
             int weight)
         {
             EnableClientipPreservation = enableClientipPreservation;
@@ -69,6 +81,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
             Endpoint = endpoint;
             SubAddress = subAddress;
             Type = type;
+            VpcId = vpcId;
+            VswitchIds = vswitchIds;
             Weight = weight;
         }
     }

@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *     vswitchName: "sr-example",
  *     zoneId: "cn-hangzhou-i",
  * });
- * const defaultStarRocksInstance = new alicloud.StarRocksInstance("default", {
+ * const defaultInstance = new alicloud.starrocks.Instance("default", {
  *     instanceName: "create-instance-1",
  *     autoRenew: false,
  *     frontendNodeGroups: [{
@@ -93,6 +93,8 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import alicloud:index/starRocksInstance:StarRocksInstance example <id>
  * ```
+ *
+ * @deprecated alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance
  */
 export class StarRocksInstance extends pulumi.CustomResource {
     /**
@@ -105,6 +107,7 @@ export class StarRocksInstance extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: StarRocksInstanceState, opts?: pulumi.CustomResourceOptions): StarRocksInstance {
+        pulumi.log.warn("StarRocksInstance is deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance")
         return new StarRocksInstance(name, <any>state, { ...opts, id: id });
     }
 
@@ -236,8 +239,11 @@ export class StarRocksInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance */
     constructor(name: string, args: StarRocksInstanceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance */
     constructor(name: string, argsOrState?: StarRocksInstanceArgs | StarRocksInstanceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("StarRocksInstance is deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

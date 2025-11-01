@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tfaccwafv310619"
+//			name := "tfexample"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -44,84 +44,54 @@ import (
 //			if param := cfg.Get("regionId"); param != "" {
 //				regionId = param
 //			}
+//			domain := "example.wafqax.top"
+//			if param := cfg.Get("domain"); param != "" {
+//				domain = param
+//			}
 //			_default, err := wafv3.GetInstances(ctx, &wafv3.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultDomain, err := wafv3.NewDomain(ctx, "default", &wafv3.DomainArgs{
+//			defaultICMRhk, err := wafv3.NewDomain(ctx, "defaultICMRhk", &wafv3.DomainArgs{
+//				Redirect: &wafv3.DomainRedirectArgs{
+//					Loadbalance: pulumi.String("iphash"),
+//					Backends: pulumi.StringArray{
+//						pulumi.String("39.98.217.197"),
+//					},
+//					ConnectTimeout: pulumi.Int(5),
+//					ReadTimeout:    pulumi.Int(120),
+//					WriteTimeout:   pulumi.Int(120),
+//				},
+//				Domain:     pulumi.String("example.wafqax.top"),
+//				AccessType: pulumi.String("share"),
 //				InstanceId: pulumi.String(_default.Ids[0]),
 //				Listen: &wafv3.DomainListenArgs{
-//					ProtectionResource: pulumi.String("share"),
 //					HttpPorts: pulumi.IntArray{
-//						pulumi.Int(81),
-//						pulumi.Int(82),
-//						pulumi.Int(83),
+//						pulumi.Int(80),
 //					},
-//					HttpsPorts:    pulumi.IntArray{},
-//					XffHeaderMode: pulumi.Int(2),
-//					XffHeaders: pulumi.StringArray{
-//						pulumi.String("examplea"),
-//						pulumi.String("exampleb"),
-//						pulumi.String("examplec"),
-//					},
-//					CustomCiphers: pulumi.StringArray{},
-//					Ipv6Enabled:   pulumi.Bool(true),
 //				},
-//				Redirect: &wafv3.DomainRedirectArgs{
-//					KeepaliveTimeout: pulumi.Int(15),
-//					Backends: pulumi.StringArray{
-//						pulumi.String("1.1.1.1"),
-//						pulumi.String("3.3.3.3"),
-//						pulumi.String("2.2.2.2"),
-//					},
-//					WriteTimeout:      pulumi.Int(5),
-//					KeepaliveRequests: pulumi.Int(1000),
-//					RequestHeaders: wafv3.DomainRedirectRequestHeaderArray{
-//						&wafv3.DomainRedirectRequestHeaderArgs{
-//							Key:   pulumi.String("examplekey1"),
-//							Value: pulumi.String("exampleValue1"),
-//						},
-//						&wafv3.DomainRedirectRequestHeaderArgs{
-//							Key:   pulumi.String("key1"),
-//							Value: pulumi.String("value1"),
-//						},
-//						&wafv3.DomainRedirectRequestHeaderArgs{
-//							Key:   pulumi.String("key22"),
-//							Value: pulumi.String("value22"),
-//						},
-//					},
-//					Loadbalance:      pulumi.String("iphash"),
-//					FocusHttpBackend: pulumi.Bool(false),
-//					SniEnabled:       pulumi.Bool(false),
-//					ConnectTimeout:   pulumi.Int(5),
-//					ReadTimeout:      pulumi.Int(5),
-//					Keepalive:        pulumi.Bool(true),
-//					Retry:            pulumi.Bool(true),
-//				},
-//				Domain:     pulumi.String("zcexample_250746.wafqax.top"),
-//				AccessType: pulumi.String("share"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = wafv3.NewDefenseRule(ctx, "default", &wafv3.DefenseRuleArgs{
+//				DefenseType:   pulumi.String("resource"),
+//				DefenseScene:  pulumi.String("account_identifier"),
+//				RuleStatus:    pulumi.Int(1),
+//				Resource:      defaultICMRhk.DomainId,
 //				DefenseOrigin: pulumi.String("custom"),
 //				Config: &wafv3.DefenseRuleConfigArgs{
 //					AccountIdentifiers: wafv3.DefenseRuleConfigAccountIdentifierArray{
 //						&wafv3.DefenseRuleConfigAccountIdentifierArgs{
+//							Position:   pulumi.String("jwt"),
 //							Priority:   pulumi.Int(2),
 //							DecodeType: pulumi.String("jwt"),
 //							Key:        pulumi.String("Query-Arg"),
 //							SubKey:     pulumi.String("adb"),
-//							Position:   pulumi.String("jwt"),
 //						},
 //					},
 //				},
-//				InstanceId:   pulumi.String(_default.Ids[0]),
-//				DefenseType:  pulumi.String("resource"),
-//				DefenseScene: pulumi.String("account_identifier"),
-//				RuleStatus:   pulumi.Int(1),
-//				Resource:     defaultDomain.DomainId,
+//				InstanceId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

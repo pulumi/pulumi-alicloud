@@ -14,11 +14,9 @@ import (
 
 // Provides a network acl entries resource to create ingress and egress entries.
 //
-// > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+// > **NOTE:** Available in 1.45.0+.
 //
 // > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-//
-// > **NOTE:** Using this resource need to open a whitelist.
 //
 // > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingressAclEntries` and `egressAclEntries` with the resource alicloud_network_acl.
 //
@@ -122,9 +120,9 @@ import (
 type NetworkAclEntries struct {
 	pulumi.CustomResourceState
 
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses NetworkAclEntriesEgressArrayOutput `pulumi:"egresses"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 	Ingresses NetworkAclEntriesIngressArrayOutput `pulumi:"ingresses"`
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringOutput `pulumi:"networkAclId"`
@@ -163,18 +161,18 @@ func GetNetworkAclEntries(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkAclEntries resources.
 type networkAclEntriesState struct {
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses []NetworkAclEntriesEgress `pulumi:"egresses"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 	Ingresses []NetworkAclEntriesIngress `pulumi:"ingresses"`
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId *string `pulumi:"networkAclId"`
 }
 
 type NetworkAclEntriesState struct {
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses NetworkAclEntriesEgressArrayInput
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 	Ingresses NetworkAclEntriesIngressArrayInput
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringPtrInput
@@ -185,9 +183,9 @@ func (NetworkAclEntriesState) ElementType() reflect.Type {
 }
 
 type networkAclEntriesArgs struct {
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses []NetworkAclEntriesEgress `pulumi:"egresses"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 	Ingresses []NetworkAclEntriesIngress `pulumi:"ingresses"`
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId string `pulumi:"networkAclId"`
@@ -195,9 +193,9 @@ type networkAclEntriesArgs struct {
 
 // The set of arguments for constructing a NetworkAclEntries resource.
 type NetworkAclEntriesArgs struct {
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+	// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 	Egresses NetworkAclEntriesEgressArrayInput
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 	Ingresses NetworkAclEntriesIngressArrayInput
 	// The id of the network acl, the field can't be changed.
 	NetworkAclId pulumi.StringInput
@@ -290,12 +288,12 @@ func (o NetworkAclEntriesOutput) ToNetworkAclEntriesOutputWithContext(ctx contex
 	return o
 }
 
-// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+// List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
 func (o NetworkAclEntriesOutput) Egresses() NetworkAclEntriesEgressArrayOutput {
 	return o.ApplyT(func(v *NetworkAclEntries) NetworkAclEntriesEgressArrayOutput { return v.Egresses }).(NetworkAclEntriesEgressArrayOutput)
 }
 
-// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
 func (o NetworkAclEntriesOutput) Ingresses() NetworkAclEntriesIngressArrayOutput {
 	return o.ApplyT(func(v *NetworkAclEntries) NetworkAclEntriesIngressArrayOutput { return v.Ingresses }).(NetworkAclEntriesIngressArrayOutput)
 }

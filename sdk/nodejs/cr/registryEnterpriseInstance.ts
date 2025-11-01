@@ -86,6 +86,8 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
     declare public /*out*/ readonly createdTime: pulumi.Output<string>;
     /**
      * Custom OSS Bucket name
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly customOssBucket: pulumi.Output<string | undefined>;
     /**
@@ -100,6 +102,8 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly imageScanner: pulumi.Output<string | undefined>;
     /**
@@ -115,6 +119,8 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly instanceType: pulumi.Output<string>;
     /**
@@ -138,6 +144,9 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
@@ -255,6 +264,8 @@ export interface RegistryEnterpriseInstanceState {
     createdTime?: pulumi.Input<string>;
     /**
      * Custom OSS Bucket name
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     customOssBucket?: pulumi.Input<string>;
     /**
@@ -269,6 +280,8 @@ export interface RegistryEnterpriseInstanceState {
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     imageScanner?: pulumi.Input<string>;
     /**
@@ -284,6 +297,8 @@ export interface RegistryEnterpriseInstanceState {
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -307,6 +322,9 @@ export interface RegistryEnterpriseInstanceState {
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**
@@ -345,6 +363,8 @@ export interface RegistryEnterpriseInstanceState {
 export interface RegistryEnterpriseInstanceArgs {
     /**
      * Custom OSS Bucket name
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     customOssBucket?: pulumi.Input<string>;
     /**
@@ -355,6 +375,8 @@ export interface RegistryEnterpriseInstanceArgs {
      * The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     imageScanner?: pulumi.Input<string>;
     /**
@@ -366,6 +388,8 @@ export interface RegistryEnterpriseInstanceArgs {
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -389,6 +413,9 @@ export interface RegistryEnterpriseInstanceArgs {
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      *
      * > **NOTE:**  must be set when creating a prepaid instance.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**

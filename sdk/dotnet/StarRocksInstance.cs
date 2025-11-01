@@ -47,13 +47,13 @@ namespace Pulumi.AliCloud
     ///         ZoneId = "cn-hangzhou-i",
     ///     });
     /// 
-    ///     var defaultStarRocksInstance = new AliCloud.StarRocksInstance("default", new()
+    ///     var defaultInstance = new AliCloud.StarRocks.Instance("default", new()
     ///     {
     ///         InstanceName = "create-instance-1",
     ///         AutoRenew = false,
     ///         FrontendNodeGroups = new[]
     ///         {
-    ///             new AliCloud.Inputs.StarRocksInstanceFrontendNodeGroupArgs
+    ///             new AliCloud.starRocks.Inputs.InstanceFrontendNodeGroupArgs
     ///             {
     ///                 Cu = 8,
     ///                 StorageSize = 100,
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud
     ///         },
     ///         Vswitches = new[]
     ///         {
-    ///             new AliCloud.Inputs.StarRocksInstanceVswitchArgs
+    ///             new AliCloud.starRocks.Inputs.InstanceVswitchArgs
     ///             {
     ///                 VswitchId = default106DkE.Id,
     ///                 ZoneId = "cn-hangzhou-i",
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud
     ///         },
     ///         BackendNodeGroups = new[]
     ///         {
-    ///             new AliCloud.Inputs.StarRocksInstanceBackendNodeGroupArgs
+    ///             new AliCloud.starRocks.Inputs.InstanceBackendNodeGroupArgs
     ///             {
     ///                 Cu = 8,
     ///                 StorageSize = 100,
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud
     ///         Encrypted = false,
     ///         ObserverNodeGroups = new[]
     ///         {
-    ///             new AliCloud.Inputs.StarRocksInstanceObserverNodeGroupArgs
+    ///             new AliCloud.starRocks.Inputs.InstanceObserverNodeGroupArgs
     ///             {
     ///                 Cu = 8,
     ///                 StorageSize = 100,
@@ -127,6 +127,7 @@ namespace Pulumi.AliCloud
     /// $ pulumi import alicloud:index/starRocksInstance:StarRocksInstance example &lt;id&gt;
     /// ```
     /// </summary>
+    [Obsolete(@"alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance")]
     [AliCloudResourceType("alicloud:index/starRocksInstance:StarRocksInstance")]
     public partial class StarRocksInstance : global::Pulumi.CustomResource
     {

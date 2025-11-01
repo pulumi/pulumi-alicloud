@@ -17,18 +17,33 @@ public final class BucketLoggingArgs extends com.pulumi.resources.ResourceArgs {
     public static final BucketLoggingArgs Empty = new BucketLoggingArgs();
 
     /**
-     * The name of the bucket.
+     * The name of the bucket
      * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket
      * 
      */
     public Output<String> bucket() {
         return this.bucket;
+    }
+
+    /**
+     * Authorization role used for bucket logging
+     * 
+     */
+    @Import(name="loggingRole")
+    private @Nullable Output<String> loggingRole;
+
+    /**
+     * @return Authorization role used for bucket logging
+     * 
+     */
+    public Optional<Output<String>> loggingRole() {
+        return Optional.ofNullable(this.loggingRole);
     }
 
     /**
@@ -65,6 +80,7 @@ public final class BucketLoggingArgs extends com.pulumi.resources.ResourceArgs {
 
     private BucketLoggingArgs(BucketLoggingArgs $) {
         this.bucket = $.bucket;
+        this.loggingRole = $.loggingRole;
         this.targetBucket = $.targetBucket;
         this.targetPrefix = $.targetPrefix;
     }
@@ -88,7 +104,7 @@ public final class BucketLoggingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bucket The name of the bucket.
+         * @param bucket The name of the bucket
          * 
          * @return builder
          * 
@@ -99,13 +115,34 @@ public final class BucketLoggingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bucket The name of the bucket.
+         * @param bucket The name of the bucket
          * 
          * @return builder
          * 
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param loggingRole Authorization role used for bucket logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingRole(@Nullable Output<String> loggingRole) {
+            $.loggingRole = loggingRole;
+            return this;
+        }
+
+        /**
+         * @param loggingRole Authorization role used for bucket logging
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingRole(String loggingRole) {
+            return loggingRole(Output.of(loggingRole));
         }
 
         /**

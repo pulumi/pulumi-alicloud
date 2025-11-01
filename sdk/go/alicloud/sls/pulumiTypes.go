@@ -7916,6 +7916,245 @@ func (o GetEtlsEtlConfigurationSinkArrayOutput) Index(i pulumi.IntInput) GetEtls
 	}).(GetEtlsEtlConfigurationSinkOutput)
 }
 
+type GetIndexsIndex struct {
+	// The ID of the resource supplied above.
+	Id string `pulumi:"id"`
+	// Field index
+	Keys string `pulumi:"keys"`
+	// Full-text index
+	Line GetIndexsIndexLine `pulumi:"line"`
+	// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+	LogReduceBlackLists []string `pulumi:"logReduceBlackLists"`
+	// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+	LogReduceWhiteLists []string `pulumi:"logReduceWhiteLists"`
+	// Maximum length of statistical field
+	MaxTextLen int `pulumi:"maxTextLen"`
+	// Log index storage time
+	Ttl int `pulumi:"ttl"`
+}
+
+// GetIndexsIndexInput is an input type that accepts GetIndexsIndexArgs and GetIndexsIndexOutput values.
+// You can construct a concrete instance of `GetIndexsIndexInput` via:
+//
+//	GetIndexsIndexArgs{...}
+type GetIndexsIndexInput interface {
+	pulumi.Input
+
+	ToGetIndexsIndexOutput() GetIndexsIndexOutput
+	ToGetIndexsIndexOutputWithContext(context.Context) GetIndexsIndexOutput
+}
+
+type GetIndexsIndexArgs struct {
+	// The ID of the resource supplied above.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Field index
+	Keys pulumi.StringInput `pulumi:"keys"`
+	// Full-text index
+	Line GetIndexsIndexLineInput `pulumi:"line"`
+	// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+	LogReduceBlackLists pulumi.StringArrayInput `pulumi:"logReduceBlackLists"`
+	// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+	LogReduceWhiteLists pulumi.StringArrayInput `pulumi:"logReduceWhiteLists"`
+	// Maximum length of statistical field
+	MaxTextLen pulumi.IntInput `pulumi:"maxTextLen"`
+	// Log index storage time
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetIndexsIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndexsIndex)(nil)).Elem()
+}
+
+func (i GetIndexsIndexArgs) ToGetIndexsIndexOutput() GetIndexsIndexOutput {
+	return i.ToGetIndexsIndexOutputWithContext(context.Background())
+}
+
+func (i GetIndexsIndexArgs) ToGetIndexsIndexOutputWithContext(ctx context.Context) GetIndexsIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIndexsIndexOutput)
+}
+
+// GetIndexsIndexArrayInput is an input type that accepts GetIndexsIndexArray and GetIndexsIndexArrayOutput values.
+// You can construct a concrete instance of `GetIndexsIndexArrayInput` via:
+//
+//	GetIndexsIndexArray{ GetIndexsIndexArgs{...} }
+type GetIndexsIndexArrayInput interface {
+	pulumi.Input
+
+	ToGetIndexsIndexArrayOutput() GetIndexsIndexArrayOutput
+	ToGetIndexsIndexArrayOutputWithContext(context.Context) GetIndexsIndexArrayOutput
+}
+
+type GetIndexsIndexArray []GetIndexsIndexInput
+
+func (GetIndexsIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIndexsIndex)(nil)).Elem()
+}
+
+func (i GetIndexsIndexArray) ToGetIndexsIndexArrayOutput() GetIndexsIndexArrayOutput {
+	return i.ToGetIndexsIndexArrayOutputWithContext(context.Background())
+}
+
+func (i GetIndexsIndexArray) ToGetIndexsIndexArrayOutputWithContext(ctx context.Context) GetIndexsIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIndexsIndexArrayOutput)
+}
+
+type GetIndexsIndexOutput struct{ *pulumi.OutputState }
+
+func (GetIndexsIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndexsIndex)(nil)).Elem()
+}
+
+func (o GetIndexsIndexOutput) ToGetIndexsIndexOutput() GetIndexsIndexOutput {
+	return o
+}
+
+func (o GetIndexsIndexOutput) ToGetIndexsIndexOutputWithContext(ctx context.Context) GetIndexsIndexOutput {
+	return o
+}
+
+// The ID of the resource supplied above.
+func (o GetIndexsIndexOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndexsIndex) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Field index
+func (o GetIndexsIndexOutput) Keys() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIndexsIndex) string { return v.Keys }).(pulumi.StringOutput)
+}
+
+// Full-text index
+func (o GetIndexsIndexOutput) Line() GetIndexsIndexLineOutput {
+	return o.ApplyT(func(v GetIndexsIndex) GetIndexsIndexLine { return v.Line }).(GetIndexsIndexLineOutput)
+}
+
+// The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+func (o GetIndexsIndexOutput) LogReduceBlackLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndexsIndex) []string { return v.LogReduceBlackLists }).(pulumi.StringArrayOutput)
+}
+
+// The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+func (o GetIndexsIndexOutput) LogReduceWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndexsIndex) []string { return v.LogReduceWhiteLists }).(pulumi.StringArrayOutput)
+}
+
+// Maximum length of statistical field
+func (o GetIndexsIndexOutput) MaxTextLen() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIndexsIndex) int { return v.MaxTextLen }).(pulumi.IntOutput)
+}
+
+// Log index storage time
+func (o GetIndexsIndexOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIndexsIndex) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetIndexsIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIndexsIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIndexsIndex)(nil)).Elem()
+}
+
+func (o GetIndexsIndexArrayOutput) ToGetIndexsIndexArrayOutput() GetIndexsIndexArrayOutput {
+	return o
+}
+
+func (o GetIndexsIndexArrayOutput) ToGetIndexsIndexArrayOutputWithContext(ctx context.Context) GetIndexsIndexArrayOutput {
+	return o
+}
+
+func (o GetIndexsIndexArrayOutput) Index(i pulumi.IntInput) GetIndexsIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIndexsIndex {
+		return vs[0].([]GetIndexsIndex)[vs[1].(int)]
+	}).(GetIndexsIndexOutput)
+}
+
+type GetIndexsIndexLine struct {
+	// Is case sensitive.
+	CaseSensitive bool `pulumi:"caseSensitive"`
+	// Does it include Chinese.
+	Chn bool `pulumi:"chn"`
+	// List of excluded fields.
+	ExcludeKeys []string `pulumi:"excludeKeys"`
+	// Include field list.
+	IncludeKeys []string `pulumi:"includeKeys"`
+	// Delimiter.
+	Tokens []string `pulumi:"tokens"`
+}
+
+// GetIndexsIndexLineInput is an input type that accepts GetIndexsIndexLineArgs and GetIndexsIndexLineOutput values.
+// You can construct a concrete instance of `GetIndexsIndexLineInput` via:
+//
+//	GetIndexsIndexLineArgs{...}
+type GetIndexsIndexLineInput interface {
+	pulumi.Input
+
+	ToGetIndexsIndexLineOutput() GetIndexsIndexLineOutput
+	ToGetIndexsIndexLineOutputWithContext(context.Context) GetIndexsIndexLineOutput
+}
+
+type GetIndexsIndexLineArgs struct {
+	// Is case sensitive.
+	CaseSensitive pulumi.BoolInput `pulumi:"caseSensitive"`
+	// Does it include Chinese.
+	Chn pulumi.BoolInput `pulumi:"chn"`
+	// List of excluded fields.
+	ExcludeKeys pulumi.StringArrayInput `pulumi:"excludeKeys"`
+	// Include field list.
+	IncludeKeys pulumi.StringArrayInput `pulumi:"includeKeys"`
+	// Delimiter.
+	Tokens pulumi.StringArrayInput `pulumi:"tokens"`
+}
+
+func (GetIndexsIndexLineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndexsIndexLine)(nil)).Elem()
+}
+
+func (i GetIndexsIndexLineArgs) ToGetIndexsIndexLineOutput() GetIndexsIndexLineOutput {
+	return i.ToGetIndexsIndexLineOutputWithContext(context.Background())
+}
+
+func (i GetIndexsIndexLineArgs) ToGetIndexsIndexLineOutputWithContext(ctx context.Context) GetIndexsIndexLineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIndexsIndexLineOutput)
+}
+
+type GetIndexsIndexLineOutput struct{ *pulumi.OutputState }
+
+func (GetIndexsIndexLineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIndexsIndexLine)(nil)).Elem()
+}
+
+func (o GetIndexsIndexLineOutput) ToGetIndexsIndexLineOutput() GetIndexsIndexLineOutput {
+	return o
+}
+
+func (o GetIndexsIndexLineOutput) ToGetIndexsIndexLineOutputWithContext(ctx context.Context) GetIndexsIndexLineOutput {
+	return o
+}
+
+// Is case sensitive.
+func (o GetIndexsIndexLineOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIndexsIndexLine) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
+// Does it include Chinese.
+func (o GetIndexsIndexLineOutput) Chn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIndexsIndexLine) bool { return v.Chn }).(pulumi.BoolOutput)
+}
+
+// List of excluded fields.
+func (o GetIndexsIndexLineOutput) ExcludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndexsIndexLine) []string { return v.ExcludeKeys }).(pulumi.StringArrayOutput)
+}
+
+// Include field list.
+func (o GetIndexsIndexLineOutput) IncludeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndexsIndexLine) []string { return v.IncludeKeys }).(pulumi.StringArrayOutput)
+}
+
+// Delimiter.
+func (o GetIndexsIndexLineOutput) Tokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIndexsIndexLine) []string { return v.Tokens }).(pulumi.StringArrayOutput)
+}
+
 type GetLogtailConfigsConfig struct {
 	// The ID of the resource supplied above.
 	Id string `pulumi:"id"`
@@ -8212,6 +8451,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationInput)(nil)).Elem(), GetEtlsEtlConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEtlsEtlConfigurationSinkArrayInput)(nil)).Elem(), GetEtlsEtlConfigurationSinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndexsIndexInput)(nil)).Elem(), GetIndexsIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndexsIndexArrayInput)(nil)).Elem(), GetIndexsIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIndexsIndexLineInput)(nil)).Elem(), GetIndexsIndexLineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLogtailConfigsConfigInput)(nil)).Elem(), GetLogtailConfigsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLogtailConfigsConfigArrayInput)(nil)).Elem(), GetLogtailConfigsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineGroupsGroupInput)(nil)).Elem(), GetMachineGroupsGroupArgs{})
@@ -8299,6 +8541,9 @@ func init() {
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationOutput{})
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkOutput{})
 	pulumi.RegisterOutputType(GetEtlsEtlConfigurationSinkArrayOutput{})
+	pulumi.RegisterOutputType(GetIndexsIndexOutput{})
+	pulumi.RegisterOutputType(GetIndexsIndexArrayOutput{})
+	pulumi.RegisterOutputType(GetIndexsIndexLineOutput{})
 	pulumi.RegisterOutputType(GetLogtailConfigsConfigOutput{})
 	pulumi.RegisterOutputType(GetLogtailConfigsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineGroupsGroupOutput{})

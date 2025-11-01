@@ -20,6 +20,11 @@ public final class ApplicationLivenessV2 {
      */
     private @Nullable ApplicationLivenessV2Exec exec;
     /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    private @Nullable Integer failureThreshold;
+    /**
      * @return The liveness check settings of the container. See `httpGet` below.
      * 
      */
@@ -52,6 +57,13 @@ public final class ApplicationLivenessV2 {
      */
     public Optional<ApplicationLivenessV2Exec> exec() {
         return Optional.ofNullable(this.exec);
+    }
+    /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    public Optional<Integer> failureThreshold() {
+        return Optional.ofNullable(this.failureThreshold);
     }
     /**
      * @return The liveness check settings of the container. See `httpGet` below.
@@ -99,6 +111,7 @@ public final class ApplicationLivenessV2 {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ApplicationLivenessV2Exec exec;
+        private @Nullable Integer failureThreshold;
         private @Nullable ApplicationLivenessV2HttpGet httpGet;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
@@ -108,6 +121,7 @@ public final class ApplicationLivenessV2 {
         public Builder(ApplicationLivenessV2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exec = defaults.exec;
+    	      this.failureThreshold = defaults.failureThreshold;
     	      this.httpGet = defaults.httpGet;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
@@ -119,6 +133,12 @@ public final class ApplicationLivenessV2 {
         public Builder exec(@Nullable ApplicationLivenessV2Exec exec) {
 
             this.exec = exec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder failureThreshold(@Nullable Integer failureThreshold) {
+
+            this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
@@ -154,6 +174,7 @@ public final class ApplicationLivenessV2 {
         public ApplicationLivenessV2 build() {
             final var _resultValue = new ApplicationLivenessV2();
             _resultValue.exec = exec;
+            _resultValue.failureThreshold = failureThreshold;
             _resultValue.httpGet = httpGet;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;

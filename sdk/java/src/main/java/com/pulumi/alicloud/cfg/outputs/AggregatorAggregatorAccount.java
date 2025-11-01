@@ -4,49 +4,50 @@
 package com.pulumi.alicloud.cfg.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AggregatorAggregatorAccount {
     /**
-     * @return Aggregator account Uid.
+     * @return The member ID.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
-     * @return Aggregator account name.
+     * @return The member name.
      * 
      */
-    private String accountName;
+    private @Nullable String accountName;
     /**
-     * @return Aggregator account source type. Valid values: `ResourceDirectory`.
+     * @return The affiliation of the member. Valid values: `ResourceDirectory`.
      * 
      */
-    private String accountType;
+    private @Nullable String accountType;
 
     private AggregatorAggregatorAccount() {}
     /**
-     * @return Aggregator account Uid.
+     * @return The member ID.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return Aggregator account name.
+     * @return The member name.
      * 
      */
-    public String accountName() {
-        return this.accountName;
+    public Optional<String> accountName() {
+        return Optional.ofNullable(this.accountName);
     }
     /**
-     * @return Aggregator account source type. Valid values: `ResourceDirectory`.
+     * @return The affiliation of the member. Valid values: `ResourceDirectory`.
      * 
      */
-    public String accountType() {
-        return this.accountType;
+    public Optional<String> accountType() {
+        return Optional.ofNullable(this.accountType);
     }
 
     public static Builder builder() {
@@ -58,9 +59,9 @@ public final class AggregatorAggregatorAccount {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
-        private String accountName;
-        private String accountType;
+        private @Nullable String accountId;
+        private @Nullable String accountName;
+        private @Nullable String accountType;
         public Builder() {}
         public Builder(AggregatorAggregatorAccount defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,26 +71,20 @@ public final class AggregatorAggregatorAccount {
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("AggregatorAggregatorAccount", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
-        public Builder accountName(String accountName) {
-            if (accountName == null) {
-              throw new MissingRequiredPropertyException("AggregatorAggregatorAccount", "accountName");
-            }
+        public Builder accountName(@Nullable String accountName) {
+
             this.accountName = accountName;
             return this;
         }
         @CustomType.Setter
-        public Builder accountType(String accountType) {
-            if (accountType == null) {
-              throw new MissingRequiredPropertyException("AggregatorAggregatorAccount", "accountType");
-            }
+        public Builder accountType(@Nullable String accountType) {
+
             this.accountType = accountType;
             return this;
         }

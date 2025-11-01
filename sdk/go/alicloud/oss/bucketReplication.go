@@ -59,8 +59,8 @@ import (
 //				return err
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Name: pulumi.Sprintf("example-role-%v", _default.Result),
-//				Document: pulumi.String(`\t\t{
+//				RoleName: pulumi.Sprintf("example-role-%v", _default.Result),
+//				AssumeRolePolicyDocument: pulumi.String(`\t\t{
 //
 // \t\t  \"Statement\": [
 // \t\t\t{
@@ -111,7 +111,7 @@ import (
 //			_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
 //				PolicyName: policy.PolicyName,
 //				PolicyType: policy.Type,
-//				RoleName:   role.Name,
+//				RoleName:   role.RoleName,
 //			})
 //			if err != nil {
 //				return err
@@ -138,7 +138,7 @@ import (
 //					Bucket:   bucketDest.ID(),
 //					Location: bucketDest.Location,
 //				},
-//				SyncRole: role.Name,
+//				SyncRole: role.RoleName,
 //				EncryptionConfiguration: &oss.BucketReplicationEncryptionConfigurationArgs{
 //					ReplicaKmsKeyId: key.ID(),
 //				},
@@ -181,6 +181,8 @@ type BucketReplication struct {
 	PrefixSet BucketReplicationPrefixSetPtrOutput `pulumi:"prefixSet"`
 	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressOutput `pulumi:"progress"`
+	// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+	Rtc BucketReplicationRtcOutput `pulumi:"rtc"`
 	// The ID of the data replication rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
@@ -241,6 +243,8 @@ type bucketReplicationState struct {
 	PrefixSet *BucketReplicationPrefixSet `pulumi:"prefixSet"`
 	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress *BucketReplicationProgress `pulumi:"progress"`
+	// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+	Rtc *BucketReplicationRtc `pulumi:"rtc"`
 	// The ID of the data replication rule.
 	RuleId *string `pulumi:"ruleId"`
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
@@ -266,6 +270,8 @@ type BucketReplicationState struct {
 	PrefixSet BucketReplicationPrefixSetPtrInput
 	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressPtrInput
+	// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+	Rtc BucketReplicationRtcPtrInput
 	// The ID of the data replication rule.
 	RuleId pulumi.StringPtrInput
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
@@ -295,6 +301,8 @@ type bucketReplicationArgs struct {
 	PrefixSet *BucketReplicationPrefixSet `pulumi:"prefixSet"`
 	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress *BucketReplicationProgress `pulumi:"progress"`
+	// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+	Rtc *BucketReplicationRtc `pulumi:"rtc"`
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria *BucketReplicationSourceSelectionCriteria `pulumi:"sourceSelectionCriteria"`
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
@@ -317,6 +325,8 @@ type BucketReplicationArgs struct {
 	PrefixSet BucketReplicationPrefixSetPtrInput
 	// Specifies the progress for querying the progress of a data replication task of a bucket.
 	Progress BucketReplicationProgressPtrInput
+	// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+	Rtc BucketReplicationRtcPtrInput
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrInput
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
@@ -445,6 +455,11 @@ func (o BucketReplicationOutput) PrefixSet() BucketReplicationPrefixSetPtrOutput
 // Specifies the progress for querying the progress of a data replication task of a bucket.
 func (o BucketReplicationOutput) Progress() BucketReplicationProgressOutput {
 	return o.ApplyT(func(v *BucketReplication) BucketReplicationProgressOutput { return v.Progress }).(BucketReplicationProgressOutput)
+}
+
+// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+func (o BucketReplicationOutput) Rtc() BucketReplicationRtcOutput {
+	return o.ApplyT(func(v *BucketReplication) BucketReplicationRtcOutput { return v.Rtc }).(BucketReplicationRtcOutput)
 }
 
 // The ID of the data replication rule.

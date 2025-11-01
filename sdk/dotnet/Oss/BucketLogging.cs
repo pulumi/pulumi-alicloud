@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Oss
 {
     /// <summary>
-    /// Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+    /// Provides a OSS Bucket Logging resource.
     /// 
-    /// For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+    /// After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+    /// 
+    /// For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
     /// 
     /// &gt; **NOTE:** Available since v1.222.0.
     /// 
@@ -25,29 +27,29 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
     ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
     ///     {
     ///         StorageClass = "Standard",
-    ///         BucketName = $"{name}-{@default.Result}",
+    ///         BucketName = "resource-example-logging-806",
     ///     });
     /// 
-    ///     var defaultBucketLogging = new AliCloud.Oss.BucketLogging("default", new()
+    ///     var createLoggingBucket = new AliCloud.Oss.Bucket("CreateLoggingBucket", new()
     ///     {
-    ///         Bucket = createBucket.BucketName,
-    ///         TargetBucket = createBucket.BucketName,
+    ///         StorageClass = "Standard",
+    ///         BucketName = "resource-example-logging-153",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Oss.BucketLogging("default", new()
+    ///     {
+    ///         Bucket = createBucket.Id,
+    ///         TargetBucket = createBucket.Id,
     ///         TargetPrefix = "log/",
+    ///         LoggingRole = "example-role",
     ///     });
     /// 
     /// });
@@ -65,10 +67,16 @@ namespace Pulumi.AliCloud.Oss
     public partial class BucketLogging : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// Authorization role used for bucket logging
+        /// </summary>
+        [Output("loggingRole")]
+        public Output<string?> LoggingRole { get; private set; } = null!;
 
         /// <summary>
         /// The bucket that stores access logs.
@@ -129,10 +137,16 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketLoggingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// Authorization role used for bucket logging
+        /// </summary>
+        [Input("loggingRole")]
+        public Input<string>? LoggingRole { get; set; }
 
         /// <summary>
         /// The bucket that stores access logs.
@@ -155,10 +169,16 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketLoggingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
+
+        /// <summary>
+        /// Authorization role used for bucket logging
+        /// </summary>
+        [Input("loggingRole")]
+        public Input<string>? LoggingRole { get; set; }
 
         /// <summary>
         /// The bucket that stores access logs.

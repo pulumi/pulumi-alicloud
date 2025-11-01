@@ -11,14 +11,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud Config Aggregator resource.
+ * Provides a Cloud Config (Config) Aggregator resource.
  * 
- * For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
+ * For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
  * 
  * &gt; **NOTE:** Available since v1.124.0.
  * 
@@ -77,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Config Aggregator can be imported using the id, e.g.
+ * Cloud Config (Config) Aggregator can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cfg/aggregator:Aggregator example &lt;id&gt;
@@ -87,74 +89,106 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cfg/aggregator:Aggregator")
 public class Aggregator extends com.pulumi.resources.CustomResource {
     /**
-     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * The member accounts of the account group. See `aggregatorAccounts` below.
+     * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
     @Export(name="aggregatorAccounts", refs={List.class,AggregatorAggregatorAccount.class}, tree="[0,1]")
     private Output<List<AggregatorAggregatorAccount>> aggregatorAccounts;
 
     /**
-     * @return The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * @return The member accounts of the account group. See `aggregatorAccounts` below.
+     * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
     public Output<List<AggregatorAggregatorAccount>> aggregatorAccounts() {
         return this.aggregatorAccounts;
     }
     /**
-     * The name of aggregator.
+     * The name of the account group.
      * 
      */
     @Export(name="aggregatorName", refs={String.class}, tree="[0]")
     private Output<String> aggregatorName;
 
     /**
-     * @return The name of aggregator.
+     * @return The name of the account group.
      * 
      */
     public Output<String> aggregatorName() {
         return this.aggregatorName;
     }
     /**
-     * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-     * * `CUSTOM` - The custom account group.
-     * * `RD` - The global account group.
+     * The type of the account group. Default value: `CUSTOM`. Valid values:
+     * - `RD`: Global account group.
+     * - `FOLDER`: Folder account group.
+     * - `CUSTOM`: Custom account group.
      * 
      */
     @Export(name="aggregatorType", refs={String.class}, tree="[0]")
     private Output<String> aggregatorType;
 
     /**
-     * @return The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-     * * `CUSTOM` - The custom account group.
-     * * `RD` - The global account group.
+     * @return The type of the account group. Default value: `CUSTOM`. Valid values:
+     * - `RD`: Global account group.
+     * - `FOLDER`: Folder account group.
+     * - `CUSTOM`: Custom account group.
      * 
      */
     public Output<String> aggregatorType() {
         return this.aggregatorType;
     }
     /**
-     * The description of aggregator.
+     * (Available since v1.262.0) The timestamp when the account group was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.262.0) The timestamp when the account group was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the account group.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of aggregator.
+     * @return The description of the account group.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+     * The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+     * 
+     */
+    @Export(name="folderId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> folderId;
+
+    /**
+     * @return The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+     * 
+     */
+    public Output<Optional<String>> folderId() {
+        return Codegen.optional(this.folderId);
+    }
+    /**
+     * The status of the account group.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+     * @return The status of the account group.
      * 
      */
     public Output<String> status() {

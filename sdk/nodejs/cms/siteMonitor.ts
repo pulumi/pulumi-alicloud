@@ -7,8 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
- * Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+ * Provides a Cloud Monitor Service Site Monitor resource.
+ *
+ * Describes the SITE monitoring tasks created by the user.
+ *
+ * For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
  *
  * > **NOTE:** Available since v1.72.0.
  *
@@ -20,31 +23,51 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const basic = new alicloud.cms.SiteMonitor("basic", {
- *     address: "http://www.alibabacloud.com",
- *     taskName: "tf-example",
+ *     address: "https://www.alibabacloud.com",
+ *     taskName: name,
  *     taskType: "HTTP",
- *     interval: 5,
+ *     interval: "5",
  *     ispCities: [{
- *         city: "546",
- *         isp: "465",
+ *         isp: "232",
+ *         city: "641",
+ *         type: "IDC",
  *     }],
- *     optionsJson: `{
- *     \\"http_method\\": \\"get\\",
- *     \\"waitTime_after_completion\\": null,
- *     \\"ipv6_task\\": false,
- *     \\"diagnosis_ping\\": false,
- *     \\"diagnosis_mtr\\": false,
- *     \\"assertions\\": [
- *         {
- *             \\"operator\\": \\"lessThan\\",
- *             \\"type\\": \\"response_time\\",
- *             \\"target\\": 1000
- *         }
- *     ],
- *     \\"time_out\\": 30000
- * }
- * `,
+ *     optionJson: {
+ *         responseContent: "example",
+ *         expectValue: "example",
+ *         port: 81,
+ *         isBaseEncode: true,
+ *         pingNum: 5,
+ *         matchRule: 1,
+ *         failureRate: "0.3",
+ *         requestContent: "example",
+ *         attempts: 4,
+ *         requestFormat: "hex",
+ *         password: "YourPassword123!",
+ *         diagnosisPing: true,
+ *         responseFormat: "hex",
+ *         cookie: "key2=value2",
+ *         pingPort: 443,
+ *         userName: "example",
+ *         dnsMatchRule: "DNS_IN",
+ *         timeout: 3000,
+ *         dnsServer: "223.6.6.6",
+ *         diagnosisMtr: true,
+ *         header: "key2:value2",
+ *         minTlsVersion: "1.1",
+ *         pingType: "udp",
+ *         dnsType: "NS",
+ *         dnsHijackWhitelist: "DnsHijackWhitelist",
+ *         httpMethod: "post",
+ *         assertions: [{
+ *             operator: "lessThan",
+ *             target: "300",
+ *             type: "response_time",
+ *         }],
+ *     },
  * });
  * ```
  *
@@ -89,31 +112,55 @@ export class SiteMonitor extends pulumi.CustomResource {
      */
     declare public readonly address: pulumi.Output<string>;
     /**
-     * The IDs of existing alert rules to be associated with the site monitoring task.
+     * The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+     */
+    declare public readonly agentGroup: pulumi.Output<string>;
+    /**
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      */
     declare public readonly alertIds: pulumi.Output<string[] | undefined>;
     /**
-     * The time when the site monitoring task was created.
+     * (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     */
+    declare public readonly customSchedule: pulumi.Output<outputs.cms.SiteMonitorCustomSchedule | undefined>;
+    /**
      * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      */
-    declare public readonly interval: pulumi.Output<number | undefined>;
+    declare public readonly interval: pulumi.Output<string>;
     /**
      * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
      */
-    declare public readonly ispCities: pulumi.Output<outputs.cms.SiteMonitorIspCity[] | undefined>;
+    declare public readonly ispCities: pulumi.Output<outputs.cms.SiteMonitorIspCity[]>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
      */
-    declare public readonly optionsJson: pulumi.Output<string | undefined>;
+    declare public readonly optionJson: pulumi.Output<outputs.cms.SiteMonitorOptionJson>;
+    /**
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     *
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     */
+    declare public readonly optionsJson: pulumi.Output<string>;
+    /**
+     * The status of the site monitoring task. Valid values:
+     */
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
      */
     declare public readonly taskName: pulumi.Output<string>;
     /**
-     * The status of the site monitoring task.
+     * (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     *
+     * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      */
     declare public /*out*/ readonly taskState: pulumi.Output<string>;
     /**
@@ -121,7 +168,9 @@ export class SiteMonitor extends pulumi.CustomResource {
      */
     declare public readonly taskType: pulumi.Output<string>;
     /**
-     * The time when the site monitoring task was updated.
+     * (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -139,11 +188,15 @@ export class SiteMonitor extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SiteMonitorState | undefined;
             resourceInputs["address"] = state?.address;
+            resourceInputs["agentGroup"] = state?.agentGroup;
             resourceInputs["alertIds"] = state?.alertIds;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customSchedule"] = state?.customSchedule;
             resourceInputs["interval"] = state?.interval;
             resourceInputs["ispCities"] = state?.ispCities;
+            resourceInputs["optionJson"] = state?.optionJson;
             resourceInputs["optionsJson"] = state?.optionsJson;
+            resourceInputs["status"] = state?.status;
             resourceInputs["taskName"] = state?.taskName;
             resourceInputs["taskState"] = state?.taskState;
             resourceInputs["taskType"] = state?.taskType;
@@ -160,10 +213,14 @@ export class SiteMonitor extends pulumi.CustomResource {
                 throw new Error("Missing required property 'taskType'");
             }
             resourceInputs["address"] = args?.address;
+            resourceInputs["agentGroup"] = args?.agentGroup;
             resourceInputs["alertIds"] = args?.alertIds;
+            resourceInputs["customSchedule"] = args?.customSchedule;
             resourceInputs["interval"] = args?.interval;
             resourceInputs["ispCities"] = args?.ispCities;
+            resourceInputs["optionJson"] = args?.optionJson;
             resourceInputs["optionsJson"] = args?.optionsJson;
+            resourceInputs["status"] = args?.status;
             resourceInputs["taskName"] = args?.taskName;
             resourceInputs["taskType"] = args?.taskType;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -184,31 +241,55 @@ export interface SiteMonitorState {
      */
     address?: pulumi.Input<string>;
     /**
-     * The IDs of existing alert rules to be associated with the site monitoring task.
+     * The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+     */
+    agentGroup?: pulumi.Input<string>;
+    /**
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      */
     alertIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The time when the site monitoring task was created.
+     * (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `createTime` has been deprecated from provider version 1.262.0.
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     */
+    customSchedule?: pulumi.Input<inputs.cms.SiteMonitorCustomSchedule>;
+    /**
      * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<string>;
     /**
      * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
      */
     ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+     */
+    optionJson?: pulumi.Input<inputs.cms.SiteMonitorOptionJson>;
+    /**
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     *
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      */
     optionsJson?: pulumi.Input<string>;
+    /**
+     * The status of the site monitoring task. Valid values:
+     */
+    status?: pulumi.Input<string>;
     /**
      * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
      */
     taskName?: pulumi.Input<string>;
     /**
-     * The status of the site monitoring task.
+     * (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     *
+     * @deprecated Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      */
     taskState?: pulumi.Input<string>;
     /**
@@ -216,7 +297,9 @@ export interface SiteMonitorState {
      */
     taskType?: pulumi.Input<string>;
     /**
-     * The time when the site monitoring task was updated.
+     * (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `updateTime` has been deprecated from provider version 1.262.0.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -230,21 +313,41 @@ export interface SiteMonitorArgs {
      */
     address: pulumi.Input<string>;
     /**
-     * The IDs of existing alert rules to be associated with the site monitoring task.
+     * The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+     */
+    agentGroup?: pulumi.Input<string>;
+    /**
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     *
+     * @deprecated Field `alertIds` has been deprecated from provider version 1.262.0.
      */
     alertIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     */
+    customSchedule?: pulumi.Input<inputs.cms.SiteMonitorCustomSchedule>;
+    /**
      * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<string>;
     /**
      * The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
      */
     ispCities?: pulumi.Input<pulumi.Input<inputs.cms.SiteMonitorIspCity>[]>;
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+     */
+    optionJson?: pulumi.Input<inputs.cms.SiteMonitorOptionJson>;
+    /**
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     *
+     * @deprecated Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      */
     optionsJson?: pulumi.Input<string>;
+    /**
+     * The status of the site monitoring task. Valid values:
+     */
+    status?: pulumi.Input<string>;
     /**
      * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
      */

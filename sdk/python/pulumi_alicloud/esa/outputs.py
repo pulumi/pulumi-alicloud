@@ -18,6 +18,11 @@ from . import outputs
 __all__ = [
     'HttpRequestHeaderModificationRuleRequestHeaderModification',
     'HttpResponseHeaderModificationRuleResponseHeaderModification',
+    'LoadBalancerAdaptiveRouting',
+    'LoadBalancerMonitor',
+    'LoadBalancerRandomSteering',
+    'LoadBalancerRule',
+    'LoadBalancerRuleFixedResponse',
     'OriginPoolOrigin',
     'OriginPoolOriginAuthConf',
     'RecordAuthConf',
@@ -142,6 +147,470 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification(dict):
         The response header value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class LoadBalancerAdaptiveRouting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverAcrossPools":
+            suggest = "failover_across_pools"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerAdaptiveRouting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerAdaptiveRouting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerAdaptiveRouting.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 failover_across_pools: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool failover_across_pools: Whether to failover across pools.
+        """
+        if failover_across_pools is not None:
+            pulumi.set(__self__, "failover_across_pools", failover_across_pools)
+
+    @_builtins.property
+    @pulumi.getter(name="failoverAcrossPools")
+    def failover_across_pools(self) -> Optional[_builtins.bool]:
+        """
+        Whether to failover across pools.
+        """
+        return pulumi.get(self, "failover_across_pools")
+
+
+@pulumi.output_type
+class LoadBalancerMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consecutiveDown":
+            suggest = "consecutive_down"
+        elif key == "consecutiveUp":
+            suggest = "consecutive_up"
+        elif key == "expectedCodes":
+            suggest = "expected_codes"
+        elif key == "followRedirects":
+            suggest = "follow_redirects"
+        elif key == "monitoringRegion":
+            suggest = "monitoring_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consecutive_down: Optional[_builtins.int] = None,
+                 consecutive_up: Optional[_builtins.int] = None,
+                 expected_codes: Optional[_builtins.str] = None,
+                 follow_redirects: Optional[_builtins.bool] = None,
+                 header: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.int] = None,
+                 method: Optional[_builtins.str] = None,
+                 monitoring_region: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 timeout: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int consecutive_down: The number of consecutive failed health checks before the backend is considered down, for example, 5.
+        :param _builtins.int consecutive_up: The number of consecutive successful probes required to consider the target as up, e.g., 3.
+        :param _builtins.str expected_codes: Expected status code, such as 200,202, successful HTTP response.
+        :param _builtins.bool follow_redirects: Whether to follow the redirect.
+        :param _builtins.str header: The HTTP headers to be included in the health check request.
+        :param _builtins.int interval: The monitoring interval, such as 60 seconds, checks the frequency.
+        :param _builtins.str method: Monitor request methods, such as GET, methods in the HTTP protocol.
+        :param _builtins.str monitoring_region: Probe Point Region, default to Global
+               - `Global`: Global.
+               - `ChineseMainland`: Chinese mainland.
+               - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+        :param _builtins.str path: The monitor checks the path, such as/healthcheck, the HTTP request path.
+        :param _builtins.int port: The target port.
+        :param _builtins.int timeout: The timeout for the health check, in seconds. The value range is 1-10.
+        :param _builtins.str type: The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+        """
+        if consecutive_down is not None:
+            pulumi.set(__self__, "consecutive_down", consecutive_down)
+        if consecutive_up is not None:
+            pulumi.set(__self__, "consecutive_up", consecutive_up)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if follow_redirects is not None:
+            pulumi.set(__self__, "follow_redirects", follow_redirects)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if monitoring_region is not None:
+            pulumi.set(__self__, "monitoring_region", monitoring_region)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="consecutiveDown")
+    def consecutive_down(self) -> Optional[_builtins.int]:
+        """
+        The number of consecutive failed health checks before the backend is considered down, for example, 5.
+        """
+        return pulumi.get(self, "consecutive_down")
+
+    @_builtins.property
+    @pulumi.getter(name="consecutiveUp")
+    def consecutive_up(self) -> Optional[_builtins.int]:
+        """
+        The number of consecutive successful probes required to consider the target as up, e.g., 3.
+        """
+        return pulumi.get(self, "consecutive_up")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[_builtins.str]:
+        """
+        Expected status code, such as 200,202, successful HTTP response.
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="followRedirects")
+    def follow_redirects(self) -> Optional[_builtins.bool]:
+        """
+        Whether to follow the redirect.
+        """
+        return pulumi.get(self, "follow_redirects")
+
+    @_builtins.property
+    @pulumi.getter
+    def header(self) -> Optional[_builtins.str]:
+        """
+        The HTTP headers to be included in the health check request.
+        """
+        return pulumi.get(self, "header")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        The monitoring interval, such as 60 seconds, checks the frequency.
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def method(self) -> Optional[_builtins.str]:
+        """
+        Monitor request methods, such as GET, methods in the HTTP protocol.
+        """
+        return pulumi.get(self, "method")
+
+    @_builtins.property
+    @pulumi.getter(name="monitoringRegion")
+    def monitoring_region(self) -> Optional[_builtins.str]:
+        """
+        Probe Point Region, default to Global
+        - `Global`: Global.
+        - `ChineseMainland`: Chinese mainland.
+        - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+        """
+        return pulumi.get(self, "monitoring_region")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        The monitor checks the path, such as/healthcheck, the HTTP request path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The target port.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        The timeout for the health check, in seconds. The value range is 1-10.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class LoadBalancerRandomSteering(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultWeight":
+            suggest = "default_weight"
+        elif key == "poolWeights":
+            suggest = "pool_weights"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRandomSteering. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRandomSteering.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRandomSteering.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_weight: Optional[_builtins.int] = None,
+                 pool_weights: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.int default_weight: The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+        :param Mapping[str, _builtins.str] pool_weights: Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+        """
+        if default_weight is not None:
+            pulumi.set(__self__, "default_weight", default_weight)
+        if pool_weights is not None:
+            pulumi.set(__self__, "pool_weights", pool_weights)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultWeight")
+    def default_weight(self) -> Optional[_builtins.int]:
+        """
+        The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+        """
+        return pulumi.get(self, "default_weight")
+
+    @_builtins.property
+    @pulumi.getter(name="poolWeights")
+    def pool_weights(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+        """
+        return pulumi.get(self, "pool_weights")
+
+
+@pulumi.output_type
+class LoadBalancerRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedResponse":
+            suggest = "fixed_response"
+        elif key == "ruleEnable":
+            suggest = "rule_enable"
+        elif key == "ruleName":
+            suggest = "rule_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_response: Optional['outputs.LoadBalancerRuleFixedResponse'] = None,
+                 overrides: Optional[_builtins.str] = None,
+                 rule: Optional[_builtins.str] = None,
+                 rule_enable: Optional[_builtins.str] = None,
+                 rule_name: Optional[_builtins.str] = None,
+                 sequence: Optional[_builtins.int] = None,
+                 terminates: Optional[_builtins.bool] = None):
+        """
+        :param 'LoadBalancerRuleFixedResponseArgs' fixed_response: Executes a specified response after matching the rule. See `fixed_response` below.
+        :param _builtins.str overrides: Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+        :param _builtins.str rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param _builtins.str rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
+        :param _builtins.str rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param _builtins.int sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
+        :param _builtins.bool terminates: Whether to terminate the execution of subsequent rules.
+        """
+        if fixed_response is not None:
+            pulumi.set(__self__, "fixed_response", fixed_response)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+        if rule is not None:
+            pulumi.set(__self__, "rule", rule)
+        if rule_enable is not None:
+            pulumi.set(__self__, "rule_enable", rule_enable)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
+        if terminates is not None:
+            pulumi.set(__self__, "terminates", terminates)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedResponse")
+    def fixed_response(self) -> Optional['outputs.LoadBalancerRuleFixedResponse']:
+        """
+        Executes a specified response after matching the rule. See `fixed_response` below.
+        """
+        return pulumi.get(self, "fixed_response")
+
+    @_builtins.property
+    @pulumi.getter
+    def overrides(self) -> Optional[_builtins.str]:
+        """
+        Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+        """
+        return pulumi.get(self, "overrides")
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> Optional[_builtins.str]:
+        """
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleEnable")
+    def rule_enable(self) -> Optional[_builtins.str]:
+        """
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
+        """
+        return pulumi.get(self, "rule_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[_builtins.str]:
+        """
+        Rule name. When adding global configuration, this parameter does not need to be set.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[_builtins.int]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
+    @pulumi.getter
+    def terminates(self) -> Optional[_builtins.bool]:
+        """
+        Whether to terminate the execution of subsequent rules.
+        """
+        return pulumi.get(self, "terminates")
+
+
+@pulumi.output_type
+class LoadBalancerRuleFixedResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "messageBody":
+            suggest = "message_body"
+        elif key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleFixedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleFixedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleFixedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_type: Optional[_builtins.str] = None,
+                 location: Optional[_builtins.str] = None,
+                 message_body: Optional[_builtins.str] = None,
+                 status_code: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str content_type: The Content-Type field in the HTTP Header.
+        :param _builtins.str location: The location field in the http return.
+        :param _builtins.str message_body: The body value of the response.
+        :param _builtins.int status_code: Status Code.
+        """
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message_body is not None:
+            pulumi.set(__self__, "message_body", message_body)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[_builtins.str]:
+        """
+        The Content-Type field in the HTTP Header.
+        """
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[_builtins.str]:
+        """
+        The location field in the http return.
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="messageBody")
+    def message_body(self) -> Optional[_builtins.str]:
+        """
+        The body value of the response.
+        """
+        return pulumi.get(self, "message_body")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[_builtins.int]:
+        """
+        Status Code.
+        """
+        return pulumi.get(self, "status_code")
 
 
 @pulumi.output_type

@@ -100,6 +100,11 @@ export type List = import("./list").List;
 export const List: typeof import("./list").List = null as any;
 utilities.lazyLoad(exports, ["List"], () => require("./list"));
 
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
 export { NetworkOptimizationArgs, NetworkOptimizationState } from "./networkOptimization";
 export type NetworkOptimization = import("./networkOptimization").NetworkOptimization;
 export const NetworkOptimization: typeof import("./networkOptimization").NetworkOptimization = null as any;
@@ -281,6 +286,8 @@ const _module = {
                 return new KvNamespace(name, <any>undefined, { urn })
             case "alicloud:esa/list:List":
                 return new List(name, <any>undefined, { urn })
+            case "alicloud:esa/loadBalancer:LoadBalancer":
+                return new LoadBalancer(name, <any>undefined, { urn })
             case "alicloud:esa/networkOptimization:NetworkOptimization":
                 return new NetworkOptimization(name, <any>undefined, { urn })
             case "alicloud:esa/originCaCertificate:OriginCaCertificate":
@@ -360,6 +367,7 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/kv", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kvAccount", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/kvNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/list", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/networkOptimization", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/originClientCertificate", _module)

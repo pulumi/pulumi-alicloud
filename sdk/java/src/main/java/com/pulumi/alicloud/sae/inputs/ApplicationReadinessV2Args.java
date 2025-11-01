@@ -34,6 +34,21 @@ public final class ApplicationReadinessV2Args extends com.pulumi.resources.Resou
     }
 
     /**
+     * The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    @Import(name="failureThreshold")
+    private @Nullable Output<Integer> failureThreshold;
+
+    /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    public Optional<Output<Integer>> failureThreshold() {
+        return Optional.ofNullable(this.failureThreshold);
+    }
+
+    /**
      * The liveness check settings of the container. See `httpGet` below.
      * 
      */
@@ -79,6 +94,21 @@ public final class ApplicationReadinessV2Args extends com.pulumi.resources.Resou
     }
 
     /**
+     * The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+     * 
+     */
+    @Import(name="successThreshold")
+    private @Nullable Output<Integer> successThreshold;
+
+    /**
+     * @return The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+     * 
+     */
+    public Optional<Output<Integer>> successThreshold() {
+        return Optional.ofNullable(this.successThreshold);
+    }
+
+    /**
      * The liveness check settings of the container. See `tcpSocket` below.
      * 
      */
@@ -112,9 +142,11 @@ public final class ApplicationReadinessV2Args extends com.pulumi.resources.Resou
 
     private ApplicationReadinessV2Args(ApplicationReadinessV2Args $) {
         this.exec = $.exec;
+        this.failureThreshold = $.failureThreshold;
         this.httpGet = $.httpGet;
         this.initialDelaySeconds = $.initialDelaySeconds;
         this.periodSeconds = $.periodSeconds;
+        this.successThreshold = $.successThreshold;
         this.tcpSocket = $.tcpSocket;
         this.timeoutSeconds = $.timeoutSeconds;
     }
@@ -156,6 +188,27 @@ public final class ApplicationReadinessV2Args extends com.pulumi.resources.Resou
          */
         public Builder exec(ApplicationReadinessV2ExecArgs exec) {
             return exec(Output.of(exec));
+        }
+
+        /**
+         * @param failureThreshold The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failureThreshold(@Nullable Output<Integer> failureThreshold) {
+            $.failureThreshold = failureThreshold;
+            return this;
+        }
+
+        /**
+         * @param failureThreshold The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failureThreshold(Integer failureThreshold) {
+            return failureThreshold(Output.of(failureThreshold));
         }
 
         /**
@@ -219,6 +272,27 @@ public final class ApplicationReadinessV2Args extends com.pulumi.resources.Resou
          */
         public Builder periodSeconds(Integer periodSeconds) {
             return periodSeconds(Output.of(periodSeconds));
+        }
+
+        /**
+         * @param successThreshold The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder successThreshold(@Nullable Output<Integer> successThreshold) {
+            $.successThreshold = successThreshold;
+            return this;
+        }
+
+        /**
+         * @param successThreshold The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder successThreshold(Integer successThreshold) {
+            return successThreshold(Output.of(successThreshold));
         }
 
         /**

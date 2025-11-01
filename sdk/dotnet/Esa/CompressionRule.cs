@@ -106,6 +106,12 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
+
+        /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Output("siteId")]
@@ -202,6 +208,12 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId", required: true)]
@@ -264,6 +276,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.

@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** When you want to destroy this resource forcefully(means remove all the relationships associated with it automatically and then destroy it) without set `force`  with `true` at beginning, you need add `force = true` to configuration file and run `pulumi preview`, then you can delete resource forcefully.
  * 
- * &gt; **NOTE:** Each policy can own at most 5 versions and the oldest version will be removed after its version achieves 5.
+ * &gt; **NOTE:** Each strategy can have a maximum of five versions. When the number of versions reaches five, the oldest version is not automatically deleted by default. You need to explicitly set `rotateStrategy = DeleteOldestNonDefaultVersionWhenLimitExceeded` to automatically delete the oldest version.
  * 
  * &gt; **NOTE:** If the policy has multiple versions, all non-default versions will be deleted first when deleting policy.
  * 

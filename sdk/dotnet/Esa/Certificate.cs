@@ -86,12 +86,6 @@ namespace Pulumi.AliCloud.Esa
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// </summary>
         [Output("createdType")]
         public Output<string> CreatedType { get; private set; } = null!;
 
@@ -101,14 +95,13 @@ namespace Pulumi.AliCloud.Esa
         [Output("domains")]
         public Output<string?> Domains { get; private set; } = null!;
 
-        /// <summary>
-        /// The certificate private key.
-        /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
 
         /// <summary>
-        /// Geographical information.
+        /// Region. This parameter is required if the type is CAS.
+        /// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+        /// For accounts on the international site, this parameter value is: ap-southeast-1
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -201,12 +194,6 @@ namespace Pulumi.AliCloud.Esa
         [Input("certificate")]
         public Input<string>? CertificateValue { get; set; }
 
-        /// <summary>
-        /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// </summary>
         [Input("createdType", required: true)]
         public Input<string> CreatedType { get; set; } = null!;
 
@@ -216,14 +203,13 @@ namespace Pulumi.AliCloud.Esa
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
-        /// <summary>
-        /// The certificate private key.
-        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
         /// <summary>
-        /// Geographical information.
+        /// Region. This parameter is required if the type is CAS.
+        /// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+        /// For accounts on the international site, this parameter value is: ap-southeast-1
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -278,12 +264,6 @@ namespace Pulumi.AliCloud.Esa
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
-        /// <summary>
-        /// The certificate type.
-        /// - cas (Certificate Center Certificate)
-        /// - upload (custom upload certificate)
-        /// - free( Free certificate).
-        /// </summary>
         [Input("createdType")]
         public Input<string>? CreatedType { get; set; }
 
@@ -293,14 +273,13 @@ namespace Pulumi.AliCloud.Esa
         [Input("domains")]
         public Input<string>? Domains { get; set; }
 
-        /// <summary>
-        /// The certificate private key.
-        /// </summary>
         [Input("privateKey")]
         public Input<string>? PrivateKey { get; set; }
 
         /// <summary>
-        /// Geographical information.
+        /// Region. This parameter is required if the type is CAS.
+        /// For accounts on the Chinese site, this parameter value is: cn-hangzhou
+        /// For accounts on the international site, this parameter value is: ap-southeast-1
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -19,6 +19,12 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<Inputs.ApplicationReadinessV2ExecGetArgs>? Exec { get; set; }
 
         /// <summary>
+        /// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+        /// </summary>
+        [Input("failureThreshold")]
+        public Input<int>? FailureThreshold { get; set; }
+
+        /// <summary>
         /// The liveness check settings of the container. See `HttpGet` below.
         /// </summary>
         [Input("httpGet")]
@@ -35,6 +41,12 @@ namespace Pulumi.AliCloud.Sae.Inputs
         /// </summary>
         [Input("periodSeconds")]
         public Input<int>? PeriodSeconds { get; set; }
+
+        /// <summary>
+        /// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+        /// </summary>
+        [Input("successThreshold")]
+        public Input<int>? SuccessThreshold { get; set; }
 
         /// <summary>
         /// The liveness check settings of the container. See `TcpSocket` below.

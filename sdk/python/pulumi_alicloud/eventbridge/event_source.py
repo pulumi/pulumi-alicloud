@@ -27,10 +27,10 @@ class EventSourceArgs:
                  linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EventSource resource.
-        :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus.
-        :param pulumi.Input[_builtins.str] event_source_name: The code name of event source.
-        :param pulumi.Input[_builtins.str] description: The detail describe of event source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The config of external source.
+        :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
+        :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
+        :param pulumi.Input[_builtins.str] description: The description of the event source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The configuration of the external data source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -44,8 +44,8 @@ class EventSourceArgs:
                `GroupID` - The group ID of consumer.
                When `external_source_type` is `MNS`, The following attributes are supported:
                `QueueName` - The queue name of MNS.
-        :param pulumi.Input[_builtins.str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
-        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
+        :param pulumi.Input[_builtins.str] external_source_type: The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
+        :param pulumi.Input[_builtins.bool] linked_external_source: Specifies whether to connect to an external data source. Default value: `false`.
         """
         pulumi.set(__self__, "event_bus_name", event_bus_name)
         pulumi.set(__self__, "event_source_name", event_source_name)
@@ -62,7 +62,7 @@ class EventSourceArgs:
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of event bus.
+        The name of the event bus to which the event source is attached.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -74,7 +74,7 @@ class EventSourceArgs:
     @pulumi.getter(name="eventSourceName")
     def event_source_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The code name of event source.
+        The name of the event source.
         """
         return pulumi.get(self, "event_source_name")
 
@@ -86,7 +86,7 @@ class EventSourceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The detail describe of event source.
+        The description of the event source.
         """
         return pulumi.get(self, "description")
 
@@ -98,7 +98,7 @@ class EventSourceArgs:
     @pulumi.getter(name="externalSourceConfig")
     def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The config of external source.
+        The configuration of the external data source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
         `RegionId` - The region ID of RabbitMQ.
         `InstanceId` - The instance ID of RabbitMQ.
@@ -123,7 +123,7 @@ class EventSourceArgs:
     @pulumi.getter(name="externalSourceType")
     def external_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         """
         return pulumi.get(self, "external_source_type")
 
@@ -135,7 +135,7 @@ class EventSourceArgs:
     @pulumi.getter(name="linkedExternalSource")
     def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to connect to an external data source. Default value: `false`
+        Specifies whether to connect to an external data source. Default value: `false`.
         """
         return pulumi.get(self, "linked_external_source")
 
@@ -155,10 +155,10 @@ class _EventSourceState:
                  linked_external_source: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EventSource resources.
-        :param pulumi.Input[_builtins.str] description: The detail describe of event source.
-        :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus.
-        :param pulumi.Input[_builtins.str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The config of external source.
+        :param pulumi.Input[_builtins.str] description: The description of the event source.
+        :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
+        :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The configuration of the external data source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -172,8 +172,8 @@ class _EventSourceState:
                `GroupID` - The group ID of consumer.
                When `external_source_type` is `MNS`, The following attributes are supported:
                `QueueName` - The queue name of MNS.
-        :param pulumi.Input[_builtins.str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
-        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
+        :param pulumi.Input[_builtins.str] external_source_type: The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
+        :param pulumi.Input[_builtins.bool] linked_external_source: Specifies whether to connect to an external data source. Default value: `false`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -192,7 +192,7 @@ class _EventSourceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The detail describe of event source.
+        The description of the event source.
         """
         return pulumi.get(self, "description")
 
@@ -204,7 +204,7 @@ class _EventSourceState:
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of event bus.
+        The name of the event bus to which the event source is attached.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -216,7 +216,7 @@ class _EventSourceState:
     @pulumi.getter(name="eventSourceName")
     def event_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The code name of event source.
+        The name of the event source.
         """
         return pulumi.get(self, "event_source_name")
 
@@ -228,7 +228,7 @@ class _EventSourceState:
     @pulumi.getter(name="externalSourceConfig")
     def external_source_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The config of external source.
+        The configuration of the external data source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
         `RegionId` - The region ID of RabbitMQ.
         `InstanceId` - The instance ID of RabbitMQ.
@@ -253,7 +253,7 @@ class _EventSourceState:
     @pulumi.getter(name="externalSourceType")
     def external_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         """
         return pulumi.get(self, "external_source_type")
 
@@ -265,7 +265,7 @@ class _EventSourceState:
     @pulumi.getter(name="linkedExternalSource")
     def linked_external_source(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to connect to an external data source. Default value: `false`
+        Specifies whether to connect to an external data source. Default value: `false`.
         """
         return pulumi.get(self, "linked_external_source")
 
@@ -306,20 +306,20 @@ class EventSource(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("example", name=f"{name}-{default['result']}")
-        example_event_source = alicloud.eventbridge.EventSource("example",
-            event_bus_name=example.event_bus_name,
-            event_source_name=name,
+        default_queue = alicloud.mns.Queue("default", name=f"{name}-{default['result']}")
+        default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=f"{name}-{default['result']}")
+        default_event_source = alicloud.eventbridge.EventSource("default",
+            event_bus_name=default_event_bus.event_bus_name,
+            event_source_name=f"{name}-{default['result']}",
             description=name,
             linked_external_source=True,
             external_source_type="MNS",
             external_source_config={
-                "QueueName": example_queue.name,
+                "QueueName": default_queue.name,
             })
         ```
 
@@ -333,10 +333,10 @@ class EventSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The detail describe of event source.
-        :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus.
-        :param pulumi.Input[_builtins.str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The config of external source.
+        :param pulumi.Input[_builtins.str] description: The description of the event source.
+        :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
+        :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The configuration of the external data source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -350,8 +350,8 @@ class EventSource(pulumi.CustomResource):
                `GroupID` - The group ID of consumer.
                When `external_source_type` is `MNS`, The following attributes are supported:
                `QueueName` - The queue name of MNS.
-        :param pulumi.Input[_builtins.str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
-        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
+        :param pulumi.Input[_builtins.str] external_source_type: The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
+        :param pulumi.Input[_builtins.bool] linked_external_source: Specifies whether to connect to an external data source. Default value: `false`.
         """
         ...
     @overload
@@ -378,20 +378,20 @@ class EventSource(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("example", name=f"{name}-{default['result']}")
-        example_event_source = alicloud.eventbridge.EventSource("example",
-            event_bus_name=example.event_bus_name,
-            event_source_name=name,
+        default_queue = alicloud.mns.Queue("default", name=f"{name}-{default['result']}")
+        default_event_bus = alicloud.eventbridge.EventBus("default", event_bus_name=f"{name}-{default['result']}")
+        default_event_source = alicloud.eventbridge.EventSource("default",
+            event_bus_name=default_event_bus.event_bus_name,
+            event_source_name=f"{name}-{default['result']}",
             description=name,
             linked_external_source=True,
             external_source_type="MNS",
             external_source_config={
-                "QueueName": example_queue.name,
+                "QueueName": default_queue.name,
             })
         ```
 
@@ -466,10 +466,10 @@ class EventSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The detail describe of event source.
-        :param pulumi.Input[_builtins.str] event_bus_name: The name of event bus.
-        :param pulumi.Input[_builtins.str] event_source_name: The code name of event source.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The config of external source.
+        :param pulumi.Input[_builtins.str] description: The description of the event source.
+        :param pulumi.Input[_builtins.str] event_bus_name: The name of the event bus to which the event source is attached.
+        :param pulumi.Input[_builtins.str] event_source_name: The name of the event source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] external_source_config: The configuration of the external data source.
                When `external_source_type` is `RabbitMQ`, The following attributes are supported:
                `RegionId` - The region ID of RabbitMQ.
                `InstanceId` - The instance ID of RabbitMQ.
@@ -483,8 +483,8 @@ class EventSource(pulumi.CustomResource):
                `GroupID` - The group ID of consumer.
                When `external_source_type` is `MNS`, The following attributes are supported:
                `QueueName` - The queue name of MNS.
-        :param pulumi.Input[_builtins.str] external_source_type: The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
-        :param pulumi.Input[_builtins.bool] linked_external_source: Whether to connect to an external data source. Default value: `false`
+        :param pulumi.Input[_builtins.str] external_source_type: The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
+        :param pulumi.Input[_builtins.bool] linked_external_source: Specifies whether to connect to an external data source. Default value: `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,7 +502,7 @@ class EventSource(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The detail describe of event source.
+        The description of the event source.
         """
         return pulumi.get(self, "description")
 
@@ -510,7 +510,7 @@ class EventSource(pulumi.CustomResource):
     @pulumi.getter(name="eventBusName")
     def event_bus_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of event bus.
+        The name of the event bus to which the event source is attached.
         """
         return pulumi.get(self, "event_bus_name")
 
@@ -518,7 +518,7 @@ class EventSource(pulumi.CustomResource):
     @pulumi.getter(name="eventSourceName")
     def event_source_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The code name of event source.
+        The name of the event source.
         """
         return pulumi.get(self, "event_source_name")
 
@@ -526,7 +526,7 @@ class EventSource(pulumi.CustomResource):
     @pulumi.getter(name="externalSourceConfig")
     def external_source_config(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The config of external source.
+        The configuration of the external data source.
         When `external_source_type` is `RabbitMQ`, The following attributes are supported:
         `RegionId` - The region ID of RabbitMQ.
         `InstanceId` - The instance ID of RabbitMQ.
@@ -547,15 +547,15 @@ class EventSource(pulumi.CustomResource):
     @pulumi.getter(name="externalSourceType")
     def external_source_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
+        The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
         """
         return pulumi.get(self, "external_source_type")
 
     @_builtins.property
     @pulumi.getter(name="linkedExternalSource")
-    def linked_external_source(self) -> pulumi.Output[_builtins.bool]:
+    def linked_external_source(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to connect to an external data source. Default value: `false`
+        Specifies whether to connect to an external data source. Default value: `false`.
         """
         return pulumi.get(self, "linked_external_source")
 

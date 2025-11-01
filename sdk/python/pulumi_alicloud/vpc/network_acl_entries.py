@@ -27,8 +27,8 @@ class NetworkAclEntriesArgs:
         """
         The set of arguments for constructing a NetworkAclEntries resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         """
         pulumi.set(__self__, "network_acl_id", network_acl_id)
         if egresses is not None:
@@ -52,7 +52,7 @@ class NetworkAclEntriesArgs:
     @pulumi.getter
     def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]]:
         """
-        List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
         """
         return pulumi.get(self, "egresses")
 
@@ -64,7 +64,7 @@ class NetworkAclEntriesArgs:
     @pulumi.getter
     def ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]]:
         """
-        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         """
         return pulumi.get(self, "ingresses")
 
@@ -81,8 +81,8 @@ class _NetworkAclEntriesState:
                  network_acl_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAclEntries resources.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         if egresses is not None:
@@ -96,7 +96,7 @@ class _NetworkAclEntriesState:
     @pulumi.getter
     def egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]]:
         """
-        List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
         """
         return pulumi.get(self, "egresses")
 
@@ -108,7 +108,7 @@ class _NetworkAclEntriesState:
     @pulumi.getter
     def ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]]:
         """
-        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         """
         return pulumi.get(self, "ingresses")
 
@@ -142,11 +142,9 @@ class NetworkAclEntries(pulumi.CustomResource):
         """
         Provides a network acl entries resource to create ingress and egress entries.
 
-        > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+        > **NOTE:** Available in 1.45.0+.
 
         > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-
-        > **NOTE:** Using this resource need to open a whitelist.
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
 
@@ -204,8 +202,8 @@ class NetworkAclEntries(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         ...
@@ -217,11 +215,9 @@ class NetworkAclEntries(pulumi.CustomResource):
         """
         Provides a network acl entries resource to create ingress and egress entries.
 
-        > **NOTE:** Available in 1.45.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+        > **NOTE:** Available in 1.45.0+.
 
         > **NOTE:** It doesn't support concurrency and the order of the ingress and egress entries determines the priority.
-
-        > **NOTE:** Using this resource need to open a whitelist.
 
         > **DEPRECATED:**  This resource  has been deprecated from version `1.122.0`. Replace by `ingress_acl_entries` and `egress_acl_entries` with the resource alicloud_network_acl.
 
@@ -329,8 +325,8 @@ class NetworkAclEntries(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesEgressArgs', 'NetworkAclEntriesEgressArgsDict']]]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclEntriesIngressArgs', 'NetworkAclEntriesIngressArgsDict']]]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -346,7 +342,7 @@ class NetworkAclEntries(pulumi.CustomResource):
     @pulumi.getter
     def egresses(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkAclEntriesEgress']]]:
         """
-        List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
+        List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
         """
         return pulumi.get(self, "egresses")
 
@@ -354,7 +350,7 @@ class NetworkAclEntries(pulumi.CustomResource):
     @pulumi.getter
     def ingresses(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkAclEntriesIngress']]]:
         """
-        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
+        List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
         """
         return pulumi.get(self, "ingresses")
 

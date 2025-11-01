@@ -3185,6 +3185,162 @@ func (o BucketReplicationProgressPtrOutput) NewObject() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketReplicationRtc struct {
+	// Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+	Enabled bool `pulumi:"enabled"`
+	// The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+	Status *string `pulumi:"status"`
+}
+
+// BucketReplicationRtcInput is an input type that accepts BucketReplicationRtcArgs and BucketReplicationRtcOutput values.
+// You can construct a concrete instance of `BucketReplicationRtcInput` via:
+//
+//	BucketReplicationRtcArgs{...}
+type BucketReplicationRtcInput interface {
+	pulumi.Input
+
+	ToBucketReplicationRtcOutput() BucketReplicationRtcOutput
+	ToBucketReplicationRtcOutputWithContext(context.Context) BucketReplicationRtcOutput
+}
+
+type BucketReplicationRtcArgs struct {
+	// Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (BucketReplicationRtcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationRtc)(nil)).Elem()
+}
+
+func (i BucketReplicationRtcArgs) ToBucketReplicationRtcOutput() BucketReplicationRtcOutput {
+	return i.ToBucketReplicationRtcOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationRtcArgs) ToBucketReplicationRtcOutputWithContext(ctx context.Context) BucketReplicationRtcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationRtcOutput)
+}
+
+func (i BucketReplicationRtcArgs) ToBucketReplicationRtcPtrOutput() BucketReplicationRtcPtrOutput {
+	return i.ToBucketReplicationRtcPtrOutputWithContext(context.Background())
+}
+
+func (i BucketReplicationRtcArgs) ToBucketReplicationRtcPtrOutputWithContext(ctx context.Context) BucketReplicationRtcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationRtcOutput).ToBucketReplicationRtcPtrOutputWithContext(ctx)
+}
+
+// BucketReplicationRtcPtrInput is an input type that accepts BucketReplicationRtcArgs, BucketReplicationRtcPtr and BucketReplicationRtcPtrOutput values.
+// You can construct a concrete instance of `BucketReplicationRtcPtrInput` via:
+//
+//	        BucketReplicationRtcArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketReplicationRtcPtrInput interface {
+	pulumi.Input
+
+	ToBucketReplicationRtcPtrOutput() BucketReplicationRtcPtrOutput
+	ToBucketReplicationRtcPtrOutputWithContext(context.Context) BucketReplicationRtcPtrOutput
+}
+
+type bucketReplicationRtcPtrType BucketReplicationRtcArgs
+
+func BucketReplicationRtcPtr(v *BucketReplicationRtcArgs) BucketReplicationRtcPtrInput {
+	return (*bucketReplicationRtcPtrType)(v)
+}
+
+func (*bucketReplicationRtcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationRtc)(nil)).Elem()
+}
+
+func (i *bucketReplicationRtcPtrType) ToBucketReplicationRtcPtrOutput() BucketReplicationRtcPtrOutput {
+	return i.ToBucketReplicationRtcPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketReplicationRtcPtrType) ToBucketReplicationRtcPtrOutputWithContext(ctx context.Context) BucketReplicationRtcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketReplicationRtcPtrOutput)
+}
+
+type BucketReplicationRtcOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationRtcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketReplicationRtc)(nil)).Elem()
+}
+
+func (o BucketReplicationRtcOutput) ToBucketReplicationRtcOutput() BucketReplicationRtcOutput {
+	return o
+}
+
+func (o BucketReplicationRtcOutput) ToBucketReplicationRtcOutputWithContext(ctx context.Context) BucketReplicationRtcOutput {
+	return o
+}
+
+func (o BucketReplicationRtcOutput) ToBucketReplicationRtcPtrOutput() BucketReplicationRtcPtrOutput {
+	return o.ToBucketReplicationRtcPtrOutputWithContext(context.Background())
+}
+
+func (o BucketReplicationRtcOutput) ToBucketReplicationRtcPtrOutputWithContext(ctx context.Context) BucketReplicationRtcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketReplicationRtc) *BucketReplicationRtc {
+		return &v
+	}).(BucketReplicationRtcPtrOutput)
+}
+
+// Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+func (o BucketReplicationRtcOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketReplicationRtc) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+func (o BucketReplicationRtcOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketReplicationRtc) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type BucketReplicationRtcPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketReplicationRtcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketReplicationRtc)(nil)).Elem()
+}
+
+func (o BucketReplicationRtcPtrOutput) ToBucketReplicationRtcPtrOutput() BucketReplicationRtcPtrOutput {
+	return o
+}
+
+func (o BucketReplicationRtcPtrOutput) ToBucketReplicationRtcPtrOutputWithContext(ctx context.Context) BucketReplicationRtcPtrOutput {
+	return o
+}
+
+func (o BucketReplicationRtcPtrOutput) Elem() BucketReplicationRtcOutput {
+	return o.ApplyT(func(v *BucketReplicationRtc) BucketReplicationRtc {
+		if v != nil {
+			return *v
+		}
+		var ret BucketReplicationRtc
+		return ret
+	}).(BucketReplicationRtcOutput)
+}
+
+// Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+func (o BucketReplicationRtcPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationRtc) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+func (o BucketReplicationRtcPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketReplicationRtc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketReplicationSourceSelectionCriteria struct {
 	// Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
 	SseKmsEncryptedObjects *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects `pulumi:"sseKmsEncryptedObjects"`
@@ -9125,6 +9281,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationPrefixSetPtrInput)(nil)).Elem(), BucketReplicationPrefixSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationProgressInput)(nil)).Elem(), BucketReplicationProgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationProgressPtrInput)(nil)).Elem(), BucketReplicationProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationRtcInput)(nil)).Elem(), BucketReplicationRtcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationRtcPtrInput)(nil)).Elem(), BucketReplicationRtcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaPtrInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput)(nil)).Elem(), BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{})
@@ -9237,6 +9395,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketReplicationPrefixSetPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationProgressOutput{})
 	pulumi.RegisterOutputType(BucketReplicationProgressPtrOutput{})
+	pulumi.RegisterOutputType(BucketReplicationRtcOutput{})
+	pulumi.RegisterOutputType(BucketReplicationRtcPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaOutput{})
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput{})

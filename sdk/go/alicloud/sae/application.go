@@ -134,7 +134,7 @@ type Application struct {
 	pulumi.CustomResourceState
 
 	// The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
-	AcrAssumeRoleArn pulumi.StringPtrOutput `pulumi:"acrAssumeRoleArn"`
+	AcrAssumeRoleArn pulumi.StringOutput `pulumi:"acrAssumeRoleArn"`
 	// The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
 	AcrInstanceId pulumi.StringPtrOutput `pulumi:"acrInstanceId"`
 	// Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `appDescription` can be modified.
@@ -1159,8 +1159,8 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 }
 
 // The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
-func (o ApplicationOutput) AcrAssumeRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.AcrAssumeRoleArn }).(pulumi.StringPtrOutput)
+func (o ApplicationOutput) AcrAssumeRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AcrAssumeRoleArn }).(pulumi.StringOutput)
 }
 
 // The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
