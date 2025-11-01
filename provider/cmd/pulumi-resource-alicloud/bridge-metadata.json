@@ -1933,8 +1933,28 @@
                     "alert_ids": {
                         "maxItemsOne": false
                     },
+                    "custom_schedule": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "isp_cities": {
                         "maxItemsOne": false
+                    },
+                    "option_json": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "assertions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4720,6 +4740,33 @@
                     }
                 }
             },
+            "alicloud_esa_load_balancer": {
+                "current": "alicloud:esa/loadBalancer:LoadBalancer",
+                "fields": {
+                    "adaptive_routing": {
+                        "maxItemsOne": true
+                    },
+                    "default_pools": {
+                        "maxItemsOne": false
+                    },
+                    "monitor": {
+                        "maxItemsOne": true
+                    },
+                    "random_steering": {
+                        "maxItemsOne": true
+                    },
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "fixed_response": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_esa_network_optimization": {
                 "current": "alicloud:esa/networkOptimization:NetworkOptimization"
             },
@@ -5990,7 +6037,14 @@
                 "current": "alicloud:ga/endpointGroup:EndpointGroup",
                 "fields": {
                     "endpoint_configurations": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "vswitch_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "endpoint_group_ip_list": {
                         "maxItemsOne": false
@@ -7632,6 +7686,9 @@
                     "progress": {
                         "maxItemsOne": true
                     },
+                    "rtc": {
+                        "maxItemsOne": true
+                    },
                     "source_selection_criteria": {
                         "maxItemsOne": true,
                         "elem": {
@@ -8000,8 +8057,22 @@
             "alicloud_polardb_primary_endpoint": {
                 "current": "alicloud:polardb/primaryEndpoint:PrimaryEndpoint"
             },
+            "alicloud_polardb_zonal_account": {
+                "current": "alicloud:polardb/zonalAccount:ZonalAccount"
+            },
             "alicloud_polardb_zonal_db_cluster": {
                 "current": "alicloud:polardb/zonalDbCluster:ZonalDbCluster"
+            },
+            "alicloud_polardb_zonal_endpoint": {
+                "current": "alicloud:polardb/zonalEndpoint:ZonalEndpoint",
+                "fields": {
+                    "nodes": {
+                        "maxItemsOne": false
+                    },
+                    "nodes_key": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_privatelink_vpc_endpoint": {
                 "current": "alicloud:privatelink/vpcEndpoint:VpcEndpoint",
@@ -8412,6 +8483,41 @@
             "alicloud_resource_manager_delegated_administrator": {
                 "current": "alicloud:resourcemanager/delegatedAdministrator:DelegatedAdministrator"
             },
+            "alicloud_resource_manager_delivery_channel": {
+                "current": "alicloud:resourcemanager/deliveryChannel:DeliveryChannel",
+                "fields": {
+                    "delivery_channel_filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "resource_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "resource_change_delivery": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sls_properties": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "resource_snapshot_delivery": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sls_properties": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_resource_manager_folder": {
                 "current": "alicloud:resourcemanager/folder:Folder"
             },
@@ -8423,6 +8529,44 @@
                 "fields": {
                     "message_types": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_resource_manager_multi_account_delivery_channel": {
+                "current": "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel",
+                "fields": {
+                    "delivery_channel_filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "account_scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "resource_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "resource_change_delivery": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sls_properties": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "resource_snapshot_delivery": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sls_properties": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -9515,7 +9659,14 @@
                 "current": "alicloud:vpn/sslVpnServer:SslVpnServer"
             },
             "alicloud_star_rocks_instance": {
-                "current": "alicloud:index/starRocksInstance:StarRocksInstance",
+                "current": "alicloud:starrocks/instance:Instance",
+                "past": [
+                    {
+                        "name": "alicloud:index/starRocksInstance:StarRocksInstance",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "backend_node_groups": {
                         "maxItemsOne": false
@@ -9530,6 +9681,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_star_rocks_node_group": {
+                "current": "alicloud:starrocks/nodeGroup:NodeGroup"
             },
             "alicloud_subnet": {
                 "current": "alicloud:vpc/subnet:Subnet"
@@ -10074,6 +10228,9 @@
                                 "conditions": {
                                     "maxItemsOne": false
                                 },
+                                "gray_config": {
+                                    "maxItemsOne": true
+                                },
                                 "rate_limit": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -10086,6 +10243,26 @@
                                 },
                                 "remote_addr": {
                                     "maxItemsOne": false
+                                },
+                                "time_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "time_periods": {
+                                                "maxItemsOne": false
+                                            },
+                                            "week_time_periods": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "day_periods": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -12686,6 +12863,17 @@
                                 }
                             }
                         }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_cloud_firewall_tls_inspect_ca_certificates": {
+                "current": "alicloud:cloudfirewall/getTlsInspectCaCertificates:getTlsInspectCaCertificates",
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false
                     },
                     "ids": {
                         "maxItemsOne": false
@@ -21953,6 +22141,43 @@
                     }
                 }
             },
+            "alicloud_sls_indexs": {
+                "current": "alicloud:sls/getIndexs:getIndexs",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "indexs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "line": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exclude_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "include_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "token": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "log_reduce_black_list": {
+                                    "maxItemsOne": false
+                                },
+                                "log_reduce_white_list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_sls_logtail_configs": {
                 "current": "alicloud:sls/getLogtailConfigs:getLogtailConfigs",
                 "fields": {
@@ -23174,6 +23399,11 @@
                 "maxItemsOneOverrides": {
                     "network.$.vswitche_list": true
                 }
+            },
+            "alicloud_star_rocks_instance": {
+                "aliases": [
+                    "alicloud:index/starRocksInstance:StarRocksInstance"
+                ]
             }
         },
         "datasources": {

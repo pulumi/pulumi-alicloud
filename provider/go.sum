@@ -1445,10 +1445,10 @@ github.com/alecthomas/units v0.0.0-20190717042225-c3de453c63f4/go.mod h1:ybxpYRF
 github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk541a8SKzHPHnH3zbiI+7dagKZ0cgpgrD7Fyho=
 github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137 h1:s6gZFSlWYmbqAuRjVTiNNhvNRfY2Wxp9nhfyel4rklc=
 github.com/alecthomas/units v0.0.0-20211218093645-b94a6e3cc137/go.mod h1:OMCwj8VM1Kc9e19TLln2VL61YJF0x1XFtfdL4JdbSyE=
-github.com/alibabacloud-go/alibabacloud-gateway-oss v0.0.18 h1:+XUQC5aR4CcuNOuWLmiLcCOk6/4lYoktJ38MzfDESzI=
-github.com/alibabacloud-go/alibabacloud-gateway-oss v0.0.18/go.mod h1:tzkIaueyBuMcZH6PIups1OdNPwK+m065iCHQfOKjUt4=
-github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.7 h1:KpgGTGe0Xso13tqkPSfMKZzW9/Y7ACzWOEQgIG4t1b4=
-github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.7/go.mod h1:wRe4d4+bawdnSEYut29hVZac1NiOgQ3MEGbLOf/nbig=
+github.com/alibabacloud-go/alibabacloud-gateway-oss v0.0.21 h1:Jqt8W5DXZvcIECHhyKyWGwKkJuTSfTqEgCyWWbZP8FM=
+github.com/alibabacloud-go/alibabacloud-gateway-oss v0.0.21/go.mod h1:GS9b2obanVAI/xzSgvTClaZnaId4tLcYVlu7USctLNA=
+github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.10 h1:87af0rrI4jT7kyRew7mb2ar04dxGlNrRfephGERhLyY=
+github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.10/go.mod h1:bMrMQIlkH6zAvG7rTaKHyIcEokmBUM2ML+R2VyRimJ8=
 github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6 h1:eIf+iGJxdU4U9ypaUfbtOWCsZSbTb8AUHvyPrxu6mAA=
 github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6/go.mod h1:4EUIoxs/do24zMOGGqYVWgw0s9NtiylnJglOeEB5UJo=
 github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.6 h1:LmBsV3DRJJyGP7GhP+OZONFuyvYPI9t3yvEj8dXVkOM=
@@ -1492,8 +1492,9 @@ github.com/alibabacloud-go/tea v1.1.11/go.mod h1:/tmnEaQMyb4Ky1/5D+SE1BAsa5zj/Ke
 github.com/alibabacloud-go/tea v1.1.17/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
 github.com/alibabacloud-go/tea v1.1.19/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
 github.com/alibabacloud-go/tea v1.1.20/go.mod h1:nXxjm6CIFkBhwW4FQkNrolwbfon8Svy6cujmKFUq98A=
-github.com/alibabacloud-go/tea v1.2.2 h1:aTsR6Rl3ANWPfqeQugPglfurloyBJY85eFy7Gc1+8oU=
 github.com/alibabacloud-go/tea v1.2.2/go.mod h1:CF3vOzEMAG+bR4WOql8gc2G9H3EkH3ZLAQdpmpXMgwk=
+github.com/alibabacloud-go/tea v1.3.8 h1:Sk2+BDJC//xJ1/Eljf+Dlg2u2tgWpA9P7mlb87AEcEs=
+github.com/alibabacloud-go/tea v1.3.8/go.mod h1:A560v/JTQ1n5zklt2BEpurJzZTI8TUT+Psg2drWlxRg=
 github.com/alibabacloud-go/tea-oss-utils v1.1.0 h1:y65crjjcZ2Pbb6UZtC2deuIZHDVTS3IaDWE7M9nVLRc=
 github.com/alibabacloud-go/tea-oss-utils v1.1.0/go.mod h1:PFCF12e9yEKyBUIn7X1IrF/pNjvxgkHy0CgxX4+xRuY=
 github.com/alibabacloud-go/tea-roa v1.3.4 h1:afc1MrB9d5euBR5cxQTZ5Erswshguf1KSZmyttxJSTU=
@@ -1514,8 +1515,9 @@ github.com/alibabacloud-go/tea-utils/v2 v2.0.0/go.mod h1:U5MTY10WwlquGPS34DOeomU
 github.com/alibabacloud-go/tea-utils/v2 v2.0.1/go.mod h1:U5MTY10WwlquGPS34DOeomUGBB0gXbLueiq5Trwu0C4=
 github.com/alibabacloud-go/tea-utils/v2 v2.0.4/go.mod h1:sj1PbjPodAVTqGTA3olprfeeqqmwD0A5OQz94o9EuXQ=
 github.com/alibabacloud-go/tea-utils/v2 v2.0.5/go.mod h1:dL6vbUT35E4F4bFTHL845eUloqaerYBYPsdWR2/jhe4=
-github.com/alibabacloud-go/tea-utils/v2 v2.0.6 h1:ZkmUlhlQbaDC+Eba/GARMPy6hKdCLiSke5RsN5LcyQ0=
 github.com/alibabacloud-go/tea-utils/v2 v2.0.6/go.mod h1:qxn986l+q33J5VkialKMqT/TTs3E+U9MJpd001iWQ9I=
+github.com/alibabacloud-go/tea-utils/v2 v2.0.7 h1:WDx5qW3Xa5ZgJ1c8NfqJkF6w+AU5wB8835UdhPr6Ax0=
+github.com/alibabacloud-go/tea-utils/v2 v2.0.7/go.mod h1:qxn986l+q33J5VkialKMqT/TTs3E+U9MJpd001iWQ9I=
 github.com/alibabacloud-go/tea-xml v1.1.2/go.mod h1:Rq08vgCcCAjHyRi/M7xlHKUykZCEtyBy9+DPF6GgEu8=
 github.com/alibabacloud-go/tea-xml v1.1.3 h1:7LYnm+JbOq2B+T/B0fHC4Ies4/FofC4zHzYtqw7dgt0=
 github.com/alibabacloud-go/tea-xml v1.1.3/go.mod h1:Rq08vgCcCAjHyRi/M7xlHKUykZCEtyBy9+DPF6GgEu8=
@@ -1540,8 +1542,8 @@ github.com/aliyun/credentials-go v1.4.7 h1:T17dLqEtPUFvjDRRb5giVvLh6dFT8IcNFJJb7
 github.com/aliyun/credentials-go v1.4.7/go.mod h1:Jm6d+xIgwJVLVWT561vy67ZRP4lPTQxMbEYRuT2Ti1U=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 h1:E4jdnYzB1G/DiTVHychdLOnak4w/TlKd4ZHM8wZDs58=
 github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050/go.mod h1:rYnxfOnoHRZ2QGKREUOESel1hmRe0frzF2RLpcDVtTU=
-github.com/aliyun/terraform-provider-alicloud v1.261.0 h1:mVcfV0FUCROBTKg1EXq7PNY9kJuKZa1a5PmPLW5K6WY=
-github.com/aliyun/terraform-provider-alicloud v1.261.0/go.mod h1:EfMq/ZbZs6w7xZGM9Mi26jnwLDTycKY2yimeSr6+SG4=
+github.com/aliyun/terraform-provider-alicloud v1.262.0 h1:FwQ5gP3KGtCKCxn5dlJBdfWZT6eVOy74GOSGTn8mLVQ=
+github.com/aliyun/terraform-provider-alicloud v1.262.0/go.mod h1:C4D/JSGOkMbEb8Xped63zhb3vUI5QD5cSCl/qBtDr7c=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/andybalholm/brotli v1.1.0 h1:eLKJA0d02Lf0mVpIDgYnqXcUn0GqVmEFny3VuID1U3M=
