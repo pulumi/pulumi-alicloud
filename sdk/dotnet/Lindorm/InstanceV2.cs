@@ -121,31 +121,54 @@ namespace Pulumi.AliCloud.Lindorm
 
         /// <summary>
         /// Deployment Scenario
-        /// &gt; Enumeration value
-        /// &gt; - 1.0 Single AZ
-        /// &gt; - 2.0 Multi-AZ Basic
-        /// &gt; - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// &gt; **NOTE:**  Enumeration value
+        /// 
+        /// &gt; **NOTE:**  - 1.0 Single AZ
+        /// 
+        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+        /// 
+        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("archVersion")]
         public Output<string> ArchVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Auto Renew
+        /// Automatic renewal duration. Unit: Month.
+        /// 
+        /// Value range: `1` to **12 * *.
+        /// 
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("autoRenewDuration")]
+        public Output<string?> AutoRenewDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the instance is automatically renewed. Enumerated values:
         /// </summary>
         [Output("autoRenewal")]
         public Output<bool?> AutoRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// &gt; Cloud storage capacity in GB
+        /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Output("cloudStorageSize")]
         public Output<int?> CloudStorageSize { get; private set; } = null!;
 
         /// <summary>
-        /// &gt;&gt;
-        /// &gt; - StandardStorage: Standard cloud storage
-        /// &gt; - PerformanceStorage: performance-based cloud storage
-        /// &gt;- capacity storage: Capacity-based cloud storage
+        /// &gt; **NOTE:** &gt;
+        /// 
+        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+        /// 
+        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+        /// 
+        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
         /// </summary>
         [Output("cloudStorageType")]
         public Output<string?> CloudStorageType { get; private set; } = null!;
@@ -155,6 +178,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("deletionProtection")]
         public Output<string> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The specified duration when the resource is purchased. Only the subscription instances are valid.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("duration")]
+        public Output<int?> Duration { get; private set; } = null!;
 
         /// <summary>
         /// Engine List See `EngineList` below.
@@ -173,6 +204,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// Purchase duration unit: Month, Year
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Output("pricingCycle")]
+        public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
         /// Primary zone VswitchId
@@ -282,31 +321,54 @@ namespace Pulumi.AliCloud.Lindorm
 
         /// <summary>
         /// Deployment Scenario
-        /// &gt; Enumeration value
-        /// &gt; - 1.0 Single AZ
-        /// &gt; - 2.0 Multi-AZ Basic
-        /// &gt; - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// &gt; **NOTE:**  Enumeration value
+        /// 
+        /// &gt; **NOTE:**  - 1.0 Single AZ
+        /// 
+        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+        /// 
+        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("archVersion", required: true)]
         public Input<string> ArchVersion { get; set; } = null!;
 
         /// <summary>
-        /// Auto Renew
+        /// Automatic renewal duration. Unit: Month.
+        /// 
+        /// Value range: `1` to **12 * *.
+        /// 
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<string>? AutoRenewDuration { get; set; }
+
+        /// <summary>
+        /// Whether the instance is automatically renewed. Enumerated values:
         /// </summary>
         [Input("autoRenewal")]
         public Input<bool>? AutoRenewal { get; set; }
 
         /// <summary>
-        /// &gt; Cloud storage capacity in GB
+        /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Input("cloudStorageSize")]
         public Input<int>? CloudStorageSize { get; set; }
 
         /// <summary>
-        /// &gt;&gt;
-        /// &gt; - StandardStorage: Standard cloud storage
-        /// &gt; - PerformanceStorage: performance-based cloud storage
-        /// &gt;- capacity storage: Capacity-based cloud storage
+        /// &gt; **NOTE:** &gt;
+        /// 
+        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+        /// 
+        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+        /// 
+        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
         /// </summary>
         [Input("cloudStorageType")]
         public Input<string>? CloudStorageType { get; set; }
@@ -316,6 +378,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The specified duration when the resource is purchased. Only the subscription instances are valid.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
 
         [Input("engineLists", required: true)]
         private InputList<Inputs.InstanceV2EngineListArgs>? _engineLists;
@@ -340,6 +410,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
+
+        /// <summary>
+        /// Purchase duration unit: Month, Year
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Primary zone VswitchId
@@ -405,31 +483,54 @@ namespace Pulumi.AliCloud.Lindorm
 
         /// <summary>
         /// Deployment Scenario
-        /// &gt; Enumeration value
-        /// &gt; - 1.0 Single AZ
-        /// &gt; - 2.0 Multi-AZ Basic
-        /// &gt; - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// &gt; **NOTE:**  Enumeration value
+        /// 
+        /// &gt; **NOTE:**  - 1.0 Single AZ
+        /// 
+        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
+        /// 
+        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("archVersion")]
         public Input<string>? ArchVersion { get; set; }
 
         /// <summary>
-        /// Auto Renew
+        /// Automatic renewal duration. Unit: Month.
+        /// 
+        /// Value range: `1` to **12 * *.
+        /// 
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<string>? AutoRenewDuration { get; set; }
+
+        /// <summary>
+        /// Whether the instance is automatically renewed. Enumerated values:
         /// </summary>
         [Input("autoRenewal")]
         public Input<bool>? AutoRenewal { get; set; }
 
         /// <summary>
-        /// &gt; Cloud storage capacity in GB
+        /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Input("cloudStorageSize")]
         public Input<int>? CloudStorageSize { get; set; }
 
         /// <summary>
-        /// &gt;&gt;
-        /// &gt; - StandardStorage: Standard cloud storage
-        /// &gt; - PerformanceStorage: performance-based cloud storage
-        /// &gt;- capacity storage: Capacity-based cloud storage
+        /// &gt; **NOTE:** &gt;
+        /// 
+        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
+        /// 
+        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
+        /// 
+        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
         /// </summary>
         [Input("cloudStorageType")]
         public Input<string>? CloudStorageType { get; set; }
@@ -439,6 +540,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The specified duration when the resource is purchased. Only the subscription instances are valid.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
 
         [Input("engineLists")]
         private InputList<Inputs.InstanceV2EngineListGetArgs>? _engineLists;
@@ -463,6 +572,14 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// Purchase duration unit: Month, Year
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
         /// Primary zone VswitchId

@@ -19,14 +19,16 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     public static final AggregatorArgs Empty = new AggregatorArgs();
 
     /**
-     * The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * The member accounts of the account group. See `aggregatorAccounts` below.
+     * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
     @Import(name="aggregatorAccounts")
     private @Nullable Output<List<AggregatorAggregatorAccountArgs>> aggregatorAccounts;
 
     /**
-     * @return The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+     * @return The member accounts of the account group. See `aggregatorAccounts` below.
+     * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
      * 
      */
     public Optional<Output<List<AggregatorAggregatorAccountArgs>>> aggregatorAccounts() {
@@ -34,14 +36,14 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of aggregator.
+     * The name of the account group.
      * 
      */
     @Import(name="aggregatorName", required=true)
     private Output<String> aggregatorName;
 
     /**
-     * @return The name of aggregator.
+     * @return The name of the account group.
      * 
      */
     public Output<String> aggregatorName() {
@@ -49,18 +51,20 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-     * * `CUSTOM` - The custom account group.
-     * * `RD` - The global account group.
+     * The type of the account group. Default value: `CUSTOM`. Valid values:
+     * - `RD`: Global account group.
+     * - `FOLDER`: Folder account group.
+     * - `CUSTOM`: Custom account group.
      * 
      */
     @Import(name="aggregatorType")
     private @Nullable Output<String> aggregatorType;
 
     /**
-     * @return The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-     * * `CUSTOM` - The custom account group.
-     * * `RD` - The global account group.
+     * @return The type of the account group. Default value: `CUSTOM`. Valid values:
+     * - `RD`: Global account group.
+     * - `FOLDER`: Folder account group.
+     * - `CUSTOM`: Custom account group.
      * 
      */
     public Optional<Output<String>> aggregatorType() {
@@ -68,18 +72,33 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of aggregator.
+     * The description of the account group.
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return The description of aggregator.
+     * @return The description of the account group.
      * 
      */
     public Output<String> description() {
         return this.description;
+    }
+
+    /**
+     * The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+     * 
+     */
+    @Import(name="folderId")
+    private @Nullable Output<String> folderId;
+
+    /**
+     * @return The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+     * 
+     */
+    public Optional<Output<String>> folderId() {
+        return Optional.ofNullable(this.folderId);
     }
 
     private AggregatorArgs() {}
@@ -89,6 +108,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         this.aggregatorName = $.aggregatorName;
         this.aggregatorType = $.aggregatorType;
         this.description = $.description;
+        this.folderId = $.folderId;
     }
 
     public static Builder builder() {
@@ -110,7 +130,8 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder
          * 
@@ -121,7 +142,8 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder
          * 
@@ -131,7 +153,8 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorAccounts The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+         * @param aggregatorAccounts The member accounts of the account group. See `aggregatorAccounts` below.
+         * &gt; **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
          * 
          * @return builder
          * 
@@ -141,7 +164,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorName The name of aggregator.
+         * @param aggregatorName The name of the account group.
          * 
          * @return builder
          * 
@@ -152,7 +175,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorName The name of aggregator.
+         * @param aggregatorName The name of the account group.
          * 
          * @return builder
          * 
@@ -162,9 +185,10 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorType The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-         * * `CUSTOM` - The custom account group.
-         * * `RD` - The global account group.
+         * @param aggregatorType The type of the account group. Default value: `CUSTOM`. Valid values:
+         * - `RD`: Global account group.
+         * - `FOLDER`: Folder account group.
+         * - `CUSTOM`: Custom account group.
          * 
          * @return builder
          * 
@@ -175,9 +199,10 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aggregatorType The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-         * * `CUSTOM` - The custom account group.
-         * * `RD` - The global account group.
+         * @param aggregatorType The type of the account group. Default value: `CUSTOM`. Valid values:
+         * - `RD`: Global account group.
+         * - `FOLDER`: Folder account group.
+         * - `CUSTOM`: Custom account group.
          * 
          * @return builder
          * 
@@ -187,7 +212,7 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of aggregator.
+         * @param description The description of the account group.
          * 
          * @return builder
          * 
@@ -198,13 +223,34 @@ public final class AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of aggregator.
+         * @param description The description of the account group.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param folderId The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder folderId(@Nullable Output<String> folderId) {
+            $.folderId = folderId;
+            return this;
+        }
+
+        /**
+         * @param folderId The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder folderId(String folderId) {
+            return folderId(Output.of(folderId));
         }
 
         public AggregatorArgs build() {

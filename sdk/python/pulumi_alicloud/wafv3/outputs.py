@@ -19,8 +19,13 @@ __all__ = [
     'DefenseRuleConfig',
     'DefenseRuleConfigAccountIdentifier',
     'DefenseRuleConfigCondition',
+    'DefenseRuleConfigGrayConfig',
     'DefenseRuleConfigRateLimit',
     'DefenseRuleConfigRateLimitStatus',
+    'DefenseRuleConfigTimeConfig',
+    'DefenseRuleConfigTimeConfigTimePeriod',
+    'DefenseRuleConfigTimeConfigWeekTimePeriod',
+    'DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod',
     'DomainListen',
     'DomainRedirect',
     'DomainRedirectRequestHeader',
@@ -52,6 +57,10 @@ class DefenseRuleConfig(dict):
             suggest = "cc_status"
         elif key == "cnRegions":
             suggest = "cn_regions"
+        elif key == "grayConfig":
+            suggest = "gray_config"
+        elif key == "grayStatus":
+            suggest = "gray_status"
         elif key == "rateLimit":
             suggest = "rate_limit"
         elif key == "remoteAddrs":
@@ -62,6 +71,8 @@ class DefenseRuleConfig(dict):
             suggest = "throttle_threhold"
         elif key == "throttleType":
             suggest = "throttle_type"
+        elif key == "timeConfig":
+            suggest = "time_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfig. Access the value via the '{suggest}' property getter instead.")
@@ -84,6 +95,8 @@ class DefenseRuleConfig(dict):
                  cc_status: Optional[_builtins.int] = None,
                  cn_regions: Optional[_builtins.str] = None,
                  conditions: Optional[Sequence['outputs.DefenseRuleConfigCondition']] = None,
+                 gray_config: Optional['outputs.DefenseRuleConfigGrayConfig'] = None,
+                 gray_status: Optional[_builtins.int] = None,
                  mode: Optional[_builtins.int] = None,
                  protocol: Optional[_builtins.str] = None,
                  rate_limit: Optional['outputs.DefenseRuleConfigRateLimit'] = None,
@@ -91,6 +104,7 @@ class DefenseRuleConfig(dict):
                  rule_action: Optional[_builtins.str] = None,
                  throttle_threhold: Optional[_builtins.int] = None,
                  throttle_type: Optional[_builtins.str] = None,
+                 time_config: Optional['outputs.DefenseRuleConfigTimeConfig'] = None,
                  ua: Optional[_builtins.str] = None,
                  url: Optional[_builtins.str] = None):
         """
@@ -144,6 +158,10 @@ class DefenseRuleConfig(dict):
                - 1: Indicates that the speed limit is on.
         :param _builtins.str cn_regions: The regions in China from which you want to block requests. If you specify "CN", requests from the Chinese mainland (excluding Hong Kong, Macao, and Taiwan) are blocked. Separate multiple regions with commas (,). For more information about region codes, see Description of region codes in China.
         :param Sequence['DefenseRuleConfigConditionArgs'] conditions: The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
+        :param 'DefenseRuleConfigGrayConfigArgs' gray_config: The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `gray_config` below.
+        :param _builtins.int gray_status: Specifies whether to enable canary release for the rule. Valid values:
+               - 0 (default): disables canary release.
+               - 1: enables canary release.
         :param _builtins.int mode: The HTTP flood protection mode. Valid values:
                - 0 (default): indicates normal protection.
                - 1: indicates emergency protection.
@@ -165,6 +183,7 @@ class DefenseRuleConfig(dict):
         :param _builtins.str throttle_type: The throttling method. Valid values:
                - qps: indicates throttling based on queries per second (QPS).
                - ratio (default): indicates throttling based on percentage.
+        :param 'DefenseRuleConfigTimeConfigArgs' time_config: The scheduled rule configuration. The value is a JSON.  See `time_config` below.
         :param _builtins.str ua: The User-Agent string that is allowed for access to the address.
         :param _builtins.str url: The address of the cached page.
         """
@@ -186,6 +205,10 @@ class DefenseRuleConfig(dict):
             pulumi.set(__self__, "cn_regions", cn_regions)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if gray_config is not None:
+            pulumi.set(__self__, "gray_config", gray_config)
+        if gray_status is not None:
+            pulumi.set(__self__, "gray_status", gray_status)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if protocol is not None:
@@ -200,6 +223,8 @@ class DefenseRuleConfig(dict):
             pulumi.set(__self__, "throttle_threhold", throttle_threhold)
         if throttle_type is not None:
             pulumi.set(__self__, "throttle_type", throttle_type)
+        if time_config is not None:
+            pulumi.set(__self__, "time_config", time_config)
         if ua is not None:
             pulumi.set(__self__, "ua", ua)
         if url is not None:
@@ -319,6 +344,24 @@ class DefenseRuleConfig(dict):
         return pulumi.get(self, "conditions")
 
     @_builtins.property
+    @pulumi.getter(name="grayConfig")
+    def gray_config(self) -> Optional['outputs.DefenseRuleConfigGrayConfig']:
+        """
+        The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `gray_config` below.
+        """
+        return pulumi.get(self, "gray_config")
+
+    @_builtins.property
+    @pulumi.getter(name="grayStatus")
+    def gray_status(self) -> Optional[_builtins.int]:
+        """
+        Specifies whether to enable canary release for the rule. Valid values:
+        - 0 (default): disables canary release.
+        - 1: enables canary release.
+        """
+        return pulumi.get(self, "gray_status")
+
+    @_builtins.property
     @pulumi.getter
     def mode(self) -> Optional[_builtins.int]:
         """
@@ -387,6 +430,14 @@ class DefenseRuleConfig(dict):
         - ratio (default): indicates throttling based on percentage.
         """
         return pulumi.get(self, "throttle_type")
+
+    @_builtins.property
+    @pulumi.getter(name="timeConfig")
+    def time_config(self) -> Optional['outputs.DefenseRuleConfigTimeConfig']:
+        """
+        The scheduled rule configuration. The value is a JSON.  See `time_config` below.
+        """
+        return pulumi.get(self, "time_config")
 
     @_builtins.property
     @pulumi.getter
@@ -636,6 +687,70 @@ class DefenseRuleConfigCondition(dict):
 
 
 @pulumi.output_type
+class DefenseRuleConfigGrayConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grayRate":
+            suggest = "gray_rate"
+        elif key == "graySubKey":
+            suggest = "gray_sub_key"
+        elif key == "grayTarget":
+            suggest = "gray_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfigGrayConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefenseRuleConfigGrayConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefenseRuleConfigGrayConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gray_rate: Optional[_builtins.int] = None,
+                 gray_sub_key: Optional[_builtins.str] = None,
+                 gray_target: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int gray_rate: The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+        :param _builtins.str gray_sub_key: The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+        :param _builtins.str gray_target: The type of the canary release object. Valid values:
+        """
+        if gray_rate is not None:
+            pulumi.set(__self__, "gray_rate", gray_rate)
+        if gray_sub_key is not None:
+            pulumi.set(__self__, "gray_sub_key", gray_sub_key)
+        if gray_target is not None:
+            pulumi.set(__self__, "gray_target", gray_target)
+
+    @_builtins.property
+    @pulumi.getter(name="grayRate")
+    def gray_rate(self) -> Optional[_builtins.int]:
+        """
+        The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+        """
+        return pulumi.get(self, "gray_rate")
+
+    @_builtins.property
+    @pulumi.getter(name="graySubKey")
+    def gray_sub_key(self) -> Optional[_builtins.str]:
+        """
+        The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+        """
+        return pulumi.get(self, "gray_sub_key")
+
+    @_builtins.property
+    @pulumi.getter(name="grayTarget")
+    def gray_target(self) -> Optional[_builtins.str]:
+        """
+        The type of the canary release object. Valid values:
+        """
+        return pulumi.get(self, "gray_target")
+
+
+@pulumi.output_type
 class DefenseRuleConfigRateLimit(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -786,6 +901,194 @@ class DefenseRuleConfigRateLimitStatus(dict):
         The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
         """
         return pulumi.get(self, "ratio")
+
+
+@pulumi.output_type
+class DefenseRuleConfigTimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timePeriods":
+            suggest = "time_periods"
+        elif key == "timeScope":
+            suggest = "time_scope"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "weekTimePeriods":
+            suggest = "week_time_periods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfigTimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefenseRuleConfigTimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefenseRuleConfigTimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_periods: Optional[Sequence['outputs.DefenseRuleConfigTimeConfigTimePeriod']] = None,
+                 time_scope: Optional[_builtins.str] = None,
+                 time_zone: Optional[_builtins.int] = None,
+                 week_time_periods: Optional[Sequence['outputs.DefenseRuleConfigTimeConfigWeekTimePeriod']] = None):
+        """
+        :param Sequence['DefenseRuleConfigTimeConfigTimePeriodArgs'] time_periods: The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `time_periods` below.
+        :param _builtins.str time_scope: The effective period of the rule. Valid values:
+        :param _builtins.int time_zone: The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+        :param Sequence['DefenseRuleConfigTimeConfigWeekTimePeriodArgs'] week_time_periods: The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `week_time_periods` below.
+        """
+        if time_periods is not None:
+            pulumi.set(__self__, "time_periods", time_periods)
+        if time_scope is not None:
+            pulumi.set(__self__, "time_scope", time_scope)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+        if week_time_periods is not None:
+            pulumi.set(__self__, "week_time_periods", week_time_periods)
+
+    @_builtins.property
+    @pulumi.getter(name="timePeriods")
+    def time_periods(self) -> Optional[Sequence['outputs.DefenseRuleConfigTimeConfigTimePeriod']]:
+        """
+        The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `time_periods` below.
+        """
+        return pulumi.get(self, "time_periods")
+
+    @_builtins.property
+    @pulumi.getter(name="timeScope")
+    def time_scope(self) -> Optional[_builtins.str]:
+        """
+        The effective period of the rule. Valid values:
+        """
+        return pulumi.get(self, "time_scope")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[_builtins.int]:
+        """
+        The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="weekTimePeriods")
+    def week_time_periods(self) -> Optional[Sequence['outputs.DefenseRuleConfigTimeConfigWeekTimePeriod']]:
+        """
+        The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `week_time_periods` below.
+        """
+        return pulumi.get(self, "week_time_periods")
+
+
+@pulumi.output_type
+class DefenseRuleConfigTimeConfigTimePeriod(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.int] = None,
+                 start: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int end: The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+        :param _builtins.int start: The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.int]:
+        """
+        The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.int]:
+        """
+        The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class DefenseRuleConfigTimeConfigWeekTimePeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayPeriods":
+            suggest = "day_periods"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefenseRuleConfigTimeConfigWeekTimePeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefenseRuleConfigTimeConfigWeekTimePeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefenseRuleConfigTimeConfigWeekTimePeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: Optional[_builtins.str] = None,
+                 day_periods: Optional[Sequence['outputs.DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod']] = None):
+        """
+        :param _builtins.str day: The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+        :param Sequence['DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs'] day_periods: The time period of each day when the rule is effective.  See `day_periods` below.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if day_periods is not None:
+            pulumi.set(__self__, "day_periods", day_periods)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> Optional[_builtins.str]:
+        """
+        The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter(name="dayPeriods")
+    def day_periods(self) -> Optional[Sequence['outputs.DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod']]:
+        """
+        The time period of each day when the rule is effective.  See `day_periods` below.
+        """
+        return pulumi.get(self, "day_periods")
+
+
+@pulumi.output_type
+class DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.int] = None,
+                 start: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int end: The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+        :param _builtins.int start: The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.int]:
+        """
+        The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.int]:
+        """
+        The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+        """
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type

@@ -84,6 +84,8 @@ type RegistryEnterpriseInstance struct {
 	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// Custom OSS Bucket name
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	CustomOssBucket pulumi.StringPtrOutput `pulumi:"customOssBucket"`
 	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrOutput `pulumi:"defaultOssBucket"`
@@ -92,6 +94,8 @@ type RegistryEnterpriseInstance struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrOutput `pulumi:"imageScanner"`
 	// (Available since v1.240.0) Instance Network Access Endpoint List
 	InstanceEndpoints RegistryEnterpriseInstanceInstanceEndpointArrayOutput `pulumi:"instanceEndpoints"`
@@ -101,6 +105,8 @@ type RegistryEnterpriseInstance struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
@@ -114,6 +120,8 @@ type RegistryEnterpriseInstance struct {
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// RegionId
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
@@ -188,6 +196,8 @@ type registryEnterpriseInstanceState struct {
 	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime *string `pulumi:"createdTime"`
 	// Custom OSS Bucket name
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	CustomOssBucket *string `pulumi:"customOssBucket"`
 	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
@@ -196,6 +206,8 @@ type registryEnterpriseInstanceState struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner *string `pulumi:"imageScanner"`
 	// (Available since v1.240.0) Instance Network Access Endpoint List
 	InstanceEndpoints []RegistryEnterpriseInstanceInstanceEndpoint `pulumi:"instanceEndpoints"`
@@ -205,6 +217,8 @@ type registryEnterpriseInstanceState struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -218,6 +232,8 @@ type registryEnterpriseInstanceState struct {
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
 	// RegionId
 	RegionId *string `pulumi:"regionId"`
@@ -247,6 +263,8 @@ type RegistryEnterpriseInstanceState struct {
 	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime pulumi.StringPtrInput
 	// Custom OSS Bucket name
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	CustomOssBucket pulumi.StringPtrInput
 	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrInput
@@ -255,6 +273,8 @@ type RegistryEnterpriseInstanceState struct {
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrInput
 	// (Available since v1.240.0) Instance Network Access Endpoint List
 	InstanceEndpoints RegistryEnterpriseInstanceInstanceEndpointArrayInput
@@ -264,6 +284,8 @@ type RegistryEnterpriseInstanceState struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -277,6 +299,8 @@ type RegistryEnterpriseInstanceState struct {
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
 	// RegionId
 	RegionId pulumi.StringPtrInput
@@ -304,12 +328,16 @@ func (RegistryEnterpriseInstanceState) ElementType() reflect.Type {
 
 type registryEnterpriseInstanceArgs struct {
 	// Custom OSS Bucket name
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	CustomOssBucket *string `pulumi:"customOssBucket"`
 	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner *string `pulumi:"imageScanner"`
 	// InstanceName
 	InstanceName string `pulumi:"instanceName"`
@@ -317,6 +345,8 @@ type registryEnterpriseInstanceArgs struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -330,6 +360,8 @@ type registryEnterpriseInstanceArgs struct {
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
 	// Automatic renewal cycle, in months.
 	//
@@ -350,12 +382,16 @@ type registryEnterpriseInstanceArgs struct {
 // The set of arguments for constructing a RegistryEnterpriseInstance resource.
 type RegistryEnterpriseInstanceArgs struct {
 	// Custom OSS Bucket name
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	CustomOssBucket pulumi.StringPtrInput
 	// Whether to use the default OSS Bucket. Value:
 	DefaultOssBucket pulumi.StringPtrInput
 	// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 	// - `ACR`: Uses the Trivy scan engine provided by default.
 	// - `SAS`: uses the enhanced cloud security scan engine.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ImageScanner pulumi.StringPtrInput
 	// InstanceName
 	InstanceName pulumi.StringInput
@@ -363,6 +399,8 @@ type RegistryEnterpriseInstanceArgs struct {
 	// - `Basic`: Basic instance
 	// - `Standard`: Standard instance
 	// - `Advanced`: Advanced Edition Instance
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	InstanceType pulumi.StringInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -376,6 +414,8 @@ type RegistryEnterpriseInstanceArgs struct {
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
 	// Automatic renewal cycle, in months.
 	//
@@ -493,6 +533,8 @@ func (o RegistryEnterpriseInstanceOutput) CreatedTime() pulumi.StringOutput {
 }
 
 // Custom OSS Bucket name
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) CustomOssBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.CustomOssBucket }).(pulumi.StringPtrOutput)
 }
@@ -510,6 +552,8 @@ func (o RegistryEnterpriseInstanceOutput) EndTime() pulumi.StringOutput {
 // The security scan engine used by the Enterprise Edition of Container Image Service. Value:
 // - `ACR`: Uses the Trivy scan engine provided by default.
 // - `SAS`: uses the enhanced cloud security scan engine.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) ImageScanner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.ImageScanner }).(pulumi.StringPtrOutput)
 }
@@ -530,6 +574,8 @@ func (o RegistryEnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
 // - `Basic`: Basic instance
 // - `Standard`: Standard instance
 // - `Advanced`: Advanced Edition Instance
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -558,6 +604,8 @@ func (o RegistryEnterpriseInstanceOutput) PaymentType() pulumi.StringOutput {
 // Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 //
 // > **NOTE:**  must be set when creating a prepaid instance.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RegistryEnterpriseInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

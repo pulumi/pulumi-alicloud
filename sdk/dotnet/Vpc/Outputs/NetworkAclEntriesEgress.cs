@@ -13,15 +13,33 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class NetworkAclEntriesEgress
     {
+        /// <summary>
+        /// The description of the egress entry.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The destination ip of the egress entry.
         /// </summary>
         public readonly string? DestinationCidrIp;
+        /// <summary>
+        /// The entry type of the egress entry. It must be `Custom` or `System`. Default value is `Custom`.
+        /// </summary>
         public readonly string? EntryType;
+        /// <summary>
+        /// The name of the egress entry.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The policy of the egress entry. It must be `Accept` or `Drop`.
+        /// </summary>
         public readonly string? Policy;
+        /// <summary>
+        /// The port of the egress entry.
+        /// </summary>
         public readonly string? Port;
+        /// <summary>
+        /// The protocol of the egress entry.
+        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

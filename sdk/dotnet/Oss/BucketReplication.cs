@@ -47,8 +47,8 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
-    ///         Name = $"example-role-{@default.Result}",
-    ///         Document = @"\t\t{
+    ///         RoleName = $"example-role-{@default.Result}",
+    ///         AssumeRolePolicyDocument = @"\t\t{
     /// \t\t  \""Statement\"": [
     /// \t\t\t{
     /// \t\t\t  \""Action\"": \""sts:AssumeRole\"",
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Oss
     ///     {
     ///         PolicyName = policy.PolicyName,
     ///         PolicyType = policy.Type,
-    ///         RoleName = role.Name,
+    ///         RoleName = role.RoleName,
     ///     });
     /// 
     ///     var key = new AliCloud.Kms.Key("key", new()
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Oss
     ///             Bucket = bucketDest.Id,
     ///             Location = bucketDest.Location,
     ///         },
-    ///         SyncRole = role.Name,
+    ///         SyncRole = role.RoleName,
     ///         EncryptionConfiguration = new AliCloud.Oss.Inputs.BucketReplicationEncryptionConfigurationArgs
     ///         {
     ///             ReplicaKmsKeyId = key.Id,
@@ -190,6 +190,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Output("progress")]
         public Output<Outputs.BucketReplicationProgress> Progress { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `Rtc` below.
+        /// </summary>
+        [Output("rtc")]
+        public Output<Outputs.BucketReplicationRtc> Rtc { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the data replication rule.
@@ -304,6 +310,12 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketReplicationProgressArgs>? Progress { get; set; }
 
         /// <summary>
+        /// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `Rtc` below.
+        /// </summary>
+        [Input("rtc")]
+        public Input<Inputs.BucketReplicationRtcArgs>? Rtc { get; set; }
+
+        /// <summary>
         /// Specifies other conditions used to filter the source objects to replicate. See `SourceSelectionCriteria` below.
         /// </summary>
         [Input("sourceSelectionCriteria")]
@@ -364,6 +376,12 @@ namespace Pulumi.AliCloud.Oss
         /// </summary>
         [Input("progress")]
         public Input<Inputs.BucketReplicationProgressGetArgs>? Progress { get; set; }
+
+        /// <summary>
+        /// Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `Rtc` below.
+        /// </summary>
+        [Input("rtc")]
+        public Input<Inputs.BucketReplicationRtcGetArgs>? Rtc { get; set; }
 
         /// <summary>
         /// The ID of the data replication rule.

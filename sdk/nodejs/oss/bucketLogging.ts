@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+ * Provides a OSS Bucket Logging resource.
  *
- * For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+ * After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+ *
+ * For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
  *
  * > **NOTE:** Available since v1.222.0.
  *
@@ -18,22 +20,22 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const _default = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
- * });
  * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
  *     storageClass: "Standard",
- *     bucket: `${name}-${_default.result}`,
+ *     bucket: "resource-example-logging-806",
  * });
- * const defaultBucketLogging = new alicloud.oss.BucketLogging("default", {
- *     bucket: createBucket.bucket,
- *     targetBucket: createBucket.bucket,
+ * const createLoggingBucket = new alicloud.oss.Bucket("CreateLoggingBucket", {
+ *     storageClass: "Standard",
+ *     bucket: "resource-example-logging-153",
+ * });
+ * const _default = new alicloud.oss.BucketLogging("default", {
+ *     bucket: createBucket.id,
+ *     targetBucket: createBucket.id,
  *     targetPrefix: "log/",
+ *     loggingRole: "example-role",
  * });
  * ```
  *
@@ -74,9 +76,13 @@ export class BucketLogging extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     declare public readonly bucket: pulumi.Output<string>;
+    /**
+     * Authorization role used for bucket logging
+     */
+    declare public readonly loggingRole: pulumi.Output<string | undefined>;
     /**
      * The bucket that stores access logs.
      */
@@ -100,6 +106,7 @@ export class BucketLogging extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BucketLoggingState | undefined;
             resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["loggingRole"] = state?.loggingRole;
             resourceInputs["targetBucket"] = state?.targetBucket;
             resourceInputs["targetPrefix"] = state?.targetPrefix;
         } else {
@@ -111,6 +118,7 @@ export class BucketLogging extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetBucket'");
             }
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["loggingRole"] = args?.loggingRole;
             resourceInputs["targetBucket"] = args?.targetBucket;
             resourceInputs["targetPrefix"] = args?.targetPrefix;
         }
@@ -124,9 +132,13 @@ export class BucketLogging extends pulumi.CustomResource {
  */
 export interface BucketLoggingState {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     bucket?: pulumi.Input<string>;
+    /**
+     * Authorization role used for bucket logging
+     */
+    loggingRole?: pulumi.Input<string>;
     /**
      * The bucket that stores access logs.
      */
@@ -142,9 +154,13 @@ export interface BucketLoggingState {
  */
 export interface BucketLoggingArgs {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Authorization role used for bucket logging
+     */
+    loggingRole?: pulumi.Input<string>;
     /**
      * The bucket that stores access logs.
      */

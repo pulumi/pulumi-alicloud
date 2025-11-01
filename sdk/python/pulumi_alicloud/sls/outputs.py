@@ -63,6 +63,8 @@ __all__ = [
     'GetEtlsEtlResult',
     'GetEtlsEtlConfigurationResult',
     'GetEtlsEtlConfigurationSinkResult',
+    'GetIndexsIndexResult',
+    'GetIndexsIndexLineResult',
     'GetLogtailConfigsConfigResult',
     'GetMachineGroupsGroupResult',
 ]
@@ -3805,6 +3807,152 @@ class GetEtlsEtlConfigurationSinkResult(dict):
         The ARN role that authorizes writing to the target Logstore.
         """
         return pulumi.get(self, "role_arn")
+
+
+@pulumi.output_type
+class GetIndexsIndexResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 keys: _builtins.str,
+                 line: 'outputs.GetIndexsIndexLineResult',
+                 log_reduce_black_lists: Sequence[_builtins.str],
+                 log_reduce_white_lists: Sequence[_builtins.str],
+                 max_text_len: _builtins.int,
+                 ttl: _builtins.int):
+        """
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.str keys: Field index
+        :param 'GetIndexsIndexLineArgs' line: Full-text index
+        :param Sequence[_builtins.str] log_reduce_black_lists: The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+        :param Sequence[_builtins.str] log_reduce_white_lists: The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+        :param _builtins.int max_text_len: Maximum length of statistical field
+        :param _builtins.int ttl: Log index storage time
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "keys", keys)
+        pulumi.set(__self__, "line", line)
+        pulumi.set(__self__, "log_reduce_black_lists", log_reduce_black_lists)
+        pulumi.set(__self__, "log_reduce_white_lists", log_reduce_white_lists)
+        pulumi.set(__self__, "max_text_len", max_text_len)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> _builtins.str:
+        """
+        Field index
+        """
+        return pulumi.get(self, "keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def line(self) -> 'outputs.GetIndexsIndexLineResult':
+        """
+        Full-text index
+        """
+        return pulumi.get(self, "line")
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceBlackLists")
+    def log_reduce_black_lists(self) -> Sequence[_builtins.str]:
+        """
+        The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+        """
+        return pulumi.get(self, "log_reduce_black_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceWhiteLists")
+    def log_reduce_white_lists(self) -> Sequence[_builtins.str]:
+        """
+        The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+        """
+        return pulumi.get(self, "log_reduce_white_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="maxTextLen")
+    def max_text_len(self) -> _builtins.int:
+        """
+        Maximum length of statistical field
+        """
+        return pulumi.get(self, "max_text_len")
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> _builtins.int:
+        """
+        Log index storage time
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class GetIndexsIndexLineResult(dict):
+    def __init__(__self__, *,
+                 case_sensitive: _builtins.bool,
+                 chn: _builtins.bool,
+                 exclude_keys: Sequence[_builtins.str],
+                 include_keys: Sequence[_builtins.str],
+                 tokens: Sequence[_builtins.str]):
+        """
+        :param _builtins.bool case_sensitive: Is case sensitive.
+        :param _builtins.bool chn: Does it include Chinese.
+        :param Sequence[_builtins.str] exclude_keys: List of excluded fields.
+        :param Sequence[_builtins.str] include_keys: Include field list.
+        :param Sequence[_builtins.str] tokens: Delimiter.
+        """
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
+        pulumi.set(__self__, "chn", chn)
+        pulumi.set(__self__, "exclude_keys", exclude_keys)
+        pulumi.set(__self__, "include_keys", include_keys)
+        pulumi.set(__self__, "tokens", tokens)
+
+    @_builtins.property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> _builtins.bool:
+        """
+        Is case sensitive.
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @_builtins.property
+    @pulumi.getter
+    def chn(self) -> _builtins.bool:
+        """
+        Does it include Chinese.
+        """
+        return pulumi.get(self, "chn")
+
+    @_builtins.property
+    @pulumi.getter(name="excludeKeys")
+    def exclude_keys(self) -> Sequence[_builtins.str]:
+        """
+        List of excluded fields.
+        """
+        return pulumi.get(self, "exclude_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="includeKeys")
+    def include_keys(self) -> Sequence[_builtins.str]:
+        """
+        Include field list.
+        """
+        return pulumi.get(self, "include_keys")
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Sequence[_builtins.str]:
+        """
+        Delimiter.
+        """
+        return pulumi.get(self, "tokens")
 
 
 @pulumi.output_type

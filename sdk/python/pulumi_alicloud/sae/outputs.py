@@ -322,6 +322,8 @@ class ApplicationLivenessV2(dict):
         suggest = None
         if key == "exec":
             suggest = "exec_"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
         elif key == "httpGet":
             suggest = "http_get"
         elif key == "initialDelaySeconds":
@@ -346,6 +348,7 @@ class ApplicationLivenessV2(dict):
 
     def __init__(__self__, *,
                  exec_: Optional['outputs.ApplicationLivenessV2Exec'] = None,
+                 failure_threshold: Optional[_builtins.int] = None,
                  http_get: Optional['outputs.ApplicationLivenessV2HttpGet'] = None,
                  initial_delay_seconds: Optional[_builtins.int] = None,
                  period_seconds: Optional[_builtins.int] = None,
@@ -353,6 +356,7 @@ class ApplicationLivenessV2(dict):
                  timeout_seconds: Optional[_builtins.int] = None):
         """
         :param 'ApplicationLivenessV2ExecArgs' exec_: Execute. See `exec` below.
+        :param _builtins.int failure_threshold: The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
         :param 'ApplicationLivenessV2HttpGetArgs' http_get: The liveness check settings of the container. See `http_get` below.
         :param _builtins.int initial_delay_seconds: The delay of the health check.
         :param _builtins.int period_seconds: The interval at which the health check is performed.
@@ -361,6 +365,8 @@ class ApplicationLivenessV2(dict):
         """
         if exec_ is not None:
             pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
@@ -379,6 +385,14 @@ class ApplicationLivenessV2(dict):
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[_builtins.int]:
+        """
+        The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+        """
+        return pulumi.get(self, "failure_threshold")
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
@@ -907,12 +921,16 @@ class ApplicationReadinessV2(dict):
         suggest = None
         if key == "exec":
             suggest = "exec_"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
         elif key == "httpGet":
             suggest = "http_get"
         elif key == "initialDelaySeconds":
             suggest = "initial_delay_seconds"
         elif key == "periodSeconds":
             suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
         elif key == "tcpSocket":
             suggest = "tcp_socket"
         elif key == "timeoutSeconds":
@@ -931,27 +949,35 @@ class ApplicationReadinessV2(dict):
 
     def __init__(__self__, *,
                  exec_: Optional['outputs.ApplicationReadinessV2Exec'] = None,
+                 failure_threshold: Optional[_builtins.int] = None,
                  http_get: Optional['outputs.ApplicationReadinessV2HttpGet'] = None,
                  initial_delay_seconds: Optional[_builtins.int] = None,
                  period_seconds: Optional[_builtins.int] = None,
+                 success_threshold: Optional[_builtins.int] = None,
                  tcp_socket: Optional['outputs.ApplicationReadinessV2TcpSocket'] = None,
                  timeout_seconds: Optional[_builtins.int] = None):
         """
         :param 'ApplicationReadinessV2ExecArgs' exec_: Execute. See `exec` below.
+        :param _builtins.int failure_threshold: The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
         :param 'ApplicationReadinessV2HttpGetArgs' http_get: The liveness check settings of the container. See `http_get` below.
         :param _builtins.int initial_delay_seconds: The delay of the health check.
         :param _builtins.int period_seconds: The interval at which the health check is performed.
+        :param _builtins.int success_threshold: The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
         :param 'ApplicationReadinessV2TcpSocketArgs' tcp_socket: The liveness check settings of the container. See `tcp_socket` below.
         :param _builtins.int timeout_seconds: The timeout period of the health check.
         """
         if exec_ is not None:
             pulumi.set(__self__, "exec_", exec_)
+        if failure_threshold is not None:
+            pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
             pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
             pulumi.set(__self__, "period_seconds", period_seconds)
+        if success_threshold is not None:
+            pulumi.set(__self__, "success_threshold", success_threshold)
         if tcp_socket is not None:
             pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
@@ -964,6 +990,14 @@ class ApplicationReadinessV2(dict):
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> Optional[_builtins.int]:
+        """
+        The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+        """
+        return pulumi.get(self, "failure_threshold")
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
@@ -988,6 +1022,14 @@ class ApplicationReadinessV2(dict):
         The interval at which the health check is performed.
         """
         return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> Optional[_builtins.int]:
+        """
+        The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+        """
+        return pulumi.get(self, "success_threshold")
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")

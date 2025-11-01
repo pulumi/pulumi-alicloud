@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.wafv3.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.wafv3.Domain;
  * import com.pulumi.alicloud.wafv3.DomainArgs;
- * import com.pulumi.alicloud.wafv3.inputs.DomainListenArgs;
  * import com.pulumi.alicloud.wafv3.inputs.DomainRedirectArgs;
+ * import com.pulumi.alicloud.wafv3.inputs.DomainListenArgs;
  * import com.pulumi.alicloud.wafv3.DefenseRule;
  * import com.pulumi.alicloud.wafv3.DefenseRuleArgs;
  * import com.pulumi.alicloud.wafv3.inputs.DefenseRuleConfigArgs;
@@ -57,77 +57,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tfaccwafv310619");
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var regionId = config.get("regionId").orElse("cn-hangzhou");
+ *         final var domain = config.get("domain").orElse("example.wafqax.top");
  *         final var default = Wafv3Functions.getInstances(GetInstancesArgs.builder()
  *             .build());
  * 
- *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
+ *         var defaultICMRhk = new Domain("defaultICMRhk", DomainArgs.builder()
+ *             .redirect(DomainRedirectArgs.builder()
+ *                 .loadbalance("iphash")
+ *                 .backends("39.98.217.197")
+ *                 .connectTimeout(5)
+ *                 .readTimeout(120)
+ *                 .writeTimeout(120)
+ *                 .build())
+ *             .domain("example.wafqax.top")
+ *             .accessType("share")
  *             .instanceId(default_.ids()[0])
  *             .listen(DomainListenArgs.builder()
- *                 .protectionResource("share")
- *                 .httpPorts(                
- *                     81,
- *                     82,
- *                     83)
- *                 .httpsPorts()
- *                 .xffHeaderMode(2)
- *                 .xffHeaders(                
- *                     "examplea",
- *                     "exampleb",
- *                     "examplec")
- *                 .customCiphers()
- *                 .ipv6Enabled(true)
+ *                 .httpPorts(80)
  *                 .build())
- *             .redirect(DomainRedirectArgs.builder()
- *                 .keepaliveTimeout(15)
- *                 .backends(                
- *                     "1.1.1.1",
- *                     "3.3.3.3",
- *                     "2.2.2.2")
- *                 .writeTimeout(5)
- *                 .keepaliveRequests(1000)
- *                 .requestHeaders(                
- *                     DomainRedirectRequestHeaderArgs.builder()
- *                         .key("examplekey1")
- *                         .value("exampleValue1")
- *                         .build(),
- *                     DomainRedirectRequestHeaderArgs.builder()
- *                         .key("key1")
- *                         .value("value1")
- *                         .build(),
- *                     DomainRedirectRequestHeaderArgs.builder()
- *                         .key("key22")
- *                         .value("value22")
- *                         .build())
- *                 .loadbalance("iphash")
- *                 .focusHttpBackend(false)
- *                 .sniEnabled(false)
- *                 .connectTimeout(5)
- *                 .readTimeout(5)
- *                 .keepalive(true)
- *                 .retry(true)
- *                 .build())
- *             .domain("zcexample_250746.wafqax.top")
- *             .accessType("share")
  *             .build());
  * 
  *         var defaultDefenseRule = new DefenseRule("defaultDefenseRule", DefenseRuleArgs.builder()
+ *             .defenseType("resource")
+ *             .defenseScene("account_identifier")
+ *             .ruleStatus(1)
+ *             .resource(defaultICMRhk.domainId())
  *             .defenseOrigin("custom")
  *             .config(DefenseRuleConfigArgs.builder()
  *                 .accountIdentifiers(DefenseRuleConfigAccountIdentifierArgs.builder()
+ *                     .position("jwt")
  *                     .priority(2)
  *                     .decodeType("jwt")
  *                     .key("Query-Arg")
  *                     .subKey("adb")
- *                     .position("jwt")
  *                     .build())
  *                 .build())
  *             .instanceId(default_.ids()[0])
- *             .defenseType("resource")
- *             .defenseScene("account_identifier")
- *             .ruleStatus(1)
- *             .resource(defaultDomain.domainId())
  *             .build());
  * 
  *     }

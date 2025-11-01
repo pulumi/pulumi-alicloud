@@ -325,12 +325,12 @@ func (o AggregateCompliancePackConfigRuleIdArrayOutput) Index(i pulumi.IntInput)
 }
 
 type AggregatorAggregatorAccount struct {
-	// Aggregator account Uid.
-	AccountId string `pulumi:"accountId"`
-	// Aggregator account name.
-	AccountName string `pulumi:"accountName"`
-	// Aggregator account source type. Valid values: `ResourceDirectory`.
-	AccountType string `pulumi:"accountType"`
+	// The member ID.
+	AccountId *string `pulumi:"accountId"`
+	// The member name.
+	AccountName *string `pulumi:"accountName"`
+	// The affiliation of the member. Valid values: `ResourceDirectory`.
+	AccountType *string `pulumi:"accountType"`
 }
 
 // AggregatorAggregatorAccountInput is an input type that accepts AggregatorAggregatorAccountArgs and AggregatorAggregatorAccountOutput values.
@@ -345,12 +345,12 @@ type AggregatorAggregatorAccountInput interface {
 }
 
 type AggregatorAggregatorAccountArgs struct {
-	// Aggregator account Uid.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Aggregator account name.
-	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// Aggregator account source type. Valid values: `ResourceDirectory`.
-	AccountType pulumi.StringInput `pulumi:"accountType"`
+	// The member ID.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The member name.
+	AccountName pulumi.StringPtrInput `pulumi:"accountName"`
+	// The affiliation of the member. Valid values: `ResourceDirectory`.
+	AccountType pulumi.StringPtrInput `pulumi:"accountType"`
 }
 
 func (AggregatorAggregatorAccountArgs) ElementType() reflect.Type {
@@ -404,19 +404,19 @@ func (o AggregatorAggregatorAccountOutput) ToAggregatorAggregatorAccountOutputWi
 	return o
 }
 
-// Aggregator account Uid.
-func (o AggregatorAggregatorAccountOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v AggregatorAggregatorAccount) string { return v.AccountId }).(pulumi.StringOutput)
+// The member ID.
+func (o AggregatorAggregatorAccountOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregatorAggregatorAccount) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Aggregator account name.
-func (o AggregatorAggregatorAccountOutput) AccountName() pulumi.StringOutput {
-	return o.ApplyT(func(v AggregatorAggregatorAccount) string { return v.AccountName }).(pulumi.StringOutput)
+// The member name.
+func (o AggregatorAggregatorAccountOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregatorAggregatorAccount) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
-// Aggregator account source type. Valid values: `ResourceDirectory`.
-func (o AggregatorAggregatorAccountOutput) AccountType() pulumi.StringOutput {
-	return o.ApplyT(func(v AggregatorAggregatorAccount) string { return v.AccountType }).(pulumi.StringOutput)
+// The affiliation of the member. Valid values: `ResourceDirectory`.
+func (o AggregatorAggregatorAccountOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AggregatorAggregatorAccount) *string { return v.AccountType }).(pulumi.StringPtrOutput)
 }
 
 type AggregatorAggregatorAccountArrayOutput struct{ *pulumi.OutputState }

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.oss.inputs.BucketReplicationDestinationArgs;
 import com.pulumi.alicloud.oss.inputs.BucketReplicationEncryptionConfigurationArgs;
 import com.pulumi.alicloud.oss.inputs.BucketReplicationPrefixSetArgs;
 import com.pulumi.alicloud.oss.inputs.BucketReplicationProgressArgs;
+import com.pulumi.alicloud.oss.inputs.BucketReplicationRtcArgs;
 import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -126,6 +127,21 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     * 
+     */
+    @Import(name="rtc")
+    private @Nullable Output<BucketReplicationRtcArgs> rtc;
+
+    /**
+     * @return Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     * 
+     */
+    public Optional<Output<BucketReplicationRtcArgs>> rtc() {
+        return Optional.ofNullable(this.rtc);
+    }
+
+    /**
      * The ID of the data replication rule.
      * 
      */
@@ -195,6 +211,7 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
         this.historicalObjectReplication = $.historicalObjectReplication;
         this.prefixSet = $.prefixSet;
         this.progress = $.progress;
+        this.rtc = $.rtc;
         this.ruleId = $.ruleId;
         this.sourceSelectionCriteria = $.sourceSelectionCriteria;
         this.status = $.status;
@@ -364,6 +381,27 @@ public final class BucketReplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder progress(BucketReplicationProgressArgs progress) {
             return progress(Output.of(progress));
+        }
+
+        /**
+         * @param rtc Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rtc(@Nullable Output<BucketReplicationRtcArgs> rtc) {
+            $.rtc = rtc;
+            return this;
+        }
+
+        /**
+         * @param rtc Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rtc(BucketReplicationRtcArgs rtc) {
+            return rtc(Output.of(rtc));
         }
 
         /**

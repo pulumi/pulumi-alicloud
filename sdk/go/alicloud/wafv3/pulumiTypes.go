@@ -73,6 +73,12 @@ type DefenseRuleConfig struct {
 	CnRegions *string `pulumi:"cnRegions"`
 	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 	Conditions []DefenseRuleConfigCondition `pulumi:"conditions"`
+	// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+	GrayConfig *DefenseRuleConfigGrayConfig `pulumi:"grayConfig"`
+	// Specifies whether to enable canary release for the rule. Valid values:
+	// - 0 (default): disables canary release.
+	// - 1: enables canary release.
+	GrayStatus *int `pulumi:"grayStatus"`
 	// The HTTP flood protection mode. Valid values:
 	// - 0 (default): indicates normal protection.
 	// - 1: indicates emergency protection.
@@ -101,6 +107,8 @@ type DefenseRuleConfig struct {
 	// - qps: indicates throttling based on queries per second (QPS).
 	// - ratio (default): indicates throttling based on percentage.
 	ThrottleType *string `pulumi:"throttleType"`
+	// The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+	TimeConfig *DefenseRuleConfigTimeConfig `pulumi:"timeConfig"`
 	// The User-Agent string that is allowed for access to the address.
 	Ua *string `pulumi:"ua"`
 	// The address of the cached page.
@@ -178,6 +186,12 @@ type DefenseRuleConfigArgs struct {
 	CnRegions pulumi.StringPtrInput `pulumi:"cnRegions"`
 	// The traffic characteristics of ACL, which are described in JSON format. You can enter up to five matching conditions. For specific configuration information, see detailed configuration of conditions. See `conditions` below.
 	Conditions DefenseRuleConfigConditionArrayInput `pulumi:"conditions"`
+	// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+	GrayConfig DefenseRuleConfigGrayConfigPtrInput `pulumi:"grayConfig"`
+	// Specifies whether to enable canary release for the rule. Valid values:
+	// - 0 (default): disables canary release.
+	// - 1: enables canary release.
+	GrayStatus pulumi.IntPtrInput `pulumi:"grayStatus"`
 	// The HTTP flood protection mode. Valid values:
 	// - 0 (default): indicates normal protection.
 	// - 1: indicates emergency protection.
@@ -206,6 +220,8 @@ type DefenseRuleConfigArgs struct {
 	// - qps: indicates throttling based on queries per second (QPS).
 	// - ratio (default): indicates throttling based on percentage.
 	ThrottleType pulumi.StringPtrInput `pulumi:"throttleType"`
+	// The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+	TimeConfig DefenseRuleConfigTimeConfigPtrInput `pulumi:"timeConfig"`
 	// The User-Agent string that is allowed for access to the address.
 	Ua pulumi.StringPtrInput `pulumi:"ua"`
 	// The address of the cached page.
@@ -375,6 +391,18 @@ func (o DefenseRuleConfigOutput) Conditions() DefenseRuleConfigConditionArrayOut
 	return o.ApplyT(func(v DefenseRuleConfig) []DefenseRuleConfigCondition { return v.Conditions }).(DefenseRuleConfigConditionArrayOutput)
 }
 
+// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+func (o DefenseRuleConfigOutput) GrayConfig() DefenseRuleConfigGrayConfigPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *DefenseRuleConfigGrayConfig { return v.GrayConfig }).(DefenseRuleConfigGrayConfigPtrOutput)
+}
+
+// Specifies whether to enable canary release for the rule. Valid values:
+// - 0 (default): disables canary release.
+// - 1: enables canary release.
+func (o DefenseRuleConfigOutput) GrayStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *int { return v.GrayStatus }).(pulumi.IntPtrOutput)
+}
+
 // The HTTP flood protection mode. Valid values:
 // - 0 (default): indicates normal protection.
 // - 1: indicates emergency protection.
@@ -422,6 +450,11 @@ func (o DefenseRuleConfigOutput) ThrottleThrehold() pulumi.IntPtrOutput {
 // - ratio (default): indicates throttling based on percentage.
 func (o DefenseRuleConfigOutput) ThrottleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefenseRuleConfig) *string { return v.ThrottleType }).(pulumi.StringPtrOutput)
+}
+
+// The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+func (o DefenseRuleConfigOutput) TimeConfig() DefenseRuleConfigTimeConfigPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfig) *DefenseRuleConfigTimeConfig { return v.TimeConfig }).(DefenseRuleConfigTimeConfigPtrOutput)
 }
 
 // The User-Agent string that is allowed for access to the address.
@@ -589,6 +622,28 @@ func (o DefenseRuleConfigPtrOutput) Conditions() DefenseRuleConfigConditionArray
 	}).(DefenseRuleConfigConditionArrayOutput)
 }
 
+// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+func (o DefenseRuleConfigPtrOutput) GrayConfig() DefenseRuleConfigGrayConfigPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *DefenseRuleConfigGrayConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GrayConfig
+	}).(DefenseRuleConfigGrayConfigPtrOutput)
+}
+
+// Specifies whether to enable canary release for the rule. Valid values:
+// - 0 (default): disables canary release.
+// - 1: enables canary release.
+func (o DefenseRuleConfigPtrOutput) GrayStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GrayStatus
+	}).(pulumi.IntPtrOutput)
+}
+
 // The HTTP flood protection mode. Valid values:
 // - 0 (default): indicates normal protection.
 // - 1: indicates emergency protection.
@@ -671,6 +726,16 @@ func (o DefenseRuleConfigPtrOutput) ThrottleType() pulumi.StringPtrOutput {
 		}
 		return v.ThrottleType
 	}).(pulumi.StringPtrOutput)
+}
+
+// The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+func (o DefenseRuleConfigPtrOutput) TimeConfig() DefenseRuleConfigTimeConfigPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfig) *DefenseRuleConfigTimeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TimeConfig
+	}).(DefenseRuleConfigTimeConfigPtrOutput)
 }
 
 // The User-Agent string that is allowed for access to the address.
@@ -1053,6 +1118,181 @@ func (o DefenseRuleConfigConditionArrayOutput) Index(i pulumi.IntInput) DefenseR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigCondition {
 		return vs[0].([]DefenseRuleConfigCondition)[vs[1].(int)]
 	}).(DefenseRuleConfigConditionOutput)
+}
+
+type DefenseRuleConfigGrayConfig struct {
+	// The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+	GrayRate *int `pulumi:"grayRate"`
+	// The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+	GraySubKey *string `pulumi:"graySubKey"`
+	// The type of the canary release object. Valid values:
+	GrayTarget *string `pulumi:"grayTarget"`
+}
+
+// DefenseRuleConfigGrayConfigInput is an input type that accepts DefenseRuleConfigGrayConfigArgs and DefenseRuleConfigGrayConfigOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigGrayConfigInput` via:
+//
+//	DefenseRuleConfigGrayConfigArgs{...}
+type DefenseRuleConfigGrayConfigInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigGrayConfigOutput() DefenseRuleConfigGrayConfigOutput
+	ToDefenseRuleConfigGrayConfigOutputWithContext(context.Context) DefenseRuleConfigGrayConfigOutput
+}
+
+type DefenseRuleConfigGrayConfigArgs struct {
+	// The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+	GrayRate pulumi.IntPtrInput `pulumi:"grayRate"`
+	// The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+	GraySubKey pulumi.StringPtrInput `pulumi:"graySubKey"`
+	// The type of the canary release object. Valid values:
+	GrayTarget pulumi.StringPtrInput `pulumi:"grayTarget"`
+}
+
+func (DefenseRuleConfigGrayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigGrayConfigArgs) ToDefenseRuleConfigGrayConfigOutput() DefenseRuleConfigGrayConfigOutput {
+	return i.ToDefenseRuleConfigGrayConfigOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigGrayConfigArgs) ToDefenseRuleConfigGrayConfigOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigGrayConfigOutput)
+}
+
+func (i DefenseRuleConfigGrayConfigArgs) ToDefenseRuleConfigGrayConfigPtrOutput() DefenseRuleConfigGrayConfigPtrOutput {
+	return i.ToDefenseRuleConfigGrayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigGrayConfigArgs) ToDefenseRuleConfigGrayConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigGrayConfigOutput).ToDefenseRuleConfigGrayConfigPtrOutputWithContext(ctx)
+}
+
+// DefenseRuleConfigGrayConfigPtrInput is an input type that accepts DefenseRuleConfigGrayConfigArgs, DefenseRuleConfigGrayConfigPtr and DefenseRuleConfigGrayConfigPtrOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigGrayConfigPtrInput` via:
+//
+//	        DefenseRuleConfigGrayConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenseRuleConfigGrayConfigPtrInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigGrayConfigPtrOutput() DefenseRuleConfigGrayConfigPtrOutput
+	ToDefenseRuleConfigGrayConfigPtrOutputWithContext(context.Context) DefenseRuleConfigGrayConfigPtrOutput
+}
+
+type defenseRuleConfigGrayConfigPtrType DefenseRuleConfigGrayConfigArgs
+
+func DefenseRuleConfigGrayConfigPtr(v *DefenseRuleConfigGrayConfigArgs) DefenseRuleConfigGrayConfigPtrInput {
+	return (*defenseRuleConfigGrayConfigPtrType)(v)
+}
+
+func (*defenseRuleConfigGrayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (i *defenseRuleConfigGrayConfigPtrType) ToDefenseRuleConfigGrayConfigPtrOutput() DefenseRuleConfigGrayConfigPtrOutput {
+	return i.ToDefenseRuleConfigGrayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *defenseRuleConfigGrayConfigPtrType) ToDefenseRuleConfigGrayConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigGrayConfigPtrOutput)
+}
+
+type DefenseRuleConfigGrayConfigOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigGrayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigGrayConfigOutput) ToDefenseRuleConfigGrayConfigOutput() DefenseRuleConfigGrayConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigGrayConfigOutput) ToDefenseRuleConfigGrayConfigOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigGrayConfigOutput) ToDefenseRuleConfigGrayConfigPtrOutput() DefenseRuleConfigGrayConfigPtrOutput {
+	return o.ToDefenseRuleConfigGrayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DefenseRuleConfigGrayConfigOutput) ToDefenseRuleConfigGrayConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenseRuleConfigGrayConfig) *DefenseRuleConfigGrayConfig {
+		return &v
+	}).(DefenseRuleConfigGrayConfigPtrOutput)
+}
+
+// The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+func (o DefenseRuleConfigGrayConfigOutput) GrayRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigGrayConfig) *int { return v.GrayRate }).(pulumi.IntPtrOutput)
+}
+
+// The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+func (o DefenseRuleConfigGrayConfigOutput) GraySubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigGrayConfig) *string { return v.GraySubKey }).(pulumi.StringPtrOutput)
+}
+
+// The type of the canary release object. Valid values:
+func (o DefenseRuleConfigGrayConfigOutput) GrayTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigGrayConfig) *string { return v.GrayTarget }).(pulumi.StringPtrOutput)
+}
+
+type DefenseRuleConfigGrayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigGrayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigGrayConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigGrayConfigPtrOutput) ToDefenseRuleConfigGrayConfigPtrOutput() DefenseRuleConfigGrayConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigGrayConfigPtrOutput) ToDefenseRuleConfigGrayConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigGrayConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigGrayConfigPtrOutput) Elem() DefenseRuleConfigGrayConfigOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigGrayConfig) DefenseRuleConfigGrayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DefenseRuleConfigGrayConfig
+		return ret
+	}).(DefenseRuleConfigGrayConfigOutput)
+}
+
+// The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+func (o DefenseRuleConfigGrayConfigPtrOutput) GrayRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigGrayConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GrayRate
+	}).(pulumi.IntPtrOutput)
+}
+
+// The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+func (o DefenseRuleConfigGrayConfigPtrOutput) GraySubKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigGrayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GraySubKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the canary release object. Valid values:
+func (o DefenseRuleConfigGrayConfigPtrOutput) GrayTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigGrayConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrayTarget
+	}).(pulumi.StringPtrOutput)
 }
 
 type DefenseRuleConfigRateLimit struct {
@@ -1488,6 +1728,522 @@ func (o DefenseRuleConfigRateLimitStatusPtrOutput) Ratio() pulumi.IntPtrOutput {
 		}
 		return v.Ratio
 	}).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigTimeConfig struct {
+	// The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `timePeriods` below.
+	TimePeriods []DefenseRuleConfigTimeConfigTimePeriod `pulumi:"timePeriods"`
+	// The effective period of the rule. Valid values:
+	TimeScope *string `pulumi:"timeScope"`
+	// The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+	TimeZone *int `pulumi:"timeZone"`
+	// The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `weekTimePeriods` below.
+	WeekTimePeriods []DefenseRuleConfigTimeConfigWeekTimePeriod `pulumi:"weekTimePeriods"`
+}
+
+// DefenseRuleConfigTimeConfigInput is an input type that accepts DefenseRuleConfigTimeConfigArgs and DefenseRuleConfigTimeConfigOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigInput` via:
+//
+//	DefenseRuleConfigTimeConfigArgs{...}
+type DefenseRuleConfigTimeConfigInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigOutput() DefenseRuleConfigTimeConfigOutput
+	ToDefenseRuleConfigTimeConfigOutputWithContext(context.Context) DefenseRuleConfigTimeConfigOutput
+}
+
+type DefenseRuleConfigTimeConfigArgs struct {
+	// The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `timePeriods` below.
+	TimePeriods DefenseRuleConfigTimeConfigTimePeriodArrayInput `pulumi:"timePeriods"`
+	// The effective period of the rule. Valid values:
+	TimeScope pulumi.StringPtrInput `pulumi:"timeScope"`
+	// The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+	TimeZone pulumi.IntPtrInput `pulumi:"timeZone"`
+	// The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `weekTimePeriods` below.
+	WeekTimePeriods DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput `pulumi:"weekTimePeriods"`
+}
+
+func (DefenseRuleConfigTimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigArgs) ToDefenseRuleConfigTimeConfigOutput() DefenseRuleConfigTimeConfigOutput {
+	return i.ToDefenseRuleConfigTimeConfigOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigArgs) ToDefenseRuleConfigTimeConfigOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigOutput)
+}
+
+func (i DefenseRuleConfigTimeConfigArgs) ToDefenseRuleConfigTimeConfigPtrOutput() DefenseRuleConfigTimeConfigPtrOutput {
+	return i.ToDefenseRuleConfigTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigArgs) ToDefenseRuleConfigTimeConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigOutput).ToDefenseRuleConfigTimeConfigPtrOutputWithContext(ctx)
+}
+
+// DefenseRuleConfigTimeConfigPtrInput is an input type that accepts DefenseRuleConfigTimeConfigArgs, DefenseRuleConfigTimeConfigPtr and DefenseRuleConfigTimeConfigPtrOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigPtrInput` via:
+//
+//	        DefenseRuleConfigTimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DefenseRuleConfigTimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigPtrOutput() DefenseRuleConfigTimeConfigPtrOutput
+	ToDefenseRuleConfigTimeConfigPtrOutputWithContext(context.Context) DefenseRuleConfigTimeConfigPtrOutput
+}
+
+type defenseRuleConfigTimeConfigPtrType DefenseRuleConfigTimeConfigArgs
+
+func DefenseRuleConfigTimeConfigPtr(v *DefenseRuleConfigTimeConfigArgs) DefenseRuleConfigTimeConfigPtrInput {
+	return (*defenseRuleConfigTimeConfigPtrType)(v)
+}
+
+func (*defenseRuleConfigTimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (i *defenseRuleConfigTimeConfigPtrType) ToDefenseRuleConfigTimeConfigPtrOutput() DefenseRuleConfigTimeConfigPtrOutput {
+	return i.ToDefenseRuleConfigTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *defenseRuleConfigTimeConfigPtrType) ToDefenseRuleConfigTimeConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigPtrOutput)
+}
+
+type DefenseRuleConfigTimeConfigOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigOutput) ToDefenseRuleConfigTimeConfigOutput() DefenseRuleConfigTimeConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigOutput) ToDefenseRuleConfigTimeConfigOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigOutput) ToDefenseRuleConfigTimeConfigPtrOutput() DefenseRuleConfigTimeConfigPtrOutput {
+	return o.ToDefenseRuleConfigTimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DefenseRuleConfigTimeConfigOutput) ToDefenseRuleConfigTimeConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefenseRuleConfigTimeConfig) *DefenseRuleConfigTimeConfig {
+		return &v
+	}).(DefenseRuleConfigTimeConfigPtrOutput)
+}
+
+// The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `timePeriods` below.
+func (o DefenseRuleConfigTimeConfigOutput) TimePeriods() DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfig) []DefenseRuleConfigTimeConfigTimePeriod { return v.TimePeriods }).(DefenseRuleConfigTimeConfigTimePeriodArrayOutput)
+}
+
+// The effective period of the rule. Valid values:
+func (o DefenseRuleConfigTimeConfigOutput) TimeScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfig) *string { return v.TimeScope }).(pulumi.StringPtrOutput)
+}
+
+// The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+func (o DefenseRuleConfigTimeConfigOutput) TimeZone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfig) *int { return v.TimeZone }).(pulumi.IntPtrOutput)
+}
+
+// The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `weekTimePeriods` below.
+func (o DefenseRuleConfigTimeConfigOutput) WeekTimePeriods() DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfig) []DefenseRuleConfigTimeConfigWeekTimePeriod {
+		return v.WeekTimePeriods
+	}).(DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefenseRuleConfigTimeConfig)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigPtrOutput) ToDefenseRuleConfigTimeConfigPtrOutput() DefenseRuleConfigTimeConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigPtrOutput) ToDefenseRuleConfigTimeConfigPtrOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigPtrOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigPtrOutput) Elem() DefenseRuleConfigTimeConfigOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigTimeConfig) DefenseRuleConfigTimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DefenseRuleConfigTimeConfig
+		return ret
+	}).(DefenseRuleConfigTimeConfigOutput)
+}
+
+// The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `timePeriods` below.
+func (o DefenseRuleConfigTimeConfigPtrOutput) TimePeriods() DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigTimeConfig) []DefenseRuleConfigTimeConfigTimePeriod {
+		if v == nil {
+			return nil
+		}
+		return v.TimePeriods
+	}).(DefenseRuleConfigTimeConfigTimePeriodArrayOutput)
+}
+
+// The effective period of the rule. Valid values:
+func (o DefenseRuleConfigTimeConfigPtrOutput) TimeScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigTimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+func (o DefenseRuleConfigTimeConfigPtrOutput) TimeZone() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigTimeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.IntPtrOutput)
+}
+
+// The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `weekTimePeriods` below.
+func (o DefenseRuleConfigTimeConfigPtrOutput) WeekTimePeriods() DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o.ApplyT(func(v *DefenseRuleConfigTimeConfig) []DefenseRuleConfigTimeConfigWeekTimePeriod {
+		if v == nil {
+			return nil
+		}
+		return v.WeekTimePeriods
+	}).(DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigTimePeriod struct {
+	// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+	End *int `pulumi:"end"`
+	// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+	Start *int `pulumi:"start"`
+}
+
+// DefenseRuleConfigTimeConfigTimePeriodInput is an input type that accepts DefenseRuleConfigTimeConfigTimePeriodArgs and DefenseRuleConfigTimeConfigTimePeriodOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigTimePeriodInput` via:
+//
+//	DefenseRuleConfigTimeConfigTimePeriodArgs{...}
+type DefenseRuleConfigTimeConfigTimePeriodInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigTimePeriodOutput() DefenseRuleConfigTimeConfigTimePeriodOutput
+	ToDefenseRuleConfigTimeConfigTimePeriodOutputWithContext(context.Context) DefenseRuleConfigTimeConfigTimePeriodOutput
+}
+
+type DefenseRuleConfigTimeConfigTimePeriodArgs struct {
+	// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+	End pulumi.IntPtrInput `pulumi:"end"`
+	// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+	Start pulumi.IntPtrInput `pulumi:"start"`
+}
+
+func (DefenseRuleConfigTimeConfigTimePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigTimePeriodArgs) ToDefenseRuleConfigTimeConfigTimePeriodOutput() DefenseRuleConfigTimeConfigTimePeriodOutput {
+	return i.ToDefenseRuleConfigTimeConfigTimePeriodOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigTimePeriodArgs) ToDefenseRuleConfigTimeConfigTimePeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigTimePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigTimePeriodOutput)
+}
+
+// DefenseRuleConfigTimeConfigTimePeriodArrayInput is an input type that accepts DefenseRuleConfigTimeConfigTimePeriodArray and DefenseRuleConfigTimeConfigTimePeriodArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigTimePeriodArrayInput` via:
+//
+//	DefenseRuleConfigTimeConfigTimePeriodArray{ DefenseRuleConfigTimeConfigTimePeriodArgs{...} }
+type DefenseRuleConfigTimeConfigTimePeriodArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigTimePeriodArrayOutput() DefenseRuleConfigTimeConfigTimePeriodArrayOutput
+	ToDefenseRuleConfigTimeConfigTimePeriodArrayOutputWithContext(context.Context) DefenseRuleConfigTimeConfigTimePeriodArrayOutput
+}
+
+type DefenseRuleConfigTimeConfigTimePeriodArray []DefenseRuleConfigTimeConfigTimePeriodInput
+
+func (DefenseRuleConfigTimeConfigTimePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigTimePeriodArray) ToDefenseRuleConfigTimeConfigTimePeriodArrayOutput() DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return i.ToDefenseRuleConfigTimeConfigTimePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigTimePeriodArray) ToDefenseRuleConfigTimeConfigTimePeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigTimePeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigTimePeriodOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigTimePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigTimePeriodOutput) ToDefenseRuleConfigTimeConfigTimePeriodOutput() DefenseRuleConfigTimeConfigTimePeriodOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigTimePeriodOutput) ToDefenseRuleConfigTimeConfigTimePeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigTimePeriodOutput {
+	return o
+}
+
+// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+func (o DefenseRuleConfigTimeConfigTimePeriodOutput) End() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigTimePeriod) *int { return v.End }).(pulumi.IntPtrOutput)
+}
+
+// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+func (o DefenseRuleConfigTimeConfigTimePeriodOutput) Start() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigTimePeriod) *int { return v.Start }).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigTimeConfigTimePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigTimePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigTimePeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigTimePeriodArrayOutput) ToDefenseRuleConfigTimeConfigTimePeriodArrayOutput() DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigTimePeriodArrayOutput) ToDefenseRuleConfigTimeConfigTimePeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigTimePeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigTimePeriodArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigTimeConfigTimePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigTimeConfigTimePeriod {
+		return vs[0].([]DefenseRuleConfigTimeConfigTimePeriod)[vs[1].(int)]
+	}).(DefenseRuleConfigTimeConfigTimePeriodOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriod struct {
+	// The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+	Day *string `pulumi:"day"`
+	// The time period of each day when the rule is effective.  See `dayPeriods` below.
+	DayPeriods []DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod `pulumi:"dayPeriods"`
+}
+
+// DefenseRuleConfigTimeConfigWeekTimePeriodInput is an input type that accepts DefenseRuleConfigTimeConfigWeekTimePeriodArgs and DefenseRuleConfigTimeConfigWeekTimePeriodOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigWeekTimePeriodInput` via:
+//
+//	DefenseRuleConfigTimeConfigWeekTimePeriodArgs{...}
+type DefenseRuleConfigTimeConfigWeekTimePeriodInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodOutput
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodOutputWithContext(context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodOutput
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodArgs struct {
+	// The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+	Day pulumi.StringPtrInput `pulumi:"day"`
+	// The time period of each day when the rule is effective.  See `dayPeriods` below.
+	DayPeriods DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput `pulumi:"dayPeriods"`
+}
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodArgs) ToDefenseRuleConfigTimeConfigWeekTimePeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodOutput {
+	return i.ToDefenseRuleConfigTimeConfigWeekTimePeriodOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodArgs) ToDefenseRuleConfigTimeConfigWeekTimePeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigWeekTimePeriodOutput)
+}
+
+// DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput is an input type that accepts DefenseRuleConfigTimeConfigWeekTimePeriodArray and DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput` via:
+//
+//	DefenseRuleConfigTimeConfigWeekTimePeriodArray{ DefenseRuleConfigTimeConfigWeekTimePeriodArgs{...} }
+type DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodArray []DefenseRuleConfigTimeConfigWeekTimePeriodInput
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodArray) ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return i.ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodArray) ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodOutput {
+	return o
+}
+
+// The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigWeekTimePeriod) *string { return v.Day }).(pulumi.StringPtrOutput)
+}
+
+// The time period of each day when the rule is effective.  See `dayPeriods` below.
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodOutput) DayPeriods() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigWeekTimePeriod) []DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+		return v.DayPeriods
+	}).(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigWeekTimePeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigTimeConfigWeekTimePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigTimeConfigWeekTimePeriod {
+		return vs[0].([]DefenseRuleConfigTimeConfigWeekTimePeriod)[vs[1].(int)]
+	}).(DefenseRuleConfigTimeConfigWeekTimePeriodOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod struct {
+	// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+	End *int `pulumi:"end"`
+	// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+	Start *int `pulumi:"start"`
+}
+
+// DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput is an input type that accepts DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs and DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput` via:
+//
+//	DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{...}
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs struct {
+	// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+	End pulumi.IntPtrInput `pulumi:"end"`
+	// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+	Start pulumi.IntPtrInput `pulumi:"start"`
+}
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return i.ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput)
+}
+
+// DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput is an input type that accepts DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray and DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput values.
+// You can construct a concrete instance of `DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput` via:
+//
+//	DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray{ DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{...} }
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput interface {
+	pulumi.Input
+
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput
+	ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray []DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return i.ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return o
+}
+
+// The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) End() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod) *int { return v.End }).(pulumi.IntPtrOutput)
+}
+
+// The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput) Start() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod) *int { return v.Start }).(pulumi.IntPtrOutput)
+}
+
+type DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod)(nil)).Elem()
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput() DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) ToDefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutputWithContext(ctx context.Context) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput {
+	return o
+}
+
+func (o DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput) Index(i pulumi.IntInput) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+		return vs[0].([]DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod)[vs[1].(int)]
+	}).(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput)
 }
 
 type DomainListen struct {
@@ -3311,10 +4067,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigAccountIdentifierArrayInput)(nil)).Elem(), DefenseRuleConfigAccountIdentifierArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigConditionInput)(nil)).Elem(), DefenseRuleConfigConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigConditionArrayInput)(nil)).Elem(), DefenseRuleConfigConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigGrayConfigInput)(nil)).Elem(), DefenseRuleConfigGrayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigGrayConfigPtrInput)(nil)).Elem(), DefenseRuleConfigGrayConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitInput)(nil)).Elem(), DefenseRuleConfigRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitPtrInput)(nil)).Elem(), DefenseRuleConfigRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitStatusInput)(nil)).Elem(), DefenseRuleConfigRateLimitStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigRateLimitStatusPtrInput)(nil)).Elem(), DefenseRuleConfigRateLimitStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigInput)(nil)).Elem(), DefenseRuleConfigTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigPtrInput)(nil)).Elem(), DefenseRuleConfigTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigTimePeriodInput)(nil)).Elem(), DefenseRuleConfigTimeConfigTimePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigTimePeriodArrayInput)(nil)).Elem(), DefenseRuleConfigTimeConfigTimePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodArrayInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayInput)(nil)).Elem(), DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainListenPtrInput)(nil)).Elem(), DomainListenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
@@ -3337,10 +4103,20 @@ func init() {
 	pulumi.RegisterOutputType(DefenseRuleConfigAccountIdentifierArrayOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigConditionOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigConditionArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigGrayConfigOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigGrayConfigPtrOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitStatusOutput{})
 	pulumi.RegisterOutputType(DefenseRuleConfigRateLimitStatusPtrOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigTimePeriodOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigTimePeriodArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodArrayOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodOutput{})
+	pulumi.RegisterOutputType(DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriodArrayOutput{})
 	pulumi.RegisterOutputType(DomainListenOutput{})
 	pulumi.RegisterOutputType(DomainListenPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})

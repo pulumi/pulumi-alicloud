@@ -48,7 +48,7 @@ import (
 // Address: pulumi.String("http://www.alibabacloud.com"),
 // TaskName: pulumi.Sprintf("terraform-example-%v", defaultInteger.Result),
 // TaskType: pulumi.String("HTTP"),
-// Interval: pulumi.Int(5),
+// Interval: pulumi.String("5"),
 // IspCities: cms.SiteMonitorIspCityArray{
 // &cms.SiteMonitorIspCityArgs{
 // City: pulumi.String("546"),

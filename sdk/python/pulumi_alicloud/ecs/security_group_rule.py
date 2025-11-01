@@ -34,7 +34,7 @@ class SecurityGroupRuleArgs:
                  source_security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
-        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the Security Group.
         :param pulumi.Input[_builtins.str] type: The type of the Security Group Rule. Valid values:
         :param pulumi.Input[_builtins.str] cidr_ip: The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
@@ -79,7 +79,7 @@ class SecurityGroupRuleArgs:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -258,7 +258,7 @@ class _SecurityGroupRuleState:
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
         :param pulumi.Input[_builtins.str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[_builtins.str] policy: The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
@@ -331,7 +331,7 @@ class _SecurityGroupRuleState:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -543,7 +543,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
         :param pulumi.Input[_builtins.str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[_builtins.str] policy: The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
@@ -698,7 +698,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
                
                > **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
-        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        :param pulumi.Input[_builtins.str] ip_protocol: The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         :param pulumi.Input[_builtins.str] ipv6_cidr_ip: Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidr_ip` parameter.
         :param pulumi.Input[_builtins.str] nic_type: Network type, can be either `internet` or `intranet`, the default value is `internet`.
         :param pulumi.Input[_builtins.str] policy: The action of the Security Group Rule that determines whether to allow inbound access. Default value: `accept`. Valid values: `accept`, `drop`.
@@ -754,7 +754,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+        The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ip_protocol` can be set to `icmpv6`.
         """
         return pulumi.get(self, "ip_protocol")
 

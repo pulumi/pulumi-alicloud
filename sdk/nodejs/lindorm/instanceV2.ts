@@ -114,31 +114,58 @@ export class InstanceV2 extends pulumi.CustomResource {
     declare public readonly arbiterZoneId: pulumi.Output<string | undefined>;
     /**
      * Deployment Scenario
-     * > Enumeration value
-     * > - 1.0 Single AZ
-     * > - 2.0 Multi-AZ Basic
-     * > - 3.0 Multi-AZ High Availability Edition
+     *
+     * > **NOTE:**  Enumeration value
+     *
+     * > **NOTE:**  - 1.0 Single AZ
+     *
+     * > **NOTE:**  - 2.0 Multi-AZ Basic
+     *
+     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly archVersion: pulumi.Output<string>;
     /**
-     * Auto Renew
+     * Automatic renewal duration. Unit: Month.
+     *
+     * Value range: `1` to **12 * *.
+     *
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly autoRenewDuration: pulumi.Output<string | undefined>;
+    /**
+     * Whether the instance is automatically renewed. Enumerated values:
      */
     declare public readonly autoRenewal: pulumi.Output<boolean | undefined>;
     /**
-     * > Cloud storage capacity in GB
+     * > **NOTE:**  Cloud storage capacity in GB
      */
     declare public readonly cloudStorageSize: pulumi.Output<number | undefined>;
     /**
-     * >>
-     * > - StandardStorage: Standard cloud storage
-     * > - PerformanceStorage: performance-based cloud storage
-     * >- capacity storage: Capacity-based cloud storage
+     * > **NOTE:** >
+     *
+     * > **NOTE:**  - StandardStorage: Standard cloud storage
+     *
+     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     *
+     * > **NOTE:** - capacity storage: Capacity-based cloud storage
      */
     declare public readonly cloudStorageType: pulumi.Output<string | undefined>;
     /**
      * Whether to enable deletion protection
      */
     declare public readonly deletionProtection: pulumi.Output<string>;
+    /**
+     * The specified duration when the resource is purchased. Only the subscription instances are valid.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly duration: pulumi.Output<number | undefined>;
     /**
      * Engine List See `engineList` below.
      */
@@ -151,6 +178,12 @@ export class InstanceV2 extends pulumi.CustomResource {
      * The payment type of the resource
      */
     declare public readonly paymentType: pulumi.Output<string>;
+    /**
+     * Purchase duration unit: Month, Year
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    declare public readonly pricingCycle: pulumi.Output<string | undefined>;
     /**
      * Primary zone VswitchId
      */
@@ -200,13 +233,16 @@ export class InstanceV2 extends pulumi.CustomResource {
             resourceInputs["arbiterVswitchId"] = state?.arbiterVswitchId;
             resourceInputs["arbiterZoneId"] = state?.arbiterZoneId;
             resourceInputs["archVersion"] = state?.archVersion;
+            resourceInputs["autoRenewDuration"] = state?.autoRenewDuration;
             resourceInputs["autoRenewal"] = state?.autoRenewal;
             resourceInputs["cloudStorageSize"] = state?.cloudStorageSize;
             resourceInputs["cloudStorageType"] = state?.cloudStorageType;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
+            resourceInputs["duration"] = state?.duration;
             resourceInputs["engineLists"] = state?.engineLists;
             resourceInputs["instanceAlias"] = state?.instanceAlias;
             resourceInputs["paymentType"] = state?.paymentType;
+            resourceInputs["pricingCycle"] = state?.pricingCycle;
             resourceInputs["primaryVswitchId"] = state?.primaryVswitchId;
             resourceInputs["primaryZoneId"] = state?.primaryZoneId;
             resourceInputs["regionId"] = state?.regionId;
@@ -241,13 +277,16 @@ export class InstanceV2 extends pulumi.CustomResource {
             resourceInputs["arbiterVswitchId"] = args?.arbiterVswitchId;
             resourceInputs["arbiterZoneId"] = args?.arbiterZoneId;
             resourceInputs["archVersion"] = args?.archVersion;
+            resourceInputs["autoRenewDuration"] = args?.autoRenewDuration;
             resourceInputs["autoRenewal"] = args?.autoRenewal;
             resourceInputs["cloudStorageSize"] = args?.cloudStorageSize;
             resourceInputs["cloudStorageType"] = args?.cloudStorageType;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
+            resourceInputs["duration"] = args?.duration;
             resourceInputs["engineLists"] = args?.engineLists;
             resourceInputs["instanceAlias"] = args?.instanceAlias;
             resourceInputs["paymentType"] = args?.paymentType;
+            resourceInputs["pricingCycle"] = args?.pricingCycle;
             resourceInputs["primaryVswitchId"] = args?.primaryVswitchId;
             resourceInputs["primaryZoneId"] = args?.primaryZoneId;
             resourceInputs["standbyVswitchId"] = args?.standbyVswitchId;
@@ -276,31 +315,58 @@ export interface InstanceV2State {
     arbiterZoneId?: pulumi.Input<string>;
     /**
      * Deployment Scenario
-     * > Enumeration value
-     * > - 1.0 Single AZ
-     * > - 2.0 Multi-AZ Basic
-     * > - 3.0 Multi-AZ High Availability Edition
+     *
+     * > **NOTE:**  Enumeration value
+     *
+     * > **NOTE:**  - 1.0 Single AZ
+     *
+     * > **NOTE:**  - 2.0 Multi-AZ Basic
+     *
+     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     archVersion?: pulumi.Input<string>;
     /**
-     * Auto Renew
+     * Automatic renewal duration. Unit: Month.
+     *
+     * Value range: `1` to **12 * *.
+     *
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    autoRenewDuration?: pulumi.Input<string>;
+    /**
+     * Whether the instance is automatically renewed. Enumerated values:
      */
     autoRenewal?: pulumi.Input<boolean>;
     /**
-     * > Cloud storage capacity in GB
+     * > **NOTE:**  Cloud storage capacity in GB
      */
     cloudStorageSize?: pulumi.Input<number>;
     /**
-     * >>
-     * > - StandardStorage: Standard cloud storage
-     * > - PerformanceStorage: performance-based cloud storage
-     * >- capacity storage: Capacity-based cloud storage
+     * > **NOTE:** >
+     *
+     * > **NOTE:**  - StandardStorage: Standard cloud storage
+     *
+     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     *
+     * > **NOTE:** - capacity storage: Capacity-based cloud storage
      */
     cloudStorageType?: pulumi.Input<string>;
     /**
      * Whether to enable deletion protection
      */
     deletionProtection?: pulumi.Input<string>;
+    /**
+     * The specified duration when the resource is purchased. Only the subscription instances are valid.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    duration?: pulumi.Input<number>;
     /**
      * Engine List See `engineList` below.
      */
@@ -313,6 +379,12 @@ export interface InstanceV2State {
      * The payment type of the resource
      */
     paymentType?: pulumi.Input<string>;
+    /**
+     * Purchase duration unit: Month, Year
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    pricingCycle?: pulumi.Input<string>;
     /**
      * Primary zone VswitchId
      */
@@ -361,31 +433,58 @@ export interface InstanceV2Args {
     arbiterZoneId?: pulumi.Input<string>;
     /**
      * Deployment Scenario
-     * > Enumeration value
-     * > - 1.0 Single AZ
-     * > - 2.0 Multi-AZ Basic
-     * > - 3.0 Multi-AZ High Availability Edition
+     *
+     * > **NOTE:**  Enumeration value
+     *
+     * > **NOTE:**  - 1.0 Single AZ
+     *
+     * > **NOTE:**  - 2.0 Multi-AZ Basic
+     *
+     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     archVersion: pulumi.Input<string>;
     /**
-     * Auto Renew
+     * Automatic renewal duration. Unit: Month.
+     *
+     * Value range: `1` to **12 * *.
+     *
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     *
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    autoRenewDuration?: pulumi.Input<string>;
+    /**
+     * Whether the instance is automatically renewed. Enumerated values:
      */
     autoRenewal?: pulumi.Input<boolean>;
     /**
-     * > Cloud storage capacity in GB
+     * > **NOTE:**  Cloud storage capacity in GB
      */
     cloudStorageSize?: pulumi.Input<number>;
     /**
-     * >>
-     * > - StandardStorage: Standard cloud storage
-     * > - PerformanceStorage: performance-based cloud storage
-     * >- capacity storage: Capacity-based cloud storage
+     * > **NOTE:** >
+     *
+     * > **NOTE:**  - StandardStorage: Standard cloud storage
+     *
+     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
+     *
+     * > **NOTE:** - capacity storage: Capacity-based cloud storage
      */
     cloudStorageType?: pulumi.Input<string>;
     /**
      * Whether to enable deletion protection
      */
     deletionProtection?: pulumi.Input<string>;
+    /**
+     * The specified duration when the resource is purchased. Only the subscription instances are valid.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    duration?: pulumi.Input<number>;
     /**
      * Engine List See `engineList` below.
      */
@@ -398,6 +497,12 @@ export interface InstanceV2Args {
      * The payment type of the resource
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * Purchase duration unit: Month, Year
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     */
+    pricingCycle?: pulumi.Input<string>;
     /**
      * Primary zone VswitchId
      */

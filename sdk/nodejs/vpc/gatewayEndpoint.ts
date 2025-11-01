@@ -106,9 +106,9 @@ export class GatewayEndpoint extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * The ID list of the route table associated with the VPC gateway endpoint.
+     * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      */
-    declare public readonly routeTables: pulumi.Output<string[] | undefined>;
+    declare public readonly routeTables: pulumi.Output<string[]>;
     /**
      * The endpoint service name.
      */
@@ -199,7 +199,7 @@ export interface GatewayEndpointState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID list of the route table associated with the VPC gateway endpoint.
+     * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      */
     routeTables?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -242,7 +242,7 @@ export interface GatewayEndpointArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The ID list of the route table associated with the VPC gateway endpoint.
+     * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      */
     routeTables?: pulumi.Input<pulumi.Input<string>[]>;
     /**

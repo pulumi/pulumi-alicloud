@@ -175,18 +175,18 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The ID list of the route table associated with the VPC gateway endpoint.
+     * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      * 
      */
     @Export(name="routeTables", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> routeTables;
+    private Output<List<String>> routeTables;
 
     /**
-     * @return The ID list of the route table associated with the VPC gateway endpoint.
+     * @return The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      * 
      */
-    public Output<Optional<List<String>>> routeTables() {
-        return Codegen.optional(this.routeTables);
+    public Output<List<String>> routeTables() {
+        return this.routeTables;
     }
     /**
      * The endpoint service name.

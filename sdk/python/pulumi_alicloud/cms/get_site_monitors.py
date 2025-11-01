@@ -135,7 +135,7 @@ def get_site_monitors(ids: Optional[Sequence[_builtins.str]] = None,
         address="http://www.alibabacloud.com",
         task_name=f"terraform-example-{default_integer['result']}",
         task_type="HTTP",
-        interval=5,
+        interval="5",
         isp_cities=[{
             "city": "546",
             "isp": "465",
@@ -210,7 +210,7 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
         address="http://www.alibabacloud.com",
         task_name=f"terraform-example-{default_integer['result']}",
         task_type="HTTP",
-        interval=5,
+        interval="5",
         isp_cities=[{
             "city": "546",
             "isp": "465",

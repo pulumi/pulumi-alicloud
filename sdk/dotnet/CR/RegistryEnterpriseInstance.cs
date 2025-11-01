@@ -75,6 +75,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// Custom OSS Bucket name
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("customOssBucket")]
         public Output<string?> CustomOssBucket { get; private set; } = null!;
@@ -95,6 +97,8 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("imageScanner")]
         public Output<string?> ImageScanner { get; private set; } = null!;
@@ -116,6 +120,8 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -149,6 +155,9 @@ namespace Pulumi.AliCloud.CR
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -243,6 +252,8 @@ namespace Pulumi.AliCloud.CR
     {
         /// <summary>
         /// Custom OSS Bucket name
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("customOssBucket")]
         public Input<string>? CustomOssBucket { get; set; }
@@ -257,6 +268,8 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("imageScanner")]
         public Input<string>? ImageScanner { get; set; }
@@ -272,6 +285,8 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -321,6 +336,9 @@ namespace Pulumi.AliCloud.CR
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -373,6 +391,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// Custom OSS Bucket name
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("customOssBucket")]
         public Input<string>? CustomOssBucket { get; set; }
@@ -393,6 +413,8 @@ namespace Pulumi.AliCloud.CR
         /// The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         /// - `ACR`: Uses the Trivy scan engine provided by default.
         /// - `SAS`: uses the enhanced cloud security scan engine.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("imageScanner")]
         public Input<string>? ImageScanner { get; set; }
@@ -420,6 +442,8 @@ namespace Pulumi.AliCloud.CR
         /// - `Basic`: Basic instance
         /// - `Standard`: Standard instance
         /// - `Advanced`: Advanced Edition Instance
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -469,6 +493,9 @@ namespace Pulumi.AliCloud.CR
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
         /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

@@ -34,6 +34,21 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
     }
 
     /**
+     * The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    @Import(name="failureThreshold")
+    private @Nullable Output<Integer> failureThreshold;
+
+    /**
+     * @return The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+     * 
+     */
+    public Optional<Output<Integer>> failureThreshold() {
+        return Optional.ofNullable(this.failureThreshold);
+    }
+
+    /**
      * The liveness check settings of the container. See `httpGet` below.
      * 
      */
@@ -112,6 +127,7 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
 
     private ApplicationLivenessV2Args(ApplicationLivenessV2Args $) {
         this.exec = $.exec;
+        this.failureThreshold = $.failureThreshold;
         this.httpGet = $.httpGet;
         this.initialDelaySeconds = $.initialDelaySeconds;
         this.periodSeconds = $.periodSeconds;
@@ -156,6 +172,27 @@ public final class ApplicationLivenessV2Args extends com.pulumi.resources.Resour
          */
         public Builder exec(ApplicationLivenessV2ExecArgs exec) {
             return exec(Output.of(exec));
+        }
+
+        /**
+         * @param failureThreshold The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failureThreshold(@Nullable Output<Integer> failureThreshold) {
+            $.failureThreshold = failureThreshold;
+            return this;
+        }
+
+        /**
+         * @param failureThreshold The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failureThreshold(Integer failureThreshold) {
+            return failureThreshold(Output.of(failureThreshold));
         }
 
         /**

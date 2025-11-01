@@ -28,6 +28,7 @@ class BucketReplicationArgs:
                  historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
                  progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
+                 rtc: Optional[pulumi.Input['BucketReplicationRtcArgs']] = None,
                  source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
                  sync_role: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -39,6 +40,7 @@ class BucketReplicationArgs:
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         :param pulumi.Input['BucketReplicationPrefixSetArgs'] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         :param pulumi.Input['BucketReplicationProgressArgs'] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input['BucketReplicationRtcArgs'] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         :param pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs'] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
@@ -54,6 +56,8 @@ class BucketReplicationArgs:
             pulumi.set(__self__, "prefix_set", prefix_set)
         if progress is not None:
             pulumi.set(__self__, "progress", progress)
+        if rtc is not None:
+            pulumi.set(__self__, "rtc", rtc)
         if source_selection_criteria is not None:
             pulumi.set(__self__, "source_selection_criteria", source_selection_criteria)
         if sync_role is not None:
@@ -144,6 +148,18 @@ class BucketReplicationArgs:
         pulumi.set(self, "progress", value)
 
     @_builtins.property
+    @pulumi.getter
+    def rtc(self) -> Optional[pulumi.Input['BucketReplicationRtcArgs']]:
+        """
+        Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+        """
+        return pulumi.get(self, "rtc")
+
+    @rtc.setter
+    def rtc(self, value: Optional[pulumi.Input['BucketReplicationRtcArgs']]):
+        pulumi.set(self, "rtc", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceSelectionCriteria")
     def source_selection_criteria(self) -> Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']]:
         """
@@ -178,6 +194,7 @@ class _BucketReplicationState:
                  historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
                  progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
+                 rtc: Optional[pulumi.Input['BucketReplicationRtcArgs']] = None,
                  rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -191,6 +208,7 @@ class _BucketReplicationState:
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         :param pulumi.Input['BucketReplicationPrefixSetArgs'] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         :param pulumi.Input['BucketReplicationProgressArgs'] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input['BucketReplicationRtcArgs'] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the data replication rule.
         :param pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs'] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] status: The status of the data replication task. Can be starting, doing and closing.
@@ -210,6 +228,8 @@ class _BucketReplicationState:
             pulumi.set(__self__, "prefix_set", prefix_set)
         if progress is not None:
             pulumi.set(__self__, "progress", progress)
+        if rtc is not None:
+            pulumi.set(__self__, "rtc", rtc)
         if rule_id is not None:
             pulumi.set(__self__, "rule_id", rule_id)
         if source_selection_criteria is not None:
@@ -304,6 +324,18 @@ class _BucketReplicationState:
         pulumi.set(self, "progress", value)
 
     @_builtins.property
+    @pulumi.getter
+    def rtc(self) -> Optional[pulumi.Input['BucketReplicationRtcArgs']]:
+        """
+        Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+        """
+        return pulumi.get(self, "rtc")
+
+    @rtc.setter
+    def rtc(self, value: Optional[pulumi.Input['BucketReplicationRtcArgs']]):
+        pulumi.set(self, "rtc", value)
+
+    @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -365,6 +397,7 @@ class BucketReplication(pulumi.CustomResource):
                  historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
                  progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+                 rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
                  source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
                  sync_role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -390,8 +423,8 @@ class BucketReplication(pulumi.CustomResource):
         bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
-            name=f"example-role-{default['result']}",
-            document=\"\"\"\\t\\t{
+            role_name=f"example-role-{default['result']}",
+            assume_role_policy_document=\"\"\"\\t\\t{
         \\t\\t  \\"Statement\\": [
         \\t\\t\\t{
         \\t\\t\\t  \\"Action\\": \\"sts:AssumeRole\\",
@@ -430,7 +463,7 @@ class BucketReplication(pulumi.CustomResource):
         attach = alicloud.ram.RolePolicyAttachment("attach",
             policy_name=policy.policy_name,
             policy_type=policy.type,
-            role_name=role.name)
+            role_name=role.role_name)
         key = alicloud.kms.Key("key",
             description="Hello KMS",
             pending_window_in_days=7,
@@ -449,7 +482,7 @@ class BucketReplication(pulumi.CustomResource):
                 "bucket": bucket_dest.id,
                 "location": bucket_dest.location,
             },
-            sync_role=role.name,
+            sync_role=role.role_name,
             encryption_configuration={
                 "replica_kms_key_id": key.id,
             },
@@ -477,6 +510,7 @@ class BucketReplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
@@ -508,8 +542,8 @@ class BucketReplication(pulumi.CustomResource):
         bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
-            name=f"example-role-{default['result']}",
-            document=\"\"\"\\t\\t{
+            role_name=f"example-role-{default['result']}",
+            assume_role_policy_document=\"\"\"\\t\\t{
         \\t\\t  \\"Statement\\": [
         \\t\\t\\t{
         \\t\\t\\t  \\"Action\\": \\"sts:AssumeRole\\",
@@ -548,7 +582,7 @@ class BucketReplication(pulumi.CustomResource):
         attach = alicloud.ram.RolePolicyAttachment("attach",
             policy_name=policy.policy_name,
             policy_type=policy.type,
-            role_name=role.name)
+            role_name=role.role_name)
         key = alicloud.kms.Key("key",
             description="Hello KMS",
             pending_window_in_days=7,
@@ -567,7 +601,7 @@ class BucketReplication(pulumi.CustomResource):
                 "bucket": bucket_dest.id,
                 "location": bucket_dest.location,
             },
-            sync_role=role.name,
+            sync_role=role.role_name,
             encryption_configuration={
                 "replica_kms_key_id": key.id,
             },
@@ -608,6 +642,7 @@ class BucketReplication(pulumi.CustomResource):
                  historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
                  prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
                  progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+                 rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
                  source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
                  sync_role: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -630,6 +665,7 @@ class BucketReplication(pulumi.CustomResource):
             __props__.__dict__["historical_object_replication"] = historical_object_replication
             __props__.__dict__["prefix_set"] = prefix_set
             __props__.__dict__["progress"] = progress
+            __props__.__dict__["rtc"] = rtc
             __props__.__dict__["source_selection_criteria"] = source_selection_criteria
             __props__.__dict__["sync_role"] = sync_role
             __props__.__dict__["rule_id"] = None
@@ -651,6 +687,7 @@ class BucketReplication(pulumi.CustomResource):
             historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
             prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
             progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+            rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
             rule_id: Optional[pulumi.Input[_builtins.str]] = None,
             source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -669,6 +706,7 @@ class BucketReplication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] historical_object_replication: Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         :param pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']] prefix_set: The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         :param pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
+        :param pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']] rtc: Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         :param pulumi.Input[_builtins.str] rule_id: The ID of the data replication rule.
         :param pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         :param pulumi.Input[_builtins.str] status: The status of the data replication task. Can be starting, doing and closing.
@@ -685,6 +723,7 @@ class BucketReplication(pulumi.CustomResource):
         __props__.__dict__["historical_object_replication"] = historical_object_replication
         __props__.__dict__["prefix_set"] = prefix_set
         __props__.__dict__["progress"] = progress
+        __props__.__dict__["rtc"] = rtc
         __props__.__dict__["rule_id"] = rule_id
         __props__.__dict__["source_selection_criteria"] = source_selection_criteria
         __props__.__dict__["status"] = status
@@ -746,6 +785,14 @@ class BucketReplication(pulumi.CustomResource):
         Specifies the progress for querying the progress of a data replication task of a bucket.
         """
         return pulumi.get(self, "progress")
+
+    @_builtins.property
+    @pulumi.getter
+    def rtc(self) -> pulumi.Output['outputs.BucketReplicationRtc']:
+        """
+        Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+        """
+        return pulumi.get(self, "rtc")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")

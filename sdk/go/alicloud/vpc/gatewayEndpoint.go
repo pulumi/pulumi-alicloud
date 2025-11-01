@@ -109,7 +109,7 @@ type GatewayEndpoint struct {
 	PolicyDocument pulumi.StringPtrOutput `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The ID list of the route table associated with the VPC gateway endpoint.
+	// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 	RouteTables pulumi.StringArrayOutput `pulumi:"routeTables"`
 	// The endpoint service name.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -168,7 +168,7 @@ type gatewayEndpointState struct {
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The ID list of the route table associated with the VPC gateway endpoint.
+	// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 	RouteTables []string `pulumi:"routeTables"`
 	// The endpoint service name.
 	ServiceName *string `pulumi:"serviceName"`
@@ -192,7 +192,7 @@ type GatewayEndpointState struct {
 	PolicyDocument pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The ID list of the route table associated with the VPC gateway endpoint.
+	// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 	RouteTables pulumi.StringArrayInput
 	// The endpoint service name.
 	ServiceName pulumi.StringPtrInput
@@ -218,7 +218,7 @@ type gatewayEndpointArgs struct {
 	PolicyDocument *string `pulumi:"policyDocument"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The ID list of the route table associated with the VPC gateway endpoint.
+	// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 	RouteTables []string `pulumi:"routeTables"`
 	// The endpoint service name.
 	ServiceName string `pulumi:"serviceName"`
@@ -239,7 +239,7 @@ type GatewayEndpointArgs struct {
 	PolicyDocument pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The ID list of the route table associated with the VPC gateway endpoint.
+	// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 	RouteTables pulumi.StringArrayInput
 	// The endpoint service name.
 	ServiceName pulumi.StringInput
@@ -362,7 +362,7 @@ func (o GatewayEndpointOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The ID list of the route table associated with the VPC gateway endpoint.
+// The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
 func (o GatewayEndpointOutput) RouteTables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayEndpoint) pulumi.StringArrayOutput { return v.RouteTables }).(pulumi.StringArrayOutput)
 }

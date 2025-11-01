@@ -16,20 +16,27 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// <summary>
         /// The ID of the city.
         /// </summary>
-        public readonly string City;
+        public readonly string? City;
         /// <summary>
         /// The ID of the carrier.
         /// </summary>
-        public readonly string Isp;
+        public readonly string? Isp;
+        /// <summary>
+        /// The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+        /// </summary>
+        public readonly string? Type;
 
         [OutputConstructor]
         private SiteMonitorIspCity(
-            string city,
+            string? city,
 
-            string isp)
+            string? isp,
+
+            string? type)
         {
             City = city;
             Isp = isp;
+            Type = type;
         }
     }
 }

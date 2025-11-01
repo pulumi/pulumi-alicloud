@@ -41,19 +41,28 @@ class RegistryEnterpriseInstanceArgs:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: Payment type, value:
                - Subscription: Prepaid.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
                > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
@@ -110,6 +119,8 @@ class RegistryEnterpriseInstanceArgs:
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "instance_type")
 
@@ -135,6 +146,8 @@ class RegistryEnterpriseInstanceArgs:
     def custom_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Custom OSS Bucket name
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "custom_oss_bucket")
 
@@ -161,6 +174,8 @@ class RegistryEnterpriseInstanceArgs:
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "image_scanner")
 
@@ -211,6 +226,9 @@ class RegistryEnterpriseInstanceArgs:
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
         > **NOTE:**  must be set when creating a prepaid instance.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -290,17 +308,23 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[_builtins.str] end_time: Expiration Time
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input['RegistryEnterpriseInstanceInstanceEndpointArgs']]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
         :param pulumi.Input[_builtins.str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
@@ -309,6 +333,9 @@ class _RegistryEnterpriseInstanceState:
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -395,6 +422,8 @@ class _RegistryEnterpriseInstanceState:
     def custom_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Custom OSS Bucket name
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "custom_oss_bucket")
 
@@ -433,6 +462,8 @@ class _RegistryEnterpriseInstanceState:
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "image_scanner")
 
@@ -472,6 +503,8 @@ class _RegistryEnterpriseInstanceState:
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "instance_type")
 
@@ -535,6 +568,9 @@ class _RegistryEnterpriseInstanceState:
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
         > **NOTE:**  must be set when creating a prepaid instance.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -674,15 +710,21 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
         :param pulumi.Input[_builtins.str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
@@ -691,6 +733,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
                > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
@@ -852,17 +897,23 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
         :param pulumi.Input[_builtins.str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         :param pulumi.Input[_builtins.str] custom_oss_bucket: Custom OSS Bucket name
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] default_oss_bucket: Whether to use the default OSS Bucket. Value:
         :param pulumi.Input[_builtins.str] end_time: Expiration Time
         :param pulumi.Input[_builtins.str] image_scanner: The security scan engine used by the Enterprise Edition of Container Image Service. Value:
                - `ACR`: Uses the Trivy scan engine provided by default.
                - `SAS`: uses the enhanced cloud security scan engine.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegistryEnterpriseInstanceInstanceEndpointArgs', 'RegistryEnterpriseInstanceInstanceEndpointArgsDict']]]] instance_endpoints: (Available since v1.240.0) Instance Network Access Endpoint List
         :param pulumi.Input[_builtins.str] instance_name: InstanceName
         :param pulumi.Input[_builtins.str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
                - `Basic`: Basic instance
                - `Standard`: Standard instance
                - `Advanced`: Advanced Edition Instance
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[_builtins.str] password: Login password, 8-32 digits, must contain at least two letters, symbols, or numbers
@@ -871,6 +922,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
                
                > **NOTE:**  must be set when creating a prepaid instance.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: RegionId
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal cycle, in months.
                
@@ -932,6 +986,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def custom_oss_bucket(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Custom OSS Bucket name
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "custom_oss_bucket")
 
@@ -958,6 +1014,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         The security scan engine used by the Enterprise Edition of Container Image Service. Value:
         - `ACR`: Uses the Trivy scan engine provided by default.
         - `SAS`: uses the enhanced cloud security scan engine.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "image_scanner")
 
@@ -985,6 +1043,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         - `Basic`: Basic instance
         - `Standard`: Standard instance
         - `Advanced`: Advanced Edition Instance
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1028,6 +1088,9 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
 
         > **NOTE:**  must be set when creating a prepaid instance.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 

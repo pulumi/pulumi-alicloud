@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Vpc.Inputs
 
     public sealed class NetworkAclEntriesEgressArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the egress entry.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -21,18 +24,33 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         [Input("destinationCidrIp")]
         public Input<string>? DestinationCidrIp { get; set; }
 
+        /// <summary>
+        /// The entry type of the egress entry. It must be `Custom` or `System`. Default value is `Custom`.
+        /// </summary>
         [Input("entryType")]
         public Input<string>? EntryType { get; set; }
 
+        /// <summary>
+        /// The name of the egress entry.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The policy of the egress entry. It must be `Accept` or `Drop`.
+        /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 
+        /// <summary>
+        /// The port of the egress entry.
+        /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
 
+        /// <summary>
+        /// The protocol of the egress entry.
+        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

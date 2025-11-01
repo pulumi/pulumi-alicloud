@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly Outputs.ApplicationLivenessV2Exec? Exec;
         /// <summary>
+        /// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+        /// </summary>
+        public readonly int? FailureThreshold;
+        /// <summary>
         /// The liveness check settings of the container. See `HttpGet` below.
         /// </summary>
         public readonly Outputs.ApplicationLivenessV2HttpGet? HttpGet;
@@ -42,6 +46,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
         private ApplicationLivenessV2(
             Outputs.ApplicationLivenessV2Exec? exec,
 
+            int? failureThreshold,
+
             Outputs.ApplicationLivenessV2HttpGet? httpGet,
 
             int? initialDelaySeconds,
@@ -53,6 +59,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
             int? timeoutSeconds)
         {
             Exec = exec;
+            FailureThreshold = failureThreshold;
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;

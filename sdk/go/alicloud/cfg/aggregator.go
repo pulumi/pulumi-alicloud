@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloud Config Aggregator resource.
+// Provides a Cloud Config (Config) Aggregator resource.
 //
-// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
+// For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
 //
 // > **NOTE:** Available since v1.124.0.
 //
@@ -73,7 +73,7 @@ import (
 //
 // ## Import
 //
-// Cloud Config Aggregator can be imported using the id, e.g.
+// Cloud Config (Config) Aggregator can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cfg/aggregator:Aggregator example <id>
@@ -81,17 +81,23 @@ import (
 type Aggregator struct {
 	pulumi.CustomResourceState
 
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The member accounts of the account group. See `aggregatorAccounts` below.
+	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayOutput `pulumi:"aggregatorAccounts"`
-	// The name of aggregator.
+	// The name of the account group.
 	AggregatorName pulumi.StringOutput `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-	// * `CUSTOM` - The custom account group.
-	// * `RD` - The global account group.
+	// The type of the account group. Default value: `CUSTOM`. Valid values:
+	// - `RD`: Global account group.
+	// - `FOLDER`: Folder account group.
+	// - `CUSTOM`: Custom account group.
 	AggregatorType pulumi.StringOutput `pulumi:"aggregatorType"`
-	// The description of aggregator.
+	// (Available since v1.262.0) The timestamp when the account group was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The description of the account group.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
+	// The status of the account group.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -131,32 +137,44 @@ func GetAggregator(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Aggregator resources.
 type aggregatorState struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The member accounts of the account group. See `aggregatorAccounts` below.
+	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
-	// The name of aggregator.
+	// The name of the account group.
 	AggregatorName *string `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-	// * `CUSTOM` - The custom account group.
-	// * `RD` - The global account group.
+	// The type of the account group. Default value: `CUSTOM`. Valid values:
+	// - `RD`: Global account group.
+	// - `FOLDER`: Folder account group.
+	// - `CUSTOM`: Custom account group.
 	AggregatorType *string `pulumi:"aggregatorType"`
-	// The description of aggregator.
+	// (Available since v1.262.0) The timestamp when the account group was created.
+	CreateTime *int `pulumi:"createTime"`
+	// The description of the account group.
 	Description *string `pulumi:"description"`
-	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+	FolderId *string `pulumi:"folderId"`
+	// The status of the account group.
 	Status *string `pulumi:"status"`
 }
 
 type AggregatorState struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The member accounts of the account group. See `aggregatorAccounts` below.
+	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
-	// The name of aggregator.
+	// The name of the account group.
 	AggregatorName pulumi.StringPtrInput
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-	// * `CUSTOM` - The custom account group.
-	// * `RD` - The global account group.
+	// The type of the account group. Default value: `CUSTOM`. Valid values:
+	// - `RD`: Global account group.
+	// - `FOLDER`: Folder account group.
+	// - `CUSTOM`: Custom account group.
 	AggregatorType pulumi.StringPtrInput
-	// The description of aggregator.
+	// (Available since v1.262.0) The timestamp when the account group was created.
+	CreateTime pulumi.IntPtrInput
+	// The description of the account group.
 	Description pulumi.StringPtrInput
-	// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+	FolderId pulumi.StringPtrInput
+	// The status of the account group.
 	Status pulumi.StringPtrInput
 }
 
@@ -165,30 +183,38 @@ func (AggregatorState) ElementType() reflect.Type {
 }
 
 type aggregatorArgs struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The member accounts of the account group. See `aggregatorAccounts` below.
+	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts []AggregatorAggregatorAccount `pulumi:"aggregatorAccounts"`
-	// The name of aggregator.
+	// The name of the account group.
 	AggregatorName string `pulumi:"aggregatorName"`
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-	// * `CUSTOM` - The custom account group.
-	// * `RD` - The global account group.
+	// The type of the account group. Default value: `CUSTOM`. Valid values:
+	// - `RD`: Global account group.
+	// - `FOLDER`: Folder account group.
+	// - `CUSTOM`: Custom account group.
 	AggregatorType *string `pulumi:"aggregatorType"`
-	// The description of aggregator.
+	// The description of the account group.
 	Description string `pulumi:"description"`
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+	FolderId *string `pulumi:"folderId"`
 }
 
 // The set of arguments for constructing a Aggregator resource.
 type AggregatorArgs struct {
-	// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+	// The member accounts of the account group. See `aggregatorAccounts` below.
+	// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 	AggregatorAccounts AggregatorAggregatorAccountArrayInput
-	// The name of aggregator.
+	// The name of the account group.
 	AggregatorName pulumi.StringInput
-	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-	// * `CUSTOM` - The custom account group.
-	// * `RD` - The global account group.
+	// The type of the account group. Default value: `CUSTOM`. Valid values:
+	// - `RD`: Global account group.
+	// - `FOLDER`: Folder account group.
+	// - `CUSTOM`: Custom account group.
 	AggregatorType pulumi.StringPtrInput
-	// The description of aggregator.
+	// The description of the account group.
 	Description pulumi.StringInput
+	// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+	FolderId pulumi.StringPtrInput
 }
 
 func (AggregatorArgs) ElementType() reflect.Type {
@@ -278,29 +304,41 @@ func (o AggregatorOutput) ToAggregatorOutputWithContext(ctx context.Context) Agg
 	return o
 }
 
-// The information of account in aggregator. If the aggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `aggregatorAccounts` below.  **NOTE:** the field `aggregatorAccounts` is not required from version 1.148.0.
+// The member accounts of the account group. See `aggregatorAccounts` below.
+// > **NOTE:** If `aggregatorType` is set to `CUSTOM`, `aggregatorAccounts` is required.
 func (o AggregatorOutput) AggregatorAccounts() AggregatorAggregatorAccountArrayOutput {
 	return o.ApplyT(func(v *Aggregator) AggregatorAggregatorAccountArrayOutput { return v.AggregatorAccounts }).(AggregatorAggregatorAccountArrayOutput)
 }
 
-// The name of aggregator.
+// The name of the account group.
 func (o AggregatorOutput) AggregatorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.AggregatorName }).(pulumi.StringOutput)
 }
 
-// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-// * `CUSTOM` - The custom account group.
-// * `RD` - The global account group.
+// The type of the account group. Default value: `CUSTOM`. Valid values:
+// - `RD`: Global account group.
+// - `FOLDER`: Folder account group.
+// - `CUSTOM`: Custom account group.
 func (o AggregatorOutput) AggregatorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.AggregatorType }).(pulumi.StringOutput)
 }
 
-// The description of aggregator.
+// (Available since v1.262.0) The timestamp when the account group was created.
+func (o AggregatorOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
+}
+
+// The description of the account group.
 func (o AggregatorOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregatorType` is set to `FOLDER`, `folderId` is required.
+func (o AggregatorOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Aggregator) pulumi.StringPtrOutput { return v.FolderId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the account group.
 func (o AggregatorOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.StarRocksInstance;
- * import com.pulumi.alicloud.StarRocksInstanceArgs;
- * import com.pulumi.alicloud.inputs.StarRocksInstanceFrontendNodeGroupArgs;
- * import com.pulumi.alicloud.inputs.StarRocksInstanceVswitchArgs;
- * import com.pulumi.alicloud.inputs.StarRocksInstanceBackendNodeGroupArgs;
- * import com.pulumi.alicloud.inputs.StarRocksInstanceObserverNodeGroupArgs;
+ * import com.pulumi.alicloud.starrocks.Instance;
+ * import com.pulumi.alicloud.starrocks.InstanceArgs;
+ * import com.pulumi.alicloud.starrocks.inputs.InstanceFrontendNodeGroupArgs;
+ * import com.pulumi.alicloud.starrocks.inputs.InstanceVswitchArgs;
+ * import com.pulumi.alicloud.starrocks.inputs.InstanceBackendNodeGroupArgs;
+ * import com.pulumi.alicloud.starrocks.inputs.InstanceObserverNodeGroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,10 +83,10 @@ import javax.annotation.Nullable;
  *             .zoneId("cn-hangzhou-i")
  *             .build());
  * 
- *         var defaultStarRocksInstance = new StarRocksInstance("defaultStarRocksInstance", StarRocksInstanceArgs.builder()
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .instanceName("create-instance-1")
  *             .autoRenew(false)
- *             .frontendNodeGroups(StarRocksInstanceFrontendNodeGroupArgs.builder()
+ *             .frontendNodeGroups(InstanceFrontendNodeGroupArgs.builder()
  *                 .cu(8)
  *                 .storageSize(100)
  *                 .residentNodeNumber(3)
@@ -96,11 +96,11 @@ import javax.annotation.Nullable;
  *                 .zoneId("cn-hangzhou-i")
  *                 .localStorageInstanceType("null")
  *                 .build())
- *             .vswitches(StarRocksInstanceVswitchArgs.builder()
+ *             .vswitches(InstanceVswitchArgs.builder()
  *                 .vswitchId(default106DkE.id())
  *                 .zoneId("cn-hangzhou-i")
  *                 .build())
- *             .backendNodeGroups(StarRocksInstanceBackendNodeGroupArgs.builder()
+ *             .backendNodeGroups(InstanceBackendNodeGroupArgs.builder()
  *                 .cu(8)
  *                 .storageSize(100)
  *                 .residentNodeNumber(3)
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *             .kmsKeyId("123")
  *             .promotionOptionNo("123")
  *             .encrypted(false)
- *             .observerNodeGroups(StarRocksInstanceObserverNodeGroupArgs.builder()
+ *             .observerNodeGroups(InstanceObserverNodeGroupArgs.builder()
  *                 .cu(8)
  *                 .storageSize(100)
  *                 .storagePerformanceLevel("pl1")
@@ -148,7 +148,11 @@ import javax.annotation.Nullable;
  * $ pulumi import alicloud:index/starRocksInstance:StarRocksInstance example &lt;id&gt;
  * ```
  * 
+ * @deprecated
+ * alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance
+ * 
  */
+@Deprecated /* alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance */
 @ResourceType(type="alicloud:index/starRocksInstance:StarRocksInstance")
 public class StarRocksInstance extends com.pulumi.resources.CustomResource {
     /**

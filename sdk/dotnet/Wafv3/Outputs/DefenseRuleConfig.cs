@@ -91,6 +91,16 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DefenseRuleConfigCondition> Conditions;
         /// <summary>
+        /// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `GrayConfig` below.
+        /// </summary>
+        public readonly Outputs.DefenseRuleConfigGrayConfig? GrayConfig;
+        /// <summary>
+        /// Specifies whether to enable canary release for the rule. Valid values:
+        /// - 0 (default): disables canary release.
+        /// - 1: enables canary release.
+        /// </summary>
+        public readonly int? GrayStatus;
+        /// <summary>
         /// The HTTP flood protection mode. Valid values:
         /// - 0 (default): indicates normal protection.
         /// - 1: indicates emergency protection.
@@ -133,6 +143,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
         /// </summary>
         public readonly string? ThrottleType;
         /// <summary>
+        /// The scheduled rule configuration. The value is a JSON.  See `TimeConfig` below.
+        /// </summary>
+        public readonly Outputs.DefenseRuleConfigTimeConfig? TimeConfig;
+        /// <summary>
         /// The User-Agent string that is allowed for access to the address.
         /// </summary>
         public readonly string? Ua;
@@ -161,6 +175,10 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             ImmutableArray<Outputs.DefenseRuleConfigCondition> conditions,
 
+            Outputs.DefenseRuleConfigGrayConfig? grayConfig,
+
+            int? grayStatus,
+
             int? mode,
 
             string? protocol,
@@ -175,6 +193,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
 
             string? throttleType,
 
+            Outputs.DefenseRuleConfigTimeConfig? timeConfig,
+
             string? ua,
 
             string? url)
@@ -188,6 +208,8 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             CcStatus = ccStatus;
             CnRegions = cnRegions;
             Conditions = conditions;
+            GrayConfig = grayConfig;
+            GrayStatus = grayStatus;
             Mode = mode;
             Protocol = protocol;
             RateLimit = rateLimit;
@@ -195,6 +217,7 @@ namespace Pulumi.AliCloud.Wafv3.Outputs
             RuleAction = ruleAction;
             ThrottleThrehold = throttleThrehold;
             ThrottleType = throttleType;
+            TimeConfig = timeConfig;
             Ua = ua;
             Url = url;
         }

@@ -11,19 +11,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworkAclEntriesEgress {
+    /**
+     * @return The description of the egress entry.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The destination ip of the egress entry.
      * 
      */
     private @Nullable String destinationCidrIp;
+    /**
+     * @return The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+     * 
+     */
     private @Nullable String entryType;
+    /**
+     * @return The name of the egress entry.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The policy of the egress entry. It must be `accept` or `drop`.
+     * 
+     */
     private @Nullable String policy;
+    /**
+     * @return The port of the egress entry.
+     * 
+     */
     private @Nullable String port;
+    /**
+     * @return The protocol of the egress entry.
+     * 
+     */
     private @Nullable String protocol;
 
     private NetworkAclEntriesEgress() {}
+    /**
+     * @return The description of the egress entry.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -34,18 +62,38 @@ public final class NetworkAclEntriesEgress {
     public Optional<String> destinationCidrIp() {
         return Optional.ofNullable(this.destinationCidrIp);
     }
+    /**
+     * @return The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+     * 
+     */
     public Optional<String> entryType() {
         return Optional.ofNullable(this.entryType);
     }
+    /**
+     * @return The name of the egress entry.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The policy of the egress entry. It must be `accept` or `drop`.
+     * 
+     */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
+    /**
+     * @return The port of the egress entry.
+     * 
+     */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return The protocol of the egress entry.
+     * 
+     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

@@ -17,6 +17,16 @@ from . import outputs
 
 __all__ = [
     'AutoGroupingRuleRuleContent',
+    'DeliveryChannelDeliveryChannelFilter',
+    'DeliveryChannelResourceChangeDelivery',
+    'DeliveryChannelResourceChangeDeliverySlsProperties',
+    'DeliveryChannelResourceSnapshotDelivery',
+    'DeliveryChannelResourceSnapshotDeliverySlsProperties',
+    'MultiAccountDeliveryChannelDeliveryChannelFilter',
+    'MultiAccountDeliveryChannelResourceChangeDelivery',
+    'MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties',
+    'MultiAccountDeliveryChannelResourceSnapshotDelivery',
+    'MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties',
     'ResourceGroupRegionStatus',
     'ResourceShareResource',
     'GetAccountDeletionCheckTaskAbandonAbleCheckResult',
@@ -86,6 +96,639 @@ class AutoGroupingRuleRuleContent(dict):
         The condition for the range of resources to be automatically transferred.
         """
         return pulumi.get(self, "auto_grouping_scope_condition")
+
+
+@pulumi.output_type
+class DeliveryChannelDeliveryChannelFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceTypes":
+            suggest = "resource_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryChannelDeliveryChannelFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryChannelDeliveryChannelFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryChannelDeliveryChannelFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_types: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] resource_types: An array of effective resource types for the delivery channel.
+               - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+               - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+        """
+        if resource_types is not None:
+            pulumi.set(__self__, "resource_types", resource_types)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceTypes")
+    def resource_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        An array of effective resource types for the delivery channel.
+        - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+        - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+        """
+        return pulumi.get(self, "resource_types")
+
+
+@pulumi.output_type
+class DeliveryChannelResourceChangeDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsProperties":
+            suggest = "sls_properties"
+        elif key == "targetArn":
+            suggest = "target_arn"
+        elif key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryChannelResourceChangeDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryChannelResourceChangeDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryChannelResourceChangeDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 sls_properties: Optional['outputs.DeliveryChannelResourceChangeDeliverySlsProperties'] = None,
+                 target_arn: Optional[_builtins.str] = None,
+                 target_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Specifies whether to enable delivery of resource configuration change events. Valid values:
+               - true
+               - false
+        :param 'DeliveryChannelResourceChangeDeliverySlsPropertiesArgs' sls_properties: The Simple Log Service configurations. See `sls_properties` below.
+        :param _builtins.str target_arn: The ARN of the delivery destination.
+               - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+               - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        :param _builtins.str target_type: The type of the delivery destination.
+               
+               Valid values:
+               - SLS
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_properties is not None:
+            pulumi.set(__self__, "sls_properties", sls_properties)
+        if target_arn is not None:
+            pulumi.set(__self__, "target_arn", target_arn)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable delivery of resource configuration change events. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="slsProperties")
+    def sls_properties(self) -> Optional['outputs.DeliveryChannelResourceChangeDeliverySlsProperties']:
+        """
+        The Simple Log Service configurations. See `sls_properties` below.
+        """
+        return pulumi.get(self, "sls_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the delivery destination.
+        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        """
+        return pulumi.get(self, "target_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the delivery destination.
+
+        Valid values:
+        - SLS
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class DeliveryChannelResourceChangeDeliverySlsProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oversizedDataOssTargetArn":
+            suggest = "oversized_data_oss_target_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryChannelResourceChangeDeliverySlsProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryChannelResourceChangeDeliverySlsProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryChannelResourceChangeDeliverySlsProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oversized_data_oss_target_arn: Optional[_builtins.str] = None):
+        if oversized_data_oss_target_arn is not None:
+            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="oversizedDataOssTargetArn")
+    def oversized_data_oss_target_arn(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oversized_data_oss_target_arn")
+
+
+@pulumi.output_type
+class DeliveryChannelResourceSnapshotDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customExpression":
+            suggest = "custom_expression"
+        elif key == "deliveryTime":
+            suggest = "delivery_time"
+        elif key == "slsProperties":
+            suggest = "sls_properties"
+        elif key == "targetArn":
+            suggest = "target_arn"
+        elif key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryChannelResourceSnapshotDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryChannelResourceSnapshotDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryChannelResourceSnapshotDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_expression: Optional[_builtins.str] = None,
+                 delivery_time: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 sls_properties: Optional['outputs.DeliveryChannelResourceSnapshotDeliverySlsProperties'] = None,
+                 target_arn: Optional[_builtins.str] = None,
+                 target_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str custom_expression: The custom expression.
+        :param _builtins.str delivery_time: The delivery time.
+        :param _builtins.bool enabled: Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+               - true
+               - false
+        :param 'DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs' sls_properties: The Simple Log Service configurations. See `sls_properties` below.
+        :param _builtins.str target_arn: The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+               - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+               - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        :param _builtins.str target_type: The type of the delivery destination.
+               
+               Valid values:
+               - `OSS` for standard delivery
+               - `OSS` or `SLS` for custom delivery
+        """
+        if custom_expression is not None:
+            pulumi.set(__self__, "custom_expression", custom_expression)
+        if delivery_time is not None:
+            pulumi.set(__self__, "delivery_time", delivery_time)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_properties is not None:
+            pulumi.set(__self__, "sls_properties", sls_properties)
+        if target_arn is not None:
+            pulumi.set(__self__, "target_arn", target_arn)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @_builtins.property
+    @pulumi.getter(name="customExpression")
+    def custom_expression(self) -> Optional[_builtins.str]:
+        """
+        The custom expression.
+        """
+        return pulumi.get(self, "custom_expression")
+
+    @_builtins.property
+    @pulumi.getter(name="deliveryTime")
+    def delivery_time(self) -> Optional[_builtins.str]:
+        """
+        The delivery time.
+        """
+        return pulumi.get(self, "delivery_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="slsProperties")
+    def sls_properties(self) -> Optional['outputs.DeliveryChannelResourceSnapshotDeliverySlsProperties']:
+        """
+        The Simple Log Service configurations. See `sls_properties` below.
+        """
+        return pulumi.get(self, "sls_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> Optional[_builtins.str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        """
+        return pulumi.get(self, "target_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the delivery destination.
+
+        Valid values:
+        - `OSS` for standard delivery
+        - `OSS` or `SLS` for custom delivery
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class DeliveryChannelResourceSnapshotDeliverySlsProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oversizedDataOssTargetArn":
+            suggest = "oversized_data_oss_target_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryChannelResourceSnapshotDeliverySlsProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryChannelResourceSnapshotDeliverySlsProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryChannelResourceSnapshotDeliverySlsProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oversized_data_oss_target_arn: Optional[_builtins.str] = None):
+        if oversized_data_oss_target_arn is not None:
+            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="oversizedDataOssTargetArn")
+    def oversized_data_oss_target_arn(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oversized_data_oss_target_arn")
+
+
+@pulumi.output_type
+class MultiAccountDeliveryChannelDeliveryChannelFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountScopes":
+            suggest = "account_scopes"
+        elif key == "resourceTypes":
+            suggest = "resource_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiAccountDeliveryChannelDeliveryChannelFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiAccountDeliveryChannelDeliveryChannelFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiAccountDeliveryChannelDeliveryChannelFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account_scopes: Sequence[_builtins.str],
+                 resource_types: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] account_scopes: The account scopes of the delivery channel.
+        :param Sequence[_builtins.str] resource_types: An array of effective resource types for the delivery channel.
+               - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+               - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+        """
+        pulumi.set(__self__, "account_scopes", account_scopes)
+        if resource_types is not None:
+            pulumi.set(__self__, "resource_types", resource_types)
+
+    @_builtins.property
+    @pulumi.getter(name="accountScopes")
+    def account_scopes(self) -> Sequence[_builtins.str]:
+        """
+        The account scopes of the delivery channel.
+        """
+        return pulumi.get(self, "account_scopes")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceTypes")
+    def resource_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        An array of effective resource types for the delivery channel.
+        - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+        - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+        """
+        return pulumi.get(self, "resource_types")
+
+
+@pulumi.output_type
+class MultiAccountDeliveryChannelResourceChangeDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "slsProperties":
+            suggest = "sls_properties"
+        elif key == "targetArn":
+            suggest = "target_arn"
+        elif key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiAccountDeliveryChannelResourceChangeDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiAccountDeliveryChannelResourceChangeDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiAccountDeliveryChannelResourceChangeDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 sls_properties: Optional['outputs.MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties'] = None,
+                 target_arn: Optional[_builtins.str] = None,
+                 target_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Specifies whether to enable delivery of resource configuration change events. Valid values:
+               - true
+               - false
+        :param 'MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs' sls_properties: The Simple Log Service configurations. See `sls_properties` below.
+        :param _builtins.str target_arn: The ARN of the delivery destination.
+               - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+               - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        :param _builtins.str target_type: The type of the delivery destination.
+               
+               Valid values:
+               - SLS
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_properties is not None:
+            pulumi.set(__self__, "sls_properties", sls_properties)
+        if target_arn is not None:
+            pulumi.set(__self__, "target_arn", target_arn)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable delivery of resource configuration change events. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="slsProperties")
+    def sls_properties(self) -> Optional['outputs.MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties']:
+        """
+        The Simple Log Service configurations. See `sls_properties` below.
+        """
+        return pulumi.get(self, "sls_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> Optional[_builtins.str]:
+        """
+        The ARN of the delivery destination.
+        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        """
+        return pulumi.get(self, "target_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the delivery destination.
+
+        Valid values:
+        - SLS
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oversizedDataOssTargetArn":
+            suggest = "oversized_data_oss_target_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oversized_data_oss_target_arn: Optional[_builtins.str] = None):
+        if oversized_data_oss_target_arn is not None:
+            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="oversizedDataOssTargetArn")
+    def oversized_data_oss_target_arn(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oversized_data_oss_target_arn")
+
+
+@pulumi.output_type
+class MultiAccountDeliveryChannelResourceSnapshotDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customExpression":
+            suggest = "custom_expression"
+        elif key == "deliveryTime":
+            suggest = "delivery_time"
+        elif key == "slsProperties":
+            suggest = "sls_properties"
+        elif key == "targetArn":
+            suggest = "target_arn"
+        elif key == "targetType":
+            suggest = "target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiAccountDeliveryChannelResourceSnapshotDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiAccountDeliveryChannelResourceSnapshotDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiAccountDeliveryChannelResourceSnapshotDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_expression: Optional[_builtins.str] = None,
+                 delivery_time: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 sls_properties: Optional['outputs.MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties'] = None,
+                 target_arn: Optional[_builtins.str] = None,
+                 target_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str custom_expression: The custom expression.
+        :param _builtins.str delivery_time: The delivery time.
+        :param _builtins.bool enabled: Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+               - true
+               - false
+        :param 'MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs' sls_properties: The Simple Log Service configurations. See `sls_properties` below.
+        :param _builtins.str target_arn: The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+               - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+               - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        :param _builtins.str target_type: The type of the delivery destination.
+               
+               Valid values:
+               - `OSS` for standard delivery
+               - `OSS` or `SLS` for custom delivery
+        """
+        if custom_expression is not None:
+            pulumi.set(__self__, "custom_expression", custom_expression)
+        if delivery_time is not None:
+            pulumi.set(__self__, "delivery_time", delivery_time)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sls_properties is not None:
+            pulumi.set(__self__, "sls_properties", sls_properties)
+        if target_arn is not None:
+            pulumi.set(__self__, "target_arn", target_arn)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @_builtins.property
+    @pulumi.getter(name="customExpression")
+    def custom_expression(self) -> Optional[_builtins.str]:
+        """
+        The custom expression.
+        """
+        return pulumi.get(self, "custom_expression")
+
+    @_builtins.property
+    @pulumi.getter(name="deliveryTime")
+    def delivery_time(self) -> Optional[_builtins.str]:
+        """
+        The delivery time.
+        """
+        return pulumi.get(self, "delivery_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+        - true
+        - false
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="slsProperties")
+    def sls_properties(self) -> Optional['outputs.MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties']:
+        """
+        The Simple Log Service configurations. See `sls_properties` below.
+        """
+        return pulumi.get(self, "sls_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> Optional[_builtins.str]:
+        """
+        The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+        - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+        - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+        """
+        return pulumi.get(self, "target_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the delivery destination.
+
+        Valid values:
+        - `OSS` for standard delivery
+        - `OSS` or `SLS` for custom delivery
+        """
+        return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oversizedDataOssTargetArn":
+            suggest = "oversized_data_oss_target_arn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 oversized_data_oss_target_arn: Optional[_builtins.str] = None):
+        if oversized_data_oss_target_arn is not None:
+            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+
+    @_builtins.property
+    @pulumi.getter(name="oversizedDataOssTargetArn")
+    def oversized_data_oss_target_arn(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oversized_data_oss_target_arn")
 
 
 @pulumi.output_type

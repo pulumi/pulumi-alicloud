@@ -35,6 +35,7 @@ __all__ = [
     'GetInstancesInstanceResult',
     'GetNatFirewallsFirewallResult',
     'GetNatFirewallsFirewallNatRouteEntryListResult',
+    'GetTlsInspectCaCertificatesCertificateResult',
     'GetVpcCenTrFirewallsFirewallResult',
     'GetVpcCenTrFirewallsFirewallIpsConfigResult',
     'GetVpcFirewallCensCenResult',
@@ -1775,6 +1776,35 @@ class GetNatFirewallsFirewallNatRouteEntryListResult(dict):
         The route table where the default route of the NAT gateway is located.
         """
         return pulumi.get(self, "route_table_id")
+
+
+@pulumi.output_type
+class GetTlsInspectCaCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 ca_cert_id: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str ca_cert_id: CA certificate ID
+        :param _builtins.str id: The ID of the resource supplied above.
+        """
+        pulumi.set(__self__, "ca_cert_id", ca_cert_id)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertId")
+    def ca_cert_id(self) -> _builtins.str:
+        """
+        CA certificate ID
+        """
+        return pulumi.get(self, "ca_cert_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

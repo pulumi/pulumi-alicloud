@@ -72,7 +72,7 @@ type Cluster struct {
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	DefaultTimeZone pulumi.StringOutput `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -184,7 +184,7 @@ type Cluster struct {
 	StandbyAz pulumi.StringOutput `pulumi:"standbyAz"`
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 	StoragePayType pulumi.StringOutput `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
@@ -309,7 +309,7 @@ type clusterState struct {
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
@@ -421,7 +421,7 @@ type clusterState struct {
 	StandbyAz *string `pulumi:"standbyAz"`
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status *string `pulumi:"status"`
-	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 	StoragePayType *string `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
@@ -508,7 +508,7 @@ type ClusterState struct {
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	DefaultTimeZone pulumi.StringPtrInput
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
@@ -620,7 +620,7 @@ type ClusterState struct {
 	StandbyAz pulumi.StringPtrInput
 	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringPtrInput
-	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 	StoragePayType pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
@@ -705,7 +705,7 @@ type clusterArgs struct {
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	DefaultTimeZone *string `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 	DeletionLock *int `pulumi:"deletionLock"`
 	// The description of cluster.
 	Description *string `pulumi:"description"`
@@ -813,7 +813,7 @@ type clusterArgs struct {
 	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
 	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
 	StandbyAz *string `pulumi:"standbyAz"`
-	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 	StoragePayType *string `pulumi:"storagePayType"`
 	// Storage space charged by space (monthly package). Unit: GB.
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
@@ -891,7 +891,7 @@ type ClusterArgs struct {
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	DefaultTimeZone pulumi.StringPtrInput
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+	// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 	DeletionLock pulumi.IntPtrInput
 	// The description of cluster.
 	Description pulumi.StringPtrInput
@@ -999,7 +999,7 @@ type ClusterArgs struct {
 	// The availability zone where the hot standby cluster is stored, takes effect when `hotStandbyCluster` is `ON` or `EQUAL`.
 	// > **NOTE:** `standbyAz` is required when `hotStandbyCluster` is `EQUAL`.
 	StandbyAz pulumi.StringPtrInput
-	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+	// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 	StoragePayType pulumi.StringPtrInput
 	// Storage space charged by space (monthly package). Unit: GB.
 	// > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
@@ -1228,7 +1228,7 @@ func (o ClusterOutput) DefaultTimeZone() pulumi.StringOutput {
 }
 
 // turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+// > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
 func (o ClusterOutput) DeletionLock() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DeletionLock }).(pulumi.IntPtrOutput)
 }
@@ -1475,7 +1475,7 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+// The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
 func (o ClusterOutput) StoragePayType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StoragePayType }).(pulumi.StringOutput)
 }

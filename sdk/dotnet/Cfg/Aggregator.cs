@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cfg
 {
     /// <summary>
-    /// Provides a Cloud Config Aggregator resource.
+    /// Provides a Cloud Config (Config) Aggregator resource.
     /// 
-    /// For information about Cloud Config Aggregate Config Rule and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
+    /// For information about Cloud Config (Config) Aggregator and how to use it, see [What is Aggregator](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createaggregator).
     /// 
     /// &gt; **NOTE:** Available since v1.124.0.
     /// 
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Cfg
     /// 
     /// ## Import
     /// 
-    /// Cloud Config Aggregator can be imported using the id, e.g.
+    /// Cloud Config (Config) Aggregator can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cfg/aggregator:Aggregator example &lt;id&gt;
@@ -68,33 +68,47 @@ namespace Pulumi.AliCloud.Cfg
     public partial class Aggregator : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The information of account in aggregator. If the AggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `AggregatorAccounts` below.  **NOTE:** the field `AggregatorAccounts` is not required from version 1.148.0.
+        /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         [Output("aggregatorAccounts")]
         public Output<ImmutableArray<Outputs.AggregatorAggregatorAccount>> AggregatorAccounts { get; private set; } = null!;
 
         /// <summary>
-        /// The name of aggregator.
+        /// The name of the account group.
         /// </summary>
         [Output("aggregatorName")]
         public Output<string> AggregatorName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        /// * `CUSTOM` - The custom account group.
-        /// * `RD` - The global account group.
+        /// The type of the account group. Default value: `CUSTOM`. Valid values:
+        /// - `RD`: Global account group.
+        /// - `FOLDER`: Folder account group.
+        /// - `CUSTOM`: Custom account group.
         /// </summary>
         [Output("aggregatorType")]
         public Output<string> AggregatorType { get; private set; } = null!;
 
         /// <summary>
-        /// The description of aggregator.
+        /// (Available since v1.262.0) The timestamp when the account group was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the account group.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        /// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `AggregatorType` is set to `FOLDER`, `FolderId` is required.
+        /// </summary>
+        [Output("folderId")]
+        public Output<string?> FolderId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the account group.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -149,7 +163,8 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregatorAggregatorAccountArgs>? _aggregatorAccounts;
 
         /// <summary>
-        /// The information of account in aggregator. If the AggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `AggregatorAccounts` below.  **NOTE:** the field `AggregatorAccounts` is not required from version 1.148.0.
+        /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountArgs> AggregatorAccounts
         {
@@ -158,24 +173,31 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The name of aggregator.
+        /// The name of the account group.
         /// </summary>
         [Input("aggregatorName", required: true)]
         public Input<string> AggregatorName { get; set; } = null!;
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        /// * `CUSTOM` - The custom account group.
-        /// * `RD` - The global account group.
+        /// The type of the account group. Default value: `CUSTOM`. Valid values:
+        /// - `RD`: Global account group.
+        /// - `FOLDER`: Folder account group.
+        /// - `CUSTOM`: Custom account group.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }
 
         /// <summary>
-        /// The description of aggregator.
+        /// The description of the account group.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `AggregatorType` is set to `FOLDER`, `FolderId` is required.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
 
         public AggregatorArgs()
         {
@@ -189,7 +211,8 @@ namespace Pulumi.AliCloud.Cfg
         private InputList<Inputs.AggregatorAggregatorAccountGetArgs>? _aggregatorAccounts;
 
         /// <summary>
-        /// The information of account in aggregator. If the AggregatorType is RD, it is optional and means add all members in the resource directory to the account group. See `AggregatorAccounts` below.  **NOTE:** the field `AggregatorAccounts` is not required from version 1.148.0.
+        /// The member accounts of the account group. See `AggregatorAccounts` below.
+        /// &gt; **NOTE:** If `AggregatorType` is set to `CUSTOM`, `AggregatorAccounts` is required.
         /// </summary>
         public InputList<Inputs.AggregatorAggregatorAccountGetArgs> AggregatorAccounts
         {
@@ -198,27 +221,40 @@ namespace Pulumi.AliCloud.Cfg
         }
 
         /// <summary>
-        /// The name of aggregator.
+        /// The name of the account group.
         /// </summary>
         [Input("aggregatorName")]
         public Input<string>? AggregatorName { get; set; }
 
         /// <summary>
-        /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
-        /// * `CUSTOM` - The custom account group.
-        /// * `RD` - The global account group.
+        /// The type of the account group. Default value: `CUSTOM`. Valid values:
+        /// - `RD`: Global account group.
+        /// - `FOLDER`: Folder account group.
+        /// - `CUSTOM`: Custom account group.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }
 
         /// <summary>
-        /// The description of aggregator.
+        /// (Available since v1.262.0) The timestamp when the account group was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the account group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
+        /// The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `AggregatorType` is set to `FOLDER`, `FolderId` is required.
+        /// </summary>
+        [Input("folderId")]
+        public Input<string>? FolderId { get; set; }
+
+        /// <summary>
+        /// The status of the account group.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

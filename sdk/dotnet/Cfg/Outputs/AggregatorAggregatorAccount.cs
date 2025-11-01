@@ -14,25 +14,25 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     public sealed class AggregatorAggregatorAccount
     {
         /// <summary>
-        /// Aggregator account Uid.
+        /// The member ID.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
-        /// Aggregator account name.
+        /// The member name.
         /// </summary>
-        public readonly string AccountName;
+        public readonly string? AccountName;
         /// <summary>
-        /// Aggregator account source type. Valid values: `ResourceDirectory`.
+        /// The affiliation of the member. Valid values: `ResourceDirectory`.
         /// </summary>
-        public readonly string AccountType;
+        public readonly string? AccountType;
 
         [OutputConstructor]
         private AggregatorAggregatorAccount(
-            string accountId,
+            string? accountId,
 
-            string accountName,
+            string? accountName,
 
-            string accountType)
+            string? accountType)
         {
             AccountId = accountId;
             AccountName = accountName;

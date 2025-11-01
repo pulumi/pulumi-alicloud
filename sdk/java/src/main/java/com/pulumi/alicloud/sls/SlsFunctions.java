@@ -8,12 +8,15 @@ import com.pulumi.alicloud.sls.inputs.GetAlertsArgs;
 import com.pulumi.alicloud.sls.inputs.GetAlertsPlainArgs;
 import com.pulumi.alicloud.sls.inputs.GetEtlsArgs;
 import com.pulumi.alicloud.sls.inputs.GetEtlsPlainArgs;
+import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+import com.pulumi.alicloud.sls.inputs.GetIndexsPlainArgs;
 import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsArgs;
 import com.pulumi.alicloud.sls.inputs.GetLogtailConfigsPlainArgs;
 import com.pulumi.alicloud.sls.inputs.GetMachineGroupsArgs;
 import com.pulumi.alicloud.sls.inputs.GetMachineGroupsPlainArgs;
 import com.pulumi.alicloud.sls.outputs.GetAlertsResult;
 import com.pulumi.alicloud.sls.outputs.GetEtlsResult;
+import com.pulumi.alicloud.sls.outputs.GetIndexsResult;
 import com.pulumi.alicloud.sls.outputs.GetLogtailConfigsResult;
 import com.pulumi.alicloud.sls.outputs.GetMachineGroupsResult;
 import com.pulumi.core.Output;
@@ -1378,6 +1381,571 @@ public final class SlsFunctions {
      */
     public static CompletableFuture<GetEtlsResult> getEtlsPlain(GetEtlsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:sls/getEtls:getEtls", TypeShape.of(GetEtlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Index;
+     * import com.pulumi.alicloud.sls.IndexArgs;
+     * import com.pulumi.alicloud.sls.inputs.IndexLineArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
+     *         final var projectName = config.get("projectName").orElse("project-for-index-terraform-example-1");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .description("terraform example")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .hotTtl(7)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(logstoreName)
+     *             .build());
+     * 
+     *         var defaultIndex = new Index("defaultIndex", IndexArgs.builder()
+     *             .line(IndexLineArgs.builder()
+     *                 .chn(true)
+     *                 .caseSensitive(true)
+     *                 .tokens("a")
+     *                 .excludeKeys("t")
+     *                 .build())
+     *             .keys(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("example", jsonObject(
+     *                         jsonProperty("caseSensitive", false),
+     *                         jsonProperty("token", jsonArray(
+     *                             """
+     * 
+     *                             """, 
+     *                             "	", 
+     *                             ",", 
+     *                             " ", 
+     *                             ";", 
+     *                             "\"", 
+     *                             "'", 
+     *                             "(", 
+     *                             ")", 
+     *                             "{", 
+     *                             "}", 
+     *                             "[", 
+     *                             "]", 
+     *                             "<", 
+     *                             ">", 
+     *                             "?", 
+     *                             "/", 
+     *                             "#", 
+     *                             ":"
+     *                         )),
+     *                         jsonProperty("type", "text"),
+     *                         jsonProperty("doc_value", false),
+     *                         jsonProperty("alias", ""),
+     *                         jsonProperty("chn", false)
+     *                     ))
+     *                 )))
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getIndexs(GetIndexsArgs.builder()
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIndexsResult> getIndexs(GetIndexsArgs args) {
+        return getIndexs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Index;
+     * import com.pulumi.alicloud.sls.IndexArgs;
+     * import com.pulumi.alicloud.sls.inputs.IndexLineArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
+     *         final var projectName = config.get("projectName").orElse("project-for-index-terraform-example-1");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .description("terraform example")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .hotTtl(7)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(logstoreName)
+     *             .build());
+     * 
+     *         var defaultIndex = new Index("defaultIndex", IndexArgs.builder()
+     *             .line(IndexLineArgs.builder()
+     *                 .chn(true)
+     *                 .caseSensitive(true)
+     *                 .tokens("a")
+     *                 .excludeKeys("t")
+     *                 .build())
+     *             .keys(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("example", jsonObject(
+     *                         jsonProperty("caseSensitive", false),
+     *                         jsonProperty("token", jsonArray(
+     *                             """
+     * 
+     *                             """, 
+     *                             "	", 
+     *                             ",", 
+     *                             " ", 
+     *                             ";", 
+     *                             "\"", 
+     *                             "'", 
+     *                             "(", 
+     *                             ")", 
+     *                             "{", 
+     *                             "}", 
+     *                             "[", 
+     *                             "]", 
+     *                             "<", 
+     *                             ">", 
+     *                             "?", 
+     *                             "/", 
+     *                             "#", 
+     *                             ":"
+     *                         )),
+     *                         jsonProperty("type", "text"),
+     *                         jsonProperty("doc_value", false),
+     *                         jsonProperty("alias", ""),
+     *                         jsonProperty("chn", false)
+     *                     ))
+     *                 )))
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getIndexs(GetIndexsArgs.builder()
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIndexsResult> getIndexsPlain(GetIndexsPlainArgs args) {
+        return getIndexsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Index;
+     * import com.pulumi.alicloud.sls.IndexArgs;
+     * import com.pulumi.alicloud.sls.inputs.IndexLineArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
+     *         final var projectName = config.get("projectName").orElse("project-for-index-terraform-example-1");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .description("terraform example")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .hotTtl(7)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(logstoreName)
+     *             .build());
+     * 
+     *         var defaultIndex = new Index("defaultIndex", IndexArgs.builder()
+     *             .line(IndexLineArgs.builder()
+     *                 .chn(true)
+     *                 .caseSensitive(true)
+     *                 .tokens("a")
+     *                 .excludeKeys("t")
+     *                 .build())
+     *             .keys(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("example", jsonObject(
+     *                         jsonProperty("caseSensitive", false),
+     *                         jsonProperty("token", jsonArray(
+     *                             """
+     * 
+     *                             """, 
+     *                             "	", 
+     *                             ",", 
+     *                             " ", 
+     *                             ";", 
+     *                             "\"", 
+     *                             "'", 
+     *                             "(", 
+     *                             ")", 
+     *                             "{", 
+     *                             "}", 
+     *                             "[", 
+     *                             "]", 
+     *                             "<", 
+     *                             ">", 
+     *                             "?", 
+     *                             "/", 
+     *                             "#", 
+     *                             ":"
+     *                         )),
+     *                         jsonProperty("type", "text"),
+     *                         jsonProperty("doc_value", false),
+     *                         jsonProperty("alias", ""),
+     *                         jsonProperty("chn", false)
+     *                     ))
+     *                 )))
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getIndexs(GetIndexsArgs.builder()
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIndexsResult> getIndexs(GetIndexsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getIndexs:getIndexs", TypeShape.of(GetIndexsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Index;
+     * import com.pulumi.alicloud.sls.IndexArgs;
+     * import com.pulumi.alicloud.sls.inputs.IndexLineArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
+     *         final var projectName = config.get("projectName").orElse("project-for-index-terraform-example-1");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .description("terraform example")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .hotTtl(7)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(logstoreName)
+     *             .build());
+     * 
+     *         var defaultIndex = new Index("defaultIndex", IndexArgs.builder()
+     *             .line(IndexLineArgs.builder()
+     *                 .chn(true)
+     *                 .caseSensitive(true)
+     *                 .tokens("a")
+     *                 .excludeKeys("t")
+     *                 .build())
+     *             .keys(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("example", jsonObject(
+     *                         jsonProperty("caseSensitive", false),
+     *                         jsonProperty("token", jsonArray(
+     *                             """
+     * 
+     *                             """, 
+     *                             "	", 
+     *                             ",", 
+     *                             " ", 
+     *                             ";", 
+     *                             "\"", 
+     *                             "'", 
+     *                             "(", 
+     *                             ")", 
+     *                             "{", 
+     *                             "}", 
+     *                             "[", 
+     *                             "]", 
+     *                             "<", 
+     *                             ">", 
+     *                             "?", 
+     *                             "/", 
+     *                             "#", 
+     *                             ":"
+     *                         )),
+     *                         jsonProperty("type", "text"),
+     *                         jsonProperty("doc_value", false),
+     *                         jsonProperty("alias", ""),
+     *                         jsonProperty("chn", false)
+     *                     ))
+     *                 )))
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getIndexs(GetIndexsArgs.builder()
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIndexsResult> getIndexs(GetIndexsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:sls/getIndexs:getIndexs", TypeShape.of(GetIndexsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Sls Index available to the user.[What is Index](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateIndex)
+     * 
+     * &gt; **NOTE:** Available since v1.262.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.sls.Index;
+     * import com.pulumi.alicloud.sls.IndexArgs;
+     * import com.pulumi.alicloud.sls.inputs.IndexLineArgs;
+     * import com.pulumi.alicloud.sls.SlsFunctions;
+     * import com.pulumi.alicloud.sls.inputs.GetIndexsArgs;
+     * import static com.pulumi.codegen.internal.Serialization.*;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var logstoreName = config.get("logstoreName").orElse("logstore-example-1");
+     *         final var projectName = config.get("projectName").orElse("project-for-index-terraform-example-1");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .description("terraform example")
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .hotTtl(7)
+     *             .retentionPeriod(30)
+     *             .shardCount(2)
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(logstoreName)
+     *             .build());
+     * 
+     *         var defaultIndex = new Index("defaultIndex", IndexArgs.builder()
+     *             .line(IndexLineArgs.builder()
+     *                 .chn(true)
+     *                 .caseSensitive(true)
+     *                 .tokens("a")
+     *                 .excludeKeys("t")
+     *                 .build())
+     *             .keys(serializeJson(
+     *                 jsonObject(
+     *                     jsonProperty("example", jsonObject(
+     *                         jsonProperty("caseSensitive", false),
+     *                         jsonProperty("token", jsonArray(
+     *                             """
+     * 
+     *                             """, 
+     *                             "	", 
+     *                             ",", 
+     *                             " ", 
+     *                             ";", 
+     *                             "\"", 
+     *                             "'", 
+     *                             "(", 
+     *                             ")", 
+     *                             "{", 
+     *                             "}", 
+     *                             "[", 
+     *                             "]", 
+     *                             "<", 
+     *                             ">", 
+     *                             "?", 
+     *                             "/", 
+     *                             "#", 
+     *                             ":"
+     *                         )),
+     *                         jsonProperty("type", "text"),
+     *                         jsonProperty("doc_value", false),
+     *                         jsonProperty("alias", ""),
+     *                         jsonProperty("chn", false)
+     *                     ))
+     *                 )))
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(projectName)
+     *             .build());
+     * 
+     *         final var default = SlsFunctions.getIndexs(GetIndexsArgs.builder()
+     *             .logstoreName(defaultStore.logstoreName())
+     *             .projectName(defaultProject.projectName())
+     *             .build());
+     * 
+     *         ctx.export("alicloudSlsIndexExampleId", default_.applyValue(_default_ -> _default_.indexs()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIndexsResult> getIndexsPlain(GetIndexsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:sls/getIndexs:getIndexs", TypeShape.of(GetIndexsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Sls Logtail Config available to the user.[What is Logtail Config](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateConfig)

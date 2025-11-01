@@ -84,7 +84,7 @@ type SecurityGroupRule struct {
 	//
 	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
 	Ipv6CidrIp pulumi.StringPtrOutput `pulumi:"ipv6CidrIp"`
@@ -156,7 +156,7 @@ type securityGroupRuleState struct {
 	//
 	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Description *string `pulumi:"description"`
-	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
 	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
@@ -190,7 +190,7 @@ type SecurityGroupRuleState struct {
 	//
 	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Description pulumi.StringPtrInput
-	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 	IpProtocol pulumi.StringPtrInput
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
 	Ipv6CidrIp pulumi.StringPtrInput
@@ -228,7 +228,7 @@ type securityGroupRuleArgs struct {
 	//
 	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Description *string `pulumi:"description"`
-	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 	IpProtocol string `pulumi:"ipProtocol"`
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
 	Ipv6CidrIp *string `pulumi:"ipv6CidrIp"`
@@ -261,7 +261,7 @@ type SecurityGroupRuleArgs struct {
 	//
 	// > **NOTE:**  You must specify one of the following field: `cidrIp`,`sourceSecurityGroupId`,`prefixListId`,`ipv6CidrIp`.
 	Description pulumi.StringPtrInput
-	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+	// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 	IpProtocol pulumi.StringInput
 	// Source IPv6 CIDR address block that requires access. Supports IP address ranges in CIDR format and IPv6 format. **NOTE:** This parameter cannot be set at the same time as the `cidrIp` parameter.
 	Ipv6CidrIp pulumi.StringPtrInput
@@ -385,7 +385,7 @@ func (o SecurityGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `gre`, `all`.
+// The transport layer protocol of the Security Group Rule. Valid values: `tcp`, `udp`, `icmp`, `icmpv6`, `gre`, `all`. **NOTE:** From version 1.262.0, `ipProtocol` can be set to `icmpv6`.
 func (o SecurityGroupRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
 }

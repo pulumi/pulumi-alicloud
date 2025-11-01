@@ -180,6 +180,21 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The size of the temporary storage space to add. Unit: GiB.
+     * 
+     */
+    @Import(name="ephemeralStorage")
+    private @Nullable Output<Integer> ephemeralStorage;
+
+    /**
+     * @return The size of the temporary storage space to add. Unit: GiB.
+     * 
+     */
+    public Optional<Output<Integer>> ephemeralStorage() {
+        return Optional.ofNullable(this.ephemeralStorage);
+    }
+
+    /**
      * HostAliases. See `hostAliases` below.
      * 
      */
@@ -483,6 +498,7 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
         this.dnsPolicy = $.dnsPolicy;
         this.eipBandwidth = $.eipBandwidth;
         this.eipInstanceId = $.eipInstanceId;
+        this.ephemeralStorage = $.ephemeralStorage;
         this.hostAliases = $.hostAliases;
         this.imageRegistryCredentials = $.imageRegistryCredentials;
         this.initContainers = $.initContainers;
@@ -750,6 +766,27 @@ public final class ContainerGroupArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder eipInstanceId(String eipInstanceId) {
             return eipInstanceId(Output.of(eipInstanceId));
+        }
+
+        /**
+         * @param ephemeralStorage The size of the temporary storage space to add. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorage(@Nullable Output<Integer> ephemeralStorage) {
+            $.ephemeralStorage = ephemeralStorage;
+            return this;
+        }
+
+        /**
+         * @param ephemeralStorage The size of the temporary storage space to add. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorage(Integer ephemeralStorage) {
+            return ephemeralStorage(Output.of(ephemeralStorage));
         }
 
         /**

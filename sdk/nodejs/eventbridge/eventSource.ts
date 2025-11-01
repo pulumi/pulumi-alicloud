@@ -21,21 +21,21 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
- * const exampleQueue = new alicloud.mns.Queue("example", {name: `${name}-${_default.result}`});
- * const exampleEventSource = new alicloud.eventbridge.EventSource("example", {
- *     eventBusName: example.eventBusName,
- *     eventSourceName: name,
+ * const defaultQueue = new alicloud.mns.Queue("default", {name: `${name}-${_default.result}`});
+ * const defaultEventBus = new alicloud.eventbridge.EventBus("default", {eventBusName: `${name}-${_default.result}`});
+ * const defaultEventSource = new alicloud.eventbridge.EventSource("default", {
+ *     eventBusName: defaultEventBus.eventBusName,
+ *     eventSourceName: `${name}-${_default.result}`,
  *     description: name,
  *     linkedExternalSource: true,
  *     externalSourceType: "MNS",
  *     externalSourceConfig: {
- *         QueueName: exampleQueue.name,
+ *         QueueName: defaultQueue.name,
  *     },
  * });
  * ```
@@ -77,19 +77,19 @@ export class EventSource extends pulumi.CustomResource {
     }
 
     /**
-     * The detail describe of event source.
+     * The description of the event source.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The name of event bus.
+     * The name of the event bus to which the event source is attached.
      */
     declare public readonly eventBusName: pulumi.Output<string>;
     /**
-     * The code name of event source.
+     * The name of the event source.
      */
     declare public readonly eventSourceName: pulumi.Output<string>;
     /**
-     * The config of external source.
+     * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -106,13 +106,13 @@ export class EventSource extends pulumi.CustomResource {
      */
     declare public readonly externalSourceConfig: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      */
     declare public readonly externalSourceType: pulumi.Output<string | undefined>;
     /**
-     * Whether to connect to an external data source. Default value: `false`
+     * Specifies whether to connect to an external data source. Default value: `false`.
      */
-    declare public readonly linkedExternalSource: pulumi.Output<boolean>;
+    declare public readonly linkedExternalSource: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a EventSource resource with the given unique name, arguments, and options.
@@ -158,19 +158,19 @@ export class EventSource extends pulumi.CustomResource {
  */
 export interface EventSourceState {
     /**
-     * The detail describe of event source.
+     * The description of the event source.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of event bus.
+     * The name of the event bus to which the event source is attached.
      */
     eventBusName?: pulumi.Input<string>;
     /**
-     * The code name of event source.
+     * The name of the event source.
      */
     eventSourceName?: pulumi.Input<string>;
     /**
-     * The config of external source.
+     * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -187,11 +187,11 @@ export interface EventSourceState {
      */
     externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      */
     externalSourceType?: pulumi.Input<string>;
     /**
-     * Whether to connect to an external data source. Default value: `false`
+     * Specifies whether to connect to an external data source. Default value: `false`.
      */
     linkedExternalSource?: pulumi.Input<boolean>;
 }
@@ -201,19 +201,19 @@ export interface EventSourceState {
  */
 export interface EventSourceArgs {
     /**
-     * The detail describe of event source.
+     * The description of the event source.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of event bus.
+     * The name of the event bus to which the event source is attached.
      */
     eventBusName: pulumi.Input<string>;
     /**
-     * The code name of event source.
+     * The name of the event source.
      */
     eventSourceName: pulumi.Input<string>;
     /**
-     * The config of external source.
+     * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -230,11 +230,11 @@ export interface EventSourceArgs {
      */
     externalSourceConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      */
     externalSourceType?: pulumi.Input<string>;
     /**
-     * Whether to connect to an external data source. Default value: `false`
+     * Specifies whether to connect to an external data source. Default value: `false`.
      */
     linkedExternalSource?: pulumi.Input<boolean>;
 }

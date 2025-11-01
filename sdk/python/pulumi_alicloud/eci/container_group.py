@@ -33,6 +33,7 @@ class ContainerGroupArgs:
                  dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
@@ -65,6 +66,7 @@ class ContainerGroupArgs:
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
+        :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below.
@@ -105,6 +107,8 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
             pulumi.set(__self__, "eip_instance_id", eip_instance_id)
+        if ephemeral_storage is not None:
+            pulumi.set(__self__, "ephemeral_storage", ephemeral_storage)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
         if image_registry_credentials is not None:
@@ -284,6 +288,18 @@ class ContainerGroupArgs:
     @eip_instance_id.setter
     def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStorage")
+    def ephemeral_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The size of the temporary storage space to add. Unit: GiB.
+        """
+        return pulumi.get(self, "ephemeral_storage")
+
+    @ephemeral_storage.setter
+    def ephemeral_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ephemeral_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="hostAliases")
@@ -505,6 +521,7 @@ class _ContainerGroupState:
                  dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
@@ -539,6 +556,7 @@ class _ContainerGroupState:
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
+        :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below.
@@ -585,6 +603,8 @@ class _ContainerGroupState:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
             pulumi.set(__self__, "eip_instance_id", eip_instance_id)
+        if ephemeral_storage is not None:
+            pulumi.set(__self__, "ephemeral_storage", ephemeral_storage)
         if host_aliases is not None:
             pulumi.set(__self__, "host_aliases", host_aliases)
         if image_registry_credentials is not None:
@@ -749,6 +769,18 @@ class _ContainerGroupState:
     @eip_instance_id.setter
     def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStorage")
+    def ephemeral_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The size of the temporary storage space to add. Unit: GiB.
+        """
+        return pulumi.get(self, "ephemeral_storage")
+
+    @ephemeral_storage.setter
+    def ephemeral_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ephemeral_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="hostAliases")
@@ -1034,6 +1066,7 @@ class ContainerGroup(pulumi.CustomResource):
                  dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
@@ -1180,6 +1213,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
+        :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
@@ -1348,6 +1382,7 @@ class ContainerGroup(pulumi.CustomResource):
                  dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
                  image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
@@ -1390,6 +1425,7 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["dns_policy"] = dns_policy
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
             __props__.__dict__["eip_instance_id"] = eip_instance_id
+            __props__.__dict__["ephemeral_storage"] = ephemeral_storage
             __props__.__dict__["host_aliases"] = host_aliases
             __props__.__dict__["image_registry_credentials"] = image_registry_credentials
             __props__.__dict__["init_containers"] = init_containers
@@ -1436,6 +1472,7 @@ class ContainerGroup(pulumi.CustomResource):
             dns_policy: Optional[pulumi.Input[_builtins.str]] = None,
             eip_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+            ephemeral_storage: Optional[pulumi.Input[_builtins.int]] = None,
             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]]] = None,
             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]]] = None,
@@ -1475,6 +1512,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[_builtins.int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[_builtins.str] eip_instance_id: The ID of the elastic IP address (EIP).
+        :param pulumi.Input[_builtins.int] ephemeral_storage: The size of the temporary storage space to add. Unit: GiB.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupImageRegistryCredentialArgs', 'ContainerGroupImageRegistryCredentialArgsDict']]]] image_registry_credentials: The image registry credential. See `image_registry_credential` below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupInitContainerArgs', 'ContainerGroupInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below.
@@ -1515,6 +1553,7 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["dns_policy"] = dns_policy
         __props__.__dict__["eip_bandwidth"] = eip_bandwidth
         __props__.__dict__["eip_instance_id"] = eip_instance_id
+        __props__.__dict__["ephemeral_storage"] = ephemeral_storage
         __props__.__dict__["host_aliases"] = host_aliases
         __props__.__dict__["image_registry_credentials"] = image_registry_credentials
         __props__.__dict__["init_containers"] = init_containers
@@ -1618,6 +1657,14 @@ class ContainerGroup(pulumi.CustomResource):
         The ID of the elastic IP address (EIP).
         """
         return pulumi.get(self, "eip_instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralStorage")
+    def ephemeral_storage(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The size of the temporary storage space to add. Unit: GiB.
+        """
+        return pulumi.get(self, "ephemeral_storage")
 
     @_builtins.property
     @pulumi.getter(name="hostAliases")

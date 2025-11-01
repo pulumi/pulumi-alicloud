@@ -19,14 +19,14 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     public static final EventSourceArgs Empty = new EventSourceArgs();
 
     /**
-     * The detail describe of event source.
+     * The description of the event source.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The detail describe of event source.
+     * @return The description of the event source.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of event bus.
+     * The name of the event bus to which the event source is attached.
      * 
      */
     @Import(name="eventBusName", required=true)
     private Output<String> eventBusName;
 
     /**
-     * @return The name of event bus.
+     * @return The name of the event bus to which the event source is attached.
      * 
      */
     public Output<String> eventBusName() {
@@ -49,14 +49,14 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The code name of event source.
+     * The name of the event source.
      * 
      */
     @Import(name="eventSourceName", required=true)
     private Output<String> eventSourceName;
 
     /**
-     * @return The code name of event source.
+     * @return The name of the event source.
      * 
      */
     public Output<String> eventSourceName() {
@@ -64,7 +64,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The config of external source.
+     * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -84,7 +84,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> externalSourceConfig;
 
     /**
-     * @return The config of external source.
+     * @return The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -105,14 +105,14 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      * 
      */
     @Import(name="externalSourceType")
     private @Nullable Output<String> externalSourceType;
 
     /**
-     * @return The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * @return The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      * 
      */
     public Optional<Output<String>> externalSourceType() {
@@ -120,14 +120,14 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to connect to an external data source. Default value: `false`
+     * Specifies whether to connect to an external data source. Default value: `false`.
      * 
      */
     @Import(name="linkedExternalSource")
     private @Nullable Output<Boolean> linkedExternalSource;
 
     /**
-     * @return Whether to connect to an external data source. Default value: `false`
+     * @return Specifies whether to connect to an external data source. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> linkedExternalSource() {
@@ -164,7 +164,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The detail describe of event source.
+         * @param description The description of the event source.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The detail describe of event source.
+         * @param description The description of the event source.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBusName The name of event bus.
+         * @param eventBusName The name of the event bus to which the event source is attached.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventBusName The name of event bus.
+         * @param eventBusName The name of the event bus to which the event source is attached.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventSourceName The code name of event source.
+         * @param eventSourceName The name of the event source.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventSourceName The code name of event source.
+         * @param eventSourceName The name of the event source.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceConfig The config of external source.
+         * @param externalSourceConfig The configuration of the external data source.
          * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
@@ -251,7 +251,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceConfig The config of external source.
+         * @param externalSourceConfig The configuration of the external data source.
          * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
          * `RegionId` - The region ID of RabbitMQ.
          * `InstanceId` - The instance ID of RabbitMQ.
@@ -274,7 +274,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+         * @param externalSourceType The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalSourceType The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+         * @param externalSourceType The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedExternalSource Whether to connect to an external data source. Default value: `false`
+         * @param linkedExternalSource Specifies whether to connect to an external data source. Default value: `false`.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class EventSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkedExternalSource Whether to connect to an external data source. Default value: `false`
+         * @param linkedExternalSource Specifies whether to connect to an external data source. Default value: `false`.
          * 
          * @return builder
          * 

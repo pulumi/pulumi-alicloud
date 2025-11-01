@@ -287,6 +287,8 @@ if typing.TYPE_CHECKING:
     sms = __sms
     import pulumi_alicloud.sslcertificatesservice as __sslcertificatesservice
     sslcertificatesservice = __sslcertificatesservice
+    import pulumi_alicloud.starrocks as __starrocks
+    starrocks = __starrocks
     import pulumi_alicloud.tag as __tag
     tag = __tag
     import pulumi_alicloud.threatdetection as __threatdetection
@@ -439,6 +441,7 @@ else:
     sls = _utilities.lazy_import('pulumi_alicloud.sls')
     sms = _utilities.lazy_import('pulumi_alicloud.sms')
     sslcertificatesservice = _utilities.lazy_import('pulumi_alicloud.sslcertificatesservice')
+    starrocks = _utilities.lazy_import('pulumi_alicloud.starrocks')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     threatdetection = _utilities.lazy_import('pulumi_alicloud.threatdetection')
     tsdb = _utilities.lazy_import('pulumi_alicloud.tsdb')
@@ -4311,6 +4314,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/loadBalancer",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "esa/networkOptimization",
   "fqn": "pulumi_alicloud.esa",
   "classes": {
@@ -6839,10 +6850,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/zonalAccount",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/zonalAccount:ZonalAccount": "ZonalAccount"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/zonalDbCluster",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
    "alicloud:polardb/zonalDbCluster:ZonalDbCluster": "ZonalDbCluster"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "polardb/zonalEndpoint",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/zonalEndpoint:ZonalEndpoint": "ZonalEndpoint"
   }
  },
  {
@@ -7415,6 +7442,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "resourcemanager/deliveryChannel",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/deliveryChannel:DeliveryChannel": "DeliveryChannel"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "resourcemanager/folder",
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
@@ -7435,6 +7470,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.resourcemanager",
   "classes": {
    "alicloud:resourcemanager/messageContact:MessageContact": "MessageContact"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "resourcemanager/multiAccountDeliveryChannel",
+  "fqn": "pulumi_alicloud.resourcemanager",
+  "classes": {
+   "alicloud:resourcemanager/multiAccountDeliveryChannel:MultiAccountDeliveryChannel": "MultiAccountDeliveryChannel"
   }
  },
  {
@@ -8227,6 +8270,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sslcertificatesservice",
   "classes": {
    "alicloud:sslcertificatesservice/pcaCertificate:PcaCertificate": "PcaCertificate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "starrocks/instance",
+  "fqn": "pulumi_alicloud.starrocks",
+  "classes": {
+   "alicloud:starrocks/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "starrocks/nodeGroup",
+  "fqn": "pulumi_alicloud.starrocks",
+  "classes": {
+   "alicloud:starrocks/nodeGroup:NodeGroup": "NodeGroup"
   }
  },
  {

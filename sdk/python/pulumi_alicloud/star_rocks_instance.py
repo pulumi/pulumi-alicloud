@@ -786,8 +786,13 @@ class _StarRocksInstanceState:
         pulumi.set(self, "vswitches", value)
 
 
+warnings.warn("""alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance""", DeprecationWarning)
+
+
 @pulumi.type_token("alicloud:index/starRocksInstance:StarRocksInstance")
 class StarRocksInstance(pulumi.CustomResource):
+    warnings.warn("""alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -842,7 +847,7 @@ class StarRocksInstance(pulumi.CustomResource):
             cidr_block="172.16.1.0/24",
             vswitch_name="sr-example",
             zone_id="cn-hangzhou-i")
-        default_star_rocks_instance = alicloud.StarRocksInstance("default",
+        default_instance = alicloud.starrocks.Instance("default",
             instance_name="create-instance-1",
             auto_renew=False,
             frontend_node_groups=[{
@@ -970,7 +975,7 @@ class StarRocksInstance(pulumi.CustomResource):
             cidr_block="172.16.1.0/24",
             vswitch_name="sr-example",
             zone_id="cn-hangzhou-i")
-        default_star_rocks_instance = alicloud.StarRocksInstance("default",
+        default_instance = alicloud.starrocks.Instance("default",
             instance_name="create-instance-1",
             auto_renew=False,
             frontend_node_groups=[{
@@ -1067,6 +1072,7 @@ class StarRocksInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""StarRocksInstance is deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

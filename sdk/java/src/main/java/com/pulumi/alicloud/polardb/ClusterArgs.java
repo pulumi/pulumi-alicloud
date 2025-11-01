@@ -296,7 +296,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
     @Import(name="deletionLock")
@@ -304,7 +304,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      * 
      */
     public Optional<Output<Integer>> deletionLock() {
@@ -986,14 +986,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      * 
      */
     @Import(name="storagePayType")
     private @Nullable Output<String> storagePayType;
 
     /**
-     * @return The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * @return The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      * 
      */
     public Optional<Output<String>> storagePayType() {
@@ -1659,7 +1659,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-         * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+         * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
          * 
          * @return builder
          * 
@@ -1671,7 +1671,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionLock turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-         * &gt; **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+         * &gt; **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
          * 
          * @return builder
          * 
@@ -2639,7 +2639,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePayType The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+         * @param storagePayType The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
          * 
          * @return builder
          * 
@@ -2650,7 +2650,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePayType The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+         * @param storagePayType The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
          * 
          * @return builder
          * 

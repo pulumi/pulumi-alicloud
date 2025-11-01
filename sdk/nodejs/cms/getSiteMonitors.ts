@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     address: "http://www.alibabacloud.com",
  *     taskName: `terraform-example-${defaultInteger.result}`,
  *     taskType: "HTTP",
- *     interval: 5,
+ *     interval: "5",
  *     ispCities: [{
  *         city: "546",
  *         isp: "465",
@@ -138,7 +138,7 @@ export interface GetSiteMonitorsResult {
  *     address: "http://www.alibabacloud.com",
  *     taskName: `terraform-example-${defaultInteger.result}`,
  *     taskType: "HTTP",
- *     interval: 5,
+ *     interval: "5",
  *     ispCities: [{
  *         city: "546",
  *         isp: "465",

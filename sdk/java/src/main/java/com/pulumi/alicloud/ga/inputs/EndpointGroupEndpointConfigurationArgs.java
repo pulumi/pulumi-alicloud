@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -84,14 +85,14 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
      * The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
+     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
-     * - `ALB`: An Application Load Balancer (ALB) instance.
-     * - `NLB`: A Network Load Balancer (NLB) instance.
-     * - `ENI`: An Elastic Network Interface (ENI).
-     * - `OSS`: An Object Storage Service (OSS) bucket.
-     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+     * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+     * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+     * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+     * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
      * 
      */
     @Import(name="type", required=true)
@@ -101,18 +102,48 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
      * @return The type of Endpoint N in the endpoint group. Valid values:
      * - `Domain`: A custom domain name.
      * - `Ip`: A custom IP address.
+     * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
      * - `PublicIp`: An Alibaba Cloud public IP address.
      * - `ECS`: An Elastic Compute Service (ECS) instance.
      * - `SLB`: A Classic Load Balancer (CLB) instance.
-     * - `ALB`: An Application Load Balancer (ALB) instance.
-     * - `NLB`: A Network Load Balancer (NLB) instance.
-     * - `ENI`: An Elastic Network Interface (ENI).
-     * - `OSS`: An Object Storage Service (OSS) bucket.
-     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+     * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+     * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+     * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+     * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
      * 
      */
     public Output<String> type() {
         return this.type;
+    }
+
+    /**
+     * The ID of the VPC.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of the VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * The IDs of vSwitches that are deployed in the VPC.
+     * 
+     */
+    @Import(name="vswitchIds")
+    private @Nullable Output<List<String>> vswitchIds;
+
+    /**
+     * @return The IDs of vSwitches that are deployed in the VPC.
+     * 
+     */
+    public Optional<Output<List<String>>> vswitchIds() {
+        return Optional.ofNullable(this.vswitchIds);
     }
 
     /**
@@ -140,6 +171,8 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         this.endpoint = $.endpoint;
         this.subAddress = $.subAddress;
         this.type = $.type;
+        this.vpcId = $.vpcId;
+        this.vswitchIds = $.vswitchIds;
         this.weight = $.weight;
     }
 
@@ -251,14 +284,14 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
          * @param type The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
+         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
-         * - `ALB`: An Application Load Balancer (ALB) instance.
-         * - `NLB`: A Network Load Balancer (NLB) instance.
-         * - `ENI`: An Elastic Network Interface (ENI).
-         * - `OSS`: An Object Storage Service (OSS) bucket.
-         * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+         * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+         * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+         * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+         * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
          * 
          * @return builder
          * 
@@ -272,20 +305,72 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
          * @param type The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
+         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
-         * - `ALB`: An Application Load Balancer (ALB) instance.
-         * - `NLB`: A Network Load Balancer (NLB) instance.
-         * - `ENI`: An Elastic Network Interface (ENI).
-         * - `OSS`: An Object Storage Service (OSS) bucket.
-         * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+         * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+         * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+         * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+         * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(@Nullable Output<List<String>> vswitchIds) {
+            $.vswitchIds = vswitchIds;
+            return this;
+        }
+
+        /**
+         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(List<String> vswitchIds) {
+            return vswitchIds(Output.of(vswitchIds));
+        }
+
+        /**
+         * @param vswitchIds The IDs of vSwitches that are deployed in the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchIds(String... vswitchIds) {
+            return vswitchIds(List.of(vswitchIds));
         }
 
         /**

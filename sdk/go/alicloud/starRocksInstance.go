@@ -29,8 +29,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/starrocks"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -63,11 +63,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewStarRocksInstance(ctx, "default", &alicloud.StarRocksInstanceArgs{
+//			_, err = starrocks.NewInstance(ctx, "default", &starrocks.InstanceArgs{
 //				InstanceName: pulumi.String("create-instance-1"),
 //				AutoRenew:    pulumi.Bool(false),
-//				FrontendNodeGroups: alicloud.StarRocksInstanceFrontendNodeGroupArray{
-//					&alicloud.StarRocksInstanceFrontendNodeGroupArgs{
+//				FrontendNodeGroups: starrocks.InstanceFrontendNodeGroupArray{
+//					&starrocks.InstanceFrontendNodeGroupArgs{
 //						Cu:                       pulumi.Int(8),
 //						StorageSize:              pulumi.Int(100),
 //						ResidentNodeNumber:       pulumi.Int(3),
@@ -78,14 +78,14 @@ import (
 //						LocalStorageInstanceType: pulumi.String("null"),
 //					},
 //				},
-//				Vswitches: alicloud.StarRocksInstanceVswitchArray{
-//					&alicloud.StarRocksInstanceVswitchArgs{
+//				Vswitches: starrocks.InstanceVswitchArray{
+//					&starrocks.InstanceVswitchArgs{
 //						VswitchId: default106DkE.ID(),
 //						ZoneId:    pulumi.String("cn-hangzhou-i"),
 //					},
 //				},
-//				BackendNodeGroups: alicloud.StarRocksInstanceBackendNodeGroupArray{
-//					&alicloud.StarRocksInstanceBackendNodeGroupArgs{
+//				BackendNodeGroups: starrocks.InstanceBackendNodeGroupArray{
+//					&starrocks.InstanceBackendNodeGroupArgs{
 //						Cu:                       pulumi.Int(8),
 //						StorageSize:              pulumi.Int(100),
 //						ResidentNodeNumber:       pulumi.Int(3),
@@ -109,8 +109,8 @@ import (
 //				KmsKeyId:             pulumi.String("123"),
 //				PromotionOptionNo:    pulumi.String("123"),
 //				Encrypted:            pulumi.Bool(false),
-//				ObserverNodeGroups: alicloud.StarRocksInstanceObserverNodeGroupArray{
-//					&alicloud.StarRocksInstanceObserverNodeGroupArgs{
+//				ObserverNodeGroups: starrocks.InstanceObserverNodeGroupArray{
+//					&starrocks.InstanceObserverNodeGroupArgs{
 //						Cu:                       pulumi.Int(8),
 //						StorageSize:              pulumi.Int(100),
 //						StoragePerformanceLevel:  pulumi.String("pl1"),
@@ -138,6 +138,8 @@ import (
 // ```sh
 // $ pulumi import alicloud:index/starRocksInstance:StarRocksInstance example <id>
 // ```
+//
+// Deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance
 type StarRocksInstance struct {
 	pulumi.CustomResourceState
 

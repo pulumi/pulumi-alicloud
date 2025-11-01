@@ -8494,17 +8494,17 @@ export namespace cfg {
 
     export interface AggregatorAggregatorAccount {
         /**
-         * Aggregator account Uid.
+         * The member ID.
          */
-        accountId: string;
+        accountId?: string;
         /**
-         * Aggregator account name.
+         * The member name.
          */
-        accountName: string;
+        accountName?: string;
         /**
-         * Aggregator account source type. Valid values: `ResourceDirectory`.
+         * The affiliation of the member. Valid values: `ResourceDirectory`.
          */
-        accountType: string;
+        accountType?: string;
     }
 
     export interface CompliancePackConfigRule {
@@ -10289,6 +10289,17 @@ export namespace cloudfirewall {
          * The route table where the default route of the NAT gateway is located.
          */
         routeTableId: string;
+    }
+
+    export interface GetTlsInspectCaCertificatesCertificate {
+        /**
+         * CA certificate ID
+         */
+        caCertId: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
     }
 
     export interface GetVpcCenTrFirewallsFirewall {
@@ -13930,6 +13941,25 @@ export namespace cms {
         regionId: string;
     }
 
+    export interface SiteMonitorCustomSchedule {
+        /**
+         * The days in a week.
+         */
+        days?: number[];
+        /**
+         * The end time of the detection. Unit: hours.
+         */
+        endHour?: number;
+        /**
+         * The start time of the detection. Unit: hours.
+         */
+        startHour?: number;
+        /**
+         * The time zone of the detection.
+         */
+        timeZone?: string;
+    }
+
     export interface SiteMonitorIspCity {
         /**
          * The ID of the city.
@@ -13939,6 +13969,174 @@ export namespace cms {
          * The ID of the carrier.
          */
         isp: string;
+        /**
+         * The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+         */
+        type: string;
+    }
+
+    export interface SiteMonitorOptionJson {
+        /**
+         * Assertion configuration group. See `assertions` below.
+         */
+        assertions?: outputs.cms.SiteMonitorOptionJsonAssertion[];
+        /**
+         * Number of retries after DNS failed.
+         */
+        attempts?: number;
+        /**
+         * The Cookie that sends the HTTP request.
+         */
+        cookie?: string;
+        /**
+         * Whether to enable automatic MTR network diagnosis after a task failure. Value:
+         * - false: does not enable automatic MTR network diagnosis.
+         * - true to turn on automatic MTR network diagnostics.
+         */
+        diagnosisMtr?: boolean;
+        /**
+         * Whether to enable the automatic PING network delay detection after the task fails. Value:
+         * - false: does not enable automatic PING network delay detection.
+         * - true: Enable automatic PING network delay detection.
+         */
+        diagnosisPing?: boolean;
+        /**
+         * List of DNS hijacking configurations.
+         */
+        dnsHijackWhitelist?: string;
+        /**
+         * Matching Rules for DNS. Value:
+         * - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
+         * - DNS_IN: All DNS responses appear in the alias or IP address that is expected to be resolved.
+         * - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
+         * - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
+         */
+        dnsMatchRule?: string;
+        /**
+         * The IP address of the DNS server.
+         *
+         * > **NOTE:**  only applicable to DNS probe types.
+         */
+        dnsServer?: string;
+        /**
+         * DNS resolution type. Only applicable to DNS probe types. Value:
+         * - A (default): specifies the IP address corresponding to the host name or domain name.
+         * - CNAME: maps multiple domain names to another domain name.
+         * - NS: specifies that the domain name is resolved by a DNS server.
+         * - MX: point domain name to a mail server address.
+         * - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
+         */
+        dnsType?: string;
+        /**
+         * The alias or address to be resolved.
+         *
+         * > **NOTE:**  This parameter applies only to DNS probe types.
+         */
+        expectValue?: string;
+        /**
+         * Packet loss rate.
+         *
+         * > **NOTE:**  This parameter only applies to PING probe types.
+         */
+        failureRate?: string;
+        /**
+         * HTTP request header.
+         */
+        header?: string;
+        /**
+         * HTTP request method. Value:
+         * - get
+         * - post
+         * - head
+         */
+        httpMethod?: string;
+        /**
+         * Whether the parameter' Password' is Base64 encoded.
+         * - true: Yes.
+         * - false: No.
+         */
+        isBaseEncode: boolean;
+        /**
+         * Whether alarm rules are included. Value:
+         * - 0: Yes.
+         * - 1: No.
+         */
+        matchRule?: number;
+        /**
+         * Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
+         */
+        minTlsVersion?: string;
+        /**
+         * The password of the SMTP, POP3, or FTP probe type.
+         */
+        password?: string;
+        /**
+         * The heartbeat of the PING probe type.
+         */
+        pingNum?: number;
+        /**
+         * PING the port. Applies to TCP PING.
+         */
+        pingPort?: number;
+        /**
+         * The PING protocol type. Value:
+         * - icmp
+         * - tcp
+         * - udp
+         */
+        pingType?: string;
+        /**
+         * Ports of TCP, UDP, SMTP, and POP3 probe types.
+         */
+        port?: number;
+        /**
+         * The request content of the HTTP probe type.
+         */
+        requestContent?: string;
+        /**
+         * HTTP request content format. Value:
+         * - hex: hexadecimal format.
+         * - text: text format.
+         */
+        requestFormat?: string;
+        /**
+         * Match the response content.
+         */
+        responseContent?: string;
+        /**
+         * HTTP response content format. Value:
+         * - hex: hexadecimal format.
+         * - text: text format.
+         */
+        responseFormat?: string;
+        /**
+         * Timeout time. Unit: milliseconds.
+         */
+        timeout?: number;
+        /**
+         * The username of FTP, SMTP, or pop3.
+         */
+        userName?: string;
+    }
+
+    export interface SiteMonitorOptionJsonAssertion {
+        /**
+         * Assertion comparison operator. Value:
+         * - contains: contains.
+         * - doesNotContain: does not contain.
+         * - matches: regular matching.
+         * - doesNotMatch: regular mismatch.
+         * - is: Numeric equals or character matches equals.
+         * - isNot: not equal.
+         * - Lesthan: less.
+         * - moreThan: Greater.
+         */
+        operator?: string;
+        /**
+         * Assertion matches the target numeric value or character of the comparison.
+         */
+        target?: string;
+        type?: string;
     }
 
     export interface SlsGroupSlsGroupConfig {
@@ -31816,7 +32014,7 @@ export namespace ens {
         /**
          * IP address of the backend server  Example value: 192.168.0.5.
          */
-        ip?: string;
+        ip: string;
         /**
          * Port used by the backend server.
          */
@@ -31832,7 +32030,7 @@ export namespace ens {
         /**
          * Weight of the backend server  Example value: 100.
          */
-        weight?: number;
+        weight: number;
     }
 
 }
@@ -31913,6 +32111,132 @@ export namespace esa {
          * The response header value.
          */
         value?: string;
+    }
+
+    export interface LoadBalancerAdaptiveRouting {
+        /**
+         * Whether to failover across pools.
+         */
+        failoverAcrossPools?: boolean;
+    }
+
+    export interface LoadBalancerMonitor {
+        /**
+         * The number of consecutive failed health checks before the backend is considered down, for example, 5.
+         */
+        consecutiveDown?: number;
+        /**
+         * The number of consecutive successful probes required to consider the target as up, e.g., 3.
+         */
+        consecutiveUp?: number;
+        /**
+         * Expected status code, such as 200,202, successful HTTP response.
+         */
+        expectedCodes?: string;
+        /**
+         * Whether to follow the redirect.
+         */
+        followRedirects?: boolean;
+        /**
+         * The HTTP headers to be included in the health check request.
+         */
+        header?: string;
+        /**
+         * The monitoring interval, such as 60 seconds, checks the frequency.
+         */
+        interval?: number;
+        /**
+         * Monitor request methods, such as GET, methods in the HTTP protocol.
+         */
+        method?: string;
+        /**
+         * Probe Point Region, default to Global
+         * - `Global`: Global.
+         * - `ChineseMainland`: Chinese mainland.
+         * - `OutsideChineseMainland`: Global (excluding the Chinese mainland).
+         */
+        monitoringRegion: string;
+        /**
+         * The monitor checks the path, such as/healthcheck, the HTTP request path.
+         */
+        path?: string;
+        /**
+         * The target port.
+         */
+        port?: number;
+        /**
+         * The timeout for the health check, in seconds. The value range is 1-10.
+         */
+        timeout?: number;
+        /**
+         * The type of monitor protocol, such as HTTP, used for health checks. When the value is off, it indicates that no check is performed.
+         */
+        type?: string;
+    }
+
+    export interface LoadBalancerRandomSteering {
+        /**
+         * The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
+         */
+        defaultWeight?: number;
+        /**
+         * Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
+         */
+        poolWeights?: {[key: string]: string};
+    }
+
+    export interface LoadBalancerRule {
+        /**
+         * Executes a specified response after matching the rule. See `fixedResponse` below.
+         */
+        fixedResponse?: outputs.esa.LoadBalancerRuleFixedResponse;
+        /**
+         * Modifies the load balancer configuration for the corresponding request after matching the rule. The fields in this configuration will override the corresponding fields in the load balancer configuration.
+         */
+        overrides?: string;
+        /**
+         * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+         */
+        rule?: string;
+        /**
+         * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
+         */
+        ruleEnable?: string;
+        /**
+         * Rule name. When adding global configuration, this parameter does not need to be set.
+         */
+        ruleName?: string;
+        /**
+         * Order of rule execution. The smaller the value, the higher the priority for execution.
+         */
+        sequence?: number;
+        /**
+         * Whether to terminate the execution of subsequent rules.
+         */
+        terminates?: boolean;
+    }
+
+    export interface LoadBalancerRuleFixedResponse {
+        /**
+         * The Content-Type field in the HTTP Header.
+         */
+        contentType?: string;
+        /**
+         * The location field in the http return.
+         */
+        location?: string;
+        /**
+         * The body value of the response.
+         */
+        messageBody?: string;
+        /**
+         * Status Code.
+         */
+        statusCode?: number;
     }
 
     export interface OriginPoolOrigin {
@@ -36425,16 +36749,24 @@ export namespace ga {
          * The type of Endpoint N in the endpoint group. Valid values:
          * - `Domain`: A custom domain name.
          * - `Ip`: A custom IP address.
+         * - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
          * - `PublicIp`: An Alibaba Cloud public IP address.
          * - `ECS`: An Elastic Compute Service (ECS) instance.
          * - `SLB`: A Classic Load Balancer (CLB) instance.
-         * - `ALB`: An Application Load Balancer (ALB) instance.
-         * - `NLB`: A Network Load Balancer (NLB) instance.
-         * - `ENI`: An Elastic Network Interface (ENI).
-         * - `OSS`: An Object Storage Service (OSS) bucket.
-         * > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+         * - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+         * - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+         * - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+         * - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
          */
         type: string;
+        /**
+         * The ID of the VPC.
+         */
+        vpcId?: string;
+        /**
+         * The IDs of vSwitches that are deployed in the VPC.
+         */
+        vswitchIds?: string[];
         /**
          * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
          * > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
@@ -45613,6 +45945,17 @@ export namespace oss {
         newObject: string;
     }
 
+    export interface BucketReplicationRtc {
+        /**
+         * Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+         */
+        enabled: boolean;
+        /**
+         * The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+         */
+        status: string;
+    }
+
     export interface BucketReplicationSourceSelectionCriteria {
         /**
          * Filter source objects encrypted by using SSE-KMS. See `sseKmsEncryptedObjects` below.
@@ -49800,6 +50143,84 @@ export namespace resourcemanager {
         targetResourceGroupCondition: string;
     }
 
+    export interface DeliveryChannelDeliveryChannelFilter {
+        /**
+         * An array of effective resource types for the delivery channel.
+         * - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+         * - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+         */
+        resourceTypes?: string[];
+    }
+
+    export interface DeliveryChannelResourceChangeDelivery {
+        /**
+         * Specifies whether to enable delivery of resource configuration change events. Valid values:
+         * - true
+         * - false
+         */
+        enabled: boolean;
+        /**
+         * The Simple Log Service configurations. See `slsProperties` below.
+         */
+        slsProperties?: outputs.resourcemanager.DeliveryChannelResourceChangeDeliverySlsProperties;
+        /**
+         * The ARN of the delivery destination.
+         * - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+         * - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+         */
+        targetArn?: string;
+        /**
+         * The type of the delivery destination.
+         *
+         * Valid values:
+         * - SLS
+         */
+        targetType?: string;
+    }
+
+    export interface DeliveryChannelResourceChangeDeliverySlsProperties {
+        oversizedDataOssTargetArn?: string;
+    }
+
+    export interface DeliveryChannelResourceSnapshotDelivery {
+        /**
+         * The custom expression.
+         */
+        customExpression?: string;
+        /**
+         * The delivery time.
+         */
+        deliveryTime?: string;
+        /**
+         * Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+         * - true
+         * - false
+         */
+        enabled: boolean;
+        /**
+         * The Simple Log Service configurations. See `slsProperties` below.
+         */
+        slsProperties?: outputs.resourcemanager.DeliveryChannelResourceSnapshotDeliverySlsProperties;
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+         * - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+         * - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+         */
+        targetArn?: string;
+        /**
+         * The type of the delivery destination.
+         *
+         * Valid values:
+         * - `OSS` for standard delivery
+         * - `OSS` or `SLS` for custom delivery
+         */
+        targetType?: string;
+    }
+
+    export interface DeliveryChannelResourceSnapshotDeliverySlsProperties {
+        oversizedDataOssTargetArn?: string;
+    }
+
     export interface GetAccountDeletionCheckTaskAbandonAbleCheck {
         /**
          * The ID of the check item.
@@ -50292,6 +50713,88 @@ export namespace resourcemanager {
          * The ID of the Shared Target.
          */
         targetId: string;
+    }
+
+    export interface MultiAccountDeliveryChannelDeliveryChannelFilter {
+        /**
+         * The account scopes of the delivery channel.
+         */
+        accountScopes: string[];
+        /**
+         * An array of effective resource types for the delivery channel.
+         * - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+         * - If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
+         */
+        resourceTypes?: string[];
+    }
+
+    export interface MultiAccountDeliveryChannelResourceChangeDelivery {
+        /**
+         * Specifies whether to enable delivery of resource configuration change events. Valid values:
+         * - true
+         * - false
+         */
+        enabled: boolean;
+        /**
+         * The Simple Log Service configurations. See `slsProperties` below.
+         */
+        slsProperties?: outputs.resourcemanager.MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties;
+        /**
+         * The ARN of the delivery destination.
+         * - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+         * - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+         */
+        targetArn?: string;
+        /**
+         * The type of the delivery destination.
+         *
+         * Valid values:
+         * - SLS
+         */
+        targetType: string;
+    }
+
+    export interface MultiAccountDeliveryChannelResourceChangeDeliverySlsProperties {
+        oversizedDataOssTargetArn?: string;
+    }
+
+    export interface MultiAccountDeliveryChannelResourceSnapshotDelivery {
+        /**
+         * The custom expression.
+         */
+        customExpression?: string;
+        /**
+         * The delivery time.
+         */
+        deliveryTime?: string;
+        /**
+         * Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
+         * - true
+         * - false
+         */
+        enabled: boolean;
+        /**
+         * The Simple Log Service configurations. See `slsProperties` below.
+         */
+        slsProperties?: outputs.resourcemanager.MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties;
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the delivery destination.
+         * - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
+         * - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
+         */
+        targetArn?: string;
+        /**
+         * The type of the delivery destination.
+         *
+         * Valid values:
+         * - `OSS` for standard delivery
+         * - `OSS` or `SLS` for custom delivery
+         */
+        targetType?: string;
+    }
+
+    export interface MultiAccountDeliveryChannelResourceSnapshotDeliverySlsProperties {
+        oversizedDataOssTargetArn?: string;
     }
 
     export interface ResourceGroupRegionStatus {
@@ -51205,6 +51708,10 @@ export namespace sae {
          */
         exec: outputs.sae.ApplicationLivenessV2Exec;
         /**
+         * The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         */
+        failureThreshold: number;
+        /**
          * The liveness check settings of the container. See `httpGet` below.
          */
         httpGet: outputs.sae.ApplicationLivenessV2HttpGet;
@@ -51348,6 +51855,10 @@ export namespace sae {
          */
         exec: outputs.sae.ApplicationReadinessV2Exec;
         /**
+         * The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+         */
+        failureThreshold: number;
+        /**
          * The liveness check settings of the container. See `httpGet` below.
          */
         httpGet: outputs.sae.ApplicationReadinessV2HttpGet;
@@ -51359,6 +51870,10 @@ export namespace sae {
          * The interval at which the health check is performed.
          */
         periodSeconds: number;
+        /**
+         * The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+         */
+        successThreshold: number;
         /**
          * The liveness check settings of the container. See `tcpSocket` below.
          */
@@ -56746,6 +57261,60 @@ export namespace sls {
         roleArn: string;
     }
 
+    export interface GetIndexsIndex {
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Field index
+         */
+        keys: string;
+        /**
+         * Full-text index
+         */
+        line: outputs.sls.GetIndexsIndexLine;
+        /**
+         * The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
+         */
+        logReduceBlackLists: string[];
+        /**
+         * The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
+         */
+        logReduceWhiteLists: string[];
+        /**
+         * Maximum length of statistical field
+         */
+        maxTextLen: number;
+        /**
+         * Log index storage time
+         */
+        ttl: number;
+    }
+
+    export interface GetIndexsIndexLine {
+        /**
+         * Is case sensitive.
+         */
+        caseSensitive: boolean;
+        /**
+         * Does it include Chinese.
+         */
+        chn: boolean;
+        /**
+         * List of excluded fields.
+         */
+        excludeKeys: string[];
+        /**
+         * Include field list.
+         */
+        includeKeys: string[];
+        /**
+         * Delimiter.
+         */
+        tokens: string[];
+    }
+
     export interface GetLogtailConfigsConfig {
         /**
          * The ID of the resource supplied above.
@@ -57025,6 +57594,145 @@ export namespace sls {
          * SQL time window-end.
          */
         toTimeExpr?: string;
+    }
+
+}
+
+export namespace starrocks {
+    export interface InstanceBackendNodeGroup {
+        /**
+         * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+         */
+        cu?: number;
+        /**
+         * The number of disks.
+         */
+        diskNumber?: number;
+        /**
+         * Local SSD instance specifications.
+         */
+        localStorageInstanceType?: string;
+        /**
+         * Resident node number of node group.
+         */
+        residentNodeNumber?: number;
+        /**
+         * Compute group specification types include the following:
+         * - standard
+         * - localSSD
+         * - bigData
+         * - ramEnhanced
+         * - networkEnhanced
+         */
+        specType?: string;
+        /**
+         * Performance levels of cloud disks include the following values:
+         * - pl0: Maximum random read/write IOPS per disk is 10,000.
+         * - pl1: Maximum random read/write IOPS per disk is 50,000.
+         * - pl2: Maximum random read/write IOPS per disk is 100,000.
+         * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+         */
+        storagePerformanceLevel?: string;
+        /**
+         * Storage size, measured in GiB.
+         */
+        storageSize?: number;
+        /**
+         * Zone ID.
+         */
+        zoneId?: string;
+    }
+
+    export interface InstanceFrontendNodeGroup {
+        /**
+         * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+         */
+        cu?: number;
+        /**
+         * DiskNumber
+         */
+        diskNumber?: number;
+        /**
+         * Local SSD instance specifications.
+         */
+        localStorageInstanceType?: string;
+        /**
+         * Resident node number of node group.
+         */
+        residentNodeNumber?: number;
+        /**
+         * Compute group specification types include the following:
+         * - standard
+         * - ramEnhanced
+         */
+        specType?: string;
+        /**
+         * Performance levels of cloud disks include the following values:
+         * - pl0: Maximum random read/write IOPS per disk is 10,000.
+         * - pl1: Maximum random read/write IOPS per disk is 50,000.
+         * - pl2: Maximum random read/write IOPS per disk is 100,000.
+         * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+         */
+        storagePerformanceLevel?: string;
+        /**
+         * Storage size, measured in GiB.
+         */
+        storageSize?: number;
+        /**
+         * Zone ID.
+         */
+        zoneId?: string;
+    }
+
+    export interface InstanceObserverNodeGroup {
+        /**
+         * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
+         */
+        cu?: number;
+        /**
+         * DiskNumber
+         */
+        diskNumber?: number;
+        /**
+         * Local SSD instance specifications.
+         */
+        localStorageInstanceType?: string;
+        /**
+         * Resident node number of node group.
+         */
+        residentNodeNumber?: number;
+        /**
+         * Compute group specification types include the following:
+         * - standard
+         */
+        specType?: string;
+        /**
+         * Performance levels of cloud disks include the following values:
+         * - pl0: Maximum random read/write IOPS per disk is 10,000.
+         * - pl1: Maximum random read/write IOPS per disk is 50,000.
+         * - pl2: Maximum random read/write IOPS per disk is 100,000.
+         * - pl3: Maximum random read/write IOPS per disk is 1,000,000.
+         */
+        storagePerformanceLevel?: string;
+        /**
+         * Storage size, measured in GiB.
+         */
+        storageSize?: number;
+        /**
+         * Zone ID.
+         */
+        zoneId?: string;
+    }
+
+    export interface InstanceVswitch {
+        /**
+         * ID of VSwitch.
+         */
+        vswitchId: string;
+        /**
+         * Zone ID of VSwitch.
+         */
+        zoneId?: string;
     }
 
 }
@@ -60097,24 +60805,60 @@ export namespace vpc {
     }
 
     export interface NetworkAclEntriesEgress {
+        /**
+         * The description of the egress entry.
+         */
         description: string;
         /**
          * The destination ip of the egress entry.
          */
         destinationCidrIp: string;
+        /**
+         * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+         */
         entryType: string;
+        /**
+         * The name of the egress entry.
+         */
         name: string;
+        /**
+         * The policy of the egress entry. It must be `accept` or `drop`.
+         */
         policy: string;
+        /**
+         * The port of the egress entry.
+         */
         port: string;
+        /**
+         * The protocol of the egress entry.
+         */
         protocol: string;
     }
 
     export interface NetworkAclEntriesIngress {
+        /**
+         * The description of the ingress entry.
+         */
         description: string;
+        /**
+         * The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+         */
         entryType: string;
+        /**
+         * The name of the ingress entry.
+         */
         name: string;
+        /**
+         * The policy of the ingress entry. It must be `accept` or `drop`.
+         */
         policy: string;
+        /**
+         * The port of the ingress entry.
+         */
         port: string;
+        /**
+         * The protocol of the ingress entry.
+         */
         protocol: string;
         /**
          * The source ip of the ingress entry.
@@ -61862,6 +62606,16 @@ export namespace wafv3 {
          */
         conditions?: outputs.wafv3.DefenseRuleConfigCondition[];
         /**
+         * The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+         */
+        grayConfig?: outputs.wafv3.DefenseRuleConfigGrayConfig;
+        /**
+         * Specifies whether to enable canary release for the rule. Valid values:
+         * - 0 (default): disables canary release.
+         * - 1: enables canary release.
+         */
+        grayStatus?: number;
+        /**
          * The HTTP flood protection mode. Valid values:
          * - 0 (default): indicates normal protection.
          * - 1: indicates emergency protection.
@@ -61903,6 +62657,10 @@ export namespace wafv3 {
          * - ratio (default): indicates throttling based on percentage.
          */
         throttleType?: string;
+        /**
+         * The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+         */
+        timeConfig: outputs.wafv3.DefenseRuleConfigTimeConfig;
         /**
          * The User-Agent string that is allowed for access to the address.
          */
@@ -61990,6 +62748,21 @@ export namespace wafv3 {
         values?: string;
     }
 
+    export interface DefenseRuleConfigGrayConfig {
+        /**
+         * The percentage of traffic for which the canary release takes effect. The value must be in the range of 1 to 100.
+         */
+        grayRate?: number;
+        /**
+         * The sub-feature of the statistical object. This parameter is required when you set the `GrayTarget` parameter to `cookie`, `header`, or `queryarg`.
+         */
+        graySubKey?: string;
+        /**
+         * The type of the canary release object. Valid values:
+         */
+        grayTarget?: string;
+    }
+
     export interface DefenseRuleConfigRateLimit {
         /**
          * The statistical period, in seconds. This parameter specifies the period during which access counts are collected, and works with the Threshold parameter.
@@ -62037,6 +62810,58 @@ export namespace wafv3 {
          * The threshold for the proportion of occurrences (percentage). When the proportion of occurrences of the specified HTTP status code exceeds this threshold, the protection rule is triggered. Valid values: 1 to 100. You can specify Count or Ratio. You cannot specify the two parameters at the same time.
          */
         ratio?: number;
+    }
+
+    export interface DefenseRuleConfigTimeConfig {
+        /**
+         * The time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `period`. A maximum of five time periods can be set. See `timePeriods` below.
+         */
+        timePeriods?: outputs.wafv3.DefenseRuleConfigTimeConfigTimePeriod[];
+        /**
+         * The effective period of the rule. Valid values:
+         */
+        timeScope: string;
+        /**
+         * The time zone in which the rule is effective. The default value is `8`. The value must be in the range of - 12 to 12. `0` indicates UTC. `8` indicates UTC+8. **-8** indicates UTC-8.
+         */
+        timeZone: number;
+        /**
+         * The periodic time period during which the rule is effective. This parameter is required when you set the `TimeScope` parameter to `cycle`. A maximum of five time periods can be set. See `weekTimePeriods` below.
+         */
+        weekTimePeriods?: outputs.wafv3.DefenseRuleConfigTimeConfigWeekTimePeriod[];
+    }
+
+    export interface DefenseRuleConfigTimeConfigTimePeriod {
+        /**
+         * The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+         */
+        end?: number;
+        /**
+         * The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+         */
+        start?: number;
+    }
+
+    export interface DefenseRuleConfigTimeConfigWeekTimePeriod {
+        /**
+         * The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
+         */
+        day?: string;
+        /**
+         * The time period of each day when the rule is effective.  See `dayPeriods` below.
+         */
+        dayPeriods?: outputs.wafv3.DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod[];
+    }
+
+    export interface DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod {
+        /**
+         * The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
+         */
+        end?: number;
+        /**
+         * The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
+         */
+        start?: number;
     }
 
     export interface DomainListen {

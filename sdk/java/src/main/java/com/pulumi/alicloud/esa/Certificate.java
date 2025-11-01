@@ -148,23 +148,9 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
-    /**
-     * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     */
     @Export(name="createdType", refs={String.class}, tree="[0]")
     private Output<String> createdType;
 
-    /**
-     * @return The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     * 
-     */
     public Output<String> createdType() {
         return this.createdType;
     }
@@ -182,29 +168,25 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> domains() {
         return Codegen.optional(this.domains);
     }
-    /**
-     * The certificate private key.
-     * 
-     */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
-    /**
-     * @return The certificate private key.
-     * 
-     */
     public Output<Optional<String>> privateKey() {
         return Codegen.optional(this.privateKey);
     }
     /**
-     * Geographical information.
+     * Region. This parameter is required if the type is CAS.
+     * For accounts on the Chinese site, this parameter value is: cn-hangzhou
+     * For accounts on the international site, this parameter value is: ap-southeast-1
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Geographical information.
+     * @return Region. This parameter is required if the type is CAS.
+     * For accounts on the Chinese site, this parameter value is: cn-hangzhou
+     * For accounts on the international site, this parameter value is: ap-southeast-1
      * 
      */
     public Output<String> region() {

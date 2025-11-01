@@ -24,31 +24,53 @@ class SiteMonitorArgs:
                  address: pulumi.Input[_builtins.str],
                  task_name: pulumi.Input[_builtins.str],
                  task_type: pulumi.Input[_builtins.str],
+                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_schedule: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']] = None,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
                  isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
-                 options_json: Optional[pulumi.Input[_builtins.str]] = None):
+                 option_json: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']] = None,
+                 options_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SiteMonitor resource.
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[_builtins.str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
-        :param pulumi.Input[_builtins.int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input['SiteMonitorCustomScheduleArgs'] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[_builtins.str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        :param pulumi.Input['SiteMonitorOptionJsonArgs'] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
+        :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "task_name", task_name)
         pulumi.set(__self__, "task_type", task_type)
+        if agent_group is not None:
+            pulumi.set(__self__, "agent_group", agent_group)
+        if alert_ids is not None:
+            warnings.warn("""Field `alert_ids` has been deprecated from provider version 1.262.0.""", DeprecationWarning)
+            pulumi.log.warn("""alert_ids is deprecated: Field `alert_ids` has been deprecated from provider version 1.262.0.""")
         if alert_ids is not None:
             pulumi.set(__self__, "alert_ids", alert_ids)
+        if custom_schedule is not None:
+            pulumi.set(__self__, "custom_schedule", custom_schedule)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if isp_cities is not None:
             pulumi.set(__self__, "isp_cities", isp_cities)
+        if option_json is not None:
+            pulumi.set(__self__, "option_json", option_json)
+        if options_json is not None:
+            warnings.warn("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""", DeprecationWarning)
+            pulumi.log.warn("""options_json is deprecated: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
         if options_json is not None:
             pulumi.set(__self__, "options_json", options_json)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter
@@ -87,10 +109,23 @@ class SiteMonitorArgs:
         pulumi.set(self, "task_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="agentGroup")
+    def agent_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        """
+        return pulumi.get(self, "agent_group")
+
+    @agent_group.setter
+    def agent_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_group", value)
+
+    @_builtins.property
     @pulumi.getter(name="alertIds")
+    @_utilities.deprecated("""Field `alert_ids` has been deprecated from provider version 1.262.0.""")
     def alert_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of existing alert rules to be associated with the site monitoring task.
+        Field `alert_ids` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "alert_ids")
 
@@ -99,15 +134,27 @@ class SiteMonitorArgs:
         pulumi.set(self, "alert_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="customSchedule")
+    def custom_schedule(self) -> Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]:
+        """
+        Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        """
+        return pulumi.get(self, "custom_schedule")
+
+    @custom_schedule.setter
+    def custom_schedule(self, value: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]):
+        pulumi.set(self, "custom_schedule", value)
+
+    @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
@@ -123,10 +170,23 @@ class SiteMonitorArgs:
         pulumi.set(self, "isp_cities", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionJson")
+    def option_json(self) -> Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]:
+        """
+        The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        """
+        return pulumi.get(self, "option_json")
+
+    @option_json.setter
+    def option_json(self, value: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]):
+        pulumi.set(self, "option_json", value)
+
+    @_builtins.property
     @pulumi.getter(name="optionsJson")
+    @_utilities.deprecated("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
     def options_json(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         """
         return pulumi.get(self, "options_json")
 
@@ -134,16 +194,32 @@ class SiteMonitorArgs:
     def options_json(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "options_json", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the site monitoring task. Valid values:
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
 
 @pulumi.input_type
 class _SiteMonitorState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_schedule: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']] = None,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
                  isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+                 option_json: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']] = None,
                  options_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None,
                  task_state: Optional[pulumi.Input[_builtins.str]] = None,
                  task_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -151,34 +227,61 @@ class _SiteMonitorState:
         """
         Input properties used for looking up and filtering SiteMonitor resources.
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
-        :param pulumi.Input[_builtins.str] create_time: The time when the site monitoring task was created.
-        :param pulumi.Input[_builtins.int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input[_builtins.str] create_time: (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input['SiteMonitorCustomScheduleArgs'] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[_builtins.str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        :param pulumi.Input['SiteMonitorOptionJsonArgs'] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
+        :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
-        :param pulumi.Input[_builtins.str] task_state: The status of the site monitoring task.
+        :param pulumi.Input[_builtins.str] task_state: (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
         :param pulumi.Input[_builtins.str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-        :param pulumi.Input[_builtins.str] update_time: The time when the site monitoring task was updated.
+        :param pulumi.Input[_builtins.str] update_time: (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
+        if agent_group is not None:
+            pulumi.set(__self__, "agent_group", agent_group)
+        if alert_ids is not None:
+            warnings.warn("""Field `alert_ids` has been deprecated from provider version 1.262.0.""", DeprecationWarning)
+            pulumi.log.warn("""alert_ids is deprecated: Field `alert_ids` has been deprecated from provider version 1.262.0.""")
         if alert_ids is not None:
             pulumi.set(__self__, "alert_ids", alert_ids)
         if create_time is not None:
+            warnings.warn("""Field `create_time` has been deprecated from provider version 1.262.0.""", DeprecationWarning)
+            pulumi.log.warn("""create_time is deprecated: Field `create_time` has been deprecated from provider version 1.262.0.""")
+        if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if custom_schedule is not None:
+            pulumi.set(__self__, "custom_schedule", custom_schedule)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if isp_cities is not None:
             pulumi.set(__self__, "isp_cities", isp_cities)
+        if option_json is not None:
+            pulumi.set(__self__, "option_json", option_json)
+        if options_json is not None:
+            warnings.warn("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""", DeprecationWarning)
+            pulumi.log.warn("""options_json is deprecated: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
         if options_json is not None:
             pulumi.set(__self__, "options_json", options_json)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if task_name is not None:
             pulumi.set(__self__, "task_name", task_name)
+        if task_state is not None:
+            warnings.warn("""Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.""", DeprecationWarning)
+            pulumi.log.warn("""task_state is deprecated: Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.""")
         if task_state is not None:
             pulumi.set(__self__, "task_state", task_state)
         if task_type is not None:
             pulumi.set(__self__, "task_type", task_type)
+        if update_time is not None:
+            warnings.warn("""Field `update_time` has been deprecated from provider version 1.262.0.""", DeprecationWarning)
+            pulumi.log.warn("""update_time is deprecated: Field `update_time` has been deprecated from provider version 1.262.0.""")
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -195,10 +298,23 @@ class _SiteMonitorState:
         pulumi.set(self, "address", value)
 
     @_builtins.property
+    @pulumi.getter(name="agentGroup")
+    def agent_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        """
+        return pulumi.get(self, "agent_group")
+
+    @agent_group.setter
+    def agent_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_group", value)
+
+    @_builtins.property
     @pulumi.getter(name="alertIds")
+    @_utilities.deprecated("""Field `alert_ids` has been deprecated from provider version 1.262.0.""")
     def alert_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The IDs of existing alert rules to be associated with the site monitoring task.
+        Field `alert_ids` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "alert_ids")
 
@@ -208,9 +324,10 @@ class _SiteMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
+    @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.262.0.""")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The time when the site monitoring task was created.
+        (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "create_time")
 
@@ -219,15 +336,27 @@ class _SiteMonitorState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="customSchedule")
+    def custom_schedule(self) -> Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]:
+        """
+        Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        """
+        return pulumi.get(self, "custom_schedule")
+
+    @custom_schedule.setter
+    def custom_schedule(self, value: Optional[pulumi.Input['SiteMonitorCustomScheduleArgs']]):
+        pulumi.set(self, "custom_schedule", value)
+
+    @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
@@ -243,16 +372,41 @@ class _SiteMonitorState:
         pulumi.set(self, "isp_cities", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionJson")
+    def option_json(self) -> Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]:
+        """
+        The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        """
+        return pulumi.get(self, "option_json")
+
+    @option_json.setter
+    def option_json(self, value: Optional[pulumi.Input['SiteMonitorOptionJsonArgs']]):
+        pulumi.set(self, "option_json", value)
+
+    @_builtins.property
     @pulumi.getter(name="optionsJson")
+    @_utilities.deprecated("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
     def options_json(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         """
         return pulumi.get(self, "options_json")
 
     @options_json.setter
     def options_json(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "options_json", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the site monitoring task. Valid values:
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="taskName")
@@ -268,9 +422,10 @@ class _SiteMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="taskState")
+    @_utilities.deprecated("""Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.""")
     def task_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the site monitoring task.
+        (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
         """
         return pulumi.get(self, "task_state")
 
@@ -292,9 +447,10 @@ class _SiteMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
+    @_utilities.deprecated("""Field `update_time` has been deprecated from provider version 1.262.0.""")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The time when the site monitoring task was updated.
+        (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "update_time")
 
@@ -310,16 +466,23 @@ class SiteMonitor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
                  isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+                 option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
                  options_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None,
                  task_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+        Provides a Cloud Monitor Service Site Monitor resource.
+
+        Describes the SITE monitoring tasks created by the user.
+
+        For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
 
         > **NOTE:** Available since v1.72.0.
 
@@ -331,31 +494,53 @@ class SiteMonitor(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         basic = alicloud.cms.SiteMonitor("basic",
-            address="http://www.alibabacloud.com",
-            task_name="tf-example",
+            address="https://www.alibabacloud.com",
+            task_name=name,
             task_type="HTTP",
-            interval=5,
+            interval="5",
             isp_cities=[{
-                "city": "546",
-                "isp": "465",
+                "isp": "232",
+                "city": "641",
+                "type": "IDC",
             }],
-            options_json=\"\"\"{
-            \\"http_method\\": \\"get\\",
-            \\"waitTime_after_completion\\": null,
-            \\"ipv6_task\\": false,
-            \\"diagnosis_ping\\": false,
-            \\"diagnosis_mtr\\": false,
-            \\"assertions\\": [
-                {
-                    \\"operator\\": \\"lessThan\\",
-                    \\"type\\": \\"response_time\\",
-                    \\"target\\": 1000
-                }
-            ],
-            \\"time_out\\": 30000
-        }
-        \"\"\")
+            option_json={
+                "response_content": "example",
+                "expect_value": "example",
+                "port": 81,
+                "is_base_encode": True,
+                "ping_num": 5,
+                "match_rule": 1,
+                "failure_rate": "0.3",
+                "request_content": "example",
+                "attempts": 4,
+                "request_format": "hex",
+                "password": "YourPassword123!",
+                "diagnosis_ping": True,
+                "response_format": "hex",
+                "cookie": "key2=value2",
+                "ping_port": 443,
+                "user_name": "example",
+                "dns_match_rule": "DNS_IN",
+                "timeout": 3000,
+                "dns_server": "223.6.6.6",
+                "diagnosis_mtr": True,
+                "header": "key2:value2",
+                "min_tls_version": "1.1",
+                "ping_type": "udp",
+                "dns_type": "NS",
+                "dns_hijack_whitelist": "DnsHijackWhitelist",
+                "http_method": "post",
+                "assertions": [{
+                    "operator": "lessThan",
+                    "target": "300",
+                    "type": "response_time",
+                }],
+            })
         ```
 
         ## Import
@@ -369,10 +554,14 @@ class SiteMonitor(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
-        :param pulumi.Input[_builtins.int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[_builtins.str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
+        :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
         :param pulumi.Input[_builtins.str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         """
@@ -383,8 +572,11 @@ class SiteMonitor(pulumi.CustomResource):
                  args: SiteMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
-        Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+        Provides a Cloud Monitor Service Site Monitor resource.
+
+        Describes the SITE monitoring tasks created by the user.
+
+        For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
 
         > **NOTE:** Available since v1.72.0.
 
@@ -396,31 +588,53 @@ class SiteMonitor(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         basic = alicloud.cms.SiteMonitor("basic",
-            address="http://www.alibabacloud.com",
-            task_name="tf-example",
+            address="https://www.alibabacloud.com",
+            task_name=name,
             task_type="HTTP",
-            interval=5,
+            interval="5",
             isp_cities=[{
-                "city": "546",
-                "isp": "465",
+                "isp": "232",
+                "city": "641",
+                "type": "IDC",
             }],
-            options_json=\"\"\"{
-            \\"http_method\\": \\"get\\",
-            \\"waitTime_after_completion\\": null,
-            \\"ipv6_task\\": false,
-            \\"diagnosis_ping\\": false,
-            \\"diagnosis_mtr\\": false,
-            \\"assertions\\": [
-                {
-                    \\"operator\\": \\"lessThan\\",
-                    \\"type\\": \\"response_time\\",
-                    \\"target\\": 1000
-                }
-            ],
-            \\"time_out\\": 30000
-        }
-        \"\"\")
+            option_json={
+                "response_content": "example",
+                "expect_value": "example",
+                "port": 81,
+                "is_base_encode": True,
+                "ping_num": 5,
+                "match_rule": 1,
+                "failure_rate": "0.3",
+                "request_content": "example",
+                "attempts": 4,
+                "request_format": "hex",
+                "password": "YourPassword123!",
+                "diagnosis_ping": True,
+                "response_format": "hex",
+                "cookie": "key2=value2",
+                "ping_port": 443,
+                "user_name": "example",
+                "dns_match_rule": "DNS_IN",
+                "timeout": 3000,
+                "dns_server": "223.6.6.6",
+                "diagnosis_mtr": True,
+                "header": "key2:value2",
+                "min_tls_version": "1.1",
+                "ping_type": "udp",
+                "dns_type": "NS",
+                "dns_hijack_whitelist": "DnsHijackWhitelist",
+                "http_method": "post",
+                "assertions": [{
+                    "operator": "lessThan",
+                    "target": "300",
+                    "type": "response_time",
+                }],
+            })
         ```
 
         ## Import
@@ -447,10 +661,14 @@ class SiteMonitor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_group: Optional[pulumi.Input[_builtins.str]] = None,
                  alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+                 interval: Optional[pulumi.Input[_builtins.str]] = None,
                  isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+                 option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
                  options_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None,
                  task_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -465,10 +683,14 @@ class SiteMonitor(pulumi.CustomResource):
             if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__.__dict__["address"] = address
+            __props__.__dict__["agent_group"] = agent_group
             __props__.__dict__["alert_ids"] = alert_ids
+            __props__.__dict__["custom_schedule"] = custom_schedule
             __props__.__dict__["interval"] = interval
             __props__.__dict__["isp_cities"] = isp_cities
+            __props__.__dict__["option_json"] = option_json
             __props__.__dict__["options_json"] = options_json
+            __props__.__dict__["status"] = status
             if task_name is None and not opts.urn:
                 raise TypeError("Missing required property 'task_name'")
             __props__.__dict__["task_name"] = task_name
@@ -489,11 +711,15 @@ class SiteMonitor(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: Optional[pulumi.Input[_builtins.str]] = None,
+            agent_group: Optional[pulumi.Input[_builtins.str]] = None,
             alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            interval: Optional[pulumi.Input[_builtins.int]] = None,
+            custom_schedule: Optional[pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']]] = None,
+            interval: Optional[pulumi.Input[_builtins.str]] = None,
             isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]]] = None,
+            option_json: Optional[pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']]] = None,
             options_json: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
             task_name: Optional[pulumi.Input[_builtins.str]] = None,
             task_state: Optional[pulumi.Input[_builtins.str]] = None,
             task_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -506,26 +732,34 @@ class SiteMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The URL or IP address monitored by the site monitoring task.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: The IDs of existing alert rules to be associated with the site monitoring task.
-        :param pulumi.Input[_builtins.str] create_time: The time when the site monitoring task was created.
-        :param pulumi.Input[_builtins.int] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
+        :param pulumi.Input[_builtins.str] agent_group: The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alert_ids: Field `alert_ids` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input[_builtins.str] create_time: (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
+        :param pulumi.Input[Union['SiteMonitorCustomScheduleArgs', 'SiteMonitorCustomScheduleArgsDict']] custom_schedule: Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        :param pulumi.Input[_builtins.str] interval: The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SiteMonitorIspCityArgs', 'SiteMonitorIspCityArgsDict']]]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
-        :param pulumi.Input[_builtins.str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        :param pulumi.Input[Union['SiteMonitorOptionJsonArgs', 'SiteMonitorOptionJsonArgsDict']] option_json: The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        :param pulumi.Input[_builtins.str] options_json: Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
+        :param pulumi.Input[_builtins.str] status: The status of the site monitoring task. Valid values:
         :param pulumi.Input[_builtins.str] task_name: The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
-        :param pulumi.Input[_builtins.str] task_state: The status of the site monitoring task.
+        :param pulumi.Input[_builtins.str] task_state: (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
         :param pulumi.Input[_builtins.str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
-        :param pulumi.Input[_builtins.str] update_time: The time when the site monitoring task was updated.
+        :param pulumi.Input[_builtins.str] update_time: (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _SiteMonitorState.__new__(_SiteMonitorState)
 
         __props__.__dict__["address"] = address
+        __props__.__dict__["agent_group"] = agent_group
         __props__.__dict__["alert_ids"] = alert_ids
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["custom_schedule"] = custom_schedule
         __props__.__dict__["interval"] = interval
         __props__.__dict__["isp_cities"] = isp_cities
+        __props__.__dict__["option_json"] = option_json
         __props__.__dict__["options_json"] = options_json
+        __props__.__dict__["status"] = status
         __props__.__dict__["task_name"] = task_name
         __props__.__dict__["task_state"] = task_state
         __props__.__dict__["task_type"] = task_type
@@ -541,24 +775,42 @@ class SiteMonitor(pulumi.CustomResource):
         return pulumi.get(self, "address")
 
     @_builtins.property
+    @pulumi.getter(name="agentGroup")
+    def agent_group(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+        """
+        return pulumi.get(self, "agent_group")
+
+    @_builtins.property
     @pulumi.getter(name="alertIds")
+    @_utilities.deprecated("""Field `alert_ids` has been deprecated from provider version 1.262.0.""")
     def alert_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The IDs of existing alert rules to be associated with the site monitoring task.
+        Field `alert_ids` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "alert_ids")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
+    @_utilities.deprecated("""Field `create_time` has been deprecated from provider version 1.262.0.""")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The time when the site monitoring task was created.
+        (Deprecated since v1.262.0) Field `create_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="customSchedule")
+    def custom_schedule(self) -> pulumi.Output[Optional['outputs.SiteMonitorCustomSchedule']]:
+        """
+        Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `custom_schedule` below.
+        """
+        return pulumi.get(self, "custom_schedule")
+
+    @_builtins.property
     @pulumi.getter
-    def interval(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def interval(self) -> pulumi.Output[_builtins.str]:
         """
         The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
         """
@@ -566,19 +818,36 @@ class SiteMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ispCities")
-    def isp_cities(self) -> pulumi.Output[Optional[Sequence['outputs.SiteMonitorIspCity']]]:
+    def isp_cities(self) -> pulumi.Output[Sequence['outputs.SiteMonitorIspCity']]:
         """
         The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         """
         return pulumi.get(self, "isp_cities")
 
     @_builtins.property
-    @pulumi.getter(name="optionsJson")
-    def options_json(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="optionJson")
+    def option_json(self) -> pulumi.Output['outputs.SiteMonitorOptionJson']:
         """
-        The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+        The extended options of the protocol that is used by the site monitoring task. See `option_json` below.
+        """
+        return pulumi.get(self, "option_json")
+
+    @_builtins.property
+    @pulumi.getter(name="optionsJson")
+    @_utilities.deprecated("""Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead""")
+    def options_json(self) -> pulumi.Output[_builtins.str]:
+        """
+        Field `options_json` has been deprecated from provider version 1.262.0. New field `option_json` instead.
         """
         return pulumi.get(self, "options_json")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the site monitoring task. Valid values:
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="taskName")
@@ -590,9 +859,10 @@ class SiteMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="taskState")
+    @_utilities.deprecated("""Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.""")
     def task_state(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the site monitoring task.
+        (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
         """
         return pulumi.get(self, "task_state")
 
@@ -606,9 +876,10 @@ class SiteMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
+    @_utilities.deprecated("""Field `update_time` has been deprecated from provider version 1.262.0.""")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The time when the site monitoring task was updated.
+        (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
         """
         return pulumi.get(self, "update_time")
 

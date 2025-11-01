@@ -107,7 +107,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
      */
-    declare public readonly acrAssumeRoleArn: pulumi.Output<string | undefined>;
+    declare public readonly acrAssumeRoleArn: pulumi.Output<string>;
     /**
      * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.
      */

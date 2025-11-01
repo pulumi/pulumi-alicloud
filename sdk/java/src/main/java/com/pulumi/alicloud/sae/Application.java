@@ -151,14 +151,14 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="acrAssumeRoleArn", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> acrAssumeRoleArn;
+    private Output<String> acrAssumeRoleArn;
 
     /**
      * @return The ARN of the RAM role required when pulling images across accounts. Only necessary if the imageUrl is pointing to an ACR EE instance.
      * 
      */
-    public Output<Optional<String>> acrAssumeRoleArn() {
-        return Codegen.optional(this.acrAssumeRoleArn);
+    public Output<String> acrAssumeRoleArn() {
+        return this.acrAssumeRoleArn;
     }
     /**
      * The ID of the ACR EE instance. Only necessary if the imageUrl is pointing to an ACR EE instance.

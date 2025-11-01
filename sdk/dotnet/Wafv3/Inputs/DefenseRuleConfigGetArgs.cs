@@ -138,6 +138,20 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         }
 
         /// <summary>
+        /// The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `GrayConfig` below.
+        /// </summary>
+        [Input("grayConfig")]
+        public Input<Inputs.DefenseRuleConfigGrayConfigGetArgs>? GrayConfig { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable canary release for the rule. Valid values:
+        /// - 0 (default): disables canary release.
+        /// - 1: enables canary release.
+        /// </summary>
+        [Input("grayStatus")]
+        public Input<int>? GrayStatus { get; set; }
+
+        /// <summary>
         /// The HTTP flood protection mode. Valid values:
         /// - 0 (default): indicates normal protection.
         /// - 1: indicates emergency protection.
@@ -198,6 +212,12 @@ namespace Pulumi.AliCloud.Wafv3.Inputs
         /// </summary>
         [Input("throttleType")]
         public Input<string>? ThrottleType { get; set; }
+
+        /// <summary>
+        /// The scheduled rule configuration. The value is a JSON.  See `TimeConfig` below.
+        /// </summary>
+        [Input("timeConfig")]
+        public Input<Inputs.DefenseRuleConfigTimeConfigGetArgs>? TimeConfig { get; set; }
 
         /// <summary>
         /// The User-Agent string that is allowed for access to the address.

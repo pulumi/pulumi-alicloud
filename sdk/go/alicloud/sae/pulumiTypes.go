@@ -527,6 +527,8 @@ func (o ApplicationKafkaConfigsKafkaConfigArrayOutput) Index(i pulumi.IntInput) 
 type ApplicationLivenessV2 struct {
 	// Execute. See `exec` below.
 	Exec *ApplicationLivenessV2Exec `pulumi:"exec"`
+	// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+	FailureThreshold *int `pulumi:"failureThreshold"`
 	// The liveness check settings of the container. See `httpGet` below.
 	HttpGet *ApplicationLivenessV2HttpGet `pulumi:"httpGet"`
 	// The delay of the health check.
@@ -553,6 +555,8 @@ type ApplicationLivenessV2Input interface {
 type ApplicationLivenessV2Args struct {
 	// Execute. See `exec` below.
 	Exec ApplicationLivenessV2ExecPtrInput `pulumi:"exec"`
+	// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
 	// The liveness check settings of the container. See `httpGet` below.
 	HttpGet ApplicationLivenessV2HttpGetPtrInput `pulumi:"httpGet"`
 	// The delay of the health check.
@@ -647,6 +651,11 @@ func (o ApplicationLivenessV2Output) Exec() ApplicationLivenessV2ExecPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2) *ApplicationLivenessV2Exec { return v.Exec }).(ApplicationLivenessV2ExecPtrOutput)
 }
 
+// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+func (o ApplicationLivenessV2Output) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLivenessV2) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
 // The liveness check settings of the container. See `httpGet` below.
 func (o ApplicationLivenessV2Output) HttpGet() ApplicationLivenessV2HttpGetPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2) *ApplicationLivenessV2HttpGet { return v.HttpGet }).(ApplicationLivenessV2HttpGetPtrOutput)
@@ -704,6 +713,16 @@ func (o ApplicationLivenessV2PtrOutput) Exec() ApplicationLivenessV2ExecPtrOutpu
 		}
 		return v.Exec
 	}).(ApplicationLivenessV2ExecPtrOutput)
+}
+
+// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+func (o ApplicationLivenessV2PtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLivenessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // The liveness check settings of the container. See `httpGet` below.
@@ -2324,12 +2343,16 @@ func (o ApplicationPvtzDiscoverySvcPortProtocolArrayOutput) Index(i pulumi.IntIn
 type ApplicationReadinessV2 struct {
 	// Execute. See `exec` below.
 	Exec *ApplicationReadinessV2Exec `pulumi:"exec"`
+	// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+	FailureThreshold *int `pulumi:"failureThreshold"`
 	// The liveness check settings of the container. See `httpGet` below.
 	HttpGet *ApplicationReadinessV2HttpGet `pulumi:"httpGet"`
 	// The delay of the health check.
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// The interval at which the health check is performed.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+	SuccessThreshold *int `pulumi:"successThreshold"`
 	// The liveness check settings of the container. See `tcpSocket` below.
 	TcpSocket *ApplicationReadinessV2TcpSocket `pulumi:"tcpSocket"`
 	// The timeout period of the health check.
@@ -2350,12 +2373,16 @@ type ApplicationReadinessV2Input interface {
 type ApplicationReadinessV2Args struct {
 	// Execute. See `exec` below.
 	Exec ApplicationReadinessV2ExecPtrInput `pulumi:"exec"`
+	// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
 	// The liveness check settings of the container. See `httpGet` below.
 	HttpGet ApplicationReadinessV2HttpGetPtrInput `pulumi:"httpGet"`
 	// The delay of the health check.
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// The interval at which the health check is performed.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// The liveness check settings of the container. See `tcpSocket` below.
 	TcpSocket ApplicationReadinessV2TcpSocketPtrInput `pulumi:"tcpSocket"`
 	// The timeout period of the health check.
@@ -2444,6 +2471,11 @@ func (o ApplicationReadinessV2Output) Exec() ApplicationReadinessV2ExecPtrOutput
 	return o.ApplyT(func(v ApplicationReadinessV2) *ApplicationReadinessV2Exec { return v.Exec }).(ApplicationReadinessV2ExecPtrOutput)
 }
 
+// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+func (o ApplicationReadinessV2Output) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
+}
+
 // The liveness check settings of the container. See `httpGet` below.
 func (o ApplicationReadinessV2Output) HttpGet() ApplicationReadinessV2HttpGetPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2) *ApplicationReadinessV2HttpGet { return v.HttpGet }).(ApplicationReadinessV2HttpGetPtrOutput)
@@ -2457,6 +2489,11 @@ func (o ApplicationReadinessV2Output) InitialDelaySeconds() pulumi.IntPtrOutput 
 // The interval at which the health check is performed.
 func (o ApplicationReadinessV2Output) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+func (o ApplicationReadinessV2Output) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationReadinessV2) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
 
 // The liveness check settings of the container. See `tcpSocket` below.
@@ -2503,6 +2540,16 @@ func (o ApplicationReadinessV2PtrOutput) Exec() ApplicationReadinessV2ExecPtrOut
 	}).(ApplicationReadinessV2ExecPtrOutput)
 }
 
+// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+func (o ApplicationReadinessV2PtrOutput) FailureThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailureThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
 // The liveness check settings of the container. See `httpGet` below.
 func (o ApplicationReadinessV2PtrOutput) HttpGet() ApplicationReadinessV2HttpGetPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2) *ApplicationReadinessV2HttpGet {
@@ -2530,6 +2577,16 @@ func (o ApplicationReadinessV2PtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.PeriodSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+func (o ApplicationReadinessV2PtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationReadinessV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessThreshold
 	}).(pulumi.IntPtrOutput)
 }
 

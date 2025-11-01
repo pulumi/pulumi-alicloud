@@ -126,6 +126,8 @@ type CacheRule struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrOutput `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
@@ -215,6 +217,8 @@ type cacheRuleState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
@@ -272,6 +276,8 @@ type CacheRuleState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the [ListSites] API.
@@ -331,6 +337,8 @@ type cacheRuleArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
@@ -387,6 +395,8 @@ type CacheRuleArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the [ListSites] API.
@@ -585,6 +595,11 @@ func (o CacheRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 // Rule name. When adding global configuration, this parameter does not need to be set.
 func (o CacheRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// Order of rule execution. The smaller the value, the higher the priority for execution.
+func (o CacheRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:

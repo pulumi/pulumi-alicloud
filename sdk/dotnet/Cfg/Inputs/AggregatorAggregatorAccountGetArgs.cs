@@ -13,22 +13,22 @@ namespace Pulumi.AliCloud.Cfg.Inputs
     public sealed class AggregatorAggregatorAccountGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Aggregator account Uid.
+        /// The member ID.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Aggregator account name.
+        /// The member name.
         /// </summary>
-        [Input("accountName", required: true)]
-        public Input<string> AccountName { get; set; } = null!;
+        [Input("accountName")]
+        public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Aggregator account source type. Valid values: `ResourceDirectory`.
+        /// The affiliation of the member. Valid values: `ResourceDirectory`.
         /// </summary>
-        [Input("accountType", required: true)]
-        public Input<string> AccountType { get; set; } = null!;
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
 
         public AggregatorAggregatorAccountGetArgs()
         {

@@ -191,6 +191,10 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     declare public readonly eipInstanceId: pulumi.Output<string | undefined>;
     /**
+     * The size of the temporary storage space to add. Unit: GiB.
+     */
+    declare public readonly ephemeralStorage: pulumi.Output<number | undefined>;
+    /**
      * HostAliases. See `hostAliases` below.
      */
     declare public readonly hostAliases: pulumi.Output<outputs.eci.ContainerGroupHostAlias[] | undefined>;
@@ -305,6 +309,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["dnsPolicy"] = state?.dnsPolicy;
             resourceInputs["eipBandwidth"] = state?.eipBandwidth;
             resourceInputs["eipInstanceId"] = state?.eipInstanceId;
+            resourceInputs["ephemeralStorage"] = state?.ephemeralStorage;
             resourceInputs["hostAliases"] = state?.hostAliases;
             resourceInputs["imageRegistryCredentials"] = state?.imageRegistryCredentials;
             resourceInputs["initContainers"] = state?.initContainers;
@@ -351,6 +356,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["dnsPolicy"] = args?.dnsPolicy;
             resourceInputs["eipBandwidth"] = args?.eipBandwidth;
             resourceInputs["eipInstanceId"] = args?.eipInstanceId;
+            resourceInputs["ephemeralStorage"] = args?.ephemeralStorage;
             resourceInputs["hostAliases"] = args?.hostAliases;
             resourceInputs["imageRegistryCredentials"] = args?.imageRegistryCredentials;
             resourceInputs["initContainers"] = args?.initContainers;
@@ -423,6 +429,10 @@ export interface ContainerGroupState {
      * The ID of the elastic IP address (EIP).
      */
     eipInstanceId?: pulumi.Input<string>;
+    /**
+     * The size of the temporary storage space to add. Unit: GiB.
+     */
+    ephemeralStorage?: pulumi.Input<number>;
     /**
      * HostAliases. See `hostAliases` below.
      */
@@ -560,6 +570,10 @@ export interface ContainerGroupArgs {
      * The ID of the elastic IP address (EIP).
      */
     eipInstanceId?: pulumi.Input<string>;
+    /**
+     * The size of the temporary storage space to add. Unit: GiB.
+     */
+    ephemeralStorage?: pulumi.Input<number>;
     /**
      * HostAliases. See `hostAliases` below.
      */

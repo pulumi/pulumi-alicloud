@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly Outputs.ApplicationReadinessV2Exec? Exec;
         /// <summary>
+        /// The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
+        /// </summary>
+        public readonly int? FailureThreshold;
+        /// <summary>
         /// The liveness check settings of the container. See `HttpGet` below.
         /// </summary>
         public readonly Outputs.ApplicationReadinessV2HttpGet? HttpGet;
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// The interval at which the health check is performed.
         /// </summary>
         public readonly int? PeriodSeconds;
+        /// <summary>
+        /// The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
+        /// </summary>
+        public readonly int? SuccessThreshold;
         /// <summary>
         /// The liveness check settings of the container. See `TcpSocket` below.
         /// </summary>
@@ -42,20 +50,26 @@ namespace Pulumi.AliCloud.Sae.Outputs
         private ApplicationReadinessV2(
             Outputs.ApplicationReadinessV2Exec? exec,
 
+            int? failureThreshold,
+
             Outputs.ApplicationReadinessV2HttpGet? httpGet,
 
             int? initialDelaySeconds,
 
             int? periodSeconds,
 
+            int? successThreshold,
+
             Outputs.ApplicationReadinessV2TcpSocket? tcpSocket,
 
             int? timeoutSeconds)
         {
             Exec = exec;
+            FailureThreshold = failureThreshold;
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;
+            SuccessThreshold = successThreshold;
             TcpSocket = tcpSocket;
             TimeoutSeconds = timeoutSeconds;
         }

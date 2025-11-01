@@ -15,9 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a OSS Bucket Logging resource. After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+ * Provides a OSS Bucket Logging resource.
  * 
- * For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://www.alibabacloud.com/help/en/oss/developer-reference/putbucketlogging).
+ * After you enable and configure logging for a bucket, Object Storage Service (OSS) generates log objects based on a predefined naming convention. This way, access logs are generated and stored in the specified bucket on an hourly basis.
+ * 
+ * For information about OSS Bucket Logging and how to use it, see [What is Bucket Logging](https://next.api.alibabacloud.com/document/Oss/2019-05-17/PutBucketLogging).
  * 
  * &gt; **NOTE:** Available since v1.222.0.
  * 
@@ -32,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketLogging;
@@ -53,20 +53,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
  *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
  *             .storageClass("Standard")
- *             .bucket(String.format("%s-%s", name,default_.result()))
+ *             .bucket("resource-example-logging-806")
  *             .build());
  * 
- *         var defaultBucketLogging = new BucketLogging("defaultBucketLogging", BucketLoggingArgs.builder()
- *             .bucket(createBucket.bucket())
- *             .targetBucket(createBucket.bucket())
+ *         var createLoggingBucket = new Bucket("createLoggingBucket", BucketArgs.builder()
+ *             .storageClass("Standard")
+ *             .bucket("resource-example-logging-153")
+ *             .build());
+ * 
+ *         var default_ = new BucketLogging("default", BucketLoggingArgs.builder()
+ *             .bucket(createBucket.id())
+ *             .targetBucket(createBucket.id())
  *             .targetPrefix("log/")
+ *             .loggingRole("example-role")
  *             .build());
  * 
  *     }
@@ -86,18 +87,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:oss/bucketLogging:BucketLogging")
 public class BucketLogging extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket
      * 
      */
     public Output<String> bucket() {
         return this.bucket;
+    }
+    /**
+     * Authorization role used for bucket logging
+     * 
+     */
+    @Export(name="loggingRole", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loggingRole;
+
+    /**
+     * @return Authorization role used for bucket logging
+     * 
+     */
+    public Output<Optional<String>> loggingRole() {
+        return Codegen.optional(this.loggingRole);
     }
     /**
      * The bucket that stores access logs.

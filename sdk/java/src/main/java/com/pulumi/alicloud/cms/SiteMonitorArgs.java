@@ -3,11 +3,12 @@
 
 package com.pulumi.alicloud.cms;
 
+import com.pulumi.alicloud.cms.inputs.SiteMonitorCustomScheduleArgs;
 import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+import com.pulumi.alicloud.cms.inputs.SiteMonitorOptionJsonArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,18 +36,56 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IDs of existing alert rules to be associated with the site monitoring task.
+     * The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
      * 
      */
+    @Import(name="agentGroup")
+    private @Nullable Output<String> agentGroup;
+
+    /**
+     * @return The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+     * 
+     */
+    public Optional<Output<String>> agentGroup() {
+        return Optional.ofNullable(this.agentGroup);
+    }
+
+    /**
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * 
+     * @deprecated
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * 
+     */
+    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
     @Import(name="alertIds")
     private @Nullable Output<List<String>> alertIds;
 
     /**
-     * @return The IDs of existing alert rules to be associated with the site monitoring task.
+     * @return Field `alertIds` has been deprecated from provider version 1.262.0.
+     * 
+     * @deprecated
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
+    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
     public Optional<Output<List<String>>> alertIds() {
         return Optional.ofNullable(this.alertIds);
+    }
+
+    /**
+     * Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     * 
+     */
+    @Import(name="customSchedule")
+    private @Nullable Output<SiteMonitorCustomScheduleArgs> customSchedule;
+
+    /**
+     * @return Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     * 
+     */
+    public Optional<Output<SiteMonitorCustomScheduleArgs>> customSchedule() {
+        return Optional.ofNullable(this.customSchedule);
     }
 
     /**
@@ -54,13 +93,13 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="interval")
-    private @Nullable Output<Integer> interval;
+    private @Nullable Output<String> interval;
 
     /**
      * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
-    public Optional<Output<Integer>> interval() {
+    public Optional<Output<String>> interval() {
         return Optional.ofNullable(this.interval);
     }
 
@@ -80,18 +119,56 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
      * 
      */
+    @Import(name="optionJson")
+    private @Nullable Output<SiteMonitorOptionJsonArgs> optionJson;
+
+    /**
+     * @return The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+     * 
+     */
+    public Optional<Output<SiteMonitorOptionJsonArgs>> optionJson() {
+        return Optional.ofNullable(this.optionJson);
+    }
+
+    /**
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     * 
+     * @deprecated
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * 
+     */
+    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
     @Import(name="optionsJson")
     private @Nullable Output<String> optionsJson;
 
     /**
-     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * @return Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     * 
+     * @deprecated
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
      * 
      */
+    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
     public Optional<Output<String>> optionsJson() {
         return Optional.ofNullable(this.optionsJson);
+    }
+
+    /**
+     * The status of the site monitoring task. Valid values:
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the site monitoring task. Valid values:
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     /**
@@ -128,10 +205,14 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     private SiteMonitorArgs(SiteMonitorArgs $) {
         this.address = $.address;
+        this.agentGroup = $.agentGroup;
         this.alertIds = $.alertIds;
+        this.customSchedule = $.customSchedule;
         this.interval = $.interval;
         this.ispCities = $.ispCities;
+        this.optionJson = $.optionJson;
         this.optionsJson = $.optionsJson;
+        this.status = $.status;
         this.taskName = $.taskName;
         this.taskType = $.taskType;
     }
@@ -176,34 +257,88 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertIds The IDs of existing alert rules to be associated with the site monitoring task.
+         * @param agentGroup The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
          * 
          * @return builder
          * 
          */
+        public Builder agentGroup(@Nullable Output<String> agentGroup) {
+            $.agentGroup = agentGroup;
+            return this;
+        }
+
+        /**
+         * @param agentGroup The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentGroup(String agentGroup) {
+            return agentGroup(Output.of(agentGroup));
+        }
+
+        /**
+         * @param alertIds Field `alertIds` has been deprecated from provider version 1.262.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * 
+         */
+        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
         public Builder alertIds(@Nullable Output<List<String>> alertIds) {
             $.alertIds = alertIds;
             return this;
         }
 
         /**
-         * @param alertIds The IDs of existing alert rules to be associated with the site monitoring task.
+         * @param alertIds Field `alertIds` has been deprecated from provider version 1.262.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * 
          */
+        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
         public Builder alertIds(List<String> alertIds) {
             return alertIds(Output.of(alertIds));
         }
 
         /**
-         * @param alertIds The IDs of existing alert rules to be associated with the site monitoring task.
+         * @param alertIds Field `alertIds` has been deprecated from provider version 1.262.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `alertIds` has been deprecated from provider version 1.262.0.
+         * 
+         */
+        @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
+        public Builder alertIds(String... alertIds) {
+            return alertIds(List.of(alertIds));
+        }
+
+        /**
+         * @param customSchedule Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
          * 
          * @return builder
          * 
          */
-        public Builder alertIds(String... alertIds) {
-            return alertIds(List.of(alertIds));
+        public Builder customSchedule(@Nullable Output<SiteMonitorCustomScheduleArgs> customSchedule) {
+            $.customSchedule = customSchedule;
+            return this;
+        }
+
+        /**
+         * @param customSchedule Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customSchedule(SiteMonitorCustomScheduleArgs customSchedule) {
+            return customSchedule(Output.of(customSchedule));
         }
 
         /**
@@ -212,7 +347,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder interval(@Nullable Output<Integer> interval) {
+        public Builder interval(@Nullable Output<String> interval) {
             $.interval = interval;
             return this;
         }
@@ -223,7 +358,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder interval(Integer interval) {
+        public Builder interval(String interval) {
             return interval(Output.of(interval));
         }
 
@@ -259,24 +394,74 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+         * @param optionJson The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
          * 
          * @return builder
          * 
          */
+        public Builder optionJson(@Nullable Output<SiteMonitorOptionJsonArgs> optionJson) {
+            $.optionJson = optionJson;
+            return this;
+        }
+
+        /**
+         * @param optionJson The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionJson(SiteMonitorOptionJsonArgs optionJson) {
+            return optionJson(Output.of(optionJson));
+        }
+
+        /**
+         * @param optionsJson Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * 
+         */
+        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
         public Builder optionsJson(@Nullable Output<String> optionsJson) {
             $.optionsJson = optionsJson;
             return this;
         }
 
         /**
-         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+         * @param optionsJson Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+         * 
+         */
+        @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+        public Builder optionsJson(String optionsJson) {
+            return optionsJson(Output.of(optionsJson));
+        }
+
+        /**
+         * @param status The status of the site monitoring task. Valid values:
          * 
          * @return builder
          * 
          */
-        public Builder optionsJson(String optionsJson) {
-            return optionsJson(Output.of(optionsJson));
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the site monitoring task. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

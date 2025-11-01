@@ -369,6 +369,20 @@ public class CacheRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleName);
     }
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
+    }
+    /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */

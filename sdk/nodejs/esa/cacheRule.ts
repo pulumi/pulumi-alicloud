@@ -166,6 +166,10 @@ export class CacheRule extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
+    /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */
     declare public readonly serveStale: pulumi.Output<string | undefined>;
@@ -226,6 +230,7 @@ export class CacheRule extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["serveStale"] = state?.serveStale;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
@@ -256,6 +261,7 @@ export class CacheRule extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["serveStale"] = args?.serveStale;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
@@ -352,6 +358,10 @@ export interface CacheRuleState {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */
@@ -460,6 +470,10 @@ export interface CacheRuleArgs {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      */

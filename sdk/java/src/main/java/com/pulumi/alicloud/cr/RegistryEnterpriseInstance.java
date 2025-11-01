@@ -120,12 +120,16 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
     /**
      * Custom OSS Bucket name
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="customOssBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOssBucket;
 
     /**
      * @return Custom OSS Bucket name
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> customOssBucket() {
@@ -164,6 +168,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="imageScanner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageScanner;
@@ -172,6 +178,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * @return The security scan engine used by the Enterprise Edition of Container Image Service. Value:
      * - `ACR`: Uses the Trivy scan engine provided by default.
      * - `SAS`: uses the enhanced cloud security scan engine.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> imageScanner() {
@@ -211,6 +219,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
@@ -220,6 +230,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * - `Basic`: Basic instance
      * - `Standard`: Standard instance
      * - `Advanced`: Advanced Edition Instance
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<String> instanceType() {
@@ -288,6 +300,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * 
      * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
@@ -296,6 +310,8 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
      * 
      * &gt; **NOTE:**  must be set when creating a prepaid instance.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<Integer>> period() {

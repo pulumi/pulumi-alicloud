@@ -10,6 +10,7 @@ import com.pulumi.alicloud.oss.outputs.BucketReplicationDestination;
 import com.pulumi.alicloud.oss.outputs.BucketReplicationEncryptionConfiguration;
 import com.pulumi.alicloud.oss.outputs.BucketReplicationPrefixSet;
 import com.pulumi.alicloud.oss.outputs.BucketReplicationProgress;
+import com.pulumi.alicloud.oss.outputs.BucketReplicationRtc;
 import com.pulumi.alicloud.oss.outputs.BucketReplicationSourceSelectionCriteria;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -83,8 +84,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var role = new Role("role", RoleArgs.builder()
- *             .name(String.format("example-role-%s", default_.result()))
- *             .document("""
+ *             .roleName(String.format("example-role-%s", default_.result()))
+ *             .assumeRolePolicyDocument("""
  * \t\t{
  * \t\t  \"Statement\": [
  * \t\t\t{
@@ -129,7 +130,7 @@ import javax.annotation.Nullable;
  *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()
  *             .policyName(policy.policyName())
  *             .policyType(policy.type())
- *             .roleName(role.name())
+ *             .roleName(role.roleName())
  *             .build());
  * 
  *         var key = new Key("key", KeyArgs.builder()
@@ -151,7 +152,7 @@ import javax.annotation.Nullable;
  *                 .bucket(bucketDest.id())
  *                 .location(bucketDest.location())
  *                 .build())
- *             .syncRole(role.name())
+ *             .syncRole(role.roleName())
  *             .encryptionConfiguration(BucketReplicationEncryptionConfigurationArgs.builder()
  *                 .replicaKmsKeyId(key.id())
  *                 .build())
@@ -275,6 +276,20 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      */
     public Output<BucketReplicationProgress> progress() {
         return this.progress;
+    }
+    /**
+     * Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     * 
+     */
+    @Export(name="rtc", refs={BucketReplicationRtc.class}, tree="[0]")
+    private Output<BucketReplicationRtc> rtc;
+
+    /**
+     * @return Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
+     * 
+     */
+    public Output<BucketReplicationRtc> rtc() {
+        return this.rtc;
     }
     /**
      * The ID of the data replication rule.

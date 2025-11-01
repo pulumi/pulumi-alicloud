@@ -6,20 +6,24 @@ package com.pulumi.alicloud.cms;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cms.SiteMonitorArgs;
 import com.pulumi.alicloud.cms.inputs.SiteMonitorState;
+import com.pulumi.alicloud.cms.outputs.SiteMonitorCustomSchedule;
 import com.pulumi.alicloud.cms.outputs.SiteMonitorIspCity;
+import com.pulumi.alicloud.cms.outputs.SiteMonitorOptionJson;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource provides a site monitor resource and it can be used to monitor public endpoints and websites.
- * Details at https://www.alibabacloud.com/help/doc-detail/67907.htm
+ * Provides a Cloud Monitor Service Site Monitor resource.
+ * 
+ * Describes the SITE monitoring tasks created by the user.
+ * 
+ * For information about Cloud Monitor Service Site Monitor and how to use it, see [What is Site Monitor](https://next.api.alibabacloud.com/document/Cms/2019-01-01/CreateSiteMonitor).
  * 
  * &gt; **NOTE:** Available since v1.72.0.
  * 
@@ -37,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cms.SiteMonitor;
  * import com.pulumi.alicloud.cms.SiteMonitorArgs;
  * import com.pulumi.alicloud.cms.inputs.SiteMonitorIspCityArgs;
+ * import com.pulumi.alicloud.cms.inputs.SiteMonitorOptionJsonArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,32 +55,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var basic = new SiteMonitor("basic", SiteMonitorArgs.builder()
- *             .address("http://www.alibabacloud.com")
- *             .taskName("tf-example")
+ *             .address("https://www.alibabacloud.com")
+ *             .taskName(name)
  *             .taskType("HTTP")
- *             .interval(5)
+ *             .interval("5")
  *             .ispCities(SiteMonitorIspCityArgs.builder()
- *                 .city("546")
- *                 .isp("465")
+ *                 .isp("232")
+ *                 .city("641")
+ *                 .type("IDC")
  *                 .build())
- *             .optionsJson("""
- * {
- *     \"http_method\": \"get\",
- *     \"waitTime_after_completion\": null,
- *     \"ipv6_task\": false,
- *     \"diagnosis_ping\": false,
- *     \"diagnosis_mtr\": false,
- *     \"assertions\": [
- *         {
- *             \"operator\": \"lessThan\",
- *             \"type\": \"response_time\",
- *             \"target\": 1000
- *         }
- *     ],
- *     \"time_out\": 30000
- * }
- *             """)
+ *             .optionJson(SiteMonitorOptionJsonArgs.builder()
+ *                 .responseContent("example")
+ *                 .expectValue("example")
+ *                 .port(81)
+ *                 .isBaseEncode(true)
+ *                 .pingNum(5)
+ *                 .matchRule(1)
+ *                 .failureRate("0.3")
+ *                 .requestContent("example")
+ *                 .attempts(4)
+ *                 .requestFormat("hex")
+ *                 .password("YourPassword123!")
+ *                 .diagnosisPing(true)
+ *                 .responseFormat("hex")
+ *                 .cookie("key2=value2")
+ *                 .pingPort(443)
+ *                 .userName("example")
+ *                 .dnsMatchRule("DNS_IN")
+ *                 .timeout(3000)
+ *                 .dnsServer("223.6.6.6")
+ *                 .diagnosisMtr(true)
+ *                 .header("key2:value2")
+ *                 .minTlsVersion("1.1")
+ *                 .pingType("udp")
+ *                 .dnsType("NS")
+ *                 .dnsHijackWhitelist("DnsHijackWhitelist")
+ *                 .httpMethod("post")
+ *                 .assertions(SiteMonitorOptionJsonAssertionArgs.builder()
+ *                     .operator("lessThan")
+ *                     .target("300")
+ *                     .type("response_time")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -109,74 +133,142 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
         return this.address;
     }
     /**
-     * The IDs of existing alert rules to be associated with the site monitoring task.
+     * The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
      * 
      */
+    @Export(name="agentGroup", refs={String.class}, tree="[0]")
+    private Output<String> agentGroup;
+
+    /**
+     * @return The type of the detection point. Default value: `PC`. Valid values: `PC`, `MOBILE`.
+     * 
+     */
+    public Output<String> agentGroup() {
+        return this.agentGroup;
+    }
+    /**
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * 
+     * @deprecated
+     * Field `alertIds` has been deprecated from provider version 1.262.0.
+     * 
+     */
+    @Deprecated /* Field `alertIds` has been deprecated from provider version 1.262.0. */
     @Export(name="alertIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alertIds;
 
     /**
-     * @return The IDs of existing alert rules to be associated with the site monitoring task.
+     * @return Field `alertIds` has been deprecated from provider version 1.262.0.
      * 
      */
     public Output<Optional<List<String>>> alertIds() {
         return Codegen.optional(this.alertIds);
     }
     /**
-     * The time when the site monitoring task was created.
+     * (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
+     * 
+     * @deprecated
+     * Field `createTime` has been deprecated from provider version 1.262.0.
      * 
      */
+    @Deprecated /* Field `createTime` has been deprecated from provider version 1.262.0. */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The time when the site monitoring task was created.
+     * @return (Deprecated since v1.262.0) Field `createTime` has been deprecated from provider version 1.262.0.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
+     * Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     * 
+     */
+    @Export(name="customSchedule", refs={SiteMonitorCustomSchedule.class}, tree="[0]")
+    private Output</* @Nullable */ SiteMonitorCustomSchedule> customSchedule;
+
+    /**
+     * @return Custom probing period. Only a certain period of time from Monday to Sunday can be selected for detection. See `customSchedule` below.
+     * 
+     */
+    public Output<Optional<SiteMonitorCustomSchedule>> customSchedule() {
+        return Codegen.optional(this.customSchedule);
+    }
+    /**
      * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
-    @Export(name="interval", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> interval;
+    @Export(name="interval", refs={String.class}, tree="[0]")
+    private Output<String> interval;
 
     /**
      * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
-    public Output<Optional<Integer>> interval() {
-        return Codegen.optional(this.interval);
+    public Output<String> interval() {
+        return this.interval;
     }
     /**
      * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
      * 
      */
     @Export(name="ispCities", refs={List.class,SiteMonitorIspCity.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SiteMonitorIspCity>> ispCities;
+    private Output<List<SiteMonitorIspCity>> ispCities;
 
     /**
      * @return The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `ispCities` below.
      * 
      */
-    public Output<Optional<List<SiteMonitorIspCity>>> ispCities() {
-        return Codegen.optional(this.ispCities);
+    public Output<List<SiteMonitorIspCity>> ispCities() {
+        return this.ispCities;
     }
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
      * 
      */
-    @Export(name="optionsJson", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> optionsJson;
+    @Export(name="optionJson", refs={SiteMonitorOptionJson.class}, tree="[0]")
+    private Output<SiteMonitorOptionJson> optionJson;
 
     /**
-     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
+     * @return The extended options of the protocol that is used by the site monitoring task. See `optionJson` below.
      * 
      */
-    public Output<Optional<String>> optionsJson() {
-        return Codegen.optional(this.optionsJson);
+    public Output<SiteMonitorOptionJson> optionJson() {
+        return this.optionJson;
+    }
+    /**
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     * 
+     * @deprecated
+     * Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead
+     * 
+     */
+    @Deprecated /* Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead */
+    @Export(name="optionsJson", refs={String.class}, tree="[0]")
+    private Output<String> optionsJson;
+
+    /**
+     * @return Field `optionsJson` has been deprecated from provider version 1.262.0. New field `optionJson` instead.
+     * 
+     */
+    public Output<String> optionsJson() {
+        return this.optionsJson;
+    }
+    /**
+     * The status of the site monitoring task. Valid values:
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the site monitoring task. Valid values:
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * The name of the site monitoring task. The name must be 4 to 100 characters in length. The name can contain the following types of characters: letters, digits, and underscores.
@@ -193,14 +285,18 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
         return this.taskName;
     }
     /**
-     * The status of the site monitoring task.
+     * (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
+     * 
+     * @deprecated
+     * Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
      */
+    @Deprecated /* Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead. */
     @Export(name="taskState", refs={String.class}, tree="[0]")
     private Output<String> taskState;
 
     /**
-     * @return The status of the site monitoring task.
+     * @return (Deprecated since v1.262.0) Field `taskState` has been deprecated from provider version 1.262.0. New field `status` instead.
      * 
      */
     public Output<String> taskState() {
@@ -221,14 +317,18 @@ public class SiteMonitor extends com.pulumi.resources.CustomResource {
         return this.taskType;
     }
     /**
-     * The time when the site monitoring task was updated.
+     * (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
+     * 
+     * @deprecated
+     * Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
      */
+    @Deprecated /* Field `updateTime` has been deprecated from provider version 1.262.0. */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return The time when the site monitoring task was updated.
+     * @return (Deprecated since v1.262.0) Field `updateTime` has been deprecated from provider version 1.262.0.
      * 
      */
     public Output<String> updateTime() {

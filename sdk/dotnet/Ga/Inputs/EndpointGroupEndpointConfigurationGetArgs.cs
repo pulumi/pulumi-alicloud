@@ -41,17 +41,35 @@ namespace Pulumi.AliCloud.Ga.Inputs
         /// The type of Endpoint N in the endpoint group. Valid values:
         /// - `Domain`: A custom domain name.
         /// - `Ip`: A custom IP address.
+        /// - `IpTarget`: (Available since v1.262.0) An Alibaba Cloud public IP address.
         /// - `PublicIp`: An Alibaba Cloud public IP address.
         /// - `ECS`: An Elastic Compute Service (ECS) instance.
         /// - `SLB`: A Classic Load Balancer (CLB) instance.
-        /// - `ALB`: An Application Load Balancer (ALB) instance.
-        /// - `NLB`: A Network Load Balancer (NLB) instance.
-        /// - `ENI`: An Elastic Network Interface (ENI).
-        /// - `OSS`: An Object Storage Service (OSS) bucket.
-        /// &gt; **NOTE:** From version 1.232.0, `Type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
+        /// - `ALB`: (Available since v1.232.0) An Application Load Balancer (ALB) instance.
+        /// - `NLB`: (Available since v1.232.0) A Network Load Balancer (NLB) instance.
+        /// - `ENI`: (Available since v1.232.0) An Elastic Network Interface (ENI).
+        /// - `OSS`: (Available since v1.232.0) An Object Storage Service (OSS) bucket.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        [Input("vswitchIds")]
+        private InputList<string>? _vswitchIds;
+
+        /// <summary>
+        /// The IDs of vSwitches that are deployed in the VPC.
+        /// </summary>
+        public InputList<string> VswitchIds
+        {
+            get => _vswitchIds ?? (_vswitchIds = new InputList<string>());
+            set => _vswitchIds = value;
+        }
 
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.

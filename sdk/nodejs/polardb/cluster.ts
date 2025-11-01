@@ -134,7 +134,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly defaultTimeZone: pulumi.Output<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      */
     declare public readonly deletionLock: pulumi.Output<number | undefined>;
     /**
@@ -336,7 +336,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      */
     declare public readonly storagePayType: pulumi.Output<string>;
     /**
@@ -677,7 +677,7 @@ export interface ClusterState {
     defaultTimeZone?: pulumi.Input<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      */
     deletionLock?: pulumi.Input<number>;
     /**
@@ -879,7 +879,7 @@ export interface ClusterState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      */
     storagePayType?: pulumi.Input<string>;
     /**
@@ -1023,7 +1023,7 @@ export interface ClusterArgs {
     defaultTimeZone?: pulumi.Input<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
-     * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
+     * > **NOTE:**  Cannot modify after created when `payType` is `PrePaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `PostPaid`.
      */
     deletionLock?: pulumi.Input<number>;
     /**
@@ -1217,7 +1217,7 @@ export interface ClusterArgs {
      */
     standbyAz?: pulumi.Input<string>;
     /**
-     * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
+     * The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
      */
     storagePayType?: pulumi.Input<string>;
     /**

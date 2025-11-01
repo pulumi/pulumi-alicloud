@@ -36,7 +36,7 @@ class GatewayEndpointArgs:
         :param pulumi.Input[_builtins.str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[_builtins.str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -131,7 +131,7 @@ class GatewayEndpointArgs:
     @pulumi.getter(name="routeTables")
     def route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The ID list of the route table associated with the VPC gateway endpoint.
+        The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         """
         return pulumi.get(self, "route_tables")
 
@@ -173,7 +173,7 @@ class _GatewayEndpointState:
         :param pulumi.Input[_builtins.str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[_builtins.str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         :param pulumi.Input[_builtins.str] service_name: The endpoint service name.
         :param pulumi.Input[_builtins.str] status: The status of VPC gateway endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
@@ -265,7 +265,7 @@ class _GatewayEndpointState:
     @pulumi.getter(name="routeTables")
     def route_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The ID list of the route table associated with the VPC gateway endpoint.
+        The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         """
         return pulumi.get(self, "route_tables")
 
@@ -398,7 +398,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[_builtins.str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         :param pulumi.Input[_builtins.str] service_name: The endpoint service name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC.
@@ -542,7 +542,7 @@ class GatewayEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway_endpoint_name: The name of the VPC gateway endpoint.
         :param pulumi.Input[_builtins.str] policy_document: Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group to which the instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] route_tables: The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         :param pulumi.Input[_builtins.str] service_name: The endpoint service name.
         :param pulumi.Input[_builtins.str] status: The status of VPC gateway endpoint.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags of the resource.
@@ -607,9 +607,9 @@ class GatewayEndpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="routeTables")
-    def route_tables(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def route_tables(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The ID list of the route table associated with the VPC gateway endpoint.
+        The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `vpc.GatewayEndpointRouteTableAttachment`.
         """
         return pulumi.get(self, "route_tables")
 

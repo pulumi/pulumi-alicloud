@@ -4,9 +4,10 @@
 package com.pulumi.alicloud.cms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SiteMonitorIspCity {
@@ -14,27 +15,39 @@ public final class SiteMonitorIspCity {
      * @return The ID of the city.
      * 
      */
-    private String city;
+    private @Nullable String city;
     /**
      * @return The ID of the carrier.
      * 
      */
-    private String isp;
+    private @Nullable String isp;
+    /**
+     * @return The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+     * 
+     */
+    private @Nullable String type;
 
     private SiteMonitorIspCity() {}
     /**
      * @return The ID of the city.
      * 
      */
-    public String city() {
-        return this.city;
+    public Optional<String> city() {
+        return Optional.ofNullable(this.city);
     }
     /**
      * @return The ID of the carrier.
      * 
      */
-    public String isp() {
-        return this.isp;
+    public Optional<String> isp() {
+        return Optional.ofNullable(this.isp);
+    }
+    /**
+     * @return The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -46,35 +59,40 @@ public final class SiteMonitorIspCity {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String city;
-        private String isp;
+        private @Nullable String city;
+        private @Nullable String isp;
+        private @Nullable String type;
         public Builder() {}
         public Builder(SiteMonitorIspCity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.city = defaults.city;
     	      this.isp = defaults.isp;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
-        public Builder city(String city) {
-            if (city == null) {
-              throw new MissingRequiredPropertyException("SiteMonitorIspCity", "city");
-            }
+        public Builder city(@Nullable String city) {
+
             this.city = city;
             return this;
         }
         @CustomType.Setter
-        public Builder isp(String isp) {
-            if (isp == null) {
-              throw new MissingRequiredPropertyException("SiteMonitorIspCity", "isp");
-            }
+        public Builder isp(@Nullable String isp) {
+
             this.isp = isp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
             return this;
         }
         public SiteMonitorIspCity build() {
             final var _resultValue = new SiteMonitorIspCity();
             _resultValue.city = city;
             _resultValue.isp = isp;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

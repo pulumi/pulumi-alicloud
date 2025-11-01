@@ -57,7 +57,7 @@ class InstanceArgs:
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute project.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -94,7 +94,7 @@ class InstanceArgs:
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -238,7 +238,7 @@ class InstanceArgs:
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute project.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.
@@ -374,7 +374,7 @@ class InstanceArgs:
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.
@@ -532,7 +532,7 @@ class _InstanceState:
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute project.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -571,7 +571,7 @@ class _InstanceState:
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -736,7 +736,7 @@ class _InstanceState:
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute project.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.
@@ -896,7 +896,7 @@ class _InstanceState:
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.
@@ -1101,7 +1101,7 @@ class Instance(pulumi.CustomResource):
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute project.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -1138,7 +1138,7 @@ class Instance(pulumi.CustomResource):
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -1345,7 +1345,7 @@ class Instance(pulumi.CustomResource):
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute project.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -1384,7 +1384,7 @@ class Instance(pulumi.CustomResource):
                - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
                - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
                - **PostgreSQL**: User-created PostgreSQL.
-               - **ODPS**:MaxCompute.
+               - **odps**: MaxCompute project.
                - **oracle**: self-built Oracle.
                - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
                - **tidb**:TiDB database.
@@ -1510,7 +1510,7 @@ class Instance(pulumi.CustomResource):
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute project.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.
@@ -1626,7 +1626,7 @@ class Instance(pulumi.CustomResource):
         - **Redis**:Redis databases (including apsaradb for Redis and user-created Redis).
         - **DRDS**: cloud-native distributed database PolarDB-X 1.0 and 2.0.
         - **PostgreSQL**: User-created PostgreSQL.
-        - **ODPS**:MaxCompute.
+        - **odps**: MaxCompute project.
         - **oracle**: self-built Oracle.
         - **mongodb**:MongoDB databases (including apsaradb for MongoDB and user-created MongoDB).
         - **tidb**:TiDB database.

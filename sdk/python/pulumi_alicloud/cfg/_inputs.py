@@ -172,17 +172,17 @@ class AggregateCompliancePackConfigRuleIdArgs:
 
 if not MYPY:
     class AggregatorAggregatorAccountArgsDict(TypedDict):
-        account_id: pulumi.Input[_builtins.str]
+        account_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Aggregator account Uid.
+        The member ID.
         """
-        account_name: pulumi.Input[_builtins.str]
+        account_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Aggregator account name.
+        The member name.
         """
-        account_type: pulumi.Input[_builtins.str]
+        account_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Aggregator account source type. Valid values: `ResourceDirectory`.
+        The affiliation of the member. Valid values: `ResourceDirectory`.
         """
 elif False:
     AggregatorAggregatorAccountArgsDict: TypeAlias = Mapping[str, Any]
@@ -190,52 +190,55 @@ elif False:
 @pulumi.input_type
 class AggregatorAggregatorAccountArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[_builtins.str],
-                 account_name: pulumi.Input[_builtins.str],
-                 account_type: pulumi.Input[_builtins.str]):
+                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] account_id: Aggregator account Uid.
-        :param pulumi.Input[_builtins.str] account_name: Aggregator account name.
-        :param pulumi.Input[_builtins.str] account_type: Aggregator account source type. Valid values: `ResourceDirectory`.
+        :param pulumi.Input[_builtins.str] account_id: The member ID.
+        :param pulumi.Input[_builtins.str] account_name: The member name.
+        :param pulumi.Input[_builtins.str] account_type: The affiliation of the member. Valid values: `ResourceDirectory`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[_builtins.str]:
+    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Aggregator account Uid.
+        The member ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[_builtins.str]):
+    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> pulumi.Input[_builtins.str]:
+    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Aggregator account name.
+        The member name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: pulumi.Input[_builtins.str]):
+    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> pulumi.Input[_builtins.str]:
+    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Aggregator account source type. Valid values: `ResourceDirectory`.
+        The affiliation of the member. Valid values: `ResourceDirectory`.
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: pulumi.Input[_builtins.str]):
+    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
 

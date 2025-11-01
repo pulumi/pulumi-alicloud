@@ -5,9 +5,10 @@ package com.pulumi.alicloud.cms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,45 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
      * The ID of the city.
      * 
      */
-    @Import(name="city", required=true)
-    private Output<String> city;
+    @Import(name="city")
+    private @Nullable Output<String> city;
 
     /**
      * @return The ID of the city.
      * 
      */
-    public Output<String> city() {
-        return this.city;
+    public Optional<Output<String>> city() {
+        return Optional.ofNullable(this.city);
     }
 
     /**
      * The ID of the carrier.
      * 
      */
-    @Import(name="isp", required=true)
-    private Output<String> isp;
+    @Import(name="isp")
+    private @Nullable Output<String> isp;
 
     /**
      * @return The ID of the carrier.
      * 
      */
-    public Output<String> isp() {
-        return this.isp;
+    public Optional<Output<String>> isp() {
+        return Optional.ofNullable(this.isp);
+    }
+
+    /**
+     * The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SiteMonitorIspCityArgs() {}
@@ -49,6 +65,7 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
     private SiteMonitorIspCityArgs(SiteMonitorIspCityArgs $) {
         this.city = $.city;
         this.isp = $.isp;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -75,7 +92,7 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder city(Output<String> city) {
+        public Builder city(@Nullable Output<String> city) {
             $.city = city;
             return this;
         }
@@ -96,7 +113,7 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder isp(Output<String> isp) {
+        public Builder isp(@Nullable Output<String> isp) {
             $.isp = isp;
             return this;
         }
@@ -111,13 +128,28 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
             return isp(Output.of(isp));
         }
 
+        /**
+         * @param type The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
+        }
+
         public SiteMonitorIspCityArgs build() {
-            if ($.city == null) {
-                throw new MissingRequiredPropertyException("SiteMonitorIspCityArgs", "city");
-            }
-            if ($.isp == null) {
-                throw new MissingRequiredPropertyException("SiteMonitorIspCityArgs", "isp");
-            }
             return $;
         }
     }

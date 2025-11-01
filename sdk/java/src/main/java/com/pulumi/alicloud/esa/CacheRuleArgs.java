@@ -292,6 +292,21 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
      * Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
      * 
      */
@@ -417,6 +432,7 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.serveStale = $.serveStale;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
@@ -824,6 +840,27 @@ public final class CacheRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**

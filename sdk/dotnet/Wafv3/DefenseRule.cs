@@ -29,76 +29,42 @@ namespace Pulumi.AliCloud.Wafv3
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tfaccwafv310619";
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var regionId = config.Get("regionId") ?? "cn-hangzhou";
+    ///     var domain = config.Get("domain") ?? "example.wafqax.top";
     ///     var @default = AliCloud.Wafv3.GetInstances.Invoke();
     /// 
-    ///     var defaultDomain = new AliCloud.Wafv3.Domain("default", new()
+    ///     var defaultICMRhk = new AliCloud.Wafv3.Domain("defaultICMRhk", new()
     ///     {
+    ///         Redirect = new AliCloud.Wafv3.Inputs.DomainRedirectArgs
+    ///         {
+    ///             Loadbalance = "iphash",
+    ///             Backends = new[]
+    ///             {
+    ///                 "39.98.217.197",
+    ///             },
+    ///             ConnectTimeout = 5,
+    ///             ReadTimeout = 120,
+    ///             WriteTimeout = 120,
+    ///         },
+    ///         DomainName = "example.wafqax.top",
+    ///         AccessType = "share",
     ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0])),
     ///         Listen = new AliCloud.Wafv3.Inputs.DomainListenArgs
     ///         {
-    ///             ProtectionResource = "share",
     ///             HttpPorts = new[]
     ///             {
-    ///                 81,
-    ///                 82,
-    ///                 83,
+    ///                 80,
     ///             },
-    ///             HttpsPorts = new() { },
-    ///             XffHeaderMode = 2,
-    ///             XffHeaders = new[]
-    ///             {
-    ///                 "examplea",
-    ///                 "exampleb",
-    ///                 "examplec",
-    ///             },
-    ///             CustomCiphers = new() { },
-    ///             Ipv6Enabled = true,
     ///         },
-    ///         Redirect = new AliCloud.Wafv3.Inputs.DomainRedirectArgs
-    ///         {
-    ///             KeepaliveTimeout = 15,
-    ///             Backends = new[]
-    ///             {
-    ///                 "1.1.1.1",
-    ///                 "3.3.3.3",
-    ///                 "2.2.2.2",
-    ///             },
-    ///             WriteTimeout = 5,
-    ///             KeepaliveRequests = 1000,
-    ///             RequestHeaders = new[]
-    ///             {
-    ///                 new AliCloud.Wafv3.Inputs.DomainRedirectRequestHeaderArgs
-    ///                 {
-    ///                     Key = "examplekey1",
-    ///                     Value = "exampleValue1",
-    ///                 },
-    ///                 new AliCloud.Wafv3.Inputs.DomainRedirectRequestHeaderArgs
-    ///                 {
-    ///                     Key = "key1",
-    ///                     Value = "value1",
-    ///                 },
-    ///                 new AliCloud.Wafv3.Inputs.DomainRedirectRequestHeaderArgs
-    ///                 {
-    ///                     Key = "key22",
-    ///                     Value = "value22",
-    ///                 },
-    ///             },
-    ///             Loadbalance = "iphash",
-    ///             FocusHttpBackend = false,
-    ///             SniEnabled = false,
-    ///             ConnectTimeout = 5,
-    ///             ReadTimeout = 5,
-    ///             Keepalive = true,
-    ///             Retry = true,
-    ///         },
-    ///         DomainName = "zcexample_250746.wafqax.top",
-    ///         AccessType = "share",
     ///     });
     /// 
     ///     var defaultDefenseRule = new AliCloud.Wafv3.DefenseRule("default", new()
     ///     {
+    ///         DefenseType = "resource",
+    ///         DefenseScene = "account_identifier",
+    ///         RuleStatus = 1,
+    ///         Resource = defaultICMRhk.DomainId,
     ///         DefenseOrigin = "custom",
     ///         Config = new AliCloud.Wafv3.Inputs.DefenseRuleConfigArgs
     ///         {
@@ -106,19 +72,15 @@ namespace Pulumi.AliCloud.Wafv3
     ///             {
     ///                 new AliCloud.Wafv3.Inputs.DefenseRuleConfigAccountIdentifierArgs
     ///                 {
+    ///                     Position = "jwt",
     ///                     Priority = 2,
     ///                     DecodeType = "jwt",
     ///                     Key = "Query-Arg",
     ///                     SubKey = "adb",
-    ///                     Position = "jwt",
     ///                 },
     ///             },
     ///         },
     ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0])),
-    ///         DefenseType = "resource",
-    ///         DefenseScene = "account_identifier",
-    ///         RuleStatus = 1,
-    ///         Resource = defaultDomain.DomainId,
     ///     });
     /// 
     /// });

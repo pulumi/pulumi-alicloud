@@ -37,6 +37,7 @@ __all__ = [
     'BucketReplicationEncryptionConfiguration',
     'BucketReplicationPrefixSet',
     'BucketReplicationProgress',
+    'BucketReplicationRtc',
     'BucketReplicationSourceSelectionCriteria',
     'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects',
     'BucketServerSideEncryptionRule',
@@ -1338,6 +1339,36 @@ class BucketReplicationProgress(dict):
         The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
         """
         return pulumi.get(self, "new_object")
+
+
+@pulumi.output_type
+class BucketReplicationRtc(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+        :param _builtins.str status: The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Specifies whether to enable the RTC feature. Set to `true` to enable or `false` to disable. This argument is required when the rtc block is defined.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        The current status of the RTC feature. This attribute is read-only and is only populated when `enabled` is set to `true`. Possible values are:
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Icmpv6`, `Gre`, `All`. **NOTE:** From version 1.262.0, `IpProtocol` can be set to `Icmpv6`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Icmpv6`, `Gre`, `All`. **NOTE:** From version 1.262.0, `IpProtocol` can be set to `Icmpv6`.
         /// </summary>
         [Input("ipProtocol", required: true)]
         public Input<string> IpProtocol { get; set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Gre`, `All`.
+        /// The transport layer protocol of the Security Group Rule. Valid values: `Tcp`, `Udp`, `Icmp`, `Icmpv6`, `Gre`, `All`. **NOTE:** From version 1.262.0, `IpProtocol` can be set to `Icmpv6`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }

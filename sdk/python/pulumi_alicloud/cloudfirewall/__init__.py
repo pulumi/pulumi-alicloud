@@ -17,6 +17,7 @@ from .get_control_policies import *
 from .get_instance_members import *
 from .get_instances import *
 from .get_nat_firewalls import *
+from .get_tls_inspect_ca_certificates import *
 from .get_vpc_cen_tr_firewalls import *
 from .get_vpc_firewall_cens import *
 from .get_vpc_firewall_control_policies import *

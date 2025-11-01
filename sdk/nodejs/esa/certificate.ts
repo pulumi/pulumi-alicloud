@@ -87,23 +87,16 @@ export class Certificate extends pulumi.CustomResource {
      * Creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     */
     declare public readonly createdType: pulumi.Output<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     declare public readonly domains: pulumi.Output<string | undefined>;
-    /**
-     * The certificate private key.
-     */
     declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
-     * Geographical information.
+     * Region. This parameter is required if the type is CAS.
+     * For accounts on the Chinese site, this parameter value is: cn-hangzhou
+     * For accounts on the international site, this parameter value is: ap-southeast-1
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -194,23 +187,16 @@ export interface CertificateState {
      * Creation time.
      */
     createTime?: pulumi.Input<string>;
-    /**
-     * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     */
     createdType?: pulumi.Input<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
-    /**
-     * The certificate private key.
-     */
     privateKey?: pulumi.Input<string>;
     /**
-     * Geographical information.
+     * Region. This parameter is required if the type is CAS.
+     * For accounts on the Chinese site, this parameter value is: cn-hangzhou
+     * For accounts on the international site, this parameter value is: ap-southeast-1
      */
     region?: pulumi.Input<string>;
     /**
@@ -247,23 +233,16 @@ export interface CertificateArgs {
      * Certificate content.
      */
     certificate?: pulumi.Input<string>;
-    /**
-     * The certificate type.
-     * - cas (Certificate Center Certificate)
-     * - upload (custom upload certificate)
-     * - free( Free certificate).
-     */
     createdType: pulumi.Input<string>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
     domains?: pulumi.Input<string>;
-    /**
-     * The certificate private key.
-     */
     privateKey?: pulumi.Input<string>;
     /**
-     * Geographical information.
+     * Region. This parameter is required if the type is CAS.
+     * For accounts on the Chinese site, this parameter value is: cn-hangzhou
+     * For accounts on the international site, this parameter value is: ap-southeast-1
      */
     region?: pulumi.Input<string>;
     /**

@@ -5,7 +5,9 @@ package com.pulumi.alicloud.wafv3.outputs;
 
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigAccountIdentifier;
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigCondition;
+import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigGrayConfig;
 import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigRateLimit;
+import com.pulumi.alicloud.wafv3.outputs.DefenseRuleConfigTimeConfig;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
@@ -103,6 +105,18 @@ public final class DefenseRuleConfig {
      */
     private @Nullable List<DefenseRuleConfigCondition> conditions;
     /**
+     * @return The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+     * 
+     */
+    private @Nullable DefenseRuleConfigGrayConfig grayConfig;
+    /**
+     * @return Specifies whether to enable canary release for the rule. Valid values:
+     * - 0 (default): disables canary release.
+     * - 1: enables canary release.
+     * 
+     */
+    private @Nullable Integer grayStatus;
+    /**
      * @return The HTTP flood protection mode. Valid values:
      * - 0 (default): indicates normal protection.
      * - 1: indicates emergency protection.
@@ -151,6 +165,11 @@ public final class DefenseRuleConfig {
      * 
      */
     private @Nullable String throttleType;
+    /**
+     * @return The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+     * 
+     */
+    private @Nullable DefenseRuleConfigTimeConfig timeConfig;
     /**
      * @return The User-Agent string that is allowed for access to the address.
      * 
@@ -268,6 +287,22 @@ public final class DefenseRuleConfig {
         return this.conditions == null ? List.of() : this.conditions;
     }
     /**
+     * @return The canary release configuration for the rule. The value is a JSON. This parameter is required only when you set `GrayStatus` to 1. See `grayConfig` below.
+     * 
+     */
+    public Optional<DefenseRuleConfigGrayConfig> grayConfig() {
+        return Optional.ofNullable(this.grayConfig);
+    }
+    /**
+     * @return Specifies whether to enable canary release for the rule. Valid values:
+     * - 0 (default): disables canary release.
+     * - 1: enables canary release.
+     * 
+     */
+    public Optional<Integer> grayStatus() {
+        return Optional.ofNullable(this.grayStatus);
+    }
+    /**
      * @return The HTTP flood protection mode. Valid values:
      * - 0 (default): indicates normal protection.
      * - 1: indicates emergency protection.
@@ -331,6 +366,13 @@ public final class DefenseRuleConfig {
         return Optional.ofNullable(this.throttleType);
     }
     /**
+     * @return The scheduled rule configuration. The value is a JSON.  See `timeConfig` below.
+     * 
+     */
+    public Optional<DefenseRuleConfigTimeConfig> timeConfig() {
+        return Optional.ofNullable(this.timeConfig);
+    }
+    /**
      * @return The User-Agent string that is allowed for access to the address.
      * 
      */
@@ -363,6 +405,8 @@ public final class DefenseRuleConfig {
         private @Nullable Integer ccStatus;
         private @Nullable String cnRegions;
         private @Nullable List<DefenseRuleConfigCondition> conditions;
+        private @Nullable DefenseRuleConfigGrayConfig grayConfig;
+        private @Nullable Integer grayStatus;
         private @Nullable Integer mode;
         private @Nullable String protocol;
         private @Nullable DefenseRuleConfigRateLimit rateLimit;
@@ -370,6 +414,7 @@ public final class DefenseRuleConfig {
         private @Nullable String ruleAction;
         private @Nullable Integer throttleThrehold;
         private @Nullable String throttleType;
+        private @Nullable DefenseRuleConfigTimeConfig timeConfig;
         private @Nullable String ua;
         private @Nullable String url;
         public Builder() {}
@@ -384,6 +429,8 @@ public final class DefenseRuleConfig {
     	      this.ccStatus = defaults.ccStatus;
     	      this.cnRegions = defaults.cnRegions;
     	      this.conditions = defaults.conditions;
+    	      this.grayConfig = defaults.grayConfig;
+    	      this.grayStatus = defaults.grayStatus;
     	      this.mode = defaults.mode;
     	      this.protocol = defaults.protocol;
     	      this.rateLimit = defaults.rateLimit;
@@ -391,6 +438,7 @@ public final class DefenseRuleConfig {
     	      this.ruleAction = defaults.ruleAction;
     	      this.throttleThrehold = defaults.throttleThrehold;
     	      this.throttleType = defaults.throttleType;
+    	      this.timeConfig = defaults.timeConfig;
     	      this.ua = defaults.ua;
     	      this.url = defaults.url;
         }
@@ -465,6 +513,18 @@ public final class DefenseRuleConfig {
             return conditions(List.of(conditions));
         }
         @CustomType.Setter
+        public Builder grayConfig(@Nullable DefenseRuleConfigGrayConfig grayConfig) {
+
+            this.grayConfig = grayConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder grayStatus(@Nullable Integer grayStatus) {
+
+            this.grayStatus = grayStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mode(@Nullable Integer mode) {
 
             this.mode = mode;
@@ -510,6 +570,12 @@ public final class DefenseRuleConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder timeConfig(@Nullable DefenseRuleConfigTimeConfig timeConfig) {
+
+            this.timeConfig = timeConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ua(@Nullable String ua) {
 
             this.ua = ua;
@@ -532,6 +598,8 @@ public final class DefenseRuleConfig {
             _resultValue.ccStatus = ccStatus;
             _resultValue.cnRegions = cnRegions;
             _resultValue.conditions = conditions;
+            _resultValue.grayConfig = grayConfig;
+            _resultValue.grayStatus = grayStatus;
             _resultValue.mode = mode;
             _resultValue.protocol = protocol;
             _resultValue.rateLimit = rateLimit;
@@ -539,6 +607,7 @@ public final class DefenseRuleConfig {
             _resultValue.ruleAction = ruleAction;
             _resultValue.throttleThrehold = throttleThrehold;
             _resultValue.throttleType = throttleType;
+            _resultValue.timeConfig = timeConfig;
             _resultValue.ua = ua;
             _resultValue.url = url;
             return _resultValue;

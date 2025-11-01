@@ -36,10 +36,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.Integer;
  * import com.pulumi.random.IntegerArgs;
- * import com.pulumi.alicloud.eventbridge.EventBus;
- * import com.pulumi.alicloud.eventbridge.EventBusArgs;
  * import com.pulumi.alicloud.mns.Queue;
  * import com.pulumi.alicloud.mns.QueueArgs;
+ * import com.pulumi.alicloud.eventbridge.EventBus;
+ * import com.pulumi.alicloud.eventbridge.EventBusArgs;
  * import com.pulumi.alicloud.eventbridge.EventSource;
  * import com.pulumi.alicloud.eventbridge.EventSourceArgs;
  * import java.util.List;
@@ -56,27 +56,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new EventBus("example", EventBusArgs.builder()
- *             .eventBusName(name)
- *             .build());
- * 
- *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .name(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleEventSource = new EventSource("exampleEventSource", EventSourceArgs.builder()
- *             .eventBusName(example.eventBusName())
- *             .eventSourceName(name)
+ *         var defaultEventBus = new EventBus("defaultEventBus", EventBusArgs.builder()
+ *             .eventBusName(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *         var defaultEventSource = new EventSource("defaultEventSource", EventSourceArgs.builder()
+ *             .eventBusName(defaultEventBus.eventBusName())
+ *             .eventSourceName(String.format("%s-%s", name,default_.result()))
  *             .description(name)
  *             .linkedExternalSource(true)
  *             .externalSourceType("MNS")
- *             .externalSourceConfig(Map.of("QueueName", exampleQueue.name()))
+ *             .externalSourceConfig(Map.of("QueueName", defaultQueue.name()))
  *             .build());
  * 
  *     }
@@ -96,49 +96,49 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eventbridge/eventSource:EventSource")
 public class EventSource extends com.pulumi.resources.CustomResource {
     /**
-     * The detail describe of event source.
+     * The description of the event source.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The detail describe of event source.
+     * @return The description of the event source.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of event bus.
+     * The name of the event bus to which the event source is attached.
      * 
      */
     @Export(name="eventBusName", refs={String.class}, tree="[0]")
     private Output<String> eventBusName;
 
     /**
-     * @return The name of event bus.
+     * @return The name of the event bus to which the event source is attached.
      * 
      */
     public Output<String> eventBusName() {
         return this.eventBusName;
     }
     /**
-     * The code name of event source.
+     * The name of the event source.
      * 
      */
     @Export(name="eventSourceName", refs={String.class}, tree="[0]")
     private Output<String> eventSourceName;
 
     /**
-     * @return The code name of event source.
+     * @return The name of the event source.
      * 
      */
     public Output<String> eventSourceName() {
         return this.eventSourceName;
     }
     /**
-     * The config of external source.
+     * The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -158,7 +158,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> externalSourceConfig;
 
     /**
-     * @return The config of external source.
+     * @return The configuration of the external data source.
      * When `externalSourceType` is `RabbitMQ`, The following attributes are supported:
      * `RegionId` - The region ID of RabbitMQ.
      * `InstanceId` - The instance ID of RabbitMQ.
@@ -178,32 +178,32 @@ public class EventSource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.externalSourceConfig);
     }
     /**
-     * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      * 
      */
     @Export(name="externalSourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalSourceType;
 
     /**
-     * @return The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linkedExternalSource` is `true`, This field is valid.
+     * @return The type of the external data source. Valid values: `RabbitMQ`, `RocketMQ` and `MNS`.
      * 
      */
     public Output<Optional<String>> externalSourceType() {
         return Codegen.optional(this.externalSourceType);
     }
     /**
-     * Whether to connect to an external data source. Default value: `false`
+     * Specifies whether to connect to an external data source. Default value: `false`.
      * 
      */
     @Export(name="linkedExternalSource", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> linkedExternalSource;
+    private Output</* @Nullable */ Boolean> linkedExternalSource;
 
     /**
-     * @return Whether to connect to an external data source. Default value: `false`
+     * @return Specifies whether to connect to an external data source. Default value: `false`.
      * 
      */
-    public Output<Boolean> linkedExternalSource() {
-        return this.linkedExternalSource;
+    public Output<Optional<Boolean>> linkedExternalSource() {
+        return Codegen.optional(this.linkedExternalSource);
     }
 
     /**
