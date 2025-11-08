@@ -27,7 +27,7 @@ class GetRolesResult:
     """
     A collection of values returned by getRoles.
     """
-    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, roles=None):
+    def __init__(__self__, id=None, ids=None, name_regex=None, names=None, output_file=None, policy_name=None, policy_type=None, roles=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -52,6 +52,9 @@ class GetRolesResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -64,9 +67,6 @@ class GetRolesResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of ram role IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -78,7 +78,7 @@ class GetRolesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of ram role names.
+        (Available since v1.42.0) A list of Role names.
         """
         return pulumi.get(self, "names")
 
@@ -101,9 +101,17 @@ class GetRolesResult:
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetRolesRoleResult']:
         """
-        A list of roles. Each element contains the following attributes:
+        A list of Role. Each element contains the following attributes:
         """
         return pulumi.get(self, "roles")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.262.1) The tags of the RAM role.
+        """
+        return pulumi.get(self, "tags")
 
 
 class AwaitableGetRolesResult(GetRolesResult):
@@ -119,7 +127,8 @@ class AwaitableGetRolesResult(GetRolesResult):
             output_file=self.output_file,
             policy_name=self.policy_name,
             policy_type=self.policy_type,
-            roles=self.roles)
+            roles=self.roles,
+            tags=self.tags)
 
 
 def get_roles(ids: Optional[Sequence[_builtins.str]] = None,
@@ -127,31 +136,63 @@ def get_roles(ids: Optional[Sequence[_builtins.str]] = None,
               output_file: Optional[_builtins.str] = None,
               policy_name: Optional[_builtins.str] = None,
               policy_type: Optional[_builtins.str] = None,
+              tags: Optional[Mapping[str, _builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
     """
-    This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+    This data source provides the RAM Roles of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.0.0+.
+    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    roles_ds = alicloud.ram.get_roles(output_file="roles.txt",
-        name_regex=".*test.*",
-        policy_name="AliyunACSDefaultAccess",
-        policy_type="Custom")
-    pulumi.export("firstRoleId", roles_ds.roles[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    default_role = alicloud.ram.Role("default",
+        role_name=f"{name}-{default['result']}",
+        description=f"{name}-{default['result']}",
+        force=True,
+        assume_role_policy_document=\"\"\"  {
+        \\"Statement\\": [
+          {
+            \\"Action\\": \\"sts:AssumeRole\\",
+            \\"Effect\\": \\"Allow\\",
+            \\"Principal\\": {
+              \\"Service\\": [
+                \\"ecs.aliyuncs.com\\"
+              ]
+            }
+          }
+        ],
+        \\"Version\\": \\"1\\"
+      }
+    \"\"\",
+        tags={
+            "Created": "TF",
+            "For": "Role",
+        })
+    ids = alicloud.ram.get_roles_output(ids=[default_role.role_id])
+    pulumi.export("ramRolesId0", ids.roles[0].id)
     ```
 
 
-    :param Sequence[_builtins.str] ids: A list of ram role IDs.
-    :param _builtins.str name_regex: A regex string to filter results by the role name.
+    :param Sequence[_builtins.str] ids: A list of Role IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Role name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
-    :param _builtins.str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+    :param _builtins.str policy_name: The name of the policy.
+    :param _builtins.str policy_type: The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policy_type` takes effect only when `policy_name` is set.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -159,6 +200,7 @@ def get_roles(ids: Optional[Sequence[_builtins.str]] = None,
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
+    __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult).value
 
@@ -170,37 +212,70 @@ def get_roles(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policy_name=pulumi.get(__ret__, 'policy_name'),
         policy_type=pulumi.get(__ret__, 'policy_type'),
-        roles=pulumi.get(__ret__, 'roles'))
+        roles=pulumi.get(__ret__, 'roles'),
+        tags=pulumi.get(__ret__, 'tags'))
 def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      policy_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
-    This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+    This data source provides the RAM Roles of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.0.0+.
+    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
+    import pulumi_random as random
 
-    roles_ds = alicloud.ram.get_roles(output_file="roles.txt",
-        name_regex=".*test.*",
-        policy_name="AliyunACSDefaultAccess",
-        policy_type="Custom")
-    pulumi.export("firstRoleId", roles_ds.roles[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = random.index.Integer("default",
+        min=10000,
+        max=99999)
+    default_role = alicloud.ram.Role("default",
+        role_name=f"{name}-{default['result']}",
+        description=f"{name}-{default['result']}",
+        force=True,
+        assume_role_policy_document=\"\"\"  {
+        \\"Statement\\": [
+          {
+            \\"Action\\": \\"sts:AssumeRole\\",
+            \\"Effect\\": \\"Allow\\",
+            \\"Principal\\": {
+              \\"Service\\": [
+                \\"ecs.aliyuncs.com\\"
+              ]
+            }
+          }
+        ],
+        \\"Version\\": \\"1\\"
+      }
+    \"\"\",
+        tags={
+            "Created": "TF",
+            "For": "Role",
+        })
+    ids = alicloud.ram.get_roles_output(ids=[default_role.role_id])
+    pulumi.export("ramRolesId0", ids.roles[0].id)
     ```
 
 
-    :param Sequence[_builtins.str] ids: A list of ram role IDs.
-    :param _builtins.str name_regex: A regex string to filter results by the role name.
+    :param Sequence[_builtins.str] ids: A list of Role IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Role name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
-    :param _builtins.str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
+    :param _builtins.str policy_name: The name of the policy.
+    :param _builtins.str policy_type: The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policy_type` takes effect only when `policy_name` is set.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -208,6 +283,7 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
+    __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
     return __ret__.apply(lambda __response__: GetRolesResult(
@@ -218,4 +294,5 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]
         output_file=pulumi.get(__response__, 'output_file'),
         policy_name=pulumi.get(__response__, 'policy_name'),
         policy_type=pulumi.get(__response__, 'policy_type'),
-        roles=pulumi.get(__response__, 'roles')))
+        roles=pulumi.get(__response__, 'roles'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -11,17 +11,17 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloud SSO User resource.
+ * Provides a Cloud Sso User resource.
  * 
- * For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
+ * For information about Cloud Sso User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
- * 
- * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
  * 
  * ## Example Usage
  * 
@@ -36,12 +36,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
  * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cloudsso.Directory;
  * import com.pulumi.alicloud.cloudsso.DirectoryArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.ConcatArgs;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cloudsso.User;
  * import com.pulumi.alicloud.cloudsso.UserArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
@@ -59,8 +59,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = CloudssoFunctions.getDirectories(GetDirectoriesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         for (var i = 0; i < default_.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
@@ -76,11 +81,6 @@ import javax.annotation.Nullable;
  *                 "")
  *             .build()).result()[0]);
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
  *         var defaultUser = new User("defaultUser", UserArgs.builder()
  *             .directoryId(directoryId)
  *             .userName(String.format("%s-%s", name,defaultInteger.result()))
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud SSO User can be imported using the id, e.g.
+ * Cloud Sso User can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:cloudsso/user:User example &lt;directory_id&gt;:&lt;user_id&gt;
@@ -103,126 +103,182 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * The description of user. The description can be up to `1024` characters long.
+     * (Available since v1.262.1) The time when the user was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.262.1) The time when the user was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the user. The description can be up to 1,024 characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of user. The description can be up to `1024` characters long.
+     * @return The description of the user. The description can be up to 1,024 characters in length.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      * 
      */
     @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
-     * @return The ID of the Directory.
+     * @return The ID of the directory.
      * 
      */
     public Output<String> directoryId() {
         return this.directoryId;
     }
     /**
-     * The display name of user. The display name can be up to `256` characters long.
+     * The display name of the user. The display name can be up to 256 characters in length.
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return The display name of user. The display name can be up to `256` characters long.
+     * @return The display name of the user. The display name can be up to 256 characters in length.
      * 
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
     }
     /**
-     * The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+     * The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
-     * @return The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+     * @return The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      * 
      */
     public Output<Optional<String>> email() {
         return Codegen.optional(this.email);
     }
     /**
-     * The first name of user. The firstName can be up to `64` characters long.
+     * The first name of the user. The first name can be up to 64 characters in length.
      * 
      */
     @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firstName;
 
     /**
-     * @return The first name of user. The firstName can be up to `64` characters long.
+     * @return The first name of the user. The first name can be up to 64 characters in length.
      * 
      */
     public Output<Optional<String>> firstName() {
         return Codegen.optional(this.firstName);
     }
     /**
-     * The last name of user. The lastName can be up to `64` characters long.
+     * The last name of the user. The last name can be up to 64 characters in length.
      * 
      */
     @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lastName;
 
     /**
-     * @return The last name of user. The lastName can be up to `64` characters long.
+     * @return The last name of the user. The last name can be up to 64 characters in length.
      * 
      */
     public Output<Optional<String>> lastName() {
         return Codegen.optional(this.lastName);
     }
     /**
-     * The status of user. Valid values: `Disabled`, `Enabled`.
+     * Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    @Export(name="mfaAuthenticationSettings", refs={String.class}, tree="[0]")
+    private Output<String> mfaAuthenticationSettings;
+
+    /**
+     * @return Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    public Output<String> mfaAuthenticationSettings() {
+        return this.mfaAuthenticationSettings;
+    }
+    /**
+     * The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+     * 
+     */
+    @Export(name="password", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> password;
+
+    /**
+     * @return The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+     * 
+     */
+    public Output<Optional<String>> password() {
+        return Codegen.optional(this.password);
+    }
+    /**
+     * The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of user. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The User ID of the group.
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The ID of the user.
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return The User ID of the group.
+     * @return The ID of the user.
      * 
      */
     public Output<String> userId() {
         return this.userId;
     }
     /**
-     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+     * The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+     * @return The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
      * 
      */
     public Output<String> userName() {
@@ -268,6 +324,9 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

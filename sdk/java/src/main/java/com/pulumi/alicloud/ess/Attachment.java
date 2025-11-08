@@ -88,11 +88,12 @@ import javax.annotation.Nullable;
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(2)
- *             .memorySize(4)
+ *             .memorySize(8)
+ *             .instanceTypeFamily("ecs.g9i")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_18.*64")
+ *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .mostRecent(true)
  *             .owners("system")
  *             .build());
@@ -138,6 +139,7 @@ import javax.annotation.Nullable;
  *             .imageId(defaultGetImages.images()[0].id())
  *             .instanceType(defaultGetInstanceTypes.instanceTypes()[0].id())
  *             .securityGroupId(defaultSecurityGroup.id())
+ *             .systemDiskCategory("cloud_essd")
  *             .forceDelete(true)
  *             .active(true)
  *             .enable(true)
@@ -151,7 +153,7 @@ import javax.annotation.Nullable;
  *                 .internetChargeType("PayByTraffic")
  *                 .internetMaxBandwidthOut(10)
  *                 .instanceChargeType("PostPaid")
- *                 .systemDiskCategory("cloud_efficiency")
+ *                 .systemDiskCategory("cloud_essd")
  *                 .vswitchId(defaultGetSwitches.ids()[0])
  *                 .instanceName(name)
  *                 .build());

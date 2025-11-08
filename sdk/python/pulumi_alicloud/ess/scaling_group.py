@@ -25,7 +25,9 @@ class ScalingGroupArgs:
                  min_size: pulumi.Input[_builtins.int],
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
                  allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
                  az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -69,7 +71,9 @@ class ScalingGroupArgs:
                **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.str] balance_mode: The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         :param pulumi.Input[_builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
@@ -125,8 +129,12 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "alb_server_groups", alb_server_groups)
         if allocation_strategy is not None:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if auto_rebalance is not None:
+            pulumi.set(__self__, "auto_rebalance", auto_rebalance)
         if az_balance is not None:
             pulumi.set(__self__, "az_balance", az_balance)
+        if balance_mode is not None:
+            pulumi.set(__self__, "balance_mode", balance_mode)
         if capacity_options_compensate_with_on_demand is not None:
             pulumi.set(__self__, "capacity_options_compensate_with_on_demand", capacity_options_compensate_with_on_demand)
         if capacity_options_on_demand_base_capacity is not None:
@@ -252,6 +260,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "allocation_strategy", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        """
+        return pulumi.get(self, "auto_rebalance")
+
+    @auto_rebalance.setter
+    def auto_rebalance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_rebalance", value)
+
+    @_builtins.property
     @pulumi.getter(name="azBalance")
     def az_balance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -262,6 +282,18 @@ class ScalingGroupArgs:
     @az_balance.setter
     def az_balance(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "az_balance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="balanceMode")
+    def balance_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        """
+        return pulumi.get(self, "balance_mode")
+
+    @balance_mode.setter
+    def balance_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "balance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")
@@ -703,7 +735,9 @@ class _ScalingGroupState:
     def __init__(__self__, *,
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
                  allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
                  az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -745,7 +779,9 @@ class _ScalingGroupState:
         Input properties used for looking up and filtering ScalingGroup resources.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.str] balance_mode: The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         :param pulumi.Input[_builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
@@ -803,8 +839,12 @@ class _ScalingGroupState:
             pulumi.set(__self__, "alb_server_groups", alb_server_groups)
         if allocation_strategy is not None:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
+        if auto_rebalance is not None:
+            pulumi.set(__self__, "auto_rebalance", auto_rebalance)
         if az_balance is not None:
             pulumi.set(__self__, "az_balance", az_balance)
+        if balance_mode is not None:
+            pulumi.set(__self__, "balance_mode", balance_mode)
         if capacity_options_compensate_with_on_demand is not None:
             pulumi.set(__self__, "capacity_options_compensate_with_on_demand", capacity_options_compensate_with_on_demand)
         if capacity_options_on_demand_base_capacity is not None:
@@ -908,6 +948,18 @@ class _ScalingGroupState:
         pulumi.set(self, "allocation_strategy", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        """
+        return pulumi.get(self, "auto_rebalance")
+
+    @auto_rebalance.setter
+    def auto_rebalance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_rebalance", value)
+
+    @_builtins.property
     @pulumi.getter(name="azBalance")
     def az_balance(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -918,6 +970,18 @@ class _ScalingGroupState:
     @az_balance.setter
     def az_balance(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "az_balance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="balanceMode")
+    def balance_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        """
+        return pulumi.get(self, "balance_mode")
+
+    @balance_mode.setter
+    def balance_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "balance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")
@@ -1388,7 +1452,9 @@ class ScalingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
                  allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
                  az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1518,7 +1584,9 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.str] balance_mode: The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         :param pulumi.Input[_builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
@@ -1682,7 +1750,9 @@ class ScalingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
                  allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
                  az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
+                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
                  capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1731,7 +1801,9 @@ class ScalingGroup(pulumi.CustomResource):
 
             __props__.__dict__["alb_server_groups"] = alb_server_groups
             __props__.__dict__["allocation_strategy"] = allocation_strategy
+            __props__.__dict__["auto_rebalance"] = auto_rebalance
             __props__.__dict__["az_balance"] = az_balance
+            __props__.__dict__["balance_mode"] = balance_mode
             __props__.__dict__["capacity_options_compensate_with_on_demand"] = capacity_options_compensate_with_on_demand
             __props__.__dict__["capacity_options_on_demand_base_capacity"] = capacity_options_on_demand_base_capacity
             __props__.__dict__["capacity_options_on_demand_percentage_above_base_capacity"] = capacity_options_on_demand_percentage_above_base_capacity
@@ -1785,7 +1857,9 @@ class ScalingGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
             allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+            auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
             az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
+            balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
             capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
             capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
             capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1832,7 +1906,9 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[_builtins.str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         :param pulumi.Input[_builtins.bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[_builtins.str] balance_mode: The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         :param pulumi.Input[_builtins.bool] capacity_options_compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_base_capacity: The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         :param pulumi.Input[_builtins.int] capacity_options_on_demand_percentage_above_base_capacity: The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
@@ -1892,7 +1968,9 @@ class ScalingGroup(pulumi.CustomResource):
 
         __props__.__dict__["alb_server_groups"] = alb_server_groups
         __props__.__dict__["allocation_strategy"] = allocation_strategy
+        __props__.__dict__["auto_rebalance"] = auto_rebalance
         __props__.__dict__["az_balance"] = az_balance
+        __props__.__dict__["balance_mode"] = balance_mode
         __props__.__dict__["capacity_options_compensate_with_on_demand"] = capacity_options_compensate_with_on_demand
         __props__.__dict__["capacity_options_on_demand_base_capacity"] = capacity_options_on_demand_base_capacity
         __props__.__dict__["capacity_options_on_demand_percentage_above_base_capacity"] = capacity_options_on_demand_percentage_above_base_capacity
@@ -1949,12 +2027,28 @@ class ScalingGroup(pulumi.CustomResource):
         return pulumi.get(self, "allocation_strategy")
 
     @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        """
+        return pulumi.get(self, "auto_rebalance")
+
+    @_builtins.property
     @pulumi.getter(name="azBalance")
     def az_balance(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "az_balance")
+
+    @_builtins.property
+    @pulumi.getter(name="balanceMode")
+    def balance_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        """
+        return pulumi.get(self, "balance_mode")
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")

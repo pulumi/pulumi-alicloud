@@ -96,15 +96,19 @@ type NetworkOptimization struct {
 	Grpc pulumi.StringPtrOutput `pulumi:"grpc"`
 	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrOutput `pulumi:"http2Origin"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// Site version number.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
@@ -153,15 +157,19 @@ type networkOptimizationState struct {
 	Grpc *string `pulumi:"grpc"`
 	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin *string `pulumi:"http2Origin"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// Site ID.
 	SiteId *int `pulumi:"siteId"`
-	// Site version number.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting *string `pulumi:"smartRouting"`
@@ -178,15 +186,19 @@ type NetworkOptimizationState struct {
 	Grpc pulumi.StringPtrInput
 	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrInput
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
 	// Rule name.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// Site ID.
 	SiteId pulumi.IntPtrInput
-	// Site version number.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrInput
@@ -205,15 +217,19 @@ type networkOptimizationArgs struct {
 	Grpc *string `pulumi:"grpc"`
 	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin *string `pulumi:"http2Origin"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// Site ID.
 	SiteId int `pulumi:"siteId"`
-	// Site version number.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting *string `pulumi:"smartRouting"`
@@ -229,15 +245,19 @@ type NetworkOptimizationArgs struct {
 	Grpc pulumi.StringPtrInput
 	// Whether to enable HTTP2 origin, default is disabled. Value range:
 	Http2Origin pulumi.StringPtrInput
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
 	// Rule name.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// Site ID.
 	SiteId pulumi.IntInput
-	// Site version number.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Whether to enable smart routing service, default is disabled. Value range:
 	SmartRouting pulumi.StringPtrInput
@@ -349,12 +369,14 @@ func (o NetworkOptimizationOutput) Http2Origin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Http2Origin }).(pulumi.StringPtrOutput)
 }
 
-// Rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o NetworkOptimizationOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Values:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o NetworkOptimizationOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
@@ -364,12 +386,17 @@ func (o NetworkOptimizationOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o NetworkOptimizationOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
+}
+
 // Site ID.
 func (o NetworkOptimizationOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// Site version number.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o NetworkOptimizationOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

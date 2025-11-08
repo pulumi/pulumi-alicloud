@@ -77,18 +77,14 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     public Optional<Output<String>> rule() {
@@ -96,20 +92,18 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -117,18 +111,33 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The rule name. You do not need to set this parameter when adding a global configuration.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return The rule name. You do not need to set this parameter when adding a global configuration.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
         return Optional.ofNullable(this.ruleName);
+    }
+
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
     }
 
     /**
@@ -186,6 +195,7 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
         this.uri = $.uri;
@@ -294,9 +304,7 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-         * ● Match all incoming requests: value set to true
-         * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+         * @param rule The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
          * 
          * @return builder
          * 
@@ -307,9 +315,7 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-         * ● Match all incoming requests: value set to true
-         * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+         * @param rule The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
          * 
          * @return builder
          * 
@@ -319,10 +325,9 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
-         * 
-         * - on
-         * - off
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * ‒ on: open.
+         * ‒ off: close.
          * 
          * @return builder
          * 
@@ -333,10 +338,9 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleEnable Indicates whether the rule is enabled. Valid values:
-         * 
-         * - on
-         * - off
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * ‒ on: open.
+         * ‒ off: close.
          * 
          * @return builder
          * 
@@ -346,7 +350,7 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName The rule name. You do not need to set this parameter when adding a global configuration.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -357,13 +361,34 @@ public final class RewriteUrlRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ruleName The rule name. You do not need to set this parameter when adding a global configuration.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**

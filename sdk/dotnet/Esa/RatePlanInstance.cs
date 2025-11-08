@@ -55,9 +55,6 @@ namespace Pulumi.AliCloud.Esa
     [AliCloudResourceType("alicloud:esa/ratePlanInstance:RatePlanInstance")]
     public partial class RatePlanInstance : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Specifies whether to enable auto payment.
-        /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
@@ -80,14 +77,13 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The plan instance status.
-        /// - `Renewing`: renewing
+        /// The instance status.
         /// </summary>
         [Output("instanceStatus")]
         public Output<string> InstanceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values:
+        /// The billing method. Valid values:
         /// - `Subscription`: subscription.
         /// </summary>
         [Output("paymentType")]
@@ -95,18 +91,22 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Subscription period (in months).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Package name.Value range:
+        /// Package name.  
+        /// 
+        /// Chinese website account:
         /// </summary>
         [Output("planName")]
         public Output<string?> PlanName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The plan status. , the plan is unavailable.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -115,6 +115,8 @@ namespace Pulumi.AliCloud.Esa
         /// The DNS setup option for the website. Valid values:
         /// - `NS`
         /// - `CNAME`
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -165,9 +167,6 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RatePlanInstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether to enable auto payment.
-        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
@@ -184,7 +183,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Coverage { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values:
+        /// The billing method. Valid values:
         /// - `Subscription`: subscription.
         /// </summary>
         [Input("paymentType")]
@@ -192,12 +191,16 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Subscription period (in months).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Package name.Value range:
+        /// Package name.  
+        /// 
+        /// Chinese website account:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
@@ -206,6 +209,8 @@ namespace Pulumi.AliCloud.Esa
         /// The DNS setup option for the website. Valid values:
         /// - `NS`
         /// - `CNAME`
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -218,9 +223,6 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RatePlanInstanceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Specifies whether to enable auto payment.
-        /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
@@ -243,14 +245,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The plan instance status.
-        /// - `Renewing`: renewing
+        /// The instance status.
         /// </summary>
         [Input("instanceStatus")]
         public Input<string>? InstanceStatus { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values:
+        /// The billing method. Valid values:
         /// - `Subscription`: subscription.
         /// </summary>
         [Input("paymentType")]
@@ -258,18 +259,22 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Subscription period (in months).
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Package name.Value range:
+        /// Package name.  
+        /// 
+        /// Chinese website account:
         /// </summary>
         [Input("planName")]
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The plan status. , the plan is unavailable.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -278,6 +283,8 @@ namespace Pulumi.AliCloud.Esa
         /// The DNS setup option for the website. Valid values:
         /// - `NS`
         /// - `CNAME`
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -113,14 +113,18 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  operation: _builtins.str,
+                 type: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: The response header name.
         :param _builtins.str operation: Operation method. Possible values:
+        :param _builtins.str type: The value type. Value range:
         :param _builtins.str value: The response header value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operation", operation)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -139,6 +143,14 @@ class HttpResponseHeaderModificationRuleResponseHeaderModification(dict):
         Operation method. Possible values:
         """
         return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The value type. Value range:
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter

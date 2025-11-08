@@ -88,6 +88,8 @@ type ImageTransform struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -139,6 +141,8 @@ type imageTransformState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -158,6 +162,8 @@ type ImageTransformState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -179,6 +185,8 @@ type imageTransformArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -197,6 +205,8 @@ type ImageTransformArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -315,6 +325,11 @@ func (o ImageTransformOutput) RuleEnable() pulumi.StringPtrOutput {
 // Rule name. When adding global configuration, this parameter does not need to be set.
 func (o ImageTransformOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageTransform) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o ImageTransformOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *ImageTransform) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The site ID, which can be obtained by calling the ListSites API.

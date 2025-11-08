@@ -17,17 +17,9 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
 
     public static final RatePlanInstanceArgs Empty = new RatePlanInstanceArgs();
 
-    /**
-     * Specifies whether to enable auto payment.
-     * 
-     */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
-    /**
-     * @return Specifies whether to enable auto payment.
-     * 
-     */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
@@ -63,7 +55,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -71,7 +63,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values:
+     * @return The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -82,6 +74,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
@@ -89,20 +83,26 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * Package name.Value range:
+     * Package name.
+     * 
+     * Chinese website account:
      * 
      */
     @Import(name="planName")
     private @Nullable Output<String> planName;
 
     /**
-     * @return Package name.Value range:
+     * @return Package name.
+     * 
+     * Chinese website account:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -114,6 +114,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
      * - `NS`
      * - `CNAME`
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -122,6 +124,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
      * @return The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> type() {
@@ -158,23 +162,11 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
             $ = new RatePlanInstanceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoPay Specifies whether to enable auto payment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
         }
 
-        /**
-         * @param autoPay Specifies whether to enable auto payment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }
@@ -222,7 +214,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values:
+         * @param paymentType The billing method. Valid values:
          * - `Subscription`: subscription.
          * 
          * @return builder
@@ -234,7 +226,7 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values:
+         * @param paymentType The billing method. Valid values:
          * - `Subscription`: subscription.
          * 
          * @return builder
@@ -247,6 +239,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param period Subscription period (in months).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -258,6 +252,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param period Subscription period (in months).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -266,7 +262,9 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param planName Package name.Value range:
+         * @param planName Package name.
+         * 
+         * Chinese website account:
          * 
          * @return builder
          * 
@@ -277,7 +275,9 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param planName Package name.Value range:
+         * @param planName Package name.
+         * 
+         * Chinese website account:
          * 
          * @return builder
          * 
@@ -291,6 +291,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
          * - `NS`
          * - `CNAME`
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -303,6 +305,8 @@ public final class RatePlanInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param type The DNS setup option for the website. Valid values:
          * - `NS`
          * - `CNAME`
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

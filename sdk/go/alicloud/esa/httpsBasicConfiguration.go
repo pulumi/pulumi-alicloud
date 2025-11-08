@@ -132,7 +132,9 @@ type HttpsBasicConfiguration struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
+	// Site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -220,7 +222,9 @@ type httpsBasicConfigurationState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
+	// Site ID, which can be obtained by calling the ListSites interface.
 	SiteId *int `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -276,7 +280,9 @@ type HttpsBasicConfigurationState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
+	// Site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntPtrInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -334,7 +340,9 @@ type httpsBasicConfigurationArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
+	// Site ID, which can be obtained by calling the ListSites interface.
 	SiteId int `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -389,7 +397,9 @@ type HttpsBasicConfigurationArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
+	// Site ID, which can be obtained by calling the ListSites interface.
 	SiteId pulumi.IntInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
@@ -561,7 +571,12 @@ func (o HttpsBasicConfigurationOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o HttpsBasicConfigurationOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
+}
+
+// Site ID, which can be obtained by calling the ListSites interface.
 func (o HttpsBasicConfigurationOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }

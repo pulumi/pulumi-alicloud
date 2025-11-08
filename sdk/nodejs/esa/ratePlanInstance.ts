@@ -68,9 +68,6 @@ export class RatePlanInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === RatePlanInstance.__pulumiType;
     }
 
-    /**
-     * Specifies whether to enable auto payment.
-     */
     declare public readonly autoPay: pulumi.Output<boolean | undefined>;
     /**
      * Auto-renewal:
@@ -85,31 +82,36 @@ export class RatePlanInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The plan instance status.
-     * - `Renewing`: renewing
+     * The instance status.
      */
     declare public /*out*/ readonly instanceStatus: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Subscription period (in months).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
-     * Package name.Value range:
+     * Package name.  
+     *
+     * Chinese website account:
      */
     declare public readonly planName: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource.
+     * The plan status. , the plan is unavailable.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly type: pulumi.Output<string | undefined>;
 
@@ -158,9 +160,6 @@ export class RatePlanInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RatePlanInstance resources.
  */
 export interface RatePlanInstanceState {
-    /**
-     * Specifies whether to enable auto payment.
-     */
     autoPay?: pulumi.Input<boolean>;
     /**
      * Auto-renewal:
@@ -175,31 +174,36 @@ export interface RatePlanInstanceState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The plan instance status.
-     * - `Renewing`: renewing
+     * The instance status.
      */
     instanceStatus?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      */
     paymentType?: pulumi.Input<string>;
     /**
      * Subscription period (in months).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**
-     * Package name.Value range:
+     * Package name.  
+     *
+     * Chinese website account:
      */
     planName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The plan status. , the plan is unavailable.
      */
     status?: pulumi.Input<string>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     type?: pulumi.Input<string>;
 }
@@ -208,9 +212,6 @@ export interface RatePlanInstanceState {
  * The set of arguments for constructing a RatePlanInstance resource.
  */
 export interface RatePlanInstanceArgs {
-    /**
-     * Specifies whether to enable auto payment.
-     */
     autoPay?: pulumi.Input<boolean>;
     /**
      * Auto-renewal:
@@ -221,22 +222,28 @@ export interface RatePlanInstanceArgs {
      */
     coverage?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      */
     paymentType?: pulumi.Input<string>;
     /**
      * Subscription period (in months).
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**
-     * Package name.Value range:
+     * Package name.  
+     *
+     * Chinese website account:
      */
     planName?: pulumi.Input<string>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     type?: pulumi.Input<string>;
 }

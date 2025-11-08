@@ -195,6 +195,10 @@ if not MYPY:
         """
         Operation method. Possible values:
         """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value type. Value range:
+        """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
         The response header value.
@@ -207,14 +211,18 @@ class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  operation: pulumi.Input[_builtins.str],
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The response header name.
         :param pulumi.Input[_builtins.str] operation: Operation method. Possible values:
+        :param pulumi.Input[_builtins.str] type: The value type. Value range:
         :param pulumi.Input[_builtins.str] value: The response header value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operation", operation)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -241,6 +249,18 @@ class HttpResponseHeaderModificationRuleResponseHeaderModificationArgs:
     @operation.setter
     def operation(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "operation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value type. Value range:
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter

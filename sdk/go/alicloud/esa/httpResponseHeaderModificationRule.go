@@ -117,15 +117,19 @@ type HttpResponseHeaderModificationRule struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput `pulumi:"responseHeaderModifications"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Rule switch. Possible values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// Rule name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
 
@@ -169,15 +173,19 @@ type httpResponseHeaderModificationRuleState struct {
 	ConfigId *int `pulumi:"configId"`
 	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications []HttpResponseHeaderModificationRuleResponseHeaderModification `pulumi:"responseHeaderModifications"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
 	SiteId *int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -186,15 +194,19 @@ type HttpResponseHeaderModificationRuleState struct {
 	ConfigId pulumi.IntPtrInput
 	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
 	SiteId pulumi.IntPtrInput
-	// The version number of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -205,15 +217,19 @@ func (HttpResponseHeaderModificationRuleState) ElementType() reflect.Type {
 type httpResponseHeaderModificationRuleArgs struct {
 	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications []HttpResponseHeaderModificationRuleResponseHeaderModification `pulumi:"responseHeaderModifications"`
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
-	// Rule switch. Possible values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// Rule name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
 	SiteId int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -221,15 +237,19 @@ type httpResponseHeaderModificationRuleArgs struct {
 type HttpResponseHeaderModificationRuleArgs struct {
 	// Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
 	ResponseHeaderModifications HttpResponseHeaderModificationRuleResponseHeaderModificationArrayInput
-	// Rule content.
+	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+	// - Match all incoming requests: value set to true
+	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
-	// Rule switch. Possible values:
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 	RuleEnable pulumi.StringPtrInput
-	// Rule name.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
 	SiteId pulumi.IntInput
-	// The version number of the website configurations.
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -332,19 +352,26 @@ func (o HttpResponseHeaderModificationRuleOutput) ResponseHeaderModifications() 
 	}).(HttpResponseHeaderModificationRuleResponseHeaderModificationArrayOutput)
 }
 
-// Rule content.
+// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+// - Match all incoming requests: value set to true
+// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 func (o HttpResponseHeaderModificationRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Rule switch. Possible values:
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
 func (o HttpResponseHeaderModificationRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// Rule name.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o HttpResponseHeaderModificationRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o HttpResponseHeaderModificationRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The site ID.
@@ -352,7 +379,7 @@ func (o HttpResponseHeaderModificationRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
 }
 
-// The version number of the website configurations.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o HttpResponseHeaderModificationRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

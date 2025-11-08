@@ -17,17 +17,9 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
 
     public static final RatePlanInstanceState Empty = new RatePlanInstanceState();
 
-    /**
-     * Specifies whether to enable auto payment.
-     * 
-     */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
-    /**
-     * @return Specifies whether to enable auto payment.
-     * 
-     */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
@@ -78,16 +70,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The plan instance status.
-     * - `Renewing`: renewing
+     * The instance status.
      * 
      */
     @Import(name="instanceStatus")
     private @Nullable Output<String> instanceStatus;
 
     /**
-     * @return The plan instance status.
-     * - `Renewing`: renewing
+     * @return The instance status.
      * 
      */
     public Optional<Output<String>> instanceStatus() {
@@ -95,7 +85,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -103,7 +93,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values:
+     * @return The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -114,6 +104,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
@@ -121,20 +113,26 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     /**
      * @return Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * Package name.Value range:
+     * Package name.
+     * 
+     * Chinese website account:
      * 
      */
     @Import(name="planName")
     private @Nullable Output<String> planName;
 
     /**
-     * @return Package name.Value range:
+     * @return Package name.
+     * 
+     * Chinese website account:
      * 
      */
     public Optional<Output<String>> planName() {
@@ -142,14 +140,14 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the resource.
+     * The plan status. , the plan is unavailable.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The plan status. , the plan is unavailable.
      * 
      */
     public Optional<Output<String>> status() {
@@ -161,6 +159,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
      * - `NS`
      * - `CNAME`
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -169,6 +169,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
      * @return The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> type() {
@@ -208,23 +210,11 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
             $ = new RatePlanInstanceState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoPay Specifies whether to enable auto payment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
         }
 
-        /**
-         * @param autoPay Specifies whether to enable auto payment.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }
@@ -293,8 +283,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceStatus The plan instance status.
-         * - `Renewing`: renewing
+         * @param instanceStatus The instance status.
          * 
          * @return builder
          * 
@@ -305,8 +294,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instanceStatus The plan instance status.
-         * - `Renewing`: renewing
+         * @param instanceStatus The instance status.
          * 
          * @return builder
          * 
@@ -316,7 +304,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values:
+         * @param paymentType The billing method. Valid values:
          * - `Subscription`: subscription.
          * 
          * @return builder
@@ -328,7 +316,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values:
+         * @param paymentType The billing method. Valid values:
          * - `Subscription`: subscription.
          * 
          * @return builder
@@ -341,6 +329,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param period Subscription period (in months).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -352,6 +342,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         /**
          * @param period Subscription period (in months).
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -360,7 +352,9 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planName Package name.Value range:
+         * @param planName Package name.
+         * 
+         * Chinese website account:
          * 
          * @return builder
          * 
@@ -371,7 +365,9 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param planName Package name.Value range:
+         * @param planName Package name.
+         * 
+         * Chinese website account:
          * 
          * @return builder
          * 
@@ -381,7 +377,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The plan status. , the plan is unavailable.
          * 
          * @return builder
          * 
@@ -392,7 +388,7 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The plan status. , the plan is unavailable.
          * 
          * @return builder
          * 
@@ -406,6 +402,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
          * - `NS`
          * - `CNAME`
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -418,6 +416,8 @@ public final class RatePlanInstanceState extends com.pulumi.resources.ResourceAr
          * @param type The DNS setup option for the website. Valid values:
          * - `NS`
          * - `CNAME`
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

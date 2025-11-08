@@ -77,28 +77,46 @@ type OriginRule struct {
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord pulumi.StringPtrOutput `pulumi:"dnsRecord"`
+	// Return Source 302 follow switch. Value range:
+	Follow302Enable pulumi.StringPtrOutput `pulumi:"follow302Enable"`
+	// 302 follows the upper limit of the number of times, with a value range of [1-5].
+	Follow302MaxTries pulumi.StringPtrOutput `pulumi:"follow302MaxTries"`
+	// Retain the original request parameter switch. Value range:
+	Follow302RetainArgs pulumi.StringPtrOutput `pulumi:"follow302RetainArgs"`
+	// Retain the original request header switch. Value range:
+	Follow302RetainHeader pulumi.StringPtrOutput `pulumi:"follow302RetainHeader"`
+	// Modify the source host after 302.
+	Follow302TargetHost pulumi.StringPtrOutput `pulumi:"follow302TargetHost"`
 	// The HOST carried in the back-to-origin request.
 	OriginHost pulumi.StringPtrOutput `pulumi:"originHost"`
 	// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
 	OriginHttpPort pulumi.StringPtrOutput `pulumi:"originHttpPort"`
 	// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
 	OriginHttpsPort pulumi.StringPtrOutput `pulumi:"originHttpsPort"`
+	// The mtls switch. Value range:
+	OriginMtls pulumi.StringPtrOutput `pulumi:"originMtls"`
+	// Read timeout interval of the source station (s).
+	OriginReadTimeout pulumi.StringPtrOutput `pulumi:"originReadTimeout"`
 	// The protocol used by the back-to-origin request. Value range:
 	OriginScheme pulumi.StringPtrOutput `pulumi:"originScheme"`
 	// SNI carried in the back-to-origin request.
 	OriginSni pulumi.StringPtrOutput `pulumi:"originSni"`
+	// Source station certificate verification switch. Value range:
+	OriginVerify pulumi.StringPtrOutput `pulumi:"originVerify"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrOutput `pulumi:"range"`
+	// range shard size.
+	RangeChunkSize pulumi.StringPtrOutput `pulumi:"rangeChunkSize"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
 	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-	// - on: open.
-	// - off: close.
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -142,28 +160,46 @@ type originRuleState struct {
 	ConfigId *int `pulumi:"configId"`
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord *string `pulumi:"dnsRecord"`
+	// Return Source 302 follow switch. Value range:
+	Follow302Enable *string `pulumi:"follow302Enable"`
+	// 302 follows the upper limit of the number of times, with a value range of [1-5].
+	Follow302MaxTries *string `pulumi:"follow302MaxTries"`
+	// Retain the original request parameter switch. Value range:
+	Follow302RetainArgs *string `pulumi:"follow302RetainArgs"`
+	// Retain the original request header switch. Value range:
+	Follow302RetainHeader *string `pulumi:"follow302RetainHeader"`
+	// Modify the source host after 302.
+	Follow302TargetHost *string `pulumi:"follow302TargetHost"`
 	// The HOST carried in the back-to-origin request.
 	OriginHost *string `pulumi:"originHost"`
 	// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
 	OriginHttpPort *string `pulumi:"originHttpPort"`
 	// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
 	OriginHttpsPort *string `pulumi:"originHttpsPort"`
+	// The mtls switch. Value range:
+	OriginMtls *string `pulumi:"originMtls"`
+	// Read timeout interval of the source station (s).
+	OriginReadTimeout *string `pulumi:"originReadTimeout"`
 	// The protocol used by the back-to-origin request. Value range:
 	OriginScheme *string `pulumi:"originScheme"`
 	// SNI carried in the back-to-origin request.
 	OriginSni *string `pulumi:"originSni"`
+	// Source station certificate verification switch. Value range:
+	OriginVerify *string `pulumi:"originVerify"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range *string `pulumi:"range"`
+	// range shard size.
+	RangeChunkSize *string `pulumi:"rangeChunkSize"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
 	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-	// - on: open.
-	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -175,28 +211,46 @@ type OriginRuleState struct {
 	ConfigId pulumi.IntPtrInput
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord pulumi.StringPtrInput
+	// Return Source 302 follow switch. Value range:
+	Follow302Enable pulumi.StringPtrInput
+	// 302 follows the upper limit of the number of times, with a value range of [1-5].
+	Follow302MaxTries pulumi.StringPtrInput
+	// Retain the original request parameter switch. Value range:
+	Follow302RetainArgs pulumi.StringPtrInput
+	// Retain the original request header switch. Value range:
+	Follow302RetainHeader pulumi.StringPtrInput
+	// Modify the source host after 302.
+	Follow302TargetHost pulumi.StringPtrInput
 	// The HOST carried in the back-to-origin request.
 	OriginHost pulumi.StringPtrInput
 	// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
 	OriginHttpPort pulumi.StringPtrInput
 	// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
 	OriginHttpsPort pulumi.StringPtrInput
+	// The mtls switch. Value range:
+	OriginMtls pulumi.StringPtrInput
+	// Read timeout interval of the source station (s).
+	OriginReadTimeout pulumi.StringPtrInput
 	// The protocol used by the back-to-origin request. Value range:
 	OriginScheme pulumi.StringPtrInput
 	// SNI carried in the back-to-origin request.
 	OriginSni pulumi.StringPtrInput
+	// Source station certificate verification switch. Value range:
+	OriginVerify pulumi.StringPtrInput
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrInput
+	// range shard size.
+	RangeChunkSize pulumi.StringPtrInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
 	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-	// - on: open.
-	// - off: close.
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
 	SiteId pulumi.IntPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -210,28 +264,46 @@ func (OriginRuleState) ElementType() reflect.Type {
 type originRuleArgs struct {
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord *string `pulumi:"dnsRecord"`
+	// Return Source 302 follow switch. Value range:
+	Follow302Enable *string `pulumi:"follow302Enable"`
+	// 302 follows the upper limit of the number of times, with a value range of [1-5].
+	Follow302MaxTries *string `pulumi:"follow302MaxTries"`
+	// Retain the original request parameter switch. Value range:
+	Follow302RetainArgs *string `pulumi:"follow302RetainArgs"`
+	// Retain the original request header switch. Value range:
+	Follow302RetainHeader *string `pulumi:"follow302RetainHeader"`
+	// Modify the source host after 302.
+	Follow302TargetHost *string `pulumi:"follow302TargetHost"`
 	// The HOST carried in the back-to-origin request.
 	OriginHost *string `pulumi:"originHost"`
 	// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
 	OriginHttpPort *string `pulumi:"originHttpPort"`
 	// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
 	OriginHttpsPort *string `pulumi:"originHttpsPort"`
+	// The mtls switch. Value range:
+	OriginMtls *string `pulumi:"originMtls"`
+	// Read timeout interval of the source station (s).
+	OriginReadTimeout *string `pulumi:"originReadTimeout"`
 	// The protocol used by the back-to-origin request. Value range:
 	OriginScheme *string `pulumi:"originScheme"`
 	// SNI carried in the back-to-origin request.
 	OriginSni *string `pulumi:"originSni"`
+	// Source station certificate verification switch. Value range:
+	OriginVerify *string `pulumi:"originVerify"`
 	// Use the range sharding method to download the file from the source. Value range:
 	Range *string `pulumi:"range"`
+	// range shard size.
+	RangeChunkSize *string `pulumi:"rangeChunkSize"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule *string `pulumi:"rule"`
 	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-	// - on: open.
-	// - off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -242,28 +314,46 @@ type originRuleArgs struct {
 type OriginRuleArgs struct {
 	// Overwrite the DNS resolution record of the origin request.
 	DnsRecord pulumi.StringPtrInput
+	// Return Source 302 follow switch. Value range:
+	Follow302Enable pulumi.StringPtrInput
+	// 302 follows the upper limit of the number of times, with a value range of [1-5].
+	Follow302MaxTries pulumi.StringPtrInput
+	// Retain the original request parameter switch. Value range:
+	Follow302RetainArgs pulumi.StringPtrInput
+	// Retain the original request header switch. Value range:
+	Follow302RetainHeader pulumi.StringPtrInput
+	// Modify the source host after 302.
+	Follow302TargetHost pulumi.StringPtrInput
 	// The HOST carried in the back-to-origin request.
 	OriginHost pulumi.StringPtrInput
 	// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
 	OriginHttpPort pulumi.StringPtrInput
 	// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
 	OriginHttpsPort pulumi.StringPtrInput
+	// The mtls switch. Value range:
+	OriginMtls pulumi.StringPtrInput
+	// Read timeout interval of the source station (s).
+	OriginReadTimeout pulumi.StringPtrInput
 	// The protocol used by the back-to-origin request. Value range:
 	OriginScheme pulumi.StringPtrInput
 	// SNI carried in the back-to-origin request.
 	OriginSni pulumi.StringPtrInput
+	// Source station certificate verification switch. Value range:
+	OriginVerify pulumi.StringPtrInput
 	// Use the range sharding method to download the file from the source. Value range:
 	Range pulumi.StringPtrInput
+	// range shard size.
+	RangeChunkSize pulumi.StringPtrInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
 	Rule pulumi.StringPtrInput
 	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-	// - on: open.
-	// - off: close.
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
 	SiteId pulumi.IntInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -367,6 +457,31 @@ func (o OriginRuleOutput) DnsRecord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.DnsRecord }).(pulumi.StringPtrOutput)
 }
 
+// Return Source 302 follow switch. Value range:
+func (o OriginRuleOutput) Follow302Enable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Follow302Enable }).(pulumi.StringPtrOutput)
+}
+
+// 302 follows the upper limit of the number of times, with a value range of [1-5].
+func (o OriginRuleOutput) Follow302MaxTries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Follow302MaxTries }).(pulumi.StringPtrOutput)
+}
+
+// Retain the original request parameter switch. Value range:
+func (o OriginRuleOutput) Follow302RetainArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Follow302RetainArgs }).(pulumi.StringPtrOutput)
+}
+
+// Retain the original request header switch. Value range:
+func (o OriginRuleOutput) Follow302RetainHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Follow302RetainHeader }).(pulumi.StringPtrOutput)
+}
+
+// Modify the source host after 302.
+func (o OriginRuleOutput) Follow302TargetHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Follow302TargetHost }).(pulumi.StringPtrOutput)
+}
+
 // The HOST carried in the back-to-origin request.
 func (o OriginRuleOutput) OriginHost() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginHost }).(pulumi.StringPtrOutput)
@@ -382,6 +497,16 @@ func (o OriginRuleOutput) OriginHttpsPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginHttpsPort }).(pulumi.StringPtrOutput)
 }
 
+// The mtls switch. Value range:
+func (o OriginRuleOutput) OriginMtls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginMtls }).(pulumi.StringPtrOutput)
+}
+
+// Read timeout interval of the source station (s).
+func (o OriginRuleOutput) OriginReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginReadTimeout }).(pulumi.StringPtrOutput)
+}
+
 // The protocol used by the back-to-origin request. Value range:
 func (o OriginRuleOutput) OriginScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginScheme }).(pulumi.StringPtrOutput)
@@ -392,9 +517,19 @@ func (o OriginRuleOutput) OriginSni() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginSni }).(pulumi.StringPtrOutput)
 }
 
+// Source station certificate verification switch. Value range:
+func (o OriginRuleOutput) OriginVerify() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.OriginVerify }).(pulumi.StringPtrOutput)
+}
+
 // Use the range sharding method to download the file from the source. Value range:
 func (o OriginRuleOutput) Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+// range shard size.
+func (o OriginRuleOutput) RangeChunkSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.RangeChunkSize }).(pulumi.StringPtrOutput)
 }
 
 // Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -405,8 +540,6 @@ func (o OriginRuleOutput) Rule() pulumi.StringPtrOutput {
 }
 
 // Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-// - on: open.
-// - off: close.
 func (o OriginRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
@@ -414,6 +547,11 @@ func (o OriginRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 // Rule name. When adding global configuration, this parameter does not need to be set.
 func (o OriginRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OriginRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o OriginRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The site ID.

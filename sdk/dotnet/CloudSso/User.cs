@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CloudSso
 {
     /// <summary>
-    /// Provides a Cloud SSO User resource.
+    /// Provides a Cloud Sso User resource.
     /// 
-    /// For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
+    /// For information about Cloud Sso User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
     /// 
     /// &gt; **NOTE:** Available since v1.140.0.
-    /// 
-    /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
     /// 
     /// ## Example Usage
     /// 
@@ -33,8 +31,14 @@ namespace Pulumi.AliCloud.CloudSso
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
+    /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
     /// 
     ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
@@ -63,12 +67,6 @@ namespace Pulumi.AliCloud.CloudSso
     ///         return length &gt; 0 ? @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids[0]) : invoke.Result[0];
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
     ///     var defaultUser = new AliCloud.CloudSso.User("default", new()
     ///     {
     ///         DirectoryId = directoryId,
@@ -80,7 +78,7 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// ## Import
     /// 
-    /// Cloud SSO User can be imported using the id, e.g.
+    /// Cloud Sso User can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:cloudsso/user:User example &lt;directory_id&gt;:&lt;user_id&gt;
@@ -90,55 +88,79 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of user. The description can be up to `1024` characters long.
+        /// (Available since v1.262.1) The time when the user was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the user. The description can be up to 1,024 characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Output("directoryId")]
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of user. The display name can be up to `256` characters long.
+        /// The display name of the user. The display name can be up to 256 characters in length.
         /// </summary>
         [Output("displayName")]
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The User's Contact Email Address. The email can be up to `128` characters long.
+        /// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         /// </summary>
         [Output("email")]
         public Output<string?> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The first name of user. The FirstName can be up to `64` characters long.
+        /// The first name of the user. The first name can be up to 64 characters in length.
         /// </summary>
         [Output("firstName")]
         public Output<string?> FirstName { get; private set; } = null!;
 
         /// <summary>
-        /// The last name of user. The LastName can be up to `64` characters long.
+        /// The last name of the user. The last name can be up to 64 characters in length.
         /// </summary>
         [Output("lastName")]
         public Output<string?> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of user. Valid values: `Disabled`, `Enabled`.
+        /// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        /// </summary>
+        [Output("mfaAuthenticationSettings")]
+        public Output<string> MfaAuthenticationSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        /// </summary>
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The User ID of the group.
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the user.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        /// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -166,6 +188,10 @@ namespace Pulumi.AliCloud.CloudSso
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -190,49 +216,83 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of user. The description can be up to `1024` characters long.
+        /// The description of the user. The description can be up to 1,024 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Input("directoryId", required: true)]
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// The display name of user. The display name can be up to `256` characters long.
+        /// The display name of the user. The display name can be up to 256 characters in length.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The User's Contact Email Address. The email can be up to `128` characters long.
+        /// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user. The FirstName can be up to `64` characters long.
+        /// The first name of the user. The first name can be up to 64 characters in length.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user. The LastName can be up to `64` characters long.
+        /// The last name of the user. The last name can be up to 64 characters in length.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The status of user. Valid values: `Disabled`, `Enabled`.
+        /// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        /// </summary>
+        [Input("mfaAuthenticationSettings")]
+        public Input<string>? MfaAuthenticationSettings { get; set; }
+
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
@@ -246,55 +306,95 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of user. The description can be up to `1024` characters long.
+        /// (Available since v1.262.1) The time when the user was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the user. The description can be up to 1,024 characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the Directory.
+        /// The ID of the directory.
         /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// The display name of user. The display name can be up to `256` characters long.
+        /// The display name of the user. The display name can be up to 256 characters in length.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The User's Contact Email Address. The email can be up to `128` characters long.
+        /// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The first name of user. The FirstName can be up to `64` characters long.
+        /// The first name of the user. The first name can be up to 64 characters in length.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// The last name of user. The LastName can be up to `64` characters long.
+        /// The last name of the user. The last name can be up to 64 characters in length.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The status of user. Valid values: `Disabled`, `Enabled`.
+        /// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        /// </summary>
+        [Input("mfaAuthenticationSettings")]
+        public Input<string>? MfaAuthenticationSettings { get; set; }
+
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The User ID of the group.
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the user.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        /// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }

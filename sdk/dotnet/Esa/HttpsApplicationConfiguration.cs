@@ -141,6 +141,24 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> HttpsForceCode { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        /// </summary>
+        [Output("httpsNoSniDeny")]
+        public Output<string?> HttpsNoSniDeny { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable SNI verification. It is disabled by default. Value range:
+        /// </summary>
+        [Output("httpsSniVerify")]
+        public Output<string?> HttpsSniVerify { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the list of allowed SNI whitelists, separated by spaces.
+        /// </summary>
+        [Output("httpsSniWhitelist")]
+        public Output<string?> HttpsSniWhitelist { get; private set; } = null!;
+
+        /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         /// - Match all incoming requests: value set to true
         /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -159,6 +177,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
 
         /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
@@ -279,6 +303,24 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? HttpsForceCode { get; set; }
 
         /// <summary>
+        /// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        /// </summary>
+        [Input("httpsNoSniDeny")]
+        public Input<string>? HttpsNoSniDeny { get; set; }
+
+        /// <summary>
+        /// Whether to enable SNI verification. It is disabled by default. Value range:
+        /// </summary>
+        [Input("httpsSniVerify")]
+        public Input<string>? HttpsSniVerify { get; set; }
+
+        /// <summary>
+        /// Specifies the list of allowed SNI whitelists, separated by spaces.
+        /// </summary>
+        [Input("httpsSniWhitelist")]
+        public Input<string>? HttpsSniWhitelist { get; set; }
+
+        /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         /// - Match all incoming requests: value set to true
         /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -297,6 +339,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
@@ -385,6 +433,24 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? HttpsForceCode { get; set; }
 
         /// <summary>
+        /// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        /// </summary>
+        [Input("httpsNoSniDeny")]
+        public Input<string>? HttpsNoSniDeny { get; set; }
+
+        /// <summary>
+        /// Whether to enable SNI verification. It is disabled by default. Value range:
+        /// </summary>
+        [Input("httpsSniVerify")]
+        public Input<string>? HttpsSniVerify { get; set; }
+
+        /// <summary>
+        /// Specifies the list of allowed SNI whitelists, separated by spaces.
+        /// </summary>
+        [Input("httpsSniWhitelist")]
+        public Input<string>? HttpsSniWhitelist { get; set; }
+
+        /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         /// - Match all incoming requests: value set to true
         /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -403,6 +469,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.

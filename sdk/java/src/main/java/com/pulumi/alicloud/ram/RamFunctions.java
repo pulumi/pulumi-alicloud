@@ -680,11 +680,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -695,12 +697,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -716,51 +714,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -771,11 +758,13 @@ public final class RamFunctions {
         return getPolicies(GetPoliciesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -786,12 +775,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -807,51 +792,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -862,11 +836,13 @@ public final class RamFunctions {
         return getPoliciesPlain(GetPoliciesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -877,12 +853,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -898,51 +870,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -953,11 +914,13 @@ public final class RamFunctions {
         return getPolicies(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -968,12 +931,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -989,51 +948,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -1044,11 +992,13 @@ public final class RamFunctions {
         return getPoliciesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1059,12 +1009,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -1080,51 +1026,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -1135,11 +1070,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invoke("alicloud:ram/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1150,12 +1087,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -1171,51 +1104,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -1226,11 +1148,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invoke("alicloud:ram/getPolicies:getPolicies", TypeShape.of(GetPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -1241,12 +1165,8 @@ public final class RamFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.random.Integer;
      * import com.pulumi.random.IntegerArgs;
-     * import com.pulumi.alicloud.ram.Group;
-     * import com.pulumi.alicloud.ram.GroupArgs;
      * import com.pulumi.alicloud.ram.Policy;
      * import com.pulumi.alicloud.ram.PolicyArgs;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
-     * import com.pulumi.alicloud.ram.GroupPolicyAttachmentArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetPoliciesArgs;
      * import java.util.List;
@@ -1262,51 +1182,40 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
      *         var default_ = new Integer("default", IntegerArgs.builder()
      *             .min(10000)
      *             .max(99999)
      *             .build());
      * 
-     *         var group = new Group("group", GroupArgs.builder()
-     *             .name(String.format("groupName-%s", default_.result()))
-     *             .comments("this is a group comments.")
-     *             .build());
-     * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()
-     *             .policyName(String.format("tf-example-%s", default_.result()))
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
+     *             .policyName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
      *             .policyDocument("""
-     *     {
-     *       \"Statement\": [
-     *         {
-     *           \"Action\": [
-     *             \"oss:ListObjects\",
-     *             \"oss:GetObject\"
-     *           ],
-     *           \"Effect\": \"Allow\",
-     *           \"Resource\": [
-     *             \"acs:oss:*:*:mybucket\",
-     *             \"acs:oss:*:*:mybucket/*\"
-     *           ]
-     *         }
-     *       ],
-     *         \"Version\": \"1\"
-     *     }
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Effect\": \"Allow\",
+     *         \"Action\": \"*\",
+     *         \"Resource\": \"*\"
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
      *             """)
-     *             .description("this is a policy test")
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Policy")
+     *             ))
      *             .build());
      * 
-     *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
-     *             .policyName(policy.policyName())
-     *             .policyType(policy.type())
-     *             .groupName(group.name())
+     *         final var ids = RamFunctions.getPolicies(GetPoliciesArgs.builder()
+     *             .ids(defaultPolicy.id())
      *             .build());
      * 
-     *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .groupName(attach.groupName())
-     *             .type("Custom")
-     *             .build());
-     * 
-     *         ctx.export("firstPolicyName", policiesDs.applyValue(_policiesDs -> _policiesDs.policies()[0].name()));
+     *         ctx.export("ramPoliciesId0", ids.applyValue(_ids -> _ids.policies()[0].id()));
      *     }
      * }
      * }
@@ -3939,11 +3848,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:ram/getRolePolicyAttachments:getRolePolicyAttachments", TypeShape.of(GetRolePolicyAttachmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -3952,6 +3863,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -3967,14 +3882,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -3985,11 +3930,13 @@ public final class RamFunctions {
         return getRoles(GetRolesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -3998,6 +3945,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4013,14 +3964,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -4031,11 +4012,13 @@ public final class RamFunctions {
         return getRolesPlain(GetRolesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -4044,6 +4027,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4059,14 +4046,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -4077,11 +4094,13 @@ public final class RamFunctions {
         return getRoles(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -4090,6 +4109,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4105,14 +4128,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -4123,11 +4176,13 @@ public final class RamFunctions {
         return getRolesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -4136,6 +4191,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4151,14 +4210,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -4169,11 +4258,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invoke("alicloud:ram/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -4182,6 +4273,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4197,14 +4292,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }
@@ -4215,11 +4340,13 @@ public final class RamFunctions {
         return Deployment.getInstance().invoke("alicloud:ram/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+     * This data source provides the RAM Roles of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available since v1.0.0+.
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * <pre>
      * {@code
@@ -4228,6 +4355,10 @@ public final class RamFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.Integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
      * import com.pulumi.alicloud.ram.RamFunctions;
      * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
      * import java.util.List;
@@ -4243,14 +4374,44 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile("roles.txt")
-     *             .nameRegex(".*test.*")
-     *             .policyName("AliyunACSDefaultAccess")
-     *             .policyType("Custom")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Integer("default", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstRoleId", rolesDs.roles()[0].id());
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .roleName(String.format("%s-%s", name,default_.result()))
+     *             .description(String.format("%s-%s", name,default_.result()))
+     *             .force(true)
+     *             .assumeRolePolicyDocument("""
+     *   {
+     *     \"Statement\": [
+     *       {
+     *         \"Action\": \"sts:AssumeRole\",
+     *         \"Effect\": \"Allow\",
+     *         \"Principal\": {
+     *           \"Service\": [
+     *             \"ecs.aliyuncs.com\"
+     *           ]
+     *         }
+     *       }
+     *     ],
+     *     \"Version\": \"1\"
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Role")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = RamFunctions.getRoles(GetRolesArgs.builder()
+     *             .ids(defaultRole.roleId())
+     *             .build());
+     * 
+     *         ctx.export("ramRolesId0", ids.applyValue(_ids -> _ids.roles()[0].id()));
      *     }
      * }
      * }

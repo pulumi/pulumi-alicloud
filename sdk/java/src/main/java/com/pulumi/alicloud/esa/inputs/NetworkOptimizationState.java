@@ -62,14 +62,18 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -77,14 +81,14 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Rule switch. Values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Values:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -107,6 +111,21 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
      * Site ID.
      * 
      */
@@ -122,14 +141,14 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Site version number.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return Site version number.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -190,6 +209,7 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
         this.smartRouting = $.smartRouting;
@@ -279,7 +299,9 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rule Rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -290,7 +312,9 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rule Rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -300,7 +324,7 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleEnable Rule switch. Values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -311,7 +335,7 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ruleEnable Rule switch. Values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -342,6 +366,27 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
+        }
+
+        /**
          * @param siteId Site ID.
          * 
          * @return builder
@@ -363,7 +408,7 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param siteVersion Site version number.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -374,7 +419,7 @@ public final class NetworkOptimizationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param siteVersion Site version number.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

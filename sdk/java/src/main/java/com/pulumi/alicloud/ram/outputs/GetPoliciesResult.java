@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,24 +26,29 @@ public final class GetPoliciesResult {
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of ram group names.
+     * @return (Available since v1.42.0) A list of Policy names.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return A list of policies. Each element contains the following attributes:
+     * @return A list of Policy. Each element contains the following attributes:
      * 
      */
     private List<GetPoliciesPolicy> policies;
     private @Nullable String roleName;
     /**
-     * @return Type of the policy.
+     * @return (Available since v1.262.1) The tags of the Policy.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
+    /**
+     * @return The type of the policy.
      * 
      */
     private @Nullable String type;
     /**
-     * @return The user name of  policy.
+     * @return (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
      * 
      */
     private @Nullable String userName;
@@ -68,7 +74,7 @@ public final class GetPoliciesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of ram group names.
+     * @return (Available since v1.42.0) A list of Policy names.
      * 
      */
     public List<String> names() {
@@ -78,7 +84,7 @@ public final class GetPoliciesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return A list of policies. Each element contains the following attributes:
+     * @return A list of Policy. Each element contains the following attributes:
      * 
      */
     public List<GetPoliciesPolicy> policies() {
@@ -88,14 +94,21 @@ public final class GetPoliciesResult {
         return Optional.ofNullable(this.roleName);
     }
     /**
-     * @return Type of the policy.
+     * @return (Available since v1.262.1) The tags of the Policy.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
+    /**
+     * @return The type of the policy.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The user name of  policy.
+     * @return (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
      * 
      */
     public Optional<String> userName() {
@@ -120,6 +133,7 @@ public final class GetPoliciesResult {
         private @Nullable String outputFile;
         private List<GetPoliciesPolicy> policies;
         private @Nullable String roleName;
+        private @Nullable Map<String,String> tags;
         private @Nullable String type;
         private @Nullable String userName;
         public Builder() {}
@@ -134,6 +148,7 @@ public final class GetPoliciesResult {
     	      this.outputFile = defaults.outputFile;
     	      this.policies = defaults.policies;
     	      this.roleName = defaults.roleName;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.userName = defaults.userName;
         }
@@ -210,6 +225,12 @@ public final class GetPoliciesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -232,6 +253,7 @@ public final class GetPoliciesResult {
             _resultValue.outputFile = outputFile;
             _resultValue.policies = policies;
             _resultValue.roleName = roleName;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.userName = userName;
             return _resultValue;

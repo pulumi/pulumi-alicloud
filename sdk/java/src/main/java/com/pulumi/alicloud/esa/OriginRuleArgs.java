@@ -33,6 +33,81 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Return Source 302 follow switch. Value range:
+     * 
+     */
+    @Import(name="follow302Enable")
+    private @Nullable Output<String> follow302Enable;
+
+    /**
+     * @return Return Source 302 follow switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> follow302Enable() {
+        return Optional.ofNullable(this.follow302Enable);
+    }
+
+    /**
+     * 302 follows the upper limit of the number of times, with a value range of [1-5].
+     * 
+     */
+    @Import(name="follow302MaxTries")
+    private @Nullable Output<String> follow302MaxTries;
+
+    /**
+     * @return 302 follows the upper limit of the number of times, with a value range of [1-5].
+     * 
+     */
+    public Optional<Output<String>> follow302MaxTries() {
+        return Optional.ofNullable(this.follow302MaxTries);
+    }
+
+    /**
+     * Retain the original request parameter switch. Value range:
+     * 
+     */
+    @Import(name="follow302RetainArgs")
+    private @Nullable Output<String> follow302RetainArgs;
+
+    /**
+     * @return Retain the original request parameter switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> follow302RetainArgs() {
+        return Optional.ofNullable(this.follow302RetainArgs);
+    }
+
+    /**
+     * Retain the original request header switch. Value range:
+     * 
+     */
+    @Import(name="follow302RetainHeader")
+    private @Nullable Output<String> follow302RetainHeader;
+
+    /**
+     * @return Retain the original request header switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> follow302RetainHeader() {
+        return Optional.ofNullable(this.follow302RetainHeader);
+    }
+
+    /**
+     * Modify the source host after 302.
+     * 
+     */
+    @Import(name="follow302TargetHost")
+    private @Nullable Output<String> follow302TargetHost;
+
+    /**
+     * @return Modify the source host after 302.
+     * 
+     */
+    public Optional<Output<String>> follow302TargetHost() {
+        return Optional.ofNullable(this.follow302TargetHost);
+    }
+
+    /**
      * The HOST carried in the back-to-origin request.
      * 
      */
@@ -78,6 +153,36 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The mtls switch. Value range:
+     * 
+     */
+    @Import(name="originMtls")
+    private @Nullable Output<String> originMtls;
+
+    /**
+     * @return The mtls switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> originMtls() {
+        return Optional.ofNullable(this.originMtls);
+    }
+
+    /**
+     * Read timeout interval of the source station (s).
+     * 
+     */
+    @Import(name="originReadTimeout")
+    private @Nullable Output<String> originReadTimeout;
+
+    /**
+     * @return Read timeout interval of the source station (s).
+     * 
+     */
+    public Optional<Output<String>> originReadTimeout() {
+        return Optional.ofNullable(this.originReadTimeout);
+    }
+
+    /**
      * The protocol used by the back-to-origin request. Value range:
      * 
      */
@@ -108,6 +213,21 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Source station certificate verification switch. Value range:
+     * 
+     */
+    @Import(name="originVerify")
+    private @Nullable Output<String> originVerify;
+
+    /**
+     * @return Source station certificate verification switch. Value range:
+     * 
+     */
+    public Optional<Output<String>> originVerify() {
+        return Optional.ofNullable(this.originVerify);
+    }
+
+    /**
      * Use the range sharding method to download the file from the source. Value range:
      * 
      */
@@ -120,6 +240,21 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> range() {
         return Optional.ofNullable(this.range);
+    }
+
+    /**
+     * range shard size.
+     * 
+     */
+    @Import(name="rangeChunkSize")
+    private @Nullable Output<String> rangeChunkSize;
+
+    /**
+     * @return range shard size.
+     * 
+     */
+    public Optional<Output<String>> rangeChunkSize() {
+        return Optional.ofNullable(this.rangeChunkSize);
     }
 
     /**
@@ -143,8 +278,6 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      * 
      */
     @Import(name="ruleEnable")
@@ -152,8 +285,6 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -173,6 +304,21 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ruleName() {
         return Optional.ofNullable(this.ruleName);
+    }
+
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
     }
 
     /**
@@ -209,15 +355,25 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     private OriginRuleArgs(OriginRuleArgs $) {
         this.dnsRecord = $.dnsRecord;
+        this.follow302Enable = $.follow302Enable;
+        this.follow302MaxTries = $.follow302MaxTries;
+        this.follow302RetainArgs = $.follow302RetainArgs;
+        this.follow302RetainHeader = $.follow302RetainHeader;
+        this.follow302TargetHost = $.follow302TargetHost;
         this.originHost = $.originHost;
         this.originHttpPort = $.originHttpPort;
         this.originHttpsPort = $.originHttpsPort;
+        this.originMtls = $.originMtls;
+        this.originReadTimeout = $.originReadTimeout;
         this.originScheme = $.originScheme;
         this.originSni = $.originSni;
+        this.originVerify = $.originVerify;
         this.range = $.range;
+        this.rangeChunkSize = $.rangeChunkSize;
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
     }
@@ -259,6 +415,111 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dnsRecord(String dnsRecord) {
             return dnsRecord(Output.of(dnsRecord));
+        }
+
+        /**
+         * @param follow302Enable Return Source 302 follow switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302Enable(@Nullable Output<String> follow302Enable) {
+            $.follow302Enable = follow302Enable;
+            return this;
+        }
+
+        /**
+         * @param follow302Enable Return Source 302 follow switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302Enable(String follow302Enable) {
+            return follow302Enable(Output.of(follow302Enable));
+        }
+
+        /**
+         * @param follow302MaxTries 302 follows the upper limit of the number of times, with a value range of [1-5].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302MaxTries(@Nullable Output<String> follow302MaxTries) {
+            $.follow302MaxTries = follow302MaxTries;
+            return this;
+        }
+
+        /**
+         * @param follow302MaxTries 302 follows the upper limit of the number of times, with a value range of [1-5].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302MaxTries(String follow302MaxTries) {
+            return follow302MaxTries(Output.of(follow302MaxTries));
+        }
+
+        /**
+         * @param follow302RetainArgs Retain the original request parameter switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302RetainArgs(@Nullable Output<String> follow302RetainArgs) {
+            $.follow302RetainArgs = follow302RetainArgs;
+            return this;
+        }
+
+        /**
+         * @param follow302RetainArgs Retain the original request parameter switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302RetainArgs(String follow302RetainArgs) {
+            return follow302RetainArgs(Output.of(follow302RetainArgs));
+        }
+
+        /**
+         * @param follow302RetainHeader Retain the original request header switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302RetainHeader(@Nullable Output<String> follow302RetainHeader) {
+            $.follow302RetainHeader = follow302RetainHeader;
+            return this;
+        }
+
+        /**
+         * @param follow302RetainHeader Retain the original request header switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302RetainHeader(String follow302RetainHeader) {
+            return follow302RetainHeader(Output.of(follow302RetainHeader));
+        }
+
+        /**
+         * @param follow302TargetHost Modify the source host after 302.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302TargetHost(@Nullable Output<String> follow302TargetHost) {
+            $.follow302TargetHost = follow302TargetHost;
+            return this;
+        }
+
+        /**
+         * @param follow302TargetHost Modify the source host after 302.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder follow302TargetHost(String follow302TargetHost) {
+            return follow302TargetHost(Output.of(follow302TargetHost));
         }
 
         /**
@@ -325,6 +586,48 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param originMtls The mtls switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originMtls(@Nullable Output<String> originMtls) {
+            $.originMtls = originMtls;
+            return this;
+        }
+
+        /**
+         * @param originMtls The mtls switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originMtls(String originMtls) {
+            return originMtls(Output.of(originMtls));
+        }
+
+        /**
+         * @param originReadTimeout Read timeout interval of the source station (s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originReadTimeout(@Nullable Output<String> originReadTimeout) {
+            $.originReadTimeout = originReadTimeout;
+            return this;
+        }
+
+        /**
+         * @param originReadTimeout Read timeout interval of the source station (s).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originReadTimeout(String originReadTimeout) {
+            return originReadTimeout(Output.of(originReadTimeout));
+        }
+
+        /**
          * @param originScheme The protocol used by the back-to-origin request. Value range:
          * 
          * @return builder
@@ -367,6 +670,27 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param originVerify Source station certificate verification switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originVerify(@Nullable Output<String> originVerify) {
+            $.originVerify = originVerify;
+            return this;
+        }
+
+        /**
+         * @param originVerify Source station certificate verification switch. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originVerify(String originVerify) {
+            return originVerify(Output.of(originVerify));
+        }
+
+        /**
          * @param range Use the range sharding method to download the file from the source. Value range:
          * 
          * @return builder
@@ -385,6 +709,27 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder range(String range) {
             return range(Output.of(range));
+        }
+
+        /**
+         * @param rangeChunkSize range shard size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rangeChunkSize(@Nullable Output<String> rangeChunkSize) {
+            $.rangeChunkSize = rangeChunkSize;
+            return this;
+        }
+
+        /**
+         * @param rangeChunkSize range shard size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rangeChunkSize(String rangeChunkSize) {
+            return rangeChunkSize(Output.of(rangeChunkSize));
         }
 
         /**
@@ -414,8 +759,6 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-         * - on: open.
-         * - off: close.
          * 
          * @return builder
          * 
@@ -427,8 +770,6 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-         * - on: open.
-         * - off: close.
          * 
          * @return builder
          * 
@@ -456,6 +797,27 @@ public final class OriginRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**

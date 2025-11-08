@@ -30,9 +30,13 @@ class HttpsApplicationConfigurationArgs:
                  hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpsApplicationConfiguration resource.
@@ -47,11 +51,15 @@ class HttpsApplicationConfigurationArgs:
         :param pulumi.Input[_builtins.str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force_code: Forced HTTPS jump status code, value range:
+        :param pulumi.Input[_builtins.str] https_no_sni_deny: Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_verify: Whether to enable SNI verification. It is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_whitelist: Specifies the list of allowed SNI whitelists, separated by spaces.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -75,12 +83,20 @@ class HttpsApplicationConfigurationArgs:
             pulumi.set(__self__, "https_force", https_force)
         if https_force_code is not None:
             pulumi.set(__self__, "https_force_code", https_force_code)
+        if https_no_sni_deny is not None:
+            pulumi.set(__self__, "https_no_sni_deny", https_no_sni_deny)
+        if https_sni_verify is not None:
+            pulumi.set(__self__, "https_sni_verify", https_sni_verify)
+        if https_sni_whitelist is not None:
+            pulumi.set(__self__, "https_sni_whitelist", https_sni_whitelist)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
         if rule_enable is not None:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
 
@@ -217,6 +233,42 @@ class HttpsApplicationConfigurationArgs:
         pulumi.set(self, "https_force_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpsNoSniDeny")
+    def https_no_sni_deny(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_no_sni_deny")
+
+    @https_no_sni_deny.setter
+    def https_no_sni_deny(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_no_sni_deny", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniVerify")
+    def https_sni_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable SNI verification. It is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_sni_verify")
+
+    @https_sni_verify.setter
+    def https_sni_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_sni_verify", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniWhitelist")
+    def https_sni_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the list of allowed SNI whitelists, separated by spaces.
+        """
+        return pulumi.get(self, "https_sni_whitelist")
+
+    @https_sni_whitelist.setter
+    def https_sni_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_sni_whitelist", value)
+
+    @_builtins.property
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -255,6 +307,18 @@ class HttpsApplicationConfigurationArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -281,9 +345,13 @@ class _HttpsApplicationConfigurationState:
                  hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
@@ -299,11 +367,15 @@ class _HttpsApplicationConfigurationState:
         :param pulumi.Input[_builtins.str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force_code: Forced HTTPS jump status code, value range:
+        :param pulumi.Input[_builtins.str] https_no_sni_deny: Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_verify: Whether to enable SNI verification. It is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_whitelist: Specifies the list of allowed SNI whitelists, separated by spaces.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -329,12 +401,20 @@ class _HttpsApplicationConfigurationState:
             pulumi.set(__self__, "https_force", https_force)
         if https_force_code is not None:
             pulumi.set(__self__, "https_force_code", https_force_code)
+        if https_no_sni_deny is not None:
+            pulumi.set(__self__, "https_no_sni_deny", https_no_sni_deny)
+        if https_sni_verify is not None:
+            pulumi.set(__self__, "https_sni_verify", https_sni_verify)
+        if https_sni_whitelist is not None:
+            pulumi.set(__self__, "https_sni_whitelist", https_sni_whitelist)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
         if rule_enable is not None:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -473,6 +553,42 @@ class _HttpsApplicationConfigurationState:
         pulumi.set(self, "https_force_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpsNoSniDeny")
+    def https_no_sni_deny(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_no_sni_deny")
+
+    @https_no_sni_deny.setter
+    def https_no_sni_deny(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_no_sni_deny", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniVerify")
+    def https_sni_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Whether to enable SNI verification. It is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_sni_verify")
+
+    @https_sni_verify.setter
+    def https_sni_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_sni_verify", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniWhitelist")
+    def https_sni_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the list of allowed SNI whitelists, separated by spaces.
+        """
+        return pulumi.get(self, "https_sni_whitelist")
+
+    @https_sni_whitelist.setter
+    def https_sni_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "https_sni_whitelist", value)
+
+    @_builtins.property
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -509,6 +625,18 @@ class _HttpsApplicationConfigurationState:
     @rule_name.setter
     def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -551,9 +679,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
                  hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -616,11 +748,15 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force_code: Forced HTTPS jump status code, value range:
+        :param pulumi.Input[_builtins.str] https_no_sni_deny: Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_verify: Whether to enable SNI verification. It is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_whitelist: Specifies the list of allowed SNI whitelists, separated by spaces.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -702,9 +838,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
                  hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force: Optional[pulumi.Input[_builtins.str]] = None,
                  https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
+                 https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -726,9 +866,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
             __props__.__dict__["hsts_preload"] = hsts_preload
             __props__.__dict__["https_force"] = https_force
             __props__.__dict__["https_force_code"] = https_force_code
+            __props__.__dict__["https_no_sni_deny"] = https_no_sni_deny
+            __props__.__dict__["https_sni_verify"] = https_sni_verify
+            __props__.__dict__["https_sni_whitelist"] = https_sni_whitelist
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -755,9 +899,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
             hsts_preload: Optional[pulumi.Input[_builtins.str]] = None,
             https_force: Optional[pulumi.Input[_builtins.str]] = None,
             https_force_code: Optional[pulumi.Input[_builtins.str]] = None,
+            https_no_sni_deny: Optional[pulumi.Input[_builtins.str]] = None,
+            https_sni_verify: Optional[pulumi.Input[_builtins.str]] = None,
+            https_sni_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None) -> 'HttpsApplicationConfiguration':
         """
@@ -778,11 +926,15 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] hsts_preload: Whether to enable HSTS preloading. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force: Whether to enable forced HTTPS. It is disabled by default. Value range:
         :param pulumi.Input[_builtins.str] https_force_code: Forced HTTPS jump status code, value range:
+        :param pulumi.Input[_builtins.str] https_no_sni_deny: Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_verify: Whether to enable SNI verification. It is disabled by default. Value range:
+        :param pulumi.Input[_builtins.str] https_sni_whitelist: Specifies the list of allowed SNI whitelists, separated by spaces.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -801,9 +953,13 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         __props__.__dict__["hsts_preload"] = hsts_preload
         __props__.__dict__["https_force"] = https_force
         __props__.__dict__["https_force_code"] = https_force_code
+        __props__.__dict__["https_no_sni_deny"] = https_no_sni_deny
+        __props__.__dict__["https_sni_verify"] = https_sni_verify
+        __props__.__dict__["https_sni_whitelist"] = https_sni_whitelist
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         return HttpsApplicationConfiguration(resource_name, opts=opts, __props__=__props__)
@@ -897,6 +1053,30 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "https_force_code")
 
     @_builtins.property
+    @pulumi.getter(name="httpsNoSniDeny")
+    def https_no_sni_deny(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_no_sni_deny")
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniVerify")
+    def https_sni_verify(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Whether to enable SNI verification. It is disabled by default. Value range:
+        """
+        return pulumi.get(self, "https_sni_verify")
+
+    @_builtins.property
+    @pulumi.getter(name="httpsSniWhitelist")
+    def https_sni_whitelist(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies the list of allowed SNI whitelists, separated by spaces.
+        """
+        return pulumi.get(self, "https_sni_whitelist")
+
+    @_builtins.property
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -921,6 +1101,14 @@ class HttpsApplicationConfiguration(pulumi.CustomResource):
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")

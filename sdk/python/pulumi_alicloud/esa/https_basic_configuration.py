@@ -29,13 +29,14 @@ class HttpsBasicConfigurationArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
                  tls12: Optional[pulumi.Input[_builtins.str]] = None,
                  tls13: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HttpsBasicConfiguration resource.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] ciphersuite: Custom cipher suite, indicating the specific encryption algorithm selected when CiphersuiteGroup is set to custom.
         :param pulumi.Input[_builtins.str] ciphersuite_group: Cipher suite group. Default is all cipher suites. Possible values:
                - all: All cipher suites.
@@ -60,6 +61,7 @@ class HttpsBasicConfigurationArgs:
                - on: open.
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -92,6 +94,8 @@ class HttpsBasicConfigurationArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if tls10 is not None:
             pulumi.set(__self__, "tls10", tls10)
         if tls11 is not None:
@@ -105,7 +109,7 @@ class HttpsBasicConfigurationArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[_builtins.int]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -238,6 +242,18 @@ class HttpsBasicConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
+    @pulumi.getter
     def tls10(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Whether to enable TLS1.0. Default is disabled. Possible values:
@@ -306,6 +322,7 @@ class _HttpsBasicConfigurationState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
@@ -338,7 +355,8 @@ class _HttpsBasicConfigurationState:
                - on: open.
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -372,6 +390,8 @@ class _HttpsBasicConfigurationState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if tls10 is not None:
@@ -519,10 +539,22 @@ class _HttpsBasicConfigurationState:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
@@ -602,6 +634,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
@@ -686,7 +719,8 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                - on: open.
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -782,6 +816,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  tls10: Optional[pulumi.Input[_builtins.str]] = None,
                  tls11: Optional[pulumi.Input[_builtins.str]] = None,
@@ -805,6 +840,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -833,6 +869,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             tls10: Optional[pulumi.Input[_builtins.str]] = None,
             tls11: Optional[pulumi.Input[_builtins.str]] = None,
@@ -870,7 +907,8 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
                - on: open.
                - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
-        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.int] site_id: Site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] tls10: Whether to enable TLS1.0. Default is disabled. Possible values:
                - on: Enable.
                - off: Disable.
@@ -898,6 +936,7 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["tls10"] = tls10
         __props__.__dict__["tls11"] = tls11
@@ -1001,10 +1040,18 @@ class HttpsBasicConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "rule_name")
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.int]:
         """
-        Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        Site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 

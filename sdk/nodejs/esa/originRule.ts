@@ -83,6 +83,26 @@ export class OriginRule extends pulumi.CustomResource {
      */
     declare public readonly dnsRecord: pulumi.Output<string | undefined>;
     /**
+     * Return Source 302 follow switch. Value range:
+     */
+    declare public readonly follow302Enable: pulumi.Output<string | undefined>;
+    /**
+     * 302 follows the upper limit of the number of times, with a value range of [1-5].
+     */
+    declare public readonly follow302MaxTries: pulumi.Output<string | undefined>;
+    /**
+     * Retain the original request parameter switch. Value range:
+     */
+    declare public readonly follow302RetainArgs: pulumi.Output<string | undefined>;
+    /**
+     * Retain the original request header switch. Value range:
+     */
+    declare public readonly follow302RetainHeader: pulumi.Output<string | undefined>;
+    /**
+     * Modify the source host after 302.
+     */
+    declare public readonly follow302TargetHost: pulumi.Output<string | undefined>;
+    /**
      * The HOST carried in the back-to-origin request.
      */
     declare public readonly originHost: pulumi.Output<string | undefined>;
@@ -95,6 +115,14 @@ export class OriginRule extends pulumi.CustomResource {
      */
     declare public readonly originHttpsPort: pulumi.Output<string | undefined>;
     /**
+     * The mtls switch. Value range:
+     */
+    declare public readonly originMtls: pulumi.Output<string | undefined>;
+    /**
+     * Read timeout interval of the source station (s).
+     */
+    declare public readonly originReadTimeout: pulumi.Output<string | undefined>;
+    /**
      * The protocol used by the back-to-origin request. Value range:
      */
     declare public readonly originScheme: pulumi.Output<string | undefined>;
@@ -103,9 +131,17 @@ export class OriginRule extends pulumi.CustomResource {
      */
     declare public readonly originSni: pulumi.Output<string | undefined>;
     /**
+     * Source station certificate verification switch. Value range:
+     */
+    declare public readonly originVerify: pulumi.Output<string | undefined>;
+    /**
      * Use the range sharding method to download the file from the source. Value range:
      */
     declare public readonly range: pulumi.Output<string | undefined>;
+    /**
+     * range shard size.
+     */
+    declare public readonly rangeChunkSize: pulumi.Output<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
@@ -114,14 +150,16 @@ export class OriginRule extends pulumi.CustomResource {
     declare public readonly rule: pulumi.Output<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      */
     declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
     /**
      * The site ID.
      */
@@ -146,15 +184,25 @@ export class OriginRule extends pulumi.CustomResource {
             const state = argsOrState as OriginRuleState | undefined;
             resourceInputs["configId"] = state?.configId;
             resourceInputs["dnsRecord"] = state?.dnsRecord;
+            resourceInputs["follow302Enable"] = state?.follow302Enable;
+            resourceInputs["follow302MaxTries"] = state?.follow302MaxTries;
+            resourceInputs["follow302RetainArgs"] = state?.follow302RetainArgs;
+            resourceInputs["follow302RetainHeader"] = state?.follow302RetainHeader;
+            resourceInputs["follow302TargetHost"] = state?.follow302TargetHost;
             resourceInputs["originHost"] = state?.originHost;
             resourceInputs["originHttpPort"] = state?.originHttpPort;
             resourceInputs["originHttpsPort"] = state?.originHttpsPort;
+            resourceInputs["originMtls"] = state?.originMtls;
+            resourceInputs["originReadTimeout"] = state?.originReadTimeout;
             resourceInputs["originScheme"] = state?.originScheme;
             resourceInputs["originSni"] = state?.originSni;
+            resourceInputs["originVerify"] = state?.originVerify;
             resourceInputs["range"] = state?.range;
+            resourceInputs["rangeChunkSize"] = state?.rangeChunkSize;
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
@@ -163,15 +211,25 @@ export class OriginRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["dnsRecord"] = args?.dnsRecord;
+            resourceInputs["follow302Enable"] = args?.follow302Enable;
+            resourceInputs["follow302MaxTries"] = args?.follow302MaxTries;
+            resourceInputs["follow302RetainArgs"] = args?.follow302RetainArgs;
+            resourceInputs["follow302RetainHeader"] = args?.follow302RetainHeader;
+            resourceInputs["follow302TargetHost"] = args?.follow302TargetHost;
             resourceInputs["originHost"] = args?.originHost;
             resourceInputs["originHttpPort"] = args?.originHttpPort;
             resourceInputs["originHttpsPort"] = args?.originHttpsPort;
+            resourceInputs["originMtls"] = args?.originMtls;
+            resourceInputs["originReadTimeout"] = args?.originReadTimeout;
             resourceInputs["originScheme"] = args?.originScheme;
             resourceInputs["originSni"] = args?.originSni;
+            resourceInputs["originVerify"] = args?.originVerify;
             resourceInputs["range"] = args?.range;
+            resourceInputs["rangeChunkSize"] = args?.rangeChunkSize;
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
@@ -194,6 +252,26 @@ export interface OriginRuleState {
      */
     dnsRecord?: pulumi.Input<string>;
     /**
+     * Return Source 302 follow switch. Value range:
+     */
+    follow302Enable?: pulumi.Input<string>;
+    /**
+     * 302 follows the upper limit of the number of times, with a value range of [1-5].
+     */
+    follow302MaxTries?: pulumi.Input<string>;
+    /**
+     * Retain the original request parameter switch. Value range:
+     */
+    follow302RetainArgs?: pulumi.Input<string>;
+    /**
+     * Retain the original request header switch. Value range:
+     */
+    follow302RetainHeader?: pulumi.Input<string>;
+    /**
+     * Modify the source host after 302.
+     */
+    follow302TargetHost?: pulumi.Input<string>;
+    /**
      * The HOST carried in the back-to-origin request.
      */
     originHost?: pulumi.Input<string>;
@@ -206,6 +284,14 @@ export interface OriginRuleState {
      */
     originHttpsPort?: pulumi.Input<string>;
     /**
+     * The mtls switch. Value range:
+     */
+    originMtls?: pulumi.Input<string>;
+    /**
+     * Read timeout interval of the source station (s).
+     */
+    originReadTimeout?: pulumi.Input<string>;
+    /**
      * The protocol used by the back-to-origin request. Value range:
      */
     originScheme?: pulumi.Input<string>;
@@ -214,9 +300,17 @@ export interface OriginRuleState {
      */
     originSni?: pulumi.Input<string>;
     /**
+     * Source station certificate verification switch. Value range:
+     */
+    originVerify?: pulumi.Input<string>;
+    /**
      * Use the range sharding method to download the file from the source. Value range:
      */
     range?: pulumi.Input<string>;
+    /**
+     * range shard size.
+     */
+    rangeChunkSize?: pulumi.Input<string>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
@@ -225,14 +319,16 @@ export interface OriginRuleState {
     rule?: pulumi.Input<string>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID.
      */
@@ -252,6 +348,26 @@ export interface OriginRuleArgs {
      */
     dnsRecord?: pulumi.Input<string>;
     /**
+     * Return Source 302 follow switch. Value range:
+     */
+    follow302Enable?: pulumi.Input<string>;
+    /**
+     * 302 follows the upper limit of the number of times, with a value range of [1-5].
+     */
+    follow302MaxTries?: pulumi.Input<string>;
+    /**
+     * Retain the original request parameter switch. Value range:
+     */
+    follow302RetainArgs?: pulumi.Input<string>;
+    /**
+     * Retain the original request header switch. Value range:
+     */
+    follow302RetainHeader?: pulumi.Input<string>;
+    /**
+     * Modify the source host after 302.
+     */
+    follow302TargetHost?: pulumi.Input<string>;
+    /**
      * The HOST carried in the back-to-origin request.
      */
     originHost?: pulumi.Input<string>;
@@ -264,6 +380,14 @@ export interface OriginRuleArgs {
      */
     originHttpsPort?: pulumi.Input<string>;
     /**
+     * The mtls switch. Value range:
+     */
+    originMtls?: pulumi.Input<string>;
+    /**
+     * Read timeout interval of the source station (s).
+     */
+    originReadTimeout?: pulumi.Input<string>;
+    /**
      * The protocol used by the back-to-origin request. Value range:
      */
     originScheme?: pulumi.Input<string>;
@@ -272,9 +396,17 @@ export interface OriginRuleArgs {
      */
     originSni?: pulumi.Input<string>;
     /**
+     * Source station certificate verification switch. Value range:
+     */
+    originVerify?: pulumi.Input<string>;
+    /**
      * Use the range sharding method to download the file from the source. Value range:
      */
     range?: pulumi.Input<string>;
+    /**
+     * range shard size.
+     */
+    rangeChunkSize?: pulumi.Input<string>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
@@ -283,14 +415,16 @@ export interface OriginRuleArgs {
     rule?: pulumi.Input<string>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID.
      */

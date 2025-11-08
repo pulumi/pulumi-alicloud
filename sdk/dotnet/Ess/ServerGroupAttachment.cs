@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = myName,
+    ///         SecurityGroupName = myName,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 

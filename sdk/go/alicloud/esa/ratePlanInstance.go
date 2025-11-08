@@ -67,7 +67,6 @@ import (
 type RatePlanInstance struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
@@ -75,21 +74,26 @@ type RatePlanInstance struct {
 	Coverage pulumi.StringPtrOutput `pulumi:"coverage"`
 	// The time when the plan was purchased.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The plan instance status.
-	// - `Renewing`: renewing
+	// The instance status.
 	InstanceStatus pulumi.StringOutput `pulumi:"instanceStatus"`
-	// The payment type of the resource. Valid values:
+	// The billing method. Valid values:
 	// - `Subscription`: subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Subscription period (in months).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Package name.Value range:
+	// Package name.
+	//
+	// Chinese website account:
 	PlanName pulumi.StringPtrOutput `pulumi:"planName"`
-	// The status of the resource.
+	// The plan status. , the plan is unavailable.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
 	// - `CNAME`
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -123,7 +127,6 @@ func GetRatePlanInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RatePlanInstance resources.
 type ratePlanInstanceState struct {
-	// Specifies whether to enable auto payment.
 	AutoPay *bool `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
@@ -131,26 +134,30 @@ type ratePlanInstanceState struct {
 	Coverage *string `pulumi:"coverage"`
 	// The time when the plan was purchased.
 	CreateTime *string `pulumi:"createTime"`
-	// The plan instance status.
-	// - `Renewing`: renewing
+	// The instance status.
 	InstanceStatus *string `pulumi:"instanceStatus"`
-	// The payment type of the resource. Valid values:
+	// The billing method. Valid values:
 	// - `Subscription`: subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// Subscription period (in months).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
-	// Package name.Value range:
+	// Package name.
+	//
+	// Chinese website account:
 	PlanName *string `pulumi:"planName"`
-	// The status of the resource.
+	// The plan status. , the plan is unavailable.
 	Status *string `pulumi:"status"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
 	// - `CNAME`
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Type *string `pulumi:"type"`
 }
 
 type RatePlanInstanceState struct {
-	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrInput
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
@@ -158,21 +165,26 @@ type RatePlanInstanceState struct {
 	Coverage pulumi.StringPtrInput
 	// The time when the plan was purchased.
 	CreateTime pulumi.StringPtrInput
-	// The plan instance status.
-	// - `Renewing`: renewing
+	// The instance status.
 	InstanceStatus pulumi.StringPtrInput
-	// The payment type of the resource. Valid values:
+	// The billing method. Valid values:
 	// - `Subscription`: subscription.
 	PaymentType pulumi.StringPtrInput
 	// Subscription period (in months).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
-	// Package name.Value range:
+	// Package name.
+	//
+	// Chinese website account:
 	PlanName pulumi.StringPtrInput
-	// The status of the resource.
+	// The plan status. , the plan is unavailable.
 	Status pulumi.StringPtrInput
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
 	// - `CNAME`
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Type pulumi.StringPtrInput
 }
 
@@ -181,43 +193,53 @@ func (RatePlanInstanceState) ElementType() reflect.Type {
 }
 
 type ratePlanInstanceArgs struct {
-	// Specifies whether to enable auto payment.
 	AutoPay *bool `pulumi:"autoPay"`
 	// Auto-renewal:
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage *string `pulumi:"coverage"`
-	// The payment type of the resource. Valid values:
+	// The billing method. Valid values:
 	// - `Subscription`: subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// Subscription period (in months).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
-	// Package name.Value range:
+	// Package name.
+	//
+	// Chinese website account:
 	PlanName *string `pulumi:"planName"`
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
 	// - `CNAME`
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RatePlanInstance resource.
 type RatePlanInstanceArgs struct {
-	// Specifies whether to enable auto payment.
 	AutoPay pulumi.BoolPtrInput
 	// Auto-renewal:
 	AutoRenew pulumi.BoolPtrInput
 	// The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
 	Coverage pulumi.StringPtrInput
-	// The payment type of the resource. Valid values:
+	// The billing method. Valid values:
 	// - `Subscription`: subscription.
 	PaymentType pulumi.StringPtrInput
 	// Subscription period (in months).
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
-	// Package name.Value range:
+	// Package name.
+	//
+	// Chinese website account:
 	PlanName pulumi.StringPtrInput
 	// The DNS setup option for the website. Valid values:
 	// - `NS`
 	// - `CNAME`
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Type pulumi.StringPtrInput
 }
 
@@ -308,7 +330,6 @@ func (o RatePlanInstanceOutput) ToRatePlanInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies whether to enable auto payment.
 func (o RatePlanInstanceOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
@@ -328,29 +349,32 @@ func (o RatePlanInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The plan instance status.
-// - `Renewing`: renewing
+// The instance status.
 func (o RatePlanInstanceOutput) InstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.InstanceStatus }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values:
+// The billing method. Valid values:
 // - `Subscription`: subscription.
 func (o RatePlanInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Subscription period (in months).
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RatePlanInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Package name.Value range:
+// Package name.
+//
+// Chinese website account:
 func (o RatePlanInstanceOutput) PlanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.PlanName }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource.
+// The plan status. , the plan is unavailable.
 func (o RatePlanInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -358,6 +382,8 @@ func (o RatePlanInstanceOutput) Status() pulumi.StringOutput {
 // The DNS setup option for the website. Valid values:
 // - `NS`
 // - `CNAME`
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RatePlanInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatePlanInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

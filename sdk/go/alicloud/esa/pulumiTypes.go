@@ -133,6 +133,8 @@ type HttpResponseHeaderModificationRuleResponseHeaderModification struct {
 	Name string `pulumi:"name"`
 	// Operation method. Possible values:
 	Operation string `pulumi:"operation"`
+	// The value type. Value range:
+	Type *string `pulumi:"type"`
 	// The response header value.
 	Value *string `pulumi:"value"`
 }
@@ -153,6 +155,8 @@ type HttpResponseHeaderModificationRuleResponseHeaderModificationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Operation method. Possible values:
 	Operation pulumi.StringInput `pulumi:"operation"`
+	// The value type. Value range:
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The response header value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -216,6 +220,11 @@ func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Name
 // Operation method. Possible values:
 func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The value type. Value range:
+func (o HttpResponseHeaderModificationRuleResponseHeaderModificationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpResponseHeaderModificationRuleResponseHeaderModification) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The response header value.

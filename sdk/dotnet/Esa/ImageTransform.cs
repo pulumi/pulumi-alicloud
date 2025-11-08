@@ -98,6 +98,12 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
+
+        /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Output("siteId")]
@@ -182,6 +188,12 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId", required: true)]
@@ -232,6 +244,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID, which can be obtained by calling the ListSites API.

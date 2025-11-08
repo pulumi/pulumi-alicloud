@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
- *             .name(myName)
+ *             .securityGroupName(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 

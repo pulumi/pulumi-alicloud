@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +18,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetPoliciesPlainArgs Empty = new GetPoliciesPlainArgs();
 
     /**
-     * Default to `true`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `true`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `true`. Set it to true can output more details.
+     * @return Whether to query the detailed list of resource attributes. Default value: `true`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -32,14 +33,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter results by a specific group name. Returned policies are attached to the specified group.
+     * The name of the user group.
      * 
      */
     @Import(name="groupName")
     private @Nullable String groupName;
 
     /**
-     * @return Filter results by a specific group name. Returned policies are attached to the specified group.
+     * @return The name of the user group.
      * 
      */
     public Optional<String> groupName() {
@@ -47,14 +48,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A list of ram group IDs.
+     * A list of Policy IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of ram group IDs.
+     * @return A list of Policy IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -62,14 +63,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * A regex string to filter resulting policies by name.
+     * A regex string to filter results by Policy name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter resulting policies by name.
+     * @return A regex string to filter results by Policy name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -92,14 +93,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter results by a specific role name. Returned policies are attached to the specified role.
+     * The name of the RAM role.
      * 
      */
     @Import(name="roleName")
     private @Nullable String roleName;
 
     /**
-     * @return Filter results by a specific role name. Returned policies are attached to the specified role.
+     * @return The name of the RAM role.
      * 
      */
     public Optional<String> roleName() {
@@ -107,14 +108,29 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Map<String,String> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Map<String,String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The type of the policy. Valid values: `System` and `Custom`.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * @return The type of the policy. Valid values: `System` and `Custom`.
      * 
      */
     public Optional<String> type() {
@@ -122,14 +138,14 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter results by a specific user name. Returned policies are attached to the specified user.
+     * The name of the RAM user.
      * 
      */
     @Import(name="userName")
     private @Nullable String userName;
 
     /**
-     * @return Filter results by a specific user name. Returned policies are attached to the specified user.
+     * @return The name of the RAM user.
      * 
      */
     public Optional<String> userName() {
@@ -145,6 +161,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
         this.roleName = $.roleName;
+        this.tags = $.tags;
         this.type = $.type;
         this.userName = $.userName;
     }
@@ -168,7 +185,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param enableDetails Default to `true`. Set it to true can output more details.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `true`.
          * 
          * @return builder
          * 
@@ -179,7 +196,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param groupName Filter results by a specific group name. Returned policies are attached to the specified group.
+         * @param groupName The name of the user group.
          * 
          * @return builder
          * 
@@ -190,7 +207,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of ram group IDs.
+         * @param ids A list of Policy IDs.
          * 
          * @return builder
          * 
@@ -201,7 +218,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ids A list of ram group IDs.
+         * @param ids A list of Policy IDs.
          * 
          * @return builder
          * 
@@ -211,7 +228,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param nameRegex A regex string to filter resulting policies by name.
+         * @param nameRegex A regex string to filter results by Policy name.
          * 
          * @return builder
          * 
@@ -233,7 +250,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param roleName Filter results by a specific role name. Returned policies are attached to the specified role.
+         * @param roleName The name of the RAM role.
          * 
          * @return builder
          * 
@@ -244,7 +261,18 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type Filter results by a specific policy type. Valid values are `Custom` and `System`.
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Map<String,String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param type The type of the policy. Valid values: `System` and `Custom`.
          * 
          * @return builder
          * 
@@ -255,7 +283,7 @@ public final class GetPoliciesPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param userName Filter results by a specific user name. Returned policies are attached to the specified user.
+         * @param userName The name of the RAM user.
          * 
          * @return builder
          * 

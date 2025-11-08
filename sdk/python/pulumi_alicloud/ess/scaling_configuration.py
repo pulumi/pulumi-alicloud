@@ -1908,7 +1908,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
@@ -2067,7 +2067,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",

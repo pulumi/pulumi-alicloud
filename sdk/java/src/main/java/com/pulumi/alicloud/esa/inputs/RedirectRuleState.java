@@ -102,6 +102,21 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
@@ -174,18 +189,18 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The redirect type. Valid value:
-     * 
-     * - static
+     * The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The redirect type. Valid value:
-     * 
-     * - static
+     * @return The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      * 
      */
     public Optional<Output<String>> type() {
@@ -200,6 +215,7 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
         this.statusCode = $.statusCode;
@@ -341,6 +357,27 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence Order of rule execution. The smaller the value, the higher the priority for execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
+        }
+
+        /**
          * @param siteId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
          * 
          * @return builder
@@ -437,9 +474,9 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The redirect type. Valid value:
-         * 
-         * - static
+         * @param type The redirection type. Value range:
+         * - static: static mode.
+         * - dynamic: dynamic mode.
          * 
          * @return builder
          * 
@@ -450,9 +487,9 @@ public final class RedirectRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The redirect type. Valid value:
-         * 
-         * - static
+         * @param type The redirection type. Value range:
+         * - static: static mode.
+         * - dynamic: dynamic mode.
          * 
          * @return builder
          * 

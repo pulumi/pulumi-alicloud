@@ -5,12 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
+ * Provides a Alikafka Topic resource.
+ *
+ * Topic in kafka.
+ *
+ * For information about Alikafka Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
  *
  * > **NOTE:** Available since v1.56.0.
- *
- * > **NOTE:**  Only the following regions support create alikafka topic.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  *
  * ## Example Usage
  *
@@ -19,50 +20,65 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const instanceName = config.get("instanceName") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInteger = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {cidrBlock: "172.16.0.0/12"});
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.alikafka.Instance("default", {
- *     name: `${instanceName}-${defaultInteger.result}`,
+ *     name: name,
  *     partitionNum: 50,
  *     diskType: 1,
  *     diskSize: 500,
  *     deployType: 5,
  *     ioMax: 20,
+ *     specType: "professional",
+ *     serviceVersion: "2.2.0",
  *     vswitchId: defaultSwitch.id,
  *     securityGroup: defaultSecurityGroup.id,
+ *     config: JSON.stringify({
+ *         "enable.acl": "true",
+ *     }),
  * });
  * const defaultTopic = new alicloud.alikafka.Topic("default", {
  *     instanceId: defaultInstance.id,
- *     topic: "example-topic",
- *     localTopic: false,
- *     compactTopic: false,
- *     partitionNum: 12,
- *     remark: "dafault_kafka_topic_remark",
+ *     topic: name,
+ *     remark: name,
+ *     localTopic: true,
+ *     compactTopic: true,
+ *     partitionNum: 18,
+ *     configs: JSON.stringify({
+ *         "message.format.version": "2.2.0",
+ *         "max.message.bytes": "10485760",
+ *         "min.insync.replicas": "1",
+ *         "replication-factor": "2",
+ *         "retention.ms": "3600000",
+ *     }),
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
  * ```
  *
  * ## Import
  *
- * ALIKAFKA TOPIC can be imported using the id, e.g.
+ * Alikafka Topic can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * $ pulumi import alicloud:alikafka/topic:Topic example <instance_id>:<topic>
  * ```
  */
 export class Topic extends pulumi.CustomResource {
@@ -94,31 +110,51 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      */
     declare public readonly compactTopic: pulumi.Output<boolean | undefined>;
     /**
-     * InstanceId of your Kafka resource, the topic will create in this instance.
+     * The advanced configurations.
+     */
+    declare public readonly configs: pulumi.Output<string>;
+    /**
+     * (Available since v1.262.1) The time when the topic was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
+    /**
+     * The ID of the instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Whether the topic is localTopic or not.
+     * The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      */
     declare public readonly localTopic: pulumi.Output<boolean | undefined>;
     /**
-     * The number of partitions of the topic. The number should between 1 and 48.
+     * The number of partitions in the topic.
      */
-    declare public readonly partitionNum: pulumi.Output<number | undefined>;
+    declare public readonly partitionNum: pulumi.Output<number>;
     /**
-     * This attribute is a concise description of topic. The length cannot exceed 64.
+     * (Available since v1.262.1) The ID of the region where the instance resides.
+     */
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
+    /**
+     * The description of the topic.
      */
     declare public readonly remark: pulumi.Output<string>;
+    /**
+     * (Available since v1.262.1) The status of the service.
+     */
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * The topic name.
      */
     declare public readonly topic: pulumi.Output<string>;
 
@@ -136,10 +172,14 @@ export class Topic extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TopicState | undefined;
             resourceInputs["compactTopic"] = state?.compactTopic;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["localTopic"] = state?.localTopic;
             resourceInputs["partitionNum"] = state?.partitionNum;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["remark"] = state?.remark;
+            resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["topic"] = state?.topic;
         } else {
@@ -154,12 +194,16 @@ export class Topic extends pulumi.CustomResource {
                 throw new Error("Missing required property 'topic'");
             }
             resourceInputs["compactTopic"] = args?.compactTopic;
+            resourceInputs["configs"] = args?.configs;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["localTopic"] = args?.localTopic;
             resourceInputs["partitionNum"] = args?.partitionNum;
             resourceInputs["remark"] = args?.remark;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["topic"] = args?.topic;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Topic.__pulumiType, name, resourceInputs, opts);
@@ -171,31 +215,51 @@ export class Topic extends pulumi.CustomResource {
  */
 export interface TopicState {
     /**
-     * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      */
     compactTopic?: pulumi.Input<boolean>;
     /**
-     * InstanceId of your Kafka resource, the topic will create in this instance.
+     * The advanced configurations.
+     */
+    configs?: pulumi.Input<string>;
+    /**
+     * (Available since v1.262.1) The time when the topic was created.
+     */
+    createTime?: pulumi.Input<number>;
+    /**
+     * The ID of the instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Whether the topic is localTopic or not.
+     * The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      */
     localTopic?: pulumi.Input<boolean>;
     /**
-     * The number of partitions of the topic. The number should between 1 and 48.
+     * The number of partitions in the topic.
      */
     partitionNum?: pulumi.Input<number>;
     /**
-     * This attribute is a concise description of topic. The length cannot exceed 64.
+     * (Available since v1.262.1) The ID of the region where the instance resides.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The description of the topic.
      */
     remark?: pulumi.Input<string>;
+    /**
+     * (Available since v1.262.1) The status of the service.
+     */
+    status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * The topic name.
      */
     topic?: pulumi.Input<string>;
 }
@@ -205,23 +269,31 @@ export interface TopicState {
  */
 export interface TopicArgs {
     /**
-     * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      */
     compactTopic?: pulumi.Input<boolean>;
     /**
-     * InstanceId of your Kafka resource, the topic will create in this instance.
+     * The advanced configurations.
+     */
+    configs?: pulumi.Input<string>;
+    /**
+     * The ID of the instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Whether the topic is localTopic or not.
+     * The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      */
     localTopic?: pulumi.Input<boolean>;
     /**
-     * The number of partitions of the topic. The number should between 1 and 48.
+     * The number of partitions in the topic.
      */
     partitionNum?: pulumi.Input<number>;
     /**
-     * This attribute is a concise description of topic. The length cannot exceed 64.
+     * The description of the topic.
      */
     remark: pulumi.Input<string>;
     /**
@@ -229,7 +301,7 @@ export interface TopicArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * The topic name.
      */
     topic: pulumi.Input<string>;
 }

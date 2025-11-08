@@ -53,6 +53,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     * 
+     */
+    @Import(name="autoRebalance")
+    private @Nullable Output<Boolean> autoRebalance;
+
+    /**
+     * @return Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRebalance() {
+        return Optional.ofNullable(this.autoRebalance);
+    }
+
+    /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      * 
      */
@@ -65,6 +80,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> azBalance() {
         return Optional.ofNullable(this.azBalance);
+    }
+
+    /**
+     * The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     * 
+     */
+    @Import(name="balanceMode")
+    private @Nullable Output<String> balanceMode;
+
+    /**
+     * @return The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     * 
+     */
+    public Optional<Output<String>> balanceMode() {
+        return Optional.ofNullable(this.balanceMode);
     }
 
     /**
@@ -665,7 +695,9 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     private ScalingGroupArgs(ScalingGroupArgs $) {
         this.albServerGroups = $.albServerGroups;
         this.allocationStrategy = $.allocationStrategy;
+        this.autoRebalance = $.autoRebalance;
         this.azBalance = $.azBalance;
+        this.balanceMode = $.balanceMode;
         this.capacityOptionsCompensateWithOnDemand = $.capacityOptionsCompensateWithOnDemand;
         this.capacityOptionsOnDemandBaseCapacity = $.capacityOptionsOnDemandBaseCapacity;
         this.capacityOptionsOnDemandPercentageAboveBaseCapacity = $.capacityOptionsOnDemandPercentageAboveBaseCapacity;
@@ -776,6 +808,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param autoRebalance Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(@Nullable Output<Boolean> autoRebalance) {
+            $.autoRebalance = autoRebalance;
+            return this;
+        }
+
+        /**
+         * @param autoRebalance Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(Boolean autoRebalance) {
+            return autoRebalance(Output.of(autoRebalance));
+        }
+
+        /**
          * @param azBalance Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
          * 
          * @return builder
@@ -794,6 +847,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder azBalance(Boolean azBalance) {
             return azBalance(Output.of(azBalance));
+        }
+
+        /**
+         * @param balanceMode The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder balanceMode(@Nullable Output<String> balanceMode) {
+            $.balanceMode = balanceMode;
+            return this;
+        }
+
+        /**
+         * @param balanceMode The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder balanceMode(String balanceMode) {
+            return balanceMode(Output.of(balanceMode));
         }
 
         /**

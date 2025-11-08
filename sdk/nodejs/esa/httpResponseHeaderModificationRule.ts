@@ -113,23 +113,29 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
      */
     declare public readonly responseHeaderModifications: pulumi.Output<outputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification[]>;
     /**
-     * Rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     declare public readonly rule: pulumi.Output<string | undefined>;
     /**
-     * Rule switch. Possible values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
-     * Rule name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
     /**
      * The site ID.
      */
     declare public readonly siteId: pulumi.Output<number>;
     /**
-     * The version number of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
 
@@ -151,6 +157,7 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
@@ -165,6 +172,7 @@ export class HttpResponseHeaderModificationRule extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
@@ -187,23 +195,29 @@ export interface HttpResponseHeaderModificationRuleState {
      */
     responseHeaderModifications?: pulumi.Input<pulumi.Input<inputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification>[]>;
     /**
-     * Rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID.
      */
     siteId?: pulumi.Input<number>;
     /**
-     * The version number of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
 }
@@ -217,23 +231,29 @@ export interface HttpResponseHeaderModificationRuleArgs {
      */
     responseHeaderModifications: pulumi.Input<pulumi.Input<inputs.esa.HttpResponseHeaderModificationRuleResponseHeaderModification>[]>;
     /**
-     * Rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
     rule?: pulumi.Input<string>;
     /**
-     * Rule switch. Possible values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * Rule name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID.
      */
     siteId: pulumi.Input<number>;
     /**
-     * The version number of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
 }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +18,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     public static final UserArgs Empty = new UserArgs();
 
     /**
-     * The description of user. The description can be up to `1024` characters long.
+     * The description of the user. The description can be up to 1,024 characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of user. The description can be up to `1024` characters long.
+     * @return The description of the user. The description can be up to 1,024 characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +33,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Directory.
+     * The ID of the directory.
      * 
      */
     @Import(name="directoryId", required=true)
     private Output<String> directoryId;
 
     /**
-     * @return The ID of the Directory.
+     * @return The ID of the directory.
      * 
      */
     public Output<String> directoryId() {
@@ -47,14 +48,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The display name of user. The display name can be up to `256` characters long.
+     * The display name of the user. The display name can be up to 256 characters in length.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name of user. The display name can be up to `256` characters long.
+     * @return The display name of the user. The display name can be up to 256 characters in length.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -62,14 +63,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+     * The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+     * @return The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
      * 
      */
     public Optional<Output<String>> email() {
@@ -77,14 +78,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The first name of user. The firstName can be up to `64` characters long.
+     * The first name of the user. The first name can be up to 64 characters in length.
      * 
      */
     @Import(name="firstName")
     private @Nullable Output<String> firstName;
 
     /**
-     * @return The first name of user. The firstName can be up to `64` characters long.
+     * @return The first name of the user. The first name can be up to 64 characters in length.
      * 
      */
     public Optional<Output<String>> firstName() {
@@ -92,14 +93,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The last name of user. The lastName can be up to `64` characters long.
+     * The last name of the user. The last name can be up to 64 characters in length.
      * 
      */
     @Import(name="lastName")
     private @Nullable Output<String> lastName;
 
     /**
-     * @return The last name of user. The lastName can be up to `64` characters long.
+     * @return The last name of the user. The last name can be up to 64 characters in length.
      * 
      */
     public Optional<Output<String>> lastName() {
@@ -107,14 +108,44 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of user. Valid values: `Disabled`, `Enabled`.
+     * Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    @Import(name="mfaAuthenticationSettings")
+    private @Nullable Output<String> mfaAuthenticationSettings;
+
+    /**
+     * @return Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+     * 
+     */
+    public Optional<Output<String>> mfaAuthenticationSettings() {
+        return Optional.ofNullable(this.mfaAuthenticationSettings);
+    }
+
+    /**
+     * The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of user. Valid values: `Disabled`, `Enabled`.
+     * @return The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -122,14 +153,29 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
      * 
      */
     @Import(name="userName", required=true)
     private Output<String> userName;
 
     /**
-     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+     * @return The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
      * 
      */
     public Output<String> userName() {
@@ -145,7 +191,10 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.email = $.email;
         this.firstName = $.firstName;
         this.lastName = $.lastName;
+        this.mfaAuthenticationSettings = $.mfaAuthenticationSettings;
+        this.password = $.password;
         this.status = $.status;
+        this.tags = $.tags;
         this.userName = $.userName;
     }
 
@@ -168,7 +217,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of user. The description can be up to `1024` characters long.
+         * @param description The description of the user. The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -179,7 +228,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of user. The description can be up to `1024` characters long.
+         * @param description The description of the user. The description can be up to 1,024 characters in length.
          * 
          * @return builder
          * 
@@ -189,7 +238,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryId The ID of the Directory.
+         * @param directoryId The ID of the directory.
          * 
          * @return builder
          * 
@@ -200,7 +249,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param directoryId The ID of the Directory.
+         * @param directoryId The ID of the directory.
          * 
          * @return builder
          * 
@@ -210,7 +259,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of user. The display name can be up to `256` characters long.
+         * @param displayName The display name of the user. The display name can be up to 256 characters in length.
          * 
          * @return builder
          * 
@@ -221,7 +270,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The display name of user. The display name can be up to `256` characters long.
+         * @param displayName The display name of the user. The display name can be up to 256 characters in length.
          * 
          * @return builder
          * 
@@ -231,7 +280,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+         * @param email The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
          * 
          * @return builder
          * 
@@ -242,7 +291,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The User&#39;s Contact Email Address. The email can be up to `128` characters long.
+         * @param email The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
          * 
          * @return builder
          * 
@@ -252,7 +301,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The first name of user. The firstName can be up to `64` characters long.
+         * @param firstName The first name of the user. The first name can be up to 64 characters in length.
          * 
          * @return builder
          * 
@@ -263,7 +312,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName The first name of user. The firstName can be up to `64` characters long.
+         * @param firstName The first name of the user. The first name can be up to 64 characters in length.
          * 
          * @return builder
          * 
@@ -273,7 +322,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The last name of user. The lastName can be up to `64` characters long.
+         * @param lastName The last name of the user. The last name can be up to 64 characters in length.
          * 
          * @return builder
          * 
@@ -284,7 +333,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName The last name of user. The lastName can be up to `64` characters long.
+         * @param lastName The last name of the user. The last name can be up to 64 characters in length.
          * 
          * @return builder
          * 
@@ -294,7 +343,49 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of user. Valid values: `Disabled`, `Enabled`.
+         * @param mfaAuthenticationSettings Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaAuthenticationSettings(@Nullable Output<String> mfaAuthenticationSettings) {
+            $.mfaAuthenticationSettings = mfaAuthenticationSettings;
+            return this;
+        }
+
+        /**
+         * @param mfaAuthenticationSettings Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfaAuthenticationSettings(String mfaAuthenticationSettings) {
+            return mfaAuthenticationSettings(Output.of(mfaAuthenticationSettings));
+        }
+
+        /**
+         * @param password The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
+        }
+
+        /**
+         * @param status The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 
@@ -305,7 +396,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of user. Valid values: `Disabled`, `Enabled`.
+         * @param status The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
          * 
          * @return builder
          * 
@@ -315,7 +406,28 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param userName The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
          * 
          * @return builder
          * 
@@ -326,7 +438,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
+         * @param userName The username of the user. The username can contain digits, letters, and the following special characters: {@literal @}_-. The username can be up to 64 characters in length.
          * 
          * @return builder
          * 

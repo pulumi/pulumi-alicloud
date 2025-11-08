@@ -141,9 +141,17 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     declare public readonly allocationStrategy: pulumi.Output<string>;
     /**
+     * Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     */
+    declare public readonly autoRebalance: pulumi.Output<boolean | undefined>;
+    /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
     declare public readonly azBalance: pulumi.Output<boolean | undefined>;
+    /**
+     * The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     */
+    declare public readonly balanceMode: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
      */
@@ -325,7 +333,9 @@ export class ScalingGroup extends pulumi.CustomResource {
             const state = argsOrState as ScalingGroupState | undefined;
             resourceInputs["albServerGroups"] = state?.albServerGroups;
             resourceInputs["allocationStrategy"] = state?.allocationStrategy;
+            resourceInputs["autoRebalance"] = state?.autoRebalance;
             resourceInputs["azBalance"] = state?.azBalance;
+            resourceInputs["balanceMode"] = state?.balanceMode;
             resourceInputs["capacityOptionsCompensateWithOnDemand"] = state?.capacityOptionsCompensateWithOnDemand;
             resourceInputs["capacityOptionsOnDemandBaseCapacity"] = state?.capacityOptionsOnDemandBaseCapacity;
             resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = state?.capacityOptionsOnDemandPercentageAboveBaseCapacity;
@@ -373,7 +383,9 @@ export class ScalingGroup extends pulumi.CustomResource {
             }
             resourceInputs["albServerGroups"] = args?.albServerGroups;
             resourceInputs["allocationStrategy"] = args?.allocationStrategy;
+            resourceInputs["autoRebalance"] = args?.autoRebalance;
             resourceInputs["azBalance"] = args?.azBalance;
+            resourceInputs["balanceMode"] = args?.balanceMode;
             resourceInputs["capacityOptionsCompensateWithOnDemand"] = args?.capacityOptionsCompensateWithOnDemand;
             resourceInputs["capacityOptionsOnDemandBaseCapacity"] = args?.capacityOptionsOnDemandBaseCapacity;
             resourceInputs["capacityOptionsOnDemandPercentageAboveBaseCapacity"] = args?.capacityOptionsOnDemandPercentageAboveBaseCapacity;
@@ -430,9 +442,17 @@ export interface ScalingGroupState {
      */
     allocationStrategy?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     */
+    autoRebalance?: pulumi.Input<boolean>;
+    /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
     azBalance?: pulumi.Input<boolean>;
+    /**
+     * The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     */
+    balanceMode?: pulumi.Input<string>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
      */
@@ -613,9 +633,17 @@ export interface ScalingGroupArgs {
      */
     allocationStrategy?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     */
+    autoRebalance?: pulumi.Input<boolean>;
+    /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      */
     azBalance?: pulumi.Input<boolean>;
+    /**
+     * The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     */
+    balanceMode?: pulumi.Input<string>;
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
      */

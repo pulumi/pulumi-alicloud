@@ -116,6 +116,10 @@ export class RedirectRule extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
+    /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     declare public readonly siteId: pulumi.Output<number>;
@@ -138,9 +142,9 @@ export class RedirectRule extends pulumi.CustomResource {
      */
     declare public readonly targetUrl: pulumi.Output<string>;
     /**
-     * The redirect type. Valid value:
-     *
-     * - static
+     * The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -162,6 +166,7 @@ export class RedirectRule extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
             resourceInputs["statusCode"] = state?.statusCode;
@@ -188,6 +193,7 @@ export class RedirectRule extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["statusCode"] = args?.statusCode;
@@ -230,6 +236,10 @@ export interface RedirectRuleState {
      */
     ruleName?: pulumi.Input<string>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId?: pulumi.Input<number>;
@@ -252,9 +262,9 @@ export interface RedirectRuleState {
      */
     targetUrl?: pulumi.Input<string>;
     /**
-     * The redirect type. Valid value:
-     *
-     * - static
+     * The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      */
     type?: pulumi.Input<string>;
 }
@@ -285,6 +295,10 @@ export interface RedirectRuleArgs {
      */
     ruleName?: pulumi.Input<string>;
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
     siteId: pulumi.Input<number>;
@@ -307,9 +321,9 @@ export interface RedirectRuleArgs {
      */
     targetUrl: pulumi.Input<string>;
     /**
-     * The redirect type. Valid value:
-     *
-     * - static
+     * The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      */
     type: pulumi.Input<string>;
 }

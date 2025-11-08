@@ -109,17 +109,16 @@ type RewriteUrlRule struct {
 	RewriteQueryStringType pulumi.StringPtrOutput `pulumi:"rewriteQueryStringType"`
 	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrOutput `pulumi:"rewriteUriType"`
-	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-	// ● Match all incoming requests: value set to true
-	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Rule pulumi.StringPtrOutput `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// ‒ on: open.
+	// ‒ off: close.
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
-	// The rule name. You do not need to set this parameter when adding a global configuration.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -169,17 +168,16 @@ type rewriteUrlRuleState struct {
 	RewriteQueryStringType *string `pulumi:"rewriteQueryStringType"`
 	// URI rewrite type. Value range:
 	RewriteUriType *string `pulumi:"rewriteUriType"`
-	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-	// ● Match all incoming requests: value set to true
-	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// ‒ on: open.
+	// ‒ off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// The rule name. You do not need to set this parameter when adding a global configuration.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId *int `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -197,17 +195,16 @@ type RewriteUrlRuleState struct {
 	RewriteQueryStringType pulumi.StringPtrInput
 	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrInput
-	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-	// ● Match all incoming requests: value set to true
-	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// ‒ on: open.
+	// ‒ off: close.
 	RuleEnable pulumi.StringPtrInput
-	// The rule name. You do not need to set this parameter when adding a global configuration.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntPtrInput
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -227,17 +224,16 @@ type rewriteUrlRuleArgs struct {
 	RewriteQueryStringType *string `pulumi:"rewriteQueryStringType"`
 	// URI rewrite type. Value range:
 	RewriteUriType *string `pulumi:"rewriteUriType"`
-	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-	// ● Match all incoming requests: value set to true
-	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Rule *string `pulumi:"rule"`
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// ‒ on: open.
+	// ‒ off: close.
 	RuleEnable *string `pulumi:"ruleEnable"`
-	// The rule name. You do not need to set this parameter when adding a global configuration.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId int `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -254,17 +250,16 @@ type RewriteUrlRuleArgs struct {
 	RewriteQueryStringType pulumi.StringPtrInput
 	// URI rewrite type. Value range:
 	RewriteUriType pulumi.StringPtrInput
-	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-	// ● Match all incoming requests: value set to true
-	// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Rule pulumi.StringPtrInput
-	// Indicates whether the rule is enabled. Valid values:
-	//
-	// - on
-	// - off
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// ‒ on: open.
+	// ‒ off: close.
 	RuleEnable pulumi.StringPtrInput
-	// The rule name. You do not need to set this parameter when adding a global configuration.
+	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntInput
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -380,24 +375,26 @@ func (o RewriteUrlRuleOutput) RewriteUriType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RewriteUriType }).(pulumi.StringPtrOutput)
 }
 
-// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-// ● Match all incoming requests: value set to true
-// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 func (o RewriteUrlRuleOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.Rule }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the rule is enabled. Valid values:
-//
-// - on
-// - off
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// ‒ on: open.
+// ‒ off: close.
 func (o RewriteUrlRuleOutput) RuleEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RuleEnable }).(pulumi.StringPtrOutput)
 }
 
-// The rule name. You do not need to set this parameter when adding a global configuration.
+// Rule name. When adding global configuration, this parameter does not need to be set.
 func (o RewriteUrlRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o RewriteUrlRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *RewriteUrlRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.

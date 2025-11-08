@@ -95,13 +95,15 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> Http2Origin { get; private set; } = null!;
 
         /// <summary>
-        /// Rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Rule switch. Values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
@@ -113,13 +115,19 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
+
+        /// <summary>
         /// Site ID.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Site version number.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
@@ -201,13 +209,15 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Http2Origin { get; set; }
 
         /// <summary>
-        /// Rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
@@ -219,13 +229,19 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// Site ID.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Site version number.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
@@ -275,13 +291,15 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Http2Origin { get; set; }
 
         /// <summary>
-        /// Rule content.
+        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        /// - Match all incoming requests: value set to true
+        /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Rule switch. Values:
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
@@ -293,13 +311,19 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// Site ID.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
 
         /// <summary>
-        /// Site version number.
+        /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }

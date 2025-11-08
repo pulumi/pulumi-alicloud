@@ -10,12 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
+    /// Provides a Alikafka Topic resource.
+    /// 
+    /// Topic in kafka.
+    /// 
+    /// For information about Alikafka Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
     /// 
     /// &gt; **NOTE:** Available since v1.56.0.
-    /// 
-    /// &gt; **NOTE:**  Only the following regions support create alikafka topic.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
     /// 
     /// ## Example Usage
     /// 
@@ -24,32 +25,28 @@ namespace Pulumi.AliCloud.AliKafka
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var instanceName = config.Get("instanceName") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
+    ///         VswitchName = name,
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
@@ -62,24 +59,43 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
     ///     {
-    ///         Name = $"{instanceName}-{defaultInteger.Result}",
+    ///         Name = name,
     ///         PartitionNum = 50,
     ///         DiskType = 1,
     ///         DiskSize = 500,
     ///         DeployType = 5,
     ///         IoMax = 20,
+    ///         SpecType = "professional",
+    ///         ServiceVersion = "2.2.0",
     ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroup = defaultSecurityGroup.Id,
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["enable.acl"] = "true",
+    ///         }),
     ///     });
     /// 
     ///     var defaultTopic = new AliCloud.AliKafka.Topic("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         TopicName = "example-topic",
-    ///         LocalTopic = false,
-    ///         CompactTopic = false,
-    ///         PartitionNum = 12,
-    ///         Remark = "dafault_kafka_topic_remark",
+    ///         TopicName = name,
+    ///         Remark = name,
+    ///         LocalTopic = true,
+    ///         CompactTopic = true,
+    ///         PartitionNum = 18,
+    ///         Configs = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["message.format.version"] = "2.2.0",
+    ///             ["max.message.bytes"] = "10485760",
+    ///             ["min.insync.replicas"] = "1",
+    ///             ["replication-factor"] = "2",
+    ///             ["retention.ms"] = "3600000",
+    ///         }),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
     ///     });
     /// 
     /// });
@@ -87,44 +103,72 @@ namespace Pulumi.AliCloud.AliKafka
     /// 
     /// ## Import
     /// 
-    /// ALIKAFKA TOPIC can be imported using the id, e.g.
+    /// Alikafka Topic can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+    /// $ pulumi import alicloud:alikafka/topic:Topic example &lt;instance_id&gt;:&lt;topic&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:alikafka/topic:Topic")]
     public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        /// The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        /// - false: The delete cleanup policy is used.
+        /// - true: The compact cleanup policy is used.
         /// </summary>
         [Output("compactTopic")]
         public Output<bool?> CompactTopic { get; private set; } = null!;
 
         /// <summary>
-        /// InstanceId of your Kafka resource, the topic will create in this instance.
+        /// The advanced configurations.
+        /// </summary>
+        [Output("configs")]
+        public Output<string> Configs { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.262.1) The time when the topic was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the topic is localTopic or not.
+        /// The storage engine of the topic. Valid values:
+        /// - false: Cloud storage.
+        /// - true: Local storage.
         /// </summary>
         [Output("localTopic")]
         public Output<bool?> LocalTopic { get; private set; } = null!;
 
         /// <summary>
-        /// The number of partitions of the topic. The number should between 1 and 48.
+        /// The number of partitions in the topic.
         /// </summary>
         [Output("partitionNum")]
-        public Output<int?> PartitionNum { get; private set; } = null!;
+        public Output<int> PartitionNum { get; private set; } = null!;
 
         /// <summary>
-        /// This attribute is a concise description of topic. The length cannot exceed 64.
+        /// (Available since v1.262.1) The ID of the region where the instance resides.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the topic.
         /// </summary>
         [Output("remark")]
         public Output<string> Remark { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.262.1) The status of the service.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
@@ -133,7 +177,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        /// The topic name.
         /// </summary>
         [Output("topic")]
         public Output<string> TopicName { get; private set; } = null!;
@@ -185,31 +229,41 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        /// The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        /// - false: The delete cleanup policy is used.
+        /// - true: The compact cleanup policy is used.
         /// </summary>
         [Input("compactTopic")]
         public Input<bool>? CompactTopic { get; set; }
 
         /// <summary>
-        /// InstanceId of your Kafka resource, the topic will create in this instance.
+        /// The advanced configurations.
+        /// </summary>
+        [Input("configs")]
+        public Input<string>? Configs { get; set; }
+
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Whether the topic is localTopic or not.
+        /// The storage engine of the topic. Valid values:
+        /// - false: Cloud storage.
+        /// - true: Local storage.
         /// </summary>
         [Input("localTopic")]
         public Input<bool>? LocalTopic { get; set; }
 
         /// <summary>
-        /// The number of partitions of the topic. The number should between 1 and 48.
+        /// The number of partitions in the topic.
         /// </summary>
         [Input("partitionNum")]
         public Input<int>? PartitionNum { get; set; }
 
         /// <summary>
-        /// This attribute is a concise description of topic. The length cannot exceed 64.
+        /// The description of the topic.
         /// </summary>
         [Input("remark", required: true)]
         public Input<string> Remark { get; set; } = null!;
@@ -227,7 +281,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        /// The topic name.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -241,34 +295,62 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class TopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        /// The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        /// - false: The delete cleanup policy is used.
+        /// - true: The compact cleanup policy is used.
         /// </summary>
         [Input("compactTopic")]
         public Input<bool>? CompactTopic { get; set; }
 
         /// <summary>
-        /// InstanceId of your Kafka resource, the topic will create in this instance.
+        /// The advanced configurations.
+        /// </summary>
+        [Input("configs")]
+        public Input<string>? Configs { get; set; }
+
+        /// <summary>
+        /// (Available since v1.262.1) The time when the topic was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Whether the topic is localTopic or not.
+        /// The storage engine of the topic. Valid values:
+        /// - false: Cloud storage.
+        /// - true: Local storage.
         /// </summary>
         [Input("localTopic")]
         public Input<bool>? LocalTopic { get; set; }
 
         /// <summary>
-        /// The number of partitions of the topic. The number should between 1 and 48.
+        /// The number of partitions in the topic.
         /// </summary>
         [Input("partitionNum")]
         public Input<int>? PartitionNum { get; set; }
 
         /// <summary>
-        /// This attribute is a concise description of topic. The length cannot exceed 64.
+        /// (Available since v1.262.1) The ID of the region where the instance resides.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The description of the topic.
         /// </summary>
         [Input("remark")]
         public Input<string>? Remark { get; set; }
+
+        /// <summary>
+        /// (Available since v1.262.1) The status of the service.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -283,7 +365,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        /// The topic name.
         /// </summary>
         [Input("topic")]
         public Input<string>? TopicName { get; set; }

@@ -28,16 +28,21 @@ class RatePlanInstanceArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RatePlanInstance resource.
-        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values:
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
                - `Subscription`: subscription.
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
-        :param pulumi.Input[_builtins.str] plan_name: Package name.Value range:
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+               
+               Chinese website account:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -57,9 +62,6 @@ class RatePlanInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable auto payment.
-        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -94,7 +96,7 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment type of the resource. Valid values:
+        The billing method. Valid values:
         - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
@@ -108,6 +110,8 @@ class RatePlanInstanceArgs:
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Subscription period (in months).
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -119,7 +123,9 @@ class RatePlanInstanceArgs:
     @pulumi.getter(name="planName")
     def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Package name.Value range:
+        Package name.  
+
+        Chinese website account:
         """
         return pulumi.get(self, "plan_name")
 
@@ -134,6 +140,8 @@ class RatePlanInstanceArgs:
         The DNS setup option for the website. Valid values:
         - `NS`
         - `CNAME`
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "type")
 
@@ -157,20 +165,24 @@ class _RatePlanInstanceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RatePlanInstance resources.
-        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] create_time: The time when the plan was purchased.
-        :param pulumi.Input[_builtins.str] instance_status: The plan instance status.
-               - `Renewing`: renewing
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values:
+        :param pulumi.Input[_builtins.str] instance_status: The instance status.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
                - `Subscription`: subscription.
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
-        :param pulumi.Input[_builtins.str] plan_name: Package name.Value range:
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+               
+               Chinese website account:
+        :param pulumi.Input[_builtins.str] status: The plan status. , the plan is unavailable.
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -196,9 +208,6 @@ class _RatePlanInstanceState:
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable auto payment.
-        """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
@@ -245,8 +254,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="instanceStatus")
     def instance_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The plan instance status.
-        - `Renewing`: renewing
+        The instance status.
         """
         return pulumi.get(self, "instance_status")
 
@@ -258,7 +266,7 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment type of the resource. Valid values:
+        The billing method. Valid values:
         - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
@@ -272,6 +280,8 @@ class _RatePlanInstanceState:
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Subscription period (in months).
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -283,7 +293,9 @@ class _RatePlanInstanceState:
     @pulumi.getter(name="planName")
     def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Package name.Value range:
+        Package name.  
+
+        Chinese website account:
         """
         return pulumi.get(self, "plan_name")
 
@@ -295,7 +307,7 @@ class _RatePlanInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource.
+        The plan status. , the plan is unavailable.
         """
         return pulumi.get(self, "status")
 
@@ -310,6 +322,8 @@ class _RatePlanInstanceState:
         The DNS setup option for the website. Valid values:
         - `NS`
         - `CNAME`
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "type")
 
@@ -371,16 +385,21 @@ class RatePlanInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values:
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
                - `Subscription`: subscription.
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
-        :param pulumi.Input[_builtins.str] plan_name: Package name.Value range:
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+               
+               Chinese website account:
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         ...
     @overload
@@ -493,20 +512,24 @@ class RatePlanInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_pay: Specifies whether to enable auto payment.
         :param pulumi.Input[_builtins.bool] auto_renew: Auto-renewal:
         :param pulumi.Input[_builtins.str] coverage: The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
         :param pulumi.Input[_builtins.str] create_time: The time when the plan was purchased.
-        :param pulumi.Input[_builtins.str] instance_status: The plan instance status.
-               - `Renewing`: renewing
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource. Valid values:
+        :param pulumi.Input[_builtins.str] instance_status: The instance status.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
                - `Subscription`: subscription.
         :param pulumi.Input[_builtins.int] period: Subscription period (in months).
-        :param pulumi.Input[_builtins.str] plan_name: Package name.Value range:
-        :param pulumi.Input[_builtins.str] status: The status of the resource.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] plan_name: Package name.  
+               
+               Chinese website account:
+        :param pulumi.Input[_builtins.str] status: The plan status. , the plan is unavailable.
         :param pulumi.Input[_builtins.str] type: The DNS setup option for the website. Valid values:
                - `NS`
                - `CNAME`
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -527,9 +550,6 @@ class RatePlanInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable auto payment.
-        """
         return pulumi.get(self, "auto_pay")
 
     @_builtins.property
@@ -560,8 +580,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceStatus")
     def instance_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The plan instance status.
-        - `Renewing`: renewing
+        The instance status.
         """
         return pulumi.get(self, "instance_status")
 
@@ -569,7 +588,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource. Valid values:
+        The billing method. Valid values:
         - `Subscription`: subscription.
         """
         return pulumi.get(self, "payment_type")
@@ -579,6 +598,8 @@ class RatePlanInstance(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Subscription period (in months).
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -586,7 +607,9 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter(name="planName")
     def plan_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Package name.Value range:
+        Package name.  
+
+        Chinese website account:
         """
         return pulumi.get(self, "plan_name")
 
@@ -594,7 +617,7 @@ class RatePlanInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource.
+        The plan status. , the plan is unavailable.
         """
         return pulumi.get(self, "status")
 
@@ -605,6 +628,8 @@ class RatePlanInstance(pulumi.CustomResource):
         The DNS setup option for the website. Valid values:
         - `NS`
         - `CNAME`
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "type")
 

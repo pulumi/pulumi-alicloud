@@ -11,11 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+// This data source provides the RAM Policies of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available since v1.0.0+.
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -27,11 +29,17 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Min: 10000,
 //				Max: 99999,
@@ -39,53 +47,38 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
-//				Name:     pulumi.Sprintf("groupName-%v", _default.Result),
-//				Comments: pulumi.String("this is a group comments."),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				PolicyName: pulumi.Sprintf("tf-example-%v", _default.Result),
-//				PolicyDocument: pulumi.String(`    {
-//	      \"Statement\": [
-//	        {
-//	          \"Action\": [
-//	            \"oss:ListObjects\",
-//	            \"oss:GetObject\"
-//	          ],
-//	          \"Effect\": \"Allow\",
-//	          \"Resource\": [
-//	            \"acs:oss:*:*:mybucket\",
-//	            \"acs:oss:*:*:mybucket/*\"
-//	          ]
-//	        }
-//	      ],
-//	        \"Version\": \"1\"
-//	    }
+//			defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
+//				PolicyName:  pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Description: pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Force:       pulumi.Bool(true),
+//				PolicyDocument: pulumi.String(`  {
+//	    \"Statement\": [
+//	      {
+//	        \"Effect\": \"Allow\",
+//	        \"Action\": \"*\",
+//	        \"Resource\": \"*\"
+//	      }
+//	    ],
+//	    \"Version\": \"1\"
+//	  }
 //
 // `),
 //
-//				Description: pulumi.String("this is a policy test"),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Policy"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			attach, err := ram.NewGroupPolicyAttachment(ctx, "attach", &ram.GroupPolicyAttachmentArgs{
-//				PolicyName: policy.PolicyName,
-//				PolicyType: policy.Type,
-//				GroupName:  group.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			policiesDs := ram.GetPoliciesOutput(ctx, ram.GetPoliciesOutputArgs{
-//				GroupName: attach.GroupName,
-//				Type:      pulumi.String("Custom"),
+//			ids := ram.GetPoliciesOutput(ctx, ram.GetPoliciesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultPolicy.ID(),
+//				},
 //			}, nil)
-//			ctx.Export("firstPolicyName", policiesDs.ApplyT(func(policiesDs ram.GetPoliciesResult) (*string, error) {
-//				return &policiesDs.Policies[0].Name, nil
+//			ctx.Export("ramPoliciesId0", ids.ApplyT(func(ids ram.GetPoliciesResult) (*string, error) {
+//				return &ids.Policies[0].Id, nil
 //			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
@@ -104,21 +97,23 @@ func GetPolicies(ctx *pulumi.Context, args *GetPoliciesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getPolicies.
 type GetPoliciesArgs struct {
-	// Default to `true`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `true`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// Filter results by a specific group name. Returned policies are attached to the specified group.
+	// The name of the user group.
 	GroupName *string `pulumi:"groupName"`
-	// A list of ram group IDs.
+	// A list of Policy IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter resulting policies by name.
+	// A regex string to filter results by Policy name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Filter results by a specific role name. Returned policies are attached to the specified role.
+	// The name of the RAM role.
 	RoleName *string `pulumi:"roleName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the policy. Valid values: `System` and `Custom`.
 	Type *string `pulumi:"type"`
-	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	// The name of the RAM user.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -130,15 +125,17 @@ type GetPoliciesResult struct {
 	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of ram group names.
+	// (Available since v1.42.0) A list of Policy names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// A list of policies. Each element contains the following attributes:
+	// A list of Policy. Each element contains the following attributes:
 	Policies []GetPoliciesPolicy `pulumi:"policies"`
 	RoleName *string             `pulumi:"roleName"`
-	// Type of the policy.
+	// (Available since v1.262.1) The tags of the Policy.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the policy.
 	Type *string `pulumi:"type"`
-	// The user name of  policy.
+	// (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
 	UserName *string `pulumi:"userName"`
 }
 
@@ -153,21 +150,23 @@ func GetPoliciesOutput(ctx *pulumi.Context, args GetPoliciesOutputArgs, opts ...
 
 // A collection of arguments for invoking getPolicies.
 type GetPoliciesOutputArgs struct {
-	// Default to `true`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `true`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// Filter results by a specific group name. Returned policies are attached to the specified group.
+	// The name of the user group.
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
-	// A list of ram group IDs.
+	// A list of Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter resulting policies by name.
+	// A regex string to filter results by Policy name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Filter results by a specific role name. Returned policies are attached to the specified role.
+	// The name of the RAM role.
 	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The type of the policy. Valid values: `System` and `Custom`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	// The name of the RAM user.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
@@ -211,7 +210,7 @@ func (o GetPoliciesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of ram group names.
+// (Available since v1.42.0) A list of Policy names.
 func (o GetPoliciesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPoliciesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -220,7 +219,7 @@ func (o GetPoliciesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// A list of policies. Each element contains the following attributes:
+// A list of Policy. Each element contains the following attributes:
 func (o GetPoliciesResultOutput) Policies() GetPoliciesPolicyArrayOutput {
 	return o.ApplyT(func(v GetPoliciesResult) []GetPoliciesPolicy { return v.Policies }).(GetPoliciesPolicyArrayOutput)
 }
@@ -229,12 +228,17 @@ func (o GetPoliciesResultOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.RoleName }).(pulumi.StringPtrOutput)
 }
 
-// Type of the policy.
+// (Available since v1.262.1) The tags of the Policy.
+func (o GetPoliciesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPoliciesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the policy.
 func (o GetPoliciesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The user name of  policy.
+// (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
 func (o GetPoliciesResultOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoliciesResult) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }

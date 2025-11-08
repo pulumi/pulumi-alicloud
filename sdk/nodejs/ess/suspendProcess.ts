@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     vswitchName: myName,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: myName,
+ *     securityGroupName: myName,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {

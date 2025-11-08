@@ -119,6 +119,12 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
+
+        /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Output("siteId")]
@@ -149,9 +155,9 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> TargetUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The redirect type. Valid value:
-        /// 
-        /// - static
+        /// The redirection type. Value range:
+        /// - static: static mode.
+        /// - dynamic: dynamic mode.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -232,6 +238,12 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId", required: true)]
@@ -262,9 +274,9 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> TargetUrl { get; set; } = null!;
 
         /// <summary>
-        /// The redirect type. Valid value:
-        /// 
-        /// - static
+        /// The redirection type. Value range:
+        /// - static: static mode.
+        /// - dynamic: dynamic mode.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -313,6 +325,12 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
+        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId")]
@@ -343,9 +361,9 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? TargetUrl { get; set; }
 
         /// <summary>
-        /// The redirect type. Valid value:
-        /// 
-        /// - static
+        /// The redirection type. Value range:
+        /// - static: static mode.
+        /// - dynamic: dynamic mode.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

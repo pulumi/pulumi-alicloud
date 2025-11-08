@@ -14,55 +14,59 @@ namespace Pulumi.AliCloud.Ram.Outputs
     public sealed class GetPoliciesPolicyResult
     {
         /// <summary>
-        /// Attachment count of the policy.
+        /// The number of references to the policy.
         /// </summary>
         public readonly int AttachmentCount;
         /// <summary>
-        /// Creation date of the policy.
+        /// The time when the policy was created.
         /// </summary>
         public readonly string CreateDate;
         /// <summary>
-        /// Default version of the policy.
+        /// The default version of the policy.
         /// </summary>
         public readonly string DefaultVersion;
         /// <summary>
-        /// Description of the policy.
+        /// The description of the policy.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Policy document of the policy.
+        /// The document of the policy. **Note:** `Document` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string Document;
         /// <summary>
-        /// ID of the policy.
+        /// (Available since v1.114.0) The ID of the Policy.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the policy.
+        /// The name of the policy.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Policy document of the policy.
+        /// (Available since v1.114.0) The document of the policy. **Note:** `PolicyDocument` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string PolicyDocument;
         /// <summary>
-        /// Name of the policy.
+        /// (Available since v1.114.0) The name of the policy.
         /// </summary>
         public readonly string PolicyName;
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The type of the policy. Valid values: `System` and `Custom`.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Update date of the policy.
+        /// The time when the policy was modified.
         /// </summary>
         public readonly string UpdateDate;
         /// <summary>
-        /// Filter results by a specific user name. Returned policies are attached to the specified user.
+        /// The name of the RAM user.
         /// </summary>
         public readonly string UserName;
         /// <summary>
-        /// The ID of default policy.
+        /// (Available since v1.114.0) The ID of the default policy version. **Note:** `VersionId` takes effect only if `EnableDetails` is set to `True`.
         /// </summary>
         public readonly string VersionId;
 
@@ -86,6 +90,8 @@ namespace Pulumi.AliCloud.Ram.Outputs
 
             string policyName,
 
+            ImmutableDictionary<string, string> tags,
+
             string type,
 
             string updateDate,
@@ -103,6 +109,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
             Name = name;
             PolicyDocument = policyDocument;
             PolicyName = policyName;
+            Tags = tags;
             Type = type;
             UpdateDate = updateDate;
             UserName = userName;

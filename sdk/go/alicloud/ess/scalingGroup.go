@@ -166,8 +166,12 @@ type ScalingGroup struct {
 	AlbServerGroups ScalingGroupAlbServerGroupArrayOutput `pulumi:"albServerGroups"`
 	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AllocationStrategy pulumi.StringOutput `pulumi:"allocationStrategy"`
+	// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+	AutoRebalance pulumi.BoolPtrOutput `pulumi:"autoRebalance"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrOutput `pulumi:"azBalance"`
+	// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+	BalanceMode pulumi.StringPtrOutput `pulumi:"balanceMode"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
 	CapacityOptionsCompensateWithOnDemand pulumi.BoolOutput `pulumi:"capacityOptionsCompensateWithOnDemand"`
 	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
@@ -301,8 +305,12 @@ type scalingGroupState struct {
 	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
 	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+	BalanceMode *string `pulumi:"balanceMode"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
 	CapacityOptionsCompensateWithOnDemand *bool `pulumi:"capacityOptionsCompensateWithOnDemand"`
 	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
@@ -401,8 +409,12 @@ type ScalingGroupState struct {
 	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
 	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AllocationStrategy pulumi.StringPtrInput
+	// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+	AutoRebalance pulumi.BoolPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+	BalanceMode pulumi.StringPtrInput
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
 	CapacityOptionsCompensateWithOnDemand pulumi.BoolPtrInput
 	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
@@ -505,8 +517,12 @@ type scalingGroupArgs struct {
 	AlbServerGroups []ScalingGroupAlbServerGroup `pulumi:"albServerGroups"`
 	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
+	// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+	BalanceMode *string `pulumi:"balanceMode"`
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
 	CapacityOptionsCompensateWithOnDemand *bool `pulumi:"capacityOptionsCompensateWithOnDemand"`
 	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
@@ -606,8 +622,12 @@ type ScalingGroupArgs struct {
 	AlbServerGroups ScalingGroupAlbServerGroupArrayInput
 	// The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AllocationStrategy pulumi.StringPtrInput
+	// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+	AutoRebalance pulumi.BoolPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+	BalanceMode pulumi.StringPtrInput
 	// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
 	CapacityOptionsCompensateWithOnDemand pulumi.BoolPtrInput
 	// The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
@@ -798,9 +818,19 @@ func (o ScalingGroupOutput) AllocationStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.AllocationStrategy }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+func (o ScalingGroupOutput) AutoRebalance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.AutoRebalance }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 func (o ScalingGroupOutput) AzBalance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.AzBalance }).(pulumi.BoolPtrOutput)
+}
+
+// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+func (o ScalingGroupOutput) BalanceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.BalanceMode }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.

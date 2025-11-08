@@ -163,56 +163,64 @@ public class RewriteUrlRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rewriteUriType);
     }
     /**
-     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     @Export(name="rule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rule;
 
     /**
-     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     public Output<Optional<String>> rule() {
         return Codegen.optional(this.rule);
     }
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleEnable;
 
     /**
-     * @return Indicates whether the rule is enabled. Valid values:
-     * 
-     * - on
-     * - off
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      * 
      */
     public Output<Optional<String>> ruleEnable() {
         return Codegen.optional(this.ruleEnable);
     }
     /**
-     * The rule name. You do not need to set this parameter when adding a global configuration.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
-     * @return The rule name. You do not need to set this parameter when adding a global configuration.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
+    }
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
     }
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.

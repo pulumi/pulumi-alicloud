@@ -99,8 +99,8 @@ import (
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(myName),
-//				VpcId: defaultNetwork.ID(),
+//				SecurityGroupName: pulumi.String(myName),
+//				VpcId:             defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err

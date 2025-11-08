@@ -10714,6 +10714,10 @@ export namespace esa {
          */
         operation: pulumi.Input<string>;
         /**
+         * The value type. Value range:
+         */
+        type?: pulumi.Input<string>;
+        /**
          * The response header value.
          */
         value?: pulumi.Input<string>;

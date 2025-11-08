@@ -142,7 +142,11 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
+    /**
+     * Site ID, which can be obtained by calling the ListSites interface.
      */
     declare public readonly siteId: pulumi.Output<number>;
     /**
@@ -193,6 +197,7 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["tls10"] = state?.tls10;
             resourceInputs["tls11"] = state?.tls11;
@@ -212,6 +217,7 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["tls10"] = args?.tls10;
             resourceInputs["tls11"] = args?.tls11;
@@ -284,7 +290,11 @@ export interface HttpsBasicConfigurationState {
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
+     * Site ID, which can be obtained by calling the ListSites interface.
      */
     siteId?: pulumi.Input<number>;
     /**
@@ -369,7 +379,11 @@ export interface HttpsBasicConfigurationArgs {
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
+     * Site ID, which can be obtained by calling the ListSites interface.
      */
     siteId: pulumi.Input<number>;
     /**

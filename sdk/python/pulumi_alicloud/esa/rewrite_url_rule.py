@@ -26,6 +26,7 @@ class RewriteUrlRuleArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -34,14 +35,12 @@ class RewriteUrlRuleArgs:
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
         :param pulumi.Input[_builtins.str] rewrite_uri_type: URI rewrite type. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-               ● Match all incoming requests: value set to true
-               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[_builtins.str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
+        :param pulumi.Input[_builtins.str] rule: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               ‒ on: open.
+               ‒ off: close.
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
@@ -58,6 +57,8 @@ class RewriteUrlRuleArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
         if uri is not None:
@@ -115,9 +116,7 @@ class RewriteUrlRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        ● Match all incoming requests: value set to true
-        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "rule")
 
@@ -129,10 +128,9 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        ‒ on: open.
+        ‒ off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -144,13 +142,25 @@ class RewriteUrlRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The rule name. You do not need to set this parameter when adding a global configuration.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
     def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
@@ -187,6 +197,7 @@ class _RewriteUrlRuleState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
@@ -196,14 +207,12 @@ class _RewriteUrlRuleState:
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
         :param pulumi.Input[_builtins.str] rewrite_uri_type: URI rewrite type. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-               ● Match all incoming requests: value set to true
-               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[_builtins.str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
+        :param pulumi.Input[_builtins.str] rule: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               ‒ on: open.
+               ‒ off: close.
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
@@ -222,6 +231,8 @@ class _RewriteUrlRuleState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -281,9 +292,7 @@ class _RewriteUrlRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        ● Match all incoming requests: value set to true
-        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "rule")
 
@@ -295,10 +304,9 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        ‒ on: open.
+        ‒ off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -310,13 +318,25 @@ class _RewriteUrlRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The rule name. You do not need to set this parameter when adding a global configuration.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
     def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -367,6 +387,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -432,14 +453,12 @@ class RewriteUrlRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
         :param pulumi.Input[_builtins.str] rewrite_uri_type: URI rewrite type. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-               ● Match all incoming requests: value set to true
-               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[_builtins.str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
+        :param pulumi.Input[_builtins.str] rule: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               ‒ on: open.
+               ‒ off: close.
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
@@ -527,6 +546,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
@@ -545,6 +565,7 @@ class RewriteUrlRule(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -568,6 +589,7 @@ class RewriteUrlRule(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             uri: Optional[pulumi.Input[_builtins.str]] = None) -> 'RewriteUrlRule':
@@ -582,14 +604,12 @@ class RewriteUrlRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
         :param pulumi.Input[_builtins.str] rewrite_uri_type: URI rewrite type. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-               ● Match all incoming requests: value set to true
-               ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
-        :param pulumi.Input[_builtins.str] rule_enable: Indicates whether the rule is enabled. Valid values:
-               
-               - on
-               - off
-        :param pulumi.Input[_builtins.str] rule_name: The rule name. You do not need to set this parameter when adding a global configuration.
+        :param pulumi.Input[_builtins.str] rule: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               ‒ on: open.
+               ‒ off: close.
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
@@ -605,6 +625,7 @@ class RewriteUrlRule(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         __props__.__dict__["uri"] = uri
@@ -646,9 +667,7 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        ● Match all incoming requests: value set to true
-        ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "rule")
 
@@ -656,10 +675,9 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Indicates whether the rule is enabled. Valid values:
-
-        - on
-        - off
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        ‒ on: open.
+        ‒ off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -667,9 +685,17 @@ class RewriteUrlRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The rule name. You do not need to set this parameter when adding a global configuration.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")

@@ -155,7 +155,13 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
+
+        /// <summary>
+        /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Output("siteId")]
         public Output<int> SiteId { get; private set; } = null!;
@@ -308,7 +314,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
+        /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId", required: true)]
         public Input<int> SiteId { get; set; } = null!;
@@ -429,7 +441,13 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
+
+        /// <summary>
+        /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId")]
         public Input<int>? SiteId { get; set; }
