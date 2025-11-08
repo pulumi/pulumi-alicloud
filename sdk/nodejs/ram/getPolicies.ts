@@ -7,56 +7,49 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the RAM Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const group = new alicloud.ram.Group("group", {
- *     name: `groupName-${_default.result}`,
- *     comments: "this is a group comments.",
- * });
- * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: `tf-example-${_default.result}`,
- *     policyDocument: `    {
- *       \\"Statement\\": [
- *         {
- *           \\"Action\\": [
- *             \\"oss:ListObjects\\",
- *             \\"oss:GetObject\\"
- *           ],
- *           \\"Effect\\": \\"Allow\\",
- *           \\"Resource\\": [
- *             \\"acs:oss:*:*:mybucket\\",
- *             \\"acs:oss:*:*:mybucket/*\\"
- *           ]
- *         }
- *       ],
- *         \\"Version\\": \\"1\\"
- *     }
+ * const defaultPolicy = new alicloud.ram.Policy("default", {
+ *     policyName: `${name}-${_default.result}`,
+ *     description: `${name}-${_default.result}`,
+ *     force: true,
+ *     policyDocument: `  {
+ *     \\"Statement\\": [
+ *       {
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Action\\": \\"*\\",
+ *         \\"Resource\\": \\"*\\"
+ *       }
+ *     ],
+ *     \\"Version\\": \\"1\\"
+ *   }
  * `,
- *     description: "this is a policy test",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Policy",
+ *     },
  * });
- * const attach = new alicloud.ram.GroupPolicyAttachment("attach", {
- *     policyName: policy.policyName,
- *     policyType: policy.type,
- *     groupName: group.name,
+ * const ids = alicloud.ram.getPoliciesOutput({
+ *     ids: [defaultPolicy.id],
  * });
- * const policiesDs = alicloud.ram.getPoliciesOutput({
- *     groupName: attach.groupName,
- *     type: "Custom",
- * });
- * export const firstPolicyName = policiesDs.apply(policiesDs => policiesDs.policies?.[0]?.name);
+ * export const ramPoliciesId0 = ids.apply(ids => ids.policies?.[0]?.id);
  * ```
  */
 export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetPoliciesResult> {
@@ -69,6 +62,7 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "roleName": args.roleName,
+        "tags": args.tags,
         "type": args.type,
         "userName": args.userName,
     }, opts);
@@ -79,19 +73,19 @@ export function getPolicies(args?: GetPoliciesArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetPoliciesArgs {
     /**
-     * Default to `true`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `true`.
      */
     enableDetails?: boolean;
     /**
-     * Filter results by a specific group name. Returned policies are attached to the specified group.
+     * The name of the user group.
      */
     groupName?: string;
     /**
-     * A list of ram group IDs.
+     * A list of Policy IDs.
      */
     ids?: string[];
     /**
-     * A regex string to filter resulting policies by name.
+     * A regex string to filter results by Policy name.
      */
     nameRegex?: string;
     /**
@@ -99,15 +93,19 @@ export interface GetPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * Filter results by a specific role name. Returned policies are attached to the specified role.
+     * The name of the RAM role.
      */
     roleName?: string;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The type of the policy. Valid values: `System` and `Custom`.
      */
     type?: string;
     /**
-     * Filter results by a specific user name. Returned policies are attached to the specified user.
+     * The name of the RAM user.
      */
     userName?: string;
 }
@@ -125,75 +123,72 @@ export interface GetPoliciesResult {
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of ram group names.
+     * (Available since v1.42.0) A list of Policy names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * A list of policies. Each element contains the following attributes:
+     * A list of Policy. Each element contains the following attributes:
      */
     readonly policies: outputs.ram.GetPoliciesPolicy[];
     readonly roleName?: string;
     /**
-     * Type of the policy.
+     * (Available since v1.262.1) The tags of the Policy.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the policy.
      */
     readonly type?: string;
     /**
-     * The user name of  policy.
+     * (Removed since v1.262.1) Field `userName` has been removed from provider version 1.262.1.
      */
     readonly userName?: string;
 }
 /**
- * This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the RAM Policies of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const group = new alicloud.ram.Group("group", {
- *     name: `groupName-${_default.result}`,
- *     comments: "this is a group comments.",
- * });
- * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: `tf-example-${_default.result}`,
- *     policyDocument: `    {
- *       \\"Statement\\": [
- *         {
- *           \\"Action\\": [
- *             \\"oss:ListObjects\\",
- *             \\"oss:GetObject\\"
- *           ],
- *           \\"Effect\\": \\"Allow\\",
- *           \\"Resource\\": [
- *             \\"acs:oss:*:*:mybucket\\",
- *             \\"acs:oss:*:*:mybucket/*\\"
- *           ]
- *         }
- *       ],
- *         \\"Version\\": \\"1\\"
- *     }
+ * const defaultPolicy = new alicloud.ram.Policy("default", {
+ *     policyName: `${name}-${_default.result}`,
+ *     description: `${name}-${_default.result}`,
+ *     force: true,
+ *     policyDocument: `  {
+ *     \\"Statement\\": [
+ *       {
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Action\\": \\"*\\",
+ *         \\"Resource\\": \\"*\\"
+ *       }
+ *     ],
+ *     \\"Version\\": \\"1\\"
+ *   }
  * `,
- *     description: "this is a policy test",
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Policy",
+ *     },
  * });
- * const attach = new alicloud.ram.GroupPolicyAttachment("attach", {
- *     policyName: policy.policyName,
- *     policyType: policy.type,
- *     groupName: group.name,
+ * const ids = alicloud.ram.getPoliciesOutput({
+ *     ids: [defaultPolicy.id],
  * });
- * const policiesDs = alicloud.ram.getPoliciesOutput({
- *     groupName: attach.groupName,
- *     type: "Custom",
- * });
- * export const firstPolicyName = policiesDs.apply(policiesDs => policiesDs.policies?.[0]?.name);
+ * export const ramPoliciesId0 = ids.apply(ids => ids.policies?.[0]?.id);
  * ```
  */
 export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
@@ -206,6 +201,7 @@ export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.In
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
         "roleName": args.roleName,
+        "tags": args.tags,
         "type": args.type,
         "userName": args.userName,
     }, opts);
@@ -216,19 +212,19 @@ export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.In
  */
 export interface GetPoliciesOutputArgs {
     /**
-     * Default to `true`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `true`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * Filter results by a specific group name. Returned policies are attached to the specified group.
+     * The name of the user group.
      */
     groupName?: pulumi.Input<string>;
     /**
-     * A list of ram group IDs.
+     * A list of Policy IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter resulting policies by name.
+     * A regex string to filter results by Policy name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -236,15 +232,19 @@ export interface GetPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Filter results by a specific role name. Returned policies are attached to the specified role.
+     * The name of the RAM role.
      */
     roleName?: pulumi.Input<string>;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The type of the policy. Valid values: `System` and `Custom`.
      */
     type?: pulumi.Input<string>;
     /**
-     * Filter results by a specific user name. Returned policies are attached to the specified user.
+     * The name of the RAM user.
      */
     userName?: pulumi.Input<string>;
 }

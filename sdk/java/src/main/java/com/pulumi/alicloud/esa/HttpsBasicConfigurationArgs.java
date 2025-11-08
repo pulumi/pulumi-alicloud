@@ -183,14 +183,29 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
+     * Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     @Import(name="siteId", required=true)
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * @return Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     public Output<Integer> siteId() {
@@ -285,6 +300,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.tls10 = $.tls10;
         this.tls11 = $.tls11;
@@ -530,7 +546,28 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
+        }
+
+        /**
+         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
          * 
          * @return builder
          * 
@@ -541,7 +578,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param siteId Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+         * @param siteId Site ID, which can be obtained by calling the ListSites interface.
          * 
          * @return builder
          * 

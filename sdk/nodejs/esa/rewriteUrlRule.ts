@@ -107,22 +107,23 @@ export class RewriteUrlRule extends pulumi.CustomResource {
      */
     declare public readonly rewriteUriType: pulumi.Output<string | undefined>;
     /**
-     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     declare public readonly rule: pulumi.Output<string | undefined>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      */
     declare public readonly ruleEnable: pulumi.Output<string | undefined>;
     /**
-     * The rule name. You do not need to set this parameter when adding a global configuration.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -156,6 +157,7 @@ export class RewriteUrlRule extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
             resourceInputs["uri"] = state?.uri;
@@ -170,6 +172,7 @@ export class RewriteUrlRule extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["uri"] = args?.uri;
@@ -201,22 +204,23 @@ export interface RewriteUrlRuleState {
      */
     rewriteUriType?: pulumi.Input<string>;
     /**
-     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * The rule name. You do not need to set this parameter when adding a global configuration.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -248,22 +252,23 @@ export interface RewriteUrlRuleArgs {
      */
     rewriteUriType?: pulumi.Input<string>;
     /**
-     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-     * ● Match all incoming requests: value set to true
-     * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     rule?: pulumi.Input<string>;
     /**
-     * Indicates whether the rule is enabled. Valid values:
-     *
-     * - on
-     * - off
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * ‒ on: open.
+     * ‒ off: close.
      */
     ruleEnable?: pulumi.Input<string>;
     /**
-     * The rule name. You do not need to set this parameter when adding a global configuration.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */

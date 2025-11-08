@@ -49,14 +49,18 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
     }
 
     /**
-     * Rule content.
+     * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     @Import(name="rule")
     private @Nullable Output<String> rule;
 
     /**
-     * @return Rule content.
+     * @return Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+     * - Match all incoming requests: value set to true
+     * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
      * 
      */
     public Optional<Output<String>> rule() {
@@ -64,14 +68,14 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
     }
 
     /**
-     * Rule switch. Possible values:
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     @Import(name="ruleEnable")
     private @Nullable Output<String> ruleEnable;
 
     /**
-     * @return Rule switch. Possible values:
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * 
      */
     public Optional<Output<String>> ruleEnable() {
@@ -79,18 +83,33 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
     }
 
     /**
-     * Rule name.
+     * Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Rule name.
+     * @return Rule name. When adding global configuration, this parameter does not need to be set.
      * 
      */
     public Optional<Output<String>> ruleName() {
         return Optional.ofNullable(this.ruleName);
+    }
+
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
     }
 
     /**
@@ -109,14 +128,14 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
     }
 
     /**
-     * The version number of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version number of the website configurations.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -131,6 +150,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
     }
@@ -206,7 +226,9 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param rule Rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -217,7 +239,9 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param rule Rule content.
+         * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+         * - Match all incoming requests: value set to true
+         * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
          * 
          * @return builder
          * 
@@ -227,7 +251,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -238,7 +262,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param ruleEnable Rule switch. Possible values:
+         * @param ruleEnable Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
          * 
          * @return builder
          * 
@@ -248,7 +272,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param ruleName Rule name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
@@ -259,13 +283,34 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param ruleName Rule name.
+         * @param ruleName Rule name. When adding global configuration, this parameter does not need to be set.
          * 
          * @return builder
          * 
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**
@@ -290,7 +335,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param siteVersion The version number of the website configurations.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -301,7 +346,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
         }
 
         /**
-         * @param siteVersion The version number of the website configurations.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

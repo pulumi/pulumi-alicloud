@@ -235,31 +235,33 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 }
 
 type GetPoliciesPolicy struct {
-	// Attachment count of the policy.
+	// The number of references to the policy.
 	AttachmentCount int `pulumi:"attachmentCount"`
-	// Creation date of the policy.
+	// The time when the policy was created.
 	CreateDate string `pulumi:"createDate"`
-	// Default version of the policy.
+	// The default version of the policy.
 	DefaultVersion string `pulumi:"defaultVersion"`
-	// Description of the policy.
+	// The description of the policy.
 	Description string `pulumi:"description"`
-	// Policy document of the policy.
+	// The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
 	Document string `pulumi:"document"`
-	// ID of the policy.
+	// (Available since v1.114.0) The ID of the Policy.
 	Id string `pulumi:"id"`
-	// Name of the policy.
+	// The name of the policy.
 	Name string `pulumi:"name"`
-	// Policy document of the policy.
+	// (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
 	PolicyDocument string `pulumi:"policyDocument"`
-	// Name of the policy.
+	// (Available since v1.114.0) The name of the policy.
 	PolicyName string `pulumi:"policyName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the policy. Valid values: `System` and `Custom`.
 	Type string `pulumi:"type"`
-	// Update date of the policy.
+	// The time when the policy was modified.
 	UpdateDate string `pulumi:"updateDate"`
-	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	// The name of the RAM user.
 	UserName string `pulumi:"userName"`
-	// The ID of default policy.
+	// (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
 	VersionId string `pulumi:"versionId"`
 }
 
@@ -275,31 +277,33 @@ type GetPoliciesPolicyInput interface {
 }
 
 type GetPoliciesPolicyArgs struct {
-	// Attachment count of the policy.
+	// The number of references to the policy.
 	AttachmentCount pulumi.IntInput `pulumi:"attachmentCount"`
-	// Creation date of the policy.
+	// The time when the policy was created.
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
-	// Default version of the policy.
+	// The default version of the policy.
 	DefaultVersion pulumi.StringInput `pulumi:"defaultVersion"`
-	// Description of the policy.
+	// The description of the policy.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Policy document of the policy.
+	// The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
 	Document pulumi.StringInput `pulumi:"document"`
-	// ID of the policy.
+	// (Available since v1.114.0) The ID of the Policy.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Name of the policy.
+	// The name of the policy.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Policy document of the policy.
+	// (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
 	PolicyDocument pulumi.StringInput `pulumi:"policyDocument"`
-	// Name of the policy.
+	// (Available since v1.114.0) The name of the policy.
 	PolicyName pulumi.StringInput `pulumi:"policyName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The type of the policy. Valid values: `System` and `Custom`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Update date of the policy.
+	// The time when the policy was modified.
 	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
-	// Filter results by a specific user name. Returned policies are attached to the specified user.
+	// The name of the RAM user.
 	UserName pulumi.StringInput `pulumi:"userName"`
-	// The ID of default policy.
+	// (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
 	VersionId pulumi.StringInput `pulumi:"versionId"`
 }
 
@@ -354,67 +358,72 @@ func (o GetPoliciesPolicyOutput) ToGetPoliciesPolicyOutputWithContext(ctx contex
 	return o
 }
 
-// Attachment count of the policy.
+// The number of references to the policy.
 func (o GetPoliciesPolicyOutput) AttachmentCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) int { return v.AttachmentCount }).(pulumi.IntOutput)
 }
 
-// Creation date of the policy.
+// The time when the policy was created.
 func (o GetPoliciesPolicyOutput) CreateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
-// Default version of the policy.
+// The default version of the policy.
 func (o GetPoliciesPolicyOutput) DefaultVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.DefaultVersion }).(pulumi.StringOutput)
 }
 
-// Description of the policy.
+// The description of the policy.
 func (o GetPoliciesPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Policy document of the policy.
+// The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
 func (o GetPoliciesPolicyOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Document }).(pulumi.StringOutput)
 }
 
-// ID of the policy.
+// (Available since v1.114.0) The ID of the Policy.
 func (o GetPoliciesPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the policy.
+// The name of the policy.
 func (o GetPoliciesPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Policy document of the policy.
+// (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
 func (o GetPoliciesPolicyOutput) PolicyDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyDocument }).(pulumi.StringOutput)
 }
 
-// Name of the policy.
+// (Available since v1.114.0) The name of the policy.
 func (o GetPoliciesPolicyOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+// A mapping of tags to assign to the resource.
+func (o GetPoliciesPolicyOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPoliciesPolicy) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the policy. Valid values: `System` and `Custom`.
 func (o GetPoliciesPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Update date of the policy.
+// The time when the policy was modified.
 func (o GetPoliciesPolicyOutput) UpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UpdateDate }).(pulumi.StringOutput)
 }
 
-// Filter results by a specific user name. Returned policies are attached to the specified user.
+// The name of the RAM user.
 func (o GetPoliciesPolicyOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.UserName }).(pulumi.StringOutput)
 }
 
-// The ID of default policy.
+// (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
 func (o GetPoliciesPolicyOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoliciesPolicy) string { return v.VersionId }).(pulumi.StringOutput)
 }
@@ -927,21 +936,23 @@ func (o GetRolePolicyAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetRolesRole struct {
-	// Resource descriptor of the role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	Arn string `pulumi:"arn"`
-	// Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+	// The policy that specifies the trusted entity to assume the RAM role.
 	AssumeRolePolicyDocument string `pulumi:"assumeRolePolicyDocument"`
-	// Creation date of the role.
+	// The creation time.
 	CreateDate string `pulumi:"createDate"`
-	// Description of the role.
+	// The description of the RAM role.
 	Description string `pulumi:"description"`
-	// Authorization strategy of the role.
+	// The policy that specifies the trusted entity to assume the RAM role.
 	Document string `pulumi:"document"`
-	// ID of the role.
+	// The ID of the RAM role.
 	Id string `pulumi:"id"`
-	// Name of the role.
+	// The name of the RAM role.
 	Name string `pulumi:"name"`
-	// Update date of the role.
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The update time.
 	UpdateDate string `pulumi:"updateDate"`
 }
 
@@ -957,21 +968,23 @@ type GetRolesRoleInput interface {
 }
 
 type GetRolesRoleArgs struct {
-	// Resource descriptor of the role.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 	Arn pulumi.StringInput `pulumi:"arn"`
-	// Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+	// The policy that specifies the trusted entity to assume the RAM role.
 	AssumeRolePolicyDocument pulumi.StringInput `pulumi:"assumeRolePolicyDocument"`
-	// Creation date of the role.
+	// The creation time.
 	CreateDate pulumi.StringInput `pulumi:"createDate"`
-	// Description of the role.
+	// The description of the RAM role.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Authorization strategy of the role.
+	// The policy that specifies the trusted entity to assume the RAM role.
 	Document pulumi.StringInput `pulumi:"document"`
-	// ID of the role.
+	// The ID of the RAM role.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Name of the role.
+	// The name of the RAM role.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Update date of the role.
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The update time.
 	UpdateDate pulumi.StringInput `pulumi:"updateDate"`
 }
 
@@ -1026,42 +1039,47 @@ func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Resource descriptor of the role.
+// The Alibaba Cloud Resource Name (ARN) of the RAM role.
 func (o GetRolesRoleOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Arn }).(pulumi.StringOutput)
 }
 
-// Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+// The policy that specifies the trusted entity to assume the RAM role.
 func (o GetRolesRoleOutput) AssumeRolePolicyDocument() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.AssumeRolePolicyDocument }).(pulumi.StringOutput)
 }
 
-// Creation date of the role.
+// The creation time.
 func (o GetRolesRoleOutput) CreateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.CreateDate }).(pulumi.StringOutput)
 }
 
-// Description of the role.
+// The description of the RAM role.
 func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Authorization strategy of the role.
+// The policy that specifies the trusted entity to assume the RAM role.
 func (o GetRolesRoleOutput) Document() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Document }).(pulumi.StringOutput)
 }
 
-// ID of the role.
+// The ID of the RAM role.
 func (o GetRolesRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the role.
+// The name of the RAM role.
 func (o GetRolesRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Update date of the role.
+// A mapping of tags to assign to the resource.
+func (o GetRolesRoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRolesRole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The update time.
 func (o GetRolesRoleOutput) UpdateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.UpdateDate }).(pulumi.StringOutput)
 }

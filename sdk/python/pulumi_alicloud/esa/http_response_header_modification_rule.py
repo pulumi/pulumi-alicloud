@@ -26,15 +26,19 @@ class HttpResponseHeaderModificationRuleArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpResponseHeaderModificationRule resource.
         :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Possible values:
-        :param pulumi.Input[_builtins.str] rule_name: Rule name.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the website configurations.
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "response_header_modifications", response_header_modifications)
         pulumi.set(__self__, "site_id", site_id)
@@ -44,6 +48,8 @@ class HttpResponseHeaderModificationRuleArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
 
@@ -75,7 +81,9 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -87,7 +95,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule switch. Possible values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -99,7 +107,7 @@ class HttpResponseHeaderModificationRuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
@@ -108,10 +116,22 @@ class HttpResponseHeaderModificationRuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The version number of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -128,17 +148,21 @@ class _HttpResponseHeaderModificationRuleState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpResponseHeaderModificationRule resources.
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs']]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Possible values:
-        :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the website configurations.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -150,6 +174,8 @@ class _HttpResponseHeaderModificationRuleState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -183,7 +209,9 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -195,7 +223,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule switch. Possible values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -207,13 +235,25 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
     def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -231,7 +271,7 @@ class _HttpResponseHeaderModificationRuleState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The version number of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -250,6 +290,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -324,11 +365,14 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Possible values:
-        :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the website configurations.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         ...
     @overload
@@ -423,6 +467,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -440,6 +485,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -460,6 +506,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None) -> 'HttpResponseHeaderModificationRule':
         """
@@ -471,11 +518,14 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[Sequence[pulumi.Input[Union['HttpResponseHeaderModificationRuleResponseHeaderModificationArgs', 'HttpResponseHeaderModificationRuleResponseHeaderModificationArgsDict']]]] response_header_modifications: Modify response headers, supporting add, delete, and modify operations. See `response_header_modification` below.
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Possible values:
-        :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the website configurations.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -486,6 +536,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         return HttpResponseHeaderModificationRule(resource_name, opts=opts, __props__=__props__)
@@ -510,7 +561,9 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -518,7 +571,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule switch. Possible values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -526,9 +579,17 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule name.
+        Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -542,7 +603,7 @@ class HttpResponseHeaderModificationRule(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The version number of the website configurations.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

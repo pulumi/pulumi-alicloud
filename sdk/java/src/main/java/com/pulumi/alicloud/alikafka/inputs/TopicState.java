@@ -19,14 +19,18 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     public static final TopicState Empty = new TopicState();
 
     /**
-     * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      * 
      */
     @Import(name="compactTopic")
     private @Nullable Output<Boolean> compactTopic;
 
     /**
-     * @return Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * @return The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      * 
      */
     public Optional<Output<Boolean>> compactTopic() {
@@ -34,14 +38,44 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * InstanceId of your Kafka resource, the topic will create in this instance.
+     * The advanced configurations.
+     * 
+     */
+    @Import(name="configs")
+    private @Nullable Output<String> configs;
+
+    /**
+     * @return The advanced configurations.
+     * 
+     */
+    public Optional<Output<String>> configs() {
+        return Optional.ofNullable(this.configs);
+    }
+
+    /**
+     * (Available since v1.262.1) The time when the topic was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.262.1) The time when the topic was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return InstanceId of your Kafka resource, the topic will create in this instance.
+     * @return The ID of the instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -49,14 +83,18 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the topic is localTopic or not.
+     * The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      * 
      */
     @Import(name="localTopic")
     private @Nullable Output<Boolean> localTopic;
 
     /**
-     * @return Whether the topic is localTopic or not.
+     * @return The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      * 
      */
     public Optional<Output<Boolean>> localTopic() {
@@ -64,14 +102,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of partitions of the topic. The number should between 1 and 48.
+     * The number of partitions in the topic.
      * 
      */
     @Import(name="partitionNum")
     private @Nullable Output<Integer> partitionNum;
 
     /**
-     * @return The number of partitions of the topic. The number should between 1 and 48.
+     * @return The number of partitions in the topic.
      * 
      */
     public Optional<Output<Integer>> partitionNum() {
@@ -79,18 +117,48 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This attribute is a concise description of topic. The length cannot exceed 64.
+     * (Available since v1.262.1) The ID of the region where the instance resides.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.262.1) The ID of the region where the instance resides.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The description of the topic.
      * 
      */
     @Import(name="remark")
     private @Nullable Output<String> remark;
 
     /**
-     * @return This attribute is a concise description of topic. The length cannot exceed 64.
+     * @return The description of the topic.
      * 
      */
     public Optional<Output<String>> remark() {
         return Optional.ofNullable(this.remark);
+    }
+
+    /**
+     * (Available since v1.262.1) The status of the service.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Available since v1.262.1) The status of the service.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     /**
@@ -109,14 +177,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * The topic name.
      * 
      */
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
     /**
-     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * @return The topic name.
      * 
      */
     public Optional<Output<String>> topic() {
@@ -127,10 +195,14 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
 
     private TopicState(TopicState $) {
         this.compactTopic = $.compactTopic;
+        this.configs = $.configs;
+        this.createTime = $.createTime;
         this.instanceId = $.instanceId;
         this.localTopic = $.localTopic;
         this.partitionNum = $.partitionNum;
+        this.regionId = $.regionId;
         this.remark = $.remark;
+        this.status = $.status;
         this.tags = $.tags;
         this.topic = $.topic;
     }
@@ -154,7 +226,9 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compactTopic Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+         * @param compactTopic The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+         * - false: The delete cleanup policy is used.
+         * - true: The compact cleanup policy is used.
          * 
          * @return builder
          * 
@@ -165,7 +239,9 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compactTopic Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+         * @param compactTopic The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+         * - false: The delete cleanup policy is used.
+         * - true: The compact cleanup policy is used.
          * 
          * @return builder
          * 
@@ -175,7 +251,49 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId InstanceId of your Kafka resource, the topic will create in this instance.
+         * @param configs The advanced configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(@Nullable Output<String> configs) {
+            $.configs = configs;
+            return this;
+        }
+
+        /**
+         * @param configs The advanced configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(String configs) {
+            return configs(Output.of(configs));
+        }
+
+        /**
+         * @param createTime (Available since v1.262.1) The time when the topic was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.262.1) The time when the topic was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -186,7 +304,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId InstanceId of your Kafka resource, the topic will create in this instance.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 
@@ -196,7 +314,9 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localTopic Whether the topic is localTopic or not.
+         * @param localTopic The storage engine of the topic. Valid values:
+         * - false: Cloud storage.
+         * - true: Local storage.
          * 
          * @return builder
          * 
@@ -207,7 +327,9 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localTopic Whether the topic is localTopic or not.
+         * @param localTopic The storage engine of the topic. Valid values:
+         * - false: Cloud storage.
+         * - true: Local storage.
          * 
          * @return builder
          * 
@@ -217,7 +339,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitionNum The number of partitions of the topic. The number should between 1 and 48.
+         * @param partitionNum The number of partitions in the topic.
          * 
          * @return builder
          * 
@@ -228,7 +350,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitionNum The number of partitions of the topic. The number should between 1 and 48.
+         * @param partitionNum The number of partitions in the topic.
          * 
          * @return builder
          * 
@@ -238,7 +360,28 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param remark This attribute is a concise description of topic. The length cannot exceed 64.
+         * @param regionId (Available since v1.262.1) The ID of the region where the instance resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.262.1) The ID of the region where the instance resides.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param remark The description of the topic.
          * 
          * @return builder
          * 
@@ -249,13 +392,34 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param remark This attribute is a concise description of topic. The length cannot exceed 64.
+         * @param remark The description of the topic.
          * 
          * @return builder
          * 
          */
         public Builder remark(String remark) {
             return remark(Output.of(remark));
+        }
+
+        /**
+         * @param status (Available since v1.262.1) The status of the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available since v1.262.1) The status of the service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**
@@ -280,7 +444,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+         * @param topic The topic name.
          * 
          * @return builder
          * 
@@ -291,7 +455,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+         * @param topic The topic name.
          * 
          * @return builder
          * 

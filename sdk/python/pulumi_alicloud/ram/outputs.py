@@ -110,24 +110,26 @@ class GetPoliciesPolicyResult(dict):
                  name: _builtins.str,
                  policy_document: _builtins.str,
                  policy_name: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  type: _builtins.str,
                  update_date: _builtins.str,
                  user_name: _builtins.str,
                  version_id: _builtins.str):
         """
-        :param _builtins.int attachment_count: Attachment count of the policy.
-        :param _builtins.str create_date: Creation date of the policy.
-        :param _builtins.str default_version: Default version of the policy.
-        :param _builtins.str description: Description of the policy.
-        :param _builtins.str document: Policy document of the policy.
-        :param _builtins.str id: ID of the policy.
-        :param _builtins.str name: Name of the policy.
-        :param _builtins.str policy_document: Policy document of the policy.
-        :param _builtins.str policy_name: Name of the policy.
-        :param _builtins.str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
-        :param _builtins.str update_date: Update date of the policy.
-        :param _builtins.str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
-        :param _builtins.str version_id: The ID of default policy.
+        :param _builtins.int attachment_count: The number of references to the policy.
+        :param _builtins.str create_date: The time when the policy was created.
+        :param _builtins.str default_version: The default version of the policy.
+        :param _builtins.str description: The description of the policy.
+        :param _builtins.str document: The document of the policy. **Note:** `document` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str id: (Available since v1.114.0) The ID of the Policy.
+        :param _builtins.str name: The name of the policy.
+        :param _builtins.str policy_document: (Available since v1.114.0) The document of the policy. **Note:** `policy_document` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str policy_name: (Available since v1.114.0) The name of the policy.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str type: The type of the policy. Valid values: `System` and `Custom`.
+        :param _builtins.str update_date: The time when the policy was modified.
+        :param _builtins.str user_name: The name of the RAM user.
+        :param _builtins.str version_id: (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
         """
         pulumi.set(__self__, "attachment_count", attachment_count)
         pulumi.set(__self__, "create_date", create_date)
@@ -138,6 +140,7 @@ class GetPoliciesPolicyResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policy_document", policy_document)
         pulumi.set(__self__, "policy_name", policy_name)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "update_date", update_date)
         pulumi.set(__self__, "user_name", user_name)
@@ -147,7 +150,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="attachmentCount")
     def attachment_count(self) -> _builtins.int:
         """
-        Attachment count of the policy.
+        The number of references to the policy.
         """
         return pulumi.get(self, "attachment_count")
 
@@ -155,7 +158,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="createDate")
     def create_date(self) -> _builtins.str:
         """
-        Creation date of the policy.
+        The time when the policy was created.
         """
         return pulumi.get(self, "create_date")
 
@@ -163,7 +166,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="defaultVersion")
     def default_version(self) -> _builtins.str:
         """
-        Default version of the policy.
+        The default version of the policy.
         """
         return pulumi.get(self, "default_version")
 
@@ -171,7 +174,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the policy.
+        The description of the policy.
         """
         return pulumi.get(self, "description")
 
@@ -179,7 +182,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter
     def document(self) -> _builtins.str:
         """
-        Policy document of the policy.
+        The document of the policy. **Note:** `document` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "document")
 
@@ -187,7 +190,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the policy.
+        (Available since v1.114.0) The ID of the Policy.
         """
         return pulumi.get(self, "id")
 
@@ -195,7 +198,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the policy.
+        The name of the policy.
         """
         return pulumi.get(self, "name")
 
@@ -203,7 +206,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="policyDocument")
     def policy_document(self) -> _builtins.str:
         """
-        Policy document of the policy.
+        (Available since v1.114.0) The document of the policy. **Note:** `policy_document` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "policy_document")
 
@@ -211,15 +214,23 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="policyName")
     def policy_name(self) -> _builtins.str:
         """
-        Name of the policy.
+        (Available since v1.114.0) The name of the policy.
         """
         return pulumi.get(self, "policy_name")
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Filter results by a specific policy type. Valid values are `Custom` and `System`.
+        The type of the policy. Valid values: `System` and `Custom`.
         """
         return pulumi.get(self, "type")
 
@@ -227,7 +238,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="updateDate")
     def update_date(self) -> _builtins.str:
         """
-        Update date of the policy.
+        The time when the policy was modified.
         """
         return pulumi.get(self, "update_date")
 
@@ -235,7 +246,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="userName")
     def user_name(self) -> _builtins.str:
         """
-        Filter results by a specific user name. Returned policies are attached to the specified user.
+        The name of the RAM user.
         """
         return pulumi.get(self, "user_name")
 
@@ -243,7 +254,7 @@ class GetPoliciesPolicyResult(dict):
     @pulumi.getter(name="versionId")
     def version_id(self) -> _builtins.str:
         """
-        The ID of default policy.
+        (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "version_id")
 
@@ -455,16 +466,18 @@ class GetRolesRoleResult(dict):
                  document: _builtins.str,
                  id: _builtins.str,
                  name: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
                  update_date: _builtins.str):
         """
-        :param _builtins.str arn: Resource descriptor of the role.
-        :param _builtins.str assume_role_policy_document: Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
-        :param _builtins.str create_date: Creation date of the role.
-        :param _builtins.str description: Description of the role.
-        :param _builtins.str document: Authorization strategy of the role.
-        :param _builtins.str id: ID of the role.
-        :param _builtins.str name: Name of the role.
-        :param _builtins.str update_date: Update date of the role.
+        :param _builtins.str arn: The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        :param _builtins.str assume_role_policy_document: The policy that specifies the trusted entity to assume the RAM role.
+        :param _builtins.str create_date: The creation time.
+        :param _builtins.str description: The description of the RAM role.
+        :param _builtins.str document: The policy that specifies the trusted entity to assume the RAM role.
+        :param _builtins.str id: The ID of the RAM role.
+        :param _builtins.str name: The name of the RAM role.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str update_date: The update time.
         """
         pulumi.set(__self__, "arn", arn)
         pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
@@ -473,13 +486,14 @@ class GetRolesRoleResult(dict):
         pulumi.set(__self__, "document", document)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "update_date", update_date)
 
     @_builtins.property
     @pulumi.getter
     def arn(self) -> _builtins.str:
         """
-        Resource descriptor of the role.
+        The Alibaba Cloud Resource Name (ARN) of the RAM role.
         """
         return pulumi.get(self, "arn")
 
@@ -487,7 +501,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter(name="assumeRolePolicyDocument")
     def assume_role_policy_document(self) -> _builtins.str:
         """
-        Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+        The policy that specifies the trusted entity to assume the RAM role.
         """
         return pulumi.get(self, "assume_role_policy_document")
 
@@ -495,7 +509,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter(name="createDate")
     def create_date(self) -> _builtins.str:
         """
-        Creation date of the role.
+        The creation time.
         """
         return pulumi.get(self, "create_date")
 
@@ -503,7 +517,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the role.
+        The description of the RAM role.
         """
         return pulumi.get(self, "description")
 
@@ -511,7 +525,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter
     def document(self) -> _builtins.str:
         """
-        Authorization strategy of the role.
+        The policy that specifies the trusted entity to assume the RAM role.
         """
         return pulumi.get(self, "document")
 
@@ -519,7 +533,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the role.
+        The ID of the RAM role.
         """
         return pulumi.get(self, "id")
 
@@ -527,15 +541,23 @@ class GetRolesRoleResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the role.
+        The name of the RAM role.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updateDate")
     def update_date(self) -> _builtins.str:
         """
-        Update date of the role.
+        The update time.
         """
         return pulumi.get(self, "update_date")
 

@@ -49,12 +49,13 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 2,
-    ///         MemorySize = 4,
+    ///         MemorySize = 8,
+    ///         InstanceTypeFamily = "ecs.g9i",
     ///     });
     /// 
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
@@ -111,6 +112,7 @@ namespace Pulumi.AliCloud.Ess
     ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         SystemDiskCategory = "cloud_essd",
     ///         ForceDelete = true,
     ///         Active = true,
     ///         Enable = true,
@@ -131,7 +133,7 @@ namespace Pulumi.AliCloud.Ess
     ///             InternetChargeType = "PayByTraffic",
     ///             InternetMaxBandwidthOut = 10,
     ///             InstanceChargeType = "PostPaid",
-    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             SystemDiskCategory = "cloud_essd",
     ///             VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///             InstanceName = name,
     ///         }));

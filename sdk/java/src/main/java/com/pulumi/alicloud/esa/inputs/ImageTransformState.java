@@ -96,6 +96,21 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */
@@ -133,6 +148,7 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
     }
@@ -262,6 +278,27 @@ public final class ImageTransformState extends com.pulumi.resources.ResourceArgs
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**

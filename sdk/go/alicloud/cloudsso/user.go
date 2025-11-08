@@ -12,13 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloud SSO User resource.
+// Provides a Cloud Sso User resource.
 //
-// For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
+// For information about Cloud Sso User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
 //
 // > **NOTE:** Available since v1.140.0.
-//
-// > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 //
 // ## Example Usage
 //
@@ -41,12 +39,19 @@ import (
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // cfg := config.New(ctx, "")
-// name := "tf-example";
+// name := "terraform-example";
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
 // _default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{
 // }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000,
+// Max: 99999,
+// })
 // if err != nil {
 // return err
 // }
@@ -78,7 +83,7 @@ import (
 // } else {
 // tmp1 = std.Concat(ctx, &std.ConcatArgs{
 // Input: pulumi.StringArrayArray{
-// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:13,12-34),
+// %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:26,12-34),
 // []string{
 // "",
 // },
@@ -88,13 +93,6 @@ import (
 // directoryId := len(_default.Ids).ApplyT(func(length int) (*interface{}, error) {
 // return &tmp1, nil
 // }).(pulumi.Interface{}PtrOutput)
-// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-// Min: 10000,
-// Max: 99999,
-// })
-// if err != nil {
-// return err
-// }
 // _, err = cloudsso.NewUser(ctx, "default", &cloudsso.UserArgs{
 // DirectoryId: pulumi.Any(directoryId),
 // UserName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
@@ -109,7 +107,7 @@ import (
 //
 // ## Import
 //
-// Cloud SSO User can be imported using the id, e.g.
+// Cloud Sso User can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
@@ -117,23 +115,31 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// The description of user. The description can be up to `1024` characters long.
+	// (Available since v1.262.1) The time when the user was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the user. The description can be up to 1,024 characters in length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
-	// The display name of user. The display name can be up to `256` characters long.
+	// The display name of the user. The display name can be up to 256 characters in length.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The User's Contact Email Address. The email can be up to `128` characters long.
+	// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
-	// The first name of user. The firstName can be up to `64` characters long.
+	// The first name of the user. The first name can be up to 64 characters in length.
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
-	// The last name of user. The lastName can be up to `64` characters long.
+	// The last name of the user. The last name can be up to 64 characters in length.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
-	// The status of user. Valid values: `Disabled`, `Enabled`.
+	// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+	MfaAuthenticationSettings pulumi.StringOutput `pulumi:"mfaAuthenticationSettings"`
+	// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The User ID of the group.
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The ID of the user.
 	UserId pulumi.StringOutput `pulumi:"userId"`
-	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+	// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
@@ -150,6 +156,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserName == nil {
 		return nil, errors.New("invalid value for required argument 'UserName'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("alicloud:cloudsso/user:User", name, args, &resource, opts...)
@@ -173,44 +186,60 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The description of user. The description can be up to `1024` characters long.
+	// (Available since v1.262.1) The time when the user was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the user. The description can be up to 1,024 characters in length.
 	Description *string `pulumi:"description"`
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId *string `pulumi:"directoryId"`
-	// The display name of user. The display name can be up to `256` characters long.
+	// The display name of the user. The display name can be up to 256 characters in length.
 	DisplayName *string `pulumi:"displayName"`
-	// The User's Contact Email Address. The email can be up to `128` characters long.
+	// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 	Email *string `pulumi:"email"`
-	// The first name of user. The firstName can be up to `64` characters long.
+	// The first name of the user. The first name can be up to 64 characters in length.
 	FirstName *string `pulumi:"firstName"`
-	// The last name of user. The lastName can be up to `64` characters long.
+	// The last name of the user. The last name can be up to 64 characters in length.
 	LastName *string `pulumi:"lastName"`
-	// The status of user. Valid values: `Disabled`, `Enabled`.
+	// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+	MfaAuthenticationSettings *string `pulumi:"mfaAuthenticationSettings"`
+	// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+	Password *string `pulumi:"password"`
+	// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 	Status *string `pulumi:"status"`
-	// The User ID of the group.
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the user.
 	UserId *string `pulumi:"userId"`
-	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+	// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 	UserName *string `pulumi:"userName"`
 }
 
 type UserState struct {
-	// The description of user. The description can be up to `1024` characters long.
+	// (Available since v1.262.1) The time when the user was created.
+	CreateTime pulumi.StringPtrInput
+	// The description of the user. The description can be up to 1,024 characters in length.
 	Description pulumi.StringPtrInput
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringPtrInput
-	// The display name of user. The display name can be up to `256` characters long.
+	// The display name of the user. The display name can be up to 256 characters in length.
 	DisplayName pulumi.StringPtrInput
-	// The User's Contact Email Address. The email can be up to `128` characters long.
+	// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 	Email pulumi.StringPtrInput
-	// The first name of user. The firstName can be up to `64` characters long.
+	// The first name of the user. The first name can be up to 64 characters in length.
 	FirstName pulumi.StringPtrInput
-	// The last name of user. The lastName can be up to `64` characters long.
+	// The last name of the user. The last name can be up to 64 characters in length.
 	LastName pulumi.StringPtrInput
-	// The status of user. Valid values: `Disabled`, `Enabled`.
+	// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+	MfaAuthenticationSettings pulumi.StringPtrInput
+	// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+	Password pulumi.StringPtrInput
+	// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringPtrInput
-	// The User ID of the group.
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
+	// The ID of the user.
 	UserId pulumi.StringPtrInput
-	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+	// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 	UserName pulumi.StringPtrInput
 }
 
@@ -219,41 +248,53 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// The description of user. The description can be up to `1024` characters long.
+	// The description of the user. The description can be up to 1,024 characters in length.
 	Description *string `pulumi:"description"`
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId string `pulumi:"directoryId"`
-	// The display name of user. The display name can be up to `256` characters long.
+	// The display name of the user. The display name can be up to 256 characters in length.
 	DisplayName *string `pulumi:"displayName"`
-	// The User's Contact Email Address. The email can be up to `128` characters long.
+	// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 	Email *string `pulumi:"email"`
-	// The first name of user. The firstName can be up to `64` characters long.
+	// The first name of the user. The first name can be up to 64 characters in length.
 	FirstName *string `pulumi:"firstName"`
-	// The last name of user. The lastName can be up to `64` characters long.
+	// The last name of the user. The last name can be up to 64 characters in length.
 	LastName *string `pulumi:"lastName"`
-	// The status of user. Valid values: `Disabled`, `Enabled`.
+	// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+	MfaAuthenticationSettings *string `pulumi:"mfaAuthenticationSettings"`
+	// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+	Password *string `pulumi:"password"`
+	// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 	Status *string `pulumi:"status"`
-	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// The description of user. The description can be up to `1024` characters long.
+	// The description of the user. The description can be up to 1,024 characters in length.
 	Description pulumi.StringPtrInput
-	// The ID of the Directory.
+	// The ID of the directory.
 	DirectoryId pulumi.StringInput
-	// The display name of user. The display name can be up to `256` characters long.
+	// The display name of the user. The display name can be up to 256 characters in length.
 	DisplayName pulumi.StringPtrInput
-	// The User's Contact Email Address. The email can be up to `128` characters long.
+	// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 	Email pulumi.StringPtrInput
-	// The first name of user. The firstName can be up to `64` characters long.
+	// The first name of the user. The first name can be up to 64 characters in length.
 	FirstName pulumi.StringPtrInput
-	// The last name of user. The lastName can be up to `64` characters long.
+	// The last name of the user. The last name can be up to 64 characters in length.
 	LastName pulumi.StringPtrInput
-	// The status of user. Valid values: `Disabled`, `Enabled`.
+	// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+	MfaAuthenticationSettings pulumi.StringPtrInput
+	// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+	Password pulumi.StringPtrInput
+	// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 	Status pulumi.StringPtrInput
-	// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
+	// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 	UserName pulumi.StringInput
 }
 
@@ -344,47 +385,67 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// The description of user. The description can be up to `1024` characters long.
+// (Available since v1.262.1) The time when the user was created.
+func (o UserOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the user. The description can be up to 1,024 characters in length.
 func (o UserOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the Directory.
+// The ID of the directory.
 func (o UserOutput) DirectoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
 }
 
-// The display name of user. The display name can be up to `256` characters long.
+// The display name of the user. The display name can be up to 256 characters in length.
 func (o UserOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The User's Contact Email Address. The email can be up to `128` characters long.
+// The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
 func (o UserOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// The first name of user. The firstName can be up to `64` characters long.
+// The first name of the user. The first name can be up to 64 characters in length.
 func (o UserOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FirstName }).(pulumi.StringPtrOutput)
 }
 
-// The last name of user. The lastName can be up to `64` characters long.
+// The last name of the user. The last name can be up to 64 characters in length.
 func (o UserOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// The status of user. Valid values: `Disabled`, `Enabled`.
+// Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+func (o UserOutput) MfaAuthenticationSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.MfaAuthenticationSettings }).(pulumi.StringOutput)
+}
+
+// The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
 func (o UserOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The User ID of the group.
+// The tag of the resource.
+func (o UserOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the user.
 func (o UserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+// The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
 func (o UserOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

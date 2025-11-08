@@ -27,7 +27,7 @@ class GetPoliciesResult:
     """
     A collection of values returned by getPolicies.
     """
-    def __init__(__self__, enable_details=None, group_name=None, id=None, ids=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, type=None, user_name=None):
+    def __init__(__self__, enable_details=None, group_name=None, id=None, ids=None, name_regex=None, names=None, output_file=None, policies=None, role_name=None, tags=None, type=None, user_name=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         pulumi.set(__self__, "enable_details", enable_details)
@@ -55,6 +55,9 @@ class GetPoliciesResult:
         if role_name and not isinstance(role_name, str):
             raise TypeError("Expected argument 'role_name' to be a str")
         pulumi.set(__self__, "role_name", role_name)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -94,7 +97,7 @@ class GetPoliciesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        A list of ram group names.
+        (Available since v1.42.0) A list of Policy names.
         """
         return pulumi.get(self, "names")
 
@@ -107,7 +110,7 @@ class GetPoliciesResult:
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetPoliciesPolicyResult']:
         """
-        A list of policies. Each element contains the following attributes:
+        A list of Policy. Each element contains the following attributes:
         """
         return pulumi.get(self, "policies")
 
@@ -118,9 +121,17 @@ class GetPoliciesResult:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Available since v1.262.1) The tags of the Policy.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Type of the policy.
+        The type of the policy.
         """
         return pulumi.get(self, "type")
 
@@ -128,7 +139,7 @@ class GetPoliciesResult:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
         """
-        The user name of  policy.
+        (Removed since v1.262.1) Field `user_name` has been removed from provider version 1.262.1.
         """
         return pulumi.get(self, "user_name")
 
@@ -148,6 +159,7 @@ class AwaitableGetPoliciesResult(GetPoliciesResult):
             output_file=self.output_file,
             policies=self.policies,
             role_name=self.role_name,
+            tags=self.tags,
             type=self.type,
             user_name=self.user_name)
 
@@ -158,65 +170,64 @@ def get_policies(enable_details: Optional[_builtins.bool] = None,
                  name_regex: Optional[_builtins.str] = None,
                  output_file: Optional[_builtins.str] = None,
                  role_name: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
                  type: Optional[_builtins.str] = None,
                  user_name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPoliciesResult:
     """
-    This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+    This data source provides the RAM Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.0.0+.
+    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
     default = random.index.Integer("default",
         min=10000,
         max=99999)
-    group = alicloud.ram.Group("group",
-        name=f"groupName-{default['result']}",
-        comments="this is a group comments.")
-    policy = alicloud.ram.Policy("policy",
-        policy_name=f"tf-example-{default['result']}",
-        policy_document=\"\"\"    {
-          \\"Statement\\": [
-            {
-              \\"Action\\": [
-                \\"oss:ListObjects\\",
-                \\"oss:GetObject\\"
-              ],
-              \\"Effect\\": \\"Allow\\",
-              \\"Resource\\": [
-                \\"acs:oss:*:*:mybucket\\",
-                \\"acs:oss:*:*:mybucket/*\\"
-              ]
-            }
-          ],
-            \\"Version\\": \\"1\\"
-        }
+    default_policy = alicloud.ram.Policy("default",
+        policy_name=f"{name}-{default['result']}",
+        description=f"{name}-{default['result']}",
+        force=True,
+        policy_document=\"\"\"  {
+        \\"Statement\\": [
+          {
+            \\"Effect\\": \\"Allow\\",
+            \\"Action\\": \\"*\\",
+            \\"Resource\\": \\"*\\"
+          }
+        ],
+        \\"Version\\": \\"1\\"
+      }
     \"\"\",
-        description="this is a policy test")
-    attach = alicloud.ram.GroupPolicyAttachment("attach",
-        policy_name=policy.policy_name,
-        policy_type=policy.type,
-        group_name=group.name)
-    policies_ds = alicloud.ram.get_policies_output(group_name=attach.group_name,
-        type="Custom")
-    pulumi.export("firstPolicyName", policies_ds.policies[0].name)
+        tags={
+            "Created": "TF",
+            "For": "Policy",
+        })
+    ids = alicloud.ram.get_policies_output(ids=[default_policy.id])
+    pulumi.export("ramPoliciesId0", ids.policies[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `true`. Set it to true can output more details.
-    :param _builtins.str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
-    :param Sequence[_builtins.str] ids: A list of ram group IDs.
-    :param _builtins.str name_regex: A regex string to filter resulting policies by name.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `true`.
+    :param _builtins.str group_name: The name of the user group.
+    :param Sequence[_builtins.str] ids: A list of Policy IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Policy name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
-    :param _builtins.str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
-    :param _builtins.str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
+    :param _builtins.str role_name: The name of the RAM role.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+    :param _builtins.str type: The type of the policy. Valid values: `System` and `Custom`.
+    :param _builtins.str user_name: The name of the RAM user.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -225,6 +236,7 @@ def get_policies(enable_details: Optional[_builtins.bool] = None,
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['roleName'] = role_name
+    __args__['tags'] = tags
     __args__['type'] = type
     __args__['userName'] = user_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -240,6 +252,7 @@ def get_policies(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'),
         role_name=pulumi.get(__ret__, 'role_name'),
+        tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         user_name=pulumi.get(__ret__, 'user_name'))
 def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -248,65 +261,64 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins
                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         role_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                         type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
-    This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+    This data source provides the RAM Policies of the current Alibaba Cloud user.
 
-    > **NOTE:** Available since v1.0.0+.
+    > **NOTE:** Available since v1.0.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
     import pulumi_random as random
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
     default = random.index.Integer("default",
         min=10000,
         max=99999)
-    group = alicloud.ram.Group("group",
-        name=f"groupName-{default['result']}",
-        comments="this is a group comments.")
-    policy = alicloud.ram.Policy("policy",
-        policy_name=f"tf-example-{default['result']}",
-        policy_document=\"\"\"    {
-          \\"Statement\\": [
-            {
-              \\"Action\\": [
-                \\"oss:ListObjects\\",
-                \\"oss:GetObject\\"
-              ],
-              \\"Effect\\": \\"Allow\\",
-              \\"Resource\\": [
-                \\"acs:oss:*:*:mybucket\\",
-                \\"acs:oss:*:*:mybucket/*\\"
-              ]
-            }
-          ],
-            \\"Version\\": \\"1\\"
-        }
+    default_policy = alicloud.ram.Policy("default",
+        policy_name=f"{name}-{default['result']}",
+        description=f"{name}-{default['result']}",
+        force=True,
+        policy_document=\"\"\"  {
+        \\"Statement\\": [
+          {
+            \\"Effect\\": \\"Allow\\",
+            \\"Action\\": \\"*\\",
+            \\"Resource\\": \\"*\\"
+          }
+        ],
+        \\"Version\\": \\"1\\"
+      }
     \"\"\",
-        description="this is a policy test")
-    attach = alicloud.ram.GroupPolicyAttachment("attach",
-        policy_name=policy.policy_name,
-        policy_type=policy.type,
-        group_name=group.name)
-    policies_ds = alicloud.ram.get_policies_output(group_name=attach.group_name,
-        type="Custom")
-    pulumi.export("firstPolicyName", policies_ds.policies[0].name)
+        tags={
+            "Created": "TF",
+            "For": "Policy",
+        })
+    ids = alicloud.ram.get_policies_output(ids=[default_policy.id])
+    pulumi.export("ramPoliciesId0", ids.policies[0].id)
     ```
 
 
-    :param _builtins.bool enable_details: Default to `true`. Set it to true can output more details.
-    :param _builtins.str group_name: Filter results by a specific group name. Returned policies are attached to the specified group.
-    :param Sequence[_builtins.str] ids: A list of ram group IDs.
-    :param _builtins.str name_regex: A regex string to filter resulting policies by name.
+    :param _builtins.bool enable_details: Whether to query the detailed list of resource attributes. Default value: `true`.
+    :param _builtins.str group_name: The name of the user group.
+    :param Sequence[_builtins.str] ids: A list of Policy IDs.
+    :param _builtins.str name_regex: A regex string to filter results by Policy name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str role_name: Filter results by a specific role name. Returned policies are attached to the specified role.
-    :param _builtins.str type: Filter results by a specific policy type. Valid values are `Custom` and `System`.
-    :param _builtins.str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
+    :param _builtins.str role_name: The name of the RAM role.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+    :param _builtins.str type: The type of the policy. Valid values: `System` and `Custom`.
+    :param _builtins.str user_name: The name of the RAM user.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -315,6 +327,7 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['roleName'] = role_name
+    __args__['tags'] = tags
     __args__['type'] = type
     __args__['userName'] = user_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -329,5 +342,6 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[_builtins
         output_file=pulumi.get(__response__, 'output_file'),
         policies=pulumi.get(__response__, 'policies'),
         role_name=pulumi.get(__response__, 'role_name'),
+        tags=pulumi.get(__response__, 'tags'),
         type=pulumi.get(__response__, 'type'),
         user_name=pulumi.get(__response__, 'user_name')))

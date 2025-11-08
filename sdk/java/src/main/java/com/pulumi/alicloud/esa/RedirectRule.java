@@ -187,6 +187,20 @@ public class RedirectRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleName);
     }
     /**
+     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
+    }
+    /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
@@ -255,18 +269,18 @@ public class RedirectRule extends com.pulumi.resources.CustomResource {
         return this.targetUrl;
     }
     /**
-     * The redirect type. Valid value:
-     * 
-     * - static
+     * The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The redirect type. Valid value:
-     * 
-     * - static
+     * @return The redirection type. Value range:
+     * - static: static mode.
+     * - dynamic: dynamic mode.
      * 
      */
     public Output<String> type() {

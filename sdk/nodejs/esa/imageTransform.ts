@@ -97,6 +97,10 @@ export class ImageTransform extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
     declare public readonly siteId: pulumi.Output<number>;
@@ -123,6 +127,7 @@ export class ImageTransform extends pulumi.CustomResource {
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
@@ -134,6 +139,7 @@ export class ImageTransform extends pulumi.CustomResource {
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
@@ -170,6 +176,10 @@ export interface ImageTransformState {
      */
     ruleName?: pulumi.Input<string>;
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
     siteId?: pulumi.Input<number>;
@@ -201,6 +211,10 @@ export interface ImageTransformArgs {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */

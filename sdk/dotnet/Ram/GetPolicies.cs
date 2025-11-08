@@ -12,11 +12,13 @@ namespace Pulumi.AliCloud.Ram
     public static class GetPolicies
     {
         /// <summary>
-        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -27,57 +29,48 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
         ///     var @default = new Random.Index.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
         ///     });
         /// 
-        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
-        ///         Name = $"groupName-{@default.Result}",
-        ///         Comments = "this is a group comments.",
-        ///     });
-        /// 
-        ///     var policy = new AliCloud.Ram.Policy("policy", new()
-        ///     {
-        ///         PolicyName = $"tf-example-{@default.Result}",
-        ///         PolicyDocument = @"    {
-        ///       \""Statement\"": [
-        ///         {
-        ///           \""Action\"": [
-        ///             \""oss:ListObjects\"",
-        ///             \""oss:GetObject\""
-        ///           ],
-        ///           \""Effect\"": \""Allow\"",
-        ///           \""Resource\"": [
-        ///             \""acs:oss:*:*:mybucket\"",
-        ///             \""acs:oss:*:*:mybucket/*\""
-        ///           ]
-        ///         }
-        ///       ],
-        ///         \""Version\"": \""1\""
-        ///     }
+        ///         PolicyName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         PolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Action\"": \""*\"",
+        ///         \""Resource\"": \""*\""
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
         /// ",
-        ///         Description = "this is a policy test",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Policy" },
+        ///         },
         ///     });
         /// 
-        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     var ids = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         PolicyName = policy.PolicyName,
-        ///         PolicyType = policy.Type,
-        ///         GroupName = @group.Name,
-        ///     });
-        /// 
-        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
-        ///     {
-        ///         GroupName = attach.GroupName,
-        ///         Type = "Custom",
+        ///         Ids = new[]
+        ///         {
+        ///             defaultPolicy.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///         ["ramPoliciesId0"] = ids.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -86,11 +79,13 @@ namespace Pulumi.AliCloud.Ram
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -101,57 +96,48 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
         ///     var @default = new Random.Index.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
         ///     });
         /// 
-        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
-        ///         Name = $"groupName-{@default.Result}",
-        ///         Comments = "this is a group comments.",
-        ///     });
-        /// 
-        ///     var policy = new AliCloud.Ram.Policy("policy", new()
-        ///     {
-        ///         PolicyName = $"tf-example-{@default.Result}",
-        ///         PolicyDocument = @"    {
-        ///       \""Statement\"": [
-        ///         {
-        ///           \""Action\"": [
-        ///             \""oss:ListObjects\"",
-        ///             \""oss:GetObject\""
-        ///           ],
-        ///           \""Effect\"": \""Allow\"",
-        ///           \""Resource\"": [
-        ///             \""acs:oss:*:*:mybucket\"",
-        ///             \""acs:oss:*:*:mybucket/*\""
-        ///           ]
-        ///         }
-        ///       ],
-        ///         \""Version\"": \""1\""
-        ///     }
+        ///         PolicyName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         PolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Action\"": \""*\"",
+        ///         \""Resource\"": \""*\""
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
         /// ",
-        ///         Description = "this is a policy test",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Policy" },
+        ///         },
         ///     });
         /// 
-        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     var ids = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         PolicyName = policy.PolicyName,
-        ///         PolicyType = policy.Type,
-        ///         GroupName = @group.Name,
-        ///     });
-        /// 
-        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
-        ///     {
-        ///         GroupName = attach.GroupName,
-        ///         Type = "Custom",
+        ///         Ids = new[]
+        ///         {
+        ///             defaultPolicy.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///         ["ramPoliciesId0"] = ids.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -160,11 +146,13 @@ namespace Pulumi.AliCloud.Ram
             => global::Pulumi.Deployment.Instance.Invoke<GetPoliciesResult>("alicloud:ram/getPolicies:getPolicies", args ?? new GetPoliciesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of RAM policies in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Policies of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -175,57 +163,48 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
         ///     var @default = new Random.Index.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
         ///     });
         /// 
-        ///     var @group = new AliCloud.Ram.Group("group", new()
+        ///     var defaultPolicy = new AliCloud.Ram.Policy("default", new()
         ///     {
-        ///         Name = $"groupName-{@default.Result}",
-        ///         Comments = "this is a group comments.",
-        ///     });
-        /// 
-        ///     var policy = new AliCloud.Ram.Policy("policy", new()
-        ///     {
-        ///         PolicyName = $"tf-example-{@default.Result}",
-        ///         PolicyDocument = @"    {
-        ///       \""Statement\"": [
-        ///         {
-        ///           \""Action\"": [
-        ///             \""oss:ListObjects\"",
-        ///             \""oss:GetObject\""
-        ///           ],
-        ///           \""Effect\"": \""Allow\"",
-        ///           \""Resource\"": [
-        ///             \""acs:oss:*:*:mybucket\"",
-        ///             \""acs:oss:*:*:mybucket/*\""
-        ///           ]
-        ///         }
-        ///       ],
-        ///         \""Version\"": \""1\""
-        ///     }
+        ///         PolicyName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         PolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Action\"": \""*\"",
+        ///         \""Resource\"": \""*\""
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
         /// ",
-        ///         Description = "this is a policy test",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Policy" },
+        ///         },
         ///     });
         /// 
-        ///     var attach = new AliCloud.Ram.GroupPolicyAttachment("attach", new()
+        ///     var ids = AliCloud.Ram.GetPolicies.Invoke(new()
         ///     {
-        ///         PolicyName = policy.PolicyName,
-        ///         PolicyType = policy.Type,
-        ///         GroupName = @group.Name,
-        ///     });
-        /// 
-        ///     var policiesDs = AliCloud.Ram.GetPolicies.Invoke(new()
-        ///     {
-        ///         GroupName = attach.GroupName,
-        ///         Type = "Custom",
+        ///         Ids = new[]
+        ///         {
+        ///             defaultPolicy.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPolicyName"] = policiesDs.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Name),
+        ///         ["ramPoliciesId0"] = ids.Apply(getPoliciesResult =&gt; getPoliciesResult.Policies[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -238,13 +217,13 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `True`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `True`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// Filter results by a specific group name. Returned policies are attached to the specified group.
+        /// The name of the user group.
         /// </summary>
         [Input("groupName")]
         public string? GroupName { get; set; }
@@ -253,7 +232,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ram group IDs.
+        /// A list of Policy IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -262,7 +241,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// A regex string to filter resulting policies by name.
+        /// A regex string to filter results by Policy name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -274,19 +253,31 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific role name. Returned policies are attached to the specified role.
+        /// The name of the RAM role.
         /// </summary>
         [Input("roleName")]
         public string? RoleName { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The type of the policy. Valid values: `System` and `Custom`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// Filter results by a specific user name. Returned policies are attached to the specified user.
+        /// The name of the RAM user.
         /// </summary>
         [Input("userName")]
         public string? UserName { get; set; }
@@ -300,13 +291,13 @@ namespace Pulumi.AliCloud.Ram
     public sealed class GetPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `True`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `True`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// Filter results by a specific group name. Returned policies are attached to the specified group.
+        /// The name of the user group.
         /// </summary>
         [Input("groupName")]
         public Input<string>? GroupName { get; set; }
@@ -315,7 +306,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ram group IDs.
+        /// A list of Policy IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -324,7 +315,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// A regex string to filter resulting policies by name.
+        /// A regex string to filter results by Policy name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -336,19 +327,31 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific role name. Returned policies are attached to the specified role.
+        /// The name of the RAM role.
         /// </summary>
         [Input("roleName")]
         public Input<string>? RoleName { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The type of the policy. Valid values: `System` and `Custom`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Filter results by a specific user name. Returned policies are attached to the specified user.
+        /// The name of the RAM user.
         /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
@@ -372,21 +375,25 @@ namespace Pulumi.AliCloud.Ram
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of ram group names.
+        /// (Available since v1.42.0) A list of Policy names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// A list of policies. Each element contains the following attributes:
+        /// A list of Policy. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPoliciesPolicyResult> Policies;
         public readonly string? RoleName;
         /// <summary>
-        /// Type of the policy.
+        /// (Available since v1.262.1) The tags of the Policy.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The type of the policy.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The user name of  policy.
+        /// (Removed since v1.262.1) Field `UserName` has been removed from provider version 1.262.1.
         /// </summary>
         public readonly string? UserName;
 
@@ -410,6 +417,8 @@ namespace Pulumi.AliCloud.Ram
 
             string? roleName,
 
+            ImmutableDictionary<string, string>? tags,
+
             string? type,
 
             string? userName)
@@ -423,6 +432,7 @@ namespace Pulumi.AliCloud.Ram
             OutputFile = outputFile;
             Policies = policies;
             RoleName = roleName;
+            Tags = tags;
             Type = type;
             UserName = userName;
         }

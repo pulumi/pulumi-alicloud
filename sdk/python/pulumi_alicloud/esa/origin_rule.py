@@ -21,56 +21,94 @@ class OriginRuleArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.int],
                  dns_record: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_max_tries: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_args: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_target_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_http_port: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_https_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_mtls: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_verify: Optional[pulumi.Input[_builtins.str]] = None,
                  range: Optional[pulumi.Input[_builtins.str]] = None,
+                 range_chunk_size: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a OriginRule resource.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
+        :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_max_tries: 302 follows the upper limit of the number of times, with a value range of [1-5].
+        :param pulumi.Input[_builtins.str] follow302_retain_args: Retain the original request parameter switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_retain_header: Retain the original request header switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_target_host: Modify the source host after 302.
         :param pulumi.Input[_builtins.str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[_builtins.str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
         :param pulumi.Input[_builtins.str] origin_https_port: The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+        :param pulumi.Input[_builtins.str] origin_mtls: The mtls switch. Value range:
+        :param pulumi.Input[_builtins.str] origin_read_timeout: Read timeout interval of the source station (s).
         :param pulumi.Input[_builtins.str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[_builtins.str] origin_sni: SNI carried in the back-to-origin request.
+        :param pulumi.Input[_builtins.str] origin_verify: Source station certificate verification switch. Value range:
         :param pulumi.Input[_builtins.str] range: Use the range sharding method to download the file from the source. Value range:
+        :param pulumi.Input[_builtins.str] range_chunk_size: range shard size.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-               - on: open.
-               - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "site_id", site_id)
         if dns_record is not None:
             pulumi.set(__self__, "dns_record", dns_record)
+        if follow302_enable is not None:
+            pulumi.set(__self__, "follow302_enable", follow302_enable)
+        if follow302_max_tries is not None:
+            pulumi.set(__self__, "follow302_max_tries", follow302_max_tries)
+        if follow302_retain_args is not None:
+            pulumi.set(__self__, "follow302_retain_args", follow302_retain_args)
+        if follow302_retain_header is not None:
+            pulumi.set(__self__, "follow302_retain_header", follow302_retain_header)
+        if follow302_target_host is not None:
+            pulumi.set(__self__, "follow302_target_host", follow302_target_host)
         if origin_host is not None:
             pulumi.set(__self__, "origin_host", origin_host)
         if origin_http_port is not None:
             pulumi.set(__self__, "origin_http_port", origin_http_port)
         if origin_https_port is not None:
             pulumi.set(__self__, "origin_https_port", origin_https_port)
+        if origin_mtls is not None:
+            pulumi.set(__self__, "origin_mtls", origin_mtls)
+        if origin_read_timeout is not None:
+            pulumi.set(__self__, "origin_read_timeout", origin_read_timeout)
         if origin_scheme is not None:
             pulumi.set(__self__, "origin_scheme", origin_scheme)
         if origin_sni is not None:
             pulumi.set(__self__, "origin_sni", origin_sni)
+        if origin_verify is not None:
+            pulumi.set(__self__, "origin_verify", origin_verify)
         if range is not None:
             pulumi.set(__self__, "range", range)
+        if range_chunk_size is not None:
+            pulumi.set(__self__, "range_chunk_size", range_chunk_size)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
         if rule_enable is not None:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
 
@@ -97,6 +135,66 @@ class OriginRuleArgs:
     @dns_record.setter
     def dns_record(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "dns_record", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302Enable")
+    def follow302_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Return Source 302 follow switch. Value range:
+        """
+        return pulumi.get(self, "follow302_enable")
+
+    @follow302_enable.setter
+    def follow302_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302MaxTries")
+    def follow302_max_tries(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        302 follows the upper limit of the number of times, with a value range of [1-5].
+        """
+        return pulumi.get(self, "follow302_max_tries")
+
+    @follow302_max_tries.setter
+    def follow302_max_tries(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_max_tries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainArgs")
+    def follow302_retain_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Retain the original request parameter switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_args")
+
+    @follow302_retain_args.setter
+    def follow302_retain_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_retain_args", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainHeader")
+    def follow302_retain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Retain the original request header switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_header")
+
+    @follow302_retain_header.setter
+    def follow302_retain_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_retain_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302TargetHost")
+    def follow302_target_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Modify the source host after 302.
+        """
+        return pulumi.get(self, "follow302_target_host")
+
+    @follow302_target_host.setter
+    def follow302_target_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_target_host", value)
 
     @_builtins.property
     @pulumi.getter(name="originHost")
@@ -135,6 +233,30 @@ class OriginRuleArgs:
         pulumi.set(self, "origin_https_port", value)
 
     @_builtins.property
+    @pulumi.getter(name="originMtls")
+    def origin_mtls(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The mtls switch. Value range:
+        """
+        return pulumi.get(self, "origin_mtls")
+
+    @origin_mtls.setter
+    def origin_mtls(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_mtls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originReadTimeout")
+    def origin_read_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Read timeout interval of the source station (s).
+        """
+        return pulumi.get(self, "origin_read_timeout")
+
+    @origin_read_timeout.setter
+    def origin_read_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_read_timeout", value)
+
+    @_builtins.property
     @pulumi.getter(name="originScheme")
     def origin_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -159,6 +281,18 @@ class OriginRuleArgs:
         pulumi.set(self, "origin_sni", value)
 
     @_builtins.property
+    @pulumi.getter(name="originVerify")
+    def origin_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Source station certificate verification switch. Value range:
+        """
+        return pulumi.get(self, "origin_verify")
+
+    @origin_verify.setter
+    def origin_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_verify", value)
+
+    @_builtins.property
     @pulumi.getter
     def range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -169,6 +303,18 @@ class OriginRuleArgs:
     @range.setter
     def range(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rangeChunkSize")
+    def range_chunk_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        range shard size.
+        """
+        return pulumi.get(self, "range_chunk_size")
+
+    @range_chunk_size.setter
+    def range_chunk_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range_chunk_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -189,8 +335,6 @@ class OriginRuleArgs:
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        - on: open.
-        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -211,6 +355,18 @@ class OriginRuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -228,34 +384,52 @@ class _OriginRuleState:
     def __init__(__self__, *,
                  config_id: Optional[pulumi.Input[_builtins.int]] = None,
                  dns_record: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_max_tries: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_args: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_target_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_http_port: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_https_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_mtls: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_verify: Optional[pulumi.Input[_builtins.str]] = None,
                  range: Optional[pulumi.Input[_builtins.str]] = None,
+                 range_chunk_size: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OriginRule resources.
         :param pulumi.Input[_builtins.int] config_id: Back-to-source rule configuration ID
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
+        :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_max_tries: 302 follows the upper limit of the number of times, with a value range of [1-5].
+        :param pulumi.Input[_builtins.str] follow302_retain_args: Retain the original request parameter switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_retain_header: Retain the original request header switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_target_host: Modify the source host after 302.
         :param pulumi.Input[_builtins.str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[_builtins.str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
         :param pulumi.Input[_builtins.str] origin_https_port: The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+        :param pulumi.Input[_builtins.str] origin_mtls: The mtls switch. Value range:
+        :param pulumi.Input[_builtins.str] origin_read_timeout: Read timeout interval of the source station (s).
         :param pulumi.Input[_builtins.str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[_builtins.str] origin_sni: SNI carried in the back-to-origin request.
+        :param pulumi.Input[_builtins.str] origin_verify: Source station certificate verification switch. Value range:
         :param pulumi.Input[_builtins.str] range: Use the range sharding method to download the file from the source. Value range:
+        :param pulumi.Input[_builtins.str] range_chunk_size: range shard size.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-               - on: open.
-               - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -263,24 +437,44 @@ class _OriginRuleState:
             pulumi.set(__self__, "config_id", config_id)
         if dns_record is not None:
             pulumi.set(__self__, "dns_record", dns_record)
+        if follow302_enable is not None:
+            pulumi.set(__self__, "follow302_enable", follow302_enable)
+        if follow302_max_tries is not None:
+            pulumi.set(__self__, "follow302_max_tries", follow302_max_tries)
+        if follow302_retain_args is not None:
+            pulumi.set(__self__, "follow302_retain_args", follow302_retain_args)
+        if follow302_retain_header is not None:
+            pulumi.set(__self__, "follow302_retain_header", follow302_retain_header)
+        if follow302_target_host is not None:
+            pulumi.set(__self__, "follow302_target_host", follow302_target_host)
         if origin_host is not None:
             pulumi.set(__self__, "origin_host", origin_host)
         if origin_http_port is not None:
             pulumi.set(__self__, "origin_http_port", origin_http_port)
         if origin_https_port is not None:
             pulumi.set(__self__, "origin_https_port", origin_https_port)
+        if origin_mtls is not None:
+            pulumi.set(__self__, "origin_mtls", origin_mtls)
+        if origin_read_timeout is not None:
+            pulumi.set(__self__, "origin_read_timeout", origin_read_timeout)
         if origin_scheme is not None:
             pulumi.set(__self__, "origin_scheme", origin_scheme)
         if origin_sni is not None:
             pulumi.set(__self__, "origin_sni", origin_sni)
+        if origin_verify is not None:
+            pulumi.set(__self__, "origin_verify", origin_verify)
         if range is not None:
             pulumi.set(__self__, "range", range)
+        if range_chunk_size is not None:
+            pulumi.set(__self__, "range_chunk_size", range_chunk_size)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
         if rule_enable is not None:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -311,6 +505,66 @@ class _OriginRuleState:
         pulumi.set(self, "dns_record", value)
 
     @_builtins.property
+    @pulumi.getter(name="follow302Enable")
+    def follow302_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Return Source 302 follow switch. Value range:
+        """
+        return pulumi.get(self, "follow302_enable")
+
+    @follow302_enable.setter
+    def follow302_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302MaxTries")
+    def follow302_max_tries(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        302 follows the upper limit of the number of times, with a value range of [1-5].
+        """
+        return pulumi.get(self, "follow302_max_tries")
+
+    @follow302_max_tries.setter
+    def follow302_max_tries(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_max_tries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainArgs")
+    def follow302_retain_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Retain the original request parameter switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_args")
+
+    @follow302_retain_args.setter
+    def follow302_retain_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_retain_args", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainHeader")
+    def follow302_retain_header(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Retain the original request header switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_header")
+
+    @follow302_retain_header.setter
+    def follow302_retain_header(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_retain_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="follow302TargetHost")
+    def follow302_target_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Modify the source host after 302.
+        """
+        return pulumi.get(self, "follow302_target_host")
+
+    @follow302_target_host.setter
+    def follow302_target_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "follow302_target_host", value)
+
+    @_builtins.property
     @pulumi.getter(name="originHost")
     def origin_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -347,6 +601,30 @@ class _OriginRuleState:
         pulumi.set(self, "origin_https_port", value)
 
     @_builtins.property
+    @pulumi.getter(name="originMtls")
+    def origin_mtls(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The mtls switch. Value range:
+        """
+        return pulumi.get(self, "origin_mtls")
+
+    @origin_mtls.setter
+    def origin_mtls(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_mtls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originReadTimeout")
+    def origin_read_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Read timeout interval of the source station (s).
+        """
+        return pulumi.get(self, "origin_read_timeout")
+
+    @origin_read_timeout.setter
+    def origin_read_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_read_timeout", value)
+
+    @_builtins.property
     @pulumi.getter(name="originScheme")
     def origin_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -371,6 +649,18 @@ class _OriginRuleState:
         pulumi.set(self, "origin_sni", value)
 
     @_builtins.property
+    @pulumi.getter(name="originVerify")
+    def origin_verify(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Source station certificate verification switch. Value range:
+        """
+        return pulumi.get(self, "origin_verify")
+
+    @origin_verify.setter
+    def origin_verify(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_verify", value)
+
+    @_builtins.property
     @pulumi.getter
     def range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -381,6 +671,18 @@ class _OriginRuleState:
     @range.setter
     def range(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rangeChunkSize")
+    def range_chunk_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        range shard size.
+        """
+        return pulumi.get(self, "range_chunk_size")
+
+    @range_chunk_size.setter
+    def range_chunk_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range_chunk_size", value)
 
     @_builtins.property
     @pulumi.getter
@@ -401,8 +703,6 @@ class _OriginRuleState:
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        - on: open.
-        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -421,6 +721,18 @@ class _OriginRuleState:
     @rule_name.setter
     def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -454,15 +766,25 @@ class OriginRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_record: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_max_tries: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_args: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_target_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_http_port: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_https_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_mtls: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_verify: Optional[pulumi.Input[_builtins.str]] = None,
                  range: Optional[pulumi.Input[_builtins.str]] = None,
+                 range_chunk_size: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -508,19 +830,27 @@ class OriginRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
+        :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_max_tries: 302 follows the upper limit of the number of times, with a value range of [1-5].
+        :param pulumi.Input[_builtins.str] follow302_retain_args: Retain the original request parameter switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_retain_header: Retain the original request header switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_target_host: Modify the source host after 302.
         :param pulumi.Input[_builtins.str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[_builtins.str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
         :param pulumi.Input[_builtins.str] origin_https_port: The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+        :param pulumi.Input[_builtins.str] origin_mtls: The mtls switch. Value range:
+        :param pulumi.Input[_builtins.str] origin_read_timeout: Read timeout interval of the source station (s).
         :param pulumi.Input[_builtins.str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[_builtins.str] origin_sni: SNI carried in the back-to-origin request.
+        :param pulumi.Input[_builtins.str] origin_verify: Source station certificate verification switch. Value range:
         :param pulumi.Input[_builtins.str] range: Use the range sharding method to download the file from the source. Value range:
+        :param pulumi.Input[_builtins.str] range_chunk_size: range shard size.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-               - on: open.
-               - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -585,15 +915,25 @@ class OriginRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dns_record: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_max_tries: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_args: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_retain_header: Optional[pulumi.Input[_builtins.str]] = None,
+                 follow302_target_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_host: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_http_port: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_https_port: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_mtls: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_read_timeout: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+                 origin_verify: Optional[pulumi.Input[_builtins.str]] = None,
                  range: Optional[pulumi.Input[_builtins.str]] = None,
+                 range_chunk_size: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -606,15 +946,25 @@ class OriginRule(pulumi.CustomResource):
             __props__ = OriginRuleArgs.__new__(OriginRuleArgs)
 
             __props__.__dict__["dns_record"] = dns_record
+            __props__.__dict__["follow302_enable"] = follow302_enable
+            __props__.__dict__["follow302_max_tries"] = follow302_max_tries
+            __props__.__dict__["follow302_retain_args"] = follow302_retain_args
+            __props__.__dict__["follow302_retain_header"] = follow302_retain_header
+            __props__.__dict__["follow302_target_host"] = follow302_target_host
             __props__.__dict__["origin_host"] = origin_host
             __props__.__dict__["origin_http_port"] = origin_http_port
             __props__.__dict__["origin_https_port"] = origin_https_port
+            __props__.__dict__["origin_mtls"] = origin_mtls
+            __props__.__dict__["origin_read_timeout"] = origin_read_timeout
             __props__.__dict__["origin_scheme"] = origin_scheme
             __props__.__dict__["origin_sni"] = origin_sni
+            __props__.__dict__["origin_verify"] = origin_verify
             __props__.__dict__["range"] = range
+            __props__.__dict__["range_chunk_size"] = range_chunk_size
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -632,15 +982,25 @@ class OriginRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config_id: Optional[pulumi.Input[_builtins.int]] = None,
             dns_record: Optional[pulumi.Input[_builtins.str]] = None,
+            follow302_enable: Optional[pulumi.Input[_builtins.str]] = None,
+            follow302_max_tries: Optional[pulumi.Input[_builtins.str]] = None,
+            follow302_retain_args: Optional[pulumi.Input[_builtins.str]] = None,
+            follow302_retain_header: Optional[pulumi.Input[_builtins.str]] = None,
+            follow302_target_host: Optional[pulumi.Input[_builtins.str]] = None,
             origin_host: Optional[pulumi.Input[_builtins.str]] = None,
             origin_http_port: Optional[pulumi.Input[_builtins.str]] = None,
             origin_https_port: Optional[pulumi.Input[_builtins.str]] = None,
+            origin_mtls: Optional[pulumi.Input[_builtins.str]] = None,
+            origin_read_timeout: Optional[pulumi.Input[_builtins.str]] = None,
             origin_scheme: Optional[pulumi.Input[_builtins.str]] = None,
             origin_sni: Optional[pulumi.Input[_builtins.str]] = None,
+            origin_verify: Optional[pulumi.Input[_builtins.str]] = None,
             range: Optional[pulumi.Input[_builtins.str]] = None,
+            range_chunk_size: Optional[pulumi.Input[_builtins.str]] = None,
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None) -> 'OriginRule':
         """
@@ -652,19 +1012,27 @@ class OriginRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] config_id: Back-to-source rule configuration ID
         :param pulumi.Input[_builtins.str] dns_record: Overwrite the DNS resolution record of the origin request.
+        :param pulumi.Input[_builtins.str] follow302_enable: Return Source 302 follow switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_max_tries: 302 follows the upper limit of the number of times, with a value range of [1-5].
+        :param pulumi.Input[_builtins.str] follow302_retain_args: Retain the original request parameter switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_retain_header: Retain the original request header switch. Value range:
+        :param pulumi.Input[_builtins.str] follow302_target_host: Modify the source host after 302.
         :param pulumi.Input[_builtins.str] origin_host: The HOST carried in the back-to-origin request.
         :param pulumi.Input[_builtins.str] origin_http_port: The port of the origin station accessed when the HTTP protocol is used to return to the origin.
         :param pulumi.Input[_builtins.str] origin_https_port: The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+        :param pulumi.Input[_builtins.str] origin_mtls: The mtls switch. Value range:
+        :param pulumi.Input[_builtins.str] origin_read_timeout: Read timeout interval of the source station (s).
         :param pulumi.Input[_builtins.str] origin_scheme: The protocol used by the back-to-origin request. Value range:
         :param pulumi.Input[_builtins.str] origin_sni: SNI carried in the back-to-origin request.
+        :param pulumi.Input[_builtins.str] origin_verify: Source station certificate verification switch. Value range:
         :param pulumi.Input[_builtins.str] range: Use the range sharding method to download the file from the source. Value range:
+        :param pulumi.Input[_builtins.str] range_chunk_size: range shard size.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                - Match all incoming requests: value set to true
                - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-               - on: open.
-               - off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: The site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
@@ -674,15 +1042,25 @@ class OriginRule(pulumi.CustomResource):
 
         __props__.__dict__["config_id"] = config_id
         __props__.__dict__["dns_record"] = dns_record
+        __props__.__dict__["follow302_enable"] = follow302_enable
+        __props__.__dict__["follow302_max_tries"] = follow302_max_tries
+        __props__.__dict__["follow302_retain_args"] = follow302_retain_args
+        __props__.__dict__["follow302_retain_header"] = follow302_retain_header
+        __props__.__dict__["follow302_target_host"] = follow302_target_host
         __props__.__dict__["origin_host"] = origin_host
         __props__.__dict__["origin_http_port"] = origin_http_port
         __props__.__dict__["origin_https_port"] = origin_https_port
+        __props__.__dict__["origin_mtls"] = origin_mtls
+        __props__.__dict__["origin_read_timeout"] = origin_read_timeout
         __props__.__dict__["origin_scheme"] = origin_scheme
         __props__.__dict__["origin_sni"] = origin_sni
+        __props__.__dict__["origin_verify"] = origin_verify
         __props__.__dict__["range"] = range
+        __props__.__dict__["range_chunk_size"] = range_chunk_size
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         return OriginRule(resource_name, opts=opts, __props__=__props__)
@@ -702,6 +1080,46 @@ class OriginRule(pulumi.CustomResource):
         Overwrite the DNS resolution record of the origin request.
         """
         return pulumi.get(self, "dns_record")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302Enable")
+    def follow302_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Return Source 302 follow switch. Value range:
+        """
+        return pulumi.get(self, "follow302_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302MaxTries")
+    def follow302_max_tries(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        302 follows the upper limit of the number of times, with a value range of [1-5].
+        """
+        return pulumi.get(self, "follow302_max_tries")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainArgs")
+    def follow302_retain_args(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Retain the original request parameter switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_args")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302RetainHeader")
+    def follow302_retain_header(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Retain the original request header switch. Value range:
+        """
+        return pulumi.get(self, "follow302_retain_header")
+
+    @_builtins.property
+    @pulumi.getter(name="follow302TargetHost")
+    def follow302_target_host(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Modify the source host after 302.
+        """
+        return pulumi.get(self, "follow302_target_host")
 
     @_builtins.property
     @pulumi.getter(name="originHost")
@@ -728,6 +1146,22 @@ class OriginRule(pulumi.CustomResource):
         return pulumi.get(self, "origin_https_port")
 
     @_builtins.property
+    @pulumi.getter(name="originMtls")
+    def origin_mtls(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mtls switch. Value range:
+        """
+        return pulumi.get(self, "origin_mtls")
+
+    @_builtins.property
+    @pulumi.getter(name="originReadTimeout")
+    def origin_read_timeout(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Read timeout interval of the source station (s).
+        """
+        return pulumi.get(self, "origin_read_timeout")
+
+    @_builtins.property
     @pulumi.getter(name="originScheme")
     def origin_scheme(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -744,12 +1178,28 @@ class OriginRule(pulumi.CustomResource):
         return pulumi.get(self, "origin_sni")
 
     @_builtins.property
+    @pulumi.getter(name="originVerify")
+    def origin_verify(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Source station certificate verification switch. Value range:
+        """
+        return pulumi.get(self, "origin_verify")
+
+    @_builtins.property
     @pulumi.getter
     def range(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Use the range sharding method to download the file from the source. Value range:
         """
         return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter(name="rangeChunkSize")
+    def range_chunk_size(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        range shard size.
+        """
+        return pulumi.get(self, "range_chunk_size")
 
     @_builtins.property
     @pulumi.getter
@@ -766,8 +1216,6 @@ class OriginRule(pulumi.CustomResource):
     def rule_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        - on: open.
-        - off: close.
         """
         return pulumi.get(self, "rule_enable")
 
@@ -778,6 +1226,14 @@ class OriginRule(pulumi.CustomResource):
         Rule name. When adding global configuration, this parameter does not need to be set.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")

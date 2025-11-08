@@ -273,14 +273,28 @@ public class HttpsBasicConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.ruleName);
     }
     /**
-     * Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
+    }
+    /**
+     * Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     @Export(name="siteId", refs={Integer.class}, tree="[0]")
     private Output<Integer> siteId;
 
     /**
-     * @return Site ID, which can be obtained by calling the [ListSites](https://next.api.alibabacloud.com/document/ESA/2024-09-10/ListSites) interface.
+     * @return Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
     public Output<Integer> siteId() {

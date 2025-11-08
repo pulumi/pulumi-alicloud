@@ -7,163 +7,176 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetPoliciesPolicy {
     /**
-     * @return Attachment count of the policy.
+     * @return The number of references to the policy.
      * 
      */
     private Integer attachmentCount;
     /**
-     * @return Creation date of the policy.
+     * @return The time when the policy was created.
      * 
      */
     private String createDate;
     /**
-     * @return Default version of the policy.
+     * @return The default version of the policy.
      * 
      */
     private String defaultVersion;
     /**
-     * @return Description of the policy.
+     * @return The description of the policy.
      * 
      */
     private String description;
     /**
-     * @return Policy document of the policy.
+     * @return The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String document;
     /**
-     * @return ID of the policy.
+     * @return (Available since v1.114.0) The ID of the Policy.
      * 
      */
     private String id;
     /**
-     * @return Name of the policy.
+     * @return The name of the policy.
      * 
      */
     private String name;
     /**
-     * @return Policy document of the policy.
+     * @return (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String policyDocument;
     /**
-     * @return Name of the policy.
+     * @return (Available since v1.114.0) The name of the policy.
      * 
      */
     private String policyName;
     /**
-     * @return Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
+     * @return The type of the policy. Valid values: `System` and `Custom`.
      * 
      */
     private String type;
     /**
-     * @return Update date of the policy.
+     * @return The time when the policy was modified.
      * 
      */
     private String updateDate;
     /**
-     * @return Filter results by a specific user name. Returned policies are attached to the specified user.
+     * @return The name of the RAM user.
      * 
      */
     private String userName;
     /**
-     * @return The ID of default policy.
+     * @return (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     private String versionId;
 
     private GetPoliciesPolicy() {}
     /**
-     * @return Attachment count of the policy.
+     * @return The number of references to the policy.
      * 
      */
     public Integer attachmentCount() {
         return this.attachmentCount;
     }
     /**
-     * @return Creation date of the policy.
+     * @return The time when the policy was created.
      * 
      */
     public String createDate() {
         return this.createDate;
     }
     /**
-     * @return Default version of the policy.
+     * @return The default version of the policy.
      * 
      */
     public String defaultVersion() {
         return this.defaultVersion;
     }
     /**
-     * @return Description of the policy.
+     * @return The description of the policy.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Policy document of the policy.
+     * @return The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String document() {
         return this.document;
     }
     /**
-     * @return ID of the policy.
+     * @return (Available since v1.114.0) The ID of the Policy.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Name of the policy.
+     * @return The name of the policy.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Policy document of the policy.
+     * @return (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String policyDocument() {
         return this.policyDocument;
     }
     /**
-     * @return Name of the policy.
+     * @return (Available since v1.114.0) The name of the policy.
      * 
      */
     public String policyName() {
         return this.policyName;
     }
     /**
-     * @return Filter results by a specific policy type. Valid values are `Custom` and `System`.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The type of the policy. Valid values: `System` and `Custom`.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Update date of the policy.
+     * @return The time when the policy was modified.
      * 
      */
     public String updateDate() {
         return this.updateDate;
     }
     /**
-     * @return Filter results by a specific user name. Returned policies are attached to the specified user.
+     * @return The name of the RAM user.
      * 
      */
     public String userName() {
         return this.userName;
     }
     /**
-     * @return The ID of default policy.
+     * @return (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
      * 
      */
     public String versionId() {
@@ -188,6 +201,7 @@ public final class GetPoliciesPolicy {
         private String name;
         private String policyDocument;
         private String policyName;
+        private Map<String,String> tags;
         private String type;
         private String updateDate;
         private String userName;
@@ -204,6 +218,7 @@ public final class GetPoliciesPolicy {
     	      this.name = defaults.name;
     	      this.policyDocument = defaults.policyDocument;
     	      this.policyName = defaults.policyName;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.updateDate = defaults.updateDate;
     	      this.userName = defaults.userName;
@@ -283,6 +298,14 @@ public final class GetPoliciesPolicy {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetPoliciesPolicy", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetPoliciesPolicy", "type");
@@ -325,6 +348,7 @@ public final class GetPoliciesPolicy {
             _resultValue.name = name;
             _resultValue.policyDocument = policyDocument;
             _resultValue.policyName = policyName;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.updateDate = updateDate;
             _resultValue.userName = userName;

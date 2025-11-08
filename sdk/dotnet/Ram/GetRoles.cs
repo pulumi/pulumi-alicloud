@@ -12,31 +12,69 @@ namespace Pulumi.AliCloud.Ram
     public static class GetRoles
     {
         /// <summary>
-        /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new Random.Index.Integer("default", new()
         ///     {
-        ///         OutputFile = "roles.txt",
-        ///         NameRegex = ".*test.*",
-        ///         PolicyName = "AliyunACSDefaultAccess",
-        ///         PolicyType = "Custom",
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         RoleName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         AssumeRolePolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Action\"": \""sts:AssumeRole\"",
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Principal\"": {
+        ///           \""Service\"": [
+        ///             \""ecs.aliyuncs.com\""
+        ///           ]
+        ///         }
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Role" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRole.RoleId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///         ["ramRolesId0"] = ids.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -45,31 +83,69 @@ namespace Pulumi.AliCloud.Ram
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new Random.Index.Integer("default", new()
         ///     {
-        ///         OutputFile = "roles.txt",
-        ///         NameRegex = ".*test.*",
-        ///         PolicyName = "AliyunACSDefaultAccess",
-        ///         PolicyType = "Custom",
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         RoleName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         AssumeRolePolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Action\"": \""sts:AssumeRole\"",
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Principal\"": {
+        ///           \""Service\"": [
+        ///             \""ecs.aliyuncs.com\""
+        ///           ]
+        ///         }
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Role" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRole.RoleId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///         ["ramRolesId0"] = ids.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -78,31 +154,69 @@ namespace Pulumi.AliCloud.Ram
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+        /// This data source provides the RAM Roles of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available since v1.0.0+.
+        /// &gt; **NOTE:** Available since v1.0.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var rolesDs = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new Random.Index.Integer("default", new()
         ///     {
-        ///         OutputFile = "roles.txt",
-        ///         NameRegex = ".*test.*",
-        ///         PolicyName = "AliyunACSDefaultAccess",
-        ///         PolicyType = "Custom",
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         RoleName = $"{name}-{@default.Result}",
+        ///         Description = $"{name}-{@default.Result}",
+        ///         Force = true,
+        ///         AssumeRolePolicyDocument = @"  {
+        ///     \""Statement\"": [
+        ///       {
+        ///         \""Action\"": \""sts:AssumeRole\"",
+        ///         \""Effect\"": \""Allow\"",
+        ///         \""Principal\"": {
+        ///           \""Service\"": [
+        ///             \""ecs.aliyuncs.com\""
+        ///           ]
+        ///         }
+        ///       }
+        ///     ],
+        ///     \""Version\"": \""1\""
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "Role" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Ram.GetRoles.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultRole.RoleId,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRoleId"] = rolesDs.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
+        ///         ["ramRolesId0"] = ids.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -118,7 +232,7 @@ namespace Pulumi.AliCloud.Ram
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of ram role IDs.
+        /// A list of Role IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -127,7 +241,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// A regex string to filter results by the role name.
+        /// A regex string to filter results by Role name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -139,16 +253,28 @@ namespace Pulumi.AliCloud.Ram
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy name. If you set this parameter without setting `PolicyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName")]
         public string? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
+        /// The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `PolicyType` takes effect only when `PolicyName` is set.
         /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
+
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
 
         public GetRolesArgs()
         {
@@ -162,7 +288,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of ram role IDs.
+        /// A list of Role IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -171,7 +297,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// A regex string to filter results by the role name.
+        /// A regex string to filter results by Role name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -183,16 +309,28 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy name. If you set this parameter without setting `PolicyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+        /// The name of the policy.
         /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 
         /// <summary>
-        /// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `PolicyName` as well.
+        /// The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `PolicyType` takes effect only when `PolicyName` is set.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public GetRolesInvokeArgs()
         {
@@ -208,22 +346,23 @@ namespace Pulumi.AliCloud.Ram
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of ram role IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of ram role names.
+        /// (Available since v1.42.0) A list of Role names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? PolicyName;
         public readonly string? PolicyType;
         /// <summary>
-        /// A list of roles. Each element contains the following attributes:
+        /// A list of Role. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRolesRoleResult> Roles;
+        /// <summary>
+        /// (Available since v1.262.1) The tags of the RAM role.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
         private GetRolesResult(
@@ -241,7 +380,9 @@ namespace Pulumi.AliCloud.Ram
 
             string? policyType,
 
-            ImmutableArray<Outputs.GetRolesRoleResult> roles)
+            ImmutableArray<Outputs.GetRolesRoleResult> roles,
+
+            ImmutableDictionary<string, string>? tags)
         {
             Id = id;
             Ids = ids;
@@ -251,6 +392,7 @@ namespace Pulumi.AliCloud.Ram
             PolicyName = policyName;
             PolicyType = policyType;
             Roles = roles;
+            Tags = tags;
         }
     }
 }

@@ -25,6 +25,7 @@ class NetworkOptimizationArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,10 +35,13 @@ class NetworkOptimizationArgs:
         :param pulumi.Input[_builtins.int] site_id: Site ID.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
-        :param pulumi.Input[_builtins.int] site_version: Site version number.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
         :param pulumi.Input[_builtins.str] websocket: Whether to enable Websocket, default is enabled. Value range:
@@ -53,6 +57,8 @@ class NetworkOptimizationArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
         if smart_routing is not None:
@@ -102,7 +108,9 @@ class NetworkOptimizationArgs:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -114,7 +122,7 @@ class NetworkOptimizationArgs:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule switch. Values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -135,10 +143,22 @@ class NetworkOptimizationArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Site version number.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -192,6 +212,7 @@ class _NetworkOptimizationState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
@@ -202,11 +223,14 @@ class _NetworkOptimizationState:
         :param pulumi.Input[_builtins.int] config_id: ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: Site ID.
-        :param pulumi.Input[_builtins.int] site_version: Site version number.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
         :param pulumi.Input[_builtins.str] websocket: Whether to enable Websocket, default is enabled. Value range:
@@ -223,6 +247,8 @@ class _NetworkOptimizationState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -274,7 +300,9 @@ class _NetworkOptimizationState:
     @pulumi.getter
     def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -286,7 +314,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule switch. Values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -307,6 +335,18 @@ class _NetworkOptimizationState:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -322,7 +362,7 @@ class _NetworkOptimizationState:
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Site version number.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -378,6 +418,7 @@ class NetworkOptimization(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
@@ -434,11 +475,14 @@ class NetworkOptimization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: Site ID.
-        :param pulumi.Input[_builtins.int] site_version: Site version number.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
         :param pulumi.Input[_builtins.str] websocket: Whether to enable Websocket, default is enabled. Value range:
@@ -515,6 +559,7 @@ class NetworkOptimization(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
@@ -534,6 +579,7 @@ class NetworkOptimization(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -558,6 +604,7 @@ class NetworkOptimization(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
@@ -573,11 +620,14 @@ class NetworkOptimization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] config_id: ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
-        :param pulumi.Input[_builtins.str] rule: Rule content.
-        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. Values:
+        :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+               - Match all incoming requests: value set to true
+               - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
+        :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         :param pulumi.Input[_builtins.int] site_id: Site ID.
-        :param pulumi.Input[_builtins.int] site_version: Site version number.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
         :param pulumi.Input[_builtins.str] websocket: Whether to enable Websocket, default is enabled. Value range:
@@ -592,6 +642,7 @@ class NetworkOptimization(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         __props__.__dict__["smart_routing"] = smart_routing
@@ -627,7 +678,9 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter
     def rule(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule content.
+        Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+        - Match all incoming requests: value set to true
+        - Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         """
         return pulumi.get(self, "rule")
 
@@ -635,7 +688,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="ruleEnable")
     def rule_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Rule switch. Values:
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
@@ -646,6 +699,14 @@ class NetworkOptimization(pulumi.CustomResource):
         Rule name.
         """
         return pulumi.get(self, "rule_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        """
+        return pulumi.get(self, "sequence")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
@@ -659,7 +720,7 @@ class NetworkOptimization(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Site version number.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

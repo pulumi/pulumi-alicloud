@@ -114,6 +114,76 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsRecord);
     }
     /**
+     * Return Source 302 follow switch. Value range:
+     * 
+     */
+    @Export(name="follow302Enable", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> follow302Enable;
+
+    /**
+     * @return Return Source 302 follow switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> follow302Enable() {
+        return Codegen.optional(this.follow302Enable);
+    }
+    /**
+     * 302 follows the upper limit of the number of times, with a value range of [1-5].
+     * 
+     */
+    @Export(name="follow302MaxTries", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> follow302MaxTries;
+
+    /**
+     * @return 302 follows the upper limit of the number of times, with a value range of [1-5].
+     * 
+     */
+    public Output<Optional<String>> follow302MaxTries() {
+        return Codegen.optional(this.follow302MaxTries);
+    }
+    /**
+     * Retain the original request parameter switch. Value range:
+     * 
+     */
+    @Export(name="follow302RetainArgs", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> follow302RetainArgs;
+
+    /**
+     * @return Retain the original request parameter switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> follow302RetainArgs() {
+        return Codegen.optional(this.follow302RetainArgs);
+    }
+    /**
+     * Retain the original request header switch. Value range:
+     * 
+     */
+    @Export(name="follow302RetainHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> follow302RetainHeader;
+
+    /**
+     * @return Retain the original request header switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> follow302RetainHeader() {
+        return Codegen.optional(this.follow302RetainHeader);
+    }
+    /**
+     * Modify the source host after 302.
+     * 
+     */
+    @Export(name="follow302TargetHost", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> follow302TargetHost;
+
+    /**
+     * @return Modify the source host after 302.
+     * 
+     */
+    public Output<Optional<String>> follow302TargetHost() {
+        return Codegen.optional(this.follow302TargetHost);
+    }
+    /**
      * The HOST carried in the back-to-origin request.
      * 
      */
@@ -156,6 +226,34 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originHttpsPort);
     }
     /**
+     * The mtls switch. Value range:
+     * 
+     */
+    @Export(name="originMtls", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> originMtls;
+
+    /**
+     * @return The mtls switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> originMtls() {
+        return Codegen.optional(this.originMtls);
+    }
+    /**
+     * Read timeout interval of the source station (s).
+     * 
+     */
+    @Export(name="originReadTimeout", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> originReadTimeout;
+
+    /**
+     * @return Read timeout interval of the source station (s).
+     * 
+     */
+    public Output<Optional<String>> originReadTimeout() {
+        return Codegen.optional(this.originReadTimeout);
+    }
+    /**
      * The protocol used by the back-to-origin request. Value range:
      * 
      */
@@ -184,6 +282,20 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.originSni);
     }
     /**
+     * Source station certificate verification switch. Value range:
+     * 
+     */
+    @Export(name="originVerify", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> originVerify;
+
+    /**
+     * @return Source station certificate verification switch. Value range:
+     * 
+     */
+    public Output<Optional<String>> originVerify() {
+        return Codegen.optional(this.originVerify);
+    }
+    /**
      * Use the range sharding method to download the file from the source. Value range:
      * 
      */
@@ -196,6 +308,20 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> range() {
         return Codegen.optional(this.range);
+    }
+    /**
+     * range shard size.
+     * 
+     */
+    @Export(name="rangeChunkSize", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> rangeChunkSize;
+
+    /**
+     * @return range shard size.
+     * 
+     */
+    public Output<Optional<String>> rangeChunkSize() {
+        return Codegen.optional(this.rangeChunkSize);
     }
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -217,8 +343,6 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      * 
      */
     @Export(name="ruleEnable", refs={String.class}, tree="[0]")
@@ -226,8 +350,6 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-     * - on: open.
-     * - off: close.
      * 
      */
     public Output<Optional<String>> ruleEnable() {
@@ -246,6 +368,20 @@ public class OriginRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
+    }
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
     }
     /**
      * The site ID.

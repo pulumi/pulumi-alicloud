@@ -163,6 +163,20 @@ public class ImageTransform extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleName);
     }
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
+    }
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */

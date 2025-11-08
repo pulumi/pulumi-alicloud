@@ -303,8 +303,9 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            memory_size=8,
+            instance_type_family="ecs.g9i")
+        default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,
             owners="system")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
@@ -336,6 +337,7 @@ class Attachment(pulumi.CustomResource):
             image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             security_group_id=default_security_group.id,
+            system_disk_category="cloud_essd",
             force_delete=True,
             active=True,
             enable=True)
@@ -348,7 +350,7 @@ class Attachment(pulumi.CustomResource):
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=10,
                 instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
+                system_disk_category="cloud_essd",
                 vswitch_id=default_get_switches.ids[0],
                 instance_name=name))
         default_attachment = alicloud.ess.Attachment("default",
@@ -421,8 +423,9 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            memory_size=8,
+            instance_type_family="ecs.g9i")
+        default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
             most_recent=True,
             owners="system")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
@@ -454,6 +457,7 @@ class Attachment(pulumi.CustomResource):
             image_id=default_get_images.images[0].id,
             instance_type=default_get_instance_types.instance_types[0].id,
             security_group_id=default_security_group.id,
+            system_disk_category="cloud_essd",
             force_delete=True,
             active=True,
             enable=True)
@@ -466,7 +470,7 @@ class Attachment(pulumi.CustomResource):
                 internet_charge_type="PayByTraffic",
                 internet_max_bandwidth_out=10,
                 instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
+                system_disk_category="cloud_essd",
                 vswitch_id=default_get_switches.ids[0],
                 instance_name=name))
         default_attachment = alicloud.ess.Attachment("default",

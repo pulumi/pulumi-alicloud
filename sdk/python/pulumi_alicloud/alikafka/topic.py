@@ -23,17 +23,23 @@ class TopicArgs:
                  remark: pulumi.Input[_builtins.str],
                  topic: pulumi.Input[_builtins.str],
                  compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
+                 configs: Optional[pulumi.Input[_builtins.str]] = None,
                  local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
                  partition_num: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Topic resource.
-        :param pulumi.Input[_builtins.str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
-        :param pulumi.Input[_builtins.str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
-        :param pulumi.Input[_builtins.str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
-        :param pulumi.Input[_builtins.bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
-        :param pulumi.Input[_builtins.bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[_builtins.int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] remark: The description of the topic.
+        :param pulumi.Input[_builtins.str] topic: The topic name.
+        :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+               - false: The delete cleanup policy is used.
+               - true: The compact cleanup policy is used.
+        :param pulumi.Input[_builtins.str] configs: The advanced configurations.
+        :param pulumi.Input[_builtins.bool] local_topic: The storage engine of the topic. Valid values:
+               - false: Cloud storage.
+               - true: Local storage.
+        :param pulumi.Input[_builtins.int] partition_num: The number of partitions in the topic.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -41,6 +47,8 @@ class TopicArgs:
         pulumi.set(__self__, "topic", topic)
         if compact_topic is not None:
             pulumi.set(__self__, "compact_topic", compact_topic)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
         if local_topic is not None:
             pulumi.set(__self__, "local_topic", local_topic)
         if partition_num is not None:
@@ -52,7 +60,7 @@ class TopicArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        InstanceId of your Kafka resource, the topic will create in this instance.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -64,7 +72,7 @@ class TopicArgs:
     @pulumi.getter
     def remark(self) -> pulumi.Input[_builtins.str]:
         """
-        This attribute is a concise description of topic. The length cannot exceed 64.
+        The description of the topic.
         """
         return pulumi.get(self, "remark")
 
@@ -76,7 +84,7 @@ class TopicArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        The topic name.
         """
         return pulumi.get(self, "topic")
 
@@ -88,7 +96,9 @@ class TopicArgs:
     @pulumi.getter(name="compactTopic")
     def compact_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        - false: The delete cleanup policy is used.
+        - true: The compact cleanup policy is used.
         """
         return pulumi.get(self, "compact_topic")
 
@@ -97,10 +107,24 @@ class TopicArgs:
         pulumi.set(self, "compact_topic", value)
 
     @_builtins.property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The advanced configurations.
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="localTopic")
     def local_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the topic is localTopic or not.
+        The storage engine of the topic. Valid values:
+        - false: Cloud storage.
+        - true: Local storage.
         """
         return pulumi.get(self, "local_topic")
 
@@ -112,7 +136,7 @@ class TopicArgs:
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of partitions of the topic. The number should between 1 and 48.
+        The number of partitions in the topic.
         """
         return pulumi.get(self, "partition_num")
 
@@ -137,32 +161,52 @@ class TopicArgs:
 class _TopicState:
     def __init__(__self__, *,
                  compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
+                 configs: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
                  partition_num: Optional[pulumi.Input[_builtins.int]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  remark: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Topic resources.
-        :param pulumi.Input[_builtins.bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
-        :param pulumi.Input[_builtins.str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
-        :param pulumi.Input[_builtins.bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[_builtins.int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
-        :param pulumi.Input[_builtins.str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
+        :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+               - false: The delete cleanup policy is used.
+               - true: The compact cleanup policy is used.
+        :param pulumi.Input[_builtins.str] configs: The advanced configurations.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.262.1) The time when the topic was created.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] local_topic: The storage engine of the topic. Valid values:
+               - false: Cloud storage.
+               - true: Local storage.
+        :param pulumi.Input[_builtins.int] partition_num: The number of partitions in the topic.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.262.1) The ID of the region where the instance resides.
+        :param pulumi.Input[_builtins.str] remark: The description of the topic.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.262.1) The status of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        :param pulumi.Input[_builtins.str] topic: The topic name.
         """
         if compact_topic is not None:
             pulumi.set(__self__, "compact_topic", compact_topic)
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if local_topic is not None:
             pulumi.set(__self__, "local_topic", local_topic)
         if partition_num is not None:
             pulumi.set(__self__, "partition_num", partition_num)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if remark is not None:
             pulumi.set(__self__, "remark", remark)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if topic is not None:
@@ -172,7 +216,9 @@ class _TopicState:
     @pulumi.getter(name="compactTopic")
     def compact_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        - false: The delete cleanup policy is used.
+        - true: The compact cleanup policy is used.
         """
         return pulumi.get(self, "compact_topic")
 
@@ -181,10 +227,34 @@ class _TopicState:
         pulumi.set(self, "compact_topic", value)
 
     @_builtins.property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The advanced configurations.
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Available since v1.262.1) The time when the topic was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        InstanceId of your Kafka resource, the topic will create in this instance.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -196,7 +266,9 @@ class _TopicState:
     @pulumi.getter(name="localTopic")
     def local_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether the topic is localTopic or not.
+        The storage engine of the topic. Valid values:
+        - false: Cloud storage.
+        - true: Local storage.
         """
         return pulumi.get(self, "local_topic")
 
@@ -208,7 +280,7 @@ class _TopicState:
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of partitions of the topic. The number should between 1 and 48.
+        The number of partitions in the topic.
         """
         return pulumi.get(self, "partition_num")
 
@@ -217,16 +289,40 @@ class _TopicState:
         pulumi.set(self, "partition_num", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.262.1) The ID of the region where the instance resides.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This attribute is a concise description of topic. The length cannot exceed 64.
+        The description of the topic.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
     def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "remark", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.262.1) The status of the service.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
@@ -244,7 +340,7 @@ class _TopicState:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        The topic name.
         """
         return pulumi.get(self, "topic")
 
@@ -260,6 +356,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
+                 configs: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
                  partition_num: Optional[pulumi.Input[_builtins.int]] = None,
@@ -268,12 +365,13 @@ class Topic(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
+        Provides a Alikafka Topic resource.
+
+        Topic in kafka.
+
+        For information about Alikafka Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
 
         > **NOTE:** Available since v1.56.0.
-
-        > **NOTE:**  Only the following regions support create alikafka topic.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -281,58 +379,79 @@ class Topic(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
-        instance_name = config.get("instanceName")
-        if instance_name is None:
-            instance_name = "tf-example"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("default",
-            name=f"{instance_name}-{default_integer['result']}",
+            name=name,
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
+            spec_type="professional",
+            service_version="2.2.0",
             vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
+            security_group=default_security_group.id,
+            config=json.dumps({
+                "enable.acl": "true",
+            }))
         default_topic = alicloud.alikafka.Topic("default",
             instance_id=default_instance.id,
-            topic="example-topic",
-            local_topic=False,
-            compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
+            topic=name,
+            remark=name,
+            local_topic=True,
+            compact_topic=True,
+            partition_num=18,
+            configs=json.dumps({
+                "message.format.version": "2.2.0",
+                "max.message.bytes": "10485760",
+                "min.insync.replicas": "1",
+                "replication-factor": "2",
+                "retention.ms": "3600000",
+            }),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         ```
 
         ## Import
 
-        ALIKAFKA TOPIC can be imported using the id, e.g.
+        Alikafka Topic can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        $ pulumi import alicloud:alikafka/topic:Topic example <instance_id>:<topic>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
-        :param pulumi.Input[_builtins.str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
-        :param pulumi.Input[_builtins.bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[_builtins.int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
-        :param pulumi.Input[_builtins.str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
+        :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+               - false: The delete cleanup policy is used.
+               - true: The compact cleanup policy is used.
+        :param pulumi.Input[_builtins.str] configs: The advanced configurations.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] local_topic: The storage engine of the topic. Valid values:
+               - false: Cloud storage.
+               - true: Local storage.
+        :param pulumi.Input[_builtins.int] partition_num: The number of partitions in the topic.
+        :param pulumi.Input[_builtins.str] remark: The description of the topic.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        :param pulumi.Input[_builtins.str] topic: The topic name.
         """
         ...
     @overload
@@ -341,12 +460,13 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
+        Provides a Alikafka Topic resource.
+
+        Topic in kafka.
+
+        For information about Alikafka Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
 
         > **NOTE:** Available since v1.56.0.
-
-        > **NOTE:**  Only the following regions support create alikafka topic.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
         ## Example Usage
 
@@ -354,47 +474,63 @@ class Topic(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
-        instance_name = config.get("instanceName")
-        if instance_name is None:
-            instance_name = "tf-example"
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default_network = alicloud.vpc.Network("default", cidr_block="172.16.0.0/12")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/12")
         default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             zone_id=default.zones[0].id)
         default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
         default_instance = alicloud.alikafka.Instance("default",
-            name=f"{instance_name}-{default_integer['result']}",
+            name=name,
             partition_num=50,
             disk_type=1,
             disk_size=500,
             deploy_type=5,
             io_max=20,
+            spec_type="professional",
+            service_version="2.2.0",
             vswitch_id=default_switch.id,
-            security_group=default_security_group.id)
+            security_group=default_security_group.id,
+            config=json.dumps({
+                "enable.acl": "true",
+            }))
         default_topic = alicloud.alikafka.Topic("default",
             instance_id=default_instance.id,
-            topic="example-topic",
-            local_topic=False,
-            compact_topic=False,
-            partition_num=12,
-            remark="dafault_kafka_topic_remark")
+            topic=name,
+            remark=name,
+            local_topic=True,
+            compact_topic=True,
+            partition_num=18,
+            configs=json.dumps({
+                "message.format.version": "2.2.0",
+                "max.message.bytes": "10485760",
+                "min.insync.replicas": "1",
+                "replication-factor": "2",
+                "retention.ms": "3600000",
+            }),
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         ```
 
         ## Import
 
-        ALIKAFKA TOPIC can be imported using the id, e.g.
+        Alikafka Topic can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+        $ pulumi import alicloud:alikafka/topic:Topic example <instance_id>:<topic>
         ```
 
         :param str resource_name: The name of the resource.
@@ -413,6 +549,7 @@ class Topic(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
+                 configs: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
                  partition_num: Optional[pulumi.Input[_builtins.int]] = None,
@@ -429,6 +566,7 @@ class Topic(pulumi.CustomResource):
             __props__ = TopicArgs.__new__(TopicArgs)
 
             __props__.__dict__["compact_topic"] = compact_topic
+            __props__.__dict__["configs"] = configs
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -441,6 +579,9 @@ class Topic(pulumi.CustomResource):
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__.__dict__["topic"] = topic
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
+            __props__.__dict__["status"] = None
         super(Topic, __self__).__init__(
             'alicloud:alikafka/topic:Topic',
             resource_name,
@@ -452,10 +593,14 @@ class Topic(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             compact_topic: Optional[pulumi.Input[_builtins.bool]] = None,
+            configs: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.int]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             local_topic: Optional[pulumi.Input[_builtins.bool]] = None,
             partition_num: Optional[pulumi.Input[_builtins.int]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             remark: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'Topic':
         """
@@ -465,23 +610,35 @@ class Topic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] compact_topic: Whether the topic is compactTopic or not. Compact topic must be a localTopic.
-        :param pulumi.Input[_builtins.str] instance_id: InstanceId of your Kafka resource, the topic will create in this instance.
-        :param pulumi.Input[_builtins.bool] local_topic: Whether the topic is localTopic or not.
-        :param pulumi.Input[_builtins.int] partition_num: The number of partitions of the topic. The number should between 1 and 48.
-        :param pulumi.Input[_builtins.str] remark: This attribute is a concise description of topic. The length cannot exceed 64.
+        :param pulumi.Input[_builtins.bool] compact_topic: The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+               - false: The delete cleanup policy is used.
+               - true: The compact cleanup policy is used.
+        :param pulumi.Input[_builtins.str] configs: The advanced configurations.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.262.1) The time when the topic was created.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] local_topic: The storage engine of the topic. Valid values:
+               - false: Cloud storage.
+               - true: Local storage.
+        :param pulumi.Input[_builtins.int] partition_num: The number of partitions in the topic.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.262.1) The ID of the region where the instance resides.
+        :param pulumi.Input[_builtins.str] remark: The description of the topic.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.262.1) The status of the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] topic: Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        :param pulumi.Input[_builtins.str] topic: The topic name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _TopicState.__new__(_TopicState)
 
         __props__.__dict__["compact_topic"] = compact_topic
+        __props__.__dict__["configs"] = configs
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["local_topic"] = local_topic
         __props__.__dict__["partition_num"] = partition_num
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["remark"] = remark
+        __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["topic"] = topic
         return Topic(resource_name, opts=opts, __props__=__props__)
@@ -490,15 +647,33 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter(name="compactTopic")
     def compact_topic(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+        The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+        - false: The delete cleanup policy is used.
+        - true: The compact cleanup policy is used.
         """
         return pulumi.get(self, "compact_topic")
+
+    @_builtins.property
+    @pulumi.getter
+    def configs(self) -> pulumi.Output[_builtins.str]:
+        """
+        The advanced configurations.
+        """
+        return pulumi.get(self, "configs")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.262.1) The time when the topic was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        InstanceId of your Kafka resource, the topic will create in this instance.
+        The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -506,25 +681,43 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter(name="localTopic")
     def local_topic(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether the topic is localTopic or not.
+        The storage engine of the topic. Valid values:
+        - false: Cloud storage.
+        - true: Local storage.
         """
         return pulumi.get(self, "local_topic")
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def partition_num(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of partitions of the topic. The number should between 1 and 48.
+        The number of partitions in the topic.
         """
         return pulumi.get(self, "partition_num")
+
+    @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.262.1) The ID of the region where the instance resides.
+        """
+        return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def remark(self) -> pulumi.Output[_builtins.str]:
         """
-        This attribute is a concise description of topic. The length cannot exceed 64.
+        The description of the topic.
         """
         return pulumi.get(self, "remark")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.262.1) The status of the service.
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
@@ -538,7 +731,7 @@ class Topic(pulumi.CustomResource):
     @pulumi.getter
     def topic(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+        The topic name.
         """
         return pulumi.get(self, "topic")
 

@@ -77,17 +77,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:esa/ratePlanInstance:RatePlanInstance")
 public class RatePlanInstance extends com.pulumi.resources.CustomResource {
-    /**
-     * Specifies whether to enable auto payment.
-     * 
-     */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
-    /**
-     * @return Specifies whether to enable auto payment.
-     * 
-     */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
@@ -134,23 +126,21 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The plan instance status.
-     * - `Renewing`: renewing
+     * The instance status.
      * 
      */
     @Export(name="instanceStatus", refs={String.class}, tree="[0]")
     private Output<String> instanceStatus;
 
     /**
-     * @return The plan instance status.
-     * - `Renewing`: renewing
+     * @return The instance status.
      * 
      */
     public Output<String> instanceStatus() {
         return this.instanceStatus;
     }
     /**
-     * The payment type of the resource. Valid values:
+     * The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -158,7 +148,7 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values:
+     * @return The billing method. Valid values:
      * - `Subscription`: subscription.
      * 
      */
@@ -168,6 +158,8 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     /**
      * Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
@@ -175,33 +167,39 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return Subscription period (in months).
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Package name.Value range:
+     * Package name.
+     * 
+     * Chinese website account:
      * 
      */
     @Export(name="planName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> planName;
 
     /**
-     * @return Package name.Value range:
+     * @return Package name.
+     * 
+     * Chinese website account:
      * 
      */
     public Output<Optional<String>> planName() {
         return Codegen.optional(this.planName);
     }
     /**
-     * The status of the resource.
+     * The plan status. , the plan is unavailable.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The plan status. , the plan is unavailable.
      * 
      */
     public Output<String> status() {
@@ -212,6 +210,8 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
      * - `NS`
      * - `CNAME`
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
@@ -220,6 +220,8 @@ public class RatePlanInstance extends com.pulumi.resources.CustomResource {
      * @return The DNS setup option for the website. Valid values:
      * - `NS`
      * - `CNAME`
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> type() {

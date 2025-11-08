@@ -26,17 +26,23 @@ class UserArgs:
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  first_name: Optional[pulumi.Input[_builtins.str]] = None,
                  last_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 mfa_authentication_settings: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[_builtins.str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] description: The description of user. The description can be up to `1024` characters long.
-        :param pulumi.Input[_builtins.str] display_name: The display name of user. The display name can be up to `256` characters long.
-        :param pulumi.Input[_builtins.str] email: The User's Contact Email Address. The email can be up to `128` characters long.
-        :param pulumi.Input[_builtins.str] first_name: The first name of user. The first_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] last_name: The last name of user. The last_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] status: The status of user. Valid values: `Disabled`, `Enabled`.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] user_name: The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the user. The display name can be up to 256 characters in length.
+        :param pulumi.Input[_builtins.str] email: The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
+        :param pulumi.Input[_builtins.str] first_name: The first name of the user. The first name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the user. The last name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] mfa_authentication_settings: Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[_builtins.str] password: The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        :param pulumi.Input[_builtins.str] status: The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "directory_id", directory_id)
         pulumi.set(__self__, "user_name", user_name)
@@ -50,14 +56,20 @@ class UserArgs:
             pulumi.set(__self__, "first_name", first_name)
         if last_name is not None:
             pulumi.set(__self__, "last_name", last_name)
+        if mfa_authentication_settings is not None:
+            pulumi.set(__self__, "mfa_authentication_settings", mfa_authentication_settings)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -69,7 +81,7 @@ class UserArgs:
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
         return pulumi.get(self, "user_name")
 
@@ -81,7 +93,7 @@ class UserArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of user. The description can be up to `1024` characters long.
+        The description of the user. The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -93,7 +105,7 @@ class UserArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The display name of user. The display name can be up to `256` characters long.
+        The display name of the user. The display name can be up to 256 characters in length.
         """
         return pulumi.get(self, "display_name")
 
@@ -105,7 +117,7 @@ class UserArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The User's Contact Email Address. The email can be up to `128` characters long.
+        The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         """
         return pulumi.get(self, "email")
 
@@ -117,7 +129,7 @@ class UserArgs:
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The first name of user. The first_name can be up to `64` characters long.
+        The first name of the user. The first name can be up to 64 characters in length.
         """
         return pulumi.get(self, "first_name")
 
@@ -129,7 +141,7 @@ class UserArgs:
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The last name of user. The last_name can be up to `64` characters long.
+        The last name of the user. The last name can be up to 64 characters in length.
         """
         return pulumi.get(self, "last_name")
 
@@ -138,10 +150,34 @@ class UserArgs:
         pulumi.set(self, "last_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaAuthenticationSettings")
+    def mfa_authentication_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "mfa_authentication_settings")
+
+    @mfa_authentication_settings.setter
+    def mfa_authentication_settings(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mfa_authentication_settings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of user. Valid values: `Disabled`, `Enabled`.
+        The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -149,31 +185,53 @@ class UserArgs:
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  first_name: Optional[pulumi.Input[_builtins.str]] = None,
                  last_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_authentication_settings: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[_builtins.str] description: The description of user. The description can be up to `1024` characters long.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[_builtins.str] display_name: The display name of user. The display name can be up to `256` characters long.
-        :param pulumi.Input[_builtins.str] email: The User's Contact Email Address. The email can be up to `128` characters long.
-        :param pulumi.Input[_builtins.str] first_name: The first name of user. The first_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] last_name: The last name of user. The last_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] status: The status of user. Valid values: `Disabled`, `Enabled`.
-        :param pulumi.Input[_builtins.str] user_id: The User ID of the group.
-        :param pulumi.Input[_builtins.str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.262.1) The time when the user was created.
+        :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the user. The display name can be up to 256 characters in length.
+        :param pulumi.Input[_builtins.str] email: The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
+        :param pulumi.Input[_builtins.str] first_name: The first name of the user. The first name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the user. The last name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] mfa_authentication_settings: Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[_builtins.str] password: The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        :param pulumi.Input[_builtins.str] status: The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.str] user_name: The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if directory_id is not None:
@@ -186,18 +244,36 @@ class _UserState:
             pulumi.set(__self__, "first_name", first_name)
         if last_name is not None:
             pulumi.set(__self__, "last_name", last_name)
+        if mfa_authentication_settings is not None:
+            pulumi.set(__self__, "mfa_authentication_settings", mfa_authentication_settings)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if user_name is not None:
             pulumi.set(__self__, "user_name", user_name)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.262.1) The time when the user was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of user. The description can be up to `1024` characters long.
+        The description of the user. The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -209,7 +285,7 @@ class _UserState:
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -221,7 +297,7 @@ class _UserState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The display name of user. The display name can be up to `256` characters long.
+        The display name of the user. The display name can be up to 256 characters in length.
         """
         return pulumi.get(self, "display_name")
 
@@ -233,7 +309,7 @@ class _UserState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The User's Contact Email Address. The email can be up to `128` characters long.
+        The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         """
         return pulumi.get(self, "email")
 
@@ -245,7 +321,7 @@ class _UserState:
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The first name of user. The first_name can be up to `64` characters long.
+        The first name of the user. The first name can be up to 64 characters in length.
         """
         return pulumi.get(self, "first_name")
 
@@ -257,7 +333,7 @@ class _UserState:
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The last name of user. The last_name can be up to `64` characters long.
+        The last name of the user. The last name can be up to 64 characters in length.
         """
         return pulumi.get(self, "last_name")
 
@@ -266,10 +342,34 @@ class _UserState:
         pulumi.set(self, "last_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="mfaAuthenticationSettings")
+    def mfa_authentication_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "mfa_authentication_settings")
+
+    @mfa_authentication_settings.setter
+    def mfa_authentication_settings(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mfa_authentication_settings", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of user. Valid values: `Disabled`, `Enabled`.
+        The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
 
@@ -278,10 +378,22 @@ class _UserState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The User ID of the group.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -293,7 +405,7 @@ class _UserState:
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
         return pulumi.get(self, "user_name")
 
@@ -314,17 +426,18 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  first_name: Optional[pulumi.Input[_builtins.str]] = None,
                  last_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_authentication_settings: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloud SSO User resource.
+        Provides a Cloud Sso User resource.
 
-        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
+        For information about Cloud Sso User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
 
         > **NOTE:** Available since v1.140.0.
-
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
         ## Example Usage
 
@@ -339,8 +452,11 @@ class User(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.cloudsso.get_directories()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_directory = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
@@ -351,9 +467,6 @@ class User(pulumi.CustomResource):
             [__item.id for __item in default_directory],
             [""],
         ]).result[0])
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_user = alicloud.cloudsso.User("default",
             directory_id=directory_id,
             user_name=f"{name}-{default_integer['result']}")
@@ -361,7 +474,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO User can be imported using the id, e.g.
+        Cloud Sso User can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
@@ -369,14 +482,17 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of user. The description can be up to `1024` characters long.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[_builtins.str] display_name: The display name of user. The display name can be up to `256` characters long.
-        :param pulumi.Input[_builtins.str] email: The User's Contact Email Address. The email can be up to `128` characters long.
-        :param pulumi.Input[_builtins.str] first_name: The first name of user. The first_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] last_name: The last name of user. The last_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] status: The status of user. Valid values: `Disabled`, `Enabled`.
-        :param pulumi.Input[_builtins.str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the user. The display name can be up to 256 characters in length.
+        :param pulumi.Input[_builtins.str] email: The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
+        :param pulumi.Input[_builtins.str] first_name: The first name of the user. The first name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the user. The last name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] mfa_authentication_settings: Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[_builtins.str] password: The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        :param pulumi.Input[_builtins.str] status: The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] user_name: The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
         ...
     @overload
@@ -385,13 +501,11 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloud SSO User resource.
+        Provides a Cloud Sso User resource.
 
-        For information about Cloud SSO User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
+        For information about Cloud Sso User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/cloudsso/latest/api-cloudsso-2021-05-15-createuser).
 
         > **NOTE:** Available since v1.140.0.
-
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
         ## Example Usage
 
@@ -406,8 +520,11 @@ class User(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.cloudsso.get_directories()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_directory = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
@@ -418,9 +535,6 @@ class User(pulumi.CustomResource):
             [__item.id for __item in default_directory],
             [""],
         ]).result[0])
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
         default_user = alicloud.cloudsso.User("default",
             directory_id=directory_id,
             user_name=f"{name}-{default_integer['result']}")
@@ -428,7 +542,7 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Cloud SSO User can be imported using the id, e.g.
+        Cloud Sso User can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:cloudsso/user:User example <directory_id>:<user_id>
@@ -455,7 +569,10 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  first_name: Optional[pulumi.Input[_builtins.str]] = None,
                  last_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_authentication_settings: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -474,11 +591,17 @@ class User(pulumi.CustomResource):
             __props__.__dict__["email"] = email
             __props__.__dict__["first_name"] = first_name
             __props__.__dict__["last_name"] = last_name
+            __props__.__dict__["mfa_authentication_settings"] = mfa_authentication_settings
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             if user_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_name'")
             __props__.__dict__["user_name"] = user_name
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["user_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'alicloud:cloudsso/user:User',
             resource_name,
@@ -489,13 +612,17 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             directory_id: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             email: Optional[pulumi.Input[_builtins.str]] = None,
             first_name: Optional[pulumi.Input[_builtins.str]] = None,
             last_name: Optional[pulumi.Input[_builtins.str]] = None,
+            mfa_authentication_settings: Optional[pulumi.Input[_builtins.str]] = None,
+            password: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             user_id: Optional[pulumi.Input[_builtins.str]] = None,
             user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
         """
@@ -505,36 +632,52 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of user. The description can be up to `1024` characters long.
-        :param pulumi.Input[_builtins.str] directory_id: The ID of the Directory.
-        :param pulumi.Input[_builtins.str] display_name: The display name of user. The display name can be up to `256` characters long.
-        :param pulumi.Input[_builtins.str] email: The User's Contact Email Address. The email can be up to `128` characters long.
-        :param pulumi.Input[_builtins.str] first_name: The first name of user. The first_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] last_name: The last name of user. The last_name can be up to `64` characters long.
-        :param pulumi.Input[_builtins.str] status: The status of user. Valid values: `Disabled`, `Enabled`.
-        :param pulumi.Input[_builtins.str] user_id: The User ID of the group.
-        :param pulumi.Input[_builtins.str] user_name: The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.262.1) The time when the user was created.
+        :param pulumi.Input[_builtins.str] description: The description of the user. The description can be up to 1,024 characters in length.
+        :param pulumi.Input[_builtins.str] directory_id: The ID of the directory.
+        :param pulumi.Input[_builtins.str] display_name: The display name of the user. The display name can be up to 256 characters in length.
+        :param pulumi.Input[_builtins.str] email: The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
+        :param pulumi.Input[_builtins.str] first_name: The first name of the user. The first name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the user. The last name can be up to 64 characters in length.
+        :param pulumi.Input[_builtins.str] mfa_authentication_settings: Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[_builtins.str] password: The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        :param pulumi.Input[_builtins.str] status: The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] user_id: The ID of the user.
+        :param pulumi.Input[_builtins.str] user_name: The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _UserState.__new__(_UserState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["email"] = email
         __props__.__dict__["first_name"] = first_name
         __props__.__dict__["last_name"] = last_name
+        __props__.__dict__["mfa_authentication_settings"] = mfa_authentication_settings
+        __props__.__dict__["password"] = password
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["user_name"] = user_name
         return User(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.262.1) The time when the user was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of user. The description can be up to `1024` characters long.
+        The description of the user. The description can be up to 1,024 characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -542,7 +685,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="directoryId")
     def directory_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Directory.
+        The ID of the directory.
         """
         return pulumi.get(self, "directory_id")
 
@@ -550,7 +693,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The display name of user. The display name can be up to `256` characters long.
+        The display name of the user. The display name can be up to 256 characters in length.
         """
         return pulumi.get(self, "display_name")
 
@@ -558,7 +701,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The User's Contact Email Address. The email can be up to `128` characters long.
+        The email address of the user. The email address must be unique within the directory. The email address can be up to 128 characters in length.
         """
         return pulumi.get(self, "email")
 
@@ -566,7 +709,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The first name of user. The first_name can be up to `64` characters long.
+        The first name of the user. The first name can be up to 64 characters in length.
         """
         return pulumi.get(self, "first_name")
 
@@ -574,23 +717,47 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The last name of user. The last_name can be up to `64` characters long.
+        The last name of the user. The last name can be up to 64 characters in length.
         """
         return pulumi.get(self, "last_name")
+
+    @_builtins.property
+    @pulumi.getter(name="mfaAuthenticationSettings")
+    def mfa_authentication_settings(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies whether to enable MFA for the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
+        """
+        return pulumi.get(self, "mfa_authentication_settings")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The new password. The password must contain the following types of characters: uppercase letters, lowercase letters, digits, and special characters. The password must be 8 to 32 characters in length.
+        """
+        return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of user. Valid values: `Disabled`, `Enabled`.
+        The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The User ID of the group.
+        The ID of the user.
         """
         return pulumi.get(self, "user_id")
 
@@ -598,7 +765,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+        The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
         """
         return pulumi.get(self, "user_name")
 

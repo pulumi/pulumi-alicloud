@@ -7,23 +7,53 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the RAM Roles of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const rolesDs = alicloud.ram.getRoles({
- *     outputFile: "roles.txt",
- *     nameRegex: ".*test.*",
- *     policyName: "AliyunACSDefaultAccess",
- *     policyType: "Custom",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     roleName: `${name}-${_default.result}`,
+ *     description: `${name}-${_default.result}`,
+ *     force: true,
+ *     assumeRolePolicyDocument: `  {
+ *     \\"Statement\\": [
+ *       {
+ *         \\"Action\\": \\"sts:AssumeRole\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": {
+ *           \\"Service\\": [
+ *             \\"ecs.aliyuncs.com\\"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     \\"Version\\": \\"1\\"
+ *   }
+ * `,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Role",
+ *     },
+ * });
+ * const ids = alicloud.ram.getRolesOutput({
+ *     ids: [defaultRole.roleId],
+ * });
+ * export const ramRolesId0 = ids.apply(ids => ids.roles?.[0]?.id);
  * ```
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
@@ -35,6 +65,7 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -43,11 +74,11 @@ export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRolesArgs {
     /**
-     * A list of ram role IDs.
+     * A list of Role IDs.
      */
     ids?: string[];
     /**
-     * A regex string to filter results by the role name.
+     * A regex string to filter results by Role name.
      */
     nameRegex?: string;
     /**
@@ -55,13 +86,17 @@ export interface GetRolesArgs {
      */
     outputFile?: string;
     /**
-     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+     * The name of the policy.
      */
     policyName?: string;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+     * The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policyType` takes effect only when `policyName` is set.
      */
     policyType?: string;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: {[key: string]: string};
 }
 
 /**
@@ -72,41 +107,72 @@ export interface GetRolesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of ram role IDs.
-     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of ram role names.
+     * (Available since v1.42.0) A list of Role names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     readonly policyName?: string;
     readonly policyType?: string;
     /**
-     * A list of roles. Each element contains the following attributes:
+     * A list of Role. Each element contains the following attributes:
      */
     readonly roles: outputs.ram.GetRolesRole[];
+    /**
+     * (Available since v1.262.1) The tags of the RAM role.
+     */
+    readonly tags?: {[key: string]: string};
 }
 /**
- * This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+ * This data source provides the RAM Roles of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available since v1.0.0+.
+ * > **NOTE:** Available since v1.0.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const rolesDs = alicloud.ram.getRoles({
- *     outputFile: "roles.txt",
- *     nameRegex: ".*test.*",
- *     policyName: "AliyunACSDefaultAccess",
- *     policyType: "Custom",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     roleName: `${name}-${_default.result}`,
+ *     description: `${name}-${_default.result}`,
+ *     force: true,
+ *     assumeRolePolicyDocument: `  {
+ *     \\"Statement\\": [
+ *       {
+ *         \\"Action\\": \\"sts:AssumeRole\\",
+ *         \\"Effect\\": \\"Allow\\",
+ *         \\"Principal\\": {
+ *           \\"Service\\": [
+ *             \\"ecs.aliyuncs.com\\"
+ *           ]
+ *         }
+ *       }
+ *     ],
+ *     \\"Version\\": \\"1\\"
+ *   }
+ * `,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "Role",
+ *     },
+ * });
+ * const ids = alicloud.ram.getRolesOutput({
+ *     ids: [defaultRole.roleId],
+ * });
+ * export const ramRolesId0 = ids.apply(ids => ids.roles?.[0]?.id);
  * ```
  */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRolesResult> {
@@ -118,6 +184,7 @@ export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOu
         "outputFile": args.outputFile,
         "policyName": args.policyName,
         "policyType": args.policyType,
+        "tags": args.tags,
     }, opts);
 }
 
@@ -126,11 +193,11 @@ export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOu
  */
 export interface GetRolesOutputArgs {
     /**
-     * A list of ram role IDs.
+     * A list of Role IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by the role name.
+     * A regex string to filter results by Role name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -138,11 +205,15 @@ export interface GetRolesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+     * The name of the policy.
      */
     policyName?: pulumi.Input<string>;
     /**
-     * Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+     * The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policyType` takes effect only when `policyName` is set.
      */
     policyType?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -34,13 +34,14 @@ import * as utilities from "../utilities";
  * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 2,
- *     memorySize: 4,
+ *     memorySize: 8,
+ *     instanceTypeFamily: "ecs.g9i",
  * }));
- * const defaultGetImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
+ * const defaultGetImages = defaultGetInstanceTypes.then(defaultGetInstanceTypes => alicloud.ecs.getImages({
+ *     instanceType: defaultGetInstanceTypes.instanceTypes?.[0]?.id,
  *     mostRecent: true,
  *     owners: "system",
- * });
+ * }));
  * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  *     cidrBlock: "10.4.0.0/16",
@@ -76,6 +77,7 @@ import * as utilities from "../utilities";
  *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
  *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroupId: defaultSecurityGroup.id,
+ *     systemDiskCategory: "cloud_essd",
  *     forceDelete: true,
  *     active: true,
  *     enable: true,
@@ -89,7 +91,7 @@ import * as utilities from "../utilities";
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
  *         instanceChargeType: "PostPaid",
- *         systemDiskCategory: "cloud_efficiency",
+ *         systemDiskCategory: "cloud_essd",
  *         vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *         instanceName: name,
  *     }));

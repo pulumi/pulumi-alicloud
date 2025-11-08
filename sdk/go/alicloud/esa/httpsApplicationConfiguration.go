@@ -107,6 +107,12 @@ type HttpsApplicationConfiguration struct {
 	HttpsForce pulumi.StringPtrOutput `pulumi:"httpsForce"`
 	// Forced HTTPS jump status code, value range:
 	HttpsForceCode pulumi.StringPtrOutput `pulumi:"httpsForceCode"`
+	// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+	HttpsNoSniDeny pulumi.StringPtrOutput `pulumi:"httpsNoSniDeny"`
+	// Whether to enable SNI verification. It is disabled by default. Value range:
+	HttpsSniVerify pulumi.StringPtrOutput `pulumi:"httpsSniVerify"`
+	// Specifies the list of allowed SNI whitelists, separated by spaces.
+	HttpsSniWhitelist pulumi.StringPtrOutput `pulumi:"httpsSniWhitelist"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -115,6 +121,8 @@ type HttpsApplicationConfiguration struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -176,6 +184,12 @@ type httpsApplicationConfigurationState struct {
 	HttpsForce *string `pulumi:"httpsForce"`
 	// Forced HTTPS jump status code, value range:
 	HttpsForceCode *string `pulumi:"httpsForceCode"`
+	// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+	HttpsNoSniDeny *string `pulumi:"httpsNoSniDeny"`
+	// Whether to enable SNI verification. It is disabled by default. Value range:
+	HttpsSniVerify *string `pulumi:"httpsSniVerify"`
+	// Specifies the list of allowed SNI whitelists, separated by spaces.
+	HttpsSniWhitelist *string `pulumi:"httpsSniWhitelist"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -184,6 +198,8 @@ type httpsApplicationConfigurationState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -213,6 +229,12 @@ type HttpsApplicationConfigurationState struct {
 	HttpsForce pulumi.StringPtrInput
 	// Forced HTTPS jump status code, value range:
 	HttpsForceCode pulumi.StringPtrInput
+	// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+	HttpsNoSniDeny pulumi.StringPtrInput
+	// Whether to enable SNI verification. It is disabled by default. Value range:
+	HttpsSniVerify pulumi.StringPtrInput
+	// Specifies the list of allowed SNI whitelists, separated by spaces.
+	HttpsSniWhitelist pulumi.StringPtrInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -221,6 +243,8 @@ type HttpsApplicationConfigurationState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -252,6 +276,12 @@ type httpsApplicationConfigurationArgs struct {
 	HttpsForce *string `pulumi:"httpsForce"`
 	// Forced HTTPS jump status code, value range:
 	HttpsForceCode *string `pulumi:"httpsForceCode"`
+	// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+	HttpsNoSniDeny *string `pulumi:"httpsNoSniDeny"`
+	// Whether to enable SNI verification. It is disabled by default. Value range:
+	HttpsSniVerify *string `pulumi:"httpsSniVerify"`
+	// Specifies the list of allowed SNI whitelists, separated by spaces.
+	HttpsSniWhitelist *string `pulumi:"httpsSniWhitelist"`
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -260,6 +290,8 @@ type httpsApplicationConfigurationArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -288,6 +320,12 @@ type HttpsApplicationConfigurationArgs struct {
 	HttpsForce pulumi.StringPtrInput
 	// Forced HTTPS jump status code, value range:
 	HttpsForceCode pulumi.StringPtrInput
+	// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+	HttpsNoSniDeny pulumi.StringPtrInput
+	// Whether to enable SNI verification. It is disabled by default. Value range:
+	HttpsSniVerify pulumi.StringPtrInput
+	// Specifies the list of allowed SNI whitelists, separated by spaces.
+	HttpsSniWhitelist pulumi.StringPtrInput
 	// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 	// - Match all incoming requests: value set to true
 	// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -296,6 +334,8 @@ type HttpsApplicationConfigurationArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
 	SiteId pulumi.IntInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -444,6 +484,21 @@ func (o HttpsApplicationConfigurationOutput) HttpsForceCode() pulumi.StringPtrOu
 	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.StringPtrOutput { return v.HttpsForceCode }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+func (o HttpsApplicationConfigurationOutput) HttpsNoSniDeny() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.StringPtrOutput { return v.HttpsNoSniDeny }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable SNI verification. It is disabled by default. Value range:
+func (o HttpsApplicationConfigurationOutput) HttpsSniVerify() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.StringPtrOutput { return v.HttpsSniVerify }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the list of allowed SNI whitelists, separated by spaces.
+func (o HttpsApplicationConfigurationOutput) HttpsSniWhitelist() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.StringPtrOutput { return v.HttpsSniWhitelist }).(pulumi.StringPtrOutput)
+}
+
 // Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
 // - Match all incoming requests: value set to true
 // - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -459,6 +514,11 @@ func (o HttpsApplicationConfigurationOutput) RuleEnable() pulumi.StringPtrOutput
 // Rule name. When adding global configuration, this parameter does not need to be set.
 func (o HttpsApplicationConfigurationOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o HttpsApplicationConfigurationOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsApplicationConfiguration) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
 // The site ID, which can be obtained by calling the ListSites API.

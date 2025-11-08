@@ -76,6 +76,36 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> DnsRecord { get; private set; } = null!;
 
         /// <summary>
+        /// Return Source 302 follow switch. Value range:
+        /// </summary>
+        [Output("follow302Enable")]
+        public Output<string?> Follow302Enable { get; private set; } = null!;
+
+        /// <summary>
+        /// 302 follows the upper limit of the number of times, with a value range of [1-5].
+        /// </summary>
+        [Output("follow302MaxTries")]
+        public Output<string?> Follow302MaxTries { get; private set; } = null!;
+
+        /// <summary>
+        /// Retain the original request parameter switch. Value range:
+        /// </summary>
+        [Output("follow302RetainArgs")]
+        public Output<string?> Follow302RetainArgs { get; private set; } = null!;
+
+        /// <summary>
+        /// Retain the original request header switch. Value range:
+        /// </summary>
+        [Output("follow302RetainHeader")]
+        public Output<string?> Follow302RetainHeader { get; private set; } = null!;
+
+        /// <summary>
+        /// Modify the source host after 302.
+        /// </summary>
+        [Output("follow302TargetHost")]
+        public Output<string?> Follow302TargetHost { get; private set; } = null!;
+
+        /// <summary>
         /// The HOST carried in the back-to-origin request.
         /// </summary>
         [Output("originHost")]
@@ -94,6 +124,18 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> OriginHttpsPort { get; private set; } = null!;
 
         /// <summary>
+        /// The mtls switch. Value range:
+        /// </summary>
+        [Output("originMtls")]
+        public Output<string?> OriginMtls { get; private set; } = null!;
+
+        /// <summary>
+        /// Read timeout interval of the source station (s).
+        /// </summary>
+        [Output("originReadTimeout")]
+        public Output<string?> OriginReadTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// The protocol used by the back-to-origin request. Value range:
         /// </summary>
         [Output("originScheme")]
@@ -106,10 +148,22 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> OriginSni { get; private set; } = null!;
 
         /// <summary>
+        /// Source station certificate verification switch. Value range:
+        /// </summary>
+        [Output("originVerify")]
+        public Output<string?> OriginVerify { get; private set; } = null!;
+
+        /// <summary>
         /// Use the range sharding method to download the file from the source. Value range:
         /// </summary>
         [Output("range")]
         public Output<string?> Range { get; private set; } = null!;
+
+        /// <summary>
+        /// range shard size.
+        /// </summary>
+        [Output("rangeChunkSize")]
+        public Output<string?> RangeChunkSize { get; private set; } = null!;
 
         /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -121,8 +175,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        /// - on: open.
-        /// - off: close.
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
@@ -132,6 +184,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
 
         /// <summary>
         /// The site ID.
@@ -198,6 +256,36 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? DnsRecord { get; set; }
 
         /// <summary>
+        /// Return Source 302 follow switch. Value range:
+        /// </summary>
+        [Input("follow302Enable")]
+        public Input<string>? Follow302Enable { get; set; }
+
+        /// <summary>
+        /// 302 follows the upper limit of the number of times, with a value range of [1-5].
+        /// </summary>
+        [Input("follow302MaxTries")]
+        public Input<string>? Follow302MaxTries { get; set; }
+
+        /// <summary>
+        /// Retain the original request parameter switch. Value range:
+        /// </summary>
+        [Input("follow302RetainArgs")]
+        public Input<string>? Follow302RetainArgs { get; set; }
+
+        /// <summary>
+        /// Retain the original request header switch. Value range:
+        /// </summary>
+        [Input("follow302RetainHeader")]
+        public Input<string>? Follow302RetainHeader { get; set; }
+
+        /// <summary>
+        /// Modify the source host after 302.
+        /// </summary>
+        [Input("follow302TargetHost")]
+        public Input<string>? Follow302TargetHost { get; set; }
+
+        /// <summary>
         /// The HOST carried in the back-to-origin request.
         /// </summary>
         [Input("originHost")]
@@ -216,6 +304,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? OriginHttpsPort { get; set; }
 
         /// <summary>
+        /// The mtls switch. Value range:
+        /// </summary>
+        [Input("originMtls")]
+        public Input<string>? OriginMtls { get; set; }
+
+        /// <summary>
+        /// Read timeout interval of the source station (s).
+        /// </summary>
+        [Input("originReadTimeout")]
+        public Input<string>? OriginReadTimeout { get; set; }
+
+        /// <summary>
         /// The protocol used by the back-to-origin request. Value range:
         /// </summary>
         [Input("originScheme")]
@@ -228,10 +328,22 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? OriginSni { get; set; }
 
         /// <summary>
+        /// Source station certificate verification switch. Value range:
+        /// </summary>
+        [Input("originVerify")]
+        public Input<string>? OriginVerify { get; set; }
+
+        /// <summary>
         /// Use the range sharding method to download the file from the source. Value range:
         /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }
+
+        /// <summary>
+        /// range shard size.
+        /// </summary>
+        [Input("rangeChunkSize")]
+        public Input<string>? RangeChunkSize { get; set; }
 
         /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -243,8 +355,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        /// - on: open.
-        /// - off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
@@ -254,6 +364,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID.
@@ -288,6 +404,36 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? DnsRecord { get; set; }
 
         /// <summary>
+        /// Return Source 302 follow switch. Value range:
+        /// </summary>
+        [Input("follow302Enable")]
+        public Input<string>? Follow302Enable { get; set; }
+
+        /// <summary>
+        /// 302 follows the upper limit of the number of times, with a value range of [1-5].
+        /// </summary>
+        [Input("follow302MaxTries")]
+        public Input<string>? Follow302MaxTries { get; set; }
+
+        /// <summary>
+        /// Retain the original request parameter switch. Value range:
+        /// </summary>
+        [Input("follow302RetainArgs")]
+        public Input<string>? Follow302RetainArgs { get; set; }
+
+        /// <summary>
+        /// Retain the original request header switch. Value range:
+        /// </summary>
+        [Input("follow302RetainHeader")]
+        public Input<string>? Follow302RetainHeader { get; set; }
+
+        /// <summary>
+        /// Modify the source host after 302.
+        /// </summary>
+        [Input("follow302TargetHost")]
+        public Input<string>? Follow302TargetHost { get; set; }
+
+        /// <summary>
         /// The HOST carried in the back-to-origin request.
         /// </summary>
         [Input("originHost")]
@@ -306,6 +452,18 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? OriginHttpsPort { get; set; }
 
         /// <summary>
+        /// The mtls switch. Value range:
+        /// </summary>
+        [Input("originMtls")]
+        public Input<string>? OriginMtls { get; set; }
+
+        /// <summary>
+        /// Read timeout interval of the source station (s).
+        /// </summary>
+        [Input("originReadTimeout")]
+        public Input<string>? OriginReadTimeout { get; set; }
+
+        /// <summary>
         /// The protocol used by the back-to-origin request. Value range:
         /// </summary>
         [Input("originScheme")]
@@ -318,10 +476,22 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? OriginSni { get; set; }
 
         /// <summary>
+        /// Source station certificate verification switch. Value range:
+        /// </summary>
+        [Input("originVerify")]
+        public Input<string>? OriginVerify { get; set; }
+
+        /// <summary>
         /// Use the range sharding method to download the file from the source. Value range:
         /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }
+
+        /// <summary>
+        /// range shard size.
+        /// </summary>
+        [Input("rangeChunkSize")]
+        public Input<string>? RangeChunkSize { get; set; }
 
         /// <summary>
         /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -333,8 +503,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
-        /// - on: open.
-        /// - off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
@@ -344,6 +512,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The site ID.

@@ -194,6 +194,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.allocationStrategy;
     }
     /**
+     * Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     * 
+     */
+    @Export(name="autoRebalance", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRebalance;
+
+    /**
+     * @return Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRebalance() {
+        return Codegen.optional(this.autoRebalance);
+    }
+    /**
      * Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
      * 
      */
@@ -206,6 +220,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> azBalance() {
         return Codegen.optional(this.azBalance);
+    }
+    /**
+     * The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     * 
+     */
+    @Export(name="balanceMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> balanceMode;
+
+    /**
+     * @return The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+     * 
+     */
+    public Output<Optional<String>> balanceMode() {
+        return Codegen.optional(this.balanceMode);
     }
     /**
      * Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set &#39;multi_az_policy&#39; to COST_OPTIMIZED. Valid values: true, false.

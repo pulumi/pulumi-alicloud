@@ -6,103 +6,116 @@ package com.pulumi.alicloud.ram.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetRolesRole {
     /**
-     * @return Resource descriptor of the role.
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     private String arn;
     /**
-     * @return Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+     * @return The policy that specifies the trusted entity to assume the RAM role.
      * 
      */
     private String assumeRolePolicyDocument;
     /**
-     * @return Creation date of the role.
+     * @return The creation time.
      * 
      */
     private String createDate;
     /**
-     * @return Description of the role.
+     * @return The description of the RAM role.
      * 
      */
     private String description;
     /**
-     * @return Authorization strategy of the role.
+     * @return The policy that specifies the trusted entity to assume the RAM role.
      * 
      */
     private String document;
     /**
-     * @return ID of the role.
+     * @return The ID of the RAM role.
      * 
      */
     private String id;
     /**
-     * @return Name of the role.
+     * @return The name of the RAM role.
      * 
      */
     private String name;
     /**
-     * @return Update date of the role.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
+     * @return The update time.
      * 
      */
     private String updateDate;
 
     private GetRolesRole() {}
     /**
-     * @return Resource descriptor of the role.
+     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     public String arn() {
         return this.arn;
     }
     /**
-     * @return Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+     * @return The policy that specifies the trusted entity to assume the RAM role.
      * 
      */
     public String assumeRolePolicyDocument() {
         return this.assumeRolePolicyDocument;
     }
     /**
-     * @return Creation date of the role.
+     * @return The creation time.
      * 
      */
     public String createDate() {
         return this.createDate;
     }
     /**
-     * @return Description of the role.
+     * @return The description of the RAM role.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Authorization strategy of the role.
+     * @return The policy that specifies the trusted entity to assume the RAM role.
      * 
      */
     public String document() {
         return this.document;
     }
     /**
-     * @return ID of the role.
+     * @return The ID of the RAM role.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Name of the role.
+     * @return The name of the RAM role.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Update date of the role.
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The update time.
      * 
      */
     public String updateDate() {
@@ -125,6 +138,7 @@ public final class GetRolesRole {
         private String document;
         private String id;
         private String name;
+        private Map<String,String> tags;
         private String updateDate;
         public Builder() {}
         public Builder(GetRolesRole defaults) {
@@ -136,6 +150,7 @@ public final class GetRolesRole {
     	      this.document = defaults.document;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.tags = defaults.tags;
     	      this.updateDate = defaults.updateDate;
         }
 
@@ -196,6 +211,14 @@ public final class GetRolesRole {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRolesRole", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             if (updateDate == null) {
               throw new MissingRequiredPropertyException("GetRolesRole", "updateDate");
@@ -212,6 +235,7 @@ public final class GetRolesRole {
             _resultValue.document = document;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.tags = tags;
             _resultValue.updateDate = updateDate;
             return _resultValue;
         }

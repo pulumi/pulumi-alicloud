@@ -116,6 +116,8 @@ type RedirectRule struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -130,9 +132,9 @@ type RedirectRule struct {
 	StatusCode pulumi.StringOutput `pulumi:"statusCode"`
 	// The destination URL to which requests are redirected.
 	TargetUrl pulumi.StringOutput `pulumi:"targetUrl"`
-	// The redirect type. Valid value:
-	//
-	// - static
+	// The redirection type. Value range:
+	// - static: static mode.
+	// - dynamic: dynamic mode.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -196,6 +198,8 @@ type redirectRuleState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId *int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -210,9 +214,9 @@ type redirectRuleState struct {
 	StatusCode *string `pulumi:"statusCode"`
 	// The destination URL to which requests are redirected.
 	TargetUrl *string `pulumi:"targetUrl"`
-	// The redirect type. Valid value:
-	//
-	// - static
+	// The redirection type. Value range:
+	// - static: static mode.
+	// - dynamic: dynamic mode.
 	Type *string `pulumi:"type"`
 }
 
@@ -232,6 +236,8 @@ type RedirectRuleState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -246,9 +252,9 @@ type RedirectRuleState struct {
 	StatusCode pulumi.StringPtrInput
 	// The destination URL to which requests are redirected.
 	TargetUrl pulumi.StringPtrInput
-	// The redirect type. Valid value:
-	//
-	// - static
+	// The redirection type. Value range:
+	// - static: static mode.
+	// - dynamic: dynamic mode.
 	Type pulumi.StringPtrInput
 }
 
@@ -270,6 +276,8 @@ type redirectRuleArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId int `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -284,9 +292,9 @@ type redirectRuleArgs struct {
 	StatusCode string `pulumi:"statusCode"`
 	// The destination URL to which requests are redirected.
 	TargetUrl string `pulumi:"targetUrl"`
-	// The redirect type. Valid value:
-	//
-	// - static
+	// The redirection type. Value range:
+	// - static: static mode.
+	// - dynamic: dynamic mode.
 	Type string `pulumi:"type"`
 }
 
@@ -305,6 +313,8 @@ type RedirectRuleArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 	SiteId pulumi.IntInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -319,9 +329,9 @@ type RedirectRuleArgs struct {
 	StatusCode pulumi.StringInput
 	// The destination URL to which requests are redirected.
 	TargetUrl pulumi.StringInput
-	// The redirect type. Valid value:
-	//
-	// - static
+	// The redirection type. Value range:
+	// - static: static mode.
+	// - dynamic: dynamic mode.
 	Type pulumi.StringInput
 }
 
@@ -442,6 +452,11 @@ func (o RedirectRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
+// Order of rule execution. The smaller the value, the higher the priority for execution.
+func (o RedirectRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *RedirectRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
+}
+
 // The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 func (o RedirectRuleOutput) SiteId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
@@ -468,9 +483,9 @@ func (o RedirectRuleOutput) TargetUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringOutput { return v.TargetUrl }).(pulumi.StringOutput)
 }
 
-// The redirect type. Valid value:
-//
-// - static
+// The redirection type. Value range:
+// - static: static mode.
+// - dynamic: dynamic mode.
 func (o RedirectRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedirectRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

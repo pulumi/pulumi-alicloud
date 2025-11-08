@@ -252,6 +252,48 @@ public class HttpsApplicationConfiguration extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.httpsForceCode);
     }
     /**
+     * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     * 
+     */
+    @Export(name="httpsNoSniDeny", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> httpsNoSniDeny;
+
+    /**
+     * @return Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     * 
+     */
+    public Output<Optional<String>> httpsNoSniDeny() {
+        return Codegen.optional(this.httpsNoSniDeny);
+    }
+    /**
+     * Whether to enable SNI verification. It is disabled by default. Value range:
+     * 
+     */
+    @Export(name="httpsSniVerify", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> httpsSniVerify;
+
+    /**
+     * @return Whether to enable SNI verification. It is disabled by default. Value range:
+     * 
+     */
+    public Output<Optional<String>> httpsSniVerify() {
+        return Codegen.optional(this.httpsSniVerify);
+    }
+    /**
+     * Specifies the list of allowed SNI whitelists, separated by spaces.
+     * 
+     */
+    @Export(name="httpsSniWhitelist", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> httpsSniWhitelist;
+
+    /**
+     * @return Specifies the list of allowed SNI whitelists, separated by spaces.
+     * 
+     */
+    public Output<Optional<String>> httpsSniWhitelist() {
+        return Codegen.optional(this.httpsSniWhitelist);
+    }
+    /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
@@ -296,6 +338,20 @@ public class HttpsApplicationConfiguration extends com.pulumi.resources.CustomRe
      */
     public Output<Optional<String>> ruleName() {
         return Codegen.optional(this.ruleName);
+    }
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
     }
     /**
      * The site ID, which can be obtained by calling the ListSites API.

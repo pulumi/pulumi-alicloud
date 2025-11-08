@@ -11,34 +11,79 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
+// This data source provides the RAM Roles of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available since v1.0.0+.
+// > **NOTE:** Available since v1.0.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rolesDs, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
-//				OutputFile: pulumi.StringRef("roles.txt"),
-//				NameRegex:  pulumi.StringRef(".*test.*"),
-//				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
-//				PolicyType: pulumi.StringRef("Custom"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstRoleId", rolesDs.Roles[0].Id)
+//			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				RoleName:    pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Description: pulumi.Sprintf("%v-%v", name, _default.Result),
+//				Force:       pulumi.Bool(true),
+//				AssumeRolePolicyDocument: pulumi.String(`  {
+//	    \"Statement\": [
+//	      {
+//	        \"Action\": \"sts:AssumeRole\",
+//	        \"Effect\": \"Allow\",
+//	        \"Principal\": {
+//	          \"Service\": [
+//	            \"ecs.aliyuncs.com\"
+//	          ]
+//	        }
+//	      }
+//	    ],
+//	    \"Version\": \"1\"
+//	  }
+//
+// `),
+//
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("Role"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := ram.GetRolesOutput(ctx, ram.GetRolesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultRole.RoleId,
+//				},
+//			}, nil)
+//			ctx.Export("ramRolesId0", ids.ApplyT(func(ids ram.GetRolesResult) (*string, error) {
+//				return &ids.Roles[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -56,32 +101,35 @@ func GetRoles(ctx *pulumi.Context, args *GetRolesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRoles.
 type GetRolesArgs struct {
-	// A list of ram role IDs.
+	// A list of Role IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by the role name.
+	// A regex string to filter results by Role name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+	// The name of the policy.
 	PolicyName *string `pulumi:"policyName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+	// The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policyType` takes effect only when `policyName` is set.
 	PolicyType *string `pulumi:"policyType"`
+	// A mapping of tags to assign to the resource.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of ram role IDs.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of ram role names.
+	// (Available since v1.42.0) A list of Role names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PolicyName *string  `pulumi:"policyName"`
 	PolicyType *string  `pulumi:"policyType"`
-	// A list of roles. Each element contains the following attributes:
+	// A list of Role. Each element contains the following attributes:
 	Roles []GetRolesRole `pulumi:"roles"`
+	// (Available since v1.262.1) The tags of the RAM role.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 func GetRolesOutput(ctx *pulumi.Context, args GetRolesOutputArgs, opts ...pulumi.InvokeOption) GetRolesResultOutput {
@@ -95,16 +143,18 @@ func GetRolesOutput(ctx *pulumi.Context, args GetRolesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getRoles.
 type GetRolesOutputArgs struct {
-	// A list of ram role IDs.
+	// A list of Role IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by the role name.
+	// A regex string to filter results by Role name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Filter results by a specific policy name. If you set this parameter without setting `policyType`, the later will be automatically set to `System`. The resulting roles will be attached to the specified policy.
+	// The name of the policy.
 	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
-	// Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policyName` as well.
+	// The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policyType` takes effect only when `policyName` is set.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
+	// A mapping of tags to assign to the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetRolesOutputArgs) ElementType() reflect.Type {
@@ -131,7 +181,6 @@ func (o GetRolesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of ram role IDs.
 func (o GetRolesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRolesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -140,7 +189,7 @@ func (o GetRolesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRolesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of ram role names.
+// (Available since v1.42.0) A list of Role names.
 func (o GetRolesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRolesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -157,9 +206,14 @@ func (o GetRolesResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRolesResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }
 
-// A list of roles. Each element contains the following attributes:
+// A list of Role. Each element contains the following attributes:
 func (o GetRolesResultOutput) Roles() GetRolesRoleArrayOutput {
 	return o.ApplyT(func(v GetRolesResult) []GetRolesRole { return v.Roles }).(GetRolesRoleArrayOutput)
+}
+
+// (Available since v1.262.1) The tags of the RAM role.
+func (o GetRolesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRolesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

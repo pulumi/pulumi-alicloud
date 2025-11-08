@@ -281,7 +281,7 @@ class ServerGroupAttachment(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,
@@ -380,7 +380,7 @@ class ServerGroupAttachment(pulumi.CustomResource):
             zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=my_name,
+            security_group_name=my_name,
             vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,

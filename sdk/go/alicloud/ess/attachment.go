@@ -62,17 +62,18 @@ import (
 //				return err
 //			}
 //			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(2),
-//				MemorySize:       pulumi.Float64Ref(4),
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
+//				CpuCoreCount:       pulumi.IntRef(2),
+//				MemorySize:         pulumi.Float64Ref(8),
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g9i"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
+//				InstanceType: pulumi.StringRef(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				MostRecent:   pulumi.BoolRef(true),
+//				Owners:       pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -127,13 +128,14 @@ import (
 //				return err
 //			}
 //			_, err = ess.NewScalingConfiguration(ctx, "default", &ess.ScalingConfigurationArgs{
-//				ScalingGroupId:  defaultScalingGroup.ID(),
-//				ImageId:         pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceType:    pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				ForceDelete:     pulumi.Bool(true),
-//				Active:          pulumi.Bool(true),
-//				Enable:          pulumi.Bool(true),
+//				ScalingGroupId:     defaultScalingGroup.ID(),
+//				ImageId:            pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:       pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				SecurityGroupId:    defaultSecurityGroup.ID(),
+//				SystemDiskCategory: pulumi.String("cloud_essd"),
+//				ForceDelete:        pulumi.Bool(true),
+//				Active:             pulumi.Bool(true),
+//				Enable:             pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -151,7 +153,7 @@ import (
 //					InternetChargeType:      pulumi.String("PayByTraffic"),
 //					InternetMaxBandwidthOut: pulumi.Int(10),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
-//					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
+//					SystemDiskCategory:      pulumi.String("cloud_essd"),
 //					VswitchId:               pulumi.String(defaultGetSwitches.Ids[0]),
 //					InstanceName:            pulumi.String(name),
 //				})

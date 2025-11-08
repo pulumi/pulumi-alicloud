@@ -128,6 +128,18 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
      */
     declare public readonly httpsForceCode: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     */
+    declare public readonly httpsNoSniDeny: pulumi.Output<string | undefined>;
+    /**
+     * Whether to enable SNI verification. It is disabled by default. Value range:
+     */
+    declare public readonly httpsSniVerify: pulumi.Output<string | undefined>;
+    /**
+     * Specifies the list of allowed SNI whitelists, separated by spaces.
+     */
+    declare public readonly httpsSniWhitelist: pulumi.Output<string | undefined>;
+    /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -141,6 +153,10 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    declare public readonly sequence: pulumi.Output<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
@@ -174,9 +190,13 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
             resourceInputs["hstsPreload"] = state?.hstsPreload;
             resourceInputs["httpsForce"] = state?.httpsForce;
             resourceInputs["httpsForceCode"] = state?.httpsForceCode;
+            resourceInputs["httpsNoSniDeny"] = state?.httpsNoSniDeny;
+            resourceInputs["httpsSniVerify"] = state?.httpsSniVerify;
+            resourceInputs["httpsSniWhitelist"] = state?.httpsSniWhitelist;
             resourceInputs["rule"] = state?.rule;
             resourceInputs["ruleEnable"] = state?.ruleEnable;
             resourceInputs["ruleName"] = state?.ruleName;
+            resourceInputs["sequence"] = state?.sequence;
             resourceInputs["siteId"] = state?.siteId;
             resourceInputs["siteVersion"] = state?.siteVersion;
         } else {
@@ -194,9 +214,13 @@ export class HttpsApplicationConfiguration extends pulumi.CustomResource {
             resourceInputs["hstsPreload"] = args?.hstsPreload;
             resourceInputs["httpsForce"] = args?.httpsForce;
             resourceInputs["httpsForceCode"] = args?.httpsForceCode;
+            resourceInputs["httpsNoSniDeny"] = args?.httpsNoSniDeny;
+            resourceInputs["httpsSniVerify"] = args?.httpsSniVerify;
+            resourceInputs["httpsSniWhitelist"] = args?.httpsSniWhitelist;
             resourceInputs["rule"] = args?.rule;
             resourceInputs["ruleEnable"] = args?.ruleEnable;
             resourceInputs["ruleName"] = args?.ruleName;
+            resourceInputs["sequence"] = args?.sequence;
             resourceInputs["siteId"] = args?.siteId;
             resourceInputs["siteVersion"] = args?.siteVersion;
             resourceInputs["configId"] = undefined /*out*/;
@@ -255,6 +279,18 @@ export interface HttpsApplicationConfigurationState {
      */
     httpsForceCode?: pulumi.Input<string>;
     /**
+     * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     */
+    httpsNoSniDeny?: pulumi.Input<string>;
+    /**
+     * Whether to enable SNI verification. It is disabled by default. Value range:
+     */
+    httpsSniVerify?: pulumi.Input<string>;
+    /**
+     * Specifies the list of allowed SNI whitelists, separated by spaces.
+     */
+    httpsSniWhitelist?: pulumi.Input<string>;
+    /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -268,6 +304,10 @@ export interface HttpsApplicationConfigurationState {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
@@ -323,6 +363,18 @@ export interface HttpsApplicationConfigurationArgs {
      */
     httpsForceCode?: pulumi.Input<string>;
     /**
+     * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     */
+    httpsNoSniDeny?: pulumi.Input<string>;
+    /**
+     * Whether to enable SNI verification. It is disabled by default. Value range:
+     */
+    httpsSniVerify?: pulumi.Input<string>;
+    /**
+     * Specifies the list of allowed SNI whitelists, separated by spaces.
+     */
+    httpsSniWhitelist?: pulumi.Input<string>;
+    /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
@@ -336,6 +388,10 @@ export interface HttpsApplicationConfigurationArgs {
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
     ruleName?: pulumi.Input<string>;
+    /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     */
+    sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */

@@ -32108,6 +32108,10 @@ export namespace esa {
          */
         operation: string;
         /**
+         * The value type. Value range:
+         */
+        type: string;
+        /**
          * The response header value.
          */
         value?: string;
@@ -48682,55 +48686,59 @@ export namespace ram {
 
     export interface GetPoliciesPolicy {
         /**
-         * Attachment count of the policy.
+         * The number of references to the policy.
          */
         attachmentCount: number;
         /**
-         * Creation date of the policy.
+         * The time when the policy was created.
          */
         createDate: string;
         /**
-         * Default version of the policy.
+         * The default version of the policy.
          */
         defaultVersion: string;
         /**
-         * Description of the policy.
+         * The description of the policy.
          */
         description: string;
         /**
-         * Policy document of the policy.
+         * The document of the policy. **Note:** `document` takes effect only if `enableDetails` is set to `true`.
          */
         document: string;
         /**
-         * ID of the policy.
+         * (Available since v1.114.0) The ID of the Policy.
          */
         id: string;
         /**
-         * Name of the policy.
+         * The name of the policy.
          */
         name: string;
         /**
-         * Policy document of the policy.
+         * (Available since v1.114.0) The document of the policy. **Note:** `policyDocument` takes effect only if `enableDetails` is set to `true`.
          */
         policyDocument: string;
         /**
-         * Name of the policy.
+         * (Available since v1.114.0) The name of the policy.
          */
         policyName: string;
         /**
-         * Filter results by a specific policy type. Valid values are `Custom` and `System`.
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The type of the policy. Valid values: `System` and `Custom`.
          */
         type: string;
         /**
-         * Update date of the policy.
+         * The time when the policy was modified.
          */
         updateDate: string;
         /**
-         * Filter results by a specific user name. Returned policies are attached to the specified user.
+         * The name of the RAM user.
          */
         userName: string;
         /**
-         * The ID of default policy.
+         * (Available since v1.114.0) The ID of the default policy version. **Note:** `versionId` takes effect only if `enableDetails` is set to `true`.
          */
         versionId: string;
     }
@@ -48809,35 +48817,39 @@ export namespace ram {
 
     export interface GetRolesRole {
         /**
-         * Resource descriptor of the role.
+         * The Alibaba Cloud Resource Name (ARN) of the RAM role.
          */
         arn: string;
         /**
-         * Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
+         * The policy that specifies the trusted entity to assume the RAM role.
          */
         assumeRolePolicyDocument: string;
         /**
-         * Creation date of the role.
+         * The creation time.
          */
         createDate: string;
         /**
-         * Description of the role.
+         * The description of the RAM role.
          */
         description: string;
         /**
-         * Authorization strategy of the role.
+         * The policy that specifies the trusted entity to assume the RAM role.
          */
         document: string;
         /**
-         * ID of the role.
+         * The ID of the RAM role.
          */
         id: string;
         /**
-         * Name of the role.
+         * The name of the RAM role.
          */
         name: string;
         /**
-         * Update date of the role.
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * The update time.
          */
         updateDate: string;
     }

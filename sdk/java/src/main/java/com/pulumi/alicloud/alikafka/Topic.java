@@ -18,12 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
+ * Provides a Alikafka Topic resource.
+ * 
+ * Topic in kafka.
+ * 
+ * For information about Alikafka Topic and how to use it, see [What is Topic](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
  * 
  * &gt; **NOTE:** Available since v1.56.0.
- * 
- * &gt; **NOTE:**  Only the following regions support create alikafka topic.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
  * 
  * ## Example Usage
  * 
@@ -38,8 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -50,6 +49,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.alikafka.InstanceArgs;
  * import com.pulumi.alicloud.alikafka.Topic;
  * import com.pulumi.alicloud.alikafka.TopicArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,21 +64,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var instanceName = config.get("instanceName").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
@@ -89,23 +86,41 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .name(String.format("%s-%s", instanceName,defaultInteger.result()))
+ *             .name(name)
  *             .partitionNum(50)
  *             .diskType(1)
  *             .diskSize(500)
  *             .deployType(5)
  *             .ioMax(20)
+ *             .specType("professional")
+ *             .serviceVersion("2.2.0")
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
+ *             .config(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("enable.acl", "true")
+ *                 )))
  *             .build());
  * 
  *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .topic("example-topic")
- *             .localTopic(false)
- *             .compactTopic(false)
- *             .partitionNum(12)
- *             .remark("dafault_kafka_topic_remark")
+ *             .topic(name)
+ *             .remark(name)
+ *             .localTopic(true)
+ *             .compactTopic(true)
+ *             .partitionNum(18)
+ *             .configs(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("message.format.version", "2.2.0"),
+ *                     jsonProperty("max.message.bytes", "10485760"),
+ *                     jsonProperty("min.insync.replicas", "1"),
+ *                     jsonProperty("replication-factor", "2"),
+ *                     jsonProperty("retention.ms", "3600000")
+ *                 )))
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
  *             .build());
  * 
  *     }
@@ -115,84 +130,148 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ALIKAFKA TOPIC can be imported using the id, e.g.
+ * Alikafka Topic can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:alikafka/topic:Topic topic alikafka_post-cn-123455abc:topicName
+ * $ pulumi import alicloud:alikafka/topic:Topic example &lt;instance_id&gt;:&lt;topic&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:alikafka/topic:Topic")
 public class Topic extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      * 
      */
     @Export(name="compactTopic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> compactTopic;
 
     /**
-     * @return Whether the topic is compactTopic or not. Compact topic must be a localTopic.
+     * @return The cleanup policy for the topic. This parameter is available only if you set the storage engine of the topic to Local storage. Valid values:
+     * - false: The delete cleanup policy is used.
+     * - true: The compact cleanup policy is used.
      * 
      */
     public Output<Optional<Boolean>> compactTopic() {
         return Codegen.optional(this.compactTopic);
     }
     /**
-     * InstanceId of your Kafka resource, the topic will create in this instance.
+     * The advanced configurations.
+     * 
+     */
+    @Export(name="configs", refs={String.class}, tree="[0]")
+    private Output<String> configs;
+
+    /**
+     * @return The advanced configurations.
+     * 
+     */
+    public Output<String> configs() {
+        return this.configs;
+    }
+    /**
+     * (Available since v1.262.1) The time when the topic was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.262.1) The time when the topic was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The ID of the instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return InstanceId of your Kafka resource, the topic will create in this instance.
+     * @return The ID of the instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * Whether the topic is localTopic or not.
+     * The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      * 
      */
     @Export(name="localTopic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> localTopic;
 
     /**
-     * @return Whether the topic is localTopic or not.
+     * @return The storage engine of the topic. Valid values:
+     * - false: Cloud storage.
+     * - true: Local storage.
      * 
      */
     public Output<Optional<Boolean>> localTopic() {
         return Codegen.optional(this.localTopic);
     }
     /**
-     * The number of partitions of the topic. The number should between 1 and 48.
+     * The number of partitions in the topic.
      * 
      */
     @Export(name="partitionNum", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> partitionNum;
+    private Output<Integer> partitionNum;
 
     /**
-     * @return The number of partitions of the topic. The number should between 1 and 48.
+     * @return The number of partitions in the topic.
      * 
      */
-    public Output<Optional<Integer>> partitionNum() {
-        return Codegen.optional(this.partitionNum);
+    public Output<Integer> partitionNum() {
+        return this.partitionNum;
     }
     /**
-     * This attribute is a concise description of topic. The length cannot exceed 64.
+     * (Available since v1.262.1) The ID of the region where the instance resides.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.262.1) The ID of the region where the instance resides.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The description of the topic.
      * 
      */
     @Export(name="remark", refs={String.class}, tree="[0]")
     private Output<String> remark;
 
     /**
-     * @return This attribute is a concise description of topic. The length cannot exceed 64.
+     * @return The description of the topic.
      * 
      */
     public Output<String> remark() {
         return this.remark;
+    }
+    /**
+     * (Available since v1.262.1) The status of the service.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.262.1) The status of the service.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * A mapping of tags to assign to the resource.
@@ -209,14 +288,14 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * The topic name.
      * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
-     * @return Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 249 characters.
+     * @return The topic name.
      * 
      */
     public Output<String> topic() {

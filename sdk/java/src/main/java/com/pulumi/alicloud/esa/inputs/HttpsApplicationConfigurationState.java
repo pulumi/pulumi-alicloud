@@ -182,6 +182,51 @@ public final class HttpsApplicationConfigurationState extends com.pulumi.resourc
     }
 
     /**
+     * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     * 
+     */
+    @Import(name="httpsNoSniDeny")
+    private @Nullable Output<String> httpsNoSniDeny;
+
+    /**
+     * @return Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+     * 
+     */
+    public Optional<Output<String>> httpsNoSniDeny() {
+        return Optional.ofNullable(this.httpsNoSniDeny);
+    }
+
+    /**
+     * Whether to enable SNI verification. It is disabled by default. Value range:
+     * 
+     */
+    @Import(name="httpsSniVerify")
+    private @Nullable Output<String> httpsSniVerify;
+
+    /**
+     * @return Whether to enable SNI verification. It is disabled by default. Value range:
+     * 
+     */
+    public Optional<Output<String>> httpsSniVerify() {
+        return Optional.ofNullable(this.httpsSniVerify);
+    }
+
+    /**
+     * Specifies the list of allowed SNI whitelists, separated by spaces.
+     * 
+     */
+    @Import(name="httpsSniWhitelist")
+    private @Nullable Output<String> httpsSniWhitelist;
+
+    /**
+     * @return Specifies the list of allowed SNI whitelists, separated by spaces.
+     * 
+     */
+    public Optional<Output<String>> httpsSniWhitelist() {
+        return Optional.ofNullable(this.httpsSniWhitelist);
+    }
+
+    /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
@@ -231,6 +276,21 @@ public final class HttpsApplicationConfigurationState extends com.pulumi.resourc
     }
 
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Import(name="sequence")
+    private @Nullable Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Optional<Output<Integer>> sequence() {
+        return Optional.ofNullable(this.sequence);
+    }
+
+    /**
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */
@@ -274,9 +334,13 @@ public final class HttpsApplicationConfigurationState extends com.pulumi.resourc
         this.hstsPreload = $.hstsPreload;
         this.httpsForce = $.httpsForce;
         this.httpsForceCode = $.httpsForceCode;
+        this.httpsNoSniDeny = $.httpsNoSniDeny;
+        this.httpsSniVerify = $.httpsSniVerify;
+        this.httpsSniWhitelist = $.httpsSniWhitelist;
         this.rule = $.rule;
         this.ruleEnable = $.ruleEnable;
         this.ruleName = $.ruleName;
+        this.sequence = $.sequence;
         this.siteId = $.siteId;
         this.siteVersion = $.siteVersion;
     }
@@ -531,6 +595,69 @@ public final class HttpsApplicationConfigurationState extends com.pulumi.resourc
         }
 
         /**
+         * @param httpsNoSniDeny Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsNoSniDeny(@Nullable Output<String> httpsNoSniDeny) {
+            $.httpsNoSniDeny = httpsNoSniDeny;
+            return this;
+        }
+
+        /**
+         * @param httpsNoSniDeny Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsNoSniDeny(String httpsNoSniDeny) {
+            return httpsNoSniDeny(Output.of(httpsNoSniDeny));
+        }
+
+        /**
+         * @param httpsSniVerify Whether to enable SNI verification. It is disabled by default. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsSniVerify(@Nullable Output<String> httpsSniVerify) {
+            $.httpsSniVerify = httpsSniVerify;
+            return this;
+        }
+
+        /**
+         * @param httpsSniVerify Whether to enable SNI verification. It is disabled by default. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsSniVerify(String httpsSniVerify) {
+            return httpsSniVerify(Output.of(httpsSniVerify));
+        }
+
+        /**
+         * @param httpsSniWhitelist Specifies the list of allowed SNI whitelists, separated by spaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsSniWhitelist(@Nullable Output<String> httpsSniWhitelist) {
+            $.httpsSniWhitelist = httpsSniWhitelist;
+            return this;
+        }
+
+        /**
+         * @param httpsSniWhitelist Specifies the list of allowed SNI whitelists, separated by spaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpsSniWhitelist(String httpsSniWhitelist) {
+            return httpsSniWhitelist(Output.of(httpsSniWhitelist));
+        }
+
+        /**
          * @param rule Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
          * - Match all incoming requests: value set to true
          * - Match specified request: Set the value to a custom expression, for example: (http.host eq \&#34;video.example.com\&#34;)
@@ -595,6 +722,27 @@ public final class HttpsApplicationConfigurationState extends com.pulumi.resourc
          */
         public Builder ruleName(String ruleName) {
             return ruleName(Output.of(ruleName));
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(@Nullable Output<Integer> sequence) {
+            $.sequence = sequence;
+            return this;
+        }
+
+        /**
+         * @param sequence The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sequence(Integer sequence) {
+            return sequence(Output.of(sequence));
         }
 
         /**

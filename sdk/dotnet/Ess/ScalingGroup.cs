@@ -151,10 +151,22 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> AllocationStrategy { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        /// </summary>
+        [Output("autoRebalance")]
+        public Output<bool?> AutoRebalance { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         /// </summary>
         [Output("azBalance")]
         public Output<bool?> AzBalance { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        /// </summary>
+        [Output("balanceMode")]
+        public Output<string?> BalanceMode { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
@@ -458,10 +470,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? AllocationStrategy { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        /// </summary>
+        [Input("autoRebalance")]
+        public Input<bool>? AutoRebalance { get; set; }
+
+        /// <summary>
         /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         /// </summary>
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
+
+        /// <summary>
+        /// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        /// </summary>
+        [Input("balanceMode")]
+        public Input<string>? BalanceMode { get; set; }
 
         /// <summary>
         /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
@@ -775,10 +799,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? AllocationStrategy { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
+        /// </summary>
+        [Input("autoRebalance")]
+        public Input<bool>? AutoRebalance { get; set; }
+
+        /// <summary>
         /// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         /// </summary>
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
+
+        /// <summary>
+        /// The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
+        /// </summary>
+        [Input("balanceMode")]
+        public Input<string>? BalanceMode { get; set; }
 
         /// <summary>
         /// Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.

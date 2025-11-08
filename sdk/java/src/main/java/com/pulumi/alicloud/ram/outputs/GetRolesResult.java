@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +20,10 @@ public final class GetRolesResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of ram role IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of ram role names.
+     * @return (Available since v1.42.0) A list of Role names.
      * 
      */
     private List<String> names;
@@ -34,10 +31,15 @@ public final class GetRolesResult {
     private @Nullable String policyName;
     private @Nullable String policyType;
     /**
-     * @return A list of roles. Each element contains the following attributes:
+     * @return A list of Role. Each element contains the following attributes:
      * 
      */
     private List<GetRolesRole> roles;
+    /**
+     * @return (Available since v1.262.1) The tags of the RAM role.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
 
     private GetRolesResult() {}
     /**
@@ -47,10 +49,6 @@ public final class GetRolesResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of ram role IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -58,7 +56,7 @@ public final class GetRolesResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of ram role names.
+     * @return (Available since v1.42.0) A list of Role names.
      * 
      */
     public List<String> names() {
@@ -74,11 +72,18 @@ public final class GetRolesResult {
         return Optional.ofNullable(this.policyType);
     }
     /**
-     * @return A list of roles. Each element contains the following attributes:
+     * @return A list of Role. Each element contains the following attributes:
      * 
      */
     public List<GetRolesRole> roles() {
         return this.roles;
+    }
+    /**
+     * @return (Available since v1.262.1) The tags of the RAM role.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
     }
 
     public static Builder builder() {
@@ -98,6 +103,7 @@ public final class GetRolesResult {
         private @Nullable String policyName;
         private @Nullable String policyType;
         private List<GetRolesRole> roles;
+        private @Nullable Map<String,String> tags;
         public Builder() {}
         public Builder(GetRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -109,6 +115,7 @@ public final class GetRolesResult {
     	      this.policyName = defaults.policyName;
     	      this.policyType = defaults.policyType;
     	      this.roles = defaults.roles;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -176,6 +183,12 @@ public final class GetRolesResult {
         public Builder roles(GetRolesRole... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
         public GetRolesResult build() {
             final var _resultValue = new GetRolesResult();
             _resultValue.id = id;
@@ -186,6 +199,7 @@ public final class GetRolesResult {
             _resultValue.policyName = policyName;
             _resultValue.policyType = policyType;
             _resultValue.roles = roles;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

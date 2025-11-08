@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.Esa.Inputs
         public Input<string> Operation { get; set; } = null!;
 
         /// <summary>
+        /// The value type. Value range:
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// The response header value.
         /// </summary>
         [Input("value")]

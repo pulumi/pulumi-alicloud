@@ -14,35 +14,39 @@ namespace Pulumi.AliCloud.Ram.Outputs
     public sealed class GetRolesRoleResult
     {
         /// <summary>
-        /// Resource descriptor of the role.
+        /// The Alibaba Cloud Resource Name (ARN) of the RAM role.
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// Authorization strategy of the role. This parameter is deprecated and replaced by `Document`.
+        /// The policy that specifies the trusted entity to assume the RAM role.
         /// </summary>
         public readonly string AssumeRolePolicyDocument;
         /// <summary>
-        /// Creation date of the role.
+        /// The creation time.
         /// </summary>
         public readonly string CreateDate;
         /// <summary>
-        /// Description of the role.
+        /// The description of the RAM role.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Authorization strategy of the role.
+        /// The policy that specifies the trusted entity to assume the RAM role.
         /// </summary>
         public readonly string Document;
         /// <summary>
-        /// ID of the role.
+        /// The ID of the RAM role.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of the role.
+        /// The name of the RAM role.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Update date of the role.
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// The update time.
         /// </summary>
         public readonly string UpdateDate;
 
@@ -62,6 +66,8 @@ namespace Pulumi.AliCloud.Ram.Outputs
 
             string name,
 
+            ImmutableDictionary<string, string> tags,
+
             string updateDate)
         {
             Arn = arn;
@@ -71,6 +77,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
             Document = document;
             Id = id;
             Name = name;
+            Tags = tags;
             UpdateDate = updateDate;
         }
     }

@@ -27,6 +27,7 @@ class RedirectRuleArgs:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a RedirectRule resource.
@@ -43,14 +44,15 @@ class RedirectRuleArgs:
                - 307
                - 308
         :param pulumi.Input[_builtins.str] target_url: The destination URL to which requests are redirected.
-        :param pulumi.Input[_builtins.str] type: The redirect type. Valid value:
-               
-               - static
+        :param pulumi.Input[_builtins.str] type: The redirection type. Value range:
+               - static: static mode.
+               - dynamic: dynamic mode.
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
                ● Match all incoming requests: value set to true
                ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         pulumi.set(__self__, "reserve_query_string", reserve_query_string)
@@ -64,6 +66,8 @@ class RedirectRuleArgs:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_version is not None:
             pulumi.set(__self__, "site_version", site_version)
 
@@ -128,9 +132,9 @@ class RedirectRuleArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The redirect type. Valid value:
-
-        - static
+        The redirection type. Value range:
+        - static: static mode.
+        - dynamic: dynamic mode.
         """
         return pulumi.get(self, "type")
 
@@ -177,6 +181,18 @@ class RedirectRuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -197,6 +213,7 @@ class _RedirectRuleState:
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status_code: Optional[pulumi.Input[_builtins.str]] = None,
@@ -214,6 +231,7 @@ class _RedirectRuleState:
                ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
@@ -224,9 +242,9 @@ class _RedirectRuleState:
                - 307
                - 308
         :param pulumi.Input[_builtins.str] target_url: The destination URL to which requests are redirected.
-        :param pulumi.Input[_builtins.str] type: The redirect type. Valid value:
-               
-               - static
+        :param pulumi.Input[_builtins.str] type: The redirection type. Value range:
+               - static: static mode.
+               - dynamic: dynamic mode.
         """
         if config_id is not None:
             pulumi.set(__self__, "config_id", config_id)
@@ -238,6 +256,8 @@ class _RedirectRuleState:
             pulumi.set(__self__, "rule_enable", rule_enable)
         if rule_name is not None:
             pulumi.set(__self__, "rule_name", rule_name)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if site_version is not None:
@@ -315,6 +335,18 @@ class _RedirectRuleState:
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "sequence", value)
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -372,9 +404,9 @@ class _RedirectRuleState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The redirect type. Valid value:
-
-        - static
+        The redirection type. Value range:
+        - static: static mode.
+        - dynamic: dynamic mode.
         """
         return pulumi.get(self, "type")
 
@@ -393,6 +425,7 @@ class RedirectRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status_code: Optional[pulumi.Input[_builtins.str]] = None,
@@ -466,6 +499,7 @@ class RedirectRule(pulumi.CustomResource):
                ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
@@ -476,9 +510,9 @@ class RedirectRule(pulumi.CustomResource):
                - 307
                - 308
         :param pulumi.Input[_builtins.str] target_url: The destination URL to which requests are redirected.
-        :param pulumi.Input[_builtins.str] type: The redirect type. Valid value:
-               
-               - static
+        :param pulumi.Input[_builtins.str] type: The redirection type. Value range:
+               - static: static mode.
+               - dynamic: dynamic mode.
         """
         ...
     @overload
@@ -561,6 +595,7 @@ class RedirectRule(pulumi.CustomResource):
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
                  site_id: Optional[pulumi.Input[_builtins.int]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status_code: Optional[pulumi.Input[_builtins.str]] = None,
@@ -581,6 +616,7 @@ class RedirectRule(pulumi.CustomResource):
             __props__.__dict__["rule"] = rule
             __props__.__dict__["rule_enable"] = rule_enable
             __props__.__dict__["rule_name"] = rule_name
+            __props__.__dict__["sequence"] = sequence
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
@@ -610,6 +646,7 @@ class RedirectRule(pulumi.CustomResource):
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+            sequence: Optional[pulumi.Input[_builtins.int]] = None,
             site_id: Optional[pulumi.Input[_builtins.int]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             status_code: Optional[pulumi.Input[_builtins.str]] = None,
@@ -632,6 +669,7 @@ class RedirectRule(pulumi.CustomResource):
                ● Match specified request: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
+        :param pulumi.Input[_builtins.int] sequence: Order of rule execution. The smaller the value, the higher the priority for execution.
         :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] status_code: The response code that you want to use to indicate URL redirection. Valid values:
@@ -642,9 +680,9 @@ class RedirectRule(pulumi.CustomResource):
                - 307
                - 308
         :param pulumi.Input[_builtins.str] target_url: The destination URL to which requests are redirected.
-        :param pulumi.Input[_builtins.str] type: The redirect type. Valid value:
-               
-               - static
+        :param pulumi.Input[_builtins.str] type: The redirection type. Value range:
+               - static: static mode.
+               - dynamic: dynamic mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -655,6 +693,7 @@ class RedirectRule(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         __props__.__dict__["rule_enable"] = rule_enable
         __props__.__dict__["rule_name"] = rule_name
+        __props__.__dict__["sequence"] = sequence
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["site_version"] = site_version
         __props__.__dict__["status_code"] = status_code
@@ -708,6 +747,14 @@ class RedirectRule(pulumi.CustomResource):
         return pulumi.get(self, "rule_name")
 
     @_builtins.property
+    @pulumi.getter
+    def sequence(self) -> pulumi.Output[_builtins.int]:
+        """
+        Order of rule execution. The smaller the value, the higher the priority for execution.
+        """
+        return pulumi.get(self, "sequence")
+
+    @_builtins.property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Output[_builtins.int]:
         """
@@ -749,9 +796,9 @@ class RedirectRule(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The redirect type. Valid value:
-
-        - static
+        The redirection type. Value range:
+        - static: static mode.
+        - dynamic: dynamic mode.
         """
         return pulumi.get(self, "type")
 

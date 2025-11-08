@@ -108,27 +108,30 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RewriteUriType { get; private set; } = null!;
 
         /// <summary>
-        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        /// ● Match all incoming requests: value set to true
-        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Output("rule")]
         public Output<string?> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// ‒ on: open.
+        /// ‒ off: close.
         /// </summary>
         [Output("ruleEnable")]
         public Output<string?> RuleEnable { get; private set; } = null!;
 
         /// <summary>
-        /// The rule name. You do not need to set this parameter when adding a global configuration.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Output("ruleName")]
         public Output<string?> RuleName { get; private set; } = null!;
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Output("sequence")]
+        public Output<int> Sequence { get; private set; } = null!;
 
         /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
@@ -213,27 +216,30 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RewriteUriType { get; set; }
 
         /// <summary>
-        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        /// ● Match all incoming requests: value set to true
-        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// ‒ on: open.
+        /// ‒ off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// The rule name. You do not need to set this parameter when adding a global configuration.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
@@ -286,27 +292,30 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RewriteUriType { get; set; }
 
         /// <summary>
-        /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
-        /// ● Match all incoming requests: value set to true
-        /// ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Input("rule")]
         public Input<string>? Rule { get; set; }
 
         /// <summary>
-        /// Indicates whether the rule is enabled. Valid values:
-        /// 
-        /// - on
-        /// - off
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// ‒ on: open.
+        /// ‒ off: close.
         /// </summary>
         [Input("ruleEnable")]
         public Input<string>? RuleEnable { get; set; }
 
         /// <summary>
-        /// The rule name. You do not need to set this parameter when adding a global configuration.
+        /// Rule name. When adding global configuration, this parameter does not need to be set.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
+
+        /// <summary>
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+        /// </summary>
+        [Input("sequence")]
+        public Input<int>? Sequence { get; set; }
 
         /// <summary>
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
