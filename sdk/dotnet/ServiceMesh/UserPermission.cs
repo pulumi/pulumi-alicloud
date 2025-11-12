@@ -20,6 +20,88 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// 
     /// Basic Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.ServiceMesh.GetVersions.Invoke(new()
+    ///     {
+    ///         Edition = "Default",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultUser = new AliCloud.Ram.User("default", new()
+    ///     {
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var default1 = new AliCloud.ServiceMesh.ServiceMesh("default1", new()
+    ///     {
+    ///         ServiceMeshName = $"{name}-{defaultInteger.Result}",
+    ///         Edition = "Default",
+    ///         ClusterSpec = "standard",
+    ///         Version = @default.Apply(@default =&gt; @default.Apply(getVersionsResult =&gt; getVersionsResult.Versions[0]?.Version)),
+    ///         Network = new AliCloud.ServiceMesh.Inputs.ServiceMeshNetworkArgs
+    ///         {
+    ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///             VswitcheLists = new[]
+    ///             {
+    ///                 defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             },
+    ///         },
+    ///         LoadBalancer = new AliCloud.ServiceMesh.Inputs.ServiceMeshLoadBalancerArgs
+    ///         {
+    ///             PilotPublicEip = false,
+    ///             ApiServerPublicEip = false,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultUserPermission = new AliCloud.ServiceMesh.UserPermission("default", new()
+    ///     {
+    ///         SubAccountUserId = defaultUser.Id,
+    ///         Permissions = new[]
+    ///         {
+    ///             new AliCloud.ServiceMesh.Inputs.UserPermissionPermissionArgs
+    ///             {
+    ///                 RoleName = "istio-ops",
+    ///                 ServiceMeshId = default1.Id,
+    ///                 RoleType = "custom",
+    ///                 IsCustom = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Service Mesh User Permission can be imported using the id, e.g.

@@ -15,6 +15,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterVbrAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterVbrAttachmentsVbrId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVbrAttachmentsResult =&gt; getTransitRouterVbrAttachmentsResult.TransitRouterAttachments[0].VbrId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTransitRouterVbrAttachmentsResult> InvokeAsync(GetTransitRouterVbrAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterVbrAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterVbrAttachmentsVbrId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVbrAttachmentsResult =&gt; getTransitRouterVbrAttachmentsResult.TransitRouterAttachments[0].VbrId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterVbrAttachmentsResult> Invoke(GetTransitRouterVbrAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithDefaults());
@@ -31,6 +75,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
         /// 
         /// &gt; **NOTE:** Available in 1.126.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterVbrAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterVbrAttachmentsVbrId"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterVbrAttachmentsResult =&gt; getTransitRouterVbrAttachmentsResult.TransitRouterAttachments[0].VbrId)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterVbrAttachmentsResult> Invoke(GetTransitRouterVbrAttachmentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVbrAttachmentsResult>("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", args ?? new GetTransitRouterVbrAttachmentsInvokeArgs(), options.WithDefaults());

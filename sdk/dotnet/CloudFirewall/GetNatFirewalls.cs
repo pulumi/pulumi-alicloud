@@ -15,6 +15,108 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
         /// 
         /// &gt; **NOTE:** Available since v1.243.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultikZ0gD = new AliCloud.Vpc.Network("defaultikZ0gD", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var defaultp4O7qi = new AliCloud.Vpc.Switch("defaultp4O7qi", new()
+        ///     {
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         CidrBlock = "172.16.6.0/24",
+        ///         VswitchName = name,
+        ///         ZoneId = "cn-shenzhen-e",
+        ///     });
+        /// 
+        ///     var default2iRZpC = new AliCloud.Vpc.NatGateway("default2iRZpC", new()
+        ///     {
+        ///         Description = name,
+        ///         NatGatewayName = name,
+        ///         EipBindMode = "MULTI_BINDED",
+        ///         NatType = "Enhanced",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         PaymentType = "PayAsYouGo",
+        ///         NetworkType = "internet",
+        ///     });
+        /// 
+        ///     var defaultyiRwgs = new AliCloud.Ecs.EipAddress("defaultyiRwgs");
+        /// 
+        ///     var defaults2MTuO = new AliCloud.Ecs.EipAssociation("defaults2MTuO", new()
+        ///     {
+        ///         InstanceId = default2iRZpC.Id,
+        ///         AllocationId = defaultyiRwgs.AllocationId,
+        ///         Mode = "NAT",
+        ///         InstanceType = "NAT",
+        ///         VpcId = default2iRZpC.VpcId,
+        ///     });
+        /// 
+        ///     var defaultAKE43g = new AliCloud.Vpc.SnatEntry("defaultAKE43g", new()
+        ///     {
+        ///         SnatIp = defaultyiRwgs.IpAddress,
+        ///         SnatTableId = default2iRZpC.SnatTableIds.Apply(snatTableIds =&gt; snatTableIds[0]),
+        ///         EipAffinity = 1,
+        ///         SourceVswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var defaultNatFirewall = new AliCloud.CloudFirewall.NatFirewall("default", new()
+        ///     {
+        ///         RegionNo = "cn-shenzhen",
+        ///         VswitchAuto = "true",
+        ///         StrictMode = 0,
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         ProxyName = name,
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         NatRouteEntryLists = new[]
+        ///         {
+        ///             new AliCloud.CloudFirewall.Inputs.NatFirewallNatRouteEntryListArgs
+        ///             {
+        ///                 NexthopId = default2iRZpC.Id,
+        ///                 DestinationCidr = "0.0.0.0/0",
+        ///                 NexthopType = "NatGateway",
+        ///                 RouteTableId = defaultp4O7qi.RouteTableId,
+        ///             },
+        ///         },
+        ///         FirewallSwitch = "close",
+        ///         VswitchCidr = "172.16.5.0/24",
+        ///         Status = "closed",
+        ///         VswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.CloudFirewall.GetNatFirewalls.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultNatFirewall.Id,
+        ///         },
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         ProxyName = name,
+        ///         RegionNo = "cn-shenzhen",
+        ///         Status = "closed",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCloudFirewallNatFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getNatFirewallsResult =&gt; getNatFirewallsResult.Firewalls[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetNatFirewallsResult> InvokeAsync(GetNatFirewallsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatFirewallsResult>("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", args ?? new GetNatFirewallsArgs(), options.WithDefaults());
@@ -23,6 +125,108 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
         /// 
         /// &gt; **NOTE:** Available since v1.243.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultikZ0gD = new AliCloud.Vpc.Network("defaultikZ0gD", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var defaultp4O7qi = new AliCloud.Vpc.Switch("defaultp4O7qi", new()
+        ///     {
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         CidrBlock = "172.16.6.0/24",
+        ///         VswitchName = name,
+        ///         ZoneId = "cn-shenzhen-e",
+        ///     });
+        /// 
+        ///     var default2iRZpC = new AliCloud.Vpc.NatGateway("default2iRZpC", new()
+        ///     {
+        ///         Description = name,
+        ///         NatGatewayName = name,
+        ///         EipBindMode = "MULTI_BINDED",
+        ///         NatType = "Enhanced",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         PaymentType = "PayAsYouGo",
+        ///         NetworkType = "internet",
+        ///     });
+        /// 
+        ///     var defaultyiRwgs = new AliCloud.Ecs.EipAddress("defaultyiRwgs");
+        /// 
+        ///     var defaults2MTuO = new AliCloud.Ecs.EipAssociation("defaults2MTuO", new()
+        ///     {
+        ///         InstanceId = default2iRZpC.Id,
+        ///         AllocationId = defaultyiRwgs.AllocationId,
+        ///         Mode = "NAT",
+        ///         InstanceType = "NAT",
+        ///         VpcId = default2iRZpC.VpcId,
+        ///     });
+        /// 
+        ///     var defaultAKE43g = new AliCloud.Vpc.SnatEntry("defaultAKE43g", new()
+        ///     {
+        ///         SnatIp = defaultyiRwgs.IpAddress,
+        ///         SnatTableId = default2iRZpC.SnatTableIds.Apply(snatTableIds =&gt; snatTableIds[0]),
+        ///         EipAffinity = 1,
+        ///         SourceVswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var defaultNatFirewall = new AliCloud.CloudFirewall.NatFirewall("default", new()
+        ///     {
+        ///         RegionNo = "cn-shenzhen",
+        ///         VswitchAuto = "true",
+        ///         StrictMode = 0,
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         ProxyName = name,
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         NatRouteEntryLists = new[]
+        ///         {
+        ///             new AliCloud.CloudFirewall.Inputs.NatFirewallNatRouteEntryListArgs
+        ///             {
+        ///                 NexthopId = default2iRZpC.Id,
+        ///                 DestinationCidr = "0.0.0.0/0",
+        ///                 NexthopType = "NatGateway",
+        ///                 RouteTableId = defaultp4O7qi.RouteTableId,
+        ///             },
+        ///         },
+        ///         FirewallSwitch = "close",
+        ///         VswitchCidr = "172.16.5.0/24",
+        ///         Status = "closed",
+        ///         VswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.CloudFirewall.GetNatFirewalls.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultNatFirewall.Id,
+        ///         },
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         ProxyName = name,
+        ///         RegionNo = "cn-shenzhen",
+        ///         Status = "closed",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCloudFirewallNatFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getNatFirewallsResult =&gt; getNatFirewallsResult.Firewalls[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNatFirewallsResult> Invoke(GetNatFirewallsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatFirewallsResult>("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", args ?? new GetNatFirewallsInvokeArgs(), options.WithDefaults());
@@ -31,6 +235,108 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
         /// 
         /// &gt; **NOTE:** Available since v1.243.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var defaultikZ0gD = new AliCloud.Vpc.Network("defaultikZ0gD", new()
+        ///     {
+        ///         CidrBlock = "172.16.0.0/12",
+        ///         VpcName = name,
+        ///     });
+        /// 
+        ///     var defaultp4O7qi = new AliCloud.Vpc.Switch("defaultp4O7qi", new()
+        ///     {
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         CidrBlock = "172.16.6.0/24",
+        ///         VswitchName = name,
+        ///         ZoneId = "cn-shenzhen-e",
+        ///     });
+        /// 
+        ///     var default2iRZpC = new AliCloud.Vpc.NatGateway("default2iRZpC", new()
+        ///     {
+        ///         Description = name,
+        ///         NatGatewayName = name,
+        ///         EipBindMode = "MULTI_BINDED",
+        ///         NatType = "Enhanced",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         PaymentType = "PayAsYouGo",
+        ///         NetworkType = "internet",
+        ///     });
+        /// 
+        ///     var defaultyiRwgs = new AliCloud.Ecs.EipAddress("defaultyiRwgs");
+        /// 
+        ///     var defaults2MTuO = new AliCloud.Ecs.EipAssociation("defaults2MTuO", new()
+        ///     {
+        ///         InstanceId = default2iRZpC.Id,
+        ///         AllocationId = defaultyiRwgs.AllocationId,
+        ///         Mode = "NAT",
+        ///         InstanceType = "NAT",
+        ///         VpcId = default2iRZpC.VpcId,
+        ///     });
+        /// 
+        ///     var defaultAKE43g = new AliCloud.Vpc.SnatEntry("defaultAKE43g", new()
+        ///     {
+        ///         SnatIp = defaultyiRwgs.IpAddress,
+        ///         SnatTableId = default2iRZpC.SnatTableIds.Apply(snatTableIds =&gt; snatTableIds[0]),
+        ///         EipAffinity = 1,
+        ///         SourceVswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var defaultNatFirewall = new AliCloud.CloudFirewall.NatFirewall("default", new()
+        ///     {
+        ///         RegionNo = "cn-shenzhen",
+        ///         VswitchAuto = "true",
+        ///         StrictMode = 0,
+        ///         VpcId = defaultikZ0gD.Id,
+        ///         ProxyName = name,
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         NatRouteEntryLists = new[]
+        ///         {
+        ///             new AliCloud.CloudFirewall.Inputs.NatFirewallNatRouteEntryListArgs
+        ///             {
+        ///                 NexthopId = default2iRZpC.Id,
+        ///                 DestinationCidr = "0.0.0.0/0",
+        ///                 NexthopType = "NatGateway",
+        ///                 RouteTableId = defaultp4O7qi.RouteTableId,
+        ///             },
+        ///         },
+        ///         FirewallSwitch = "close",
+        ///         VswitchCidr = "172.16.5.0/24",
+        ///         Status = "closed",
+        ///         VswitchId = defaultp4O7qi.Id,
+        ///     });
+        /// 
+        ///     var @default = AliCloud.CloudFirewall.GetNatFirewalls.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultNatFirewall.Id,
+        ///         },
+        ///         Lang = "zh",
+        ///         NatGatewayId = default2iRZpC.Id,
+        ///         ProxyName = name,
+        ///         RegionNo = "cn-shenzhen",
+        ///         Status = "closed",
+        ///         VpcId = defaultikZ0gD.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudCloudFirewallNatFirewallExampleId"] = @default.Apply(@default =&gt; @default.Apply(getNatFirewallsResult =&gt; getNatFirewallsResult.Firewalls[0]?.Id)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetNatFirewallsResult> Invoke(GetNatFirewallsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatFirewallsResult>("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", args ?? new GetNatFirewallsInvokeArgs(), options.WithDefaults());

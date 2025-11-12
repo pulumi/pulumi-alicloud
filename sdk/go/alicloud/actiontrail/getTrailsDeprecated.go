@@ -15,6 +15,33 @@ import (
 //
 // This data source provides a list of action trail of the current Alibaba Cloud user.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			trails, err := actiontrail.GetTrailsDeprecated(ctx, &actiontrail.GetTrailsDeprecatedArgs{
+//				NameRegex: pulumi.StringRef("tf-testacc-actiontrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTrailName", trails.Actiontrails[0].Name)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Deprecated: DataSource has been renamed to `getTrails`
 func GetTrailsDeprecated(ctx *pulumi.Context, args *GetTrailsDeprecatedArgs, opts ...pulumi.InvokeOption) (*GetTrailsDeprecatedResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

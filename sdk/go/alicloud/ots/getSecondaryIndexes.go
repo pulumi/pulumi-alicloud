@@ -16,6 +16,36 @@ import (
 // For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 //
 // > **NOTE:** Available in v1.187.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secondaryIndexDs, err := ots.GetSecondaryIndexes(ctx, &ots.GetSecondaryIndexesArgs{
+//				InstanceName: "sample-instance",
+//				TableName:    "sample-table",
+//				NameRegex:    pulumi.StringRef("sample-secondary-index"),
+//				OutputFile:   pulumi.StringRef("secondary-indexs.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSecondaryIndexId", secondaryIndexDs.Indexs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSecondaryIndexes(ctx *pulumi.Context, args *GetSecondaryIndexesArgs, opts ...pulumi.InvokeOption) (*GetSecondaryIndexesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecondaryIndexesResult

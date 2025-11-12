@@ -124,6 +124,16 @@ def get_transit_router_vbr_attachments(cen_id: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in 1.126.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_vbr_attachments(cen_id="cen-id1")
+    pulumi.export("firstTransitRouterVbrAttachmentsVbrId", default.transit_router_attachments[0]["vbrId"])
+    ```
+
 
     :param _builtins.str cen_id: ID of the CEN instance.
     :param Sequence[_builtins.str] ids: A list of resource id. The element value is same as `transit_router_id`.
@@ -158,6 +168,16 @@ def get_transit_router_vbr_attachments_output(cen_id: Optional[pulumi.Input[_bui
     This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
 
     > **NOTE:** Available in 1.126.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_vbr_attachments(cen_id="cen-id1")
+    pulumi.export("firstTransitRouterVbrAttachmentsVbrId", default.transit_router_attachments[0]["vbrId"])
+    ```
 
 
     :param _builtins.str cen_id: ID of the CEN instance.

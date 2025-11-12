@@ -206,6 +206,72 @@ def get_nat_firewalls(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available since v1.243.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    defaultik_z0g_d = alicloud.vpc.Network("defaultikZ0gD",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    defaultp4_o7qi = alicloud.vpc.Switch("defaultp4O7qi",
+        vpc_id=defaultik_z0g_d.id,
+        cidr_block="172.16.6.0/24",
+        vswitch_name=name,
+        zone_id="cn-shenzhen-e")
+    default2i_r_zp_c = alicloud.vpc.NatGateway("default2iRZpC",
+        description=name,
+        nat_gateway_name=name,
+        eip_bind_mode="MULTI_BINDED",
+        nat_type="Enhanced",
+        vpc_id=defaultik_z0g_d.id,
+        payment_type="PayAsYouGo",
+        network_type="internet")
+    defaultyi_rwgs = alicloud.ecs.EipAddress("defaultyiRwgs")
+    defaults2_m_tu_o = alicloud.ecs.EipAssociation("defaults2MTuO",
+        instance_id=default2i_r_zp_c.id,
+        allocation_id=defaultyi_rwgs.allocation_id,
+        mode="NAT",
+        instance_type="NAT",
+        vpc_id=default2i_r_zp_c.vpc_id)
+    default_ake43g = alicloud.vpc.SnatEntry("defaultAKE43g",
+        snat_ip=defaultyi_rwgs.ip_address,
+        snat_table_id=default2i_r_zp_c.snat_table_ids[0],
+        eip_affinity=1,
+        source_vswitch_id=defaultp4_o7qi.id)
+    default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",
+        region_no="cn-shenzhen",
+        vswitch_auto="true",
+        strict_mode=0,
+        vpc_id=defaultik_z0g_d.id,
+        proxy_name=name,
+        lang="zh",
+        nat_gateway_id=default2i_r_zp_c.id,
+        nat_route_entry_lists=[{
+            "nexthop_id": default2i_r_zp_c.id,
+            "destination_cidr": "0.0.0.0/0",
+            "nexthop_type": "NatGateway",
+            "route_table_id": defaultp4_o7qi.route_table_id,
+        }],
+        firewall_switch="close",
+        vswitch_cidr="172.16.5.0/24",
+        status="closed",
+        vswitch_id=defaultp4_o7qi.id)
+    default = alicloud.cloudfirewall.get_nat_firewalls_output(ids=[default_nat_firewall.id],
+        lang="zh",
+        nat_gateway_id=default2i_r_zp_c.id,
+        proxy_name=name,
+        region_no="cn-shenzhen",
+        status="closed",
+        vpc_id=defaultik_z0g_d.id)
+    pulumi.export("alicloudCloudFirewallNatFirewallExampleId", default.firewalls[0].id)
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of Nat Firewall IDs.
     :param _builtins.str lang: Lang
@@ -268,6 +334,72 @@ def get_nat_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[_built
     This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
 
     > **NOTE:** Available since v1.243.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    defaultik_z0g_d = alicloud.vpc.Network("defaultikZ0gD",
+        cidr_block="172.16.0.0/12",
+        vpc_name=name)
+    defaultp4_o7qi = alicloud.vpc.Switch("defaultp4O7qi",
+        vpc_id=defaultik_z0g_d.id,
+        cidr_block="172.16.6.0/24",
+        vswitch_name=name,
+        zone_id="cn-shenzhen-e")
+    default2i_r_zp_c = alicloud.vpc.NatGateway("default2iRZpC",
+        description=name,
+        nat_gateway_name=name,
+        eip_bind_mode="MULTI_BINDED",
+        nat_type="Enhanced",
+        vpc_id=defaultik_z0g_d.id,
+        payment_type="PayAsYouGo",
+        network_type="internet")
+    defaultyi_rwgs = alicloud.ecs.EipAddress("defaultyiRwgs")
+    defaults2_m_tu_o = alicloud.ecs.EipAssociation("defaults2MTuO",
+        instance_id=default2i_r_zp_c.id,
+        allocation_id=defaultyi_rwgs.allocation_id,
+        mode="NAT",
+        instance_type="NAT",
+        vpc_id=default2i_r_zp_c.vpc_id)
+    default_ake43g = alicloud.vpc.SnatEntry("defaultAKE43g",
+        snat_ip=defaultyi_rwgs.ip_address,
+        snat_table_id=default2i_r_zp_c.snat_table_ids[0],
+        eip_affinity=1,
+        source_vswitch_id=defaultp4_o7qi.id)
+    default_nat_firewall = alicloud.cloudfirewall.NatFirewall("default",
+        region_no="cn-shenzhen",
+        vswitch_auto="true",
+        strict_mode=0,
+        vpc_id=defaultik_z0g_d.id,
+        proxy_name=name,
+        lang="zh",
+        nat_gateway_id=default2i_r_zp_c.id,
+        nat_route_entry_lists=[{
+            "nexthop_id": default2i_r_zp_c.id,
+            "destination_cidr": "0.0.0.0/0",
+            "nexthop_type": "NatGateway",
+            "route_table_id": defaultp4_o7qi.route_table_id,
+        }],
+        firewall_switch="close",
+        vswitch_cidr="172.16.5.0/24",
+        status="closed",
+        vswitch_id=defaultp4_o7qi.id)
+    default = alicloud.cloudfirewall.get_nat_firewalls_output(ids=[default_nat_firewall.id],
+        lang="zh",
+        nat_gateway_id=default2i_r_zp_c.id,
+        proxy_name=name,
+        region_no="cn-shenzhen",
+        status="closed",
+        vpc_id=defaultik_z0g_d.id)
+    pulumi.export("alicloudCloudFirewallNatFirewallExampleId", default.firewalls[0].id)
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of Nat Firewall IDs.

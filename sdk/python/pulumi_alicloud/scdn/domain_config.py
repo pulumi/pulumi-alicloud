@@ -184,6 +184,30 @@ class DomainConfig(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain config.
+        domain = alicloud.scdn.Domain("domain",
+            domain_name="mydomain.alicloud-provider.cn",
+            cdn_type="web",
+            scope="overseas",
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": "20",
+                "port": 80,
+            }])
+        config = alicloud.scdn.DomainConfig("config",
+            domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
+            function_args=[{
+                "arg_name": "ip_list",
+                "arg_value": "110.110.110.110",
+            }])
+        ```
+
         ## Import
 
         SCDN domain config can be imported using the id, e.g.
@@ -218,6 +242,30 @@ class DomainConfig(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        # Create a new Domain config.
+        domain = alicloud.scdn.Domain("domain",
+            domain_name="mydomain.alicloud-provider.cn",
+            cdn_type="web",
+            scope="overseas",
+            sources=[{
+                "content": "1.1.1.1",
+                "type": "ipaddr",
+                "priority": "20",
+                "port": 80,
+            }])
+        config = alicloud.scdn.DomainConfig("config",
+            domain_name=domain.domain_name,
+            function_name="ip_allow_list_set",
+            function_args=[{
+                "arg_name": "ip_list",
+                "arg_value": "110.110.110.110",
+            }])
+        ```
 
         ## Import
 

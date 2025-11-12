@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *     remediationTemplateId: "ACS-OSS-PutBucketAcl",
  *     remediationSourceType: "ALIYUN",
  *     invokeType: "MANUAL_EXECUTION",
- *     params: pulumi.all([defaultBucket.bucket, _default]).apply(([bucket, _default]) => `{"bucketName": "${bucket}", "regionId": "${_default.regions?.[0]?.id}", "permissionName": "private"}`),
+ *     params: Promise.all([defaultBucket.bucket, _default]).then(([bucket, _default]) => `{"bucketName": "${bucket}", "regionId": "${_default.regions?.[0]?.id}", "permissionName": "private"}`),
  *     remediationType: "OOS",
  * });
  * ```

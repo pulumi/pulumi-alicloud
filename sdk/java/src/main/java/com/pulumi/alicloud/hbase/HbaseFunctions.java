@@ -26,6 +26,51 @@ public final class HbaseFunctions {
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes() {
         return getInstanceTypes(GetInstanceTypesArgs.Empty, InvokeOptions.Empty);
@@ -34,6 +79,51 @@ public final class HbaseFunctions {
      * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain() {
@@ -44,6 +134,51 @@ public final class HbaseFunctions {
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args) {
         return getInstanceTypes(args, InvokeOptions.Empty);
@@ -52,6 +187,51 @@ public final class HbaseFunctions {
      * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args) {
@@ -62,6 +242,51 @@ public final class HbaseFunctions {
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
@@ -71,6 +296,51 @@ public final class HbaseFunctions {
      * 
      * &gt; **NOTE:** Available since v1.106.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetInstanceTypesResult> getInstanceTypes(GetInstanceTypesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:hbase/getInstanceTypes:getInstanceTypes", TypeShape.of(GetInstanceTypesResult.class), args, Utilities.withVersion(options));
@@ -79,6 +349,51 @@ public final class HbaseFunctions {
      * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.106.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.hbase.HbaseFunctions;
+     * import com.pulumi.alicloud.hbase.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.hbase.Instance;
+     * import com.pulumi.alicloud.hbase.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = HbaseFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .chargeType("Postpaid")
+     *             .regionId("cn-shanghai")
+     *             .zoneId("cn-shanghai-g")
+     *             .engine("hbaseue")
+     *             .version("2.0")
+     *             .instanceType("hbase.sn2.large")
+     *             .diskType("cloud_ssd")
+     *             .build());
+     * 
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
+     *             .coreInstanceType(default_.types()[0].id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetInstanceTypesResult> getInstanceTypesPlain(GetInstanceTypesPlainArgs args, InvokeOptions options) {

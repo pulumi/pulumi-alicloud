@@ -141,6 +141,19 @@ def get_search_indexes(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    search_index_ds = alicloud.ots.get_search_indexes(instance_name="sample-instance",
+        table_name="sample-table",
+        name_regex="sample-search-index",
+        output_file="search-indexs.txt")
+    pulumi.export("firstSearchIndexId", search_index_ds.indexs[0]["id"])
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of search index IDs.
     :param _builtins.str instance_name: The name of OTS instance.
@@ -178,6 +191,19 @@ def get_search_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[_buil
     For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 
     > **NOTE:** Available in v1.187.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    search_index_ds = alicloud.ots.get_search_indexes(instance_name="sample-instance",
+        table_name="sample-table",
+        name_regex="sample-search-index",
+        output_file="search-indexs.txt")
+    pulumi.export("firstSearchIndexId", search_index_ds.indexs[0]["id"])
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of search index IDs.

@@ -159,6 +159,16 @@ def get_transit_router_peer_attachments(cen_id: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in 1.128.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_peer_attachments(cen_id="cen-id1")
+    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.transit_router_attachments[0]["resourceType"])
+    ```
+
 
     :param _builtins.str cen_id: ID of the CEN instance.
     :param Sequence[_builtins.str] ids: A list of CEN Transit Router peer attachments IDs.
@@ -202,6 +212,16 @@ def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[_bu
     This data source provides CEN Transit Router peer attachments available to the user.
 
     > **NOTE:** Available in 1.128.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.cen.get_transit_router_peer_attachments(cen_id="cen-id1")
+    pulumi.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default.transit_router_attachments[0]["resourceType"])
+    ```
 
 
     :param _builtins.str cen_id: ID of the CEN instance.

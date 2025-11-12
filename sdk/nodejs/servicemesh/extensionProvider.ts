@@ -11,6 +11,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.191.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as std from "@pulumi/std";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
+ * });
+ * const defaultNetwork: alicloud.vpc.Network[] = [];
+ * defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultNetwork.push(new alicloud.vpc.Network(`default-${range.value}`, {}));
+ *     }
+ * });
+ * const defaultGetSwitches = pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id).apply(value => alicloud.vpc.getSwitchesOutput({
+ *     vpcId: value,
+ * }));
+ * const defaultSwitch: alicloud.vpc.Switch[] = [];
+ * defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids).length.apply(length => {
+ *     for (const range = {value: 0}; range.value < (length > 0 ? 0 : 1); range.value++) {
+ *         defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
+ *             vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ *             cidrBlock: defaultGetNetworks.then(defaultGetNetworks => std.cidrsubnet({
+ *                 input: defaultGetNetworks.vpcs?.[0]?.cidrBlock,
+ *                 newbits: 8,
+ *                 netnum: 2,
+ *             })).then(invoke => invoke.result),
+ *             zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *         }));
+ *     }
+ * });
+ * const defaultServiceMesh = new alicloud.servicemesh.ServiceMesh("default", {
+ *     serviceMeshName: "mesh-c50f3fef117ad45b6b26047cdafef65ad",
+ *     version: "v1.21.6.103-g5ddeaef7-aliyun",
+ *     edition: "Default",
+ *     network: {
+ *         vpcId: pulumi.all([defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids).length, defaultGetNetworks, defaultNetwork[0].id]).apply(([length, defaultGetNetworks, id]) => length > 0 ? defaultGetNetworks.ids?.[0] : id),
+ *         vswitcheLists: [pulumi.all([defaultGetSwitches.apply(defaultGetSwitches => defaultGetSwitches.ids).length, defaultGetSwitches, defaultSwitch[0].id]).apply(([length, defaultGetSwitches, id]) => length > 0 ? defaultGetSwitches.ids?.[0] : id)],
+ *     },
+ * });
+ * const defaultExtensionProvider = new alicloud.servicemesh.ExtensionProvider("default", {
+ *     serviceMeshId: defaultServiceMesh.id,
+ *     extensionProviderName: "httpextauth-tf-example",
+ *     type: "httpextauth",
+ *     config: "{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service Mesh Extension Provider can be imported using the id, e.g.

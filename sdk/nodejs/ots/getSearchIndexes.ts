@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const searchIndexDs = alicloud.ots.getSearchIndexes({
+ *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
+ *     nameRegex: "sample-search-index",
+ *     outputFile: "search-indexs.txt",
+ * });
+ * export const firstSearchIndexId = searchIndexDs.then(searchIndexDs => searchIndexDs.indexs[0].id);
+ * ```
  */
 export function getSearchIndexes(args: GetSearchIndexesArgs, opts?: pulumi.InvokeOptions): Promise<GetSearchIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +102,21 @@ export interface GetSearchIndexesResult {
  * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const searchIndexDs = alicloud.ots.getSearchIndexes({
+ *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
+ *     nameRegex: "sample-search-index",
+ *     outputFile: "search-indexs.txt",
+ * });
+ * export const firstSearchIndexId = searchIndexDs.then(searchIndexDs => searchIndexDs.indexs[0].id);
+ * ```
  */
 export function getSearchIndexesOutput(args: GetSearchIndexesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSearchIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

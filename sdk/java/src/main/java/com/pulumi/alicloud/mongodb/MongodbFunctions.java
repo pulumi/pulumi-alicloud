@@ -1200,6 +1200,44 @@ public final class MongodbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPrivateAddressId1", example.addresses()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs args) {
         return getShardingNetworkPrivateAddresses(args, InvokeOptions.Empty);
@@ -1208,6 +1246,44 @@ public final class MongodbFunctions {
      * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.157.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPrivateAddressId1", example.addresses()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddressesPlain(GetShardingNetworkPrivateAddressesPlainArgs args) {
@@ -1218,6 +1294,44 @@ public final class MongodbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPrivateAddressId1", example.addresses()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", TypeShape.of(GetShardingNetworkPrivateAddressesResult.class), args, Utilities.withVersion(options));
@@ -1227,6 +1341,44 @@ public final class MongodbFunctions {
      * 
      * &gt; **NOTE:** Available in v1.157.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPrivateAddressId1", example.addresses()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", TypeShape.of(GetShardingNetworkPrivateAddressesResult.class), args, Utilities.withVersion(options));
@@ -1235,6 +1387,44 @@ public final class MongodbFunctions {
      * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.157.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+     * import com.pulumi.alicloud.mongodb.inputs.GetShardingNetworkPrivateAddressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = MongodbFunctions.getShardingNetworkPrivateAddresses(GetShardingNetworkPrivateAddressesArgs.builder()
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
+     *             .build());
+     * 
+     *         ctx.export("mongodbShardingNetworkPrivateAddressId1", example.addresses()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetShardingNetworkPrivateAddressesResult> getShardingNetworkPrivateAddressesPlain(GetShardingNetworkPrivateAddressesPlainArgs args, InvokeOptions options) {

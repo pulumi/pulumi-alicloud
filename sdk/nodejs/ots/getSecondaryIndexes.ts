@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const secondaryIndexDs = alicloud.ots.getSecondaryIndexes({
+ *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
+ *     nameRegex: "sample-secondary-index",
+ *     outputFile: "secondary-indexs.txt",
+ * });
+ * export const firstSecondaryIndexId = secondaryIndexDs.then(secondaryIndexDs => secondaryIndexDs.indexs[0].id);
+ * ```
  */
 export function getSecondaryIndexes(args: GetSecondaryIndexesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecondaryIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +102,21 @@ export interface GetSecondaryIndexesResult {
  * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
  *
  * > **NOTE:** Available in v1.187.0+.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const secondaryIndexDs = alicloud.ots.getSecondaryIndexes({
+ *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
+ *     nameRegex: "sample-secondary-index",
+ *     outputFile: "secondary-indexs.txt",
+ * });
+ * export const firstSecondaryIndexId = secondaryIndexDs.then(secondaryIndexDs => secondaryIndexDs.indexs[0].id);
+ * ```
  */
 export function getSecondaryIndexesOutput(args: GetSecondaryIndexesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecondaryIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -71,7 +71,7 @@ import (
 // Status: pulumi.String("Running"),
 // }, nil);
 // _default := polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (polardb.GetEndpointsResult, error) {
-// return polardb.GetEndpointsResult(interface{}(polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+// return polardb.GetEndpointsResult(interface{}(polardb.GetEndpoints(ctx, &polardb.GetEndpointsArgs{
 // DbClusterId: polardbClustersDs.Clusters[0].Id,
 // }, nil))), nil
 // }).(polardb.GetEndpointsResultOutput)

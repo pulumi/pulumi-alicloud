@@ -116,8 +116,8 @@ import (
 // return err
 // }
 // _default := defaultLogtailConfig.LogtailConfigName.ApplyT(func(logtailConfigName string) (sls.GetLogtailConfigsResult, error) {
-// return sls.GetLogtailConfigsResult(interface{}(sls.GetLogtailConfigsOutput(ctx, sls.GetLogtailConfigsOutputArgs{
-// LogtailConfigName: logtailConfigName,
+// return sls.GetLogtailConfigsResult(interface{}(sls.GetLogtailConfigs(ctx, &sls.GetLogtailConfigsArgs{
+// LogtailConfigName: pulumi.StringRef(pulumi.StringRef(logtailConfigName)),
 // LogstoreName: "example",
 // ProjectName: projectName,
 // Offset: 0,

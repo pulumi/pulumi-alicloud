@@ -10,6 +10,71 @@ import * as utilities from "../utilities";
  * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
+ *     name: name,
+ *     specification: "slb.s2.small",
+ *     vswitchId: defaultAlicloudVswitches.ids[0],
+ * });
+ * const desc = config.get("desc") || "example_value";
+ * const namespaceId = config.get("namespaceId") || "cn-hangzhou:yourname";
+ * const defaultNamespace = new alicloud.sae.Namespace("default", {
+ *     namespaceId: namespaceId,
+ *     namespaceName: name,
+ *     namespaceDescription: desc,
+ * });
+ * const defaultApplication = new alicloud.sae.Application("default", {
+ *     appDescription: "your_app_description",
+ *     appName: "your_app_name",
+ *     namespaceId: "your_namespace_id",
+ *     packageUrl: "your_package_url",
+ *     packageType: "your_package_url",
+ *     jdk: "jdk_specifications",
+ *     vswitchId: defaultAlicloudVswitches.ids[0],
+ *     replicas: "your_replicas",
+ *     cpu: "cpu_specifications",
+ *     memory: "memory_specifications",
+ * });
+ * const defaultIngress = new alicloud.sae.Ingress("default", {
+ *     slbId: defaultLoadBalancer.id,
+ *     namespaceId: defaultNamespace.id,
+ *     listenerPort: "your_listener_port",
+ *     rules: [{
+ *         appId: defaultApplication.id,
+ *         containerPort: "your_container_port",
+ *         domain: "your_domain",
+ *         appName: "your_name",
+ *         path: "your_path",
+ *     }],
+ * });
+ * const defaultGetIngresses = alicloud.sae.getIngressesOutput({
+ *     ids: [defaultIngress.id],
+ * });
+ * export const saeIngressId = defaultGetIngresses.ingressList[0].id;
+ * ```
  */
 export function getIngresses(args: GetIngressesArgs, opts?: pulumi.InvokeOptions): Promise<GetIngressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,6 +126,71 @@ export interface GetIngressesResult {
  * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.137.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "example_value";
+ * const _default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const defaultLoadBalancer = new alicloud.slb.LoadBalancer("default", {
+ *     name: name,
+ *     specification: "slb.s2.small",
+ *     vswitchId: defaultAlicloudVswitches.ids[0],
+ * });
+ * const desc = config.get("desc") || "example_value";
+ * const namespaceId = config.get("namespaceId") || "cn-hangzhou:yourname";
+ * const defaultNamespace = new alicloud.sae.Namespace("default", {
+ *     namespaceId: namespaceId,
+ *     namespaceName: name,
+ *     namespaceDescription: desc,
+ * });
+ * const defaultApplication = new alicloud.sae.Application("default", {
+ *     appDescription: "your_app_description",
+ *     appName: "your_app_name",
+ *     namespaceId: "your_namespace_id",
+ *     packageUrl: "your_package_url",
+ *     packageType: "your_package_url",
+ *     jdk: "jdk_specifications",
+ *     vswitchId: defaultAlicloudVswitches.ids[0],
+ *     replicas: "your_replicas",
+ *     cpu: "cpu_specifications",
+ *     memory: "memory_specifications",
+ * });
+ * const defaultIngress = new alicloud.sae.Ingress("default", {
+ *     slbId: defaultLoadBalancer.id,
+ *     namespaceId: defaultNamespace.id,
+ *     listenerPort: "your_listener_port",
+ *     rules: [{
+ *         appId: defaultApplication.id,
+ *         containerPort: "your_container_port",
+ *         domain: "your_domain",
+ *         appName: "your_name",
+ *         path: "your_path",
+ *     }],
+ * });
+ * const defaultGetIngresses = alicloud.sae.getIngressesOutput({
+ *     ids: [defaultIngress.id],
+ * });
+ * export const saeIngressId = defaultGetIngresses.ingressList[0].id;
+ * ```
  */
 export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIngressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

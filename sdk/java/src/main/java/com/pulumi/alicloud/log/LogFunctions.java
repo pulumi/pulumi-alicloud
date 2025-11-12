@@ -264,6 +264,42 @@ public final class LogFunctions {
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProjectsResult> getProjects() {
         return getProjects(GetProjectsArgs.Empty, InvokeOptions.Empty);
@@ -272,6 +308,42 @@ public final class LogFunctions {
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain() {
@@ -282,6 +354,42 @@ public final class LogFunctions {
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args) {
         return getProjects(args, InvokeOptions.Empty);
@@ -290,6 +398,42 @@ public final class LogFunctions {
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args) {
@@ -300,6 +444,42 @@ public final class LogFunctions {
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:log/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
@@ -309,6 +489,42 @@ public final class LogFunctions {
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProjectsResult> getProjects(GetProjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:log/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
@@ -317,6 +533,42 @@ public final class LogFunctions {
      * This data source provides the Log Projects of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.126.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.log.LogFunctions;
+     * import com.pulumi.alicloud.log.inputs.GetProjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LogFunctions.getProjects(GetProjectsArgs.builder()
+     *             .ids("the_project_name")
+     *             .build());
+     * 
+     *         ctx.export("firstLogProjectId", example.project()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProjectsResult> getProjectsPlain(GetProjectsPlainArgs args, InvokeOptions options) {

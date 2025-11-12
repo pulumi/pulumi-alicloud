@@ -55,10 +55,10 @@ import (
 //				return err
 //			}
 //			groupsDs := defaultGroup.InstanceId.ApplyT(func(instanceId string) (rocketmq.GetGroupsResult, error) {
-//				return rocketmq.GetGroupsResult(interface{}(rocketmq.GetGroupsOutput(ctx, rocketmq.GetGroupsOutputArgs{
+//				return rocketmq.GetGroupsResult(interface{}(rocketmq.GetGroups(ctx, &rocketmq.GetGroupsArgs{
 //					InstanceId: instanceId,
-//					NameRegex:  groupId,
-//					OutputFile: "groups.txt",
+//					NameRegex:  pulumi.StringRef(pulumi.StringRef(pulumi.String(groupId))),
+//					OutputFile: pulumi.StringRef(pulumi.StringRef("groups.txt")),
 //				}, nil))), nil
 //			}).(rocketmq.GetGroupsResultOutput)
 //			ctx.Export("firstGroupName", groupsDs.ApplyT(func(groupsDs rocketmq.GetGroupsResult) (*string, error) {

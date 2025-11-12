@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source provides the Market product items of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.64.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.marketplace.getProducts({
+ *     sort: "created_on-desc",
+ *     categoryId: "53690006",
+ *     productType: "SERVICE",
+ * });
+ * export const firstProductCode = _default.then(_default => _default.productItems[0].code);
+ * export const productCodes = _default.then(_default => _default.ids);
+ * ```
  */
 export function getProducts(args?: GetProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductsResult> {
     args = args || {};
@@ -113,6 +128,21 @@ export interface GetProductsResult {
  * This data source provides the Market product items of Alibaba Cloud.
  *
  * > **NOTE:** Available in 1.64.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.marketplace.getProducts({
+ *     sort: "created_on-desc",
+ *     categoryId: "53690006",
+ *     productType: "SERVICE",
+ * });
+ * export const firstProductCode = _default.then(_default => _default.productItems[0].code);
+ * export const productCodes = _default.then(_default => _default.ids);
+ * ```
  */
 export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductsResult> {
     args = args || {};

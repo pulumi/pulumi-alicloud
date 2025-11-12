@@ -24,6 +24,49 @@ namespace Pulumi.AliCloud.Scdn
     /// 
     /// Basic Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Domain config.
+    ///     var domain = new AliCloud.Scdn.Domain("domain", new()
+    ///     {
+    ///         DomainName = "mydomain.alicloud-provider.cn",
+    ///         CdnType = "web",
+    ///         Scope = "overseas",
+    ///         Sources = new[]
+    ///         {
+    ///             new AliCloud.Scdn.Inputs.DomainSourceArgs
+    ///             {
+    ///                 Content = "1.1.1.1",
+    ///                 Type = "ipaddr",
+    ///                 Priority = "20",
+    ///                 Port = 80,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var config = new AliCloud.Scdn.DomainConfig("config", new()
+    ///     {
+    ///         DomainName = domain.DomainName,
+    ///         FunctionName = "ip_allow_list_set",
+    ///         FunctionArgs = new[]
+    ///         {
+    ///             new AliCloud.Scdn.Inputs.DomainConfigFunctionArgArgs
+    ///             {
+    ///                 ArgName = "ip_list",
+    ///                 ArgValue = "110.110.110.110",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SCDN domain config can be imported using the id, e.g.

@@ -114,6 +114,18 @@ def get_projects(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available in v1.126.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.log.get_projects(ids=["the_project_name"])
+    pulumi.export("firstLogProjectId", example.project[0]["id"])
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of project IDs.
     :param _builtins.str name_regex: A regex string to filter results by project name.
@@ -145,6 +157,18 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.s
     This data source provides the Log Projects of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.126.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.log.get_projects(ids=["the_project_name"])
+    pulumi.export("firstLogProjectId", example.project[0]["id"])
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of project IDs.

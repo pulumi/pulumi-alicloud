@@ -10,6 +10,24 @@ import * as utilities from "../utilities";
  * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.106.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.hbase.getInstanceTypes({
+ *     chargeType: "Postpaid",
+ *     regionId: "cn-shanghai",
+ *     zoneId: "cn-shanghai-g",
+ *     engine: "hbaseue",
+ *     version: "2.0",
+ *     instanceType: "hbase.sn2.large",
+ *     diskType: "cloud_ssd",
+ * });
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
     args = args || {};
@@ -110,6 +128,24 @@ export interface GetInstanceTypesResult {
  * This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.106.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.hbase.getInstanceTypes({
+ *     chargeType: "Postpaid",
+ *     regionId: "cn-shanghai",
+ *     zoneId: "cn-shanghai-g",
+ *     engine: "hbaseue",
+ *     version: "2.0",
+ *     instanceType: "hbase.sn2.large",
+ *     diskType: "cloud_ssd",
+ * });
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypesResult> {
     args = args || {};

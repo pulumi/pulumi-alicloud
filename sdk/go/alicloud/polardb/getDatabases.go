@@ -87,9 +87,9 @@ import (
 // _default := pulumi.All(polardbClustersDs,defaultDatabase.DbName).ApplyT(func(_args []interface{}) (polardb.GetDatabasesResult, error) {
 // polardbClustersDs := _args[0].(polardb.GetClustersResult)
 // dbName := _args[1].(string)
-// return polardb.GetDatabasesResult(interface{}(polardb.GetDatabasesOutput(ctx, polardb.GetDatabasesOutputArgs{
+// return polardb.GetDatabasesResult(interface{}(polardb.GetDatabases(ctx, &polardb.GetDatabasesArgs{
 // DbClusterId: polardbClustersDs.Clusters[0].Id,
-// NameRegex: dbName,
+// NameRegex: pulumi.StringRef(pulumi.StringRef(dbName)),
 // }, nil))), nil
 // }).(polardb.GetDatabasesResultOutput)
 // ctx.Export("database", _default.ApplyT(func(_default polardb.GetDatabasesResult) (*string, error) {

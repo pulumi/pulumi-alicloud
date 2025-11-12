@@ -556,6 +556,43 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var searchIndexDs = OtsFunctions.getSearchIndexes(GetSearchIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-search-index")
+     *             .outputFile("search-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSearchIndexId", searchIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args) {
         return getSearchIndexes(args, InvokeOptions.Empty);
@@ -566,6 +603,43 @@ public final class OtsFunctions {
      * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var searchIndexDs = OtsFunctions.getSearchIndexes(GetSearchIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-search-index")
+     *             .outputFile("search-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSearchIndexId", searchIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args) {
@@ -578,6 +652,43 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var searchIndexDs = OtsFunctions.getSearchIndexes(GetSearchIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-search-index")
+     *             .outputFile("search-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSearchIndexId", searchIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
@@ -588,6 +699,43 @@ public final class OtsFunctions {
      * For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var searchIndexDs = OtsFunctions.getSearchIndexes(GetSearchIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-search-index")
+     *             .outputFile("search-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSearchIndexId", searchIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSearchIndexesResult> getSearchIndexes(GetSearchIndexesArgs args, InvokeOutputOptions options) {
@@ -600,6 +748,43 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSearchIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var searchIndexDs = OtsFunctions.getSearchIndexes(GetSearchIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-search-index")
+     *             .outputFile("search-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSearchIndexId", searchIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetSearchIndexesResult> getSearchIndexesPlain(GetSearchIndexesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:ots/getSearchIndexes:getSearchIndexes", TypeShape.of(GetSearchIndexesResult.class), args, Utilities.withVersion(options));
@@ -610,6 +795,43 @@ public final class OtsFunctions {
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secondaryIndexDs = OtsFunctions.getSecondaryIndexes(GetSecondaryIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-secondary-index")
+     *             .outputFile("secondary-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSecondaryIndexId", secondaryIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args) {
@@ -622,6 +844,43 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secondaryIndexDs = OtsFunctions.getSecondaryIndexes(GetSecondaryIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-secondary-index")
+     *             .outputFile("secondary-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSecondaryIndexId", secondaryIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args) {
         return getSecondaryIndexesPlain(args, InvokeOptions.Empty);
@@ -632,6 +891,43 @@ public final class OtsFunctions {
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secondaryIndexDs = OtsFunctions.getSecondaryIndexes(GetSecondaryIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-secondary-index")
+     *             .outputFile("secondary-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSecondaryIndexId", secondaryIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOptions options) {
@@ -644,6 +940,43 @@ public final class OtsFunctions {
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secondaryIndexDs = OtsFunctions.getSecondaryIndexes(GetSecondaryIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-secondary-index")
+     *             .outputFile("secondary-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSecondaryIndexId", secondaryIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSecondaryIndexesResult> getSecondaryIndexes(GetSecondaryIndexesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", TypeShape.of(GetSecondaryIndexesResult.class), args, Utilities.withVersion(options));
@@ -654,6 +987,43 @@ public final class OtsFunctions {
      * For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
      * 
      * &gt; **NOTE:** Available in v1.187.0+.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.ots.OtsFunctions;
+     * import com.pulumi.alicloud.ots.inputs.GetSecondaryIndexesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secondaryIndexDs = OtsFunctions.getSecondaryIndexes(GetSecondaryIndexesArgs.builder()
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-secondary-index")
+     *             .outputFile("secondary-indexs.txt")
+     *             .build());
+     * 
+     *         ctx.export("firstSecondaryIndexId", secondaryIndexDs.indexs()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecondaryIndexesResult> getSecondaryIndexesPlain(GetSecondaryIndexesPlainArgs args, InvokeOptions options) {

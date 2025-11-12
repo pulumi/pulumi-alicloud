@@ -10,6 +10,78 @@ import * as utilities from "../utilities";
  * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
  *
  * > **NOTE:** Available since v1.243.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultikZ0gD = new alicloud.vpc.Network("defaultikZ0gD", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const defaultp4O7qi = new alicloud.vpc.Switch("defaultp4O7qi", {
+ *     vpcId: defaultikZ0gD.id,
+ *     cidrBlock: "172.16.6.0/24",
+ *     vswitchName: name,
+ *     zoneId: "cn-shenzhen-e",
+ * });
+ * const default2iRZpC = new alicloud.vpc.NatGateway("default2iRZpC", {
+ *     description: name,
+ *     natGatewayName: name,
+ *     eipBindMode: "MULTI_BINDED",
+ *     natType: "Enhanced",
+ *     vpcId: defaultikZ0gD.id,
+ *     paymentType: "PayAsYouGo",
+ *     networkType: "internet",
+ * });
+ * const defaultyiRwgs = new alicloud.ecs.EipAddress("defaultyiRwgs", {});
+ * const defaults2MTuO = new alicloud.ecs.EipAssociation("defaults2MTuO", {
+ *     instanceId: default2iRZpC.id,
+ *     allocationId: defaultyiRwgs.allocationId,
+ *     mode: "NAT",
+ *     instanceType: "NAT",
+ *     vpcId: default2iRZpC.vpcId,
+ * });
+ * const defaultAKE43g = new alicloud.vpc.SnatEntry("defaultAKE43g", {
+ *     snatIp: defaultyiRwgs.ipAddress,
+ *     snatTableId: default2iRZpC.snatTableIds[0],
+ *     eipAffinity: 1,
+ *     sourceVswitchId: defaultp4O7qi.id,
+ * });
+ * const defaultNatFirewall = new alicloud.cloudfirewall.NatFirewall("default", {
+ *     regionNo: "cn-shenzhen",
+ *     vswitchAuto: "true",
+ *     strictMode: 0,
+ *     vpcId: defaultikZ0gD.id,
+ *     proxyName: name,
+ *     lang: "zh",
+ *     natGatewayId: default2iRZpC.id,
+ *     natRouteEntryLists: [{
+ *         nexthopId: default2iRZpC.id,
+ *         destinationCidr: "0.0.0.0/0",
+ *         nexthopType: "NatGateway",
+ *         routeTableId: defaultp4O7qi.routeTableId,
+ *     }],
+ *     firewallSwitch: "close",
+ *     vswitchCidr: "172.16.5.0/24",
+ *     status: "closed",
+ *     vswitchId: defaultp4O7qi.id,
+ * });
+ * const _default = alicloud.cloudfirewall.getNatFirewallsOutput({
+ *     ids: [defaultNatFirewall.id],
+ *     lang: "zh",
+ *     natGatewayId: default2iRZpC.id,
+ *     proxyName: name,
+ *     regionNo: "cn-shenzhen",
+ *     status: "closed",
+ *     vpcId: defaultikZ0gD.id,
+ * });
+ * export const alicloudCloudFirewallNatFirewallExampleId = _default.apply(_default => _default.firewalls?.[0]?.id);
+ * ```
  */
 export function getNatFirewalls(args?: GetNatFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatFirewallsResult> {
     args = args || {};
@@ -131,6 +203,78 @@ export interface GetNatFirewallsResult {
  * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
  *
  * > **NOTE:** Available since v1.243.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultikZ0gD = new alicloud.vpc.Network("defaultikZ0gD", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: name,
+ * });
+ * const defaultp4O7qi = new alicloud.vpc.Switch("defaultp4O7qi", {
+ *     vpcId: defaultikZ0gD.id,
+ *     cidrBlock: "172.16.6.0/24",
+ *     vswitchName: name,
+ *     zoneId: "cn-shenzhen-e",
+ * });
+ * const default2iRZpC = new alicloud.vpc.NatGateway("default2iRZpC", {
+ *     description: name,
+ *     natGatewayName: name,
+ *     eipBindMode: "MULTI_BINDED",
+ *     natType: "Enhanced",
+ *     vpcId: defaultikZ0gD.id,
+ *     paymentType: "PayAsYouGo",
+ *     networkType: "internet",
+ * });
+ * const defaultyiRwgs = new alicloud.ecs.EipAddress("defaultyiRwgs", {});
+ * const defaults2MTuO = new alicloud.ecs.EipAssociation("defaults2MTuO", {
+ *     instanceId: default2iRZpC.id,
+ *     allocationId: defaultyiRwgs.allocationId,
+ *     mode: "NAT",
+ *     instanceType: "NAT",
+ *     vpcId: default2iRZpC.vpcId,
+ * });
+ * const defaultAKE43g = new alicloud.vpc.SnatEntry("defaultAKE43g", {
+ *     snatIp: defaultyiRwgs.ipAddress,
+ *     snatTableId: default2iRZpC.snatTableIds[0],
+ *     eipAffinity: 1,
+ *     sourceVswitchId: defaultp4O7qi.id,
+ * });
+ * const defaultNatFirewall = new alicloud.cloudfirewall.NatFirewall("default", {
+ *     regionNo: "cn-shenzhen",
+ *     vswitchAuto: "true",
+ *     strictMode: 0,
+ *     vpcId: defaultikZ0gD.id,
+ *     proxyName: name,
+ *     lang: "zh",
+ *     natGatewayId: default2iRZpC.id,
+ *     natRouteEntryLists: [{
+ *         nexthopId: default2iRZpC.id,
+ *         destinationCidr: "0.0.0.0/0",
+ *         nexthopType: "NatGateway",
+ *         routeTableId: defaultp4O7qi.routeTableId,
+ *     }],
+ *     firewallSwitch: "close",
+ *     vswitchCidr: "172.16.5.0/24",
+ *     status: "closed",
+ *     vswitchId: defaultp4O7qi.id,
+ * });
+ * const _default = alicloud.cloudfirewall.getNatFirewallsOutput({
+ *     ids: [defaultNatFirewall.id],
+ *     lang: "zh",
+ *     natGatewayId: default2iRZpC.id,
+ *     proxyName: name,
+ *     regionNo: "cn-shenzhen",
+ *     status: "closed",
+ *     vpcId: defaultikZ0gD.id,
+ * });
+ * export const alicloudCloudFirewallNatFirewallExampleId = _default.apply(_default => _default.firewalls?.[0]?.id);
+ * ```
  */
 export function getNatFirewallsOutput(args?: GetNatFirewallsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNatFirewallsResult> {
     args = args || {};

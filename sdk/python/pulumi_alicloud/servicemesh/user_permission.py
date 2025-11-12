@@ -117,6 +117,47 @@ class UserPermission(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.servicemesh.get_versions(edition="Default")
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default_get_zones.zones[0].id)
+        default_user = alicloud.ram.User("default", name=name)
+        default1 = alicloud.servicemesh.ServiceMesh("default1",
+            service_mesh_name=f"{name}-{default_integer['result']}",
+            edition="Default",
+            cluster_spec="standard",
+            version=default.versions[0].version,
+            network={
+                "vpc_id": default_get_networks.ids[0],
+                "vswitche_lists": [default_get_switches.ids[0]],
+            },
+            load_balancer={
+                "pilot_public_eip": False,
+                "api_server_public_eip": False,
+            })
+        default_user_permission = alicloud.servicemesh.UserPermission("default",
+            sub_account_user_id=default_user.id,
+            permissions=[{
+                "role_name": "istio-ops",
+                "service_mesh_id": default1.id,
+                "role_type": "custom",
+                "is_custom": True,
+            }])
+        ```
+
         ## Import
 
         Service Mesh User Permission can be imported using the id, e.g.
@@ -146,6 +187,47 @@ class UserPermission(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tfexample"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.servicemesh.get_versions(edition="Default")
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default_get_zones.zones[0].id)
+        default_user = alicloud.ram.User("default", name=name)
+        default1 = alicloud.servicemesh.ServiceMesh("default1",
+            service_mesh_name=f"{name}-{default_integer['result']}",
+            edition="Default",
+            cluster_spec="standard",
+            version=default.versions[0].version,
+            network={
+                "vpc_id": default_get_networks.ids[0],
+                "vswitche_lists": [default_get_switches.ids[0]],
+            },
+            load_balancer={
+                "pilot_public_eip": False,
+                "api_server_public_eip": False,
+            })
+        default_user_permission = alicloud.servicemesh.UserPermission("default",
+            sub_account_user_id=default_user.id,
+            permissions=[{
+                "role_name": "istio-ops",
+                "service_mesh_id": default1.id,
+                "role_type": "custom",
+                "is_custom": True,
+            }])
+        ```
 
         ## Import
 

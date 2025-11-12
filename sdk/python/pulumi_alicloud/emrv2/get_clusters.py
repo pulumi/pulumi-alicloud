@@ -214,6 +214,136 @@ def get_clusters(cluster_name: Optional[_builtins.str] = None,
 
     > **NOTE:** Available since v1.199.0.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name="TF-VPC",
+        cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/21",
+        zone_id=default_get_zones.zones[0].id,
+        vswitch_name="TF_VSwitch")
+    default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name="terraform-kp")
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name="TF_SECURITY_GROUP",
+        vpc_id=default_network.id)
+    default_role = alicloud.ram.Role("default",
+        name="emrtf",
+        document=\"\"\"    {
+            \\"Statement\\": [
+            {
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                \\"Service\\": [
+                    \\"emr.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
+                ]
+                }
+            }
+            ],
+            \\"Version\\": \\"1\\"
+        }
+    \"\"\",
+        description="this is a role test.",
+        force=True)
+    default_cluster = alicloud.emrv2.Cluster("default",
+        payment_type="PayAsYouGo",
+        cluster_type="DATALAKE",
+        release_version="EMR-5.10.0",
+        cluster_name="terraform-emr-cluster-v2",
+        deploy_mode="NORMAL",
+        security_mode="NORMAL",
+        applications=[
+            "HADOOP-COMMON",
+            "HDFS",
+            "YARN",
+            "HIVE",
+            "SPARK3",
+            "TEZ",
+        ],
+        application_configs=[
+            {
+                "application_name": "HIVE",
+                "config_file_name": "hivemetastore-site.xml",
+                "config_item_key": "hive.metastore.type",
+                "config_item_value": "DLF",
+                "config_scope": "CLUSTER",
+            },
+            {
+                "application_name": "SPARK3",
+                "config_file_name": "hive-site.xml",
+                "config_item_key": "hive.metastore.type",
+                "config_item_value": "DLF",
+                "config_scope": "CLUSTER",
+            },
+        ],
+        node_attributes=[{
+            "ram_role": default_role.name,
+            "security_group_id": default_security_group.id,
+            "vpc_id": default_network.id,
+            "zone_id": default_get_zones.zones[0].id,
+            "key_pair_name": default_ecs_key_pair.id,
+        }],
+        tags={
+            "created": "tf",
+        },
+        node_groups=[
+            {
+                "node_group_type": "MASTER",
+                "node_group_name": "emr-master",
+                "payment_type": "PayAsYouGo",
+                "vswitch_ids": [default_switch.id],
+                "with_public_ip": False,
+                "instance_types": ["ecs.g7.xlarge"],
+                "node_count": 1,
+                "system_disk": {
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 1,
+                },
+                "data_disks": [{
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 3,
+                }],
+            },
+            {
+                "node_group_type": "CORE",
+                "node_group_name": "emr-core",
+                "payment_type": "PayAsYouGo",
+                "vswitch_ids": [default_switch.id],
+                "with_public_ip": False,
+                "instance_types": ["ecs.g7.xlarge"],
+                "node_count": 3,
+                "system_disk": {
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 1,
+                },
+                "data_disks": [{
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 3,
+                }],
+            },
+        ],
+        resource_group_id=default.ids[0])
+    ids = alicloud.emrv2.get_clusters()
+    pulumi.export("emrv2ClustersId1", ids.clusters[0].id)
+    name_regex = alicloud.emrv2.get_clusters(name_regex=default_alicloud_emr_cluster["name"])
+    pulumi.export("emrv2ClustersId2", name_regex.clusters[0].id)
+    ```
+
 
     :param _builtins.str cluster_name: The cluster name.
     :param Sequence[_builtins.str] cluster_states: The cluster states.
@@ -274,6 +404,136 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[_builtins.s
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.199.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_zones = alicloud.get_zones(available_instance_type="ecs.g7.xlarge")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name="TF-VPC",
+        cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/21",
+        zone_id=default_get_zones.zones[0].id,
+        vswitch_name="TF_VSwitch")
+    default_ecs_key_pair = alicloud.ecs.EcsKeyPair("default", key_pair_name="terraform-kp")
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name="TF_SECURITY_GROUP",
+        vpc_id=default_network.id)
+    default_role = alicloud.ram.Role("default",
+        name="emrtf",
+        document=\"\"\"    {
+            \\"Statement\\": [
+            {
+                \\"Action\\": \\"sts:AssumeRole\\",
+                \\"Effect\\": \\"Allow\\",
+                \\"Principal\\": {
+                \\"Service\\": [
+                    \\"emr.aliyuncs.com\\",
+                    \\"ecs.aliyuncs.com\\"
+                ]
+                }
+            }
+            ],
+            \\"Version\\": \\"1\\"
+        }
+    \"\"\",
+        description="this is a role test.",
+        force=True)
+    default_cluster = alicloud.emrv2.Cluster("default",
+        payment_type="PayAsYouGo",
+        cluster_type="DATALAKE",
+        release_version="EMR-5.10.0",
+        cluster_name="terraform-emr-cluster-v2",
+        deploy_mode="NORMAL",
+        security_mode="NORMAL",
+        applications=[
+            "HADOOP-COMMON",
+            "HDFS",
+            "YARN",
+            "HIVE",
+            "SPARK3",
+            "TEZ",
+        ],
+        application_configs=[
+            {
+                "application_name": "HIVE",
+                "config_file_name": "hivemetastore-site.xml",
+                "config_item_key": "hive.metastore.type",
+                "config_item_value": "DLF",
+                "config_scope": "CLUSTER",
+            },
+            {
+                "application_name": "SPARK3",
+                "config_file_name": "hive-site.xml",
+                "config_item_key": "hive.metastore.type",
+                "config_item_value": "DLF",
+                "config_scope": "CLUSTER",
+            },
+        ],
+        node_attributes=[{
+            "ram_role": default_role.name,
+            "security_group_id": default_security_group.id,
+            "vpc_id": default_network.id,
+            "zone_id": default_get_zones.zones[0].id,
+            "key_pair_name": default_ecs_key_pair.id,
+        }],
+        tags={
+            "created": "tf",
+        },
+        node_groups=[
+            {
+                "node_group_type": "MASTER",
+                "node_group_name": "emr-master",
+                "payment_type": "PayAsYouGo",
+                "vswitch_ids": [default_switch.id],
+                "with_public_ip": False,
+                "instance_types": ["ecs.g7.xlarge"],
+                "node_count": 1,
+                "system_disk": {
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 1,
+                },
+                "data_disks": [{
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 3,
+                }],
+            },
+            {
+                "node_group_type": "CORE",
+                "node_group_name": "emr-core",
+                "payment_type": "PayAsYouGo",
+                "vswitch_ids": [default_switch.id],
+                "with_public_ip": False,
+                "instance_types": ["ecs.g7.xlarge"],
+                "node_count": 3,
+                "system_disk": {
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 1,
+                },
+                "data_disks": [{
+                    "category": "cloud_essd",
+                    "size": 80,
+                    "count": 3,
+                }],
+            },
+        ],
+        resource_group_id=default.ids[0])
+    ids = alicloud.emrv2.get_clusters()
+    pulumi.export("emrv2ClustersId1", ids.clusters[0].id)
+    name_regex = alicloud.emrv2.get_clusters(name_regex=default_alicloud_emr_cluster["name"])
+    pulumi.export("emrv2ClustersId2", name_regex.clusters[0].id)
+    ```
 
 
     :param _builtins.str cluster_name: The cluster name.

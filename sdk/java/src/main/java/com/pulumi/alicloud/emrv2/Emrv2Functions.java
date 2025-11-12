@@ -1423,6 +1423,197 @@ public final class Emrv2Functions {
      * 
      * &gt; **NOTE:** Available since v1.199.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClustersResult> getClusters() {
         return getClusters(GetClustersArgs.Empty, InvokeOptions.Empty);
@@ -1431,6 +1622,197 @@ public final class Emrv2Functions {
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.199.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain() {
@@ -1441,6 +1823,197 @@ public final class Emrv2Functions {
      * 
      * &gt; **NOTE:** Available since v1.199.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args) {
         return getClusters(args, InvokeOptions.Empty);
@@ -1449,6 +2022,197 @@ public final class Emrv2Functions {
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.199.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args) {
@@ -1459,6 +2223,197 @@ public final class Emrv2Functions {
      * 
      * &gt; **NOTE:** Available since v1.199.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:emrv2/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
@@ -1468,6 +2423,197 @@ public final class Emrv2Functions {
      * 
      * &gt; **NOTE:** Available since v1.199.0.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetClustersResult> getClusters(GetClustersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:emrv2/getClusters:getClusters", TypeShape.of(GetClustersResult.class), args, Utilities.withVersion(options));
@@ -1476,6 +2622,197 @@ public final class Emrv2Functions {
      * This data source provides the Emr Clusters of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.199.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.EcsKeyPair;
+     * import com.pulumi.alicloud.ecs.EcsKeyPairArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ram.Role;
+     * import com.pulumi.alicloud.ram.RoleArgs;
+     * import com.pulumi.alicloud.emrv2.Cluster;
+     * import com.pulumi.alicloud.emrv2.ClusterArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterApplicationConfigArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
+     * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
+     * import com.pulumi.alicloud.emrv2.Emrv2Functions;
+     * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *             .status("OK")
+     *             .build());
+     * 
+     *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableInstanceType("ecs.g7.xlarge")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("TF-VPC")
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(defaultGetZones.zones()[0].id())
+     *             .vswitchName("TF_VSwitch")
+     *             .build());
+     * 
+     *         var defaultEcsKeyPair = new EcsKeyPair("defaultEcsKeyPair", EcsKeyPairArgs.builder()
+     *             .keyPairName("terraform-kp")
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("TF_SECURITY_GROUP")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+     *             .name("emrtf")
+     *             .document("""
+     *     {
+     *         \"Statement\": [
+     *         {
+     *             \"Action\": \"sts:AssumeRole\",
+     *             \"Effect\": \"Allow\",
+     *             \"Principal\": {
+     *             \"Service\": [
+     *                 \"emr.aliyuncs.com\",
+     *                 \"ecs.aliyuncs.com\"
+     *             ]
+     *             }
+     *         }
+     *         ],
+     *         \"Version\": \"1\"
+     *     }
+     *             """)
+     *             .description("this is a role test.")
+     *             .force(true)
+     *             .build());
+     * 
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
+     *             .paymentType("PayAsYouGo")
+     *             .clusterType("DATALAKE")
+     *             .releaseVersion("EMR-5.10.0")
+     *             .clusterName("terraform-emr-cluster-v2")
+     *             .deployMode("NORMAL")
+     *             .securityMode("NORMAL")
+     *             .applications(            
+     *                 "HADOOP-COMMON",
+     *                 "HDFS",
+     *                 "YARN",
+     *                 "HIVE",
+     *                 "SPARK3",
+     *                 "TEZ")
+     *             .applicationConfigs(            
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("HIVE")
+     *                     .configFileName("hivemetastore-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build(),
+     *                 ClusterApplicationConfigArgs.builder()
+     *                     .applicationName("SPARK3")
+     *                     .configFileName("hive-site.xml")
+     *                     .configItemKey("hive.metastore.type")
+     *                     .configItemValue("DLF")
+     *                     .configScope("CLUSTER")
+     *                     .build())
+     *             .nodeAttributes(ClusterNodeAttributeArgs.builder()
+     *                 .ramRole(defaultRole.name())
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vpcId(defaultNetwork.id())
+     *                 .zoneId(defaultGetZones.zones()[0].id())
+     *                 .keyPairName(defaultEcsKeyPair.id())
+     *                 .build())
+     *             .tags(Map.of("created", "tf"))
+     *             .nodeGroups(            
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("MASTER")
+     *                     .nodeGroupName("emr-master")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(1)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build(),
+     *                 ClusterNodeGroupArgs.builder()
+     *                     .nodeGroupType("CORE")
+     *                     .nodeGroupName("emr-core")
+     *                     .paymentType("PayAsYouGo")
+     *                     .vswitchIds(defaultSwitch.id())
+     *                     .withPublicIp(false)
+     *                     .instanceTypes("ecs.g7.xlarge")
+     *                     .nodeCount(3)
+     *                     .systemDisk(ClusterNodeGroupSystemDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(1)
+     *                         .build())
+     *                     .dataDisks(ClusterNodeGroupDataDiskArgs.builder()
+     *                         .category("cloud_essd")
+     *                         .size(80)
+     *                         .count(3)
+     *                         .build())
+     *                     .build())
+     *             .resourceGroupId(default_.ids()[0])
+     *             .build());
+     * 
+     *         final var ids = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId1", ids.clusters()[0].id());
+     *         final var nameRegex = Emrv2Functions.getClusters(GetClustersArgs.builder()
+     *             .nameRegex(defaultAlicloudEmrCluster.name())
+     *             .build());
+     * 
+     *         ctx.export("emrv2ClustersId2", nameRegex.clusters()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetClustersResult> getClustersPlain(GetClustersPlainArgs args, InvokeOptions options) {

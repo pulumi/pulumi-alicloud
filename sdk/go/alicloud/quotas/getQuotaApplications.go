@@ -49,10 +49,10 @@ import (
 //			_ = pulumi.All(defaultQuotaApplication.QuotaCategory, defaultQuotaApplication.ID()).ApplyT(func(_args []interface{}) (quotas.GetQuotaApplicationsResult, error) {
 //				quotaCategory := _args[0].(*string)
 //				id := _args[1].(string)
-//				return quotas.GetQuotaApplicationsResult(interface{}(quotas.GetQuotaApplicationsOutput(ctx, quotas.GetQuotaApplicationsOutputArgs{
+//				return quotas.GetQuotaApplicationsResult(interface{}(quotas.GetQuotaApplications(ctx, &quotas.GetQuotaApplicationsArgs{
 //					ProductCode:   "vpc",
-//					EnableDetails: true,
-//					QuotaCategory: quotaCategory,
+//					EnableDetails: pulumi.BoolRef(pulumi.BoolRef(true)),
+//					QuotaCategory: pulumi.StringRef(pulumi.StringRef(quotaCategory)),
 //					Ids: []string{
 //						id,
 //					},
