@@ -105,6 +105,67 @@ def get_ingresses(enable_details: Optional[_builtins.bool] = None,
 
     > **NOTE:** Available in v1.137.0+.
 
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        name=name,
+        cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/21",
+        zone_id=default.zones[0].id,
+        vswitch_name=name)
+    default_load_balancer = alicloud.slb.LoadBalancer("default",
+        name=name,
+        specification="slb.s2.small",
+        vswitch_id=default_alicloud_vswitches["ids"][0])
+    desc = config.get("desc")
+    if desc is None:
+        desc = "example_value"
+    namespace_id = config.get("namespaceId")
+    if namespace_id is None:
+        namespace_id = "cn-hangzhou:yourname"
+    default_namespace = alicloud.sae.Namespace("default",
+        namespace_id=namespace_id,
+        namespace_name=name,
+        namespace_description=desc)
+    default_application = alicloud.sae.Application("default",
+        app_description="your_app_description",
+        app_name="your_app_name",
+        namespace_id="your_namespace_id",
+        package_url="your_package_url",
+        package_type="your_package_url",
+        jdk="jdk_specifications",
+        vswitch_id=default_alicloud_vswitches["ids"][0],
+        replicas="your_replicas",
+        cpu="cpu_specifications",
+        memory="memory_specifications")
+    default_ingress = alicloud.sae.Ingress("default",
+        slb_id=default_load_balancer.id,
+        namespace_id=default_namespace.id,
+        listener_port="your_listener_port",
+        rules=[{
+            "app_id": default_application.id,
+            "container_port": "your_container_port",
+            "domain": "your_domain",
+            "app_name": "your_name",
+            "path": "your_path",
+        }])
+    default_get_ingresses = alicloud.sae.get_ingresses_output(ids=[default_ingress.id])
+    pulumi.export("saeIngressId", default_get_ingresses.ingress_list[0]["id"])
+    ```
+
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[_builtins.str] ids: A list of Ingress IDs.
@@ -135,6 +196,67 @@ def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[_builtin
     This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.137.0+.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
+    default_network = alicloud.vpc.Network("default",
+        name=name,
+        cidr_block="172.16.0.0/12")
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default_network.id,
+        cidr_block="172.16.0.0/21",
+        zone_id=default.zones[0].id,
+        vswitch_name=name)
+    default_load_balancer = alicloud.slb.LoadBalancer("default",
+        name=name,
+        specification="slb.s2.small",
+        vswitch_id=default_alicloud_vswitches["ids"][0])
+    desc = config.get("desc")
+    if desc is None:
+        desc = "example_value"
+    namespace_id = config.get("namespaceId")
+    if namespace_id is None:
+        namespace_id = "cn-hangzhou:yourname"
+    default_namespace = alicloud.sae.Namespace("default",
+        namespace_id=namespace_id,
+        namespace_name=name,
+        namespace_description=desc)
+    default_application = alicloud.sae.Application("default",
+        app_description="your_app_description",
+        app_name="your_app_name",
+        namespace_id="your_namespace_id",
+        package_url="your_package_url",
+        package_type="your_package_url",
+        jdk="jdk_specifications",
+        vswitch_id=default_alicloud_vswitches["ids"][0],
+        replicas="your_replicas",
+        cpu="cpu_specifications",
+        memory="memory_specifications")
+    default_ingress = alicloud.sae.Ingress("default",
+        slb_id=default_load_balancer.id,
+        namespace_id=default_namespace.id,
+        listener_port="your_listener_port",
+        rules=[{
+            "app_id": default_application.id,
+            "container_port": "your_container_port",
+            "domain": "your_domain",
+            "app_name": "your_name",
+            "path": "your_path",
+        }])
+    default_get_ingresses = alicloud.sae.get_ingresses_output(ids=[default_ingress.id])
+    pulumi.export("saeIngressId", default_get_ingresses.ingress_list[0]["id"])
+    ```
 
 
     :param _builtins.bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

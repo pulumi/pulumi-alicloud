@@ -368,6 +368,43 @@ public final class NasFunctions {
      * 
      * &gt; **NOTE**: Available in 1.35.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = NasFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupName("tf-testAccAccessGroupsdatasource")
+     *             .sourceCidrIp("168.1.1.0/16")
+     *             .rwAccess("RDWR")
+     *             .userAccess("no_squash")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasAccessRulesId", foo.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args) {
         return getAccessRules(args, InvokeOptions.Empty);
@@ -376,6 +413,43 @@ public final class NasFunctions {
      * This data source provides AccessRule available to the user.
      * 
      * &gt; **NOTE**: Available in 1.35.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = NasFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupName("tf-testAccAccessGroupsdatasource")
+     *             .sourceCidrIp("168.1.1.0/16")
+     *             .rwAccess("RDWR")
+     *             .userAccess("no_squash")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasAccessRulesId", foo.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccessRulesResult> getAccessRulesPlain(GetAccessRulesPlainArgs args) {
@@ -386,6 +460,43 @@ public final class NasFunctions {
      * 
      * &gt; **NOTE**: Available in 1.35.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = NasFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupName("tf-testAccAccessGroupsdatasource")
+     *             .sourceCidrIp("168.1.1.0/16")
+     *             .rwAccess("RDWR")
+     *             .userAccess("no_squash")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasAccessRulesId", foo.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getAccessRules:getAccessRules", TypeShape.of(GetAccessRulesResult.class), args, Utilities.withVersion(options));
@@ -395,6 +506,43 @@ public final class NasFunctions {
      * 
      * &gt; **NOTE**: Available in 1.35.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = NasFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupName("tf-testAccAccessGroupsdatasource")
+     *             .sourceCidrIp("168.1.1.0/16")
+     *             .rwAccess("RDWR")
+     *             .userAccess("no_squash")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasAccessRulesId", foo.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetAccessRulesResult> getAccessRules(GetAccessRulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:nas/getAccessRules:getAccessRules", TypeShape.of(GetAccessRulesResult.class), args, Utilities.withVersion(options));
@@ -403,6 +551,43 @@ public final class NasFunctions {
      * This data source provides AccessRule available to the user.
      * 
      * &gt; **NOTE**: Available in 1.35.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.nas.NasFunctions;
+     * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = NasFunctions.getAccessRules(GetAccessRulesArgs.builder()
+     *             .accessGroupName("tf-testAccAccessGroupsdatasource")
+     *             .sourceCidrIp("168.1.1.0/16")
+     *             .rwAccess("RDWR")
+     *             .userAccess("no_squash")
+     *             .build());
+     * 
+     *         ctx.export("alicloudNasAccessRulesId", foo.rules()[0].id());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAccessRulesResult> getAccessRulesPlain(GetAccessRulesPlainArgs args, InvokeOptions options) {

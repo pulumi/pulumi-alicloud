@@ -41,136 +41,138 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
-//				VpcName:   pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-//				VpcId: defaultNetwork.ID(),
-//				CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-//					return std.CidrsubnetResult(interface{}(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
-//						Input:   cidrBlock,
-//						Newbits: 8,
-//						Netnum:  8,
-//					}, nil))), nil
-//				}).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//					return invoke.Result, nil
-//				}).(pulumi.StringPtrOutput)),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
-//				Name: pulumi.String(name),
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("2"),
-//					pulumi.String("3"),
-//				},
-//				RetentionDays: pulumi.Int(-1),
-//				TimePoints: pulumi.StringArray{
-//					pulumi.String("1"),
-//					pulumi.String("22"),
-//					pulumi.String("23"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetInstanceTypes := vswitch.ZoneId.ApplyT(func(zoneId string) (ecs.GetInstanceTypesResult, error) {
-//				return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypesOutput(ctx, ecs.GetInstanceTypesOutputArgs{
-//					AvailabilityZone:   zoneId,
-//					CpuCoreCount:       2,
-//					MemorySize:         4,
-//					KubernetesNodeRole: "Worker",
-//					InstanceTypeFamily: "ecs.sn1ne",
-//				}, nil))), nil
-//			}).(ecs.GetInstanceTypesResultOutput)
-//			defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
-//				Name:          pulumi.String(name),
-//				ClusterSpec:   pulumi.String("ack.pro.small"),
-//				Version:       pulumi.String("1.24.6-aliyun.1"),
-//				NewNatGateway: pulumi.Bool(true),
-//				NodeCidrMask:  pulumi.Int(26),
-//				ProxyMode:     pulumi.String("ipvs"),
-//				ServiceCidr:   pulumi.String("172.23.0.0/16"),
-//				PodCidr:       pulumi.String("10.95.0.0/16"),
-//				WorkerVswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Max: 99999,
-//				Min: 10000,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
-//				KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
-//				NodePoolName: pulumi.String("desired_size"),
-//				ClusterId:    defaultManagedKubernetes.ID(),
-//				VswitchIds: pulumi.StringArray{
-//					vswitch.ID(),
-//				},
-//				InstanceTypes: pulumi.StringArray{
-//					pulumi.String(defaultGetInstanceTypes.ApplyT(func(defaultGetInstanceTypes ecs.GetInstanceTypesResult) (*string, error) {
-//						return &defaultGetInstanceTypes.InstanceTypes[0].Id, nil
-//					}).(pulumi.StringPtrOutput)),
-//				},
-//				SystemDiskCategory: pulumi.String("cloud_efficiency"),
-//				SystemDiskSize:     pulumi.Int(40),
-//				KeyName:            defaultKeyPair.KeyPairName,
-//				DesiredSize:        pulumi.String("2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultPrometheus, err := arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
-//				ClusterType:       pulumi.String("aliyun-cs"),
-//				GrafanaInstanceId: pulumi.String("free"),
-//				ClusterId:         defaultNodePool.ClusterId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = arms.NewPrometheusMonitoring(ctx, "default", &arms.PrometheusMonitoringArgs{
-//				Status:    pulumi.String("run"),
-//				Type:      pulumi.String("serviceMonitor"),
-//				ClusterId: defaultPrometheus.ClusterId,
-//				ConfigYaml: pulumi.String(`apiVersion: monitoring.coreos.com/v1
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: cidrBlock,
+// Newbits: 8,
+// Netnum: 8,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringPtrOutput)),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewSnapshotPolicy(ctx, "default", &ecs.SnapshotPolicyArgs{
+// Name: pulumi.String(name),
+// RepeatWeekdays: pulumi.StringArray{
+// pulumi.String("1"),
+// pulumi.String("2"),
+// pulumi.String("3"),
+// },
+// RetentionDays: pulumi.Int(-1),
+// TimePoints: pulumi.StringArray{
+// pulumi.String("1"),
+// pulumi.String("22"),
+// pulumi.String("23"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes := vswitch.ZoneId.ApplyT(func(zoneId string) (ecs.GetInstanceTypesResult, error) {
+// return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(pulumi.StringRef(zoneId)),
+// CpuCoreCount: pulumi.IntRef(pulumi.IntRef(int(2))),
+// MemorySize: pulumi.Float64Ref(pulumi.Float64Ref(4)),
+// KubernetesNodeRole: pulumi.StringRef(pulumi.StringRef("Worker")),
+// InstanceTypeFamily: pulumi.StringRef(pulumi.StringRef("ecs.sn1ne")),
+// }, nil))), nil
+// }).(ecs.GetInstanceTypesResultOutput)
+// defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{
+// Name: pulumi.String(name),
+// ClusterSpec: pulumi.String("ack.pro.small"),
+// Version: pulumi.String("1.24.6-aliyun.1"),
+// NewNatGateway: pulumi.Bool(true),
+// NodeCidrMask: pulumi.Int(26),
+// ProxyMode: pulumi.String("ipvs"),
+// ServiceCidr: pulumi.String("172.23.0.0/16"),
+// PodCidr: pulumi.String("10.95.0.0/16"),
+// WorkerVswitchIds: pulumi.StringArray{
+// vswitch.ID(),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Max: 99999,
+// Min: 10000,
+// })
+// if err != nil {
+// return err
+// }
+// defaultKeyPair, err := ecs.NewKeyPair(ctx, "default", &ecs.KeyPairArgs{
+// KeyPairName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNodePool, err := cs.NewNodePool(ctx, "default", &cs.NodePoolArgs{
+// NodePoolName: pulumi.String("desired_size"),
+// ClusterId: defaultManagedKubernetes.ID(),
+// VswitchIds: pulumi.StringArray{
+// vswitch.ID(),
+// },
+// InstanceTypes: pulumi.StringArray{
+// pulumi.String(defaultGetInstanceTypes.ApplyT(func(defaultGetInstanceTypes ecs.GetInstanceTypesResult) (*string, error) {
+// return &defaultGetInstanceTypes.InstanceTypes[0].Id, nil
+// }).(pulumi.StringPtrOutput)),
+// },
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// SystemDiskSize: pulumi.Int(40),
+// KeyName: defaultKeyPair.KeyPairName,
+// DesiredSize: pulumi.String("2"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultPrometheus, err := arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
+// ClusterType: pulumi.String("aliyun-cs"),
+// GrafanaInstanceId: pulumi.String("free"),
+// ClusterId: defaultNodePool.ClusterId,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = arms.NewPrometheusMonitoring(ctx, "default", &arms.PrometheusMonitoringArgs{
+// Status: pulumi.String("run"),
+// Type: pulumi.String("serviceMonitor"),
+// ClusterId: defaultPrometheus.ClusterId,
+// ConfigYaml: pulumi.String(`apiVersion: monitoring.coreos.com/v1
 // kind: ServiceMonitor
 // metadata:
 //
@@ -192,15 +194,13 @@ import (
 //	    app: tomcat
 //
 // `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

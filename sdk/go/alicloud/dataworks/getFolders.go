@@ -41,7 +41,7 @@ import (
 //			ids := pulumi.All(_default.FolderId, _default.ProjectId).ApplyT(func(_args []interface{}) (dataworks.GetFoldersResult, error) {
 //				folderId := _args[0].(string)
 //				projectId := _args[1].(*string)
-//				return dataworks.GetFoldersResult(interface{}(dataworks.GetFoldersOutput(ctx, dataworks.GetFoldersOutputArgs{
+//				return dataworks.GetFoldersResult(interface{}(dataworks.GetFolders(ctx, &dataworks.GetFoldersArgs{
 //					Ids: []string{
 //						folderId,
 //					},

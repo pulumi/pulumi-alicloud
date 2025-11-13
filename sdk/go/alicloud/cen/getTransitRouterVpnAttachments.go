@@ -149,12 +149,12 @@ import (
 //				id := _args[0].(string)
 //				cenId := _args[1].(string)
 //				transitRouterId := _args[2].(*string)
-//				return cen.GetTransitRouterVpnAttachmentsResult(interface{}(cen.GetTransitRouterVpnAttachmentsOutput(ctx, cen.GetTransitRouterVpnAttachmentsOutputArgs{
+//				return cen.GetTransitRouterVpnAttachmentsResult(interface{}(cen.GetTransitRouterVpnAttachments(ctx, &cen.GetTransitRouterVpnAttachmentsArgs{
 //					Ids: []string{
 //						id,
 //					},
-//					CenId:           cenId,
-//					TransitRouterId: transitRouterId,
+//					CenId:           pulumi.StringRef(pulumi.StringRef(cenId)),
+//					TransitRouterId: pulumi.StringRef(pulumi.StringRef(transitRouterId)),
 //				}, nil))), nil
 //			}).(cen.GetTransitRouterVpnAttachmentsResultOutput)
 //			ctx.Export("cenTransitRouterVpnAttachmentId0", ids.ApplyT(func(ids cen.GetTransitRouterVpnAttachmentsResult) (*string, error) {

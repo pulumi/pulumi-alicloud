@@ -12,6 +12,16 @@ import * as utilities from "../utilities";
  * > **NOTE:** Available in v1.73.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const zonesIds = alicloud.gpdb.getZones({});
+ * // Create an Gpdb instance with the first matched zone
+ * const hbase = new alicloud.hbase.Instance("hbase", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
+ * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -61,6 +71,16 @@ export interface GetZonesResult {
  * > **NOTE:** Available in v1.73.0+.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const zonesIds = alicloud.gpdb.getZones({});
+ * // Create an Gpdb instance with the first matched zone
+ * const hbase = new alicloud.hbase.Instance("hbase", {availabilityZone: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
+ * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};

@@ -17,6 +17,26 @@ namespace Pulumi.AliCloud.Gpdb
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
+        /// 
+        ///     // Create an Gpdb instance with the first matched zone
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -27,6 +47,26 @@ namespace Pulumi.AliCloud.Gpdb
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
+        /// 
+        ///     // Create an Gpdb instance with the first matched zone
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -37,6 +77,26 @@ namespace Pulumi.AliCloud.Gpdb
         /// &gt; **NOTE:** Available in v1.73.0+.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var zonesIds = AliCloud.Gpdb.GetZones.Invoke();
+        /// 
+        ///     // Create an Gpdb instance with the first matched zone
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         AvailabilityZone = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:gpdb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

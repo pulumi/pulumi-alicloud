@@ -15,6 +15,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.128.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterPeerAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPeerAttachmentsResult =&gt; getTransitRouterPeerAttachmentsResult.TransitRouterAttachments[0].ResourceType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetTransitRouterPeerAttachmentsResult> InvokeAsync(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.128.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterPeerAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPeerAttachmentsResult =&gt; getTransitRouterPeerAttachmentsResult.TransitRouterAttachments[0].ResourceType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());
@@ -31,6 +75,28 @@ namespace Pulumi.AliCloud.Cen
         /// This data source provides CEN Transit Router peer attachments available to the user.
         /// 
         /// &gt; **NOTE:** Available in 1.128.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Cen.GetTransitRouterPeerAttachments.Invoke(new()
+        ///     {
+        ///         CenId = "cen-id1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType"] = @default.Apply(@default =&gt; @default.Apply(getTransitRouterPeerAttachmentsResult =&gt; getTransitRouterPeerAttachmentsResult.TransitRouterAttachments[0].ResourceType)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetTransitRouterPeerAttachmentsResult> Invoke(GetTransitRouterPeerAttachmentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPeerAttachmentsResult>("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", args ?? new GetTransitRouterPeerAttachmentsInvokeArgs(), options.WithDefaults());

@@ -102,6 +102,16 @@ def get_zones(multi: Optional[_builtins.bool] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    zones_ids = alicloud.gpdb.get_zones()
+    # Create an Gpdb instance with the first matched zone
+    hbase = alicloud.hbase.Instance("hbase", availability_zone=zones_ids.zones[0].id)
+    ```
+
 
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -127,6 +137,16 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[_builtins.bool]]] = N
     > **NOTE:** Available in v1.73.0+.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    # Declare the data source
+    zones_ids = alicloud.gpdb.get_zones()
+    # Create an Gpdb instance with the first matched zone
+    hbase = alicloud.hbase.Instance("hbase", availability_zone=zones_ids.zones[0].id)
+    ```
 
 
     :param _builtins.bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Gpdb instances.

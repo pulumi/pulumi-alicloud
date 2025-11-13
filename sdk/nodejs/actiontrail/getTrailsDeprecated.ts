@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
  *
  * This data source provides a list of action trail of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const trails = alicloud.actiontrail.getTrailsDeprecated({
+ *     nameRegex: "tf-testacc-actiontrail",
+ * });
+ * export const firstTrailName = trails.then(trails => trails.actiontrails?.[0]?.name);
+ * ```
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecated(args?: GetTrailsDeprecatedArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsDeprecatedResult> {
@@ -74,6 +86,18 @@ export interface GetTrailsDeprecatedResult {
  * > **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
  *
  * This data source provides a list of action trail of the current Alibaba Cloud user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const trails = alicloud.actiontrail.getTrailsDeprecated({
+ *     nameRegex: "tf-testacc-actiontrail",
+ * });
+ * export const firstTrailName = trails.then(trails => trails.actiontrails?.[0]?.name);
+ * ```
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
 export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrailsDeprecatedResult> {

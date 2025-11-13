@@ -54,13 +54,19 @@ import (
 //				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				Zones: pulumi.StringArray{
 //					len(_default.Ids).ApplyT(func(length int) (string, error) {
-//						return _default.Ids[length-2], nil
+//						return _default.Ids[float64(length.ApplyT(func(__convert float64) (float64, error) {
+//							return __convert - 2, nil
+//						}).(pulumi.Float64Output))], nil
 //					}).(pulumi.StringOutput),
 //					len(_default.Ids).ApplyT(func(length int) (string, error) {
-//						return _default.Ids[length-3], nil
+//						return _default.Ids[float64(length.ApplyT(func(__convert float64) (float64, error) {
+//							return __convert - 3, nil
+//						}).(pulumi.Float64Output))], nil
 //					}).(pulumi.StringOutput),
 //					len(_default.Ids).ApplyT(func(length int) (string, error) {
-//						return _default.Ids[length-4], nil
+//						return _default.Ids[float64(length.ApplyT(func(__convert float64) (float64, error) {
+//							return __convert - 4, nil
+//						}).(pulumi.Float64Output))], nil
 //					}).(pulumi.StringOutput),
 //				},
 //				AutoRenew:        pulumi.Bool(false),

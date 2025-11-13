@@ -66,18 +66,21 @@ import (
 // if err != nil {
 // return err
 // }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: cidrBlock,
+// Newbits: 8,
+// Netnum: 8,
+// }, nil)
+// if err != nil {
+// return err
+// }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
 // Description: pulumi.String(name),
 // VpcId: vpc.ID(),
 // VswitchName: pulumi.String(name),
 // ZoneId: pulumi.String(enhanced.Zones[0].ZoneId),
 // CidrBlock: pulumi.String(vpc.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-// return std.CidrsubnetResult(interface{}(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
-// Input: cidrBlock,
-// Newbits: 8,
-// Netnum: 8,
-// }, nil))), nil
-// }).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
 // return invoke.Result, nil
 // }).(pulumi.StringPtrOutput)),
 // })
@@ -102,12 +105,12 @@ import (
 // return err
 // }
 // _default := vswitch.ZoneId.ApplyT(func(zoneId string) (ecs.GetInstanceTypesResult, error) {
-// return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypesOutput(ctx, ecs.GetInstanceTypesOutputArgs{
-// AvailabilityZone: zoneId,
-// CpuCoreCount: 2,
-// MemorySize: 4,
-// KubernetesNodeRole: "Worker",
-// InstanceTypeFamily: "ecs.n1",
+// return ecs.GetInstanceTypesResult(interface{}(ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(pulumi.StringRef(zoneId)),
+// CpuCoreCount: pulumi.IntRef(pulumi.IntRef(int(2))),
+// MemorySize: pulumi.Float64Ref(pulumi.Float64Ref(4)),
+// KubernetesNodeRole: pulumi.StringRef(pulumi.StringRef("Worker")),
+// InstanceTypeFamily: pulumi.StringRef(pulumi.StringRef("ecs.n1")),
 // }, nil))), nil
 // }).(ecs.GetInstanceTypesResultOutput)
 // defaultManagedKubernetes, err := cs.NewManagedKubernetes(ctx, "default", &cs.ManagedKubernetesArgs{

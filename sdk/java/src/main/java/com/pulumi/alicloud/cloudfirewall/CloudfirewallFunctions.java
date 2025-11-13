@@ -1289,6 +1289,121 @@ public final class CloudfirewallFunctions {
      * 
      * &gt; **NOTE:** Available since v1.243.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNatFirewallsResult> getNatFirewalls() {
         return getNatFirewalls(GetNatFirewallsArgs.Empty, InvokeOptions.Empty);
@@ -1297,6 +1412,121 @@ public final class CloudfirewallFunctions {
      * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
      * 
      * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain() {
@@ -1307,6 +1537,121 @@ public final class CloudfirewallFunctions {
      * 
      * &gt; **NOTE:** Available since v1.243.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args) {
         return getNatFirewalls(args, InvokeOptions.Empty);
@@ -1315,6 +1660,121 @@ public final class CloudfirewallFunctions {
      * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
      * 
      * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain(GetNatFirewallsPlainArgs args) {
@@ -1325,6 +1785,121 @@ public final class CloudfirewallFunctions {
      * 
      * &gt; **NOTE:** Available since v1.243.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
@@ -1334,6 +1909,121 @@ public final class CloudfirewallFunctions {
      * 
      * &gt; **NOTE:** Available since v1.243.0.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNatFirewallsResult> getNatFirewalls(GetNatFirewallsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cloudfirewall/getNatFirewalls:getNatFirewalls", TypeShape.of(GetNatFirewallsResult.class), args, Utilities.withVersion(options));
@@ -1342,6 +2032,121 @@ public final class CloudfirewallFunctions {
      * This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
      * 
      * &gt; **NOTE:** Available since v1.243.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.vpc.NatGateway;
+     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
+     * import com.pulumi.alicloud.ecs.EipAddress;
+     * import com.pulumi.alicloud.ecs.EipAssociation;
+     * import com.pulumi.alicloud.ecs.EipAssociationArgs;
+     * import com.pulumi.alicloud.vpc.SnatEntry;
+     * import com.pulumi.alicloud.vpc.SnatEntryArgs;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewall;
+     * import com.pulumi.alicloud.cloudfirewall.NatFirewallArgs;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.NatFirewallNatRouteEntryListArgs;
+     * import com.pulumi.alicloud.cloudfirewall.CloudfirewallFunctions;
+     * import com.pulumi.alicloud.cloudfirewall.inputs.GetNatFirewallsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var defaultikZ0gD = new Network("defaultikZ0gD", NetworkArgs.builder()
+     *             .cidrBlock("172.16.0.0/12")
+     *             .vpcName(name)
+     *             .build());
+     * 
+     *         var defaultp4O7qi = new Switch("defaultp4O7qi", SwitchArgs.builder()
+     *             .vpcId(defaultikZ0gD.id())
+     *             .cidrBlock("172.16.6.0/24")
+     *             .vswitchName(name)
+     *             .zoneId("cn-shenzhen-e")
+     *             .build());
+     * 
+     *         var default2iRZpC = new NatGateway("default2iRZpC", NatGatewayArgs.builder()
+     *             .description(name)
+     *             .natGatewayName(name)
+     *             .eipBindMode("MULTI_BINDED")
+     *             .natType("Enhanced")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .paymentType("PayAsYouGo")
+     *             .networkType("internet")
+     *             .build());
+     * 
+     *         var defaultyiRwgs = new EipAddress("defaultyiRwgs");
+     * 
+     *         var defaults2MTuO = new EipAssociation("defaults2MTuO", EipAssociationArgs.builder()
+     *             .instanceId(default2iRZpC.id())
+     *             .allocationId(defaultyiRwgs.allocationId())
+     *             .mode("NAT")
+     *             .instanceType("NAT")
+     *             .vpcId(default2iRZpC.vpcId())
+     *             .build());
+     * 
+     *         var defaultAKE43g = new SnatEntry("defaultAKE43g", SnatEntryArgs.builder()
+     *             .snatIp(defaultyiRwgs.ipAddress())
+     *             .snatTableId(default2iRZpC.snatTableIds().applyValue(_snatTableIds -> _snatTableIds[0]))
+     *             .eipAffinity(1)
+     *             .sourceVswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         var defaultNatFirewall = new NatFirewall("defaultNatFirewall", NatFirewallArgs.builder()
+     *             .regionNo("cn-shenzhen")
+     *             .vswitchAuto("true")
+     *             .strictMode(0)
+     *             .vpcId(defaultikZ0gD.id())
+     *             .proxyName(name)
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .natRouteEntryLists(NatFirewallNatRouteEntryListArgs.builder()
+     *                 .nexthopId(default2iRZpC.id())
+     *                 .destinationCidr("0.0.0.0/0")
+     *                 .nexthopType("NatGateway")
+     *                 .routeTableId(defaultp4O7qi.routeTableId())
+     *                 .build())
+     *             .firewallSwitch("close")
+     *             .vswitchCidr("172.16.5.0/24")
+     *             .status("closed")
+     *             .vswitchId(defaultp4O7qi.id())
+     *             .build());
+     * 
+     *         final var default = CloudfirewallFunctions.getNatFirewalls(GetNatFirewallsArgs.builder()
+     *             .ids(defaultNatFirewall.id())
+     *             .lang("zh")
+     *             .natGatewayId(default2iRZpC.id())
+     *             .proxyName(name)
+     *             .regionNo("cn-shenzhen")
+     *             .status("closed")
+     *             .vpcId(defaultikZ0gD.id())
+     *             .build());
+     * 
+     *         ctx.export("alicloudCloudFirewallNatFirewallExampleId", default_.applyValue(_default_ -> _default_.firewalls()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNatFirewallsResult> getNatFirewallsPlain(GetNatFirewallsPlainArgs args, InvokeOptions options) {

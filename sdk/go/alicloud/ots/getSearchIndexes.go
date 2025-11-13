@@ -16,6 +16,36 @@ import (
 // For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
 //
 // > **NOTE:** Available in v1.187.0+.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			searchIndexDs, err := ots.GetSearchIndexes(ctx, &ots.GetSearchIndexesArgs{
+//				InstanceName: "sample-instance",
+//				TableName:    "sample-table",
+//				NameRegex:    pulumi.StringRef("sample-search-index"),
+//				OutputFile:   pulumi.StringRef("search-indexs.txt"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstSearchIndexId", searchIndexDs.Indexs[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSearchIndexes(ctx *pulumi.Context, args *GetSearchIndexesArgs, opts ...pulumi.InvokeOption) (*GetSearchIndexesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSearchIndexesResult

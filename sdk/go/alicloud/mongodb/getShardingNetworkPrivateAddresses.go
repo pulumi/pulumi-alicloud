@@ -14,6 +14,37 @@ import (
 // This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.157.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := mongodb.GetShardingNetworkPrivateAddresses(ctx, &mongodb.GetShardingNetworkPrivateAddressesArgs{
+//				DbInstanceId: "example_value",
+//				NodeId:       pulumi.StringRef("example_value"),
+//				Role:         pulumi.StringRef("Primary"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("mongodbShardingNetworkPrivateAddressId1", example.Addresses[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetShardingNetworkPrivateAddresses(ctx *pulumi.Context, args *GetShardingNetworkPrivateAddressesArgs, opts ...pulumi.InvokeOption) (*GetShardingNetworkPrivateAddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetShardingNetworkPrivateAddressesResult

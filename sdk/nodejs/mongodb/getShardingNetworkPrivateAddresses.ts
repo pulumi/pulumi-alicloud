@@ -10,6 +10,22 @@ import * as utilities from "../utilities";
  * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.157.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mongodb.getShardingNetworkPrivateAddresses({
+ *     dbInstanceId: "example_value",
+ *     nodeId: "example_value",
+ *     role: "Primary",
+ * });
+ * export const mongodbShardingNetworkPrivateAddressId1 = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getShardingNetworkPrivateAddresses(args: GetShardingNetworkPrivateAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetShardingNetworkPrivateAddressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -61,6 +77,22 @@ export interface GetShardingNetworkPrivateAddressesResult {
  * This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.157.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.mongodb.getShardingNetworkPrivateAddresses({
+ *     dbInstanceId: "example_value",
+ *     nodeId: "example_value",
+ *     role: "Primary",
+ * });
+ * export const mongodbShardingNetworkPrivateAddressId1 = example.then(example => example.addresses?.[0]?.id);
+ * ```
  */
 export function getShardingNetworkPrivateAddressesOutput(args: GetShardingNetworkPrivateAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShardingNetworkPrivateAddressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

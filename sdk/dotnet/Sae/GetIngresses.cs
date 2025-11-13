@@ -15,6 +15,102 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         Name = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Specification = "slb.s2.small",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///     });
+        /// 
+        ///     var desc = config.Get("desc") ?? "example_value";
+        ///     var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
+        ///     {
+        ///         NamespaceId = namespaceId,
+        ///         NamespaceName = name,
+        ///         NamespaceDescription = desc,
+        ///     });
+        /// 
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
+        ///     {
+        ///         AppDescription = "your_app_description",
+        ///         AppName = "your_app_name",
+        ///         NamespaceId = "your_namespace_id",
+        ///         PackageUrl = "your_package_url",
+        ///         PackageType = "your_package_url",
+        ///         Jdk = "jdk_specifications",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///         Replicas = "your_replicas",
+        ///         Cpu = "cpu_specifications",
+        ///         Memory = "memory_specifications",
+        ///     });
+        /// 
+        ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
+        ///     {
+        ///         SlbId = defaultLoadBalancer.Id,
+        ///         NamespaceId = defaultNamespace.Id,
+        ///         ListenerPort = "your_listener_port",
+        ///         Rules = new[]
+        ///         {
+        ///             new AliCloud.Sae.Inputs.IngressRuleArgs
+        ///             {
+        ///                 AppId = defaultApplication.Id,
+        ///                 ContainerPort = "your_container_port",
+        ///                 Domain = "your_domain",
+        ///                 AppName = "your_name",
+        ///                 Path = "your_path",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGetIngresses = AliCloud.Sae.GetIngresses.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultIngress.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeIngressId"] = defaultGetIngresses.Apply(getIngressesResult =&gt; getIngressesResult.IngressList[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetIngressesResult> InvokeAsync(GetIngressesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesArgs(), options.WithDefaults());
@@ -23,6 +119,102 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         Name = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Specification = "slb.s2.small",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///     });
+        /// 
+        ///     var desc = config.Get("desc") ?? "example_value";
+        ///     var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
+        ///     {
+        ///         NamespaceId = namespaceId,
+        ///         NamespaceName = name,
+        ///         NamespaceDescription = desc,
+        ///     });
+        /// 
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
+        ///     {
+        ///         AppDescription = "your_app_description",
+        ///         AppName = "your_app_name",
+        ///         NamespaceId = "your_namespace_id",
+        ///         PackageUrl = "your_package_url",
+        ///         PackageType = "your_package_url",
+        ///         Jdk = "jdk_specifications",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///         Replicas = "your_replicas",
+        ///         Cpu = "cpu_specifications",
+        ///         Memory = "memory_specifications",
+        ///     });
+        /// 
+        ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
+        ///     {
+        ///         SlbId = defaultLoadBalancer.Id,
+        ///         NamespaceId = defaultNamespace.Id,
+        ///         ListenerPort = "your_listener_port",
+        ///         Rules = new[]
+        ///         {
+        ///             new AliCloud.Sae.Inputs.IngressRuleArgs
+        ///             {
+        ///                 AppId = defaultApplication.Id,
+        ///                 ContainerPort = "your_container_port",
+        ///                 Domain = "your_domain",
+        ///                 AppName = "your_name",
+        ///                 Path = "your_path",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGetIngresses = AliCloud.Sae.GetIngresses.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultIngress.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeIngressId"] = defaultGetIngresses.Apply(getIngressesResult =&gt; getIngressesResult.IngressList[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());
@@ -31,6 +223,102 @@ namespace Pulumi.AliCloud.Sae
         /// This data source provides the Sae Ingresses of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.137.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "example_value";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         Name = name,
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         VswitchName = name,
+        ///     });
+        /// 
+        ///     var defaultLoadBalancer = new AliCloud.Slb.LoadBalancer("default", new()
+        ///     {
+        ///         Name = name,
+        ///         Specification = "slb.s2.small",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///     });
+        /// 
+        ///     var desc = config.Get("desc") ?? "example_value";
+        ///     var namespaceId = config.Get("namespaceId") ?? "cn-hangzhou:yourname";
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
+        ///     {
+        ///         NamespaceId = namespaceId,
+        ///         NamespaceName = name,
+        ///         NamespaceDescription = desc,
+        ///     });
+        /// 
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
+        ///     {
+        ///         AppDescription = "your_app_description",
+        ///         AppName = "your_app_name",
+        ///         NamespaceId = "your_namespace_id",
+        ///         PackageUrl = "your_package_url",
+        ///         PackageType = "your_package_url",
+        ///         Jdk = "jdk_specifications",
+        ///         VswitchId = defaultAlicloudVswitches.Ids[0],
+        ///         Replicas = "your_replicas",
+        ///         Cpu = "cpu_specifications",
+        ///         Memory = "memory_specifications",
+        ///     });
+        /// 
+        ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
+        ///     {
+        ///         SlbId = defaultLoadBalancer.Id,
+        ///         NamespaceId = defaultNamespace.Id,
+        ///         ListenerPort = "your_listener_port",
+        ///         Rules = new[]
+        ///         {
+        ///             new AliCloud.Sae.Inputs.IngressRuleArgs
+        ///             {
+        ///                 AppId = defaultApplication.Id,
+        ///                 ContainerPort = "your_container_port",
+        ///                 Domain = "your_domain",
+        ///                 AppName = "your_name",
+        ///                 Path = "your_path",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultGetIngresses = AliCloud.Sae.GetIngresses.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             defaultIngress.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["saeIngressId"] = defaultGetIngresses.Apply(getIngressesResult =&gt; getIngressesResult.IngressList[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetIngressesResult> Invoke(GetIngressesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIngressesResult>("alicloud:sae/getIngresses:getIngresses", args ?? new GetIngressesInvokeArgs(), options.WithDefaults());

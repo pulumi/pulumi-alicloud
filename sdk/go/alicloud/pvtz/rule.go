@@ -39,109 +39,112 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "example_value";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000,
+// Max: 99999,
+// })
+// if err != nil {
+// return err
+// }
+// _default, err := pvtz.GetResolverZones(ctx, &pvtz.GetResolverZonesArgs{
+// Status: pulumi.StringRef("NORMAL"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+// Current: pulumi.BoolRef(true),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// })
+// if err != nil {
+// return err
+// }
+// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
+// Input: cidrBlock,
+// Newbits: 8,
+// Netnum: val0,
+// }, nil)
+// if err != nil {
+// return err
+// }
+// var defaultSwitch []*vpc.Switch
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "example_value"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := pvtz.GetResolverZones(ctx, &pvtz.GetResolverZonesArgs{
-//				Status: pulumi.StringRef("NORMAL"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			var defaultSwitch []*vpc.Switch
-//			for index := 0; index < 2; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
-//					VpcId: defaultNetwork.ID(),
-//					CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-//						return std.CidrsubnetResult(interface{}(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
-//							Input:   cidrBlock,
-//							Newbits: 8,
-//							Netnum:  val0,
-//						}, nil))), nil
-//					}).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-//						return invoke.Result, nil
-//					}).(pulumi.StringPtrOutput)),
-//					ZoneId: pulumi.String(_default.Zones[val0].ZoneId),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				defaultSwitch = append(defaultSwitch, __res)
-//			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
-//				Name:  pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultEndpoint, err := pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
-//				EndpointName:    pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
-//				VpcId:           defaultNetwork.ID(),
-//				VpcRegionId:     pulumi.String(defaultGetRegions.Regions[0].Id),
-//				IpConfigs: pvtz.EndpointIpConfigArray{
-//					&pvtz.EndpointIpConfigArgs{
-//						ZoneId:    defaultSwitch[0].ZoneId,
-//						CidrBlock: defaultSwitch[0].CidrBlock,
-//						VswitchId: defaultSwitch[0].ID(),
-//					},
-//					&pvtz.EndpointIpConfigArgs{
-//						ZoneId:    defaultSwitch[1].ZoneId,
-//						CidrBlock: defaultSwitch[1].CidrBlock,
-//						VswitchId: defaultSwitch[1].ID(),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pvtz.NewRule(ctx, "default", &pvtz.RuleArgs{
-//				EndpointId: defaultEndpoint.ID(),
-//				RuleName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
-//				Type:       pulumi.String("OUTBOUND"),
-//				ZoneName:   pulumi.String(name),
-//				ForwardIps: pvtz.RuleForwardIpArray{
-//					&pvtz.RuleForwardIpArgs{
-//						Ip:   pulumi.String("114.114.114.114"),
-//						Port: pulumi.Int(8080),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    val0 := index
 //
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("default-%v", key0), &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
+// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+// return invoke.Result, nil
+// }).(pulumi.StringPtrOutput)),
+// ZoneId: pulumi.String(_default.Zones[val0].ZoneId),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch = append(defaultSwitch, __res)
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// VpcId: defaultNetwork.ID(),
+// Name: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEndpoint, err := pvtz.NewEndpoint(ctx, "default", &pvtz.EndpointArgs{
+// EndpointName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// SecurityGroupId: defaultSecurityGroup.ID(),
+// VpcId: defaultNetwork.ID(),
+// VpcRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
+// IpConfigs: pvtz.EndpointIpConfigArray{
+// &pvtz.EndpointIpConfigArgs{
+// ZoneId: defaultSwitch[0].ZoneId,
+// CidrBlock: defaultSwitch[0].CidrBlock,
+// VswitchId: defaultSwitch[0].ID(),
+// },
+// &pvtz.EndpointIpConfigArgs{
+// ZoneId: defaultSwitch[1].ZoneId,
+// CidrBlock: defaultSwitch[1].CidrBlock,
+// VswitchId: defaultSwitch[1].ID(),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// _, err = pvtz.NewRule(ctx, "default", &pvtz.RuleArgs{
+// EndpointId: defaultEndpoint.ID(),
+// RuleName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// Type: pulumi.String("OUTBOUND"),
+// ZoneName: pulumi.String(name),
+// ForwardIps: pvtz.RuleForwardIpArray{
+// &pvtz.RuleForwardIpArgs{
+// Ip: pulumi.String("114.114.114.114"),
+// Port: pulumi.Int(8080),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

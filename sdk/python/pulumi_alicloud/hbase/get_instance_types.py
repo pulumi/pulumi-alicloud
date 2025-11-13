@@ -193,6 +193,22 @@ def get_instance_types(charge_type: Optional[_builtins.str] = None,
 
     > **NOTE:** Available since v1.106.0.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.hbase.get_instance_types(charge_type="Postpaid",
+        region_id="cn-shanghai",
+        zone_id="cn-shanghai-g",
+        engine="hbaseue",
+        version="2.0",
+        instance_type="hbase.sn2.large",
+        disk_type="cloud_ssd")
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    ```
+
 
     :param _builtins.str charge_type: The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
     :param _builtins.str disk_type: The disk type, `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`.
@@ -242,6 +258,22 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[_built
     This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available since v1.106.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.hbase.get_instance_types(charge_type="Postpaid",
+        region_id="cn-shanghai",
+        zone_id="cn-shanghai-g",
+        engine="hbaseue",
+        version="2.0",
+        instance_type="hbase.sn2.large",
+        disk_type="cloud_ssd")
+    hbase = alicloud.hbase.Instance("hbase", core_instance_type=default.types[0].id)
+    ```
 
 
     :param _builtins.str charge_type: The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.

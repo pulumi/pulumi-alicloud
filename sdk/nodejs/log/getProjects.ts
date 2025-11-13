@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * This data source provides the Log Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.log.getProjects({
+ *     ids: ["the_project_name"],
+ * });
+ * export const firstLogProjectId = example.then(example => example.project[0].id);
+ * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
@@ -63,6 +77,20 @@ export interface GetProjectsResult {
  * This data source provides the Log Projects of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.126.0+.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.log.getProjects({
+ *     ids: ["the_project_name"],
+ * });
+ * export const firstLogProjectId = example.then(example => example.project[0].id);
+ * ```
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     args = args || {};

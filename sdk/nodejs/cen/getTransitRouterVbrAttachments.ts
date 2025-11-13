@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
  *
  * > **NOTE:** Available in 1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.cen.getTransitRouterVbrAttachments({
+ *     cenId: "cen-id1",
+ * });
+ * export const firstTransitRouterVbrAttachmentsVbrId = _default.then(_default => _default.transitRouterAttachments[0].vbrId);
+ * ```
  */
 export function getTransitRouterVbrAttachments(args: GetTransitRouterVbrAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterVbrAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,6 +88,18 @@ export interface GetTransitRouterVbrAttachmentsResult {
  * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
  *
  * > **NOTE:** Available in 1.126.0+
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const _default = alicloud.cen.getTransitRouterVbrAttachments({
+ *     cenId: "cen-id1",
+ * });
+ * export const firstTransitRouterVbrAttachmentsVbrId = _default.then(_default => _default.transitRouterAttachments[0].vbrId);
+ * ```
  */
 export function getTransitRouterVbrAttachmentsOutput(args: GetTransitRouterVbrAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterVbrAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

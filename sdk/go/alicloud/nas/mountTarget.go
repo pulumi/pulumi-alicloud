@@ -45,7 +45,9 @@ import (
 //			}
 //			countSize := len(_default.Zones)
 //			zoneId := countSize.ApplyT(func(countSize int) (nas.GetZonesZone, error) {
-//				return nas.GetZonesZone(_default.Zones[countSize-1]), nil
+//				return nas.GetZonesZone(_default.Zones[float64(countSize.ApplyT(func(__convert float64) (float64, error) {
+//					return __convert - 1, nil
+//				}).(pulumi.Float64Output))]), nil
 //			}).(nas.GetZonesZoneOutput).ApplyT(func(obj nas.GetZonesZone) (*string, error) {
 //				return obj.ZoneId, nil
 //			}).(pulumi.StringPtrOutput)

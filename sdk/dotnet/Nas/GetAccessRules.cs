@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides AccessRule available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
+        ///     {
+        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         SourceCidrIp = "168.1.1.0/16",
+        ///         RwAccess = "RDWR",
+        ///         UserAccess = "no_squash",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasAccessRulesId"] = foo.Apply(getAccessRulesResult =&gt; getAccessRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAccessRulesResult> InvokeAsync(GetAccessRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides AccessRule available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
+        ///     {
+        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         SourceCidrIp = "168.1.1.0/16",
+        ///         RwAccess = "RDWR",
+        ///         UserAccess = "no_squash",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasAccessRulesId"] = foo.Apply(getAccessRulesResult =&gt; getAccessRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());
@@ -31,6 +81,31 @@ namespace Pulumi.AliCloud.Nas
         /// This data source provides AccessRule available to the user.
         /// 
         /// &gt; **NOTE**: Available in 1.35.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = AliCloud.Nas.GetAccessRules.Invoke(new()
+        ///     {
+        ///         AccessGroupName = "tf-testAccAccessGroupsdatasource",
+        ///         SourceCidrIp = "168.1.1.0/16",
+        ///         RwAccess = "RDWR",
+        ///         UserAccess = "no_squash",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudNasAccessRulesId"] = foo.Apply(getAccessRulesResult =&gt; getAccessRulesResult.Rules[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAccessRulesResult> Invoke(GetAccessRulesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessRulesResult>("alicloud:nas/getAccessRules:getAccessRules", args ?? new GetAccessRulesInvokeArgs(), options.WithDefaults());

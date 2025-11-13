@@ -5980,6 +5980,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.128.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.transitRouterAttachments()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args) {
         return getTransitRouterPeerAttachments(args, InvokeOptions.Empty);
@@ -5988,6 +6022,40 @@ public final class CenFunctions {
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
      * &gt; **NOTE:** Available in 1.128.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.transitRouterAttachments()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachmentsPlain(GetTransitRouterPeerAttachmentsPlainArgs args) {
@@ -5998,6 +6066,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.128.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.transitRouterAttachments()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", TypeShape.of(GetTransitRouterPeerAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -6007,6 +6109,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.128.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.transitRouterAttachments()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments", TypeShape.of(GetTransitRouterPeerAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -6015,6 +6151,40 @@ public final class CenFunctions {
      * This data source provides CEN Transit Router peer attachments available to the user.
      * 
      * &gt; **NOTE:** Available in 1.128.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterPeerAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterPeerAttachments(GetTransitRouterPeerAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.transitRouterAttachments()[0].resourceType());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterPeerAttachmentsResult> getTransitRouterPeerAttachmentsPlain(GetTransitRouterPeerAttachmentsPlainArgs args, InvokeOptions options) {
@@ -7824,6 +7994,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.126.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterVbrAttachmentsVbrId", default_.transitRouterAttachments()[0].vbrId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs args) {
         return getTransitRouterVbrAttachments(args, InvokeOptions.Empty);
@@ -7832,6 +8036,40 @@ public final class CenFunctions {
      * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
      * 
      * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterVbrAttachmentsVbrId", default_.transitRouterAttachments()[0].vbrId());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachmentsPlain(GetTransitRouterVbrAttachmentsPlainArgs args) {
@@ -7842,6 +8080,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.126.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterVbrAttachmentsVbrId", default_.transitRouterAttachments()[0].vbrId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -7851,6 +8123,40 @@ public final class CenFunctions {
      * 
      * &gt; **NOTE:** Available in 1.126.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterVbrAttachmentsVbrId", default_.transitRouterAttachments()[0].vbrId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", TypeShape.of(GetTransitRouterVbrAttachmentsResult.class), args, Utilities.withVersion(options));
@@ -7859,6 +8165,40 @@ public final class CenFunctions {
      * This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
      * 
      * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterVbrAttachmentsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterVbrAttachments(GetTransitRouterVbrAttachmentsArgs.builder()
+     *             .cenId("cen-id1")
+     *             .build());
+     * 
+     *         ctx.export("firstTransitRouterVbrAttachmentsVbrId", default_.transitRouterAttachments()[0].vbrId());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetTransitRouterVbrAttachmentsResult> getTransitRouterVbrAttachmentsPlain(GetTransitRouterVbrAttachmentsPlainArgs args, InvokeOptions options) {

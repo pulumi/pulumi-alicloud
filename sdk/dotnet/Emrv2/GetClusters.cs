@@ -15,6 +15,210 @@ namespace Pulumi.AliCloud.Emrv2
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.199.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableInstanceType = "ecs.g7.xlarge",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "TF-VPC",
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = "TF_VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = "terraform-kp",
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = "TF_SECURITY_GROUP",
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         Name = "emrtf",
+        ///         Document = @"    {
+        ///         \""Statement\"": [
+        ///         {
+        ///             \""Action\"": \""sts:AssumeRole\"",
+        ///             \""Effect\"": \""Allow\"",
+        ///             \""Principal\"": {
+        ///             \""Service\"": [
+        ///                 \""emr.aliyuncs.com\"",
+        ///                 \""ecs.aliyuncs.com\""
+        ///             ]
+        ///             }
+        ///         }
+        ///         ],
+        ///         \""Version\"": \""1\""
+        ///     }
+        /// ",
+        ///         Description = "this is a role test.",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultCluster = new AliCloud.Emrv2.Cluster("default", new()
+        ///     {
+        ///         PaymentType = "PayAsYouGo",
+        ///         ClusterType = "DATALAKE",
+        ///         ReleaseVersion = "EMR-5.10.0",
+        ///         ClusterName = "terraform-emr-cluster-v2",
+        ///         DeployMode = "NORMAL",
+        ///         SecurityMode = "NORMAL",
+        ///         Applications = new[]
+        ///         {
+        ///             "HADOOP-COMMON",
+        ///             "HDFS",
+        ///             "YARN",
+        ///             "HIVE",
+        ///             "SPARK3",
+        ///             "TEZ",
+        ///         },
+        ///         ApplicationConfigs = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "HIVE",
+        ///                 ConfigFileName = "hivemetastore-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "SPARK3",
+        ///                 ConfigFileName = "hive-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///         },
+        ///         NodeAttributes = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeAttributeArgs
+        ///             {
+        ///                 RamRole = defaultRole.Name,
+        ///                 SecurityGroupId = defaultSecurityGroup.Id,
+        ///                 VpcId = defaultNetwork.Id,
+        ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///                 KeyPairName = defaultEcsKeyPair.Id,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "created", "tf" },
+        ///         },
+        ///         NodeGroups = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "MASTER",
+        ///                 NodeGroupName = "emr-master",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 1,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "CORE",
+        ///                 NodeGroupName = "emr-core",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 3,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Emrv2.GetClusters.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Emrv2.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultAlicloudEmrCluster.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["emrv2ClustersId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["emrv2ClustersId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -23,6 +227,210 @@ namespace Pulumi.AliCloud.Emrv2
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.199.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableInstanceType = "ecs.g7.xlarge",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "TF-VPC",
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = "TF_VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = "terraform-kp",
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = "TF_SECURITY_GROUP",
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         Name = "emrtf",
+        ///         Document = @"    {
+        ///         \""Statement\"": [
+        ///         {
+        ///             \""Action\"": \""sts:AssumeRole\"",
+        ///             \""Effect\"": \""Allow\"",
+        ///             \""Principal\"": {
+        ///             \""Service\"": [
+        ///                 \""emr.aliyuncs.com\"",
+        ///                 \""ecs.aliyuncs.com\""
+        ///             ]
+        ///             }
+        ///         }
+        ///         ],
+        ///         \""Version\"": \""1\""
+        ///     }
+        /// ",
+        ///         Description = "this is a role test.",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultCluster = new AliCloud.Emrv2.Cluster("default", new()
+        ///     {
+        ///         PaymentType = "PayAsYouGo",
+        ///         ClusterType = "DATALAKE",
+        ///         ReleaseVersion = "EMR-5.10.0",
+        ///         ClusterName = "terraform-emr-cluster-v2",
+        ///         DeployMode = "NORMAL",
+        ///         SecurityMode = "NORMAL",
+        ///         Applications = new[]
+        ///         {
+        ///             "HADOOP-COMMON",
+        ///             "HDFS",
+        ///             "YARN",
+        ///             "HIVE",
+        ///             "SPARK3",
+        ///             "TEZ",
+        ///         },
+        ///         ApplicationConfigs = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "HIVE",
+        ///                 ConfigFileName = "hivemetastore-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "SPARK3",
+        ///                 ConfigFileName = "hive-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///         },
+        ///         NodeAttributes = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeAttributeArgs
+        ///             {
+        ///                 RamRole = defaultRole.Name,
+        ///                 SecurityGroupId = defaultSecurityGroup.Id,
+        ///                 VpcId = defaultNetwork.Id,
+        ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///                 KeyPairName = defaultEcsKeyPair.Id,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "created", "tf" },
+        ///         },
+        ///         NodeGroups = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "MASTER",
+        ///                 NodeGroupName = "emr-master",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 1,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "CORE",
+        ///                 NodeGroupName = "emr-core",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 3,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Emrv2.GetClusters.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Emrv2.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultAlicloudEmrCluster.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["emrv2ClustersId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["emrv2ClustersId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());
@@ -31,6 +439,210 @@ namespace Pulumi.AliCloud.Emrv2
         /// This data source provides the Emr Clusters of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.199.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+        ///     {
+        ///         Status = "OK",
+        ///     });
+        /// 
+        ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableInstanceType = "ecs.g7.xlarge",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "TF-VPC",
+        ///         CidrBlock = "172.16.0.0/12",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "172.16.0.0/21",
+        ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = "TF_VSwitch",
+        ///     });
+        /// 
+        ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
+        ///     {
+        ///         KeyPairName = "terraform-kp",
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = "TF_SECURITY_GROUP",
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultRole = new AliCloud.Ram.Role("default", new()
+        ///     {
+        ///         Name = "emrtf",
+        ///         Document = @"    {
+        ///         \""Statement\"": [
+        ///         {
+        ///             \""Action\"": \""sts:AssumeRole\"",
+        ///             \""Effect\"": \""Allow\"",
+        ///             \""Principal\"": {
+        ///             \""Service\"": [
+        ///                 \""emr.aliyuncs.com\"",
+        ///                 \""ecs.aliyuncs.com\""
+        ///             ]
+        ///             }
+        ///         }
+        ///         ],
+        ///         \""Version\"": \""1\""
+        ///     }
+        /// ",
+        ///         Description = "this is a role test.",
+        ///         Force = true,
+        ///     });
+        /// 
+        ///     var defaultCluster = new AliCloud.Emrv2.Cluster("default", new()
+        ///     {
+        ///         PaymentType = "PayAsYouGo",
+        ///         ClusterType = "DATALAKE",
+        ///         ReleaseVersion = "EMR-5.10.0",
+        ///         ClusterName = "terraform-emr-cluster-v2",
+        ///         DeployMode = "NORMAL",
+        ///         SecurityMode = "NORMAL",
+        ///         Applications = new[]
+        ///         {
+        ///             "HADOOP-COMMON",
+        ///             "HDFS",
+        ///             "YARN",
+        ///             "HIVE",
+        ///             "SPARK3",
+        ///             "TEZ",
+        ///         },
+        ///         ApplicationConfigs = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "HIVE",
+        ///                 ConfigFileName = "hivemetastore-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterApplicationConfigArgs
+        ///             {
+        ///                 ApplicationName = "SPARK3",
+        ///                 ConfigFileName = "hive-site.xml",
+        ///                 ConfigItemKey = "hive.metastore.type",
+        ///                 ConfigItemValue = "DLF",
+        ///                 ConfigScope = "CLUSTER",
+        ///             },
+        ///         },
+        ///         NodeAttributes = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeAttributeArgs
+        ///             {
+        ///                 RamRole = defaultRole.Name,
+        ///                 SecurityGroupId = defaultSecurityGroup.Id,
+        ///                 VpcId = defaultNetwork.Id,
+        ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///                 KeyPairName = defaultEcsKeyPair.Id,
+        ///             },
+        ///         },
+        ///         Tags = 
+        ///         {
+        ///             { "created", "tf" },
+        ///         },
+        ///         NodeGroups = new[]
+        ///         {
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "MASTER",
+        ///                 NodeGroupName = "emr-master",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 1,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
+        ///             {
+        ///                 NodeGroupType = "CORE",
+        ///                 NodeGroupName = "emr-core",
+        ///                 PaymentType = "PayAsYouGo",
+        ///                 VswitchIds = new[]
+        ///                 {
+        ///                     defaultSwitch.Id,
+        ///                 },
+        ///                 WithPublicIp = false,
+        ///                 InstanceTypes = new[]
+        ///                 {
+        ///                     "ecs.g7.xlarge",
+        ///                 },
+        ///                 NodeCount = 3,
+        ///                 SystemDisk = new AliCloud.Emrv2.Inputs.ClusterNodeGroupSystemDiskArgs
+        ///                 {
+        ///                     Category = "cloud_essd",
+        ///                     Size = 80,
+        ///                     Count = 1,
+        ///                 },
+        ///                 DataDisks = new[]
+        ///                 {
+        ///                     new AliCloud.Emrv2.Inputs.ClusterNodeGroupDataDiskArgs
+        ///                     {
+        ///                         Category = "cloud_essd",
+        ///                         Size = 80,
+        ///                         Count = 3,
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Emrv2.GetClusters.Invoke();
+        /// 
+        ///     var nameRegex = AliCloud.Emrv2.GetClusters.Invoke(new()
+        ///     {
+        ///         NameRegex = defaultAlicloudEmrCluster.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["emrv2ClustersId1"] = ids.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///         ["emrv2ClustersId2"] = nameRegex.Apply(getClustersResult =&gt; getClustersResult.Clusters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:emrv2/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

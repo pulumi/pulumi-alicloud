@@ -141,6 +141,19 @@ def get_secondary_indexes(ids: Optional[Sequence[_builtins.str]] = None,
 
     > **NOTE:** Available in v1.187.0+.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    secondary_index_ds = alicloud.ots.get_secondary_indexes(instance_name="sample-instance",
+        table_name="sample-table",
+        name_regex="sample-secondary-index",
+        output_file="secondary-indexs.txt")
+    pulumi.export("firstSecondaryIndexId", secondary_index_ds.indexs[0]["id"])
+    ```
+
 
     :param Sequence[_builtins.str] ids: A list of secondary index IDs.
     :param _builtins.str instance_name: The name of OTS instance.
@@ -178,6 +191,19 @@ def get_secondary_indexes_output(ids: Optional[pulumi.Input[Optional[Sequence[_b
     For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
 
     > **NOTE:** Available in v1.187.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    secondary_index_ds = alicloud.ots.get_secondary_indexes(instance_name="sample-instance",
+        table_name="sample-table",
+        name_regex="sample-secondary-index",
+        output_file="secondary-indexs.txt")
+    pulumi.export("firstSecondaryIndexId", secondary_index_ds.indexs[0]["id"])
+    ```
 
 
     :param Sequence[_builtins.str] ids: A list of secondary index IDs.

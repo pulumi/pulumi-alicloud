@@ -2746,6 +2746,40 @@ public final class ActiontrailFunctions {
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
      * 
@@ -2758,6 +2792,40 @@ public final class ActiontrailFunctions {
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -2772,6 +2840,40 @@ public final class ActiontrailFunctions {
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
      * 
@@ -2784,6 +2886,40 @@ public final class ActiontrailFunctions {
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
@@ -2798,6 +2934,40 @@ public final class ActiontrailFunctions {
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
      * 
@@ -2811,6 +2981,40 @@ public final class ActiontrailFunctions {
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      * @deprecated
      * DataSource has been renamed to `getTrails`
      * 
@@ -2823,6 +3027,40 @@ public final class ActiontrailFunctions {
      * &gt; **DEPRECATED:**  This datasource has been renamed to alicloud.actiontrail.getTrails from version 1.95.0.
      * 
      * This data source provides a list of action trail of the current Alibaba Cloud user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.actiontrail.ActiontrailFunctions;
+     * import com.pulumi.alicloud.actiontrail.inputs.GetTrailsDeprecatedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var trails = ActiontrailFunctions.getTrailsDeprecated(GetTrailsDeprecatedArgs.builder()
+     *             .nameRegex("tf-testacc-actiontrail")
+     *             .build());
+     * 
+     *         ctx.export("firstTrailName", trails.actiontrails()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      * @deprecated
      * DataSource has been renamed to `getTrails`

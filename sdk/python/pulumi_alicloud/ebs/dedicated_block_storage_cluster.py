@@ -387,6 +387,18 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
 
         Basic Usage
 
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ebs.DedicatedBlockStorageCluster("default",
+            type="Premium",
+            zone_id="cn-heyuan-b",
+            dedicated_block_storage_cluster_name="dedicated_block_storage_cluster_name",
+            total_capacity="61440",
+            region_id="cn-heyuan")
+        ```
+
         ## Import
 
         Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
@@ -419,6 +431,18 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         ## Example Usage
 
         Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.ebs.DedicatedBlockStorageCluster("default",
+            type="Premium",
+            zone_id="cn-heyuan-b",
+            dedicated_block_storage_cluster_name="dedicated_block_storage_cluster_name",
+            total_capacity="61440",
+            region_id="cn-heyuan")
+        ```
 
         ## Import
 

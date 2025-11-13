@@ -89,11 +89,11 @@ import (
 // _default := pulumi.All(defaultBaseline.ID(),defaultBaseline.BaselineName).ApplyT(func(_args []interface{}) (governance.GetBaselinesResult, error) {
 // id := _args[0].(string)
 // baselineName := _args[1].(*string)
-// return governance.GetBaselinesResult(interface{}(governance.GetBaselinesOutput(ctx, governance.GetBaselinesOutputArgs{
+// return governance.GetBaselinesResult(interface{}(governance.GetBaselines(ctx, &governance.GetBaselinesArgs{
 // Ids: []string{
 // id,
 // },
-// NameRegex: baselineName,
+// NameRegex: pulumi.StringRef(pulumi.StringRef(baselineName)),
 // }, nil))), nil
 // }).(governance.GetBaselinesResultOutput)
 // ctx.Export("alicloudGovernanceBaselineExampleId", _default.ApplyT(func(_default governance.GetBaselinesResult) (*string, error) {
