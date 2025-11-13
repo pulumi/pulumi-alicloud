@@ -14,6 +14,123 @@ import (
 // This data source provides Cloud Firewall Nat Firewall available to the user.[What is Nat Firewall](https://next.api.alibabacloud.com/document/Cloudfw/2017-12-07/CreateSecurityProxy)
 //
 // > **NOTE:** Available since v1.243.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultikZ0gD, err := vpc.NewNetwork(ctx, "defaultikZ0gD", &vpc.NetworkArgs{
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// VpcName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultp4O7qi, err := vpc.NewSwitch(ctx, "defaultp4O7qi", &vpc.SwitchArgs{
+// VpcId: defaultikZ0gD.ID(),
+// CidrBlock: pulumi.String("172.16.6.0/24"),
+// VswitchName: pulumi.String(name),
+// ZoneId: pulumi.String("cn-shenzhen-e"),
+// })
+// if err != nil {
+// return err
+// }
+// default2iRZpC, err := vpc.NewNatGateway(ctx, "default2iRZpC", &vpc.NatGatewayArgs{
+// Description: pulumi.String(name),
+// NatGatewayName: pulumi.String(name),
+// EipBindMode: pulumi.String("MULTI_BINDED"),
+// NatType: pulumi.String("Enhanced"),
+// VpcId: defaultikZ0gD.ID(),
+// PaymentType: pulumi.String("PayAsYouGo"),
+// NetworkType: pulumi.String("internet"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultyiRwgs, err := ecs.NewEipAddress(ctx, "defaultyiRwgs", nil)
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewEipAssociation(ctx, "defaults2MTuO", &ecs.EipAssociationArgs{
+// InstanceId: default2iRZpC.ID(),
+// AllocationId: defaultyiRwgs.AllocationId,
+// Mode: pulumi.String("NAT"),
+// InstanceType: pulumi.String("NAT"),
+// VpcId: default2iRZpC.VpcId,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = vpc.NewSnatEntry(ctx, "defaultAKE43g", &vpc.SnatEntryArgs{
+// SnatIp: defaultyiRwgs.IpAddress,
+// SnatTableId: pulumi.String(default2iRZpC.SnatTableIds.ApplyT(func(snatTableIds string) (interface{}, error) {
+// return snatTableIds[0], nil
+// }).(pulumi.Interface{}Output)),
+// EipAffinity: pulumi.Int(1),
+// SourceVswitchId: defaultp4O7qi.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultNatFirewall, err := cloudfirewall.NewNatFirewall(ctx, "default", &cloudfirewall.NatFirewallArgs{
+// RegionNo: pulumi.String("cn-shenzhen"),
+// VswitchAuto: pulumi.String("true"),
+// StrictMode: pulumi.Int(0),
+// VpcId: defaultikZ0gD.ID(),
+// ProxyName: pulumi.String(name),
+// Lang: pulumi.String("zh"),
+// NatGatewayId: default2iRZpC.ID(),
+// NatRouteEntryLists: cloudfirewall.NatFirewallNatRouteEntryListArray{
+// &cloudfirewall.NatFirewallNatRouteEntryListArgs{
+// NexthopId: default2iRZpC.ID(),
+// DestinationCidr: pulumi.String("0.0.0.0/0"),
+// NexthopType: pulumi.String("NatGateway"),
+// RouteTableId: defaultp4O7qi.RouteTableId,
+// },
+// },
+// FirewallSwitch: pulumi.String("close"),
+// VswitchCidr: pulumi.String("172.16.5.0/24"),
+// Status: pulumi.String("closed"),
+// VswitchId: defaultp4O7qi.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _default := cloudfirewall.GetNatFirewallsOutput(ctx, cloudfirewall.GetNatFirewallsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultNatFirewall.ID(),
+// },
+// Lang: pulumi.String("zh"),
+// NatGatewayId: default2iRZpC.ID(),
+// ProxyName: pulumi.String(name),
+// RegionNo: pulumi.String("cn-shenzhen"),
+// Status: pulumi.String("closed"),
+// VpcId: defaultikZ0gD.ID(),
+// }, nil);
+// ctx.Export("alicloudCloudFirewallNatFirewallExampleId", _default.ApplyT(func(_default cloudfirewall.GetNatFirewallsResult) (*string, error) {
+// return &default.Firewalls[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 func GetNatFirewalls(ctx *pulumi.Context, args *GetNatFirewallsArgs, opts ...pulumi.InvokeOption) (*GetNatFirewallsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatFirewallsResult

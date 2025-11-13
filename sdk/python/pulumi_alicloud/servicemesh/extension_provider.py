@@ -174,6 +174,75 @@ class ExtensionProvider(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.191.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_network = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
+
+        len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_switches = pulumi.Output.all(
+            length=len(default_get_networks.ids),
+            id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
+        default_switch = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                    vpc_id=pulumi.Output.all(
+                        id=default_network[0].id,
+                        value=default_get_networks.ids[0] if length.apply(lambda __convert: __convert > 0) else id
+        ).apply(lambda resolved_outputs: pulumi.Output.all(
+                        length=len(default_get_networks.ids),
+                        id=resolved_outputs['id']
+        ).apply(lambda resolved_outputs: resolved_outputs['value'])
+        )
+        ,
+                    cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                        newbits=8,
+                        netnum=2).result,
+                    zone_id=default.zones[0].id))
+
+        len(default_get_switches.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_service_mesh = alicloud.servicemesh.ServiceMesh("default",
+            service_mesh_name="mesh-c50f3fef117ad45b6b26047cdafef65ad",
+            version="v1.21.6.103-g5ddeaef7-aliyun",
+            edition="Default",
+            network={
+                "vpc_id": pulumi.Output.all(
+                    length=len(default_get_networks.ids),
+                    id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ,
+                "vswitche_lists": [pulumi.Output.all(
+                    length=len(default_get_switches.ids),
+                    default_get_switches=default_get_switches,
+                    id=default_switch[0].id
+        ).apply(lambda resolved_outputs: default_get_switches.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ],
+            })
+        default_extension_provider = alicloud.servicemesh.ExtensionProvider("default",
+            service_mesh_id=default_service_mesh.id,
+            extension_provider_name="httpextauth-tf-example",
+            type="httpextauth",
+            config="{\\"headersToDownstreamOnDeny\\":[\\"content-type\\",\\"set-cookie\\"],\\"headersToUpstreamOnAllow\\":[\\"authorization\\",\\"cookie\\",\\"path\\",\\"x-auth-request-access-token\\",\\"x-forwarded-access-token\\"],\\"includeRequestHeadersInCheck\\":[\\"cookie\\",\\"x-forward-access-token\\"],\\"oidc\\":{\\"clientID\\":\\"qweqweqwewqeqwe\\",\\"clientSecret\\":\\"asdasdasdasdsadas\\",\\"cookieExpire\\":\\"1000\\",\\"cookieRefresh\\":\\"500\\",\\"cookieSecret\\":\\"scxzcxzcxzcxzcxz\\",\\"issuerURI\\":\\"qweqwewqeqweqweqwe\\",\\"redirectDomain\\":\\"www.alicloud-provider.cn\\",\\"redirectProtocol\\":\\"http\\",\\"scopes\\":[\\"profile\\"]},\\"port\\":4180,\\"service\\":\\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\\",\\"timeout\\":\\"10s\\"}")
+        ```
+
         ## Import
 
         Service Mesh Extension Provider can be imported using the id, e.g.
@@ -201,6 +270,75 @@ class ExtensionProvider(pulumi.CustomResource):
         For information about Service Mesh Extension Provider and how to use it, see [What is Extension Provider](https://help.aliyun.com/document_detail/461549.html).
 
         > **NOTE:** Available since v1.191.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_std as std
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf_example"
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_network = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
+
+        len(default_get_networks.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_get_switches = pulumi.Output.all(
+            length=len(default_get_networks.ids),
+            id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
+        default_switch = []
+        def create_default(range_body):
+            for range in [{"value": i} for i in range(0, range_body)]:
+                default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
+                    vpc_id=pulumi.Output.all(
+                        id=default_network[0].id,
+                        value=default_get_networks.ids[0] if length.apply(lambda __convert: __convert > 0) else id
+        ).apply(lambda resolved_outputs: pulumi.Output.all(
+                        length=len(default_get_networks.ids),
+                        id=resolved_outputs['id']
+        ).apply(lambda resolved_outputs: resolved_outputs['value'])
+        )
+        ,
+                    cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
+                        newbits=8,
+                        netnum=2).result,
+                    zone_id=default.zones[0].id))
+
+        len(default_get_switches.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
+        default_service_mesh = alicloud.servicemesh.ServiceMesh("default",
+            service_mesh_name="mesh-c50f3fef117ad45b6b26047cdafef65ad",
+            version="v1.21.6.103-g5ddeaef7-aliyun",
+            edition="Default",
+            network={
+                "vpc_id": pulumi.Output.all(
+                    length=len(default_get_networks.ids),
+                    id=default_network[0].id
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ,
+                "vswitche_lists": [pulumi.Output.all(
+                    length=len(default_get_switches.ids),
+                    default_get_switches=default_get_switches,
+                    id=default_switch[0].id
+        ).apply(lambda resolved_outputs: default_get_switches.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
+        ],
+            })
+        default_extension_provider = alicloud.servicemesh.ExtensionProvider("default",
+            service_mesh_id=default_service_mesh.id,
+            extension_provider_name="httpextauth-tf-example",
+            type="httpextauth",
+            config="{\\"headersToDownstreamOnDeny\\":[\\"content-type\\",\\"set-cookie\\"],\\"headersToUpstreamOnAllow\\":[\\"authorization\\",\\"cookie\\",\\"path\\",\\"x-auth-request-access-token\\",\\"x-forwarded-access-token\\"],\\"includeRequestHeadersInCheck\\":[\\"cookie\\",\\"x-forward-access-token\\"],\\"oidc\\":{\\"clientID\\":\\"qweqweqwewqeqwe\\",\\"clientSecret\\":\\"asdasdasdasdsadas\\",\\"cookieExpire\\":\\"1000\\",\\"cookieRefresh\\":\\"500\\",\\"cookieSecret\\":\\"scxzcxzcxzcxzcxz\\",\\"issuerURI\\":\\"qweqwewqeqweqweqwe\\",\\"redirectDomain\\":\\"www.alicloud-provider.cn\\",\\"redirectProtocol\\":\\"http\\",\\"scopes\\":[\\"profile\\"]},\\"port\\":4180,\\"service\\":\\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\\",\\"timeout\\":\\"10s\\"}")
+        ```
 
         ## Import
 

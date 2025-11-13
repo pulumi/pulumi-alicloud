@@ -15,6 +15,33 @@ namespace Pulumi.AliCloud.Log
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Log.GetProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "the_project_name",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLogProjectId"] = example.Apply(getProjectsResult =&gt; getProjectsResult.Project[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetProjectsResult> InvokeAsync(GetProjectsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsArgs(), options.WithDefaults());
@@ -23,6 +50,33 @@ namespace Pulumi.AliCloud.Log
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Log.GetProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "the_project_name",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLogProjectId"] = example.Apply(getProjectsResult =&gt; getProjectsResult.Project[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());
@@ -31,6 +85,33 @@ namespace Pulumi.AliCloud.Log
         /// This data source provides the Log Projects of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.126.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Log.GetProjects.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             "the_project_name",
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstLogProjectId"] = example.Apply(getProjectsResult =&gt; getProjectsResult.Project[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetProjectsResult> Invoke(GetProjectsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectsResult>("alicloud:log/getProjects:getProjects", args ?? new GetProjectsInvokeArgs(), options.WithDefaults());

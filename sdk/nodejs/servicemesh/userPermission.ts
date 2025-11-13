@@ -17,6 +17,56 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tfexample";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const _default = alicloud.servicemesh.getVersions({
+ *     edition: "Default",
+ * });
+ * const defaultGetZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetZones]).then(([defaultGetNetworks, defaultGetZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: defaultGetZones.zones?.[0]?.id,
+ * }));
+ * const defaultUser = new alicloud.ram.User("default", {name: name});
+ * const default1 = new alicloud.servicemesh.ServiceMesh("default1", {
+ *     serviceMeshName: `${name}-${defaultInteger.result}`,
+ *     edition: "Default",
+ *     clusterSpec: "standard",
+ *     version: _default.then(_default => _default.versions?.[0]?.version),
+ *     network: {
+ *         vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *         vswitcheLists: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
+ *     },
+ *     loadBalancer: {
+ *         pilotPublicEip: false,
+ *         apiServerPublicEip: false,
+ *     },
+ * });
+ * const defaultUserPermission = new alicloud.servicemesh.UserPermission("default", {
+ *     subAccountUserId: defaultUser.id,
+ *     permissions: [{
+ *         roleName: "istio-ops",
+ *         serviceMeshId: default1.id,
+ *         roleType: "custom",
+ *         isCustom: true,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service Mesh User Permission can be imported using the id, e.g.

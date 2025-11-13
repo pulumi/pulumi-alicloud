@@ -248,6 +248,43 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProductsResult> getProducts() {
         return getProducts(GetProductsArgs.Empty, InvokeOptions.Empty);
@@ -256,6 +293,43 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain() {
@@ -266,6 +340,43 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args) {
         return getProducts(args, InvokeOptions.Empty);
@@ -274,6 +385,43 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain(GetProductsPlainArgs args) {
@@ -284,6 +432,43 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:marketplace/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
@@ -293,6 +478,43 @@ public final class MarketplaceFunctions {
      * 
      * &gt; **NOTE:** Available in 1.64.0+
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetProductsResult> getProducts(GetProductsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:marketplace/getProducts:getProducts", TypeShape.of(GetProductsResult.class), args, Utilities.withVersion(options));
@@ -301,6 +523,43 @@ public final class MarketplaceFunctions {
      * This data source provides the Market product items of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available in 1.64.0+
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.marketplace.MarketplaceFunctions;
+     * import com.pulumi.alicloud.marketplace.inputs.GetProductsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = MarketplaceFunctions.getProducts(GetProductsArgs.builder()
+     *             .sort("created_on-desc")
+     *             .categoryId("53690006")
+     *             .productType("SERVICE")
+     *             .build());
+     * 
+     *         ctx.export("firstProductCode", default_.productItems()[0].code());
+     *         ctx.export("productCodes", default_.ids());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetProductsResult> getProductsPlain(GetProductsPlainArgs args, InvokeOptions options) {

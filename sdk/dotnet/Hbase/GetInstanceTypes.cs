@@ -15,6 +15,35 @@ namespace Pulumi.AliCloud.Hbase
         /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbase.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         ChargeType = "Postpaid",
+        ///         RegionId = "cn-shanghai",
+        ///         ZoneId = "cn-shanghai-g",
+        ///         Engine = "hbaseue",
+        ///         Version = "2.0",
+        ///         InstanceType = "hbase.sn2.large",
+        ///         DiskType = "cloud_ssd",
+        ///     });
+        /// 
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -23,6 +52,35 @@ namespace Pulumi.AliCloud.Hbase
         /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbase.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         ChargeType = "Postpaid",
+        ///         RegionId = "cn-shanghai",
+        ///         ZoneId = "cn-shanghai-g",
+        ///         Engine = "hbaseue",
+        ///         Version = "2.0",
+        ///         InstanceType = "hbase.sn2.large",
+        ///         DiskType = "cloud_ssd",
+        ///     });
+        /// 
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
@@ -31,6 +89,35 @@ namespace Pulumi.AliCloud.Hbase
         /// This data source provides availability InstanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.106.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = AliCloud.Hbase.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         ChargeType = "Postpaid",
+        ///         RegionId = "cn-shanghai",
+        ///         ZoneId = "cn-shanghai-g",
+        ///         Engine = "hbaseue",
+        ///         Version = "2.0",
+        ///         InstanceType = "hbase.sn2.large",
+        ///         DiskType = "cloud_ssd",
+        ///     });
+        /// 
+        ///     var hbase = new AliCloud.Hbase.Instance("hbase", new()
+        ///     {
+        ///         CoreInstanceType = @default.Apply(@default =&gt; @default.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Types[0]?.Id)),
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:hbase/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());

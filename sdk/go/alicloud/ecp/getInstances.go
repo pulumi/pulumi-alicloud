@@ -43,13 +43,17 @@ import (
 //			}
 //			countSize := len(_default.Zones)
 //			zoneId := countSize.ApplyT(func(countSize int) (ecp.GetZonesZone, error) {
-//				return ecp.GetZonesZone(_default.Zones[countSize-1]), nil
+//				return ecp.GetZonesZone(_default.Zones[float64(countSize.ApplyT(func(__convert float64) (float64, error) {
+//					return __convert - 1, nil
+//				}).(pulumi.Float64Output))]), nil
 //			}).(ecp.GetZonesZoneOutput).ApplyT(func(obj ecp.GetZonesZone) (*string, error) {
 //				return obj.ZoneId, nil
 //			}).(pulumi.StringPtrOutput)
 //			instanceTypeCountSize := len(defaultGetInstanceTypes.InstanceTypes)
 //			_ = instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//				return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1]), nil
+//				return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[float64(instanceTypeCountSize.ApplyT(func(__convert float64) (float64, error) {
+//					return __convert - 1, nil
+//				}).(pulumi.Float64Output))]), nil
 //			}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
 //				return obj.InstanceType, nil
 //			}).(pulumi.StringPtrOutput)
@@ -88,7 +92,9 @@ import (
 //				VswitchId:    pulumi.String(defaultGetSwitches.Ids[0]),
 //				ImageId:      pulumi.String("android_9_0_0_release_2851157_20211201.vhd"),
 //				InstanceType: pulumi.String(instanceTypeCountSize.ApplyT(func(instanceTypeCountSize int) (ecp.GetInstanceTypesInstanceType, error) {
-//					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[instanceTypeCountSize-1]), nil
+//					return ecp.GetInstanceTypesInstanceType(defaultGetInstanceTypes.InstanceTypes[float64(instanceTypeCountSize.ApplyT(func(__convert float64) (float64, error) {
+//						return __convert - 1, nil
+//					}).(pulumi.Float64Output))]), nil
 //				}).(ecp.GetInstanceTypesInstanceTypeOutput).ApplyT(func(obj ecp.GetInstanceTypesInstanceType) (*string, error) {
 //					return obj.InstanceType, nil
 //				}).(pulumi.StringPtrOutput)),

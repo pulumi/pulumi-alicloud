@@ -140,6 +140,19 @@ def get_access_rules(access_group_name: Optional[_builtins.str] = None,
 
     > **NOTE**: Available in 1.35.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.nas.get_access_rules(access_group_name="tf-testAccAccessGroupsdatasource",
+        source_cidr_ip="168.1.1.0/16",
+        rw_access="RDWR",
+        user_access="no_squash")
+    pulumi.export("alicloudNasAccessRulesId", foo.rules[0].id)
+    ```
+
 
     :param _builtins.str access_group_name: Filter results by a specific AccessGroupName.
     :param Sequence[_builtins.str] ids: A list of rule IDs.
@@ -178,6 +191,19 @@ def get_access_rules_output(access_group_name: Optional[pulumi.Input[_builtins.s
     This data source provides AccessRule available to the user.
 
     > **NOTE**: Available in 1.35.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    foo = alicloud.nas.get_access_rules(access_group_name="tf-testAccAccessGroupsdatasource",
+        source_cidr_ip="168.1.1.0/16",
+        rw_access="RDWR",
+        user_access="no_squash")
+    pulumi.export("alicloudNasAccessRulesId", foo.rules[0].id)
+    ```
 
 
     :param _builtins.str access_group_name: Filter results by a specific AccessGroupName.

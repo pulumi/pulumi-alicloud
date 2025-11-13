@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var searchIndexDs = AliCloud.Ots.GetSearchIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-search-index",
+        ///         OutputFile = "search-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSearchIndexId"] = searchIndexDs.Apply(getSearchIndexesResult =&gt; getSearchIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSearchIndexesResult> InvokeAsync(GetSearchIndexesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesArgs(), options.WithDefaults());
@@ -27,6 +52,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var searchIndexDs = AliCloud.Ots.GetSearchIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-search-index",
+        ///         OutputFile = "search-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSearchIndexId"] = searchIndexDs.Apply(getSearchIndexesResult =&gt; getSearchIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSearchIndexesResult> Invoke(GetSearchIndexesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesInvokeArgs(), options.WithDefaults());
@@ -37,6 +87,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS search index and how to use it, see [Search index overview](https://www.alibabacloud.com/help/en/tablestore/latest/search-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var searchIndexDs = AliCloud.Ots.GetSearchIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-search-index",
+        ///         OutputFile = "search-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSearchIndexId"] = searchIndexDs.Apply(getSearchIndexesResult =&gt; getSearchIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSearchIndexesResult> Invoke(GetSearchIndexesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSearchIndexesResult>("alicloud:ots/getSearchIndexes:getSearchIndexes", args ?? new GetSearchIndexesInvokeArgs(), options.WithDefaults());

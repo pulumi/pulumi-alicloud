@@ -26,6 +26,54 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/scdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Domain config.
+//			domain, err := scdn.NewDomain(ctx, "domain", &scdn.DomainArgs{
+//				DomainName: pulumi.String("mydomain.alicloud-provider.cn"),
+//				CdnType:    "web",
+//				Scope:      "overseas",
+//				Sources: scdn.DomainSourceArray{
+//					&scdn.DomainSourceArgs{
+//						Content:  pulumi.String("1.1.1.1"),
+//						Type:     pulumi.String("ipaddr"),
+//						Priority: pulumi.String("20"),
+//						Port:     pulumi.Int(80),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = scdn.NewDomainConfig(ctx, "config", &scdn.DomainConfigArgs{
+//				DomainName:   domain.DomainName,
+//				FunctionName: pulumi.String("ip_allow_list_set"),
+//				FunctionArgs: scdn.DomainConfigFunctionArgArray{
+//					&scdn.DomainConfigFunctionArgArgs{
+//						ArgName:  pulumi.String("ip_list"),
+//						ArgValue: pulumi.String("110.110.110.110"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // SCDN domain config can be imported using the id, e.g.

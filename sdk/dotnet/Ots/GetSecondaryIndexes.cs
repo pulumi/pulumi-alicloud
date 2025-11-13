@@ -17,6 +17,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var secondaryIndexDs = AliCloud.Ots.GetSecondaryIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-secondary-index",
+        ///         OutputFile = "secondary-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSecondaryIndexId"] = secondaryIndexDs.Apply(getSecondaryIndexesResult =&gt; getSecondaryIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSecondaryIndexesResult> InvokeAsync(GetSecondaryIndexesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesArgs(), options.WithDefaults());
@@ -27,6 +52,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var secondaryIndexDs = AliCloud.Ots.GetSecondaryIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-secondary-index",
+        ///         OutputFile = "secondary-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSecondaryIndexId"] = secondaryIndexDs.Apply(getSecondaryIndexesResult =&gt; getSecondaryIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecondaryIndexesResult> Invoke(GetSecondaryIndexesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesInvokeArgs(), options.WithDefaults());
@@ -37,6 +87,31 @@ namespace Pulumi.AliCloud.Ots
         /// For information about OTS secondary index and how to use it, see [Secondary index overview](https://www.alibabacloud.com/help/en/tablestore/latest/secondary-index-overview).
         /// 
         /// &gt; **NOTE:** Available in v1.187.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var secondaryIndexDs = AliCloud.Ots.GetSecondaryIndexes.Invoke(new()
+        ///     {
+        ///         InstanceName = "sample-instance",
+        ///         TableName = "sample-table",
+        ///         NameRegex = "sample-secondary-index",
+        ///         OutputFile = "secondary-indexs.txt",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstSecondaryIndexId"] = secondaryIndexDs.Apply(getSecondaryIndexesResult =&gt; getSecondaryIndexesResult.Indexs[0].Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecondaryIndexesResult> Invoke(GetSecondaryIndexesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecondaryIndexesResult>("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", args ?? new GetSecondaryIndexesInvokeArgs(), options.WithDefaults());

@@ -22,6 +22,34 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ebs.NewDedicatedBlockStorageCluster(ctx, "default", &ebs.DedicatedBlockStorageClusterArgs{
+//				Type:                             pulumi.String("Premium"),
+//				ZoneId:                           pulumi.String("cn-heyuan-b"),
+//				DedicatedBlockStorageClusterName: pulumi.String("dedicated_block_storage_cluster_name"),
+//				TotalCapacity:                    pulumi.String("61440"),
+//				RegionId:                         "cn-heyuan",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.

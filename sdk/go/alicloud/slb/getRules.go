@@ -94,7 +94,7 @@ import (
 //				return err
 //			}
 //			sampleDs := defaultApplicationLoadBalancer.ID().ApplyT(func(id string) (slb.GetRulesResult, error) {
-//				return slb.GetRulesResult(interface{}(slb.GetRulesOutput(ctx, slb.GetRulesOutputArgs{
+//				return slb.GetRulesResult(interface{}(slb.GetRules(ctx, &slb.GetRulesArgs{
 //					LoadBalancerId: id,
 //					FrontendPort:   22,
 //				}, nil))), nil

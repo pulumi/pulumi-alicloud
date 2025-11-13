@@ -74,13 +74,13 @@ import (
 //			exampleGetClusters := pulumi.All(exampleCluster.ID(), exampleCluster.ClusterAliasName).ApplyT(func(_args []interface{}) (mse.GetClustersResult, error) {
 //				id := _args[0].(string)
 //				clusterAliasName := _args[1].(string)
-//				return mse.GetClustersResult(interface{}(mse.GetClustersOutput(ctx, mse.GetClustersOutputArgs{
-//					EnableDetails: true,
+//				return mse.GetClustersResult(interface{}(mse.GetClusters(ctx, &mse.GetClustersArgs{
+//					EnableDetails: pulumi.BoolRef(pulumi.BoolRef(true)),
 //					Ids: []string{
 //						id,
 //					},
-//					Status:    "INIT_SUCCESS",
-//					NameRegex: clusterAliasName,
+//					Status:    pulumi.StringRef(pulumi.StringRef("INIT_SUCCESS")),
+//					NameRegex: pulumi.StringRef(pulumi.StringRef(clusterAliasName)),
 //				}, nil))), nil
 //			}).(mse.GetClustersResultOutput)
 //			ctx.Export("instanceId", exampleGetClusters.ApplyT(func(exampleGetClusters mse.GetClustersResult) (*string, error) {

@@ -20,6 +20,26 @@ namespace Pulumi.AliCloud.Ebs
     /// 
     /// Basic Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new AliCloud.Ebs.DedicatedBlockStorageCluster("default", new()
+    ///     {
+    ///         Type = "Premium",
+    ///         ZoneId = "cn-heyuan-b",
+    ///         DedicatedBlockStorageClusterName = "dedicated_block_storage_cluster_name",
+    ///         TotalCapacity = "61440",
+    ///         RegionId = "cn-heyuan",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.

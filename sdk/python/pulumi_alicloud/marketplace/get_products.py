@@ -180,6 +180,19 @@ def get_products(category_id: Optional[_builtins.str] = None,
 
     > **NOTE:** Available in 1.64.0+
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.marketplace.get_products(sort="created_on-desc",
+        category_id="53690006",
+        product_type="SERVICE")
+    pulumi.export("firstProductCode", default.product_items[0]["code"])
+    pulumi.export("productCodes", default.ids)
+    ```
+
 
     :param _builtins.str category_id: The Category ID of products.
     :param Sequence[_builtins.str] ids: A list of product code.
@@ -234,6 +247,19 @@ def get_products_output(category_id: Optional[pulumi.Input[Optional[_builtins.st
     This data source provides the Market product items of Alibaba Cloud.
 
     > **NOTE:** Available in 1.64.0+
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    default = alicloud.marketplace.get_products(sort="created_on-desc",
+        category_id="53690006",
+        product_type="SERVICE")
+    pulumi.export("firstProductCode", default.product_items[0]["code"])
+    pulumi.export("productCodes", default.ids)
+    ```
 
 
     :param _builtins.str category_id: The Category ID of products.

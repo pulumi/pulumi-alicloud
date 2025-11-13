@@ -16,6 +16,104 @@ namespace Pulumi.AliCloud.ServiceMesh
     /// 
     /// &gt; **NOTE:** Available since v1.191.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "default-NODELETING",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new List&lt;AliCloud.Vpc.Network&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultNetwork.Add(new AliCloud.Vpc.Network($"default-{range.Value}", new()
+    ///         {
+    ///         }));
+    ///     }
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : defaultNetwork[0].Id,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
+    ///         {
+    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length, defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
+    ///             {
+    ///                 var length = values.Item1;
+    ///                 var defaultGetNetworks = values.Item2;
+    ///                 var id = values.Item3;
+    ///                 return length &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : id;
+    ///             }),
+    ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
+    ///             {
+    ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
+    ///                 Newbits = 8,
+    ///                 Netnum = 2,
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         }));
+    ///     }
+    ///     var defaultServiceMesh = new AliCloud.ServiceMesh.ServiceMesh("default", new()
+    ///     {
+    ///         ServiceMeshName = "mesh-c50f3fef117ad45b6b26047cdafef65ad",
+    ///         Version = "v1.21.6.103-g5ddeaef7-aliyun",
+    ///         Edition = "Default",
+    ///         Network = new AliCloud.ServiceMesh.Inputs.ServiceMeshNetworkArgs
+    ///         {
+    ///             VpcId = Output.Tuple(defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids).Length, defaultGetNetworks, defaultNetwork[0].Id).Apply(values =&gt;
+    ///             {
+    ///                 var length = values.Item1;
+    ///                 var defaultGetNetworks = values.Item2;
+    ///                 var id = values.Item3;
+    ///                 return length &gt; 0 ? defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]) : id;
+    ///             }),
+    ///             VswitcheLists = new[]
+    ///             {
+    ///                 Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, defaultSwitch[0].Id).Apply(values =&gt;
+    ///                 {
+    ///                     var length = values.Item1;
+    ///                     var defaultGetSwitches = values.Item2;
+    ///                     var id = values.Item3;
+    ///                     return length &gt; 0 ? defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]) : id;
+    ///                 }),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultExtensionProvider = new AliCloud.ServiceMesh.ExtensionProvider("default", new()
+    ///     {
+    ///         ServiceMeshId = defaultServiceMesh.Id,
+    ///         ExtensionProviderName = "httpextauth-tf-example",
+    ///         Type = "httpextauth",
+    ///         Config = "{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Service Mesh Extension Provider can be imported using the id, e.g.

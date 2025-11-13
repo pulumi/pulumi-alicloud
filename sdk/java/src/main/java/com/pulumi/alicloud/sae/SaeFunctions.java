@@ -1500,6 +1500,115 @@ public final class SaeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.Ingress;
+     * import com.pulumi.alicloud.sae.IngressArgs;
+     * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .name(name)
+     *             .specification("slb.s2.small")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .build());
+     * 
+     *         final var desc = config.get("desc").orElse("example_value");
+     *         final var namespaceId = config.get("namespaceId").orElse("cn-hangzhou:yourname");
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespaceId(namespaceId)
+     *             .namespaceName(name)
+     *             .namespaceDescription(desc)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
+     *             .appDescription("your_app_description")
+     *             .appName("your_app_name")
+     *             .namespaceId("your_namespace_id")
+     *             .packageUrl("your_package_url")
+     *             .packageType("your_package_url")
+     *             .jdk("jdk_specifications")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .replicas("your_replicas")
+     *             .cpu("cpu_specifications")
+     *             .memory("memory_specifications")
+     *             .build());
+     * 
+     *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
+     *             .slbId(defaultLoadBalancer.id())
+     *             .namespaceId(defaultNamespace.id())
+     *             .listenerPort("your_listener_port")
+     *             .rules(IngressRuleArgs.builder()
+     *                 .appId(defaultApplication.id())
+     *                 .containerPort("your_container_port")
+     *                 .domain("your_domain")
+     *                 .appName("your_name")
+     *                 .path("your_path")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetIngresses = SaeFunctions.getIngresses(GetIngressesArgs.builder()
+     *             .ids(defaultIngress.id())
+     *             .build());
+     * 
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIngressesResult> getIngresses(GetIngressesArgs args) {
         return getIngresses(args, InvokeOptions.Empty);
@@ -1508,6 +1617,115 @@ public final class SaeFunctions {
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.Ingress;
+     * import com.pulumi.alicloud.sae.IngressArgs;
+     * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .name(name)
+     *             .specification("slb.s2.small")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .build());
+     * 
+     *         final var desc = config.get("desc").orElse("example_value");
+     *         final var namespaceId = config.get("namespaceId").orElse("cn-hangzhou:yourname");
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespaceId(namespaceId)
+     *             .namespaceName(name)
+     *             .namespaceDescription(desc)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
+     *             .appDescription("your_app_description")
+     *             .appName("your_app_name")
+     *             .namespaceId("your_namespace_id")
+     *             .packageUrl("your_package_url")
+     *             .packageType("your_package_url")
+     *             .jdk("jdk_specifications")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .replicas("your_replicas")
+     *             .cpu("cpu_specifications")
+     *             .memory("memory_specifications")
+     *             .build());
+     * 
+     *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
+     *             .slbId(defaultLoadBalancer.id())
+     *             .namespaceId(defaultNamespace.id())
+     *             .listenerPort("your_listener_port")
+     *             .rules(IngressRuleArgs.builder()
+     *                 .appId(defaultApplication.id())
+     *                 .containerPort("your_container_port")
+     *                 .domain("your_domain")
+     *                 .appName("your_name")
+     *                 .path("your_path")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetIngresses = SaeFunctions.getIngresses(GetIngressesArgs.builder()
+     *             .ids(defaultIngress.id())
+     *             .build());
+     * 
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIngressesResult> getIngressesPlain(GetIngressesPlainArgs args) {
@@ -1518,6 +1736,115 @@ public final class SaeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.Ingress;
+     * import com.pulumi.alicloud.sae.IngressArgs;
+     * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .name(name)
+     *             .specification("slb.s2.small")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .build());
+     * 
+     *         final var desc = config.get("desc").orElse("example_value");
+     *         final var namespaceId = config.get("namespaceId").orElse("cn-hangzhou:yourname");
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespaceId(namespaceId)
+     *             .namespaceName(name)
+     *             .namespaceDescription(desc)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
+     *             .appDescription("your_app_description")
+     *             .appName("your_app_name")
+     *             .namespaceId("your_namespace_id")
+     *             .packageUrl("your_package_url")
+     *             .packageType("your_package_url")
+     *             .jdk("jdk_specifications")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .replicas("your_replicas")
+     *             .cpu("cpu_specifications")
+     *             .memory("memory_specifications")
+     *             .build());
+     * 
+     *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
+     *             .slbId(defaultLoadBalancer.id())
+     *             .namespaceId(defaultNamespace.id())
+     *             .listenerPort("your_listener_port")
+     *             .rules(IngressRuleArgs.builder()
+     *                 .appId(defaultApplication.id())
+     *                 .containerPort("your_container_port")
+     *                 .domain("your_domain")
+     *                 .appName("your_name")
+     *                 .path("your_path")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetIngresses = SaeFunctions.getIngresses(GetIngressesArgs.builder()
+     *             .ids(defaultIngress.id())
+     *             .build());
+     * 
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIngressesResult> getIngresses(GetIngressesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getIngresses:getIngresses", TypeShape.of(GetIngressesResult.class), args, Utilities.withVersion(options));
@@ -1527,6 +1854,115 @@ public final class SaeFunctions {
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
      * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.Ingress;
+     * import com.pulumi.alicloud.sae.IngressArgs;
+     * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .name(name)
+     *             .specification("slb.s2.small")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .build());
+     * 
+     *         final var desc = config.get("desc").orElse("example_value");
+     *         final var namespaceId = config.get("namespaceId").orElse("cn-hangzhou:yourname");
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespaceId(namespaceId)
+     *             .namespaceName(name)
+     *             .namespaceDescription(desc)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
+     *             .appDescription("your_app_description")
+     *             .appName("your_app_name")
+     *             .namespaceId("your_namespace_id")
+     *             .packageUrl("your_package_url")
+     *             .packageType("your_package_url")
+     *             .jdk("jdk_specifications")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .replicas("your_replicas")
+     *             .cpu("cpu_specifications")
+     *             .memory("memory_specifications")
+     *             .build());
+     * 
+     *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
+     *             .slbId(defaultLoadBalancer.id())
+     *             .namespaceId(defaultNamespace.id())
+     *             .listenerPort("your_listener_port")
+     *             .rules(IngressRuleArgs.builder()
+     *                 .appId(defaultApplication.id())
+     *                 .containerPort("your_container_port")
+     *                 .domain("your_domain")
+     *                 .appName("your_name")
+     *                 .path("your_path")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetIngresses = SaeFunctions.getIngresses(GetIngressesArgs.builder()
+     *             .ids(defaultIngress.id())
+     *             .build());
+     * 
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetIngressesResult> getIngresses(GetIngressesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("alicloud:sae/getIngresses:getIngresses", TypeShape.of(GetIngressesResult.class), args, Utilities.withVersion(options));
@@ -1535,6 +1971,115 @@ public final class SaeFunctions {
      * This data source provides the Sae Ingresses of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.137.0+.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.slb.LoadBalancer;
+     * import com.pulumi.alicloud.slb.LoadBalancerArgs;
+     * import com.pulumi.alicloud.sae.Namespace;
+     * import com.pulumi.alicloud.sae.NamespaceArgs;
+     * import com.pulumi.alicloud.sae.Application;
+     * import com.pulumi.alicloud.sae.ApplicationArgs;
+     * import com.pulumi.alicloud.sae.Ingress;
+     * import com.pulumi.alicloud.sae.IngressArgs;
+     * import com.pulumi.alicloud.sae.inputs.IngressRuleArgs;
+     * import com.pulumi.alicloud.sae.SaeFunctions;
+     * import com.pulumi.alicloud.sae.inputs.GetIngressesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("example_value");
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .name(name)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock("172.16.0.0/21")
+     *             .zoneId(default_.zones()[0].id())
+     *             .vswitchName(name)
+     *             .build());
+     * 
+     *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
+     *             .name(name)
+     *             .specification("slb.s2.small")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .build());
+     * 
+     *         final var desc = config.get("desc").orElse("example_value");
+     *         final var namespaceId = config.get("namespaceId").orElse("cn-hangzhou:yourname");
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
+     *             .namespaceId(namespaceId)
+     *             .namespaceName(name)
+     *             .namespaceDescription(desc)
+     *             .build());
+     * 
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
+     *             .appDescription("your_app_description")
+     *             .appName("your_app_name")
+     *             .namespaceId("your_namespace_id")
+     *             .packageUrl("your_package_url")
+     *             .packageType("your_package_url")
+     *             .jdk("jdk_specifications")
+     *             .vswitchId(defaultAlicloudVswitches.ids()[0])
+     *             .replicas("your_replicas")
+     *             .cpu("cpu_specifications")
+     *             .memory("memory_specifications")
+     *             .build());
+     * 
+     *         var defaultIngress = new Ingress("defaultIngress", IngressArgs.builder()
+     *             .slbId(defaultLoadBalancer.id())
+     *             .namespaceId(defaultNamespace.id())
+     *             .listenerPort("your_listener_port")
+     *             .rules(IngressRuleArgs.builder()
+     *                 .appId(defaultApplication.id())
+     *                 .containerPort("your_container_port")
+     *                 .domain("your_domain")
+     *                 .appName("your_name")
+     *                 .path("your_path")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var defaultGetIngresses = SaeFunctions.getIngresses(GetIngressesArgs.builder()
+     *             .ids(defaultIngress.id())
+     *             .build());
+     * 
+     *         ctx.export("saeIngressId", defaultGetIngresses.applyValue(_defaultGetIngresses -> _defaultGetIngresses.ingressList()[0].id()));
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetIngressesResult> getIngressesPlain(GetIngressesPlainArgs args, InvokeOptions options) {

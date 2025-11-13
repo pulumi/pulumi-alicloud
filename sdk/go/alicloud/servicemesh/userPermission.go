@@ -22,6 +22,107 @@ import (
 //
 // # Basic Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/servicemesh"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tfexample"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := servicemesh.GetVersions(ctx, &servicemesh.GetVersionsArgs{
+//				Edition: pulumi.StringRef("Default"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultUser, err := ram.NewUser(ctx, "default", &ram.UserArgs{
+//				Name: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default1, err := servicemesh.NewServiceMesh(ctx, "default1", &servicemesh.ServiceMeshArgs{
+//				ServiceMeshName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				Edition:         pulumi.String("Default"),
+//				ClusterSpec:     pulumi.String("standard"),
+//				Version:         pulumi.String(_default.Versions[0].Version),
+//				Network: &servicemesh.ServiceMeshNetworkArgs{
+//					VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+//					VswitcheLists: []*string{
+//						defaultGetSwitches.Ids[0],
+//					},
+//				},
+//				LoadBalancer: &servicemesh.ServiceMeshLoadBalancerArgs{
+//					PilotPublicEip:     pulumi.Bool(false),
+//					ApiServerPublicEip: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = servicemesh.NewUserPermission(ctx, "default", &servicemesh.UserPermissionArgs{
+//				SubAccountUserId: defaultUser.ID(),
+//				Permissions: servicemesh.UserPermissionPermissionArray{
+//					&servicemesh.UserPermissionPermissionArgs{
+//						RoleName:      pulumi.String("istio-ops"),
+//						ServiceMeshId: default1.ID(),
+//						RoleType:      pulumi.String("custom"),
+//						IsCustom:      pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Service Mesh User Permission can be imported using the id, e.g.

@@ -14,6 +14,36 @@ import (
 // This data source provides AccessRule available to the user.
 //
 // > **NOTE**: Available in 1.35.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := nas.GetAccessRules(ctx, &nas.GetAccessRulesArgs{
+//				AccessGroupName: "tf-testAccAccessGroupsdatasource",
+//				SourceCidrIp:    pulumi.StringRef("168.1.1.0/16"),
+//				RwAccess:        pulumi.StringRef("RDWR"),
+//				UserAccess:      pulumi.StringRef("no_squash"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudNasAccessRulesId", foo.Rules[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessRulesResult

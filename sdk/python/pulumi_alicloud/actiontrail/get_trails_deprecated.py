@@ -152,6 +152,16 @@ def get_trails_deprecated(ids: Optional[Sequence[_builtins.str]] = None,
 
     This data source provides a list of action trail of the current Alibaba Cloud user.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    trails = alicloud.actiontrail.get_trails_deprecated(name_regex="tf-testacc-actiontrail")
+    pulumi.export("firstTrailName", trails.actiontrails[0].name)
+    ```
+
 
     :param _builtins.str name_regex: A regex string to filter results action trail name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -189,6 +199,16 @@ def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[_b
     > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
 
     This data source provides a list of action trail of the current Alibaba Cloud user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    trails = alicloud.actiontrail.get_trails_deprecated(name_regex="tf-testacc-actiontrail")
+    pulumi.export("firstTrailName", trails.actiontrails[0].name)
+    ```
 
 
     :param _builtins.str name_regex: A regex string to filter results action trail name.

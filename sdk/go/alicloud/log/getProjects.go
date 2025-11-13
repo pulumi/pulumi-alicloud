@@ -14,6 +14,37 @@ import (
 // This data source provides the Log Projects of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.126.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := log.GetProjects(ctx, &log.GetProjectsArgs{
+//				Ids: []string{
+//					"the_project_name",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstLogProjectId", example.Project[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult

@@ -14,6 +14,33 @@ import (
 // This data source provides CEN Transit Router peer attachments available to the user.
 //
 // > **NOTE:** Available in 1.128.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cen.GetTransitRouterPeerAttachments(ctx, &cen.GetTransitRouterPeerAttachmentsArgs{
+//				CenId: "cen-id1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", _default.TransitRouterAttachments[0].ResourceType)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTransitRouterPeerAttachments(ctx *pulumi.Context, args *GetTransitRouterPeerAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterPeerAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterPeerAttachmentsResult

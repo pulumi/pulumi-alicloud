@@ -14,6 +14,44 @@ import (
 // This data source provides availability instanceTypes for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available since v1.106.0.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := hbase.GetInstanceTypes(ctx, &hbase.GetInstanceTypesArgs{
+//				ChargeType:   pulumi.StringRef("Postpaid"),
+//				RegionId:     pulumi.StringRef("cn-shanghai"),
+//				ZoneId:       pulumi.StringRef("cn-shanghai-g"),
+//				Engine:       pulumi.StringRef("hbaseue"),
+//				Version:      pulumi.StringRef("2.0"),
+//				InstanceType: pulumi.StringRef("hbase.sn2.large"),
+//				DiskType:     pulumi.StringRef("cloud_ssd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbase.NewInstance(ctx, "hbase", &hbase.InstanceArgs{
+//				CoreInstanceType: pulumi.Any(_default.Types[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceTypesResult

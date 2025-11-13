@@ -20,6 +20,117 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.191.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.CidrsubnetArgs;
+ * import com.pulumi.alicloud.servicemesh.ServiceMesh;
+ * import com.pulumi.alicloud.servicemesh.ServiceMeshArgs;
+ * import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshNetworkArgs;
+ * import com.pulumi.alicloud.servicemesh.ExtensionProvider;
+ * import com.pulumi.alicloud.servicemesh.ExtensionProviderArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex("default-NODELETING")
+ *             .build());
+ * 
+ *         for (var i = 0; i < defaultGetNetworks.ids().length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new Network("defaultNetwork-" + i);
+ * 
+ *         
+ * }
+ *         final var defaultGetSwitches = Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
+ *             var length = values.t1;
+ *             var id = values.t2;
+ *             return length > 0 ? defaultGetNetworks.ids()[0] : id;
+ *         }).applyValue(_value -> VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(_value)
+ *             .build()));
+ * 
+ *         for (var i = 0; i < defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).length().applyValue(_length -> _length > 0 ? 0 : 1); i++) {
+ *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
+ *                 .vpcId(Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
+ *                     var length = values.t1;
+ *                     var id = values.t2;
+ *                     return length > 0 ? defaultGetNetworks.ids()[0] : id;
+ *                 }))
+ *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                     .input(defaultGetNetworks.vpcs()[0].cidrBlock())
+ *                     .newbits(8)
+ *                     .netnum(2)
+ *                     .build()).result())
+ *                 .zoneId(default_.zones()[0].id())
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultServiceMesh = new ServiceMesh("defaultServiceMesh", ServiceMeshArgs.builder()
+ *             .serviceMeshName("mesh-c50f3fef117ad45b6b26047cdafef65ad")
+ *             .version("v1.21.6.103-g5ddeaef7-aliyun")
+ *             .edition("Default")
+ *             .network(ServiceMeshNetworkArgs.builder()
+ *                 .vpcId(Output.tuple(defaultGetNetworks.ids().length(), defaultNetwork[0].id()).applyValue(values -> {
+ *                     var length = values.t1;
+ *                     var id = values.t2;
+ *                     return length.applyValue(___convert -> ___convert > 0) ? defaultGetNetworks.ids()[0] : id;
+ *                 }))
+ *                 .vswitcheLists(List.of(Output.tuple(defaultGetSwitches.applyValue(_defaultGetSwitches -> _defaultGetSwitches.ids()).length(), defaultGetSwitches, defaultSwitch[0].id()).applyValue(values -> {
+ *                     var length = values.t1;
+ *                     var defaultGetSwitches = values.t2;
+ *                     var id = values.t3;
+ *                     return length.applyValue(___convert -> ___convert > 0) ? defaultGetSwitches.ids()[0] : id;
+ *                 })))
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultExtensionProvider = new ExtensionProvider("defaultExtensionProvider", ExtensionProviderArgs.builder()
+ *             .serviceMeshId(defaultServiceMesh.id())
+ *             .extensionProviderName("httpextauth-tf-example")
+ *             .type("httpextauth")
+ *             .config("{\"headersToDownstreamOnDeny\":[\"content-type\",\"set-cookie\"],\"headersToUpstreamOnAllow\":[\"authorization\",\"cookie\",\"path\",\"x-auth-request-access-token\",\"x-forwarded-access-token\"],\"includeRequestHeadersInCheck\":[\"cookie\",\"x-forward-access-token\"],\"oidc\":{\"clientID\":\"qweqweqwewqeqwe\",\"clientSecret\":\"asdasdasdasdsadas\",\"cookieExpire\":\"1000\",\"cookieRefresh\":\"500\",\"cookieSecret\":\"scxzcxzcxzcxzcxz\",\"issuerURI\":\"qweqwewqeqweqweqwe\",\"redirectDomain\":\"www.alicloud-provider.cn\",\"redirectProtocol\":\"http\",\"scopes\":[\"profile\"]},\"port\":4180,\"service\":\"oauth2proxy-httpextauth-tf-example.istio-system.svc.cluster.local\",\"timeout\":\"10s\"}")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Service Mesh Extension Provider can be imported using the id, e.g.
