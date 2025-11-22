@@ -28,9 +28,9 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// The mode in which the domain name is added to WAF. Valid values:
-	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
+	// The CNAME assigned by WAF to the domain name.
+	Cname pulumi.StringOutput `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The domain ID.
@@ -91,9 +91,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The mode in which the domain name is added to WAF. Valid values:
-	// share: CNAME record mode. This is the default value.
 	AccessType *string `pulumi:"accessType"`
+	// The CNAME assigned by WAF to the domain name.
+	Cname *string `pulumi:"cname"`
 	// The name of the domain name to query.
 	Domain *string `pulumi:"domain"`
 	// The domain ID.
@@ -113,9 +113,9 @@ type domainState struct {
 }
 
 type DomainState struct {
-	// The mode in which the domain name is added to WAF. Valid values:
-	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrInput
+	// The CNAME assigned by WAF to the domain name.
+	Cname pulumi.StringPtrInput
 	// The name of the domain name to query.
 	Domain pulumi.StringPtrInput
 	// The domain ID.
@@ -139,8 +139,6 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The mode in which the domain name is added to WAF. Valid values:
-	// share: CNAME record mode. This is the default value.
 	AccessType *string `pulumi:"accessType"`
 	// The name of the domain name to query.
 	Domain string `pulumi:"domain"`
@@ -158,8 +156,6 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The mode in which the domain name is added to WAF. Valid values:
-	// share: CNAME record mode. This is the default value.
 	AccessType pulumi.StringPtrInput
 	// The name of the domain name to query.
 	Domain pulumi.StringInput
@@ -262,10 +258,13 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
-// The mode in which the domain name is added to WAF. Valid values:
-// share: CNAME record mode. This is the default value.
 func (o DomainOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
+}
+
+// The CNAME assigned by WAF to the domain name.
+func (o DomainOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
 // The name of the domain name to query.

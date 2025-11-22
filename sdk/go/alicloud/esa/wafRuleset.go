@@ -80,8 +80,7 @@ type WafRuleset struct {
 	// waf rule set id
 	RulesetId pulumi.IntOutput `pulumi:"rulesetId"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The site version.
+	SiteId      pulumi.StringOutput `pulumi:"siteId"`
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -130,9 +129,8 @@ type wafRulesetState struct {
 	// waf rule set id
 	RulesetId *int `pulumi:"rulesetId"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId *int `pulumi:"siteId"`
-	// The site version.
-	SiteVersion *int `pulumi:"siteVersion"`
+	SiteId      *string `pulumi:"siteId"`
+	SiteVersion *int    `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status *string `pulumi:"status"`
 }
@@ -145,8 +143,7 @@ type WafRulesetState struct {
 	// waf rule set id
 	RulesetId pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntPtrInput
-	// The site version.
+	SiteId      pulumi.StringPtrInput
 	SiteVersion pulumi.IntPtrInput
 	// Rule Set Status
 	Status pulumi.StringPtrInput
@@ -162,9 +159,8 @@ type wafRulesetArgs struct {
 	// The WAF phase
 	Phase string `pulumi:"phase"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId int `pulumi:"siteId"`
-	// The site version.
-	SiteVersion *int `pulumi:"siteVersion"`
+	SiteId      string `pulumi:"siteId"`
+	SiteVersion *int   `pulumi:"siteVersion"`
 	// Rule Set Status
 	Status *string `pulumi:"status"`
 }
@@ -176,8 +172,7 @@ type WafRulesetArgs struct {
 	// The WAF phase
 	Phase pulumi.StringInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntInput
-	// The site version.
+	SiteId      pulumi.StringInput
 	SiteVersion pulumi.IntPtrInput
 	// Rule Set Status
 	Status pulumi.StringPtrInput
@@ -286,11 +281,10 @@ func (o WafRulesetOutput) RulesetId() pulumi.IntOutput {
 }
 
 // The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-func (o WafRulesetOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *WafRuleset) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o WafRulesetOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRuleset) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// The site version.
 func (o WafRulesetOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRuleset) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

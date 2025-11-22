@@ -121,7 +121,7 @@ type SiteOriginClientCertificate struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// Site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The certificate ID on ESA.
 	SiteOriginClientCertificateId pulumi.StringOutput `pulumi:"siteOriginClientCertificateId"`
 	// The certificate name.
@@ -183,7 +183,7 @@ type siteOriginClientCertificateState struct {
 	// The private key of the certificate.
 	PrivateKey *string `pulumi:"privateKey"`
 	// Site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The certificate ID on ESA.
 	SiteOriginClientCertificateId *string `pulumi:"siteOriginClientCertificateId"`
 	// The certificate name.
@@ -200,7 +200,7 @@ type SiteOriginClientCertificateState struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringPtrInput
 	// Site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The certificate ID on ESA.
 	SiteOriginClientCertificateId pulumi.StringPtrInput
 	// The certificate name.
@@ -219,7 +219,7 @@ type siteOriginClientCertificateArgs struct {
 	// The private key of the certificate.
 	PrivateKey string `pulumi:"privateKey"`
 	// Site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The certificate name.
 	SiteOriginClientCertificateName *string `pulumi:"siteOriginClientCertificateName"`
 }
@@ -231,7 +231,7 @@ type SiteOriginClientCertificateArgs struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringInput
 	// Site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The certificate name.
 	SiteOriginClientCertificateName pulumi.StringPtrInput
 }
@@ -339,8 +339,8 @@ func (o SiteOriginClientCertificateOutput) PrivateKey() pulumi.StringOutput {
 }
 
 // Site ID.
-func (o SiteOriginClientCertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *SiteOriginClientCertificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o SiteOriginClientCertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteOriginClientCertificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The certificate ID on ESA.

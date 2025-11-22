@@ -159,6 +159,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.ScalingConfigurationDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the dedicated host cluster.
+        /// </summary>
+        [Output("dedicatedHostClusterId")]
+        public Output<string?> DedicatedHostClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         /// </summary>
         [Output("deletionProtection")]
@@ -181,6 +187,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        /// </summary>
+        [Output("httpEndpoint")]
+        public Output<string?> HttpEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
@@ -551,6 +563,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The ID of the dedicated host cluster.
+        /// </summary>
+        [Input("dedicatedHostClusterId")]
+        public Input<string>? DedicatedHostClusterId { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         /// </summary>
         [Input("deletionProtection")]
@@ -573,6 +591,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.
@@ -960,6 +984,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The ID of the dedicated host cluster.
+        /// </summary>
+        [Input("dedicatedHostClusterId")]
+        public Input<string>? DedicatedHostClusterId { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         /// </summary>
         [Input("deletionProtection")]
@@ -982,6 +1012,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
         /// ID of an image file, indicating the image resource selected when an instance is enabled.

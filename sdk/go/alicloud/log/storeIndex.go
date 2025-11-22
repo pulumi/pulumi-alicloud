@@ -15,6 +15,8 @@ import (
 // Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
 // You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 //
+// > **NOTE:** Available since v1.0.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -99,12 +101,22 @@ import (
 type StoreIndex struct {
 	pulumi.CustomResourceState
 
-	// List configurations of field search index. Valid item as follows:
+	// List configurations of field search index. See `fieldSearch` below.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	FieldSearches StoreIndexFieldSearchArrayOutput `pulumi:"fieldSearches"`
-	// The configuration of full text index. Valid item as follows:
+	// The configuration of full text index. See `fullText` below.
 	FullText StoreIndexFullTextPtrOutput `pulumi:"fullText"`
+	// Whether to enable log reduce. Default to false.
+	LogReduce pulumi.BoolPtrOutput `pulumi:"logReduce"`
+	// The black list of log reduce.
+	LogReduceBlackLists pulumi.StringArrayOutput `pulumi:"logReduceBlackLists"`
+	// The white list of log reduce.
+	LogReduceWhiteLists pulumi.StringArrayOutput `pulumi:"logReduceWhiteLists"`
 	// The log store name to the query index belongs.
 	Logstore pulumi.StringOutput `pulumi:"logstore"`
+	// The max text length.
+	MaxTextLen pulumi.IntPtrOutput `pulumi:"maxTextLen"`
 	// The project name to the log store belongs.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -145,23 +157,43 @@ func GetStoreIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StoreIndex resources.
 type storeIndexState struct {
-	// List configurations of field search index. Valid item as follows:
+	// List configurations of field search index. See `fieldSearch` below.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	FieldSearches []StoreIndexFieldSearch `pulumi:"fieldSearches"`
-	// The configuration of full text index. Valid item as follows:
+	// The configuration of full text index. See `fullText` below.
 	FullText *StoreIndexFullText `pulumi:"fullText"`
+	// Whether to enable log reduce. Default to false.
+	LogReduce *bool `pulumi:"logReduce"`
+	// The black list of log reduce.
+	LogReduceBlackLists []string `pulumi:"logReduceBlackLists"`
+	// The white list of log reduce.
+	LogReduceWhiteLists []string `pulumi:"logReduceWhiteLists"`
 	// The log store name to the query index belongs.
 	Logstore *string `pulumi:"logstore"`
+	// The max text length.
+	MaxTextLen *int `pulumi:"maxTextLen"`
 	// The project name to the log store belongs.
 	Project *string `pulumi:"project"`
 }
 
 type StoreIndexState struct {
-	// List configurations of field search index. Valid item as follows:
+	// List configurations of field search index. See `fieldSearch` below.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	FieldSearches StoreIndexFieldSearchArrayInput
-	// The configuration of full text index. Valid item as follows:
+	// The configuration of full text index. See `fullText` below.
 	FullText StoreIndexFullTextPtrInput
+	// Whether to enable log reduce. Default to false.
+	LogReduce pulumi.BoolPtrInput
+	// The black list of log reduce.
+	LogReduceBlackLists pulumi.StringArrayInput
+	// The white list of log reduce.
+	LogReduceWhiteLists pulumi.StringArrayInput
 	// The log store name to the query index belongs.
 	Logstore pulumi.StringPtrInput
+	// The max text length.
+	MaxTextLen pulumi.IntPtrInput
 	// The project name to the log store belongs.
 	Project pulumi.StringPtrInput
 }
@@ -171,24 +203,44 @@ func (StoreIndexState) ElementType() reflect.Type {
 }
 
 type storeIndexArgs struct {
-	// List configurations of field search index. Valid item as follows:
+	// List configurations of field search index. See `fieldSearch` below.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	FieldSearches []StoreIndexFieldSearch `pulumi:"fieldSearches"`
-	// The configuration of full text index. Valid item as follows:
+	// The configuration of full text index. See `fullText` below.
 	FullText *StoreIndexFullText `pulumi:"fullText"`
+	// Whether to enable log reduce. Default to false.
+	LogReduce *bool `pulumi:"logReduce"`
+	// The black list of log reduce.
+	LogReduceBlackLists []string `pulumi:"logReduceBlackLists"`
+	// The white list of log reduce.
+	LogReduceWhiteLists []string `pulumi:"logReduceWhiteLists"`
 	// The log store name to the query index belongs.
 	Logstore string `pulumi:"logstore"`
+	// The max text length.
+	MaxTextLen *int `pulumi:"maxTextLen"`
 	// The project name to the log store belongs.
 	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a StoreIndex resource.
 type StoreIndexArgs struct {
-	// List configurations of field search index. Valid item as follows:
+	// List configurations of field search index. See `fieldSearch` below.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 	FieldSearches StoreIndexFieldSearchArrayInput
-	// The configuration of full text index. Valid item as follows:
+	// The configuration of full text index. See `fullText` below.
 	FullText StoreIndexFullTextPtrInput
+	// Whether to enable log reduce. Default to false.
+	LogReduce pulumi.BoolPtrInput
+	// The black list of log reduce.
+	LogReduceBlackLists pulumi.StringArrayInput
+	// The white list of log reduce.
+	LogReduceWhiteLists pulumi.StringArrayInput
 	// The log store name to the query index belongs.
 	Logstore pulumi.StringInput
+	// The max text length.
+	MaxTextLen pulumi.IntPtrInput
 	// The project name to the log store belongs.
 	Project pulumi.StringInput
 }
@@ -280,19 +332,41 @@ func (o StoreIndexOutput) ToStoreIndexOutputWithContext(ctx context.Context) Sto
 	return o
 }
 
-// List configurations of field search index. Valid item as follows:
+// List configurations of field search index. See `fieldSearch` below.
+//
+// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 func (o StoreIndexOutput) FieldSearches() StoreIndexFieldSearchArrayOutput {
 	return o.ApplyT(func(v *StoreIndex) StoreIndexFieldSearchArrayOutput { return v.FieldSearches }).(StoreIndexFieldSearchArrayOutput)
 }
 
-// The configuration of full text index. Valid item as follows:
+// The configuration of full text index. See `fullText` below.
 func (o StoreIndexOutput) FullText() StoreIndexFullTextPtrOutput {
 	return o.ApplyT(func(v *StoreIndex) StoreIndexFullTextPtrOutput { return v.FullText }).(StoreIndexFullTextPtrOutput)
+}
+
+// Whether to enable log reduce. Default to false.
+func (o StoreIndexOutput) LogReduce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.BoolPtrOutput { return v.LogReduce }).(pulumi.BoolPtrOutput)
+}
+
+// The black list of log reduce.
+func (o StoreIndexOutput) LogReduceBlackLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.StringArrayOutput { return v.LogReduceBlackLists }).(pulumi.StringArrayOutput)
+}
+
+// The white list of log reduce.
+func (o StoreIndexOutput) LogReduceWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.StringArrayOutput { return v.LogReduceWhiteLists }).(pulumi.StringArrayOutput)
 }
 
 // The log store name to the query index belongs.
 func (o StoreIndexOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v *StoreIndex) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
+}
+
+// The max text length.
+func (o StoreIndexOutput) MaxTextLen() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StoreIndex) pulumi.IntPtrOutput { return v.MaxTextLen }).(pulumi.IntPtrOutput)
 }
 
 // The project name to the log store belongs.

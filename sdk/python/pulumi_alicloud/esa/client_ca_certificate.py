@@ -20,12 +20,12 @@ __all__ = ['ClientCaCertificateArgs', 'ClientCaCertificate']
 class ClientCaCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  client_ca_cert_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCaCertificate resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
         """
         pulumi.set(__self__, "certificate", certificate)
@@ -47,14 +47,14 @@ class ClientCaCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -77,7 +77,7 @@ class _ClientCaCertificateState:
                  client_ca_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_ca_cert_name: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientCaCertificate resources.
@@ -85,7 +85,7 @@ class _ClientCaCertificateState:
         :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
         """
         if certificate is not None:
@@ -151,14 +151,14 @@ class _ClientCaCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -182,7 +182,7 @@ class ClientCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  client_ca_cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Client Ca Certificate resource.
@@ -220,7 +220,7 @@ class ClientCaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         ...
     @overload
@@ -277,7 +277,7 @@ class ClientCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  client_ca_cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -311,7 +311,7 @@ class ClientCaCertificate(pulumi.CustomResource):
             client_ca_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_ca_cert_name: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientCaCertificate':
         """
         Get an existing ClientCaCertificate resource's state with the given name, id, and optional extra
@@ -324,7 +324,7 @@ class ClientCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_ca_cert_id: ClientCaCertificate Id
         :param pulumi.Input[_builtins.str] client_ca_cert_name: The certificate name.
         :param pulumi.Input[_builtins.str] create_time: Creation time.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -373,7 +373,7 @@ class ClientCaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site Id
         """

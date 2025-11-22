@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Mongo D B Account can be imported using the id, e.g.
+ * Mongodb Account can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
@@ -42,31 +42,26 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * Account comment information.
-     *
-     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+     * Set the comment information of the account.
+     * - Cannot start with http:// or https.
+     * - Start with Chinese and English letters.
+     * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      */
     declare public readonly accountDescription: pulumi.Output<string | undefined>;
     /**
-     * The new password.
-     *
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-     * - The password must be 8 to 32 characters in length.
+     * Account Name
      */
     declare public readonly accountName: pulumi.Output<string>;
     /**
-     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+     * Account Password
      */
     declare public readonly accountPassword: pulumi.Output<string>;
     /**
-     * The role type of the instance. Value description
-     *
-     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * The account Comment Information type. Value:
      */
     declare public readonly characterType: pulumi.Output<string>;
     /**
-     * The account whose password needs to be reset. Set the value to `root`.
+     * Instance Id
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -123,31 +118,26 @@ export class Account extends pulumi.CustomResource {
  */
 export interface AccountState {
     /**
-     * Account comment information.
-     *
-     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+     * Set the comment information of the account.
+     * - Cannot start with http:// or https.
+     * - Start with Chinese and English letters.
+     * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The new password.
-     *
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-     * - The password must be 8 to 32 characters in length.
+     * Account Name
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+     * Account Password
      */
     accountPassword?: pulumi.Input<string>;
     /**
-     * The role type of the instance. Value description
-     *
-     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * The account Comment Information type. Value:
      */
     characterType?: pulumi.Input<string>;
     /**
-     * The account whose password needs to be reset. Set the value to `root`.
+     * Instance Id
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -161,31 +151,26 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * Account comment information.
-     *
-     * > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+     * Set the comment information of the account.
+     * - Cannot start with http:// or https.
+     * - Start with Chinese and English letters.
+     * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      */
     accountDescription?: pulumi.Input<string>;
     /**
-     * The new password.
-     *
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-     * - The password must be 8 to 32 characters in length.
+     * Account Name
      */
     accountName: pulumi.Input<string>;
     /**
-     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+     * Account Password
      */
     accountPassword: pulumi.Input<string>;
     /**
-     * The role type of the instance. Value description
-     *
-     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * The account Comment Information type. Value:
      */
     characterType?: pulumi.Input<string>;
     /**
-     * The account whose password needs to be reset. Set the value to `root`.
+     * Instance Id
      */
     instanceId: pulumi.Input<string>;
 }

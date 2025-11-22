@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -167,14 +166,14 @@ public class SiteOriginClientCertificate extends com.pulumi.resources.CustomReso
      * Site ID.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return Site ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**

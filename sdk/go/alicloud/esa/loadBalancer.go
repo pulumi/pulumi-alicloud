@@ -145,7 +145,7 @@ type LoadBalancer struct {
 	// Session persistence. Valid values:
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The status of the load balancer.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Load balancing policy.
@@ -229,7 +229,7 @@ type loadBalancerState struct {
 	// Session persistence. Valid values:
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The status of the load balancer.
 	Status *string `pulumi:"status"`
 	// Load balancing policy.
@@ -266,7 +266,7 @@ type LoadBalancerState struct {
 	// Session persistence. Valid values:
 	SessionAffinity pulumi.StringPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The status of the load balancer.
 	Status pulumi.StringPtrInput
 	// Load balancing policy.
@@ -305,7 +305,7 @@ type loadBalancerArgs struct {
 	// Session persistence. Valid values:
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// Load balancing policy.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
 	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
@@ -339,7 +339,7 @@ type LoadBalancerArgs struct {
 	// Session persistence. Valid values:
 	SessionAffinity pulumi.StringPtrInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// Load balancing policy.
 	SteeringPolicy pulumi.StringInput
 	// Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
@@ -496,8 +496,8 @@ func (o LoadBalancerOutput) SessionAffinity() pulumi.StringPtrOutput {
 }
 
 // The site ID.
-func (o LoadBalancerOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o LoadBalancerOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The status of the load balancer.

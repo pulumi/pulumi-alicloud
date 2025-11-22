@@ -13,6 +13,8 @@ namespace Pulumi.AliCloud.Log
     /// Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
     /// You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
     /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -91,22 +93,48 @@ namespace Pulumi.AliCloud.Log
     public partial class StoreIndex : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List configurations of field search index. Valid item as follows:
+        /// List configurations of field search index. See `FieldSearch` below.
+        /// 
+        /// &gt; **Note:** At least one of the "FullText" and "FieldSearch" should be specified.
         /// </summary>
         [Output("fieldSearches")]
         public Output<ImmutableArray<Outputs.StoreIndexFieldSearch>> FieldSearches { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of full text index. Valid item as follows:
+        /// The configuration of full text index. See `FullText` below.
         /// </summary>
         [Output("fullText")]
         public Output<Outputs.StoreIndexFullText?> FullText { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to enable log reduce. Default to false.
+        /// </summary>
+        [Output("logReduce")]
+        public Output<bool?> LogReduce { get; private set; } = null!;
+
+        /// <summary>
+        /// The black list of log reduce.
+        /// </summary>
+        [Output("logReduceBlackLists")]
+        public Output<ImmutableArray<string>> LogReduceBlackLists { get; private set; } = null!;
+
+        /// <summary>
+        /// The white list of log reduce.
+        /// </summary>
+        [Output("logReduceWhiteLists")]
+        public Output<ImmutableArray<string>> LogReduceWhiteLists { get; private set; } = null!;
 
         /// <summary>
         /// The log store name to the query index belongs.
         /// </summary>
         [Output("logstore")]
         public Output<string> Logstore { get; private set; } = null!;
+
+        /// <summary>
+        /// The max text length.
+        /// </summary>
+        [Output("maxTextLen")]
+        public Output<int?> MaxTextLen { get; private set; } = null!;
 
         /// <summary>
         /// The project name to the log store belongs.
@@ -164,7 +192,9 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.StoreIndexFieldSearchArgs>? _fieldSearches;
 
         /// <summary>
-        /// List configurations of field search index. Valid item as follows:
+        /// List configurations of field search index. See `FieldSearch` below.
+        /// 
+        /// &gt; **Note:** At least one of the "FullText" and "FieldSearch" should be specified.
         /// </summary>
         public InputList<Inputs.StoreIndexFieldSearchArgs> FieldSearches
         {
@@ -173,16 +203,52 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// The configuration of full text index. Valid item as follows:
+        /// The configuration of full text index. See `FullText` below.
         /// </summary>
         [Input("fullText")]
         public Input<Inputs.StoreIndexFullTextArgs>? FullText { get; set; }
+
+        /// <summary>
+        /// Whether to enable log reduce. Default to false.
+        /// </summary>
+        [Input("logReduce")]
+        public Input<bool>? LogReduce { get; set; }
+
+        [Input("logReduceBlackLists")]
+        private InputList<string>? _logReduceBlackLists;
+
+        /// <summary>
+        /// The black list of log reduce.
+        /// </summary>
+        public InputList<string> LogReduceBlackLists
+        {
+            get => _logReduceBlackLists ?? (_logReduceBlackLists = new InputList<string>());
+            set => _logReduceBlackLists = value;
+        }
+
+        [Input("logReduceWhiteLists")]
+        private InputList<string>? _logReduceWhiteLists;
+
+        /// <summary>
+        /// The white list of log reduce.
+        /// </summary>
+        public InputList<string> LogReduceWhiteLists
+        {
+            get => _logReduceWhiteLists ?? (_logReduceWhiteLists = new InputList<string>());
+            set => _logReduceWhiteLists = value;
+        }
 
         /// <summary>
         /// The log store name to the query index belongs.
         /// </summary>
         [Input("logstore", required: true)]
         public Input<string> Logstore { get; set; } = null!;
+
+        /// <summary>
+        /// The max text length.
+        /// </summary>
+        [Input("maxTextLen")]
+        public Input<int>? MaxTextLen { get; set; }
 
         /// <summary>
         /// The project name to the log store belongs.
@@ -202,7 +268,9 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.StoreIndexFieldSearchGetArgs>? _fieldSearches;
 
         /// <summary>
-        /// List configurations of field search index. Valid item as follows:
+        /// List configurations of field search index. See `FieldSearch` below.
+        /// 
+        /// &gt; **Note:** At least one of the "FullText" and "FieldSearch" should be specified.
         /// </summary>
         public InputList<Inputs.StoreIndexFieldSearchGetArgs> FieldSearches
         {
@@ -211,16 +279,52 @@ namespace Pulumi.AliCloud.Log
         }
 
         /// <summary>
-        /// The configuration of full text index. Valid item as follows:
+        /// The configuration of full text index. See `FullText` below.
         /// </summary>
         [Input("fullText")]
         public Input<Inputs.StoreIndexFullTextGetArgs>? FullText { get; set; }
+
+        /// <summary>
+        /// Whether to enable log reduce. Default to false.
+        /// </summary>
+        [Input("logReduce")]
+        public Input<bool>? LogReduce { get; set; }
+
+        [Input("logReduceBlackLists")]
+        private InputList<string>? _logReduceBlackLists;
+
+        /// <summary>
+        /// The black list of log reduce.
+        /// </summary>
+        public InputList<string> LogReduceBlackLists
+        {
+            get => _logReduceBlackLists ?? (_logReduceBlackLists = new InputList<string>());
+            set => _logReduceBlackLists = value;
+        }
+
+        [Input("logReduceWhiteLists")]
+        private InputList<string>? _logReduceWhiteLists;
+
+        /// <summary>
+        /// The white list of log reduce.
+        /// </summary>
+        public InputList<string> LogReduceWhiteLists
+        {
+            get => _logReduceWhiteLists ?? (_logReduceWhiteLists = new InputList<string>());
+            set => _logReduceWhiteLists = value;
+        }
 
         /// <summary>
         /// The log store name to the query index belongs.
         /// </summary>
         [Input("logstore")]
         public Input<string>? Logstore { get; set; }
+
+        /// <summary>
+        /// The max text length.
+        /// </summary>
+        [Input("maxTextLen")]
+        public Input<int>? MaxTextLen { get; set; }
 
         /// <summary>
         /// The project name to the log store belongs.

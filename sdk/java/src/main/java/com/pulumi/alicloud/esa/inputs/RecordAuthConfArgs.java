@@ -16,14 +16,14 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
     public static final RecordAuthConfArgs Empty = new RecordAuthConfArgs();
 
     /**
-     * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+     * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -119,7 +119,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accessKey The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         * @param accessKey The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class RecordAuthConfArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accessKey The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         * @param accessKey The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
          * 
          * @return builder
          * 

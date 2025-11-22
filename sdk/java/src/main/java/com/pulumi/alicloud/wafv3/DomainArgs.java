@@ -19,19 +19,9 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainArgs Empty = new DomainArgs();
 
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
-    /**
-     * @return The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     public Optional<Output<String>> accessType() {
         return Optional.ofNullable(this.accessType);
     }
@@ -156,25 +146,11 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DomainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accessType The mode in which the domain name is added to WAF. Valid values:
-         * share: CNAME record mode. This is the default value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessType(@Nullable Output<String> accessType) {
             $.accessType = accessType;
             return this;
         }
 
-        /**
-         * @param accessType The mode in which the domain name is added to WAF. Valid values:
-         * share: CNAME record mode. This is the default value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessType(String accessType) {
             return accessType(Output.of(accessType));
         }

@@ -143,6 +143,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     declare public readonly dataDisks: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
     /**
+     * The ID of the dedicated host cluster.
+     */
+    declare public readonly dedicatedHostClusterId: pulumi.Output<string | undefined>;
+    /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
@@ -158,6 +162,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * Hostname of an ECS instance.
      */
     declare public readonly hostName: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     */
+    declare public readonly httpEndpoint: pulumi.Output<string | undefined>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
@@ -376,10 +384,12 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["creditSpecification"] = state?.creditSpecification;
             resourceInputs["customPriorities"] = state?.customPriorities;
             resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["dedicatedHostClusterId"] = state?.dedicatedHostClusterId;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["hostName"] = state?.hostName;
+            resourceInputs["httpEndpoint"] = state?.httpEndpoint;
             resourceInputs["imageId"] = state?.imageId;
             resourceInputs["imageName"] = state?.imageName;
             resourceInputs["imageOptionsLoginAsNonRoot"] = state?.imageOptionsLoginAsNonRoot;
@@ -434,10 +444,12 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["creditSpecification"] = args?.creditSpecification;
             resourceInputs["customPriorities"] = args?.customPriorities;
             resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["dedicatedHostClusterId"] = args?.dedicatedHostClusterId;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["hostName"] = args?.hostName;
+            resourceInputs["httpEndpoint"] = args?.httpEndpoint;
             resourceInputs["imageId"] = args?.imageId;
             resourceInputs["imageName"] = args?.imageName;
             resourceInputs["imageOptionsLoginAsNonRoot"] = args?.imageOptionsLoginAsNonRoot;
@@ -510,6 +522,10 @@ export interface ScalingConfigurationState {
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
     /**
+     * The ID of the dedicated host cluster.
+     */
+    dedicatedHostClusterId?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
     deletionProtection?: pulumi.Input<boolean>;
@@ -525,6 +541,10 @@ export interface ScalingConfigurationState {
      * Hostname of an ECS instance.
      */
     hostName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     */
+    httpEndpoint?: pulumi.Input<string>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
@@ -748,6 +768,10 @@ export interface ScalingConfigurationArgs {
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
     /**
+     * The ID of the dedicated host cluster.
+     */
+    dedicatedHostClusterId?: pulumi.Input<string>;
+    /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
     deletionProtection?: pulumi.Input<boolean>;
@@ -763,6 +787,10 @@ export interface ScalingConfigurationArgs {
      * Hostname of an ECS instance.
      */
     hostName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     */
+    httpEndpoint?: pulumi.Input<string>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */

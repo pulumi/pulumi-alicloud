@@ -12,108 +12,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a MongoDB Audit Policy resource.
-//
-// For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
-//
-// > **NOTE:** Available since v1.148.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_default, err := mongodb.GetZones(ctx, &mongodb.GetZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			index := len(_default.Zones).ApplyT(func(length int) (float64, error) {
-//				return float64(length.ApplyT(func(__convert float64) (float64, error) {
-//					return __convert - 1, nil
-//				}).(pulumi.Float64Output)), nil
-//			}).(pulumi.Float64Output)
-//			zoneId := _default.Zones[index].Id
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("172.17.3.0/24"),
-//				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(zoneId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
-//				EngineVersion:     pulumi.String("4.2"),
-//				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
-//				DbInstanceStorage: pulumi.Int(10),
-//				VswitchId:         defaultSwitch.ID(),
-//				SecurityIpLists: pulumi.StringArray{
-//					pulumi.String("10.168.1.12"),
-//					pulumi.String("100.69.7.112"),
-//				},
-//				Name: pulumi.String(name),
-//				Tags: pulumi.StringMap{
-//					"Created": pulumi.String("TF"),
-//					"For":     pulumi.String("example"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mongodb.NewAuditPolicy(ctx, "default", &mongodb.AuditPolicyArgs{
-//				DbInstanceId: defaultInstance.ID(),
-//				AuditStatus:  pulumi.String("disabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// MongoDB Audit Policy can be imported using the id, e.g.
+// Mongodb Audit Policy can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
 // ```
 type AuditPolicy struct {
 	pulumi.CustomResourceState
 
-	// The status of the audit log. Valid values: `disabled`, `enable`.
+	// Audit state, Valid values: `enable`, `disabled`.
 	AuditStatus pulumi.StringOutput `pulumi:"auditStatus"`
-	// The ID of the instance.
+	// Database Instance Id
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
-	// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
-	StoragePeriod pulumi.IntPtrOutput `pulumi:"storagePeriod"`
+	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+	StoragePeriod pulumi.IntOutput `pulumi:"storagePeriod"`
 }
 
 // NewAuditPolicy registers a new resource with the given unique name, arguments, and options.
@@ -152,20 +66,20 @@ func GetAuditPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuditPolicy resources.
 type auditPolicyState struct {
-	// The status of the audit log. Valid values: `disabled`, `enable`.
+	// Audit state, Valid values: `enable`, `disabled`.
 	AuditStatus *string `pulumi:"auditStatus"`
-	// The ID of the instance.
+	// Database Instance Id
 	DbInstanceId *string `pulumi:"dbInstanceId"`
-	// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
 
 type AuditPolicyState struct {
-	// The status of the audit log. Valid values: `disabled`, `enable`.
+	// Audit state, Valid values: `enable`, `disabled`.
 	AuditStatus pulumi.StringPtrInput
-	// The ID of the instance.
+	// Database Instance Id
 	DbInstanceId pulumi.StringPtrInput
-	// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod pulumi.IntPtrInput
 }
 
@@ -174,21 +88,21 @@ func (AuditPolicyState) ElementType() reflect.Type {
 }
 
 type auditPolicyArgs struct {
-	// The status of the audit log. Valid values: `disabled`, `enable`.
+	// Audit state, Valid values: `enable`, `disabled`.
 	AuditStatus string `pulumi:"auditStatus"`
-	// The ID of the instance.
+	// Database Instance Id
 	DbInstanceId string `pulumi:"dbInstanceId"`
-	// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod *int `pulumi:"storagePeriod"`
 }
 
 // The set of arguments for constructing a AuditPolicy resource.
 type AuditPolicyArgs struct {
-	// The status of the audit log. Valid values: `disabled`, `enable`.
+	// Audit state, Valid values: `enable`, `disabled`.
 	AuditStatus pulumi.StringInput
-	// The ID of the instance.
+	// Database Instance Id
 	DbInstanceId pulumi.StringInput
-	// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+	// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
 	StoragePeriod pulumi.IntPtrInput
 }
 
@@ -279,19 +193,19 @@ func (o AuditPolicyOutput) ToAuditPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The status of the audit log. Valid values: `disabled`, `enable`.
+// Audit state, Valid values: `enable`, `disabled`.
 func (o AuditPolicyOutput) AuditStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.AuditStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the instance.
+// Database Instance Id
 func (o AuditPolicyOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuditPolicy) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
 }
 
-// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
-func (o AuditPolicyOutput) StoragePeriod() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AuditPolicy) pulumi.IntPtrOutput { return v.StoragePeriod }).(pulumi.IntPtrOutput)
+// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
+func (o AuditPolicyOutput) StoragePeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v *AuditPolicy) pulumi.IntOutput { return v.StoragePeriod }).(pulumi.IntOutput)
 }
 
 type AuditPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -119,7 +119,7 @@ export class SiteOriginClientCertificate extends pulumi.CustomResource {
     /**
      * Site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The certificate ID on ESA.
      */
@@ -198,7 +198,7 @@ export interface SiteOriginClientCertificateState {
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The certificate ID on ESA.
      */
@@ -228,7 +228,7 @@ export interface SiteOriginClientCertificateArgs {
     /**
      * Site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * The certificate name.
      */

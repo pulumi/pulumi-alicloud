@@ -137,7 +137,7 @@ type OriginPool struct {
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayOutput `pulumi:"origins"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
 
 // NewOriginPool registers a new resource with the given unique name, arguments, and options.
@@ -185,7 +185,7 @@ type originPoolState struct {
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins []OriginPoolOrigin `pulumi:"origins"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 }
 
 type OriginPoolState struct {
@@ -198,7 +198,7 @@ type OriginPoolState struct {
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (OriginPoolState) ElementType() reflect.Type {
@@ -213,7 +213,7 @@ type originPoolArgs struct {
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins []OriginPoolOrigin `pulumi:"origins"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a OriginPool resource.
@@ -225,7 +225,7 @@ type OriginPoolArgs struct {
 	// The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
 	Origins OriginPoolOriginArrayInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (OriginPoolArgs) ElementType() reflect.Type {
@@ -336,8 +336,8 @@ func (o OriginPoolOutput) Origins() OriginPoolOriginArrayOutput {
 }
 
 // The site ID.
-func (o OriginPoolOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginPool) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o OriginPoolOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginPool) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 type OriginPoolArrayOutput struct{ *pulumi.OutputState }

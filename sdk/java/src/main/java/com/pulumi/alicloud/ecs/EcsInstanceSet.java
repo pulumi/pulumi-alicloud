@@ -157,60 +157,62 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoReleaseTime);
     }
     /**
-     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+     * Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+     * @return Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * @return Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * Indicate how to check instance ready to use.
+     * Indicate how to check instance ready to use. Valid values:
      * 
      */
     @Export(name="bootCheckOsWithAssistant", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootCheckOsWithAssistant;
 
     /**
-     * @return Indicate how to check instance ready to use.
+     * @return Indicate how to check instance ready to use. Valid values:
      * 
      */
     public Output<Optional<Boolean>> bootCheckOsWithAssistant() {
         return Codegen.optional(this.bootCheckOsWithAssistant);
     }
     /**
-     * The list of data disks created with instance. See `dataDisks` below..
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Export(name="dataDisks", refs={List.class,EcsInstanceSetDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetDataDisk>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `dataDisks` below..
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Output<Optional<List<EcsInstanceSetDataDisk>>> dataDisks() {
@@ -385,14 +387,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
-     * The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+     * The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
-     * @return The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+     * @return The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      * 
      */
     public Output<String> internetChargeType() {
@@ -469,14 +471,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.launchTemplateVersion);
     }
     /**
-     * A list of NetworkInterface. See `networkInterfaces` below..
+     * A list of NetworkInterface. See `networkInterfaces` below.
      * 
      */
     @Export(name="networkInterfaces", refs={List.class,EcsInstanceSetNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetNetworkInterface>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See `networkInterfaces` below..
+     * @return A list of NetworkInterface. See `networkInterfaces` below.
      * 
      */
     public Output<Optional<List<EcsInstanceSetNetworkInterface>>> networkInterfaces() {
@@ -511,32 +513,34 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.passwordInherit);
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * @return The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * @return The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Output<Optional<String>> periodUnit() {
@@ -571,7 +575,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * The security enhancement strategy.
+     * The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
@@ -580,7 +584,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
-     * @return The security enhancement strategy.
+     * @return The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
@@ -603,34 +607,36 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+     * The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      * 
      */
     @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output<Double> spotPriceLimit;
 
     /**
-     * @return The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+     * @return The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      * 
      */
     public Output<Double> spotPriceLimit() {
         return this.spotPriceLimit;
     }
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+     * The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      * 
      */
     @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+     * @return The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      * 
      */
     public Output<String> spotStrategy() {
@@ -651,14 +657,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskAutoSnapshotPolicyId);
     }
     /**
-     * The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+     * The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+     * @return The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     public Output<String> systemDiskCategory() {
@@ -707,14 +713,14 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
         return this.systemDiskPerformanceLevel;
     }
     /**
-     * The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+     * The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      * 
      */
     @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
     /**
-     * @return The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+     * @return The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      * 
      */
     public Output<Integer> systemDiskSize() {

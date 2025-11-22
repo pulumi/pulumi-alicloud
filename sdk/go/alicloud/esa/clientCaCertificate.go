@@ -74,7 +74,7 @@ type ClientCaCertificate struct {
 	// Creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Site Id
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Certificate status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -124,7 +124,7 @@ type clientCaCertificateState struct {
 	// Creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// Site Id
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Certificate status.
 	Status *string `pulumi:"status"`
 }
@@ -139,7 +139,7 @@ type ClientCaCertificateState struct {
 	// Creation time.
 	CreateTime pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Certificate status.
 	Status pulumi.StringPtrInput
 }
@@ -154,7 +154,7 @@ type clientCaCertificateArgs struct {
 	// The certificate name.
 	ClientCaCertName *string `pulumi:"clientCaCertName"`
 	// Site Id
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a ClientCaCertificate resource.
@@ -164,7 +164,7 @@ type ClientCaCertificateArgs struct {
 	// The certificate name.
 	ClientCaCertName pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (ClientCaCertificateArgs) ElementType() reflect.Type {
@@ -275,8 +275,8 @@ func (o ClientCaCertificateOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Site Id
-func (o ClientCaCertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ClientCaCertificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o ClientCaCertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCaCertificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Certificate status.

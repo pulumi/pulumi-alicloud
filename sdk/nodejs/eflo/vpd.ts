@@ -7,7 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Eflo Vpd resource.
  *
- * For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+ * Lingjun Network Segment.
+ *
+ * For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
  *
  * > **NOTE:** Available since v1.201.0.
  *
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const _default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultVpd = new alicloud.eflo.Vpd("default", {
  *     cidr: "10.0.0.0/8",
@@ -66,27 +68,39 @@ export class Vpd extends pulumi.CustomResource {
     }
 
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      */
     declare public readonly cidr: pulumi.Output<string>;
     /**
-     * The creation time of the resource
+     * The time when the activation code was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Modification time
+     * The time when the O&M task was modified.
      */
     declare public /*out*/ readonly gmtModified: pulumi.Output<string>;
     /**
-     * The Resource group id.
+     * (Available since v1.263.0) The region ID.
      */
-    declare public readonly resourceGroupId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly regionId: pulumi.Output<string>;
     /**
-     * The Vpd status.
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * The additional CIDR block.
+     */
+    declare public readonly secondaryCidrBlocks: pulumi.Output<string[] | undefined>;
+    /**
+     * The current state of the instance.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The Name of the VPD.
+     * The tag of the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The name of the VPD instance.
      */
     declare public readonly vpdName: pulumi.Output<string>;
 
@@ -106,8 +120,11 @@ export class Vpd extends pulumi.CustomResource {
             resourceInputs["cidr"] = state?.cidr;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["gmtModified"] = state?.gmtModified;
+            resourceInputs["regionId"] = state?.regionId;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["secondaryCidrBlocks"] = state?.secondaryCidrBlocks;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vpdName"] = state?.vpdName;
         } else {
             const args = argsOrState as VpdArgs | undefined;
@@ -119,9 +136,12 @@ export class Vpd extends pulumi.CustomResource {
             }
             resourceInputs["cidr"] = args?.cidr;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["secondaryCidrBlocks"] = args?.secondaryCidrBlocks;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vpdName"] = args?.vpdName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["gmtModified"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,27 +154,39 @@ export class Vpd extends pulumi.CustomResource {
  */
 export interface VpdState {
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      */
     cidr?: pulumi.Input<string>;
     /**
-     * The creation time of the resource
+     * The time when the activation code was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Modification time
+     * The time when the O&M task was modified.
      */
     gmtModified?: pulumi.Input<string>;
     /**
-     * The Resource group id.
+     * (Available since v1.263.0) The region ID.
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The Vpd status.
+     * The additional CIDR block.
+     */
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The current state of the instance.
      */
     status?: pulumi.Input<string>;
     /**
-     * The Name of the VPD.
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the VPD instance.
      */
     vpdName?: pulumi.Input<string>;
 }
@@ -164,15 +196,23 @@ export interface VpdState {
  */
 export interface VpdArgs {
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      */
     cidr: pulumi.Input<string>;
     /**
-     * The Resource group id.
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The Name of the VPD.
+     * The additional CIDR block.
+     */
+    secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the VPD instance.
      */
     vpdName: pulumi.Input<string>;
 }

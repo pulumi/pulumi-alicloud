@@ -24,13 +24,23 @@ class StoreIndexArgs:
                  logstore: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
-                 full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None):
+                 full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
+                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
+                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a StoreIndex resource.
         :param pulumi.Input[_builtins.str] logstore: The log store name to the query index belongs.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input['StoreIndexFullTextArgs'] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. See `field_search` below.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        :param pulumi.Input['StoreIndexFullTextArgs'] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.
+        :param pulumi.Input[_builtins.int] max_text_len: The max text length.
         """
         pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "project", project)
@@ -38,6 +48,14 @@ class StoreIndexArgs:
             pulumi.set(__self__, "field_searches", field_searches)
         if full_text is not None:
             pulumi.set(__self__, "full_text", full_text)
+        if log_reduce is not None:
+            pulumi.set(__self__, "log_reduce", log_reduce)
+        if log_reduce_black_lists is not None:
+            pulumi.set(__self__, "log_reduce_black_lists", log_reduce_black_lists)
+        if log_reduce_white_lists is not None:
+            pulumi.set(__self__, "log_reduce_white_lists", log_reduce_white_lists)
+        if max_text_len is not None:
+            pulumi.set(__self__, "max_text_len", max_text_len)
 
     @_builtins.property
     @pulumi.getter
@@ -67,7 +85,9 @@ class StoreIndexArgs:
     @pulumi.getter(name="fieldSearches")
     def field_searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]]:
         """
-        List configurations of field search index. Valid item as follows:
+        List configurations of field search index. See `field_search` below.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
         """
         return pulumi.get(self, "field_searches")
 
@@ -79,13 +99,61 @@ class StoreIndexArgs:
     @pulumi.getter(name="fullText")
     def full_text(self) -> Optional[pulumi.Input['StoreIndexFullTextArgs']]:
         """
-        The configuration of full text index. Valid item as follows:
+        The configuration of full text index. See `full_text` below.
         """
         return pulumi.get(self, "full_text")
 
     @full_text.setter
     def full_text(self, value: Optional[pulumi.Input['StoreIndexFullTextArgs']]):
         pulumi.set(self, "full_text", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduce")
+    def log_reduce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable log reduce. Default to false.
+        """
+        return pulumi.get(self, "log_reduce")
+
+    @log_reduce.setter
+    def log_reduce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "log_reduce", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceBlackLists")
+    def log_reduce_black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The black list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_black_lists")
+
+    @log_reduce_black_lists.setter
+    def log_reduce_black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "log_reduce_black_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceWhiteLists")
+    def log_reduce_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The white list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_white_lists")
+
+    @log_reduce_white_lists.setter
+    def log_reduce_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "log_reduce_white_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxTextLen")
+    def max_text_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The max text length.
+        """
+        return pulumi.get(self, "max_text_len")
+
+    @max_text_len.setter
+    def max_text_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_text_len", value)
 
 
 @pulumi.input_type
@@ -93,21 +161,39 @@ class _StoreIndexState:
     def __init__(__self__, *,
                  field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
                  full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
+                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
+                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StoreIndex resources.
-        :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input['StoreIndexFullTextArgs'] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]] field_searches: List configurations of field search index. See `field_search` below.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        :param pulumi.Input['StoreIndexFullTextArgs'] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.
         :param pulumi.Input[_builtins.str] logstore: The log store name to the query index belongs.
+        :param pulumi.Input[_builtins.int] max_text_len: The max text length.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
         """
         if field_searches is not None:
             pulumi.set(__self__, "field_searches", field_searches)
         if full_text is not None:
             pulumi.set(__self__, "full_text", full_text)
+        if log_reduce is not None:
+            pulumi.set(__self__, "log_reduce", log_reduce)
+        if log_reduce_black_lists is not None:
+            pulumi.set(__self__, "log_reduce_black_lists", log_reduce_black_lists)
+        if log_reduce_white_lists is not None:
+            pulumi.set(__self__, "log_reduce_white_lists", log_reduce_white_lists)
         if logstore is not None:
             pulumi.set(__self__, "logstore", logstore)
+        if max_text_len is not None:
+            pulumi.set(__self__, "max_text_len", max_text_len)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -115,7 +201,9 @@ class _StoreIndexState:
     @pulumi.getter(name="fieldSearches")
     def field_searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]]:
         """
-        List configurations of field search index. Valid item as follows:
+        List configurations of field search index. See `field_search` below.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
         """
         return pulumi.get(self, "field_searches")
 
@@ -127,13 +215,49 @@ class _StoreIndexState:
     @pulumi.getter(name="fullText")
     def full_text(self) -> Optional[pulumi.Input['StoreIndexFullTextArgs']]:
         """
-        The configuration of full text index. Valid item as follows:
+        The configuration of full text index. See `full_text` below.
         """
         return pulumi.get(self, "full_text")
 
     @full_text.setter
     def full_text(self, value: Optional[pulumi.Input['StoreIndexFullTextArgs']]):
         pulumi.set(self, "full_text", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduce")
+    def log_reduce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable log reduce. Default to false.
+        """
+        return pulumi.get(self, "log_reduce")
+
+    @log_reduce.setter
+    def log_reduce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "log_reduce", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceBlackLists")
+    def log_reduce_black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The black list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_black_lists")
+
+    @log_reduce_black_lists.setter
+    def log_reduce_black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "log_reduce_black_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceWhiteLists")
+    def log_reduce_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The white list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_white_lists")
+
+    @log_reduce_white_lists.setter
+    def log_reduce_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "log_reduce_white_lists", value)
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +270,18 @@ class _StoreIndexState:
     @logstore.setter
     def logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "logstore", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxTextLen")
+    def max_text_len(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The max text length.
+        """
+        return pulumi.get(self, "max_text_len")
+
+    @max_text_len.setter
+    def max_text_len(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_text_len", value)
 
     @_builtins.property
     @pulumi.getter
@@ -168,12 +304,18 @@ class StoreIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
                  full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
+                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -229,9 +371,15 @@ class StoreIndex(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. See `field_search` below.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.
         :param pulumi.Input[_builtins.str] logstore: The log store name to the query index belongs.
+        :param pulumi.Input[_builtins.int] max_text_len: The max text length.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
         """
         ...
@@ -243,6 +391,8 @@ class StoreIndex(pulumi.CustomResource):
         """
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+
+        > **NOTE:** Available since v1.0.0.
 
         ## Example Usage
 
@@ -313,7 +463,11 @@ class StoreIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
                  full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+                 log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
+                 log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  logstore: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -326,9 +480,13 @@ class StoreIndex(pulumi.CustomResource):
 
             __props__.__dict__["field_searches"] = field_searches
             __props__.__dict__["full_text"] = full_text
+            __props__.__dict__["log_reduce"] = log_reduce
+            __props__.__dict__["log_reduce_black_lists"] = log_reduce_black_lists
+            __props__.__dict__["log_reduce_white_lists"] = log_reduce_white_lists
             if logstore is None and not opts.urn:
                 raise TypeError("Missing required property 'logstore'")
             __props__.__dict__["logstore"] = logstore
+            __props__.__dict__["max_text_len"] = max_text_len
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -344,7 +502,11 @@ class StoreIndex(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             field_searches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]]] = None,
             full_text: Optional[pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']]] = None,
+            log_reduce: Optional[pulumi.Input[_builtins.bool]] = None,
+            log_reduce_black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            log_reduce_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             logstore: Optional[pulumi.Input[_builtins.str]] = None,
+            max_text_len: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None) -> 'StoreIndex':
         """
         Get an existing StoreIndex resource's state with the given name, id, and optional extra
@@ -353,9 +515,15 @@ class StoreIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. Valid item as follows:
-        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. Valid item as follows:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StoreIndexFieldSearchArgs', 'StoreIndexFieldSearchArgsDict']]]] field_searches: List configurations of field search index. See `field_search` below.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        :param pulumi.Input[Union['StoreIndexFullTextArgs', 'StoreIndexFullTextArgsDict']] full_text: The configuration of full text index. See `full_text` below.
+        :param pulumi.Input[_builtins.bool] log_reduce: Whether to enable log reduce. Default to false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_black_lists: The black list of log reduce.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] log_reduce_white_lists: The white list of log reduce.
         :param pulumi.Input[_builtins.str] logstore: The log store name to the query index belongs.
+        :param pulumi.Input[_builtins.int] max_text_len: The max text length.
         :param pulumi.Input[_builtins.str] project: The project name to the log store belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -364,7 +532,11 @@ class StoreIndex(pulumi.CustomResource):
 
         __props__.__dict__["field_searches"] = field_searches
         __props__.__dict__["full_text"] = full_text
+        __props__.__dict__["log_reduce"] = log_reduce
+        __props__.__dict__["log_reduce_black_lists"] = log_reduce_black_lists
+        __props__.__dict__["log_reduce_white_lists"] = log_reduce_white_lists
         __props__.__dict__["logstore"] = logstore
+        __props__.__dict__["max_text_len"] = max_text_len
         __props__.__dict__["project"] = project
         return StoreIndex(resource_name, opts=opts, __props__=__props__)
 
@@ -372,7 +544,9 @@ class StoreIndex(pulumi.CustomResource):
     @pulumi.getter(name="fieldSearches")
     def field_searches(self) -> pulumi.Output[Optional[Sequence['outputs.StoreIndexFieldSearch']]]:
         """
-        List configurations of field search index. Valid item as follows:
+        List configurations of field search index. See `field_search` below.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
         """
         return pulumi.get(self, "field_searches")
 
@@ -380,9 +554,33 @@ class StoreIndex(pulumi.CustomResource):
     @pulumi.getter(name="fullText")
     def full_text(self) -> pulumi.Output[Optional['outputs.StoreIndexFullText']]:
         """
-        The configuration of full text index. Valid item as follows:
+        The configuration of full text index. See `full_text` below.
         """
         return pulumi.get(self, "full_text")
+
+    @_builtins.property
+    @pulumi.getter(name="logReduce")
+    def log_reduce(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable log reduce. Default to false.
+        """
+        return pulumi.get(self, "log_reduce")
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceBlackLists")
+    def log_reduce_black_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The black list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_black_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="logReduceWhiteLists")
+    def log_reduce_white_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The white list of log reduce.
+        """
+        return pulumi.get(self, "log_reduce_white_lists")
 
     @_builtins.property
     @pulumi.getter
@@ -391,6 +589,14 @@ class StoreIndex(pulumi.CustomResource):
         The log store name to the query index belongs.
         """
         return pulumi.get(self, "logstore")
+
+    @_builtins.property
+    @pulumi.getter(name="maxTextLen")
+    def max_text_len(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The max text length.
+        """
+        return pulumi.get(self, "max_text_len")
 
     @_builtins.property
     @pulumi.getter

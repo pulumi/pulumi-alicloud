@@ -120,56 +120,56 @@ public class Record extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authConf);
     }
     /**
-     * The business scenario of the record for acceleration. Valid values:
+     * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      * 
      */
     @Export(name="bizName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bizName;
 
     /**
-     * @return The business scenario of the record for acceleration. Valid values:
+     * @return The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      * 
      */
     public Output<Optional<String>> bizName() {
         return Codegen.optional(this.bizName);
     }
     /**
-     * The comments of the record.
+     * The comment of the record. The maximum length is 100 characters.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return The comments of the record.
+     * @return The comment of the record. The maximum length is 100 characters.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+     * @return The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
     private Output<RecordData> data;
 
     /**
-     * @return The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * @return The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      * 
      */
     public Output<RecordData> data() {
@@ -190,14 +190,14 @@ public class Record extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hostPolicy);
     }
     /**
-     * Filters by whether the record is proxied. Valid values:
+     * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      * 
      */
     @Export(name="proxied", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> proxied;
 
     /**
-     * @return Filters by whether the record is proxied. Valid values:
+     * @return Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      * 
      */
     public Output<Optional<Boolean>> proxied() {
@@ -218,68 +218,68 @@ public class Record extends com.pulumi.resources.CustomResource {
         return this.recordName;
     }
     /**
-     * The DNS record type.
+     * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      * 
      */
     @Export(name="recordType", refs={String.class}, tree="[0]")
     private Output<String> recordType;
 
     /**
-     * @return The DNS record type.
+     * @return The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      * 
      */
     public Output<String> recordType() {
         return this.recordType;
     }
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The website ID.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return The website ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
-     * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     * 
+     * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      * 
      */
     @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceType;
 
     /**
-     * @return The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     * 
+     * @return The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      * 
      */
     public Output<Optional<String>> sourceType() {
         return Codegen.optional(this.sourceType);
     }
     /**
-     * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      * 
      */
     @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**
-     * @return The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * @return The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      * 
      */
     public Output<Optional<Integer>> ttl() {

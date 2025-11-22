@@ -81,11 +81,8 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
-        /// <summary>
-        /// The site version.
-        /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
@@ -157,11 +154,8 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
-        /// <summary>
-        /// The site version.
-        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
@@ -201,11 +195,8 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
-        /// <summary>
-        /// The site version.
-        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 

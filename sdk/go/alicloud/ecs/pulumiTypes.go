@@ -417,7 +417,7 @@ type EcsInstanceSetDataDisk struct {
 	DiskDescription *string `pulumi:"diskDescription"`
 	// The name of the data disk.
 	DiskName *string `pulumi:"diskName"`
-	// The size of the data disk. Unit: GiB.
+	// The size of the data disk. Unit: GiB. Valid values:
 	// - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -453,7 +453,7 @@ type EcsInstanceSetDataDiskArgs struct {
 	DiskDescription pulumi.StringPtrInput `pulumi:"diskDescription"`
 	// The name of the data disk.
 	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
-	// The size of the data disk. Unit: GiB.
+	// The size of the data disk. Unit: GiB. Valid values:
 	// - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
 	// - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -540,7 +540,7 @@ func (o EcsInstanceSetDataDiskOutput) DiskName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsInstanceSetDataDisk) *string { return v.DiskName }).(pulumi.StringPtrOutput)
 }
 
-// The size of the data disk. Unit: GiB.
+// The size of the data disk. Unit: GiB. Valid values:
 // - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
 // - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
 // - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.

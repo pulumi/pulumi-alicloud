@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
     public sealed class ParameterGroupParameter
     {
         /// <summary>
-        /// The name of a parameter in the parameter template.
+        /// The name of the parameter.
         /// </summary>
-        public readonly string ParamName;
+        public readonly string? ParamName;
         /// <summary>
-        /// The value of a parameter in the parameter template.
+        /// The value of the parameter.
         /// </summary>
-        public readonly string ParamValue;
+        public readonly string? ParamValue;
 
         [OutputConstructor]
         private ParameterGroupParameter(
-            string paramName,
+            string? paramName,
 
-            string paramValue)
+            string? paramValue)
         {
             ParamName = paramName;
             ParamValue = paramValue;

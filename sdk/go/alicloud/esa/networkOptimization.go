@@ -107,7 +107,7 @@ type NetworkOptimization struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
@@ -168,7 +168,7 @@ type networkOptimizationState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
@@ -197,7 +197,7 @@ type NetworkOptimizationState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Whether to enable smart routing service, default is disabled. Value range:
@@ -228,7 +228,7 @@ type networkOptimizationArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Whether to enable smart routing service, default is disabled. Value range:
@@ -256,7 +256,7 @@ type NetworkOptimizationArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Whether to enable smart routing service, default is disabled. Value range:
@@ -392,8 +392,8 @@ func (o NetworkOptimizationOutput) Sequence() pulumi.IntOutput {
 }
 
 // Site ID.
-func (o NetworkOptimizationOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkOptimization) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o NetworkOptimizationOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkOptimization) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

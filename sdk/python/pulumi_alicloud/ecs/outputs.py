@@ -338,7 +338,7 @@ class EcsInstanceSetDataDisk(dict):
                  performance_level: Optional[_builtins.str] = None,
                  snapshot_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.int disk_size: The size of the data disk. Unit: GiB.
+        :param _builtins.int disk_size: The size of the data disk. Unit: GiB. Valid values:
                - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
                - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
                - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
@@ -374,7 +374,7 @@ class EcsInstanceSetDataDisk(dict):
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> _builtins.int:
         """
-        The size of the data disk. Unit: GiB.
+        The size of the data disk. Unit: GiB. Valid values:
         - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.

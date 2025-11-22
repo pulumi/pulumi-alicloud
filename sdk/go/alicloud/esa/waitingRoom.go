@@ -110,44 +110,28 @@ type WaitingRoom struct {
 	// Waiting room description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable session renewal. Value:
-	// -'on': open.
-	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrOutput `pulumi:"disableSessionRenewalEnable"`
 	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayOutput `pulumi:"hostNameAndPaths"`
 	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-	// -'on': open.
-	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrOutput `pulumi:"jsonResponseEnable"`
 	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-	// -'enus': English.
-	// -'zhcn': Simplified Chinese.
-	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringOutput `pulumi:"newUsersPerMinute"`
 	// All in line. Value:
-	// -'on': open.
-	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrOutput `pulumi:"queueAllEnable"`
 	// Way of queuing. Value:
-	// -'random': random.
-	// -'fifo': first in, first out.
-	// -'Passthrough ': through.
-	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringOutput `pulumi:"queuingMethod"`
 	// Waiting room status code. Value:
-	// -'200'
-	// -'202'
-	// -'429'
 	QueuingStatusCode pulumi.StringOutput `pulumi:"queuingStatusCode"`
 	// Session duration in minutes.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Waiting room enabled status. Value:
-	// -'on': Enable waiting room
-	// -'off': disabled waiting room
+	// - 'on': Enable waiting room
+	// - 'off': Disabled waiting room
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Total number of active users.
 	TotalActiveUsers pulumi.StringOutput `pulumi:"totalActiveUsers"`
@@ -156,8 +140,6 @@ type WaitingRoom struct {
 	// The name of the waiting room.
 	WaitingRoomName pulumi.StringOutput `pulumi:"waitingRoomName"`
 	// Waiting room type, support:
-	// -'default': Indicates the default type.
-	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringOutput `pulumi:"waitingRoomType"`
 }
 
@@ -231,44 +213,28 @@ type waitingRoomState struct {
 	// Waiting room description.
 	Description *string `pulumi:"description"`
 	// Disable session renewal. Value:
-	// -'on': open.
-	// -'off': closed.
 	DisableSessionRenewalEnable *string `pulumi:"disableSessionRenewalEnable"`
 	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths []WaitingRoomHostNameAndPath `pulumi:"hostNameAndPaths"`
 	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-	// -'on': open.
-	// -'off': closed.
 	JsonResponseEnable *string `pulumi:"jsonResponseEnable"`
 	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-	// -'enus': English.
-	// -'zhcn': Simplified Chinese.
-	// -'zhhk': Traditional Chinese.
 	Language *string `pulumi:"language"`
 	// Number of new users per minute.
 	NewUsersPerMinute *string `pulumi:"newUsersPerMinute"`
 	// All in line. Value:
-	// -'on': open.
-	// -'off': closed.
 	QueueAllEnable *string `pulumi:"queueAllEnable"`
 	// Way of queuing. Value:
-	// -'random': random.
-	// -'fifo': first in, first out.
-	// -'Passthrough ': through.
-	// -'Reject-all': reject all.
 	QueuingMethod *string `pulumi:"queuingMethod"`
 	// Waiting room status code. Value:
-	// -'200'
-	// -'202'
-	// -'429'
 	QueuingStatusCode *string `pulumi:"queuingStatusCode"`
 	// Session duration in minutes.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Waiting room enabled status. Value:
-	// -'on': Enable waiting room
-	// -'off': disabled waiting room
+	// - 'on': Enable waiting room
+	// - 'off': Disabled waiting room
 	Status *string `pulumi:"status"`
 	// Total number of active users.
 	TotalActiveUsers *string `pulumi:"totalActiveUsers"`
@@ -277,8 +243,6 @@ type waitingRoomState struct {
 	// The name of the waiting room.
 	WaitingRoomName *string `pulumi:"waitingRoomName"`
 	// Waiting room type, support:
-	// -'default': Indicates the default type.
-	// -'custom': indicates a custom type.
 	WaitingRoomType *string `pulumi:"waitingRoomType"`
 }
 
@@ -290,44 +254,28 @@ type WaitingRoomState struct {
 	// Waiting room description.
 	Description pulumi.StringPtrInput
 	// Disable session renewal. Value:
-	// -'on': open.
-	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrInput
 	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayInput
 	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-	// -'on': open.
-	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrInput
 	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-	// -'enus': English.
-	// -'zhcn': Simplified Chinese.
-	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrInput
 	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringPtrInput
 	// All in line. Value:
-	// -'on': open.
-	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrInput
 	// Way of queuing. Value:
-	// -'random': random.
-	// -'fifo': first in, first out.
-	// -'Passthrough ': through.
-	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringPtrInput
 	// Waiting room status code. Value:
-	// -'200'
-	// -'202'
-	// -'429'
 	QueuingStatusCode pulumi.StringPtrInput
 	// Session duration in minutes.
 	SessionDuration pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Waiting room enabled status. Value:
-	// -'on': Enable waiting room
-	// -'off': disabled waiting room
+	// - 'on': Enable waiting room
+	// - 'off': Disabled waiting room
 	Status pulumi.StringPtrInput
 	// Total number of active users.
 	TotalActiveUsers pulumi.StringPtrInput
@@ -336,8 +284,6 @@ type WaitingRoomState struct {
 	// The name of the waiting room.
 	WaitingRoomName pulumi.StringPtrInput
 	// Waiting room type, support:
-	// -'default': Indicates the default type.
-	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringPtrInput
 }
 
@@ -353,52 +299,34 @@ type waitingRoomArgs struct {
 	// Waiting room description.
 	Description *string `pulumi:"description"`
 	// Disable session renewal. Value:
-	// -'on': open.
-	// -'off': closed.
 	DisableSessionRenewalEnable *string `pulumi:"disableSessionRenewalEnable"`
 	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths []WaitingRoomHostNameAndPath `pulumi:"hostNameAndPaths"`
 	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-	// -'on': open.
-	// -'off': closed.
 	JsonResponseEnable *string `pulumi:"jsonResponseEnable"`
 	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-	// -'enus': English.
-	// -'zhcn': Simplified Chinese.
-	// -'zhhk': Traditional Chinese.
 	Language *string `pulumi:"language"`
 	// Number of new users per minute.
 	NewUsersPerMinute string `pulumi:"newUsersPerMinute"`
 	// All in line. Value:
-	// -'on': open.
-	// -'off': closed.
 	QueueAllEnable *string `pulumi:"queueAllEnable"`
 	// Way of queuing. Value:
-	// -'random': random.
-	// -'fifo': first in, first out.
-	// -'Passthrough ': through.
-	// -'Reject-all': reject all.
 	QueuingMethod string `pulumi:"queuingMethod"`
 	// Waiting room status code. Value:
-	// -'200'
-	// -'202'
-	// -'429'
 	QueuingStatusCode string `pulumi:"queuingStatusCode"`
 	// Session duration in minutes.
 	SessionDuration string `pulumi:"sessionDuration"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// Waiting room enabled status. Value:
-	// -'on': Enable waiting room
-	// -'off': disabled waiting room
+	// - 'on': Enable waiting room
+	// - 'off': Disabled waiting room
 	Status string `pulumi:"status"`
 	// Total number of active users.
 	TotalActiveUsers string `pulumi:"totalActiveUsers"`
 	// The name of the waiting room.
 	WaitingRoomName string `pulumi:"waitingRoomName"`
 	// Waiting room type, support:
-	// -'default': Indicates the default type.
-	// -'custom': indicates a custom type.
 	WaitingRoomType string `pulumi:"waitingRoomType"`
 }
 
@@ -411,52 +339,34 @@ type WaitingRoomArgs struct {
 	// Waiting room description.
 	Description pulumi.StringPtrInput
 	// Disable session renewal. Value:
-	// -'on': open.
-	// -'off': closed.
 	DisableSessionRenewalEnable pulumi.StringPtrInput
 	// Host name and path. See `hostNameAndPath` below.
 	HostNameAndPaths WaitingRoomHostNameAndPathArrayInput
 	// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-	// -'on': open.
-	// -'off': closed.
 	JsonResponseEnable pulumi.StringPtrInput
 	// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-	// -'enus': English.
-	// -'zhcn': Simplified Chinese.
-	// -'zhhk': Traditional Chinese.
 	Language pulumi.StringPtrInput
 	// Number of new users per minute.
 	NewUsersPerMinute pulumi.StringInput
 	// All in line. Value:
-	// -'on': open.
-	// -'off': closed.
 	QueueAllEnable pulumi.StringPtrInput
 	// Way of queuing. Value:
-	// -'random': random.
-	// -'fifo': first in, first out.
-	// -'Passthrough ': through.
-	// -'Reject-all': reject all.
 	QueuingMethod pulumi.StringInput
 	// Waiting room status code. Value:
-	// -'200'
-	// -'202'
-	// -'429'
 	QueuingStatusCode pulumi.StringInput
 	// Session duration in minutes.
 	SessionDuration pulumi.StringInput
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// Waiting room enabled status. Value:
-	// -'on': Enable waiting room
-	// -'off': disabled waiting room
+	// - 'on': Enable waiting room
+	// - 'off': Disabled waiting room
 	Status pulumi.StringInput
 	// Total number of active users.
 	TotalActiveUsers pulumi.StringInput
 	// The name of the waiting room.
 	WaitingRoomName pulumi.StringInput
 	// Waiting room type, support:
-	// -'default': Indicates the default type.
-	// -'custom': indicates a custom type.
 	WaitingRoomType pulumi.StringInput
 }
 
@@ -563,8 +473,6 @@ func (o WaitingRoomOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Disable session renewal. Value:
-// -'on': open.
-// -'off': closed.
 func (o WaitingRoomOutput) DisableSessionRenewalEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.DisableSessionRenewalEnable }).(pulumi.StringPtrOutput)
 }
@@ -575,16 +483,11 @@ func (o WaitingRoomOutput) HostNameAndPaths() WaitingRoomHostNameAndPathArrayOut
 }
 
 // The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-// -'on': open.
-// -'off': closed.
 func (o WaitingRoomOutput) JsonResponseEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.JsonResponseEnable }).(pulumi.StringPtrOutput)
 }
 
 // The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-// -'enus': English.
-// -'zhcn': Simplified Chinese.
-// -'zhhk': Traditional Chinese.
 func (o WaitingRoomOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
@@ -595,25 +498,16 @@ func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.StringOutput {
 }
 
 // All in line. Value:
-// -'on': open.
-// -'off': closed.
 func (o WaitingRoomOutput) QueueAllEnable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.QueueAllEnable }).(pulumi.StringPtrOutput)
 }
 
 // Way of queuing. Value:
-// -'random': random.
-// -'fifo': first in, first out.
-// -'Passthrough ': through.
-// -'Reject-all': reject all.
 func (o WaitingRoomOutput) QueuingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.QueuingMethod }).(pulumi.StringOutput)
 }
 
 // Waiting room status code. Value:
-// -'200'
-// -'202'
-// -'429'
 func (o WaitingRoomOutput) QueuingStatusCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.QueuingStatusCode }).(pulumi.StringOutput)
 }
@@ -624,13 +518,13 @@ func (o WaitingRoomOutput) SessionDuration() pulumi.StringOutput {
 }
 
 // The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-func (o WaitingRoomOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o WaitingRoomOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Waiting room enabled status. Value:
-// -'on': Enable waiting room
-// -'off': disabled waiting room
+// - 'on': Enable waiting room
+// - 'off': Disabled waiting room
 func (o WaitingRoomOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -651,8 +545,6 @@ func (o WaitingRoomOutput) WaitingRoomName() pulumi.StringOutput {
 }
 
 // Waiting room type, support:
-// -'default': Indicates the default type.
-// -'custom': indicates a custom type.
 func (o WaitingRoomOutput) WaitingRoomType() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.WaitingRoomType }).(pulumi.StringOutput)
 }

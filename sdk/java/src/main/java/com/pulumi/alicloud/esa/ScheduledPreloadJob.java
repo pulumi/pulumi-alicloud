@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -117,12 +116,16 @@ public class ScheduledPreloadJob extends com.pulumi.resources.CustomResource {
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="ossUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossUrl;
 
     /**
      * @return Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> ossUrl() {
@@ -160,18 +163,20 @@ public class ScheduledPreloadJob extends com.pulumi.resources.CustomResource {
      * The site ID.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="urlList", refs={String.class}, tree="[0]")
@@ -179,6 +184,8 @@ public class ScheduledPreloadJob extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> urlList() {

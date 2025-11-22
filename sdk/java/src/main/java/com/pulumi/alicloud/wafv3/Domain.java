@@ -36,21 +36,25 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:wafv3/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessType;
 
-    /**
-     * @return The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     public Output<Optional<String>> accessType() {
         return Codegen.optional(this.accessType);
+    }
+    /**
+     * The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    @Export(name="cname", refs={String.class}, tree="[0]")
+    private Output<String> cname;
+
+    /**
+     * @return The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    public Output<String> cname() {
+        return this.cname;
     }
     /**
      * The name of the domain name to query.

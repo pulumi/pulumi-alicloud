@@ -6,6 +6,8 @@ package com.pulumi.alicloud.eflo.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,14 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     public static final VpdState Empty = new VpdState();
 
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
-     * @return CIDR network segment.
+     * @return The CIDR block of the VPD.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -31,14 +33,14 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the resource
+     * The time when the activation code was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The time when the activation code was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -46,14 +48,14 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Modification time
+     * The time when the O&amp;M task was modified.
      * 
      */
     @Import(name="gmtModified")
     private @Nullable Output<String> gmtModified;
 
     /**
-     * @return Modification time
+     * @return The time when the O&amp;M task was modified.
      * 
      */
     public Optional<Output<String>> gmtModified() {
@@ -61,14 +63,29 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource group id.
+     * (Available since v1.263.0) The region ID.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.263.0) The region ID.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource group id.
+     * @return The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -76,14 +93,29 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Vpd status.
+     * The additional CIDR block.
+     * 
+     */
+    @Import(name="secondaryCidrBlocks")
+    private @Nullable Output<List<String>> secondaryCidrBlocks;
+
+    /**
+     * @return The additional CIDR block.
+     * 
+     */
+    public Optional<Output<List<String>>> secondaryCidrBlocks() {
+        return Optional.ofNullable(this.secondaryCidrBlocks);
+    }
+
+    /**
+     * The current state of the instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Vpd status.
+     * @return The current state of the instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -91,14 +123,29 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Name of the VPD.
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The name of the VPD instance.
      * 
      */
     @Import(name="vpdName")
     private @Nullable Output<String> vpdName;
 
     /**
-     * @return The Name of the VPD.
+     * @return The name of the VPD instance.
      * 
      */
     public Optional<Output<String>> vpdName() {
@@ -111,8 +158,11 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         this.cidr = $.cidr;
         this.createTime = $.createTime;
         this.gmtModified = $.gmtModified;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
+        this.secondaryCidrBlocks = $.secondaryCidrBlocks;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpdName = $.vpdName;
     }
 
@@ -135,7 +185,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment.
+         * @param cidr The CIDR block of the VPD.
          * 
          * @return builder
          * 
@@ -146,7 +196,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment.
+         * @param cidr The CIDR block of the VPD.
          * 
          * @return builder
          * 
@@ -156,7 +206,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The time when the activation code was created.
          * 
          * @return builder
          * 
@@ -167,7 +217,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the resource
+         * @param createTime The time when the activation code was created.
          * 
          * @return builder
          * 
@@ -177,7 +227,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtModified Modification time
+         * @param gmtModified The time when the O&amp;M task was modified.
          * 
          * @return builder
          * 
@@ -188,7 +238,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gmtModified Modification time
+         * @param gmtModified The time when the O&amp;M task was modified.
          * 
          * @return builder
          * 
@@ -198,7 +248,28 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id.
+         * @param regionId (Available since v1.263.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.263.0) The region ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param resourceGroupId The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -209,7 +280,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id.
+         * @param resourceGroupId The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -219,7 +290,38 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Vpd status.
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(@Nullable Output<List<String>> secondaryCidrBlocks) {
+            $.secondaryCidrBlocks = secondaryCidrBlocks;
+            return this;
+        }
+
+        /**
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
+            return secondaryCidrBlocks(Output.of(secondaryCidrBlocks));
+        }
+
+        /**
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
+            return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
+        }
+
+        /**
+         * @param status The current state of the instance.
          * 
          * @return builder
          * 
@@ -230,7 +332,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Vpd status.
+         * @param status The current state of the instance.
          * 
          * @return builder
          * 
@@ -240,7 +342,28 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpdName The name of the VPD instance.
          * 
          * @return builder
          * 
@@ -251,7 +374,7 @@ public final class VpdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param vpdName The name of the VPD instance.
          * 
          * @return builder
          * 

@@ -102,7 +102,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
      */
@@ -202,7 +202,7 @@ export interface CertificateState {
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
      */
@@ -248,7 +248,7 @@ export interface CertificateArgs {
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */

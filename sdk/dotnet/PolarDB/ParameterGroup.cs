@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB Parameter Group resource.
+    /// Provides a Polar Db Parameter Group resource.
     /// 
-    /// For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+    /// For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
     /// 
     /// &gt; **NOTE:** Available since v1.183.0.
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// {
     ///     var example = new AliCloud.PolarDB.ParameterGroup("example", new()
     ///     {
-    ///         Name = "example_value",
+    ///         ParameterGroupName = "example_value",
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         Parameters = new[]
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// ## Import
     /// 
-    /// PolarDB Parameter Group can be imported using the id, e.g.
+    /// Polar Db Parameter Group can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example &lt;id&gt;
@@ -59,31 +59,55 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class ParameterGroup : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the database engine. Only `MySQL` is supported.
         /// </summary>
         [Output("dbType")]
         public Output<string> DbType { get; private set; } = null!;
 
         /// <summary>
-        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        /// The version of the database engine. Valid values: 
+        /// - **5.6**
+        /// - **5.7**
+        /// - **8.0**
         /// </summary>
         [Output("dbVersion")]
         public Output<string> DbVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the parameter template. It must be 0 to 200 characters in length.
+        /// The description of the parameter template.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        /// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The parameter template. See the following `Block parameters`.
+        /// The name of the parameter template. The name must meet the following requirements:
+        /// 
+        /// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+        /// 
+        /// - It must be 8 to 64 characters in length.
+        /// </summary>
+        [Output("parameterGroupName")]
+        public Output<string> ParameterGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// Details about the parameters. See `Parameters` below.
+        /// 
+        /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.ParameterGroupParameter>> Parameters { get; private set; } = null!;
@@ -141,28 +165,46 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string> DbType { get; set; } = null!;
 
         /// <summary>
-        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        /// The version of the database engine. Valid values: 
+        /// - **5.6**
+        /// - **5.7**
+        /// - **8.0**
         /// </summary>
         [Input("dbVersion", required: true)]
         public Input<string> DbVersion { get; set; } = null!;
 
         /// <summary>
-        /// The description of the parameter template. It must be 0 to 200 characters in length.
+        /// The description of the parameter template.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        /// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the parameter template. The name must meet the following requirements:
+        /// 
+        /// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+        /// 
+        /// - It must be 8 to 64 characters in length.
+        /// </summary>
+        [Input("parameterGroupName")]
+        public Input<string>? ParameterGroupName { get; set; }
 
         [Input("parameters", required: true)]
         private InputList<Inputs.ParameterGroupParameterArgs>? _parameters;
 
         /// <summary>
-        /// The parameter template. See the following `Block parameters`.
+        /// Details about the parameters. See `Parameters` below.
+        /// 
+        /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.ParameterGroupParameterArgs> Parameters
         {
@@ -179,34 +221,58 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ParameterGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The type of the database engine. Only `MySQL` is supported.
         /// </summary>
         [Input("dbType")]
         public Input<string>? DbType { get; set; }
 
         /// <summary>
-        /// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        /// The version of the database engine. Valid values: 
+        /// - **5.6**
+        /// - **5.7**
+        /// - **8.0**
         /// </summary>
         [Input("dbVersion")]
         public Input<string>? DbVersion { get; set; }
 
         /// <summary>
-        /// The description of the parameter template. It must be 0 to 200 characters in length.
+        /// The description of the parameter template.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        /// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The name of the parameter template. The name must meet the following requirements:
+        /// 
+        /// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+        /// 
+        /// - It must be 8 to 64 characters in length.
+        /// </summary>
+        [Input("parameterGroupName")]
+        public Input<string>? ParameterGroupName { get; set; }
 
         [Input("parameters")]
         private InputList<Inputs.ParameterGroupParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// The parameter template. See the following `Block parameters`.
+        /// Details about the parameters. See `Parameters` below.
+        /// 
+        /// &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+        /// 
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<Inputs.ParameterGroupParameterGetArgs> Parameters
         {

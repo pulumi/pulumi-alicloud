@@ -19,7 +19,7 @@ __all__ = ['NetworkOptimizationArgs', 'NetworkOptimization']
 @pulumi.input_type
 class NetworkOptimizationArgs:
     def __init__(__self__, *,
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  grpc: Optional[pulumi.Input[_builtins.str]] = None,
                  http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,7 +32,7 @@ class NetworkOptimizationArgs:
                  websocket: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkOptimization resource.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.str] grpc: Whether to enable GRPC, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] http2_origin: Whether to enable HTTP2 origin, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] rule: Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
@@ -70,14 +70,14 @@ class NetworkOptimizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -213,7 +213,7 @@ class _NetworkOptimizationState:
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
@@ -229,7 +229,7 @@ class _NetworkOptimizationState:
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
@@ -348,14 +348,14 @@ class _NetworkOptimizationState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -419,7 +419,7 @@ class NetworkOptimization(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
@@ -481,7 +481,7 @@ class NetworkOptimization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
@@ -560,7 +560,7 @@ class NetworkOptimization(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
                  upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
@@ -605,7 +605,7 @@ class NetworkOptimization(pulumi.CustomResource):
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
             sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
             upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
@@ -626,7 +626,7 @@ class NetworkOptimization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_enable: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         :param pulumi.Input[_builtins.str] rule_name: Rule name.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] smart_routing: Whether to enable smart routing service, default is disabled. Value range:
         :param pulumi.Input[_builtins.str] upload_max_filesize: Maximum upload file size, in MB, value range: 100～500.
@@ -710,7 +710,7 @@ class NetworkOptimization(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site ID.
         """

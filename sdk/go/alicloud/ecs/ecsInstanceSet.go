@@ -122,15 +122,16 @@ type EcsInstanceSet struct {
 	Amount pulumi.IntPtrOutput `pulumi:"amount"`
 	// The automatic release time of the `PostPaid` instance.
 	AutoReleaseTime pulumi.StringPtrOutput `pulumi:"autoReleaseTime"`
-	// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+	// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+	// Auto renewal period of an instance, in the unit of month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// Indicate how to check instance ready to use.
+	// Indicate how to check instance ready to use. Valid values:
 	BootCheckOsWithAssistant pulumi.BoolPtrOutput `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See `dataDisks` below..
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsInstanceSetDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
@@ -156,7 +157,7 @@ type EcsInstanceSet struct {
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// The type of instance to start.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+	// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
 	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntOutput `pulumi:"internetMaxBandwidthOut"`
@@ -168,38 +169,40 @@ type EcsInstanceSet struct {
 	LaunchTemplateName pulumi.StringPtrOutput `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrOutput `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See `networkInterfaces` below..
+	// A list of NetworkInterface. See `networkInterfaces` below.
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Whether to use the password preset in the image.
 	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+	// The duration that you will buy the resource, in month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+	// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
 	// The Instance RAM role name.
 	RamRoleName pulumi.StringPtrOutput `pulumi:"ramRoleName"`
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The security enhancement strategy.
+	// The security enhancement strategy. Valid values:
 	// - `Active`: Enable security enhancement strategy, it only works on system images.
 	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+	// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 	SpotPriceLimit pulumi.Float64Output `pulumi:"spotPriceLimit"`
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// The spot strategy of a Pay-As-You-Go instance. Valid values:
 	// - `NoSpot`: A regular Pay-As-You-Go instance.
 	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+	//   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
@@ -207,7 +210,7 @@ type EcsInstanceSet struct {
 	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
 	SystemDiskPerformanceLevel pulumi.StringOutput `pulumi:"systemDiskPerformanceLevel"`
-	// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+	// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -269,15 +272,16 @@ type ecsInstanceSetState struct {
 	Amount *int `pulumi:"amount"`
 	// The automatic release time of the `PostPaid` instance.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+	// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+	// Auto renewal period of an instance, in the unit of month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Indicate how to check instance ready to use.
+	// Indicate how to check instance ready to use. Valid values:
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See `dataDisks` below..
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -303,7 +307,7 @@ type ecsInstanceSetState struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The type of instance to start.
 	InstanceType *string `pulumi:"instanceType"`
-	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+	// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
@@ -315,38 +319,40 @@ type ecsInstanceSetState struct {
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See `networkInterfaces` below..
+	// A list of NetworkInterface. See `networkInterfaces` below.
 	NetworkInterfaces []EcsInstanceSetNetworkInterface `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password *string `pulumi:"password"`
 	// Whether to use the password preset in the image.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+	// The duration that you will buy the resource, in month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 	Period *int `pulumi:"period"`
-	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+	// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The Instance RAM role name.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The security enhancement strategy.
+	// The security enhancement strategy. Valid values:
 	// - `Active`: Enable security enhancement strategy, it only works on system images.
 	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+	// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// The spot strategy of a Pay-As-You-Go instance. Valid values:
 	// - `NoSpot`: A regular Pay-As-You-Go instance.
 	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+	//   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
@@ -354,7 +360,7 @@ type ecsInstanceSetState struct {
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
-	// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+	// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -371,15 +377,16 @@ type EcsInstanceSetState struct {
 	Amount pulumi.IntPtrInput
 	// The automatic release time of the `PostPaid` instance.
 	AutoReleaseTime pulumi.StringPtrInput
-	// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+	// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenew pulumi.BoolPtrInput
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+	// Auto renewal period of an instance, in the unit of month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Indicate how to check instance ready to use.
+	// Indicate how to check instance ready to use. Valid values:
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
-	// The list of data disks created with instance. See `dataDisks` below..
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -405,7 +412,7 @@ type EcsInstanceSetState struct {
 	InstanceName pulumi.StringPtrInput
 	// The type of instance to start.
 	InstanceType pulumi.StringPtrInput
-	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+	// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
 	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
@@ -417,38 +424,40 @@ type EcsInstanceSetState struct {
 	LaunchTemplateName pulumi.StringPtrInput
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrInput
-	// A list of NetworkInterface. See `networkInterfaces` below..
+	// A list of NetworkInterface. See `networkInterfaces` below.
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayInput
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrInput
 	// Whether to use the password preset in the image.
 	PasswordInherit pulumi.BoolPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+	// The duration that you will buy the resource, in month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 	Period pulumi.IntPtrInput
-	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+	// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 	PeriodUnit pulumi.StringPtrInput
 	// The Instance RAM role name.
 	RamRoleName pulumi.StringPtrInput
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The security enhancement strategy.
+	// The security enhancement strategy. Valid values:
 	// - `Active`: Enable security enhancement strategy, it only works on system images.
 	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+	// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 	SpotPriceLimit pulumi.Float64PtrInput
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// The spot strategy of a Pay-As-You-Go instance. Valid values:
 	// - `NoSpot`: A regular Pay-As-You-Go instance.
 	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+	//   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	SystemDiskDescription pulumi.StringPtrInput
@@ -456,7 +465,7 @@ type EcsInstanceSetState struct {
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
-	// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+	// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -477,15 +486,16 @@ type ecsInstanceSetArgs struct {
 	Amount *int `pulumi:"amount"`
 	// The automatic release time of the `PostPaid` instance.
 	AutoReleaseTime *string `pulumi:"autoReleaseTime"`
-	// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+	// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+	// Auto renewal period of an instance, in the unit of month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Indicate how to check instance ready to use.
+	// Indicate how to check instance ready to use. Valid values:
 	BootCheckOsWithAssistant *bool `pulumi:"bootCheckOsWithAssistant"`
-	// The list of data disks created with instance. See `dataDisks` below..
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []EcsInstanceSetDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
@@ -509,7 +519,7 @@ type ecsInstanceSetArgs struct {
 	InstanceName *string `pulumi:"instanceName"`
 	// The type of instance to start.
 	InstanceType string `pulumi:"instanceType"`
-	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+	// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
@@ -521,38 +531,40 @@ type ecsInstanceSetArgs struct {
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
 	// The version of the launch template.
 	LaunchTemplateVersion *string `pulumi:"launchTemplateVersion"`
-	// A list of NetworkInterface. See `networkInterfaces` below..
+	// A list of NetworkInterface. See `networkInterfaces` below.
 	NetworkInterfaces []EcsInstanceSetNetworkInterface `pulumi:"networkInterfaces"`
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password *string `pulumi:"password"`
 	// Whether to use the password preset in the image.
 	PasswordInherit *bool `pulumi:"passwordInherit"`
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+	// The duration that you will buy the resource, in month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 	Period *int `pulumi:"period"`
-	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+	// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 	PeriodUnit *string `pulumi:"periodUnit"`
 	// The Instance RAM role name.
 	RamRoleName *string `pulumi:"ramRoleName"`
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The security enhancement strategy.
+	// The security enhancement strategy. Valid values:
 	// - `Active`: Enable security enhancement strategy, it only works on system images.
 	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+	// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// The spot strategy of a Pay-As-You-Go instance. Valid values:
 	// - `NoSpot`: A regular Pay-As-You-Go instance.
 	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+	//   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
-	// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
@@ -560,7 +572,7 @@ type ecsInstanceSetArgs struct {
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
-	// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+	// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -578,15 +590,16 @@ type EcsInstanceSetArgs struct {
 	Amount pulumi.IntPtrInput
 	// The automatic release time of the `PostPaid` instance.
 	AutoReleaseTime pulumi.StringPtrInput
-	// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+	// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenew pulumi.BoolPtrInput
-	// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+	// Auto renewal period of an instance, in the unit of month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Indicate how to check instance ready to use.
+	// Indicate how to check instance ready to use. Valid values:
 	BootCheckOsWithAssistant pulumi.BoolPtrInput
-	// The list of data disks created with instance. See `dataDisks` below..
+	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks EcsInstanceSetDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If the `dedicatedHostId` is specified, the `spotStrategy` and `spotPriceLimit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
 	DedicatedHostId pulumi.StringPtrInput
@@ -610,7 +623,7 @@ type EcsInstanceSetArgs struct {
 	InstanceName pulumi.StringPtrInput
 	// The type of instance to start.
 	InstanceType pulumi.StringInput
-	// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+	// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
 	// The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
@@ -622,38 +635,40 @@ type EcsInstanceSetArgs struct {
 	LaunchTemplateName pulumi.StringPtrInput
 	// The version of the launch template.
 	LaunchTemplateVersion pulumi.StringPtrInput
-	// A list of NetworkInterface. See `networkInterfaces` below..
+	// A list of NetworkInterface. See `networkInterfaces` below.
 	NetworkInterfaces EcsInstanceSetNetworkInterfaceArrayInput
 	// The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
 	Password pulumi.StringPtrInput
 	// Whether to use the password preset in the image.
 	PasswordInherit pulumi.BoolPtrInput
-	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+	// The duration that you will buy the resource, in month. Valid values:
 	// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
 	// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+	//   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 	Period pulumi.IntPtrInput
-	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+	// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 	PeriodUnit pulumi.StringPtrInput
 	// The Instance RAM role name.
 	RamRoleName pulumi.StringPtrInput
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The security enhancement strategy.
+	// The security enhancement strategy. Valid values:
 	// - `Active`: Enable security enhancement strategy, it only works on system images.
 	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
-	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+	// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 	SpotPriceLimit pulumi.Float64PtrInput
-	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// The spot strategy of a Pay-As-You-Go instance. Valid values:
 	// - `NoSpot`: A regular Pay-As-You-Go instance.
 	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+	//   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
-	// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+	// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	SystemDiskDescription pulumi.StringPtrInput
@@ -661,7 +676,7 @@ type EcsInstanceSetArgs struct {
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
-	// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+	// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -770,24 +785,25 @@ func (o EcsInstanceSetOutput) AutoReleaseTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.AutoReleaseTime }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+// Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
 func (o EcsInstanceSetOutput) AutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
-// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
-// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+// Auto renewal period of an instance, in the unit of month. Valid values:
+//   - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
+//   - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+//     **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
 func (o EcsInstanceSetOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Indicate how to check instance ready to use.
+// Indicate how to check instance ready to use. Valid values:
 func (o EcsInstanceSetOutput) BootCheckOsWithAssistant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.BootCheckOsWithAssistant }).(pulumi.BoolPtrOutput)
 }
 
-// The list of data disks created with instance. See `dataDisks` below..
+// The list of data disks created with instance. See `dataDisks` below.
 func (o EcsInstanceSetOutput) DataDisks() EcsInstanceSetDataDiskArrayOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetDataDiskArrayOutput { return v.DataDisks }).(EcsInstanceSetDataDiskArrayOutput)
 }
@@ -852,7 +868,7 @@ func (o EcsInstanceSetOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
 func (o EcsInstanceSetOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
@@ -882,7 +898,7 @@ func (o EcsInstanceSetOutput) LaunchTemplateVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.LaunchTemplateVersion }).(pulumi.StringPtrOutput)
 }
 
-// A list of NetworkInterface. See `networkInterfaces` below..
+// A list of NetworkInterface. See `networkInterfaces` below.
 func (o EcsInstanceSetOutput) NetworkInterfaces() EcsInstanceSetNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) EcsInstanceSetNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(EcsInstanceSetNetworkInterfaceArrayOutput)
 }
@@ -897,14 +913,15 @@ func (o EcsInstanceSetOutput) PasswordInherit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
 }
 
-// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
-// - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
-// - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+// The duration that you will buy the resource, in month. Valid values:
+//   - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
+//   - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+//     **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
 func (o EcsInstanceSetOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
 func (o EcsInstanceSetOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
@@ -919,7 +936,7 @@ func (o EcsInstanceSetOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The security enhancement strategy.
+// The security enhancement strategy. Valid values:
 // - `Active`: Enable security enhancement strategy, it only works on system images.
 // - `Deactive`: Disable security enhancement strategy, it works on all images.
 func (o EcsInstanceSetOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
@@ -931,15 +948,16 @@ func (o EcsInstanceSetOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
 func (o EcsInstanceSetOutput) SpotPriceLimit() pulumi.Float64Output {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.Float64Output { return v.SpotPriceLimit }).(pulumi.Float64Output)
 }
 
-// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
-// - `NoSpot`: A regular Pay-As-You-Go instance.
-// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+// The spot strategy of a Pay-As-You-Go instance. Valid values:
+//   - `NoSpot`: A regular Pay-As-You-Go instance.
+//   - `SpotWithPriceLimit`: A price threshold for a spot instance.
+//   - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+//     **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
 func (o EcsInstanceSetOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }
@@ -949,7 +967,7 @@ func (o EcsInstanceSetOutput) SystemDiskAutoSnapshotPolicyId() pulumi.StringPtrO
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SystemDiskAutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+// The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
 func (o EcsInstanceSetOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
@@ -969,7 +987,7 @@ func (o EcsInstanceSetOutput) SystemDiskPerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringOutput)
 }
 
-// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
 func (o EcsInstanceSetOutput) SystemDiskSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.IntOutput { return v.SystemDiskSize }).(pulumi.IntOutput)
 }

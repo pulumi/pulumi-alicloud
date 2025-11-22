@@ -86,25 +86,25 @@ namespace Pulumi.AliCloud.Esa
         public Output<Outputs.RecordAuthConf?> AuthConf { get; private set; } = null!;
 
         /// <summary>
-        /// The business scenario of the record for acceleration. Valid values:
+        /// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         /// </summary>
         [Output("bizName")]
         public Output<string?> BizName { get; private set; } = null!;
 
         /// <summary>
-        /// The comments of the record.
+        /// The comment of the record. The maximum length is 100 characters.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+        /// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `Data` below.
         /// </summary>
         [Output("data")]
         public Output<Outputs.RecordData> Data { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> HostPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Filters by whether the record is proxied. Valid values:
+        /// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         /// </summary>
         [Output("proxied")]
         public Output<bool?> Proxied { get; private set; } = null!;
@@ -128,31 +128,31 @@ namespace Pulumi.AliCloud.Esa
         public Output<string> RecordName { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS record type.
+        /// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         /// </summary>
         [Output("recordType")]
         public Output<string> RecordType { get; private set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// The website ID.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-        /// 
+        /// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         /// - `OSS`: OSS bucket.
         /// - `S3`: S3 bucket.
         /// - `LB`: load balancer.
         /// - `OP`: origin pool.
         /// - `Domain`: domain name.
+        /// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         /// </summary>
         [Output("sourceType")]
         public Output<string?> SourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        /// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
@@ -210,19 +210,19 @@ namespace Pulumi.AliCloud.Esa
         public Input<Inputs.RecordAuthConfArgs>? AuthConf { get; set; }
 
         /// <summary>
-        /// The business scenario of the record for acceleration. Valid values:
+        /// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         /// </summary>
         [Input("bizName")]
         public Input<string>? BizName { get; set; }
 
         /// <summary>
-        /// The comments of the record.
+        /// The comment of the record. The maximum length is 100 characters.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `Data` below.
         /// </summary>
         [Input("data", required: true)]
         public Input<Inputs.RecordDataArgs> Data { get; set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? HostPolicy { get; set; }
 
         /// <summary>
-        /// Filters by whether the record is proxied. Valid values:
+        /// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
@@ -246,31 +246,31 @@ namespace Pulumi.AliCloud.Esa
         public Input<string> RecordName { get; set; } = null!;
 
         /// <summary>
-        /// The DNS record type.
+        /// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         /// </summary>
         [Input("recordType", required: true)]
         public Input<string> RecordType { get; set; } = null!;
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// The website ID.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-        /// 
+        /// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         /// - `OSS`: OSS bucket.
         /// - `S3`: S3 bucket.
         /// - `LB`: load balancer.
         /// - `OP`: origin pool.
         /// - `Domain`: domain name.
+        /// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
         /// <summary>
-        /// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        /// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -290,25 +290,25 @@ namespace Pulumi.AliCloud.Esa
         public Input<Inputs.RecordAuthConfGetArgs>? AuthConf { get; set; }
 
         /// <summary>
-        /// The business scenario of the record for acceleration. Valid values:
+        /// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         /// </summary>
         [Input("bizName")]
         public Input<string>? BizName { get; set; }
 
         /// <summary>
-        /// The comments of the record.
+        /// The comment of the record. The maximum length is 100 characters.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+        /// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `Data` below.
+        /// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `Data` below.
         /// </summary>
         [Input("data")]
         public Input<Inputs.RecordDataGetArgs>? Data { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? HostPolicy { get; set; }
 
         /// <summary>
-        /// Filters by whether the record is proxied. Valid values:
+        /// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         /// </summary>
         [Input("proxied")]
         public Input<bool>? Proxied { get; set; }
@@ -332,31 +332,31 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RecordName { get; set; }
 
         /// <summary>
-        /// The DNS record type.
+        /// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         /// </summary>
         [Input("recordType")]
         public Input<string>? RecordType { get; set; }
 
         /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        /// The website ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-        /// 
+        /// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         /// - `OSS`: OSS bucket.
         /// - `S3`: S3 bucket.
         /// - `LB`: load balancer.
         /// - `OP`: origin pool.
         /// - `Domain`: domain name.
+        /// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 
         /// <summary>
-        /// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        /// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

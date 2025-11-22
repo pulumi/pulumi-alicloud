@@ -12,148 +12,61 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a MongoDB Audit Policy resource.
- * 
- * For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
- * 
- * &gt; **NOTE:** Available since v1.148.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.mongodb.MongodbFunctions;
- * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.mongodb.Instance;
- * import com.pulumi.alicloud.mongodb.InstanceArgs;
- * import com.pulumi.alicloud.mongodb.AuditPolicy;
- * import com.pulumi.alicloud.mongodb.AuditPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = MongodbFunctions.getZones(GetZonesArgs.builder()
- *             .build());
- * 
- *         final var index = default_.zones().length().applyValue(_length -> _length - 1);
- * 
- *         final var zoneId = default_.zones()[index].id();
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(zoneId)
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .engineVersion("4.2")
- *             .dbInstanceClass("dds.mongo.mid")
- *             .dbInstanceStorage(10)
- *             .vswitchId(defaultSwitch.id())
- *             .securityIpLists(            
- *                 "10.168.1.12",
- *                 "100.69.7.112")
- *             .name(name)
- *             .tags(Map.ofEntries(
- *                 Map.entry("Created", "TF"),
- *                 Map.entry("For", "example")
- *             ))
- *             .build());
- * 
- *         var defaultAuditPolicy = new AuditPolicy("defaultAuditPolicy", AuditPolicyArgs.builder()
- *             .dbInstanceId(defaultInstance.id())
- *             .auditStatus("disabled")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
- * MongoDB Audit Policy can be imported using the id, e.g.
+ * Mongodb Audit Policy can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:mongodb/auditPolicy:AuditPolicy")
 public class AuditPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The status of the audit log. Valid values: `disabled`, `enable`.
+     * Audit state, Valid values: `enable`, `disabled`.
      * 
      */
     @Export(name="auditStatus", refs={String.class}, tree="[0]")
     private Output<String> auditStatus;
 
     /**
-     * @return The status of the audit log. Valid values: `disabled`, `enable`.
+     * @return Audit state, Valid values: `enable`, `disabled`.
      * 
      */
     public Output<String> auditStatus() {
         return this.auditStatus;
     }
     /**
-     * The ID of the instance.
+     * Database Instance Id
      * 
      */
     @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return Database Instance Id
      * 
      */
     public Output<String> dbInstanceId() {
         return this.dbInstanceId;
     }
     /**
-     * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      * 
      */
     @Export(name="storagePeriod", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> storagePeriod;
+    private Output<Integer> storagePeriod;
 
     /**
-     * @return The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * @return Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      * 
      */
-    public Output<Optional<Integer>> storagePeriod() {
-        return Codegen.optional(this.storagePeriod);
+    public Output<Integer> storagePeriod() {
+        return this.storagePeriod;
     }
 
     /**

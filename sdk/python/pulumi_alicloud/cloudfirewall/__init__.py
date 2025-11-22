@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .address_book import *
+from .ai_traffic_analysis_status import *
 from .control_policy import *
 from .control_policy_order import *
 from .firewall_vpc_firewall import *

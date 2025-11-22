@@ -7,6 +7,8 @@ import com.pulumi.alicloud.log.inputs.StoreIndexFieldSearchArgs;
 import com.pulumi.alicloud.log.inputs.StoreIndexFullTextArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,14 +21,18 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
     public static final StoreIndexState Empty = new StoreIndexState();
 
     /**
-     * List configurations of field search index. Valid item as follows:
+     * List configurations of field search index. See `fieldSearch` below.
+     * 
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     @Import(name="fieldSearches")
     private @Nullable Output<List<StoreIndexFieldSearchArgs>> fieldSearches;
 
     /**
-     * @return List configurations of field search index. Valid item as follows:
+     * @return List configurations of field search index. See `fieldSearch` below.
+     * 
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     public Optional<Output<List<StoreIndexFieldSearchArgs>>> fieldSearches() {
@@ -34,18 +40,63 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of full text index. Valid item as follows:
+     * The configuration of full text index. See `fullText` below.
      * 
      */
     @Import(name="fullText")
     private @Nullable Output<StoreIndexFullTextArgs> fullText;
 
     /**
-     * @return The configuration of full text index. Valid item as follows:
+     * @return The configuration of full text index. See `fullText` below.
      * 
      */
     public Optional<Output<StoreIndexFullTextArgs>> fullText() {
         return Optional.ofNullable(this.fullText);
+    }
+
+    /**
+     * Whether to enable log reduce. Default to false.
+     * 
+     */
+    @Import(name="logReduce")
+    private @Nullable Output<Boolean> logReduce;
+
+    /**
+     * @return Whether to enable log reduce. Default to false.
+     * 
+     */
+    public Optional<Output<Boolean>> logReduce() {
+        return Optional.ofNullable(this.logReduce);
+    }
+
+    /**
+     * The black list of log reduce.
+     * 
+     */
+    @Import(name="logReduceBlackLists")
+    private @Nullable Output<List<String>> logReduceBlackLists;
+
+    /**
+     * @return The black list of log reduce.
+     * 
+     */
+    public Optional<Output<List<String>>> logReduceBlackLists() {
+        return Optional.ofNullable(this.logReduceBlackLists);
+    }
+
+    /**
+     * The white list of log reduce.
+     * 
+     */
+    @Import(name="logReduceWhiteLists")
+    private @Nullable Output<List<String>> logReduceWhiteLists;
+
+    /**
+     * @return The white list of log reduce.
+     * 
+     */
+    public Optional<Output<List<String>>> logReduceWhiteLists() {
+        return Optional.ofNullable(this.logReduceWhiteLists);
     }
 
     /**
@@ -61,6 +112,21 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> logstore() {
         return Optional.ofNullable(this.logstore);
+    }
+
+    /**
+     * The max text length.
+     * 
+     */
+    @Import(name="maxTextLen")
+    private @Nullable Output<Integer> maxTextLen;
+
+    /**
+     * @return The max text length.
+     * 
+     */
+    public Optional<Output<Integer>> maxTextLen() {
+        return Optional.ofNullable(this.maxTextLen);
     }
 
     /**
@@ -83,7 +149,11 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
     private StoreIndexState(StoreIndexState $) {
         this.fieldSearches = $.fieldSearches;
         this.fullText = $.fullText;
+        this.logReduce = $.logReduce;
+        this.logReduceBlackLists = $.logReduceBlackLists;
+        this.logReduceWhiteLists = $.logReduceWhiteLists;
         this.logstore = $.logstore;
+        this.maxTextLen = $.maxTextLen;
         this.project = $.project;
     }
 
@@ -106,7 +176,9 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fieldSearches List configurations of field search index. Valid item as follows:
+         * @param fieldSearches List configurations of field search index. See `fieldSearch` below.
+         * 
+         * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
          * 
          * @return builder
          * 
@@ -117,7 +189,9 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fieldSearches List configurations of field search index. Valid item as follows:
+         * @param fieldSearches List configurations of field search index. See `fieldSearch` below.
+         * 
+         * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
          * 
          * @return builder
          * 
@@ -127,7 +201,9 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fieldSearches List configurations of field search index. Valid item as follows:
+         * @param fieldSearches List configurations of field search index. See `fieldSearch` below.
+         * 
+         * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
          * 
          * @return builder
          * 
@@ -137,7 +213,7 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fullText The configuration of full text index. Valid item as follows:
+         * @param fullText The configuration of full text index. See `fullText` below.
          * 
          * @return builder
          * 
@@ -148,13 +224,96 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fullText The configuration of full text index. Valid item as follows:
+         * @param fullText The configuration of full text index. See `fullText` below.
          * 
          * @return builder
          * 
          */
         public Builder fullText(StoreIndexFullTextArgs fullText) {
             return fullText(Output.of(fullText));
+        }
+
+        /**
+         * @param logReduce Whether to enable log reduce. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduce(@Nullable Output<Boolean> logReduce) {
+            $.logReduce = logReduce;
+            return this;
+        }
+
+        /**
+         * @param logReduce Whether to enable log reduce. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduce(Boolean logReduce) {
+            return logReduce(Output.of(logReduce));
+        }
+
+        /**
+         * @param logReduceBlackLists The black list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceBlackLists(@Nullable Output<List<String>> logReduceBlackLists) {
+            $.logReduceBlackLists = logReduceBlackLists;
+            return this;
+        }
+
+        /**
+         * @param logReduceBlackLists The black list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceBlackLists(List<String> logReduceBlackLists) {
+            return logReduceBlackLists(Output.of(logReduceBlackLists));
+        }
+
+        /**
+         * @param logReduceBlackLists The black list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceBlackLists(String... logReduceBlackLists) {
+            return logReduceBlackLists(List.of(logReduceBlackLists));
+        }
+
+        /**
+         * @param logReduceWhiteLists The white list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceWhiteLists(@Nullable Output<List<String>> logReduceWhiteLists) {
+            $.logReduceWhiteLists = logReduceWhiteLists;
+            return this;
+        }
+
+        /**
+         * @param logReduceWhiteLists The white list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceWhiteLists(List<String> logReduceWhiteLists) {
+            return logReduceWhiteLists(Output.of(logReduceWhiteLists));
+        }
+
+        /**
+         * @param logReduceWhiteLists The white list of log reduce.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logReduceWhiteLists(String... logReduceWhiteLists) {
+            return logReduceWhiteLists(List.of(logReduceWhiteLists));
         }
 
         /**
@@ -176,6 +335,27 @@ public final class StoreIndexState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logstore(String logstore) {
             return logstore(Output.of(logstore));
+        }
+
+        /**
+         * @param maxTextLen The max text length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTextLen(@Nullable Output<Integer> maxTextLen) {
+            $.maxTextLen = maxTextLen;
+            return this;
+        }
+
+        /**
+         * @param maxTextLen The max text length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTextLen(Integer maxTextLen) {
+            return maxTextLen(Output.of(maxTextLen));
         }
 
         /**

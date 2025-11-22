@@ -109,7 +109,7 @@ type OriginCaCertificate struct {
 	// OriginCaCertificate Id
 	OriginCaCertificateId pulumi.StringOutput `pulumi:"originCaCertificateId"`
 	// Site Id
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Certificate status.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -159,7 +159,7 @@ type originCaCertificateState struct {
 	// OriginCaCertificate Id
 	OriginCaCertificateId *string `pulumi:"originCaCertificateId"`
 	// Site Id
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Certificate status.
 	Status *string `pulumi:"status"`
 }
@@ -174,7 +174,7 @@ type OriginCaCertificateState struct {
 	// OriginCaCertificate Id
 	OriginCaCertificateId pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Certificate status.
 	Status pulumi.StringPtrInput
 }
@@ -189,7 +189,7 @@ type originCaCertificateArgs struct {
 	// The certificate name.
 	Name *string `pulumi:"name"`
 	// Site Id
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a OriginCaCertificate resource.
@@ -199,7 +199,7 @@ type OriginCaCertificateArgs struct {
 	// The certificate name.
 	Name pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (OriginCaCertificateArgs) ElementType() reflect.Type {
@@ -310,8 +310,8 @@ func (o OriginCaCertificateOutput) OriginCaCertificateId() pulumi.StringOutput {
 }
 
 // Site Id
-func (o OriginCaCertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginCaCertificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o OriginCaCertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Certificate status.

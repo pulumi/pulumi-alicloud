@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class StoreIndexFieldSearch
     {
         /// <summary>
-        /// The alias of one field
+        /// The alias of one field.
         /// </summary>
         public readonly string? Alias;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly bool? IncludeChinese;
         /// <summary>
-        /// Use nested index when type is json
+        /// Use nested index when type is json. See `JsonKeys` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StoreIndexFieldSearchJsonKey> JsonKeys;
         /// <summary>
-        /// The field name, which is unique in the same log store.
+        /// When using the JsonKeys field, this field is required.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string? Token;
         /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         /// </summary>
         public readonly string? Type;
 

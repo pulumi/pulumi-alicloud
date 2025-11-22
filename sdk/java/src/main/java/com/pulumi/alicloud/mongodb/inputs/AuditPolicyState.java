@@ -17,14 +17,14 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
     public static final AuditPolicyState Empty = new AuditPolicyState();
 
     /**
-     * The status of the audit log. Valid values: `disabled`, `enable`.
+     * Audit state, Valid values: `enable`, `disabled`.
      * 
      */
     @Import(name="auditStatus")
     private @Nullable Output<String> auditStatus;
 
     /**
-     * @return The status of the audit log. Valid values: `disabled`, `enable`.
+     * @return Audit state, Valid values: `enable`, `disabled`.
      * 
      */
     public Optional<Output<String>> auditStatus() {
@@ -32,14 +32,14 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the instance.
+     * Database Instance Id
      * 
      */
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return Database Instance Id
      * 
      */
     public Optional<Output<String>> dbInstanceId() {
@@ -47,14 +47,14 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      * 
      */
     @Import(name="storagePeriod")
     private @Nullable Output<Integer> storagePeriod;
 
     /**
-     * @return The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * @return Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      * 
      */
     public Optional<Output<Integer>> storagePeriod() {
@@ -88,7 +88,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditStatus The status of the audit log. Valid values: `disabled`, `enable`.
+         * @param auditStatus Audit state, Valid values: `enable`, `disabled`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditStatus The status of the audit log. Valid values: `disabled`, `enable`.
+         * @param auditStatus Audit state, Valid values: `enable`, `disabled`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The ID of the instance.
+         * @param dbInstanceId Database Instance Id
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbInstanceId The ID of the instance.
+         * @param dbInstanceId Database Instance Id
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePeriod The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+         * @param storagePeriod Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AuditPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePeriod The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+         * @param storagePeriod Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
          * 
          * @return builder
          * 

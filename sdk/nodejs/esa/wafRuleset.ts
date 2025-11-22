@@ -85,10 +85,7 @@ export class WafRuleset extends pulumi.CustomResource {
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    declare public readonly siteId: pulumi.Output<number>;
-    /**
-     * The site version.
-     */
+    declare public readonly siteId: pulumi.Output<string>;
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * Rule Set Status
@@ -153,10 +150,7 @@ export interface WafRulesetState {
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<number>;
-    /**
-     * The site version.
-     */
+    siteId?: pulumi.Input<string>;
     siteVersion?: pulumi.Input<number>;
     /**
      * Rule Set Status
@@ -179,10 +173,7 @@ export interface WafRulesetArgs {
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId: pulumi.Input<number>;
-    /**
-     * The site version.
-     */
+    siteId: pulumi.Input<string>;
     siteVersion?: pulumi.Input<number>;
     /**
      * Rule Set Status

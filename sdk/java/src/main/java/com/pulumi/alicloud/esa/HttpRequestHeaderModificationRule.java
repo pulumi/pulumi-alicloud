@@ -189,28 +189,42 @@ public class HttpRequestHeaderModificationRule extends com.pulumi.resources.Cust
         return Codegen.optional(this.ruleName);
     }
     /**
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    @Export(name="sequence", refs={Integer.class}, tree="[0]")
+    private Output<Integer> sequence;
+
+    /**
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+     * 
+     */
+    public Output<Integer> sequence() {
+        return this.sequence;
+    }
+    /**
      * The site ID.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
-     * The version number of the website configurations.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
     /**
-     * @return The version number of the website configurations.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Output<Optional<Integer>> siteVersion() {

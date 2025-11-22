@@ -118,9 +118,11 @@ type HttpRequestHeaderModificationRule struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version number of the website configurations.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
 
@@ -174,9 +176,11 @@ type httpRequestHeaderModificationRuleState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	SiteId *string `pulumi:"siteId"`
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -195,9 +199,11 @@ type HttpRequestHeaderModificationRuleState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
-	// The version number of the website configurations.
+	SiteId pulumi.StringPtrInput
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -218,9 +224,11 @@ type httpRequestHeaderModificationRuleArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
-	// The version number of the website configurations.
+	SiteId string `pulumi:"siteId"`
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
 
@@ -238,9 +246,11 @@ type HttpRequestHeaderModificationRuleArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntInput
-	// The version number of the website configurations.
+	SiteId pulumi.StringInput
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -362,12 +372,17 @@ func (o HttpRequestHeaderModificationRuleOutput) RuleName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// The site ID.
-func (o HttpRequestHeaderModificationRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+func (o HttpRequestHeaderModificationRuleOutput) Sequence() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
 
-// The version number of the website configurations.
+// The site ID.
+func (o HttpRequestHeaderModificationRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o HttpRequestHeaderModificationRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpRequestHeaderModificationRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

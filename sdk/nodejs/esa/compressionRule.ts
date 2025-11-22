@@ -103,13 +103,13 @@ export class CompressionRule extends pulumi.CustomResource {
      */
     declare public readonly ruleName: pulumi.Output<string | undefined>;
     /**
-     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     declare public readonly sequence: pulumi.Output<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
@@ -194,13 +194,13 @@ export interface CompressionRuleState {
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
@@ -238,13 +238,13 @@ export interface CompressionRuleArgs {
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
     sequence?: pulumi.Input<number>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */

@@ -6,7 +6,6 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,12 +34,16 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="ossUrl")
     private @Nullable Output<String> ossUrl;
 
     /**
      * @return Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> ossUrl() {
@@ -67,18 +70,20 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The site ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="urlList")
@@ -86,6 +91,8 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
 
     /**
      * @return A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> urlList() {
@@ -144,6 +151,8 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
         /**
          * @param ossUrl Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -154,6 +163,8 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
 
         /**
          * @param ossUrl Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -189,7 +200,7 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -200,12 +211,14 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
          * @param urlList A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -217,6 +230,8 @@ public final class ScheduledPreloadJobArgs extends com.pulumi.resources.Resource
 
         /**
          * @param urlList A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

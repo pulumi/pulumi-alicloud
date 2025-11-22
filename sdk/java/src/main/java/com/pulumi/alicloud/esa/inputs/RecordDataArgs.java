@@ -152,14 +152,14 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+     * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+     * @return The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
      * 
      */
     public Optional<Output<String>> tag() {
@@ -197,9 +197,8 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-     * 
-     * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+     * Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+     * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
      * - `CNAME`: the target domain name.
      * - `NS`: the name servers for the domain name.
      * - `MX`: a valid domain name of the target mail server.
@@ -213,9 +212,8 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> value;
 
     /**
-     * @return The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-     * 
-     * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+     * @return Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+     * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
      * - `CNAME`: the target domain name.
      * - `NS`: the name servers for the domain name.
      * - `MX`: a valid domain name of the target mail server.
@@ -471,7 +469,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tag The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         * @param tag The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
          * 
          * @return builder
          * 
@@ -482,7 +480,7 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tag The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         * @param tag The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
          * 
          * @return builder
          * 
@@ -534,9 +532,8 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-         * 
-         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * @param value Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+         * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
          * - `CNAME`: the target domain name.
          * - `NS`: the name servers for the domain name.
          * - `MX`: a valid domain name of the target mail server.
@@ -554,9 +551,8 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-         * 
-         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * @param value Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+         * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
          * - `CNAME`: the target domain name.
          * - `NS`: the name servers for the domain name.
          * - `MX`: a valid domain name of the target mail server.

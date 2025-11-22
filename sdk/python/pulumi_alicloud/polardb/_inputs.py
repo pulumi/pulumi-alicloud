@@ -249,13 +249,13 @@ class ClusterParameterArgs:
 
 if not MYPY:
     class ParameterGroupParameterArgsDict(TypedDict):
-        param_name: pulumi.Input[_builtins.str]
+        param_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The name of a parameter in the parameter template.
+        The name of the parameter.
         """
-        param_value: pulumi.Input[_builtins.str]
+        param_value: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The value of a parameter in the parameter template.
+        The value of the parameter.
         """
 elif False:
     ParameterGroupParameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -263,37 +263,39 @@ elif False:
 @pulumi.input_type
 class ParameterGroupParameterArgs:
     def __init__(__self__, *,
-                 param_name: pulumi.Input[_builtins.str],
-                 param_value: pulumi.Input[_builtins.str]):
+                 param_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 param_value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] param_name: The name of a parameter in the parameter template.
-        :param pulumi.Input[_builtins.str] param_value: The value of a parameter in the parameter template.
+        :param pulumi.Input[_builtins.str] param_name: The name of the parameter.
+        :param pulumi.Input[_builtins.str] param_value: The value of the parameter.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        if param_name is not None:
+            pulumi.set(__self__, "param_name", param_name)
+        if param_value is not None:
+            pulumi.set(__self__, "param_value", param_value)
 
     @_builtins.property
     @pulumi.getter(name="paramName")
-    def param_name(self) -> pulumi.Input[_builtins.str]:
+    def param_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of a parameter in the parameter template.
+        The name of the parameter.
         """
         return pulumi.get(self, "param_name")
 
     @param_name.setter
-    def param_name(self, value: pulumi.Input[_builtins.str]):
+    def param_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "param_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paramValue")
-    def param_value(self) -> pulumi.Input[_builtins.str]:
+    def param_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The value of a parameter in the parameter template.
+        The value of the parameter.
         """
         return pulumi.get(self, "param_value")
 
     @param_value.setter
-    def param_value(self, value: pulumi.Input[_builtins.str]):
+    def param_value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "param_value", value)
 
 

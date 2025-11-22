@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a PolarDB Parameter Group resource.
+ * Provides a Polar Db Parameter Group resource.
  *
- * For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+ * For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
  *
  * > **NOTE:** Available since v1.183.0.
  *
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.polardb.ParameterGroup("example", {
- *     name: "example_value",
+ *     parameterGroupName: "example_value",
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     parameters: [{
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PolarDB Parameter Group can be imported using the id, e.g.
+ * Polar Db Parameter Group can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
@@ -70,23 +70,45 @@ export class ParameterGroup extends pulumi.CustomResource {
     }
 
     /**
+     * The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * The type of the database engine. Only `MySQL` is supported.
      */
     declare public readonly dbType: pulumi.Output<string>;
     /**
-     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * The version of the database engine. Valid values: 
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      */
     declare public readonly dbVersion: pulumi.Output<string>;
     /**
-     * The description of the parameter template. It must be 0 to 200 characters in length.
+     * The description of the parameter template.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The parameter template. See the following `Block parameters`.
+     * The name of the parameter template. The name must meet the following requirements:
+     *
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     *
+     * - It must be 8 to 64 characters in length.
+     */
+    declare public readonly parameterGroupName: pulumi.Output<string>;
+    /**
+     * Details about the parameters. See `parameters` below.
+     *
+     * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     *
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     declare public readonly parameters: pulumi.Output<outputs.polardb.ParameterGroupParameter[]>;
 
@@ -103,10 +125,12 @@ export class ParameterGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParameterGroupState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dbType"] = state?.dbType;
             resourceInputs["dbVersion"] = state?.dbVersion;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
+            resourceInputs["parameterGroupName"] = state?.parameterGroupName;
             resourceInputs["parameters"] = state?.parameters;
         } else {
             const args = argsOrState as ParameterGroupArgs | undefined;
@@ -123,7 +147,9 @@ export class ParameterGroup extends pulumi.CustomResource {
             resourceInputs["dbVersion"] = args?.dbVersion;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
+            resourceInputs["parameterGroupName"] = args?.parameterGroupName;
             resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ParameterGroup.__pulumiType, name, resourceInputs, opts);
@@ -135,23 +161,45 @@ export class ParameterGroup extends pulumi.CustomResource {
  */
 export interface ParameterGroupState {
     /**
+     * The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
      * The type of the database engine. Only `MySQL` is supported.
      */
     dbType?: pulumi.Input<string>;
     /**
-     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * The version of the database engine. Valid values: 
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      */
     dbVersion?: pulumi.Input<string>;
     /**
-     * The description of the parameter template. It must be 0 to 200 characters in length.
+     * The description of the parameter template.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The parameter template. See the following `Block parameters`.
+     * The name of the parameter template. The name must meet the following requirements:
+     *
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     *
+     * - It must be 8 to 64 characters in length.
+     */
+    parameterGroupName?: pulumi.Input<string>;
+    /**
+     * Details about the parameters. See `parameters` below.
+     *
+     * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     *
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ParameterGroupParameter>[]>;
 }
@@ -165,19 +213,37 @@ export interface ParameterGroupArgs {
      */
     dbType: pulumi.Input<string>;
     /**
-     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * The version of the database engine. Valid values: 
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      */
     dbVersion: pulumi.Input<string>;
     /**
-     * The description of the parameter template. It must be 0 to 200 characters in length.
+     * The description of the parameter template.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+     *
+     * @deprecated Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The parameter template. See the following `Block parameters`.
+     * The name of the parameter template. The name must meet the following requirements:
+     *
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     *
+     * - It must be 8 to 64 characters in length.
+     */
+    parameterGroupName?: pulumi.Input<string>;
+    /**
+     * Details about the parameters. See `parameters` below.
+     *
+     * > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     *
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     parameters: pulumi.Input<pulumi.Input<inputs.polardb.ParameterGroupParameter>[]>;
 }

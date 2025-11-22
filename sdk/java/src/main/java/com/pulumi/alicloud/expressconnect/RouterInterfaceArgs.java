@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +20,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     public static final RouterInterfaceArgs Empty = new RouterInterfaceArgs();
 
     /**
-     * The access point ID to which the VBR belongs.
+     * Access point ID
      * 
      */
     @Import(name="accessPointId")
     private @Nullable Output<String> accessPointId;
 
     /**
-     * @return The access point ID to which the VBR belongs.
+     * @return Access point ID
      * 
      */
     public Optional<Output<String>> accessPointId() {
@@ -34,29 +35,52 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
     public Optional<Output<Boolean>> autoPay() {
         return Optional.ofNullable(this.autoPay);
     }
 
     /**
-     * Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+     * Whether to enable automatic renewal. Value:
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether to enable automatic renewal. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * Whether to delete the health check IP address configured on the router interface. Value:
      * 
      */
     @Import(name="deleteHealthCheckIp")
     private @Nullable Output<Boolean> deleteHealthCheckIp;
 
     /**
-     * @return Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+     * @return Whether to delete the health check IP address configured on the router interface. Value:
      * 
      */
     public Optional<Output<Boolean>> deleteHealthCheckIp() {
@@ -64,14 +88,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * @return The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +103,29 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+     * Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+     * 
+     */
+    @Import(name="fastLinkMode")
+    private @Nullable Output<Boolean> fastLinkMode;
+
+    /**
+     * @return Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> fastLinkMode() {
+        return Optional.ofNullable(this.fastLinkMode);
+    }
+
+    /**
+     * Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      * 
      */
     @Import(name="hcRate")
     private @Nullable Output<Integer> hcRate;
 
     /**
-     * @return The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+     * @return Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      * 
      */
     public Optional<Output<Integer>> hcRate() {
@@ -94,14 +133,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+     * Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      * 
      */
     @Import(name="hcThreshold")
     private @Nullable Output<String> hcThreshold;
 
     /**
-     * @return The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+     * @return Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      * 
      */
     public Optional<Output<String>> hcThreshold() {
@@ -109,14 +148,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The health check source IP address, must be an unused IP within the local VPC.
+     * Health check source IP address
      * 
      */
     @Import(name="healthCheckSourceIp")
     private @Nullable Output<String> healthCheckSourceIp;
 
     /**
-     * @return The health check source IP address, must be an unused IP within the local VPC.
+     * @return Health check source IP address
      * 
      */
     public Optional<Output<String>> healthCheckSourceIp() {
@@ -124,14 +163,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The IP address for health screening purposes.
+     * Health check destination IP address
      * 
      */
     @Import(name="healthCheckTargetIp")
     private @Nullable Output<String> healthCheckTargetIp;
 
     /**
-     * @return The IP address for health screening purposes.
+     * @return Health check destination IP address
      * 
      */
     public Optional<Output<String>> healthCheckTargetIp() {
@@ -139,14 +178,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Access point ID to which the other end belongs.
+     * Peer access point ID
      * 
      */
     @Import(name="oppositeAccessPointId")
     private @Nullable Output<String> oppositeAccessPointId;
 
     /**
-     * @return The Access point ID to which the other end belongs.
+     * @return Peer access point ID
      * 
      */
     public Optional<Output<String>> oppositeAccessPointId() {
@@ -154,29 +193,37 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Interface ID of the router at the other end.
+     * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
     @Import(name="oppositeInterfaceId")
     private @Nullable Output<String> oppositeInterfaceId;
 
     /**
-     * @return The Interface ID of the router at the other end.
+     * @return . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
     public Optional<Output<String>> oppositeInterfaceId() {
         return Optional.ofNullable(this.oppositeInterfaceId);
     }
 
     /**
-     * The AliCloud account ID of the owner of the router interface on the other end.
+     * Account ID of the peer router interface
      * 
      */
     @Import(name="oppositeInterfaceOwnerId")
     private @Nullable Output<String> oppositeInterfaceOwnerId;
 
     /**
-     * @return The AliCloud account ID of the owner of the router interface on the other end.
+     * @return Account ID of the peer router interface
      * 
      */
     public Optional<Output<String>> oppositeInterfaceOwnerId() {
@@ -184,14 +231,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The geographical ID of the location of the receiving end of the connection.
+     * Region of the connection peer
      * 
      */
     @Import(name="oppositeRegionId", required=true)
     private Output<String> oppositeRegionId;
 
     /**
-     * @return The geographical ID of the location of the receiving end of the connection.
+     * @return Region of the connection peer
      * 
      */
     public Output<String> oppositeRegionId() {
@@ -199,14 +246,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The id of the router at the other end.
+     * The ID of the router to which the opposite router interface belongs.
      * 
      */
     @Import(name="oppositeRouterId")
     private @Nullable Output<String> oppositeRouterId;
 
     /**
-     * @return The id of the router at the other end.
+     * @return The ID of the router to which the opposite router interface belongs.
      * 
      */
     public Optional<Output<String>> oppositeRouterId() {
@@ -214,14 +261,18 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+     * The router type associated with the peer router interface. Valid values:
+     * - VRouter: VPC router.
+     * - VBR: Virtual Border Router.
      * 
      */
     @Import(name="oppositeRouterType")
     private @Nullable Output<String> oppositeRouterType;
 
     /**
-     * @return The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+     * @return The router type associated with the peer router interface. Valid values:
+     * - VRouter: VPC router.
+     * - VBR: Virtual Border Router.
      * 
      */
     public Optional<Output<String>> oppositeRouterType() {
@@ -229,14 +280,18 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+     * The payment method of the router interface. Valid values:
+     * - Subscription : PrePaid.
+     * - PayAsYouGo : PostPaid.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+     * @return The payment method of the router interface. Valid values:
+     * - Subscription : PrePaid.
+     * - PayAsYouGo : PostPaid.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -244,14 +299,26 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * Purchase duration, value:
+     * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+     * - When you choose to pay per year, the value range is **1 to 3**.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return Purchase duration, value:
+     * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+     * - When you choose to pay per year, the value range is **1 to 3**.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -259,14 +326,26 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * The billing cycle of the prepaid fee. Valid values:
+     * - `Month` (default): monthly payment.
+     * - `Year`: Pay per Year.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return The billing cycle of the prepaid fee. Valid values:
+     * - `Month` (default): monthly payment.
+     * - `Year`: Pay per Year.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -274,14 +353,33 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+     * The ID of the resource group
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The role of the router interface. Valid values:
+     * - InitiatingSide : the initiator of the connection.
+     * - AcceptingSide : Connect to the receiving end.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+     * @return The role of the router interface. Valid values:
+     * - InitiatingSide : the initiator of the connection.
+     * - AcceptingSide : Connect to the receiving end.
      * 
      */
     public Output<String> role() {
@@ -289,14 +387,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The router id associated with the router interface.
+     * The ID of the router where the route entry is located.
      * 
      */
     @Import(name="routerId", required=true)
     private Output<String> routerId;
 
     /**
-     * @return The router id associated with the router interface.
+     * @return The ID of the router where the route entry is located.
      * 
      */
     public Output<String> routerId() {
@@ -304,29 +402,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The first ID of the resource.
-     * 
-     */
-    @Import(name="routerInterfaceId")
-    private @Nullable Output<String> routerInterfaceId;
-
-    /**
-     * @return The first ID of the resource.
-     * 
-     */
-    public Optional<Output<String>> routerInterfaceId() {
-        return Optional.ofNullable(this.routerInterfaceId);
-    }
-
-    /**
-     * The name of the resource.
+     * Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     @Import(name="routerInterfaceName")
     private @Nullable Output<String> routerInterfaceName;
 
     /**
-     * @return The name of the resource.
+     * @return Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> routerInterfaceName() {
@@ -334,14 +417,18 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+     * The type of the router where the routing table resides. Valid values:
+     * - VRouter:VPC router
+     * - VBR: Border Router
      * 
      */
     @Import(name="routerType", required=true)
     private Output<String> routerType;
 
     /**
-     * @return The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+     * @return The type of the router where the routing table resides. Valid values:
+     * - VRouter:VPC router
+     * - VBR: Border Router
      * 
      */
     public Output<String> routerType() {
@@ -349,14 +436,42 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+     * - Mini.2: 2 Mbps
+     * - Mini.5: 5 Mbps
+     * - Small.1: 10 Mbps
+     * - Small.2: 20 Mbps
+     * - Small.5: 50 Mbps
+     * - Middle.1: 100 Mbps
+     * - Middle.2: 200 Mbps
+     * - Middle.5: 500 Mbps
+     * - Large.1: 1000 Mbps
+     * - Large.2: 2000 Mbps
+     * - Large.5: 5000 Mbps
+     * - Xlarge.1: 10000 Mbps
+     * 
+     * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
      * 
      */
     @Import(name="spec", required=true)
     private Output<String> spec;
 
     /**
-     * @return The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * @return The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+     * - Mini.2: 2 Mbps
+     * - Mini.5: 5 Mbps
+     * - Small.1: 10 Mbps
+     * - Small.2: 20 Mbps
+     * - Small.5: 50 Mbps
+     * - Middle.1: 100 Mbps
+     * - Middle.2: 200 Mbps
+     * - Middle.5: 500 Mbps
+     * - Large.1: 1000 Mbps
+     * - Large.2: 2000 Mbps
+     * - Large.5: 5000 Mbps
+     * - Xlarge.1: 10000 Mbps
+     * 
+     * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
      * 
      */
     public Output<String> spec() {
@@ -364,18 +479,57 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * Resource attribute fields that represent the status of the resource. Value range:
+     * - Idle : Initialize.
+     * - Connecting : the initiator is in the process of Connecting.
+     * - AcceptingConnecting : the receiving end is being connected.
+     * - Activating : Restoring.
+     * - Active : Normal.
+     * - Modifying : Modifying.
+     * - Deactivating : Freezing.
+     * - Inactive : Frozen.
+     * - Deleting : Deleting.
+     * - Deleted : Deleted.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * @return Resource attribute fields that represent the status of the resource. Value range:
+     * - Idle : Initialize.
+     * - Connecting : the initiator is in the process of Connecting.
+     * - AcceptingConnecting : the receiving end is being connected.
+     * - Activating : Restoring.
+     * - Active : Normal.
+     * - Modifying : Modifying.
+     * - Deactivating : Freezing.
+     * - Inactive : Frozen.
+     * - Deleting : Deleting.
+     * - Deleted : Deleted.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private RouterInterfaceArgs() {}
@@ -383,8 +537,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     private RouterInterfaceArgs(RouterInterfaceArgs $) {
         this.accessPointId = $.accessPointId;
         this.autoPay = $.autoPay;
+        this.autoRenew = $.autoRenew;
         this.deleteHealthCheckIp = $.deleteHealthCheckIp;
         this.description = $.description;
+        this.fastLinkMode = $.fastLinkMode;
         this.hcRate = $.hcRate;
         this.hcThreshold = $.hcThreshold;
         this.healthCheckSourceIp = $.healthCheckSourceIp;
@@ -398,13 +554,14 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.pricingCycle = $.pricingCycle;
+        this.resourceGroupId = $.resourceGroupId;
         this.role = $.role;
         this.routerId = $.routerId;
-        this.routerInterfaceId = $.routerInterfaceId;
         this.routerInterfaceName = $.routerInterfaceName;
         this.routerType = $.routerType;
         this.spec = $.spec;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -426,7 +583,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accessPointId The access point ID to which the VBR belongs.
+         * @param accessPointId Access point ID
          * 
          * @return builder
          * 
@@ -437,7 +594,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accessPointId The access point ID to which the VBR belongs.
+         * @param accessPointId Access point ID
          * 
          * @return builder
          * 
@@ -447,28 +604,57 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoPay Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param autoPay . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+         * 
          */
+        @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
             $.autoPay = autoPay;
             return this;
         }
 
         /**
-         * @param autoPay Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param autoPay . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
+         * 
          */
+        @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
         public Builder autoPay(Boolean autoPay) {
             return autoPay(Output.of(autoPay));
         }
 
         /**
-         * @param deleteHealthCheckIp Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+         * @param autoRenew Whether to enable automatic renewal. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether to enable automatic renewal. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param deleteHealthCheckIp Whether to delete the health check IP address configured on the router interface. Value:
          * 
          * @return builder
          * 
@@ -479,7 +665,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param deleteHealthCheckIp Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+         * @param deleteHealthCheckIp Whether to delete the health check IP address configured on the router interface. Value:
          * 
          * @return builder
          * 
@@ -489,7 +675,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+         * @param description The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -500,7 +686,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+         * @param description The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -510,7 +696,28 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hcRate The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+         * @param fastLinkMode Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastLinkMode(@Nullable Output<Boolean> fastLinkMode) {
+            $.fastLinkMode = fastLinkMode;
+            return this;
+        }
+
+        /**
+         * @param fastLinkMode Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fastLinkMode(Boolean fastLinkMode) {
+            return fastLinkMode(Output.of(fastLinkMode));
+        }
+
+        /**
+         * @param hcRate Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
          * 
          * @return builder
          * 
@@ -521,7 +728,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hcRate The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+         * @param hcRate Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
          * 
          * @return builder
          * 
@@ -531,7 +738,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hcThreshold The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+         * @param hcThreshold Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
          * 
          * @return builder
          * 
@@ -542,7 +749,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hcThreshold The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+         * @param hcThreshold Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
          * 
          * @return builder
          * 
@@ -552,7 +759,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param healthCheckSourceIp The health check source IP address, must be an unused IP within the local VPC.
+         * @param healthCheckSourceIp Health check source IP address
          * 
          * @return builder
          * 
@@ -563,7 +770,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param healthCheckSourceIp The health check source IP address, must be an unused IP within the local VPC.
+         * @param healthCheckSourceIp Health check source IP address
          * 
          * @return builder
          * 
@@ -573,7 +780,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param healthCheckTargetIp The IP address for health screening purposes.
+         * @param healthCheckTargetIp Health check destination IP address
          * 
          * @return builder
          * 
@@ -584,7 +791,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param healthCheckTargetIp The IP address for health screening purposes.
+         * @param healthCheckTargetIp Health check destination IP address
          * 
          * @return builder
          * 
@@ -594,7 +801,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeAccessPointId The Access point ID to which the other end belongs.
+         * @param oppositeAccessPointId Peer access point ID
          * 
          * @return builder
          * 
@@ -605,7 +812,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeAccessPointId The Access point ID to which the other end belongs.
+         * @param oppositeAccessPointId Peer access point ID
          * 
          * @return builder
          * 
@@ -615,28 +822,36 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeInterfaceId The Interface ID of the router at the other end.
+         * @param oppositeInterfaceId . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+         * 
          */
+        @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
         public Builder oppositeInterfaceId(@Nullable Output<String> oppositeInterfaceId) {
             $.oppositeInterfaceId = oppositeInterfaceId;
             return this;
         }
 
         /**
-         * @param oppositeInterfaceId The Interface ID of the router at the other end.
+         * @param oppositeInterfaceId . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
+         * 
          */
+        @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
         public Builder oppositeInterfaceId(String oppositeInterfaceId) {
             return oppositeInterfaceId(Output.of(oppositeInterfaceId));
         }
 
         /**
-         * @param oppositeInterfaceOwnerId The AliCloud account ID of the owner of the router interface on the other end.
+         * @param oppositeInterfaceOwnerId Account ID of the peer router interface
          * 
          * @return builder
          * 
@@ -647,7 +862,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeInterfaceOwnerId The AliCloud account ID of the owner of the router interface on the other end.
+         * @param oppositeInterfaceOwnerId Account ID of the peer router interface
          * 
          * @return builder
          * 
@@ -657,7 +872,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRegionId The geographical ID of the location of the receiving end of the connection.
+         * @param oppositeRegionId Region of the connection peer
          * 
          * @return builder
          * 
@@ -668,7 +883,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRegionId The geographical ID of the location of the receiving end of the connection.
+         * @param oppositeRegionId Region of the connection peer
          * 
          * @return builder
          * 
@@ -678,7 +893,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRouterId The id of the router at the other end.
+         * @param oppositeRouterId The ID of the router to which the opposite router interface belongs.
          * 
          * @return builder
          * 
@@ -689,7 +904,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRouterId The id of the router at the other end.
+         * @param oppositeRouterId The ID of the router to which the opposite router interface belongs.
          * 
          * @return builder
          * 
@@ -699,7 +914,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRouterType The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+         * @param oppositeRouterType The router type associated with the peer router interface. Valid values:
+         * - VRouter: VPC router.
+         * - VBR: Virtual Border Router.
          * 
          * @return builder
          * 
@@ -710,7 +927,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeRouterType The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+         * @param oppositeRouterType The router type associated with the peer router interface. Valid values:
+         * - VRouter: VPC router.
+         * - VBR: Virtual Border Router.
          * 
          * @return builder
          * 
@@ -720,7 +939,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentType The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType The payment method of the router interface. Valid values:
+         * - Subscription : PrePaid.
+         * - PayAsYouGo : PostPaid.
          * 
          * @return builder
          * 
@@ -731,7 +952,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param paymentType The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+         * @param paymentType The payment method of the router interface. Valid values:
+         * - Subscription : PrePaid.
+         * - PayAsYouGo : PostPaid.
          * 
          * @return builder
          * 
@@ -741,7 +964,13 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param period Purchase duration, value:
+         * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+         * - When you choose to pay per year, the value range is **1 to 3**.
+         * 
+         * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -752,7 +981,13 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param period Purchase duration, value:
+         * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+         * - When you choose to pay per year, the value range is **1 to 3**.
+         * 
+         * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -762,7 +997,13 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pricingCycle The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param pricingCycle The billing cycle of the prepaid fee. Valid values:
+         * - `Month` (default): monthly payment.
+         * - `Year`: Pay per Year.
+         * 
+         * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -773,7 +1014,13 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param pricingCycle The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+         * @param pricingCycle The billing cycle of the prepaid fee. Valid values:
+         * - `Month` (default): monthly payment.
+         * - `Year`: Pay per Year.
+         * 
+         * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -783,7 +1030,30 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param role The role of the router interface. Valid values:
+         * - InitiatingSide : the initiator of the connection.
+         * - AcceptingSide : Connect to the receiving end.
          * 
          * @return builder
          * 
@@ -794,7 +1064,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+         * @param role The role of the router interface. Valid values:
+         * - InitiatingSide : the initiator of the connection.
+         * - AcceptingSide : Connect to the receiving end.
          * 
          * @return builder
          * 
@@ -804,7 +1076,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerId The router id associated with the router interface.
+         * @param routerId The ID of the router where the route entry is located.
          * 
          * @return builder
          * 
@@ -815,7 +1087,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerId The router id associated with the router interface.
+         * @param routerId The ID of the router where the route entry is located.
          * 
          * @return builder
          * 
@@ -825,28 +1097,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerInterfaceId The first ID of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routerInterfaceId(@Nullable Output<String> routerInterfaceId) {
-            $.routerInterfaceId = routerInterfaceId;
-            return this;
-        }
-
-        /**
-         * @param routerInterfaceId The first ID of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routerInterfaceId(String routerInterfaceId) {
-            return routerInterfaceId(Output.of(routerInterfaceId));
-        }
-
-        /**
-         * @param routerInterfaceName The name of the resource.
+         * @param routerInterfaceName Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -857,7 +1108,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerInterfaceName The name of the resource.
+         * @param routerInterfaceName Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -867,7 +1118,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerType The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+         * @param routerType The type of the router where the routing table resides. Valid values:
+         * - VRouter:VPC router
+         * - VBR: Border Router
          * 
          * @return builder
          * 
@@ -878,7 +1131,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerType The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+         * @param routerType The type of the router where the routing table resides. Valid values:
+         * - VRouter:VPC router
+         * - VBR: Border Router
          * 
          * @return builder
          * 
@@ -888,7 +1143,21 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+         * @param spec The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+         * - Mini.2: 2 Mbps
+         * - Mini.5: 5 Mbps
+         * - Small.1: 10 Mbps
+         * - Small.2: 20 Mbps
+         * - Small.5: 50 Mbps
+         * - Middle.1: 100 Mbps
+         * - Middle.2: 200 Mbps
+         * - Middle.5: 500 Mbps
+         * - Large.1: 1000 Mbps
+         * - Large.2: 2000 Mbps
+         * - Large.5: 5000 Mbps
+         * - Xlarge.1: 10000 Mbps
+         * 
+         * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
          * 
          * @return builder
          * 
@@ -899,7 +1168,21 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+         * @param spec The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+         * - Mini.2: 2 Mbps
+         * - Mini.5: 5 Mbps
+         * - Small.1: 10 Mbps
+         * - Small.2: 20 Mbps
+         * - Small.5: 50 Mbps
+         * - Middle.1: 100 Mbps
+         * - Middle.2: 200 Mbps
+         * - Middle.5: 500 Mbps
+         * - Large.1: 1000 Mbps
+         * - Large.2: 2000 Mbps
+         * - Large.5: 5000 Mbps
+         * - Xlarge.1: 10000 Mbps
+         * 
+         * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
          * 
          * @return builder
          * 
@@ -909,7 +1192,17 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+         * @param status Resource attribute fields that represent the status of the resource. Value range:
+         * - Idle : Initialize.
+         * - Connecting : the initiator is in the process of Connecting.
+         * - AcceptingConnecting : the receiving end is being connected.
+         * - Activating : Restoring.
+         * - Active : Normal.
+         * - Modifying : Modifying.
+         * - Deactivating : Freezing.
+         * - Inactive : Frozen.
+         * - Deleting : Deleting.
+         * - Deleted : Deleted.
          * 
          * @return builder
          * 
@@ -920,13 +1213,48 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+         * @param status Resource attribute fields that represent the status of the resource. Value range:
+         * - Idle : Initialize.
+         * - Connecting : the initiator is in the process of Connecting.
+         * - AcceptingConnecting : the receiving end is being connected.
+         * - Activating : Restoring.
+         * - Active : Normal.
+         * - Modifying : Modifying.
+         * - Deactivating : Freezing.
+         * - Inactive : Frozen.
+         * - Deleting : Deleting.
+         * - Deleted : Deleted.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public RouterInterfaceArgs build() {

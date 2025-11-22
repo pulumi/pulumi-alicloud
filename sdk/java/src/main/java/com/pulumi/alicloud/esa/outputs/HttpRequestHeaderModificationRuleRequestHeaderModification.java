@@ -23,6 +23,11 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
      */
     private String operation;
     /**
+     * @return Value type. Value range:
+     * 
+     */
+    private @Nullable String type;
+    /**
      * @return Request header value
      * 
      */
@@ -44,6 +49,13 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
         return this.operation;
     }
     /**
+     * @return Value type. Value range:
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+    /**
      * @return Request header value
      * 
      */
@@ -62,12 +74,14 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
     public static final class Builder {
         private String name;
         private String operation;
+        private @Nullable String type;
         private @Nullable String value;
         public Builder() {}
         public Builder(HttpRequestHeaderModificationRuleRequestHeaderModification defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.operation = defaults.operation;
+    	      this.type = defaults.type;
     	      this.value = defaults.value;
         }
 
@@ -88,6 +102,12 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
             return this;
         }
         @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
 
             this.value = value;
@@ -97,6 +117,7 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModification {
             final var _resultValue = new HttpRequestHeaderModificationRuleRequestHeaderModification();
             _resultValue.name = name;
             _resultValue.operation = operation;
+            _resultValue.type = type;
             _resultValue.value = value;
             return _resultValue;
         }

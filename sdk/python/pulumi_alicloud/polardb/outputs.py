@@ -234,28 +234,30 @@ class ParameterGroupParameter(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 param_name: _builtins.str,
-                 param_value: _builtins.str):
+                 param_name: Optional[_builtins.str] = None,
+                 param_value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str param_name: The name of a parameter in the parameter template.
-        :param _builtins.str param_value: The value of a parameter in the parameter template.
+        :param _builtins.str param_name: The name of the parameter.
+        :param _builtins.str param_value: The value of the parameter.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        if param_name is not None:
+            pulumi.set(__self__, "param_name", param_name)
+        if param_value is not None:
+            pulumi.set(__self__, "param_value", param_value)
 
     @_builtins.property
     @pulumi.getter(name="paramName")
-    def param_name(self) -> _builtins.str:
+    def param_name(self) -> Optional[_builtins.str]:
         """
-        The name of a parameter in the parameter template.
+        The name of the parameter.
         """
         return pulumi.get(self, "param_name")
 
     @_builtins.property
     @pulumi.getter(name="paramValue")
-    def param_value(self) -> _builtins.str:
+    def param_value(self) -> Optional[_builtins.str]:
         """
-        The value of a parameter in the parameter template.
+        The value of the parameter.
         """
         return pulumi.get(self, "param_value")
 

@@ -47,7 +47,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.adAuthServers;
     }
     /**
-     * The bandwidth of Cloud Bastionhost instance.
+     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
@@ -56,7 +56,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of Cloud Bastionhost instance.
+     * @return The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
@@ -235,6 +235,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
+    }
+    /**
+     * Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
+    @Export(name="slaveVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> slaveVswitchId;
+
+    /**
+     * @return Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
+    public Output<Optional<String>> slaveVswitchId() {
+        return Codegen.optional(this.slaveVswitchId);
     }
     /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// <summary>
     /// Provides a Express Connect Router Interface resource.
     /// 
-    /// For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+    /// For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
     /// 
     /// &gt; **NOTE:** Available since v1.199.0.
     /// 
@@ -29,27 +29,67 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
     ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
+    ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING-JG",
+    ///     });
+    /// 
+    ///     var defaultGetZones = AliCloud.Alb.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         EnableIpv6 = true,
+    ///     });
+    /// 
+    ///     var zoneA = new AliCloud.Vpc.Switch("zone_a", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Ipv6CidrBlockMask = 6,
+    ///     });
+    /// 
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
+    ///     {
+    ///         PhysicalConnectionId = nameRegex.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VlanId = 1001,
+    ///         PeerGatewayIp = "192.168.254.2",
+    ///         PeeringSubnetMask = "255.255.255.0",
+    ///         LocalGatewayIp = "192.168.254.1",
+    ///     });
+    /// 
     ///     var defaultRouterInterface = new AliCloud.ExpressConnect.RouterInterface("default", new()
     ///     {
-    ///         Description = name,
-    ///         OppositeRegionId = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
-    ///         RouterId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.RouterId)),
-    ///         Role = "InitiatingSide",
-    ///         RouterType = "VRouter",
-    ///         PaymentType = "PayAsYouGo",
-    ///         RouterInterfaceName = name,
+    ///         AutoRenew = true,
     ///         Spec = "Mini.2",
+    ///         OppositeRouterType = "VRouter",
+    ///         RouterId = defaultVirtualBorderRouter.Id,
+    ///         Description = "terraform-example",
+    ///         AccessPointId = "ap-cn-hangzhou-jg-B",
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
+    ///         Period = 1,
+    ///         OppositeRouterId = defaultNetwork.RouterId,
+    ///         Role = "InitiatingSide",
+    ///         PaymentType = "PayAsYouGo",
+    ///         AutoPay = true,
+    ///         OppositeInterfaceOwnerId = @this.Apply(@this =&gt; @this.Apply(getAccountResult =&gt; getAccountResult.Id)),
+    ///         RouterInterfaceName = name,
+    ///         FastLinkMode = true,
+    ///         OppositeRegionId = "cn-hangzhou",
+    ///         RouterType = "VBR",
     ///     });
     /// 
     /// });
@@ -67,247 +107,320 @@ namespace Pulumi.AliCloud.ExpressConnect
     public partial class RouterInterface : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access point ID to which the VBR belongs.
+        /// Access point ID
         /// </summary>
         [Output("accessPointId")]
         public Output<string?> AccessPointId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// . Field 'name' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth of the resource.
+        /// Whether to enable automatic renewal. Value:
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
+        /// The bandwidth of the router interface
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        /// The service status of the router interface.
         /// </summary>
         [Output("businessStatus")]
         public Output<string> BusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The connected time of the resource.
+        /// Time the connection was established
         /// </summary>
         [Output("connectedTime")]
         public Output<string> ConnectedTime { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The cross border of the resource.
+        /// CrossBorder
         /// </summary>
         [Output("crossBorder")]
         public Output<bool> CrossBorder { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        /// Whether to delete the health check IP address configured on the router interface. Value:
         /// </summary>
         [Output("deleteHealthCheckIp")]
         public Output<bool?> DeleteHealthCheckIp { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The end time of the resource.
+        /// End Time of Prepaid
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The has reservation data of the resource.
+        /// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        /// </summary>
+        [Output("fastLinkMode")]
+        public Output<bool?> FastLinkMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether there is renewal data
         /// </summary>
         [Output("hasReservationData")]
         public Output<string> HasReservationData { get; private set; } = null!;
 
         /// <summary>
-        /// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        /// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         /// </summary>
         [Output("hcRate")]
         public Output<int?> HcRate { get; private set; } = null!;
 
         /// <summary>
-        /// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        /// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         /// </summary>
         [Output("hcThreshold")]
         public Output<string?> HcThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// The health check source IP address, must be an unused IP within the local VPC.
+        /// Health check source IP address
         /// </summary>
         [Output("healthCheckSourceIp")]
         public Output<string?> HealthCheckSourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address for health screening purposes.
+        /// Health check destination IP address
         /// </summary>
         [Output("healthCheckTargetIp")]
         public Output<string?> HealthCheckTargetIp { get; private set; } = null!;
 
         /// <summary>
-        /// The Access point ID to which the other end belongs.
+        /// Peer access point ID
         /// </summary>
         [Output("oppositeAccessPointId")]
         public Output<string?> OppositeAccessPointId { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite bandwidth of the router on the other side.
+        /// opposite bandwidth
         /// </summary>
         [Output("oppositeBandwidth")]
         public Output<int> OppositeBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        /// The service status of the router interface on the opposite end of the connection.
         /// </summary>
         [Output("oppositeInterfaceBusinessStatus")]
         public Output<string> OppositeInterfaceBusinessStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The Interface ID of the router at the other end.
+        /// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Output("oppositeInterfaceId")]
-        public Output<string?> OppositeInterfaceId { get; private set; } = null!;
+        public Output<string> OppositeInterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The AliCloud account ID of the owner of the router interface on the other end.
+        /// Account ID of the peer router interface
         /// </summary>
         [Output("oppositeInterfaceOwnerId")]
         public Output<string?> OppositeInterfaceOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        /// Specifications of the interface of the peer router.
         /// </summary>
         [Output("oppositeInterfaceSpec")]
         public Output<string> OppositeInterfaceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        /// The status of the router interface on the peer of the connection.
         /// </summary>
         [Output("oppositeInterfaceStatus")]
         public Output<string> OppositeInterfaceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The geographical ID of the location of the receiving end of the connection.
+        /// Region of the connection peer
         /// </summary>
         [Output("oppositeRegionId")]
         public Output<string> OppositeRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the router at the other end.
+        /// The ID of the router to which the opposite router interface belongs.
         /// </summary>
         [Output("oppositeRouterId")]
         public Output<string?> OppositeRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        /// The router type associated with the peer router interface. Valid values:
+        /// - VRouter: VPC router.
+        /// - VBR: Virtual Border Router.
         /// </summary>
         [Output("oppositeRouterType")]
         public Output<string> OppositeRouterType { get; private set; } = null!;
 
         /// <summary>
-        /// The opposite vpc instance id of the router on the other side.
+        /// The peer VPC ID
         /// </summary>
         [Output("oppositeVpcInstanceId")]
         public Output<string> OppositeVpcInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        /// The payment method of the router interface. Valid values:
+        /// - Subscription : PrePaid.
+        /// - PayAsYouGo : PostPaid.
         /// </summary>
         [Output("paymentType")]
-        public Output<string?> PaymentType { get; private set; } = null!;
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// Purchase duration, value:
+        /// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        /// - When you choose to pay per year, the value range is **1 to 3**.
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// The billing cycle of the prepaid fee. Valid values:
+        /// - `Month` (default): monthly payment.
+        /// - `Year`: Pay per Year.
+        /// 
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("pricingCycle")]
         public Output<string?> PricingCycle { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation active time of the resource.
+        /// ReservationActiveTime
         /// </summary>
         [Output("reservationActiveTime")]
         public Output<string> ReservationActiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation bandwidth of the resource.
+        /// Renew Bandwidth
         /// </summary>
         [Output("reservationBandwidth")]
         public Output<string> ReservationBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation internet charge type of the resource.
+        /// Payment Type for Renewal
         /// </summary>
         [Output("reservationInternetChargeType")]
         public Output<string> ReservationInternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation order type of the resource.
+        /// Renewal Order Type
         /// </summary>
         [Output("reservationOrderType")]
         public Output<string> ReservationOrderType { get; private set; } = null!;
 
         /// <summary>
-        /// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        /// The ID of the resource group
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The role of the router interface. Valid values:
+        /// - InitiatingSide : the initiator of the connection.
+        /// - AcceptingSide : Connect to the receiving end.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The router id associated with the router interface.
+        /// The ID of the router where the route entry is located.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The first ID of the resource
         /// </summary>
         [Output("routerInterfaceId")]
         public Output<string> RouterInterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the resource.
+        /// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Output("routerInterfaceName")]
         public Output<string?> RouterInterfaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        /// The type of the router where the routing table resides. Valid values:
+        /// - VRouter:VPC router
+        /// - VBR: Border Router
         /// </summary>
         [Output("routerType")]
         public Output<string> RouterType { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        /// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        /// - Mini.2: 2 Mbps
+        /// - Mini.5: 5 Mbps
+        /// - Small.1: 10 Mbps
+        /// - Small.2: 20 Mbps
+        /// - Small.5: 50 Mbps
+        /// - Middle.1: 100 Mbps
+        /// - Middle.2: 200 Mbps
+        /// - Middle.5: 500 Mbps
+        /// - Large.1: 1000 Mbps
+        /// - Large.2: 2000 Mbps
+        /// - Large.5: 5000 Mbps
+        /// - Xlarge.1: 10000 Mbps
+        /// 
+        /// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         /// </summary>
         [Output("spec")]
         public Output<string> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        /// Resource attribute fields that represent the status of the resource. Value range:
+        /// - Idle : Initialize.
+        /// - Connecting : the initiator is in the process of Connecting.
+        /// - AcceptingConnecting : the receiving end is being connected.
+        /// - Activating : Restoring.
+        /// - Active : Normal.
+        /// - Modifying : Modifying.
+        /// - Deactivating : Freezing.
+        /// - Inactive : Frozen.
+        /// - Deleting : Deleting.
+        /// - Deleted : Deleted.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc instance id of the resource.
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the local VPC in the peering connection
         /// </summary>
         [Output("vpcInstanceId")]
         public Output<string> VpcInstanceId { get; private set; } = null!;
@@ -359,148 +472,221 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class RouterInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access point ID to which the VBR belongs.
+        /// Access point ID
         /// </summary>
         [Input("accessPointId")]
         public Input<string>? AccessPointId { get; set; }
 
         /// <summary>
-        /// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// . Field 'name' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        /// Whether to enable automatic renewal. Value:
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// Whether to delete the health check IP address configured on the router interface. Value:
         /// </summary>
         [Input("deleteHealthCheckIp")]
         public Input<bool>? DeleteHealthCheckIp { get; set; }
 
         /// <summary>
-        /// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        /// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        /// </summary>
+        [Input("fastLinkMode")]
+        public Input<bool>? FastLinkMode { get; set; }
+
+        /// <summary>
+        /// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         /// </summary>
         [Input("hcRate")]
         public Input<int>? HcRate { get; set; }
 
         /// <summary>
-        /// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        /// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         /// </summary>
         [Input("hcThreshold")]
         public Input<string>? HcThreshold { get; set; }
 
         /// <summary>
-        /// The health check source IP address, must be an unused IP within the local VPC.
+        /// Health check source IP address
         /// </summary>
         [Input("healthCheckSourceIp")]
         public Input<string>? HealthCheckSourceIp { get; set; }
 
         /// <summary>
-        /// The IP address for health screening purposes.
+        /// Health check destination IP address
         /// </summary>
         [Input("healthCheckTargetIp")]
         public Input<string>? HealthCheckTargetIp { get; set; }
 
         /// <summary>
-        /// The Access point ID to which the other end belongs.
+        /// Peer access point ID
         /// </summary>
         [Input("oppositeAccessPointId")]
         public Input<string>? OppositeAccessPointId { get; set; }
 
         /// <summary>
-        /// The Interface ID of the router at the other end.
+        /// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Input("oppositeInterfaceId")]
         public Input<string>? OppositeInterfaceId { get; set; }
 
         /// <summary>
-        /// The AliCloud account ID of the owner of the router interface on the other end.
+        /// Account ID of the peer router interface
         /// </summary>
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
         /// <summary>
-        /// The geographical ID of the location of the receiving end of the connection.
+        /// Region of the connection peer
         /// </summary>
         [Input("oppositeRegionId", required: true)]
         public Input<string> OppositeRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The id of the router at the other end.
+        /// The ID of the router to which the opposite router interface belongs.
         /// </summary>
         [Input("oppositeRouterId")]
         public Input<string>? OppositeRouterId { get; set; }
 
         /// <summary>
-        /// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        /// The router type associated with the peer router interface. Valid values:
+        /// - VRouter: VPC router.
+        /// - VBR: Virtual Border Router.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }
 
         /// <summary>
-        /// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        /// The payment method of the router interface. Valid values:
+        /// - Subscription : PrePaid.
+        /// - PayAsYouGo : PostPaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// Purchase duration, value:
+        /// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        /// - When you choose to pay per year, the value range is **1 to 3**.
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// The billing cycle of the prepaid fee. Valid values:
+        /// - `Month` (default): monthly payment.
+        /// - `Year`: Pay per Year.
+        /// 
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The role of the router interface. Valid values:
+        /// - InitiatingSide : the initiator of the connection.
+        /// - AcceptingSide : Connect to the receiving end.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// The router id associated with the router interface.
+        /// The ID of the router where the route entry is located.
         /// </summary>
         [Input("routerId", required: true)]
         public Input<string> RouterId { get; set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource.
-        /// </summary>
-        [Input("routerInterfaceId")]
-        public Input<string>? RouterInterfaceId { get; set; }
-
-        /// <summary>
-        /// The name of the resource.
+        /// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Input("routerInterfaceName")]
         public Input<string>? RouterInterfaceName { get; set; }
 
         /// <summary>
-        /// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        /// The type of the router where the routing table resides. Valid values:
+        /// - VRouter:VPC router
+        /// - VBR: Border Router
         /// </summary>
         [Input("routerType", required: true)]
         public Input<string> RouterType { get; set; } = null!;
 
         /// <summary>
-        /// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        /// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        /// - Mini.2: 2 Mbps
+        /// - Mini.5: 5 Mbps
+        /// - Small.1: 10 Mbps
+        /// - Small.2: 20 Mbps
+        /// - Small.5: 50 Mbps
+        /// - Middle.1: 100 Mbps
+        /// - Middle.2: 200 Mbps
+        /// - Middle.5: 500 Mbps
+        /// - Large.1: 1000 Mbps
+        /// - Large.2: 2000 Mbps
+        /// - Large.5: 5000 Mbps
+        /// - Xlarge.1: 10000 Mbps
+        /// 
+        /// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        /// Resource attribute fields that represent the status of the resource. Value range:
+        /// - Idle : Initialize.
+        /// - Connecting : the initiator is in the process of Connecting.
+        /// - AcceptingConnecting : the receiving end is being connected.
+        /// - Activating : Restoring.
+        /// - Active : Normal.
+        /// - Modifying : Modifying.
+        /// - Deactivating : Freezing.
+        /// - Inactive : Frozen.
+        /// - Deleting : Deleting.
+        /// - Deleted : Deleted.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public RouterInterfaceArgs()
         {
@@ -511,247 +697,326 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class RouterInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The access point ID to which the VBR belongs.
+        /// Access point ID
         /// </summary>
         [Input("accessPointId")]
         public Input<string>? AccessPointId { get; set; }
 
         /// <summary>
-        /// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// . Field 'name' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The bandwidth of the resource.
+        /// Whether to enable automatic renewal. Value:
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The bandwidth of the router interface
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        /// The service status of the router interface.
         /// </summary>
         [Input("businessStatus")]
         public Input<string>? BusinessStatus { get; set; }
 
         /// <summary>
-        /// The connected time of the resource.
+        /// Time the connection was established
         /// </summary>
         [Input("connectedTime")]
         public Input<string>? ConnectedTime { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The cross border of the resource.
+        /// CrossBorder
         /// </summary>
         [Input("crossBorder")]
         public Input<bool>? CrossBorder { get; set; }
 
         /// <summary>
-        /// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        /// Whether to delete the health check IP address configured on the router interface. Value:
         /// </summary>
         [Input("deleteHealthCheckIp")]
         public Input<bool>? DeleteHealthCheckIp { get; set; }
 
         /// <summary>
-        /// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        /// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The end time of the resource.
+        /// End Time of Prepaid
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// The has reservation data of the resource.
+        /// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        /// </summary>
+        [Input("fastLinkMode")]
+        public Input<bool>? FastLinkMode { get; set; }
+
+        /// <summary>
+        /// Whether there is renewal data
         /// </summary>
         [Input("hasReservationData")]
         public Input<string>? HasReservationData { get; set; }
 
         /// <summary>
-        /// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        /// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         /// </summary>
         [Input("hcRate")]
         public Input<int>? HcRate { get; set; }
 
         /// <summary>
-        /// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        /// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         /// </summary>
         [Input("hcThreshold")]
         public Input<string>? HcThreshold { get; set; }
 
         /// <summary>
-        /// The health check source IP address, must be an unused IP within the local VPC.
+        /// Health check source IP address
         /// </summary>
         [Input("healthCheckSourceIp")]
         public Input<string>? HealthCheckSourceIp { get; set; }
 
         /// <summary>
-        /// The IP address for health screening purposes.
+        /// Health check destination IP address
         /// </summary>
         [Input("healthCheckTargetIp")]
         public Input<string>? HealthCheckTargetIp { get; set; }
 
         /// <summary>
-        /// The Access point ID to which the other end belongs.
+        /// Peer access point ID
         /// </summary>
         [Input("oppositeAccessPointId")]
         public Input<string>? OppositeAccessPointId { get; set; }
 
         /// <summary>
-        /// The opposite bandwidth of the router on the other side.
+        /// opposite bandwidth
         /// </summary>
         [Input("oppositeBandwidth")]
         public Input<int>? OppositeBandwidth { get; set; }
 
         /// <summary>
-        /// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        /// The service status of the router interface on the opposite end of the connection.
         /// </summary>
         [Input("oppositeInterfaceBusinessStatus")]
         public Input<string>? OppositeInterfaceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The Interface ID of the router at the other end.
+        /// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         /// </summary>
         [Input("oppositeInterfaceId")]
         public Input<string>? OppositeInterfaceId { get; set; }
 
         /// <summary>
-        /// The AliCloud account ID of the owner of the router interface on the other end.
+        /// Account ID of the peer router interface
         /// </summary>
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
 
         /// <summary>
-        /// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        /// Specifications of the interface of the peer router.
         /// </summary>
         [Input("oppositeInterfaceSpec")]
         public Input<string>? OppositeInterfaceSpec { get; set; }
 
         /// <summary>
-        /// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        /// The status of the router interface on the peer of the connection.
         /// </summary>
         [Input("oppositeInterfaceStatus")]
         public Input<string>? OppositeInterfaceStatus { get; set; }
 
         /// <summary>
-        /// The geographical ID of the location of the receiving end of the connection.
+        /// Region of the connection peer
         /// </summary>
         [Input("oppositeRegionId")]
         public Input<string>? OppositeRegionId { get; set; }
 
         /// <summary>
-        /// The id of the router at the other end.
+        /// The ID of the router to which the opposite router interface belongs.
         /// </summary>
         [Input("oppositeRouterId")]
         public Input<string>? OppositeRouterId { get; set; }
 
         /// <summary>
-        /// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        /// The router type associated with the peer router interface. Valid values:
+        /// - VRouter: VPC router.
+        /// - VBR: Virtual Border Router.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }
 
         /// <summary>
-        /// The opposite vpc instance id of the router on the other side.
+        /// The peer VPC ID
         /// </summary>
         [Input("oppositeVpcInstanceId")]
         public Input<string>? OppositeVpcInstanceId { get; set; }
 
         /// <summary>
-        /// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        /// The payment method of the router interface. Valid values:
+        /// - Subscription : PrePaid.
+        /// - PayAsYouGo : PostPaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// Purchase duration, value:
+        /// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        /// - When you choose to pay per year, the value range is **1 to 3**.
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        /// The billing cycle of the prepaid fee. Valid values:
+        /// - `Month` (default): monthly payment.
+        /// - `Year`: Pay per Year.
+        /// 
+        /// 
+        /// &gt; **NOTE:**  `Period` is required when the value of the parameter `PaymentType` is `Subscription`.
+        /// 
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
         /// <summary>
-        /// The reservation active time of the resource.
+        /// ReservationActiveTime
         /// </summary>
         [Input("reservationActiveTime")]
         public Input<string>? ReservationActiveTime { get; set; }
 
         /// <summary>
-        /// The reservation bandwidth of the resource.
+        /// Renew Bandwidth
         /// </summary>
         [Input("reservationBandwidth")]
         public Input<string>? ReservationBandwidth { get; set; }
 
         /// <summary>
-        /// The reservation internet charge type of the resource.
+        /// Payment Type for Renewal
         /// </summary>
         [Input("reservationInternetChargeType")]
         public Input<string>? ReservationInternetChargeType { get; set; }
 
         /// <summary>
-        /// The reservation order type of the resource.
+        /// Renewal Order Type
         /// </summary>
         [Input("reservationOrderType")]
         public Input<string>? ReservationOrderType { get; set; }
 
         /// <summary>
-        /// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        /// The ID of the resource group
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The role of the router interface. Valid values:
+        /// - InitiatingSide : the initiator of the connection.
+        /// - AcceptingSide : Connect to the receiving end.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// The router id associated with the router interface.
+        /// The ID of the router where the route entry is located.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// The first ID of the resource.
+        /// The first ID of the resource
         /// </summary>
         [Input("routerInterfaceId")]
         public Input<string>? RouterInterfaceId { get; set; }
 
         /// <summary>
-        /// The name of the resource.
+        /// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         /// </summary>
         [Input("routerInterfaceName")]
         public Input<string>? RouterInterfaceName { get; set; }
 
         /// <summary>
-        /// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        /// The type of the router where the routing table resides. Valid values:
+        /// - VRouter:VPC router
+        /// - VBR: Border Router
         /// </summary>
         [Input("routerType")]
         public Input<string>? RouterType { get; set; }
 
         /// <summary>
-        /// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        /// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        /// - Mini.2: 2 Mbps
+        /// - Mini.5: 5 Mbps
+        /// - Small.1: 10 Mbps
+        /// - Small.2: 20 Mbps
+        /// - Small.5: 50 Mbps
+        /// - Middle.1: 100 Mbps
+        /// - Middle.2: 200 Mbps
+        /// - Middle.5: 500 Mbps
+        /// - Large.1: 1000 Mbps
+        /// - Large.2: 2000 Mbps
+        /// - Large.5: 5000 Mbps
+        /// - Xlarge.1: 10000 Mbps
+        /// 
+        /// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        /// Resource attribute fields that represent the status of the resource. Value range:
+        /// - Idle : Initialize.
+        /// - Connecting : the initiator is in the process of Connecting.
+        /// - AcceptingConnecting : the receiving end is being connected.
+        /// - Activating : Restoring.
+        /// - Active : Normal.
+        /// - Modifying : Modifying.
+        /// - Deactivating : Freezing.
+        /// - Inactive : Frozen.
+        /// - Deleting : Deleting.
+        /// - Deleted : Deleted.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The vpc instance id of the resource.
+        /// The tag of the resource
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// ID of the local VPC in the peering connection
         /// </summary>
         [Input("vpcInstanceId")]
         public Input<string>? VpcInstanceId { get; set; }

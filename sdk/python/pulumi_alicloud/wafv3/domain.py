@@ -34,8 +34,6 @@ class DomainArgs:
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input['DomainListenArgs'] listen: Configure listening information. See `listen` below.
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
-        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
-               share: CNAME record mode. This is the default value.
         :param pulumi.Input[_builtins.str] resource_manager_resource_group_id: The ID of the Alibaba Cloud resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags. You can specify up to 20 tags.
         """
@@ -101,10 +99,6 @@ class DomainArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The mode in which the domain name is added to WAF. Valid values:
-        share: CNAME record mode. This is the default value.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -140,6 +134,7 @@ class DomainArgs:
 class _DomainState:
     def __init__(__self__, *,
                  access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cname: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  domain_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -150,8 +145,7 @@ class _DomainState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
-               share: CNAME record mode. This is the default value.
+        :param pulumi.Input[_builtins.str] cname: The CNAME assigned by WAF to the domain name.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
@@ -163,6 +157,8 @@ class _DomainState:
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
+        if cname is not None:
+            pulumi.set(__self__, "cname", cname)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if domain_id is not None:
@@ -183,15 +179,23 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The mode in which the domain name is added to WAF. Valid values:
-        share: CNAME record mode. This is the default value.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
     def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "access_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The CNAME assigned by WAF to the domain name.
+        """
+        return pulumi.get(self, "cname")
+
+    @cname.setter
+    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter
@@ -321,8 +325,6 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
-               share: CNAME record mode. This is the default value.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
         :param pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']] listen: Configure listening information. See `listen` below.
@@ -397,6 +399,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["redirect"] = redirect
             __props__.__dict__["resource_manager_resource_group_id"] = resource_manager_resource_group_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["cname"] = None
             __props__.__dict__["domain_id"] = None
             __props__.__dict__["status"] = None
         super(Domain, __self__).__init__(
@@ -410,6 +413,7 @@ class Domain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_type: Optional[pulumi.Input[_builtins.str]] = None,
+            cname: Optional[pulumi.Input[_builtins.str]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             domain_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -425,8 +429,7 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: The mode in which the domain name is added to WAF. Valid values:
-               share: CNAME record mode. This is the default value.
+        :param pulumi.Input[_builtins.str] cname: The CNAME assigned by WAF to the domain name.
         :param pulumi.Input[_builtins.str] domain: The name of the domain name to query.
         :param pulumi.Input[_builtins.str] domain_id: The domain ID.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the Web Application Firewall (WAF) instance.
@@ -441,6 +444,7 @@ class Domain(pulumi.CustomResource):
         __props__ = _DomainState.__new__(_DomainState)
 
         __props__.__dict__["access_type"] = access_type
+        __props__.__dict__["cname"] = cname
         __props__.__dict__["domain"] = domain
         __props__.__dict__["domain_id"] = domain_id
         __props__.__dict__["instance_id"] = instance_id
@@ -454,11 +458,15 @@ class Domain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The mode in which the domain name is added to WAF. Valid values:
-        share: CNAME record mode. This is the default value.
-        """
         return pulumi.get(self, "access_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def cname(self) -> pulumi.Output[_builtins.str]:
+        """
+        The CNAME assigned by WAF to the domain name.
+        """
+        return pulumi.get(self, "cname")
 
     @_builtins.property
     @pulumi.getter

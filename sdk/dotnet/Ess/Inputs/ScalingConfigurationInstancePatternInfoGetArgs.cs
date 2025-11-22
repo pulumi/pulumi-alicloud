@@ -36,6 +36,18 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("cores")]
         public Input<int>? Cores { get; set; }
 
+        [Input("cpuArchitectures")]
+        private InputList<string>? _cpuArchitectures;
+
+        /// <summary>
+        /// CPU architecture N of the instance types. Valid values: x86,Arm.
+        /// </summary>
+        public InputList<string> CpuArchitectures
+        {
+            get => _cpuArchitectures ?? (_cpuArchitectures = new InputList<string>());
+            set => _cpuArchitectures = value;
+        }
+
         [Input("excludedInstanceTypes")]
         private InputList<string>? _excludedInstanceTypes;
 
@@ -48,11 +60,47 @@ namespace Pulumi.AliCloud.Ess.Inputs
             set => _excludedInstanceTypes = value;
         }
 
+        [Input("gpuSpecs")]
+        private InputList<string>? _gpuSpecs;
+
+        /// <summary>
+        /// The GPU model.
+        /// </summary>
+        public InputList<string> GpuSpecs
+        {
+            get => _gpuSpecs ?? (_gpuSpecs = new InputList<string>());
+            set => _gpuSpecs = value;
+        }
+
+        [Input("instanceCategories")]
+        private InputList<string>? _instanceCategories;
+
+        /// <summary>
+        /// Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+        /// </summary>
+        public InputList<string> InstanceCategories
+        {
+            get => _instanceCategories ?? (_instanceCategories = new InputList<string>());
+            set => _instanceCategories = value;
+        }
+
         /// <summary>
         /// The instance family level in instancePatternInfo.
         /// </summary>
         [Input("instanceFamilyLevel")]
         public Input<string>? InstanceFamilyLevel { get; set; }
+
+        [Input("instanceTypeFamilies")]
+        private InputList<string>? _instanceTypeFamilies;
+
+        /// <summary>
+        /// Instance family N that is queried. Valid values of N: 1 to 10.
+        /// </summary>
+        public InputList<string> InstanceTypeFamilies
+        {
+            get => _instanceTypeFamilies ?? (_instanceTypeFamilies = new InputList<string>());
+            set => _instanceTypeFamilies = value;
+        }
 
         /// <summary>
         /// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
@@ -61,10 +109,88 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<double>? MaxPrice { get; set; }
 
         /// <summary>
+        /// The maximum number of vCPUs per instance type.
+        /// </summary>
+        [Input("maximumCpuCoreCount")]
+        public Input<int>? MaximumCpuCoreCount { get; set; }
+
+        /// <summary>
+        /// The maximum number of GPUs per instance. The value must be a positive integer.
+        /// </summary>
+        [Input("maximumGpuAmount")]
+        public Input<int>? MaximumGpuAmount { get; set; }
+
+        /// <summary>
+        /// The maximum memory size per instance. Unit: GiB.
+        /// </summary>
+        [Input("maximumMemorySize")]
+        public Input<double>? MaximumMemorySize { get; set; }
+
+        /// <summary>
         /// The memory size that is specified for an instance type in instancePatternInfo.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
+
+        /// <summary>
+        /// The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        /// </summary>
+        [Input("minimumBaselineCredit")]
+        public Input<int>? MinimumBaselineCredit { get; set; }
+
+        /// <summary>
+        /// The minimum number of vCPUs per instance type.
+        /// </summary>
+        [Input("minimumCpuCoreCount")]
+        public Input<int>? MinimumCpuCoreCount { get; set; }
+
+        /// <summary>
+        /// The minimum number of IPv6 addresses per ENI.
+        /// </summary>
+        [Input("minimumEniIpv6AddressQuantity")]
+        public Input<int>? MinimumEniIpv6AddressQuantity { get; set; }
+
+        /// <summary>
+        /// The minimum number of IPv4 addresses per ENI.
+        /// </summary>
+        [Input("minimumEniPrivateIpAddressQuantity")]
+        public Input<int>? MinimumEniPrivateIpAddressQuantity { get; set; }
+
+        /// <summary>
+        /// The minimum number of elastic network interfaces (ENIs) per instance.
+        /// </summary>
+        [Input("minimumEniQuantity")]
+        public Input<int>? MinimumEniQuantity { get; set; }
+
+        /// <summary>
+        /// The minimum number of GPUs per instance. The value must be a positive integer.
+        /// </summary>
+        [Input("minimumGpuAmount")]
+        public Input<int>? MinimumGpuAmount { get; set; }
+
+        /// <summary>
+        /// The initial vCPU credits per t5 or t6 burstable instance.
+        /// </summary>
+        [Input("minimumInitialCredit")]
+        public Input<int>? MinimumInitialCredit { get; set; }
+
+        /// <summary>
+        /// The minimum memory size per instance. Unit: GiB.
+        /// </summary>
+        [Input("minimumMemorySize")]
+        public Input<double>? MinimumMemorySize { get; set; }
+
+        [Input("physicalProcessorModels")]
+        private InputList<string>? _physicalProcessorModels;
+
+        /// <summary>
+        /// Processor model N of the ECS instances. Valid values of N: 1 to 10.
+        /// </summary>
+        public InputList<string> PhysicalProcessorModels
+        {
+            get => _physicalProcessorModels ?? (_physicalProcessorModels = new InputList<string>());
+            set => _physicalProcessorModels = value;
+        }
 
         public ScalingConfigurationInstancePatternInfoGetArgs()
         {

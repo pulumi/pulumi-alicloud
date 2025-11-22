@@ -117,8 +117,6 @@ export class WaitingRoom extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly disableSessionRenewalEnable: pulumi.Output<string | undefined>;
     /**
@@ -127,15 +125,10 @@ export class WaitingRoom extends pulumi.CustomResource {
     declare public readonly hostNameAndPaths: pulumi.Output<outputs.esa.WaitingRoomHostNameAndPath[]>;
     /**
      * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly jsonResponseEnable: pulumi.Output<string | undefined>;
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     declare public readonly language: pulumi.Output<string | undefined>;
     /**
@@ -144,23 +137,14 @@ export class WaitingRoom extends pulumi.CustomResource {
     declare public readonly newUsersPerMinute: pulumi.Output<string>;
     /**
      * All in line. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly queueAllEnable: pulumi.Output<string | undefined>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'Passthrough ': through.
-     * -'Reject-all': reject all.
      */
     declare public readonly queuingMethod: pulumi.Output<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     declare public readonly queuingStatusCode: pulumi.Output<string>;
     /**
@@ -170,11 +154,11 @@ export class WaitingRoom extends pulumi.CustomResource {
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Waiting room enabled status. Value:
-     * -'on': Enable waiting room
-     * -'off': disabled waiting room
+     * - 'on': Enable waiting room
+     * - 'off': Disabled waiting room
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -191,8 +175,6 @@ export class WaitingRoom extends pulumi.CustomResource {
     declare public readonly waitingRoomName: pulumi.Output<string>;
     /**
      * Waiting room type, support:
-     * -'default': Indicates the default type.
-     * -'custom': indicates a custom type.
      */
     declare public readonly waitingRoomType: pulumi.Output<string>;
 
@@ -304,8 +286,6 @@ export interface WaitingRoomState {
     description?: pulumi.Input<string>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
@@ -314,15 +294,10 @@ export interface WaitingRoomState {
     hostNameAndPaths?: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[]>;
     /**
      * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
@@ -331,23 +306,14 @@ export interface WaitingRoomState {
     newUsersPerMinute?: pulumi.Input<string>;
     /**
      * All in line. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     queueAllEnable?: pulumi.Input<string>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'Passthrough ': through.
-     * -'Reject-all': reject all.
      */
     queuingMethod?: pulumi.Input<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     queuingStatusCode?: pulumi.Input<string>;
     /**
@@ -357,11 +323,11 @@ export interface WaitingRoomState {
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Waiting room enabled status. Value:
-     * -'on': Enable waiting room
-     * -'off': disabled waiting room
+     * - 'on': Enable waiting room
+     * - 'off': Disabled waiting room
      */
     status?: pulumi.Input<string>;
     /**
@@ -378,8 +344,6 @@ export interface WaitingRoomState {
     waitingRoomName?: pulumi.Input<string>;
     /**
      * Waiting room type, support:
-     * -'default': Indicates the default type.
-     * -'custom': indicates a custom type.
      */
     waitingRoomType?: pulumi.Input<string>;
 }
@@ -402,8 +366,6 @@ export interface WaitingRoomArgs {
     description?: pulumi.Input<string>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
@@ -412,15 +374,10 @@ export interface WaitingRoomArgs {
     hostNameAndPaths: pulumi.Input<pulumi.Input<inputs.esa.WaitingRoomHostNameAndPath>[]>;
     /**
      * The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
@@ -429,23 +386,14 @@ export interface WaitingRoomArgs {
     newUsersPerMinute: pulumi.Input<string>;
     /**
      * All in line. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     queueAllEnable?: pulumi.Input<string>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'Passthrough ': through.
-     * -'Reject-all': reject all.
      */
     queuingMethod: pulumi.Input<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     queuingStatusCode: pulumi.Input<string>;
     /**
@@ -455,11 +403,11 @@ export interface WaitingRoomArgs {
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * Waiting room enabled status. Value:
-     * -'on': Enable waiting room
-     * -'off': disabled waiting room
+     * - 'on': Enable waiting room
+     * - 'off': Disabled waiting room
      */
     status: pulumi.Input<string>;
     /**
@@ -472,8 +420,6 @@ export interface WaitingRoomArgs {
     waitingRoomName: pulumi.Input<string>;
     /**
      * Waiting room type, support:
-     * -'default': Indicates the default type.
-     * -'custom': indicates a custom type.
      */
     waitingRoomType: pulumi.Input<string>;
 }

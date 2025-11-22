@@ -3188,14 +3188,46 @@ type ScalingConfigurationInstancePatternInfo struct {
 	BurstablePerformance *string `pulumi:"burstablePerformance"`
 	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
 	Cores *int `pulumi:"cores"`
+	// CPU architecture N of the instance types. Valid values: x86,Arm.
+	CpuArchitectures []string `pulumi:"cpuArchitectures"`
 	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
 	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// The GPU model.
+	GpuSpecs []string `pulumi:"gpuSpecs"`
+	// Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+	InstanceCategories []string `pulumi:"instanceCategories"`
 	// The instance family level in instancePatternInfo.
 	InstanceFamilyLevel *string `pulumi:"instanceFamilyLevel"`
+	// Instance family N that is queried. Valid values of N: 1 to 10.
+	InstanceTypeFamilies []string `pulumi:"instanceTypeFamilies"`
 	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
 	MaxPrice *float64 `pulumi:"maxPrice"`
+	// The maximum number of vCPUs per instance type.
+	MaximumCpuCoreCount *int `pulumi:"maximumCpuCoreCount"`
+	// The maximum number of GPUs per instance. The value must be a positive integer.
+	MaximumGpuAmount *int `pulumi:"maximumGpuAmount"`
+	// The maximum memory size per instance. Unit: GiB.
+	MaximumMemorySize *float64 `pulumi:"maximumMemorySize"`
 	// The memory size that is specified for an instance type in instancePatternInfo.
 	Memory *float64 `pulumi:"memory"`
+	// The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	MinimumBaselineCredit *int `pulumi:"minimumBaselineCredit"`
+	// The minimum number of vCPUs per instance type.
+	MinimumCpuCoreCount *int `pulumi:"minimumCpuCoreCount"`
+	// The minimum number of IPv6 addresses per ENI.
+	MinimumEniIpv6AddressQuantity *int `pulumi:"minimumEniIpv6AddressQuantity"`
+	// The minimum number of IPv4 addresses per ENI.
+	MinimumEniPrivateIpAddressQuantity *int `pulumi:"minimumEniPrivateIpAddressQuantity"`
+	// The minimum number of elastic network interfaces (ENIs) per instance.
+	MinimumEniQuantity *int `pulumi:"minimumEniQuantity"`
+	// The minimum number of GPUs per instance. The value must be a positive integer.
+	MinimumGpuAmount *int `pulumi:"minimumGpuAmount"`
+	// The initial vCPU credits per t5 or t6 burstable instance.
+	MinimumInitialCredit *int `pulumi:"minimumInitialCredit"`
+	// The minimum memory size per instance. Unit: GiB.
+	MinimumMemorySize *float64 `pulumi:"minimumMemorySize"`
+	// Processor model N of the ECS instances. Valid values of N: 1 to 10.
+	PhysicalProcessorModels []string `pulumi:"physicalProcessorModels"`
 }
 
 // ScalingConfigurationInstancePatternInfoInput is an input type that accepts ScalingConfigurationInstancePatternInfoArgs and ScalingConfigurationInstancePatternInfoOutput values.
@@ -3216,14 +3248,46 @@ type ScalingConfigurationInstancePatternInfoArgs struct {
 	BurstablePerformance pulumi.StringPtrInput `pulumi:"burstablePerformance"`
 	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// CPU architecture N of the instance types. Valid values: x86,Arm.
+	CpuArchitectures pulumi.StringArrayInput `pulumi:"cpuArchitectures"`
 	// Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
 	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// The GPU model.
+	GpuSpecs pulumi.StringArrayInput `pulumi:"gpuSpecs"`
+	// Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+	InstanceCategories pulumi.StringArrayInput `pulumi:"instanceCategories"`
 	// The instance family level in instancePatternInfo.
 	InstanceFamilyLevel pulumi.StringPtrInput `pulumi:"instanceFamilyLevel"`
+	// Instance family N that is queried. Valid values of N: 1 to 10.
+	InstanceTypeFamilies pulumi.StringArrayInput `pulumi:"instanceTypeFamilies"`
 	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
 	MaxPrice pulumi.Float64PtrInput `pulumi:"maxPrice"`
+	// The maximum number of vCPUs per instance type.
+	MaximumCpuCoreCount pulumi.IntPtrInput `pulumi:"maximumCpuCoreCount"`
+	// The maximum number of GPUs per instance. The value must be a positive integer.
+	MaximumGpuAmount pulumi.IntPtrInput `pulumi:"maximumGpuAmount"`
+	// The maximum memory size per instance. Unit: GiB.
+	MaximumMemorySize pulumi.Float64PtrInput `pulumi:"maximumMemorySize"`
 	// The memory size that is specified for an instance type in instancePatternInfo.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+	// The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	MinimumBaselineCredit pulumi.IntPtrInput `pulumi:"minimumBaselineCredit"`
+	// The minimum number of vCPUs per instance type.
+	MinimumCpuCoreCount pulumi.IntPtrInput `pulumi:"minimumCpuCoreCount"`
+	// The minimum number of IPv6 addresses per ENI.
+	MinimumEniIpv6AddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniIpv6AddressQuantity"`
+	// The minimum number of IPv4 addresses per ENI.
+	MinimumEniPrivateIpAddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniPrivateIpAddressQuantity"`
+	// The minimum number of elastic network interfaces (ENIs) per instance.
+	MinimumEniQuantity pulumi.IntPtrInput `pulumi:"minimumEniQuantity"`
+	// The minimum number of GPUs per instance. The value must be a positive integer.
+	MinimumGpuAmount pulumi.IntPtrInput `pulumi:"minimumGpuAmount"`
+	// The initial vCPU credits per t5 or t6 burstable instance.
+	MinimumInitialCredit pulumi.IntPtrInput `pulumi:"minimumInitialCredit"`
+	// The minimum memory size per instance. Unit: GiB.
+	MinimumMemorySize pulumi.Float64PtrInput `pulumi:"minimumMemorySize"`
+	// Processor model N of the ECS instances. Valid values of N: 1 to 10.
+	PhysicalProcessorModels pulumi.StringArrayInput `pulumi:"physicalProcessorModels"`
 }
 
 func (ScalingConfigurationInstancePatternInfoArgs) ElementType() reflect.Type {
@@ -3292,9 +3356,24 @@ func (o ScalingConfigurationInstancePatternInfoOutput) Cores() pulumi.IntPtrOutp
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
 
+// CPU architecture N of the instance types. Valid values: x86,Arm.
+func (o ScalingConfigurationInstancePatternInfoOutput) CpuArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.CpuArchitectures }).(pulumi.StringArrayOutput)
+}
+
 // Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
 func (o ScalingConfigurationInstancePatternInfoOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// The GPU model.
+func (o ScalingConfigurationInstancePatternInfoOutput) GpuSpecs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.GpuSpecs }).(pulumi.StringArrayOutput)
+}
+
+// Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+func (o ScalingConfigurationInstancePatternInfoOutput) InstanceCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.InstanceCategories }).(pulumi.StringArrayOutput)
 }
 
 // The instance family level in instancePatternInfo.
@@ -3302,14 +3381,79 @@ func (o ScalingConfigurationInstancePatternInfoOutput) InstanceFamilyLevel() pul
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *string { return v.InstanceFamilyLevel }).(pulumi.StringPtrOutput)
 }
 
+// Instance family N that is queried. Valid values of N: 1 to 10.
+func (o ScalingConfigurationInstancePatternInfoOutput) InstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.InstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
 // The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) MaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.MaxPrice }).(pulumi.Float64PtrOutput)
 }
 
+// The maximum number of vCPUs per instance type.
+func (o ScalingConfigurationInstancePatternInfoOutput) MaximumCpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MaximumCpuCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of GPUs per instance. The value must be a positive integer.
+func (o ScalingConfigurationInstancePatternInfoOutput) MaximumGpuAmount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MaximumGpuAmount }).(pulumi.IntPtrOutput)
+}
+
+// The maximum memory size per instance. Unit: GiB.
+func (o ScalingConfigurationInstancePatternInfoOutput) MaximumMemorySize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.MaximumMemorySize }).(pulumi.Float64PtrOutput)
+}
+
 // The memory size that is specified for an instance type in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumBaselineCredit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumBaselineCredit }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of vCPUs per instance type.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumCpuCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumCpuCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of IPv6 addresses per ENI.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumEniIpv6AddressQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumEniIpv6AddressQuantity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of IPv4 addresses per ENI.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumEniPrivateIpAddressQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumEniPrivateIpAddressQuantity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of elastic network interfaces (ENIs) per instance.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumEniQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumEniQuantity }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of GPUs per instance. The value must be a positive integer.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumGpuAmount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumGpuAmount }).(pulumi.IntPtrOutput)
+}
+
+// The initial vCPU credits per t5 or t6 burstable instance.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumInitialCredit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.MinimumInitialCredit }).(pulumi.IntPtrOutput)
+}
+
+// The minimum memory size per instance. Unit: GiB.
+func (o ScalingConfigurationInstancePatternInfoOutput) MinimumMemorySize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.MinimumMemorySize }).(pulumi.Float64PtrOutput)
+}
+
+// Processor model N of the ECS instances. Valid values of N: 1 to 10.
+func (o ScalingConfigurationInstancePatternInfoOutput) PhysicalProcessorModels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) []string { return v.PhysicalProcessorModels }).(pulumi.StringArrayOutput)
 }
 
 type ScalingConfigurationInstancePatternInfoArrayOutput struct{ *pulumi.OutputState }

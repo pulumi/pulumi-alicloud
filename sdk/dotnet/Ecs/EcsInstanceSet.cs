@@ -111,27 +111,28 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AutoReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. **Note:** `AutoRenew` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Indicate how to check instance ready to use.
+        /// Indicate how to check instance ready to use. Valid values:
         /// </summary>
         [Output("bootCheckOsWithAssistant")]
         public Output<bool?> BootCheckOsWithAssistant { get; private set; } = null!;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below..
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         [Output("dataDisks")]
         public Output<ImmutableArray<Outputs.EcsInstanceSetDataDisk>> DataDisks { get; private set; } = null!;
@@ -209,7 +210,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        /// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
@@ -245,7 +246,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LaunchTemplateVersion { get; private set; } = null!;
 
         /// <summary>
-        /// A list of NetworkInterface. See `NetworkInterfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below.
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.EcsInstanceSetNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
@@ -263,15 +264,16 @@ namespace Pulumi.AliCloud.Ecs
         public Output<bool?> PasswordInherit { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `PeriodUnit` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
@@ -289,7 +291,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The security enhancement strategy.
+        /// The security enhancement strategy. Valid values:
         /// - `Active`: Enable security enhancement strategy, it only works on system images.
         /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
@@ -303,16 +305,17 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        /// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `SpotPriceLimit` takes effect only if `SpotStrategy` is set to `SpotWithPriceLimit`.
         /// </summary>
         [Output("spotPriceLimit")]
         public Output<double> SpotPriceLimit { get; private set; } = null!;
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance. Valid values:
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -324,7 +327,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SystemDiskAutoSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
+        /// The category of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
@@ -348,7 +351,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SystemDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        /// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int> SystemDiskSize { get; private set; } = null!;
@@ -440,21 +443,22 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. **Note:** `AutoRenew` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Indicate how to check instance ready to use.
+        /// Indicate how to check instance ready to use. Valid values:
         /// </summary>
         [Input("bootCheckOsWithAssistant")]
         public Input<bool>? BootCheckOsWithAssistant { get; set; }
@@ -463,7 +467,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetDataDiskArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below..
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.EcsInstanceSetDataDiskArgs> DataDisks
         {
@@ -538,7 +542,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        /// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -577,7 +581,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetNetworkInterfaceArgs>? _networkInterfaces;
 
         /// <summary>
-        /// A list of NetworkInterface. See `NetworkInterfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below.
         /// </summary>
         public InputList<Inputs.EcsInstanceSetNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -608,15 +612,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `PeriodUnit` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -634,7 +639,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The security enhancement strategy.
+        /// The security enhancement strategy. Valid values:
         /// - `Active`: Enable security enhancement strategy, it only works on system images.
         /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
@@ -654,16 +659,17 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        /// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `SpotPriceLimit` takes effect only if `SpotStrategy` is set to `SpotWithPriceLimit`.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance. Valid values:
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -675,7 +681,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
+        /// The category of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -699,7 +705,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        /// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -755,21 +761,22 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoReleaseTime { get; set; }
 
         /// <summary>
-        /// Whether to enable auto-renewal for the instance. This parameter is valid only when the `InstanceChargeType` is set to `PrePaid`.
+        /// Whether to enable auto-renewal for the instance. **Note:** `AutoRenew` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Auto renewal period of an instance, in the unit of month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// Auto renewal period of an instance, in the unit of month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `AutoRenewPeriod` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Indicate how to check instance ready to use.
+        /// Indicate how to check instance ready to use. Valid values:
         /// </summary>
         [Input("bootCheckOsWithAssistant")]
         public Input<bool>? BootCheckOsWithAssistant { get; set; }
@@ -778,7 +785,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetDataDiskGetArgs>? _dataDisks;
 
         /// <summary>
-        /// The list of data disks created with instance. See `DataDisks` below..
+        /// The list of data disks created with instance. See `DataDisks` below.
         /// </summary>
         public InputList<Inputs.EcsInstanceSetDataDiskGetArgs> DataDisks
         {
@@ -865,7 +872,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        /// The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -904,7 +911,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<Inputs.EcsInstanceSetNetworkInterfaceGetArgs>? _networkInterfaces;
 
         /// <summary>
-        /// A list of NetworkInterface. See `NetworkInterfaces` below..
+        /// A list of NetworkInterface. See `NetworkInterfaces` below.
         /// </summary>
         public InputList<Inputs.EcsInstanceSetNetworkInterfaceGetArgs> NetworkInterfaces
         {
@@ -935,15 +942,16 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? PasswordInherit { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `InstanceChargeType` is `PrePaid`.
+        /// The duration that you will buy the resource, in month. Valid values:
         /// - When `PeriodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         /// - When `PeriodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+        /// **Note:** `Period` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. It is valid when `InstanceChargeType` is 'PrePaid'. Valid value: `Week`, `Month`.
+        /// The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `PeriodUnit` is valid only when `InstanceChargeType` is set to `PrePaid`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
@@ -961,7 +969,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The security enhancement strategy.
+        /// The security enhancement strategy. Valid values:
         /// - `Active`: Enable security enhancement strategy, it only works on system images.
         /// - `Deactive`: Disable security enhancement strategy, it works on all images.
         /// </summary>
@@ -981,16 +989,17 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        /// The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `SpotPriceLimit` takes effect only if `SpotStrategy` is set to `SpotWithPriceLimit`.
         /// </summary>
         [Input("spotPriceLimit")]
         public Input<double>? SpotPriceLimit { get; set; }
 
         /// <summary>
-        /// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `InstanceChargeType` is 'PostPaid'.
+        /// The spot strategy of a Pay-As-You-Go instance. Valid values:
         /// - `NoSpot`: A regular Pay-As-You-Go instance.
         /// - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        /// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        /// **Note:** `SpotStrategy` takes effect only if `InstanceChargeType` is set to `PostPaid`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1002,7 +1011,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskAutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// The category of the system disk. Valid values are `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
+        /// The category of the system disk. Valid values: `CloudEfficiency`, `CloudSsd`, `CloudEssd`, `Cloud`.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
@@ -1026,7 +1035,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
 
         /// <summary>
-        /// The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        /// The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }

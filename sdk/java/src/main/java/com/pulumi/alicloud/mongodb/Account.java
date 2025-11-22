@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Mongo D B Account can be imported using the id, e.g.
+ * Mongodb Account can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:mongodb/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -28,86 +28,76 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:mongodb/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**
-     * Account comment information.
-     * 
-     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+     * Set the comment information of the account.
+     * - Cannot start with http:// or https.
+     * - Start with Chinese and English letters.
+     * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
-     * @return Account comment information.
-     * 
-     * &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+     * @return Set the comment information of the account.
+     * - Cannot start with http:// or https.
+     * - Start with Chinese and English letters.
+     * - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
      * 
      */
     public Output<Optional<String>> accountDescription() {
         return Codegen.optional(this.accountDescription);
     }
     /**
-     * The new password.
-     * 
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
-     * - The password must be 8 to 32 characters in length.
+     * Account Name
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return The new password.
-     * 
-     * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
-     * - The password must be 8 to 32 characters in length.
+     * @return Account Name
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
+     * Account Password
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
+     * @return Account Password
      * 
      */
     public Output<String> accountPassword() {
         return this.accountPassword;
     }
     /**
-     * The role type of the instance. Value description
-     * 
-     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * The account Comment Information type. Value:
      * 
      */
     @Export(name="characterType", refs={String.class}, tree="[0]")
     private Output<String> characterType;
 
     /**
-     * @return The role type of the instance. Value description
-     * 
-     * - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-     * - When the instance type is a replica set, charactertype can be null or pass in normal.
+     * @return The account Comment Information type. Value:
      * 
      */
     public Output<String> characterType() {
         return this.characterType;
     }
     /**
-     * The account whose password needs to be reset. Set the value to `root`.
+     * Instance Id
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The account whose password needs to be reset. Set the value to `root`.
+     * @return Instance Id
      * 
      */
     public Output<String> instanceId() {

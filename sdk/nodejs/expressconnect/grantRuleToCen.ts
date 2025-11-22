@@ -21,31 +21,31 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const example = alicloud.expressconnect.getPhysicalConnections({
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.getAccount({});
+ * const defaultGetPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.index.Integer("vlan_id", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 2999,
  *     min: 1,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("example", {
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
+ *     physicalConnectionId: defaultGetPhysicalConnections.then(defaultGetPhysicalConnections => defaultGetPhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: defaultInteger.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});
- * const _default = alicloud.getAccount({});
- * const exampleGrantRuleToCen = new alicloud.expressconnect.GrantRuleToCen("example", {
- *     cenId: exampleInstance.id,
+ * const defaultInstance = new alicloud.cen.Instance("default", {cenInstanceName: name});
+ * const defaultGrantRuleToCen = new alicloud.expressconnect.GrantRuleToCen("default", {
+ *     cenId: defaultInstance.id,
  *     cenOwnerId: _default.then(_default => _default.id),
- *     instanceId: exampleVirtualBorderRouter.id,
+ *     instanceId: defaultVirtualBorderRouter.id,
  * });
  * ```
  *
@@ -92,7 +92,11 @@ export class GrantRuleToCen extends pulumi.CustomResource {
     /**
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      */
-    declare public readonly cenOwnerId: pulumi.Output<number>;
+    declare public readonly cenOwnerId: pulumi.Output<string>;
+    /**
+     * (Available since v1.263.0) The time when the instance was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * The ID of the VBR.
      */
@@ -113,6 +117,7 @@ export class GrantRuleToCen extends pulumi.CustomResource {
             const state = argsOrState as GrantRuleToCenState | undefined;
             resourceInputs["cenId"] = state?.cenId;
             resourceInputs["cenOwnerId"] = state?.cenOwnerId;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["instanceId"] = state?.instanceId;
         } else {
             const args = argsOrState as GrantRuleToCenArgs | undefined;
@@ -128,6 +133,7 @@ export class GrantRuleToCen extends pulumi.CustomResource {
             resourceInputs["cenId"] = args?.cenId;
             resourceInputs["cenOwnerId"] = args?.cenOwnerId;
             resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GrantRuleToCen.__pulumiType, name, resourceInputs, opts);
@@ -145,7 +151,11 @@ export interface GrantRuleToCenState {
     /**
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      */
-    cenOwnerId?: pulumi.Input<number>;
+    cenOwnerId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.263.0) The time when the instance was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The ID of the VBR.
      */
@@ -163,7 +173,7 @@ export interface GrantRuleToCenArgs {
     /**
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      */
-    cenOwnerId: pulumi.Input<number>;
+    cenOwnerId: pulumi.Input<string>;
     /**
      * The ID of the VBR.
      */

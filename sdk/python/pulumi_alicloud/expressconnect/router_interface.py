@@ -26,8 +26,10 @@ class RouterInterfaceArgs:
                  spec: pulumi.Input[_builtins.str],
                  access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,35 +42,88 @@ class RouterInterfaceArgs:
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
-        :param pulumi.Input[_builtins.str] opposite_region_id: The geographical ID of the location of the receiving end of the connection.
-        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
-        :param pulumi.Input[_builtins.str] router_id: The router id associated with the router interface.
-        :param pulumi.Input[_builtins.str] router_type: The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] access_point_id: The access point ID to which the VBR belongs.
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
-        :param pulumi.Input[_builtins.str] description: The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.int] hc_rate: The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
-        :param pulumi.Input[_builtins.str] hc_threshold: The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
-        :param pulumi.Input[_builtins.str] health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
-        :param pulumi.Input[_builtins.str] health_check_target_ip: The IP address for health screening purposes.
-        :param pulumi.Input[_builtins.str] opposite_access_point_id: The Access point ID to which the other end belongs.
-        :param pulumi.Input[_builtins.str] opposite_interface_id: The Interface ID of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: The AliCloud account ID of the owner of the router interface on the other end.
-        :param pulumi.Input[_builtins.str] opposite_router_id: The id of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_router_type: The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] payment_type: The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[_builtins.int] period: Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] router_interface_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        :param pulumi.Input[_builtins.str] opposite_region_id: Region of the connection peer
+        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid values:
+               - InitiatingSide : the initiator of the connection.
+               - AcceptingSide : Connect to the receiving end.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the router where the route entry is located.
+        :param pulumi.Input[_builtins.str] router_type: The type of the router where the routing table resides. Valid values:
+               - VRouter:VPC router
+               - VBR: Border Router
+        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+               - Mini.2: 2 Mbps
+               - Mini.5: 5 Mbps
+               - Small.1: 10 Mbps
+               - Small.2: 20 Mbps
+               - Small.5: 50 Mbps
+               - Middle.1: 100 Mbps
+               - Middle.2: 200 Mbps
+               - Middle.5: 500 Mbps
+               - Large.1: 1000 Mbps
+               - Large.2: 2000 Mbps
+               - Large.5: 5000 Mbps
+               - Xlarge.1: 10000 Mbps
+               
+               When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
+        :param pulumi.Input[_builtins.str] access_point_id: Access point ID
+        :param pulumi.Input[_builtins.bool] auto_pay: . Field 'name' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. Value:
+        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:
+        :param pulumi.Input[_builtins.str] description: The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.bool] fast_link_mode: Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        :param pulumi.Input[_builtins.int] hc_rate: Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
+        :param pulumi.Input[_builtins.str] hc_threshold: Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
+        :param pulumi.Input[_builtins.str] health_check_source_ip: Health check source IP address
+        :param pulumi.Input[_builtins.str] health_check_target_ip: Health check destination IP address
+        :param pulumi.Input[_builtins.str] opposite_access_point_id: Peer access point ID
+        :param pulumi.Input[_builtins.str] opposite_interface_id: . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Account ID of the peer router interface
+        :param pulumi.Input[_builtins.str] opposite_router_id: The ID of the router to which the opposite router interface belongs.
+        :param pulumi.Input[_builtins.str] opposite_router_type: The router type associated with the peer router interface. Valid values:
+               - VRouter: VPC router.
+               - VBR: Virtual Border Router.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the router interface. Valid values:
+               - Subscription : PrePaid.
+               - PayAsYouGo : PostPaid.
+        :param pulumi.Input[_builtins.int] period: Purchase duration, value:
+               - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+               - When you choose to pay per year, the value range is **1 to 3**.
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
+               - `Month` (default): monthly payment.
+               - `Year`: Pay per Year.
+               
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] router_interface_name: Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] status: Resource attribute fields that represent the status of the resource. Value range:
+               - Idle : Initialize.
+               - Connecting : the initiator is in the process of Connecting.
+               - AcceptingConnecting : the receiving end is being connected.
+               - Activating : Restoring.
+               - Active : Normal.
+               - Modifying : Modifying.
+               - Deactivating : Freezing.
+               - Inactive : Frozen.
+               - Deleting : Deleting.
+               - Deleted : Deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "opposite_region_id", opposite_region_id)
         pulumi.set(__self__, "role", role)
@@ -78,11 +133,18 @@ class RouterInterfaceArgs:
         if access_point_id is not None:
             pulumi.set(__self__, "access_point_id", access_point_id)
         if auto_pay is not None:
+            warnings.warn("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""", DeprecationWarning)
+            pulumi.log.warn("""auto_pay is deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
+        if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if delete_health_check_ip is not None:
             pulumi.set(__self__, "delete_health_check_ip", delete_health_check_ip)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if fast_link_mode is not None:
+            pulumi.set(__self__, "fast_link_mode", fast_link_mode)
         if hc_rate is not None:
             pulumi.set(__self__, "hc_rate", hc_rate)
         if hc_threshold is not None:
@@ -93,6 +155,9 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
         if opposite_access_point_id is not None:
             pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+        if opposite_interface_id is not None:
+            warnings.warn("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""", DeprecationWarning)
+            pulumi.log.warn("""opposite_interface_id is deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
         if opposite_interface_id is not None:
             pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
@@ -107,18 +172,20 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "period", period)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
-        if router_interface_id is not None:
-            pulumi.set(__self__, "router_interface_id", router_interface_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if router_interface_name is not None:
             pulumi.set(__self__, "router_interface_name", router_interface_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRegionId")
     def opposite_region_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The geographical ID of the location of the receiving end of the connection.
+        Region of the connection peer
         """
         return pulumi.get(self, "opposite_region_id")
 
@@ -130,7 +197,9 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[_builtins.str]:
         """
-        The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        The role of the router interface. Valid values:
+        - InitiatingSide : the initiator of the connection.
+        - AcceptingSide : Connect to the receiving end.
         """
         return pulumi.get(self, "role")
 
@@ -142,7 +211,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The router id associated with the router interface.
+        The ID of the router where the route entry is located.
         """
         return pulumi.get(self, "router_id")
 
@@ -154,7 +223,9 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="routerType")
     def router_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        The type of the router where the routing table resides. Valid values:
+        - VRouter:VPC router
+        - VBR: Border Router
         """
         return pulumi.get(self, "router_type")
 
@@ -166,7 +237,21 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[_builtins.str]:
         """
-        The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        - Mini.2: 2 Mbps
+        - Mini.5: 5 Mbps
+        - Small.1: 10 Mbps
+        - Small.2: 20 Mbps
+        - Small.5: 50 Mbps
+        - Middle.1: 100 Mbps
+        - Middle.2: 200 Mbps
+        - Middle.5: 500 Mbps
+        - Large.1: 1000 Mbps
+        - Large.2: 2000 Mbps
+        - Large.5: 5000 Mbps
+        - Xlarge.1: 10000 Mbps
+
+        When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         """
         return pulumi.get(self, "spec")
 
@@ -178,7 +263,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access point ID to which the VBR belongs.
+        Access point ID
         """
         return pulumi.get(self, "access_point_id")
 
@@ -188,9 +273,10 @@ class RouterInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
+    @_utilities.deprecated("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        . Field 'name' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -199,10 +285,22 @@ class RouterInterfaceArgs:
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable automatic renewal. Value:
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
     @pulumi.getter(name="deleteHealthCheckIp")
     def delete_health_check_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        Whether to delete the health check IP address configured on the router interface. Value:
         """
         return pulumi.get(self, "delete_health_check_ip")
 
@@ -214,7 +312,7 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -223,10 +321,22 @@ class RouterInterfaceArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="fastLinkMode")
+    def fast_link_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        """
+        return pulumi.get(self, "fast_link_mode")
+
+    @fast_link_mode.setter
+    def fast_link_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "fast_link_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="hcRate")
     def hc_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         """
         return pulumi.get(self, "hc_rate")
 
@@ -238,7 +348,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="hcThreshold")
     def hc_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         """
         return pulumi.get(self, "hc_threshold")
 
@@ -250,7 +360,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="healthCheckSourceIp")
     def health_check_source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The health check source IP address, must be an unused IP within the local VPC.
+        Health check source IP address
         """
         return pulumi.get(self, "health_check_source_ip")
 
@@ -262,7 +372,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="healthCheckTargetIp")
     def health_check_target_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address for health screening purposes.
+        Health check destination IP address
         """
         return pulumi.get(self, "health_check_target_ip")
 
@@ -274,7 +384,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Access point ID to which the other end belongs.
+        Peer access point ID
         """
         return pulumi.get(self, "opposite_access_point_id")
 
@@ -284,9 +394,10 @@ class RouterInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
+    @_utilities.deprecated("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
     def opposite_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Interface ID of the router at the other end.
+        . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "opposite_interface_id")
 
@@ -298,7 +409,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="oppositeInterfaceOwnerId")
     def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The AliCloud account ID of the owner of the router interface on the other end.
+        Account ID of the peer router interface
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
@@ -310,7 +421,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="oppositeRouterId")
     def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of the router at the other end.
+        The ID of the router to which the opposite router interface belongs.
         """
         return pulumi.get(self, "opposite_router_id")
 
@@ -322,7 +433,9 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="oppositeRouterType")
     def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        The router type associated with the peer router interface. Valid values:
+        - VRouter: VPC router.
+        - VBR: Virtual Border Router.
         """
         return pulumi.get(self, "opposite_router_type")
 
@@ -334,7 +447,9 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        The payment method of the router interface. Valid values:
+        - Subscription : PrePaid.
+        - PayAsYouGo : PostPaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -346,7 +461,14 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        Purchase duration, value:
+        - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        - When you choose to pay per year, the value range is **1 to 3**.
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -358,7 +480,15 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        The billing cycle of the prepaid fee. Valid values:
+        - `Month` (default): monthly payment.
+        - `Year`: Pay per Year.
+
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -367,22 +497,22 @@ class RouterInterfaceArgs:
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
-    @pulumi.getter(name="routerInterfaceId")
-    def router_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The first ID of the resource.
+        The ID of the resource group
         """
-        return pulumi.get(self, "router_interface_id")
+        return pulumi.get(self, "resource_group_id")
 
-    @router_interface_id.setter
-    def router_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "router_interface_id", value)
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceName")
     def router_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the resource.
+        Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "router_interface_name")
 
@@ -394,7 +524,17 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        Resource attribute fields that represent the status of the resource. Value range:
+        - Idle : Initialize.
+        - Connecting : the initiator is in the process of Connecting.
+        - AcceptingConnecting : the receiving end is being connected.
+        - Activating : Restoring.
+        - Active : Normal.
+        - Modifying : Modifying.
+        - Deactivating : Freezing.
+        - Inactive : Frozen.
+        - Deleting : Deleting.
+        - Deleted : Deleted.
         """
         return pulumi.get(self, "status")
 
@@ -402,12 +542,27 @@ class RouterInterfaceArgs:
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _RouterInterfaceState:
     def __init__(__self__, *,
                  access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  business_status: Optional[pulumi.Input[_builtins.str]] = None,
                  connected_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -416,6 +571,7 @@ class _RouterInterfaceState:
                  delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  has_reservation_data: Optional[pulumi.Input[_builtins.str]] = None,
                  hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
@@ -439,6 +595,7 @@ class _RouterInterfaceState:
                  reservation_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
                  reservation_internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  reservation_order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
                  router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -446,55 +603,114 @@ class _RouterInterfaceState:
                  router_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
-        :param pulumi.Input[_builtins.str] access_point_id: The access point ID to which the VBR belongs.
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the resource.
-        :param pulumi.Input[_builtins.str] business_status: The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-        :param pulumi.Input[_builtins.str] connected_time: The connected time of the resource.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.bool] cross_border: The cross border of the resource.
-        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
-        :param pulumi.Input[_builtins.str] description: The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.str] end_time: The end time of the resource.
-        :param pulumi.Input[_builtins.str] has_reservation_data: The has reservation data of the resource.
-        :param pulumi.Input[_builtins.int] hc_rate: The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
-        :param pulumi.Input[_builtins.str] hc_threshold: The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
-        :param pulumi.Input[_builtins.str] health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
-        :param pulumi.Input[_builtins.str] health_check_target_ip: The IP address for health screening purposes.
-        :param pulumi.Input[_builtins.str] opposite_access_point_id: The Access point ID to which the other end belongs.
-        :param pulumi.Input[_builtins.int] opposite_bandwidth: The opposite bandwidth of the router on the other side.
-        :param pulumi.Input[_builtins.str] opposite_interface_business_status: The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-        :param pulumi.Input[_builtins.str] opposite_interface_id: The Interface ID of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: The AliCloud account ID of the owner of the router interface on the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_spec: The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] opposite_interface_status: The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-        :param pulumi.Input[_builtins.str] opposite_region_id: The geographical ID of the location of the receiving end of the connection.
-        :param pulumi.Input[_builtins.str] opposite_router_id: The id of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_router_type: The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] opposite_vpc_instance_id: The opposite vpc instance id of the router on the other side.
-        :param pulumi.Input[_builtins.str] payment_type: The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[_builtins.int] period: Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] reservation_active_time: The reservation active time of the resource.
-        :param pulumi.Input[_builtins.str] reservation_bandwidth: The reservation bandwidth of the resource.
-        :param pulumi.Input[_builtins.str] reservation_internet_charge_type: The reservation internet charge type of the resource.
-        :param pulumi.Input[_builtins.str] reservation_order_type: The reservation order type of the resource.
-        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
-        :param pulumi.Input[_builtins.str] router_id: The router id associated with the router interface.
-        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] router_interface_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] router_type: The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-        :param pulumi.Input[_builtins.str] vpc_instance_id: The vpc instance id of the resource.
+        :param pulumi.Input[_builtins.str] access_point_id: Access point ID
+        :param pulumi.Input[_builtins.bool] auto_pay: . Field 'name' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. Value:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the router interface
+        :param pulumi.Input[_builtins.str] business_status: The service status of the router interface.
+        :param pulumi.Input[_builtins.str] connected_time: Time the connection was established
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.bool] cross_border: CrossBorder
+        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:
+        :param pulumi.Input[_builtins.str] description: The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] end_time: End Time of Prepaid
+        :param pulumi.Input[_builtins.bool] fast_link_mode: Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        :param pulumi.Input[_builtins.str] has_reservation_data: Whether there is renewal data
+        :param pulumi.Input[_builtins.int] hc_rate: Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
+        :param pulumi.Input[_builtins.str] hc_threshold: Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
+        :param pulumi.Input[_builtins.str] health_check_source_ip: Health check source IP address
+        :param pulumi.Input[_builtins.str] health_check_target_ip: Health check destination IP address
+        :param pulumi.Input[_builtins.str] opposite_access_point_id: Peer access point ID
+        :param pulumi.Input[_builtins.int] opposite_bandwidth: opposite bandwidth
+        :param pulumi.Input[_builtins.str] opposite_interface_business_status: The service status of the router interface on the opposite end of the connection.
+        :param pulumi.Input[_builtins.str] opposite_interface_id: . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Account ID of the peer router interface
+        :param pulumi.Input[_builtins.str] opposite_interface_spec: Specifications of the interface of the peer router.
+        :param pulumi.Input[_builtins.str] opposite_interface_status: The status of the router interface on the peer of the connection.
+        :param pulumi.Input[_builtins.str] opposite_region_id: Region of the connection peer
+        :param pulumi.Input[_builtins.str] opposite_router_id: The ID of the router to which the opposite router interface belongs.
+        :param pulumi.Input[_builtins.str] opposite_router_type: The router type associated with the peer router interface. Valid values:
+               - VRouter: VPC router.
+               - VBR: Virtual Border Router.
+        :param pulumi.Input[_builtins.str] opposite_vpc_instance_id: The peer VPC ID
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the router interface. Valid values:
+               - Subscription : PrePaid.
+               - PayAsYouGo : PostPaid.
+        :param pulumi.Input[_builtins.int] period: Purchase duration, value:
+               - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+               - When you choose to pay per year, the value range is **1 to 3**.
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
+               - `Month` (default): monthly payment.
+               - `Year`: Pay per Year.
+               
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] reservation_active_time: ReservationActiveTime
+        :param pulumi.Input[_builtins.str] reservation_bandwidth: Renew Bandwidth
+        :param pulumi.Input[_builtins.str] reservation_internet_charge_type: Payment Type for Renewal
+        :param pulumi.Input[_builtins.str] reservation_order_type: Renewal Order Type
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid values:
+               - InitiatingSide : the initiator of the connection.
+               - AcceptingSide : Connect to the receiving end.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the router where the route entry is located.
+        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource
+        :param pulumi.Input[_builtins.str] router_interface_name: Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] router_type: The type of the router where the routing table resides. Valid values:
+               - VRouter:VPC router
+               - VBR: Border Router
+        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+               - Mini.2: 2 Mbps
+               - Mini.5: 5 Mbps
+               - Small.1: 10 Mbps
+               - Small.2: 20 Mbps
+               - Small.5: 50 Mbps
+               - Middle.1: 100 Mbps
+               - Middle.2: 200 Mbps
+               - Middle.5: 500 Mbps
+               - Large.1: 1000 Mbps
+               - Large.2: 2000 Mbps
+               - Large.5: 5000 Mbps
+               - Xlarge.1: 10000 Mbps
+               
+               When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
+        :param pulumi.Input[_builtins.str] status: Resource attribute fields that represent the status of the resource. Value range:
+               - Idle : Initialize.
+               - Connecting : the initiator is in the process of Connecting.
+               - AcceptingConnecting : the receiving end is being connected.
+               - Activating : Restoring.
+               - Active : Normal.
+               - Modifying : Modifying.
+               - Deactivating : Freezing.
+               - Inactive : Frozen.
+               - Deleting : Deleting.
+               - Deleted : Deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] vpc_instance_id: ID of the local VPC in the peering connection
         """
         if access_point_id is not None:
             pulumi.set(__self__, "access_point_id", access_point_id)
         if auto_pay is not None:
+            warnings.warn("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""", DeprecationWarning)
+            pulumi.log.warn("""auto_pay is deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
+        if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if business_status is not None:
@@ -511,6 +727,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "description", description)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
+        if fast_link_mode is not None:
+            pulumi.set(__self__, "fast_link_mode", fast_link_mode)
         if has_reservation_data is not None:
             pulumi.set(__self__, "has_reservation_data", has_reservation_data)
         if hc_rate is not None:
@@ -527,6 +745,9 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "opposite_bandwidth", opposite_bandwidth)
         if opposite_interface_business_status is not None:
             pulumi.set(__self__, "opposite_interface_business_status", opposite_interface_business_status)
+        if opposite_interface_id is not None:
+            warnings.warn("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""", DeprecationWarning)
+            pulumi.log.warn("""opposite_interface_id is deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
         if opposite_interface_id is not None:
             pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
@@ -557,6 +778,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
         if reservation_order_type is not None:
             pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if router_id is not None:
@@ -571,6 +794,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_instance_id is not None:
             pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
 
@@ -578,7 +803,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access point ID to which the VBR belongs.
+        Access point ID
         """
         return pulumi.get(self, "access_point_id")
 
@@ -588,9 +813,10 @@ class _RouterInterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
+    @_utilities.deprecated("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
     def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        . Field 'name' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "auto_pay")
 
@@ -599,10 +825,22 @@ class _RouterInterfaceState:
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable automatic renewal. Value:
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The bandwidth of the resource.
+        The bandwidth of the router interface
         """
         return pulumi.get(self, "bandwidth")
 
@@ -614,7 +852,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        The service status of the router interface.
         """
         return pulumi.get(self, "business_status")
 
@@ -626,7 +864,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="connectedTime")
     def connected_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The connected time of the resource.
+        Time the connection was established
         """
         return pulumi.get(self, "connected_time")
 
@@ -638,7 +876,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -650,7 +888,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="crossBorder")
     def cross_border(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        The cross border of the resource.
+        CrossBorder
         """
         return pulumi.get(self, "cross_border")
 
@@ -662,7 +900,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="deleteHealthCheckIp")
     def delete_health_check_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        Whether to delete the health check IP address configured on the router interface. Value:
         """
         return pulumi.get(self, "delete_health_check_ip")
 
@@ -674,7 +912,7 @@ class _RouterInterfaceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -686,7 +924,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The end time of the resource.
+        End Time of Prepaid
         """
         return pulumi.get(self, "end_time")
 
@@ -695,10 +933,22 @@ class _RouterInterfaceState:
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="fastLinkMode")
+    def fast_link_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        """
+        return pulumi.get(self, "fast_link_mode")
+
+    @fast_link_mode.setter
+    def fast_link_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "fast_link_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="hasReservationData")
     def has_reservation_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The has reservation data of the resource.
+        Whether there is renewal data
         """
         return pulumi.get(self, "has_reservation_data")
 
@@ -710,7 +960,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="hcRate")
     def hc_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         """
         return pulumi.get(self, "hc_rate")
 
@@ -722,7 +972,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="hcThreshold")
     def hc_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         """
         return pulumi.get(self, "hc_threshold")
 
@@ -734,7 +984,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="healthCheckSourceIp")
     def health_check_source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The health check source IP address, must be an unused IP within the local VPC.
+        Health check source IP address
         """
         return pulumi.get(self, "health_check_source_ip")
 
@@ -746,7 +996,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="healthCheckTargetIp")
     def health_check_target_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IP address for health screening purposes.
+        Health check destination IP address
         """
         return pulumi.get(self, "health_check_target_ip")
 
@@ -758,7 +1008,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Access point ID to which the other end belongs.
+        Peer access point ID
         """
         return pulumi.get(self, "opposite_access_point_id")
 
@@ -770,7 +1020,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeBandwidth")
     def opposite_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The opposite bandwidth of the router on the other side.
+        opposite bandwidth
         """
         return pulumi.get(self, "opposite_bandwidth")
 
@@ -782,7 +1032,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceBusinessStatus")
     def opposite_interface_business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        The service status of the router interface on the opposite end of the connection.
         """
         return pulumi.get(self, "opposite_interface_business_status")
 
@@ -792,9 +1042,10 @@ class _RouterInterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
+    @_utilities.deprecated("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
     def opposite_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Interface ID of the router at the other end.
+        . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "opposite_interface_id")
 
@@ -806,7 +1057,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceOwnerId")
     def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The AliCloud account ID of the owner of the router interface on the other end.
+        Account ID of the peer router interface
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
@@ -818,7 +1069,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceSpec")
     def opposite_interface_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        Specifications of the interface of the peer router.
         """
         return pulumi.get(self, "opposite_interface_spec")
 
@@ -830,7 +1081,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceStatus")
     def opposite_interface_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        The status of the router interface on the peer of the connection.
         """
         return pulumi.get(self, "opposite_interface_status")
 
@@ -842,7 +1093,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeRegionId")
     def opposite_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The geographical ID of the location of the receiving end of the connection.
+        Region of the connection peer
         """
         return pulumi.get(self, "opposite_region_id")
 
@@ -854,7 +1105,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeRouterId")
     def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of the router at the other end.
+        The ID of the router to which the opposite router interface belongs.
         """
         return pulumi.get(self, "opposite_router_id")
 
@@ -866,7 +1117,9 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeRouterType")
     def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        The router type associated with the peer router interface. Valid values:
+        - VRouter: VPC router.
+        - VBR: Virtual Border Router.
         """
         return pulumi.get(self, "opposite_router_type")
 
@@ -878,7 +1131,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeVpcInstanceId")
     def opposite_vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The opposite vpc instance id of the router on the other side.
+        The peer VPC ID
         """
         return pulumi.get(self, "opposite_vpc_instance_id")
 
@@ -890,7 +1143,9 @@ class _RouterInterfaceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        The payment method of the router interface. Valid values:
+        - Subscription : PrePaid.
+        - PayAsYouGo : PostPaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -902,7 +1157,14 @@ class _RouterInterfaceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        Purchase duration, value:
+        - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        - When you choose to pay per year, the value range is **1 to 3**.
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -914,7 +1176,15 @@ class _RouterInterfaceState:
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        The billing cycle of the prepaid fee. Valid values:
+        - `Month` (default): monthly payment.
+        - `Year`: Pay per Year.
+
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -926,7 +1196,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="reservationActiveTime")
     def reservation_active_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reservation active time of the resource.
+        ReservationActiveTime
         """
         return pulumi.get(self, "reservation_active_time")
 
@@ -938,7 +1208,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="reservationBandwidth")
     def reservation_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reservation bandwidth of the resource.
+        Renew Bandwidth
         """
         return pulumi.get(self, "reservation_bandwidth")
 
@@ -950,7 +1220,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="reservationInternetChargeType")
     def reservation_internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reservation internet charge type of the resource.
+        Payment Type for Renewal
         """
         return pulumi.get(self, "reservation_internet_charge_type")
 
@@ -962,7 +1232,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="reservationOrderType")
     def reservation_order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The reservation order type of the resource.
+        Renewal Order Type
         """
         return pulumi.get(self, "reservation_order_type")
 
@@ -971,10 +1241,24 @@ class _RouterInterfaceState:
         pulumi.set(self, "reservation_order_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        The role of the router interface. Valid values:
+        - InitiatingSide : the initiator of the connection.
+        - AcceptingSide : Connect to the receiving end.
         """
         return pulumi.get(self, "role")
 
@@ -986,7 +1270,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The router id associated with the router interface.
+        The ID of the router where the route entry is located.
         """
         return pulumi.get(self, "router_id")
 
@@ -998,7 +1282,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The first ID of the resource.
+        The first ID of the resource
         """
         return pulumi.get(self, "router_interface_id")
 
@@ -1010,7 +1294,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="routerInterfaceName")
     def router_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the resource.
+        Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "router_interface_name")
 
@@ -1022,7 +1306,9 @@ class _RouterInterfaceState:
     @pulumi.getter(name="routerType")
     def router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        The type of the router where the routing table resides. Valid values:
+        - VRouter:VPC router
+        - VBR: Border Router
         """
         return pulumi.get(self, "router_type")
 
@@ -1034,7 +1320,21 @@ class _RouterInterfaceState:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        - Mini.2: 2 Mbps
+        - Mini.5: 5 Mbps
+        - Small.1: 10 Mbps
+        - Small.2: 20 Mbps
+        - Small.5: 50 Mbps
+        - Middle.1: 100 Mbps
+        - Middle.2: 200 Mbps
+        - Middle.5: 500 Mbps
+        - Large.1: 1000 Mbps
+        - Large.2: 2000 Mbps
+        - Large.5: 5000 Mbps
+        - Xlarge.1: 10000 Mbps
+
+        When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         """
         return pulumi.get(self, "spec")
 
@@ -1046,7 +1346,17 @@ class _RouterInterfaceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        Resource attribute fields that represent the status of the resource. Value range:
+        - Idle : Initialize.
+        - Connecting : the initiator is in the process of Connecting.
+        - AcceptingConnecting : the receiving end is being connected.
+        - Activating : Restoring.
+        - Active : Normal.
+        - Modifying : Modifying.
+        - Deactivating : Freezing.
+        - Inactive : Frozen.
+        - Deleting : Deleting.
+        - Deleted : Deleted.
         """
         return pulumi.get(self, "status")
 
@@ -1055,10 +1365,24 @@ class _RouterInterfaceState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcInstanceId")
     def vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vpc instance id of the resource.
+        ID of the local VPC in the peering connection
         """
         return pulumi.get(self, "vpc_instance_id")
 
@@ -1075,8 +1399,10 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1090,18 +1416,19 @@ class RouterInterface(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
                  router_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Interface resource.
 
-        For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+        For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
 
         > **NOTE:** Available since v1.199.0.
 
@@ -1116,18 +1443,46 @@ class RouterInterface(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
-        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+            name = "tfexample"
+        default = alicloud.resourcemanager.get_resource_groups()
+        this = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING-JG")
+        default_get_zones = alicloud.alb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16",
+            enable_ipv6=True)
+        zone_a = alicloud.vpc.Switch("zone_a",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_get_zones.zones[0].id,
+            ipv6_cidr_block_mask=6)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
+            physical_connection_id=name_regex.connections[0].id,
+            vlan_id=1001,
+            peer_gateway_ip="192.168.254.2",
+            peering_subnet_mask="255.255.255.0",
+            local_gateway_ip="192.168.254.1")
         default_router_interface = alicloud.expressconnect.RouterInterface("default",
-            description=name,
-            opposite_region_id=default_get_regions.regions[0].id,
-            router_id=default.vpcs[0].router_id,
+            auto_renew=True,
+            spec="Mini.2",
+            opposite_router_type="VRouter",
+            router_id=default_virtual_border_router.id,
+            description="terraform-example",
+            access_point_id="ap-cn-hangzhou-jg-B",
+            resource_group_id=default.ids[0],
+            period=1,
+            opposite_router_id=default_network.router_id,
             role="InitiatingSide",
-            router_type="VRouter",
             payment_type="PayAsYouGo",
+            auto_pay=True,
+            opposite_interface_owner_id=this.id,
             router_interface_name=name,
-            spec="Mini.2")
+            fast_link_mode=True,
+            opposite_region_id="cn-hangzhou",
+            router_type="VBR")
         ```
 
         ## Import
@@ -1140,30 +1495,82 @@ class RouterInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_point_id: The access point ID to which the VBR belongs.
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
-        :param pulumi.Input[_builtins.str] description: The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.int] hc_rate: The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
-        :param pulumi.Input[_builtins.str] hc_threshold: The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
-        :param pulumi.Input[_builtins.str] health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
-        :param pulumi.Input[_builtins.str] health_check_target_ip: The IP address for health screening purposes.
-        :param pulumi.Input[_builtins.str] opposite_access_point_id: The Access point ID to which the other end belongs.
-        :param pulumi.Input[_builtins.str] opposite_interface_id: The Interface ID of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: The AliCloud account ID of the owner of the router interface on the other end.
-        :param pulumi.Input[_builtins.str] opposite_region_id: The geographical ID of the location of the receiving end of the connection.
-        :param pulumi.Input[_builtins.str] opposite_router_id: The id of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_router_type: The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] payment_type: The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[_builtins.int] period: Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
-        :param pulumi.Input[_builtins.str] router_id: The router id associated with the router interface.
-        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] router_interface_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] router_type: The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        :param pulumi.Input[_builtins.str] access_point_id: Access point ID
+        :param pulumi.Input[_builtins.bool] auto_pay: . Field 'name' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. Value:
+        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:
+        :param pulumi.Input[_builtins.str] description: The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.bool] fast_link_mode: Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        :param pulumi.Input[_builtins.int] hc_rate: Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
+        :param pulumi.Input[_builtins.str] hc_threshold: Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
+        :param pulumi.Input[_builtins.str] health_check_source_ip: Health check source IP address
+        :param pulumi.Input[_builtins.str] health_check_target_ip: Health check destination IP address
+        :param pulumi.Input[_builtins.str] opposite_access_point_id: Peer access point ID
+        :param pulumi.Input[_builtins.str] opposite_interface_id: . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Account ID of the peer router interface
+        :param pulumi.Input[_builtins.str] opposite_region_id: Region of the connection peer
+        :param pulumi.Input[_builtins.str] opposite_router_id: The ID of the router to which the opposite router interface belongs.
+        :param pulumi.Input[_builtins.str] opposite_router_type: The router type associated with the peer router interface. Valid values:
+               - VRouter: VPC router.
+               - VBR: Virtual Border Router.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the router interface. Valid values:
+               - Subscription : PrePaid.
+               - PayAsYouGo : PostPaid.
+        :param pulumi.Input[_builtins.int] period: Purchase duration, value:
+               - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+               - When you choose to pay per year, the value range is **1 to 3**.
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
+               - `Month` (default): monthly payment.
+               - `Year`: Pay per Year.
+               
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid values:
+               - InitiatingSide : the initiator of the connection.
+               - AcceptingSide : Connect to the receiving end.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the router where the route entry is located.
+        :param pulumi.Input[_builtins.str] router_interface_name: Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] router_type: The type of the router where the routing table resides. Valid values:
+               - VRouter:VPC router
+               - VBR: Border Router
+        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+               - Mini.2: 2 Mbps
+               - Mini.5: 5 Mbps
+               - Small.1: 10 Mbps
+               - Small.2: 20 Mbps
+               - Small.5: 50 Mbps
+               - Middle.1: 100 Mbps
+               - Middle.2: 200 Mbps
+               - Middle.5: 500 Mbps
+               - Large.1: 1000 Mbps
+               - Large.2: 2000 Mbps
+               - Large.5: 5000 Mbps
+               - Xlarge.1: 10000 Mbps
+               
+               When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
+        :param pulumi.Input[_builtins.str] status: Resource attribute fields that represent the status of the resource. Value range:
+               - Idle : Initialize.
+               - Connecting : the initiator is in the process of Connecting.
+               - AcceptingConnecting : the receiving end is being connected.
+               - Activating : Restoring.
+               - Active : Normal.
+               - Modifying : Modifying.
+               - Deactivating : Freezing.
+               - Inactive : Frozen.
+               - Deleting : Deleting.
+               - Deleted : Deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -1174,7 +1581,7 @@ class RouterInterface(pulumi.CustomResource):
         """
         Provides a Express Connect Router Interface resource.
 
-        For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+        For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
 
         > **NOTE:** Available since v1.199.0.
 
@@ -1189,18 +1596,46 @@ class RouterInterface(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
-        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+            name = "tfexample"
+        default = alicloud.resourcemanager.get_resource_groups()
+        this = alicloud.get_account()
         default_get_regions = alicloud.get_regions(current=True)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING-JG")
+        default_get_zones = alicloud.alb.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16",
+            enable_ipv6=True)
+        zone_a = alicloud.vpc.Switch("zone_a",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_get_zones.zones[0].id,
+            ipv6_cidr_block_mask=6)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
+            physical_connection_id=name_regex.connections[0].id,
+            vlan_id=1001,
+            peer_gateway_ip="192.168.254.2",
+            peering_subnet_mask="255.255.255.0",
+            local_gateway_ip="192.168.254.1")
         default_router_interface = alicloud.expressconnect.RouterInterface("default",
-            description=name,
-            opposite_region_id=default_get_regions.regions[0].id,
-            router_id=default.vpcs[0].router_id,
+            auto_renew=True,
+            spec="Mini.2",
+            opposite_router_type="VRouter",
+            router_id=default_virtual_border_router.id,
+            description="terraform-example",
+            access_point_id="ap-cn-hangzhou-jg-B",
+            resource_group_id=default.ids[0],
+            period=1,
+            opposite_router_id=default_network.router_id,
             role="InitiatingSide",
-            router_type="VRouter",
             payment_type="PayAsYouGo",
+            auto_pay=True,
+            opposite_interface_owner_id=this.id,
             router_interface_name=name,
-            spec="Mini.2")
+            fast_link_mode=True,
+            opposite_region_id="cn-hangzhou",
+            router_type="VBR")
         ```
 
         ## Import
@@ -1228,8 +1663,10 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
                  hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
                  health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1243,13 +1680,14 @@ class RouterInterface(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
                  router_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1261,8 +1699,10 @@ class RouterInterface(pulumi.CustomResource):
 
             __props__.__dict__["access_point_id"] = access_point_id
             __props__.__dict__["auto_pay"] = auto_pay
+            __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["delete_health_check_ip"] = delete_health_check_ip
             __props__.__dict__["description"] = description
+            __props__.__dict__["fast_link_mode"] = fast_link_mode
             __props__.__dict__["hc_rate"] = hc_rate
             __props__.__dict__["hc_threshold"] = hc_threshold
             __props__.__dict__["health_check_source_ip"] = health_check_source_ip
@@ -1278,13 +1718,13 @@ class RouterInterface(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             if router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'router_id'")
             __props__.__dict__["router_id"] = router_id
-            __props__.__dict__["router_interface_id"] = router_interface_id
             __props__.__dict__["router_interface_name"] = router_interface_name
             if router_type is None and not opts.urn:
                 raise TypeError("Missing required property 'router_type'")
@@ -1293,6 +1733,7 @@ class RouterInterface(pulumi.CustomResource):
                 raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["bandwidth"] = None
             __props__.__dict__["business_status"] = None
             __props__.__dict__["connected_time"] = None
@@ -1309,6 +1750,7 @@ class RouterInterface(pulumi.CustomResource):
             __props__.__dict__["reservation_bandwidth"] = None
             __props__.__dict__["reservation_internet_charge_type"] = None
             __props__.__dict__["reservation_order_type"] = None
+            __props__.__dict__["router_interface_id"] = None
             __props__.__dict__["vpc_instance_id"] = None
         super(RouterInterface, __self__).__init__(
             'alicloud:expressconnect/routerInterface:RouterInterface',
@@ -1322,6 +1764,7 @@ class RouterInterface(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
             auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
+            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
             bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             business_status: Optional[pulumi.Input[_builtins.str]] = None,
             connected_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1330,6 +1773,7 @@ class RouterInterface(pulumi.CustomResource):
             delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             end_time: Optional[pulumi.Input[_builtins.str]] = None,
+            fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
             has_reservation_data: Optional[pulumi.Input[_builtins.str]] = None,
             hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
             hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1353,6 +1797,7 @@ class RouterInterface(pulumi.CustomResource):
             reservation_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
             reservation_internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
             reservation_order_type: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
             router_id: Optional[pulumi.Input[_builtins.str]] = None,
             router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1360,6 +1805,7 @@ class RouterInterface(pulumi.CustomResource):
             router_type: Optional[pulumi.Input[_builtins.str]] = None,
             spec: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterInterface':
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
@@ -1368,47 +1814,100 @@ class RouterInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_point_id: The access point ID to which the VBR belongs.
-        :param pulumi.Input[_builtins.bool] auto_pay: Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the resource.
-        :param pulumi.Input[_builtins.str] business_status: The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-        :param pulumi.Input[_builtins.str] connected_time: The connected time of the resource.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
-        :param pulumi.Input[_builtins.bool] cross_border: The cross border of the resource.
-        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
-        :param pulumi.Input[_builtins.str] description: The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.str] end_time: The end time of the resource.
-        :param pulumi.Input[_builtins.str] has_reservation_data: The has reservation data of the resource.
-        :param pulumi.Input[_builtins.int] hc_rate: The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
-        :param pulumi.Input[_builtins.str] hc_threshold: The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
-        :param pulumi.Input[_builtins.str] health_check_source_ip: The health check source IP address, must be an unused IP within the local VPC.
-        :param pulumi.Input[_builtins.str] health_check_target_ip: The IP address for health screening purposes.
-        :param pulumi.Input[_builtins.str] opposite_access_point_id: The Access point ID to which the other end belongs.
-        :param pulumi.Input[_builtins.int] opposite_bandwidth: The opposite bandwidth of the router on the other side.
-        :param pulumi.Input[_builtins.str] opposite_interface_business_status: The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
-        :param pulumi.Input[_builtins.str] opposite_interface_id: The Interface ID of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: The AliCloud account ID of the owner of the router interface on the other end.
-        :param pulumi.Input[_builtins.str] opposite_interface_spec: The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] opposite_interface_status: The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-        :param pulumi.Input[_builtins.str] opposite_region_id: The geographical ID of the location of the receiving end of the connection.
-        :param pulumi.Input[_builtins.str] opposite_router_id: The id of the router at the other end.
-        :param pulumi.Input[_builtins.str] opposite_router_type: The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] opposite_vpc_instance_id: The opposite vpc instance id of the router on the other side.
-        :param pulumi.Input[_builtins.str] payment_type: The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-        :param pulumi.Input[_builtins.int] period: Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
-        :param pulumi.Input[_builtins.str] reservation_active_time: The reservation active time of the resource.
-        :param pulumi.Input[_builtins.str] reservation_bandwidth: The reservation bandwidth of the resource.
-        :param pulumi.Input[_builtins.str] reservation_internet_charge_type: The reservation internet charge type of the resource.
-        :param pulumi.Input[_builtins.str] reservation_order_type: The reservation order type of the resource.
-        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
-        :param pulumi.Input[_builtins.str] router_id: The router id associated with the router interface.
-        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource.
-        :param pulumi.Input[_builtins.str] router_interface_name: The name of the resource.
-        :param pulumi.Input[_builtins.str] router_type: The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
-        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
-        :param pulumi.Input[_builtins.str] vpc_instance_id: The vpc instance id of the resource.
+        :param pulumi.Input[_builtins.str] access_point_id: Access point ID
+        :param pulumi.Input[_builtins.bool] auto_pay: . Field 'name' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal. Value:
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the router interface
+        :param pulumi.Input[_builtins.str] business_status: The service status of the router interface.
+        :param pulumi.Input[_builtins.str] connected_time: Time the connection was established
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.bool] cross_border: CrossBorder
+        :param pulumi.Input[_builtins.bool] delete_health_check_ip: Whether to delete the health check IP address configured on the router interface. Value:
+        :param pulumi.Input[_builtins.str] description: The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] end_time: End Time of Prepaid
+        :param pulumi.Input[_builtins.bool] fast_link_mode: Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        :param pulumi.Input[_builtins.str] has_reservation_data: Whether there is renewal data
+        :param pulumi.Input[_builtins.int] hc_rate: Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
+        :param pulumi.Input[_builtins.str] hc_threshold: Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
+        :param pulumi.Input[_builtins.str] health_check_source_ip: Health check source IP address
+        :param pulumi.Input[_builtins.str] health_check_target_ip: Health check destination IP address
+        :param pulumi.Input[_builtins.str] opposite_access_point_id: Peer access point ID
+        :param pulumi.Input[_builtins.int] opposite_bandwidth: opposite bandwidth
+        :param pulumi.Input[_builtins.str] opposite_interface_business_status: The service status of the router interface on the opposite end of the connection.
+        :param pulumi.Input[_builtins.str] opposite_interface_id: . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+        :param pulumi.Input[_builtins.str] opposite_interface_owner_id: Account ID of the peer router interface
+        :param pulumi.Input[_builtins.str] opposite_interface_spec: Specifications of the interface of the peer router.
+        :param pulumi.Input[_builtins.str] opposite_interface_status: The status of the router interface on the peer of the connection.
+        :param pulumi.Input[_builtins.str] opposite_region_id: Region of the connection peer
+        :param pulumi.Input[_builtins.str] opposite_router_id: The ID of the router to which the opposite router interface belongs.
+        :param pulumi.Input[_builtins.str] opposite_router_type: The router type associated with the peer router interface. Valid values:
+               - VRouter: VPC router.
+               - VBR: Virtual Border Router.
+        :param pulumi.Input[_builtins.str] opposite_vpc_instance_id: The peer VPC ID
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the router interface. Valid values:
+               - Subscription : PrePaid.
+               - PayAsYouGo : PostPaid.
+        :param pulumi.Input[_builtins.int] period: Purchase duration, value:
+               - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+               - When you choose to pay per year, the value range is **1 to 3**.
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] pricing_cycle: The billing cycle of the prepaid fee. Valid values:
+               - `Month` (default): monthly payment.
+               - `Year`: Pay per Year.
+               
+               
+               > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+               
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] reservation_active_time: ReservationActiveTime
+        :param pulumi.Input[_builtins.str] reservation_bandwidth: Renew Bandwidth
+        :param pulumi.Input[_builtins.str] reservation_internet_charge_type: Payment Type for Renewal
+        :param pulumi.Input[_builtins.str] reservation_order_type: Renewal Order Type
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[_builtins.str] role: The role of the router interface. Valid values:
+               - InitiatingSide : the initiator of the connection.
+               - AcceptingSide : Connect to the receiving end.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the router where the route entry is located.
+        :param pulumi.Input[_builtins.str] router_interface_id: The first ID of the resource
+        :param pulumi.Input[_builtins.str] router_interface_name: Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
+        :param pulumi.Input[_builtins.str] router_type: The type of the router where the routing table resides. Valid values:
+               - VRouter:VPC router
+               - VBR: Border Router
+        :param pulumi.Input[_builtins.str] spec: The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+               - Mini.2: 2 Mbps
+               - Mini.5: 5 Mbps
+               - Small.1: 10 Mbps
+               - Small.2: 20 Mbps
+               - Small.5: 50 Mbps
+               - Middle.1: 100 Mbps
+               - Middle.2: 200 Mbps
+               - Middle.5: 500 Mbps
+               - Large.1: 1000 Mbps
+               - Large.2: 2000 Mbps
+               - Large.5: 5000 Mbps
+               - Xlarge.1: 10000 Mbps
+               
+               When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
+        :param pulumi.Input[_builtins.str] status: Resource attribute fields that represent the status of the resource. Value range:
+               - Idle : Initialize.
+               - Connecting : the initiator is in the process of Connecting.
+               - AcceptingConnecting : the receiving end is being connected.
+               - Activating : Restoring.
+               - Active : Normal.
+               - Modifying : Modifying.
+               - Deactivating : Freezing.
+               - Inactive : Frozen.
+               - Deleting : Deleting.
+               - Deleted : Deleted.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] vpc_instance_id: ID of the local VPC in the peering connection
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1416,6 +1915,7 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__.__dict__["access_point_id"] = access_point_id
         __props__.__dict__["auto_pay"] = auto_pay
+        __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["business_status"] = business_status
         __props__.__dict__["connected_time"] = connected_time
@@ -1424,6 +1924,7 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["delete_health_check_ip"] = delete_health_check_ip
         __props__.__dict__["description"] = description
         __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["fast_link_mode"] = fast_link_mode
         __props__.__dict__["has_reservation_data"] = has_reservation_data
         __props__.__dict__["hc_rate"] = hc_rate
         __props__.__dict__["hc_threshold"] = hc_threshold
@@ -1447,6 +1948,7 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["reservation_bandwidth"] = reservation_bandwidth
         __props__.__dict__["reservation_internet_charge_type"] = reservation_internet_charge_type
         __props__.__dict__["reservation_order_type"] = reservation_order_type
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["role"] = role
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["router_interface_id"] = router_interface_id
@@ -1454,6 +1956,7 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["router_type"] = router_type
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_instance_id"] = vpc_instance_id
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
@@ -1461,23 +1964,32 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access point ID to which the VBR belongs.
+        Access point ID
         """
         return pulumi.get(self, "access_point_id")
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
+    @_utilities.deprecated("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
     def auto_pay(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        . Field 'name' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "auto_pay")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable automatic renewal. Value:
+        """
+        return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        The bandwidth of the resource.
+        The bandwidth of the router interface
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1485,7 +1997,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        The service status of the router interface.
         """
         return pulumi.get(self, "business_status")
 
@@ -1493,7 +2005,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="connectedTime")
     def connected_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The connected time of the resource.
+        Time the connection was established
         """
         return pulumi.get(self, "connected_time")
 
@@ -1501,7 +2013,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -1509,7 +2021,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="crossBorder")
     def cross_border(self) -> pulumi.Output[_builtins.bool]:
         """
-        The cross border of the resource.
+        CrossBorder
         """
         return pulumi.get(self, "cross_border")
 
@@ -1517,7 +2029,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="deleteHealthCheckIp")
     def delete_health_check_ip(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+        Whether to delete the health check IP address configured on the router interface. Value:
         """
         return pulumi.get(self, "delete_health_check_ip")
 
@@ -1525,7 +2037,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -1533,15 +2045,23 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The end time of the resource.
+        End Time of Prepaid
         """
         return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="fastLinkMode")
+    def fast_link_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+        """
+        return pulumi.get(self, "fast_link_mode")
 
     @_builtins.property
     @pulumi.getter(name="hasReservationData")
     def has_reservation_data(self) -> pulumi.Output[_builtins.str]:
         """
-        The has reservation data of the resource.
+        Whether there is renewal data
         """
         return pulumi.get(self, "has_reservation_data")
 
@@ -1549,7 +2069,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="hcRate")
     def hc_rate(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+        Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         """
         return pulumi.get(self, "hc_rate")
 
@@ -1557,7 +2077,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="hcThreshold")
     def hc_threshold(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+        Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         """
         return pulumi.get(self, "hc_threshold")
 
@@ -1565,7 +2085,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckSourceIp")
     def health_check_source_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The health check source IP address, must be an unused IP within the local VPC.
+        Health check source IP address
         """
         return pulumi.get(self, "health_check_source_ip")
 
@@ -1573,7 +2093,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTargetIp")
     def health_check_target_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The IP address for health screening purposes.
+        Health check destination IP address
         """
         return pulumi.get(self, "health_check_target_ip")
 
@@ -1581,7 +2101,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Access point ID to which the other end belongs.
+        Peer access point ID
         """
         return pulumi.get(self, "opposite_access_point_id")
 
@@ -1589,7 +2109,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeBandwidth")
     def opposite_bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
-        The opposite bandwidth of the router on the other side.
+        opposite bandwidth
         """
         return pulumi.get(self, "opposite_bandwidth")
 
@@ -1597,15 +2117,16 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceBusinessStatus")
     def opposite_interface_business_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+        The service status of the router interface on the opposite end of the connection.
         """
         return pulumi.get(self, "opposite_interface_business_status")
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
-    def opposite_interface_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
+    def opposite_interface_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Interface ID of the router at the other end.
+        . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "opposite_interface_id")
 
@@ -1613,7 +2134,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceOwnerId")
     def opposite_interface_owner_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The AliCloud account ID of the owner of the router interface on the other end.
+        Account ID of the peer router interface
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
@@ -1621,7 +2142,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceSpec")
     def opposite_interface_spec(self) -> pulumi.Output[_builtins.str]:
         """
-        The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        Specifications of the interface of the peer router.
         """
         return pulumi.get(self, "opposite_interface_spec")
 
@@ -1629,7 +2150,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceStatus")
     def opposite_interface_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        The status of the router interface on the peer of the connection.
         """
         return pulumi.get(self, "opposite_interface_status")
 
@@ -1637,7 +2158,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeRegionId")
     def opposite_region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The geographical ID of the location of the receiving end of the connection.
+        Region of the connection peer
         """
         return pulumi.get(self, "opposite_region_id")
 
@@ -1645,7 +2166,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeRouterId")
     def opposite_router_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The id of the router at the other end.
+        The ID of the router to which the opposite router interface belongs.
         """
         return pulumi.get(self, "opposite_router_id")
 
@@ -1653,7 +2174,9 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeRouterType")
     def opposite_router_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+        The router type associated with the peer router interface. Valid values:
+        - VRouter: VPC router.
+        - VBR: Virtual Border Router.
         """
         return pulumi.get(self, "opposite_router_type")
 
@@ -1661,15 +2184,17 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeVpcInstanceId")
     def opposite_vpc_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The opposite vpc instance id of the router on the other side.
+        The peer VPC ID
         """
         return pulumi.get(self, "opposite_vpc_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+        The payment method of the router interface. Valid values:
+        - Subscription : PrePaid.
+        - PayAsYouGo : PostPaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1677,7 +2202,14 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        Purchase duration, value:
+        - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+        - When you choose to pay per year, the value range is **1 to 3**.
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -1685,7 +2217,15 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="pricingCycle")
     def pricing_cycle(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+        The billing cycle of the prepaid fee. Valid values:
+        - `Month` (default): monthly payment.
+        - `Year`: Pay per Year.
+
+
+        > **NOTE:**  `period` is required when the value of the parameter `payment_type` is `Subscription`.
+
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pricing_cycle")
 
@@ -1693,7 +2233,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="reservationActiveTime")
     def reservation_active_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The reservation active time of the resource.
+        ReservationActiveTime
         """
         return pulumi.get(self, "reservation_active_time")
 
@@ -1701,7 +2241,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="reservationBandwidth")
     def reservation_bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
-        The reservation bandwidth of the resource.
+        Renew Bandwidth
         """
         return pulumi.get(self, "reservation_bandwidth")
 
@@ -1709,7 +2249,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="reservationInternetChargeType")
     def reservation_internet_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The reservation internet charge type of the resource.
+        Payment Type for Renewal
         """
         return pulumi.get(self, "reservation_internet_charge_type")
 
@@ -1717,15 +2257,25 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="reservationOrderType")
     def reservation_order_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The reservation order type of the resource.
+        Renewal Order Type
         """
         return pulumi.get(self, "reservation_order_type")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
         """
-        The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+        The role of the router interface. Valid values:
+        - InitiatingSide : the initiator of the connection.
+        - AcceptingSide : Connect to the receiving end.
         """
         return pulumi.get(self, "role")
 
@@ -1733,7 +2283,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The router id associated with the router interface.
+        The ID of the router where the route entry is located.
         """
         return pulumi.get(self, "router_id")
 
@@ -1741,7 +2291,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="routerInterfaceId")
     def router_interface_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The first ID of the resource.
+        The first ID of the resource
         """
         return pulumi.get(self, "router_interface_id")
 
@@ -1749,7 +2299,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="routerInterfaceName")
     def router_interface_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the resource.
+        Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "router_interface_name")
 
@@ -1757,7 +2307,9 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="routerType")
     def router_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+        The type of the router where the routing table resides. Valid values:
+        - VRouter:VPC router
+        - VBR: Border Router
         """
         return pulumi.get(self, "router_type")
 
@@ -1765,7 +2317,21 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output[_builtins.str]:
         """
-        The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+        The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+        - Mini.2: 2 Mbps
+        - Mini.5: 5 Mbps
+        - Small.1: 10 Mbps
+        - Small.2: 20 Mbps
+        - Small.5: 50 Mbps
+        - Middle.1: 100 Mbps
+        - Middle.2: 200 Mbps
+        - Middle.5: 500 Mbps
+        - Large.1: 1000 Mbps
+        - Large.2: 2000 Mbps
+        - Large.5: 5000 Mbps
+        - Xlarge.1: 10000 Mbps
+
+        When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
         """
         return pulumi.get(self, "spec")
 
@@ -1773,15 +2339,35 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+        Resource attribute fields that represent the status of the resource. Value range:
+        - Idle : Initialize.
+        - Connecting : the initiator is in the process of Connecting.
+        - AcceptingConnecting : the receiving end is being connected.
+        - Activating : Restoring.
+        - Active : Normal.
+        - Modifying : Modifying.
+        - Deactivating : Freezing.
+        - Inactive : Frozen.
+        - Deleting : Deleting.
+        - Deleted : Deleted.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcInstanceId")
     def vpc_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The vpc instance id of the resource.
+        ID of the local VPC in the peering connection
         """
         return pulumi.get(self, "vpc_instance_id")
 

@@ -20,16 +20,15 @@ __all__ = ['WafRulesetArgs', 'WafRuleset']
 class WafRulesetArgs:
     def __init__(__self__, *,
                  phase: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafRuleset resource.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] name: The ruleset name.
-        :param pulumi.Input[_builtins.int] site_version: The site version.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         pulumi.set(__self__, "phase", phase)
@@ -55,14 +54,14 @@ class WafRulesetArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -80,9 +79,6 @@ class WafRulesetArgs:
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The site version.
-        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -108,7 +104,7 @@ class _WafRulesetState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
                  ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -116,8 +112,7 @@ class _WafRulesetState:
         :param pulumi.Input[_builtins.str] name: The ruleset name.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.int] ruleset_id: waf rule set id
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.int] site_version: The site version.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         if name is not None:
@@ -171,22 +166,19 @@ class _WafRulesetState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The site version.
-        """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
@@ -214,7 +206,7 @@ class WafRuleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -259,8 +251,7 @@ class WafRuleset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The ruleset name.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.int] site_version: The site version.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         ...
@@ -323,7 +314,7 @@ class WafRuleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -358,7 +349,7 @@ class WafRuleset(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             phase: Optional[pulumi.Input[_builtins.str]] = None,
             ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'WafRuleset':
         """
@@ -371,8 +362,7 @@ class WafRuleset(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The ruleset name.
         :param pulumi.Input[_builtins.str] phase: The WAF phase
         :param pulumi.Input[_builtins.int] ruleset_id: waf rule set id
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.int] site_version: The site version.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] status: Rule Set Status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -413,7 +403,7 @@ class WafRuleset(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
@@ -422,9 +412,6 @@ class WafRuleset(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        The site version.
-        """
         return pulumi.get(self, "site_version")
 
     @_builtins.property

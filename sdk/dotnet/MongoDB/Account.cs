@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// <summary>
     /// ## Import
     /// 
-    /// Mongo D B Account can be imported using the id, e.g.
+    /// Mongodb Account can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:mongodb/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -22,39 +22,34 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account comment information.
-        /// 
-        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        /// Set the comment information of the account.
+        /// - Cannot start with http:// or https.
+        /// - Start with Chinese and English letters.
+        /// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         /// </summary>
         [Output("accountDescription")]
         public Output<string?> AccountDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The new password.
-        /// 
-        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
-        /// - The password must be 8 to 32 characters in length.
+        /// Account Name
         /// </summary>
         [Output("accountName")]
         public Output<string> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
+        /// Account Password
         /// </summary>
         [Output("accountPassword")]
         public Output<string> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The role type of the instance. Value description
-        /// 
-        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// The account Comment Information type. Value:
         /// </summary>
         [Output("characterType")]
         public Output<string> CharacterType { get; private set; } = null!;
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `Root`.
+        /// Instance Id
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -116,18 +111,16 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account comment information.
-        /// 
-        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        /// Set the comment information of the account.
+        /// - Cannot start with http:// or https.
+        /// - Start with Chinese and English letters.
+        /// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The new password.
-        /// 
-        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
-        /// - The password must be 8 to 32 characters in length.
+        /// Account Name
         /// </summary>
         [Input("accountName", required: true)]
         public Input<string> AccountName { get; set; } = null!;
@@ -136,7 +129,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
+        /// Account Password
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -149,16 +142,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The role type of the instance. Value description
-        /// 
-        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// The account Comment Information type. Value:
         /// </summary>
         [Input("characterType")]
         public Input<string>? CharacterType { get; set; }
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `Root`.
+        /// Instance Id
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -172,18 +162,16 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account comment information.
-        /// 
-        /// &gt; **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        /// Set the comment information of the account.
+        /// - Cannot start with http:// or https.
+        /// - Start with Chinese and English letters.
+        /// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         /// </summary>
         [Input("accountDescription")]
         public Input<string>? AccountDescription { get; set; }
 
         /// <summary>
-        /// The new password.
-        /// 
-        /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ &amp; * ( ) _ + - =`
-        /// - The password must be 8 to 32 characters in length.
+        /// Account Name
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
@@ -192,7 +180,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ &amp; \* ( ) \_ + - =
+        /// Account Password
         /// </summary>
         public Input<string>? AccountPassword
         {
@@ -205,16 +193,13 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The role type of the instance. Value description
-        /// 
-        /// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        /// - When the instance type is a replica set, charactertype can be null or pass in normal.
+        /// The account Comment Information type. Value:
         /// </summary>
         [Input("characterType")]
         public Input<string>? CharacterType { get; set; }
 
         /// <summary>
-        /// The account whose password needs to be reset. Set the value to `Root`.
+        /// Instance Id
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

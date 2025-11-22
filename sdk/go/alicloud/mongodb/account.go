@@ -14,7 +14,7 @@ import (
 
 // ## Import
 //
-// Mongo D B Account can be imported using the id, e.g.
+// Mongodb Account can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
@@ -22,23 +22,18 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	// Account comment information.
-	//
-	// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+	// Set the comment information of the account.
+	// - Cannot start with http:// or https.
+	// - Start with Chinese and English letters.
+	// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
-	// The new password.
-	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-	// - The password must be 8 to 32 characters in length.
+	// Account Name
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+	// Account Password
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
-	// The role type of the instance. Value description
-	//
-	// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-	// - When the instance type is a replica set, charactertype can be null or pass in normal.
+	// The account Comment Information type. Value:
 	CharacterType pulumi.StringOutput `pulumi:"characterType"`
-	// The account whose password needs to be reset. Set the value to `root`.
+	// Instance Id
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Account Status
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -90,46 +85,36 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// Account comment information.
-	//
-	// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+	// Set the comment information of the account.
+	// - Cannot start with http:// or https.
+	// - Start with Chinese and English letters.
+	// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// The new password.
-	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-	// - The password must be 8 to 32 characters in length.
+	// Account Name
 	AccountName *string `pulumi:"accountName"`
-	// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+	// Account Password
 	AccountPassword *string `pulumi:"accountPassword"`
-	// The role type of the instance. Value description
-	//
-	// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-	// - When the instance type is a replica set, charactertype can be null or pass in normal.
+	// The account Comment Information type. Value:
 	CharacterType *string `pulumi:"characterType"`
-	// The account whose password needs to be reset. Set the value to `root`.
+	// Instance Id
 	InstanceId *string `pulumi:"instanceId"`
 	// Account Status
 	Status *string `pulumi:"status"`
 }
 
 type AccountState struct {
-	// Account comment information.
-	//
-	// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+	// Set the comment information of the account.
+	// - Cannot start with http:// or https.
+	// - Start with Chinese and English letters.
+	// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrInput
-	// The new password.
-	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-	// - The password must be 8 to 32 characters in length.
+	// Account Name
 	AccountName pulumi.StringPtrInput
-	// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+	// Account Password
 	AccountPassword pulumi.StringPtrInput
-	// The role type of the instance. Value description
-	//
-	// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-	// - When the instance type is a replica set, charactertype can be null or pass in normal.
+	// The account Comment Information type. Value:
 	CharacterType pulumi.StringPtrInput
-	// The account whose password needs to be reset. Set the value to `root`.
+	// Instance Id
 	InstanceId pulumi.StringPtrInput
 	// Account Status
 	Status pulumi.StringPtrInput
@@ -140,45 +125,35 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// Account comment information.
-	//
-	// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+	// Set the comment information of the account.
+	// - Cannot start with http:// or https.
+	// - Start with Chinese and English letters.
+	// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// The new password.
-	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-	// - The password must be 8 to 32 characters in length.
+	// Account Name
 	AccountName string `pulumi:"accountName"`
-	// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+	// Account Password
 	AccountPassword string `pulumi:"accountPassword"`
-	// The role type of the instance. Value description
-	//
-	// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-	// - When the instance type is a replica set, charactertype can be null or pass in normal.
+	// The account Comment Information type. Value:
 	CharacterType *string `pulumi:"characterType"`
-	// The account whose password needs to be reset. Set the value to `root`.
+	// Instance Id
 	InstanceId string `pulumi:"instanceId"`
 }
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// Account comment information.
-	//
-	// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+	// Set the comment information of the account.
+	// - Cannot start with http:// or https.
+	// - Start with Chinese and English letters.
+	// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 	AccountDescription pulumi.StringPtrInput
-	// The new password.
-	//
-	// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-	// - The password must be 8 to 32 characters in length.
+	// Account Name
 	AccountName pulumi.StringInput
-	// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+	// Account Password
 	AccountPassword pulumi.StringInput
-	// The role type of the instance. Value description
-	//
-	// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-	// - When the instance type is a replica set, charactertype can be null or pass in normal.
+	// The account Comment Information type. Value:
 	CharacterType pulumi.StringPtrInput
-	// The account whose password needs to be reset. Set the value to `root`.
+	// Instance Id
 	InstanceId pulumi.StringInput
 }
 
@@ -269,35 +244,30 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
-// Account comment information.
-//
-// > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+// Set the comment information of the account.
+// - Cannot start with http:// or https.
+// - Start with Chinese and English letters.
+// - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
 func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
 }
 
-// The new password.
-//
-// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-// - The password must be 8 to 32 characters in length.
+// Account Name
 func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \* ( ) \_ + - =
+// Account Password
 func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
 }
 
-// The role type of the instance. Value description
-//
-// - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-// - When the instance type is a replica set, charactertype can be null or pass in normal.
+// The account Comment Information type. Value:
 func (o AccountOutput) CharacterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.CharacterType }).(pulumi.StringOutput)
 }
 
-// The account whose password needs to be reset. Set the value to `root`.
+// Instance Id
 func (o AccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

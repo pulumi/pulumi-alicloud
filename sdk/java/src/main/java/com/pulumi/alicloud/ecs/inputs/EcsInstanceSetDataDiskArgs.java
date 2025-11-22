@@ -79,7 +79,7 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The size of the data disk. Unit: GiB.
+     * The size of the data disk. Unit: GiB. Valid values:
      * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -90,7 +90,7 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
     private Output<Integer> diskSize;
 
     /**
-     * @return The size of the data disk. Unit: GiB.
+     * @return The size of the data disk. Unit: GiB. Valid values:
      * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -278,7 +278,7 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param diskSize The size of the data disk. Unit: GiB.
+         * @param diskSize The size of the data disk. Unit: GiB. Valid values:
          * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -293,7 +293,7 @@ public final class EcsInstanceSetDataDiskArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param diskSize The size of the data disk. Unit: GiB.
+         * @param diskSize The size of the data disk. Unit: GiB. Valid values:
          * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.

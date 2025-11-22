@@ -85,7 +85,7 @@ type Certificate struct {
 	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
@@ -147,7 +147,7 @@ type certificateState struct {
 	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region *string `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status *string `pulumi:"status"`
 	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
@@ -174,7 +174,7 @@ type CertificateState struct {
 	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
 	Status pulumi.StringPtrInput
 	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
@@ -203,7 +203,7 @@ type certificateArgs struct {
 	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region *string `pulumi:"region"`
 	// The site ID, which can be obtained by calling the ListSites interface.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type *string `pulumi:"type"`
 }
@@ -227,7 +227,7 @@ type CertificateArgs struct {
 	// For accounts on the international site, this parameter value is: ap-southeast-1
 	Region pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
 	Type pulumi.StringPtrInput
 }
@@ -365,8 +365,8 @@ func (o CertificateOutput) Region() pulumi.StringOutput {
 }
 
 // The site ID, which can be obtained by calling the ListSites interface.
-func (o CertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o CertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.

@@ -83,8 +83,9 @@ type DefenseTemplate struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group.
-	ResourceManagerResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceManagerResourceGroupId"`
+	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+	ResourceGroups                 pulumi.StringArrayOutput `pulumi:"resourceGroups"`
+	ResourceManagerResourceGroupId pulumi.StringPtrOutput   `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayOutput `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -155,8 +156,9 @@ type defenseTemplateState struct {
 	Description *string `pulumi:"description"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group.
-	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
+	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+	ResourceGroups                 []string `pulumi:"resourceGroups"`
+	ResourceManagerResourceGroupId *string  `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -180,7 +182,8 @@ type DefenseTemplateState struct {
 	Description pulumi.StringPtrInput
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringPtrInput
-	// The ID of the Alibaba Cloud resource group.
+	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+	ResourceGroups                 pulumi.StringArrayInput
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayInput
@@ -207,8 +210,9 @@ type defenseTemplateArgs struct {
 	Description *string `pulumi:"description"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The ID of the Alibaba Cloud resource group.
-	ResourceManagerResourceGroupId *string `pulumi:"resourceManagerResourceGroupId"`
+	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+	ResourceGroups                 []string `pulumi:"resourceGroups"`
+	ResourceManagerResourceGroupId *string  `pulumi:"resourceManagerResourceGroupId"`
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources []string `pulumi:"resources"`
 	// The status of the protection rule template. Valid values:
@@ -231,7 +235,8 @@ type DefenseTemplateArgs struct {
 	Description pulumi.StringPtrInput
 	// The ID of the Web Application Firewall (WAF) instance.
 	InstanceId pulumi.StringInput
-	// The ID of the Alibaba Cloud resource group.
+	// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+	ResourceGroups                 pulumi.StringArrayInput
 	ResourceManagerResourceGroupId pulumi.StringPtrInput
 	// The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
 	Resources pulumi.StringArrayInput
@@ -357,7 +362,11 @@ func (o DefenseTemplateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the Alibaba Cloud resource group.
+// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+func (o DefenseTemplateOutput) ResourceGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringArrayOutput { return v.ResourceGroups }).(pulumi.StringArrayOutput)
+}
+
 func (o DefenseTemplateOutput) ResourceManagerResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DefenseTemplate) pulumi.StringPtrOutput { return v.ResourceManagerResourceGroupId }).(pulumi.StringPtrOutput)
 }

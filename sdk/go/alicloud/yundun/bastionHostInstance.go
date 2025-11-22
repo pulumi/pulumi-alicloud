@@ -29,6 +29,7 @@ type BastionHostInstance struct {
 	RenewalStatus      pulumi.StringOutput                          `pulumi:"renewalStatus"`
 	ResourceGroupId    pulumi.StringOutput                          `pulumi:"resourceGroupId"`
 	SecurityGroupIds   pulumi.StringArrayOutput                     `pulumi:"securityGroupIds"`
+	SlaveVswitchId     pulumi.StringPtrOutput                       `pulumi:"slaveVswitchId"`
 	Storage            pulumi.StringOutput                          `pulumi:"storage"`
 	Tags               pulumi.StringMapOutput                       `pulumi:"tags"`
 	VswitchId          pulumi.StringOutput                          `pulumi:"vswitchId"`
@@ -99,6 +100,7 @@ type bastionHostInstanceState struct {
 	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	SlaveVswitchId     *string                             `pulumi:"slaveVswitchId"`
 	Storage            *string                             `pulumi:"storage"`
 	Tags               map[string]string                   `pulumi:"tags"`
 	VswitchId          *string                             `pulumi:"vswitchId"`
@@ -119,6 +121,7 @@ type BastionHostInstanceState struct {
 	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
+	SlaveVswitchId     pulumi.StringPtrInput
 	Storage            pulumi.StringPtrInput
 	Tags               pulumi.StringMapInput
 	VswitchId          pulumi.StringPtrInput
@@ -143,6 +146,7 @@ type bastionHostInstanceArgs struct {
 	RenewalStatus      *string                             `pulumi:"renewalStatus"`
 	ResourceGroupId    *string                             `pulumi:"resourceGroupId"`
 	SecurityGroupIds   []string                            `pulumi:"securityGroupIds"`
+	SlaveVswitchId     *string                             `pulumi:"slaveVswitchId"`
 	Storage            string                              `pulumi:"storage"`
 	Tags               map[string]string                   `pulumi:"tags"`
 	VswitchId          string                              `pulumi:"vswitchId"`
@@ -164,6 +168,7 @@ type BastionHostInstanceArgs struct {
 	RenewalStatus      pulumi.StringPtrInput
 	ResourceGroupId    pulumi.StringPtrInput
 	SecurityGroupIds   pulumi.StringArrayInput
+	SlaveVswitchId     pulumi.StringPtrInput
 	Storage            pulumi.StringInput
 	Tags               pulumi.StringMapInput
 	VswitchId          pulumi.StringInput
@@ -310,6 +315,10 @@ func (o BastionHostInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 
 func (o BastionHostInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+func (o BastionHostInstanceOutput) SlaveVswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BastionHostInstance) pulumi.StringPtrOutput { return v.SlaveVswitchId }).(pulumi.StringPtrOutput)
 }
 
 func (o BastionHostInstanceOutput) Storage() pulumi.StringOutput {

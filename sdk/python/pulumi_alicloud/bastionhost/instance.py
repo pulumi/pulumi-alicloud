@@ -37,10 +37,11 @@ class InstanceArgs:
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
                If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -63,6 +64,7 @@ class InstanceArgs:
                - `Y`: years.
         :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewal_status` can be modified.
         :param pulumi.Input[_builtins.str] resource_group_id: The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -90,6 +92,8 @@ class InstanceArgs:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if slave_vswitch_id is not None:
+            pulumi.set(__self__, "slave_vswitch_id", slave_vswitch_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -97,7 +101,7 @@ class InstanceArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input[_builtins.str]:
         """
-        The bandwidth of Cloud Bastionhost instance.
+        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
         If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
         If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
@@ -291,6 +295,18 @@ class InstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
+        return pulumi.get(self, "slave_vswitch_id")
+
+    @slave_vswitch_id.setter
+    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "slave_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -320,13 +336,14 @@ class _InstanceState:
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAdAuthServerArgs']]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
                If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -346,6 +363,7 @@ class _InstanceState:
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
         :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -378,6 +396,8 @@ class _InstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if slave_vswitch_id is not None:
+            pulumi.set(__self__, "slave_vswitch_id", slave_vswitch_id)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if tags is not None:
@@ -401,7 +421,7 @@ class _InstanceState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The bandwidth of Cloud Bastionhost instance.
+        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
         If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
         If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
@@ -559,6 +579,18 @@ class _InstanceState:
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
+        return pulumi.get(self, "slave_vswitch_id")
+
+    @slave_vswitch_id.setter
+    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "slave_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -615,6 +647,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,7 +664,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdAuthServerArgs', 'InstanceAdAuthServerArgsDict']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
                If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -651,6 +684,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
         :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -699,6 +733,7 @@ class Instance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -735,6 +770,7 @@ class Instance(pulumi.CustomResource):
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["slave_vswitch_id"] = slave_vswitch_id
             if storage is None and not opts.urn:
                 raise TypeError("Missing required property 'storage'")
             __props__.__dict__["storage"] = storage
@@ -766,6 +802,7 @@ class Instance(pulumi.CustomResource):
             renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             storage: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
@@ -777,7 +814,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceAdAuthServerArgs', 'InstanceAdAuthServerArgsDict']]]] ad_auth_servers: The AD auth server of the Instance. See `ad_auth_server` below.
-        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance.
+        :param pulumi.Input[_builtins.str] bandwidth: The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
                If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
                If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         :param pulumi.Input[_builtins.str] description: Description of the instance. This name can have a string of 1 to 63 characters.
@@ -797,6 +834,7 @@ class Instance(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `security_group_ids` values indefinite.
                So, from version 1.160.0, `security_group_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
+        :param pulumi.Input[_builtins.str] slave_vswitch_id: Slave VSwitch ID configured to Bastionhost.
         :param pulumi.Input[_builtins.str] storage: The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.str] vswitch_id: VSwitch ID configured to Bastionhost.
@@ -819,6 +857,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["slave_vswitch_id"] = slave_vswitch_id
         __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -836,7 +875,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.str]:
         """
-        The bandwidth of Cloud Bastionhost instance.
+        The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
         If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
         If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
         """
@@ -940,6 +979,14 @@ class Instance(pulumi.CustomResource):
         and you can use tolist to convert it to a list.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Slave VSwitch ID configured to Bastionhost.
+        """
+        return pulumi.get(self, "slave_vswitch_id")
 
     @_builtins.property
     @pulumi.getter

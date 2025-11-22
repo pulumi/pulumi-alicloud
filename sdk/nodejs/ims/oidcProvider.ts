@@ -25,15 +25,15 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const oidcProviderName = config.get("oidcProviderName") || "amp-resource-example-oidc-provider";
  * const _default = new alicloud.ims.OidcProvider("default", {
- *     description: oidcProviderName,
- *     issuerUrl: "https://oauth.aliyun.com",
- *     fingerprints: ["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
+ *     fingerprints: ["0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"],
  *     issuanceLimitTime: 12,
- *     oidcProviderName: name,
+ *     oidcProviderName: "tfaccims89018",
  *     clientIds: [
  *         "123",
  *         "456",
  *     ],
+ *     description: oidcProviderName,
+ *     issuerUrl: "https://oauth.aliyun.com",
  * });
  * ```
  *

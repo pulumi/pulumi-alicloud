@@ -155,7 +155,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The status of the load balancer.
      */
@@ -301,7 +301,7 @@ export interface LoadBalancerState {
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The status of the load balancer.
      */
@@ -371,7 +371,7 @@ export interface LoadBalancerArgs {
     /**
      * The site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * Load balancing policy.
      */

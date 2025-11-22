@@ -20,12 +20,12 @@ __all__ = ['GrantRuleToCenArgs', 'GrantRuleToCen']
 class GrantRuleToCenArgs:
     def __init__(__self__, *,
                  cen_id: pulumi.Input[_builtins.str],
-                 cen_owner_id: pulumi.Input[_builtins.int],
+                 cen_owner_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GrantRuleToCen resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
-        :param pulumi.Input[_builtins.int] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VBR.
         """
         pulumi.set(__self__, "cen_id", cen_id)
@@ -46,14 +46,14 @@ class GrantRuleToCenArgs:
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> pulumi.Input[_builtins.int]:
+    def cen_owner_id(self) -> pulumi.Input[_builtins.str]:
         """
         The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: pulumi.Input[_builtins.int]):
+    def cen_owner_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
@@ -73,18 +73,22 @@ class GrantRuleToCenArgs:
 class _GrantRuleToCenState:
     def __init__(__self__, *,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GrantRuleToCen resources.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
-        :param pulumi.Input[_builtins.int] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VBR.
         """
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
         if cen_owner_id is not None:
             pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
 
@@ -102,15 +106,27 @@ class _GrantRuleToCenState:
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.263.0) The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -132,7 +148,7 @@ class GrantRuleToCen(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -154,27 +170,27 @@ class GrantRuleToCen(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+            name = "terraform-example"
+        default = alicloud.get_account()
+        default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
             max=2999,
             min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default_get_physical_connections.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
-        default = alicloud.get_account()
-        example_grant_rule_to_cen = alicloud.expressconnect.GrantRuleToCen("example",
-            cen_id=example_instance.id,
+        default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+        default_grant_rule_to_cen = alicloud.expressconnect.GrantRuleToCen("default",
+            cen_id=default_instance.id,
             cen_owner_id=default.id,
-            instance_id=example_virtual_border_router.id)
+            instance_id=default_virtual_border_router.id)
         ```
 
         ## Import
@@ -188,7 +204,7 @@ class GrantRuleToCen(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
-        :param pulumi.Input[_builtins.int] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VBR.
         """
         ...
@@ -216,27 +232,27 @@ class GrantRuleToCen(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
+            name = "terraform-example"
+        default = alicloud.get_account()
+        default_get_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
             max=2999,
             min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default_get_physical_connections.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_instance = alicloud.cen.Instance("example", cen_instance_name=name)
-        default = alicloud.get_account()
-        example_grant_rule_to_cen = alicloud.expressconnect.GrantRuleToCen("example",
-            cen_id=example_instance.id,
+        default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+        default_grant_rule_to_cen = alicloud.expressconnect.GrantRuleToCen("default",
+            cen_id=default_instance.id,
             cen_owner_id=default.id,
-            instance_id=example_virtual_border_router.id)
+            instance_id=default_virtual_border_router.id)
         ```
 
         ## Import
@@ -263,7 +279,7 @@ class GrantRuleToCen(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -283,6 +299,7 @@ class GrantRuleToCen(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["create_time"] = None
         super(GrantRuleToCen, __self__).__init__(
             'alicloud:expressconnect/grantRuleToCen:GrantRuleToCen',
             resource_name,
@@ -294,7 +311,8 @@ class GrantRuleToCen(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
+            cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GrantRuleToCen':
         """
         Get an existing GrantRuleToCen resource's state with the given name, id, and optional extra
@@ -304,7 +322,8 @@ class GrantRuleToCen(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cen_id: The ID of the CEN instance to which you want to grant permissions.
-        :param pulumi.Input[_builtins.int] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] cen_owner_id: The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] instance_id: The ID of the VBR.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -313,6 +332,7 @@ class GrantRuleToCen(pulumi.CustomResource):
 
         __props__.__dict__["cen_id"] = cen_id
         __props__.__dict__["cen_owner_id"] = cen_owner_id
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_id"] = instance_id
         return GrantRuleToCen(resource_name, opts=opts, __props__=__props__)
 
@@ -326,11 +346,19 @@ class GrantRuleToCen(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> pulumi.Output[_builtins.int]:
+    def cen_owner_id(self) -> pulumi.Output[_builtins.str]:
         """
         The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         """
         return pulumi.get(self, "cen_owner_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.263.0) The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")

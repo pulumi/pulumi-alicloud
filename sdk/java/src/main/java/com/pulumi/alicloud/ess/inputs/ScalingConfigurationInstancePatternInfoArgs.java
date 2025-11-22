@@ -64,6 +64,21 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
     }
 
     /**
+     * CPU architecture N of the instance types. Valid values: x86,Arm.
+     * 
+     */
+    @Import(name="cpuArchitectures")
+    private @Nullable Output<List<String>> cpuArchitectures;
+
+    /**
+     * @return CPU architecture N of the instance types. Valid values: x86,Arm.
+     * 
+     */
+    public Optional<Output<List<String>>> cpuArchitectures() {
+        return Optional.ofNullable(this.cpuArchitectures);
+    }
+
+    /**
      * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
      * 
      */
@@ -76,6 +91,36 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
      */
     public Optional<Output<List<String>>> excludedInstanceTypes() {
         return Optional.ofNullable(this.excludedInstanceTypes);
+    }
+
+    /**
+     * The GPU model.
+     * 
+     */
+    @Import(name="gpuSpecs")
+    private @Nullable Output<List<String>> gpuSpecs;
+
+    /**
+     * @return The GPU model.
+     * 
+     */
+    public Optional<Output<List<String>>> gpuSpecs() {
+        return Optional.ofNullable(this.gpuSpecs);
+    }
+
+    /**
+     * Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+     * 
+     */
+    @Import(name="instanceCategories")
+    private @Nullable Output<List<String>> instanceCategories;
+
+    /**
+     * @return Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+     * 
+     */
+    public Optional<Output<List<String>>> instanceCategories() {
+        return Optional.ofNullable(this.instanceCategories);
     }
 
     /**
@@ -94,6 +139,21 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
     }
 
     /**
+     * Instance family N that is queried. Valid values of N: 1 to 10.
+     * 
+     */
+    @Import(name="instanceTypeFamilies")
+    private @Nullable Output<List<String>> instanceTypeFamilies;
+
+    /**
+     * @return Instance family N that is queried. Valid values of N: 1 to 10.
+     * 
+     */
+    public Optional<Output<List<String>>> instanceTypeFamilies() {
+        return Optional.ofNullable(this.instanceTypeFamilies);
+    }
+
+    /**
      * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
      * 
      */
@@ -106,6 +166,51 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
      */
     public Optional<Output<Double>> maxPrice() {
         return Optional.ofNullable(this.maxPrice);
+    }
+
+    /**
+     * The maximum number of vCPUs per instance type.
+     * 
+     */
+    @Import(name="maximumCpuCoreCount")
+    private @Nullable Output<Integer> maximumCpuCoreCount;
+
+    /**
+     * @return The maximum number of vCPUs per instance type.
+     * 
+     */
+    public Optional<Output<Integer>> maximumCpuCoreCount() {
+        return Optional.ofNullable(this.maximumCpuCoreCount);
+    }
+
+    /**
+     * The maximum number of GPUs per instance. The value must be a positive integer.
+     * 
+     */
+    @Import(name="maximumGpuAmount")
+    private @Nullable Output<Integer> maximumGpuAmount;
+
+    /**
+     * @return The maximum number of GPUs per instance. The value must be a positive integer.
+     * 
+     */
+    public Optional<Output<Integer>> maximumGpuAmount() {
+        return Optional.ofNullable(this.maximumGpuAmount);
+    }
+
+    /**
+     * The maximum memory size per instance. Unit: GiB.
+     * 
+     */
+    @Import(name="maximumMemorySize")
+    private @Nullable Output<Double> maximumMemorySize;
+
+    /**
+     * @return The maximum memory size per instance. Unit: GiB.
+     * 
+     */
+    public Optional<Output<Double>> maximumMemorySize() {
+        return Optional.ofNullable(this.maximumMemorySize);
     }
 
     /**
@@ -123,16 +228,167 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
         return Optional.ofNullable(this.memory);
     }
 
+    /**
+     * The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+     * 
+     */
+    @Import(name="minimumBaselineCredit")
+    private @Nullable Output<Integer> minimumBaselineCredit;
+
+    /**
+     * @return The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+     * 
+     */
+    public Optional<Output<Integer>> minimumBaselineCredit() {
+        return Optional.ofNullable(this.minimumBaselineCredit);
+    }
+
+    /**
+     * The minimum number of vCPUs per instance type.
+     * 
+     */
+    @Import(name="minimumCpuCoreCount")
+    private @Nullable Output<Integer> minimumCpuCoreCount;
+
+    /**
+     * @return The minimum number of vCPUs per instance type.
+     * 
+     */
+    public Optional<Output<Integer>> minimumCpuCoreCount() {
+        return Optional.ofNullable(this.minimumCpuCoreCount);
+    }
+
+    /**
+     * The minimum number of IPv6 addresses per ENI.
+     * 
+     */
+    @Import(name="minimumEniIpv6AddressQuantity")
+    private @Nullable Output<Integer> minimumEniIpv6AddressQuantity;
+
+    /**
+     * @return The minimum number of IPv6 addresses per ENI.
+     * 
+     */
+    public Optional<Output<Integer>> minimumEniIpv6AddressQuantity() {
+        return Optional.ofNullable(this.minimumEniIpv6AddressQuantity);
+    }
+
+    /**
+     * The minimum number of IPv4 addresses per ENI.
+     * 
+     */
+    @Import(name="minimumEniPrivateIpAddressQuantity")
+    private @Nullable Output<Integer> minimumEniPrivateIpAddressQuantity;
+
+    /**
+     * @return The minimum number of IPv4 addresses per ENI.
+     * 
+     */
+    public Optional<Output<Integer>> minimumEniPrivateIpAddressQuantity() {
+        return Optional.ofNullable(this.minimumEniPrivateIpAddressQuantity);
+    }
+
+    /**
+     * The minimum number of elastic network interfaces (ENIs) per instance.
+     * 
+     */
+    @Import(name="minimumEniQuantity")
+    private @Nullable Output<Integer> minimumEniQuantity;
+
+    /**
+     * @return The minimum number of elastic network interfaces (ENIs) per instance.
+     * 
+     */
+    public Optional<Output<Integer>> minimumEniQuantity() {
+        return Optional.ofNullable(this.minimumEniQuantity);
+    }
+
+    /**
+     * The minimum number of GPUs per instance. The value must be a positive integer.
+     * 
+     */
+    @Import(name="minimumGpuAmount")
+    private @Nullable Output<Integer> minimumGpuAmount;
+
+    /**
+     * @return The minimum number of GPUs per instance. The value must be a positive integer.
+     * 
+     */
+    public Optional<Output<Integer>> minimumGpuAmount() {
+        return Optional.ofNullable(this.minimumGpuAmount);
+    }
+
+    /**
+     * The initial vCPU credits per t5 or t6 burstable instance.
+     * 
+     */
+    @Import(name="minimumInitialCredit")
+    private @Nullable Output<Integer> minimumInitialCredit;
+
+    /**
+     * @return The initial vCPU credits per t5 or t6 burstable instance.
+     * 
+     */
+    public Optional<Output<Integer>> minimumInitialCredit() {
+        return Optional.ofNullable(this.minimumInitialCredit);
+    }
+
+    /**
+     * The minimum memory size per instance. Unit: GiB.
+     * 
+     */
+    @Import(name="minimumMemorySize")
+    private @Nullable Output<Double> minimumMemorySize;
+
+    /**
+     * @return The minimum memory size per instance. Unit: GiB.
+     * 
+     */
+    public Optional<Output<Double>> minimumMemorySize() {
+        return Optional.ofNullable(this.minimumMemorySize);
+    }
+
+    /**
+     * Processor model N of the ECS instances. Valid values of N: 1 to 10.
+     * 
+     */
+    @Import(name="physicalProcessorModels")
+    private @Nullable Output<List<String>> physicalProcessorModels;
+
+    /**
+     * @return Processor model N of the ECS instances. Valid values of N: 1 to 10.
+     * 
+     */
+    public Optional<Output<List<String>>> physicalProcessorModels() {
+        return Optional.ofNullable(this.physicalProcessorModels);
+    }
+
     private ScalingConfigurationInstancePatternInfoArgs() {}
 
     private ScalingConfigurationInstancePatternInfoArgs(ScalingConfigurationInstancePatternInfoArgs $) {
         this.architectures = $.architectures;
         this.burstablePerformance = $.burstablePerformance;
         this.cores = $.cores;
+        this.cpuArchitectures = $.cpuArchitectures;
         this.excludedInstanceTypes = $.excludedInstanceTypes;
+        this.gpuSpecs = $.gpuSpecs;
+        this.instanceCategories = $.instanceCategories;
         this.instanceFamilyLevel = $.instanceFamilyLevel;
+        this.instanceTypeFamilies = $.instanceTypeFamilies;
         this.maxPrice = $.maxPrice;
+        this.maximumCpuCoreCount = $.maximumCpuCoreCount;
+        this.maximumGpuAmount = $.maximumGpuAmount;
+        this.maximumMemorySize = $.maximumMemorySize;
         this.memory = $.memory;
+        this.minimumBaselineCredit = $.minimumBaselineCredit;
+        this.minimumCpuCoreCount = $.minimumCpuCoreCount;
+        this.minimumEniIpv6AddressQuantity = $.minimumEniIpv6AddressQuantity;
+        this.minimumEniPrivateIpAddressQuantity = $.minimumEniPrivateIpAddressQuantity;
+        this.minimumEniQuantity = $.minimumEniQuantity;
+        this.minimumGpuAmount = $.minimumGpuAmount;
+        this.minimumInitialCredit = $.minimumInitialCredit;
+        this.minimumMemorySize = $.minimumMemorySize;
+        this.physicalProcessorModels = $.physicalProcessorModels;
     }
 
     public static Builder builder() {
@@ -227,6 +483,37 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
         }
 
         /**
+         * @param cpuArchitectures CPU architecture N of the instance types. Valid values: x86,Arm.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuArchitectures(@Nullable Output<List<String>> cpuArchitectures) {
+            $.cpuArchitectures = cpuArchitectures;
+            return this;
+        }
+
+        /**
+         * @param cpuArchitectures CPU architecture N of the instance types. Valid values: x86,Arm.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuArchitectures(List<String> cpuArchitectures) {
+            return cpuArchitectures(Output.of(cpuArchitectures));
+        }
+
+        /**
+         * @param cpuArchitectures CPU architecture N of the instance types. Valid values: x86,Arm.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuArchitectures(String... cpuArchitectures) {
+            return cpuArchitectures(List.of(cpuArchitectures));
+        }
+
+        /**
          * @param excludedInstanceTypes Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
          * 
          * @return builder
@@ -258,6 +545,68 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
         }
 
         /**
+         * @param gpuSpecs The GPU model.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuSpecs(@Nullable Output<List<String>> gpuSpecs) {
+            $.gpuSpecs = gpuSpecs;
+            return this;
+        }
+
+        /**
+         * @param gpuSpecs The GPU model.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuSpecs(List<String> gpuSpecs) {
+            return gpuSpecs(Output.of(gpuSpecs));
+        }
+
+        /**
+         * @param gpuSpecs The GPU model.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuSpecs(String... gpuSpecs) {
+            return gpuSpecs(List.of(gpuSpecs));
+        }
+
+        /**
+         * @param instanceCategories Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCategories(@Nullable Output<List<String>> instanceCategories) {
+            $.instanceCategories = instanceCategories;
+            return this;
+        }
+
+        /**
+         * @param instanceCategories Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCategories(List<String> instanceCategories) {
+            return instanceCategories(Output.of(instanceCategories));
+        }
+
+        /**
+         * @param instanceCategories Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCategories(String... instanceCategories) {
+            return instanceCategories(List.of(instanceCategories));
+        }
+
+        /**
          * @param instanceFamilyLevel The instance family level in instancePatternInfo.
          * 
          * @return builder
@@ -276,6 +625,37 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
          */
         public Builder instanceFamilyLevel(String instanceFamilyLevel) {
             return instanceFamilyLevel(Output.of(instanceFamilyLevel));
+        }
+
+        /**
+         * @param instanceTypeFamilies Instance family N that is queried. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeFamilies(@Nullable Output<List<String>> instanceTypeFamilies) {
+            $.instanceTypeFamilies = instanceTypeFamilies;
+            return this;
+        }
+
+        /**
+         * @param instanceTypeFamilies Instance family N that is queried. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeFamilies(List<String> instanceTypeFamilies) {
+            return instanceTypeFamilies(Output.of(instanceTypeFamilies));
+        }
+
+        /**
+         * @param instanceTypeFamilies Instance family N that is queried. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypeFamilies(String... instanceTypeFamilies) {
+            return instanceTypeFamilies(List.of(instanceTypeFamilies));
         }
 
         /**
@@ -300,6 +680,69 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
         }
 
         /**
+         * @param maximumCpuCoreCount The maximum number of vCPUs per instance type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumCpuCoreCount(@Nullable Output<Integer> maximumCpuCoreCount) {
+            $.maximumCpuCoreCount = maximumCpuCoreCount;
+            return this;
+        }
+
+        /**
+         * @param maximumCpuCoreCount The maximum number of vCPUs per instance type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumCpuCoreCount(Integer maximumCpuCoreCount) {
+            return maximumCpuCoreCount(Output.of(maximumCpuCoreCount));
+        }
+
+        /**
+         * @param maximumGpuAmount The maximum number of GPUs per instance. The value must be a positive integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumGpuAmount(@Nullable Output<Integer> maximumGpuAmount) {
+            $.maximumGpuAmount = maximumGpuAmount;
+            return this;
+        }
+
+        /**
+         * @param maximumGpuAmount The maximum number of GPUs per instance. The value must be a positive integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumGpuAmount(Integer maximumGpuAmount) {
+            return maximumGpuAmount(Output.of(maximumGpuAmount));
+        }
+
+        /**
+         * @param maximumMemorySize The maximum memory size per instance. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumMemorySize(@Nullable Output<Double> maximumMemorySize) {
+            $.maximumMemorySize = maximumMemorySize;
+            return this;
+        }
+
+        /**
+         * @param maximumMemorySize The maximum memory size per instance. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maximumMemorySize(Double maximumMemorySize) {
+            return maximumMemorySize(Output.of(maximumMemorySize));
+        }
+
+        /**
          * @param memory The memory size that is specified for an instance type in instancePatternInfo.
          * 
          * @return builder
@@ -318,6 +761,205 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
          */
         public Builder memory(Double memory) {
             return memory(Output.of(memory));
+        }
+
+        /**
+         * @param minimumBaselineCredit The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumBaselineCredit(@Nullable Output<Integer> minimumBaselineCredit) {
+            $.minimumBaselineCredit = minimumBaselineCredit;
+            return this;
+        }
+
+        /**
+         * @param minimumBaselineCredit The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumBaselineCredit(Integer minimumBaselineCredit) {
+            return minimumBaselineCredit(Output.of(minimumBaselineCredit));
+        }
+
+        /**
+         * @param minimumCpuCoreCount The minimum number of vCPUs per instance type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumCpuCoreCount(@Nullable Output<Integer> minimumCpuCoreCount) {
+            $.minimumCpuCoreCount = minimumCpuCoreCount;
+            return this;
+        }
+
+        /**
+         * @param minimumCpuCoreCount The minimum number of vCPUs per instance type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumCpuCoreCount(Integer minimumCpuCoreCount) {
+            return minimumCpuCoreCount(Output.of(minimumCpuCoreCount));
+        }
+
+        /**
+         * @param minimumEniIpv6AddressQuantity The minimum number of IPv6 addresses per ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniIpv6AddressQuantity(@Nullable Output<Integer> minimumEniIpv6AddressQuantity) {
+            $.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            return this;
+        }
+
+        /**
+         * @param minimumEniIpv6AddressQuantity The minimum number of IPv6 addresses per ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniIpv6AddressQuantity(Integer minimumEniIpv6AddressQuantity) {
+            return minimumEniIpv6AddressQuantity(Output.of(minimumEniIpv6AddressQuantity));
+        }
+
+        /**
+         * @param minimumEniPrivateIpAddressQuantity The minimum number of IPv4 addresses per ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniPrivateIpAddressQuantity(@Nullable Output<Integer> minimumEniPrivateIpAddressQuantity) {
+            $.minimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
+            return this;
+        }
+
+        /**
+         * @param minimumEniPrivateIpAddressQuantity The minimum number of IPv4 addresses per ENI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniPrivateIpAddressQuantity(Integer minimumEniPrivateIpAddressQuantity) {
+            return minimumEniPrivateIpAddressQuantity(Output.of(minimumEniPrivateIpAddressQuantity));
+        }
+
+        /**
+         * @param minimumEniQuantity The minimum number of elastic network interfaces (ENIs) per instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniQuantity(@Nullable Output<Integer> minimumEniQuantity) {
+            $.minimumEniQuantity = minimumEniQuantity;
+            return this;
+        }
+
+        /**
+         * @param minimumEniQuantity The minimum number of elastic network interfaces (ENIs) per instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniQuantity(Integer minimumEniQuantity) {
+            return minimumEniQuantity(Output.of(minimumEniQuantity));
+        }
+
+        /**
+         * @param minimumGpuAmount The minimum number of GPUs per instance. The value must be a positive integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumGpuAmount(@Nullable Output<Integer> minimumGpuAmount) {
+            $.minimumGpuAmount = minimumGpuAmount;
+            return this;
+        }
+
+        /**
+         * @param minimumGpuAmount The minimum number of GPUs per instance. The value must be a positive integer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumGpuAmount(Integer minimumGpuAmount) {
+            return minimumGpuAmount(Output.of(minimumGpuAmount));
+        }
+
+        /**
+         * @param minimumInitialCredit The initial vCPU credits per t5 or t6 burstable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumInitialCredit(@Nullable Output<Integer> minimumInitialCredit) {
+            $.minimumInitialCredit = minimumInitialCredit;
+            return this;
+        }
+
+        /**
+         * @param minimumInitialCredit The initial vCPU credits per t5 or t6 burstable instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumInitialCredit(Integer minimumInitialCredit) {
+            return minimumInitialCredit(Output.of(minimumInitialCredit));
+        }
+
+        /**
+         * @param minimumMemorySize The minimum memory size per instance. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumMemorySize(@Nullable Output<Double> minimumMemorySize) {
+            $.minimumMemorySize = minimumMemorySize;
+            return this;
+        }
+
+        /**
+         * @param minimumMemorySize The minimum memory size per instance. Unit: GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumMemorySize(Double minimumMemorySize) {
+            return minimumMemorySize(Output.of(minimumMemorySize));
+        }
+
+        /**
+         * @param physicalProcessorModels Processor model N of the ECS instances. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder physicalProcessorModels(@Nullable Output<List<String>> physicalProcessorModels) {
+            $.physicalProcessorModels = physicalProcessorModels;
+            return this;
+        }
+
+        /**
+         * @param physicalProcessorModels Processor model N of the ECS instances. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder physicalProcessorModels(List<String> physicalProcessorModels) {
+            return physicalProcessorModels(Output.of(physicalProcessorModels));
+        }
+
+        /**
+         * @param physicalProcessorModels Processor model N of the ECS instances. Valid values of N: 1 to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder physicalProcessorModels(String... physicalProcessorModels) {
+            return physicalProcessorModels(List.of(physicalProcessorModels));
         }
 
         public ScalingConfigurationInstancePatternInfoArgs build() {

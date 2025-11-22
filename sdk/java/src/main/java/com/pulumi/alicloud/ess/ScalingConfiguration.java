@@ -223,6 +223,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataDisks);
     }
     /**
+     * The ID of the dedicated host cluster.
+     * 
+     */
+    @Export(name="dedicatedHostClusterId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dedicatedHostClusterId;
+
+    /**
+     * @return The ID of the dedicated host cluster.
+     * 
+     */
+    public Output<Optional<String>> dedicatedHostClusterId() {
+        return Codegen.optional(this.dedicatedHostClusterId);
+    }
+    /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      * 
      */
@@ -277,6 +291,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
+    }
+    /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> httpEndpoint;
+
+    /**
+     * @return Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    public Output<Optional<String>> httpEndpoint() {
+        return Codegen.optional(this.httpEndpoint);
     }
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.

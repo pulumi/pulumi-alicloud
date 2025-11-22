@@ -55,14 +55,14 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var oidcProviderName = config.get("oidcProviderName").orElse("amp-resource-example-oidc-provider");
  *         var default_ = new OidcProvider("default", OidcProviderArgs.builder()
- *             .description(oidcProviderName)
- *             .issuerUrl("https://oauth.aliyun.com")
- *             .fingerprints("902ef2deeb3c5b13ea4c3d5193629309e231ae55")
+ *             .fingerprints("0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71")
  *             .issuanceLimitTime(12)
- *             .oidcProviderName(name)
+ *             .oidcProviderName("tfaccims89018")
  *             .clientIds(            
  *                 "123",
  *                 "456")
+ *             .description(oidcProviderName)
+ *             .issuerUrl("https://oauth.aliyun.com")
  *             .build());
  * 
  *     }

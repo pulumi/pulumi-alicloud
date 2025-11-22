@@ -48,6 +48,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
     declare public readonly renewalStatus: pulumi.Output<string>;
     declare public readonly resourceGroupId: pulumi.Output<string>;
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
+    declare public readonly slaveVswitchId: pulumi.Output<string | undefined>;
     declare public readonly storage: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly vswitchId: pulumi.Output<string>;
@@ -79,6 +80,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state?.renewalStatus;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["slaveVswitchId"] = state?.slaveVswitchId;
             resourceInputs["storage"] = state?.storage;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vswitchId"] = state?.vswitchId;
@@ -119,6 +121,7 @@ export class BastionHostInstance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args?.renewalStatus;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["slaveVswitchId"] = args?.slaveVswitchId;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vswitchId"] = args?.vswitchId;
@@ -146,6 +149,7 @@ export interface BastionHostInstanceState {
     renewalStatus?: pulumi.Input<string>;
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    slaveVswitchId?: pulumi.Input<string>;
     storage?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vswitchId?: pulumi.Input<string>;
@@ -169,6 +173,7 @@ export interface BastionHostInstanceArgs {
     renewalStatus?: pulumi.Input<string>;
     resourceGroupId?: pulumi.Input<string>;
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    slaveVswitchId?: pulumi.Input<string>;
     storage: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vswitchId: pulumi.Input<string>;

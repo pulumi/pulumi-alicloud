@@ -5,9 +5,10 @@ package com.pulumi.alicloud.polardb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ParameterGroupParameterArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,33 +16,33 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
     public static final ParameterGroupParameterArgs Empty = new ParameterGroupParameterArgs();
 
     /**
-     * The name of a parameter in the parameter template.
+     * The name of the parameter.
      * 
      */
-    @Import(name="paramName", required=true)
-    private Output<String> paramName;
+    @Import(name="paramName")
+    private @Nullable Output<String> paramName;
 
     /**
-     * @return The name of a parameter in the parameter template.
+     * @return The name of the parameter.
      * 
      */
-    public Output<String> paramName() {
-        return this.paramName;
+    public Optional<Output<String>> paramName() {
+        return Optional.ofNullable(this.paramName);
     }
 
     /**
-     * The value of a parameter in the parameter template.
+     * The value of the parameter.
      * 
      */
-    @Import(name="paramValue", required=true)
-    private Output<String> paramValue;
+    @Import(name="paramValue")
+    private @Nullable Output<String> paramValue;
 
     /**
-     * @return The value of a parameter in the parameter template.
+     * @return The value of the parameter.
      * 
      */
-    public Output<String> paramValue() {
-        return this.paramValue;
+    public Optional<Output<String>> paramValue() {
+        return Optional.ofNullable(this.paramValue);
     }
 
     private ParameterGroupParameterArgs() {}
@@ -70,18 +71,18 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paramName The name of a parameter in the parameter template.
+         * @param paramName The name of the parameter.
          * 
          * @return builder
          * 
          */
-        public Builder paramName(Output<String> paramName) {
+        public Builder paramName(@Nullable Output<String> paramName) {
             $.paramName = paramName;
             return this;
         }
 
         /**
-         * @param paramName The name of a parameter in the parameter template.
+         * @param paramName The name of the parameter.
          * 
          * @return builder
          * 
@@ -91,18 +92,18 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param paramValue The value of a parameter in the parameter template.
+         * @param paramValue The value of the parameter.
          * 
          * @return builder
          * 
          */
-        public Builder paramValue(Output<String> paramValue) {
+        public Builder paramValue(@Nullable Output<String> paramValue) {
             $.paramValue = paramValue;
             return this;
         }
 
         /**
-         * @param paramValue The value of a parameter in the parameter template.
+         * @param paramValue The value of the parameter.
          * 
          * @return builder
          * 
@@ -112,12 +113,6 @@ public final class ParameterGroupParameterArgs extends com.pulumi.resources.Reso
         }
 
         public ParameterGroupParameterArgs build() {
-            if ($.paramName == null) {
-                throw new MissingRequiredPropertyException("ParameterGroupParameterArgs", "paramName");
-            }
-            if ($.paramValue == null) {
-                throw new MissingRequiredPropertyException("ParameterGroupParameterArgs", "paramValue");
-            }
             return $;
         }
     }

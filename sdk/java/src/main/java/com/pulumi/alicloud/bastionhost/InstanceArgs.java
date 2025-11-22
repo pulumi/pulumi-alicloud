@@ -38,7 +38,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bandwidth of Cloud Bastionhost instance.
+     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
@@ -47,7 +47,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of Cloud Bastionhost instance.
+     * @return The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      * 
@@ -241,6 +241,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
+    @Import(name="slaveVswitchId")
+    private @Nullable Output<String> slaveVswitchId;
+
+    /**
+     * @return Slave VSwitch ID configured to Bastionhost.
+     * 
+     */
+    public Optional<Output<String>> slaveVswitchId() {
+        return Optional.ofNullable(this.slaveVswitchId);
+    }
+
+    /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      * 
      */
@@ -302,6 +317,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
+        this.slaveVswitchId = $.slaveVswitchId;
         this.storage = $.storage;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
@@ -357,7 +373,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
          * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
          * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
          * 
@@ -370,7 +386,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The bandwidth of Cloud Bastionhost instance.
+         * @param bandwidth The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
          * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
          * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
          * 
@@ -658,6 +674,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param slaveVswitchId Slave VSwitch ID configured to Bastionhost.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveVswitchId(@Nullable Output<String> slaveVswitchId) {
+            $.slaveVswitchId = slaveVswitchId;
+            return this;
+        }
+
+        /**
+         * @param slaveVswitchId Slave VSwitch ID configured to Bastionhost.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slaveVswitchId(String slaveVswitchId) {
+            return slaveVswitchId(Output.of(slaveVswitchId));
         }
 
         /**

@@ -25,14 +25,28 @@ class ParameterGroupArgs:
                  db_version: pulumi.Input[_builtins.str],
                  parameters: pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ParameterGroup resource.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
-        :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: The parameter template. See the following `Block parameters`.
-        :param pulumi.Input[_builtins.str] description: The description of the parameter template. It must be 0 to 200 characters in length.
-        :param pulumi.Input[_builtins.str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+               - **5.6**
+               - **5.7**
+               - **8.0**
+        :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
+               
+               > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+               
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[_builtins.str] description: The description of the parameter template.
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+        :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template. The name must meet the following requirements:
+               
+               - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+               
+               - It must be 8 to 64 characters in length.
         """
         pulumi.set(__self__, "db_type", db_type)
         pulumi.set(__self__, "db_version", db_version)
@@ -40,7 +54,12 @@ class ParameterGroupArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if parameter_group_name is not None:
+            pulumi.set(__self__, "parameter_group_name", parameter_group_name)
 
     @_builtins.property
     @pulumi.getter(name="dbType")
@@ -58,7 +77,10 @@ class ParameterGroupArgs:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Input[_builtins.str]:
         """
-        The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        The version of the database engine. Valid values: 
+        - **5.6**
+        - **5.7**
+        - **8.0**
         """
         return pulumi.get(self, "db_version")
 
@@ -70,7 +92,12 @@ class ParameterGroupArgs:
     @pulumi.getter
     def parameters(self) -> pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]:
         """
-        The parameter template. See the following `Block parameters`.
+        Details about the parameters. See `parameters` below.
+
+        > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "parameters")
 
@@ -82,7 +109,7 @@ class ParameterGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the parameter template. It must be 0 to 200 characters in length.
+        The description of the parameter template.
         """
         return pulumi.get(self, "description")
 
@@ -92,9 +119,10 @@ class ParameterGroupArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -102,23 +130,57 @@ class ParameterGroupArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the parameter template. The name must meet the following requirements:
+
+        - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+
+        - It must be 8 to 64 characters in length.
+        """
+        return pulumi.get(self, "parameter_group_name")
+
+    @parameter_group_name.setter
+    def parameter_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parameter_group_name", value)
+
 
 @pulumi.input_type
 class _ParameterGroupState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  db_type: Optional[pulumi.Input[_builtins.str]] = None,
                  db_version: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None):
         """
         Input properties used for looking up and filtering ParameterGroup resources.
+        :param pulumi.Input[_builtins.str] create_time: The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
-        :param pulumi.Input[_builtins.str] description: The description of the parameter template. It must be 0 to 200 characters in length.
-        :param pulumi.Input[_builtins.str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: The parameter template. See the following `Block parameters`.
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+               - **5.6**
+               - **5.7**
+               - **8.0**
+        :param pulumi.Input[_builtins.str] description: The description of the parameter template.
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+        :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template. The name must meet the following requirements:
+               
+               - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+               
+               - It must be 8 to 64 characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: Details about the parameters. See `parameters` below.
+               
+               > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+               
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if db_type is not None:
             pulumi.set(__self__, "db_type", db_type)
         if db_version is not None:
@@ -126,9 +188,26 @@ class _ParameterGroupState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if parameter_group_name is not None:
+            pulumi.set(__self__, "parameter_group_name", parameter_group_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbType")
@@ -146,7 +225,10 @@ class _ParameterGroupState:
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        The version of the database engine. Valid values: 
+        - **5.6**
+        - **5.7**
+        - **8.0**
         """
         return pulumi.get(self, "db_version")
 
@@ -158,7 +240,7 @@ class _ParameterGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the parameter template. It must be 0 to 200 characters in length.
+        The description of the parameter template.
         """
         return pulumi.get(self, "description")
 
@@ -168,9 +250,10 @@ class _ParameterGroupState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -179,10 +262,31 @@ class _ParameterGroupState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the parameter template. The name must meet the following requirements:
+
+        - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+
+        - It must be 8 to 64 characters in length.
+        """
+        return pulumi.get(self, "parameter_group_name")
+
+    @parameter_group_name.setter
+    def parameter_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parameter_group_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]]:
         """
-        The parameter template. See the following `Block parameters`.
+        Details about the parameters. See `parameters` below.
+
+        > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "parameters")
 
@@ -201,12 +305,13 @@ class ParameterGroup(pulumi.CustomResource):
                  db_version: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a PolarDB Parameter Group resource.
+        Provides a Polar Db Parameter Group resource.
 
-        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+        For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available since v1.183.0.
 
@@ -219,7 +324,7 @@ class ParameterGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.polardb.ParameterGroup("example",
-            name="example_value",
+            parameter_group_name="example_value",
             db_type="MySQL",
             db_version="8.0",
             parameters=[{
@@ -231,7 +336,7 @@ class ParameterGroup(pulumi.CustomResource):
 
         ## Import
 
-        PolarDB Parameter Group can be imported using the id, e.g.
+        Polar Db Parameter Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
@@ -240,10 +345,23 @@ class ParameterGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
-        :param pulumi.Input[_builtins.str] description: The description of the parameter template. It must be 0 to 200 characters in length.
-        :param pulumi.Input[_builtins.str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: The parameter template. See the following `Block parameters`.
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+               - **5.6**
+               - **5.7**
+               - **8.0**
+        :param pulumi.Input[_builtins.str] description: The description of the parameter template.
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+        :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template. The name must meet the following requirements:
+               
+               - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+               
+               - It must be 8 to 64 characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: Details about the parameters. See `parameters` below.
+               
+               > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+               
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -252,9 +370,9 @@ class ParameterGroup(pulumi.CustomResource):
                  args: ParameterGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a PolarDB Parameter Group resource.
+        Provides a Polar Db Parameter Group resource.
 
-        For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+        For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 
         > **NOTE:** Available since v1.183.0.
 
@@ -267,7 +385,7 @@ class ParameterGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.polardb.ParameterGroup("example",
-            name="example_value",
+            parameter_group_name="example_value",
             db_type="MySQL",
             db_version="8.0",
             parameters=[{
@@ -279,7 +397,7 @@ class ParameterGroup(pulumi.CustomResource):
 
         ## Import
 
-        PolarDB Parameter Group can be imported using the id, e.g.
+        Polar Db Parameter Group can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
@@ -304,6 +422,7 @@ class ParameterGroup(pulumi.CustomResource):
                  db_version: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -322,9 +441,11 @@ class ParameterGroup(pulumi.CustomResource):
             __props__.__dict__["db_version"] = db_version
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["parameter_group_name"] = parameter_group_name
             if parameters is None and not opts.urn:
                 raise TypeError("Missing required property 'parameters'")
             __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["create_time"] = None
         super(ParameterGroup, __self__).__init__(
             'alicloud:polardb/parameterGroup:ParameterGroup',
             resource_name,
@@ -335,10 +456,12 @@ class ParameterGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             db_type: Optional[pulumi.Input[_builtins.str]] = None,
             db_version: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
             parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]]] = None) -> 'ParameterGroup':
         """
         Get an existing ParameterGroup resource's state with the given name, id, and optional extra
@@ -347,22 +470,46 @@ class ParameterGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_time: The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] db_type: The type of the database engine. Only `MySQL` is supported.
-        :param pulumi.Input[_builtins.str] db_version: The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
-        :param pulumi.Input[_builtins.str] description: The description of the parameter template. It must be 0 to 200 characters in length.
-        :param pulumi.Input[_builtins.str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: The parameter template. See the following `Block parameters`.
+        :param pulumi.Input[_builtins.str] db_version: The version of the database engine. Valid values: 
+               - **5.6**
+               - **5.7**
+               - **8.0**
+        :param pulumi.Input[_builtins.str] description: The description of the parameter template.
+        :param pulumi.Input[_builtins.str] name: . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+        :param pulumi.Input[_builtins.str] parameter_group_name: The name of the parameter template. The name must meet the following requirements:
+               
+               - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+               
+               - It must be 8 to 64 characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ParameterGroupParameterArgs', 'ParameterGroupParameterArgsDict']]]] parameters: Details about the parameters. See `parameters` below.
+               
+               > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+               
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ParameterGroupState.__new__(_ParameterGroupState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["db_type"] = db_type
         __props__.__dict__["db_version"] = db_version
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["parameter_group_name"] = parameter_group_name
         __props__.__dict__["parameters"] = parameters
         return ParameterGroup(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="dbType")
@@ -376,7 +523,10 @@ class ParameterGroup(pulumi.CustomResource):
     @pulumi.getter(name="dbVersion")
     def db_version(self) -> pulumi.Output[_builtins.str]:
         """
-        The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+        The version of the database engine. Valid values: 
+        - **5.6**
+        - **5.7**
+        - **8.0**
         """
         return pulumi.get(self, "db_version")
 
@@ -384,23 +534,41 @@ class ParameterGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the parameter template. It must be 0 to 200 characters in length.
+        The description of the parameter template.
         """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parameterGroupName")
+    def parameter_group_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the parameter template. The name must meet the following requirements:
+
+        - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+
+        - It must be 8 to 64 characters in length.
+        """
+        return pulumi.get(self, "parameter_group_name")
 
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.ParameterGroupParameter']]:
         """
-        The parameter template. See the following `Block parameters`.
+        Details about the parameters. See `parameters` below.
+
+        > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "parameters")
 

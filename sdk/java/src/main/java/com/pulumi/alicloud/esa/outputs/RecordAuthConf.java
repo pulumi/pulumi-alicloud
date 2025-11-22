@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RecordAuthConf {
     /**
-     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
      * 
      */
     private @Nullable String accessKey;
@@ -39,7 +39,7 @@ public final class RecordAuthConf {
 
     private RecordAuthConf() {}
     /**
-     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+     * @return The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
      * 
      */
     public Optional<String> accessKey() {

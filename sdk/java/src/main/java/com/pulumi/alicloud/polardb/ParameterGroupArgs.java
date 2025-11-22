@@ -34,14 +34,20 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * The version of the database engine. Valid values:
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      * 
      */
     @Import(name="dbVersion", required=true)
     private Output<String> dbVersion;
 
     /**
-     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * @return The version of the database engine. Valid values:
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      * 
      */
     public Output<String> dbVersion() {
@@ -49,14 +55,14 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the parameter template. It must be 0 to 200 characters in length.
+     * The description of the parameter template.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the parameter template. It must be 0 to 200 characters in length.
+     * @return The description of the parameter template.
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,29 +70,68 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The parameter template. See the following `Block parameters`.
+     * The name of the parameter template. The name must meet the following requirements:
+     * 
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     * 
+     * - It must be 8 to 64 characters in length.
+     * 
+     */
+    @Import(name="parameterGroupName")
+    private @Nullable Output<String> parameterGroupName;
+
+    /**
+     * @return The name of the parameter template. The name must meet the following requirements:
+     * 
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     * 
+     * - It must be 8 to 64 characters in length.
+     * 
+     */
+    public Optional<Output<String>> parameterGroupName() {
+        return Optional.ofNullable(this.parameterGroupName);
+    }
+
+    /**
+     * Details about the parameters. See `parameters` below.
+     * 
+     * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="parameters", required=true)
     private Output<List<ParameterGroupParameterArgs>> parameters;
 
     /**
-     * @return The parameter template. See the following `Block parameters`.
+     * @return Details about the parameters. See `parameters` below.
+     * 
+     * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<List<ParameterGroupParameterArgs>> parameters() {
@@ -100,6 +145,7 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         this.dbVersion = $.dbVersion;
         this.description = $.description;
         this.name = $.name;
+        this.parameterGroupName = $.parameterGroupName;
         this.parameters = $.parameters;
     }
 
@@ -143,7 +189,10 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbVersion The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+         * @param dbVersion The version of the database engine. Valid values:
+         * - **5.6**
+         * - **5.7**
+         * - **8.0**
          * 
          * @return builder
          * 
@@ -154,7 +203,10 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dbVersion The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+         * @param dbVersion The version of the database engine. Valid values:
+         * - **5.6**
+         * - **5.7**
+         * - **8.0**
          * 
          * @return builder
          * 
@@ -164,7 +216,7 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the parameter template. It must be 0 to 200 characters in length.
+         * @param description The description of the parameter template.
          * 
          * @return builder
          * 
@@ -175,7 +227,7 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the parameter template. It must be 0 to 200 characters in length.
+         * @param description The description of the parameter template.
          * 
          * @return builder
          * 
@@ -185,28 +237,69 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param parameters The parameter template. See the following `Block parameters`.
+         * @param parameterGroupName The name of the parameter template. The name must meet the following requirements:
+         * 
+         * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+         * 
+         * - It must be 8 to 64 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameterGroupName(@Nullable Output<String> parameterGroupName) {
+            $.parameterGroupName = parameterGroupName;
+            return this;
+        }
+
+        /**
+         * @param parameterGroupName The name of the parameter template. The name must meet the following requirements:
+         * 
+         * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+         * 
+         * - It must be 8 to 64 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameterGroupName(String parameterGroupName) {
+            return parameterGroupName(Output.of(parameterGroupName));
+        }
+
+        /**
+         * @param parameters Details about the parameters. See `parameters` below.
+         * 
+         * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -217,7 +310,11 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameters The parameter template. See the following `Block parameters`.
+         * @param parameters Details about the parameters. See `parameters` below.
+         * 
+         * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -227,7 +324,11 @@ public final class ParameterGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param parameters The parameter template. See the following `Block parameters`.
+         * @param parameters Details about the parameters. See `parameters` below.
+         * 
+         * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
