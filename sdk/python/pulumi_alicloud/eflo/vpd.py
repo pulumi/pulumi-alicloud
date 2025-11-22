@@ -21,23 +21,31 @@ class VpdArgs:
     def __init__(__self__, *,
                  cidr: pulumi.Input[_builtins.str],
                  vpd_name: pulumi.Input[_builtins.str],
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Vpd resource.
-        :param pulumi.Input[_builtins.str] cidr: CIDR network segment.
-        :param pulumi.Input[_builtins.str] vpd_name: The Name of the VPD.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group id.
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
+        :param pulumi.Input[_builtins.str] vpd_name: The name of the VPD instance.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: The additional CIDR block.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "vpd_name", vpd_name)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_cidr_blocks is not None:
+            pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        CIDR network segment.
+        The CIDR block of the VPD.
         """
         return pulumi.get(self, "cidr")
 
@@ -49,7 +57,7 @@ class VpdArgs:
     @pulumi.getter(name="vpdName")
     def vpd_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The Name of the VPD.
+        The name of the VPD instance.
         """
         return pulumi.get(self, "vpd_name")
 
@@ -61,13 +69,37 @@ class VpdArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Resource group id.
+        The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryCidrBlocks")
+    def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The additional CIDR block.
+        """
+        return pulumi.get(self, "secondary_cidr_blocks")
+
+    @secondary_cidr_blocks.setter
+    def secondary_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "secondary_cidr_blocks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -76,17 +108,23 @@ class _VpdState:
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
+                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpd_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpd resources.
-        :param pulumi.Input[_builtins.str] cidr: CIDR network segment.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[_builtins.str] gmt_modified: Modification time
-        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group id.
-        :param pulumi.Input[_builtins.str] status: The Vpd status.
-        :param pulumi.Input[_builtins.str] vpd_name: The Name of the VPD.
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
+        :param pulumi.Input[_builtins.str] create_time: The time when the activation code was created.
+        :param pulumi.Input[_builtins.str] gmt_modified: The time when the O&M task was modified.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.263.0) The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: The additional CIDR block.
+        :param pulumi.Input[_builtins.str] status: The current state of the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vpd_name: The name of the VPD instance.
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
@@ -94,10 +132,16 @@ class _VpdState:
             pulumi.set(__self__, "create_time", create_time)
         if gmt_modified is not None:
             pulumi.set(__self__, "gmt_modified", gmt_modified)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if secondary_cidr_blocks is not None:
+            pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpd_name is not None:
             pulumi.set(__self__, "vpd_name", vpd_name)
 
@@ -105,7 +149,7 @@ class _VpdState:
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        CIDR network segment.
+        The CIDR block of the VPD.
         """
         return pulumi.get(self, "cidr")
 
@@ -117,7 +161,7 @@ class _VpdState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the resource
+        The time when the activation code was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -129,7 +173,7 @@ class _VpdState:
     @pulumi.getter(name="gmtModified")
     def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Modification time
+        The time when the O&M task was modified.
         """
         return pulumi.get(self, "gmt_modified")
 
@@ -138,10 +182,22 @@ class _VpdState:
         pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.263.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Resource group id.
+        The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -150,10 +206,22 @@ class _VpdState:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="secondaryCidrBlocks")
+    def secondary_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The additional CIDR block.
+        """
+        return pulumi.get(self, "secondary_cidr_blocks")
+
+    @secondary_cidr_blocks.setter
+    def secondary_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "secondary_cidr_blocks", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Vpd status.
+        The current state of the instance.
         """
         return pulumi.get(self, "status")
 
@@ -162,10 +230,22 @@ class _VpdState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpdName")
     def vpd_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Name of the VPD.
+        The name of the VPD instance.
         """
         return pulumi.get(self, "vpd_name")
 
@@ -182,12 +262,16 @@ class Vpd(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpd_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Vpd resource.
 
-        For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+        Lingjun Network Segment.
+
+        For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
 
         > **NOTE:** Available since v1.201.0.
 
@@ -202,7 +286,7 @@ class Vpd(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups()
         default_vpd = alicloud.eflo.Vpd("default",
             cidr="10.0.0.0/8",
@@ -220,9 +304,11 @@ class Vpd(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr: CIDR network segment.
-        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group id.
-        :param pulumi.Input[_builtins.str] vpd_name: The Name of the VPD.
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: The additional CIDR block.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vpd_name: The name of the VPD instance.
         """
         ...
     @overload
@@ -233,7 +319,9 @@ class Vpd(pulumi.CustomResource):
         """
         Provides a Eflo Vpd resource.
 
-        For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+        Lingjun Network Segment.
+
+        For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
 
         > **NOTE:** Available since v1.201.0.
 
@@ -248,7 +336,7 @@ class Vpd(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.resourcemanager.get_resource_groups()
         default_vpd = alicloud.eflo.Vpd("default",
             cidr="10.0.0.0/8",
@@ -281,6 +369,8 @@ class Vpd(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vpd_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,11 +385,14 @@ class Vpd(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cidr'")
             __props__.__dict__["cidr"] = cidr
             __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["secondary_cidr_blocks"] = secondary_cidr_blocks
+            __props__.__dict__["tags"] = tags
             if vpd_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vpd_name'")
             __props__.__dict__["vpd_name"] = vpd_name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["gmt_modified"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(Vpd, __self__).__init__(
             'alicloud:eflo/vpd:Vpd',
@@ -314,8 +407,11 @@ class Vpd(pulumi.CustomResource):
             cidr: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
+            region_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vpd_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vpd':
         """
         Get an existing Vpd resource's state with the given name, id, and optional extra
@@ -324,12 +420,15 @@ class Vpd(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cidr: CIDR network segment.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[_builtins.str] gmt_modified: Modification time
-        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group id.
-        :param pulumi.Input[_builtins.str] status: The Vpd status.
-        :param pulumi.Input[_builtins.str] vpd_name: The Name of the VPD.
+        :param pulumi.Input[_builtins.str] cidr: The CIDR block of the VPD.
+        :param pulumi.Input[_builtins.str] create_time: The time when the activation code was created.
+        :param pulumi.Input[_builtins.str] gmt_modified: The time when the O&M task was modified.
+        :param pulumi.Input[_builtins.str] region_id: (Available since v1.263.0) The region ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] secondary_cidr_blocks: The additional CIDR block.
+        :param pulumi.Input[_builtins.str] status: The current state of the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vpd_name: The name of the VPD instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,8 +437,11 @@ class Vpd(pulumi.CustomResource):
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["gmt_modified"] = gmt_modified
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["secondary_cidr_blocks"] = secondary_cidr_blocks
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpd_name"] = vpd_name
         return Vpd(resource_name, opts=opts, __props__=__props__)
 
@@ -347,7 +449,7 @@ class Vpd(pulumi.CustomResource):
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        CIDR network segment.
+        The CIDR block of the VPD.
         """
         return pulumi.get(self, "cidr")
 
@@ -355,7 +457,7 @@ class Vpd(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the resource
+        The time when the activation code was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -363,31 +465,55 @@ class Vpd(pulumi.CustomResource):
     @pulumi.getter(name="gmtModified")
     def gmt_modified(self) -> pulumi.Output[_builtins.str]:
         """
-        Modification time
+        The time when the O&M task was modified.
         """
         return pulumi.get(self, "gmt_modified")
 
     @_builtins.property
-    @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Resource group id.
+        (Available since v1.263.0) The region ID.
+        """
+        return pulumi.get(self, "region_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Resource group ID. **NOTE:** From version 1.263.0, `resource_group_id` can be modified.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryCidrBlocks")
+    def secondary_cidr_blocks(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The additional CIDR block.
+        """
+        return pulumi.get(self, "secondary_cidr_blocks")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The Vpd status.
+        The current state of the instance.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpdName")
     def vpd_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The Name of the VPD.
+        The name of the VPD instance.
         """
         return pulumi.get(self, "vpd_name")
 

@@ -30,21 +30,11 @@ namespace Pulumi.AliCloud.Esa.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("secretKey")]
-        private Input<string>? _secretKey;
-
         /// <summary>
         /// The SecretKey to be passed when AuthType is set to PrivateCrossAccount or private.
         /// </summary>
-        public Input<string>? SecretKey
-        {
-            get => _secretKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("secretKey")]
+        public Input<string>? SecretKey { get; set; }
 
         /// <summary>
         /// The signature version to be transmitted when the source station is AWS S3.

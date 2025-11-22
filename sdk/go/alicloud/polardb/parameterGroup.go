@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a PolarDB Parameter Group resource.
+// Provides a Polar Db Parameter Group resource.
 //
-// For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+// For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
 //
 // > **NOTE:** Available since v1.183.0.
 //
@@ -35,9 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := polardb.NewParameterGroup(ctx, "example", &polardb.ParameterGroupArgs{
-//				Name:      pulumi.String("example_value"),
-//				DbType:    pulumi.String("MySQL"),
-//				DbVersion: pulumi.String("8.0"),
+//				ParameterGroupName: pulumi.String("example_value"),
+//				DbType:             pulumi.String("MySQL"),
+//				DbVersion:          pulumi.String("8.0"),
 //				Parameters: polardb.ParameterGroupParameterArray{
 //					&polardb.ParameterGroupParameterArgs{
 //						ParamName:  pulumi.String("wait_timeout"),
@@ -57,7 +57,7 @@ import (
 //
 // ## Import
 //
-// PolarDB Parameter Group can be imported using the id, e.g.
+// Polar Db Parameter Group can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example <id>
@@ -65,15 +65,32 @@ import (
 type ParameterGroup struct {
 	pulumi.CustomResourceState
 
+	// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The type of the database engine. Only `MySQL` is supported.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
-	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+	// The version of the database engine. Valid values:
+	// - **5.6**
+	// - **5.7**
+	// - **8.0**
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
-	// The description of the parameter template. It must be 0 to 200 characters in length.
+	// The description of the parameter template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The parameter template. See the following `Block parameters`.
+	// The name of the parameter template. The name must meet the following requirements:
+	//
+	// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+	//
+	// - It must be 8 to 64 characters in length.
+	ParameterGroupName pulumi.StringOutput `pulumi:"parameterGroupName"`
+	// Details about the parameters. See `parameters` below.
+	//
+	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Parameters ParameterGroupParameterArrayOutput `pulumi:"parameters"`
 }
 
@@ -116,28 +133,62 @@ func GetParameterGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ParameterGroup resources.
 type parameterGroupState struct {
+	// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreateTime *string `pulumi:"createTime"`
 	// The type of the database engine. Only `MySQL` is supported.
 	DbType *string `pulumi:"dbType"`
-	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+	// The version of the database engine. Valid values:
+	// - **5.6**
+	// - **5.7**
+	// - **8.0**
 	DbVersion *string `pulumi:"dbVersion"`
-	// The description of the parameter template. It must be 0 to 200 characters in length.
+	// The description of the parameter template.
 	Description *string `pulumi:"description"`
-	// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 	Name *string `pulumi:"name"`
-	// The parameter template. See the following `Block parameters`.
+	// The name of the parameter template. The name must meet the following requirements:
+	//
+	// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+	//
+	// - It must be 8 to 64 characters in length.
+	ParameterGroupName *string `pulumi:"parameterGroupName"`
+	// Details about the parameters. See `parameters` below.
+	//
+	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Parameters []ParameterGroupParameter `pulumi:"parameters"`
 }
 
 type ParameterGroupState struct {
+	// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringPtrInput
 	// The type of the database engine. Only `MySQL` is supported.
 	DbType pulumi.StringPtrInput
-	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+	// The version of the database engine. Valid values:
+	// - **5.6**
+	// - **5.7**
+	// - **8.0**
 	DbVersion pulumi.StringPtrInput
-	// The description of the parameter template. It must be 0 to 200 characters in length.
+	// The description of the parameter template.
 	Description pulumi.StringPtrInput
-	// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 	Name pulumi.StringPtrInput
-	// The parameter template. See the following `Block parameters`.
+	// The name of the parameter template. The name must meet the following requirements:
+	//
+	// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+	//
+	// - It must be 8 to 64 characters in length.
+	ParameterGroupName pulumi.StringPtrInput
+	// Details about the parameters. See `parameters` below.
+	//
+	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Parameters ParameterGroupParameterArrayInput
 }
 
@@ -148,13 +199,28 @@ func (ParameterGroupState) ElementType() reflect.Type {
 type parameterGroupArgs struct {
 	// The type of the database engine. Only `MySQL` is supported.
 	DbType string `pulumi:"dbType"`
-	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+	// The version of the database engine. Valid values:
+	// - **5.6**
+	// - **5.7**
+	// - **8.0**
 	DbVersion string `pulumi:"dbVersion"`
-	// The description of the parameter template. It must be 0 to 200 characters in length.
+	// The description of the parameter template.
 	Description *string `pulumi:"description"`
-	// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 	Name *string `pulumi:"name"`
-	// The parameter template. See the following `Block parameters`.
+	// The name of the parameter template. The name must meet the following requirements:
+	//
+	// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+	//
+	// - It must be 8 to 64 characters in length.
+	ParameterGroupName *string `pulumi:"parameterGroupName"`
+	// Details about the parameters. See `parameters` below.
+	//
+	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Parameters []ParameterGroupParameter `pulumi:"parameters"`
 }
 
@@ -162,13 +228,28 @@ type parameterGroupArgs struct {
 type ParameterGroupArgs struct {
 	// The type of the database engine. Only `MySQL` is supported.
 	DbType pulumi.StringInput
-	// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+	// The version of the database engine. Valid values:
+	// - **5.6**
+	// - **5.7**
+	// - **8.0**
 	DbVersion pulumi.StringInput
-	// The description of the parameter template. It must be 0 to 200 characters in length.
+	// The description of the parameter template.
 	Description pulumi.StringPtrInput
-	// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+	// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+	//
+	// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 	Name pulumi.StringPtrInput
-	// The parameter template. See the following `Block parameters`.
+	// The name of the parameter template. The name must meet the following requirements:
+	//
+	// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+	//
+	// - It must be 8 to 64 characters in length.
+	ParameterGroupName pulumi.StringPtrInput
+	// Details about the parameters. See `parameters` below.
+	//
+	// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Parameters ParameterGroupParameterArrayInput
 }
 
@@ -259,27 +340,50 @@ func (o ParameterGroupOutput) ToParameterGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+func (o ParameterGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ParameterGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The type of the database engine. Only `MySQL` is supported.
 func (o ParameterGroupOutput) DbType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterGroup) pulumi.StringOutput { return v.DbType }).(pulumi.StringOutput)
 }
 
-// The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+// The version of the database engine. Valid values:
+// - **5.6**
+// - **5.7**
+// - **8.0**
 func (o ParameterGroupOutput) DbVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterGroup) pulumi.StringOutput { return v.DbVersion }).(pulumi.StringOutput)
 }
 
-// The description of the parameter template. It must be 0 to 200 characters in length.
+// The description of the parameter template.
 func (o ParameterGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParameterGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+// . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
+//
+// Deprecated: Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
 func (o ParameterGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ParameterGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The parameter template. See the following `Block parameters`.
+// The name of the parameter template. The name must meet the following requirements:
+//
+// - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+//
+// - It must be 8 to 64 characters in length.
+func (o ParameterGroupOutput) ParameterGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ParameterGroup) pulumi.StringOutput { return v.ParameterGroupName }).(pulumi.StringOutput)
+}
+
+// Details about the parameters. See `parameters` below.
+//
+// > **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o ParameterGroupOutput) Parameters() ParameterGroupParameterArrayOutput {
 	return o.ApplyT(func(v *ParameterGroup) ParameterGroupParameterArrayOutput { return v.Parameters }).(ParameterGroupParameterArrayOutput)
 }

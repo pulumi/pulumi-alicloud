@@ -35,19 +35,19 @@ namespace Pulumi.AliCloud.Ims
     ///     var oidcProviderName = config.Get("oidcProviderName") ?? "amp-resource-example-oidc-provider";
     ///     var @default = new AliCloud.Ims.OidcProvider("default", new()
     ///     {
-    ///         Description = oidcProviderName,
-    ///         IssuerUrl = "https://oauth.aliyun.com",
     ///         Fingerprints = new[]
     ///         {
-    ///             "902ef2deeb3c5b13ea4c3d5193629309e231ae55",
+    ///             "0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71",
     ///         },
     ///         IssuanceLimitTime = 12,
-    ///         OidcProviderName = name,
+    ///         OidcProviderName = "tfaccims89018",
     ///         ClientIds = new[]
     ///         {
     ///             "123",
     ///             "456",
     ///         },
+    ///         Description = oidcProviderName,
+    ///         IssuerUrl = "https://oauth.aliyun.com",
     ///     });
     /// 
     /// });

@@ -25,7 +25,7 @@ class LoadBalancerArgs:
                  fallback_pool: pulumi.Input[_builtins.int],
                  load_balancer_name: pulumi.Input[_builtins.str],
                  monitor: pulumi.Input['LoadBalancerMonitorArgs'],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  steering_policy: pulumi.Input[_builtins.str],
                  adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -42,7 +42,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[_builtins.int] fallback_pool: The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         :param pulumi.Input[_builtins.str] load_balancer_name: The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         :param pulumi.Input['LoadBalancerMonitorArgs'] monitor: Monitor configuration for health check. See `monitor` below.
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] steering_policy: Load balancing policy.
         :param pulumi.Input['LoadBalancerAdaptiveRoutingArgs'] adaptive_routing: Cross-pool origin configuration. See `adaptive_routing` below.
         :param pulumi.Input[_builtins.str] description: The detailed description of the load balancer for easy management and identification.
@@ -129,14 +129,14 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -275,7 +275,7 @@ class _LoadBalancerState:
                  region_pools: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
@@ -294,7 +294,7 @@ class _LoadBalancerState:
         :param pulumi.Input[_builtins.str] region_pools: Address pools corresponding to primary regions.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]] rules: Rule configuration list, used to define behavior under specific conditions. See `rules` below.
         :param pulumi.Input[_builtins.str] session_affinity: Session persistence. Valid values:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] status: The status of the load balancer.
         :param pulumi.Input[_builtins.str] steering_policy: Load balancing policy.
         :param pulumi.Input[_builtins.str] sub_region_pools: Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
@@ -481,14 +481,14 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -557,7 +557,7 @@ class LoadBalancer(pulumi.CustomResource):
                  region_pools: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
@@ -641,7 +641,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_pools: Address pools corresponding to primary regions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]] rules: Rule configuration list, used to define behavior under specific conditions. See `rules` below.
         :param pulumi.Input[_builtins.str] session_affinity: Session persistence. Valid values:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] steering_policy: Load balancing policy.
         :param pulumi.Input[_builtins.str] sub_region_pools: Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         :param pulumi.Input[_builtins.int] ttl: TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
@@ -744,7 +744,7 @@ class LoadBalancer(pulumi.CustomResource):
                  region_pools: Optional[pulumi.Input[_builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
                  session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
@@ -808,7 +808,7 @@ class LoadBalancer(pulumi.CustomResource):
             region_pools: Optional[pulumi.Input[_builtins.str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
             session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
             sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
@@ -832,7 +832,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_pools: Address pools corresponding to primary regions.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]] rules: Rule configuration list, used to define behavior under specific conditions. See `rules` below.
         :param pulumi.Input[_builtins.str] session_affinity: Session persistence. Valid values:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] status: The status of the load balancer.
         :param pulumi.Input[_builtins.str] steering_policy: Load balancing policy.
         :param pulumi.Input[_builtins.str] sub_region_pools: Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
@@ -959,7 +959,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID.
         """

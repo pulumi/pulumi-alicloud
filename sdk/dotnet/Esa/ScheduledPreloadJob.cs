@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("ossUrl")]
         public Output<string?> OssUrl { get; private set; } = null!;
@@ -97,10 +99,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("urlList")]
         public Output<string?> UrlList { get; private set; } = null!;
@@ -159,6 +163,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("ossUrl")]
         public Input<string>? OssUrl { get; set; }
@@ -173,10 +179,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("urlList")]
         public Input<string>? UrlList { get; set; }
@@ -203,6 +211,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("ossUrl")]
         public Input<string>? OssUrl { get; set; }
@@ -223,10 +233,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("urlList")]
         public Input<string>? UrlList { get; set; }

@@ -20,7 +20,7 @@ __all__ = ['CertificateArgs', 'Certificate']
 class CertificateArgs:
     def __init__(__self__, *,
                  created_type: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  cas_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_id: Optional[pulumi.Input[_builtins.str]] = None,
                  cert_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,7 +31,7 @@ class CertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] cas_id: Cloud certificate ID.
         :param pulumi.Input[_builtins.str] cert_id: The certificate Id.
         :param pulumi.Input[_builtins.str] cert_name: The certificate name.
@@ -72,14 +72,14 @@ class CertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -190,7 +190,7 @@ class _CertificateState:
                  domains: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -204,7 +204,7 @@ class _CertificateState:
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
         :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
@@ -339,14 +339,14 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -388,7 +388,7 @@ class Certificate(pulumi.CustomResource):
                  domains: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -433,7 +433,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
         ...
@@ -497,7 +497,7 @@ class Certificate(pulumi.CustomResource):
                  domains: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -543,7 +543,7 @@ class Certificate(pulumi.CustomResource):
             domains: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Certificate':
         """
@@ -562,7 +562,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: Region. This parameter is required if the type is CAS.
                For accounts on the Chinese site, this parameter value is: cn-hangzhou
                For accounts on the international site, this parameter value is: ap-southeast-1
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites interface.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites interface.
         :param pulumi.Input[_builtins.str] status: Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
         :param pulumi.Input[_builtins.str] type: Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
         """
@@ -654,7 +654,7 @@ class Certificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites interface.
         """

@@ -106,6 +106,12 @@ public class BastionHostInstance extends com.pulumi.resources.CustomResource {
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
+    @Export(name="slaveVswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> slaveVswitchId;
+
+    public Output<Optional<String>> slaveVswitchId() {
+        return Codegen.optional(this.slaveVswitchId);
+    }
     @Export(name="storage", refs={String.class}, tree="[0]")
     private Output<String> storage;
 

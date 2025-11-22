@@ -27,12 +27,14 @@ namespace Pulumi.AliCloud.Wafv3
     [AliCloudResourceType("alicloud:wafv3/domain:Domain")]
     public partial class Domain : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The mode in which the domain name is added to WAF. Valid values:
-        /// share: CNAME record mode. This is the default value.
-        /// </summary>
         [Output("accessType")]
         public Output<string?> AccessType { get; private set; } = null!;
+
+        /// <summary>
+        /// The CNAME assigned by WAF to the domain name.
+        /// </summary>
+        [Output("cname")]
+        public Output<string> Cname { get; private set; } = null!;
 
         /// <summary>
         /// The name of the domain name to query.
@@ -128,10 +130,6 @@ namespace Pulumi.AliCloud.Wafv3
 
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The mode in which the domain name is added to WAF. Valid values:
-        /// share: CNAME record mode. This is the default value.
-        /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
@@ -185,12 +183,14 @@ namespace Pulumi.AliCloud.Wafv3
 
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The mode in which the domain name is added to WAF. Valid values:
-        /// share: CNAME record mode. This is the default value.
-        /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
+
+        /// <summary>
+        /// The CNAME assigned by WAF to the domain name.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
 
         /// <summary>
         /// The name of the domain name to query.

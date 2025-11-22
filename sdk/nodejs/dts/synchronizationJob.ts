@@ -309,6 +309,10 @@ export class SynchronizationJob extends pulumi.CustomResource {
      */
     declare public readonly instanceClass: pulumi.Output<string>;
     /**
+     * DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+     */
+    declare public readonly jobParameters: pulumi.Output<string | undefined>;
+    /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      */
     declare public readonly reserve: pulumi.Output<string>;
@@ -420,6 +424,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["errorNotice"] = state?.errorNotice;
             resourceInputs["errorPhone"] = state?.errorPhone;
             resourceInputs["instanceClass"] = state?.instanceClass;
+            resourceInputs["jobParameters"] = state?.jobParameters;
             resourceInputs["reserve"] = state?.reserve;
             resourceInputs["sourceEndpointDatabaseName"] = state?.sourceEndpointDatabaseName;
             resourceInputs["sourceEndpointEngineName"] = state?.sourceEndpointEngineName;
@@ -496,6 +501,7 @@ export class SynchronizationJob extends pulumi.CustomResource {
             resourceInputs["errorNotice"] = args?.errorNotice;
             resourceInputs["errorPhone"] = args?.errorPhone;
             resourceInputs["instanceClass"] = args?.instanceClass;
+            resourceInputs["jobParameters"] = args?.jobParameters;
             resourceInputs["reserve"] = args?.reserve;
             resourceInputs["sourceEndpointDatabaseName"] = args?.sourceEndpointDatabaseName;
             resourceInputs["sourceEndpointEngineName"] = args?.sourceEndpointEngineName;
@@ -638,6 +644,10 @@ export interface SynchronizationJobState {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
     instanceClass?: pulumi.Input<string>;
+    /**
+     * DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+     */
+    jobParameters?: pulumi.Input<string>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      */
@@ -830,6 +840,10 @@ export interface SynchronizationJobArgs {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
      */
     instanceClass?: pulumi.Input<string>;
+    /**
+     * DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+     */
+    jobParameters?: pulumi.Input<string>;
     /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      */

@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly string Operation;
         /// <summary>
+        /// Value type. Value range:
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
         /// Request header value
         /// </summary>
         public readonly string? Value;
@@ -32,10 +36,13 @@ namespace Pulumi.AliCloud.Esa.Outputs
 
             string operation,
 
+            string? type,
+
             string? value)
         {
             Name = name;
             Operation = operation;
+            Type = type;
             Value = value;
         }
     }

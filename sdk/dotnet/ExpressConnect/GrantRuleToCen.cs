@@ -30,43 +30,43 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultGetPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,
     ///     });
     /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = defaultGetPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
+    ///         VlanId = defaultInteger.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
+    ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
     ///     });
     /// 
-    ///     var @default = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var exampleGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("example", new()
+    ///     var defaultGrantRuleToCen = new AliCloud.ExpressConnect.GrantRuleToCen("default", new()
     ///     {
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = defaultInstance.Id,
     ///         CenOwnerId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
-    ///         InstanceId = exampleVirtualBorderRouter.Id,
+    ///         InstanceId = defaultVirtualBorderRouter.Id,
     ///     });
     /// 
     /// });
@@ -93,7 +93,13 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         /// </summary>
         [Output("cenOwnerId")]
-        public Output<int> CenOwnerId { get; private set; } = null!;
+        public Output<string> CenOwnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.263.0) The time when the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VBR.
@@ -157,7 +163,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         /// </summary>
         [Input("cenOwnerId", required: true)]
-        public Input<int> CenOwnerId { get; set; } = null!;
+        public Input<string> CenOwnerId { get; set; } = null!;
 
         /// <summary>
         /// The ID of the VBR.
@@ -183,7 +189,13 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
         /// </summary>
         [Input("cenOwnerId")]
-        public Input<int>? CenOwnerId { get; set; }
+        public Input<string>? CenOwnerId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.263.0) The time when the instance was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The ID of the VBR.

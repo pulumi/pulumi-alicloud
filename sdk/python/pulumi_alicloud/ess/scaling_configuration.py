@@ -26,10 +26,12 @@ class ScalingConfigurationArgs:
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
                  image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -81,10 +83,12 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[_builtins.bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[_builtins.str] host_name: Hostname of an ECS instance.
+        :param pulumi.Input[_builtins.str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         :param pulumi.Input[_builtins.str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
@@ -155,6 +159,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "custom_priorities", custom_priorities)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if dedicated_host_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable is not None:
@@ -163,6 +169,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -319,6 +327,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @dedicated_host_cluster_id.setter
+    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dedicated_host_cluster_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -365,6 +385,18 @@ class ScalingConfigurationArgs:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
@@ -920,10 +952,12 @@ class _ScalingConfigurationState:
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
                  image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -975,10 +1009,12 @@ class _ScalingConfigurationState:
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[_builtins.bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[_builtins.str] host_name: Hostname of an ECS instance.
+        :param pulumi.Input[_builtins.str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         :param pulumi.Input[_builtins.str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
@@ -1049,6 +1085,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "custom_priorities", custom_priorities)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if dedicated_host_cluster_id is not None:
+            pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable is not None:
@@ -1057,6 +1095,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
@@ -1203,6 +1243,18 @@ class _ScalingConfigurationState:
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @dedicated_host_cluster_id.setter
+    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "dedicated_host_cluster_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1249,6 +1301,18 @@ class _ScalingConfigurationState:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
@@ -1819,10 +1883,12 @@ class ScalingConfiguration(pulumi.CustomResource):
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
                  image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1956,10 +2022,12 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[_builtins.bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[_builtins.str] host_name: Hostname of an ECS instance.
+        :param pulumi.Input[_builtins.str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         :param pulumi.Input[_builtins.str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
@@ -2128,10 +2196,12 @@ class ScalingConfiguration(pulumi.CustomResource):
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  image_name: Optional[pulumi.Input[_builtins.str]] = None,
                  image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -2190,10 +2260,12 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["credit_specification"] = credit_specification
             __props__.__dict__["custom_priorities"] = custom_priorities
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["dedicated_host_cluster_id"] = dedicated_host_cluster_id
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable"] = enable
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
+            __props__.__dict__["http_endpoint"] = http_endpoint
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_name"] = image_name
             __props__.__dict__["image_options_login_as_non_root"] = image_options_login_as_non_root
@@ -2255,10 +2327,12 @@ class ScalingConfiguration(pulumi.CustomResource):
             credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
             custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+            dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             enable: Optional[pulumi.Input[_builtins.bool]] = None,
             force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
             host_name: Optional[pulumi.Input[_builtins.str]] = None,
+            http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             image_id: Optional[pulumi.Input[_builtins.str]] = None,
             image_name: Optional[pulumi.Input[_builtins.str]] = None,
             image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -2315,10 +2389,12 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]] custom_priorities: You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[_builtins.str] dedicated_host_cluster_id: The ID of the dedicated host cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[_builtins.bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[_builtins.bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[_builtins.str] host_name: Hostname of an ECS instance.
+        :param pulumi.Input[_builtins.str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         :param pulumi.Input[_builtins.str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[_builtins.bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
@@ -2389,10 +2465,12 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["custom_priorities"] = custom_priorities
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["dedicated_host_cluster_id"] = dedicated_host_cluster_id
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable"] = enable
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
+        __props__.__dict__["http_endpoint"] = http_endpoint
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_name"] = image_name
         __props__.__dict__["image_options_login_as_non_root"] = image_options_login_as_non_root
@@ -2473,6 +2551,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "data_disks")
 
     @_builtins.property
+    @pulumi.getter(name="dedicatedHostClusterId")
+    def dedicated_host_cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the dedicated host cluster.
+        """
+        return pulumi.get(self, "dedicated_host_cluster_id")
+
+    @_builtins.property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -2503,6 +2589,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         Hostname of an ECS instance.
         """
         return pulumi.get(self, "host_name")
+
+    @_builtins.property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="imageId")

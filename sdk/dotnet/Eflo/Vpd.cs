@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Eflo
     /// <summary>
     /// Provides a Eflo Vpd resource.
     /// 
-    /// For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+    /// Lingjun Network Segment.
+    /// 
+    /// For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
     /// 
     /// &gt; **NOTE:** Available since v1.201.0.
     /// 
@@ -29,7 +31,7 @@ namespace Pulumi.AliCloud.Eflo
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultVpd = new AliCloud.Eflo.Vpd("default", new()
@@ -54,37 +56,55 @@ namespace Pulumi.AliCloud.Eflo
     public partial class Vpd : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// CIDR network segment.
+        /// The CIDR block of the VPD.
         /// </summary>
         [Output("cidr")]
         public Output<string> Cidr { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource
+        /// The time when the activation code was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Modification time
+        /// The time when the O&amp;M task was modified.
         /// </summary>
         [Output("gmtModified")]
         public Output<string> GmtModified { get; private set; } = null!;
 
         /// <summary>
-        /// The Resource group id.
+        /// (Available since v1.263.0) The region ID.
         /// </summary>
-        [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The Vpd status.
+        /// The Resource group ID. **NOTE:** From version 1.263.0, `ResourceGroupId` can be modified.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The additional CIDR block.
+        /// </summary>
+        [Output("secondaryCidrBlocks")]
+        public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
+
+        /// <summary>
+        /// The current state of the instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The Name of the VPD.
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the VPD instance.
         /// </summary>
         [Output("vpdName")]
         public Output<string> VpdName { get; private set; } = null!;
@@ -136,19 +156,43 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class VpdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment.
+        /// The CIDR block of the VPD.
         /// </summary>
         [Input("cidr", required: true)]
         public Input<string> Cidr { get; set; } = null!;
 
         /// <summary>
-        /// The Resource group id.
+        /// The Resource group ID. **NOTE:** From version 1.263.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("secondaryCidrBlocks")]
+        private InputList<string>? _secondaryCidrBlocks;
+
         /// <summary>
-        /// The Name of the VPD.
+        /// The additional CIDR block.
+        /// </summary>
+        public InputList<string> SecondaryCidrBlocks
+        {
+            get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
+            set => _secondaryCidrBlocks = value;
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the VPD instance.
         /// </summary>
         [Input("vpdName", required: true)]
         public Input<string> VpdName { get; set; } = null!;
@@ -162,37 +206,67 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class VpdState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR network segment.
+        /// The CIDR block of the VPD.
         /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
         /// <summary>
-        /// The creation time of the resource
+        /// The time when the activation code was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Modification time
+        /// The time when the O&amp;M task was modified.
         /// </summary>
         [Input("gmtModified")]
         public Input<string>? GmtModified { get; set; }
 
         /// <summary>
-        /// The Resource group id.
+        /// (Available since v1.263.0) The region ID.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The Resource group ID. **NOTE:** From version 1.263.0, `ResourceGroupId` can be modified.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
+        [Input("secondaryCidrBlocks")]
+        private InputList<string>? _secondaryCidrBlocks;
+
         /// <summary>
-        /// The Vpd status.
+        /// The additional CIDR block.
+        /// </summary>
+        public InputList<string> SecondaryCidrBlocks
+        {
+            get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
+            set => _secondaryCidrBlocks = value;
+        }
+
+        /// <summary>
+        /// The current state of the instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The Name of the VPD.
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The name of the VPD instance.
         /// </summary>
         [Input("vpdName")]
         public Input<string>? VpdName { get; set; }

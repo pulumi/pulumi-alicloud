@@ -19,6 +19,7 @@ from .node_group_attachment import *
 from .resource import *
 from .subnet import *
 from .vpd import *
+from .vpd_grant_rule import *
 from .vsc import *
 from ._inputs import *
 from . import outputs

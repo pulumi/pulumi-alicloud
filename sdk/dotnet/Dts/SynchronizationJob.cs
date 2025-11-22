@@ -402,6 +402,12 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> InstanceClass { get; private set; } = null!;
 
         /// <summary>
+        /// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        /// </summary>
+        [Output("jobParameters")]
+        public Output<string?> JobParameters { get; private set; } = null!;
+
+        /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         /// </summary>
         [Output("reserve")]
@@ -722,6 +728,12 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? InstanceClass { get; set; }
 
         /// <summary>
+        /// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        /// </summary>
+        [Input("jobParameters")]
+        public Input<string>? JobParameters { get; set; }
+
+        /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         /// </summary>
         [Input("reserve")]
@@ -1002,6 +1014,12 @@ namespace Pulumi.AliCloud.Dts
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
+
+        /// <summary>
+        /// DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        /// </summary>
+        [Input("jobParameters")]
+        public Input<string>? JobParameters { get; set; }
 
         /// <summary>
         /// DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).

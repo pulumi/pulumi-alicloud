@@ -14,7 +14,9 @@ import (
 
 // Provides a Eflo Vpd resource.
 //
-// For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+// Lingjun Network Segment.
+//
+// For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
 //
 // > **NOTE:** Available since v1.201.0.
 //
@@ -37,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -69,17 +71,23 @@ import (
 type Vpd struct {
 	pulumi.CustomResourceState
 
-	// CIDR network segment.
+	// The CIDR block of the VPD.
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
-	// The creation time of the resource
+	// The time when the activation code was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Modification time
+	// The time when the O&M task was modified.
 	GmtModified pulumi.StringOutput `pulumi:"gmtModified"`
-	// The Resource group id.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The Vpd status.
+	// (Available since v1.263.0) The region ID.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The additional CIDR block.
+	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
+	// The current state of the instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The Name of the VPD.
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The name of the VPD instance.
 	VpdName pulumi.StringOutput `pulumi:"vpdName"`
 }
 
@@ -119,32 +127,44 @@ func GetVpd(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Vpd resources.
 type vpdState struct {
-	// CIDR network segment.
+	// The CIDR block of the VPD.
 	Cidr *string `pulumi:"cidr"`
-	// The creation time of the resource
+	// The time when the activation code was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Modification time
+	// The time when the O&M task was modified.
 	GmtModified *string `pulumi:"gmtModified"`
-	// The Resource group id.
+	// (Available since v1.263.0) The region ID.
+	RegionId *string `pulumi:"regionId"`
+	// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The Vpd status.
+	// The additional CIDR block.
+	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
+	// The current state of the instance.
 	Status *string `pulumi:"status"`
-	// The Name of the VPD.
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the VPD instance.
 	VpdName *string `pulumi:"vpdName"`
 }
 
 type VpdState struct {
-	// CIDR network segment.
+	// The CIDR block of the VPD.
 	Cidr pulumi.StringPtrInput
-	// The creation time of the resource
+	// The time when the activation code was created.
 	CreateTime pulumi.StringPtrInput
-	// Modification time
+	// The time when the O&M task was modified.
 	GmtModified pulumi.StringPtrInput
-	// The Resource group id.
+	// (Available since v1.263.0) The region ID.
+	RegionId pulumi.StringPtrInput
+	// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The Vpd status.
+	// The additional CIDR block.
+	SecondaryCidrBlocks pulumi.StringArrayInput
+	// The current state of the instance.
 	Status pulumi.StringPtrInput
-	// The Name of the VPD.
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
+	// The name of the VPD instance.
 	VpdName pulumi.StringPtrInput
 }
 
@@ -153,21 +173,29 @@ func (VpdState) ElementType() reflect.Type {
 }
 
 type vpdArgs struct {
-	// CIDR network segment.
+	// The CIDR block of the VPD.
 	Cidr string `pulumi:"cidr"`
-	// The Resource group id.
+	// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The Name of the VPD.
+	// The additional CIDR block.
+	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of the VPD instance.
 	VpdName string `pulumi:"vpdName"`
 }
 
 // The set of arguments for constructing a Vpd resource.
 type VpdArgs struct {
-	// CIDR network segment.
+	// The CIDR block of the VPD.
 	Cidr pulumi.StringInput
-	// The Resource group id.
+	// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
 	ResourceGroupId pulumi.StringPtrInput
-	// The Name of the VPD.
+	// The additional CIDR block.
+	SecondaryCidrBlocks pulumi.StringArrayInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
+	// The name of the VPD instance.
 	VpdName pulumi.StringInput
 }
 
@@ -258,32 +286,47 @@ func (o VpdOutput) ToVpdOutputWithContext(ctx context.Context) VpdOutput {
 	return o
 }
 
-// CIDR network segment.
+// The CIDR block of the VPD.
 func (o VpdOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource
+// The time when the activation code was created.
 func (o VpdOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Modification time
+// The time when the O&M task was modified.
 func (o VpdOutput) GmtModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.GmtModified }).(pulumi.StringOutput)
 }
 
-// The Resource group id.
-func (o VpdOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Vpd) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+// (Available since v1.263.0) The region ID.
+func (o VpdOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The Vpd status.
+// The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
+func (o VpdOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The additional CIDR block.
+func (o VpdOutput) SecondaryCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Vpd) pulumi.StringArrayOutput { return v.SecondaryCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The current state of the instance.
 func (o VpdOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The Name of the VPD.
+// The tag of the resource.
+func (o VpdOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Vpd) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The name of the VPD instance.
 func (o VpdOutput) VpdName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpd) pulumi.StringOutput { return v.VpdName }).(pulumi.StringOutput)
 }

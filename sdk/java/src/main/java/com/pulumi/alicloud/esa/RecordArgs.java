@@ -36,14 +36,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The business scenario of the record for acceleration. Valid values:
+     * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      * 
      */
     @Import(name="bizName")
     private @Nullable Output<String> bizName;
 
     /**
-     * @return The business scenario of the record for acceleration. Valid values:
+     * @return The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      * 
      */
     public Optional<Output<String>> bizName() {
@@ -51,14 +51,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The comments of the record.
+     * The comment of the record. The maximum length is 100 characters.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return The comments of the record.
+     * @return The comment of the record. The maximum length is 100 characters.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -66,14 +66,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      * 
      */
     @Import(name="data", required=true)
     private Output<RecordDataArgs> data;
 
     /**
-     * @return The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * @return The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      * 
      */
     public Output<RecordDataArgs> data() {
@@ -96,14 +96,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Filters by whether the record is proxied. Valid values:
+     * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      * 
      */
     @Import(name="proxied")
     private @Nullable Output<Boolean> proxied;
 
     /**
-     * @return Filters by whether the record is proxied. Valid values:
+     * @return Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      * 
      */
     public Optional<Output<Boolean>> proxied() {
@@ -126,14 +126,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS record type.
+     * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      * 
      */
     @Import(name="recordType", required=true)
     private Output<String> recordType;
 
     /**
-     * @return The DNS record type.
+     * @return The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      * 
      */
     public Output<String> recordType() {
@@ -141,41 +141,41 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The website ID.
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * @return The website ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
-     * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     * 
+     * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      * 
      */
     @Import(name="sourceType")
     private @Nullable Output<String> sourceType;
 
     /**
-     * @return The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     * 
+     * @return The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      * 
      */
     public Optional<Output<String>> sourceType() {
@@ -183,14 +183,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * @return The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -253,7 +253,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bizName The business scenario of the record for acceleration. Valid values:
+         * @param bizName The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bizName The business scenario of the record for acceleration. Valid values:
+         * @param bizName The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comments of the record.
+         * @param comment The comment of the record. The maximum length is 100 characters.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment The comments of the record.
+         * @param comment The comment of the record. The maximum length is 100 characters.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+         * @param data The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+         * @param data The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Filters by whether the record is proxied. Valid values:
+         * @param proxied Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Filters by whether the record is proxied. Valid values:
+         * @param proxied Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recordType The DNS record type.
+         * @param recordType The type of the DNS record, such as A/AAAA, CNAME, and TXT.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recordType The DNS record type.
+         * @param recordType The type of the DNS record, such as A/AAAA, CNAME, and TXT.
          * 
          * @return builder
          * 
@@ -400,34 +400,34 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param siteId The website ID.
          * 
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
         /**
-         * @param siteId The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+         * @param siteId The website ID.
          * 
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param sourceType The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-         * 
+         * @param sourceType The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
          * - `OSS`: OSS bucket.
          * - `S3`: S3 bucket.
          * - `LB`: load balancer.
          * - `OP`: origin pool.
          * - `Domain`: domain name.
+         * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
          * 
          * @return builder
          * 
@@ -438,13 +438,13 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceType The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-         * 
+         * @param sourceType The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
          * - `OSS`: OSS bucket.
          * - `S3`: S3 bucket.
          * - `LB`: load balancer.
          * - `OP`: origin pool.
          * - `Domain`: domain name.
+         * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+         * @param ttl The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+         * @param ttl The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
          * 
          * @return builder
          * 

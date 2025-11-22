@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +19,14 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     public static final VpdArgs Empty = new VpdArgs();
 
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      * 
      */
     @Import(name="cidr", required=true)
     private Output<String> cidr;
 
     /**
-     * @return CIDR network segment.
+     * @return The CIDR block of the VPD.
      * 
      */
     public Output<String> cidr() {
@@ -32,14 +34,14 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Resource group id.
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource group id.
+     * @return The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -47,14 +49,44 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Name of the VPD.
+     * The additional CIDR block.
+     * 
+     */
+    @Import(name="secondaryCidrBlocks")
+    private @Nullable Output<List<String>> secondaryCidrBlocks;
+
+    /**
+     * @return The additional CIDR block.
+     * 
+     */
+    public Optional<Output<List<String>>> secondaryCidrBlocks() {
+        return Optional.ofNullable(this.secondaryCidrBlocks);
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The name of the VPD instance.
      * 
      */
     @Import(name="vpdName", required=true)
     private Output<String> vpdName;
 
     /**
-     * @return The Name of the VPD.
+     * @return The name of the VPD instance.
      * 
      */
     public Output<String> vpdName() {
@@ -66,6 +98,8 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
     private VpdArgs(VpdArgs $) {
         this.cidr = $.cidr;
         this.resourceGroupId = $.resourceGroupId;
+        this.secondaryCidrBlocks = $.secondaryCidrBlocks;
+        this.tags = $.tags;
         this.vpdName = $.vpdName;
     }
 
@@ -88,7 +122,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment.
+         * @param cidr The CIDR block of the VPD.
          * 
          * @return builder
          * 
@@ -99,7 +133,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidr CIDR network segment.
+         * @param cidr The CIDR block of the VPD.
          * 
          * @return builder
          * 
@@ -109,7 +143,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id.
+         * @param resourceGroupId The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -120,7 +154,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id.
+         * @param resourceGroupId The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
          * 
          * @return builder
          * 
@@ -130,7 +164,59 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(@Nullable Output<List<String>> secondaryCidrBlocks) {
+            $.secondaryCidrBlocks = secondaryCidrBlocks;
+            return this;
+        }
+
+        /**
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
+            return secondaryCidrBlocks(Output.of(secondaryCidrBlocks));
+        }
+
+        /**
+         * @param secondaryCidrBlocks The additional CIDR block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
+            return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpdName The name of the VPD instance.
          * 
          * @return builder
          * 
@@ -141,7 +227,7 @@ public final class VpdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param vpdName The name of the VPD instance.
          * 
          * @return builder
          * 

@@ -8541,7 +8541,7 @@ export namespace ecs {
          */
         diskName?: pulumi.Input<string>;
         /**
-         * The size of the data disk. Unit: GiB.
+         * The size of the data disk. Unit: GiB. Valid values:
          * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -10699,6 +10699,10 @@ export namespace esa {
          */
         operation: pulumi.Input<string>;
         /**
+         * Value type. Value range:
+         */
+        type?: pulumi.Input<string>;
+        /**
          * Request header value
          */
         value?: pulumi.Input<string>;
@@ -10912,7 +10916,7 @@ export namespace esa {
 
     export interface RecordAuthConf {
         /**
-         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
          */
         accessKey?: pulumi.Input<string>;
         /**
@@ -10971,7 +10975,7 @@ export namespace esa {
          */
         selector?: pulumi.Input<number>;
         /**
-         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
          */
         tag?: pulumi.Input<string>;
         /**
@@ -10983,9 +10987,8 @@ export namespace esa {
          */
         usage?: pulumi.Input<number>;
         /**
-         * The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-         *
-         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+         * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
          * - `CNAME`: the target domain name.
          * - `NS`: the name servers for the domain name.
          * - `MX`: a valid domain name of the target mail server.
@@ -12108,21 +12111,85 @@ export namespace ess {
          */
         cores?: pulumi.Input<number>;
         /**
+         * CPU architecture N of the instance types. Valid values: x86,Arm.
+         */
+        cpuArchitectures?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
          */
         excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The GPU model.
+         */
+        gpuSpecs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+         */
+        instanceCategories?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The instance family level in instancePatternInfo.
          */
         instanceFamilyLevel?: pulumi.Input<string>;
         /**
+         * Instance family N that is queried. Valid values of N: 1 to 10.
+         */
+        instanceTypeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
          */
         maxPrice?: pulumi.Input<number>;
         /**
+         * The maximum number of vCPUs per instance type.
+         */
+        maximumCpuCoreCount?: pulumi.Input<number>;
+        /**
+         * The maximum number of GPUs per instance. The value must be a positive integer.
+         */
+        maximumGpuAmount?: pulumi.Input<number>;
+        /**
+         * The maximum memory size per instance. Unit: GiB.
+         */
+        maximumMemorySize?: pulumi.Input<number>;
+        /**
          * The memory size that is specified for an instance type in instancePatternInfo.
          */
         memory?: pulumi.Input<number>;
+        /**
+         * The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+         */
+        minimumBaselineCredit?: pulumi.Input<number>;
+        /**
+         * The minimum number of vCPUs per instance type.
+         */
+        minimumCpuCoreCount?: pulumi.Input<number>;
+        /**
+         * The minimum number of IPv6 addresses per ENI.
+         */
+        minimumEniIpv6AddressQuantity?: pulumi.Input<number>;
+        /**
+         * The minimum number of IPv4 addresses per ENI.
+         */
+        minimumEniPrivateIpAddressQuantity?: pulumi.Input<number>;
+        /**
+         * The minimum number of elastic network interfaces (ENIs) per instance.
+         */
+        minimumEniQuantity?: pulumi.Input<number>;
+        /**
+         * The minimum number of GPUs per instance. The value must be a positive integer.
+         */
+        minimumGpuAmount?: pulumi.Input<number>;
+        /**
+         * The initial vCPU credits per t5 or t6 burstable instance.
+         */
+        minimumInitialCredit?: pulumi.Input<number>;
+        /**
+         * The minimum memory size per instance. Unit: GiB.
+         */
+        minimumMemorySize?: pulumi.Input<number>;
+        /**
+         * Processor model N of the ECS instances. Valid values of N: 1 to 10.
+         */
+        physicalProcessorModels?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ScalingConfigurationInstanceTypeOverride {
@@ -14730,7 +14797,7 @@ export namespace log {
 
     export interface StoreIndexFieldSearch {
         /**
-         * The alias of one field
+         * The alias of one field.
          */
         alias?: pulumi.Input<string>;
         /**
@@ -14746,11 +14813,11 @@ export namespace log {
          */
         includeChinese?: pulumi.Input<boolean>;
         /**
-         * Use nested index when type is json
+         * Use nested index when type is json. See `jsonKeys` below.
          */
         jsonKeys?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearchJsonKey>[]>;
         /**
-         * The field name, which is unique in the same log store.
+         * When using the jsonKeys field, this field is required.
          */
         name: pulumi.Input<string>;
         /**
@@ -14758,7 +14825,7 @@ export namespace log {
          */
         token?: pulumi.Input<string>;
         /**
-         * The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+         * The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
          */
         type?: pulumi.Input<string>;
     }
@@ -16789,13 +16856,13 @@ export namespace polardb {
 
     export interface ParameterGroupParameter {
         /**
-         * The name of a parameter in the parameter template.
+         * The name of the parameter.
          */
-        paramName: pulumi.Input<string>;
+        paramName?: pulumi.Input<string>;
         /**
-         * The value of a parameter in the parameter template.
+         * The value of the parameter.
          */
-        paramValue: pulumi.Input<string>;
+        paramValue?: pulumi.Input<string>;
     }
 }
 

@@ -154,16 +154,22 @@ public class DefenseTemplate extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The ID of the Alibaba Cloud resource group.
+     * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      * 
      */
+    @Export(name="resourceGroups", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> resourceGroups;
+
+    /**
+     * @return The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+     * 
+     */
+    public Output<Optional<List<String>>> resourceGroups() {
+        return Codegen.optional(this.resourceGroups);
+    }
     @Export(name="resourceManagerResourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceManagerResourceGroupId;
 
-    /**
-     * @return The ID of the Alibaba Cloud resource group.
-     * 
-     */
     public Output<Optional<String>> resourceManagerResourceGroupId() {
         return Codegen.optional(this.resourceManagerResourceGroupId);
     }

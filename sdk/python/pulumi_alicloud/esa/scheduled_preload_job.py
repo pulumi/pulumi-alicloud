@@ -21,16 +21,20 @@ class ScheduledPreloadJobArgs:
     def __init__(__self__, *,
                  insert_way: pulumi.Input[_builtins.str],
                  scheduled_preload_job_name: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  oss_url: Optional[pulumi.Input[_builtins.str]] = None,
                  url_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScheduledPreloadJob resource.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_name: The task name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] oss_url: Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] url_list: A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         pulumi.set(__self__, "insert_way", insert_way)
         pulumi.set(__self__, "scheduled_preload_job_name", scheduled_preload_job_name)
@@ -66,14 +70,14 @@ class ScheduledPreloadJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -81,6 +85,8 @@ class ScheduledPreloadJobArgs:
     def oss_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_url")
 
@@ -93,6 +99,8 @@ class ScheduledPreloadJobArgs:
     def url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "url_list")
 
@@ -109,17 +117,21 @@ class _ScheduledPreloadJobState:
                  oss_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url_list: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScheduledPreloadJob resources.
         :param pulumi.Input[_builtins.str] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] oss_url: Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_id: The ID of the prefetch task.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_name: The task name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url_list: A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -165,6 +177,8 @@ class _ScheduledPreloadJobState:
     def oss_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_url")
 
@@ -198,14 +212,14 @@ class _ScheduledPreloadJobState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -213,6 +227,8 @@ class _ScheduledPreloadJobState:
     def url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "url_list")
 
@@ -230,7 +246,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
                  insert_way: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url_list: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -273,9 +289,13 @@ class ScheduledPreloadJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] oss_url: Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_name: The task name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url_list: A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         ...
     @overload
@@ -337,7 +357,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
                  insert_way: Optional[pulumi.Input[_builtins.str]] = None,
                  oss_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url_list: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -376,7 +396,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
             oss_url: Optional[pulumi.Input[_builtins.str]] = None,
             scheduled_preload_job_id: Optional[pulumi.Input[_builtins.str]] = None,
             scheduled_preload_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             url_list: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScheduledPreloadJob':
         """
         Get an existing ScheduledPreloadJob resource's state with the given name, id, and optional extra
@@ -388,10 +408,14 @@ class ScheduledPreloadJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time when the task was created.
         :param pulumi.Input[_builtins.str] insert_way: The method to submit the URLs to be prefetched.
         :param pulumi.Input[_builtins.str] oss_url: Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_id: The ID of the prefetch task.
         :param pulumi.Input[_builtins.str] scheduled_preload_job_name: The task name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url_list: A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -427,6 +451,8 @@ class ScheduledPreloadJob(pulumi.CustomResource):
     def oss_url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_url")
 
@@ -448,7 +474,7 @@ class ScheduledPreloadJob(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID.
         """
@@ -459,6 +485,8 @@ class ScheduledPreloadJob(pulumi.CustomResource):
     def url_list(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "url_list")
 

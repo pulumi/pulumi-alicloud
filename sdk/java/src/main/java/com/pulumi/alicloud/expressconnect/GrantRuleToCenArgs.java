@@ -6,7 +6,6 @@ package com.pulumi.alicloud.expressconnect;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -35,13 +34,13 @@ public final class GrantRuleToCenArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="cenOwnerId", required=true)
-    private Output<Integer> cenOwnerId;
+    private Output<String> cenOwnerId;
 
     /**
      * @return The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    public Output<Integer> cenOwnerId() {
+    public Output<String> cenOwnerId() {
         return this.cenOwnerId;
     }
 
@@ -113,7 +112,7 @@ public final class GrantRuleToCenArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder cenOwnerId(Output<Integer> cenOwnerId) {
+        public Builder cenOwnerId(Output<String> cenOwnerId) {
             $.cenOwnerId = cenOwnerId;
             return this;
         }
@@ -124,7 +123,7 @@ public final class GrantRuleToCenArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder cenOwnerId(Integer cenOwnerId) {
+        public Builder cenOwnerId(String cenOwnerId) {
             return cenOwnerId(Output.of(cenOwnerId));
         }
 

@@ -47,17 +47,17 @@ import (
 //				oidcProviderName = param
 //			}
 //			_, err := ims.NewOidcProvider(ctx, "default", &ims.OidcProviderArgs{
-//				Description: pulumi.String(oidcProviderName),
-//				IssuerUrl:   pulumi.String("https://oauth.aliyun.com"),
 //				Fingerprints: pulumi.StringArray{
-//					pulumi.String("902ef2deeb3c5b13ea4c3d5193629309e231ae55"),
+//					pulumi.String("0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"),
 //				},
 //				IssuanceLimitTime: pulumi.Int(12),
-//				OidcProviderName:  pulumi.String(name),
+//				OidcProviderName:  pulumi.String("tfaccims89018"),
 //				ClientIds: pulumi.StringArray{
 //					pulumi.String("123"),
 //					pulumi.String("456"),
 //				},
+//				Description: pulumi.String(oidcProviderName),
+//				IssuerUrl:   pulumi.String("https://oauth.aliyun.com"),
 //			})
 //			if err != nil {
 //				return err

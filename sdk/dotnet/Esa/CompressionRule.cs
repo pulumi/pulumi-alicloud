@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Esa
         public Output<string?> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Output("sequence")]
         public Output<int> Sequence { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Input("sequence")]
         public Input<int>? Sequence { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Order of rule execution. The smaller the value, the higher the priority for execution.
+        /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         /// </summary>
         [Input("sequence")]
         public Input<int>? Sequence { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

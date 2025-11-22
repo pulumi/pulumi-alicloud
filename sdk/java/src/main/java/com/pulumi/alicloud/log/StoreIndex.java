@@ -12,6 +12,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +22,8 @@ import javax.annotation.Nullable;
 /**
  * Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
  * You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
+ * 
+ * &gt; **NOTE:** Available since v1.0.0.
  * 
  * ## Example Usage
  * 
@@ -115,32 +119,78 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:log/storeIndex:StoreIndex")
 public class StoreIndex extends com.pulumi.resources.CustomResource {
     /**
-     * List configurations of field search index. Valid item as follows:
+     * List configurations of field search index. See `fieldSearch` below.
+     * 
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     @Export(name="fieldSearches", refs={List.class,StoreIndexFieldSearch.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StoreIndexFieldSearch>> fieldSearches;
 
     /**
-     * @return List configurations of field search index. Valid item as follows:
+     * @return List configurations of field search index. See `fieldSearch` below.
+     * 
+     * &gt; **Note:** At least one of the &#34;fullText&#34; and &#34;fieldSearch&#34; should be specified.
      * 
      */
     public Output<Optional<List<StoreIndexFieldSearch>>> fieldSearches() {
         return Codegen.optional(this.fieldSearches);
     }
     /**
-     * The configuration of full text index. Valid item as follows:
+     * The configuration of full text index. See `fullText` below.
      * 
      */
     @Export(name="fullText", refs={StoreIndexFullText.class}, tree="[0]")
     private Output</* @Nullable */ StoreIndexFullText> fullText;
 
     /**
-     * @return The configuration of full text index. Valid item as follows:
+     * @return The configuration of full text index. See `fullText` below.
      * 
      */
     public Output<Optional<StoreIndexFullText>> fullText() {
         return Codegen.optional(this.fullText);
+    }
+    /**
+     * Whether to enable log reduce. Default to false.
+     * 
+     */
+    @Export(name="logReduce", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logReduce;
+
+    /**
+     * @return Whether to enable log reduce. Default to false.
+     * 
+     */
+    public Output<Optional<Boolean>> logReduce() {
+        return Codegen.optional(this.logReduce);
+    }
+    /**
+     * The black list of log reduce.
+     * 
+     */
+    @Export(name="logReduceBlackLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> logReduceBlackLists;
+
+    /**
+     * @return The black list of log reduce.
+     * 
+     */
+    public Output<Optional<List<String>>> logReduceBlackLists() {
+        return Codegen.optional(this.logReduceBlackLists);
+    }
+    /**
+     * The white list of log reduce.
+     * 
+     */
+    @Export(name="logReduceWhiteLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> logReduceWhiteLists;
+
+    /**
+     * @return The white list of log reduce.
+     * 
+     */
+    public Output<Optional<List<String>>> logReduceWhiteLists() {
+        return Codegen.optional(this.logReduceWhiteLists);
     }
     /**
      * The log store name to the query index belongs.
@@ -155,6 +205,20 @@ public class StoreIndex extends com.pulumi.resources.CustomResource {
      */
     public Output<String> logstore() {
         return this.logstore;
+    }
+    /**
+     * The max text length.
+     * 
+     */
+    @Export(name="maxTextLen", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxTextLen;
+
+    /**
+     * @return The max text length.
+     * 
+     */
+    public Output<Optional<Integer>> maxTextLen() {
+        return Codegen.optional(this.maxTextLen);
     }
     /**
      * The project name to the log store belongs.

@@ -119,6 +119,13 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.securityGroupIds);
     }
 
+    @Import(name="slaveVswitchId")
+    private @Nullable Output<String> slaveVswitchId;
+
+    public Optional<Output<String>> slaveVswitchId() {
+        return Optional.ofNullable(this.slaveVswitchId);
+    }
+
     @Import(name="storage")
     private @Nullable Output<String> storage;
 
@@ -157,6 +164,7 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
+        this.slaveVswitchId = $.slaveVswitchId;
         this.storage = $.storage;
         this.tags = $.tags;
         this.vswitchId = $.vswitchId;
@@ -320,6 +328,15 @@ public final class BastionHostInstanceState extends com.pulumi.resources.Resourc
 
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        public Builder slaveVswitchId(@Nullable Output<String> slaveVswitchId) {
+            $.slaveVswitchId = slaveVswitchId;
+            return this;
+        }
+
+        public Builder slaveVswitchId(String slaveVswitchId) {
+            return slaveVswitchId(Output.of(slaveVswitchId));
         }
 
         public Builder storage(@Nullable Output<String> storage) {

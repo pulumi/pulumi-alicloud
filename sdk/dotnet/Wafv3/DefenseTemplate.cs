@@ -89,8 +89,11 @@ namespace Pulumi.AliCloud.Wafv3
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group.
+        /// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
         /// </summary>
+        [Output("resourceGroups")]
+        public Output<ImmutableArray<string>> ResourceGroups { get; private set; } = null!;
+
         [Output("resourceManagerResourceGroupId")]
         public Output<string?> ResourceManagerResourceGroupId { get; private set; } = null!;
 
@@ -190,9 +193,18 @@ namespace Pulumi.AliCloud.Wafv3
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        [Input("resourceGroups")]
+        private InputList<string>? _resourceGroups;
+
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group.
+        /// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
         /// </summary>
+        public InputList<string> ResourceGroups
+        {
+            get => _resourceGroups ?? (_resourceGroups = new InputList<string>());
+            set => _resourceGroups = value;
+        }
+
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 
@@ -266,9 +278,18 @@ namespace Pulumi.AliCloud.Wafv3
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
+        [Input("resourceGroups")]
+        private InputList<string>? _resourceGroups;
+
         /// <summary>
-        /// The ID of the Alibaba Cloud resource group.
+        /// The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
         /// </summary>
+        public InputList<string> ResourceGroups
+        {
+            get => _resourceGroups ?? (_resourceGroups = new InputList<string>());
+            set => _resourceGroups = value;
+        }
+
         [Input("resourceManagerResourceGroupId")]
         public Input<string>? ResourceManagerResourceGroupId { get; set; }
 

@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB Parameter Group resource.
+ * Provides a Polar Db Parameter Group resource.
  * 
- * For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
+ * For information about Polar Db Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
  * 
  * &gt; **NOTE:** Available since v1.183.0.
  * 
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ParameterGroup("example", ParameterGroupArgs.builder()
- *             .name("example_value")
+ *             .parameterGroupName("example_value")
  *             .dbType("MySQL")
  *             .dbVersion("8.0")
  *             .parameters(ParameterGroupParameterArgs.builder()
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PolarDB Parameter Group can be imported using the id, e.g.
+ * Polar Db Parameter Group can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:polardb/parameterGroup:ParameterGroup example &lt;id&gt;
@@ -77,6 +77,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:polardb/parameterGroup:ParameterGroup")
 public class ParameterGroup extends com.pulumi.resources.CustomResource {
+    /**
+     * The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The type of the database engine. Only `MySQL` is supported.
      * 
@@ -92,56 +106,96 @@ public class ParameterGroup extends com.pulumi.resources.CustomResource {
         return this.dbType;
     }
     /**
-     * The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * The version of the database engine. Valid values:
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      * 
      */
     @Export(name="dbVersion", refs={String.class}, tree="[0]")
     private Output<String> dbVersion;
 
     /**
-     * @return The version number of the database engine. Valid values: `5.6`, `5.7`, `8.0`.
+     * @return The version of the database engine. Valid values:
+     * - **5.6**
+     * - **5.7**
+     * - **8.0**
      * 
      */
     public Output<String> dbVersion() {
         return this.dbVersion;
     }
     /**
-     * The description of the parameter template. It must be 0 to 200 characters in length.
+     * The description of the parameter template.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the parameter template. It must be 0 to 200 characters in length.
+     * @return The description of the parameter template.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.263.0. New field &#39;parameter_group_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The parameter template. See the following `Block parameters`.
+     * The name of the parameter template. The name must meet the following requirements:
+     * 
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     * 
+     * - It must be 8 to 64 characters in length.
+     * 
+     */
+    @Export(name="parameterGroupName", refs={String.class}, tree="[0]")
+    private Output<String> parameterGroupName;
+
+    /**
+     * @return The name of the parameter template. The name must meet the following requirements:
+     * 
+     * - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+     * 
+     * - It must be 8 to 64 characters in length.
+     * 
+     */
+    public Output<String> parameterGroupName() {
+        return this.parameterGroupName;
+    }
+    /**
+     * Details about the parameters. See `parameters` below.
+     * 
+     * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="parameters", refs={List.class,ParameterGroupParameter.class}, tree="[0,1]")
     private Output<List<ParameterGroupParameter>> parameters;
 
     /**
-     * @return The parameter template. See the following `Block parameters`.
+     * @return Details about the parameters. See `parameters` below.
+     * 
+     * &gt; **NOTE:**  You can view all parameter details for the target database engine version database cluster through the [DescribeParameterTemplates](https://next.api.alibabacloud.com/document/polardb/2017-08-01/DescribeParameterTemplates), including parameter name, value.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<List<ParameterGroupParameter>> parameters() {

@@ -13,13 +13,14 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Express Connect Router Interface resource.
  * 
- * For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+ * For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
  * 
  * &gt; **NOTE:** Available since v1.199.0.
  * 
@@ -34,10 +35,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.alicloud.alb.AlbFunctions;
+ * import com.pulumi.alicloud.alb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.expressconnect.RouterInterface;
  * import com.pulumi.alicloud.expressconnect.RouterInterfaceArgs;
  * import java.util.List;
@@ -54,24 +65,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
- *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex("default-NODELETING")
+ *         final var name = config.get("name").orElse("tfexample");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .build());
+ * 
+ *         final var this = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
+ *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex("^preserved-NODELETING-JG")
+ *             .build());
+ * 
+ *         final var defaultGetZones = AlbFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("172.16.0.0/16")
+ *             .enableIpv6(true)
+ *             .build());
+ * 
+ *         var zoneA = new Switch("zoneA", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(defaultGetZones.zones()[0].id())
+ *             .ipv6CidrBlockMask(6)
+ *             .build());
+ * 
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+ *             .physicalConnectionId(nameRegex.connections()[0].id())
+ *             .vlanId(1001)
+ *             .peerGatewayIp("192.168.254.2")
+ *             .peeringSubnetMask("255.255.255.0")
+ *             .localGatewayIp("192.168.254.1")
+ *             .build());
+ * 
  *         var defaultRouterInterface = new RouterInterface("defaultRouterInterface", RouterInterfaceArgs.builder()
- *             .description(name)
- *             .oppositeRegionId(defaultGetRegions.regions()[0].id())
- *             .routerId(default_.vpcs()[0].routerId())
- *             .role("InitiatingSide")
- *             .routerType("VRouter")
- *             .paymentType("PayAsYouGo")
- *             .routerInterfaceName(name)
+ *             .autoRenew(true)
  *             .spec("Mini.2")
+ *             .oppositeRouterType("VRouter")
+ *             .routerId(defaultVirtualBorderRouter.id())
+ *             .description("terraform-example")
+ *             .accessPointId("ap-cn-hangzhou-jg-B")
+ *             .resourceGroupId(default_.ids()[0])
+ *             .period(1)
+ *             .oppositeRouterId(defaultNetwork.routerId())
+ *             .role("InitiatingSide")
+ *             .paymentType("PayAsYouGo")
+ *             .autoPay(true)
+ *             .oppositeInterfaceOwnerId(this_.id())
+ *             .routerInterfaceName(name)
+ *             .fastLinkMode(true)
+ *             .oppositeRegionId("cn-hangzhou")
+ *             .routerType("VBR")
  *             .build());
  * 
  *     }
@@ -91,574 +141,730 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/routerInterface:RouterInterface")
 public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
-     * The access point ID to which the VBR belongs.
+     * Access point ID
      * 
      */
     @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessPointId;
 
     /**
-     * @return The access point ID to which the VBR belongs.
+     * @return Access point ID
      * 
      */
     public Output<Optional<String>> accessPointId() {
         return Codegen.optional(this.accessPointId);
     }
     /**
-     * Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;auto_pay&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'auto_pay' has been deprecated since provider version 1.263.0. */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
-     * @return Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.263.0.
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * The bandwidth of the resource.
+     * Whether to enable automatic renewal. Value:
+     * 
+     */
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRenew;
+
+    /**
+     * @return Whether to enable automatic renewal. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> autoRenew() {
+        return Codegen.optional(this.autoRenew);
+    }
+    /**
+     * The bandwidth of the router interface
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the resource.
+     * @return The bandwidth of the router interface
      * 
      */
     public Output<Integer> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+     * The service status of the router interface.
      * 
      */
     @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
-     * @return The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+     * @return The service status of the router interface.
      * 
      */
     public Output<String> businessStatus() {
         return this.businessStatus;
     }
     /**
-     * The connected time of the resource.
+     * Time the connection was established
      * 
      */
     @Export(name="connectedTime", refs={String.class}, tree="[0]")
     private Output<String> connectedTime;
 
     /**
-     * @return The connected time of the resource.
+     * @return Time the connection was established
      * 
      */
     public Output<String> connectedTime() {
         return this.connectedTime;
     }
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The cross border of the resource.
+     * CrossBorder
      * 
      */
     @Export(name="crossBorder", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> crossBorder;
 
     /**
-     * @return The cross border of the resource.
+     * @return CrossBorder
      * 
      */
     public Output<Boolean> crossBorder() {
         return this.crossBorder;
     }
     /**
-     * Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+     * Whether to delete the health check IP address configured on the router interface. Value:
      * 
      */
     @Export(name="deleteHealthCheckIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteHealthCheckIp;
 
     /**
-     * @return Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+     * @return Whether to delete the health check IP address configured on the router interface. Value:
      * 
      */
     public Output<Optional<Boolean>> deleteHealthCheckIp() {
         return Codegen.optional(this.deleteHealthCheckIp);
     }
     /**
-     * The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * @return The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The end time of the resource.
+     * End Time of Prepaid
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
-     * @return The end time of the resource.
+     * @return End Time of Prepaid
      * 
      */
     public Output<String> endTime() {
         return this.endTime;
     }
     /**
-     * The has reservation data of the resource.
+     * Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+     * 
+     */
+    @Export(name="fastLinkMode", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> fastLinkMode;
+
+    /**
+     * @return Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> fastLinkMode() {
+        return Codegen.optional(this.fastLinkMode);
+    }
+    /**
+     * Whether there is renewal data
      * 
      */
     @Export(name="hasReservationData", refs={String.class}, tree="[0]")
     private Output<String> hasReservationData;
 
     /**
-     * @return The has reservation data of the resource.
+     * @return Whether there is renewal data
      * 
      */
     public Output<String> hasReservationData() {
         return this.hasReservationData;
     }
     /**
-     * The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+     * Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      * 
      */
     @Export(name="hcRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> hcRate;
 
     /**
-     * @return The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+     * @return Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      * 
      */
     public Output<Optional<Integer>> hcRate() {
         return Codegen.optional(this.hcRate);
     }
     /**
-     * The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+     * Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      * 
      */
     @Export(name="hcThreshold", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hcThreshold;
 
     /**
-     * @return The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+     * @return Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      * 
      */
     public Output<Optional<String>> hcThreshold() {
         return Codegen.optional(this.hcThreshold);
     }
     /**
-     * The health check source IP address, must be an unused IP within the local VPC.
+     * Health check source IP address
      * 
      */
     @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckSourceIp;
 
     /**
-     * @return The health check source IP address, must be an unused IP within the local VPC.
+     * @return Health check source IP address
      * 
      */
     public Output<Optional<String>> healthCheckSourceIp() {
         return Codegen.optional(this.healthCheckSourceIp);
     }
     /**
-     * The IP address for health screening purposes.
+     * Health check destination IP address
      * 
      */
     @Export(name="healthCheckTargetIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckTargetIp;
 
     /**
-     * @return The IP address for health screening purposes.
+     * @return Health check destination IP address
      * 
      */
     public Output<Optional<String>> healthCheckTargetIp() {
         return Codegen.optional(this.healthCheckTargetIp);
     }
     /**
-     * The Access point ID to which the other end belongs.
+     * Peer access point ID
      * 
      */
     @Export(name="oppositeAccessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeAccessPointId;
 
     /**
-     * @return The Access point ID to which the other end belongs.
+     * @return Peer access point ID
      * 
      */
     public Output<Optional<String>> oppositeAccessPointId() {
         return Codegen.optional(this.oppositeAccessPointId);
     }
     /**
-     * The opposite bandwidth of the router on the other side.
+     * opposite bandwidth
      * 
      */
     @Export(name="oppositeBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> oppositeBandwidth;
 
     /**
-     * @return The opposite bandwidth of the router on the other side.
+     * @return opposite bandwidth
      * 
      */
     public Output<Integer> oppositeBandwidth() {
         return this.oppositeBandwidth;
     }
     /**
-     * The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+     * The service status of the router interface on the opposite end of the connection.
      * 
      */
     @Export(name="oppositeInterfaceBusinessStatus", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceBusinessStatus;
 
     /**
-     * @return The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+     * @return The service status of the router interface on the opposite end of the connection.
      * 
      */
     public Output<String> oppositeInterfaceBusinessStatus() {
         return this.oppositeInterfaceBusinessStatus;
     }
     /**
-     * The Interface ID of the router at the other end.
+     * . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
+     * 
+     * @deprecated
+     * Field &#39;opposite_interface_id&#39; has been deprecated since provider version 1.263.0.
      * 
      */
+    @Deprecated /* Field 'opposite_interface_id' has been deprecated since provider version 1.263.0. */
     @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> oppositeInterfaceId;
+    private Output<String> oppositeInterfaceId;
 
     /**
-     * @return The Interface ID of the router at the other end.
+     * @return . Field &#39;router_table_id&#39; has been deprecated from provider version 1.263.0.
      * 
      */
-    public Output<Optional<String>> oppositeInterfaceId() {
-        return Codegen.optional(this.oppositeInterfaceId);
+    public Output<String> oppositeInterfaceId() {
+        return this.oppositeInterfaceId;
     }
     /**
-     * The AliCloud account ID of the owner of the router interface on the other end.
+     * Account ID of the peer router interface
      * 
      */
     @Export(name="oppositeInterfaceOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeInterfaceOwnerId;
 
     /**
-     * @return The AliCloud account ID of the owner of the router interface on the other end.
+     * @return Account ID of the peer router interface
      * 
      */
     public Output<Optional<String>> oppositeInterfaceOwnerId() {
         return Codegen.optional(this.oppositeInterfaceOwnerId);
     }
     /**
-     * The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * Specifications of the interface of the peer router.
      * 
      */
     @Export(name="oppositeInterfaceSpec", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceSpec;
 
     /**
-     * @return The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * @return Specifications of the interface of the peer router.
      * 
      */
     public Output<String> oppositeInterfaceSpec() {
         return this.oppositeInterfaceSpec;
     }
     /**
-     * The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * The status of the router interface on the peer of the connection.
      * 
      */
     @Export(name="oppositeInterfaceStatus", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceStatus;
 
     /**
-     * @return The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * @return The status of the router interface on the peer of the connection.
      * 
      */
     public Output<String> oppositeInterfaceStatus() {
         return this.oppositeInterfaceStatus;
     }
     /**
-     * The geographical ID of the location of the receiving end of the connection.
+     * Region of the connection peer
      * 
      */
     @Export(name="oppositeRegionId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRegionId;
 
     /**
-     * @return The geographical ID of the location of the receiving end of the connection.
+     * @return Region of the connection peer
      * 
      */
     public Output<String> oppositeRegionId() {
         return this.oppositeRegionId;
     }
     /**
-     * The id of the router at the other end.
+     * The ID of the router to which the opposite router interface belongs.
      * 
      */
     @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeRouterId;
 
     /**
-     * @return The id of the router at the other end.
+     * @return The ID of the router to which the opposite router interface belongs.
      * 
      */
     public Output<Optional<String>> oppositeRouterId() {
         return Codegen.optional(this.oppositeRouterId);
     }
     /**
-     * The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+     * The router type associated with the peer router interface. Valid values:
+     * - VRouter: VPC router.
+     * - VBR: Virtual Border Router.
      * 
      */
     @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterType;
 
     /**
-     * @return The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+     * @return The router type associated with the peer router interface. Valid values:
+     * - VRouter: VPC router.
+     * - VBR: Virtual Border Router.
      * 
      */
     public Output<String> oppositeRouterType() {
         return this.oppositeRouterType;
     }
     /**
-     * The opposite vpc instance id of the router on the other side.
+     * The peer VPC ID
      * 
      */
     @Export(name="oppositeVpcInstanceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeVpcInstanceId;
 
     /**
-     * @return The opposite vpc instance id of the router on the other side.
+     * @return The peer VPC ID
      * 
      */
     public Output<String> oppositeVpcInstanceId() {
         return this.oppositeVpcInstanceId;
     }
     /**
-     * The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+     * The payment method of the router interface. Valid values:
+     * - Subscription : PrePaid.
+     * - PayAsYouGo : PostPaid.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> paymentType;
+    private Output<String> paymentType;
 
     /**
-     * @return The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+     * @return The payment method of the router interface. Valid values:
+     * - Subscription : PrePaid.
+     * - PayAsYouGo : PostPaid.
      * 
      */
-    public Output<Optional<String>> paymentType() {
-        return Codegen.optional(this.paymentType);
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
-     * Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * Purchase duration, value:
+     * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+     * - When you choose to pay per year, the value range is **1 to 3**.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return Purchase duration, value:
+     * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+     * - When you choose to pay per year, the value range is **1 to 3**.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * The billing cycle of the prepaid fee. Valid values:
+     * - `Month` (default): monthly payment.
+     * - `Year`: Pay per Year.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
-     * @return The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+     * @return The billing cycle of the prepaid fee. Valid values:
+     * - `Month` (default): monthly payment.
+     * - `Year`: Pay per Year.
+     * 
+     * &gt; **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
     }
     /**
-     * The reservation active time of the resource.
+     * ReservationActiveTime
      * 
      */
     @Export(name="reservationActiveTime", refs={String.class}, tree="[0]")
     private Output<String> reservationActiveTime;
 
     /**
-     * @return The reservation active time of the resource.
+     * @return ReservationActiveTime
      * 
      */
     public Output<String> reservationActiveTime() {
         return this.reservationActiveTime;
     }
     /**
-     * The reservation bandwidth of the resource.
+     * Renew Bandwidth
      * 
      */
     @Export(name="reservationBandwidth", refs={String.class}, tree="[0]")
     private Output<String> reservationBandwidth;
 
     /**
-     * @return The reservation bandwidth of the resource.
+     * @return Renew Bandwidth
      * 
      */
     public Output<String> reservationBandwidth() {
         return this.reservationBandwidth;
     }
     /**
-     * The reservation internet charge type of the resource.
+     * Payment Type for Renewal
      * 
      */
     @Export(name="reservationInternetChargeType", refs={String.class}, tree="[0]")
     private Output<String> reservationInternetChargeType;
 
     /**
-     * @return The reservation internet charge type of the resource.
+     * @return Payment Type for Renewal
      * 
      */
     public Output<String> reservationInternetChargeType() {
         return this.reservationInternetChargeType;
     }
     /**
-     * The reservation order type of the resource.
+     * Renewal Order Type
      * 
      */
     @Export(name="reservationOrderType", refs={String.class}, tree="[0]")
     private Output<String> reservationOrderType;
 
     /**
-     * @return The reservation order type of the resource.
+     * @return Renewal Order Type
      * 
      */
     public Output<String> reservationOrderType() {
         return this.reservationOrderType;
     }
     /**
-     * The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+     * The ID of the resource group
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The role of the router interface. Valid values:
+     * - InitiatingSide : the initiator of the connection.
+     * - AcceptingSide : Connect to the receiving end.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
-     * @return The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+     * @return The role of the router interface. Valid values:
+     * - InitiatingSide : the initiator of the connection.
+     * - AcceptingSide : Connect to the receiving end.
      * 
      */
     public Output<String> role() {
         return this.role;
     }
     /**
-     * The router id associated with the router interface.
+     * The ID of the router where the route entry is located.
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return The router id associated with the router interface.
+     * @return The ID of the router where the route entry is located.
      * 
      */
     public Output<String> routerId() {
         return this.routerId;
     }
     /**
-     * The first ID of the resource.
+     * The first ID of the resource
      * 
      */
     @Export(name="routerInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> routerInterfaceId;
 
     /**
-     * @return The first ID of the resource.
+     * @return The first ID of the resource
      * 
      */
     public Output<String> routerInterfaceId() {
         return this.routerInterfaceId;
     }
     /**
-     * The name of the resource.
+     * Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     @Export(name="routerInterfaceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routerInterfaceName;
 
     /**
-     * @return The name of the resource.
+     * @return Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      * 
      */
     public Output<Optional<String>> routerInterfaceName() {
         return Codegen.optional(this.routerInterfaceName);
     }
     /**
-     * The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+     * The type of the router where the routing table resides. Valid values:
+     * - VRouter:VPC router
+     * - VBR: Border Router
      * 
      */
     @Export(name="routerType", refs={String.class}, tree="[0]")
     private Output<String> routerType;
 
     /**
-     * @return The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+     * @return The type of the router where the routing table resides. Valid values:
+     * - VRouter:VPC router
+     * - VBR: Border Router
      * 
      */
     public Output<String> routerType() {
         return this.routerType;
     }
     /**
-     * The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+     * - Mini.2: 2 Mbps
+     * - Mini.5: 5 Mbps
+     * - Small.1: 10 Mbps
+     * - Small.2: 20 Mbps
+     * - Small.5: 50 Mbps
+     * - Middle.1: 100 Mbps
+     * - Middle.2: 200 Mbps
+     * - Middle.5: 500 Mbps
+     * - Large.1: 1000 Mbps
+     * - Large.2: 2000 Mbps
+     * - Large.5: 5000 Mbps
+     * - Xlarge.1: 10000 Mbps
+     * 
+     * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
      * 
      */
     @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
-     * @return The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+     * @return The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+     * - Mini.2: 2 Mbps
+     * - Mini.5: 5 Mbps
+     * - Small.1: 10 Mbps
+     * - Small.2: 20 Mbps
+     * - Small.5: 50 Mbps
+     * - Middle.1: 100 Mbps
+     * - Middle.2: 200 Mbps
+     * - Middle.5: 500 Mbps
+     * - Large.1: 1000 Mbps
+     * - Large.2: 2000 Mbps
+     * - Large.5: 5000 Mbps
+     * - Xlarge.1: 10000 Mbps
+     * 
+     * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
      * 
      */
     public Output<String> spec() {
         return this.spec;
     }
     /**
-     * The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * Resource attribute fields that represent the status of the resource. Value range:
+     * - Idle : Initialize.
+     * - Connecting : the initiator is in the process of Connecting.
+     * - AcceptingConnecting : the receiving end is being connected.
+     * - Activating : Restoring.
+     * - Active : Normal.
+     * - Modifying : Modifying.
+     * - Deactivating : Freezing.
+     * - Inactive : Frozen.
+     * - Deleting : Deleting.
+     * - Deleted : Deleted.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+     * @return Resource attribute fields that represent the status of the resource. Value range:
+     * - Idle : Initialize.
+     * - Connecting : the initiator is in the process of Connecting.
+     * - AcceptingConnecting : the receiving end is being connected.
+     * - Activating : Restoring.
+     * - Active : Normal.
+     * - Modifying : Modifying.
+     * - Deactivating : Freezing.
+     * - Inactive : Frozen.
+     * - Deleting : Deleting.
+     * - Deleted : Deleted.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The vpc instance id of the resource.
+     * The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * ID of the local VPC in the peering connection
      * 
      */
     @Export(name="vpcInstanceId", refs={String.class}, tree="[0]")
     private Output<String> vpcInstanceId;
 
     /**
-     * @return The vpc instance id of the resource.
+     * @return ID of the local VPC in the peering connection
      * 
      */
     public Output<String> vpcInstanceId() {

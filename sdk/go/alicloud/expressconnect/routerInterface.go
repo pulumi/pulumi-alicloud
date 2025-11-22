@@ -14,7 +14,7 @@ import (
 
 // Provides a Express Connect Router Interface resource.
 //
-// For information about Express Connect Router Interface and how to use it, see What is Router Interface.
+// For information about Express Connect Router Interface and how to use it, see [What is Router Interface](https://next.api.alibabacloud.com/document/Vpc/2016-04-28/CreateRouterInterface).
 //
 // > **NOTE:** Available since v1.199.0.
 //
@@ -28,7 +28,9 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -38,31 +40,80 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			name := "tfexample"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			this, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING-JG"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alb.GetZones(ctx, &alb.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:    pulumi.String(name),
+//				CidrBlock:  pulumi.String("172.16.0.0/16"),
+//				EnableIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewSwitch(ctx, "zone_a", &vpc.SwitchArgs{
+//				VswitchName:       pulumi.String(name),
+//				VpcId:             defaultNetwork.ID(),
+//				CidrBlock:         pulumi.String("172.16.0.0/24"),
+//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
+//				Ipv6CidrBlockMask: pulumi.Int(6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
+//				PhysicalConnectionId: pulumi.String(nameRegex.Connections[0].Id),
+//				VlanId:               pulumi.Int(1001),
+//				PeerGatewayIp:        pulumi.String("192.168.254.2"),
+//				PeeringSubnetMask:    pulumi.String("255.255.255.0"),
+//				LocalGatewayIp:       pulumi.String("192.168.254.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = expressconnect.NewRouterInterface(ctx, "default", &expressconnect.RouterInterfaceArgs{
-//				Description:         pulumi.String(name),
-//				OppositeRegionId:    pulumi.String(defaultGetRegions.Regions[0].Id),
-//				RouterId:            pulumi.String(_default.Vpcs[0].RouterId),
-//				Role:                pulumi.String("InitiatingSide"),
-//				RouterType:          pulumi.String("VRouter"),
-//				PaymentType:         pulumi.String("PayAsYouGo"),
-//				RouterInterfaceName: pulumi.String(name),
-//				Spec:                pulumi.String("Mini.2"),
+//				AutoRenew:                pulumi.Bool(true),
+//				Spec:                     pulumi.String("Mini.2"),
+//				OppositeRouterType:       pulumi.String("VRouter"),
+//				RouterId:                 defaultVirtualBorderRouter.ID(),
+//				Description:              pulumi.String("terraform-example"),
+//				AccessPointId:            pulumi.String("ap-cn-hangzhou-jg-B"),
+//				ResourceGroupId:          pulumi.String(_default.Ids[0]),
+//				Period:                   pulumi.Int(1),
+//				OppositeRouterId:         defaultNetwork.RouterId,
+//				Role:                     pulumi.String("InitiatingSide"),
+//				PaymentType:              pulumi.String("PayAsYouGo"),
+//				AutoPay:                  pulumi.Bool(true),
+//				OppositeInterfaceOwnerId: pulumi.String(this.Id),
+//				RouterInterfaceName:      pulumi.String(name),
+//				FastLinkMode:             pulumi.Bool(true),
+//				OppositeRegionId:         pulumi.String("cn-hangzhou"),
+//				RouterType:               pulumi.String("VBR"),
 //			})
 //			if err != nil {
 //				return err
@@ -83,87 +134,145 @@ import (
 type RouterInterface struct {
 	pulumi.CustomResourceState
 
-	// The access point ID to which the VBR belongs.
+	// Access point ID
 	AccessPointId pulumi.StringPtrOutput `pulumi:"accessPointId"`
-	// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// . Field 'name' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
-	// The bandwidth of the resource.
+	// Whether to enable automatic renewal. Value:
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
+	// The bandwidth of the router interface
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
-	// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface.
 	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
-	// The connected time of the resource.
+	// Time the connection was established
 	ConnectedTime pulumi.StringOutput `pulumi:"connectedTime"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The cross border of the resource.
+	// CrossBorder
 	CrossBorder pulumi.BoolOutput `pulumi:"crossBorder"`
-	// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+	// Whether to delete the health check IP address configured on the router interface. Value:
 	DeleteHealthCheckIp pulumi.BoolPtrOutput `pulumi:"deleteHealthCheckIp"`
-	// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The end time of the resource.
+	// End Time of Prepaid
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// The has reservation data of the resource.
+	// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+	FastLinkMode pulumi.BoolPtrOutput `pulumi:"fastLinkMode"`
+	// Whether there is renewal data
 	HasReservationData pulumi.StringOutput `pulumi:"hasReservationData"`
-	// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+	// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 	HcRate pulumi.IntPtrOutput `pulumi:"hcRate"`
-	// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+	// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 	HcThreshold pulumi.StringPtrOutput `pulumi:"hcThreshold"`
-	// The health check source IP address, must be an unused IP within the local VPC.
+	// Health check source IP address
 	HealthCheckSourceIp pulumi.StringPtrOutput `pulumi:"healthCheckSourceIp"`
-	// The IP address for health screening purposes.
+	// Health check destination IP address
 	HealthCheckTargetIp pulumi.StringPtrOutput `pulumi:"healthCheckTargetIp"`
-	// The Access point ID to which the other end belongs.
+	// Peer access point ID
 	OppositeAccessPointId pulumi.StringPtrOutput `pulumi:"oppositeAccessPointId"`
-	// The opposite bandwidth of the router on the other side.
+	// opposite bandwidth
 	OppositeBandwidth pulumi.IntOutput `pulumi:"oppositeBandwidth"`
-	// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface on the opposite end of the connection.
 	OppositeInterfaceBusinessStatus pulumi.StringOutput `pulumi:"oppositeInterfaceBusinessStatus"`
-	// The Interface ID of the router at the other end.
-	OppositeInterfaceId pulumi.StringPtrOutput `pulumi:"oppositeInterfaceId"`
-	// The AliCloud account ID of the owner of the router interface on the other end.
+	// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
+	OppositeInterfaceId pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
+	// Account ID of the peer router interface
 	OppositeInterfaceOwnerId pulumi.StringPtrOutput `pulumi:"oppositeInterfaceOwnerId"`
-	// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// Specifications of the interface of the peer router.
 	OppositeInterfaceSpec pulumi.StringOutput `pulumi:"oppositeInterfaceSpec"`
-	// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// The status of the router interface on the peer of the connection.
 	OppositeInterfaceStatus pulumi.StringOutput `pulumi:"oppositeInterfaceStatus"`
-	// The geographical ID of the location of the receiving end of the connection.
+	// Region of the connection peer
 	OppositeRegionId pulumi.StringOutput `pulumi:"oppositeRegionId"`
-	// The id of the router at the other end.
+	// The ID of the router to which the opposite router interface belongs.
 	OppositeRouterId pulumi.StringPtrOutput `pulumi:"oppositeRouterId"`
-	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	// The router type associated with the peer router interface. Valid values:
+	// - VRouter: VPC router.
+	// - VBR: Virtual Border Router.
 	OppositeRouterType pulumi.StringOutput `pulumi:"oppositeRouterType"`
-	// The opposite vpc instance id of the router on the other side.
+	// The peer VPC ID
 	OppositeVpcInstanceId pulumi.StringOutput `pulumi:"oppositeVpcInstanceId"`
-	// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The payment method of the router interface. Valid values:
+	// - Subscription : PrePaid.
+	// - PayAsYouGo : PostPaid.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// Purchase duration, value:
+	// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+	// - When you choose to pay per year, the value range is **1 to 3**.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The billing cycle of the prepaid fee. Valid values:
+	// - `Month` (default): monthly payment.
+	// - `Year`: Pay per Year.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
-	// The reservation active time of the resource.
+	// ReservationActiveTime
 	ReservationActiveTime pulumi.StringOutput `pulumi:"reservationActiveTime"`
-	// The reservation bandwidth of the resource.
+	// Renew Bandwidth
 	ReservationBandwidth pulumi.StringOutput `pulumi:"reservationBandwidth"`
-	// The reservation internet charge type of the resource.
+	// Payment Type for Renewal
 	ReservationInternetChargeType pulumi.StringOutput `pulumi:"reservationInternetChargeType"`
-	// The reservation order type of the resource.
+	// Renewal Order Type
 	ReservationOrderType pulumi.StringOutput `pulumi:"reservationOrderType"`
-	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The role of the router interface. Valid values:
+	// - InitiatingSide : the initiator of the connection.
+	// - AcceptingSide : Connect to the receiving end.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// The router id associated with the router interface.
+	// The ID of the router where the route entry is located.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// The first ID of the resource.
+	// The first ID of the resource
 	RouterInterfaceId pulumi.StringOutput `pulumi:"routerInterfaceId"`
-	// The name of the resource.
+	// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	RouterInterfaceName pulumi.StringPtrOutput `pulumi:"routerInterfaceName"`
-	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	// The type of the router where the routing table resides. Valid values:
+	// - VRouter:VPC router
+	// - VBR: Border Router
 	RouterType pulumi.StringOutput `pulumi:"routerType"`
-	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+	// - Mini.2: 2 Mbps
+	// - Mini.5: 5 Mbps
+	// - Small.1: 10 Mbps
+	// - Small.2: 20 Mbps
+	// - Small.5: 50 Mbps
+	// - Middle.1: 100 Mbps
+	// - Middle.2: 200 Mbps
+	// - Middle.5: 500 Mbps
+	// - Large.1: 1000 Mbps
+	// - Large.2: 2000 Mbps
+	// - Large.5: 5000 Mbps
+	// - Xlarge.1: 10000 Mbps
+	//
+	// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 	Spec pulumi.StringOutput `pulumi:"spec"`
-	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// Resource attribute fields that represent the status of the resource. Value range:
+	// - Idle : Initialize.
+	// - Connecting : the initiator is in the process of Connecting.
+	// - AcceptingConnecting : the receiving end is being connected.
+	// - Activating : Restoring.
+	// - Active : Normal.
+	// - Modifying : Modifying.
+	// - Deactivating : Freezing.
+	// - Inactive : Frozen.
+	// - Deleting : Deleting.
+	// - Deleted : Deleted.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The vpc instance id of the resource.
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// ID of the local VPC in the peering connection
 	VpcInstanceId pulumi.StringOutput `pulumi:"vpcInstanceId"`
 }
 
@@ -212,172 +321,288 @@ func GetRouterInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterInterface resources.
 type routerInterfaceState struct {
-	// The access point ID to which the VBR belongs.
+	// Access point ID
 	AccessPointId *string `pulumi:"accessPointId"`
-	// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// . Field 'name' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 	AutoPay *bool `pulumi:"autoPay"`
-	// The bandwidth of the resource.
+	// Whether to enable automatic renewal. Value:
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The bandwidth of the router interface
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface.
 	BusinessStatus *string `pulumi:"businessStatus"`
-	// The connected time of the resource.
+	// Time the connection was established
 	ConnectedTime *string `pulumi:"connectedTime"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
-	// The cross border of the resource.
+	// CrossBorder
 	CrossBorder *bool `pulumi:"crossBorder"`
-	// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+	// Whether to delete the health check IP address configured on the router interface. Value:
 	DeleteHealthCheckIp *bool `pulumi:"deleteHealthCheckIp"`
-	// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The end time of the resource.
+	// End Time of Prepaid
 	EndTime *string `pulumi:"endTime"`
-	// The has reservation data of the resource.
+	// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+	FastLinkMode *bool `pulumi:"fastLinkMode"`
+	// Whether there is renewal data
 	HasReservationData *string `pulumi:"hasReservationData"`
-	// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+	// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 	HcRate *int `pulumi:"hcRate"`
-	// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+	// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 	HcThreshold *string `pulumi:"hcThreshold"`
-	// The health check source IP address, must be an unused IP within the local VPC.
+	// Health check source IP address
 	HealthCheckSourceIp *string `pulumi:"healthCheckSourceIp"`
-	// The IP address for health screening purposes.
+	// Health check destination IP address
 	HealthCheckTargetIp *string `pulumi:"healthCheckTargetIp"`
-	// The Access point ID to which the other end belongs.
+	// Peer access point ID
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
-	// The opposite bandwidth of the router on the other side.
+	// opposite bandwidth
 	OppositeBandwidth *int `pulumi:"oppositeBandwidth"`
-	// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface on the opposite end of the connection.
 	OppositeInterfaceBusinessStatus *string `pulumi:"oppositeInterfaceBusinessStatus"`
-	// The Interface ID of the router at the other end.
+	// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
-	// The AliCloud account ID of the owner of the router interface on the other end.
+	// Account ID of the peer router interface
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
-	// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// Specifications of the interface of the peer router.
 	OppositeInterfaceSpec *string `pulumi:"oppositeInterfaceSpec"`
-	// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// The status of the router interface on the peer of the connection.
 	OppositeInterfaceStatus *string `pulumi:"oppositeInterfaceStatus"`
-	// The geographical ID of the location of the receiving end of the connection.
+	// Region of the connection peer
 	OppositeRegionId *string `pulumi:"oppositeRegionId"`
-	// The id of the router at the other end.
+	// The ID of the router to which the opposite router interface belongs.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
-	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	// The router type associated with the peer router interface. Valid values:
+	// - VRouter: VPC router.
+	// - VBR: Virtual Border Router.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
-	// The opposite vpc instance id of the router on the other side.
+	// The peer VPC ID
 	OppositeVpcInstanceId *string `pulumi:"oppositeVpcInstanceId"`
-	// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+	// The payment method of the router interface. Valid values:
+	// - Subscription : PrePaid.
+	// - PayAsYouGo : PostPaid.
 	PaymentType *string `pulumi:"paymentType"`
-	// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// Purchase duration, value:
+	// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+	// - When you choose to pay per year, the value range is **1 to 3**.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
-	// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The billing cycle of the prepaid fee. Valid values:
+	// - `Month` (default): monthly payment.
+	// - `Year`: Pay per Year.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PricingCycle *string `pulumi:"pricingCycle"`
-	// The reservation active time of the resource.
+	// ReservationActiveTime
 	ReservationActiveTime *string `pulumi:"reservationActiveTime"`
-	// The reservation bandwidth of the resource.
+	// Renew Bandwidth
 	ReservationBandwidth *string `pulumi:"reservationBandwidth"`
-	// The reservation internet charge type of the resource.
+	// Payment Type for Renewal
 	ReservationInternetChargeType *string `pulumi:"reservationInternetChargeType"`
-	// The reservation order type of the resource.
+	// Renewal Order Type
 	ReservationOrderType *string `pulumi:"reservationOrderType"`
-	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The role of the router interface. Valid values:
+	// - InitiatingSide : the initiator of the connection.
+	// - AcceptingSide : Connect to the receiving end.
 	Role *string `pulumi:"role"`
-	// The router id associated with the router interface.
+	// The ID of the router where the route entry is located.
 	RouterId *string `pulumi:"routerId"`
-	// The first ID of the resource.
+	// The first ID of the resource
 	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
-	// The name of the resource.
+	// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	RouterInterfaceName *string `pulumi:"routerInterfaceName"`
-	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	// The type of the router where the routing table resides. Valid values:
+	// - VRouter:VPC router
+	// - VBR: Border Router
 	RouterType *string `pulumi:"routerType"`
-	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+	// - Mini.2: 2 Mbps
+	// - Mini.5: 5 Mbps
+	// - Small.1: 10 Mbps
+	// - Small.2: 20 Mbps
+	// - Small.5: 50 Mbps
+	// - Middle.1: 100 Mbps
+	// - Middle.2: 200 Mbps
+	// - Middle.5: 500 Mbps
+	// - Large.1: 1000 Mbps
+	// - Large.2: 2000 Mbps
+	// - Large.5: 5000 Mbps
+	// - Xlarge.1: 10000 Mbps
+	//
+	// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 	Spec *string `pulumi:"spec"`
-	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// Resource attribute fields that represent the status of the resource. Value range:
+	// - Idle : Initialize.
+	// - Connecting : the initiator is in the process of Connecting.
+	// - AcceptingConnecting : the receiving end is being connected.
+	// - Activating : Restoring.
+	// - Active : Normal.
+	// - Modifying : Modifying.
+	// - Deactivating : Freezing.
+	// - Inactive : Frozen.
+	// - Deleting : Deleting.
+	// - Deleted : Deleted.
 	Status *string `pulumi:"status"`
-	// The vpc instance id of the resource.
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
+	// ID of the local VPC in the peering connection
 	VpcInstanceId *string `pulumi:"vpcInstanceId"`
 }
 
 type RouterInterfaceState struct {
-	// The access point ID to which the VBR belongs.
+	// Access point ID
 	AccessPointId pulumi.StringPtrInput
-	// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// . Field 'name' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 	AutoPay pulumi.BoolPtrInput
-	// The bandwidth of the resource.
+	// Whether to enable automatic renewal. Value:
+	AutoRenew pulumi.BoolPtrInput
+	// The bandwidth of the router interface
 	Bandwidth pulumi.IntPtrInput
-	// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface.
 	BusinessStatus pulumi.StringPtrInput
-	// The connected time of the resource.
+	// Time the connection was established
 	ConnectedTime pulumi.StringPtrInput
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	// The cross border of the resource.
+	// CrossBorder
 	CrossBorder pulumi.BoolPtrInput
-	// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+	// Whether to delete the health check IP address configured on the router interface. Value:
 	DeleteHealthCheckIp pulumi.BoolPtrInput
-	// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// The end time of the resource.
+	// End Time of Prepaid
 	EndTime pulumi.StringPtrInput
-	// The has reservation data of the resource.
+	// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+	FastLinkMode pulumi.BoolPtrInput
+	// Whether there is renewal data
 	HasReservationData pulumi.StringPtrInput
-	// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+	// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 	HcRate pulumi.IntPtrInput
-	// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+	// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 	HcThreshold pulumi.StringPtrInput
-	// The health check source IP address, must be an unused IP within the local VPC.
+	// Health check source IP address
 	HealthCheckSourceIp pulumi.StringPtrInput
-	// The IP address for health screening purposes.
+	// Health check destination IP address
 	HealthCheckTargetIp pulumi.StringPtrInput
-	// The Access point ID to which the other end belongs.
+	// Peer access point ID
 	OppositeAccessPointId pulumi.StringPtrInput
-	// The opposite bandwidth of the router on the other side.
+	// opposite bandwidth
 	OppositeBandwidth pulumi.IntPtrInput
-	// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+	// The service status of the router interface on the opposite end of the connection.
 	OppositeInterfaceBusinessStatus pulumi.StringPtrInput
-	// The Interface ID of the router at the other end.
+	// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
 	OppositeInterfaceId pulumi.StringPtrInput
-	// The AliCloud account ID of the owner of the router interface on the other end.
+	// Account ID of the peer router interface
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
-	// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// Specifications of the interface of the peer router.
 	OppositeInterfaceSpec pulumi.StringPtrInput
-	// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// The status of the router interface on the peer of the connection.
 	OppositeInterfaceStatus pulumi.StringPtrInput
-	// The geographical ID of the location of the receiving end of the connection.
+	// Region of the connection peer
 	OppositeRegionId pulumi.StringPtrInput
-	// The id of the router at the other end.
+	// The ID of the router to which the opposite router interface belongs.
 	OppositeRouterId pulumi.StringPtrInput
-	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	// The router type associated with the peer router interface. Valid values:
+	// - VRouter: VPC router.
+	// - VBR: Virtual Border Router.
 	OppositeRouterType pulumi.StringPtrInput
-	// The opposite vpc instance id of the router on the other side.
+	// The peer VPC ID
 	OppositeVpcInstanceId pulumi.StringPtrInput
-	// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+	// The payment method of the router interface. Valid values:
+	// - Subscription : PrePaid.
+	// - PayAsYouGo : PostPaid.
 	PaymentType pulumi.StringPtrInput
-	// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// Purchase duration, value:
+	// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+	// - When you choose to pay per year, the value range is **1 to 3**.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
-	// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The billing cycle of the prepaid fee. Valid values:
+	// - `Month` (default): monthly payment.
+	// - `Year`: Pay per Year.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PricingCycle pulumi.StringPtrInput
-	// The reservation active time of the resource.
+	// ReservationActiveTime
 	ReservationActiveTime pulumi.StringPtrInput
-	// The reservation bandwidth of the resource.
+	// Renew Bandwidth
 	ReservationBandwidth pulumi.StringPtrInput
-	// The reservation internet charge type of the resource.
+	// Payment Type for Renewal
 	ReservationInternetChargeType pulumi.StringPtrInput
-	// The reservation order type of the resource.
+	// Renewal Order Type
 	ReservationOrderType pulumi.StringPtrInput
-	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// The role of the router interface. Valid values:
+	// - InitiatingSide : the initiator of the connection.
+	// - AcceptingSide : Connect to the receiving end.
 	Role pulumi.StringPtrInput
-	// The router id associated with the router interface.
+	// The ID of the router where the route entry is located.
 	RouterId pulumi.StringPtrInput
-	// The first ID of the resource.
+	// The first ID of the resource
 	RouterInterfaceId pulumi.StringPtrInput
-	// The name of the resource.
+	// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	RouterInterfaceName pulumi.StringPtrInput
-	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	// The type of the router where the routing table resides. Valid values:
+	// - VRouter:VPC router
+	// - VBR: Border Router
 	RouterType pulumi.StringPtrInput
-	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+	// - Mini.2: 2 Mbps
+	// - Mini.5: 5 Mbps
+	// - Small.1: 10 Mbps
+	// - Small.2: 20 Mbps
+	// - Small.5: 50 Mbps
+	// - Middle.1: 100 Mbps
+	// - Middle.2: 200 Mbps
+	// - Middle.5: 500 Mbps
+	// - Large.1: 1000 Mbps
+	// - Large.2: 2000 Mbps
+	// - Large.5: 5000 Mbps
+	// - Xlarge.1: 10000 Mbps
+	//
+	// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 	Spec pulumi.StringPtrInput
-	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// Resource attribute fields that represent the status of the resource. Value range:
+	// - Idle : Initialize.
+	// - Connecting : the initiator is in the process of Connecting.
+	// - AcceptingConnecting : the receiving end is being connected.
+	// - Activating : Restoring.
+	// - Active : Normal.
+	// - Modifying : Modifying.
+	// - Deactivating : Freezing.
+	// - Inactive : Frozen.
+	// - Deleting : Deleting.
+	// - Deleted : Deleted.
 	Status pulumi.StringPtrInput
-	// The vpc instance id of the resource.
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
+	// ID of the local VPC in the peering connection
 	VpcInstanceId pulumi.StringPtrInput
 }
 
@@ -386,106 +611,218 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 }
 
 type routerInterfaceArgs struct {
-	// The access point ID to which the VBR belongs.
+	// Access point ID
 	AccessPointId *string `pulumi:"accessPointId"`
-	// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// . Field 'name' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 	AutoPay *bool `pulumi:"autoPay"`
-	// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+	// Whether to enable automatic renewal. Value:
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// Whether to delete the health check IP address configured on the router interface. Value:
 	DeleteHealthCheckIp *bool `pulumi:"deleteHealthCheckIp"`
-	// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+	// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+	FastLinkMode *bool `pulumi:"fastLinkMode"`
+	// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 	HcRate *int `pulumi:"hcRate"`
-	// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+	// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 	HcThreshold *string `pulumi:"hcThreshold"`
-	// The health check source IP address, must be an unused IP within the local VPC.
+	// Health check source IP address
 	HealthCheckSourceIp *string `pulumi:"healthCheckSourceIp"`
-	// The IP address for health screening purposes.
+	// Health check destination IP address
 	HealthCheckTargetIp *string `pulumi:"healthCheckTargetIp"`
-	// The Access point ID to which the other end belongs.
+	// Peer access point ID
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
-	// The Interface ID of the router at the other end.
+	// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
-	// The AliCloud account ID of the owner of the router interface on the other end.
+	// Account ID of the peer router interface
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
-	// The geographical ID of the location of the receiving end of the connection.
+	// Region of the connection peer
 	OppositeRegionId string `pulumi:"oppositeRegionId"`
-	// The id of the router at the other end.
+	// The ID of the router to which the opposite router interface belongs.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
-	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	// The router type associated with the peer router interface. Valid values:
+	// - VRouter: VPC router.
+	// - VBR: Virtual Border Router.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
-	// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+	// The payment method of the router interface. Valid values:
+	// - Subscription : PrePaid.
+	// - PayAsYouGo : PostPaid.
 	PaymentType *string `pulumi:"paymentType"`
-	// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// Purchase duration, value:
+	// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+	// - When you choose to pay per year, the value range is **1 to 3**.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
-	// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The billing cycle of the prepaid fee. Valid values:
+	// - `Month` (default): monthly payment.
+	// - `Year`: Pay per Year.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PricingCycle *string `pulumi:"pricingCycle"`
-	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	// The ID of the resource group
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The role of the router interface. Valid values:
+	// - InitiatingSide : the initiator of the connection.
+	// - AcceptingSide : Connect to the receiving end.
 	Role string `pulumi:"role"`
-	// The router id associated with the router interface.
+	// The ID of the router where the route entry is located.
 	RouterId string `pulumi:"routerId"`
-	// The first ID of the resource.
-	RouterInterfaceId *string `pulumi:"routerInterfaceId"`
-	// The name of the resource.
+	// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	RouterInterfaceName *string `pulumi:"routerInterfaceName"`
-	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	// The type of the router where the routing table resides. Valid values:
+	// - VRouter:VPC router
+	// - VBR: Border Router
 	RouterType string `pulumi:"routerType"`
-	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+	// - Mini.2: 2 Mbps
+	// - Mini.5: 5 Mbps
+	// - Small.1: 10 Mbps
+	// - Small.2: 20 Mbps
+	// - Small.5: 50 Mbps
+	// - Middle.1: 100 Mbps
+	// - Middle.2: 200 Mbps
+	// - Middle.5: 500 Mbps
+	// - Large.1: 1000 Mbps
+	// - Large.2: 2000 Mbps
+	// - Large.5: 5000 Mbps
+	// - Xlarge.1: 10000 Mbps
+	//
+	// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 	Spec string `pulumi:"spec"`
-	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// Resource attribute fields that represent the status of the resource. Value range:
+	// - Idle : Initialize.
+	// - Connecting : the initiator is in the process of Connecting.
+	// - AcceptingConnecting : the receiving end is being connected.
+	// - Activating : Restoring.
+	// - Active : Normal.
+	// - Modifying : Modifying.
+	// - Deactivating : Freezing.
+	// - Inactive : Frozen.
+	// - Deleting : Deleting.
+	// - Deleted : Deleted.
 	Status *string `pulumi:"status"`
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a RouterInterface resource.
 type RouterInterfaceArgs struct {
-	// The access point ID to which the VBR belongs.
+	// Access point ID
 	AccessPointId pulumi.StringPtrInput
-	// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// . Field 'name' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 	AutoPay pulumi.BoolPtrInput
-	// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+	// Whether to enable automatic renewal. Value:
+	AutoRenew pulumi.BoolPtrInput
+	// Whether to delete the health check IP address configured on the router interface. Value:
 	DeleteHealthCheckIp pulumi.BoolPtrInput
-	// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+	// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+	FastLinkMode pulumi.BoolPtrInput
+	// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 	HcRate pulumi.IntPtrInput
-	// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+	// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 	HcThreshold pulumi.StringPtrInput
-	// The health check source IP address, must be an unused IP within the local VPC.
+	// Health check source IP address
 	HealthCheckSourceIp pulumi.StringPtrInput
-	// The IP address for health screening purposes.
+	// Health check destination IP address
 	HealthCheckTargetIp pulumi.StringPtrInput
-	// The Access point ID to which the other end belongs.
+	// Peer access point ID
 	OppositeAccessPointId pulumi.StringPtrInput
-	// The Interface ID of the router at the other end.
+	// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+	//
+	// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
 	OppositeInterfaceId pulumi.StringPtrInput
-	// The AliCloud account ID of the owner of the router interface on the other end.
+	// Account ID of the peer router interface
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
-	// The geographical ID of the location of the receiving end of the connection.
+	// Region of the connection peer
 	OppositeRegionId pulumi.StringInput
-	// The id of the router at the other end.
+	// The ID of the router to which the opposite router interface belongs.
 	OppositeRouterId pulumi.StringPtrInput
-	// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+	// The router type associated with the peer router interface. Valid values:
+	// - VRouter: VPC router.
+	// - VBR: Virtual Border Router.
 	OppositeRouterType pulumi.StringPtrInput
-	// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
+	// The payment method of the router interface. Valid values:
+	// - Subscription : PrePaid.
+	// - PayAsYouGo : PostPaid.
 	PaymentType pulumi.StringPtrInput
-	// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// Purchase duration, value:
+	// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+	// - When you choose to pay per year, the value range is **1 to 3**.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
-	// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+	// The billing cycle of the prepaid fee. Valid values:
+	// - `Month` (default): monthly payment.
+	// - `Year`: Pay per Year.
+	//
+	// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PricingCycle pulumi.StringPtrInput
-	// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+	// The ID of the resource group
+	ResourceGroupId pulumi.StringPtrInput
+	// The role of the router interface. Valid values:
+	// - InitiatingSide : the initiator of the connection.
+	// - AcceptingSide : Connect to the receiving end.
 	Role pulumi.StringInput
-	// The router id associated with the router interface.
+	// The ID of the router where the route entry is located.
 	RouterId pulumi.StringInput
-	// The first ID of the resource.
-	RouterInterfaceId pulumi.StringPtrInput
-	// The name of the resource.
+	// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 	RouterInterfaceName pulumi.StringPtrInput
-	// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+	// The type of the router where the routing table resides. Valid values:
+	// - VRouter:VPC router
+	// - VBR: Border Router
 	RouterType pulumi.StringInput
-	// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+	// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+	// - Mini.2: 2 Mbps
+	// - Mini.5: 5 Mbps
+	// - Small.1: 10 Mbps
+	// - Small.2: 20 Mbps
+	// - Small.5: 50 Mbps
+	// - Middle.1: 100 Mbps
+	// - Middle.2: 200 Mbps
+	// - Middle.5: 500 Mbps
+	// - Large.1: 1000 Mbps
+	// - Large.2: 2000 Mbps
+	// - Large.5: 5000 Mbps
+	// - Xlarge.1: 10000 Mbps
+	//
+	// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 	Spec pulumi.StringInput
-	// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+	// Resource attribute fields that represent the status of the resource. Value range:
+	// - Idle : Initialize.
+	// - Connecting : the initiator is in the process of Connecting.
+	// - AcceptingConnecting : the receiving end is being connected.
+	// - Activating : Restoring.
+	// - Active : Normal.
+	// - Modifying : Modifying.
+	// - Deactivating : Freezing.
+	// - Inactive : Frozen.
+	// - Deleting : Deleting.
+	// - Deleted : Deleted.
 	Status pulumi.StringPtrInput
+	// The tag of the resource
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	Tags pulumi.StringMapInput
 }
 
 func (RouterInterfaceArgs) ElementType() reflect.Type {
@@ -575,207 +912,277 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Co
 	return o
 }
 
-// The access point ID to which the VBR belongs.
+// Access point ID
 func (o RouterInterfaceOutput) AccessPointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.AccessPointId }).(pulumi.StringPtrOutput)
 }
 
-// Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+// . Field 'name' has been deprecated from provider version 1.263.0.
+//
+// Deprecated: Field 'auto_pay' has been deprecated since provider version 1.263.0.
 func (o RouterInterfaceOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
 
-// The bandwidth of the resource.
+// Whether to enable automatic renewal. Value:
+func (o RouterInterfaceOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The bandwidth of the router interface
 func (o RouterInterfaceOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+// The service status of the router interface.
 func (o RouterInterfaceOutput) BusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.BusinessStatus }).(pulumi.StringOutput)
 }
 
-// The connected time of the resource.
+// Time the connection was established
 func (o RouterInterfaceOutput) ConnectedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ConnectedTime }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o RouterInterfaceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The cross border of the resource.
+// CrossBorder
 func (o RouterInterfaceOutput) CrossBorder() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.BoolOutput { return v.CrossBorder }).(pulumi.BoolOutput)
 }
 
-// Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
+// Whether to delete the health check IP address configured on the router interface. Value:
 func (o RouterInterfaceOutput) DeleteHealthCheckIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.BoolPtrOutput { return v.DeleteHealthCheckIp }).(pulumi.BoolPtrOutput)
 }
 
-// The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+// The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 func (o RouterInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The end time of the resource.
+// End Time of Prepaid
 func (o RouterInterfaceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// The has reservation data of the resource.
+// Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
+func (o RouterInterfaceOutput) FastLinkMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.BoolPtrOutput { return v.FastLinkMode }).(pulumi.BoolPtrOutput)
+}
+
+// Whether there is renewal data
 func (o RouterInterfaceOutput) HasReservationData() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.HasReservationData }).(pulumi.StringOutput)
 }
 
-// The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
+// Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
 func (o RouterInterfaceOutput) HcRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.IntPtrOutput { return v.HcRate }).(pulumi.IntPtrOutput)
 }
 
-// The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
+// Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
 func (o RouterInterfaceOutput) HcThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.HcThreshold }).(pulumi.StringPtrOutput)
 }
 
-// The health check source IP address, must be an unused IP within the local VPC.
+// Health check source IP address
 func (o RouterInterfaceOutput) HealthCheckSourceIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.HealthCheckSourceIp }).(pulumi.StringPtrOutput)
 }
 
-// The IP address for health screening purposes.
+// Health check destination IP address
 func (o RouterInterfaceOutput) HealthCheckTargetIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.HealthCheckTargetIp }).(pulumi.StringPtrOutput)
 }
 
-// The Access point ID to which the other end belongs.
+// Peer access point ID
 func (o RouterInterfaceOutput) OppositeAccessPointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeAccessPointId }).(pulumi.StringPtrOutput)
 }
 
-// The opposite bandwidth of the router on the other side.
+// opposite bandwidth
 func (o RouterInterfaceOutput) OppositeBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.IntOutput { return v.OppositeBandwidth }).(pulumi.IntOutput)
 }
 
-// The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
+// The service status of the router interface on the opposite end of the connection.
 func (o RouterInterfaceOutput) OppositeInterfaceBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceBusinessStatus }).(pulumi.StringOutput)
 }
 
-// The Interface ID of the router at the other end.
-func (o RouterInterfaceOutput) OppositeInterfaceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeInterfaceId }).(pulumi.StringPtrOutput)
+// . Field 'router_table_id' has been deprecated from provider version 1.263.0.
+//
+// Deprecated: Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
+func (o RouterInterfaceOutput) OppositeInterfaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceId }).(pulumi.StringOutput)
 }
 
-// The AliCloud account ID of the owner of the router interface on the other end.
+// Account ID of the peer router interface
 func (o RouterInterfaceOutput) OppositeInterfaceOwnerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeInterfaceOwnerId }).(pulumi.StringPtrOutput)
 }
 
-// The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+// Specifications of the interface of the peer router.
 func (o RouterInterfaceOutput) OppositeInterfaceSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceSpec }).(pulumi.StringOutput)
 }
 
-// The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+// The status of the router interface on the peer of the connection.
 func (o RouterInterfaceOutput) OppositeInterfaceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceStatus }).(pulumi.StringOutput)
 }
 
-// The geographical ID of the location of the receiving end of the connection.
+// Region of the connection peer
 func (o RouterInterfaceOutput) OppositeRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRegionId }).(pulumi.StringOutput)
 }
 
-// The id of the router at the other end.
+// The ID of the router to which the opposite router interface belongs.
 func (o RouterInterfaceOutput) OppositeRouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeRouterId }).(pulumi.StringPtrOutput)
 }
 
-// The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
+// The router type associated with the peer router interface. Valid values:
+// - VRouter: VPC router.
+// - VBR: Virtual Border Router.
 func (o RouterInterfaceOutput) OppositeRouterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRouterType }).(pulumi.StringOutput)
 }
 
-// The opposite vpc instance id of the router on the other side.
+// The peer VPC ID
 func (o RouterInterfaceOutput) OppositeVpcInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeVpcInstanceId }).(pulumi.StringOutput)
 }
 
-// The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
-func (o RouterInterfaceOutput) PaymentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+// The payment method of the router interface. Valid values:
+// - Subscription : PrePaid.
+// - PayAsYouGo : PostPaid.
+func (o RouterInterfaceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+// Purchase duration, value:
+// - When you choose to pay on a monthly basis, the value range is **1 to 9**.
+// - When you choose to pay per year, the value range is **1 to 3**.
+//
+// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RouterInterfaceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.> **InstanceChargeType** is required when the value of the parameter is **PrePaid.
+// The billing cycle of the prepaid fee. Valid values:
+// - `Month` (default): monthly payment.
+// - `Year`: Pay per Year.
+//
+// > **NOTE:**  `period` is required when the value of the parameter `paymentType` is `Subscription`.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o RouterInterfaceOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
 
-// The reservation active time of the resource.
+// ReservationActiveTime
 func (o RouterInterfaceOutput) ReservationActiveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ReservationActiveTime }).(pulumi.StringOutput)
 }
 
-// The reservation bandwidth of the resource.
+// Renew Bandwidth
 func (o RouterInterfaceOutput) ReservationBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ReservationBandwidth }).(pulumi.StringOutput)
 }
 
-// The reservation internet charge type of the resource.
+// Payment Type for Renewal
 func (o RouterInterfaceOutput) ReservationInternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ReservationInternetChargeType }).(pulumi.StringOutput)
 }
 
-// The reservation order type of the resource.
+// Renewal Order Type
 func (o RouterInterfaceOutput) ReservationOrderType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ReservationOrderType }).(pulumi.StringOutput)
 }
 
-// The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
+// The ID of the resource group
+func (o RouterInterfaceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The role of the router interface. Valid values:
+// - InitiatingSide : the initiator of the connection.
+// - AcceptingSide : Connect to the receiving end.
 func (o RouterInterfaceOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// The router id associated with the router interface.
+// The ID of the router where the route entry is located.
 func (o RouterInterfaceOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource.
+// The first ID of the resource
 func (o RouterInterfaceOutput) RouterInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterInterfaceId }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
 func (o RouterInterfaceOutput) RouterInterfaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.RouterInterfaceName }).(pulumi.StringPtrOutput)
 }
 
-// The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
+// The type of the router where the routing table resides. Valid values:
+// - VRouter:VPC router
+// - VBR: Border Router
 func (o RouterInterfaceOutput) RouterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterType }).(pulumi.StringOutput)
 }
 
-// The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
+// The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
+// - Mini.2: 2 Mbps
+// - Mini.5: 5 Mbps
+// - Small.1: 10 Mbps
+// - Small.2: 20 Mbps
+// - Small.5: 50 Mbps
+// - Middle.1: 100 Mbps
+// - Middle.2: 200 Mbps
+// - Middle.5: 500 Mbps
+// - Large.1: 1000 Mbps
+// - Large.2: 2000 Mbps
+// - Large.5: 5000 Mbps
+// - Xlarge.1: 10000 Mbps
+//
+// When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
 func (o RouterInterfaceOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
+// Resource attribute fields that represent the status of the resource. Value range:
+// - Idle : Initialize.
+// - Connecting : the initiator is in the process of Connecting.
+// - AcceptingConnecting : the receiving end is being connected.
+// - Activating : Restoring.
+// - Active : Normal.
+// - Modifying : Modifying.
+// - Deactivating : Freezing.
+// - Inactive : Frozen.
+// - Deleting : Deleting.
+// - Deleted : Deleted.
 func (o RouterInterfaceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The vpc instance id of the resource.
+// The tag of the resource
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o RouterInterfaceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// ID of the local VPC in the peering connection
 func (o RouterInterfaceOutput) VpcInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.VpcInstanceId }).(pulumi.StringOutput)
 }

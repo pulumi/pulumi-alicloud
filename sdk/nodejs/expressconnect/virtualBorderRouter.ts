@@ -21,21 +21,21 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const example = alicloud.expressconnect.getPhysicalConnections({
+ * const name = config.get("name") || "terraform-example";
+ * const _default = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.index.Integer("vlan_id", {
- *     max: 2999,
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 1,
+ *     max: 2999,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("example", {
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
+ *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: defaultInteger.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -79,87 +79,109 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
     }
 
     /**
-     * The associated physical connections.
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     *
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      */
     declare public readonly associatedPhysicalConnections: pulumi.Output<string | undefined>;
     /**
-     * The bandwidth.
+     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
-    declare public readonly bandwidth: pulumi.Output<number>;
+    declare public readonly bandwidth: pulumi.Output<number | undefined>;
     /**
-     * Operators for physical connection circuit provided coding.
+     * The circuit code provided by the operator for the physical connection.
      */
     declare public readonly circuitCode: pulumi.Output<string | undefined>;
     /**
-     * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * (Available since v1.263.0) The creation time of the VBR.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The description information of the VBR.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      */
     declare public readonly detectMultiplier: pulumi.Output<number>;
     /**
-     * Whether to Enable IPv6. Valid values: `false`, `true`.
+     * Whether IPv6 is enabled.
      */
-    declare public readonly enableIpv6: pulumi.Output<boolean>;
+    declare public readonly enableIpv6: pulumi.Output<boolean | undefined>;
     /**
-     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     */
-    declare public readonly includeCrossAccountVbr: pulumi.Output<boolean>;
-    /**
-     * Alibaba Cloud-Connected IPv4 address.
+     * The IPv4 address on the Alibaba Cloud side of the VBR instance.
      */
     declare public readonly localGatewayIp: pulumi.Output<string>;
     /**
-     * Alibaba Cloud-Connected IPv6 Address.
+     * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
     declare public readonly localIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
-     * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      */
     declare public readonly minRxInterval: pulumi.Output<number>;
     /**
-     * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      */
     declare public readonly minTxInterval: pulumi.Output<number>;
     /**
-     * The Client-Side Interconnection IPv4 Address.
+     * Maximum transmission unit.
+     */
+    declare public readonly mtu: pulumi.Output<number>;
+    /**
+     * The IPv4 address of the client side of the VBR instance.
      */
     declare public readonly peerGatewayIp: pulumi.Output<string>;
     /**
-     * The Client-Side Interconnection IPv6 Address.
+     * The IPv6 address of the client side of the VBR instance.
      */
     declare public readonly peerIpv6GatewayIp: pulumi.Output<string | undefined>;
     /**
-     * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      */
     declare public readonly peeringIpv6SubnetMask: pulumi.Output<string | undefined>;
     /**
-     * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      */
     declare public readonly peeringSubnetMask: pulumi.Output<string>;
     /**
-     * The ID of the Physical Connection to Which the ID.
+     * The ID of the physical connection to which the VBR belongs.
      */
     declare public readonly physicalConnectionId: pulumi.Output<string>;
+    /**
+     * The ID of the resource group.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      */
     declare public /*out*/ readonly routeTableId: pulumi.Output<string>;
     /**
-     * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     */
+    declare public readonly sitelinkEnable: pulumi.Output<boolean | undefined>;
+    /**
+     * The status of the VBR. Valid values: `active`, `terminated`.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
-     * The vbr owner id.
+     * The tag of the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      */
     declare public readonly vbrOwnerId: pulumi.Output<string | undefined>;
     /**
-     * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * The name of the VBR instance.
      */
     declare public readonly virtualBorderRouterName: pulumi.Output<string | undefined>;
     /**
-     * The VLAN ID of the VBR. Value range: 0~2999.
+     * The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      */
     declare public readonly vlanId: pulumi.Output<number>;
 
@@ -179,21 +201,25 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["associatedPhysicalConnections"] = state?.associatedPhysicalConnections;
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["circuitCode"] = state?.circuitCode;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["detectMultiplier"] = state?.detectMultiplier;
             resourceInputs["enableIpv6"] = state?.enableIpv6;
-            resourceInputs["includeCrossAccountVbr"] = state?.includeCrossAccountVbr;
             resourceInputs["localGatewayIp"] = state?.localGatewayIp;
             resourceInputs["localIpv6GatewayIp"] = state?.localIpv6GatewayIp;
             resourceInputs["minRxInterval"] = state?.minRxInterval;
             resourceInputs["minTxInterval"] = state?.minTxInterval;
+            resourceInputs["mtu"] = state?.mtu;
             resourceInputs["peerGatewayIp"] = state?.peerGatewayIp;
             resourceInputs["peerIpv6GatewayIp"] = state?.peerIpv6GatewayIp;
             resourceInputs["peeringIpv6SubnetMask"] = state?.peeringIpv6SubnetMask;
             resourceInputs["peeringSubnetMask"] = state?.peeringSubnetMask;
             resourceInputs["physicalConnectionId"] = state?.physicalConnectionId;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["sitelinkEnable"] = state?.sitelinkEnable;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["vbrOwnerId"] = state?.vbrOwnerId;
             resourceInputs["virtualBorderRouterName"] = state?.virtualBorderRouterName;
             resourceInputs["vlanId"] = state?.vlanId;
@@ -220,20 +246,24 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["detectMultiplier"] = args?.detectMultiplier;
             resourceInputs["enableIpv6"] = args?.enableIpv6;
-            resourceInputs["includeCrossAccountVbr"] = args?.includeCrossAccountVbr;
             resourceInputs["localGatewayIp"] = args?.localGatewayIp;
             resourceInputs["localIpv6GatewayIp"] = args?.localIpv6GatewayIp;
             resourceInputs["minRxInterval"] = args?.minRxInterval;
             resourceInputs["minTxInterval"] = args?.minTxInterval;
+            resourceInputs["mtu"] = args?.mtu;
             resourceInputs["peerGatewayIp"] = args?.peerGatewayIp;
             resourceInputs["peerIpv6GatewayIp"] = args?.peerIpv6GatewayIp;
             resourceInputs["peeringIpv6SubnetMask"] = args?.peeringIpv6SubnetMask;
             resourceInputs["peeringSubnetMask"] = args?.peeringSubnetMask;
             resourceInputs["physicalConnectionId"] = args?.physicalConnectionId;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
+            resourceInputs["sitelinkEnable"] = args?.sitelinkEnable;
             resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["vbrOwnerId"] = args?.vbrOwnerId;
             resourceInputs["virtualBorderRouterName"] = args?.virtualBorderRouterName;
             resourceInputs["vlanId"] = args?.vlanId;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["routeTableId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -246,87 +276,109 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
  */
 export interface VirtualBorderRouterState {
     /**
-     * The associated physical connections.
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     *
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      */
     associatedPhysicalConnections?: pulumi.Input<string>;
     /**
-     * The bandwidth.
+     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * Operators for physical connection circuit provided coding.
+     * The circuit code provided by the operator for the physical connection.
      */
     circuitCode?: pulumi.Input<string>;
     /**
-     * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * (Available since v1.263.0) The creation time of the VBR.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The description information of the VBR.
      */
     description?: pulumi.Input<string>;
     /**
-     * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      */
     detectMultiplier?: pulumi.Input<number>;
     /**
-     * Whether to Enable IPv6. Valid values: `false`, `true`.
+     * Whether IPv6 is enabled.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
-     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     */
-    includeCrossAccountVbr?: pulumi.Input<boolean>;
-    /**
-     * Alibaba Cloud-Connected IPv4 address.
+     * The IPv4 address on the Alibaba Cloud side of the VBR instance.
      */
     localGatewayIp?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv6 Address.
+     * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
     localIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      */
     minRxInterval?: pulumi.Input<number>;
     /**
-     * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      */
     minTxInterval?: pulumi.Input<number>;
     /**
-     * The Client-Side Interconnection IPv4 Address.
+     * Maximum transmission unit.
+     */
+    mtu?: pulumi.Input<number>;
+    /**
+     * The IPv4 address of the client side of the VBR instance.
      */
     peerGatewayIp?: pulumi.Input<string>;
     /**
-     * The Client-Side Interconnection IPv6 Address.
+     * The IPv6 address of the client side of the VBR instance.
      */
     peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      */
     peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      */
     peeringSubnetMask?: pulumi.Input<string>;
     /**
-     * The ID of the Physical Connection to Which the ID.
+     * The ID of the physical connection to which the VBR belongs.
      */
     physicalConnectionId?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
      */
     routeTableId?: pulumi.Input<string>;
     /**
-     * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     */
+    sitelinkEnable?: pulumi.Input<boolean>;
+    /**
+     * The status of the VBR. Valid values: `active`, `terminated`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The vbr owner id.
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      */
     vbrOwnerId?: pulumi.Input<string>;
     /**
-     * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * The name of the VBR instance.
      */
     virtualBorderRouterName?: pulumi.Input<string>;
     /**
-     * The VLAN ID of the VBR. Value range: 0~2999.
+     * The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      */
     vlanId?: pulumi.Input<number>;
 }
@@ -336,83 +388,101 @@ export interface VirtualBorderRouterState {
  */
 export interface VirtualBorderRouterArgs {
     /**
-     * The associated physical connections.
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     *
+     * @deprecated Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      */
     associatedPhysicalConnections?: pulumi.Input<string>;
     /**
-     * The bandwidth.
+     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
     bandwidth?: pulumi.Input<number>;
     /**
-     * Operators for physical connection circuit provided coding.
+     * The circuit code provided by the operator for the physical connection.
      */
     circuitCode?: pulumi.Input<string>;
     /**
-     * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * The description information of the VBR.
      */
     description?: pulumi.Input<string>;
     /**
-     * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      */
     detectMultiplier?: pulumi.Input<number>;
     /**
-     * Whether to Enable IPv6. Valid values: `false`, `true`.
+     * Whether IPv6 is enabled.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
-     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     */
-    includeCrossAccountVbr?: pulumi.Input<boolean>;
-    /**
-     * Alibaba Cloud-Connected IPv4 address.
+     * The IPv4 address on the Alibaba Cloud side of the VBR instance.
      */
     localGatewayIp: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv6 Address.
+     * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
     localIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      */
     minRxInterval?: pulumi.Input<number>;
     /**
-     * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      */
     minTxInterval?: pulumi.Input<number>;
     /**
-     * The Client-Side Interconnection IPv4 Address.
+     * Maximum transmission unit.
+     */
+    mtu?: pulumi.Input<number>;
+    /**
+     * The IPv4 address of the client side of the VBR instance.
      */
     peerGatewayIp: pulumi.Input<string>;
     /**
-     * The Client-Side Interconnection IPv6 Address.
+     * The IPv6 address of the client side of the VBR instance.
      */
     peerIpv6GatewayIp?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      */
     peeringIpv6SubnetMask?: pulumi.Input<string>;
     /**
-     * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      */
     peeringSubnetMask: pulumi.Input<string>;
     /**
-     * The ID of the Physical Connection to Which the ID.
+     * The ID of the physical connection to which the VBR belongs.
      */
     physicalConnectionId: pulumi.Input<string>;
     /**
-     * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     */
+    sitelinkEnable?: pulumi.Input<boolean>;
+    /**
+     * The status of the VBR. Valid values: `active`, `terminated`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The vbr owner id.
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      */
     vbrOwnerId?: pulumi.Input<string>;
     /**
-     * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * The name of the VBR instance.
      */
     virtualBorderRouterName?: pulumi.Input<string>;
     /**
-     * The VLAN ID of the VBR. Value range: 0~2999.
+     * The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      */
     vlanId: pulumi.Input<number>;
 }

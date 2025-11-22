@@ -72,14 +72,18 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  operation: _builtins.str,
+                 type: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Request Header Name.
         :param _builtins.str operation: Mode of operation. Value range:
+        :param _builtins.str type: Value type. Value range:
         :param _builtins.str value: Request header value
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "operation", operation)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -98,6 +102,14 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification(dict):
         Mode of operation. Value range:
         """
         return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Value type. Value range:
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
@@ -871,7 +883,7 @@ class RecordAuthConf(dict):
                  secret_key: Optional[_builtins.str] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str access_key: The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+        :param _builtins.str access_key: The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
         :param _builtins.str auth_type: The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
         :param _builtins.str region: The region of the origin. If the origin type is S3, you must specify this value. You can get the region information from the official website of S3.
         :param _builtins.str secret_key: The secret access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
@@ -892,7 +904,7 @@ class RecordAuthConf(dict):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[_builtins.str]:
         """
-        The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+        The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
         """
         return pulumi.get(self, "access_key")
 
@@ -975,12 +987,11 @@ class RecordData(dict):
         :param _builtins.int port: The port of the record, specified within the range of 0 to 65,535. This parameter is required when you add an SRV record.
         :param _builtins.int priority: The priority of the record, specified within the range of 0 to 65,535. A smaller value indicates a higher priority. This parameter is required when you add MX, SRV, and URI records.
         :param _builtins.int selector: The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-        :param _builtins.str tag: The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+        :param _builtins.str tag: The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
         :param _builtins.int type: The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
         :param _builtins.int usage: The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
-        :param _builtins.str value: The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-               
-               - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+        :param _builtins.str value: Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+               - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
                - `CNAME`: the target domain name.
                - `NS`: the name servers for the domain name.
                - `MX`: a valid domain name of the target mail server.
@@ -1095,7 +1106,7 @@ class RecordData(dict):
     @pulumi.getter
     def tag(self) -> Optional[_builtins.str]:
         """
-        The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+        The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
         """
         return pulumi.get(self, "tag")
 
@@ -1119,9 +1130,8 @@ class RecordData(dict):
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
         """
-        The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-
-        - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+        Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+        - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
         - `CNAME`: the target domain name.
         - `NS`: the name servers for the domain name.
         - `MX`: a valid domain name of the target mail server.

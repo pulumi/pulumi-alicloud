@@ -632,6 +632,20 @@ public class SynchronizationJob extends com.pulumi.resources.CustomResource {
         return this.instanceClass;
     }
     /**
+     * DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task&#39;s behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+     * 
+     */
+    @Export(name="jobParameters", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> jobParameters;
+
+    /**
+     * @return DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task&#39;s behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+     * 
+     */
+    public Output<Optional<String>> jobParameters() {
+        return Codegen.optional(this.jobParameters);
+    }
+    /**
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
      * 
      */

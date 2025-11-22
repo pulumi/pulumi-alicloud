@@ -18,6 +18,8 @@ type HttpRequestHeaderModificationRuleRequestHeaderModification struct {
 	Name string `pulumi:"name"`
 	// Mode of operation. Value range:
 	Operation string `pulumi:"operation"`
+	// Value type. Value range:
+	Type *string `pulumi:"type"`
 	// Request header value
 	Value *string `pulumi:"value"`
 }
@@ -38,6 +40,8 @@ type HttpRequestHeaderModificationRuleRequestHeaderModificationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Mode of operation. Value range:
 	Operation pulumi.StringInput `pulumi:"operation"`
+	// Value type. Value range:
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Request header value
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -101,6 +105,11 @@ func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Name()
 // Mode of operation. Value range:
 func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Value type. Value range:
+func (o HttpRequestHeaderModificationRuleRequestHeaderModificationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRequestHeaderModificationRuleRequestHeaderModification) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // Request header value
@@ -1643,7 +1652,7 @@ func (o OriginPoolOriginAuthConfPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type RecordAuthConf struct {
-	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
 	AccessKey *string `pulumi:"accessKey"`
 	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
 	AuthType *string `pulumi:"authType"`
@@ -1667,7 +1676,7 @@ type RecordAuthConfInput interface {
 }
 
 type RecordAuthConfArgs struct {
-	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+	// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
 	// The authentication type of the origin server. Different origins support different authentication types. The type of origin refers to the SourceType parameter in this operation. If the type of origin is OSS or S3, you must specify the authentication type of the origin. Valid values:
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
@@ -1756,7 +1765,7 @@ func (o RecordAuthConfOutput) ToRecordAuthConfPtrOutputWithContext(ctx context.C
 	}).(RecordAuthConfPtrOutput)
 }
 
-// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
 func (o RecordAuthConfOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordAuthConf) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
@@ -1805,7 +1814,7 @@ func (o RecordAuthConfPtrOutput) Elem() RecordAuthConfOutput {
 	}).(RecordAuthConfOutput)
 }
 
-// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
 func (o RecordAuthConfPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordAuthConf) *string {
 		if v == nil {
@@ -1874,15 +1883,14 @@ type RecordData struct {
 	Priority *int `pulumi:"priority"`
 	// The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
 	Selector *int `pulumi:"selector"`
-	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
 	Tag *string `pulumi:"tag"`
 	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
 	Type *int `pulumi:"type"`
 	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
 	Usage *int `pulumi:"usage"`
-	// The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-	//
-	// - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+	// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+	// - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
 	// - `CNAME`: the target domain name.
 	// - `NS`: the name servers for the domain name.
 	// - `MX`: a valid domain name of the target mail server.
@@ -1925,15 +1933,14 @@ type RecordDataArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The type of certificate or public key, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
 	Selector pulumi.IntPtrInput `pulumi:"selector"`
-	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+	// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
 	Type pulumi.IntPtrInput `pulumi:"type"`
 	// The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
 	Usage pulumi.IntPtrInput `pulumi:"usage"`
-	// The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-	//
-	// - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+	// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+	// - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
 	// - `CNAME`: the target domain name.
 	// - `NS`: the name servers for the domain name.
 	// - `MX`: a valid domain name of the target mail server.
@@ -2068,7 +2075,7 @@ func (o RecordDataOutput) Selector() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RecordData) *int { return v.Selector }).(pulumi.IntPtrOutput)
 }
 
-// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
 func (o RecordDataOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordData) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -2083,9 +2090,8 @@ func (o RecordDataOutput) Usage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RecordData) *int { return v.Usage }).(pulumi.IntPtrOutput)
 }
 
-// The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-//
-// - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+// - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
 // - `CNAME`: the target domain name.
 // - `NS`: the name servers for the domain name.
 // - `MX`: a valid domain name of the target mail server.
@@ -2216,7 +2222,7 @@ func (o RecordDataPtrOutput) Selector() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+// The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
 func (o RecordDataPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordData) *string {
 		if v == nil {
@@ -2246,9 +2252,8 @@ func (o RecordDataPtrOutput) Usage() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-//
-// - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+// Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+// - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
 // - `CNAME`: the target domain name.
 // - `NS`: the name servers for the domain name.
 // - `MX`: a valid domain name of the target mail server.

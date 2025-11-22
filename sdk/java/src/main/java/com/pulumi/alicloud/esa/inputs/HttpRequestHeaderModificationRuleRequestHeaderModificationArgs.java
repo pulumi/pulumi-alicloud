@@ -47,6 +47,21 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
     }
 
     /**
+     * Value type. Value range:
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Value type. Value range:
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * Request header value
      * 
      */
@@ -66,6 +81,7 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
     private HttpRequestHeaderModificationRuleRequestHeaderModificationArgs(HttpRequestHeaderModificationRuleRequestHeaderModificationArgs $) {
         this.name = $.name;
         this.operation = $.operation;
+        this.type = $.type;
         this.value = $.value;
     }
 
@@ -127,6 +143,27 @@ public final class HttpRequestHeaderModificationRuleRequestHeaderModificationArg
          */
         public Builder operation(String operation) {
             return operation(Output.of(operation));
+        }
+
+        /**
+         * @param type Value type. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Value type. Value range:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

@@ -86,7 +86,7 @@ export class ClientCaCertificate extends pulumi.CustomResource {
     /**
      * Site Id
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Certificate status.
      */
@@ -154,7 +154,7 @@ export interface ClientCaCertificateState {
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Certificate status.
      */
@@ -176,5 +176,5 @@ export interface ClientCaCertificateArgs {
     /**
      * Site Id
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

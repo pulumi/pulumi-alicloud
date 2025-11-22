@@ -86,6 +86,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The ID of the dedicated host cluster.
+     * 
+     */
+    @Import(name="dedicatedHostClusterId")
+    private @Nullable Output<String> dedicatedHostClusterId;
+
+    /**
+     * @return The ID of the dedicated host cluster.
+     * 
+     */
+    public Optional<Output<String>> dedicatedHostClusterId() {
+        return Optional.ofNullable(this.dedicatedHostClusterId);
+    }
+
+    /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      * 
      */
@@ -143,6 +158,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> hostName() {
         return Optional.ofNullable(this.hostName);
+    }
+
+    /**
+     * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    /**
+     * @return Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+     * 
+     */
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
     }
 
     /**
@@ -875,10 +905,12 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.creditSpecification = $.creditSpecification;
         this.customPriorities = $.customPriorities;
         this.dataDisks = $.dataDisks;
+        this.dedicatedHostClusterId = $.dedicatedHostClusterId;
         this.deletionProtection = $.deletionProtection;
         this.enable = $.enable;
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
+        this.httpEndpoint = $.httpEndpoint;
         this.imageId = $.imageId;
         this.imageName = $.imageName;
         this.imageOptionsLoginAsNonRoot = $.imageOptionsLoginAsNonRoot;
@@ -1049,6 +1081,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param dedicatedHostClusterId The ID of the dedicated host cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedHostClusterId(@Nullable Output<String> dedicatedHostClusterId) {
+            $.dedicatedHostClusterId = dedicatedHostClusterId;
+            return this;
+        }
+
+        /**
+         * @param dedicatedHostClusterId The ID of the dedicated host cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedHostClusterId(String dedicatedHostClusterId) {
+            return dedicatedHostClusterId(Output.of(dedicatedHostClusterId));
+        }
+
+        /**
          * @param deletionProtection Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
          * 
          * @return builder
@@ -1130,6 +1183,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
+        }
+
+        /**
+         * @param httpEndpoint Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
         }
 
         /**

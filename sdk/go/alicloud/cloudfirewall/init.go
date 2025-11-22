@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:cloudfirewall/addressBook:AddressBook":
 		r = &AddressBook{}
+	case "alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus":
+		r = &AiTrafficAnalysisStatus{}
 	case "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
 		r = &ControlPolicy{}
 	case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
@@ -65,6 +67,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cloudfirewall/addressBook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudfirewall/aiTrafficAnalysisStatus",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

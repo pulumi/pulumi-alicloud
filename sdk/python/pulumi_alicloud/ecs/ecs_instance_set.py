@@ -72,12 +72,13 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below..
+               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
@@ -87,35 +88,37 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[_builtins.str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
-        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset in the image.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy. Valid values:
                - `Active`: Enable security enhancement strategy, it only works on system images.
                - `Deactive`: Disable security enhancement strategy, it works on all images.
-        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance. Valid values:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_disk_name: The name of the system disk.
         :param pulumi.Input[_builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.bool] unique_suffix: Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC.
@@ -271,7 +274,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -283,9 +286,10 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -297,7 +301,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="bootCheckOsWithAssistant")
     def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicate how to check instance ready to use.
+        Indicate how to check instance ready to use. Valid values:
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -309,7 +313,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See `data_disks` below..
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -429,7 +433,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -501,7 +505,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
-        A list of NetworkInterface. See `network_interfaces` below..
+        A list of NetworkInterface. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -537,9 +541,10 @@ class EcsInstanceSetArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -551,7 +556,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -587,7 +592,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The security enhancement strategy.
+        The security enhancement strategy. Valid values:
         - `Active`: Enable security enhancement strategy, it only works on system images.
         - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
@@ -601,7 +606,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -613,10 +618,11 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        The spot strategy of a Pay-As-You-Go instance. Valid values:
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -640,7 +646,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -688,7 +694,7 @@ class EcsInstanceSetArgs:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -797,12 +803,13 @@ class _EcsInstanceSetState:
         Input properties used for looking up and filtering EcsInstanceSet resources.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below..
+               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
@@ -815,36 +822,38 @@ class _EcsInstanceSetState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of ECS Instance ID.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start.
-        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
+        :param pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset in the image.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy. Valid values:
                - `Active`: Enable security enhancement strategy, it only works on system images.
                - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
-        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance. Valid values:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_disk_name: The name of the system disk.
         :param pulumi.Input[_builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.bool] unique_suffix: Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC.
@@ -969,7 +978,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -981,9 +990,10 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -995,7 +1005,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="bootCheckOsWithAssistant")
     def boot_check_os_with_assistant(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicate how to check instance ready to use.
+        Indicate how to check instance ready to use. Valid values:
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -1007,7 +1017,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]]:
         """
-        The list of data disks created with instance. See `data_disks` below..
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -1163,7 +1173,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1235,7 +1245,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]]:
         """
-        A list of NetworkInterface. See `network_interfaces` below..
+        A list of NetworkInterface. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1271,9 +1281,10 @@ class _EcsInstanceSetState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -1285,7 +1296,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1321,7 +1332,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The security enhancement strategy.
+        The security enhancement strategy. Valid values:
         - `Active`: Enable security enhancement strategy, it only works on system images.
         - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
@@ -1347,7 +1358,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -1359,10 +1370,11 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        The spot strategy of a Pay-As-You-Go instance. Valid values:
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1386,7 +1398,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -1434,7 +1446,7 @@ class _EcsInstanceSetState:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         """
         return pulumi.get(self, "system_disk_size")
 
@@ -1602,12 +1614,13 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below..
+               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
@@ -1619,36 +1632,38 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_charge_type: The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start.
-        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset in the image.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy. Valid values:
                - `Active`: Enable security enhancement strategy, it only works on system images.
                - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
-        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance. Valid values:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_disk_name: The name of the system disk.
         :param pulumi.Input[_builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.bool] unique_suffix: Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC.
@@ -1901,12 +1916,13 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] auto_release_time: The automatic release time of the `PostPaid` instance.
-        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
-        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.int] auto_renew_period: Auto renewal period of an instance, in the unit of month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below..
+               **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.bool] boot_check_os_with_assistant: Indicate how to check instance ready to use. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetDataDiskArgs', 'EcsInstanceSetDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether to enable release protection for the instance.
         :param pulumi.Input[_builtins.str] deployment_set_id: The ID of the deployment set to which to deploy the instance.
@@ -1919,36 +1935,38 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: A list of ECS Instance ID.
         :param pulumi.Input[_builtins.str] instance_name: The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen, and must not begin with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] instance_type: The type of instance to start.
-        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        :param pulumi.Input[_builtins.str] internet_charge_type: The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         :param pulumi.Input[_builtins.int] internet_max_bandwidth_out: The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
         :param pulumi.Input[_builtins.str] key_pair_name: The name of key pair that can login ECS instance successfully without password.
         :param pulumi.Input[_builtins.str] launch_template_id: The ID of the launch template.
         :param pulumi.Input[_builtins.str] launch_template_name: The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
         :param pulumi.Input[_builtins.str] launch_template_version: The version of the launch template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below..
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EcsInstanceSetNetworkInterfaceArgs', 'EcsInstanceSetNetworkInterfaceArgsDict']]]] network_interfaces: A list of NetworkInterface. See `network_interfaces` below.
         :param pulumi.Input[_builtins.str] password: The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
         :param pulumi.Input[_builtins.bool] password_inherit: Whether to use the password preset in the image.
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy the resource, in month. Valid values:
                - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
                - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
-        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+               **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
+        :param pulumi.Input[_builtins.str] period_unit: The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         :param pulumi.Input[_builtins.str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the instance belongs.
-        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy.
+        :param pulumi.Input[_builtins.str] security_enhancement_strategy: The security enhancement strategy. Valid values:
                - `Active`: Enable security enhancement strategy, it only works on system images.
                - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: A list of security group ids to associate with.
-        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
-        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        :param pulumi.Input[_builtins.float] spot_price_limit: The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
+        :param pulumi.Input[_builtins.str] spot_strategy: The spot strategy of a Pay-As-You-Go instance. Valid values:
                - `NoSpot`: A regular Pay-As-You-Go instance.
                - `SpotWithPriceLimit`: A price threshold for a spot instance.
-               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+               **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         :param pulumi.Input[_builtins.str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
-        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        :param pulumi.Input[_builtins.str] system_disk_category: The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[_builtins.str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[_builtins.str] system_disk_name: The name of the system disk.
         :param pulumi.Input[_builtins.str] system_disk_performance_level: The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
-        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        :param pulumi.Input[_builtins.int] system_disk_size: The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[_builtins.bool] unique_suffix: Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
         :param pulumi.Input[_builtins.str] vswitch_id: The virtual switch ID to launch in VPC.
@@ -2025,7 +2043,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
+        Whether to enable auto-renewal for the instance. **Note:** `auto_renew` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -2033,9 +2051,10 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`.
+        Auto renewal period of an instance, in the unit of month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `auto_renew_period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -2043,7 +2062,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="bootCheckOsWithAssistant")
     def boot_check_os_with_assistant(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Indicate how to check instance ready to use.
+        Indicate how to check instance ready to use. Valid values:
         """
         return pulumi.get(self, "boot_check_os_with_assistant")
 
@@ -2051,7 +2070,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.EcsInstanceSetDataDisk']]]:
         """
-        The list of data disks created with instance. See `data_disks` below..
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -2155,7 +2174,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+        The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -2203,7 +2222,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.EcsInstanceSetNetworkInterface']]]:
         """
-        A list of NetworkInterface. See `network_interfaces` below..
+        A list of NetworkInterface. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2227,9 +2246,10 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`.
+        The duration that you will buy the resource, in month. Valid values:
         - When `period_unit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
         - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
+        **Note:** `period` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period")
 
@@ -2237,7 +2257,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: `Week`, `Month`.
+        The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `period_unit` is valid only when `instance_charge_type` is set to `PrePaid`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -2261,7 +2281,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="securityEnhancementStrategy")
     def security_enhancement_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The security enhancement strategy.
+        The security enhancement strategy. Valid values:
         - `Active`: Enable security enhancement strategy, it only works on system images.
         - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
@@ -2279,7 +2299,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="spotPriceLimit")
     def spot_price_limit(self) -> pulumi.Output[_builtins.float]:
         """
-        The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
+        The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spot_price_limit` takes effect only if `spot_strategy` is set to `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_price_limit")
 
@@ -2287,10 +2307,11 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="spotStrategy")
     def spot_strategy(self) -> pulumi.Output[_builtins.str]:
         """
-        The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        The spot strategy of a Pay-As-You-Go instance. Valid values:
         - `NoSpot`: A regular Pay-As-You-Go instance.
         - `SpotWithPriceLimit`: A price threshold for a spot instance.
-        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+        **Note:** `spot_strategy` takes effect only if `instance_charge_type` is set to `PostPaid`.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -2306,7 +2327,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[_builtins.str]:
         """
-        The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
+        The category of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         """
         return pulumi.get(self, "system_disk_category")
 
@@ -2338,7 +2359,7 @@ class EcsInstanceSet(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[_builtins.int]:
         """
-        The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+        The size of the system disk, measured in GiB. Valid values: `20` to `500`.
         """
         return pulumi.get(self, "system_disk_size")
 

@@ -35,7 +35,7 @@ public final class EcsInstanceSetDataDisk {
      */
     private @Nullable String diskName;
     /**
-     * @return The size of the data disk. Unit: GiB.
+     * @return The size of the data disk. Unit: GiB. Valid values:
      * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -94,7 +94,7 @@ public final class EcsInstanceSetDataDisk {
         return Optional.ofNullable(this.diskName);
     }
     /**
-     * @return The size of the data disk. Unit: GiB.
+     * @return The size of the data disk. Unit: GiB. Valid values:
      * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
      * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.

@@ -30,43 +30,56 @@ class VirtualBorderRouterArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_cross_account_vbr: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VirtualBorderRouter resource.
-        :param pulumi.Input[_builtins.str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
-        :param pulumi.Input[_builtins.str] peer_gateway_ip: The Client-Side Interconnection IPv4 Address.
-        :param pulumi.Input[_builtins.str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the Physical Connection to Which the ID.
-        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
-        :param pulumi.Input[_builtins.str] associated_physical_connections: The associated physical connections.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth.
-        :param pulumi.Input[_builtins.str] circuit_code: Operators for physical connection circuit provided coding.
-        :param pulumi.Input[_builtins.str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
-        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
-        :param pulumi.Input[_builtins.bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The Client-Side Interconnection IPv6 Address.
-        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The vbr owner id.
-        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
+        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
+        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
+        :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+               - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+               - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
+        :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
+        :param pulumi.Input[_builtins.str] description: The description information of the VBR.
+        :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
+               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: `3` to `10`.
+        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
+        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
         """
         pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
         pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
         pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
         pulumi.set(__self__, "physical_connection_id", physical_connection_id)
         pulumi.set(__self__, "vlan_id", vlan_id)
+        if associated_physical_connections is not None:
+            warnings.warn("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""associated_physical_connections is deprecated: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
         if associated_physical_connections is not None:
             pulumi.set(__self__, "associated_physical_connections", associated_physical_connections)
         if bandwidth is not None:
@@ -79,20 +92,26 @@ class VirtualBorderRouterArgs:
             pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
-        if include_cross_account_vbr is not None:
-            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_ipv6_gateway_ip is not None:
             pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
         if min_rx_interval is not None:
             pulumi.set(__self__, "min_rx_interval", min_rx_interval)
         if min_tx_interval is not None:
             pulumi.set(__self__, "min_tx_interval", min_tx_interval)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if peer_ipv6_gateway_ip is not None:
             pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
         if peering_ipv6_subnet_mask is not None:
             pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sitelink_enable is not None:
+            pulumi.set(__self__, "sitelink_enable", sitelink_enable)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vbr_owner_id is not None:
             pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
         if virtual_border_router_name is not None:
@@ -102,7 +121,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="localGatewayIp")
     def local_gateway_ip(self) -> pulumi.Input[_builtins.str]:
         """
-        Alibaba Cloud-Connected IPv4 address.
+        The IPv4 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_gateway_ip")
 
@@ -114,7 +133,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="peerGatewayIp")
     def peer_gateway_ip(self) -> pulumi.Input[_builtins.str]:
         """
-        The Client-Side Interconnection IPv4 Address.
+        The IPv4 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_gateway_ip")
 
@@ -126,7 +145,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="peeringSubnetMask")
     def peering_subnet_mask(self) -> pulumi.Input[_builtins.str]:
         """
-        Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         """
         return pulumi.get(self, "peering_subnet_mask")
 
@@ -138,7 +157,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="physicalConnectionId")
     def physical_connection_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the Physical Connection to Which the ID.
+        The ID of the physical connection to which the VBR belongs.
         """
         return pulumi.get(self, "physical_connection_id")
 
@@ -150,7 +169,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Input[_builtins.int]:
         """
-        The VLAN ID of the VBR. Value range: 0~2999.
+        The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         return pulumi.get(self, "vlan_id")
 
@@ -160,9 +179,10 @@ class VirtualBorderRouterArgs:
 
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
+    @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
     def associated_physical_connections(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The associated physical connections.
+        Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         """
         return pulumi.get(self, "associated_physical_connections")
 
@@ -174,7 +194,9 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The bandwidth.
+        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -186,7 +208,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operators for physical connection circuit provided coding.
+        The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
 
@@ -198,7 +220,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        The description information of the VBR.
         """
         return pulumi.get(self, "description")
 
@@ -210,7 +232,9 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="detectMultiplier")
     def detect_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        Multiple of detection time.
+        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: `3` to `10`.
         """
         return pulumi.get(self, "detect_multiplier")
 
@@ -222,7 +246,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to Enable IPv6. Valid values: `false`, `true`.
+        Whether IPv6 is enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -231,22 +255,10 @@ class VirtualBorderRouterArgs:
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
-    @pulumi.getter(name="includeCrossAccountVbr")
-    def include_cross_account_vbr(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        """
-        return pulumi.get(self, "include_cross_account_vbr")
-
-    @include_cross_account_vbr.setter
-    def include_cross_account_vbr(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "include_cross_account_vbr", value)
-
-    @_builtins.property
     @pulumi.getter(name="localIpv6GatewayIp")
     def local_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 Address.
+        The IPv6 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_ipv6_gateway_ip")
 
@@ -258,7 +270,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -270,7 +282,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_tx_interval")
 
@@ -279,10 +291,22 @@ class VirtualBorderRouterArgs:
         pulumi.set(self, "min_tx_interval", value)
 
     @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum transmission unit.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "mtu", value)
+
+    @_builtins.property
     @pulumi.getter(name="peerIpv6GatewayIp")
     def peer_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Client-Side Interconnection IPv6 Address.
+        The IPv6 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_ipv6_gateway_ip")
 
@@ -294,7 +318,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="peeringIpv6SubnetMask")
     def peering_ipv6_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         """
         return pulumi.get(self, "peering_ipv6_subnet_mask")
 
@@ -303,10 +327,34 @@ class VirtualBorderRouterArgs:
         pulumi.set(self, "peering_ipv6_subnet_mask", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sitelinkEnable")
+    def sitelink_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "sitelink_enable")
+
+    @sitelink_enable.setter
+    def sitelink_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sitelink_enable", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        The status of the VBR. Valid values: `active`, `terminated`.
         """
         return pulumi.get(self, "status")
 
@@ -315,10 +363,22 @@ class VirtualBorderRouterArgs:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vbr owner id.
+        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -330,7 +390,7 @@ class VirtualBorderRouterArgs:
     @pulumi.getter(name="virtualBorderRouterName")
     def virtual_border_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        The name of the VBR instance.
         """
         return pulumi.get(self, "virtual_border_router_name")
 
@@ -345,62 +405,77 @@ class _VirtualBorderRouterState:
                  associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_cross_account_vbr: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VirtualBorderRouter resources.
-        :param pulumi.Input[_builtins.str] associated_physical_connections: The associated physical connections.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth.
-        :param pulumi.Input[_builtins.str] circuit_code: Operators for physical connection circuit provided coding.
-        :param pulumi.Input[_builtins.str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
-        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
-        :param pulumi.Input[_builtins.bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        :param pulumi.Input[_builtins.str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
-        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.str] peer_gateway_ip: The Client-Side Interconnection IPv4 Address.
-        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The Client-Side Interconnection IPv6 Address.
-        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the Physical Connection to Which the ID.
+        :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+               - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+               - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
+        :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The creation time of the VBR.
+        :param pulumi.Input[_builtins.str] description: The description information of the VBR.
+        :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
+               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: `3` to `10`.
+        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
+        :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
+        :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
+        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
-        :param pulumi.Input[_builtins.str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The vbr owner id.
-        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
+        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
+        if associated_physical_connections is not None:
+            warnings.warn("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""associated_physical_connections is deprecated: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
         if associated_physical_connections is not None:
             pulumi.set(__self__, "associated_physical_connections", associated_physical_connections)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if circuit_code is not None:
             pulumi.set(__self__, "circuit_code", circuit_code)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if detect_multiplier is not None:
             pulumi.set(__self__, "detect_multiplier", detect_multiplier)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
-        if include_cross_account_vbr is not None:
-            pulumi.set(__self__, "include_cross_account_vbr", include_cross_account_vbr)
         if local_gateway_ip is not None:
             pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
         if local_ipv6_gateway_ip is not None:
@@ -409,6 +484,8 @@ class _VirtualBorderRouterState:
             pulumi.set(__self__, "min_rx_interval", min_rx_interval)
         if min_tx_interval is not None:
             pulumi.set(__self__, "min_tx_interval", min_tx_interval)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
         if peer_gateway_ip is not None:
             pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
         if peer_ipv6_gateway_ip is not None:
@@ -419,10 +496,16 @@ class _VirtualBorderRouterState:
             pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
         if physical_connection_id is not None:
             pulumi.set(__self__, "physical_connection_id", physical_connection_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if route_table_id is not None:
             pulumi.set(__self__, "route_table_id", route_table_id)
+        if sitelink_enable is not None:
+            pulumi.set(__self__, "sitelink_enable", sitelink_enable)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vbr_owner_id is not None:
             pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
         if virtual_border_router_name is not None:
@@ -432,9 +515,10 @@ class _VirtualBorderRouterState:
 
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
+    @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
     def associated_physical_connections(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The associated physical connections.
+        Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         """
         return pulumi.get(self, "associated_physical_connections")
 
@@ -446,7 +530,9 @@ class _VirtualBorderRouterState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The bandwidth.
+        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -458,7 +544,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Operators for physical connection circuit provided coding.
+        The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
 
@@ -467,10 +553,22 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "circuit_code", value)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.263.0) The creation time of the VBR.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        The description information of the VBR.
         """
         return pulumi.get(self, "description")
 
@@ -482,7 +580,9 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="detectMultiplier")
     def detect_multiplier(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        Multiple of detection time.
+        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: `3` to `10`.
         """
         return pulumi.get(self, "detect_multiplier")
 
@@ -494,7 +594,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to Enable IPv6. Valid values: `false`, `true`.
+        Whether IPv6 is enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -503,22 +603,10 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "enable_ipv6", value)
 
     @_builtins.property
-    @pulumi.getter(name="includeCrossAccountVbr")
-    def include_cross_account_vbr(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        """
-        return pulumi.get(self, "include_cross_account_vbr")
-
-    @include_cross_account_vbr.setter
-    def include_cross_account_vbr(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "include_cross_account_vbr", value)
-
-    @_builtins.property
     @pulumi.getter(name="localGatewayIp")
     def local_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv4 address.
+        The IPv4 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_gateway_ip")
 
@@ -530,7 +618,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="localIpv6GatewayIp")
     def local_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 Address.
+        The IPv6 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_ipv6_gateway_ip")
 
@@ -542,7 +630,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -554,7 +642,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_tx_interval")
 
@@ -563,10 +651,22 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "min_tx_interval", value)
 
     @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum transmission unit.
+        """
+        return pulumi.get(self, "mtu")
+
+    @mtu.setter
+    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "mtu", value)
+
+    @_builtins.property
     @pulumi.getter(name="peerGatewayIp")
     def peer_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Client-Side Interconnection IPv4 Address.
+        The IPv4 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_gateway_ip")
 
@@ -578,7 +678,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="peerIpv6GatewayIp")
     def peer_ipv6_gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Client-Side Interconnection IPv6 Address.
+        The IPv6 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_ipv6_gateway_ip")
 
@@ -590,7 +690,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="peeringIpv6SubnetMask")
     def peering_ipv6_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         """
         return pulumi.get(self, "peering_ipv6_subnet_mask")
 
@@ -602,7 +702,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="peeringSubnetMask")
     def peering_subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         """
         return pulumi.get(self, "peering_subnet_mask")
 
@@ -614,13 +714,25 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="physicalConnectionId")
     def physical_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the Physical Connection to Which the ID.
+        The ID of the physical connection to which the VBR belongs.
         """
         return pulumi.get(self, "physical_connection_id")
 
     @physical_connection_id.setter
     def physical_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "physical_connection_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
@@ -635,10 +747,22 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="sitelinkEnable")
+    def sitelink_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "sitelink_enable")
+
+    @sitelink_enable.setter
+    def sitelink_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "sitelink_enable", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        The status of the VBR. Valid values: `active`, `terminated`.
         """
         return pulumi.get(self, "status")
 
@@ -647,10 +771,22 @@ class _VirtualBorderRouterState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The vbr owner id.
+        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -662,7 +798,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="virtualBorderRouterName")
     def virtual_border_router_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        The name of the VBR instance.
         """
         return pulumi.get(self, "virtual_border_router_name")
 
@@ -674,7 +810,7 @@ class _VirtualBorderRouterState:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The VLAN ID of the VBR. Value range: 0~2999.
+        The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         return pulumi.get(self, "vlan_id")
 
@@ -695,17 +831,20 @@ class VirtualBorderRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_cross_account_vbr: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -729,18 +868,18 @@ class VirtualBorderRouter(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+            name = "terraform-example"
+        default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
+            min=1,
+            max=2999)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -756,26 +895,33 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] associated_physical_connections: The associated physical connections.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth.
-        :param pulumi.Input[_builtins.str] circuit_code: Operators for physical connection circuit provided coding.
-        :param pulumi.Input[_builtins.str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
-        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
-        :param pulumi.Input[_builtins.bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        :param pulumi.Input[_builtins.str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
-        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.str] peer_gateway_ip: The Client-Side Interconnection IPv4 Address.
-        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The Client-Side Interconnection IPv6 Address.
-        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the Physical Connection to Which the ID.
-        :param pulumi.Input[_builtins.str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The vbr owner id.
-        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
+        :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+               - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+               - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
+        :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
+        :param pulumi.Input[_builtins.str] description: The description information of the VBR.
+        :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
+               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: `3` to `10`.
+        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
+        :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
+        :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
+        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
+        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         ...
     @overload
@@ -802,18 +948,18 @@ class VirtualBorderRouter(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.index.Integer("vlan_id",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("example",
+            name = "terraform-example"
+        default = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        default_integer = random.index.Integer("default",
+            min=1,
+            max=2999)
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example.connections[0].id,
+            physical_connection_id=default.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=default_integer["id"],
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -848,17 +994,20 @@ class VirtualBorderRouter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
                  enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_cross_account_vbr: Optional[pulumi.Input[_builtins.bool]] = None,
                  local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
                  min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
+                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
                  physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
                  virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vlan_id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -877,13 +1026,13 @@ class VirtualBorderRouter(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["detect_multiplier"] = detect_multiplier
             __props__.__dict__["enable_ipv6"] = enable_ipv6
-            __props__.__dict__["include_cross_account_vbr"] = include_cross_account_vbr
             if local_gateway_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'local_gateway_ip'")
             __props__.__dict__["local_gateway_ip"] = local_gateway_ip
             __props__.__dict__["local_ipv6_gateway_ip"] = local_ipv6_gateway_ip
             __props__.__dict__["min_rx_interval"] = min_rx_interval
             __props__.__dict__["min_tx_interval"] = min_tx_interval
+            __props__.__dict__["mtu"] = mtu
             if peer_gateway_ip is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_gateway_ip'")
             __props__.__dict__["peer_gateway_ip"] = peer_gateway_ip
@@ -895,12 +1044,16 @@ class VirtualBorderRouter(pulumi.CustomResource):
             if physical_connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'physical_connection_id'")
             __props__.__dict__["physical_connection_id"] = physical_connection_id
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["sitelink_enable"] = sitelink_enable
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["vbr_owner_id"] = vbr_owner_id
             __props__.__dict__["virtual_border_router_name"] = virtual_border_router_name
             if vlan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vlan_id'")
             __props__.__dict__["vlan_id"] = vlan_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["route_table_id"] = None
         super(VirtualBorderRouter, __self__).__init__(
             'alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter',
@@ -915,21 +1068,25 @@ class VirtualBorderRouter(pulumi.CustomResource):
             associated_physical_connections: Optional[pulumi.Input[_builtins.str]] = None,
             bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             circuit_code: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             detect_multiplier: Optional[pulumi.Input[_builtins.int]] = None,
             enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            include_cross_account_vbr: Optional[pulumi.Input[_builtins.bool]] = None,
             local_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
             local_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
             min_rx_interval: Optional[pulumi.Input[_builtins.int]] = None,
             min_tx_interval: Optional[pulumi.Input[_builtins.int]] = None,
+            mtu: Optional[pulumi.Input[_builtins.int]] = None,
             peer_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
             peer_ipv6_gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
             peering_ipv6_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
             peering_subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
             physical_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+            sitelink_enable: Optional[pulumi.Input[_builtins.bool]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vbr_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
             virtual_border_router_name: Optional[pulumi.Input[_builtins.str]] = None,
             vlan_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'VirtualBorderRouter':
@@ -940,27 +1097,35 @@ class VirtualBorderRouter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] associated_physical_connections: The associated physical connections.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth.
-        :param pulumi.Input[_builtins.str] circuit_code: Operators for physical connection circuit provided coding.
-        :param pulumi.Input[_builtins.str] description: The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] detect_multiplier: Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
-        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether to Enable IPv6. Valid values: `false`, `true`.
-        :param pulumi.Input[_builtins.bool] include_cross_account_vbr: Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        :param pulumi.Input[_builtins.str] local_gateway_ip: Alibaba Cloud-Connected IPv4 address.
-        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: Alibaba Cloud-Connected IPv6 Address.
-        :param pulumi.Input[_builtins.int] min_rx_interval: Configure BFD packet reception interval of values include: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.int] min_tx_interval: Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
-        :param pulumi.Input[_builtins.str] peer_gateway_ip: The Client-Side Interconnection IPv4 Address.
-        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The Client-Side Interconnection IPv6 Address.
-        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] peering_subnet_mask: Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
-        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the Physical Connection to Which the ID.
+        :param pulumi.Input[_builtins.str] associated_physical_connections: Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+               - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+               - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
+        :param pulumi.Input[_builtins.str] circuit_code: The circuit code provided by the operator for the physical connection.
+        :param pulumi.Input[_builtins.str] create_time: (Available since v1.263.0) The creation time of the VBR.
+        :param pulumi.Input[_builtins.str] description: The description information of the VBR.
+        :param pulumi.Input[_builtins.int] detect_multiplier: Multiple of detection time.
+               That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+               Valid values: `3` to `10`.
+        :param pulumi.Input[_builtins.bool] enable_ipv6: Whether IPv6 is enabled.
+        :param pulumi.Input[_builtins.str] local_gateway_ip: The IPv4 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.str] local_ipv6_gateway_ip: The IPv6 address on the Alibaba Cloud side of the VBR instance.
+        :param pulumi.Input[_builtins.int] min_rx_interval: Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] min_tx_interval: Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
+        :param pulumi.Input[_builtins.int] mtu: Maximum transmission unit.
+        :param pulumi.Input[_builtins.str] peer_gateway_ip: The IPv4 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peer_ipv6_gateway_ip: The IPv6 address of the client side of the VBR instance.
+        :param pulumi.Input[_builtins.str] peering_ipv6_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
+        :param pulumi.Input[_builtins.str] peering_subnet_mask: The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
+        :param pulumi.Input[_builtins.str] physical_connection_id: The ID of the physical connection to which the VBR belongs.
+        :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[_builtins.str] route_table_id: (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
-        :param pulumi.Input[_builtins.str] status: The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
-        :param pulumi.Input[_builtins.str] vbr_owner_id: The vbr owner id.
-        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
-        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
+        :param pulumi.Input[_builtins.bool] sitelink_enable: Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        :param pulumi.Input[_builtins.str] status: The status of the VBR. Valid values: `active`, `terminated`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
+        :param pulumi.Input[_builtins.str] vbr_owner_id: The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
+        :param pulumi.Input[_builtins.str] virtual_border_router_name: The name of the VBR instance.
+        :param pulumi.Input[_builtins.int] vlan_id: The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -969,21 +1134,25 @@ class VirtualBorderRouter(pulumi.CustomResource):
         __props__.__dict__["associated_physical_connections"] = associated_physical_connections
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["circuit_code"] = circuit_code
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["detect_multiplier"] = detect_multiplier
         __props__.__dict__["enable_ipv6"] = enable_ipv6
-        __props__.__dict__["include_cross_account_vbr"] = include_cross_account_vbr
         __props__.__dict__["local_gateway_ip"] = local_gateway_ip
         __props__.__dict__["local_ipv6_gateway_ip"] = local_ipv6_gateway_ip
         __props__.__dict__["min_rx_interval"] = min_rx_interval
         __props__.__dict__["min_tx_interval"] = min_tx_interval
+        __props__.__dict__["mtu"] = mtu
         __props__.__dict__["peer_gateway_ip"] = peer_gateway_ip
         __props__.__dict__["peer_ipv6_gateway_ip"] = peer_ipv6_gateway_ip
         __props__.__dict__["peering_ipv6_subnet_mask"] = peering_ipv6_subnet_mask
         __props__.__dict__["peering_subnet_mask"] = peering_subnet_mask
         __props__.__dict__["physical_connection_id"] = physical_connection_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["route_table_id"] = route_table_id
+        __props__.__dict__["sitelink_enable"] = sitelink_enable
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vbr_owner_id"] = vbr_owner_id
         __props__.__dict__["virtual_border_router_name"] = virtual_border_router_name
         __props__.__dict__["vlan_id"] = vlan_id
@@ -991,17 +1160,20 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="associatedPhysicalConnections")
+    @_utilities.deprecated("""Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.""")
     def associated_physical_connections(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The associated physical connections.
+        Field `associated_physical_connections` has been deprecated from provider version 1.263.0. Please use the resource `expressconnect.VbrPconnAssociation` instead.
         """
         return pulumi.get(self, "associated_physical_connections")
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[_builtins.int]:
+    def bandwidth(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The bandwidth.
+        The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1009,15 +1181,23 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="circuitCode")
     def circuit_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Operators for physical connection circuit provided coding.
+        The circuit code provided by the operator for the physical connection.
         """
         return pulumi.get(self, "circuit_code")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.263.0) The creation time of the VBR.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        The description information of the VBR.
         """
         return pulumi.get(self, "description")
 
@@ -1025,31 +1205,25 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="detectMultiplier")
     def detect_multiplier(self) -> pulumi.Output[_builtins.int]:
         """
-        Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        Multiple of detection time.
+        That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        Valid values: `3` to `10`.
         """
         return pulumi.get(self, "detect_multiplier")
 
     @_builtins.property
     @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> pulumi.Output[_builtins.bool]:
+    def enable_ipv6(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to Enable IPv6. Valid values: `false`, `true`.
+        Whether IPv6 is enabled.
         """
         return pulumi.get(self, "enable_ipv6")
-
-    @_builtins.property
-    @pulumi.getter(name="includeCrossAccountVbr")
-    def include_cross_account_vbr(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-        """
-        return pulumi.get(self, "include_cross_account_vbr")
 
     @_builtins.property
     @pulumi.getter(name="localGatewayIp")
     def local_gateway_ip(self) -> pulumi.Output[_builtins.str]:
         """
-        Alibaba Cloud-Connected IPv4 address.
+        The IPv4 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_gateway_ip")
 
@@ -1057,7 +1231,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="localIpv6GatewayIp")
     def local_ipv6_gateway_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 Address.
+        The IPv6 address on the Alibaba Cloud side of the VBR instance.
         """
         return pulumi.get(self, "local_ipv6_gateway_ip")
 
@@ -1065,7 +1239,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="minRxInterval")
     def min_rx_interval(self) -> pulumi.Output[_builtins.int]:
         """
-        Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_rx_interval")
 
@@ -1073,15 +1247,23 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="minTxInterval")
     def min_tx_interval(self) -> pulumi.Output[_builtins.int]:
         """
-        Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         """
         return pulumi.get(self, "min_tx_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> pulumi.Output[_builtins.int]:
+        """
+        Maximum transmission unit.
+        """
+        return pulumi.get(self, "mtu")
 
     @_builtins.property
     @pulumi.getter(name="peerGatewayIp")
     def peer_gateway_ip(self) -> pulumi.Output[_builtins.str]:
         """
-        The Client-Side Interconnection IPv4 Address.
+        The IPv4 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_gateway_ip")
 
@@ -1089,7 +1271,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="peerIpv6GatewayIp")
     def peer_ipv6_gateway_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Client-Side Interconnection IPv6 Address.
+        The IPv6 address of the client side of the VBR instance.
         """
         return pulumi.get(self, "peer_ipv6_gateway_ip")
 
@@ -1097,7 +1279,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="peeringIpv6SubnetMask")
     def peering_ipv6_subnet_mask(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         """
         return pulumi.get(self, "peering_ipv6_subnet_mask")
 
@@ -1105,7 +1287,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="peeringSubnetMask")
     def peering_subnet_mask(self) -> pulumi.Output[_builtins.str]:
         """
-        Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         """
         return pulumi.get(self, "peering_subnet_mask")
 
@@ -1113,9 +1295,17 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="physicalConnectionId")
     def physical_connection_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the Physical Connection to Which the ID.
+        The ID of the physical connection to which the VBR belongs.
         """
         return pulumi.get(self, "physical_connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
@@ -1126,18 +1316,34 @@ class VirtualBorderRouter(pulumi.CustomResource):
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
+    @pulumi.getter(name="sitelinkEnable")
+    def sitelink_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "sitelink_enable")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+        The status of the VBR. Valid values: `active`, `terminated`.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The vbr owner id.
+        The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -1145,7 +1351,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="virtualBorderRouterName")
     def virtual_border_router_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        The name of the VBR instance.
         """
         return pulumi.get(self, "virtual_border_router_name")
 
@@ -1153,7 +1359,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The VLAN ID of the VBR. Value range: 0~2999.
+        The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         """
         return pulumi.get(self, "vlan_id")
 

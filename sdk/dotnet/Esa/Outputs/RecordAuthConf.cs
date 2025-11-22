@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Esa.Outputs
     public sealed class RecordAuthConf
     {
         /// <summary>
-        /// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+        /// The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>

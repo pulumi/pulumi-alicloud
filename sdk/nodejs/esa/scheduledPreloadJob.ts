@@ -82,6 +82,8 @@ export class ScheduledPreloadJob extends pulumi.CustomResource {
     declare public readonly insertWay: pulumi.Output<string>;
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly ossUrl: pulumi.Output<string | undefined>;
     /**
@@ -95,9 +97,11 @@ export class ScheduledPreloadJob extends pulumi.CustomResource {
     /**
      * The site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly urlList: pulumi.Output<string | undefined>;
 
@@ -159,6 +163,8 @@ export interface ScheduledPreloadJobState {
     insertWay?: pulumi.Input<string>;
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     ossUrl?: pulumi.Input<string>;
     /**
@@ -172,9 +178,11 @@ export interface ScheduledPreloadJobState {
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     urlList?: pulumi.Input<string>;
 }
@@ -189,6 +197,8 @@ export interface ScheduledPreloadJobArgs {
     insertWay: pulumi.Input<string>;
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     ossUrl?: pulumi.Input<string>;
     /**
@@ -198,9 +208,11 @@ export interface ScheduledPreloadJobArgs {
     /**
      * The site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     urlList?: pulumi.Input<string>;
 }

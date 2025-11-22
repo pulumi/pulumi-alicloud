@@ -6,7 +6,6 @@ package com.pulumi.alicloud.esa.inputs;
 import com.pulumi.alicloud.esa.inputs.WaitingRoomHostNameAndPathArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -65,8 +64,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="disableSessionRenewalEnable")
@@ -74,8 +71,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> disableSessionRenewalEnable() {
@@ -99,8 +94,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="jsonResponseEnable")
@@ -108,8 +101,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> jsonResponseEnable() {
@@ -118,9 +109,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Import(name="language")
@@ -128,9 +116,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Optional<Output<String>> language() {
@@ -154,8 +139,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * All in line. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="queueAllEnable")
@@ -163,8 +146,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return All in line. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> queueAllEnable() {
@@ -173,10 +154,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;Passthrough &#39;: through.
-     * -&#39;Reject-all&#39;: reject all.
      * 
      */
     @Import(name="queuingMethod")
@@ -184,10 +161,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;Passthrough &#39;: through.
-     * -&#39;Reject-all&#39;: reject all.
      * 
      */
     public Optional<Output<String>> queuingMethod() {
@@ -196,9 +169,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     @Import(name="queuingStatusCode")
@@ -206,9 +176,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     public Optional<Output<String>> queuingStatusCode() {
@@ -235,20 +202,20 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
      * Waiting room enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room
-     * -&#39;off&#39;: disabled waiting room
+     * - &#39;on&#39;: Enable waiting room
+     * - &#39;off&#39;: Disabled waiting room
      * 
      */
     @Import(name="status")
@@ -256,8 +223,8 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Waiting room enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room
-     * -&#39;off&#39;: disabled waiting room
+     * - &#39;on&#39;: Enable waiting room
+     * - &#39;off&#39;: Disabled waiting room
      * 
      */
     public Optional<Output<String>> status() {
@@ -311,8 +278,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Waiting room type, support:
-     * -&#39;default&#39;: Indicates the default type.
-     * -&#39;custom&#39;: indicates a custom type.
      * 
      */
     @Import(name="waitingRoomType")
@@ -320,8 +285,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Waiting room type, support:
-     * -&#39;default&#39;: Indicates the default type.
-     * -&#39;custom&#39;: indicates a custom type.
      * 
      */
     public Optional<Output<String>> waitingRoomType() {
@@ -434,8 +397,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param disableSessionRenewalEnable Disable session renewal. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -447,8 +408,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param disableSessionRenewalEnable Disable session renewal. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -490,8 +449,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jsonResponseEnable The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -503,8 +460,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param jsonResponseEnable The JSON response. If the accept request header contains &#34;application/json&#34;, JSON data is returned. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -515,9 +470,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-         * -&#39;enus&#39;: English.
-         * -&#39;zhcn&#39;: Simplified Chinese.
-         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -529,9 +481,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-         * -&#39;enus&#39;: English.
-         * -&#39;zhcn&#39;: Simplified Chinese.
-         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -563,8 +512,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queueAllEnable All in line. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -576,8 +523,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queueAllEnable All in line. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -588,10 +533,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queuingMethod Way of queuing. Value:
-         * -&#39;random&#39;: random.
-         * -&#39;fifo&#39;: first in, first out.
-         * -&#39;Passthrough &#39;: through.
-         * -&#39;Reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -603,10 +544,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queuingMethod Way of queuing. Value:
-         * -&#39;random&#39;: random.
-         * -&#39;fifo&#39;: first in, first out.
-         * -&#39;Passthrough &#39;: through.
-         * -&#39;Reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -617,9 +554,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queuingStatusCode Waiting room status code. Value:
-         * -&#39;200&#39;
-         * -&#39;202&#39;
-         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -631,9 +565,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queuingStatusCode Waiting room status code. Value:
-         * -&#39;200&#39;
-         * -&#39;202&#39;
-         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -669,7 +600,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -680,14 +611,14 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
          * @param status Waiting room enabled status. Value:
-         * -&#39;on&#39;: Enable waiting room
-         * -&#39;off&#39;: disabled waiting room
+         * - &#39;on&#39;: Enable waiting room
+         * - &#39;off&#39;: Disabled waiting room
          * 
          * @return builder
          * 
@@ -699,8 +630,8 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Waiting room enabled status. Value:
-         * -&#39;on&#39;: Enable waiting room
-         * -&#39;off&#39;: disabled waiting room
+         * - &#39;on&#39;: Enable waiting room
+         * - &#39;off&#39;: Disabled waiting room
          * 
          * @return builder
          * 
@@ -774,8 +705,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param waitingRoomType Waiting room type, support:
-         * -&#39;default&#39;: Indicates the default type.
-         * -&#39;custom&#39;: indicates a custom type.
          * 
          * @return builder
          * 
@@ -787,8 +716,6 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param waitingRoomType Waiting room type, support:
-         * -&#39;default&#39;: Indicates the default type.
-         * -&#39;custom&#39;: indicates a custom type.
          * 
          * @return builder
          * 

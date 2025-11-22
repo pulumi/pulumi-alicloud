@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string? DiskName;
         /// <summary>
-        /// The size of the data disk. Unit: GiB.
+        /// The size of the data disk. Unit: GiB. Valid values:
         /// - When `DiskCategory` is `CloudEfficiency`, Valid values: `20` to `32768`.
         /// - When `DiskCategory` is `CloudSsd`, Valid values: `20` to `32768`.
         /// - When `DiskCategory` is `CloudEssd`, Valid values: `20` to `32768`.

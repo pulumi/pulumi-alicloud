@@ -91,8 +91,9 @@ export class DefenseTemplate extends pulumi.CustomResource {
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * The ID of the Alibaba Cloud resource group.
+     * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      */
+    declare public readonly resourceGroups: pulumi.Output<string[] | undefined>;
     declare public readonly resourceManagerResourceGroupId: pulumi.Output<string | undefined>;
     /**
      * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
@@ -131,6 +132,7 @@ export class DefenseTemplate extends pulumi.CustomResource {
             resourceInputs["defenseTemplateName"] = state?.defenseTemplateName;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["resourceGroups"] = state?.resourceGroups;
             resourceInputs["resourceManagerResourceGroupId"] = state?.resourceManagerResourceGroupId;
             resourceInputs["resources"] = state?.resources;
             resourceInputs["status"] = state?.status;
@@ -160,6 +162,7 @@ export class DefenseTemplate extends pulumi.CustomResource {
             resourceInputs["defenseTemplateName"] = args?.defenseTemplateName;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["resourceGroups"] = args?.resourceGroups;
             resourceInputs["resourceManagerResourceGroupId"] = args?.resourceManagerResourceGroupId;
             resourceInputs["resources"] = args?.resources;
             resourceInputs["status"] = args?.status;
@@ -197,8 +200,9 @@ export interface DefenseTemplateState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud resource group.
+     * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      */
+    resourceGroups?: pulumi.Input<pulumi.Input<string>[]>;
     resourceManagerResourceGroupId?: pulumi.Input<string>;
     /**
      * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
@@ -241,8 +245,9 @@ export interface DefenseTemplateArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The ID of the Alibaba Cloud resource group.
+     * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      */
+    resourceGroups?: pulumi.Input<pulumi.Input<string>[]>;
     resourceManagerResourceGroupId?: pulumi.Input<string>;
     /**
      * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.

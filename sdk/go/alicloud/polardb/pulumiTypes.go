@@ -365,10 +365,10 @@ func (o ClusterParameterArrayOutput) Index(i pulumi.IntInput) ClusterParameterOu
 }
 
 type ParameterGroupParameter struct {
-	// The name of a parameter in the parameter template.
-	ParamName string `pulumi:"paramName"`
-	// The value of a parameter in the parameter template.
-	ParamValue string `pulumi:"paramValue"`
+	// The name of the parameter.
+	ParamName *string `pulumi:"paramName"`
+	// The value of the parameter.
+	ParamValue *string `pulumi:"paramValue"`
 }
 
 // ParameterGroupParameterInput is an input type that accepts ParameterGroupParameterArgs and ParameterGroupParameterOutput values.
@@ -383,10 +383,10 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The name of a parameter in the parameter template.
-	ParamName pulumi.StringInput `pulumi:"paramName"`
-	// The value of a parameter in the parameter template.
-	ParamValue pulumi.StringInput `pulumi:"paramValue"`
+	// The name of the parameter.
+	ParamName pulumi.StringPtrInput `pulumi:"paramName"`
+	// The value of the parameter.
+	ParamValue pulumi.StringPtrInput `pulumi:"paramValue"`
 }
 
 func (ParameterGroupParameterArgs) ElementType() reflect.Type {
@@ -440,14 +440,14 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The name of a parameter in the parameter template.
-func (o ParameterGroupParameterOutput) ParamName() pulumi.StringOutput {
-	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamName }).(pulumi.StringOutput)
+// The name of the parameter.
+func (o ParameterGroupParameterOutput) ParamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ParamName }).(pulumi.StringPtrOutput)
 }
 
-// The value of a parameter in the parameter template.
-func (o ParameterGroupParameterOutput) ParamValue() pulumi.StringOutput {
-	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamValue }).(pulumi.StringOutput)
+// The value of the parameter.
+func (o ParameterGroupParameterOutput) ParamValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterGroupParameter) *string { return v.ParamValue }).(pulumi.StringPtrOutput)
 }
 
 type ParameterGroupParameterArrayOutput struct{ *pulumi.OutputState }

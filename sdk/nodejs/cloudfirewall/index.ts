@@ -10,6 +10,11 @@ export type AddressBook = import("./addressBook").AddressBook;
 export const AddressBook: typeof import("./addressBook").AddressBook = null as any;
 utilities.lazyLoad(exports, ["AddressBook"], () => require("./addressBook"));
 
+export { AiTrafficAnalysisStatusArgs, AiTrafficAnalysisStatusState } from "./aiTrafficAnalysisStatus";
+export type AiTrafficAnalysisStatus = import("./aiTrafficAnalysisStatus").AiTrafficAnalysisStatus;
+export const AiTrafficAnalysisStatus: typeof import("./aiTrafficAnalysisStatus").AiTrafficAnalysisStatus = null as any;
+utilities.lazyLoad(exports, ["AiTrafficAnalysisStatus"], () => require("./aiTrafficAnalysisStatus"));
+
 export { ControlPolicyArgs, ControlPolicyState } from "./controlPolicy";
 export type ControlPolicy = import("./controlPolicy").ControlPolicy;
 export const ControlPolicy: typeof import("./controlPolicy").ControlPolicy = null as any;
@@ -132,6 +137,8 @@ const _module = {
         switch (type) {
             case "alicloud:cloudfirewall/addressBook:AddressBook":
                 return new AddressBook(name, <any>undefined, { urn })
+            case "alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus":
+                return new AiTrafficAnalysisStatus(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/controlPolicy:ControlPolicy":
                 return new ControlPolicy(name, <any>undefined, { urn })
             case "alicloud:cloudfirewall/controlPolicyOrder:ControlPolicyOrder":
@@ -164,6 +171,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/addressBook", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/aiTrafficAnalysisStatus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/controlPolicyOrder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cloudfirewall/firewallVpcFirewall", _module)

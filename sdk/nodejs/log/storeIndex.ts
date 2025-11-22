@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
  * You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -95,17 +97,35 @@ export class StoreIndex extends pulumi.CustomResource {
     }
 
     /**
-     * List configurations of field search index. Valid item as follows:
+     * List configurations of field search index. See `fieldSearch` below.
+     *
+     * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
      */
     declare public readonly fieldSearches: pulumi.Output<outputs.log.StoreIndexFieldSearch[] | undefined>;
     /**
-     * The configuration of full text index. Valid item as follows:
+     * The configuration of full text index. See `fullText` below.
      */
     declare public readonly fullText: pulumi.Output<outputs.log.StoreIndexFullText | undefined>;
+    /**
+     * Whether to enable log reduce. Default to false.
+     */
+    declare public readonly logReduce: pulumi.Output<boolean | undefined>;
+    /**
+     * The black list of log reduce.
+     */
+    declare public readonly logReduceBlackLists: pulumi.Output<string[] | undefined>;
+    /**
+     * The white list of log reduce.
+     */
+    declare public readonly logReduceWhiteLists: pulumi.Output<string[] | undefined>;
     /**
      * The log store name to the query index belongs.
      */
     declare public readonly logstore: pulumi.Output<string>;
+    /**
+     * The max text length.
+     */
+    declare public readonly maxTextLen: pulumi.Output<number | undefined>;
     /**
      * The project name to the log store belongs.
      */
@@ -126,7 +146,11 @@ export class StoreIndex extends pulumi.CustomResource {
             const state = argsOrState as StoreIndexState | undefined;
             resourceInputs["fieldSearches"] = state?.fieldSearches;
             resourceInputs["fullText"] = state?.fullText;
+            resourceInputs["logReduce"] = state?.logReduce;
+            resourceInputs["logReduceBlackLists"] = state?.logReduceBlackLists;
+            resourceInputs["logReduceWhiteLists"] = state?.logReduceWhiteLists;
             resourceInputs["logstore"] = state?.logstore;
+            resourceInputs["maxTextLen"] = state?.maxTextLen;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as StoreIndexArgs | undefined;
@@ -138,7 +162,11 @@ export class StoreIndex extends pulumi.CustomResource {
             }
             resourceInputs["fieldSearches"] = args?.fieldSearches;
             resourceInputs["fullText"] = args?.fullText;
+            resourceInputs["logReduce"] = args?.logReduce;
+            resourceInputs["logReduceBlackLists"] = args?.logReduceBlackLists;
+            resourceInputs["logReduceWhiteLists"] = args?.logReduceWhiteLists;
             resourceInputs["logstore"] = args?.logstore;
+            resourceInputs["maxTextLen"] = args?.maxTextLen;
             resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -151,17 +179,35 @@ export class StoreIndex extends pulumi.CustomResource {
  */
 export interface StoreIndexState {
     /**
-     * List configurations of field search index. Valid item as follows:
+     * List configurations of field search index. See `fieldSearch` below.
+     *
+     * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
      */
     fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
     /**
-     * The configuration of full text index. Valid item as follows:
+     * The configuration of full text index. See `fullText` below.
      */
     fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    /**
+     * Whether to enable log reduce. Default to false.
+     */
+    logReduce?: pulumi.Input<boolean>;
+    /**
+     * The black list of log reduce.
+     */
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The white list of log reduce.
+     */
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The log store name to the query index belongs.
      */
     logstore?: pulumi.Input<string>;
+    /**
+     * The max text length.
+     */
+    maxTextLen?: pulumi.Input<number>;
     /**
      * The project name to the log store belongs.
      */
@@ -173,17 +219,35 @@ export interface StoreIndexState {
  */
 export interface StoreIndexArgs {
     /**
-     * List configurations of field search index. Valid item as follows:
+     * List configurations of field search index. See `fieldSearch` below.
+     *
+     * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
      */
     fieldSearches?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearch>[]>;
     /**
-     * The configuration of full text index. Valid item as follows:
+     * The configuration of full text index. See `fullText` below.
      */
     fullText?: pulumi.Input<inputs.log.StoreIndexFullText>;
+    /**
+     * Whether to enable log reduce. Default to false.
+     */
+    logReduce?: pulumi.Input<boolean>;
+    /**
+     * The black list of log reduce.
+     */
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The white list of log reduce.
+     */
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The log store name to the query index belongs.
      */
     logstore: pulumi.Input<string>;
+    /**
+     * The max text length.
+     */
+    maxTextLen?: pulumi.Input<number>;
     /**
      * The project name to the log store belongs.
      */

@@ -10,102 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.MongoDB
 {
     /// <summary>
-    /// Provides a MongoDB Audit Policy resource.
-    /// 
-    /// For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
-    /// 
-    /// &gt; **NOTE:** Available since v1.148.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
-    /// 
-    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
-    /// 
-    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.17.3.0/24",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
-    ///     {
-    ///         EngineVersion = "4.2",
-    ///         DbInstanceClass = "dds.mongo.mid",
-    ///         DbInstanceStorage = 10,
-    ///         VswitchId = defaultSwitch.Id,
-    ///         SecurityIpLists = new[]
-    ///         {
-    ///             "10.168.1.12",
-    ///             "100.69.7.112",
-    ///         },
-    ///         Name = name,
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF" },
-    ///             { "For", "example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultAuditPolicy = new AliCloud.MongoDB.AuditPolicy("default", new()
-    ///     {
-    ///         DbInstanceId = defaultInstance.Id,
-    ///         AuditStatus = "disabled",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// MongoDB Audit Policy can be imported using the id, e.g.
+    /// Mongodb Audit Policy can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;db_instance_id&gt;
+    /// $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mongodb/auditPolicy:AuditPolicy")]
     public partial class AuditPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
+        /// Audit state, Valid values: `Enable`, `Disabled`.
         /// </summary>
         [Output("auditStatus")]
         public Output<string> AuditStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// Database Instance Id
         /// </summary>
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         /// </summary>
         [Output("storagePeriod")]
-        public Output<int?> StoragePeriod { get; private set; } = null!;
+        public Output<int> StoragePeriod { get; private set; } = null!;
 
 
         /// <summary>
@@ -154,19 +86,19 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
+        /// Audit state, Valid values: `Enable`, `Disabled`.
         /// </summary>
         [Input("auditStatus", required: true)]
         public Input<string> AuditStatus { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the instance.
+        /// Database Instance Id
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         /// </summary>
         [Input("storagePeriod")]
         public Input<int>? StoragePeriod { get; set; }
@@ -180,19 +112,19 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class AuditPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the audit log. Valid values: `Disabled`, `Enable`.
+        /// Audit state, Valid values: `Enable`, `Disabled`.
         /// </summary>
         [Input("auditStatus")]
         public Input<string>? AuditStatus { get; set; }
 
         /// <summary>
-        /// The ID of the instance.
+        /// Database Instance Id
         /// </summary>
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
         /// <summary>
-        /// The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        /// Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         /// </summary>
         [Input("storagePeriod")]
         public Input<int>? StoragePeriod { get; set; }

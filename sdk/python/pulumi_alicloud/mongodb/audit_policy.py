@@ -24,9 +24,9 @@ class AuditPolicyArgs:
                  storage_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditPolicy resource.
-        :param pulumi.Input[_builtins.str] audit_status: The status of the audit log. Valid values: `disabled`, `enable`.
-        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         pulumi.set(__self__, "audit_status", audit_status)
         pulumi.set(__self__, "db_instance_id", db_instance_id)
@@ -37,7 +37,7 @@ class AuditPolicyArgs:
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Input[_builtins.str]:
         """
-        The status of the audit log. Valid values: `disabled`, `enable`.
+        Audit state, Valid values: `enable`, `disabled`.
         """
         return pulumi.get(self, "audit_status")
 
@@ -49,7 +49,7 @@ class AuditPolicyArgs:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the instance.
+        Database Instance Id
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -61,7 +61,7 @@ class AuditPolicyArgs:
     @pulumi.getter(name="storagePeriod")
     def storage_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         return pulumi.get(self, "storage_period")
 
@@ -78,9 +78,9 @@ class _AuditPolicyState:
                  storage_period: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AuditPolicy resources.
-        :param pulumi.Input[_builtins.str] audit_status: The status of the audit log. Valid values: `disabled`, `enable`.
-        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         if audit_status is not None:
             pulumi.set(__self__, "audit_status", audit_status)
@@ -93,7 +93,7 @@ class _AuditPolicyState:
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the audit log. Valid values: `disabled`, `enable`.
+        Audit state, Valid values: `enable`, `disabled`.
         """
         return pulumi.get(self, "audit_status")
 
@@ -105,7 +105,7 @@ class _AuditPolicyState:
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the instance.
+        Database Instance Id
         """
         return pulumi.get(self, "db_instance_id")
 
@@ -117,7 +117,7 @@ class _AuditPolicyState:
     @pulumi.getter(name="storagePeriod")
     def storage_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         return pulumi.get(self, "storage_period")
 
@@ -137,67 +137,19 @@ class AuditPolicy(pulumi.CustomResource):
                  storage_period: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Provides a MongoDB Audit Policy resource.
-
-        For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
-
-        > **NOTE:** Available since v1.148.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("default",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            name=name,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_audit_policy = alicloud.mongodb.AuditPolicy("default",
-            db_instance_id=default_instance.id,
-            audit_status="disabled")
-        ```
-
         ## Import
 
-        MongoDB Audit Policy can be imported using the id, e.g.
+        Mongodb Audit Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] audit_status: The status of the audit log. Valid values: `disabled`, `enable`.
-        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         ...
     @overload
@@ -206,60 +158,12 @@ class AuditPolicy(pulumi.CustomResource):
                  args: AuditPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a MongoDB Audit Policy resource.
-
-        For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
-
-        > **NOTE:** Available since v1.148.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.mongodb.get_zones()
-        index = len(default.zones).apply(lambda length: length - 1)
-        zone_id = default.zones[index].id
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            cidr_block="172.17.3.0/24",
-            vpc_id=default_network.id,
-            zone_id=zone_id)
-        default_instance = alicloud.mongodb.Instance("default",
-            engine_version="4.2",
-            db_instance_class="dds.mongo.mid",
-            db_instance_storage=10,
-            vswitch_id=default_switch.id,
-            security_ip_lists=[
-                "10.168.1.12",
-                "100.69.7.112",
-            ],
-            name=name,
-            tags={
-                "Created": "TF",
-                "For": "example",
-            })
-        default_audit_policy = alicloud.mongodb.AuditPolicy("default",
-            db_instance_id=default_instance.id,
-            audit_status="disabled")
-        ```
-
         ## Import
 
-        MongoDB Audit Policy can be imported using the id, e.g.
+        Mongodb Audit Policy can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+        $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -316,9 +220,9 @@ class AuditPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] audit_status: The status of the audit log. Valid values: `disabled`, `enable`.
-        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.int] storage_period: The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        :param pulumi.Input[_builtins.str] audit_status: Audit state, Valid values: `enable`, `disabled`.
+        :param pulumi.Input[_builtins.str] db_instance_id: Database Instance Id
+        :param pulumi.Input[_builtins.int] storage_period: Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +237,7 @@ class AuditPolicy(pulumi.CustomResource):
     @pulumi.getter(name="auditStatus")
     def audit_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the audit log. Valid values: `disabled`, `enable`.
+        Audit state, Valid values: `enable`, `disabled`.
         """
         return pulumi.get(self, "audit_status")
 
@@ -341,15 +245,15 @@ class AuditPolicy(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the instance.
+        Database Instance Id
         """
         return pulumi.get(self, "db_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="storagePeriod")
-    def storage_period(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def storage_period(self) -> pulumi.Output[_builtins.int]:
         """
-        The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+        Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         return pulumi.get(self, "storage_period")
 

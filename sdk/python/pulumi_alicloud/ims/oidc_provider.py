@@ -296,15 +296,15 @@ class OidcProvider(pulumi.CustomResource):
         if oidc_provider_name is None:
             oidc_provider_name = "amp-resource-example-oidc-provider"
         default = alicloud.ims.OidcProvider("default",
-            description=oidc_provider_name,
-            issuer_url="https://oauth.aliyun.com",
-            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
+            fingerprints=["0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"],
             issuance_limit_time=12,
-            oidc_provider_name=name,
+            oidc_provider_name="tfaccims89018",
             client_ids=[
                 "123",
                 "456",
-            ])
+            ],
+            description=oidc_provider_name,
+            issuer_url="https://oauth.aliyun.com")
         ```
 
         ## Import
@@ -356,15 +356,15 @@ class OidcProvider(pulumi.CustomResource):
         if oidc_provider_name is None:
             oidc_provider_name = "amp-resource-example-oidc-provider"
         default = alicloud.ims.OidcProvider("default",
-            description=oidc_provider_name,
-            issuer_url="https://oauth.aliyun.com",
-            fingerprints=["902ef2deeb3c5b13ea4c3d5193629309e231ae55"],
+            fingerprints=["0BBFAB97059595E8D1EC48E89EB8657C0E5AAE71"],
             issuance_limit_time=12,
-            oidc_provider_name=name,
+            oidc_provider_name="tfaccims89018",
             client_ids=[
                 "123",
                 "456",
-            ])
+            ],
+            description=oidc_provider_name,
+            issuer_url="https://oauth.aliyun.com")
         ```
 
         ## Import

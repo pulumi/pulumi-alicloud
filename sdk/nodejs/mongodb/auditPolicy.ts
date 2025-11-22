@@ -5,62 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a MongoDB Audit Policy resource.
- *
- * For information about MongoDB Audit Policy and how to use it, see [What is Audit Policy](https://www.alibabacloud.com/help/doc-detail/131941.html).
- *
- * > **NOTE:** Available since v1.148.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.mongodb.getZones({});
- * const index = _default.then(_default => _default.zones).length.apply(length => length - 1);
- * const zoneId = _default.then(_default => _default.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.17.3.0/24",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     cidrBlock: "172.17.3.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
- * });
- * const defaultInstance = new alicloud.mongodb.Instance("default", {
- *     engineVersion: "4.2",
- *     dbInstanceClass: "dds.mongo.mid",
- *     dbInstanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
- *     securityIpLists: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
- *     name: name,
- *     tags: {
- *         Created: "TF",
- *         For: "example",
- *     },
- * });
- * const defaultAuditPolicy = new alicloud.mongodb.AuditPolicy("default", {
- *     dbInstanceId: defaultInstance.id,
- *     auditStatus: "disabled",
- * });
- * ```
- *
  * ## Import
  *
- * MongoDB Audit Policy can be imported using the id, e.g.
+ * Mongodb Audit Policy can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <db_instance_id>
+ * $ pulumi import alicloud:mongodb/auditPolicy:AuditPolicy example <id>
  * ```
  */
 export class AuditPolicy extends pulumi.CustomResource {
@@ -92,17 +42,17 @@ export class AuditPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The status of the audit log. Valid values: `disabled`, `enable`.
+     * Audit state, Valid values: `enable`, `disabled`.
      */
     declare public readonly auditStatus: pulumi.Output<string>;
     /**
-     * The ID of the instance.
+     * Database Instance Id
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
-     * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
-    declare public readonly storagePeriod: pulumi.Output<number | undefined>;
+    declare public readonly storagePeriod: pulumi.Output<number>;
 
     /**
      * Create a AuditPolicy resource with the given unique name, arguments, and options.
@@ -142,15 +92,15 @@ export class AuditPolicy extends pulumi.CustomResource {
  */
 export interface AuditPolicyState {
     /**
-     * The status of the audit log. Valid values: `disabled`, `enable`.
+     * Audit state, Valid values: `enable`, `disabled`.
      */
     auditStatus?: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * Database Instance Id
      */
     dbInstanceId?: pulumi.Input<string>;
     /**
-     * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
     storagePeriod?: pulumi.Input<number>;
 }
@@ -160,15 +110,15 @@ export interface AuditPolicyState {
  */
 export interface AuditPolicyArgs {
     /**
-     * The status of the audit log. Valid values: `disabled`, `enable`.
+     * Audit state, Valid values: `enable`, `disabled`.
      */
     auditStatus: pulumi.Input<string>;
     /**
-     * The ID of the instance.
+     * Database Instance Id
      */
     dbInstanceId: pulumi.Input<string>;
     /**
-     * The retention period of audit logs. Valid values: `1` to `30`. Default value: `30`.
+     * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
     storagePeriod?: pulumi.Input<number>;
 }

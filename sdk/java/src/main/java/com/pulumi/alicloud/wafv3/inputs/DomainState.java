@@ -19,21 +19,26 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainState Empty = new DomainState();
 
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     @Import(name="accessType")
     private @Nullable Output<String> accessType;
 
-    /**
-     * @return The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     * 
-     */
     public Optional<Output<String>> accessType() {
         return Optional.ofNullable(this.accessType);
+    }
+
+    /**
+     * The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    @Import(name="cname")
+    private @Nullable Output<String> cname;
+
+    /**
+     * @return The CNAME assigned by WAF to the domain name.
+     * 
+     */
+    public Optional<Output<String>> cname() {
+        return Optional.ofNullable(this.cname);
     }
 
     /**
@@ -160,6 +165,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
     private DomainState(DomainState $) {
         this.accessType = $.accessType;
+        this.cname = $.cname;
         this.domain = $.domain;
         this.domainId = $.domainId;
         this.instanceId = $.instanceId;
@@ -188,27 +194,34 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
             $ = new DomainState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accessType The mode in which the domain name is added to WAF. Valid values:
-         * share: CNAME record mode. This is the default value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accessType(@Nullable Output<String> accessType) {
             $.accessType = accessType;
             return this;
         }
 
+        public Builder accessType(String accessType) {
+            return accessType(Output.of(accessType));
+        }
+
         /**
-         * @param accessType The mode in which the domain name is added to WAF. Valid values:
-         * share: CNAME record mode. This is the default value.
+         * @param cname The CNAME assigned by WAF to the domain name.
          * 
          * @return builder
          * 
          */
-        public Builder accessType(String accessType) {
-            return accessType(Output.of(accessType));
+        public Builder cname(@Nullable Output<String> cname) {
+            $.cname = cname;
+            return this;
+        }
+
+        /**
+         * @param cname The CNAME assigned by WAF to the domain name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cname(String cname) {
+            return cname(Output.of(cname));
         }
 
         /**

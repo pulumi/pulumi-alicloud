@@ -2156,12 +2156,44 @@ class ScalingConfigurationInstancePatternInfo(dict):
         suggest = None
         if key == "burstablePerformance":
             suggest = "burstable_performance"
+        elif key == "cpuArchitectures":
+            suggest = "cpu_architectures"
         elif key == "excludedInstanceTypes":
             suggest = "excluded_instance_types"
+        elif key == "gpuSpecs":
+            suggest = "gpu_specs"
+        elif key == "instanceCategories":
+            suggest = "instance_categories"
         elif key == "instanceFamilyLevel":
             suggest = "instance_family_level"
+        elif key == "instanceTypeFamilies":
+            suggest = "instance_type_families"
         elif key == "maxPrice":
             suggest = "max_price"
+        elif key == "maximumCpuCoreCount":
+            suggest = "maximum_cpu_core_count"
+        elif key == "maximumGpuAmount":
+            suggest = "maximum_gpu_amount"
+        elif key == "maximumMemorySize":
+            suggest = "maximum_memory_size"
+        elif key == "minimumBaselineCredit":
+            suggest = "minimum_baseline_credit"
+        elif key == "minimumCpuCoreCount":
+            suggest = "minimum_cpu_core_count"
+        elif key == "minimumEniIpv6AddressQuantity":
+            suggest = "minimum_eni_ipv6_address_quantity"
+        elif key == "minimumEniPrivateIpAddressQuantity":
+            suggest = "minimum_eni_private_ip_address_quantity"
+        elif key == "minimumEniQuantity":
+            suggest = "minimum_eni_quantity"
+        elif key == "minimumGpuAmount":
+            suggest = "minimum_gpu_amount"
+        elif key == "minimumInitialCredit":
+            suggest = "minimum_initial_credit"
+        elif key == "minimumMemorySize":
+            suggest = "minimum_memory_size"
+        elif key == "physicalProcessorModels":
+            suggest = "physical_processor_models"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationInstancePatternInfo. Access the value via the '{suggest}' property getter instead.")
@@ -2178,18 +2210,50 @@ class ScalingConfigurationInstancePatternInfo(dict):
                  architectures: Optional[Sequence[_builtins.str]] = None,
                  burstable_performance: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
+                 cpu_architectures: Optional[Sequence[_builtins.str]] = None,
                  excluded_instance_types: Optional[Sequence[_builtins.str]] = None,
+                 gpu_specs: Optional[Sequence[_builtins.str]] = None,
+                 instance_categories: Optional[Sequence[_builtins.str]] = None,
                  instance_family_level: Optional[_builtins.str] = None,
+                 instance_type_families: Optional[Sequence[_builtins.str]] = None,
                  max_price: Optional[_builtins.float] = None,
-                 memory: Optional[_builtins.float] = None):
+                 maximum_cpu_core_count: Optional[_builtins.int] = None,
+                 maximum_gpu_amount: Optional[_builtins.int] = None,
+                 maximum_memory_size: Optional[_builtins.float] = None,
+                 memory: Optional[_builtins.float] = None,
+                 minimum_baseline_credit: Optional[_builtins.int] = None,
+                 minimum_cpu_core_count: Optional[_builtins.int] = None,
+                 minimum_eni_ipv6_address_quantity: Optional[_builtins.int] = None,
+                 minimum_eni_private_ip_address_quantity: Optional[_builtins.int] = None,
+                 minimum_eni_quantity: Optional[_builtins.int] = None,
+                 minimum_gpu_amount: Optional[_builtins.int] = None,
+                 minimum_initial_credit: Optional[_builtins.int] = None,
+                 minimum_memory_size: Optional[_builtins.float] = None,
+                 physical_processor_models: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.str] architectures: Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
         :param _builtins.str burstable_performance: Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
         :param _builtins.int cores: The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        :param Sequence[_builtins.str] cpu_architectures: CPU architecture N of the instance types. Valid values: x86,Arm.
         :param Sequence[_builtins.str] excluded_instance_types: Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        :param Sequence[_builtins.str] gpu_specs: The GPU model.
+        :param Sequence[_builtins.str] instance_categories: Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
         :param _builtins.str instance_family_level: The instance family level in instancePatternInfo.
+        :param Sequence[_builtins.str] instance_type_families: Instance family N that is queried. Valid values of N: 1 to 10.
         :param _builtins.float max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        :param _builtins.int maximum_cpu_core_count: The maximum number of vCPUs per instance type.
+        :param _builtins.int maximum_gpu_amount: The maximum number of GPUs per instance. The value must be a positive integer.
+        :param _builtins.float maximum_memory_size: The maximum memory size per instance. Unit: GiB.
         :param _builtins.float memory: The memory size that is specified for an instance type in instancePatternInfo.
+        :param _builtins.int minimum_baseline_credit: The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        :param _builtins.int minimum_cpu_core_count: The minimum number of vCPUs per instance type.
+        :param _builtins.int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI.
+        :param _builtins.int minimum_eni_private_ip_address_quantity: The minimum number of IPv4 addresses per ENI.
+        :param _builtins.int minimum_eni_quantity: The minimum number of elastic network interfaces (ENIs) per instance.
+        :param _builtins.int minimum_gpu_amount: The minimum number of GPUs per instance. The value must be a positive integer.
+        :param _builtins.int minimum_initial_credit: The initial vCPU credits per t5 or t6 burstable instance.
+        :param _builtins.float minimum_memory_size: The minimum memory size per instance. Unit: GiB.
+        :param Sequence[_builtins.str] physical_processor_models: Processor model N of the ECS instances. Valid values of N: 1 to 10.
         """
         if architectures is not None:
             pulumi.set(__self__, "architectures", architectures)
@@ -2197,14 +2261,46 @@ class ScalingConfigurationInstancePatternInfo(dict):
             pulumi.set(__self__, "burstable_performance", burstable_performance)
         if cores is not None:
             pulumi.set(__self__, "cores", cores)
+        if cpu_architectures is not None:
+            pulumi.set(__self__, "cpu_architectures", cpu_architectures)
         if excluded_instance_types is not None:
             pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        if gpu_specs is not None:
+            pulumi.set(__self__, "gpu_specs", gpu_specs)
+        if instance_categories is not None:
+            pulumi.set(__self__, "instance_categories", instance_categories)
         if instance_family_level is not None:
             pulumi.set(__self__, "instance_family_level", instance_family_level)
+        if instance_type_families is not None:
+            pulumi.set(__self__, "instance_type_families", instance_type_families)
         if max_price is not None:
             pulumi.set(__self__, "max_price", max_price)
+        if maximum_cpu_core_count is not None:
+            pulumi.set(__self__, "maximum_cpu_core_count", maximum_cpu_core_count)
+        if maximum_gpu_amount is not None:
+            pulumi.set(__self__, "maximum_gpu_amount", maximum_gpu_amount)
+        if maximum_memory_size is not None:
+            pulumi.set(__self__, "maximum_memory_size", maximum_memory_size)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if minimum_baseline_credit is not None:
+            pulumi.set(__self__, "minimum_baseline_credit", minimum_baseline_credit)
+        if minimum_cpu_core_count is not None:
+            pulumi.set(__self__, "minimum_cpu_core_count", minimum_cpu_core_count)
+        if minimum_eni_ipv6_address_quantity is not None:
+            pulumi.set(__self__, "minimum_eni_ipv6_address_quantity", minimum_eni_ipv6_address_quantity)
+        if minimum_eni_private_ip_address_quantity is not None:
+            pulumi.set(__self__, "minimum_eni_private_ip_address_quantity", minimum_eni_private_ip_address_quantity)
+        if minimum_eni_quantity is not None:
+            pulumi.set(__self__, "minimum_eni_quantity", minimum_eni_quantity)
+        if minimum_gpu_amount is not None:
+            pulumi.set(__self__, "minimum_gpu_amount", minimum_gpu_amount)
+        if minimum_initial_credit is not None:
+            pulumi.set(__self__, "minimum_initial_credit", minimum_initial_credit)
+        if minimum_memory_size is not None:
+            pulumi.set(__self__, "minimum_memory_size", minimum_memory_size)
+        if physical_processor_models is not None:
+            pulumi.set(__self__, "physical_processor_models", physical_processor_models)
 
     @_builtins.property
     @pulumi.getter
@@ -2231,12 +2327,36 @@ class ScalingConfigurationInstancePatternInfo(dict):
         return pulumi.get(self, "cores")
 
     @_builtins.property
+    @pulumi.getter(name="cpuArchitectures")
+    def cpu_architectures(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CPU architecture N of the instance types. Valid values: x86,Arm.
+        """
+        return pulumi.get(self, "cpu_architectures")
+
+    @_builtins.property
     @pulumi.getter(name="excludedInstanceTypes")
     def excluded_instance_types(self) -> Optional[Sequence[_builtins.str]]:
         """
         Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
         """
         return pulumi.get(self, "excluded_instance_types")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuSpecs")
+    def gpu_specs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The GPU model.
+        """
+        return pulumi.get(self, "gpu_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCategories")
+    def instance_categories(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+        """
+        return pulumi.get(self, "instance_categories")
 
     @_builtins.property
     @pulumi.getter(name="instanceFamilyLevel")
@@ -2247,6 +2367,14 @@ class ScalingConfigurationInstancePatternInfo(dict):
         return pulumi.get(self, "instance_family_level")
 
     @_builtins.property
+    @pulumi.getter(name="instanceTypeFamilies")
+    def instance_type_families(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Instance family N that is queried. Valid values of N: 1 to 10.
+        """
+        return pulumi.get(self, "instance_type_families")
+
+    @_builtins.property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> Optional[_builtins.float]:
         """
@@ -2255,12 +2383,108 @@ class ScalingConfigurationInstancePatternInfo(dict):
         return pulumi.get(self, "max_price")
 
     @_builtins.property
+    @pulumi.getter(name="maximumCpuCoreCount")
+    def maximum_cpu_core_count(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of vCPUs per instance type.
+        """
+        return pulumi.get(self, "maximum_cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maximumGpuAmount")
+    def maximum_gpu_amount(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of GPUs per instance. The value must be a positive integer.
+        """
+        return pulumi.get(self, "maximum_gpu_amount")
+
+    @_builtins.property
+    @pulumi.getter(name="maximumMemorySize")
+    def maximum_memory_size(self) -> Optional[_builtins.float]:
+        """
+        The maximum memory size per instance. Unit: GiB.
+        """
+        return pulumi.get(self, "maximum_memory_size")
+
+    @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.float]:
         """
         The memory size that is specified for an instance type in instancePatternInfo.
         """
         return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumBaselineCredit")
+    def minimum_baseline_credit(self) -> Optional[_builtins.int]:
+        """
+        The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        """
+        return pulumi.get(self, "minimum_baseline_credit")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumCpuCoreCount")
+    def minimum_cpu_core_count(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of vCPUs per instance type.
+        """
+        return pulumi.get(self, "minimum_cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumEniIpv6AddressQuantity")
+    def minimum_eni_ipv6_address_quantity(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of IPv6 addresses per ENI.
+        """
+        return pulumi.get(self, "minimum_eni_ipv6_address_quantity")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumEniPrivateIpAddressQuantity")
+    def minimum_eni_private_ip_address_quantity(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of IPv4 addresses per ENI.
+        """
+        return pulumi.get(self, "minimum_eni_private_ip_address_quantity")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumEniQuantity")
+    def minimum_eni_quantity(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of elastic network interfaces (ENIs) per instance.
+        """
+        return pulumi.get(self, "minimum_eni_quantity")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumGpuAmount")
+    def minimum_gpu_amount(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of GPUs per instance. The value must be a positive integer.
+        """
+        return pulumi.get(self, "minimum_gpu_amount")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumInitialCredit")
+    def minimum_initial_credit(self) -> Optional[_builtins.int]:
+        """
+        The initial vCPU credits per t5 or t6 burstable instance.
+        """
+        return pulumi.get(self, "minimum_initial_credit")
+
+    @_builtins.property
+    @pulumi.getter(name="minimumMemorySize")
+    def minimum_memory_size(self) -> Optional[_builtins.float]:
+        """
+        The minimum memory size per instance. Unit: GiB.
+        """
+        return pulumi.get(self, "minimum_memory_size")
+
+    @_builtins.property
+    @pulumi.getter(name="physicalProcessorModels")
+    def physical_processor_models(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Processor model N of the ECS instances. Valid values of N: 1 to 10.
+        """
+        return pulumi.get(self, "physical_processor_models")
 
 
 @pulumi.output_type

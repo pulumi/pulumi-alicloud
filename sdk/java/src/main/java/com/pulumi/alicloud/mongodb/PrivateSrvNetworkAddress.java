@@ -14,11 +14,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Mongo D B Private Srv Network Address resource.
+ * Provides a Mongodb Private Srv Network Address resource.
  * 
  * Private network SRV highly available link address.
  * 
- * For information about Mongo D B Private Srv Network Address and how to use it, see [What is Private Srv Network Address](https://www.alibabacloud.com/help/en/).
+ * For information about Mongodb Private Srv Network Address and how to use it, see [What is Private Srv Network Address](https://next.api.alibabacloud.com/document/Dds/2015-12-01/AllocateDBInstanceSrvNetworkAddress).
  * 
  * &gt; **NOTE:** Available since v1.240.0.
  * 
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Mongo D B Private Srv Network Address can be imported using the id, e.g.
+ * Mongodb Private Srv Network Address can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress example &lt;id&gt;

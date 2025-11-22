@@ -26,19 +26,14 @@ class AccountArgs:
                  character_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
-        :param pulumi.Input[_builtins.str] account_name: The new password.
-               
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-               - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
-        :param pulumi.Input[_builtins.str] instance_id: The account whose password needs to be reset. Set the value to `root`.
-        :param pulumi.Input[_builtins.str] account_description: Account comment information.
-               
-               > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
-        :param pulumi.Input[_builtins.str] character_type: The role type of the instance. Value description
-               
-               - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-               - When the instance type is a replica set, charactertype can be null or pass in normal.
+        :param pulumi.Input[_builtins.str] account_name: Account Name
+        :param pulumi.Input[_builtins.str] account_password: Account Password
+        :param pulumi.Input[_builtins.str] instance_id: Instance Id
+        :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
+               - Cannot start with http:// or https.
+               - Start with Chinese and English letters.
+               - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] character_type: The account Comment Information type. Value:
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
@@ -52,10 +47,7 @@ class AccountArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The new password.
-
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-        - The password must be 8 to 32 characters in length.
+        Account Name
         """
         return pulumi.get(self, "account_name")
 
@@ -67,7 +59,7 @@ class AccountArgs:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Input[_builtins.str]:
         """
-        The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
+        Account Password
         """
         return pulumi.get(self, "account_password")
 
@@ -79,7 +71,7 @@ class AccountArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The account whose password needs to be reset. Set the value to `root`.
+        Instance Id
         """
         return pulumi.get(self, "instance_id")
 
@@ -91,9 +83,10 @@ class AccountArgs:
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account comment information.
-
-        > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        Set the comment information of the account.
+        - Cannot start with http:// or https.
+        - Start with Chinese and English letters.
+        - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
@@ -105,10 +98,7 @@ class AccountArgs:
     @pulumi.getter(name="characterType")
     def character_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The role type of the instance. Value description
-
-        - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        - When the instance type is a replica set, charactertype can be null or pass in normal.
+        The account Comment Information type. Value:
         """
         return pulumi.get(self, "character_type")
 
@@ -128,19 +118,14 @@ class _AccountState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
-        :param pulumi.Input[_builtins.str] account_description: Account comment information.
-               
-               > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
-        :param pulumi.Input[_builtins.str] account_name: The new password.
-               
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-               - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
-        :param pulumi.Input[_builtins.str] character_type: The role type of the instance. Value description
-               
-               - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-               - When the instance type is a replica set, charactertype can be null or pass in normal.
-        :param pulumi.Input[_builtins.str] instance_id: The account whose password needs to be reset. Set the value to `root`.
+        :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
+               - Cannot start with http:// or https.
+               - Start with Chinese and English letters.
+               - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] account_name: Account Name
+        :param pulumi.Input[_builtins.str] account_password: Account Password
+        :param pulumi.Input[_builtins.str] character_type: The account Comment Information type. Value:
+        :param pulumi.Input[_builtins.str] instance_id: Instance Id
         :param pulumi.Input[_builtins.str] status: Account Status
         """
         if account_description is not None:
@@ -160,9 +145,10 @@ class _AccountState:
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account comment information.
-
-        > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        Set the comment information of the account.
+        - Cannot start with http:// or https.
+        - Start with Chinese and English letters.
+        - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
@@ -174,10 +160,7 @@ class _AccountState:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The new password.
-
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-        - The password must be 8 to 32 characters in length.
+        Account Name
         """
         return pulumi.get(self, "account_name")
 
@@ -189,7 +172,7 @@ class _AccountState:
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
+        Account Password
         """
         return pulumi.get(self, "account_password")
 
@@ -201,10 +184,7 @@ class _AccountState:
     @pulumi.getter(name="characterType")
     def character_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The role type of the instance. Value description
-
-        - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        - When the instance type is a replica set, charactertype can be null or pass in normal.
+        The account Comment Information type. Value:
         """
         return pulumi.get(self, "character_type")
 
@@ -216,7 +196,7 @@ class _AccountState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The account whose password needs to be reset. Set the value to `root`.
+        Instance Id
         """
         return pulumi.get(self, "instance_id")
 
@@ -252,7 +232,7 @@ class Account(pulumi.CustomResource):
         """
         ## Import
 
-        Mongo D B Account can be imported using the id, e.g.
+        Mongodb Account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
@@ -260,19 +240,14 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_description: Account comment information.
-               
-               > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
-        :param pulumi.Input[_builtins.str] account_name: The new password.
-               
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-               - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
-        :param pulumi.Input[_builtins.str] character_type: The role type of the instance. Value description
-               
-               - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-               - When the instance type is a replica set, charactertype can be null or pass in normal.
-        :param pulumi.Input[_builtins.str] instance_id: The account whose password needs to be reset. Set the value to `root`.
+        :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
+               - Cannot start with http:// or https.
+               - Start with Chinese and English letters.
+               - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] account_name: Account Name
+        :param pulumi.Input[_builtins.str] account_password: Account Password
+        :param pulumi.Input[_builtins.str] character_type: The account Comment Information type. Value:
+        :param pulumi.Input[_builtins.str] instance_id: Instance Id
         """
         ...
     @overload
@@ -283,7 +258,7 @@ class Account(pulumi.CustomResource):
         """
         ## Import
 
-        Mongo D B Account can be imported using the id, e.g.
+        Mongodb Account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:mongodb/account:Account example <instance_id>:<account_name>
@@ -355,19 +330,14 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_description: Account comment information.
-               
-               > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
-        :param pulumi.Input[_builtins.str] account_name: The new password.
-               
-               - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-               - The password must be 8 to 32 characters in length.
-        :param pulumi.Input[_builtins.str] account_password: The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
-        :param pulumi.Input[_builtins.str] character_type: The role type of the instance. Value description
-               
-               - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-               - When the instance type is a replica set, charactertype can be null or pass in normal.
-        :param pulumi.Input[_builtins.str] instance_id: The account whose password needs to be reset. Set the value to `root`.
+        :param pulumi.Input[_builtins.str] account_description: Set the comment information of the account.
+               - Cannot start with http:// or https.
+               - Start with Chinese and English letters.
+               - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] account_name: Account Name
+        :param pulumi.Input[_builtins.str] account_password: Account Password
+        :param pulumi.Input[_builtins.str] character_type: The account Comment Information type. Value:
+        :param pulumi.Input[_builtins.str] instance_id: Instance Id
         :param pulumi.Input[_builtins.str] status: Account Status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -386,9 +356,10 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountDescription")
     def account_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Account comment information.
-
-        > **NOTE:**  Call the ModifyAccountDescription interface to set the account description information before this parameter is returned.
+        Set the comment information of the account.
+        - Cannot start with http:// or https.
+        - Start with Chinese and English letters.
+        - Can contain Chinese characters, English characters, underscores (_), dashes (-), and numbers, and can be 2 to 256 characters in length.
         """
         return pulumi.get(self, "account_description")
 
@@ -396,10 +367,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The new password.
-
-        - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! # $ % ^ & * ( ) _ + - =`
-        - The password must be 8 to 32 characters in length.
+        Account Name
         """
         return pulumi.get(self, "account_name")
 
@@ -407,7 +375,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPassword")
     def account_password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the database account. The password must be 8 to 32 characters in length. It can contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! # $ % ^ & \\* ( ) \\_ + - =
+        Account Password
         """
         return pulumi.get(self, "account_password")
 
@@ -415,10 +383,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="characterType")
     def character_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The role type of the instance. Value description
-
-        - When the instance type is sharded cluster, charactertype is required. The values are db and cs.
-        - When the instance type is a replica set, charactertype can be null or pass in normal.
+        The account Comment Information type. Value:
         """
         return pulumi.get(self, "character_type")
 
@@ -426,7 +391,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The account whose password needs to be reset. Set the value to `root`.
+        Instance Id
         """
         return pulumi.get(self, "instance_id")
 

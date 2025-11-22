@@ -37,6 +37,7 @@ class BastionHostInstanceArgs:
                  renewal_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BastionHostInstance resource.
@@ -66,6 +67,8 @@ class BastionHostInstanceArgs:
             pulumi.set(__self__, "renewal_status", renewal_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if slave_vswitch_id is not None:
+            pulumi.set(__self__, "slave_vswitch_id", slave_vswitch_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -214,6 +217,15 @@ class BastionHostInstanceArgs:
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "slave_vswitch_id")
+
+    @slave_vswitch_id.setter
+    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "slave_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
@@ -240,6 +252,7 @@ class _BastionHostInstanceState:
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -274,6 +287,8 @@ class _BastionHostInstanceState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if slave_vswitch_id is not None:
+            pulumi.set(__self__, "slave_vswitch_id", slave_vswitch_id)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if tags is not None:
@@ -408,6 +423,15 @@ class _BastionHostInstanceState:
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "slave_vswitch_id")
+
+    @slave_vswitch_id.setter
+    def slave_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "slave_vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "storage")
@@ -455,6 +479,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -501,6 +526,7 @@ class BastionHostInstance(pulumi.CustomResource):
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -537,6 +563,7 @@ class BastionHostInstance(pulumi.CustomResource):
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["slave_vswitch_id"] = slave_vswitch_id
             if storage is None and not opts.urn:
                 raise TypeError("Missing required property 'storage'")
             __props__.__dict__["storage"] = storage
@@ -568,6 +595,7 @@ class BastionHostInstance(pulumi.CustomResource):
             renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            slave_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             storage: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'BastionHostInstance':
@@ -597,6 +625,7 @@ class BastionHostInstance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["slave_vswitch_id"] = slave_vswitch_id
         __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vswitch_id"] = vswitch_id
@@ -671,6 +700,11 @@ class BastionHostInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         return pulumi.get(self, "security_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="slaveVswitchId")
+    def slave_vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "slave_vswitch_id")
 
     @_builtins.property
     @pulumi.getter

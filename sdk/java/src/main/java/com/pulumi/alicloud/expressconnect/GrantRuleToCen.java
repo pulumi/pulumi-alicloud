@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -32,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.random.Integer;
@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
- * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.expressconnect.GrantRuleToCen;
  * import com.pulumi.alicloud.expressconnect.GrantRuleToCenArgs;
  * import java.util.List;
@@ -57,38 +56,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         final var defaultGetPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
- *             .physicalConnectionId(example.connections()[0].id())
+ *             .physicalConnectionId(defaultGetPhysicalConnections.connections()[0].id())
  *             .virtualBorderRouterName(name)
- *             .vlanId(vlanId.id())
+ *             .vlanId(defaultInteger.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         final var default = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
- * 
- *         var exampleGrantRuleToCen = new GrantRuleToCen("exampleGrantRuleToCen", GrantRuleToCenArgs.builder()
- *             .cenId(exampleInstance.id())
+ *         var defaultGrantRuleToCen = new GrantRuleToCen("defaultGrantRuleToCen", GrantRuleToCenArgs.builder()
+ *             .cenId(defaultInstance.id())
  *             .cenOwnerId(default_.id())
- *             .instanceId(exampleVirtualBorderRouter.id())
+ *             .instanceId(defaultVirtualBorderRouter.id())
  *             .build());
  * 
  *     }
@@ -125,15 +124,29 @@ public class GrantRuleToCen extends com.pulumi.resources.CustomResource {
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    @Export(name="cenOwnerId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> cenOwnerId;
+    @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
+    private Output<String> cenOwnerId;
 
     /**
      * @return The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    public Output<Integer> cenOwnerId() {
+    public Output<String> cenOwnerId() {
         return this.cenOwnerId;
+    }
+    /**
+     * (Available since v1.263.0) The time when the instance was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.263.0) The time when the instance was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The ID of the VBR.

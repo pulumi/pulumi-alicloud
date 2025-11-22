@@ -79,14 +79,18 @@ type ScheduledPreloadJob struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay pulumi.StringOutput `pulumi:"insertWay"`
 	// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssUrl pulumi.StringPtrOutput `pulumi:"ossUrl"`
 	// The ID of the prefetch task.
 	ScheduledPreloadJobId pulumi.StringOutput `pulumi:"scheduledPreloadJobId"`
 	// The task name.
 	ScheduledPreloadJobName pulumi.StringOutput `pulumi:"scheduledPreloadJobName"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	UrlList pulumi.StringPtrOutput `pulumi:"urlList"`
 }
 
@@ -134,14 +138,18 @@ type scheduledPreloadJobState struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay *string `pulumi:"insertWay"`
 	// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssUrl *string `pulumi:"ossUrl"`
 	// The ID of the prefetch task.
 	ScheduledPreloadJobId *string `pulumi:"scheduledPreloadJobId"`
 	// The task name.
 	ScheduledPreloadJobName *string `pulumi:"scheduledPreloadJobName"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	UrlList *string `pulumi:"urlList"`
 }
 
@@ -151,14 +159,18 @@ type ScheduledPreloadJobState struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay pulumi.StringPtrInput
 	// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssUrl pulumi.StringPtrInput
 	// The ID of the prefetch task.
 	ScheduledPreloadJobId pulumi.StringPtrInput
 	// The task name.
 	ScheduledPreloadJobName pulumi.StringPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	UrlList pulumi.StringPtrInput
 }
 
@@ -170,12 +182,16 @@ type scheduledPreloadJobArgs struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay string `pulumi:"insertWay"`
 	// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssUrl *string `pulumi:"ossUrl"`
 	// The task name.
 	ScheduledPreloadJobName string `pulumi:"scheduledPreloadJobName"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	UrlList *string `pulumi:"urlList"`
 }
 
@@ -184,12 +200,16 @@ type ScheduledPreloadJobArgs struct {
 	// The method to submit the URLs to be prefetched.
 	InsertWay pulumi.StringInput
 	// Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssUrl pulumi.StringPtrInput
 	// The task name.
 	ScheduledPreloadJobName pulumi.StringInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	UrlList pulumi.StringPtrInput
 }
 
@@ -291,6 +311,8 @@ func (o ScheduledPreloadJobOutput) InsertWay() pulumi.StringOutput {
 }
 
 // Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ScheduledPreloadJobOutput) OssUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledPreloadJob) pulumi.StringPtrOutput { return v.OssUrl }).(pulumi.StringPtrOutput)
 }
@@ -306,11 +328,13 @@ func (o ScheduledPreloadJobOutput) ScheduledPreloadJobName() pulumi.StringOutput
 }
 
 // The site ID.
-func (o ScheduledPreloadJobOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ScheduledPreloadJob) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o ScheduledPreloadJobOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledPreloadJob) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ScheduledPreloadJobOutput) UrlList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledPreloadJob) pulumi.StringPtrOutput { return v.UrlList }).(pulumi.StringPtrOutput)
 }

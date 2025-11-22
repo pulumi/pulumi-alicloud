@@ -49,6 +49,7 @@ class SynchronizationJobArgs:
                  error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
                  error_phone: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 job_parameters: Optional[pulumi.Input[_builtins.str]] = None,
                  reserve: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -102,6 +103,7 @@ class SynchronizationJobArgs:
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         :param pulumi.Input[_builtins.str] source_endpoint_instance_id: The ID of source instance. If the source instance is a cloud database (such as RDS MySQL), you need to pass in the instance ID of the cloud database (such as the instance ID of RDS MySQL). If the source instance is a self-built database, the value of this parameter changes according to the value of `source_endpoint_instance_type`. For example, the value of `source_endpoint_instance_type` is:
@@ -170,6 +172,8 @@ class SynchronizationJobArgs:
             pulumi.set(__self__, "error_phone", error_phone)
         if instance_class is not None:
             pulumi.set(__self__, "instance_class", instance_class)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
         if reserve is not None:
             pulumi.set(__self__, "reserve", reserve)
         if source_endpoint_database_name is not None:
@@ -567,6 +571,18 @@ class SynchronizationJobArgs:
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        """
+        return pulumi.get(self, "job_parameters")
+
+    @job_parameters.setter
+    def job_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "job_parameters", value)
+
+    @_builtins.property
     @pulumi.getter
     def reserve(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -768,6 +784,7 @@ class _SynchronizationJobState:
                  error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
                  error_phone: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 job_parameters: Optional[pulumi.Input[_builtins.str]] = None,
                  reserve: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -821,6 +838,7 @@ class _SynchronizationJobState:
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
@@ -896,6 +914,8 @@ class _SynchronizationJobState:
             pulumi.set(__self__, "error_phone", error_phone)
         if instance_class is not None:
             pulumi.set(__self__, "instance_class", instance_class)
+        if job_parameters is not None:
+            pulumi.set(__self__, "job_parameters", job_parameters)
         if reserve is not None:
             pulumi.set(__self__, "reserve", reserve)
         if source_endpoint_database_name is not None:
@@ -1263,6 +1283,18 @@ class _SynchronizationJobState:
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        """
+        return pulumi.get(self, "job_parameters")
+
+    @job_parameters.setter
+    def job_parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "job_parameters", value)
+
+    @_builtins.property
     @pulumi.getter
     def reserve(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -1503,6 +1535,7 @@ class SynchronizationJob(pulumi.CustomResource):
                  error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
                  error_phone: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 job_parameters: Optional[pulumi.Input[_builtins.str]] = None,
                  reserve: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1698,6 +1731,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
@@ -1908,6 +1942,7 @@ class SynchronizationJob(pulumi.CustomResource):
                  error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
                  error_phone: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 job_parameters: Optional[pulumi.Input[_builtins.str]] = None,
                  reserve: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1975,6 +2010,7 @@ class SynchronizationJob(pulumi.CustomResource):
             __props__.__dict__["error_notice"] = error_notice
             __props__.__dict__["error_phone"] = error_phone
             __props__.__dict__["instance_class"] = instance_class
+            __props__.__dict__["job_parameters"] = job_parameters
             __props__.__dict__["reserve"] = reserve
             __props__.__dict__["source_endpoint_database_name"] = source_endpoint_database_name
             if source_endpoint_engine_name is None and not opts.urn:
@@ -2035,6 +2071,7 @@ class SynchronizationJob(pulumi.CustomResource):
             error_notice: Optional[pulumi.Input[_builtins.bool]] = None,
             error_phone: Optional[pulumi.Input[_builtins.str]] = None,
             instance_class: Optional[pulumi.Input[_builtins.str]] = None,
+            job_parameters: Optional[pulumi.Input[_builtins.str]] = None,
             reserve: Optional[pulumi.Input[_builtins.str]] = None,
             source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
             source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2093,6 +2130,7 @@ class SynchronizationJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] error_notice: The error notice. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.str] error_phone: The error phone. The mobile phone number of the contact who error the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
         :param pulumi.Input[_builtins.str] instance_class: The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
+        :param pulumi.Input[_builtins.str] job_parameters: DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
         :param pulumi.Input[_builtins.str] reserve: DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter [description of the Reserve parameter](https://help.aliyun.com/document_detail/273111.html).
         :param pulumi.Input[_builtins.str] source_endpoint_database_name: The name of the database to which the migration object belongs in the source instance. Note: this parameter is only available and must be passed in when the source instance, or the database type of the source instance is PolarDB O engine, PostgreSQL, or MongoDB database.
         :param pulumi.Input[_builtins.str] source_endpoint_engine_name: The type of source database. The default value is `MySQL`. For the correspondence between supported source libraries and target libraries, see [Supported Databases](https://help.aliyun.com/document_detail/131497.htm). When the database type of the source instance is `MONGODB`, you also need to pass in some information in the reserved parameter `Reserve`, for the configuration method, see the description of Reserve parameters. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`, `POLARDB_PG`, `MARIADB`, `POLARDBX10`, `TiDB`, `REDIS`.
@@ -2145,6 +2183,7 @@ class SynchronizationJob(pulumi.CustomResource):
         __props__.__dict__["error_notice"] = error_notice
         __props__.__dict__["error_phone"] = error_phone
         __props__.__dict__["instance_class"] = instance_class
+        __props__.__dict__["job_parameters"] = job_parameters
         __props__.__dict__["reserve"] = reserve
         __props__.__dict__["source_endpoint_database_name"] = source_endpoint_database_name
         __props__.__dict__["source_endpoint_engine_name"] = source_endpoint_engine_name
@@ -2386,6 +2425,14 @@ class SynchronizationJob(pulumi.CustomResource):
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`. You can only upgrade the configuration, not downgrade the configuration. If you downgrade the instance, you need to [submit a ticket](https://selfservice.console.aliyun.com/ticket/category/dts/today).
         """
         return pulumi.get(self, "instance_class")
+
+    @_builtins.property
+    @pulumi.getter(name="jobParameters")
+    def job_parameters(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        DTS modifiable runtime parameters, you can modify the parameters of a running DTS (Data Transmission Service) task by providing a JSON array. This allows for real-time adjustments to the task's behavior.Please note that you can only modify these parameters while the task is active; they are not available during the initial setup. For more information, please refer to the parameter [description of the Runtime parameter](https://help.aliyun.com/zh/dts/developer-reference/parameter-description).
+        """
+        return pulumi.get(self, "job_parameters")
 
     @_builtins.property
     @pulumi.getter

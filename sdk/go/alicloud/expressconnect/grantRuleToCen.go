@@ -39,30 +39,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetPhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
 //				Max: 2999,
 //				Min: 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(defaultGetPhysicalConnections.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.Id,
+//				VlanId:                  defaultInteger.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -70,20 +74,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = expressconnect.NewGrantRuleToCen(ctx, "example", &expressconnect.GrantRuleToCenArgs{
-//				CenId:      exampleInstance.ID(),
+//			_, err = expressconnect.NewGrantRuleToCen(ctx, "default", &expressconnect.GrantRuleToCenArgs{
+//				CenId:      defaultInstance.ID(),
 //				CenOwnerId: pulumi.String(_default.Id),
-//				InstanceId: exampleVirtualBorderRouter.ID(),
+//				InstanceId: defaultVirtualBorderRouter.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,9 @@ type GrantRuleToCen struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
 	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId pulumi.IntOutput `pulumi:"cenOwnerId"`
+	CenOwnerId pulumi.StringOutput `pulumi:"cenOwnerId"`
+	// (Available since v1.263.0) The time when the instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the VBR.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 }
@@ -154,7 +156,9 @@ type grantRuleToCenState struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId *string `pulumi:"cenId"`
 	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId *int `pulumi:"cenOwnerId"`
+	CenOwnerId *string `pulumi:"cenOwnerId"`
+	// (Available since v1.263.0) The time when the instance was created.
+	CreateTime *string `pulumi:"createTime"`
 	// The ID of the VBR.
 	InstanceId *string `pulumi:"instanceId"`
 }
@@ -163,7 +167,9 @@ type GrantRuleToCenState struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId pulumi.StringPtrInput
 	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId pulumi.IntPtrInput
+	CenOwnerId pulumi.StringPtrInput
+	// (Available since v1.263.0) The time when the instance was created.
+	CreateTime pulumi.StringPtrInput
 	// The ID of the VBR.
 	InstanceId pulumi.StringPtrInput
 }
@@ -176,7 +182,7 @@ type grantRuleToCenArgs struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId string `pulumi:"cenId"`
 	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId int `pulumi:"cenOwnerId"`
+	CenOwnerId string `pulumi:"cenOwnerId"`
 	// The ID of the VBR.
 	InstanceId string `pulumi:"instanceId"`
 }
@@ -186,7 +192,7 @@ type GrantRuleToCenArgs struct {
 	// The ID of the CEN instance to which you want to grant permissions.
 	CenId pulumi.StringInput
 	// The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-	CenOwnerId pulumi.IntInput
+	CenOwnerId pulumi.StringInput
 	// The ID of the VBR.
 	InstanceId pulumi.StringInput
 }
@@ -284,8 +290,13 @@ func (o GrantRuleToCenOutput) CenId() pulumi.StringOutput {
 }
 
 // The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
-func (o GrantRuleToCenOutput) CenOwnerId() pulumi.IntOutput {
-	return o.ApplyT(func(v *GrantRuleToCen) pulumi.IntOutput { return v.CenOwnerId }).(pulumi.IntOutput)
+func (o GrantRuleToCenOutput) CenOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrantRuleToCen) pulumi.StringOutput { return v.CenOwnerId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.263.0) The time when the instance was created.
+func (o GrantRuleToCenOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GrantRuleToCen) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The ID of the VBR.

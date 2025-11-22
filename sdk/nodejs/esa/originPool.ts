@@ -142,7 +142,7 @@ export class OriginPool extends pulumi.CustomResource {
     /**
      * The site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a OriginPool resource with the given unique name, arguments, and options.
@@ -204,7 +204,7 @@ export interface OriginPoolState {
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
 }
 
 /**
@@ -226,5 +226,5 @@ export interface OriginPoolArgs {
     /**
      * The site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

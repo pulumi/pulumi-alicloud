@@ -11,13 +11,17 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Eflo Vpd resource.
  * 
- * For information about Eflo Vpd and how to use it, see [What is Vpd](https://www.alibabacloud.com/help/en/pai/user-guide/overview-of-intelligent-computing-lingjun).
+ * Lingjun Network Segment.
+ * 
+ * For information about Eflo Vpd and how to use it, see [What is Vpd](https://next.api.alibabacloud.com/document/eflo/2022-05-30/CreateVpd).
  * 
  * &gt; **NOTE:** Available since v1.201.0.
  * 
@@ -50,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .build());
  * 
@@ -77,84 +81,126 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eflo/vpd:Vpd")
 public class Vpd extends com.pulumi.resources.CustomResource {
     /**
-     * CIDR network segment.
+     * The CIDR block of the VPD.
      * 
      */
     @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
-     * @return CIDR network segment.
+     * @return The CIDR block of the VPD.
      * 
      */
     public Output<String> cidr() {
         return this.cidr;
     }
     /**
-     * The creation time of the resource
+     * The time when the activation code was created.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource
+     * @return The time when the activation code was created.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Modification time
+     * The time when the O&amp;M task was modified.
      * 
      */
     @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
-     * @return Modification time
+     * @return The time when the O&amp;M task was modified.
      * 
      */
     public Output<String> gmtModified() {
         return this.gmtModified;
     }
     /**
-     * The Resource group id.
+     * (Available since v1.263.0) The region ID.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.263.0) The region ID.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
-     * @return The Resource group id.
+     * @return The Resource group ID. **NOTE:** From version 1.263.0, `resourceGroupId` can be modified.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
-     * The Vpd status.
+     * The additional CIDR block.
+     * 
+     */
+    @Export(name="secondaryCidrBlocks", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> secondaryCidrBlocks;
+
+    /**
+     * @return The additional CIDR block.
+     * 
+     */
+    public Output<Optional<List<String>>> secondaryCidrBlocks() {
+        return Codegen.optional(this.secondaryCidrBlocks);
+    }
+    /**
+     * The current state of the instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The Vpd status.
+     * @return The current state of the instance.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The Name of the VPD.
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The name of the VPD instance.
      * 
      */
     @Export(name="vpdName", refs={String.class}, tree="[0]")
     private Output<String> vpdName;
 
     /**
-     * @return The Name of the VPD.
+     * @return The name of the VPD instance.
      * 
      */
     public Output<String> vpdName() {

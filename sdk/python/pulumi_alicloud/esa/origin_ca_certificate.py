@@ -20,12 +20,12 @@ __all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
 class OriginCaCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginCaCertificate resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] name: The certificate name.
         """
         pulumi.set(__self__, "certificate", certificate)
@@ -47,14 +47,14 @@ class OriginCaCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -77,7 +77,7 @@ class _OriginCaCertificateState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginCaCertificate resources.
@@ -85,7 +85,7 @@ class _OriginCaCertificateState:
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] name: The certificate name.
         :param pulumi.Input[_builtins.str] origin_ca_certificate_id: OriginCaCertificate Id
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
         """
         if certificate is not None:
@@ -151,14 +151,14 @@ class _OriginCaCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -182,7 +182,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Origin Ca Certificate resource.
@@ -246,7 +246,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate: Certificate content.
         :param pulumi.Input[_builtins.str] name: The certificate name.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         ...
     @overload
@@ -329,7 +329,7 @@ class OriginCaCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -363,7 +363,7 @@ class OriginCaCertificate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             origin_ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'OriginCaCertificate':
         """
         Get an existing OriginCaCertificate resource's state with the given name, id, and optional extra
@@ -376,7 +376,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Creation time.
         :param pulumi.Input[_builtins.str] name: The certificate name.
         :param pulumi.Input[_builtins.str] origin_ca_certificate_id: OriginCaCertificate Id
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: Certificate status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -425,7 +425,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site Id
         """

@@ -93,16 +93,23 @@ public final class DefenseTemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the Alibaba Cloud resource group.
+     * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      * 
      */
+    @Import(name="resourceGroups")
+    private @Nullable Output<List<String>> resourceGroups;
+
+    /**
+     * @return The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+     * 
+     */
+    public Optional<Output<List<String>>> resourceGroups() {
+        return Optional.ofNullable(this.resourceGroups);
+    }
+
     @Import(name="resourceManagerResourceGroupId")
     private @Nullable Output<String> resourceManagerResourceGroupId;
 
-    /**
-     * @return The ID of the Alibaba Cloud resource group.
-     * 
-     */
     public Optional<Output<String>> resourceManagerResourceGroupId() {
         return Optional.ofNullable(this.resourceManagerResourceGroupId);
     }
@@ -179,6 +186,7 @@ public final class DefenseTemplateState extends com.pulumi.resources.ResourceArg
         this.defenseTemplateName = $.defenseTemplateName;
         this.description = $.description;
         this.instanceId = $.instanceId;
+        this.resourceGroups = $.resourceGroups;
         this.resourceManagerResourceGroupId = $.resourceManagerResourceGroupId;
         this.resources = $.resources;
         this.status = $.status;
@@ -310,22 +318,41 @@ public final class DefenseTemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
+         * @param resourceGroups The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
          * 
          * @return builder
          * 
          */
+        public Builder resourceGroups(@Nullable Output<List<String>> resourceGroups) {
+            $.resourceGroups = resourceGroups;
+            return this;
+        }
+
+        /**
+         * @param resourceGroups The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroups(List<String> resourceGroups) {
+            return resourceGroups(Output.of(resourceGroups));
+        }
+
+        /**
+         * @param resourceGroups The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroups(String... resourceGroups) {
+            return resourceGroups(List.of(resourceGroups));
+        }
+
         public Builder resourceManagerResourceGroupId(@Nullable Output<String> resourceManagerResourceGroupId) {
             $.resourceManagerResourceGroupId = resourceManagerResourceGroupId;
             return this;
         }
 
-        /**
-         * @param resourceManagerResourceGroupId The ID of the Alibaba Cloud resource group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceManagerResourceGroupId(String resourceManagerResourceGroupId) {
             return resourceManagerResourceGroupId(Output.of(resourceManagerResourceGroupId));
         }

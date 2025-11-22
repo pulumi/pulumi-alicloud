@@ -1850,6 +1850,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "cloudfirewall/aiTrafficAnalysisStatus",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/aiTrafficAnalysisStatus:AiTrafficAnalysisStatus": "AiTrafficAnalysisStatus"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cloudfirewall/controlPolicy",
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
@@ -3990,6 +3998,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
    "alicloud:eflo/vpd:Vpd": "Vpd"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "eflo/vpdGrantRule",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/vpdGrantRule:VpdGrantRule": "VpdGrantRule"
   }
  },
  {
@@ -9102,6 +9118,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.waf",
   "classes": {
    "alicloud:waf/protectionModule:ProtectionModule": "ProtectionModule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "wafv3/defenseResourceGroup",
+  "fqn": "pulumi_alicloud.wafv3",
+  "classes": {
+   "alicloud:wafv3/defenseResourceGroup:DefenseResourceGroup": "DefenseResourceGroup"
   }
  },
  {

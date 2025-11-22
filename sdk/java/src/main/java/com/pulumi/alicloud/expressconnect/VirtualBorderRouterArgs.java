@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,29 +20,41 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     public static final VirtualBorderRouterArgs Empty = new VirtualBorderRouterArgs();
 
     /**
-     * The associated physical connections.
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * 
+     * @deprecated
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
+    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
     @Import(name="associatedPhysicalConnections")
     private @Nullable Output<String> associatedPhysicalConnections;
 
     /**
-     * @return The associated physical connections.
+     * @return Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * 
+     * @deprecated
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
+    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
     public Optional<Output<String>> associatedPhysicalConnections() {
         return Optional.ofNullable(this.associatedPhysicalConnections);
     }
 
     /**
-     * The bandwidth.
+     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth.
+     * @return The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -49,14 +62,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Operators for physical connection circuit provided coding.
+     * The circuit code provided by the operator for the physical connection.
      * 
      */
     @Import(name="circuitCode")
     private @Nullable Output<String> circuitCode;
 
     /**
-     * @return Operators for physical connection circuit provided coding.
+     * @return The circuit code provided by the operator for the physical connection.
      * 
      */
     public Optional<Output<String>> circuitCode() {
@@ -64,14 +77,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * The description information of the VBR.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * @return The description information of the VBR.
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +92,18 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      * 
      */
     @Import(name="detectMultiplier")
     private @Nullable Output<Integer> detectMultiplier;
 
     /**
-     * @return Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * @return Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      * 
      */
     public Optional<Output<Integer>> detectMultiplier() {
@@ -94,14 +111,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether to Enable IPv6. Valid values: `false`, `true`.
+     * Whether IPv6 is enabled.
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return Whether to Enable IPv6. Valid values: `false`, `true`.
+     * @return Whether IPv6 is enabled.
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -109,29 +126,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     * 
-     */
-    @Import(name="includeCrossAccountVbr")
-    private @Nullable Output<Boolean> includeCrossAccountVbr;
-
-    /**
-     * @return Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     * 
-     */
-    public Optional<Output<Boolean>> includeCrossAccountVbr() {
-        return Optional.ofNullable(this.includeCrossAccountVbr);
-    }
-
-    /**
-     * Alibaba Cloud-Connected IPv4 address.
+     * The IPv4 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     @Import(name="localGatewayIp", required=true)
     private Output<String> localGatewayIp;
 
     /**
-     * @return Alibaba Cloud-Connected IPv4 address.
+     * @return The IPv4 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     public Output<String> localGatewayIp() {
@@ -139,14 +141,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Alibaba Cloud-Connected IPv6 Address.
+     * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     @Import(name="localIpv6GatewayIp")
     private @Nullable Output<String> localIpv6GatewayIp;
 
     /**
-     * @return Alibaba Cloud-Connected IPv6 Address.
+     * @return The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     public Optional<Output<String>> localIpv6GatewayIp() {
@@ -154,14 +156,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     @Import(name="minRxInterval")
     private @Nullable Output<Integer> minRxInterval;
 
     /**
-     * @return Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * @return Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     public Optional<Output<Integer>> minRxInterval() {
@@ -169,14 +171,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     @Import(name="minTxInterval")
     private @Nullable Output<Integer> minTxInterval;
 
     /**
-     * @return Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * @return Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     public Optional<Output<Integer>> minTxInterval() {
@@ -184,14 +186,29 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Client-Side Interconnection IPv4 Address.
+     * Maximum transmission unit.
+     * 
+     */
+    @Import(name="mtu")
+    private @Nullable Output<Integer> mtu;
+
+    /**
+     * @return Maximum transmission unit.
+     * 
+     */
+    public Optional<Output<Integer>> mtu() {
+        return Optional.ofNullable(this.mtu);
+    }
+
+    /**
+     * The IPv4 address of the client side of the VBR instance.
      * 
      */
     @Import(name="peerGatewayIp", required=true)
     private Output<String> peerGatewayIp;
 
     /**
-     * @return The Client-Side Interconnection IPv4 Address.
+     * @return The IPv4 address of the client side of the VBR instance.
      * 
      */
     public Output<String> peerGatewayIp() {
@@ -199,14 +216,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Client-Side Interconnection IPv6 Address.
+     * The IPv6 address of the client side of the VBR instance.
      * 
      */
     @Import(name="peerIpv6GatewayIp")
     private @Nullable Output<String> peerIpv6GatewayIp;
 
     /**
-     * @return The Client-Side Interconnection IPv6 Address.
+     * @return The IPv6 address of the client side of the VBR instance.
      * 
      */
     public Optional<Output<String>> peerIpv6GatewayIp() {
@@ -214,14 +231,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      * 
      */
     @Import(name="peeringIpv6SubnetMask")
     private @Nullable Output<String> peeringIpv6SubnetMask;
 
     /**
-     * @return Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * @return The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      * 
      */
     public Optional<Output<String>> peeringIpv6SubnetMask() {
@@ -229,14 +246,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      * 
      */
     @Import(name="peeringSubnetMask", required=true)
     private Output<String> peeringSubnetMask;
 
     /**
-     * @return Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * @return The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      * 
      */
     public Output<String> peeringSubnetMask() {
@@ -244,14 +261,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the Physical Connection to Which the ID.
+     * The ID of the physical connection to which the VBR belongs.
      * 
      */
     @Import(name="physicalConnectionId", required=true)
     private Output<String> physicalConnectionId;
 
     /**
-     * @return The ID of the Physical Connection to Which the ID.
+     * @return The ID of the physical connection to which the VBR belongs.
      * 
      */
     public Output<String> physicalConnectionId() {
@@ -259,14 +276,44 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="sitelinkEnable")
+    private @Nullable Output<Boolean> sitelinkEnable;
+
+    /**
+     * @return Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> sitelinkEnable() {
+        return Optional.ofNullable(this.sitelinkEnable);
+    }
+
+    /**
+     * The status of the VBR. Valid values: `active`, `terminated`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * @return The status of the VBR. Valid values: `active`, `terminated`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -274,14 +321,29 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The vbr owner id.
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      * 
      */
     @Import(name="vbrOwnerId")
     private @Nullable Output<String> vbrOwnerId;
 
     /**
-     * @return The vbr owner id.
+     * @return The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      * 
      */
     public Optional<Output<String>> vbrOwnerId() {
@@ -289,14 +351,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * The name of the VBR instance.
      * 
      */
     @Import(name="virtualBorderRouterName")
     private @Nullable Output<String> virtualBorderRouterName;
 
     /**
-     * @return The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * @return The name of the VBR instance.
      * 
      */
     public Optional<Output<String>> virtualBorderRouterName() {
@@ -304,14 +366,14 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The VLAN ID of the VBR. Value range: 0~2999.
+     * The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      * 
      */
     @Import(name="vlanId", required=true)
     private Output<Integer> vlanId;
 
     /**
-     * @return The VLAN ID of the VBR. Value range: 0~2999.
+     * @return The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      * 
      */
     public Output<Integer> vlanId() {
@@ -327,17 +389,20 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         this.description = $.description;
         this.detectMultiplier = $.detectMultiplier;
         this.enableIpv6 = $.enableIpv6;
-        this.includeCrossAccountVbr = $.includeCrossAccountVbr;
         this.localGatewayIp = $.localGatewayIp;
         this.localIpv6GatewayIp = $.localIpv6GatewayIp;
         this.minRxInterval = $.minRxInterval;
         this.minTxInterval = $.minTxInterval;
+        this.mtu = $.mtu;
         this.peerGatewayIp = $.peerGatewayIp;
         this.peerIpv6GatewayIp = $.peerIpv6GatewayIp;
         this.peeringIpv6SubnetMask = $.peeringIpv6SubnetMask;
         this.peeringSubnetMask = $.peeringSubnetMask;
         this.physicalConnectionId = $.physicalConnectionId;
+        this.resourceGroupId = $.resourceGroupId;
+        this.sitelinkEnable = $.sitelinkEnable;
         this.status = $.status;
+        this.tags = $.tags;
         this.vbrOwnerId = $.vbrOwnerId;
         this.virtualBorderRouterName = $.virtualBorderRouterName;
         this.vlanId = $.vlanId;
@@ -362,28 +427,38 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param associatedPhysicalConnections The associated physical connections.
+         * @param associatedPhysicalConnections Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+         * 
          */
+        @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
         public Builder associatedPhysicalConnections(@Nullable Output<String> associatedPhysicalConnections) {
             $.associatedPhysicalConnections = associatedPhysicalConnections;
             return this;
         }
 
         /**
-         * @param associatedPhysicalConnections The associated physical connections.
+         * @param associatedPhysicalConnections Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+         * 
          */
+        @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
         public Builder associatedPhysicalConnections(String associatedPhysicalConnections) {
             return associatedPhysicalConnections(Output.of(associatedPhysicalConnections));
         }
 
         /**
-         * @param bandwidth The bandwidth.
+         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+         * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+         * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
          * 
          * @return builder
          * 
@@ -394,7 +469,9 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bandwidth The bandwidth.
+         * @param bandwidth The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+         * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+         * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
          * 
          * @return builder
          * 
@@ -404,7 +481,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param circuitCode Operators for physical connection circuit provided coding.
+         * @param circuitCode The circuit code provided by the operator for the physical connection.
          * 
          * @return builder
          * 
@@ -415,7 +492,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param circuitCode Operators for physical connection circuit provided coding.
+         * @param circuitCode The circuit code provided by the operator for the physical connection.
          * 
          * @return builder
          * 
@@ -425,7 +502,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+         * @param description The description information of the VBR.
          * 
          * @return builder
          * 
@@ -436,7 +513,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+         * @param description The description information of the VBR.
          * 
          * @return builder
          * 
@@ -446,7 +523,9 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param detectMultiplier Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+         * @param detectMultiplier Multiple of detection time.
+         * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+         * Valid values: `3` to `10`.
          * 
          * @return builder
          * 
@@ -457,7 +536,9 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param detectMultiplier Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+         * @param detectMultiplier Multiple of detection time.
+         * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+         * Valid values: `3` to `10`.
          * 
          * @return builder
          * 
@@ -467,7 +548,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enableIpv6 Whether to Enable IPv6. Valid values: `false`, `true`.
+         * @param enableIpv6 Whether IPv6 is enabled.
          * 
          * @return builder
          * 
@@ -478,7 +559,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enableIpv6 Whether to Enable IPv6. Valid values: `false`, `true`.
+         * @param enableIpv6 Whether IPv6 is enabled.
          * 
          * @return builder
          * 
@@ -488,28 +569,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param includeCrossAccountVbr Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeCrossAccountVbr(@Nullable Output<Boolean> includeCrossAccountVbr) {
-            $.includeCrossAccountVbr = includeCrossAccountVbr;
-            return this;
-        }
-
-        /**
-         * @param includeCrossAccountVbr Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includeCrossAccountVbr(Boolean includeCrossAccountVbr) {
-            return includeCrossAccountVbr(Output.of(includeCrossAccountVbr));
-        }
-
-        /**
-         * @param localGatewayIp Alibaba Cloud-Connected IPv4 address.
+         * @param localGatewayIp The IPv4 address on the Alibaba Cloud side of the VBR instance.
          * 
          * @return builder
          * 
@@ -520,7 +580,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localGatewayIp Alibaba Cloud-Connected IPv4 address.
+         * @param localGatewayIp The IPv4 address on the Alibaba Cloud side of the VBR instance.
          * 
          * @return builder
          * 
@@ -530,7 +590,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localIpv6GatewayIp Alibaba Cloud-Connected IPv6 Address.
+         * @param localIpv6GatewayIp The IPv6 address on the Alibaba Cloud side of the VBR instance.
          * 
          * @return builder
          * 
@@ -541,7 +601,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param localIpv6GatewayIp Alibaba Cloud-Connected IPv6 Address.
+         * @param localIpv6GatewayIp The IPv6 address on the Alibaba Cloud side of the VBR instance.
          * 
          * @return builder
          * 
@@ -551,7 +611,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minRxInterval Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+         * @param minRxInterval Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
          * 
          * @return builder
          * 
@@ -562,7 +622,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minRxInterval Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+         * @param minRxInterval Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
          * 
          * @return builder
          * 
@@ -572,7 +632,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minTxInterval Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+         * @param minTxInterval Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
          * 
          * @return builder
          * 
@@ -583,7 +643,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minTxInterval Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+         * @param minTxInterval Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
          * 
          * @return builder
          * 
@@ -593,7 +653,28 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerGatewayIp The Client-Side Interconnection IPv4 Address.
+         * @param mtu Maximum transmission unit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtu(@Nullable Output<Integer> mtu) {
+            $.mtu = mtu;
+            return this;
+        }
+
+        /**
+         * @param mtu Maximum transmission unit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtu(Integer mtu) {
+            return mtu(Output.of(mtu));
+        }
+
+        /**
+         * @param peerGatewayIp The IPv4 address of the client side of the VBR instance.
          * 
          * @return builder
          * 
@@ -604,7 +685,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerGatewayIp The Client-Side Interconnection IPv4 Address.
+         * @param peerGatewayIp The IPv4 address of the client side of the VBR instance.
          * 
          * @return builder
          * 
@@ -614,7 +695,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerIpv6GatewayIp The Client-Side Interconnection IPv6 Address.
+         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance.
          * 
          * @return builder
          * 
@@ -625,7 +706,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peerIpv6GatewayIp The Client-Side Interconnection IPv6 Address.
+         * @param peerIpv6GatewayIp The IPv6 address of the client side of the VBR instance.
          * 
          * @return builder
          * 
@@ -635,7 +716,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peeringIpv6SubnetMask Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+         * @param peeringIpv6SubnetMask The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
          * 
          * @return builder
          * 
@@ -646,7 +727,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peeringIpv6SubnetMask Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+         * @param peeringIpv6SubnetMask The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
          * 
          * @return builder
          * 
@@ -656,7 +737,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peeringSubnetMask Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+         * @param peeringSubnetMask The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
          * 
          * @return builder
          * 
@@ -667,7 +748,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param peeringSubnetMask Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+         * @param peeringSubnetMask The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
          * 
          * @return builder
          * 
@@ -677,7 +758,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param physicalConnectionId The ID of the Physical Connection to Which the ID.
+         * @param physicalConnectionId The ID of the physical connection to which the VBR belongs.
          * 
          * @return builder
          * 
@@ -688,7 +769,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param physicalConnectionId The ID of the Physical Connection to Which the ID.
+         * @param physicalConnectionId The ID of the physical connection to which the VBR belongs.
          * 
          * @return builder
          * 
@@ -698,7 +779,49 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param sitelinkEnable Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sitelinkEnable(@Nullable Output<Boolean> sitelinkEnable) {
+            $.sitelinkEnable = sitelinkEnable;
+            return this;
+        }
+
+        /**
+         * @param sitelinkEnable Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sitelinkEnable(Boolean sitelinkEnable) {
+            return sitelinkEnable(Output.of(sitelinkEnable));
+        }
+
+        /**
+         * @param status The status of the VBR. Valid values: `active`, `terminated`.
          * 
          * @return builder
          * 
@@ -709,7 +832,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+         * @param status The status of the VBR. Valid values: `active`, `terminated`.
          * 
          * @return builder
          * 
@@ -719,7 +842,28 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vbrOwnerId The vbr owner id.
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vbrOwnerId The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
          * 
          * @return builder
          * 
@@ -730,7 +874,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vbrOwnerId The vbr owner id.
+         * @param vbrOwnerId The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
          * 
          * @return builder
          * 
@@ -740,7 +884,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param virtualBorderRouterName The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+         * @param virtualBorderRouterName The name of the VBR instance.
          * 
          * @return builder
          * 
@@ -751,7 +895,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param virtualBorderRouterName The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+         * @param virtualBorderRouterName The name of the VBR instance.
          * 
          * @return builder
          * 
@@ -761,7 +905,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vlanId The VLAN ID of the VBR. Value range: 0~2999.
+         * @param vlanId The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
          * 
          * @return builder
          * 
@@ -772,7 +916,7 @@ public final class VirtualBorderRouterArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vlanId The VLAN ID of the VBR. Value range: 0~2999.
+         * @param vlanId The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
          * 
          * @return builder
          * 

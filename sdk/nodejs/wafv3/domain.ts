@@ -49,11 +49,11 @@ export class Domain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Domain.__pulumiType;
     }
 
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     */
     declare public readonly accessType: pulumi.Output<string | undefined>;
+    /**
+     * The CNAME assigned by WAF to the domain name.
+     */
+    declare public /*out*/ readonly cname: pulumi.Output<string>;
     /**
      * The name of the domain name to query.
      */
@@ -101,6 +101,7 @@ export class Domain extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["cname"] = state?.cname;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["domainId"] = state?.domainId;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -130,6 +131,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["redirect"] = args?.redirect;
             resourceInputs["resourceManagerResourceGroupId"] = args?.resourceManagerResourceGroupId;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["cname"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -142,11 +144,11 @@ export class Domain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Domain resources.
  */
 export interface DomainState {
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     */
     accessType?: pulumi.Input<string>;
+    /**
+     * The CNAME assigned by WAF to the domain name.
+     */
+    cname?: pulumi.Input<string>;
     /**
      * The name of the domain name to query.
      */
@@ -185,10 +187,6 @@ export interface DomainState {
  * The set of arguments for constructing a Domain resource.
  */
 export interface DomainArgs {
-    /**
-     * The mode in which the domain name is added to WAF. Valid values:
-     * share: CNAME record mode. This is the default value.
-     */
     accessType?: pulumi.Input<string>;
     /**
      * The name of the domain name to query.

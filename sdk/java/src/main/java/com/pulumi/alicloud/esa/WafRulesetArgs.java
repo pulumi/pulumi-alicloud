@@ -52,27 +52,19 @@ public final class WafRulesetArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
-    /**
-     * The site version.
-     * 
-     */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
-    /**
-     * @return The site version.
-     * 
-     */
     public Optional<Output<Integer>> siteVersion() {
         return Optional.ofNullable(this.siteVersion);
     }
@@ -168,7 +160,7 @@ public final class WafRulesetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -179,27 +171,15 @@ public final class WafRulesetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
-        /**
-         * @param siteVersion The site version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder siteVersion(@Nullable Output<Integer> siteVersion) {
             $.siteVersion = siteVersion;
             return this;
         }
 
-        /**
-         * @param siteVersion The site version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder siteVersion(Integer siteVersion) {
             return siteVersion(Output.of(siteVersion));
         }

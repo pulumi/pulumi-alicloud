@@ -13,16 +13,16 @@ namespace Pulumi.AliCloud.PolarDB.Inputs
     public sealed class ParameterGroupParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of a parameter in the parameter template.
+        /// The name of the parameter.
         /// </summary>
-        [Input("paramName", required: true)]
-        public Input<string> ParamName { get; set; } = null!;
+        [Input("paramName")]
+        public Input<string>? ParamName { get; set; }
 
         /// <summary>
-        /// The value of a parameter in the parameter template.
+        /// The value of the parameter.
         /// </summary>
-        [Input("paramValue", required: true)]
-        public Input<string> ParamValue { get; set; } = null!;
+        [Input("paramValue")]
+        public Input<string>? ParamValue { get; set; }
 
         public ParameterGroupParameterGetArgs()
         {

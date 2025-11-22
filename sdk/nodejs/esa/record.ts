@@ -94,19 +94,19 @@ export class Record extends pulumi.CustomResource {
      */
     declare public readonly authConf: pulumi.Output<outputs.esa.RecordAuthConf | undefined>;
     /**
-     * The business scenario of the record for acceleration. Valid values:
+     * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      */
     declare public readonly bizName: pulumi.Output<string | undefined>;
     /**
-     * The comments of the record.
+     * The comment of the record. The maximum length is 100 characters.
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      */
     declare public readonly data: pulumi.Output<outputs.esa.RecordData>;
     /**
@@ -114,7 +114,7 @@ export class Record extends pulumi.CustomResource {
      */
     declare public readonly hostPolicy: pulumi.Output<string | undefined>;
     /**
-     * Filters by whether the record is proxied. Valid values:
+     * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      */
     declare public readonly proxied: pulumi.Output<boolean | undefined>;
     /**
@@ -122,25 +122,25 @@ export class Record extends pulumi.CustomResource {
      */
     declare public readonly recordName: pulumi.Output<string>;
     /**
-     * The DNS record type.
+     * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      */
     declare public readonly recordType: pulumi.Output<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The website ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
-     * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     *
+     * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      */
     declare public readonly sourceType: pulumi.Output<string | undefined>;
     /**
-     * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      */
     declare public readonly ttl: pulumi.Output<number | undefined>;
 
@@ -210,19 +210,19 @@ export interface RecordState {
      */
     authConf?: pulumi.Input<inputs.esa.RecordAuthConf>;
     /**
-     * The business scenario of the record for acceleration. Valid values:
+     * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      */
     bizName?: pulumi.Input<string>;
     /**
-     * The comments of the record.
+     * The comment of the record. The maximum length is 100 characters.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+     * The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      */
     data?: pulumi.Input<inputs.esa.RecordData>;
     /**
@@ -230,7 +230,7 @@ export interface RecordState {
      */
     hostPolicy?: pulumi.Input<string>;
     /**
-     * Filters by whether the record is proxied. Valid values:
+     * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      */
     proxied?: pulumi.Input<boolean>;
     /**
@@ -238,25 +238,25 @@ export interface RecordState {
      */
     recordName?: pulumi.Input<string>;
     /**
-     * The DNS record type.
+     * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      */
     recordType?: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The website ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
-     * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     *
+     * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      */
     sourceType?: pulumi.Input<string>;
     /**
-     * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      */
     ttl?: pulumi.Input<number>;
 }
@@ -270,15 +270,15 @@ export interface RecordArgs {
      */
     authConf?: pulumi.Input<inputs.esa.RecordAuthConf>;
     /**
-     * The business scenario of the record for acceleration. Valid values:
+     * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      */
     bizName?: pulumi.Input<string>;
     /**
-     * The comments of the record.
+     * The comment of the record. The maximum length is 100 characters.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+     * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      */
     data: pulumi.Input<inputs.esa.RecordData>;
     /**
@@ -286,7 +286,7 @@ export interface RecordArgs {
      */
     hostPolicy?: pulumi.Input<string>;
     /**
-     * Filters by whether the record is proxied. Valid values:
+     * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      */
     proxied?: pulumi.Input<boolean>;
     /**
@@ -294,25 +294,25 @@ export interface RecordArgs {
      */
     recordName: pulumi.Input<string>;
     /**
-     * The DNS record type.
+     * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      */
     recordType: pulumi.Input<string>;
     /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+     * The website ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
-     * The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-     *
+     * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
      * - `S3`: S3 bucket.
      * - `LB`: load balancer.
      * - `OP`: origin pool.
      * - `Domain`: domain name.
+     * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      */
     sourceType?: pulumi.Input<string>;
     /**
-     * The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+     * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      */
     ttl?: pulumi.Input<number>;
 }

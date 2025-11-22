@@ -20,14 +20,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     public static final StoreIndexFieldSearchArgs Empty = new StoreIndexFieldSearchArgs();
 
     /**
-     * The alias of one field
+     * The alias of one field.
      * 
      */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
     /**
-     * @return The alias of one field
+     * @return The alias of one field.
      * 
      */
     public Optional<Output<String>> alias() {
@@ -80,14 +80,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Use nested index when type is json
+     * Use nested index when type is json. See `jsonKeys` below.
      * 
      */
     @Import(name="jsonKeys")
     private @Nullable Output<List<StoreIndexFieldSearchJsonKeyArgs>> jsonKeys;
 
     /**
-     * @return Use nested index when type is json
+     * @return Use nested index when type is json. See `jsonKeys` below.
      * 
      */
     public Optional<Output<List<StoreIndexFieldSearchJsonKeyArgs>>> jsonKeys() {
@@ -95,14 +95,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The field name, which is unique in the same log store.
+     * When using the jsonKeys field, this field is required.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The field name, which is unique in the same log store.
+     * @return When using the jsonKeys field, this field is required.
      * 
      */
     public Output<String> name() {
@@ -125,14 +125,14 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
+     * The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
      * 
      */
     public Optional<Output<String>> type() {
@@ -171,7 +171,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param alias The alias of one field
+         * @param alias The alias of one field.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param alias The alias of one field
+         * @param alias The alias of one field.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param jsonKeys Use nested index when type is json
+         * @param jsonKeys Use nested index when type is json. See `jsonKeys` below.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param jsonKeys Use nested index when type is json
+         * @param jsonKeys Use nested index when type is json. See `jsonKeys` below.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param jsonKeys Use nested index when type is json
+         * @param jsonKeys Use nested index when type is json. See `jsonKeys` below.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The field name, which is unique in the same log store.
+         * @param name When using the jsonKeys field, this field is required.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The field name, which is unique in the same log store.
+         * @param name When using the jsonKeys field, this field is required.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class StoreIndexFieldSearchArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
          * 
          * @return builder
          * 

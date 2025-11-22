@@ -111,7 +111,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * Site Id
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Certificate status.
      */
@@ -179,7 +179,7 @@ export interface OriginCaCertificateState {
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Certificate status.
      */
@@ -201,5 +201,5 @@ export interface OriginCaCertificateArgs {
     /**
      * Site Id
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

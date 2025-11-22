@@ -290,7 +290,7 @@ if not MYPY:
     class EcsInstanceSetDataDiskArgsDict(TypedDict):
         disk_size: pulumi.Input[_builtins.int]
         """
-        The size of the data disk. Unit: GiB.
+        The size of the data disk. Unit: GiB. Valid values:
         - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
@@ -344,7 +344,7 @@ class EcsInstanceSetDataDiskArgs:
                  performance_level: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] disk_size: The size of the data disk. Unit: GiB.
+        :param pulumi.Input[_builtins.int] disk_size: The size of the data disk. Unit: GiB. Valid values:
                - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
                - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
                - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.
@@ -380,7 +380,7 @@ class EcsInstanceSetDataDiskArgs:
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> pulumi.Input[_builtins.int]:
         """
-        The size of the data disk. Unit: GiB.
+        The size of the data disk. Unit: GiB. Valid values:
         - When `disk_category` is `cloud_efficiency`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_ssd`, Valid values: `20` to `32768`.
         - When `disk_category` is `cloud_essd`, Valid values: `20` to `32768`.

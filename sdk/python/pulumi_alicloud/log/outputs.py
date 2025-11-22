@@ -1087,14 +1087,14 @@ class StoreIndexFieldSearch(dict):
                  token: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: The field name, which is unique in the same log store.
-        :param _builtins.str alias: The alias of one field
+        :param _builtins.str name: When using the json_keys field, this field is required.
+        :param _builtins.str alias: The alias of one field.
         :param _builtins.bool case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         :param _builtins.bool enable_analytics: Whether to enable field analytics. Default to true.
         :param _builtins.bool include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param Sequence['StoreIndexFieldSearchJsonKeyArgs'] json_keys: Use nested index when type is json
+        :param Sequence['StoreIndexFieldSearchJsonKeyArgs'] json_keys: Use nested index when type is json. See `json_keys` below.
         :param _builtins.str token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
-        :param _builtins.str type: The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+        :param _builtins.str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
         pulumi.set(__self__, "name", name)
         if alias is not None:
@@ -1116,7 +1116,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The field name, which is unique in the same log store.
+        When using the json_keys field, this field is required.
         """
         return pulumi.get(self, "name")
 
@@ -1124,7 +1124,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def alias(self) -> Optional[_builtins.str]:
         """
-        The alias of one field
+        The alias of one field.
         """
         return pulumi.get(self, "alias")
 
@@ -1156,7 +1156,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter(name="jsonKeys")
     def json_keys(self) -> Optional[Sequence['outputs.StoreIndexFieldSearchJsonKey']]:
         """
-        Use nested index when type is json
+        Use nested index when type is json. See `json_keys` below.
         """
         return pulumi.get(self, "json_keys")
 
@@ -1172,7 +1172,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
         return pulumi.get(self, "type")
 

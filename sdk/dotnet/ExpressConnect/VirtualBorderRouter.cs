@@ -30,26 +30,26 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 2999,
     ///         Min = 1,
+    ///         Max = 2999,
     ///     });
     /// 
-    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("example", new()
+    ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
     ///     {
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = @default.Apply(@default =&gt; @default.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id)),
     ///         VirtualBorderRouterName = name,
-    ///         VlanId = vlanId.Id,
+    ///         VlanId = defaultInteger.Id,
     ///         MinRxInterval = 1000,
     ///         MinTxInterval = 1000,
     ///         DetectMultiplier = 10,
@@ -70,100 +70,116 @@ namespace Pulumi.AliCloud.ExpressConnect
     public partial class VirtualBorderRouter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The associated physical connections.
+        /// Field `AssociatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
         /// </summary>
         [Output("associatedPhysicalConnections")]
         public Output<string?> AssociatedPhysicalConnections { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth.
+        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int> Bandwidth { get; private set; } = null!;
+        public Output<int?> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Operators for physical connection circuit provided coding.
+        /// The circuit code provided by the operator for the physical connection.
         /// </summary>
         [Output("circuitCode")]
         public Output<string?> CircuitCode { get; private set; } = null!;
 
         /// <summary>
-        /// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        /// (Available since v1.263.0) The creation time of the VBR.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description information of the VBR.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        /// Multiple of detection time.
+        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: `3` to `10`.
         /// </summary>
         [Output("detectMultiplier")]
         public Output<int> DetectMultiplier { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `False`, `True`.
+        /// Whether IPv6 is enabled.
         /// </summary>
         [Output("enableIpv6")]
-        public Output<bool> EnableIpv6 { get; private set; } = null!;
+        public Output<bool?> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
-        /// </summary>
-        [Output("includeCrossAccountVbr")]
-        public Output<bool> IncludeCrossAccountVbr { get; private set; } = null!;
-
-        /// <summary>
-        /// Alibaba Cloud-Connected IPv4 address.
+        /// The IPv4 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Output("localGatewayIp")]
         public Output<string> LocalGatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 Address.
+        /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Output("localIpv6GatewayIp")]
         public Output<string?> LocalIpv6GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Output("minRxInterval")]
         public Output<int> MinRxInterval { get; private set; } = null!;
 
         /// <summary>
-        /// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Output("minTxInterval")]
         public Output<int> MinTxInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The Client-Side Interconnection IPv4 Address.
+        /// Maximum transmission unit.
+        /// </summary>
+        [Output("mtu")]
+        public Output<int> Mtu { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv4 address of the client side of the VBR instance.
         /// </summary>
         [Output("peerGatewayIp")]
         public Output<string> PeerGatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// The Client-Side Interconnection IPv6 Address.
+        /// The IPv6 address of the client side of the VBR instance.
         /// </summary>
         [Output("peerIpv6GatewayIp")]
         public Output<string?> PeerIpv6GatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         /// </summary>
         [Output("peeringIpv6SubnetMask")]
         public Output<string?> PeeringIpv6SubnetMask { get; private set; } = null!;
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         /// </summary>
         [Output("peeringSubnetMask")]
         public Output<string> PeeringSubnetMask { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Physical Connection to Which the ID.
+        /// The ID of the physical connection to which the VBR belongs.
         /// </summary>
         [Output("physicalConnectionId")]
         public Output<string> PhysicalConnectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
@@ -172,25 +188,37 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
+        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("sitelinkEnable")]
+        public Output<bool?> SitelinkEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the VBR. Valid values: `Active`, `Terminated`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The vbr owner id.
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         /// </summary>
         [Output("vbrOwnerId")]
         public Output<string?> VbrOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        /// The name of the VBR instance.
         /// </summary>
         [Output("virtualBorderRouterName")]
         public Output<string?> VirtualBorderRouterName { get; private set; } = null!;
 
         /// <summary>
-        /// The VLAN ID of the VBR. Value range: 0~2999.
+        /// The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         /// </summary>
         [Output("vlanId")]
         public Output<int> VlanId { get; private set; } = null!;
@@ -242,121 +270,149 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class VirtualBorderRouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The associated physical connections.
+        /// Field `AssociatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
         /// </summary>
         [Input("associatedPhysicalConnections")]
         public Input<string>? AssociatedPhysicalConnections { get; set; }
 
         /// <summary>
-        /// The bandwidth.
+        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Operators for physical connection circuit provided coding.
+        /// The circuit code provided by the operator for the physical connection.
         /// </summary>
         [Input("circuitCode")]
         public Input<string>? CircuitCode { get; set; }
 
         /// <summary>
-        /// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        /// The description information of the VBR.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        /// Multiple of detection time.
+        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: `3` to `10`.
         /// </summary>
         [Input("detectMultiplier")]
         public Input<int>? DetectMultiplier { get; set; }
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `False`, `True`.
+        /// Whether IPv6 is enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
-        /// </summary>
-        [Input("includeCrossAccountVbr")]
-        public Input<bool>? IncludeCrossAccountVbr { get; set; }
-
-        /// <summary>
-        /// Alibaba Cloud-Connected IPv4 address.
+        /// The IPv4 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Input("localGatewayIp", required: true)]
         public Input<string> LocalGatewayIp { get; set; } = null!;
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 Address.
+        /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Input("localIpv6GatewayIp")]
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Input("minRxInterval")]
         public Input<int>? MinRxInterval { get; set; }
 
         /// <summary>
-        /// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Input("minTxInterval")]
         public Input<int>? MinTxInterval { get; set; }
 
         /// <summary>
-        /// The Client-Side Interconnection IPv4 Address.
+        /// Maximum transmission unit.
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
+        /// <summary>
+        /// The IPv4 address of the client side of the VBR instance.
         /// </summary>
         [Input("peerGatewayIp", required: true)]
         public Input<string> PeerGatewayIp { get; set; } = null!;
 
         /// <summary>
-        /// The Client-Side Interconnection IPv6 Address.
+        /// The IPv6 address of the client side of the VBR instance.
         /// </summary>
         [Input("peerIpv6GatewayIp")]
         public Input<string>? PeerIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         /// </summary>
         [Input("peeringIpv6SubnetMask")]
         public Input<string>? PeeringIpv6SubnetMask { get; set; }
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         /// </summary>
         [Input("peeringSubnetMask", required: true)]
         public Input<string> PeeringSubnetMask { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Physical Connection to Which the ID.
+        /// The ID of the physical connection to which the VBR belongs.
         /// </summary>
         [Input("physicalConnectionId", required: true)]
         public Input<string> PhysicalConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("sitelinkEnable")]
+        public Input<bool>? SitelinkEnable { get; set; }
+
+        /// <summary>
+        /// The status of the VBR. Valid values: `Active`, `Terminated`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The vbr owner id.
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
 
         /// <summary>
-        /// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        /// The name of the VBR instance.
         /// </summary>
         [Input("virtualBorderRouterName")]
         public Input<string>? VirtualBorderRouterName { get; set; }
 
         /// <summary>
-        /// The VLAN ID of the VBR. Value range: 0~2999.
+        /// The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         /// </summary>
         [Input("vlanId", required: true)]
         public Input<int> VlanId { get; set; } = null!;
@@ -370,100 +426,116 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class VirtualBorderRouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The associated physical connections.
+        /// Field `AssociatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
         /// </summary>
         [Input("associatedPhysicalConnections")]
         public Input<string>? AssociatedPhysicalConnections { get; set; }
 
         /// <summary>
-        /// The bandwidth.
+        /// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+        /// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+        /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Operators for physical connection circuit provided coding.
+        /// The circuit code provided by the operator for the physical connection.
         /// </summary>
         [Input("circuitCode")]
         public Input<string>? CircuitCode { get; set; }
 
         /// <summary>
-        /// The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+        /// (Available since v1.263.0) The creation time of the VBR.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description information of the VBR.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+        /// Multiple of detection time.
+        /// That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+        /// Valid values: `3` to `10`.
         /// </summary>
         [Input("detectMultiplier")]
         public Input<int>? DetectMultiplier { get; set; }
 
         /// <summary>
-        /// Whether to Enable IPv6. Valid values: `False`, `True`.
+        /// Whether IPv6 is enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Whether cross account border routers are included. Valid values: `False`, `True`. Default: `True`.
-        /// </summary>
-        [Input("includeCrossAccountVbr")]
-        public Input<bool>? IncludeCrossAccountVbr { get; set; }
-
-        /// <summary>
-        /// Alibaba Cloud-Connected IPv4 address.
+        /// The IPv4 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Input("localGatewayIp")]
         public Input<string>? LocalGatewayIp { get; set; }
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 Address.
+        /// The IPv6 address on the Alibaba Cloud side of the VBR instance.
         /// </summary>
         [Input("localIpv6GatewayIp")]
         public Input<string>? LocalIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+        /// Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Input("minRxInterval")]
         public Input<int>? MinRxInterval { get; set; }
 
         /// <summary>
-        /// Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+        /// Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
         /// </summary>
         [Input("minTxInterval")]
         public Input<int>? MinTxInterval { get; set; }
 
         /// <summary>
-        /// The Client-Side Interconnection IPv4 Address.
+        /// Maximum transmission unit.
+        /// </summary>
+        [Input("mtu")]
+        public Input<int>? Mtu { get; set; }
+
+        /// <summary>
+        /// The IPv4 address of the client side of the VBR instance.
         /// </summary>
         [Input("peerGatewayIp")]
         public Input<string>? PeerGatewayIp { get; set; }
 
         /// <summary>
-        /// The Client-Side Interconnection IPv6 Address.
+        /// The IPv6 address of the client side of the VBR instance.
         /// </summary>
         [Input("peerIpv6GatewayIp")]
         public Input<string>? PeerIpv6GatewayIp { get; set; }
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
         /// </summary>
         [Input("peeringIpv6SubnetMask")]
         public Input<string>? PeeringIpv6SubnetMask { get; set; }
 
         /// <summary>
-        /// Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+        /// The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
         /// </summary>
         [Input("peeringSubnetMask")]
         public Input<string>? PeeringSubnetMask { get; set; }
 
         /// <summary>
-        /// The ID of the Physical Connection to Which the ID.
+        /// The ID of the physical connection to which the VBR belongs.
         /// </summary>
         [Input("physicalConnectionId")]
         public Input<string>? PhysicalConnectionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
@@ -472,25 +544,43 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// The instance state. Valid values: `Active`, `Deleting`, `Recovering`, `Terminated`, `Terminating`, `Unconfirmed`.
+        /// Whether to allow inter-IDC communication. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("sitelinkEnable")]
+        public Input<bool>? SitelinkEnable { get; set; }
+
+        /// <summary>
+        /// The status of the VBR. Valid values: `Active`, `Terminated`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
         /// <summary>
-        /// The vbr owner id.
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
 
         /// <summary>
-        /// The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+        /// The name of the VBR instance.
         /// </summary>
         [Input("virtualBorderRouterName")]
         public Input<string>? VirtualBorderRouterName { get; set; }
 
         /// <summary>
-        /// The VLAN ID of the VBR. Value range: 0~2999.
+        /// The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

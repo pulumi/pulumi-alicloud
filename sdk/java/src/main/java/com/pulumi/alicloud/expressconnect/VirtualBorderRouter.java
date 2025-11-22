@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -54,23 +55,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
- *             .max(2999)
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(1)
+ *             .max(2999)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
- *             .physicalConnectionId(example.connections()[0].id())
+ *             .physicalConnectionId(default_.connections()[0].id())
  *             .virtualBorderRouterName(name)
- *             .vlanId(vlanId.id())
+ *             .vlanId(defaultInteger.id())
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
@@ -93,228 +94,268 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:expressconnect/virtualBorderRouter:VirtualBorderRouter")
 public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
     /**
-     * The associated physical connections.
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
+     * 
+     * @deprecated
+     * Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
+    @Deprecated /* Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead. */
     @Export(name="associatedPhysicalConnections", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> associatedPhysicalConnections;
 
     /**
-     * @return The associated physical connections.
+     * @return Field `associatedPhysicalConnections` has been deprecated from provider version 1.263.0. Please use the resource `alicloud.expressconnect.VbrPconnAssociation` instead.
      * 
      */
     public Output<Optional<String>> associatedPhysicalConnections() {
         return Codegen.optional(this.associatedPhysicalConnections);
     }
     /**
-     * The bandwidth.
+     * The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
-    private Output<Integer> bandwidth;
+    private Output</* @Nullable */ Integer> bandwidth;
 
     /**
-     * @return The bandwidth.
+     * @return The bandwidth of the VBR instance. Unit: Mbps. Valid values:
+     * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
+     * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
      */
-    public Output<Integer> bandwidth() {
-        return this.bandwidth;
+    public Output<Optional<Integer>> bandwidth() {
+        return Codegen.optional(this.bandwidth);
     }
     /**
-     * Operators for physical connection circuit provided coding.
+     * The circuit code provided by the operator for the physical connection.
      * 
      */
     @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> circuitCode;
 
     /**
-     * @return Operators for physical connection circuit provided coding.
+     * @return The circuit code provided by the operator for the physical connection.
      * 
      */
     public Output<Optional<String>> circuitCode() {
         return Codegen.optional(this.circuitCode);
     }
     /**
-     * The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * (Available since v1.263.0) The creation time of the VBR.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.263.0) The creation time of the VBR.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description information of the VBR.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of VBR. Length is from 2 to 256 characters, must start with a letter or the Chinese at the beginning, but not at the http:// Or https:// at the beginning.
+     * @return The description information of the VBR.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      * 
      */
     @Export(name="detectMultiplier", refs={Integer.class}, tree="[0]")
     private Output<Integer> detectMultiplier;
 
     /**
-     * @return Detection time multiplier that recipient allows the sender to send a message of the maximum allowable connections for the number of packets, used to detect whether the link normal. Value: 3~10.
+     * @return Multiple of detection time.
+     * That is the maximum number of connection packet losses allowed by the receiver to send messages, which is used to detect whether the link is normal.
+     * Valid values: `3` to `10`.
      * 
      */
     public Output<Integer> detectMultiplier() {
         return this.detectMultiplier;
     }
     /**
-     * Whether to Enable IPv6. Valid values: `false`, `true`.
+     * Whether IPv6 is enabled.
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enableIpv6;
+    private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return Whether to Enable IPv6. Valid values: `false`, `true`.
+     * @return Whether IPv6 is enabled.
      * 
      */
-    public Output<Boolean> enableIpv6() {
-        return this.enableIpv6;
+    public Output<Optional<Boolean>> enableIpv6() {
+        return Codegen.optional(this.enableIpv6);
     }
     /**
-     * Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     * 
-     */
-    @Export(name="includeCrossAccountVbr", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> includeCrossAccountVbr;
-
-    /**
-     * @return Whether cross account border routers are included. Valid values: `false`, `true`. Default: `true`.
-     * 
-     */
-    public Output<Boolean> includeCrossAccountVbr() {
-        return this.includeCrossAccountVbr;
-    }
-    /**
-     * Alibaba Cloud-Connected IPv4 address.
+     * The IPv4 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     @Export(name="localGatewayIp", refs={String.class}, tree="[0]")
     private Output<String> localGatewayIp;
 
     /**
-     * @return Alibaba Cloud-Connected IPv4 address.
+     * @return The IPv4 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     public Output<String> localGatewayIp() {
         return this.localGatewayIp;
     }
     /**
-     * Alibaba Cloud-Connected IPv6 Address.
+     * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     @Export(name="localIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localIpv6GatewayIp;
 
     /**
-     * @return Alibaba Cloud-Connected IPv6 Address.
+     * @return The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
     public Output<Optional<String>> localIpv6GatewayIp() {
         return Codegen.optional(this.localIpv6GatewayIp);
     }
     /**
-     * Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     @Export(name="minRxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minRxInterval;
 
     /**
-     * @return Configure BFD packet reception interval of values include: 200~1000, unit: ms.
+     * @return Configure the receiving interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     public Output<Integer> minRxInterval() {
         return this.minRxInterval;
     }
     /**
-     * Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     @Export(name="minTxInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> minTxInterval;
 
     /**
-     * @return Configure BFD packet transmission interval maximum value: 200~1000, unit: ms.
+     * @return Configure the sending interval of BFD packets. Valid values: `200` to `1000`.
      * 
      */
     public Output<Integer> minTxInterval() {
         return this.minTxInterval;
     }
     /**
-     * The Client-Side Interconnection IPv4 Address.
+     * Maximum transmission unit.
+     * 
+     */
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
+    private Output<Integer> mtu;
+
+    /**
+     * @return Maximum transmission unit.
+     * 
+     */
+    public Output<Integer> mtu() {
+        return this.mtu;
+    }
+    /**
+     * The IPv4 address of the client side of the VBR instance.
      * 
      */
     @Export(name="peerGatewayIp", refs={String.class}, tree="[0]")
     private Output<String> peerGatewayIp;
 
     /**
-     * @return The Client-Side Interconnection IPv4 Address.
+     * @return The IPv4 address of the client side of the VBR instance.
      * 
      */
     public Output<String> peerGatewayIp() {
         return this.peerGatewayIp;
     }
     /**
-     * The Client-Side Interconnection IPv6 Address.
+     * The IPv6 address of the client side of the VBR instance.
      * 
      */
     @Export(name="peerIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerIpv6GatewayIp;
 
     /**
-     * @return The Client-Side Interconnection IPv6 Address.
+     * @return The IPv6 address of the client side of the VBR instance.
      * 
      */
     public Output<Optional<String>> peerIpv6GatewayIp() {
         return Codegen.optional(this.peerIpv6GatewayIp);
     }
     /**
-     * Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      * 
      */
     @Export(name="peeringIpv6SubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringIpv6SubnetMask;
 
     /**
-     * @return Alibaba Cloud-Connected IPv6 with Client-Side Interconnection IPv6 of Subnet Mask.
+     * @return The subnet masks of the Alibaba Cloud-side IPv6 and the customer-side IPv6 of The VBR instance.
      * 
      */
     public Output<Optional<String>> peeringIpv6SubnetMask() {
         return Codegen.optional(this.peeringIpv6SubnetMask);
     }
     /**
-     * Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      * 
      */
     @Export(name="peeringSubnetMask", refs={String.class}, tree="[0]")
     private Output<String> peeringSubnetMask;
 
     /**
-     * @return Alibaba Cloud-Connected IPv4 and Client-Side Interconnection IPv4 of Subnet Mask.
+     * @return The subnet masks of the Alibaba Cloud-side IPv4 and the customer-side IPv4 of The VBR instance.
      * 
      */
     public Output<String> peeringSubnetMask() {
         return this.peeringSubnetMask;
     }
     /**
-     * The ID of the Physical Connection to Which the ID.
+     * The ID of the physical connection to which the VBR belongs.
      * 
      */
     @Export(name="physicalConnectionId", refs={String.class}, tree="[0]")
     private Output<String> physicalConnectionId;
 
     /**
-     * @return The ID of the Physical Connection to Which the ID.
+     * @return The ID of the physical connection to which the VBR belongs.
      * 
      */
     public Output<String> physicalConnectionId() {
         return this.physicalConnectionId;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * (Available since v1.166.0) The Route Table ID Of the Virtual Border Router.
@@ -331,56 +372,84 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
         return this.routeTableId;
     }
     /**
-     * The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * 
+     */
+    @Export(name="sitelinkEnable", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sitelinkEnable;
+
+    /**
+     * @return Whether to allow inter-IDC communication. Valid values: `true`, `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> sitelinkEnable() {
+        return Codegen.optional(this.sitelinkEnable);
+    }
+    /**
+     * The status of the VBR. Valid values: `active`, `terminated`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The instance state. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
+     * @return The status of the VBR. Valid values: `active`, `terminated`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The vbr owner id.
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      * 
      */
     @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vbrOwnerId;
 
     /**
-     * @return The vbr owner id.
+     * @return The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
      * 
      */
     public Output<Optional<String>> vbrOwnerId() {
         return Codegen.optional(this.vbrOwnerId);
     }
     /**
-     * The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * The name of the VBR instance.
      * 
      */
     @Export(name="virtualBorderRouterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> virtualBorderRouterName;
 
     /**
-     * @return The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
+     * @return The name of the VBR instance.
      * 
      */
     public Output<Optional<String>> virtualBorderRouterName() {
         return Codegen.optional(this.virtualBorderRouterName);
     }
     /**
-     * The VLAN ID of the VBR. Value range: 0~2999.
+     * The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      * 
      */
     @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**
-     * @return The VLAN ID of the VBR. Value range: 0~2999.
+     * @return The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
      * 
      */
     public Output<Integer> vlanId() {

@@ -95,33 +95,33 @@ type Record struct {
 
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf RecordAuthConfPtrOutput `pulumi:"authConf"`
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 	BizName pulumi.StringPtrOutput `pulumi:"bizName"`
-	// The comments of the record.
+	// The comment of the record. The maximum length is 100 characters.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 	Data RecordDataOutput `pulumi:"data"`
 	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
 	HostPolicy pulumi.StringPtrOutput `pulumi:"hostPolicy"`
-	// Filters by whether the record is proxied. Valid values:
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	Proxied pulumi.BoolPtrOutput `pulumi:"proxied"`
 	// The record name. This parameter specifies a filter condition for the query.
 	RecordName pulumi.StringOutput `pulumi:"recordName"`
-	// The DNS record type.
+	// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 	RecordType pulumi.StringOutput `pulumi:"recordType"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
+	// The website ID.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	// - `OSS`: OSS bucket.
 	// - `S3`: S3 bucket.
 	// - `LB`: load balancer.
 	// - `OP`: origin pool.
 	// - `Domain`: domain name.
+	// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 }
 
@@ -169,66 +169,66 @@ func GetRecord(ctx *pulumi.Context,
 type recordState struct {
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf *RecordAuthConf `pulumi:"authConf"`
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 	BizName *string `pulumi:"bizName"`
-	// The comments of the record.
+	// The comment of the record. The maximum length is 100 characters.
 	Comment *string `pulumi:"comment"`
-	// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 	Data *RecordData `pulumi:"data"`
 	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
 	HostPolicy *string `pulumi:"hostPolicy"`
-	// Filters by whether the record is proxied. Valid values:
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	Proxied *bool `pulumi:"proxied"`
 	// The record name. This parameter specifies a filter condition for the query.
 	RecordName *string `pulumi:"recordName"`
-	// The DNS record type.
+	// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 	RecordType *string `pulumi:"recordType"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId *int `pulumi:"siteId"`
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
+	// The website ID.
+	SiteId *string `pulumi:"siteId"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	// - `OSS`: OSS bucket.
 	// - `S3`: S3 bucket.
 	// - `LB`: load balancer.
 	// - `OP`: origin pool.
 	// - `Domain`: domain name.
+	// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 	SourceType *string `pulumi:"sourceType"`
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	Ttl *int `pulumi:"ttl"`
 }
 
 type RecordState struct {
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf RecordAuthConfPtrInput
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 	BizName pulumi.StringPtrInput
-	// The comments of the record.
+	// The comment of the record. The maximum length is 100 characters.
 	Comment pulumi.StringPtrInput
-	// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 	Data RecordDataPtrInput
 	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
 	HostPolicy pulumi.StringPtrInput
-	// Filters by whether the record is proxied. Valid values:
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	Proxied pulumi.BoolPtrInput
 	// The record name. This parameter specifies a filter condition for the query.
 	RecordName pulumi.StringPtrInput
-	// The DNS record type.
+	// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 	RecordType pulumi.StringPtrInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntPtrInput
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
+	// The website ID.
+	SiteId pulumi.StringPtrInput
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	// - `OSS`: OSS bucket.
 	// - `S3`: S3 bucket.
 	// - `LB`: load balancer.
 	// - `OP`: origin pool.
 	// - `Domain`: domain name.
+	// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 	SourceType pulumi.StringPtrInput
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -239,31 +239,31 @@ func (RecordState) ElementType() reflect.Type {
 type recordArgs struct {
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf *RecordAuthConf `pulumi:"authConf"`
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 	BizName *string `pulumi:"bizName"`
-	// The comments of the record.
+	// The comment of the record. The maximum length is 100 characters.
 	Comment *string `pulumi:"comment"`
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 	Data RecordData `pulumi:"data"`
 	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
 	HostPolicy *string `pulumi:"hostPolicy"`
-	// Filters by whether the record is proxied. Valid values:
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	Proxied *bool `pulumi:"proxied"`
 	// The record name. This parameter specifies a filter condition for the query.
 	RecordName string `pulumi:"recordName"`
-	// The DNS record type.
+	// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 	RecordType string `pulumi:"recordType"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId int `pulumi:"siteId"`
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
+	// The website ID.
+	SiteId string `pulumi:"siteId"`
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	// - `OSS`: OSS bucket.
 	// - `S3`: S3 bucket.
 	// - `LB`: load balancer.
 	// - `OP`: origin pool.
 	// - `Domain`: domain name.
+	// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 	SourceType *string `pulumi:"sourceType"`
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	Ttl *int `pulumi:"ttl"`
 }
 
@@ -271,31 +271,31 @@ type recordArgs struct {
 type RecordArgs struct {
 	// The origin authentication information of the CNAME record. See `authConf` below.
 	AuthConf RecordAuthConfPtrInput
-	// The business scenario of the record for acceleration. Valid values:
+	// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 	BizName pulumi.StringPtrInput
-	// The comments of the record.
+	// The comment of the record. The maximum length is 100 characters.
 	Comment pulumi.StringPtrInput
-	// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+	// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 	Data RecordDataInput
 	// The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
 	HostPolicy pulumi.StringPtrInput
-	// Filters by whether the record is proxied. Valid values:
+	// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 	Proxied pulumi.BoolPtrInput
 	// The record name. This parameter specifies a filter condition for the query.
 	RecordName pulumi.StringInput
-	// The DNS record type.
+	// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 	RecordType pulumi.StringInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntInput
-	// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-	//
+	// The website ID.
+	SiteId pulumi.StringInput
+	// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 	// - `OSS`: OSS bucket.
 	// - `S3`: S3 bucket.
 	// - `LB`: load balancer.
 	// - `OP`: origin pool.
 	// - `Domain`: domain name.
+	// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 	SourceType pulumi.StringPtrInput
-	// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+	// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -391,22 +391,22 @@ func (o RecordOutput) AuthConf() RecordAuthConfPtrOutput {
 	return o.ApplyT(func(v *Record) RecordAuthConfPtrOutput { return v.AuthConf }).(RecordAuthConfPtrOutput)
 }
 
-// The business scenario of the record for acceleration. Valid values:
+// The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
 func (o RecordOutput) BizName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.BizName }).(pulumi.StringPtrOutput)
 }
 
-// The comments of the record.
+// The comment of the record. The maximum length is 100 characters.
 func (o RecordOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+// The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 func (o RecordOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+// The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
 func (o RecordOutput) Data() RecordDataOutput {
 	return o.ApplyT(func(v *Record) RecordDataOutput { return v.Data }).(RecordDataOutput)
 }
@@ -416,7 +416,7 @@ func (o RecordOutput) HostPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.HostPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Filters by whether the record is proxied. Valid values:
+// Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
 func (o RecordOutput) Proxied() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.Proxied }).(pulumi.BoolPtrOutput)
 }
@@ -426,28 +426,28 @@ func (o RecordOutput) RecordName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.RecordName }).(pulumi.StringOutput)
 }
 
-// The DNS record type.
+// The type of the DNS record, such as A/AAAA, CNAME, and TXT.
 func (o RecordOutput) RecordType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.RecordType }).(pulumi.StringOutput)
 }
 
-// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-func (o RecordOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *Record) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+// The website ID.
+func (o RecordOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-//
+// The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
 // - `OSS`: OSS bucket.
 // - `S3`: S3 bucket.
 // - `LB`: load balancer.
 // - `OP`: origin pool.
 // - `Domain`: domain name.
+// - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
 func (o RecordOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
-// The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+// The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
 func (o RecordOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }

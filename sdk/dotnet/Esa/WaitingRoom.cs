@@ -116,8 +116,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Disable session renewal. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Output("disableSessionRenewalEnable")]
         public Output<string?> DisableSessionRenewalEnable { get; private set; } = null!;
@@ -130,17 +128,12 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Output("jsonResponseEnable")]
         public Output<string?> JsonResponseEnable { get; private set; } = null!;
 
         /// <summary>
         /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-        /// -'enus': English.
-        /// -'zhcn': Simplified Chinese.
-        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
@@ -153,27 +146,18 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// All in line. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Output("queueAllEnable")]
         public Output<string?> QueueAllEnable { get; private set; } = null!;
 
         /// <summary>
         /// Way of queuing. Value:
-        /// -'random': random.
-        /// -'fifo': first in, first out.
-        /// -'Passthrough ': through.
-        /// -'Reject-all': reject all.
         /// </summary>
         [Output("queuingMethod")]
         public Output<string> QueuingMethod { get; private set; } = null!;
 
         /// <summary>
         /// Waiting room status code. Value:
-        /// -'200'
-        /// -'202'
-        /// -'429'
         /// </summary>
         [Output("queuingStatusCode")]
         public Output<string> QueuingStatusCode { get; private set; } = null!;
@@ -188,12 +172,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Waiting room enabled status. Value:
-        /// -'on': Enable waiting room
-        /// -'off': disabled waiting room
+        /// - 'on': Enable waiting room
+        /// - 'off': Disabled waiting room
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -218,8 +202,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Waiting room type, support:
-        /// -'default': Indicates the default type.
-        /// -'custom': indicates a custom type.
         /// </summary>
         [Output("waitingRoomType")]
         public Output<string> WaitingRoomType { get; private set; } = null!;
@@ -290,8 +272,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Disable session renewal. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
@@ -310,17 +290,12 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
         /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-        /// -'enus': English.
-        /// -'zhcn': Simplified Chinese.
-        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -333,27 +308,18 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// All in line. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("queueAllEnable")]
         public Input<string>? QueueAllEnable { get; set; }
 
         /// <summary>
         /// Way of queuing. Value:
-        /// -'random': random.
-        /// -'fifo': first in, first out.
-        /// -'Passthrough ': through.
-        /// -'Reject-all': reject all.
         /// </summary>
         [Input("queuingMethod", required: true)]
         public Input<string> QueuingMethod { get; set; } = null!;
 
         /// <summary>
         /// Waiting room status code. Value:
-        /// -'200'
-        /// -'202'
-        /// -'429'
         /// </summary>
         [Input("queuingStatusCode", required: true)]
         public Input<string> QueuingStatusCode { get; set; } = null!;
@@ -368,12 +334,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Waiting room enabled status. Value:
-        /// -'on': Enable waiting room
-        /// -'off': disabled waiting room
+        /// - 'on': Enable waiting room
+        /// - 'off': Disabled waiting room
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -392,8 +358,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Waiting room type, support:
-        /// -'default': Indicates the default type.
-        /// -'custom': indicates a custom type.
         /// </summary>
         [Input("waitingRoomType", required: true)]
         public Input<string> WaitingRoomType { get; set; } = null!;
@@ -426,8 +390,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Disable session renewal. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("disableSessionRenewalEnable")]
         public Input<string>? DisableSessionRenewalEnable { get; set; }
@@ -446,17 +408,12 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// The JSON response. If the accept request header contains "application/json", JSON data is returned. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("jsonResponseEnable")]
         public Input<string>? JsonResponseEnable { get; set; }
 
         /// <summary>
         /// The language of the waiting room page. When the waiting room type is the default type, it needs to be passed in. The following types are supported:
-        /// -'enus': English.
-        /// -'zhcn': Simplified Chinese.
-        /// -'zhhk': Traditional Chinese.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -469,27 +426,18 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// All in line. Value:
-        /// -'on': open.
-        /// -'off': closed.
         /// </summary>
         [Input("queueAllEnable")]
         public Input<string>? QueueAllEnable { get; set; }
 
         /// <summary>
         /// Way of queuing. Value:
-        /// -'random': random.
-        /// -'fifo': first in, first out.
-        /// -'Passthrough ': through.
-        /// -'Reject-all': reject all.
         /// </summary>
         [Input("queuingMethod")]
         public Input<string>? QueuingMethod { get; set; }
 
         /// <summary>
         /// Waiting room status code. Value:
-        /// -'200'
-        /// -'202'
-        /// -'429'
         /// </summary>
         [Input("queuingStatusCode")]
         public Input<string>? QueuingStatusCode { get; set; }
@@ -504,12 +452,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// Waiting room enabled status. Value:
-        /// -'on': Enable waiting room
-        /// -'off': disabled waiting room
+        /// - 'on': Enable waiting room
+        /// - 'off': Disabled waiting room
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -534,8 +482,6 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Waiting room type, support:
-        /// -'default': Indicates the default type.
-        /// -'custom': indicates a custom type.
         /// </summary>
         [Input("waitingRoomType")]
         public Input<string>? WaitingRoomType { get; set; }

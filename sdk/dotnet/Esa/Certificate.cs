@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.

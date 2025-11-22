@@ -24467,7 +24467,7 @@ export namespace ecs {
          */
         diskName?: string;
         /**
-         * The size of the data disk. Unit: GiB.
+         * The size of the data disk. Unit: GiB. Valid values:
          * - When `diskCategory` is `cloudEfficiency`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudSsd`, Valid values: `20` to `32768`.
          * - When `diskCategory` is `cloudEssd`, Valid values: `20` to `32768`.
@@ -32093,6 +32093,10 @@ export namespace esa {
          */
         operation: string;
         /**
+         * Value type. Value range:
+         */
+        type?: string;
+        /**
          * Request header value
          */
         value?: string;
@@ -32306,7 +32310,7 @@ export namespace esa {
 
     export interface RecordAuthConf {
         /**
-         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_same_account, or when the SourceType is S3 and AuthType is private.
+         * The access key of the account to which the origin server belongs. This parameter is required when the SourceType is OSS, and AuthType is private_cross_account, or when the SourceType is S3 and AuthType is private.
          */
         accessKey?: string;
         /**
@@ -32365,7 +32369,7 @@ export namespace esa {
          */
         selector?: number;
         /**
-         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record.
+         * The label of the record. The Tag of a CAA record indicate its specific type and usage. This parameter is required when you add a CAA record. Valid values:
          */
         tag?: string;
         /**
@@ -32377,9 +32381,8 @@ export namespace esa {
          */
         usage?: number;
         /**
-         * The record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on different types of records:
-         *
-         * - **A/AAAA**: the IP address(es). Separate multiple IPs with commas (,). You must have at least one IPv4 address.
+         * Record value or part of the record content. This parameter is required when you add A/AAAA, CNAME, NS, MX, TXT, CAA, SRV, and URI records. It has different meanings based on types of records:
+         * - `A/AAAA`: the IP address(es). Separate IP addresses with commas (,). You must have at least one IPv4 address.
          * - `CNAME`: the target domain name.
          * - `NS`: the name servers for the domain name.
          * - `MX`: a valid domain name of the target mail server.
@@ -34216,21 +34219,85 @@ export namespace ess {
          */
         cores?: number;
         /**
+         * CPU architecture N of the instance types. Valid values: x86,Arm.
+         */
+        cpuArchitectures?: string[];
+        /**
          * Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
          */
         excludedInstanceTypes?: string[];
+        /**
+         * The GPU model.
+         */
+        gpuSpecs?: string[];
+        /**
+         * Category N of the instances type. Valid values: General-purpose, Compute-optimized, Memory-optimized, Big data, Local SSDs, Enhanced, Shared, Compute-optimized with GPU, Visual Compute-optimized, Heterogeneous Service, Compute-optimized with FPGA, Compute-optimized with NPU, ECS Bare Metal, High Performance Compute.
+         */
+        instanceCategories?: string[];
         /**
          * The instance family level in instancePatternInfo.
          */
         instanceFamilyLevel?: string;
         /**
+         * Instance family N that is queried. Valid values of N: 1 to 10.
+         */
+        instanceTypeFamilies?: string[];
+        /**
          * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
          */
         maxPrice?: number;
         /**
+         * The maximum number of vCPUs per instance type.
+         */
+        maximumCpuCoreCount?: number;
+        /**
+         * The maximum number of GPUs per instance. The value must be a positive integer.
+         */
+        maximumGpuAmount?: number;
+        /**
+         * The maximum memory size per instance. Unit: GiB.
+         */
+        maximumMemorySize?: number;
+        /**
          * The memory size that is specified for an instance type in instancePatternInfo.
          */
         memory?: number;
+        /**
+         * The minimum baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+         */
+        minimumBaselineCredit?: number;
+        /**
+         * The minimum number of vCPUs per instance type.
+         */
+        minimumCpuCoreCount?: number;
+        /**
+         * The minimum number of IPv6 addresses per ENI.
+         */
+        minimumEniIpv6AddressQuantity?: number;
+        /**
+         * The minimum number of IPv4 addresses per ENI.
+         */
+        minimumEniPrivateIpAddressQuantity?: number;
+        /**
+         * The minimum number of elastic network interfaces (ENIs) per instance.
+         */
+        minimumEniQuantity?: number;
+        /**
+         * The minimum number of GPUs per instance. The value must be a positive integer.
+         */
+        minimumGpuAmount?: number;
+        /**
+         * The initial vCPU credits per t5 or t6 burstable instance.
+         */
+        minimumInitialCredit?: number;
+        /**
+         * The minimum memory size per instance. Unit: GiB.
+         */
+        minimumMemorySize?: number;
+        /**
+         * Processor model N of the ECS instances. Valid values of N: 1 to 10.
+         */
+        physicalProcessorModels?: string[];
     }
 
     export interface ScalingConfigurationInstanceTypeOverride {
@@ -41780,7 +41847,7 @@ export namespace log {
 
     export interface StoreIndexFieldSearch {
         /**
-         * The alias of one field
+         * The alias of one field.
          */
         alias?: string;
         /**
@@ -41796,11 +41863,11 @@ export namespace log {
          */
         includeChinese?: boolean;
         /**
-         * Use nested index when type is json
+         * Use nested index when type is json. See `jsonKeys` below.
          */
         jsonKeys?: outputs.log.StoreIndexFieldSearchJsonKey[];
         /**
-         * The field name, which is unique in the same log store.
+         * When using the jsonKeys field, this field is required.
          */
         name: string;
         /**
@@ -41808,7 +41875,7 @@ export namespace log {
          */
         token?: string;
         /**
-         * The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+         * The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
          */
         type?: string;
     }
@@ -47676,13 +47743,13 @@ export namespace polardb {
 
     export interface ParameterGroupParameter {
         /**
-         * The name of a parameter in the parameter template.
+         * The name of the parameter.
          */
-        paramName: string;
+        paramName?: string;
         /**
-         * The value of a parameter in the parameter template.
+         * The value of the parameter.
          */
-        paramValue: string;
+        paramValue?: string;
     }
 
 }

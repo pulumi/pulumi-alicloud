@@ -54,6 +54,9 @@ namespace Pulumi.AliCloud.Yundun
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
+        [Output("slaveVswitchId")]
+        public Output<string?> SlaveVswitchId { get; private set; } = null!;
+
         [Output("storage")]
         public Output<string> Storage { get; private set; } = null!;
 
@@ -171,6 +174,9 @@ namespace Pulumi.AliCloud.Yundun
             set => _securityGroupIds = value;
         }
 
+        [Input("slaveVswitchId")]
+        public Input<string>? SlaveVswitchId { get; set; }
+
         [Input("storage", required: true)]
         public Input<string> Storage { get; set; } = null!;
 
@@ -254,6 +260,9 @@ namespace Pulumi.AliCloud.Yundun
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        [Input("slaveVswitchId")]
+        public Input<string>? SlaveVswitchId { get; set; }
 
         [Input("storage")]
         public Input<string>? Storage { get; set; }

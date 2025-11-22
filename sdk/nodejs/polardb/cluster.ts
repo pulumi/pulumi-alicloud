@@ -57,7 +57,7 @@ export class Cluster extends pulumi.CustomResource {
     declare public readonly backupRetentionPolicyOnClusterDeletion: pulumi.Output<string>;
     /**
      * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
-     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
      */
     declare public readonly cloneDataPoint: pulumi.Output<string | undefined>;
     /**
@@ -600,7 +600,7 @@ export interface ClusterState {
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
      * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
-     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
      */
     cloneDataPoint?: pulumi.Input<string>;
     /**
@@ -958,7 +958,7 @@ export interface ClusterArgs {
     backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
     /**
      * The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
-     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
+     * > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
      */
     cloneDataPoint?: pulumi.Input<string>;
     /**

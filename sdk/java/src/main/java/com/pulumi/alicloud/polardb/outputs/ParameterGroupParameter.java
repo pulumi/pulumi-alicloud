@@ -4,37 +4,38 @@
 package com.pulumi.alicloud.polardb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ParameterGroupParameter {
     /**
-     * @return The name of a parameter in the parameter template.
+     * @return The name of the parameter.
      * 
      */
-    private String paramName;
+    private @Nullable String paramName;
     /**
-     * @return The value of a parameter in the parameter template.
+     * @return The value of the parameter.
      * 
      */
-    private String paramValue;
+    private @Nullable String paramValue;
 
     private ParameterGroupParameter() {}
     /**
-     * @return The name of a parameter in the parameter template.
+     * @return The name of the parameter.
      * 
      */
-    public String paramName() {
-        return this.paramName;
+    public Optional<String> paramName() {
+        return Optional.ofNullable(this.paramName);
     }
     /**
-     * @return The value of a parameter in the parameter template.
+     * @return The value of the parameter.
      * 
      */
-    public String paramValue() {
-        return this.paramValue;
+    public Optional<String> paramValue() {
+        return Optional.ofNullable(this.paramValue);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class ParameterGroupParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String paramName;
-        private String paramValue;
+        private @Nullable String paramName;
+        private @Nullable String paramValue;
         public Builder() {}
         public Builder(ParameterGroupParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class ParameterGroupParameter {
         }
 
         @CustomType.Setter
-        public Builder paramName(String paramName) {
-            if (paramName == null) {
-              throw new MissingRequiredPropertyException("ParameterGroupParameter", "paramName");
-            }
+        public Builder paramName(@Nullable String paramName) {
+
             this.paramName = paramName;
             return this;
         }
         @CustomType.Setter
-        public Builder paramValue(String paramValue) {
-            if (paramValue == null) {
-              throw new MissingRequiredPropertyException("ParameterGroupParameter", "paramValue");
-            }
+        public Builder paramValue(@Nullable String paramValue) {
+
             this.paramValue = paramValue;
             return this;
         }

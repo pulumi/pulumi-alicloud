@@ -24,7 +24,7 @@ class RecordArgs:
                  data: pulumi.Input['RecordDataArgs'],
                  record_name: pulumi.Input[_builtins.str],
                  record_type: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  auth_conf: Optional[pulumi.Input['RecordAuthConfArgs']] = None,
                  biz_name: Optional[pulumi.Input[_builtins.str]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,23 +34,23 @@ class RecordArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Record resource.
-        :param pulumi.Input['RecordDataArgs'] data: The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        :param pulumi.Input['RecordDataArgs'] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
-        :param pulumi.Input[_builtins.str] record_type: The DNS record type.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] record_type: The type of the DNS record, such as A/AAAA, CNAME, and TXT.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         :param pulumi.Input['RecordAuthConfArgs'] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
-        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Valid values:
-        :param pulumi.Input[_builtins.str] comment: The comments of the record.
+        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
-        :param pulumi.Input[_builtins.bool] proxied: Filters by whether the record is proxied. Valid values:
-        :param pulumi.Input[_builtins.str] source_type: The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-               
+        :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
+        :param pulumi.Input[_builtins.str] source_type: The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
                - `OSS`: OSS bucket.
                - `S3`: S3 bucket.
                - `LB`: load balancer.
                - `OP`: origin pool.
                - `Domain`: domain name.
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+               - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "record_name", record_name)
@@ -75,7 +75,7 @@ class RecordArgs:
     @pulumi.getter
     def data(self) -> pulumi.Input['RecordDataArgs']:
         """
-        The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         """
         return pulumi.get(self, "data")
 
@@ -99,7 +99,7 @@ class RecordArgs:
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The DNS record type.
+        The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         """
         return pulumi.get(self, "record_type")
 
@@ -109,14 +109,14 @@ class RecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -135,7 +135,7 @@ class RecordArgs:
     @pulumi.getter(name="bizName")
     def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The business scenario of the record for acceleration. Valid values:
+        The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         """
         return pulumi.get(self, "biz_name")
 
@@ -147,7 +147,7 @@ class RecordArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The comments of the record.
+        The comment of the record. The maximum length is 100 characters.
         """
         return pulumi.get(self, "comment")
 
@@ -171,7 +171,7 @@ class RecordArgs:
     @pulumi.getter
     def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Filters by whether the record is proxied. Valid values:
+        Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         """
         return pulumi.get(self, "proxied")
 
@@ -183,13 +183,13 @@ class RecordArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-
+        The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         - `OSS`: OSS bucket.
         - `S3`: S3 bucket.
         - `LB`: load balancer.
         - `OP`: origin pool.
         - `Domain`: domain name.
+        - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         """
         return pulumi.get(self, "source_type")
 
@@ -201,7 +201,7 @@ class RecordArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         return pulumi.get(self, "ttl")
 
@@ -222,29 +222,29 @@ class _RecordState:
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Record resources.
         :param pulumi.Input['RecordAuthConfArgs'] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
-        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Valid values:
-        :param pulumi.Input[_builtins.str] comment: The comments of the record.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
-        :param pulumi.Input['RecordDataArgs'] data: The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
+        :param pulumi.Input[_builtins.str] create_time: The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input['RecordDataArgs'] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
-        :param pulumi.Input[_builtins.bool] proxied: Filters by whether the record is proxied. Valid values:
+        :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
-        :param pulumi.Input[_builtins.str] record_type: The DNS record type.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.str] source_type: The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-               
+        :param pulumi.Input[_builtins.str] record_type: The type of the DNS record, such as A/AAAA, CNAME, and TXT.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] source_type: The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
                - `OSS`: OSS bucket.
                - `S3`: S3 bucket.
                - `LB`: load balancer.
                - `OP`: origin pool.
                - `Domain`: domain name.
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+               - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         if auth_conf is not None:
             pulumi.set(__self__, "auth_conf", auth_conf)
@@ -287,7 +287,7 @@ class _RecordState:
     @pulumi.getter(name="bizName")
     def biz_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The business scenario of the record for acceleration. Valid values:
+        The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         """
         return pulumi.get(self, "biz_name")
 
@@ -299,7 +299,7 @@ class _RecordState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The comments of the record.
+        The comment of the record. The maximum length is 100 characters.
         """
         return pulumi.get(self, "comment")
 
@@ -311,7 +311,7 @@ class _RecordState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+        The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -323,7 +323,7 @@ class _RecordState:
     @pulumi.getter
     def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
         """
-        The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         """
         return pulumi.get(self, "data")
 
@@ -347,7 +347,7 @@ class _RecordState:
     @pulumi.getter
     def proxied(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Filters by whether the record is proxied. Valid values:
+        Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         """
         return pulumi.get(self, "proxied")
 
@@ -371,7 +371,7 @@ class _RecordState:
     @pulumi.getter(name="recordType")
     def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DNS record type.
+        The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         """
         return pulumi.get(self, "record_type")
 
@@ -381,27 +381,27 @@ class _RecordState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-
+        The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         - `OSS`: OSS bucket.
         - `S3`: S3 bucket.
         - `LB`: load balancer.
         - `OP`: origin pool.
         - `Domain`: domain name.
+        - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         """
         return pulumi.get(self, "source_type")
 
@@ -413,7 +413,7 @@ class _RecordState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         return pulumi.get(self, "ttl")
 
@@ -436,7 +436,7 @@ class Record(pulumi.CustomResource):
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -497,22 +497,22 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
-        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Valid values:
-        :param pulumi.Input[_builtins.str] comment: The comments of the record.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
-        :param pulumi.Input[_builtins.bool] proxied: Filters by whether the record is proxied. Valid values:
+        :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
-        :param pulumi.Input[_builtins.str] record_type: The DNS record type.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.str] source_type: The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-               
+        :param pulumi.Input[_builtins.str] record_type: The type of the DNS record, such as A/AAAA, CNAME, and TXT.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] source_type: The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
                - `OSS`: OSS bucket.
                - `S3`: S3 bucket.
                - `LB`: load balancer.
                - `OP`: origin pool.
                - `Domain`: domain name.
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+               - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         ...
     @overload
@@ -597,7 +597,7 @@ class Record(pulumi.CustomResource):
                  proxied: Optional[pulumi.Input[_builtins.bool]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -648,7 +648,7 @@ class Record(pulumi.CustomResource):
             proxied: Optional[pulumi.Input[_builtins.bool]] = None,
             record_name: Optional[pulumi.Input[_builtins.str]] = None,
             record_type: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             source_type: Optional[pulumi.Input[_builtins.str]] = None,
             ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'Record':
         """
@@ -659,23 +659,23 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RecordAuthConfArgs', 'RecordAuthConfArgsDict']] auth_conf: The origin authentication information of the CNAME record. See `auth_conf` below.
-        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Valid values:
-        :param pulumi.Input[_builtins.str] comment: The comments of the record.
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
-        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        :param pulumi.Input[_builtins.str] biz_name: The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
+        :param pulumi.Input[_builtins.str] comment: The comment of the record. The maximum length is 100 characters.
+        :param pulumi.Input[_builtins.str] create_time: The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[Union['RecordDataArgs', 'RecordDataArgsDict']] data: The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         :param pulumi.Input[_builtins.str] host_policy: The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
-        :param pulumi.Input[_builtins.bool] proxied: Filters by whether the record is proxied. Valid values:
+        :param pulumi.Input[_builtins.bool] proxied: Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         :param pulumi.Input[_builtins.str] record_name: The record name. This parameter specifies a filter condition for the query.
-        :param pulumi.Input[_builtins.str] record_type: The DNS record type.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        :param pulumi.Input[_builtins.str] source_type: The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-               
+        :param pulumi.Input[_builtins.str] record_type: The type of the DNS record, such as A/AAAA, CNAME, and TXT.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] source_type: The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
                - `OSS`: OSS bucket.
                - `S3`: S3 bucket.
                - `LB`: load balancer.
                - `OP`: origin pool.
                - `Domain`: domain name.
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+               - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -707,7 +707,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="bizName")
     def biz_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The business scenario of the record for acceleration. Valid values:
+        The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
         """
         return pulumi.get(self, "biz_name")
 
@@ -715,7 +715,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The comments of the record.
+        The comment of the record. The maximum length is 100 characters.
         """
         return pulumi.get(self, "comment")
 
@@ -723,7 +723,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the record. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
+        The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -731,7 +731,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def data(self) -> pulumi.Output['outputs.RecordData']:
         """
-        The DNS record information. The format of this field varies based on the record type. For more information, see [Add DNS records](https://www.alibabacloud.com/help/doc-detail/2708761.html). See `data` below.
+        The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
         """
         return pulumi.get(self, "data")
 
@@ -747,7 +747,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def proxied(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Filters by whether the record is proxied. Valid values:
+        Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
         """
         return pulumi.get(self, "proxied")
 
@@ -763,15 +763,15 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The DNS record type.
+        The type of the DNS record, such as A/AAAA, CNAME, and TXT.
         """
         return pulumi.get(self, "record_type")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        The website ID.
         """
         return pulumi.get(self, "site_id")
 
@@ -779,13 +779,13 @@ class Record(pulumi.CustomResource):
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The origin type of the record. Only CNAME records can be filtered by using this field. Valid values:
-
+        The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
         - `OSS`: OSS bucket.
         - `S3`: S3 bucket.
         - `LB`: load balancer.
         - `OP`: origin pool.
         - `Domain`: domain name.
+        - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         """
         return pulumi.get(self, "source_type")
 
@@ -793,7 +793,7 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The TTL of the record. Unit: seconds. The range is 30 to 86,400, or 1. If the value is 1, the TTL of the record is determined by the system.
+        The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
         """
         return pulumi.get(self, "ttl")
 

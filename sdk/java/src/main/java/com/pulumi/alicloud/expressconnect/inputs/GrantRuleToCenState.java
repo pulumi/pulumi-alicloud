@@ -5,7 +5,6 @@ package com.pulumi.alicloud.expressconnect.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,14 +35,29 @@ public final class GrantRuleToCenState extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="cenOwnerId")
-    private @Nullable Output<Integer> cenOwnerId;
+    private @Nullable Output<String> cenOwnerId;
 
     /**
      * @return The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      * 
      */
-    public Optional<Output<Integer>> cenOwnerId() {
+    public Optional<Output<String>> cenOwnerId() {
         return Optional.ofNullable(this.cenOwnerId);
+    }
+
+    /**
+     * (Available since v1.263.0) The time when the instance was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.263.0) The time when the instance was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -66,6 +80,7 @@ public final class GrantRuleToCenState extends com.pulumi.resources.ResourceArgs
     private GrantRuleToCenState(GrantRuleToCenState $) {
         this.cenId = $.cenId;
         this.cenOwnerId = $.cenOwnerId;
+        this.createTime = $.createTime;
         this.instanceId = $.instanceId;
     }
 
@@ -114,7 +129,7 @@ public final class GrantRuleToCenState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder cenOwnerId(@Nullable Output<Integer> cenOwnerId) {
+        public Builder cenOwnerId(@Nullable Output<String> cenOwnerId) {
             $.cenOwnerId = cenOwnerId;
             return this;
         }
@@ -125,8 +140,29 @@ public final class GrantRuleToCenState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder cenOwnerId(Integer cenOwnerId) {
+        public Builder cenOwnerId(String cenOwnerId) {
             return cenOwnerId(Output.of(cenOwnerId));
+        }
+
+        /**
+         * @param createTime (Available since v1.263.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.263.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**

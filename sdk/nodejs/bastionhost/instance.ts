@@ -48,7 +48,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly adAuthServers: pulumi.Output<outputs.bastionhost.InstanceAdAuthServer[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance.
+     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
@@ -105,6 +105,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
+     * Slave VSwitch ID configured to Bastionhost.
+     */
+    declare public readonly slaveVswitchId: pulumi.Output<string | undefined>;
+    /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
     declare public readonly storage: pulumi.Output<string>;
@@ -144,6 +148,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state?.renewalStatus;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["slaveVswitchId"] = state?.slaveVswitchId;
             resourceInputs["storage"] = state?.storage;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["vswitchId"] = state?.vswitchId;
@@ -184,6 +189,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args?.renewalStatus;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["slaveVswitchId"] = args?.slaveVswitchId;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["vswitchId"] = args?.vswitchId;
@@ -202,7 +208,7 @@ export interface InstanceState {
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance.
+     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
@@ -259,6 +265,10 @@ export interface InstanceState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Slave VSwitch ID configured to Bastionhost.
+     */
+    slaveVswitchId?: pulumi.Input<string>;
+    /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
     storage?: pulumi.Input<string>;
@@ -281,7 +291,7 @@ export interface InstanceArgs {
      */
     adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
     /**
-     * The bandwidth of Cloud Bastionhost instance.
+     * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
@@ -337,6 +347,10 @@ export interface InstanceArgs {
      * and you can use tolist to convert it to a list.
      */
     securityGroupIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Slave VSwitch ID configured to Bastionhost.
+     */
+    slaveVswitchId?: pulumi.Input<string>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */

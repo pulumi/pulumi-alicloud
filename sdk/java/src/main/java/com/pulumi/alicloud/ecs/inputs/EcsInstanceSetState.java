@@ -54,14 +54,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+     * Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+     * @return Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -69,18 +69,20 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+     * @return Auto renewal period of an instance, in the unit of month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -88,14 +90,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicate how to check instance ready to use.
+     * Indicate how to check instance ready to use. Valid values:
      * 
      */
     @Import(name="bootCheckOsWithAssistant")
     private @Nullable Output<Boolean> bootCheckOsWithAssistant;
 
     /**
-     * @return Indicate how to check instance ready to use.
+     * @return Indicate how to check instance ready to use. Valid values:
      * 
      */
     public Optional<Output<Boolean>> bootCheckOsWithAssistant() {
@@ -103,14 +105,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The list of data disks created with instance. See `dataDisks` below..
+     * The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<EcsInstanceSetDataDiskArgs>> dataDisks;
 
     /**
-     * @return The list of data disks created with instance. See `dataDisks` below..
+     * @return The list of data disks created with instance. See `dataDisks` below.
      * 
      */
     public Optional<Output<List<EcsInstanceSetDataDiskArgs>>> dataDisks() {
@@ -298,14 +300,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+     * The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+     * @return The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -388,14 +390,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of NetworkInterface. See `networkInterfaces` below..
+     * A list of NetworkInterface. See `networkInterfaces` below.
      * 
      */
     @Import(name="networkInterfaces")
     private @Nullable Output<List<EcsInstanceSetNetworkInterfaceArgs>> networkInterfaces;
 
     /**
-     * @return A list of NetworkInterface. See `networkInterfaces` below..
+     * @return A list of NetworkInterface. See `networkInterfaces` below.
      * 
      */
     public Optional<Output<List<EcsInstanceSetNetworkInterfaceArgs>>> networkInterfaces() {
@@ -433,18 +435,20 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+     * @return The duration that you will buy the resource, in month. Valid values:
      * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+     *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -452,14 +456,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+     * @return The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -497,7 +501,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The security enhancement strategy.
+     * The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
@@ -506,7 +510,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> securityEnhancementStrategy;
 
     /**
-     * @return The security enhancement strategy.
+     * @return The security enhancement strategy. Valid values:
      * - `Active`: Enable security enhancement strategy, it only works on system images.
      * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
@@ -531,14 +535,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+     * The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      * 
      */
     @Import(name="spotPriceLimit")
     private @Nullable Output<Double> spotPriceLimit;
 
     /**
-     * @return The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+     * @return The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
      * 
      */
     public Optional<Output<Double>> spotPriceLimit() {
@@ -546,20 +550,22 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+     * The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      * 
      */
     @Import(name="spotStrategy")
     private @Nullable Output<String> spotStrategy;
 
     /**
-     * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+     * @return The spot strategy of a Pay-As-You-Go instance. Valid values:
      * - `NoSpot`: A regular Pay-As-You-Go instance.
      * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+     *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -582,14 +588,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+     * The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     @Import(name="systemDiskCategory")
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+     * @return The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
      * 
      */
     public Optional<Output<String>> systemDiskCategory() {
@@ -642,14 +648,14 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+     * The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      * 
      */
     @Import(name="systemDiskSize")
     private @Nullable Output<Integer> systemDiskSize;
 
     /**
-     * @return The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+     * @return The size of the system disk, measured in GiB. Valid values: `20` to `500`.
      * 
      */
     public Optional<Output<Integer>> systemDiskSize() {
@@ -827,7 +833,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+         * @param autoRenew Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -838,7 +844,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoRenew Whether to enable auto-renewal for the instance. This parameter is valid only when the `instanceChargeType` is set to `PrePaid`.
+         * @param autoRenew Whether to enable auto-renewal for the instance. **Note:** `autoRenew` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -848,9 +854,10 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. Valid values:
          * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
          * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+         *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -861,9 +868,10 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. It is valid when `instanceChargeType` is `PrePaid`.
+         * @param autoRenewPeriod Auto renewal period of an instance, in the unit of month. Valid values:
          * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `6`, `12`.
          * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+         *   **Note:** `autoRenewPeriod` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -873,7 +881,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootCheckOsWithAssistant Indicate how to check instance ready to use.
+         * @param bootCheckOsWithAssistant Indicate how to check instance ready to use. Valid values:
          * 
          * @return builder
          * 
@@ -884,7 +892,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bootCheckOsWithAssistant Indicate how to check instance ready to use.
+         * @param bootCheckOsWithAssistant Indicate how to check instance ready to use. Valid values:
          * 
          * @return builder
          * 
@@ -894,7 +902,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -905,7 +913,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -915,7 +923,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dataDisks The list of data disks created with instance. See `dataDisks` below..
+         * @param dataDisks The list of data disks created with instance. See `dataDisks` below.
          * 
          * @return builder
          * 
@@ -1187,7 +1195,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetChargeType The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+         * @param internetChargeType The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -1198,7 +1206,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param internetChargeType The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
+         * @param internetChargeType The Internet charge type of the instance. Valid values: `PayByBandwidth`, `PayByTraffic`.
          * 
          * @return builder
          * 
@@ -1313,7 +1321,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1324,7 +1332,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1334,7 +1342,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below..
+         * @param networkInterfaces A list of NetworkInterface. See `networkInterfaces` below.
          * 
          * @return builder
          * 
@@ -1386,9 +1394,10 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+         * @param period The duration that you will buy the resource, in month. Valid values:
          * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
          * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+         *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1399,9 +1408,10 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`.
+         * @param period The duration that you will buy the resource, in month. Valid values:
          * - When `periodUnit` is `Month`, Valid values: `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
          * - When `periodUnit` is `Week`, Valid values: `1`, `2`, `3`.
+         *   **Note:** `period` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1411,7 +1421,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+         * @param periodUnit The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1422,7 +1432,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. It is valid when `instanceChargeType` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
+         * @param periodUnit The duration unit that you will buy the resource. Valid values: `Week`, `Month`. **Note:** `periodUnit` is valid only when `instanceChargeType` is set to `PrePaid`.
          * 
          * @return builder
          * 
@@ -1474,7 +1484,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityEnhancementStrategy The security enhancement strategy.
+         * @param securityEnhancementStrategy The security enhancement strategy. Valid values:
          * - `Active`: Enable security enhancement strategy, it only works on system images.
          * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
@@ -1487,7 +1497,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityEnhancementStrategy The security enhancement strategy.
+         * @param securityEnhancementStrategy The security enhancement strategy. Valid values:
          * - `Active`: Enable security enhancement strategy, it only works on system images.
          * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
@@ -1530,7 +1540,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spotPriceLimit The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+         * @param spotPriceLimit The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
          * 
          * @return builder
          * 
@@ -1541,7 +1551,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spotPriceLimit The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
+         * @param spotPriceLimit The hourly price threshold of a instance. Three decimals is allowed at most. **Note:** `spotPriceLimit` takes effect only if `spotStrategy` is set to `SpotWithPriceLimit`.
          * 
          * @return builder
          * 
@@ -1551,10 +1561,11 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance. Valid values:
          * - `NoSpot`: A regular Pay-As-You-Go instance.
          * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+         *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
          * 
          * @return builder
          * 
@@ -1565,10 +1576,11 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is &#39;PostPaid&#39;.
+         * @param spotStrategy The spot strategy of a Pay-As-You-Go instance. Valid values:
          * - `NoSpot`: A regular Pay-As-You-Go instance.
          * - `SpotWithPriceLimit`: A price threshold for a spot instance.
-         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
+         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance.
+         *   **Note:** `spotStrategy` takes effect only if `instanceChargeType` is set to `PostPaid`.
          * 
          * @return builder
          * 
@@ -1599,7 +1611,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+         * @param systemDiskCategory The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
          * 
          * @return builder
          * 
@@ -1610,7 +1622,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskCategory The category of the system disk. Valid values are `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
+         * @param systemDiskCategory The category of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloud`.
          * 
          * @return builder
          * 
@@ -1683,7 +1695,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskSize The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+         * @param systemDiskSize The size of the system disk, measured in GiB. Valid values: `20` to `500`.
          * 
          * @return builder
          * 
@@ -1694,7 +1706,7 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param systemDiskSize The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
+         * @param systemDiskSize The size of the system disk, measured in GiB. Valid values: `20` to `500`.
          * 
          * @return builder
          * 
