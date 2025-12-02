@@ -1477,6 +1477,17 @@
             "alicloud_cloud_firewall_policy_advanced_config": {
                 "current": "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig"
             },
+            "alicloud_cloud_firewall_private_dns": {
+                "current": "alicloud:cloudfirewall/privateDns:PrivateDns",
+                "fields": {
+                    "domain_name_list": {
+                        "maxItemsOne": false
+                    },
+                    "firewall_type": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_cloud_firewall_threat_intelligence_switch": {
                 "current": "alicloud:cloudfirewall/threatIntelligenceSwitch:ThreatIntelligenceSwitch"
             },
@@ -4269,6 +4280,9 @@
                         }
                     }
                 }
+            },
+            "alicloud_eflo_hyper_node": {
+                "current": "alicloud:eflo/hyperNode:HyperNode"
             },
             "alicloud_eflo_invocation": {
                 "current": "alicloud:eflo/invocation:Invocation",
@@ -7073,6 +7087,17 @@
             "alicloud_mhub_product": {
                 "current": "alicloud:mhub/product:Product"
             },
+            "alicloud_milvus_instance": {
+                "current": "alicloud:index/milvusInstance:MilvusInstance",
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "vswitch_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "alicloud_mns_queue": {
                 "current": "alicloud:mns/queue:Queue"
             },
@@ -8000,6 +8025,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_polar_db_extension": {
+                "current": "alicloud:index/polarDbExtension:PolarDbExtension"
             },
             "alicloud_polardb_account": {
                 "current": "alicloud:polardb/account:Account"
@@ -17337,6 +17365,140 @@
                         "maxItemsOne": false
                     },
                     "zones": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_fcv3_functions": {
+                "current": "alicloud:fc/getV3Functions:getV3Functions",
+                "fields": {
+                    "functions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_container_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "acceleration_info": {
+                                                "maxItemsOne": true
+                                            },
+                                            "command": {
+                                                "maxItemsOne": false
+                                            },
+                                            "entrypoint": {
+                                                "maxItemsOne": false
+                                            },
+                                            "health_check_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "custom_dns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dns_options": {
+                                                "maxItemsOne": false
+                                            },
+                                            "name_servers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "searches": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "custom_runtime_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "args": {
+                                                "maxItemsOne": false
+                                            },
+                                            "command": {
+                                                "maxItemsOne": false
+                                            },
+                                            "health_check_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "gpu_config": {
+                                    "maxItemsOne": true
+                                },
+                                "instance_lifecycle_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "initializer": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "command": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "pre_stop": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "invocation_restriction": {
+                                    "maxItemsOne": true
+                                },
+                                "layers": {
+                                    "maxItemsOne": false
+                                },
+                                "log_config": {
+                                    "maxItemsOne": true
+                                },
+                                "nas_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "mount_points": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "oss_mount_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "mount_points": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tracing_config": {
+                                    "maxItemsOne": true
+                                },
+                                "vpc_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "vswitch_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "names": {
                         "maxItemsOne": false
                     }
                 }
