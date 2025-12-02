@@ -82,12 +82,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to force deletion even without backup.
      * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
+     * 
      */
     @Import(name="forceDeleteWithoutBackup")
     private @Nullable Output<String> forceDeleteWithoutBackup;
 
     /**
      * @return Whether to force deletion even without backup.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
      * 
      */
     public Optional<Output<String>> forceDeleteWithoutBackup() {
@@ -125,14 +129,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     @Import(name="log")
     private @Nullable Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     public Optional<Output<String>> log() {
@@ -140,14 +144,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     @Import(name="logStorage")
     private @Nullable Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     public Optional<Output<Integer>> logStorage() {
@@ -155,35 +159,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * The billing method. Valid values:
+     * 
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * @return The billing method. Valid values:
+     * 
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      * 
      */
     public Optional<Output<String>> paymentType() {
         return Optional.ofNullable(this.paymentType);
     }
 
-    /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     * 
-     */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
-    /**
-     * @return Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     * 
-     */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
     }
@@ -204,14 +202,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The auto-renewal period. Unit: month.
+     * 
+     * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return The auto-renewal period. Unit: month.
+     * 
+     * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -219,35 +221,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The renewal status of the specified instance. Valid values:
+     * 
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return The renewal status of the specified instance. Valid values:
+     * 
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      * 
      */
     public Optional<Output<String>> renewStatus() {
         return Optional.ofNullable(this.renewStatus);
     }
 
-    /**
-     * Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     * 
-     */
     @Import(name="renewalPeriodUnit")
     private @Nullable Output<String> renewalPeriodUnit;
 
-    /**
-     * @return Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     * 
-     */
     public Optional<Output<String>> renewalPeriodUnit() {
         return Optional.ofNullable(this.renewalPeriodUnit);
     }
@@ -298,14 +296,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -515,6 +513,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param forceDeleteWithoutBackup Whether to force deletion even without backup.
          * 
+         * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
+         * 
          * @return builder
          * 
          */
@@ -525,6 +525,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param forceDeleteWithoutBackup Whether to force deletion even without backup.
+         * 
+         * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
          * 
          * @return builder
          * 
@@ -576,7 +578,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param log Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
          * 
          * @return builder
          * 
@@ -587,7 +589,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param log Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param log Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
          * 
          * @return builder
          * 
@@ -597,7 +599,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param logStorage Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
          * 
          * @return builder
          * 
@@ -608,7 +610,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStorage Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param logStorage Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
          * 
          * @return builder
          * 
@@ -618,9 +620,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:
-         * - `Subscription`: Prepaid.
-         * - `PayAsYouGo`: Postpaid.
+         * @param paymentType The billing method. Valid values:
+         * 
+         * - Subscription: the subscription billing method.
+         * - PayAsYouGo: the pay-as-you-go billing method.
          * 
          * @return builder
          * 
@@ -631,9 +634,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type, valid values:
-         * - `Subscription`: Prepaid.
-         * - `PayAsYouGo`: Postpaid.
+         * @param paymentType The billing method. Valid values:
+         * 
+         * - Subscription: the subscription billing method.
+         * - PayAsYouGo: the pay-as-you-go billing method.
          * 
          * @return builder
          * 
@@ -642,23 +646,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return paymentType(Output.of(paymentType));
         }
 
-        /**
-         * @param period Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder period(@Nullable Output<Integer> period) {
             $.period = period;
             return this;
         }
 
-        /**
-         * @param period Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder period(Integer period) {
             return period(Output.of(period));
         }
@@ -685,7 +677,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param renewPeriod The auto-renewal period. Unit: month.
+         * 
+         * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
          * 
          * @return builder
          * 
@@ -696,7 +690,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewPeriod Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param renewPeriod The auto-renewal period. Unit: month.
+         * 
+         * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
          * 
          * @return builder
          * 
@@ -706,7 +702,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param renewStatus The renewal status of the specified instance. Valid values:
+         * 
+         * - AutoRenewal: The instance is automatically renewed.
+         * - ManualRenewal: The instance is manually renewed.
+         * - NotRenewal: The instance is not renewed.
          * 
          * @return builder
          * 
@@ -717,7 +717,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+         * @param renewStatus The renewal status of the specified instance. Valid values:
+         * 
+         * - AutoRenewal: The instance is automatically renewed.
+         * - ManualRenewal: The instance is manually renewed.
+         * - NotRenewal: The instance is not renewed.
          * 
          * @return builder
          * 
@@ -726,27 +730,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return renewStatus(Output.of(renewStatus));
         }
 
-        /**
-         * @param renewalPeriodUnit Automatic renewal period unit, valid value:
-         * - `M`: Month.
-         * - `Y`: Year.
-         * 
-         * @return builder
-         * 
-         */
         public Builder renewalPeriodUnit(@Nullable Output<String> renewalPeriodUnit) {
             $.renewalPeriodUnit = renewalPeriodUnit;
             return this;
         }
 
-        /**
-         * @param renewalPeriodUnit Automatic renewal period unit, valid value:
-         * - `M`: Month.
-         * - `Y`: Year.
-         * 
-         * @return builder
-         * 
-         */
         public Builder renewalPeriodUnit(String renewalPeriodUnit) {
             return renewalPeriodUnit(Output.of(renewalPeriodUnit));
         }
@@ -815,7 +803,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -826,7 +814,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 

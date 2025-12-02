@@ -101,13 +101,13 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
@@ -271,7 +271,7 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -282,7 +282,7 @@ public final class ImageTransformArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

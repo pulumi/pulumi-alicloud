@@ -54,11 +54,17 @@ namespace Pulumi.AliCloud.ActionTrail
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("dataEventTrailRegion")]
+        public Output<string?> DataEventTrailRegion { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         /// </summary>
         [Output("eventRw")]
         public Output<string> EventRw { get; private set; } = null!;
+
+        [Output("eventSelectors")]
+        public Output<string?> EventSelectors { get; private set; } = null!;
 
         [Output("isOrganizationTrail")]
         public Output<bool?> IsOrganizationTrail { get; private set; } = null!;
@@ -171,11 +177,17 @@ namespace Pulumi.AliCloud.ActionTrail
 
     public sealed class TrailDeprecatedArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dataEventTrailRegion")]
+        public Input<string>? DataEventTrailRegion { get; set; }
+
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
+
+        [Input("eventSelectors")]
+        public Input<string>? EventSelectors { get; set; }
 
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }
@@ -250,11 +262,17 @@ namespace Pulumi.AliCloud.ActionTrail
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("dataEventTrailRegion")]
+        public Input<string>? DataEventTrailRegion { get; set; }
+
         /// <summary>
         /// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
+
+        [Input("eventSelectors")]
+        public Input<string>? EventSelectors { get; set; }
 
         [Input("isOrganizationTrail")]
         public Input<bool>? IsOrganizationTrail { get; set; }

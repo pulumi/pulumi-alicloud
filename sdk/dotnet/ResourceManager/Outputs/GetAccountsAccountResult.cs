@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         /// </summary>
         public readonly string AccountName;
         /// <summary>
+        /// (Available since v1.264.0) The deletion status of the member.
+        /// </summary>
+        public readonly string DeletionStatus;
+        /// <summary>
         /// The display name of the member.
         /// </summary>
         public readonly string DisplayName;
@@ -72,6 +76,8 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
 
             string accountName,
 
+            string deletionStatus,
+
             string displayName,
 
             string folderId,
@@ -96,6 +102,7 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
         {
             AccountId = accountId;
             AccountName = accountName;
+            DeletionStatus = deletionStatus;
             DisplayName = displayName;
             FolderId = folderId;
             Id = id;

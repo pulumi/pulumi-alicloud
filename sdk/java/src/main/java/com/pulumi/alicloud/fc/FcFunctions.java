@@ -14,6 +14,8 @@ import com.pulumi.alicloud.fc.inputs.GetServicesArgs;
 import com.pulumi.alicloud.fc.inputs.GetServicesPlainArgs;
 import com.pulumi.alicloud.fc.inputs.GetTriggersArgs;
 import com.pulumi.alicloud.fc.inputs.GetTriggersPlainArgs;
+import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+import com.pulumi.alicloud.fc.inputs.GetV3FunctionsPlainArgs;
 import com.pulumi.alicloud.fc.inputs.GetV3TriggersArgs;
 import com.pulumi.alicloud.fc.inputs.GetV3TriggersPlainArgs;
 import com.pulumi.alicloud.fc.inputs.GetZonesArgs;
@@ -23,6 +25,7 @@ import com.pulumi.alicloud.fc.outputs.GetFunctionsResult;
 import com.pulumi.alicloud.fc.outputs.GetServiceResult;
 import com.pulumi.alicloud.fc.outputs.GetServicesResult;
 import com.pulumi.alicloud.fc.outputs.GetTriggersResult;
+import com.pulumi.alicloud.fc.outputs.GetV3FunctionsResult;
 import com.pulumi.alicloud.fc.outputs.GetV3TriggersResult;
 import com.pulumi.alicloud.fc.outputs.GetZonesResult;
 import com.pulumi.core.Output;
@@ -1353,6 +1356,321 @@ public final class FcFunctions {
      */
     public static CompletableFuture<GetTriggersResult> getTriggersPlain(GetTriggersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:fc/getTriggers:getTriggers", TypeShape.of(GetTriggersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetV3FunctionsResult> getV3Functions() {
+        return getV3Functions(GetV3FunctionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetV3FunctionsResult> getV3FunctionsPlain() {
+        return getV3FunctionsPlain(GetV3FunctionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetV3FunctionsResult> getV3Functions(GetV3FunctionsArgs args) {
+        return getV3Functions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetV3FunctionsResult> getV3FunctionsPlain(GetV3FunctionsPlainArgs args) {
+        return getV3FunctionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetV3FunctionsResult> getV3Functions(GetV3FunctionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fc/getV3Functions:getV3Functions", TypeShape.of(GetV3FunctionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetV3FunctionsResult> getV3Functions(GetV3FunctionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:fc/getV3Functions:getV3Functions", TypeShape.of(GetV3FunctionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)
+     * 
+     * &gt; **NOTE:** Available since v1.264.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.fc.FcFunctions;
+     * import com.pulumi.alicloud.fc.inputs.GetV3FunctionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         final var default = FcFunctions.getV3Functions(GetV3FunctionsArgs.builder()
+     *             .prefix("terraform-example-for-function-alias")
+     *             .build());
+     * 
+     *         ctx.export("alicloudFcv3FunctionExampleId", default_.functions()[0].functionName());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetV3FunctionsResult> getV3FunctionsPlain(GetV3FunctionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:fc/getV3Functions:getV3Functions", TypeShape.of(GetV3FunctionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)

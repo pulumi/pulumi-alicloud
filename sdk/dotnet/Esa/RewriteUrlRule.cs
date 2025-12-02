@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
@@ -321,7 +321,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.

@@ -72,7 +72,7 @@ import (
 //					DestUrl:          pulumi.String("http://11.177.129.13:8081"),
 //					MaxBatchSize:     pulumi.Int(1000),
 //				},
-//				DataCenter:   pulumi.String("oversea"),
+//				DataCenter:   pulumi.String("global"),
 //				DiscardRate:  pulumi.Float64(0),
 //				TaskName:     pulumi.String("dcdn-example-task"),
 //				BusinessType: pulumi.String("dcdn_log_access_l1"),
@@ -111,16 +111,26 @@ type SiteDeliveryTask struct {
 	// The list of delivery fields to be modified, separated by commas.
 	FieldName pulumi.StringOutput `pulumi:"fieldName"`
 	// HTTP delivery configuration parameters. See `httpDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	HttpDelivery SiteDeliveryTaskHttpDeliveryPtrOutput `pulumi:"httpDelivery"`
 	// Kafka delivery configuration parameters. See `kafkaDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	KafkaDelivery SiteDeliveryTaskKafkaDeliveryPtrOutput `pulumi:"kafkaDelivery"`
 	// OSS delivery configuration. See `ossDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssDelivery SiteDeliveryTaskOssDeliveryPtrOutput `pulumi:"ossDelivery"`
 	// S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	S3Delivery SiteDeliveryTaskS3DeliveryPtrOutput `pulumi:"s3Delivery"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// SLS delivery configuration. See `slsDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SlsDelivery SiteDeliveryTaskSlsDeliveryPtrOutput `pulumi:"slsDelivery"`
 	// Task status, value:
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -188,16 +198,26 @@ type siteDeliveryTaskState struct {
 	// The list of delivery fields to be modified, separated by commas.
 	FieldName *string `pulumi:"fieldName"`
 	// HTTP delivery configuration parameters. See `httpDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	HttpDelivery *SiteDeliveryTaskHttpDelivery `pulumi:"httpDelivery"`
 	// Kafka delivery configuration parameters. See `kafkaDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	KafkaDelivery *SiteDeliveryTaskKafkaDelivery `pulumi:"kafkaDelivery"`
 	// OSS delivery configuration. See `ossDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssDelivery *SiteDeliveryTaskOssDelivery `pulumi:"ossDelivery"`
 	// S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	S3Delivery *SiteDeliveryTaskS3Delivery `pulumi:"s3Delivery"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// SLS delivery configuration. See `slsDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SlsDelivery *SiteDeliveryTaskSlsDelivery `pulumi:"slsDelivery"`
 	// Task status, value:
 	Status *string `pulumi:"status"`
@@ -218,16 +238,26 @@ type SiteDeliveryTaskState struct {
 	// The list of delivery fields to be modified, separated by commas.
 	FieldName pulumi.StringPtrInput
 	// HTTP delivery configuration parameters. See `httpDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	HttpDelivery SiteDeliveryTaskHttpDeliveryPtrInput
 	// Kafka delivery configuration parameters. See `kafkaDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	KafkaDelivery SiteDeliveryTaskKafkaDeliveryPtrInput
 	// OSS delivery configuration. See `ossDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssDelivery SiteDeliveryTaskOssDeliveryPtrInput
 	// S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	S3Delivery SiteDeliveryTaskS3DeliveryPtrInput
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// SLS delivery configuration. See `slsDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SlsDelivery SiteDeliveryTaskSlsDeliveryPtrInput
 	// Task status, value:
 	Status pulumi.StringPtrInput
@@ -252,16 +282,26 @@ type siteDeliveryTaskArgs struct {
 	// The list of delivery fields to be modified, separated by commas.
 	FieldName string `pulumi:"fieldName"`
 	// HTTP delivery configuration parameters. See `httpDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	HttpDelivery *SiteDeliveryTaskHttpDelivery `pulumi:"httpDelivery"`
 	// Kafka delivery configuration parameters. See `kafkaDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	KafkaDelivery *SiteDeliveryTaskKafkaDelivery `pulumi:"kafkaDelivery"`
 	// OSS delivery configuration. See `ossDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssDelivery *SiteDeliveryTaskOssDelivery `pulumi:"ossDelivery"`
 	// S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	S3Delivery *SiteDeliveryTaskS3Delivery `pulumi:"s3Delivery"`
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// SLS delivery configuration. See `slsDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SlsDelivery *SiteDeliveryTaskSlsDelivery `pulumi:"slsDelivery"`
 	// Task status, value:
 	Status *string `pulumi:"status"`
@@ -283,16 +323,26 @@ type SiteDeliveryTaskArgs struct {
 	// The list of delivery fields to be modified, separated by commas.
 	FieldName pulumi.StringInput
 	// HTTP delivery configuration parameters. See `httpDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	HttpDelivery SiteDeliveryTaskHttpDeliveryPtrInput
 	// Kafka delivery configuration parameters. See `kafkaDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	KafkaDelivery SiteDeliveryTaskKafkaDeliveryPtrInput
 	// OSS delivery configuration. See `ossDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	OssDelivery SiteDeliveryTaskOssDeliveryPtrInput
 	// S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	S3Delivery SiteDeliveryTaskS3DeliveryPtrInput
 	// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// SLS delivery configuration. See `slsDelivery` below.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SlsDelivery SiteDeliveryTaskSlsDeliveryPtrInput
 	// Task status, value:
 	Status pulumi.StringPtrInput
@@ -414,31 +464,41 @@ func (o SiteDeliveryTaskOutput) FieldName() pulumi.StringOutput {
 }
 
 // HTTP delivery configuration parameters. See `httpDelivery` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o SiteDeliveryTaskOutput) HttpDelivery() SiteDeliveryTaskHttpDeliveryPtrOutput {
 	return o.ApplyT(func(v *SiteDeliveryTask) SiteDeliveryTaskHttpDeliveryPtrOutput { return v.HttpDelivery }).(SiteDeliveryTaskHttpDeliveryPtrOutput)
 }
 
 // Kafka delivery configuration parameters. See `kafkaDelivery` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o SiteDeliveryTaskOutput) KafkaDelivery() SiteDeliveryTaskKafkaDeliveryPtrOutput {
 	return o.ApplyT(func(v *SiteDeliveryTask) SiteDeliveryTaskKafkaDeliveryPtrOutput { return v.KafkaDelivery }).(SiteDeliveryTaskKafkaDeliveryPtrOutput)
 }
 
 // OSS delivery configuration. See `ossDelivery` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o SiteDeliveryTaskOutput) OssDelivery() SiteDeliveryTaskOssDeliveryPtrOutput {
 	return o.ApplyT(func(v *SiteDeliveryTask) SiteDeliveryTaskOssDeliveryPtrOutput { return v.OssDelivery }).(SiteDeliveryTaskOssDeliveryPtrOutput)
 }
 
 // S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o SiteDeliveryTaskOutput) S3Delivery() SiteDeliveryTaskS3DeliveryPtrOutput {
 	return o.ApplyT(func(v *SiteDeliveryTask) SiteDeliveryTaskS3DeliveryPtrOutput { return v.S3Delivery }).(SiteDeliveryTaskS3DeliveryPtrOutput)
 }
 
 // The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
-func (o SiteDeliveryTaskOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *SiteDeliveryTask) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o SiteDeliveryTaskOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteDeliveryTask) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // SLS delivery configuration. See `slsDelivery` below.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o SiteDeliveryTaskOutput) SlsDelivery() SiteDeliveryTaskSlsDeliveryPtrOutput {
 	return o.ApplyT(func(v *SiteDeliveryTask) SiteDeliveryTaskSlsDeliveryPtrOutput { return v.SlsDelivery }).(SiteDeliveryTaskSlsDeliveryPtrOutput)
 }

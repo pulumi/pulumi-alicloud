@@ -87,9 +87,17 @@ export class Trail extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
+    declare public readonly dataEventTrailRegion: pulumi.Output<string | undefined>;
+    /**
      * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     declare public readonly eventRw: pulumi.Output<string>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
+    declare public readonly eventSelectors: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
      */
@@ -171,7 +179,9 @@ export class Trail extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TrailState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataEventTrailRegion"] = state?.dataEventTrailRegion;
             resourceInputs["eventRw"] = state?.eventRw;
+            resourceInputs["eventSelectors"] = state?.eventSelectors;
             resourceInputs["isOrganizationTrail"] = state?.isOrganizationTrail;
             resourceInputs["maxComputeProjectArn"] = state?.maxComputeProjectArn;
             resourceInputs["maxComputeWriteRoleArn"] = state?.maxComputeWriteRoleArn;
@@ -189,7 +199,9 @@ export class Trail extends pulumi.CustomResource {
             resourceInputs["trailRegion"] = state?.trailRegion;
         } else {
             const args = argsOrState as TrailArgs | undefined;
+            resourceInputs["dataEventTrailRegion"] = args?.dataEventTrailRegion;
             resourceInputs["eventRw"] = args?.eventRw;
+            resourceInputs["eventSelectors"] = args?.eventSelectors;
             resourceInputs["isOrganizationTrail"] = args?.isOrganizationTrail;
             resourceInputs["maxComputeProjectArn"] = args?.maxComputeProjectArn;
             resourceInputs["maxComputeWriteRoleArn"] = args?.maxComputeWriteRoleArn;
@@ -221,9 +233,17 @@ export interface TrailState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
+    dataEventTrailRegion?: pulumi.Input<string>;
+    /**
      * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     eventRw?: pulumi.Input<string>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
+    eventSelectors?: pulumi.Input<string>;
     /**
      * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
      */
@@ -297,9 +317,17 @@ export interface TrailState {
  */
 export interface TrailArgs {
     /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     */
+    dataEventTrailRegion?: pulumi.Input<string>;
+    /**
      * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      */
     eventRw?: pulumi.Input<string>;
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     */
+    eventSelectors?: pulumi.Input<string>;
     /**
      * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
      */

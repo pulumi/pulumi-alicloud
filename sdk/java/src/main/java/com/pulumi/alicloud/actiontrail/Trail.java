@@ -117,6 +117,20 @@ public class Trail extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
+    @Export(name="dataEventTrailRegion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataEventTrailRegion;
+
+    /**
+     * @return The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
+    public Output<Optional<String>> dataEventTrailRegion() {
+        return Codegen.optional(this.dataEventTrailRegion);
+    }
+    /**
      * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
@@ -129,6 +143,20 @@ public class Trail extends com.pulumi.resources.CustomResource {
      */
     public Output<String> eventRw() {
         return this.eventRw;
+    }
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
+    @Export(name="eventSelectors", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> eventSelectors;
+
+    /**
+     * @return The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
+    public Output<Optional<String>> eventSelectors() {
+        return Codegen.optional(this.eventSelectors);
     }
     /**
      * Specifies whether to create a multi-account trail. Default value: `false`. Valid values:

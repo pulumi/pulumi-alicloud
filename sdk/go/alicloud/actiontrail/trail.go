@@ -105,8 +105,12 @@ type Trail struct {
 
 	// (Available since v1.256.0) The time when the trail was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+	DataEventTrailRegion pulumi.StringPtrOutput `pulumi:"dataEventTrailRegion"`
 	// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 	EventRw pulumi.StringOutput `pulumi:"eventRw"`
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	EventSelectors pulumi.StringPtrOutput `pulumi:"eventSelectors"`
 	// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
 	IsOrganizationTrail pulumi.BoolPtrOutput `pulumi:"isOrganizationTrail"`
 	// The ARN of the MaxCompute project to which you want to deliver events.
@@ -177,8 +181,12 @@ func GetTrail(ctx *pulumi.Context,
 type trailState struct {
 	// (Available since v1.256.0) The time when the trail was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`
 	// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 	EventRw *string `pulumi:"eventRw"`
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	EventSelectors *string `pulumi:"eventSelectors"`
 	// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
 	IsOrganizationTrail *bool `pulumi:"isOrganizationTrail"`
 	// The ARN of the MaxCompute project to which you want to deliver events.
@@ -220,8 +228,12 @@ type trailState struct {
 type TrailState struct {
 	// (Available since v1.256.0) The time when the trail was created.
 	CreateTime pulumi.StringPtrInput
+	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+	DataEventTrailRegion pulumi.StringPtrInput
 	// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 	EventRw pulumi.StringPtrInput
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	EventSelectors pulumi.StringPtrInput
 	// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
 	IsOrganizationTrail pulumi.BoolPtrInput
 	// The ARN of the MaxCompute project to which you want to deliver events.
@@ -265,8 +277,12 @@ func (TrailState) ElementType() reflect.Type {
 }
 
 type trailArgs struct {
+	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`
 	// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 	EventRw *string `pulumi:"eventRw"`
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	EventSelectors *string `pulumi:"eventSelectors"`
 	// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
 	IsOrganizationTrail *bool `pulumi:"isOrganizationTrail"`
 	// The ARN of the MaxCompute project to which you want to deliver events.
@@ -305,8 +321,12 @@ type trailArgs struct {
 
 // The set of arguments for constructing a Trail resource.
 type TrailArgs struct {
+	// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+	DataEventTrailRegion pulumi.StringPtrInput
 	// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 	EventRw pulumi.StringPtrInput
+	// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+	EventSelectors pulumi.StringPtrInput
 	// Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
 	IsOrganizationTrail pulumi.BoolPtrInput
 	// The ARN of the MaxCompute project to which you want to deliver events.
@@ -435,9 +455,19 @@ func (o TrailOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+func (o TrailOutput) DataEventTrailRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.DataEventTrailRegion }).(pulumi.StringPtrOutput)
+}
+
 // The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
 func (o TrailOutput) EventRw() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.EventRw }).(pulumi.StringOutput)
+}
+
+// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+func (o TrailOutput) EventSelectors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.EventSelectors }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether to create a multi-account trail. Default value: `false`. Valid values:

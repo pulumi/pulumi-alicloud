@@ -81,6 +81,12 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    @Export(name="dataEventTrailRegion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataEventTrailRegion;
+
+    public Output<Optional<String>> dataEventTrailRegion() {
+        return Codegen.optional(this.dataEventTrailRegion);
+    }
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      * 
@@ -94,6 +100,12 @@ public class TrailDeprecated extends com.pulumi.resources.CustomResource {
      */
     public Output<String> eventRw() {
         return this.eventRw;
+    }
+    @Export(name="eventSelectors", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> eventSelectors;
+
+    public Output<Optional<String>> eventSelectors() {
+        return Codegen.optional(this.eventSelectors);
     }
     @Export(name="isOrganizationTrail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOrganizationTrail;

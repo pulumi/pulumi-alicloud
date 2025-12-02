@@ -159,8 +159,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="disableSessionRenewalEnable", refs={String.class}, tree="[0]")
@@ -168,8 +166,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> disableSessionRenewalEnable() {
@@ -191,8 +187,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * JSON response switch. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="jsonResponseEnable", refs={String.class}, tree="[0]")
@@ -200,8 +194,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return JSON response switch. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> jsonResponseEnable() {
@@ -209,9 +201,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Default language setting. Values include:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
@@ -219,9 +208,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Default language setting. Values include:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Output<Optional<String>> language() {
@@ -243,8 +229,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Pre-queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="preQueueEnable", refs={String.class}, tree="[0]")
@@ -252,8 +236,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Pre-queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> preQueueEnable() {
@@ -275,10 +257,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;passthrough &#39;: through.
-     * -&#39;reject-all&#39;: reject all.
      * 
      */
     @Export(name="queuingMethod", refs={String.class}, tree="[0]")
@@ -286,10 +264,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;passthrough &#39;: through.
-     * -&#39;reject-all&#39;: reject all.
      * 
      */
     public Output<String> queuingMethod() {
@@ -297,9 +271,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     @Export(name="queuingStatusCode", refs={String.class}, tree="[0]")
@@ -307,9 +278,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     public Output<String> queuingStatusCode() {
@@ -317,8 +285,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Random queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Export(name="randomPreQueueEnable", refs={String.class}, tree="[0]")
@@ -326,8 +292,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Random queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Output<Optional<String>> randomPreQueueEnable() {
@@ -351,14 +315,14 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
@@ -377,8 +341,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room events
-     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -386,8 +348,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room events
-     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     public Output<String> status() {
@@ -451,8 +411,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Waiting room type. The following types are supported:
-     * -&#39;default&#39;: the default type.
-     * -&#39;custom&#39;: custom type.
      * 
      */
     @Export(name="waitingRoomType", refs={String.class}, tree="[0]")
@@ -460,8 +418,6 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Waiting room type. The following types are supported:
-     * -&#39;default&#39;: the default type.
-     * -&#39;custom&#39;: custom type.
      * 
      */
     public Output<String> waitingRoomType() {

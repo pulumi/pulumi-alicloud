@@ -25,7 +25,7 @@ class SiteDeliveryTaskArgs:
                  data_center: pulumi.Input[_builtins.str],
                  delivery_type: pulumi.Input[_builtins.str],
                  field_name: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  task_name: pulumi.Input[_builtins.str],
                  discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
                  http_delivery: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']] = None,
@@ -41,14 +41,24 @@ class SiteDeliveryTaskArgs:
         :param pulumi.Input[_builtins.str] data_center: Data Center. Values:
         :param pulumi.Input[_builtins.str] delivery_type: Delivery Type:
         :param pulumi.Input[_builtins.str] field_name: The list of delivery fields to be modified, separated by commas.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         :param pulumi.Input[_builtins.str] task_name: The task name.
         :param pulumi.Input[_builtins.float] discard_rate: If the discard rate is not filled, the default value is 0.
         :param pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs'] http_delivery: HTTP delivery configuration parameters. See `http_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs'] kafka_delivery: Kafka delivery configuration parameters. See `kafka_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskOssDeliveryArgs'] oss_delivery: OSS delivery configuration. See `oss_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskS3DeliveryArgs'] s3_delivery: S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs'] sls_delivery: SLS delivery configuration. See `sls_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: Task status, value:
         """
         pulumi.set(__self__, "business_type", business_type)
@@ -123,14 +133,14 @@ class SiteDeliveryTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -162,6 +172,8 @@ class SiteDeliveryTaskArgs:
     def http_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]:
         """
         HTTP delivery configuration parameters. See `http_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "http_delivery")
 
@@ -174,6 +186,8 @@ class SiteDeliveryTaskArgs:
     def kafka_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]:
         """
         Kafka delivery configuration parameters. See `kafka_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "kafka_delivery")
 
@@ -186,6 +200,8 @@ class SiteDeliveryTaskArgs:
     def oss_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]:
         """
         OSS delivery configuration. See `oss_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_delivery")
 
@@ -198,6 +214,8 @@ class SiteDeliveryTaskArgs:
     def s3_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]:
         """
         S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "s3_delivery")
 
@@ -210,6 +228,8 @@ class SiteDeliveryTaskArgs:
     def sls_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]:
         """
         SLS delivery configuration. See `sls_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "sls_delivery")
 
@@ -242,7 +262,7 @@ class _SiteDeliveryTaskState:
                  kafka_delivery: Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']] = None,
                  oss_delivery: Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']] = None,
                  s3_delivery: Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sls_delivery: Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -255,11 +275,21 @@ class _SiteDeliveryTaskState:
         :param pulumi.Input[_builtins.float] discard_rate: If the discard rate is not filled, the default value is 0.
         :param pulumi.Input[_builtins.str] field_name: The list of delivery fields to be modified, separated by commas.
         :param pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs'] http_delivery: HTTP delivery configuration parameters. See `http_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs'] kafka_delivery: Kafka delivery configuration parameters. See `kafka_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskOssDeliveryArgs'] oss_delivery: OSS delivery configuration. See `oss_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input['SiteDeliveryTaskS3DeliveryArgs'] s3_delivery: S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         :param pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs'] sls_delivery: SLS delivery configuration. See `sls_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: Task status, value:
         :param pulumi.Input[_builtins.str] task_name: The task name.
         """
@@ -356,6 +386,8 @@ class _SiteDeliveryTaskState:
     def http_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]:
         """
         HTTP delivery configuration parameters. See `http_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "http_delivery")
 
@@ -368,6 +400,8 @@ class _SiteDeliveryTaskState:
     def kafka_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]:
         """
         Kafka delivery configuration parameters. See `kafka_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "kafka_delivery")
 
@@ -380,6 +414,8 @@ class _SiteDeliveryTaskState:
     def oss_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]:
         """
         OSS delivery configuration. See `oss_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_delivery")
 
@@ -392,6 +428,8 @@ class _SiteDeliveryTaskState:
     def s3_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]:
         """
         S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "s3_delivery")
 
@@ -401,14 +439,14 @@ class _SiteDeliveryTaskState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -416,6 +454,8 @@ class _SiteDeliveryTaskState:
     def sls_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]:
         """
         SLS delivery configuration. See `sls_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "sls_delivery")
 
@@ -463,7 +503,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                  kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
                  oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
                  s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -510,7 +550,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                 "dest_url": "http://11.177.129.13:8081",
                 "max_batch_size": 1000,
             },
-            data_center="oversea",
+            data_center="global",
             discard_rate=0,
             task_name="dcdn-example-task",
             business_type="dcdn_log_access_l1",
@@ -536,11 +576,21 @@ class SiteDeliveryTask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] discard_rate: If the discard rate is not filled, the default value is 0.
         :param pulumi.Input[_builtins.str] field_name: The list of delivery fields to be modified, separated by commas.
         :param pulumi.Input[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']] http_delivery: HTTP delivery configuration parameters. See `http_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']] kafka_delivery: Kafka delivery configuration parameters. See `kafka_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']] oss_delivery: OSS delivery configuration. See `oss_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']] s3_delivery: S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         :param pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']] sls_delivery: SLS delivery configuration. See `sls_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: Task status, value:
         :param pulumi.Input[_builtins.str] task_name: The task name.
         """
@@ -592,7 +642,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                 "dest_url": "http://11.177.129.13:8081",
                 "max_batch_size": 1000,
             },
-            data_center="oversea",
+            data_center="global",
             discard_rate=0,
             task_name="dcdn-example-task",
             business_type="dcdn_log_access_l1",
@@ -633,7 +683,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                  kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
                  oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
                  s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  task_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -690,7 +740,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
             kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
             oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
             s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             task_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'SiteDeliveryTask':
@@ -708,11 +758,21 @@ class SiteDeliveryTask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] discard_rate: If the discard rate is not filled, the default value is 0.
         :param pulumi.Input[_builtins.str] field_name: The list of delivery fields to be modified, separated by commas.
         :param pulumi.Input[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']] http_delivery: HTTP delivery configuration parameters. See `http_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']] kafka_delivery: Kafka delivery configuration parameters. See `kafka_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']] oss_delivery: OSS delivery configuration. See `oss_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']] s3_delivery: S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         :param pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']] sls_delivery: SLS delivery configuration. See `sls_delivery` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: Task status, value:
         :param pulumi.Input[_builtins.str] task_name: The task name.
         """
@@ -781,6 +841,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def http_delivery(self) -> pulumi.Output[Optional['outputs.SiteDeliveryTaskHttpDelivery']]:
         """
         HTTP delivery configuration parameters. See `http_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "http_delivery")
 
@@ -789,6 +851,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def kafka_delivery(self) -> pulumi.Output[Optional['outputs.SiteDeliveryTaskKafkaDelivery']]:
         """
         Kafka delivery configuration parameters. See `kafka_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "kafka_delivery")
 
@@ -797,6 +861,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def oss_delivery(self) -> pulumi.Output[Optional['outputs.SiteDeliveryTaskOssDelivery']]:
         """
         OSS delivery configuration. See `oss_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "oss_delivery")
 
@@ -805,12 +871,14 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def s3_delivery(self) -> pulumi.Output[Optional['outputs.SiteDeliveryTaskS3Delivery']]:
         """
         S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "s3_delivery")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         """
@@ -821,6 +889,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def sls_delivery(self) -> pulumi.Output[Optional['outputs.SiteDeliveryTaskSlsDelivery']]:
         """
         SLS delivery configuration. See `sls_delivery` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "sls_delivery")
 

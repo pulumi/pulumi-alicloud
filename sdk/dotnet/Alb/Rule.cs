@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -319,7 +319,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string> ListenerId { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
@@ -383,7 +383,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ListenerId { get; set; }
 
         /// <summary>
-        /// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+        /// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

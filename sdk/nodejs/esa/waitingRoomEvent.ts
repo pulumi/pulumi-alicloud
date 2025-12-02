@@ -121,8 +121,6 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly disableSessionRenewalEnable: pulumi.Output<string | undefined>;
     /**
@@ -131,15 +129,10 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     declare public readonly endTime: pulumi.Output<string>;
     /**
      * JSON response switch. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly jsonResponseEnable: pulumi.Output<string | undefined>;
     /**
      * Default language setting. Values include:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     declare public readonly language: pulumi.Output<string | undefined>;
     /**
@@ -148,8 +141,6 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     declare public readonly newUsersPerMinute: pulumi.Output<string>;
     /**
      * Pre-queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly preQueueEnable: pulumi.Output<string | undefined>;
     /**
@@ -158,23 +149,14 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     declare public readonly preQueueStartTime: pulumi.Output<string | undefined>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'passthrough ': through.
-     * -'reject-all': reject all.
      */
     declare public readonly queuingMethod: pulumi.Output<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     declare public readonly queuingStatusCode: pulumi.Output<string>;
     /**
      * Random queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     declare public readonly randomPreQueueEnable: pulumi.Output<string | undefined>;
     /**
@@ -184,15 +166,13 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The timestamp of the event start time.
      */
     declare public readonly startTime: pulumi.Output<string>;
     /**
      * Enabled status. Value:
-     * -'on': Enable waiting room events
-     * -'off': Disable waiting room events
      */
     declare public readonly status: pulumi.Output<string>;
     /**
@@ -213,8 +193,6 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     declare public readonly waitingRoomId: pulumi.Output<string>;
     /**
      * Waiting room type. The following types are supported:
-     * -'default': the default type.
-     * -'custom': custom type.
      */
     declare public readonly waitingRoomType: pulumi.Output<string>;
 
@@ -328,8 +306,6 @@ export interface WaitingRoomEventState {
     description?: pulumi.Input<string>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
@@ -338,15 +314,10 @@ export interface WaitingRoomEventState {
     endTime?: pulumi.Input<string>;
     /**
      * JSON response switch. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
      * Default language setting. Values include:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
@@ -355,8 +326,6 @@ export interface WaitingRoomEventState {
     newUsersPerMinute?: pulumi.Input<string>;
     /**
      * Pre-queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     preQueueEnable?: pulumi.Input<string>;
     /**
@@ -365,23 +334,14 @@ export interface WaitingRoomEventState {
     preQueueStartTime?: pulumi.Input<string>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'passthrough ': through.
-     * -'reject-all': reject all.
      */
     queuingMethod?: pulumi.Input<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     queuingStatusCode?: pulumi.Input<string>;
     /**
      * Random queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     randomPreQueueEnable?: pulumi.Input<string>;
     /**
@@ -391,15 +351,13 @@ export interface WaitingRoomEventState {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The timestamp of the event start time.
      */
     startTime?: pulumi.Input<string>;
     /**
      * Enabled status. Value:
-     * -'on': Enable waiting room events
-     * -'off': Disable waiting room events
      */
     status?: pulumi.Input<string>;
     /**
@@ -420,8 +378,6 @@ export interface WaitingRoomEventState {
     waitingRoomId?: pulumi.Input<string>;
     /**
      * Waiting room type. The following types are supported:
-     * -'default': the default type.
-     * -'custom': custom type.
      */
     waitingRoomType?: pulumi.Input<string>;
 }
@@ -440,8 +396,6 @@ export interface WaitingRoomEventArgs {
     description?: pulumi.Input<string>;
     /**
      * Disable session renewal. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     disableSessionRenewalEnable?: pulumi.Input<string>;
     /**
@@ -450,15 +404,10 @@ export interface WaitingRoomEventArgs {
     endTime: pulumi.Input<string>;
     /**
      * JSON response switch. Value:
-     * -'on': open.
-     * -'off': closed.
      */
     jsonResponseEnable?: pulumi.Input<string>;
     /**
      * Default language setting. Values include:
-     * -'enus': English.
-     * -'zhcn': Simplified Chinese.
-     * -'zhhk': Traditional Chinese.
      */
     language?: pulumi.Input<string>;
     /**
@@ -467,8 +416,6 @@ export interface WaitingRoomEventArgs {
     newUsersPerMinute: pulumi.Input<string>;
     /**
      * Pre-queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     preQueueEnable?: pulumi.Input<string>;
     /**
@@ -477,23 +424,14 @@ export interface WaitingRoomEventArgs {
     preQueueStartTime?: pulumi.Input<string>;
     /**
      * Way of queuing. Value:
-     * -'random': random.
-     * -'fifo': first in, first out.
-     * -'passthrough ': through.
-     * -'reject-all': reject all.
      */
     queuingMethod: pulumi.Input<string>;
     /**
      * Waiting room status code. Value:
-     * -'200'
-     * -'202'
-     * -'429'
      */
     queuingStatusCode: pulumi.Input<string>;
     /**
      * Random queue switch.
-     * -'on': open.
-     * -'off': closed.
      */
     randomPreQueueEnable?: pulumi.Input<string>;
     /**
@@ -503,15 +441,13 @@ export interface WaitingRoomEventArgs {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * The timestamp of the event start time.
      */
     startTime: pulumi.Input<string>;
     /**
      * Enabled status. Value:
-     * -'on': Enable waiting room events
-     * -'off': Disable waiting room events
      */
     status: pulumi.Input<string>;
     /**
@@ -528,8 +464,6 @@ export interface WaitingRoomEventArgs {
     waitingRoomId?: pulumi.Input<string>;
     /**
      * Waiting room type. The following types are supported:
-     * -'default': the default type.
-     * -'custom': custom type.
      */
     waitingRoomType: pulumi.Input<string>;
 }

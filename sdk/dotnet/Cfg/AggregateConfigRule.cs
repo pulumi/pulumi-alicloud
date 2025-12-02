@@ -105,7 +105,10 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> ConfigRuleId { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The trigger type of the rule. Valid values:
+        /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+        /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Output("configRuleTriggerTypes")]
         public Output<string> ConfigRuleTriggerTypes { get; private set; } = null!;
@@ -247,7 +250,10 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> AggregatorId { get; set; } = null!;
 
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The trigger type of the rule. Valid values:
+        /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+        /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Input("configRuleTriggerTypes", required: true)]
         public Input<string> ConfigRuleTriggerTypes { get; set; } = null!;
@@ -369,7 +375,10 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? ConfigRuleId { get; set; }
 
         /// <summary>
-        /// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+        /// The trigger type of the rule. Valid values:
+        /// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+        /// - `ScheduledNotification`: The rule is periodically triggered.
+        /// &gt; **NOTE:** Separate multiple trigger types with commas (,).
         /// </summary>
         [Input("configRuleTriggerTypes")]
         public Input<string>? ConfigRuleTriggerTypes { get; set; }

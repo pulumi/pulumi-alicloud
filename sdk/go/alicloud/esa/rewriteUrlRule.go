@@ -120,7 +120,7 @@ type RewriteUrlRule struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
@@ -179,7 +179,7 @@ type rewriteUrlRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
@@ -206,7 +206,7 @@ type RewriteUrlRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrInput
 	// The desired URI to which you want to rewrite the path in the original request.
@@ -235,7 +235,7 @@ type rewriteUrlRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The desired URI to which you want to rewrite the path in the original request.
@@ -261,7 +261,7 @@ type RewriteUrlRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
 	SiteVersion pulumi.IntPtrInput
 	// The desired URI to which you want to rewrite the path in the original request.
@@ -398,8 +398,8 @@ func (o RewriteUrlRuleOutput) Sequence() pulumi.IntOutput {
 }
 
 // The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-func (o RewriteUrlRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *RewriteUrlRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o RewriteUrlRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RewriteUrlRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.

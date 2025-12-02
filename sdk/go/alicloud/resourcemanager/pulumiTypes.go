@@ -2393,6 +2393,8 @@ type GetAccountsAccount struct {
 	AccountId string `pulumi:"accountId"`
 	// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 	AccountName string `pulumi:"accountName"`
+	// (Available since v1.264.0) The deletion status of the member.
+	DeletionStatus string `pulumi:"deletionStatus"`
 	// The display name of the member.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the folder.
@@ -2433,6 +2435,8 @@ type GetAccountsAccountArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
+	// (Available since v1.264.0) The deletion status of the member.
+	DeletionStatus pulumi.StringInput `pulumi:"deletionStatus"`
 	// The display name of the member.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The ID of the folder.
@@ -2516,6 +2520,11 @@ func (o GetAccountsAccountOutput) AccountId() pulumi.StringOutput {
 // (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
 func (o GetAccountsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.AccountName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.264.0) The deletion status of the member.
+func (o GetAccountsAccountOutput) DeletionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountsAccount) string { return v.DeletionStatus }).(pulumi.StringOutput)
 }
 
 // The display name of the member.

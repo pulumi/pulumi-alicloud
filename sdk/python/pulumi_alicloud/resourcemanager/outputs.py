@@ -914,6 +914,7 @@ class GetAccountsAccountResult(dict):
     def __init__(__self__, *,
                  account_id: _builtins.str,
                  account_name: _builtins.str,
+                 deletion_status: _builtins.str,
                  display_name: _builtins.str,
                  folder_id: _builtins.str,
                  id: _builtins.str,
@@ -928,6 +929,7 @@ class GetAccountsAccountResult(dict):
         """
         :param _builtins.str account_id: The Alibaba Cloud account ID of the member.
         :param _builtins.str account_name: (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
+        :param _builtins.str deletion_status: (Available since v1.264.0) The deletion status of the member.
         :param _builtins.str display_name: The display name of the member.
         :param _builtins.str folder_id: The ID of the folder.
         :param _builtins.str id: The ID of the Account.
@@ -942,6 +944,7 @@ class GetAccountsAccountResult(dict):
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "account_name", account_name)
+        pulumi.set(__self__, "deletion_status", deletion_status)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "folder_id", folder_id)
         pulumi.set(__self__, "id", id)
@@ -969,6 +972,14 @@ class GetAccountsAccountResult(dict):
         (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `account_name` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "account_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionStatus")
+    def deletion_status(self) -> _builtins.str:
+        """
+        (Available since v1.264.0) The deletion status of the member.
+        """
+        return pulumi.get(self, "deletion_status")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

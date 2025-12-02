@@ -20,12 +20,12 @@ __all__ = ['UrlObservationArgs', 'UrlObservation']
 class UrlObservationArgs:
     def __init__(__self__, *,
                  sdk_type: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a UrlObservation resource.
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url: The URL of the page to monitor.
         """
         pulumi.set(__self__, "sdk_type", sdk_type)
@@ -46,14 +46,14 @@ class UrlObservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -74,13 +74,13 @@ class _UrlObservationState:
     def __init__(__self__, *,
                  config_id: Optional[pulumi.Input[_builtins.int]] = None,
                  sdk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UrlObservation resources.
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url: The URL of the page to monitor.
         """
         if config_id is not None:
@@ -118,14 +118,14 @@ class _UrlObservationState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -148,7 +148,7 @@ class UrlObservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  sdk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -195,7 +195,7 @@ class UrlObservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url: The URL of the page to monitor.
         """
         ...
@@ -261,7 +261,7 @@ class UrlObservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  sdk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -294,7 +294,7 @@ class UrlObservation(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             config_id: Optional[pulumi.Input[_builtins.int]] = None,
             sdk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None) -> 'UrlObservation':
         """
         Get an existing UrlObservation resource's state with the given name, id, and optional extra
@@ -305,7 +305,7 @@ class UrlObservation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] config_id: Config Id
         :param pulumi.Input[_builtins.str] sdk_type: SDK integration mode. Value:
-        :param pulumi.Input[_builtins.int] site_id: The site ID.
+        :param pulumi.Input[_builtins.str] site_id: The site ID.
         :param pulumi.Input[_builtins.str] url: The URL of the page to monitor.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -336,7 +336,7 @@ class UrlObservation(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID.
         """

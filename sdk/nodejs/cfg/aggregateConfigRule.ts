@@ -99,7 +99,10 @@ export class AggregateConfigRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly configRuleId: pulumi.Output<string>;
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The trigger type of the rule. Valid values:
+     * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+     * - `ScheduledNotification`: The rule is periodically triggered.
+     * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     declare public readonly configRuleTriggerTypes: pulumi.Output<string>;
     /**
@@ -248,7 +251,10 @@ export interface AggregateConfigRuleState {
      */
     configRuleId?: pulumi.Input<string>;
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The trigger type of the rule. Valid values:
+     * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+     * - `ScheduledNotification`: The rule is periodically triggered.
+     * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     configRuleTriggerTypes?: pulumi.Input<string>;
     /**
@@ -318,7 +324,10 @@ export interface AggregateConfigRuleArgs {
      */
     aggregatorId: pulumi.Input<string>;
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The trigger type of the rule. Valid values:
+     * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+     * - `ScheduledNotification`: The rule is periodically triggered.
+     * > **NOTE:** Separate multiple trigger types with commas (,).
      */
     configRuleTriggerTypes: pulumi.Input<string>;
     /**

@@ -60,9 +60,11 @@ import (
 type TrailDeprecated struct {
 	pulumi.CustomResourceState
 
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime           pulumi.StringOutput    `pulumi:"createTime"`
+	DataEventTrailRegion pulumi.StringPtrOutput `pulumi:"dataEventTrailRegion"`
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw                pulumi.StringOutput    `pulumi:"eventRw"`
+	EventSelectors         pulumi.StringPtrOutput `pulumi:"eventSelectors"`
 	IsOrganizationTrail    pulumi.BoolPtrOutput   `pulumi:"isOrganizationTrail"`
 	MaxComputeProjectArn   pulumi.StringPtrOutput `pulumi:"maxComputeProjectArn"`
 	MaxComputeWriteRoleArn pulumi.StringOutput    `pulumi:"maxComputeWriteRoleArn"`
@@ -123,9 +125,11 @@ func GetTrailDeprecated(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrailDeprecated resources.
 type trailDeprecatedState struct {
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime           *string `pulumi:"createTime"`
+	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw                *string `pulumi:"eventRw"`
+	EventSelectors         *string `pulumi:"eventSelectors"`
 	IsOrganizationTrail    *bool   `pulumi:"isOrganizationTrail"`
 	MaxComputeProjectArn   *string `pulumi:"maxComputeProjectArn"`
 	MaxComputeWriteRoleArn *string `pulumi:"maxComputeWriteRoleArn"`
@@ -157,9 +161,11 @@ type trailDeprecatedState struct {
 }
 
 type TrailDeprecatedState struct {
-	CreateTime pulumi.StringPtrInput
+	CreateTime           pulumi.StringPtrInput
+	DataEventTrailRegion pulumi.StringPtrInput
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw                pulumi.StringPtrInput
+	EventSelectors         pulumi.StringPtrInput
 	IsOrganizationTrail    pulumi.BoolPtrInput
 	MaxComputeProjectArn   pulumi.StringPtrInput
 	MaxComputeWriteRoleArn pulumi.StringPtrInput
@@ -195,8 +201,10 @@ func (TrailDeprecatedState) ElementType() reflect.Type {
 }
 
 type trailDeprecatedArgs struct {
+	DataEventTrailRegion *string `pulumi:"dataEventTrailRegion"`
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw                *string `pulumi:"eventRw"`
+	EventSelectors         *string `pulumi:"eventSelectors"`
 	IsOrganizationTrail    *bool   `pulumi:"isOrganizationTrail"`
 	MaxComputeProjectArn   *string `pulumi:"maxComputeProjectArn"`
 	MaxComputeWriteRoleArn *string `pulumi:"maxComputeWriteRoleArn"`
@@ -228,8 +236,10 @@ type trailDeprecatedArgs struct {
 
 // The set of arguments for constructing a TrailDeprecated resource.
 type TrailDeprecatedArgs struct {
+	DataEventTrailRegion pulumi.StringPtrInput
 	// Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 	EventRw                pulumi.StringPtrInput
+	EventSelectors         pulumi.StringPtrInput
 	IsOrganizationTrail    pulumi.BoolPtrInput
 	MaxComputeProjectArn   pulumi.StringPtrInput
 	MaxComputeWriteRoleArn pulumi.StringPtrInput
@@ -350,9 +360,17 @@ func (o TrailDeprecatedOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+func (o TrailDeprecatedOutput) DataEventTrailRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.DataEventTrailRegion }).(pulumi.StringPtrOutput)
+}
+
 // Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
 func (o TrailDeprecatedOutput) EventRw() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.EventRw }).(pulumi.StringOutput)
+}
+
+func (o TrailDeprecatedOutput) EventSelectors() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.EventSelectors }).(pulumi.StringPtrOutput)
 }
 
 func (o TrailDeprecatedOutput) IsOrganizationTrail() pulumi.BoolPtrOutput {

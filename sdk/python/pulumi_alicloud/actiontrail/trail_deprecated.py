@@ -19,7 +19,9 @@ __all__ = ['TrailDeprecatedArgs', 'TrailDeprecated']
 @pulumi.input_type
 class TrailDeprecatedArgs:
     def __init__(__self__, *,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -46,8 +48,12 @@ class TrailDeprecatedArgs:
                
                > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
+        if data_event_trail_region is not None:
+            pulumi.set(__self__, "data_event_trail_region", data_event_trail_region)
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
+        if event_selectors is not None:
+            pulumi.set(__self__, "event_selectors", event_selectors)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         if max_compute_project_arn is not None:
@@ -87,6 +93,15 @@ class TrailDeprecatedArgs:
             pulumi.set(__self__, "trail_region", trail_region)
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "data_event_trail_region")
+
+    @data_event_trail_region.setter
+    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_event_trail_region", value)
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -97,6 +112,15 @@ class TrailDeprecatedArgs:
     @event_rw.setter
     def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "event_selectors")
+
+    @event_selectors.setter
+    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
@@ -252,7 +276,9 @@ class TrailDeprecatedArgs:
 class _TrailDeprecatedState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -282,8 +308,12 @@ class _TrailDeprecatedState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_event_trail_region is not None:
+            pulumi.set(__self__, "data_event_trail_region", data_event_trail_region)
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
+        if event_selectors is not None:
+            pulumi.set(__self__, "event_selectors", event_selectors)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         if max_compute_project_arn is not None:
@@ -334,6 +364,15 @@ class _TrailDeprecatedState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "data_event_trail_region")
+
+    @data_event_trail_region.setter
+    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_event_trail_region", value)
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -344,6 +383,15 @@ class _TrailDeprecatedState:
     @event_rw.setter
     def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "event_selectors")
+
+    @event_selectors.setter
+    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
@@ -515,7 +563,9 @@ class TrailDeprecated(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -624,7 +674,9 @@ class TrailDeprecated(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -649,7 +701,9 @@ class TrailDeprecated(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TrailDeprecatedArgs.__new__(TrailDeprecatedArgs)
 
+            __props__.__dict__["data_event_trail_region"] = data_event_trail_region
             __props__.__dict__["event_rw"] = event_rw
+            __props__.__dict__["event_selectors"] = event_selectors
             __props__.__dict__["is_organization_trail"] = is_organization_trail
             __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
             __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
@@ -677,7 +731,9 @@ class TrailDeprecated(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
             event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+            event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
             is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
             max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
             max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -715,7 +771,9 @@ class TrailDeprecated(pulumi.CustomResource):
         __props__ = _TrailDeprecatedState.__new__(_TrailDeprecatedState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_event_trail_region"] = data_event_trail_region
         __props__.__dict__["event_rw"] = event_rw
+        __props__.__dict__["event_selectors"] = event_selectors
         __props__.__dict__["is_organization_trail"] = is_organization_trail
         __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
         __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
@@ -739,12 +797,22 @@ class TrailDeprecated(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "data_event_trail_region")
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> pulumi.Output[_builtins.str]:
         """
         Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
         """
         return pulumi.get(self, "event_rw")
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "event_selectors")
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")

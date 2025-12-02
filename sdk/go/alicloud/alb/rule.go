@@ -219,7 +219,7 @@ type Rule struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayOutput `pulumi:"ruleActions"`
@@ -284,7 +284,7 @@ type ruleState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId *string `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority *int `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
@@ -305,7 +305,7 @@ type RuleState struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringPtrInput
-	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntPtrInput
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
@@ -330,7 +330,7 @@ type ruleArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId string `pulumi:"listenerId"`
-	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority int `pulumi:"priority"`
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions []RuleRuleAction `pulumi:"ruleActions"`
@@ -350,7 +350,7 @@ type RuleArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
 	ListenerId pulumi.StringInput
-	// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+	// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 	Priority pulumi.IntInput
 	// The actions of the forwarding rules. See `ruleActions` below.
 	RuleActions RuleRuleActionArrayInput
@@ -464,7 +464,7 @@ func (o RuleOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+// The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
 func (o RuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }

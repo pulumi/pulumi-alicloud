@@ -21,12 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:index/milvusInstance:MilvusInstance":
+		r = &MilvusInstance{}
 	case "alicloud:index/mscSubContract:MscSubContract":
 		r = &MscSubContract{}
 	case "alicloud:index/mscSubSubscription:MscSubSubscription":
 		r = &MscSubSubscription{}
 	case "alicloud:index/mscSubWebhook:MscSubWebhook":
 		r = &MscSubWebhook{}
+	case "alicloud:index/polarDbExtension:PolarDbExtension":
+		r = &PolarDbExtension{}
 	case "alicloud:index/starRocksInstance:StarRocksInstance":
 		r = &StarRocksInstance{}
 	default:
@@ -62,6 +66,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"index/milvusInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"index/mscSubContract",
 		&module{version},
 	)
@@ -73,6 +82,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"index/mscSubWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"index/polarDbExtension",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

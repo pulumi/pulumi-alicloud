@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Esa
     ///             DestUrl = "http://11.177.129.13:8081",
     ///             MaxBatchSize = 1000,
     ///         },
-    ///         DataCenter = "oversea",
+    ///         DataCenter = "global",
     ///         DiscardRate = 0,
     ///         TaskName = "dcdn-example-task",
     ///         BusinessType = "dcdn_log_access_l1",
@@ -119,24 +119,32 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// HTTP delivery configuration parameters. See `HttpDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("httpDelivery")]
         public Output<Outputs.SiteDeliveryTaskHttpDelivery?> HttpDelivery { get; private set; } = null!;
 
         /// <summary>
         /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("kafkaDelivery")]
         public Output<Outputs.SiteDeliveryTaskKafkaDelivery?> KafkaDelivery { get; private set; } = null!;
 
         /// <summary>
         /// OSS delivery configuration. See `OssDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("ossDelivery")]
         public Output<Outputs.SiteDeliveryTaskOssDelivery?> OssDelivery { get; private set; } = null!;
 
         /// <summary>
         /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("s3Delivery")]
         public Output<Outputs.SiteDeliveryTaskS3Delivery?> S3Delivery { get; private set; } = null!;
@@ -145,10 +153,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// SLS delivery configuration. See `SlsDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("slsDelivery")]
         public Output<Outputs.SiteDeliveryTaskSlsDelivery?> SlsDelivery { get; private set; } = null!;
@@ -244,24 +254,32 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// HTTP delivery configuration parameters. See `HttpDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("httpDelivery")]
         public Input<Inputs.SiteDeliveryTaskHttpDeliveryArgs>? HttpDelivery { get; set; }
 
         /// <summary>
         /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("kafkaDelivery")]
         public Input<Inputs.SiteDeliveryTaskKafkaDeliveryArgs>? KafkaDelivery { get; set; }
 
         /// <summary>
         /// OSS delivery configuration. See `OssDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("ossDelivery")]
         public Input<Inputs.SiteDeliveryTaskOssDeliveryArgs>? OssDelivery { get; set; }
 
         /// <summary>
         /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("s3Delivery")]
         public Input<Inputs.SiteDeliveryTaskS3DeliveryArgs>? S3Delivery { get; set; }
@@ -270,10 +288,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// SLS delivery configuration. See `SlsDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("slsDelivery")]
         public Input<Inputs.SiteDeliveryTaskSlsDeliveryArgs>? SlsDelivery { get; set; }
@@ -331,24 +351,32 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// HTTP delivery configuration parameters. See `HttpDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("httpDelivery")]
         public Input<Inputs.SiteDeliveryTaskHttpDeliveryGetArgs>? HttpDelivery { get; set; }
 
         /// <summary>
         /// Kafka delivery configuration parameters. See `KafkaDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("kafkaDelivery")]
         public Input<Inputs.SiteDeliveryTaskKafkaDeliveryGetArgs>? KafkaDelivery { get; set; }
 
         /// <summary>
         /// OSS delivery configuration. See `OssDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("ossDelivery")]
         public Input<Inputs.SiteDeliveryTaskOssDeliveryGetArgs>? OssDelivery { get; set; }
 
         /// <summary>
         /// S3/S3 compatible delivery configuration parameters. See `S3Delivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("s3Delivery")]
         public Input<Inputs.SiteDeliveryTaskS3DeliveryGetArgs>? S3Delivery { get; set; }
@@ -357,10 +385,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// SLS delivery configuration. See `SlsDelivery` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("slsDelivery")]
         public Input<Inputs.SiteDeliveryTaskSlsDeliveryGetArgs>? SlsDelivery { get; set; }

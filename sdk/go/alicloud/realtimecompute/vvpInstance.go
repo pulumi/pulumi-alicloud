@@ -32,6 +32,8 @@ type VvpInstance struct {
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// (Available since v1.264.0) The ID of the K8s cluster.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Resource specifications. See `resourceSpec` below.
 	ResourceSpec VvpInstanceResourceSpecOutput `pulumi:"resourceSpec"`
 	// The status of the resource.
@@ -108,6 +110,8 @@ type vvpInstanceState struct {
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// (Available since v1.264.0) The ID of the K8s cluster.
+	ResourceId *string `pulumi:"resourceId"`
 	// Resource specifications. See `resourceSpec` below.
 	ResourceSpec *VvpInstanceResourceSpec `pulumi:"resourceSpec"`
 	// The status of the resource.
@@ -137,6 +141,8 @@ type VvpInstanceState struct {
 	PricingCycle pulumi.StringPtrInput
 	// The resource group to which the newly purchased instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
+	// (Available since v1.264.0) The ID of the K8s cluster.
+	ResourceId pulumi.StringPtrInput
 	// Resource specifications. See `resourceSpec` below.
 	ResourceSpec VvpInstanceResourceSpecPtrInput
 	// The status of the resource.
@@ -320,6 +326,11 @@ func (o VvpInstanceOutput) PricingCycle() pulumi.StringPtrOutput {
 // The resource group to which the newly purchased instance belongs.
 func (o VvpInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.264.0) The ID of the K8s cluster.
+func (o VvpInstanceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VvpInstance) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // Resource specifications. See `resourceSpec` below.

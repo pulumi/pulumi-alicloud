@@ -19,7 +19,8 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `ServerGroupTuples` is greater than 2.
+        /// The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+        /// **NOTE:** `Weight` is required when the number of `ServerGroupTuples` is greater than 2. From version 1.264.0, `Weight` can be set to `0`.
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

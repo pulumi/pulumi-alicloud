@@ -67,10 +67,12 @@ export class TrailDeprecated extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly dataEventTrailRegion: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
     declare public readonly eventRw: pulumi.Output<string>;
+    declare public readonly eventSelectors: pulumi.Output<string | undefined>;
     declare public readonly isOrganizationTrail: pulumi.Output<boolean | undefined>;
     declare public readonly maxComputeProjectArn: pulumi.Output<string | undefined>;
     declare public readonly maxComputeWriteRoleArn: pulumi.Output<string>;
@@ -131,7 +133,9 @@ export class TrailDeprecated extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TrailDeprecatedState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataEventTrailRegion"] = state?.dataEventTrailRegion;
             resourceInputs["eventRw"] = state?.eventRw;
+            resourceInputs["eventSelectors"] = state?.eventSelectors;
             resourceInputs["isOrganizationTrail"] = state?.isOrganizationTrail;
             resourceInputs["maxComputeProjectArn"] = state?.maxComputeProjectArn;
             resourceInputs["maxComputeWriteRoleArn"] = state?.maxComputeWriteRoleArn;
@@ -149,7 +153,9 @@ export class TrailDeprecated extends pulumi.CustomResource {
             resourceInputs["trailRegion"] = state?.trailRegion;
         } else {
             const args = argsOrState as TrailDeprecatedArgs | undefined;
+            resourceInputs["dataEventTrailRegion"] = args?.dataEventTrailRegion;
             resourceInputs["eventRw"] = args?.eventRw;
+            resourceInputs["eventSelectors"] = args?.eventSelectors;
             resourceInputs["isOrganizationTrail"] = args?.isOrganizationTrail;
             resourceInputs["maxComputeProjectArn"] = args?.maxComputeProjectArn;
             resourceInputs["maxComputeWriteRoleArn"] = args?.maxComputeWriteRoleArn;
@@ -177,10 +183,12 @@ export class TrailDeprecated extends pulumi.CustomResource {
  */
 export interface TrailDeprecatedState {
     createTime?: pulumi.Input<string>;
+    dataEventTrailRegion?: pulumi.Input<string>;
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
     eventRw?: pulumi.Input<string>;
+    eventSelectors?: pulumi.Input<string>;
     isOrganizationTrail?: pulumi.Input<boolean>;
     maxComputeProjectArn?: pulumi.Input<string>;
     maxComputeWriteRoleArn?: pulumi.Input<string>;
@@ -229,10 +237,12 @@ export interface TrailDeprecatedState {
  * The set of arguments for constructing a TrailDeprecated resource.
  */
 export interface TrailDeprecatedArgs {
+    dataEventTrailRegion?: pulumi.Input<string>;
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      */
     eventRw?: pulumi.Input<string>;
+    eventSelectors?: pulumi.Input<string>;
     isOrganizationTrail?: pulumi.Input<boolean>;
     maxComputeProjectArn?: pulumi.Input<string>;
     maxComputeWriteRoleArn?: pulumi.Input<string>;

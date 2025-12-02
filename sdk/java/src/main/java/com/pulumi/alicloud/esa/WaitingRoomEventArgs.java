@@ -6,7 +6,6 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,8 +48,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="disableSessionRenewalEnable")
@@ -58,8 +55,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Disable session renewal. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> disableSessionRenewalEnable() {
@@ -83,8 +78,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * JSON response switch. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="jsonResponseEnable")
@@ -92,8 +85,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return JSON response switch. Value:
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> jsonResponseEnable() {
@@ -102,9 +93,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Default language setting. Values include:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     @Import(name="language")
@@ -112,9 +100,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Default language setting. Values include:
-     * -&#39;enus&#39;: English.
-     * -&#39;zhcn&#39;: Simplified Chinese.
-     * -&#39;zhhk&#39;: Traditional Chinese.
      * 
      */
     public Optional<Output<String>> language() {
@@ -138,8 +123,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Pre-queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="preQueueEnable")
@@ -147,8 +130,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Pre-queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> preQueueEnable() {
@@ -172,10 +153,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;passthrough &#39;: through.
-     * -&#39;reject-all&#39;: reject all.
      * 
      */
     @Import(name="queuingMethod", required=true)
@@ -183,10 +160,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Way of queuing. Value:
-     * -&#39;random&#39;: random.
-     * -&#39;fifo&#39;: first in, first out.
-     * -&#39;passthrough &#39;: through.
-     * -&#39;reject-all&#39;: reject all.
      * 
      */
     public Output<String> queuingMethod() {
@@ -195,9 +168,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     @Import(name="queuingStatusCode", required=true)
@@ -205,9 +175,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Waiting room status code. Value:
-     * -&#39;200&#39;
-     * -&#39;202&#39;
-     * -&#39;429&#39;
      * 
      */
     public Output<String> queuingStatusCode() {
@@ -216,8 +183,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Random queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     @Import(name="randomPreQueueEnable")
@@ -225,8 +190,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Random queue switch.
-     * -&#39;on&#39;: open.
-     * -&#39;off&#39;: closed.
      * 
      */
     public Optional<Output<String>> randomPreQueueEnable() {
@@ -253,13 +216,13 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
@@ -280,8 +243,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room events
-     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     @Import(name="status", required=true)
@@ -289,8 +250,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Enabled status. Value:
-     * -&#39;on&#39;: Enable waiting room events
-     * -&#39;off&#39;: Disable waiting room events
      * 
      */
     public Output<String> status() {
@@ -344,8 +303,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Waiting room type. The following types are supported:
-     * -&#39;default&#39;: the default type.
-     * -&#39;custom&#39;: custom type.
      * 
      */
     @Import(name="waitingRoomType", required=true)
@@ -353,8 +310,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Waiting room type. The following types are supported:
-     * -&#39;default&#39;: the default type.
-     * -&#39;custom&#39;: custom type.
      * 
      */
     public Output<String> waitingRoomType() {
@@ -448,8 +403,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param disableSessionRenewalEnable Disable session renewal. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -461,8 +414,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param disableSessionRenewalEnable Disable session renewal. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -494,8 +445,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param jsonResponseEnable JSON response switch. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -507,8 +456,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param jsonResponseEnable JSON response switch. Value:
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -519,9 +466,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param language Default language setting. Values include:
-         * -&#39;enus&#39;: English.
-         * -&#39;zhcn&#39;: Simplified Chinese.
-         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -533,9 +477,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param language Default language setting. Values include:
-         * -&#39;enus&#39;: English.
-         * -&#39;zhcn&#39;: Simplified Chinese.
-         * -&#39;zhhk&#39;: Traditional Chinese.
          * 
          * @return builder
          * 
@@ -567,8 +508,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param preQueueEnable Pre-queue switch.
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -580,8 +519,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param preQueueEnable Pre-queue switch.
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -613,10 +550,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queuingMethod Way of queuing. Value:
-         * -&#39;random&#39;: random.
-         * -&#39;fifo&#39;: first in, first out.
-         * -&#39;passthrough &#39;: through.
-         * -&#39;reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -628,10 +561,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queuingMethod Way of queuing. Value:
-         * -&#39;random&#39;: random.
-         * -&#39;fifo&#39;: first in, first out.
-         * -&#39;passthrough &#39;: through.
-         * -&#39;reject-all&#39;: reject all.
          * 
          * @return builder
          * 
@@ -642,9 +571,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queuingStatusCode Waiting room status code. Value:
-         * -&#39;200&#39;
-         * -&#39;202&#39;
-         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -656,9 +582,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param queuingStatusCode Waiting room status code. Value:
-         * -&#39;200&#39;
-         * -&#39;202&#39;
-         * -&#39;429&#39;
          * 
          * @return builder
          * 
@@ -669,8 +592,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param randomPreQueueEnable Random queue switch.
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -682,8 +603,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param randomPreQueueEnable Random queue switch.
-         * -&#39;on&#39;: open.
-         * -&#39;off&#39;: closed.
          * 
          * @return builder
          * 
@@ -719,7 +638,7 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -730,7 +649,7 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
@@ -757,8 +676,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status Enabled status. Value:
-         * -&#39;on&#39;: Enable waiting room events
-         * -&#39;off&#39;: Disable waiting room events
          * 
          * @return builder
          * 
@@ -770,8 +687,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param status Enabled status. Value:
-         * -&#39;on&#39;: Enable waiting room events
-         * -&#39;off&#39;: Disable waiting room events
          * 
          * @return builder
          * 
@@ -845,8 +760,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param waitingRoomType Waiting room type. The following types are supported:
-         * -&#39;default&#39;: the default type.
-         * -&#39;custom&#39;: custom type.
          * 
          * @return builder
          * 
@@ -858,8 +771,6 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param waitingRoomType Waiting room type. The following types are supported:
-         * -&#39;default&#39;: the default type.
-         * -&#39;custom&#39;: custom type.
          * 
          * @return builder
          * 

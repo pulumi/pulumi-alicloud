@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         public OriginProtectionArgs()
         {
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         public OriginProtectionState()
         {

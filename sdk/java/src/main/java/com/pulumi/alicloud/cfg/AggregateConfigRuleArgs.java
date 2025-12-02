@@ -50,14 +50,20 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * The trigger type of the rule. Valid values:
+     * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+     * - `ScheduledNotification`: The rule is periodically triggered.
+     * &gt; **NOTE:** Separate multiple trigger types with commas (,).
      * 
      */
     @Import(name="configRuleTriggerTypes", required=true)
     private Output<String> configRuleTriggerTypes;
 
     /**
-     * @return The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+     * @return The trigger type of the rule. Valid values:
+     * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+     * - `ScheduledNotification`: The rule is periodically triggered.
+     * &gt; **NOTE:** Separate multiple trigger types with commas (,).
      * 
      */
     public Output<String> configRuleTriggerTypes() {
@@ -341,7 +347,10 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param configRuleTriggerTypes The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+         * @param configRuleTriggerTypes The trigger type of the rule. Valid values:
+         * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+         * - `ScheduledNotification`: The rule is periodically triggered.
+         * &gt; **NOTE:** Separate multiple trigger types with commas (,).
          * 
          * @return builder
          * 
@@ -352,7 +361,10 @@ public final class AggregateConfigRuleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param configRuleTriggerTypes The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+         * @param configRuleTriggerTypes The trigger type of the rule. Valid values:
+         * - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+         * - `ScheduledNotification`: The rule is periodically triggered.
+         * &gt; **NOTE:** Separate multiple trigger types with commas (,).
          * 
          * @return builder
          * 

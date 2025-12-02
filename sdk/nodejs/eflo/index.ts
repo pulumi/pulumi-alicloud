@@ -35,6 +35,11 @@ export const getVpds: typeof import("./getVpds").getVpds = null as any;
 export const getVpdsOutput: typeof import("./getVpds").getVpdsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpds","getVpdsOutput"], () => require("./getVpds"));
 
+export { HyperNodeArgs, HyperNodeState } from "./hyperNode";
+export type HyperNode = import("./hyperNode").HyperNode;
+export const HyperNode: typeof import("./hyperNode").HyperNode = null as any;
+utilities.lazyLoad(exports, ["HyperNode"], () => require("./hyperNode"));
+
 export { InvocationArgs, InvocationState } from "./invocation";
 export type Invocation = import("./invocation").Invocation;
 export const Invocation: typeof import("./invocation").Invocation = null as any;
@@ -93,6 +98,8 @@ const _module = {
                 return new ExperimentPlan(name, <any>undefined, { urn })
             case "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate":
                 return new ExperimentPlanTemplate(name, <any>undefined, { urn })
+            case "alicloud:eflo/hyperNode:HyperNode":
+                return new HyperNode(name, <any>undefined, { urn })
             case "alicloud:eflo/invocation:Invocation":
                 return new Invocation(name, <any>undefined, { urn })
             case "alicloud:eflo/node:Node":
@@ -120,6 +127,7 @@ pulumi.runtime.registerResourceModule("alicloud", "eflo/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/er", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/experimentPlanTemplate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "eflo/hyperNode", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/invocation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/node", _module)
 pulumi.runtime.registerResourceModule("alicloud", "eflo/nodeGroup", _module)

@@ -131,13 +131,13 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
@@ -361,7 +361,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -372,7 +372,7 @@ public final class RewriteUrlRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
