@@ -82,7 +82,7 @@ export class OriginProtection extends pulumi.CustomResource {
     /**
      * Site Id
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a OriginProtection resource with the given unique name, arguments, and options.
@@ -126,7 +126,7 @@ export interface OriginProtectionState {
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
 }
 
 /**
@@ -143,5 +143,5 @@ export interface OriginProtectionArgs {
     /**
      * Site Id
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

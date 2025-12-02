@@ -11,7 +11,6 @@ import com.pulumi.alicloud.esa.inputs.SiteDeliveryTaskSlsDeliveryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -102,12 +101,16 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="httpDelivery")
     private @Nullable Output<SiteDeliveryTaskHttpDeliveryArgs> httpDelivery;
 
     /**
      * @return HTTP delivery configuration parameters. See `httpDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<SiteDeliveryTaskHttpDeliveryArgs>> httpDelivery() {
@@ -117,12 +120,16 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="kafkaDelivery")
     private @Nullable Output<SiteDeliveryTaskKafkaDeliveryArgs> kafkaDelivery;
 
     /**
      * @return Kafka delivery configuration parameters. See `kafkaDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<SiteDeliveryTaskKafkaDeliveryArgs>> kafkaDelivery() {
@@ -132,12 +139,16 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
     /**
      * OSS delivery configuration. See `ossDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="ossDelivery")
     private @Nullable Output<SiteDeliveryTaskOssDeliveryArgs> ossDelivery;
 
     /**
      * @return OSS delivery configuration. See `ossDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<SiteDeliveryTaskOssDeliveryArgs>> ossDelivery() {
@@ -147,12 +158,16 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="s3Delivery")
     private @Nullable Output<SiteDeliveryTaskS3DeliveryArgs> s3Delivery;
 
     /**
      * @return S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<SiteDeliveryTaskS3DeliveryArgs>> s3Delivery() {
@@ -164,18 +179,20 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
      * SLS delivery configuration. See `slsDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="slsDelivery")
@@ -183,6 +200,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return SLS delivery configuration. See `slsDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<SiteDeliveryTaskSlsDeliveryArgs>> slsDelivery() {
@@ -365,6 +384,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
         /**
          * @param httpDelivery HTTP delivery configuration parameters. See `httpDelivery` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -376,6 +397,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
         /**
          * @param httpDelivery HTTP delivery configuration parameters. See `httpDelivery` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -385,6 +408,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param kafkaDelivery Kafka delivery configuration parameters. See `kafkaDelivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -397,6 +422,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
         /**
          * @param kafkaDelivery Kafka delivery configuration parameters. See `kafkaDelivery` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -406,6 +433,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param ossDelivery OSS delivery configuration. See `ossDelivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -418,6 +447,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
         /**
          * @param ossDelivery OSS delivery configuration. See `ossDelivery` below.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -427,6 +458,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -438,6 +471,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param s3Delivery S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -452,7 +487,7 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -463,12 +498,14 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
          * @param slsDelivery SLS delivery configuration. See `slsDelivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -480,6 +517,8 @@ public final class SiteDeliveryTaskState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param slsDelivery SLS delivery configuration. See `slsDelivery` below.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

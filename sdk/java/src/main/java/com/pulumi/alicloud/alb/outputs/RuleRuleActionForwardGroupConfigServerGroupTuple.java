@@ -18,7 +18,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
      */
     private @Nullable String serverGroupId;
     /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+     * @return The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+     * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
      * 
      */
     private @Nullable Integer weight;
@@ -32,7 +33,8 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
         return Optional.ofNullable(this.serverGroupId);
     }
     /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+     * @return The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+     * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
      * 
      */
     public Optional<Integer> weight() {

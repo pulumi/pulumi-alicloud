@@ -86,7 +86,7 @@ export class UrlObservation extends pulumi.CustomResource {
     /**
      * The site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The URL of the page to monitor.
      */
@@ -145,7 +145,7 @@ export interface UrlObservationState {
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The URL of the page to monitor.
      */
@@ -163,7 +163,7 @@ export interface UrlObservationArgs {
     /**
      * The site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * The URL of the page to monitor.
      */

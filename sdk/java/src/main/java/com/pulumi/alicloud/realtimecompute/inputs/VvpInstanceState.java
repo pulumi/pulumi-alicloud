@@ -96,6 +96,21 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.264.0) The ID of the K8s cluster.
+     * 
+     */
+    @Import(name="resourceId")
+    private @Nullable Output<String> resourceId;
+
+    /**
+     * @return (Available since v1.264.0) The ID of the K8s cluster.
+     * 
+     */
+    public Optional<Output<String>> resourceId() {
+        return Optional.ofNullable(this.resourceId);
+    }
+
+    /**
      * Resource specifications. See `resourceSpec` below.
      * 
      */
@@ -223,6 +238,7 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.pricingCycle = $.pricingCycle;
         this.resourceGroupId = $.resourceGroupId;
+        this.resourceId = $.resourceId;
         this.resourceSpec = $.resourceSpec;
         this.status = $.status;
         this.storage = $.storage;
@@ -354,6 +370,27 @@ public final class VvpInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param resourceId (Available since v1.264.0) The ID of the K8s cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceId(@Nullable Output<String> resourceId) {
+            $.resourceId = resourceId;
+            return this;
+        }
+
+        /**
+         * @param resourceId (Available since v1.264.0) The ID of the K8s cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceId(String resourceId) {
+            return resourceId(Output.of(resourceId));
         }
 
         /**

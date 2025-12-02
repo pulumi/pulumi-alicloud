@@ -342,6 +342,8 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// Whether to force deletion even without backup.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Output("forceDeleteWithoutBackup")]
         public Output<string?> ForceDeleteWithoutBackup { get; private set; } = null!;
@@ -359,28 +361,26 @@ namespace Pulumi.AliCloud.Kms
         public Output<int?> KeyNum { get; private set; } = null!;
 
         /// <summary>
-        /// Instance Audit Log Switch. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Output("log")]
         public Output<string> Log { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log capacity. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Output("logStorage")]
         public Output<int> LogStorage { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type, valid values:
-        /// - `Subscription`: Prepaid.
-        /// - `PayAsYouGo`: Postpaid.
+        /// The billing method. Valid values:
+        /// 
+        /// - Subscription: the subscription billing method.
+        /// - PayAsYouGo: the pay-as-you-go billing method.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
-        /// <summary>
-        /// Purchase cycle, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
-        /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
@@ -391,22 +391,23 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> ProductVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The auto-renewal period. Unit: month.
+        /// 
+        /// &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The renewal status of the specified instance. Valid values:
+        /// 
+        /// - AutoRenewal: The instance is automatically renewed.
+        /// - ManualRenewal: The instance is manually renewed.
+        /// - NotRenewal: The instance is not renewed.
         /// </summary>
         [Output("renewStatus")]
         public Output<string> RenewStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// Automatic renewal period unit, valid value:
-        /// - `M`: Month.
-        /// - `Y`: Year.
-        /// </summary>
         [Output("renewalPeriodUnit")]
         public Output<string?> RenewalPeriodUnit { get; private set; } = null!;
 
@@ -429,7 +430,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -518,6 +519,8 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// Whether to force deletion even without backup.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Input("forceDeleteWithoutBackup")]
         public Input<string>? ForceDeleteWithoutBackup { get; set; }
@@ -535,28 +538,26 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? KeyNum { get; set; }
 
         /// <summary>
-        /// Instance Audit Log Switch. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
 
         /// <summary>
-        /// Instance log capacity. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Input("logStorage")]
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type, valid values:
-        /// - `Subscription`: Prepaid.
-        /// - `PayAsYouGo`: Postpaid.
+        /// The billing method. Valid values:
+        /// 
+        /// - Subscription: the subscription billing method.
+        /// - PayAsYouGo: the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// Purchase cycle, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -567,22 +568,23 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProductVersion { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The auto-renewal period. Unit: month.
+        /// 
+        /// &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The renewal status of the specified instance. Valid values:
+        /// 
+        /// - AutoRenewal: The instance is automatically renewed.
+        /// - ManualRenewal: The instance is manually renewed.
+        /// - NotRenewal: The instance is not renewed.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
-        /// <summary>
-        /// Automatic renewal period unit, valid value:
-        /// - `M`: Month.
-        /// - `Y`: Year.
-        /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
@@ -602,7 +604,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -686,6 +688,8 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// Whether to force deletion even without backup.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Input("forceDeleteWithoutBackup")]
         public Input<string>? ForceDeleteWithoutBackup { get; set; }
@@ -703,28 +707,26 @@ namespace Pulumi.AliCloud.Kms
         public Input<int>? KeyNum { get; set; }
 
         /// <summary>
-        /// Instance Audit Log Switch. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
 
         /// <summary>
-        /// Instance log capacity. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         /// </summary>
         [Input("logStorage")]
         public Input<int>? LogStorage { get; set; }
 
         /// <summary>
-        /// Payment type, valid values:
-        /// - `Subscription`: Prepaid.
-        /// - `PayAsYouGo`: Postpaid.
+        /// The billing method. Valid values:
+        /// 
+        /// - Subscription: the subscription billing method.
+        /// - PayAsYouGo: the pay-as-you-go billing method.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
-        /// <summary>
-        /// Purchase cycle, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
-        /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
@@ -735,22 +737,23 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? ProductVersion { get; set; }
 
         /// <summary>
-        /// Automatic renewal period, in months. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The auto-renewal period. Unit: month.
+        /// 
+        /// &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `PaymentType` is `Subscription`.
+        /// The renewal status of the specified instance. Valid values:
+        /// 
+        /// - AutoRenewal: The instance is automatically renewed.
+        /// - ManualRenewal: The instance is manually renewed.
+        /// - NotRenewal: The instance is not renewed.
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
-        /// <summary>
-        /// Automatic renewal period unit, valid value:
-        /// - `M`: Month.
-        /// - `Y`: Year.
-        /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
@@ -776,7 +779,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {

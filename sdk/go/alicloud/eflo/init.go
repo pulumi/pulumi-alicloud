@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExperimentPlan{}
 	case "alicloud:eflo/experimentPlanTemplate:ExperimentPlanTemplate":
 		r = &ExperimentPlanTemplate{}
+	case "alicloud:eflo/hyperNode:HyperNode":
+		r = &HyperNode{}
 	case "alicloud:eflo/invocation:Invocation":
 		r = &Invocation{}
 	case "alicloud:eflo/node:Node":
@@ -78,6 +80,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"eflo/experimentPlanTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"eflo/hyperNode",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -22,6 +22,11 @@ public final class GetAccountsAccount {
      */
     private String accountName;
     /**
+     * @return (Available since v1.264.0) The deletion status of the member.
+     * 
+     */
+    private String deletionStatus;
+    /**
      * @return The display name of the member.
      * 
      */
@@ -91,6 +96,13 @@ public final class GetAccountsAccount {
      */
     public String accountName() {
         return this.accountName;
+    }
+    /**
+     * @return (Available since v1.264.0) The deletion status of the member.
+     * 
+     */
+    public String deletionStatus() {
+        return this.deletionStatus;
     }
     /**
      * @return The display name of the member.
@@ -181,6 +193,7 @@ public final class GetAccountsAccount {
     public static final class Builder {
         private String accountId;
         private String accountName;
+        private String deletionStatus;
         private String displayName;
         private String folderId;
         private String id;
@@ -197,6 +210,7 @@ public final class GetAccountsAccount {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.accountName = defaults.accountName;
+    	      this.deletionStatus = defaults.deletionStatus;
     	      this.displayName = defaults.displayName;
     	      this.folderId = defaults.folderId;
     	      this.id = defaults.id;
@@ -224,6 +238,14 @@ public final class GetAccountsAccount {
               throw new MissingRequiredPropertyException("GetAccountsAccount", "accountName");
             }
             this.accountName = accountName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionStatus(String deletionStatus) {
+            if (deletionStatus == null) {
+              throw new MissingRequiredPropertyException("GetAccountsAccount", "deletionStatus");
+            }
+            this.deletionStatus = deletionStatus;
             return this;
         }
         @CustomType.Setter
@@ -318,6 +340,7 @@ public final class GetAccountsAccount {
             final var _resultValue = new GetAccountsAccount();
             _resultValue.accountId = accountId;
             _resultValue.accountName = accountName;
+            _resultValue.deletionStatus = deletionStatus;
             _resultValue.displayName = displayName;
             _resultValue.folderId = folderId;
             _resultValue.id = id;

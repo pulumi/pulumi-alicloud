@@ -50,6 +50,11 @@ export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { MilvusInstanceArgs, MilvusInstanceState } from "./milvusInstance";
+export type MilvusInstance = import("./milvusInstance").MilvusInstance;
+export const MilvusInstance: typeof import("./milvusInstance").MilvusInstance = null as any;
+utilities.lazyLoad(exports, ["MilvusInstance"], () => require("./milvusInstance"));
+
 export { MscSubContractArgs, MscSubContractState } from "./mscSubContract";
 export type MscSubContract = import("./mscSubContract").MscSubContract;
 export const MscSubContract: typeof import("./mscSubContract").MscSubContract = null as any;
@@ -64,6 +69,11 @@ export { MscSubWebhookArgs, MscSubWebhookState } from "./mscSubWebhook";
 export type MscSubWebhook = import("./mscSubWebhook").MscSubWebhook;
 export const MscSubWebhook: typeof import("./mscSubWebhook").MscSubWebhook = null as any;
 utilities.lazyLoad(exports, ["MscSubWebhook"], () => require("./mscSubWebhook"));
+
+export { PolarDbExtensionArgs, PolarDbExtensionState } from "./polarDbExtension";
+export type PolarDbExtension = import("./polarDbExtension").PolarDbExtension;
+export const PolarDbExtension: typeof import("./polarDbExtension").PolarDbExtension = null as any;
+utilities.lazyLoad(exports, ["PolarDbExtension"], () => require("./polarDbExtension"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -369,12 +379,16 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:index/milvusInstance:MilvusInstance":
+                return new MilvusInstance(name, <any>undefined, { urn })
             case "alicloud:index/mscSubContract:MscSubContract":
                 return new MscSubContract(name, <any>undefined, { urn })
             case "alicloud:index/mscSubSubscription:MscSubSubscription":
                 return new MscSubSubscription(name, <any>undefined, { urn })
             case "alicloud:index/mscSubWebhook:MscSubWebhook":
                 return new MscSubWebhook(name, <any>undefined, { urn })
+            case "alicloud:index/polarDbExtension:PolarDbExtension":
+                return new PolarDbExtension(name, <any>undefined, { urn })
             case "alicloud:index/starRocksInstance:StarRocksInstance":
                 return new StarRocksInstance(name, <any>undefined, { urn })
             default:
@@ -382,9 +396,11 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "index/milvusInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubContract", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubSubscription", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubWebhook", _module)
+pulumi.runtime.registerResourceModule("alicloud", "index/polarDbExtension", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/starRocksInstance", _module)
 pulumi.runtime.registerResourcePackage("alicloud", {
     version: utilities.getVersion(),

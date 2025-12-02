@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *         destUrl: "http://11.177.129.13:8081",
  *         maxBatchSize: 1000,
  *     },
- *     dataCenter: "oversea",
+ *     dataCenter: "global",
  *     discardRate: 0,
  *     taskName: "dcdn-example-task",
  *     businessType: "dcdn_log_access_l1",
@@ -118,26 +118,36 @@ export class SiteDeliveryTask extends pulumi.CustomResource {
     declare public readonly fieldName: pulumi.Output<string>;
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly httpDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskHttpDelivery | undefined>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly kafkaDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskKafkaDelivery | undefined>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly ossDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskOssDelivery | undefined>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly s3Delivery: pulumi.Output<outputs.esa.SiteDeliveryTaskS3Delivery | undefined>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * SLS delivery configuration. See `slsDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly slsDelivery: pulumi.Output<outputs.esa.SiteDeliveryTaskSlsDelivery | undefined>;
     /**
@@ -241,26 +251,36 @@ export interface SiteDeliveryTaskState {
     fieldName?: pulumi.Input<string>;
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * SLS delivery configuration. See `slsDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery>;
     /**
@@ -300,26 +320,36 @@ export interface SiteDeliveryTaskArgs {
     fieldName: pulumi.Input<string>;
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     httpDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskHttpDelivery>;
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     kafkaDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskKafkaDelivery>;
     /**
      * OSS delivery configuration. See `ossDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     ossDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskOssDelivery>;
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     s3Delivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskS3Delivery>;
     /**
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * SLS delivery configuration. See `slsDelivery` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     slsDelivery?: pulumi.Input<inputs.esa.SiteDeliveryTaskSlsDelivery>;
     /**

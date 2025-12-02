@@ -107,7 +107,10 @@ type AggregateConfigRule struct {
 	AggregatorId pulumi.StringOutput `pulumi:"aggregatorId"`
 	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId pulumi.StringOutput `pulumi:"configRuleId"`
-	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+	// The trigger type of the rule. Valid values:
+	// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+	// - `ScheduledNotification`: The rule is periodically triggered.
+	// > **NOTE:** Separate multiple trigger types with commas (,).
 	ConfigRuleTriggerTypes pulumi.StringOutput `pulumi:"configRuleTriggerTypes"`
 	// The description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -194,7 +197,10 @@ type aggregateConfigRuleState struct {
 	AggregatorId *string `pulumi:"aggregatorId"`
 	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId *string `pulumi:"configRuleId"`
-	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+	// The trigger type of the rule. Valid values:
+	// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+	// - `ScheduledNotification`: The rule is periodically triggered.
+	// > **NOTE:** Separate multiple trigger types with commas (,).
 	ConfigRuleTriggerTypes *string `pulumi:"configRuleTriggerTypes"`
 	// The description of the rule.
 	Description *string `pulumi:"description"`
@@ -231,7 +237,10 @@ type AggregateConfigRuleState struct {
 	AggregatorId pulumi.StringPtrInput
 	// (Available since v1.141.0) The rule ID of Aggregate Config Rule.
 	ConfigRuleId pulumi.StringPtrInput
-	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+	// The trigger type of the rule. Valid values:
+	// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+	// - `ScheduledNotification`: The rule is periodically triggered.
+	// > **NOTE:** Separate multiple trigger types with commas (,).
 	ConfigRuleTriggerTypes pulumi.StringPtrInput
 	// The description of the rule.
 	Description pulumi.StringPtrInput
@@ -270,7 +279,10 @@ type aggregateConfigRuleArgs struct {
 	AggregateConfigRuleName string `pulumi:"aggregateConfigRuleName"`
 	// The Aggregator Id.
 	AggregatorId string `pulumi:"aggregatorId"`
-	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+	// The trigger type of the rule. Valid values:
+	// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+	// - `ScheduledNotification`: The rule is periodically triggered.
+	// > **NOTE:** Separate multiple trigger types with commas (,).
 	ConfigRuleTriggerTypes string `pulumi:"configRuleTriggerTypes"`
 	// The description of the rule.
 	Description *string `pulumi:"description"`
@@ -306,7 +318,10 @@ type AggregateConfigRuleArgs struct {
 	AggregateConfigRuleName pulumi.StringInput
 	// The Aggregator Id.
 	AggregatorId pulumi.StringInput
-	// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+	// The trigger type of the rule. Valid values:
+	// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+	// - `ScheduledNotification`: The rule is periodically triggered.
+	// > **NOTE:** Separate multiple trigger types with commas (,).
 	ConfigRuleTriggerTypes pulumi.StringInput
 	// The description of the rule.
 	Description pulumi.StringPtrInput
@@ -438,7 +453,10 @@ func (o AggregateConfigRuleOutput) ConfigRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.ConfigRuleId }).(pulumi.StringOutput)
 }
 
-// The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
+// The trigger type of the rule. Valid values:
+// - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
+// - `ScheduledNotification`: The rule is periodically triggered.
+// > **NOTE:** Separate multiple trigger types with commas (,).
 func (o AggregateConfigRuleOutput) ConfigRuleTriggerTypes() pulumi.StringOutput {
 	return o.ApplyT(func(v *AggregateConfigRule) pulumi.StringOutput { return v.ConfigRuleTriggerTypes }).(pulumi.StringOutput)
 }

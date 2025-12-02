@@ -264,6 +264,8 @@ export class Instance extends pulumi.CustomResource {
     declare public /*out*/ readonly endDate: pulumi.Output<string>;
     /**
      * Whether to force deletion even without backup.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     declare public readonly forceDeleteWithoutBackup: pulumi.Output<string | undefined>;
     /**
@@ -275,40 +277,39 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly keyNum: pulumi.Output<number | undefined>;
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     declare public readonly log: pulumi.Output<string>;
     /**
-     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     declare public readonly logStorage: pulumi.Output<number>;
     /**
-     * Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * The billing method. Valid values:
+     *
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      */
     declare public readonly paymentType: pulumi.Output<string>;
-    /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
     declare public readonly productVersion: pulumi.Output<string>;
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The auto-renewal period. Unit: month.
+     *
+     * > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      */
     declare public readonly renewPeriod: pulumi.Output<number | undefined>;
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The renewal status of the specified instance. Valid values:
+     *
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      */
     declare public readonly renewStatus: pulumi.Output<string>;
-    /**
-     * Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     */
     declare public readonly renewalPeriodUnit: pulumi.Output<string | undefined>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -323,7 +324,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -441,6 +442,8 @@ export interface InstanceState {
     endDate?: pulumi.Input<string>;
     /**
      * Whether to force deletion even without backup.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     forceDeleteWithoutBackup?: pulumi.Input<string>;
     /**
@@ -452,40 +455,39 @@ export interface InstanceState {
      */
     keyNum?: pulumi.Input<number>;
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     log?: pulumi.Input<string>;
     /**
-     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * The billing method. Valid values:
+     *
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
-    /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     */
     period?: pulumi.Input<number>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
     productVersion?: pulumi.Input<string>;
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The auto-renewal period. Unit: month.
+     *
+     * > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The renewal status of the specified instance. Valid values:
+     *
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      */
     renewStatus?: pulumi.Input<string>;
-    /**
-     * Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -500,7 +502,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -531,6 +533,8 @@ export interface InstanceArgs {
     bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
     /**
      * Whether to force deletion even without backup.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     forceDeleteWithoutBackup?: pulumi.Input<string>;
     /**
@@ -542,40 +546,39 @@ export interface InstanceArgs {
      */
     keyNum?: pulumi.Input<number>;
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     log?: pulumi.Input<string>;
     /**
-     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * The billing method. Valid values:
+     *
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      */
     paymentType?: pulumi.Input<string>;
-    /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     */
     period?: pulumi.Input<number>;
     /**
      * KMS Instance commodity type (software/hardware)
      */
     productVersion?: pulumi.Input<string>;
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The auto-renewal period. Unit: month.
+     *
+     * > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The renewal status of the specified instance. Valid values:
+     *
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      */
     renewStatus?: pulumi.Input<string>;
-    /**
-     * Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
      * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
@@ -586,7 +589,7 @@ export interface InstanceArgs {
      */
     spec?: pulumi.Input<number>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

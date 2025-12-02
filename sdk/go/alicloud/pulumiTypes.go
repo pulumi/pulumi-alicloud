@@ -13,6 +13,263 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type MilvusInstanceComponent struct {
+	// The number of CU. For example: 4
+	CuNum int `pulumi:"cuNum"`
+	// The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+	// - general: Generic
+	// - ram: Capacity
+	CuType *string `pulumi:"cuType"`
+	// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+	DiskSizeType *string `pulumi:"diskSizeType"`
+	// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+	Replica int `pulumi:"replica"`
+	// The component type. Different types need to be configured according to different versions.
+	// - Starter version: Array including standalone
+	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+	//   2.5: proxy ,mix_coordinator,data,query,index
+	//   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+	Type string `pulumi:"type"`
+}
+
+// MilvusInstanceComponentInput is an input type that accepts MilvusInstanceComponentArgs and MilvusInstanceComponentOutput values.
+// You can construct a concrete instance of `MilvusInstanceComponentInput` via:
+//
+//	MilvusInstanceComponentArgs{...}
+type MilvusInstanceComponentInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceComponentOutput() MilvusInstanceComponentOutput
+	ToMilvusInstanceComponentOutputWithContext(context.Context) MilvusInstanceComponentOutput
+}
+
+type MilvusInstanceComponentArgs struct {
+	// The number of CU. For example: 4
+	CuNum pulumi.IntInput `pulumi:"cuNum"`
+	// The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+	// - general: Generic
+	// - ram: Capacity
+	CuType pulumi.StringPtrInput `pulumi:"cuType"`
+	// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+	DiskSizeType pulumi.StringPtrInput `pulumi:"diskSizeType"`
+	// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+	Replica pulumi.IntInput `pulumi:"replica"`
+	// The component type. Different types need to be configured according to different versions.
+	// - Starter version: Array including standalone
+	// - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+	//   2.5: proxy ,mix_coordinator,data,query,index
+	//   2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MilvusInstanceComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceComponent)(nil)).Elem()
+}
+
+func (i MilvusInstanceComponentArgs) ToMilvusInstanceComponentOutput() MilvusInstanceComponentOutput {
+	return i.ToMilvusInstanceComponentOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceComponentArgs) ToMilvusInstanceComponentOutputWithContext(ctx context.Context) MilvusInstanceComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceComponentOutput)
+}
+
+// MilvusInstanceComponentArrayInput is an input type that accepts MilvusInstanceComponentArray and MilvusInstanceComponentArrayOutput values.
+// You can construct a concrete instance of `MilvusInstanceComponentArrayInput` via:
+//
+//	MilvusInstanceComponentArray{ MilvusInstanceComponentArgs{...} }
+type MilvusInstanceComponentArrayInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceComponentArrayOutput() MilvusInstanceComponentArrayOutput
+	ToMilvusInstanceComponentArrayOutputWithContext(context.Context) MilvusInstanceComponentArrayOutput
+}
+
+type MilvusInstanceComponentArray []MilvusInstanceComponentInput
+
+func (MilvusInstanceComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceComponent)(nil)).Elem()
+}
+
+func (i MilvusInstanceComponentArray) ToMilvusInstanceComponentArrayOutput() MilvusInstanceComponentArrayOutput {
+	return i.ToMilvusInstanceComponentArrayOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceComponentArray) ToMilvusInstanceComponentArrayOutputWithContext(ctx context.Context) MilvusInstanceComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceComponentArrayOutput)
+}
+
+type MilvusInstanceComponentOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceComponent)(nil)).Elem()
+}
+
+func (o MilvusInstanceComponentOutput) ToMilvusInstanceComponentOutput() MilvusInstanceComponentOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentOutput) ToMilvusInstanceComponentOutputWithContext(ctx context.Context) MilvusInstanceComponentOutput {
+	return o
+}
+
+// The number of CU. For example: 4
+func (o MilvusInstanceComponentOutput) CuNum() pulumi.IntOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) int { return v.CuNum }).(pulumi.IntOutput)
+}
+
+// The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+// - general: Generic
+// - ram: Capacity
+func (o MilvusInstanceComponentOutput) CuType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) *string { return v.CuType }).(pulumi.StringPtrOutput)
+}
+
+// Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+func (o MilvusInstanceComponentOutput) DiskSizeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) *string { return v.DiskSizeType }).(pulumi.StringPtrOutput)
+}
+
+// The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+func (o MilvusInstanceComponentOutput) Replica() pulumi.IntOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) int { return v.Replica }).(pulumi.IntOutput)
+}
+
+// The component type. Different types need to be configured according to different versions.
+//   - Starter version: Array including standalone
+//   - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+//     2.5: proxy ,mix_coordinator,data,query,index
+//     2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+func (o MilvusInstanceComponentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MilvusInstanceComponent) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MilvusInstanceComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceComponent)(nil)).Elem()
+}
+
+func (o MilvusInstanceComponentArrayOutput) ToMilvusInstanceComponentArrayOutput() MilvusInstanceComponentArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentArrayOutput) ToMilvusInstanceComponentArrayOutputWithContext(ctx context.Context) MilvusInstanceComponentArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceComponentArrayOutput) Index(i pulumi.IntInput) MilvusInstanceComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MilvusInstanceComponent {
+		return vs[0].([]MilvusInstanceComponent)[vs[1].(int)]
+	}).(MilvusInstanceComponentOutput)
+}
+
+type MilvusInstanceVswitchId struct {
+	// VSwitch id, which must correspond to the zone id.
+	VswId *string `pulumi:"vswId"`
+	// The availability zone must correspond to the vswId.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// MilvusInstanceVswitchIdInput is an input type that accepts MilvusInstanceVswitchIdArgs and MilvusInstanceVswitchIdOutput values.
+// You can construct a concrete instance of `MilvusInstanceVswitchIdInput` via:
+//
+//	MilvusInstanceVswitchIdArgs{...}
+type MilvusInstanceVswitchIdInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceVswitchIdOutput() MilvusInstanceVswitchIdOutput
+	ToMilvusInstanceVswitchIdOutputWithContext(context.Context) MilvusInstanceVswitchIdOutput
+}
+
+type MilvusInstanceVswitchIdArgs struct {
+	// VSwitch id, which must correspond to the zone id.
+	VswId pulumi.StringPtrInput `pulumi:"vswId"`
+	// The availability zone must correspond to the vswId.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (MilvusInstanceVswitchIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceVswitchId)(nil)).Elem()
+}
+
+func (i MilvusInstanceVswitchIdArgs) ToMilvusInstanceVswitchIdOutput() MilvusInstanceVswitchIdOutput {
+	return i.ToMilvusInstanceVswitchIdOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceVswitchIdArgs) ToMilvusInstanceVswitchIdOutputWithContext(ctx context.Context) MilvusInstanceVswitchIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceVswitchIdOutput)
+}
+
+// MilvusInstanceVswitchIdArrayInput is an input type that accepts MilvusInstanceVswitchIdArray and MilvusInstanceVswitchIdArrayOutput values.
+// You can construct a concrete instance of `MilvusInstanceVswitchIdArrayInput` via:
+//
+//	MilvusInstanceVswitchIdArray{ MilvusInstanceVswitchIdArgs{...} }
+type MilvusInstanceVswitchIdArrayInput interface {
+	pulumi.Input
+
+	ToMilvusInstanceVswitchIdArrayOutput() MilvusInstanceVswitchIdArrayOutput
+	ToMilvusInstanceVswitchIdArrayOutputWithContext(context.Context) MilvusInstanceVswitchIdArrayOutput
+}
+
+type MilvusInstanceVswitchIdArray []MilvusInstanceVswitchIdInput
+
+func (MilvusInstanceVswitchIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceVswitchId)(nil)).Elem()
+}
+
+func (i MilvusInstanceVswitchIdArray) ToMilvusInstanceVswitchIdArrayOutput() MilvusInstanceVswitchIdArrayOutput {
+	return i.ToMilvusInstanceVswitchIdArrayOutputWithContext(context.Background())
+}
+
+func (i MilvusInstanceVswitchIdArray) ToMilvusInstanceVswitchIdArrayOutputWithContext(ctx context.Context) MilvusInstanceVswitchIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MilvusInstanceVswitchIdArrayOutput)
+}
+
+type MilvusInstanceVswitchIdOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceVswitchIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MilvusInstanceVswitchId)(nil)).Elem()
+}
+
+func (o MilvusInstanceVswitchIdOutput) ToMilvusInstanceVswitchIdOutput() MilvusInstanceVswitchIdOutput {
+	return o
+}
+
+func (o MilvusInstanceVswitchIdOutput) ToMilvusInstanceVswitchIdOutputWithContext(ctx context.Context) MilvusInstanceVswitchIdOutput {
+	return o
+}
+
+// VSwitch id, which must correspond to the zone id.
+func (o MilvusInstanceVswitchIdOutput) VswId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceVswitchId) *string { return v.VswId }).(pulumi.StringPtrOutput)
+}
+
+// The availability zone must correspond to the vswId.
+func (o MilvusInstanceVswitchIdOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MilvusInstanceVswitchId) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type MilvusInstanceVswitchIdArrayOutput struct{ *pulumi.OutputState }
+
+func (MilvusInstanceVswitchIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MilvusInstanceVswitchId)(nil)).Elem()
+}
+
+func (o MilvusInstanceVswitchIdArrayOutput) ToMilvusInstanceVswitchIdArrayOutput() MilvusInstanceVswitchIdArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceVswitchIdArrayOutput) ToMilvusInstanceVswitchIdArrayOutputWithContext(ctx context.Context) MilvusInstanceVswitchIdArrayOutput {
+	return o
+}
+
+func (o MilvusInstanceVswitchIdArrayOutput) Index(i pulumi.IntInput) MilvusInstanceVswitchIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MilvusInstanceVswitchId {
+		return vs[0].([]MilvusInstanceVswitchId)[vs[1].(int)]
+	}).(MilvusInstanceVswitchIdOutput)
+}
+
 type ProviderAssumeRole struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The permissions applied when assuming a role. You cannot use, this policy to grant further permissions that are in excess to those of the, role that is being assumed.
@@ -3558,6 +3815,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentInput)(nil)).Elem(), MilvusInstanceComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceComponentArrayInput)(nil)).Elem(), MilvusInstanceComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdInput)(nil)).Elem(), MilvusInstanceVswitchIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MilvusInstanceVswitchIdArrayInput)(nil)).Elem(), MilvusInstanceVswitchIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRolePtrInput)(nil)).Elem(), ProviderAssumeRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderAssumeRoleWithOidcInput)(nil)).Elem(), ProviderAssumeRoleWithOidcArgs{})
@@ -3584,6 +3845,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(MilvusInstanceComponentOutput{})
+	pulumi.RegisterOutputType(MilvusInstanceComponentArrayOutput{})
+	pulumi.RegisterOutputType(MilvusInstanceVswitchIdOutput{})
+	pulumi.RegisterOutputType(MilvusInstanceVswitchIdArrayOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRolePtrOutput{})
 	pulumi.RegisterOutputType(ProviderAssumeRoleWithOidcOutput{})

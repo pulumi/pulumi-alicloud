@@ -19,7 +19,7 @@ __all__ = ['RewriteUrlRuleArgs', 'RewriteUrlRule']
 @pulumi.input_type
 class RewriteUrlRuleArgs:
     def __init__(__self__, *,
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  query_string: Optional[pulumi.Input[_builtins.str]] = None,
                  rewrite_query_string_type: Optional[pulumi.Input[_builtins.str]] = None,
                  rewrite_uri_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,7 +31,7 @@ class RewriteUrlRuleArgs:
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RewriteUrlRule resource.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.str] query_string: The desired query string to which you want to rewrite the query string in the original request.
         :param pulumi.Input[_builtins.str] rewrite_query_string_type: Query string rewrite type. Value range:
         :param pulumi.Input[_builtins.str] rewrite_uri_type: URI rewrite type. Value range:
@@ -66,14 +66,14 @@ class RewriteUrlRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -198,7 +198,7 @@ class _RewriteUrlRuleState:
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -213,7 +213,7 @@ class _RewriteUrlRuleState:
                ‒ off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
@@ -340,14 +340,14 @@ class _RewriteUrlRuleState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -388,7 +388,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -459,7 +459,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                ‒ off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
@@ -547,7 +547,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                  rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
                  sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  uri: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -590,7 +590,7 @@ class RewriteUrlRule(pulumi.CustomResource):
             rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
             sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             uri: Optional[pulumi.Input[_builtins.str]] = None) -> 'RewriteUrlRule':
         """
@@ -610,7 +610,7 @@ class RewriteUrlRule(pulumi.CustomResource):
                ‒ off: close.
         :param pulumi.Input[_builtins.str] rule_name: Rule name. When adding global configuration, this parameter does not need to be set.
         :param pulumi.Input[_builtins.int] sequence: The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
-        :param pulumi.Input[_builtins.int] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+        :param pulumi.Input[_builtins.str] site_id: The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         :param pulumi.Input[_builtins.int] site_version: Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
         :param pulumi.Input[_builtins.str] uri: The desired URI to which you want to rewrite the path in the original request.
         """
@@ -699,7 +699,7 @@ class RewriteUrlRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """

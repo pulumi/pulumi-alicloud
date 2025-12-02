@@ -84,7 +84,7 @@ type OriginProtection struct {
 	// - off
 	OriginConverge pulumi.StringPtrOutput `pulumi:"originConverge"`
 	// Site Id
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
 
 // NewOriginProtection registers a new resource with the given unique name, arguments, and options.
@@ -126,7 +126,7 @@ type originProtectionState struct {
 	// - off
 	OriginConverge *string `pulumi:"originConverge"`
 	// Site Id
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 }
 
 type OriginProtectionState struct {
@@ -136,7 +136,7 @@ type OriginProtectionState struct {
 	// - off
 	OriginConverge pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (OriginProtectionState) ElementType() reflect.Type {
@@ -150,7 +150,7 @@ type originProtectionArgs struct {
 	// - off
 	OriginConverge *string `pulumi:"originConverge"`
 	// Site Id
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a OriginProtection resource.
@@ -161,7 +161,7 @@ type OriginProtectionArgs struct {
 	// - off
 	OriginConverge pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (OriginProtectionArgs) ElementType() reflect.Type {
@@ -260,8 +260,8 @@ func (o OriginProtectionOutput) OriginConverge() pulumi.StringPtrOutput {
 }
 
 // Site Id
-func (o OriginProtectionOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginProtection) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o OriginProtectionOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginProtection) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 type OriginProtectionArrayOutput struct{ *pulumi.OutputState }

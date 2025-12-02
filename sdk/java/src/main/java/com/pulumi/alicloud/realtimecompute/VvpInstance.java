@@ -102,6 +102,20 @@ public class VvpInstance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * (Available since v1.264.0) The ID of the K8s cluster.
+     * 
+     */
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
+    private Output<String> resourceId;
+
+    /**
+     * @return (Available since v1.264.0) The ID of the K8s cluster.
+     * 
+     */
+    public Output<String> resourceId() {
+        return this.resourceId;
+    }
+    /**
      * Resource specifications. See `resourceSpec` below.
      * 
      */

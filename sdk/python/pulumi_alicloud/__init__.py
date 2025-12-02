@@ -15,9 +15,11 @@ from .get_msc_sub_subscriptions import *
 from .get_msc_sub_webhooks import *
 from .get_regions import *
 from .get_zones import *
+from .milvus_instance import *
 from .msc_sub_contract import *
 from .msc_sub_subscription import *
 from .msc_sub_webhook import *
+from .polar_db_extension import *
 from .provider import *
 from .star_rocks_instance import *
 from ._inputs import *
@@ -1942,6 +1944,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cloudfirewall",
   "classes": {
    "alicloud:cloudfirewall/policyAdvancedConfig:PolicyAdvancedConfig": "PolicyAdvancedConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cloudfirewall/privateDns",
+  "fqn": "pulumi_alicloud.cloudfirewall",
+  "classes": {
+   "alicloud:cloudfirewall/privateDns:PrivateDns": "PrivateDns"
   }
  },
  {
@@ -3946,6 +3956,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "eflo/hyperNode",
+  "fqn": "pulumi_alicloud.eflo",
+  "classes": {
+   "alicloud:eflo/hyperNode:HyperNode": "HyperNode"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "eflo/invocation",
   "fqn": "pulumi_alicloud.eflo",
   "classes": {
@@ -5562,6 +5580,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "index/milvusInstance",
+  "fqn": "pulumi_alicloud",
+  "classes": {
+   "alicloud:index/milvusInstance:MilvusInstance": "MilvusInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "index/mscSubContract",
   "fqn": "pulumi_alicloud",
   "classes": {
@@ -5582,6 +5608,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud",
   "classes": {
    "alicloud:index/mscSubWebhook:MscSubWebhook": "MscSubWebhook"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "index/polarDbExtension",
+  "fqn": "pulumi_alicloud",
+  "classes": {
+   "alicloud:index/polarDbExtension:PolarDbExtension": "PolarDbExtension"
   }
  },
  {

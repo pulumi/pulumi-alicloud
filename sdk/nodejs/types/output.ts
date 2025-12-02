@@ -177,6 +177,46 @@ export interface GetZonesZone {
     slbSlaveZoneIds: string[];
 }
 
+export interface MilvusInstanceComponent {
+    /**
+     * The number of CU. For example: 4
+     */
+    cuNum: number;
+    /**
+     * The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+     * - general: Generic
+     * - ram: Capacity
+     */
+    cuType: string;
+    /**
+     * Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+     */
+    diskSizeType: string;
+    /**
+     * The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+     */
+    replica: number;
+    /**
+     * The component type. Different types need to be configured according to different versions.
+     * - Starter version: Array including standalone
+     * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+     * 2.5: proxy ,mix_coordinator,data,query,index
+     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+     */
+    type: string;
+}
+
+export interface MilvusInstanceVswitchId {
+    /**
+     * VSwitch id, which must correspond to the zone id.
+     */
+    vswId?: string;
+    /**
+     * The availability zone must correspond to the vswId.
+     */
+    zoneId?: string;
+}
+
 export interface StarRocksInstanceBackendNodeGroup {
     /**
      * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
@@ -2804,7 +2844,8 @@ export namespace alb {
          */
         serverGroupId: string;
         /**
-         * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+         * The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+         * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
          */
         weight?: number;
     }
@@ -2823,7 +2864,7 @@ export namespace alb {
 
     export interface RuleRuleActionRedirectConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: string;
         /**
@@ -2831,11 +2872,11 @@ export namespace alb {
          */
         httpCode?: string;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: string;
         /**
-         * The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+         * The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
          */
         port?: string;
         /**
@@ -2854,11 +2895,11 @@ export namespace alb {
 
     export interface RuleRuleActionRewriteConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: string;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: string;
         /**
@@ -35837,6 +35878,494 @@ export namespace fc {
         type: string;
     }
 
+    export interface GetV3FunctionsFunction {
+        /**
+         * The code package size of the function returned by the system, in byte Example : 1024
+         */
+        codeSize: number;
+        /**
+         * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+         */
+        cpu: number;
+        /**
+         * The creation time of the function.
+         */
+        createTime: string;
+        /**
+         * The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig.
+         */
+        customContainerConfig: outputs.fc.GetV3FunctionsFunctionCustomContainerConfig;
+        /**
+         * Function custom DNS configuration
+         */
+        customDns: outputs.fc.GetV3FunctionsFunctionCustomDns;
+        /**
+         * Customize the runtime configuration.
+         */
+        customRuntimeConfig: outputs.fc.GetV3FunctionsFunctionCustomRuntimeConfig;
+        /**
+         * The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
+         */
+        description: string;
+        /**
+         * The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
+         */
+        diskSize: number;
+        /**
+         * The environment variable set for the function, you can get the value of the environment variable in the function.
+         */
+        environmentVariables: {[key: string]: string};
+        /**
+         * ARN of function
+         */
+        functionArn: string;
+        /**
+         * The first ID of the resource
+         */
+        functionId: string;
+        /**
+         * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+         */
+        functionName: string;
+        /**
+         * Function GPU configuration.
+         */
+        gpuConfig: outputs.fc.GetV3FunctionsFunctionGpuConfig;
+        /**
+         * The execution entry of the callback method, which is similar to the request handler.
+         */
+        handler: string;
+        /**
+         * The ID of the resource supplied above.
+         */
+        id: string;
+        /**
+         * Destroy an instance when the instance no-request duration exceeds this attribute. -1 means that the threshold is cleared and the system default behavior is used.
+         */
+        idleTimeout: number;
+        /**
+         * Maximum instance concurrency.
+         */
+        instanceConcurrency: number;
+        /**
+         * Instance isolation mode
+         */
+        instanceIsolationMode: string;
+        /**
+         * Instance lifecycle callback method configuration.
+         */
+        instanceLifecycleConfig: outputs.fc.GetV3FunctionsFunctionInstanceLifecycleConfig;
+        /**
+         * Allow function to access public network
+         */
+        internetAccess: boolean;
+        /**
+         * Invocation Restriction Detail
+         */
+        invocationRestriction: outputs.fc.GetV3FunctionsFunctionInvocationRestriction;
+        /**
+         * Last time the function was Updated
+         */
+        lastModifiedTime: string;
+        /**
+         * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+         */
+        lastUpdateStatus: string;
+        /**
+         * The reason that caused the last function to update the Operation State to the current value
+         */
+        lastUpdateStatusReason: string;
+        /**
+         * Status code of the reason that caused the last function update operation status to the current value
+         */
+        lastUpdateStatusReasonCode: string;
+        /**
+         * The list of layers.
+         */
+        layers: string[];
+        /**
+         * The logs generated by the function are written to the configured Logstore.
+         */
+        logConfig: outputs.fc.GetV3FunctionsFunctionLogConfig;
+        /**
+         * The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
+         */
+        memorySize: number;
+        /**
+         * NAS configuration. After this parameter is configured, the function can access the specified NAS resource.
+         */
+        nasConfig: outputs.fc.GetV3FunctionsFunctionNasConfig;
+        /**
+         * OSS mount configuration
+         */
+        ossMountConfig: outputs.fc.GetV3FunctionsFunctionOssMountConfig;
+        /**
+         * Resource Group ID
+         */
+        resourceGroupId: string;
+        /**
+         * The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
+         */
+        role: string;
+        /**
+         * Function runtime type
+         */
+        runtime: string;
+        /**
+         * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+         */
+        sessionAffinity: string;
+        /**
+         * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+         */
+        sessionAffinityConfig: string;
+        /**
+         * Function Status
+         */
+        state: string;
+        /**
+         * The reason why the function is in the current state
+         */
+        stateReason: string;
+        /**
+         * The status code of the reason the function is in the current state.
+         */
+        stateReasonCode: string;
+        /**
+         * The tag of the resource
+         */
+        tags: {[key: string]: string};
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout: number;
+        /**
+         * Tracing configuration
+         */
+        tracingConfig: outputs.fc.GetV3FunctionsFunctionTracingConfig;
+        /**
+         * VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
+         */
+        vpcConfig: outputs.fc.GetV3FunctionsFunctionVpcConfig;
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfig {
+        /**
+         * Image Acceleration Information (Obsolete).
+         */
+        accelerationInfo: outputs.fc.GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo;
+        /**
+         * Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+         */
+        accelerationType: string;
+        /**
+         * ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+         */
+        acrInstanceId: string;
+        /**
+         * Lifecycle Initialization Phase Callback Instructions.
+         */
+        commands: string[];
+        /**
+         * Container start command.
+         */
+        entrypoints: string[];
+        /**
+         * Function custom health check configuration.
+         */
+        healthCheckConfig: outputs.fc.GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig;
+        /**
+         * The container Image address.
+         */
+        image: string;
+        /**
+         * The listening port of the HTTP Server.
+         */
+        port: number;
+        /**
+         * The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+         */
+        resolvedImageUri: string;
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfigAccelerationInfo {
+        /**
+         * Image Acceleration Status (Deprecated).
+         */
+        status: string;
+    }
+
+    export interface GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig {
+        /**
+         * The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+         */
+        failureThreshold: number;
+        /**
+         * The URL of the container's custom health check. No more than 2048 characters in length.
+         */
+        httpGetUrl: string;
+        /**
+         * The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+         */
+        initialDelaySeconds: number;
+        /**
+         * Health check cycle. The value range is 1~120. The default value is 3.
+         */
+        periodSeconds: number;
+        /**
+         * The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+         */
+        successThreshold: number;
+        /**
+         * Health check timeout. Value range 1~3. The default value is 1.
+         */
+        timeoutSeconds: number;
+    }
+
+    export interface GetV3FunctionsFunctionCustomDns {
+        /**
+         * List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required.
+         */
+        dnsOptions: outputs.fc.GetV3FunctionsFunctionCustomDnsDnsOption[];
+        /**
+         * IP Address List of DNS servers.
+         */
+        nameServers: string[];
+        /**
+         * DNS search domain list.
+         */
+        searches: string[];
+    }
+
+    export interface GetV3FunctionsFunctionCustomDnsDnsOption {
+        /**
+         * Configuration Item Name.
+         */
+        name: string;
+        /**
+         * Configuration Item Value.
+         */
+        value: string;
+    }
+
+    export interface GetV3FunctionsFunctionCustomRuntimeConfig {
+        /**
+         * Instance startup parameters.
+         */
+        args: string[];
+        /**
+         * Lifecycle Initialization Phase Callback Instructions.
+         */
+        commands: string[];
+        /**
+         * Function custom health check configuration.
+         */
+        healthCheckConfig: outputs.fc.GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfig;
+        /**
+         * The listening port of the HTTP Server.
+         */
+        port: number;
+    }
+
+    export interface GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfig {
+        /**
+         * The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+         */
+        failureThreshold: number;
+        /**
+         * The URL of the container's custom health check. No more than 2048 characters in length.
+         */
+        httpGetUrl: string;
+        /**
+         * The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+         */
+        initialDelaySeconds: number;
+        /**
+         * Health check cycle. The value range is 1~120. The default value is 3.
+         */
+        periodSeconds: number;
+        /**
+         * The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+         */
+        successThreshold: number;
+        /**
+         * Health check timeout. Value range 1~3. The default value is 1.
+         */
+        timeoutSeconds: number;
+    }
+
+    export interface GetV3FunctionsFunctionGpuConfig {
+        /**
+         * GPU memory specification, unit: MB, multiple of 1024MB.
+         */
+        gpuMemorySize: number;
+        /**
+         * GPU card architecture.-fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).-fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).-fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+         */
+        gpuType: string;
+    }
+
+    export interface GetV3FunctionsFunctionInstanceLifecycleConfig {
+        /**
+         * Initializer handler method configuration.
+         */
+        initializer: outputs.fc.GetV3FunctionsFunctionInstanceLifecycleConfigInitializer;
+        /**
+         * PreStop handler method configuration.
+         */
+        preStop: outputs.fc.GetV3FunctionsFunctionInstanceLifecycleConfigPreStop;
+    }
+
+    export interface GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
+        /**
+         * Lifecycle Initialization Phase Callback Instructions.
+         */
+        commands: string[];
+        /**
+         * The execution entry of the callback method, which is similar to the request handler.
+         */
+        handler: string;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout: number;
+    }
+
+    export interface GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
+        /**
+         * The execution entry of the callback method, which is similar to the request handler.
+         */
+        handler: string;
+        /**
+         * The maximum running time of the function, in seconds.
+         */
+        timeout: number;
+    }
+
+    export interface GetV3FunctionsFunctionInvocationRestriction {
+        /**
+         * Whether invocation is disabled.
+         */
+        disable: boolean;
+        /**
+         * Last time the function was Updated
+         */
+        lastModifiedTime: string;
+        /**
+         * Disable Reason.
+         */
+        reason: string;
+    }
+
+    export interface GetV3FunctionsFunctionLogConfig {
+        /**
+         * After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+         */
+        enableInstanceMetrics: boolean;
+        /**
+         * After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+         */
+        enableRequestMetrics: boolean;
+        /**
+         * Log Line First Matching Rules.
+         */
+        logBeginRule: string;
+        /**
+         * The Logstore name of log service.
+         */
+        logstore: string;
+        /**
+         * The name of the log service Project.
+         */
+        project: string;
+    }
+
+    export interface GetV3FunctionsFunctionNasConfig {
+        /**
+         * Group ID.
+         */
+        groupId: number;
+        /**
+         * OSS mount point list.
+         */
+        mountPoints: outputs.fc.GetV3FunctionsFunctionNasConfigMountPoint[];
+        /**
+         * Account ID.
+         */
+        userId: number;
+    }
+
+    export interface GetV3FunctionsFunctionNasConfigMountPoint {
+        /**
+         * Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+         */
+        enableTls: boolean;
+        /**
+         * Mount Directory.
+         */
+        mountDir: string;
+        /**
+         * NAS server address.
+         */
+        serverAddr: string;
+    }
+
+    export interface GetV3FunctionsFunctionOssMountConfig {
+        /**
+         * OSS mount point list.
+         */
+        mountPoints: outputs.fc.GetV3FunctionsFunctionOssMountConfigMountPoint[];
+    }
+
+    export interface GetV3FunctionsFunctionOssMountConfigMountPoint {
+        /**
+         * OSS Bucket name.
+         */
+        bucketName: string;
+        /**
+         * Path of the mounted OSS Bucket.
+         */
+        bucketPath: string;
+        /**
+         * OSS access endpoint.
+         */
+        endpoint: string;
+        /**
+         * Mount Directory.
+         */
+        mountDir: string;
+        /**
+         * Read-only.
+         */
+        readOnly: boolean;
+    }
+
+    export interface GetV3FunctionsFunctionTracingConfig {
+        /**
+         * Tracing parameters.
+         */
+        params: {[key: string]: string};
+        /**
+         * The tracing protocol type. Currently, only Jaeger is supported.
+         */
+        type: string;
+    }
+
+    export interface GetV3FunctionsFunctionVpcConfig {
+        /**
+         * Security group ID.
+         */
+        securityGroupId: string;
+        /**
+         * VPC network ID.
+         */
+        vpcId: string;
+        /**
+         * Switch List.
+         */
+        vswitchIds: string[];
+    }
+
     export interface GetV3TriggersTrigger {
         /**
          * Creation time
@@ -44964,7 +45493,7 @@ export namespace nlb {
          *
          * > **NOTE:**  This parameter takes effect only when `HealthCheckType` is set to `HTTP`.
          */
-        httpCheckMethod?: string;
+        httpCheckMethod: string;
         /**
          * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
          * Valid values: `2` to `10`.
@@ -50339,6 +50868,10 @@ export namespace resourcemanager {
          * (Available since v1.125.0) The Alibaba Cloud account name of the member. **Note:** `accountName` takes effect only if `enableDetails` is set to `true`.
          */
         accountName: string;
+        /**
+         * (Available since v1.264.0) The deletion status of the member.
+         */
+        deletionStatus: string;
         /**
          * The display name of the member.
          */

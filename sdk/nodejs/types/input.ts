@@ -5,6 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface MilvusInstanceComponent {
+    /**
+     * The number of CU. For example: 4
+     */
+    cuNum: pulumi.Input<number>;
+    /**
+     * The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+     * - general: Generic
+     * - ram: Capacity
+     */
+    cuType?: pulumi.Input<string>;
+    /**
+     * Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+     */
+    diskSizeType?: pulumi.Input<string>;
+    /**
+     * The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+     */
+    replica: pulumi.Input<number>;
+    /**
+     * The component type. Different types need to be configured according to different versions.
+     * - Starter version: Array including standalone
+     * - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+     * 2.5: proxy ,mix_coordinator,data,query,index
+     * 2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface MilvusInstanceVswitchId {
+    /**
+     * VSwitch id, which must correspond to the zone id.
+     */
+    vswId?: pulumi.Input<string>;
+    /**
+     * The availability zone must correspond to the vswId.
+     */
+    zoneId?: pulumi.Input<string>;
+}
+
 export interface ProviderAssumeRole {
     externalId?: pulumi.Input<string>;
     /**
@@ -1281,7 +1321,8 @@ export namespace alb {
          */
         serverGroupId?: pulumi.Input<string>;
         /**
-         * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
+         * The Weight of server group. Default value: `100`. Valid values: `0` to `100`.
+         * **NOTE:** `weight` is required when the number of `serverGroupTuples` is greater than 2. From version 1.264.0, `weight` can be set to `0`.
          */
         weight?: pulumi.Input<number>;
     }
@@ -1300,7 +1341,7 @@ export namespace alb {
 
     export interface RuleRuleActionRedirectConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: pulumi.Input<string>;
         /**
@@ -1308,11 +1349,11 @@ export namespace alb {
          */
         httpCode?: pulumi.Input<string>;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**
-         * The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
+         * The port of the destination to which requests are redirected. Valid values: `1` to `63335`. Default value: ${port}. You cannot use this value together with other characters at the same time.
          */
         port?: pulumi.Input<string>;
         /**
@@ -1331,11 +1372,11 @@ export namespace alb {
 
     export interface RuleRuleActionRewriteConfig {
         /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: pulumi.Input<string>;
         /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+         * The path to which requests are to be redirected within ALB. The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**

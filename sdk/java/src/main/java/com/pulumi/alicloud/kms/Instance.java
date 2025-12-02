@@ -366,12 +366,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to force deletion even without backup.
      * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
+     * 
      */
     @Export(name="forceDeleteWithoutBackup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> forceDeleteWithoutBackup;
 
     /**
      * @return Whether to force deletion even without backup.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
      * 
      */
     public Output<Optional<String>> forceDeleteWithoutBackup() {
@@ -406,62 +410,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.keyNum);
     }
     /**
-     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     @Export(name="log", refs={String.class}, tree="[0]")
     private Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     public Output<String> log() {
         return this.log;
     }
     /**
-     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     @Export(name="logStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
      * 
      */
     public Output<Integer> logStorage() {
         return this.logStorage;
     }
     /**
-     * Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * The billing method. Valid values:
+     * 
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Payment type, valid values:
-     * - `Subscription`: Prepaid.
-     * - `PayAsYouGo`: Postpaid.
+     * @return The billing method. Valid values:
+     * 
+     * - Subscription: the subscription billing method.
+     * - PayAsYouGo: the pay-as-you-go billing method.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
-    /**
-     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     * 
-     */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
-    /**
-     * @return Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
-     * 
-     */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
@@ -480,48 +478,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.productVersion;
     }
     /**
-     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The auto-renewal period. Unit: month.
+     * 
+     * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return The auto-renewal period. Unit: month.
+     * 
+     * &gt; **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
     /**
-     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * The renewal status of the specified instance. Valid values:
+     * 
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output<String> renewStatus;
 
     /**
-     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     * @return The renewal status of the specified instance. Valid values:
+     * 
+     * - AutoRenewal: The instance is automatically renewed.
+     * - ManualRenewal: The instance is manually renewed.
+     * - NotRenewal: The instance is not renewed.
      * 
      */
     public Output<String> renewStatus() {
         return this.renewStatus;
     }
-    /**
-     * Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     * 
-     */
     @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalPeriodUnit;
 
-    /**
-     * @return Automatic renewal period unit, valid value:
-     * - `M`: Month.
-     * - `Y`: Year.
-     * 
-     */
     public Output<Optional<String>> renewalPeriodUnit() {
         return Codegen.optional(this.renewalPeriodUnit);
     }
@@ -568,14 +566,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

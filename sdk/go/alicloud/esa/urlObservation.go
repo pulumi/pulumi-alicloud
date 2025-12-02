@@ -86,7 +86,7 @@ type UrlObservation struct {
 	// SDK integration mode. Value:
 	SdkType pulumi.StringOutput `pulumi:"sdkType"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The URL of the page to monitor.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -135,7 +135,7 @@ type urlObservationState struct {
 	// SDK integration mode. Value:
 	SdkType *string `pulumi:"sdkType"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The URL of the page to monitor.
 	Url *string `pulumi:"url"`
 }
@@ -146,7 +146,7 @@ type UrlObservationState struct {
 	// SDK integration mode. Value:
 	SdkType pulumi.StringPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The URL of the page to monitor.
 	Url pulumi.StringPtrInput
 }
@@ -159,7 +159,7 @@ type urlObservationArgs struct {
 	// SDK integration mode. Value:
 	SdkType string `pulumi:"sdkType"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The URL of the page to monitor.
 	Url string `pulumi:"url"`
 }
@@ -169,7 +169,7 @@ type UrlObservationArgs struct {
 	// SDK integration mode. Value:
 	SdkType pulumi.StringInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The URL of the page to monitor.
 	Url pulumi.StringInput
 }
@@ -272,8 +272,8 @@ func (o UrlObservationOutput) SdkType() pulumi.StringOutput {
 }
 
 // The site ID.
-func (o UrlObservationOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *UrlObservation) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o UrlObservationOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlObservation) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The URL of the page to monitor.

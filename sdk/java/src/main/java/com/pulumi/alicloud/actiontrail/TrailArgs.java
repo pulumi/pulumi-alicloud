@@ -17,6 +17,21 @@ public final class TrailArgs extends com.pulumi.resources.ResourceArgs {
     public static final TrailArgs Empty = new TrailArgs();
 
     /**
+     * The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
+    @Import(name="dataEventTrailRegion")
+    private @Nullable Output<String> dataEventTrailRegion;
+
+    /**
+     * @return The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+     * 
+     */
+    public Optional<Output<String>> dataEventTrailRegion() {
+        return Optional.ofNullable(this.dataEventTrailRegion);
+    }
+
+    /**
      * The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
      * 
      */
@@ -29,6 +44,21 @@ public final class TrailArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> eventRw() {
         return Optional.ofNullable(this.eventRw);
+    }
+
+    /**
+     * The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
+    @Import(name="eventSelectors")
+    private @Nullable Output<String> eventSelectors;
+
+    /**
+     * @return The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+     * 
+     */
+    public Optional<Output<String>> eventSelectors() {
+        return Optional.ofNullable(this.eventSelectors);
     }
 
     /**
@@ -268,7 +298,9 @@ public final class TrailArgs extends com.pulumi.resources.ResourceArgs {
     private TrailArgs() {}
 
     private TrailArgs(TrailArgs $) {
+        this.dataEventTrailRegion = $.dataEventTrailRegion;
         this.eventRw = $.eventRw;
+        this.eventSelectors = $.eventSelectors;
         this.isOrganizationTrail = $.isOrganizationTrail;
         this.maxComputeProjectArn = $.maxComputeProjectArn;
         this.maxComputeWriteRoleArn = $.maxComputeWriteRoleArn;
@@ -304,6 +336,27 @@ public final class TrailArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dataEventTrailRegion The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataEventTrailRegion(@Nullable Output<String> dataEventTrailRegion) {
+            $.dataEventTrailRegion = dataEventTrailRegion;
+            return this;
+        }
+
+        /**
+         * @param dataEventTrailRegion The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataEventTrailRegion(String dataEventTrailRegion) {
+            return dataEventTrailRegion(Output.of(dataEventTrailRegion));
+        }
+
+        /**
          * @param eventRw The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
          * 
          * @return builder
@@ -322,6 +375,27 @@ public final class TrailArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventRw(String eventRw) {
             return eventRw(Output.of(eventRw));
+        }
+
+        /**
+         * @param eventSelectors The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventSelectors(@Nullable Output<String> eventSelectors) {
+            $.eventSelectors = eventSelectors;
+            return this;
+        }
+
+        /**
+         * @param eventSelectors The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventSelectors(String eventSelectors) {
+            return eventSelectors(Output.of(eventSelectors));
         }
 
         /**

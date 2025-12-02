@@ -24,7 +24,7 @@ class WaitingRoomEventArgs:
                  queuing_method: pulumi.Input[_builtins.str],
                  queuing_status_code: pulumi.Input[_builtins.str],
                  session_duration: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input[_builtins.str],
                  status: pulumi.Input[_builtins.str],
                  total_active_users: pulumi.Input[_builtins.str],
@@ -44,44 +44,22 @@ class WaitingRoomEventArgs:
         :param pulumi.Input[_builtins.str] end_time: The timestamp of the end time of the event.
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
         :param pulumi.Input[_builtins.str] queuing_method: Way of queuing. Value:
-               -'random': random.
-               -'fifo': first in, first out.
-               -'passthrough ': through.
-               -'reject-all': reject all.
         :param pulumi.Input[_builtins.str] queuing_status_code: Waiting room status code. Value:
-               -'200'
-               -'202'
-               -'429'
         :param pulumi.Input[_builtins.str] session_duration: User session duration in minutes.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] start_time: The timestamp of the event start time.
         :param pulumi.Input[_builtins.str] status: Enabled status. Value:
-               -'on': Enable waiting room events
-               -'off': Disable waiting room events
         :param pulumi.Input[_builtins.str] total_active_users: Total number of active users.
         :param pulumi.Input[_builtins.str] waiting_room_event_name: Event name, custom event description.
         :param pulumi.Input[_builtins.str] waiting_room_type: Waiting room type. The following types are supported:
-               -'default': the default type.
-               -'custom': custom type.
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] json_response_enable: JSON response switch. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] language: Default language setting. Values include:
-               -'enus': English.
-               -'zhcn': Simplified Chinese.
-               -'zhhk': Traditional Chinese.
         :param pulumi.Input[_builtins.str] pre_queue_enable: Pre-queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] pre_queue_start_time: Pre-queue start time.
         :param pulumi.Input[_builtins.str] random_pre_queue_enable: Random queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         pulumi.set(__self__, "end_time", end_time)
@@ -143,10 +121,6 @@ class WaitingRoomEventArgs:
     def queuing_method(self) -> pulumi.Input[_builtins.str]:
         """
         Way of queuing. Value:
-        -'random': random.
-        -'fifo': first in, first out.
-        -'passthrough ': through.
-        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -159,9 +133,6 @@ class WaitingRoomEventArgs:
     def queuing_status_code(self) -> pulumi.Input[_builtins.str]:
         """
         Waiting room status code. Value:
-        -'200'
-        -'202'
-        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -183,14 +154,14 @@ class WaitingRoomEventArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -210,8 +181,6 @@ class WaitingRoomEventArgs:
     def status(self) -> pulumi.Input[_builtins.str]:
         """
         Enabled status. Value:
-        -'on': Enable waiting room events
-        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -248,8 +217,6 @@ class WaitingRoomEventArgs:
     def waiting_room_type(self) -> pulumi.Input[_builtins.str]:
         """
         Waiting room type. The following types are supported:
-        -'default': the default type.
-        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 
@@ -286,8 +253,6 @@ class WaitingRoomEventArgs:
     def disable_session_renewal_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Disable session renewal. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -300,8 +265,6 @@ class WaitingRoomEventArgs:
     def json_response_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         JSON response switch. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -314,9 +277,6 @@ class WaitingRoomEventArgs:
     def language(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Default language setting. Values include:
-        -'enus': English.
-        -'zhcn': Simplified Chinese.
-        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -329,8 +289,6 @@ class WaitingRoomEventArgs:
     def pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Pre-queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -355,8 +313,6 @@ class WaitingRoomEventArgs:
     def random_pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Random queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -393,7 +349,7 @@ class _WaitingRoomEventState:
                  queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
                  random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
@@ -406,46 +362,24 @@ class _WaitingRoomEventState:
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] end_time: The timestamp of the end time of the event.
         :param pulumi.Input[_builtins.str] json_response_enable: JSON response switch. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] language: Default language setting. Values include:
-               -'enus': English.
-               -'zhcn': Simplified Chinese.
-               -'zhhk': Traditional Chinese.
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
         :param pulumi.Input[_builtins.str] pre_queue_enable: Pre-queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] pre_queue_start_time: Pre-queue start time.
         :param pulumi.Input[_builtins.str] queuing_method: Way of queuing. Value:
-               -'random': random.
-               -'fifo': first in, first out.
-               -'passthrough ': through.
-               -'reject-all': reject all.
         :param pulumi.Input[_builtins.str] queuing_status_code: Waiting room status code. Value:
-               -'200'
-               -'202'
-               -'429'
         :param pulumi.Input[_builtins.str] random_pre_queue_enable: Random queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] session_duration: User session duration in minutes.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] start_time: The timestamp of the event start time.
         :param pulumi.Input[_builtins.str] status: Enabled status. Value:
-               -'on': Enable waiting room events
-               -'off': Disable waiting room events
         :param pulumi.Input[_builtins.str] total_active_users: Total number of active users.
         :param pulumi.Input[_builtins.int] waiting_room_event_id: The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         :param pulumi.Input[_builtins.str] waiting_room_event_name: Event name, custom event description.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         :param pulumi.Input[_builtins.str] waiting_room_type: Waiting room type. The following types are supported:
-               -'default': the default type.
-               -'custom': custom type.
         """
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
@@ -519,8 +453,6 @@ class _WaitingRoomEventState:
     def disable_session_renewal_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Disable session renewal. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -545,8 +477,6 @@ class _WaitingRoomEventState:
     def json_response_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         JSON response switch. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -559,9 +489,6 @@ class _WaitingRoomEventState:
     def language(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Default language setting. Values include:
-        -'enus': English.
-        -'zhcn': Simplified Chinese.
-        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -586,8 +513,6 @@ class _WaitingRoomEventState:
     def pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Pre-queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -612,10 +537,6 @@ class _WaitingRoomEventState:
     def queuing_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Way of queuing. Value:
-        -'random': random.
-        -'fifo': first in, first out.
-        -'passthrough ': through.
-        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -628,9 +549,6 @@ class _WaitingRoomEventState:
     def queuing_status_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Waiting room status code. Value:
-        -'200'
-        -'202'
-        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -643,8 +561,6 @@ class _WaitingRoomEventState:
     def random_pre_queue_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Random queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -666,14 +582,14 @@ class _WaitingRoomEventState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -693,8 +609,6 @@ class _WaitingRoomEventState:
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Enabled status. Value:
-        -'on': Enable waiting room events
-        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -755,8 +669,6 @@ class _WaitingRoomEventState:
     def waiting_room_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Waiting room type. The following types are supported:
-        -'default': the default type.
-        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 
@@ -784,7 +696,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
                  random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
@@ -871,45 +783,23 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] end_time: The timestamp of the end time of the event.
         :param pulumi.Input[_builtins.str] json_response_enable: JSON response switch. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] language: Default language setting. Values include:
-               -'enus': English.
-               -'zhcn': Simplified Chinese.
-               -'zhhk': Traditional Chinese.
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
         :param pulumi.Input[_builtins.str] pre_queue_enable: Pre-queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] pre_queue_start_time: Pre-queue start time.
         :param pulumi.Input[_builtins.str] queuing_method: Way of queuing. Value:
-               -'random': random.
-               -'fifo': first in, first out.
-               -'passthrough ': through.
-               -'reject-all': reject all.
         :param pulumi.Input[_builtins.str] queuing_status_code: Waiting room status code. Value:
-               -'200'
-               -'202'
-               -'429'
         :param pulumi.Input[_builtins.str] random_pre_queue_enable: Random queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] session_duration: User session duration in minutes.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] start_time: The timestamp of the event start time.
         :param pulumi.Input[_builtins.str] status: Enabled status. Value:
-               -'on': Enable waiting room events
-               -'off': Disable waiting room events
         :param pulumi.Input[_builtins.str] total_active_users: Total number of active users.
         :param pulumi.Input[_builtins.str] waiting_room_event_name: Event name, custom event description.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         :param pulumi.Input[_builtins.str] waiting_room_type: Waiting room type. The following types are supported:
-               -'default': the default type.
-               -'custom': custom type.
         """
         ...
     @overload
@@ -1019,7 +909,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
                  random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
                  session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1101,7 +991,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
             queuing_status_code: Optional[pulumi.Input[_builtins.str]] = None,
             random_pre_queue_enable: Optional[pulumi.Input[_builtins.str]] = None,
             session_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             start_time: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             total_active_users: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1119,46 +1009,24 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] custom_page_html: User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
         :param pulumi.Input[_builtins.str] description: Waiting room description.
         :param pulumi.Input[_builtins.str] disable_session_renewal_enable: Disable session renewal. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] end_time: The timestamp of the end time of the event.
         :param pulumi.Input[_builtins.str] json_response_enable: JSON response switch. Value:
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] language: Default language setting. Values include:
-               -'enus': English.
-               -'zhcn': Simplified Chinese.
-               -'zhhk': Traditional Chinese.
         :param pulumi.Input[_builtins.str] new_users_per_minute: Number of new users per minute.
         :param pulumi.Input[_builtins.str] pre_queue_enable: Pre-queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] pre_queue_start_time: Pre-queue start time.
         :param pulumi.Input[_builtins.str] queuing_method: Way of queuing. Value:
-               -'random': random.
-               -'fifo': first in, first out.
-               -'passthrough ': through.
-               -'reject-all': reject all.
         :param pulumi.Input[_builtins.str] queuing_status_code: Waiting room status code. Value:
-               -'200'
-               -'202'
-               -'429'
         :param pulumi.Input[_builtins.str] random_pre_queue_enable: Random queue switch.
-               -'on': open.
-               -'off': closed.
         :param pulumi.Input[_builtins.str] session_duration: User session duration in minutes.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] start_time: The timestamp of the event start time.
         :param pulumi.Input[_builtins.str] status: Enabled status. Value:
-               -'on': Enable waiting room events
-               -'off': Disable waiting room events
         :param pulumi.Input[_builtins.str] total_active_users: Total number of active users.
         :param pulumi.Input[_builtins.int] waiting_room_event_id: The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
         :param pulumi.Input[_builtins.str] waiting_room_event_name: Event name, custom event description.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         :param pulumi.Input[_builtins.str] waiting_room_type: Waiting room type. The following types are supported:
-               -'default': the default type.
-               -'custom': custom type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1208,8 +1076,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def disable_session_renewal_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Disable session renewal. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "disable_session_renewal_enable")
 
@@ -1226,8 +1092,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def json_response_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         JSON response switch. Value:
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "json_response_enable")
 
@@ -1236,9 +1100,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def language(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Default language setting. Values include:
-        -'enus': English.
-        -'zhcn': Simplified Chinese.
-        -'zhhk': Traditional Chinese.
         """
         return pulumi.get(self, "language")
 
@@ -1255,8 +1116,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def pre_queue_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Pre-queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "pre_queue_enable")
 
@@ -1273,10 +1132,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def queuing_method(self) -> pulumi.Output[_builtins.str]:
         """
         Way of queuing. Value:
-        -'random': random.
-        -'fifo': first in, first out.
-        -'passthrough ': through.
-        -'reject-all': reject all.
         """
         return pulumi.get(self, "queuing_method")
 
@@ -1285,9 +1140,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def queuing_status_code(self) -> pulumi.Output[_builtins.str]:
         """
         Waiting room status code. Value:
-        -'200'
-        -'202'
-        -'429'
         """
         return pulumi.get(self, "queuing_status_code")
 
@@ -1296,8 +1148,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def random_pre_queue_enable(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Random queue switch.
-        -'on': open.
-        -'off': closed.
         """
         return pulumi.get(self, "random_pre_queue_enable")
 
@@ -1311,7 +1161,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
@@ -1330,8 +1180,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         Enabled status. Value:
-        -'on': Enable waiting room events
-        -'off': Disable waiting room events
         """
         return pulumi.get(self, "status")
 
@@ -1372,8 +1220,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
     def waiting_room_type(self) -> pulumi.Output[_builtins.str]:
         """
         Waiting room type. The following types are supported:
-        -'default': the default type.
-        -'custom': custom type.
         """
         return pulumi.get(self, "waiting_room_type")
 

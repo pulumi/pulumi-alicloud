@@ -47,23 +47,28 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zone_ids: zone id
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
-               - `Subscription`: Prepaid.
-               - `PayAsYouGo`: Postpaid.
-        :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
+               
+               - Subscription: the subscription billing method.
+               - PayAsYouGo: the pay-as-you-go billing method.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
-        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
-               - `M`: Month.
-               - `Y`: Year.
+        :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
+               
+               > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values:
+               
+               - AutoRenewal: The instance is automatically renewed.
+               - ManualRenewal: The instance is manually renewed.
+               - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -155,6 +160,8 @@ class InstanceArgs:
     def force_delete_without_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Whether to force deletion even without backup.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete_without_backup")
 
@@ -190,7 +197,7 @@ class InstanceArgs:
     @pulumi.getter
     def log(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log")
 
@@ -202,7 +209,7 @@ class InstanceArgs:
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log_storage")
 
@@ -214,9 +221,10 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Payment type, valid values:
-        - `Subscription`: Prepaid.
-        - `PayAsYouGo`: Postpaid.
+        The billing method. Valid values:
+
+        - Subscription: the subscription billing method.
+        - PayAsYouGo: the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
@@ -227,9 +235,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -252,7 +257,9 @@ class InstanceArgs:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The auto-renewal period. Unit: month.
+
+        > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renew_period")
 
@@ -264,7 +271,11 @@ class InstanceArgs:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The renewal status of the specified instance. Valid values:
+
+        - AutoRenewal: The instance is automatically renewed.
+        - ManualRenewal: The instance is manually renewed.
+        - NotRenewal: The instance is not renewed.
         """
         return pulumi.get(self, "renew_status")
 
@@ -275,11 +286,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Automatic renewal period unit, valid value:
-        - `M`: Month.
-        - `Y`: Year.
-        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -314,7 +320,7 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -368,24 +374,29 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
-               - `Subscription`: Prepaid.
-               - `PayAsYouGo`: Postpaid.
-        :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
+               
+               - Subscription: the subscription billing method.
+               - PayAsYouGo: the pay-as-you-go billing method.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
-        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
-               - `M`: Month.
-               - `Y`: Year.
+        :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
+               
+               > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values:
+               
+               - AutoRenewal: The instance is automatically renewed.
+               - ManualRenewal: The instance is manually renewed.
+               - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -491,6 +502,8 @@ class _InstanceState:
     def force_delete_without_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Whether to force deletion even without backup.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete_without_backup")
 
@@ -526,7 +539,7 @@ class _InstanceState:
     @pulumi.getter
     def log(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log")
 
@@ -538,7 +551,7 @@ class _InstanceState:
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log_storage")
 
@@ -550,9 +563,10 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Payment type, valid values:
-        - `Subscription`: Prepaid.
-        - `PayAsYouGo`: Postpaid.
+        The billing method. Valid values:
+
+        - Subscription: the subscription billing method.
+        - PayAsYouGo: the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
@@ -563,9 +577,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -588,7 +599,9 @@ class _InstanceState:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The auto-renewal period. Unit: month.
+
+        > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renew_period")
 
@@ -600,7 +613,11 @@ class _InstanceState:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The renewal status of the specified instance. Valid values:
+
+        - AutoRenewal: The instance is automatically renewed.
+        - ManualRenewal: The instance is manually renewed.
+        - NotRenewal: The instance is not renewed.
         """
         return pulumi.get(self, "renew_status")
 
@@ -611,11 +628,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Automatic renewal period unit, valid value:
-        - `M`: Month.
-        - `Y`: Year.
-        """
         return pulumi.get(self, "renewal_period_unit")
 
     @renewal_period_unit.setter
@@ -662,7 +674,7 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -937,23 +949,28 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance See `bind_vpcs` below.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
-               - `Subscription`: Prepaid.
-               - `PayAsYouGo`: Postpaid.
-        :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
+               
+               - Subscription: the subscription billing method.
+               - PayAsYouGo: the pay-as-you-go billing method.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
-        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
-               - `M`: Month.
-               - `Y`: Year.
+        :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
+               
+               > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values:
+               
+               - AutoRenewal: The instance is automatically renewed.
+               - ManualRenewal: The instance is manually renewed.
+               - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -1270,24 +1287,29 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[_builtins.str] force_delete_without_backup: Whether to force deletion even without backup.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.str] instance_name: The name of the resource
         :param pulumi.Input[_builtins.int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] payment_type: Payment type, valid values:
-               - `Subscription`: Prepaid.
-               - `PayAsYouGo`: Postpaid.
-        :param pulumi.Input[_builtins.int] period: Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        :param pulumi.Input[_builtins.str] log: Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.int] log_storage: Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
+        :param pulumi.Input[_builtins.str] payment_type: The billing method. Valid values:
+               
+               - Subscription: the subscription billing method.
+               - PayAsYouGo: the pay-as-you-go billing method.
         :param pulumi.Input[_builtins.str] product_version: KMS Instance commodity type (software/hardware)
-        :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renew_status: Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        :param pulumi.Input[_builtins.str] renewal_period_unit: Automatic renewal period unit, valid value:
-               - `M`: Month.
-               - `Y`: Year.
+        :param pulumi.Input[_builtins.int] renew_period: The auto-renewal period. Unit: month.
+               
+               > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values:
+               
+               - AutoRenewal: The instance is automatically renewed.
+               - ManualRenewal: The instance is manually renewed.
+               - NotRenewal: The instance is not renewed.
         :param pulumi.Input[_builtins.int] secret_num: Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.int] spec: The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the virtual private cloud (VPC) that is associated with the KMS instance.
         :param pulumi.Input[_builtins.int] vpc_num: The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: Instance bind vswitches
@@ -1359,6 +1381,8 @@ class Instance(pulumi.CustomResource):
     def force_delete_without_backup(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Whether to force deletion even without backup.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete_without_backup")
 
@@ -1382,7 +1406,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def log(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance Audit Log Switch. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log")
 
@@ -1390,7 +1414,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> pulumi.Output[_builtins.int]:
         """
-        Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        Instance log capacity. This attribute was limited to Subscription (prepaid) payment type before v1.264.0. As of v1.264.0, it is also supported for PayAsYouGo (postpaid) instances.
         """
         return pulumi.get(self, "log_storage")
 
@@ -1398,18 +1422,16 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Payment type, valid values:
-        - `Subscription`: Prepaid.
-        - `PayAsYouGo`: Postpaid.
+        The billing method. Valid values:
+
+        - Subscription: the subscription billing method.
+        - PayAsYouGo: the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
@@ -1424,7 +1446,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The auto-renewal period. Unit: month.
+
+        > **NOTE:**   This parameter is required if the `RenewalStatus` parameter is set to `AutoRenewal`.
         """
         return pulumi.get(self, "renew_period")
 
@@ -1432,18 +1456,17 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> pulumi.Output[_builtins.str]:
         """
-        Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
+        The renewal status of the specified instance. Valid values:
+
+        - AutoRenewal: The instance is automatically renewed.
+        - ManualRenewal: The instance is manually renewed.
+        - NotRenewal: The instance is not renewed.
         """
         return pulumi.get(self, "renew_status")
 
     @_builtins.property
     @pulumi.getter(name="renewalPeriodUnit")
     def renewal_period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Automatic renewal period unit, valid value:
-        - `M`: Month.
-        - `Y`: Year.
-        """
         return pulumi.get(self, "renewal_period_unit")
 
     @_builtins.property
@@ -1474,7 +1497,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 

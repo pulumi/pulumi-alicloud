@@ -91,10 +91,22 @@ namespace Pulumi.AliCloud.ActionTrail
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
+        [Output("dataEventTrailRegion")]
+        public Output<string?> DataEventTrailRegion { get; private set; } = null!;
+
+        /// <summary>
         /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Output("eventRw")]
         public Output<string> EventRw { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
+        [Output("eventSelectors")]
+        public Output<string?> EventSelectors { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
@@ -233,10 +245,22 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class TrailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
+        [Input("dataEventTrailRegion")]
+        public Input<string>? DataEventTrailRegion { get; set; }
+
+        /// <summary>
         /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
+
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
+        [Input("eventSelectors")]
+        public Input<string>? EventSelectors { get; set; }
 
         /// <summary>
         /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:
@@ -337,10 +361,22 @@ namespace Pulumi.AliCloud.ActionTrail
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        /// </summary>
+        [Input("dataEventTrailRegion")]
+        public Input<string>? DataEventTrailRegion { get; set; }
+
+        /// <summary>
         /// The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         /// </summary>
         [Input("eventRw")]
         public Input<string>? EventRw { get; set; }
+
+        /// <summary>
+        /// The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        /// </summary>
+        [Input("eventSelectors")]
+        public Input<string>? EventSelectors { get; set; }
 
         /// <summary>
         /// Specifies whether to create a multi-account trail. Default value: `False`. Valid values:

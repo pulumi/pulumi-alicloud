@@ -19,7 +19,9 @@ __all__ = ['TrailArgs', 'Trail']
 @pulumi.input_type
 class TrailArgs:
     def __init__(__self__, *,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,7 +38,9 @@ class TrailArgs:
                  trail_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Trail resource.
+        :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
+        :param pulumi.Input[_builtins.str] event_selectors: The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
         :param pulumi.Input[_builtins.bool] is_organization_trail: Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] max_compute_project_arn: The ARN of the MaxCompute project to which you want to deliver events.
         :param pulumi.Input[_builtins.str] max_compute_write_role_arn: The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
@@ -52,8 +56,12 @@ class TrailArgs:
         :param pulumi.Input[_builtins.str] trail_name: The name of the trail to be created.
         :param pulumi.Input[_builtins.str] trail_region: The region of the trail.
         """
+        if data_event_trail_region is not None:
+            pulumi.set(__self__, "data_event_trail_region", data_event_trail_region)
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
+        if event_selectors is not None:
+            pulumi.set(__self__, "event_selectors", event_selectors)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         if max_compute_project_arn is not None:
@@ -93,6 +101,18 @@ class TrailArgs:
             pulumi.set(__self__, "trail_region", trail_region)
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        """
+        return pulumi.get(self, "data_event_trail_region")
+
+    @data_event_trail_region.setter
+    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_event_trail_region", value)
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -103,6 +123,18 @@ class TrailArgs:
     @event_rw.setter
     def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        """
+        return pulumi.get(self, "event_selectors")
+
+    @event_selectors.setter
+    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
@@ -280,7 +312,9 @@ class TrailArgs:
 class _TrailState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -299,7 +333,9 @@ class _TrailState:
         """
         Input properties used for looking up and filtering Trail resources.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.256.0) The time when the trail was created.
+        :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
+        :param pulumi.Input[_builtins.str] event_selectors: The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
         :param pulumi.Input[_builtins.bool] is_organization_trail: Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] max_compute_project_arn: The ARN of the MaxCompute project to which you want to deliver events.
         :param pulumi.Input[_builtins.str] max_compute_write_role_arn: The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
@@ -318,8 +354,12 @@ class _TrailState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_event_trail_region is not None:
+            pulumi.set(__self__, "data_event_trail_region", data_event_trail_region)
         if event_rw is not None:
             pulumi.set(__self__, "event_rw", event_rw)
+        if event_selectors is not None:
+            pulumi.set(__self__, "event_selectors", event_selectors)
         if is_organization_trail is not None:
             pulumi.set(__self__, "is_organization_trail", is_organization_trail)
         if max_compute_project_arn is not None:
@@ -373,6 +413,18 @@ class _TrailState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        """
+        return pulumi.get(self, "data_event_trail_region")
+
+    @data_event_trail_region.setter
+    def data_event_trail_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_event_trail_region", value)
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -383,6 +435,18 @@ class _TrailState:
     @event_rw.setter
     def event_rw(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "event_rw", value)
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        """
+        return pulumi.get(self, "event_selectors")
+
+    @event_selectors.setter
+    def event_selectors(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "event_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")
@@ -574,7 +638,9 @@ class Trail(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -637,7 +703,9 @@ class Trail(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
+        :param pulumi.Input[_builtins.str] event_selectors: The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
         :param pulumi.Input[_builtins.bool] is_organization_trail: Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] max_compute_project_arn: The ARN of the MaxCompute project to which you want to deliver events.
         :param pulumi.Input[_builtins.str] max_compute_write_role_arn: The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
@@ -719,7 +787,9 @@ class Trail(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
                  event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+                 event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
                  is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
                  max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -743,7 +813,9 @@ class Trail(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TrailArgs.__new__(TrailArgs)
 
+            __props__.__dict__["data_event_trail_region"] = data_event_trail_region
             __props__.__dict__["event_rw"] = event_rw
+            __props__.__dict__["event_selectors"] = event_selectors
             __props__.__dict__["is_organization_trail"] = is_organization_trail
             __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
             __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
@@ -771,7 +843,9 @@ class Trail(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            data_event_trail_region: Optional[pulumi.Input[_builtins.str]] = None,
             event_rw: Optional[pulumi.Input[_builtins.str]] = None,
+            event_selectors: Optional[pulumi.Input[_builtins.str]] = None,
             is_organization_trail: Optional[pulumi.Input[_builtins.bool]] = None,
             max_compute_project_arn: Optional[pulumi.Input[_builtins.str]] = None,
             max_compute_write_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
@@ -795,7 +869,9 @@ class Trail(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.256.0) The time when the trail was created.
+        :param pulumi.Input[_builtins.str] data_event_trail_region: The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
         :param pulumi.Input[_builtins.str] event_rw: The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
+        :param pulumi.Input[_builtins.str] event_selectors: The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
         :param pulumi.Input[_builtins.bool] is_organization_trail: Specifies whether to create a multi-account trail. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] max_compute_project_arn: The ARN of the MaxCompute project to which you want to deliver events.
         :param pulumi.Input[_builtins.str] max_compute_write_role_arn: The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
@@ -817,7 +893,9 @@ class Trail(pulumi.CustomResource):
         __props__ = _TrailState.__new__(_TrailState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_event_trail_region"] = data_event_trail_region
         __props__.__dict__["event_rw"] = event_rw
+        __props__.__dict__["event_selectors"] = event_selectors
         __props__.__dict__["is_organization_trail"] = is_organization_trail
         __props__.__dict__["max_compute_project_arn"] = max_compute_project_arn
         __props__.__dict__["max_compute_write_role_arn"] = max_compute_write_role_arn
@@ -844,12 +922,28 @@ class Trail(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="dataEventTrailRegion")
+    def data_event_trail_region(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The regions where the trail tracks data events. The value is a comma-separated list of region IDs.
+        """
+        return pulumi.get(self, "data_event_trail_region")
+
+    @_builtins.property
     @pulumi.getter(name="eventRw")
     def event_rw(self) -> pulumi.Output[_builtins.str]:
         """
         The read/write type of the events to be delivered. Default value: `All`. Valid values: `Read`, `Write`, `All`.
         """
         return pulumi.get(self, "event_rw")
+
+    @_builtins.property
+    @pulumi.getter(name="eventSelectors")
+    def event_selectors(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The configuration of the data event selector. This parameter is a JSON array that can contain a maximum of 20 elements.
+        """
+        return pulumi.get(self, "event_selectors")
 
     @_builtins.property
     @pulumi.getter(name="isOrganizationTrail")

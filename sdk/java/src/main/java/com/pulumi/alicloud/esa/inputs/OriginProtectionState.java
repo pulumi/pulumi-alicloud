@@ -5,7 +5,6 @@ package com.pulumi.alicloud.esa.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,13 +41,13 @@ public final class OriginProtectionState extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return Site Id
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -110,7 +109,7 @@ public final class OriginProtectionState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -121,7 +120,7 @@ public final class OriginProtectionState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

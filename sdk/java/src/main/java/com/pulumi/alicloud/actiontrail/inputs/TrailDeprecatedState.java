@@ -23,6 +23,13 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.createTime);
     }
 
+    @Import(name="dataEventTrailRegion")
+    private @Nullable Output<String> dataEventTrailRegion;
+
+    public Optional<Output<String>> dataEventTrailRegion() {
+        return Optional.ofNullable(this.dataEventTrailRegion);
+    }
+
     /**
      * Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
      * 
@@ -36,6 +43,13 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> eventRw() {
         return Optional.ofNullable(this.eventRw);
+    }
+
+    @Import(name="eventSelectors")
+    private @Nullable Output<String> eventSelectors;
+
+    public Optional<Output<String>> eventSelectors() {
+        return Optional.ofNullable(this.eventSelectors);
     }
 
     @Import(name="isOrganizationTrail")
@@ -227,7 +241,9 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
 
     private TrailDeprecatedState(TrailDeprecatedState $) {
         this.createTime = $.createTime;
+        this.dataEventTrailRegion = $.dataEventTrailRegion;
         this.eventRw = $.eventRw;
+        this.eventSelectors = $.eventSelectors;
         this.isOrganizationTrail = $.isOrganizationTrail;
         this.maxComputeProjectArn = $.maxComputeProjectArn;
         this.maxComputeWriteRoleArn = $.maxComputeWriteRoleArn;
@@ -272,6 +288,15 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
             return createTime(Output.of(createTime));
         }
 
+        public Builder dataEventTrailRegion(@Nullable Output<String> dataEventTrailRegion) {
+            $.dataEventTrailRegion = dataEventTrailRegion;
+            return this;
+        }
+
+        public Builder dataEventTrailRegion(String dataEventTrailRegion) {
+            return dataEventTrailRegion(Output.of(dataEventTrailRegion));
+        }
+
         /**
          * @param eventRw Indicates whether the event is a read or a write event. Valid values: Read, Write, and All. Default value: Write.
          * 
@@ -291,6 +316,15 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
          */
         public Builder eventRw(String eventRw) {
             return eventRw(Output.of(eventRw));
+        }
+
+        public Builder eventSelectors(@Nullable Output<String> eventSelectors) {
+            $.eventSelectors = eventSelectors;
+            return this;
+        }
+
+        public Builder eventSelectors(String eventSelectors) {
+            return eventSelectors(Output.of(eventSelectors));
         }
 
         public Builder isOrganizationTrail(@Nullable Output<Boolean> isOrganizationTrail) {

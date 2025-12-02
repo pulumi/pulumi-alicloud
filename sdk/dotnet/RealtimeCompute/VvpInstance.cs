@@ -52,6 +52,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.264.0) The ID of the K8s cluster.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
         /// Resource specifications. See `ResourceSpec` below.
         /// </summary>
         [Output("resourceSpec")]
@@ -260,6 +266,12 @@ namespace Pulumi.AliCloud.RealtimeCompute
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.264.0) The ID of the K8s cluster.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// Resource specifications. See `ResourceSpec` below.

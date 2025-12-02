@@ -85,6 +85,26 @@ __all__ = [
     'GetServicesServiceNasConfigMountPointResult',
     'GetServicesServiceVpcConfigResult',
     'GetTriggersTriggerResult',
+    'GetV3FunctionsFunctionResult',
+    'GetV3FunctionsFunctionCustomContainerConfigResult',
+    'GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoResult',
+    'GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigResult',
+    'GetV3FunctionsFunctionCustomDnsResult',
+    'GetV3FunctionsFunctionCustomDnsDnsOptionResult',
+    'GetV3FunctionsFunctionCustomRuntimeConfigResult',
+    'GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfigResult',
+    'GetV3FunctionsFunctionGpuConfigResult',
+    'GetV3FunctionsFunctionInstanceLifecycleConfigResult',
+    'GetV3FunctionsFunctionInstanceLifecycleConfigInitializerResult',
+    'GetV3FunctionsFunctionInstanceLifecycleConfigPreStopResult',
+    'GetV3FunctionsFunctionInvocationRestrictionResult',
+    'GetV3FunctionsFunctionLogConfigResult',
+    'GetV3FunctionsFunctionNasConfigResult',
+    'GetV3FunctionsFunctionNasConfigMountPointResult',
+    'GetV3FunctionsFunctionOssMountConfigResult',
+    'GetV3FunctionsFunctionOssMountConfigMountPointResult',
+    'GetV3FunctionsFunctionTracingConfigResult',
+    'GetV3FunctionsFunctionVpcConfigResult',
     'GetV3TriggersTriggerResult',
     'GetV3TriggersTriggerHttpTriggerResult',
     'GetZonesZoneResult',
@@ -4100,6 +4120,1323 @@ class GetTriggersTriggerResult(dict):
         Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionResult(dict):
+    def __init__(__self__, *,
+                 code_size: _builtins.int,
+                 cpu: _builtins.float,
+                 create_time: _builtins.str,
+                 custom_container_config: 'outputs.GetV3FunctionsFunctionCustomContainerConfigResult',
+                 custom_dns: 'outputs.GetV3FunctionsFunctionCustomDnsResult',
+                 custom_runtime_config: 'outputs.GetV3FunctionsFunctionCustomRuntimeConfigResult',
+                 description: _builtins.str,
+                 disk_size: _builtins.int,
+                 environment_variables: Mapping[str, _builtins.str],
+                 function_arn: _builtins.str,
+                 function_id: _builtins.str,
+                 function_name: _builtins.str,
+                 gpu_config: 'outputs.GetV3FunctionsFunctionGpuConfigResult',
+                 handler: _builtins.str,
+                 id: _builtins.str,
+                 idle_timeout: _builtins.int,
+                 instance_concurrency: _builtins.int,
+                 instance_isolation_mode: _builtins.str,
+                 instance_lifecycle_config: 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigResult',
+                 internet_access: _builtins.bool,
+                 invocation_restriction: 'outputs.GetV3FunctionsFunctionInvocationRestrictionResult',
+                 last_modified_time: _builtins.str,
+                 last_update_status: _builtins.str,
+                 last_update_status_reason: _builtins.str,
+                 last_update_status_reason_code: _builtins.str,
+                 layers: Sequence[_builtins.str],
+                 log_config: 'outputs.GetV3FunctionsFunctionLogConfigResult',
+                 memory_size: _builtins.int,
+                 nas_config: 'outputs.GetV3FunctionsFunctionNasConfigResult',
+                 oss_mount_config: 'outputs.GetV3FunctionsFunctionOssMountConfigResult',
+                 resource_group_id: _builtins.str,
+                 role: _builtins.str,
+                 runtime: _builtins.str,
+                 session_affinity: _builtins.str,
+                 session_affinity_config: _builtins.str,
+                 state: _builtins.str,
+                 state_reason: _builtins.str,
+                 state_reason_code: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 timeout: _builtins.int,
+                 tracing_config: 'outputs.GetV3FunctionsFunctionTracingConfigResult',
+                 vpc_config: 'outputs.GetV3FunctionsFunctionVpcConfigResult'):
+        """
+        :param _builtins.int code_size: The code package size of the function returned by the system, in byte Example : 1024
+        :param _builtins.float cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+        :param _builtins.str create_time: The creation time of the function.
+        :param 'GetV3FunctionsFunctionCustomContainerConfigArgs' custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig.
+        :param 'GetV3FunctionsFunctionCustomDnsArgs' custom_dns: Function custom DNS configuration
+        :param 'GetV3FunctionsFunctionCustomRuntimeConfigArgs' custom_runtime_config: Customize the runtime configuration.
+        :param _builtins.str description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
+        :param _builtins.int disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
+        :param Mapping[str, _builtins.str] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param _builtins.str function_arn: ARN of function
+        :param _builtins.str function_id: The first ID of the resource
+        :param _builtins.str function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        :param 'GetV3FunctionsFunctionGpuConfigArgs' gpu_config: Function GPU configuration.
+        :param _builtins.str handler: The execution entry of the callback method, which is similar to the request handler.
+        :param _builtins.str id: The ID of the resource supplied above.
+        :param _builtins.int idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. -1 means that the threshold is cleared and the system default behavior is used.
+        :param _builtins.int instance_concurrency: Maximum instance concurrency.
+        :param _builtins.str instance_isolation_mode: Instance isolation mode
+        :param 'GetV3FunctionsFunctionInstanceLifecycleConfigArgs' instance_lifecycle_config: Instance lifecycle callback method configuration.
+        :param _builtins.bool internet_access: Allow function to access public network
+        :param 'GetV3FunctionsFunctionInvocationRestrictionArgs' invocation_restriction: Invocation Restriction Detail
+        :param _builtins.str last_modified_time: Last time the function was Updated
+        :param _builtins.str last_update_status: The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        :param _builtins.str last_update_status_reason: The reason that caused the last function to update the Operation State to the current value
+        :param _builtins.str last_update_status_reason_code: Status code of the reason that caused the last function update operation status to the current value
+        :param Sequence[_builtins.str] layers: The list of layers.
+        :param 'GetV3FunctionsFunctionLogConfigArgs' log_config: The logs generated by the function are written to the configured Logstore.
+        :param _builtins.int memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
+        :param 'GetV3FunctionsFunctionNasConfigArgs' nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource.
+        :param 'GetV3FunctionsFunctionOssMountConfigArgs' oss_mount_config: OSS mount configuration
+        :param _builtins.str resource_group_id: Resource Group ID
+        :param _builtins.str role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
+        :param _builtins.str runtime: Function runtime type
+        :param _builtins.str session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+        :param _builtins.str session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+        :param _builtins.str state: Function Status
+        :param _builtins.str state_reason: The reason why the function is in the current state
+        :param _builtins.str state_reason_code: The status code of the reason the function is in the current state.
+        :param Mapping[str, _builtins.str] tags: The tag of the resource
+        :param _builtins.int timeout: The maximum running time of the function, in seconds.
+        :param 'GetV3FunctionsFunctionTracingConfigArgs' tracing_config: Tracing configuration
+        :param 'GetV3FunctionsFunctionVpcConfigArgs' vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
+        """
+        pulumi.set(__self__, "code_size", code_size)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "custom_container_config", custom_container_config)
+        pulumi.set(__self__, "custom_dns", custom_dns)
+        pulumi.set(__self__, "custom_runtime_config", custom_runtime_config)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "environment_variables", environment_variables)
+        pulumi.set(__self__, "function_arn", function_arn)
+        pulumi.set(__self__, "function_id", function_id)
+        pulumi.set(__self__, "function_name", function_name)
+        pulumi.set(__self__, "gpu_config", gpu_config)
+        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "idle_timeout", idle_timeout)
+        pulumi.set(__self__, "instance_concurrency", instance_concurrency)
+        pulumi.set(__self__, "instance_isolation_mode", instance_isolation_mode)
+        pulumi.set(__self__, "instance_lifecycle_config", instance_lifecycle_config)
+        pulumi.set(__self__, "internet_access", internet_access)
+        pulumi.set(__self__, "invocation_restriction", invocation_restriction)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "last_update_status", last_update_status)
+        pulumi.set(__self__, "last_update_status_reason", last_update_status_reason)
+        pulumi.set(__self__, "last_update_status_reason_code", last_update_status_reason_code)
+        pulumi.set(__self__, "layers", layers)
+        pulumi.set(__self__, "log_config", log_config)
+        pulumi.set(__self__, "memory_size", memory_size)
+        pulumi.set(__self__, "nas_config", nas_config)
+        pulumi.set(__self__, "oss_mount_config", oss_mount_config)
+        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "session_affinity", session_affinity)
+        pulumi.set(__self__, "session_affinity_config", session_affinity_config)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_reason", state_reason)
+        pulumi.set(__self__, "state_reason_code", state_reason_code)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "tracing_config", tracing_config)
+        pulumi.set(__self__, "vpc_config", vpc_config)
+
+    @_builtins.property
+    @pulumi.getter(name="codeSize")
+    def code_size(self) -> _builtins.int:
+        """
+        The code package size of the function returned by the system, in byte Example : 1024
+        """
+        return pulumi.get(self, "code_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.float:
+        """
+        The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the function.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="customContainerConfig")
+    def custom_container_config(self) -> 'outputs.GetV3FunctionsFunctionCustomContainerConfigResult':
+        """
+        The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig.
+        """
+        return pulumi.get(self, "custom_container_config")
+
+    @_builtins.property
+    @pulumi.getter(name="customDns")
+    def custom_dns(self) -> 'outputs.GetV3FunctionsFunctionCustomDnsResult':
+        """
+        Function custom DNS configuration
+        """
+        return pulumi.get(self, "custom_dns")
+
+    @_builtins.property
+    @pulumi.getter(name="customRuntimeConfig")
+    def custom_runtime_config(self) -> 'outputs.GetV3FunctionsFunctionCustomRuntimeConfigResult':
+        """
+        Customize the runtime configuration.
+        """
+        return pulumi.get(self, "custom_runtime_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> _builtins.int:
+        """
+        The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
+        """
+        return pulumi.get(self, "disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Mapping[str, _builtins.str]:
+        """
+        The environment variable set for the function, you can get the value of the environment variable in the function.
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @_builtins.property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> _builtins.str:
+        """
+        ARN of function
+        """
+        return pulumi.get(self, "function_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="functionId")
+    def function_id(self) -> _builtins.str:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "function_id")
+
+    @_builtins.property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> _builtins.str:
+        """
+        The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
+        """
+        return pulumi.get(self, "function_name")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuConfig")
+    def gpu_config(self) -> 'outputs.GetV3FunctionsFunctionGpuConfigResult':
+        """
+        Function GPU configuration.
+        """
+        return pulumi.get(self, "gpu_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def handler(self) -> _builtins.str:
+        """
+        The execution entry of the callback method, which is similar to the request handler.
+        """
+        return pulumi.get(self, "handler")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the resource supplied above.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> _builtins.int:
+        """
+        Destroy an instance when the instance no-request duration exceeds this attribute. -1 means that the threshold is cleared and the system default behavior is used.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceConcurrency")
+    def instance_concurrency(self) -> _builtins.int:
+        """
+        Maximum instance concurrency.
+        """
+        return pulumi.get(self, "instance_concurrency")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceIsolationMode")
+    def instance_isolation_mode(self) -> _builtins.str:
+        """
+        Instance isolation mode
+        """
+        return pulumi.get(self, "instance_isolation_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceLifecycleConfig")
+    def instance_lifecycle_config(self) -> 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigResult':
+        """
+        Instance lifecycle callback method configuration.
+        """
+        return pulumi.get(self, "instance_lifecycle_config")
+
+    @_builtins.property
+    @pulumi.getter(name="internetAccess")
+    def internet_access(self) -> _builtins.bool:
+        """
+        Allow function to access public network
+        """
+        return pulumi.get(self, "internet_access")
+
+    @_builtins.property
+    @pulumi.getter(name="invocationRestriction")
+    def invocation_restriction(self) -> 'outputs.GetV3FunctionsFunctionInvocationRestrictionResult':
+        """
+        Invocation Restriction Detail
+        """
+        return pulumi.get(self, "invocation_restriction")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> _builtins.str:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUpdateStatus")
+    def last_update_status(self) -> _builtins.str:
+        """
+        The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        """
+        return pulumi.get(self, "last_update_status")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUpdateStatusReason")
+    def last_update_status_reason(self) -> _builtins.str:
+        """
+        The reason that caused the last function to update the Operation State to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="lastUpdateStatusReasonCode")
+    def last_update_status_reason_code(self) -> _builtins.str:
+        """
+        Status code of the reason that caused the last function update operation status to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def layers(self) -> Sequence[_builtins.str]:
+        """
+        The list of layers.
+        """
+        return pulumi.get(self, "layers")
+
+    @_builtins.property
+    @pulumi.getter(name="logConfig")
+    def log_config(self) -> 'outputs.GetV3FunctionsFunctionLogConfigResult':
+        """
+        The logs generated by the function are written to the configured Logstore.
+        """
+        return pulumi.get(self, "log_config")
+
+    @_builtins.property
+    @pulumi.getter(name="memorySize")
+    def memory_size(self) -> _builtins.int:
+        """
+        The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
+        """
+        return pulumi.get(self, "memory_size")
+
+    @_builtins.property
+    @pulumi.getter(name="nasConfig")
+    def nas_config(self) -> 'outputs.GetV3FunctionsFunctionNasConfigResult':
+        """
+        NAS configuration. After this parameter is configured, the function can access the specified NAS resource.
+        """
+        return pulumi.get(self, "nas_config")
+
+    @_builtins.property
+    @pulumi.getter(name="ossMountConfig")
+    def oss_mount_config(self) -> 'outputs.GetV3FunctionsFunctionOssMountConfigResult':
+        """
+        OSS mount configuration
+        """
+        return pulumi.get(self, "oss_mount_config")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> _builtins.str:
+        """
+        Resource Group ID
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter
+    def runtime(self) -> _builtins.str:
+        """
+        Function runtime type
+        """
+        return pulumi.get(self, "runtime")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionAffinity")
+    def session_affinity(self) -> _builtins.str:
+        """
+        The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
+        """
+        return pulumi.get(self, "session_affinity")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionAffinityConfig")
+    def session_affinity_config(self) -> _builtins.str:
+        """
+        When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
+        """
+        return pulumi.get(self, "session_affinity_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Function Status
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> _builtins.str:
+        """
+        The reason why the function is in the current state
+        """
+        return pulumi.get(self, "state_reason")
+
+    @_builtins.property
+    @pulumi.getter(name="stateReasonCode")
+    def state_reason_code(self) -> _builtins.str:
+        """
+        The status code of the reason the function is in the current state.
+        """
+        return pulumi.get(self, "state_reason_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        The tag of the resource
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        The maximum running time of the function, in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> 'outputs.GetV3FunctionsFunctionTracingConfigResult':
+        """
+        Tracing configuration
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConfig")
+    def vpc_config(self) -> 'outputs.GetV3FunctionsFunctionVpcConfigResult':
+        """
+        VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
+        """
+        return pulumi.get(self, "vpc_config")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomContainerConfigResult(dict):
+    def __init__(__self__, *,
+                 acceleration_info: 'outputs.GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoResult',
+                 acceleration_type: _builtins.str,
+                 acr_instance_id: _builtins.str,
+                 commands: Sequence[_builtins.str],
+                 entrypoints: Sequence[_builtins.str],
+                 health_check_config: 'outputs.GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigResult',
+                 image: _builtins.str,
+                 port: _builtins.int,
+                 resolved_image_uri: _builtins.str):
+        """
+        :param 'GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoArgs' acceleration_info: Image Acceleration Information (Obsolete).
+        :param _builtins.str acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        :param _builtins.str acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        :param Sequence[_builtins.str] commands: Lifecycle Initialization Phase Callback Instructions.
+        :param Sequence[_builtins.str] entrypoints: Container start command.
+        :param 'GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration.
+        :param _builtins.str image: The container Image address.
+        :param _builtins.int port: The listening port of the HTTP Server.
+        :param _builtins.str resolved_image_uri: The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+        """
+        pulumi.set(__self__, "acceleration_info", acceleration_info)
+        pulumi.set(__self__, "acceleration_type", acceleration_type)
+        pulumi.set(__self__, "acr_instance_id", acr_instance_id)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "entrypoints", entrypoints)
+        pulumi.set(__self__, "health_check_config", health_check_config)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "resolved_image_uri", resolved_image_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="accelerationInfo")
+    def acceleration_info(self) -> 'outputs.GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoResult':
+        """
+        Image Acceleration Information (Obsolete).
+        """
+        return pulumi.get(self, "acceleration_info")
+
+    @_builtins.property
+    @pulumi.getter(name="accelerationType")
+    def acceleration_type(self) -> _builtins.str:
+        """
+        Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
+        """
+        return pulumi.get(self, "acceleration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="acrInstanceId")
+    def acr_instance_id(self) -> _builtins.str:
+        """
+        ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
+        """
+        return pulumi.get(self, "acr_instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Sequence[_builtins.str]:
+        """
+        Lifecycle Initialization Phase Callback Instructions.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def entrypoints(self) -> Sequence[_builtins.str]:
+        """
+        Container start command.
+        """
+        return pulumi.get(self, "entrypoints")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> 'outputs.GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigResult':
+        """
+        Function custom health check configuration.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        """
+        The container Image address.
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The listening port of the HTTP Server.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="resolvedImageUri")
+    def resolved_image_uri(self) -> _builtins.str:
+        """
+        The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
+        """
+        return pulumi.get(self, "resolved_image_uri")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomContainerConfigAccelerationInfoResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Image Acceleration Status (Deprecated).
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Image Acceleration Status (Deprecated).
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfigResult(dict):
+    def __init__(__self__, *,
+                 failure_threshold: _builtins.int,
+                 http_get_url: _builtins.str,
+                 initial_delay_seconds: _builtins.int,
+                 period_seconds: _builtins.int,
+                 success_threshold: _builtins.int,
+                 timeout_seconds: _builtins.int):
+        """
+        :param _builtins.int failure_threshold: The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+        :param _builtins.str http_get_url: The URL of the container's custom health check. No more than 2048 characters in length.
+        :param _builtins.int initial_delay_seconds: The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+        :param _builtins.int period_seconds: Health check cycle. The value range is 1~120. The default value is 3.
+        :param _builtins.int success_threshold: The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+        :param _builtins.int timeout_seconds: Health check timeout. Value range 1~3. The default value is 1.
+        """
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "http_get_url", http_get_url)
+        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "success_threshold", success_threshold)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> _builtins.int:
+        """
+        The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> _builtins.str:
+        """
+        The URL of the container's custom health check. No more than 2048 characters in length.
+        """
+        return pulumi.get(self, "http_get_url")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> _builtins.int:
+        """
+        The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> _builtins.int:
+        """
+        Health check cycle. The value range is 1~120. The default value is 3.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> _builtins.int:
+        """
+        The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> _builtins.int:
+        """
+        Health check timeout. Value range 1~3. The default value is 1.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomDnsResult(dict):
+    def __init__(__self__, *,
+                 dns_options: Sequence['outputs.GetV3FunctionsFunctionCustomDnsDnsOptionResult'],
+                 name_servers: Sequence[_builtins.str],
+                 searches: Sequence[_builtins.str]):
+        """
+        :param Sequence['GetV3FunctionsFunctionCustomDnsDnsOptionArgs'] dns_options: List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required.
+        :param Sequence[_builtins.str] name_servers: IP Address List of DNS servers.
+        :param Sequence[_builtins.str] searches: DNS search domain list.
+        """
+        pulumi.set(__self__, "dns_options", dns_options)
+        pulumi.set(__self__, "name_servers", name_servers)
+        pulumi.set(__self__, "searches", searches)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsOptions")
+    def dns_options(self) -> Sequence['outputs.GetV3FunctionsFunctionCustomDnsDnsOptionResult']:
+        """
+        List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required.
+        """
+        return pulumi.get(self, "dns_options")
+
+    @_builtins.property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[_builtins.str]:
+        """
+        IP Address List of DNS servers.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @_builtins.property
+    @pulumi.getter
+    def searches(self) -> Sequence[_builtins.str]:
+        """
+        DNS search domain list.
+        """
+        return pulumi.get(self, "searches")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomDnsDnsOptionResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Configuration Item Name.
+        :param _builtins.str value: Configuration Item Value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Configuration Item Name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Configuration Item Value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomRuntimeConfigResult(dict):
+    def __init__(__self__, *,
+                 args: Sequence[_builtins.str],
+                 commands: Sequence[_builtins.str],
+                 health_check_config: 'outputs.GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfigResult',
+                 port: _builtins.int):
+        """
+        :param Sequence[_builtins.str] args: Instance startup parameters.
+        :param Sequence[_builtins.str] commands: Lifecycle Initialization Phase Callback Instructions.
+        :param 'GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration.
+        :param _builtins.int port: The listening port of the HTTP Server.
+        """
+        pulumi.set(__self__, "args", args)
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "health_check_config", health_check_config)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def args(self) -> Sequence[_builtins.str]:
+        """
+        Instance startup parameters.
+        """
+        return pulumi.get(self, "args")
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Sequence[_builtins.str]:
+        """
+        Lifecycle Initialization Phase Callback Instructions.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckConfig")
+    def health_check_config(self) -> 'outputs.GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfigResult':
+        """
+        Function custom health check configuration.
+        """
+        return pulumi.get(self, "health_check_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        The listening port of the HTTP Server.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionCustomRuntimeConfigHealthCheckConfigResult(dict):
+    def __init__(__self__, *,
+                 failure_threshold: _builtins.int,
+                 http_get_url: _builtins.str,
+                 initial_delay_seconds: _builtins.int,
+                 period_seconds: _builtins.int,
+                 success_threshold: _builtins.int,
+                 timeout_seconds: _builtins.int):
+        """
+        :param _builtins.int failure_threshold: The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+        :param _builtins.str http_get_url: The URL of the container's custom health check. No more than 2048 characters in length.
+        :param _builtins.int initial_delay_seconds: The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+        :param _builtins.int period_seconds: Health check cycle. The value range is 1~120. The default value is 3.
+        :param _builtins.int success_threshold: The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+        :param _builtins.int timeout_seconds: Health check timeout. Value range 1~3. The default value is 1.
+        """
+        pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "http_get_url", http_get_url)
+        pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
+        pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "success_threshold", success_threshold)
+        pulumi.set(__self__, "timeout_seconds", timeout_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="failureThreshold")
+    def failure_threshold(self) -> _builtins.int:
+        """
+        The health check failure threshold. The system considers the health check failure when the health check fails. The value range is 1~120. The default value is 3.
+        """
+        return pulumi.get(self, "failure_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="httpGetUrl")
+    def http_get_url(self) -> _builtins.str:
+        """
+        The URL of the container's custom health check. No more than 2048 characters in length.
+        """
+        return pulumi.get(self, "http_get_url")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelaySeconds")
+    def initial_delay_seconds(self) -> _builtins.int:
+        """
+        The delay between the start of the container and the initiation of the health check. Value range 0~120. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="periodSeconds")
+    def period_seconds(self) -> _builtins.int:
+        """
+        Health check cycle. The value range is 1~120. The default value is 3.
+        """
+        return pulumi.get(self, "period_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="successThreshold")
+    def success_threshold(self) -> _builtins.int:
+        """
+        The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
+        """
+        return pulumi.get(self, "success_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutSeconds")
+    def timeout_seconds(self) -> _builtins.int:
+        """
+        Health check timeout. Value range 1~3. The default value is 1.
+        """
+        return pulumi.get(self, "timeout_seconds")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionGpuConfigResult(dict):
+    def __init__(__self__, *,
+                 gpu_memory_size: _builtins.int,
+                 gpu_type: _builtins.str):
+        """
+        :param _builtins.int gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB.
+        :param _builtins.str gpu_type: GPU card architecture.-fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).-fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).-fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+        """
+        pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
+        pulumi.set(__self__, "gpu_type", gpu_type)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuMemorySize")
+    def gpu_memory_size(self) -> _builtins.int:
+        """
+        GPU memory specification, unit: MB, multiple of 1024MB.
+        """
+        return pulumi.get(self, "gpu_memory_size")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuType")
+    def gpu_type(self) -> _builtins.str:
+        """
+        GPU card architecture.-fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).-fc.gpu.ampere.1 indicates the GPU instance type of Ampere Architecture Series card (same as NVIDIA A10 card type).-fc.gpu.ada.1 Indicates the GPU instance Ada Lovelace architecture family card type.
+        """
+        return pulumi.get(self, "gpu_type")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionInstanceLifecycleConfigResult(dict):
+    def __init__(__self__, *,
+                 initializer: 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigInitializerResult',
+                 pre_stop: 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigPreStopResult'):
+        """
+        :param 'GetV3FunctionsFunctionInstanceLifecycleConfigInitializerArgs' initializer: Initializer handler method configuration.
+        :param 'GetV3FunctionsFunctionInstanceLifecycleConfigPreStopArgs' pre_stop: PreStop handler method configuration.
+        """
+        pulumi.set(__self__, "initializer", initializer)
+        pulumi.set(__self__, "pre_stop", pre_stop)
+
+    @_builtins.property
+    @pulumi.getter
+    def initializer(self) -> 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigInitializerResult':
+        """
+        Initializer handler method configuration.
+        """
+        return pulumi.get(self, "initializer")
+
+    @_builtins.property
+    @pulumi.getter(name="preStop")
+    def pre_stop(self) -> 'outputs.GetV3FunctionsFunctionInstanceLifecycleConfigPreStopResult':
+        """
+        PreStop handler method configuration.
+        """
+        return pulumi.get(self, "pre_stop")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionInstanceLifecycleConfigInitializerResult(dict):
+    def __init__(__self__, *,
+                 commands: Sequence[_builtins.str],
+                 handler: _builtins.str,
+                 timeout: _builtins.int):
+        """
+        :param Sequence[_builtins.str] commands: Lifecycle Initialization Phase Callback Instructions.
+        :param _builtins.str handler: The execution entry of the callback method, which is similar to the request handler.
+        :param _builtins.int timeout: The maximum running time of the function, in seconds.
+        """
+        pulumi.set(__self__, "commands", commands)
+        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def commands(self) -> Sequence[_builtins.str]:
+        """
+        Lifecycle Initialization Phase Callback Instructions.
+        """
+        return pulumi.get(self, "commands")
+
+    @_builtins.property
+    @pulumi.getter
+    def handler(self) -> _builtins.str:
+        """
+        The execution entry of the callback method, which is similar to the request handler.
+        """
+        return pulumi.get(self, "handler")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        The maximum running time of the function, in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionInstanceLifecycleConfigPreStopResult(dict):
+    def __init__(__self__, *,
+                 handler: _builtins.str,
+                 timeout: _builtins.int):
+        """
+        :param _builtins.str handler: The execution entry of the callback method, which is similar to the request handler.
+        :param _builtins.int timeout: The maximum running time of the function, in seconds.
+        """
+        pulumi.set(__self__, "handler", handler)
+        pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def handler(self) -> _builtins.str:
+        """
+        The execution entry of the callback method, which is similar to the request handler.
+        """
+        return pulumi.get(self, "handler")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        The maximum running time of the function, in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionInvocationRestrictionResult(dict):
+    def __init__(__self__, *,
+                 disable: _builtins.bool,
+                 last_modified_time: _builtins.str,
+                 reason: _builtins.str):
+        """
+        :param _builtins.bool disable: Whether invocation is disabled.
+        :param _builtins.str last_modified_time: Last time the function was Updated
+        :param _builtins.str reason: Disable Reason.
+        """
+        pulumi.set(__self__, "disable", disable)
+        pulumi.set(__self__, "last_modified_time", last_modified_time)
+        pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def disable(self) -> _builtins.bool:
+        """
+        Whether invocation is disabled.
+        """
+        return pulumi.get(self, "disable")
+
+    @_builtins.property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> _builtins.str:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> _builtins.str:
+        """
+        Disable Reason.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionLogConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_instance_metrics: _builtins.bool,
+                 enable_request_metrics: _builtins.bool,
+                 log_begin_rule: _builtins.str,
+                 logstore: _builtins.str,
+                 project: _builtins.str):
+        """
+        :param _builtins.bool enable_instance_metrics: After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+        :param _builtins.bool enable_request_metrics: After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+        :param _builtins.str log_begin_rule: Log Line First Matching Rules.
+        :param _builtins.str logstore: The Logstore name of log service.
+        :param _builtins.str project: The name of the log service Project.
+        """
+        pulumi.set(__self__, "enable_instance_metrics", enable_instance_metrics)
+        pulumi.set(__self__, "enable_request_metrics", enable_request_metrics)
+        pulumi.set(__self__, "log_begin_rule", log_begin_rule)
+        pulumi.set(__self__, "logstore", logstore)
+        pulumi.set(__self__, "project", project)
+
+    @_builtins.property
+    @pulumi.getter(name="enableInstanceMetrics")
+    def enable_instance_metrics(self) -> _builtins.bool:
+        """
+        After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
+        """
+        return pulumi.get(self, "enable_instance_metrics")
+
+    @_builtins.property
+    @pulumi.getter(name="enableRequestMetrics")
+    def enable_request_metrics(self) -> _builtins.bool:
+        """
+        After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
+        """
+        return pulumi.get(self, "enable_request_metrics")
+
+    @_builtins.property
+    @pulumi.getter(name="logBeginRule")
+    def log_begin_rule(self) -> _builtins.str:
+        """
+        Log Line First Matching Rules.
+        """
+        return pulumi.get(self, "log_begin_rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def logstore(self) -> _builtins.str:
+        """
+        The Logstore name of log service.
+        """
+        return pulumi.get(self, "logstore")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The name of the log service Project.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionNasConfigResult(dict):
+    def __init__(__self__, *,
+                 group_id: _builtins.int,
+                 mount_points: Sequence['outputs.GetV3FunctionsFunctionNasConfigMountPointResult'],
+                 user_id: _builtins.int):
+        """
+        :param _builtins.int group_id: Group ID.
+        :param Sequence['GetV3FunctionsFunctionNasConfigMountPointArgs'] mount_points: OSS mount point list.
+        :param _builtins.int user_id: Account ID.
+        """
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "mount_points", mount_points)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> _builtins.int:
+        """
+        Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Sequence['outputs.GetV3FunctionsFunctionNasConfigMountPointResult']:
+        """
+        OSS mount point list.
+        """
+        return pulumi.get(self, "mount_points")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.int:
+        """
+        Account ID.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionNasConfigMountPointResult(dict):
+    def __init__(__self__, *,
+                 enable_tls: _builtins.bool,
+                 mount_dir: _builtins.str,
+                 server_addr: _builtins.str):
+        """
+        :param _builtins.bool enable_tls: Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+        :param _builtins.str mount_dir: Mount Directory.
+        :param _builtins.str server_addr: NAS server address.
+        """
+        pulumi.set(__self__, "enable_tls", enable_tls)
+        pulumi.set(__self__, "mount_dir", mount_dir)
+        pulumi.set(__self__, "server_addr", server_addr)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls")
+    def enable_tls(self) -> _builtins.bool:
+        """
+        Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
+        """
+        return pulumi.get(self, "enable_tls")
+
+    @_builtins.property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> _builtins.str:
+        """
+        Mount Directory.
+        """
+        return pulumi.get(self, "mount_dir")
+
+    @_builtins.property
+    @pulumi.getter(name="serverAddr")
+    def server_addr(self) -> _builtins.str:
+        """
+        NAS server address.
+        """
+        return pulumi.get(self, "server_addr")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionOssMountConfigResult(dict):
+    def __init__(__self__, *,
+                 mount_points: Sequence['outputs.GetV3FunctionsFunctionOssMountConfigMountPointResult']):
+        """
+        :param Sequence['GetV3FunctionsFunctionOssMountConfigMountPointArgs'] mount_points: OSS mount point list.
+        """
+        pulumi.set(__self__, "mount_points", mount_points)
+
+    @_builtins.property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Sequence['outputs.GetV3FunctionsFunctionOssMountConfigMountPointResult']:
+        """
+        OSS mount point list.
+        """
+        return pulumi.get(self, "mount_points")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionOssMountConfigMountPointResult(dict):
+    def __init__(__self__, *,
+                 bucket_name: _builtins.str,
+                 bucket_path: _builtins.str,
+                 endpoint: _builtins.str,
+                 mount_dir: _builtins.str,
+                 read_only: _builtins.bool):
+        """
+        :param _builtins.str bucket_name: OSS Bucket name.
+        :param _builtins.str bucket_path: Path of the mounted OSS Bucket.
+        :param _builtins.str endpoint: OSS access endpoint.
+        :param _builtins.str mount_dir: Mount Directory.
+        :param _builtins.bool read_only: Read-only.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "bucket_path", bucket_path)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "mount_dir", mount_dir)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> _builtins.str:
+        """
+        OSS Bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketPath")
+    def bucket_path(self) -> _builtins.str:
+        """
+        Path of the mounted OSS Bucket.
+        """
+        return pulumi.get(self, "bucket_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        OSS access endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="mountDir")
+    def mount_dir(self) -> _builtins.str:
+        """
+        Mount Directory.
+        """
+        return pulumi.get(self, "mount_dir")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        """
+        Read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionTracingConfigResult(dict):
+    def __init__(__self__, *,
+                 params: Mapping[str, _builtins.str],
+                 type: _builtins.str):
+        """
+        :param Mapping[str, _builtins.str] params: Tracing parameters.
+        :param _builtins.str type: The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> Mapping[str, _builtins.str]:
+        """
+        Tracing parameters.
+        """
+        return pulumi.get(self, "params")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetV3FunctionsFunctionVpcConfigResult(dict):
+    def __init__(__self__, *,
+                 security_group_id: _builtins.str,
+                 vpc_id: _builtins.str,
+                 vswitch_ids: Sequence[_builtins.str]):
+        """
+        :param _builtins.str security_group_id: Security group ID.
+        :param _builtins.str vpc_id: VPC network ID.
+        :param Sequence[_builtins.str] vswitch_ids: Switch List.
+        """
+        pulumi.set(__self__, "security_group_id", security_group_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> _builtins.str:
+        """
+        Security group ID.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.str:
+        """
+        VPC network ID.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchIds")
+    def vswitch_ids(self) -> Sequence[_builtins.str]:
+        """
+        Switch List.
+        """
+        return pulumi.get(self, "vswitch_ids")
 
 
 @pulumi.output_type

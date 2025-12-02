@@ -19,11 +19,11 @@ __all__ = ['OriginProtectionArgs', 'OriginProtection']
 @pulumi.input_type
 class OriginProtectionArgs:
     def __init__(__self__, *,
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  origin_converge: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginProtection resource.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] origin_converge: The IP convergence status.
                
                - on
@@ -35,14 +35,14 @@ class OriginProtectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -65,14 +65,14 @@ class OriginProtectionArgs:
 class _OriginProtectionState:
     def __init__(__self__, *,
                  origin_converge: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginProtection resources.
         :param pulumi.Input[_builtins.str] origin_converge: The IP convergence status.
                
                - on
                - off
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         if origin_converge is not None:
             pulumi.set(__self__, "origin_converge", origin_converge)
@@ -96,14 +96,14 @@ class _OriginProtectionState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -114,7 +114,7 @@ class OriginProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  origin_converge: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Origin Protection resource.
@@ -160,7 +160,7 @@ class OriginProtection(pulumi.CustomResource):
                
                - on
                - off
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         ...
     @overload
@@ -222,7 +222,7 @@ class OriginProtection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  origin_converge: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -247,7 +247,7 @@ class OriginProtection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             origin_converge: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'OriginProtection':
+            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OriginProtection':
         """
         Get an existing OriginProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -259,7 +259,7 @@ class OriginProtection(pulumi.CustomResource):
                
                - on
                - off
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -282,7 +282,7 @@ class OriginProtection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site Id
         """

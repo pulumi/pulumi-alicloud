@@ -15,6 +15,10 @@ else:
 from . import _utilities
 
 __all__ = [
+    'MilvusInstanceComponentArgs',
+    'MilvusInstanceComponentArgsDict',
+    'MilvusInstanceVswitchIdArgs',
+    'MilvusInstanceVswitchIdArgsDict',
     'ProviderAssumeRoleArgs',
     'ProviderAssumeRoleArgsDict',
     'ProviderAssumeRoleWithOidcArgs',
@@ -34,6 +38,185 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class MilvusInstanceComponentArgsDict(TypedDict):
+        cu_num: pulumi.Input[_builtins.int]
+        """
+        The number of CU. For example: 4
+        """
+        replica: pulumi.Input[_builtins.int]
+        """
+        The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+        """
+        type: pulumi.Input[_builtins.str]
+        """
+        The component type. Different types need to be configured according to different versions.
+        - Starter version: Array including standalone
+        - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+        2.5: proxy ,mix_coordinator,data,query,index
+        2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        """
+        cu_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+        - general: Generic
+        - ram: Capacity
+        """
+        disk_size_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        """
+elif False:
+    MilvusInstanceComponentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MilvusInstanceComponentArgs:
+    def __init__(__self__, *,
+                 cu_num: pulumi.Input[_builtins.int],
+                 replica: pulumi.Input[_builtins.int],
+                 type: pulumi.Input[_builtins.str],
+                 cu_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_size_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] cu_num: The number of CU. For example: 4
+        :param pulumi.Input[_builtins.int] replica: The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+        :param pulumi.Input[_builtins.str] type: The component type. Different types need to be configured according to different versions.
+               - Starter version: Array including standalone
+               - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+               2.5: proxy ,mix_coordinator,data,query,index
+               2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        :param pulumi.Input[_builtins.str] cu_type: The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+               - general: Generic
+               - ram: Capacity
+        :param pulumi.Input[_builtins.str] disk_size_type: Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        """
+        pulumi.set(__self__, "cu_num", cu_num)
+        pulumi.set(__self__, "replica", replica)
+        pulumi.set(__self__, "type", type)
+        if cu_type is not None:
+            pulumi.set(__self__, "cu_type", cu_type)
+        if disk_size_type is not None:
+            pulumi.set(__self__, "disk_size_type", disk_size_type)
+
+    @_builtins.property
+    @pulumi.getter(name="cuNum")
+    def cu_num(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of CU. For example: 4
+        """
+        return pulumi.get(self, "cu_num")
+
+    @cu_num.setter
+    def cu_num(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "cu_num", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replica(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+        """
+        return pulumi.get(self, "replica")
+
+    @replica.setter
+    def replica(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "replica", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The component type. Different types need to be configured according to different versions.
+        - Starter version: Array including standalone
+        - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+        2.5: proxy ,mix_coordinator,data,query,index
+        2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cuType")
+    def cu_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+        - general: Generic
+        - ram: Capacity
+        """
+        return pulumi.get(self, "cu_type")
+
+    @cu_type.setter
+    def cu_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cu_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeType")
+    def disk_size_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        """
+        return pulumi.get(self, "disk_size_type")
+
+    @disk_size_type.setter
+    def disk_size_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "disk_size_type", value)
+
+
+if not MYPY:
+    class MilvusInstanceVswitchIdArgsDict(TypedDict):
+        vsw_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        VSwitch id, which must correspond to the zone id.
+        """
+        zone_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The availability zone must correspond to the vswId.
+        """
+elif False:
+    MilvusInstanceVswitchIdArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MilvusInstanceVswitchIdArgs:
+    def __init__(__self__, *,
+                 vsw_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vsw_id: VSwitch id, which must correspond to the zone id.
+        :param pulumi.Input[_builtins.str] zone_id: The availability zone must correspond to the vswId.
+        """
+        if vsw_id is not None:
+            pulumi.set(__self__, "vsw_id", vsw_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="vswId")
+    def vsw_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        VSwitch id, which must correspond to the zone id.
+        """
+        return pulumi.get(self, "vsw_id")
+
+    @vsw_id.setter
+    def vsw_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vsw_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The availability zone must correspond to the vswId.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "zone_id", value)
+
 
 if not MYPY:
     class ProviderAssumeRoleArgsDict(TypedDict):

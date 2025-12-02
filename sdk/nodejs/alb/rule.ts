@@ -176,7 +176,7 @@ export class Rule extends pulumi.CustomResource {
      */
     declare public readonly listenerId: pulumi.Output<string>;
     /**
-     * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
@@ -267,7 +267,7 @@ export interface RuleState {
      */
     listenerId?: pulumi.Input<string>;
     /**
-     * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -307,7 +307,7 @@ export interface RuleArgs {
      */
     listenerId: pulumi.Input<string>;
     /**
-     * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
+     * The priority of the rule. Valid values: `1` to `10000`. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      */
     priority: pulumi.Input<number>;
     /**

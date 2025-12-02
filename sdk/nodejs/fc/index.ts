@@ -50,6 +50,11 @@ export const getTriggers: typeof import("./getTriggers").getTriggers = null as a
 export const getTriggersOutput: typeof import("./getTriggers").getTriggersOutput = null as any;
 utilities.lazyLoad(exports, ["getTriggers","getTriggersOutput"], () => require("./getTriggers"));
 
+export { GetV3FunctionsArgs, GetV3FunctionsResult, GetV3FunctionsOutputArgs } from "./getV3Functions";
+export const getV3Functions: typeof import("./getV3Functions").getV3Functions = null as any;
+export const getV3FunctionsOutput: typeof import("./getV3Functions").getV3FunctionsOutput = null as any;
+utilities.lazyLoad(exports, ["getV3Functions","getV3FunctionsOutput"], () => require("./getV3Functions"));
+
 export { GetV3TriggersArgs, GetV3TriggersResult, GetV3TriggersOutputArgs } from "./getV3Triggers";
 export const getV3Triggers: typeof import("./getV3Triggers").getV3Triggers = null as any;
 export const getV3TriggersOutput: typeof import("./getV3Triggers").getV3TriggersOutput = null as any;

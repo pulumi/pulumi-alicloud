@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// The URL of the page to monitor.
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// The URL of the page to monitor.
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// The URL of the page to monitor.

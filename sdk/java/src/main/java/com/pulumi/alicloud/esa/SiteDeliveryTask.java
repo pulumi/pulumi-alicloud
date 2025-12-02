@@ -16,7 +16,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -90,7 +89,7 @@ import javax.annotation.Nullable;
  *                 .destUrl("http://11.177.129.13:8081")
  *                 .maxBatchSize(1000)
  *                 .build())
- *             .dataCenter("oversea")
+ *             .dataCenter("global")
  *             .discardRate(0.0)
  *             .taskName("dcdn-example-task")
  *             .businessType("dcdn_log_access_l1")
@@ -190,12 +189,16 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
     /**
      * HTTP delivery configuration parameters. See `httpDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="httpDelivery", refs={SiteDeliveryTaskHttpDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskHttpDelivery> httpDelivery;
 
     /**
      * @return HTTP delivery configuration parameters. See `httpDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<SiteDeliveryTaskHttpDelivery>> httpDelivery() {
@@ -204,12 +207,16 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
     /**
      * Kafka delivery configuration parameters. See `kafkaDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="kafkaDelivery", refs={SiteDeliveryTaskKafkaDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskKafkaDelivery> kafkaDelivery;
 
     /**
      * @return Kafka delivery configuration parameters. See `kafkaDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<SiteDeliveryTaskKafkaDelivery>> kafkaDelivery() {
@@ -218,12 +225,16 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
     /**
      * OSS delivery configuration. See `ossDelivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="ossDelivery", refs={SiteDeliveryTaskOssDelivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskOssDelivery> ossDelivery;
 
     /**
      * @return OSS delivery configuration. See `ossDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<SiteDeliveryTaskOssDelivery>> ossDelivery() {
@@ -232,12 +243,16 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
     /**
      * S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="s3Delivery", refs={SiteDeliveryTaskS3Delivery.class}, tree="[0]")
     private Output</* @Nullable */ SiteDeliveryTaskS3Delivery> s3Delivery;
 
     /**
      * @return S3/S3 compatible delivery configuration parameters. See `s3Delivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<SiteDeliveryTaskS3Delivery>> s3Delivery() {
@@ -247,18 +262,20 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
      * The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
      * SLS delivery configuration. See `slsDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="slsDelivery", refs={SiteDeliveryTaskSlsDelivery.class}, tree="[0]")
@@ -266,6 +283,8 @@ public class SiteDeliveryTask extends com.pulumi.resources.CustomResource {
 
     /**
      * @return SLS delivery configuration. See `slsDelivery` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<SiteDeliveryTaskSlsDelivery>> slsDelivery() {

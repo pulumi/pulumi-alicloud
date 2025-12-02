@@ -64,6 +64,10 @@ export class VvpInstance extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
+     * (Available since v1.264.0) The ID of the K8s cluster.
+     */
+    declare public /*out*/ readonly resourceId: pulumi.Output<string>;
+    /**
      * Resource specifications. See `resourceSpec` below.
      */
     declare public readonly resourceSpec: pulumi.Output<outputs.realtimecompute.VvpInstanceResourceSpec>;
@@ -114,6 +118,7 @@ export class VvpInstance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["pricingCycle"] = state?.pricingCycle;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceSpec"] = state?.resourceSpec;
             resourceInputs["status"] = state?.status;
             resourceInputs["storage"] = state?.storage;
@@ -154,6 +159,7 @@ export class VvpInstance extends pulumi.CustomResource {
             resourceInputs["vvpInstanceName"] = args?.vvpInstanceName;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["resourceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -185,6 +191,10 @@ export interface VvpInstanceState {
      * The resource group to which the newly purchased instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.264.0) The ID of the K8s cluster.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * Resource specifications. See `resourceSpec` below.
      */

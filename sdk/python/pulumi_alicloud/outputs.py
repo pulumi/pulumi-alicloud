@@ -15,6 +15,8 @@ else:
 from . import _utilities
 
 __all__ = [
+    'MilvusInstanceComponent',
+    'MilvusInstanceVswitchId',
     'StarRocksInstanceBackendNodeGroup',
     'StarRocksInstanceFrontendNodeGroup',
     'StarRocksInstanceObserverNodeGroup',
@@ -25,6 +27,153 @@ __all__ = [
     'GetRegionsRegionResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class MilvusInstanceComponent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cuNum":
+            suggest = "cu_num"
+        elif key == "cuType":
+            suggest = "cu_type"
+        elif key == "diskSizeType":
+            suggest = "disk_size_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MilvusInstanceComponent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MilvusInstanceComponent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MilvusInstanceComponent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cu_num: _builtins.int,
+                 replica: _builtins.int,
+                 type: _builtins.str,
+                 cu_type: Optional[_builtins.str] = None,
+                 disk_size_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int cu_num: The number of CU. For example: 4
+        :param _builtins.int replica: The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+        :param _builtins.str type: The component type. Different types need to be configured according to different versions.
+               - Starter version: Array including standalone
+               - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+               2.5: proxy ,mix_coordinator,data,query,index
+               2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        :param _builtins.str cu_type: The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+               - general: Generic
+               - ram: Capacity
+        :param _builtins.str disk_size_type: Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        """
+        pulumi.set(__self__, "cu_num", cu_num)
+        pulumi.set(__self__, "replica", replica)
+        pulumi.set(__self__, "type", type)
+        if cu_type is not None:
+            pulumi.set(__self__, "cu_type", cu_type)
+        if disk_size_type is not None:
+            pulumi.set(__self__, "disk_size_type", disk_size_type)
+
+    @_builtins.property
+    @pulumi.getter(name="cuNum")
+    def cu_num(self) -> _builtins.int:
+        """
+        The number of CU. For example: 4
+        """
+        return pulumi.get(self, "cu_num")
+
+    @_builtins.property
+    @pulumi.getter
+    def replica(self) -> _builtins.int:
+        """
+        The number of component replicas. The number of highly available replicas must be greater than or equal to 2.
+        """
+        return pulumi.get(self, "replica")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The component type. Different types need to be configured according to different versions.
+        - Starter version: Array including standalone
+        - Standard Edition: The configuration is different according to the 2.5 version and 2.6 version.
+        2.5: proxy ,mix_coordinator,data,query,index
+        2.6 need to configure: proxy,mix_coordinator,data,query,streaming
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="cuType")
+    def cu_type(self) -> Optional[_builtins.str]:
+        """
+        The calculation type. The default value is general, and the ram type needs to be opened with a work order.
+        - general: Generic
+        - ram: Capacity
+        """
+        return pulumi.get(self, "cu_type")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeType")
+    def disk_size_type(self) -> Optional[_builtins.str]:
+        """
+        Default Normal. The Query Node is configured with the capacity type, performance type, and capacity type Large, and the rest are configured with Normal.
+        """
+        return pulumi.get(self, "disk_size_type")
+
+
+@pulumi.output_type
+class MilvusInstanceVswitchId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vswId":
+            suggest = "vsw_id"
+        elif key == "zoneId":
+            suggest = "zone_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MilvusInstanceVswitchId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MilvusInstanceVswitchId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MilvusInstanceVswitchId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vsw_id: Optional[_builtins.str] = None,
+                 zone_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str vsw_id: VSwitch id, which must correspond to the zone id.
+        :param _builtins.str zone_id: The availability zone must correspond to the vswId.
+        """
+        if vsw_id is not None:
+            pulumi.set(__self__, "vsw_id", vsw_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="vswId")
+    def vsw_id(self) -> Optional[_builtins.str]:
+        """
+        VSwitch id, which must correspond to the zone id.
+        """
+        return pulumi.get(self, "vsw_id")
+
+    @_builtins.property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[_builtins.str]:
+        """
+        The availability zone must correspond to the vswId.
+        """
+        return pulumi.get(self, "zone_id")
+
 
 @pulumi.output_type
 class StarRocksInstanceBackendNodeGroup(dict):

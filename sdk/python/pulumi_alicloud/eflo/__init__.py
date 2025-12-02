@@ -12,6 +12,7 @@ from .experiment_plan import *
 from .experiment_plan_template import *
 from .get_subnets import *
 from .get_vpds import *
+from .hyper_node import *
 from .invocation import *
 from .node import *
 from .node_group import *

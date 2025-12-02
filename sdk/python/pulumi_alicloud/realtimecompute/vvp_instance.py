@@ -204,6 +204,7 @@ class _VvpInstanceState:
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_spec: Optional[pulumi.Input['VvpInstanceResourceSpecArgs']] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  storage: Optional[pulumi.Input['VvpInstanceStorageArgs']] = None,
@@ -219,6 +220,7 @@ class _VvpInstanceState:
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
+        :param pulumi.Input[_builtins.str] resource_id: (Available since v1.264.0) The ID of the K8s cluster.
         :param pulumi.Input['VvpInstanceResourceSpecArgs'] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input['VvpInstanceStorageArgs'] storage: Store information. See `storage` below.
@@ -238,6 +240,8 @@ class _VvpInstanceState:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if resource_spec is not None:
             pulumi.set(__self__, "resource_spec", resource_spec)
         if status is not None:
@@ -314,6 +318,18 @@ class _VvpInstanceState:
     @resource_group_id.setter
     def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.264.0) The ID of the K8s cluster.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSpec")
@@ -527,6 +543,7 @@ class VvpInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["resource_id"] = None
             __props__.__dict__["status"] = None
         super(VvpInstance, __self__).__init__(
             'alicloud:realtimecompute/vvpInstance:VvpInstance',
@@ -543,6 +560,7 @@ class VvpInstance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
             resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_spec: Optional[pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             storage: Optional[pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']]] = None,
@@ -563,6 +581,7 @@ class VvpInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource.
         :param pulumi.Input[_builtins.str] pricing_cycle: The subscription period. If the payment type is PRE, this parameter is required.
         :param pulumi.Input[_builtins.str] resource_group_id: The resource group to which the newly purchased instance belongs.
+        :param pulumi.Input[_builtins.str] resource_id: (Available since v1.264.0) The ID of the K8s cluster.
         :param pulumi.Input[Union['VvpInstanceResourceSpecArgs', 'VvpInstanceResourceSpecArgsDict']] resource_spec: Resource specifications. See `resource_spec` below.
         :param pulumi.Input[_builtins.str] status: The status of the resource.
         :param pulumi.Input[Union['VvpInstanceStorageArgs', 'VvpInstanceStorageArgsDict']] storage: Store information. See `storage` below.
@@ -581,6 +600,7 @@ class VvpInstance(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_spec"] = resource_spec
         __props__.__dict__["status"] = status
         __props__.__dict__["storage"] = storage
@@ -630,6 +650,14 @@ class VvpInstance(pulumi.CustomResource):
         The resource group to which the newly purchased instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.264.0) The ID of the K8s cluster.
+        """
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceSpec")
