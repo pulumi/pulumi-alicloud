@@ -78,7 +78,7 @@ export interface GetImageCachesResult {
     /**
      * A list of caches. Each element contains the following attributes:
      */
-    readonly caches: outputs.eci.GetImageCachesCach[];
+    readonly caches: outputs.eci.GetImageCachesCache[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

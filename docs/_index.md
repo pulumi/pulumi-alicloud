@@ -39,6 +39,7 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as alicloud from "@pulumi/alicloud";
@@ -93,6 +94,7 @@ const instance = new alicloud.ecs.Instance("instance", {
     }],
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -108,6 +110,7 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```python
 import pulumi
 import pulumi_alicloud as alicloud
@@ -157,6 +160,7 @@ instance = alicloud.ecs.Instance("instance",
         "kms_key_id": key.id,
     }])
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -172,6 +176,7 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -251,6 +256,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -266,6 +272,7 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```go
 package main
 
@@ -359,6 +366,7 @@ return nil
 })
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -374,9 +382,11 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```yaml
 Example currently unavailable in this language
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -392,6 +402,7 @@ config:
         value: 'TODO: var.secret_key'
 
 ```
+
 ```java
 package generated_program;
 
@@ -482,6 +493,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Authentication
