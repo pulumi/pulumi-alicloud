@@ -231,7 +231,7 @@ namespace Pulumi.AliCloud.Eci
         /// <summary>
         /// A list of caches. Each element contains the following attributes:
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetImageCachesCachResult> Caches;
+        public readonly ImmutableArray<Outputs.GetImageCachesCacheResult> Caches;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.Eci
 
         [OutputConstructor]
         private GetImageCachesResult(
-            ImmutableArray<Outputs.GetImageCachesCachResult> caches,
+            ImmutableArray<Outputs.GetImageCachesCacheResult> caches,
 
             string id,
 

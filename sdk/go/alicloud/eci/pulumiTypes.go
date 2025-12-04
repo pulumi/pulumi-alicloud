@@ -6560,11 +6560,11 @@ func (o GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput
 	}).(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput)
 }
 
-type GetImageCachesCach struct {
+type GetImageCachesCache struct {
 	// The id of container group.
 	ContainerGroupId string `pulumi:"containerGroupId"`
 	// Image cache pulls image event information.
-	Events []GetImageCachesCachEvent `pulumi:"events"`
+	Events []GetImageCachesCacheEvent `pulumi:"events"`
 	// The time of expired.
 	ExpireDateTime string `pulumi:"expireDateTime"`
 	// The ID of the ECI Image Cache.
@@ -6583,22 +6583,22 @@ type GetImageCachesCach struct {
 	Status string `pulumi:"status"`
 }
 
-// GetImageCachesCachInput is an input type that accepts GetImageCachesCachArgs and GetImageCachesCachOutput values.
-// You can construct a concrete instance of `GetImageCachesCachInput` via:
+// GetImageCachesCacheInput is an input type that accepts GetImageCachesCacheArgs and GetImageCachesCacheOutput values.
+// You can construct a concrete instance of `GetImageCachesCacheInput` via:
 //
-//	GetImageCachesCachArgs{...}
-type GetImageCachesCachInput interface {
+//	GetImageCachesCacheArgs{...}
+type GetImageCachesCacheInput interface {
 	pulumi.Input
 
-	ToGetImageCachesCachOutput() GetImageCachesCachOutput
-	ToGetImageCachesCachOutputWithContext(context.Context) GetImageCachesCachOutput
+	ToGetImageCachesCacheOutput() GetImageCachesCacheOutput
+	ToGetImageCachesCacheOutputWithContext(context.Context) GetImageCachesCacheOutput
 }
 
-type GetImageCachesCachArgs struct {
+type GetImageCachesCacheArgs struct {
 	// The id of container group.
 	ContainerGroupId pulumi.StringInput `pulumi:"containerGroupId"`
 	// Image cache pulls image event information.
-	Events GetImageCachesCachEventArrayInput `pulumi:"events"`
+	Events GetImageCachesCacheEventArrayInput `pulumi:"events"`
 	// The time of expired.
 	ExpireDateTime pulumi.StringInput `pulumi:"expireDateTime"`
 	// The ID of the ECI Image Cache.
@@ -6617,128 +6617,128 @@ type GetImageCachesCachArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
-func (GetImageCachesCachArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetImageCachesCach)(nil)).Elem()
+func (GetImageCachesCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesCache)(nil)).Elem()
 }
 
-func (i GetImageCachesCachArgs) ToGetImageCachesCachOutput() GetImageCachesCachOutput {
-	return i.ToGetImageCachesCachOutputWithContext(context.Background())
+func (i GetImageCachesCacheArgs) ToGetImageCachesCacheOutput() GetImageCachesCacheOutput {
+	return i.ToGetImageCachesCacheOutputWithContext(context.Background())
 }
 
-func (i GetImageCachesCachArgs) ToGetImageCachesCachOutputWithContext(ctx context.Context) GetImageCachesCachOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachOutput)
+func (i GetImageCachesCacheArgs) ToGetImageCachesCacheOutputWithContext(ctx context.Context) GetImageCachesCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCacheOutput)
 }
 
-// GetImageCachesCachArrayInput is an input type that accepts GetImageCachesCachArray and GetImageCachesCachArrayOutput values.
-// You can construct a concrete instance of `GetImageCachesCachArrayInput` via:
+// GetImageCachesCacheArrayInput is an input type that accepts GetImageCachesCacheArray and GetImageCachesCacheArrayOutput values.
+// You can construct a concrete instance of `GetImageCachesCacheArrayInput` via:
 //
-//	GetImageCachesCachArray{ GetImageCachesCachArgs{...} }
-type GetImageCachesCachArrayInput interface {
+//	GetImageCachesCacheArray{ GetImageCachesCacheArgs{...} }
+type GetImageCachesCacheArrayInput interface {
 	pulumi.Input
 
-	ToGetImageCachesCachArrayOutput() GetImageCachesCachArrayOutput
-	ToGetImageCachesCachArrayOutputWithContext(context.Context) GetImageCachesCachArrayOutput
+	ToGetImageCachesCacheArrayOutput() GetImageCachesCacheArrayOutput
+	ToGetImageCachesCacheArrayOutputWithContext(context.Context) GetImageCachesCacheArrayOutput
 }
 
-type GetImageCachesCachArray []GetImageCachesCachInput
+type GetImageCachesCacheArray []GetImageCachesCacheInput
 
-func (GetImageCachesCachArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetImageCachesCach)(nil)).Elem()
+func (GetImageCachesCacheArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageCachesCache)(nil)).Elem()
 }
 
-func (i GetImageCachesCachArray) ToGetImageCachesCachArrayOutput() GetImageCachesCachArrayOutput {
-	return i.ToGetImageCachesCachArrayOutputWithContext(context.Background())
+func (i GetImageCachesCacheArray) ToGetImageCachesCacheArrayOutput() GetImageCachesCacheArrayOutput {
+	return i.ToGetImageCachesCacheArrayOutputWithContext(context.Background())
 }
 
-func (i GetImageCachesCachArray) ToGetImageCachesCachArrayOutputWithContext(ctx context.Context) GetImageCachesCachArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachArrayOutput)
+func (i GetImageCachesCacheArray) ToGetImageCachesCacheArrayOutputWithContext(ctx context.Context) GetImageCachesCacheArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCacheArrayOutput)
 }
 
-type GetImageCachesCachOutput struct{ *pulumi.OutputState }
+type GetImageCachesCacheOutput struct{ *pulumi.OutputState }
 
-func (GetImageCachesCachOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetImageCachesCach)(nil)).Elem()
+func (GetImageCachesCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesCache)(nil)).Elem()
 }
 
-func (o GetImageCachesCachOutput) ToGetImageCachesCachOutput() GetImageCachesCachOutput {
+func (o GetImageCachesCacheOutput) ToGetImageCachesCacheOutput() GetImageCachesCacheOutput {
 	return o
 }
 
-func (o GetImageCachesCachOutput) ToGetImageCachesCachOutputWithContext(ctx context.Context) GetImageCachesCachOutput {
+func (o GetImageCachesCacheOutput) ToGetImageCachesCacheOutputWithContext(ctx context.Context) GetImageCachesCacheOutput {
 	return o
 }
 
 // The id of container group.
-func (o GetImageCachesCachOutput) ContainerGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.ContainerGroupId }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) ContainerGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.ContainerGroupId }).(pulumi.StringOutput)
 }
 
 // Image cache pulls image event information.
-func (o GetImageCachesCachOutput) Events() GetImageCachesCachEventArrayOutput {
-	return o.ApplyT(func(v GetImageCachesCach) []GetImageCachesCachEvent { return v.Events }).(GetImageCachesCachEventArrayOutput)
+func (o GetImageCachesCacheOutput) Events() GetImageCachesCacheEventArrayOutput {
+	return o.ApplyT(func(v GetImageCachesCache) []GetImageCachesCacheEvent { return v.Events }).(GetImageCachesCacheEventArrayOutput)
 }
 
 // The time of expired.
-func (o GetImageCachesCachOutput) ExpireDateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.ExpireDateTime }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) ExpireDateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.ExpireDateTime }).(pulumi.StringOutput)
 }
 
 // The ID of the ECI Image Cache.
-func (o GetImageCachesCachOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.Id }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The id of the ECI Image Cache.
-func (o GetImageCachesCachOutput) ImageCacheId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.ImageCacheId }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) ImageCacheId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.ImageCacheId }).(pulumi.StringOutput)
 }
 
 // The name of ECI Image Cache.
-func (o GetImageCachesCachOutput) ImageCacheName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.ImageCacheName }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) ImageCacheName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.ImageCacheName }).(pulumi.StringOutput)
 }
 
 // The list of cached images.
-func (o GetImageCachesCachOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetImageCachesCach) []string { return v.Images }).(pulumi.StringArrayOutput)
+func (o GetImageCachesCacheOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageCachesCache) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
 // The progress of ECI Image Cache.
-func (o GetImageCachesCachOutput) Progress() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.Progress }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) Progress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.Progress }).(pulumi.StringOutput)
 }
 
 // The id of snapshot.
-func (o GetImageCachesCachOutput) SnapshotId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.SnapshotId }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The status of ECI Image Cache.
-func (o GetImageCachesCachOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCach) string { return v.Status }).(pulumi.StringOutput)
+func (o GetImageCachesCacheOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCache) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type GetImageCachesCachArrayOutput struct{ *pulumi.OutputState }
+type GetImageCachesCacheArrayOutput struct{ *pulumi.OutputState }
 
-func (GetImageCachesCachArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetImageCachesCach)(nil)).Elem()
+func (GetImageCachesCacheArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageCachesCache)(nil)).Elem()
 }
 
-func (o GetImageCachesCachArrayOutput) ToGetImageCachesCachArrayOutput() GetImageCachesCachArrayOutput {
+func (o GetImageCachesCacheArrayOutput) ToGetImageCachesCacheArrayOutput() GetImageCachesCacheArrayOutput {
 	return o
 }
 
-func (o GetImageCachesCachArrayOutput) ToGetImageCachesCachArrayOutputWithContext(ctx context.Context) GetImageCachesCachArrayOutput {
+func (o GetImageCachesCacheArrayOutput) ToGetImageCachesCacheArrayOutputWithContext(ctx context.Context) GetImageCachesCacheArrayOutput {
 	return o
 }
 
-func (o GetImageCachesCachArrayOutput) Index(i pulumi.IntInput) GetImageCachesCachOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageCachesCach {
-		return vs[0].([]GetImageCachesCach)[vs[1].(int)]
-	}).(GetImageCachesCachOutput)
+func (o GetImageCachesCacheArrayOutput) Index(i pulumi.IntInput) GetImageCachesCacheOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageCachesCache {
+		return vs[0].([]GetImageCachesCache)[vs[1].(int)]
+	}).(GetImageCachesCacheOutput)
 }
 
-type GetImageCachesCachEvent struct {
+type GetImageCachesCacheEvent struct {
 	// Number of events.
 	Count int `pulumi:"count"`
 	// Start time.
@@ -6752,18 +6752,18 @@ type GetImageCachesCachEvent struct {
 	Type string `pulumi:"type"`
 }
 
-// GetImageCachesCachEventInput is an input type that accepts GetImageCachesCachEventArgs and GetImageCachesCachEventOutput values.
-// You can construct a concrete instance of `GetImageCachesCachEventInput` via:
+// GetImageCachesCacheEventInput is an input type that accepts GetImageCachesCacheEventArgs and GetImageCachesCacheEventOutput values.
+// You can construct a concrete instance of `GetImageCachesCacheEventInput` via:
 //
-//	GetImageCachesCachEventArgs{...}
-type GetImageCachesCachEventInput interface {
+//	GetImageCachesCacheEventArgs{...}
+type GetImageCachesCacheEventInput interface {
 	pulumi.Input
 
-	ToGetImageCachesCachEventOutput() GetImageCachesCachEventOutput
-	ToGetImageCachesCachEventOutputWithContext(context.Context) GetImageCachesCachEventOutput
+	ToGetImageCachesCacheEventOutput() GetImageCachesCacheEventOutput
+	ToGetImageCachesCacheEventOutputWithContext(context.Context) GetImageCachesCacheEventOutput
 }
 
-type GetImageCachesCachEventArgs struct {
+type GetImageCachesCacheEventArgs struct {
 	// Number of events.
 	Count pulumi.IntInput `pulumi:"count"`
 	// Start time.
@@ -6777,104 +6777,104 @@ type GetImageCachesCachEventArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetImageCachesCachEventArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetImageCachesCachEvent)(nil)).Elem()
+func (GetImageCachesCacheEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesCacheEvent)(nil)).Elem()
 }
 
-func (i GetImageCachesCachEventArgs) ToGetImageCachesCachEventOutput() GetImageCachesCachEventOutput {
-	return i.ToGetImageCachesCachEventOutputWithContext(context.Background())
+func (i GetImageCachesCacheEventArgs) ToGetImageCachesCacheEventOutput() GetImageCachesCacheEventOutput {
+	return i.ToGetImageCachesCacheEventOutputWithContext(context.Background())
 }
 
-func (i GetImageCachesCachEventArgs) ToGetImageCachesCachEventOutputWithContext(ctx context.Context) GetImageCachesCachEventOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachEventOutput)
+func (i GetImageCachesCacheEventArgs) ToGetImageCachesCacheEventOutputWithContext(ctx context.Context) GetImageCachesCacheEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCacheEventOutput)
 }
 
-// GetImageCachesCachEventArrayInput is an input type that accepts GetImageCachesCachEventArray and GetImageCachesCachEventArrayOutput values.
-// You can construct a concrete instance of `GetImageCachesCachEventArrayInput` via:
+// GetImageCachesCacheEventArrayInput is an input type that accepts GetImageCachesCacheEventArray and GetImageCachesCacheEventArrayOutput values.
+// You can construct a concrete instance of `GetImageCachesCacheEventArrayInput` via:
 //
-//	GetImageCachesCachEventArray{ GetImageCachesCachEventArgs{...} }
-type GetImageCachesCachEventArrayInput interface {
+//	GetImageCachesCacheEventArray{ GetImageCachesCacheEventArgs{...} }
+type GetImageCachesCacheEventArrayInput interface {
 	pulumi.Input
 
-	ToGetImageCachesCachEventArrayOutput() GetImageCachesCachEventArrayOutput
-	ToGetImageCachesCachEventArrayOutputWithContext(context.Context) GetImageCachesCachEventArrayOutput
+	ToGetImageCachesCacheEventArrayOutput() GetImageCachesCacheEventArrayOutput
+	ToGetImageCachesCacheEventArrayOutputWithContext(context.Context) GetImageCachesCacheEventArrayOutput
 }
 
-type GetImageCachesCachEventArray []GetImageCachesCachEventInput
+type GetImageCachesCacheEventArray []GetImageCachesCacheEventInput
 
-func (GetImageCachesCachEventArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetImageCachesCachEvent)(nil)).Elem()
+func (GetImageCachesCacheEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageCachesCacheEvent)(nil)).Elem()
 }
 
-func (i GetImageCachesCachEventArray) ToGetImageCachesCachEventArrayOutput() GetImageCachesCachEventArrayOutput {
-	return i.ToGetImageCachesCachEventArrayOutputWithContext(context.Background())
+func (i GetImageCachesCacheEventArray) ToGetImageCachesCacheEventArrayOutput() GetImageCachesCacheEventArrayOutput {
+	return i.ToGetImageCachesCacheEventArrayOutputWithContext(context.Background())
 }
 
-func (i GetImageCachesCachEventArray) ToGetImageCachesCachEventArrayOutputWithContext(ctx context.Context) GetImageCachesCachEventArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCachEventArrayOutput)
+func (i GetImageCachesCacheEventArray) ToGetImageCachesCacheEventArrayOutputWithContext(ctx context.Context) GetImageCachesCacheEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageCachesCacheEventArrayOutput)
 }
 
-type GetImageCachesCachEventOutput struct{ *pulumi.OutputState }
+type GetImageCachesCacheEventOutput struct{ *pulumi.OutputState }
 
-func (GetImageCachesCachEventOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetImageCachesCachEvent)(nil)).Elem()
+func (GetImageCachesCacheEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageCachesCacheEvent)(nil)).Elem()
 }
 
-func (o GetImageCachesCachEventOutput) ToGetImageCachesCachEventOutput() GetImageCachesCachEventOutput {
+func (o GetImageCachesCacheEventOutput) ToGetImageCachesCacheEventOutput() GetImageCachesCacheEventOutput {
 	return o
 }
 
-func (o GetImageCachesCachEventOutput) ToGetImageCachesCachEventOutputWithContext(ctx context.Context) GetImageCachesCachEventOutput {
+func (o GetImageCachesCacheEventOutput) ToGetImageCachesCacheEventOutputWithContext(ctx context.Context) GetImageCachesCacheEventOutput {
 	return o
 }
 
 // Number of events.
-func (o GetImageCachesCachEventOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) int { return v.Count }).(pulumi.IntOutput)
+func (o GetImageCachesCacheEventOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) int { return v.Count }).(pulumi.IntOutput)
 }
 
 // Start time.
-func (o GetImageCachesCachEventOutput) FirstTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) string { return v.FirstTimestamp }).(pulumi.StringOutput)
+func (o GetImageCachesCacheEventOutput) FirstTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.FirstTimestamp }).(pulumi.StringOutput)
 }
 
 // End time.
-func (o GetImageCachesCachEventOutput) LastTimestamp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) string { return v.LastTimestamp }).(pulumi.StringOutput)
+func (o GetImageCachesCacheEventOutput) LastTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.LastTimestamp }).(pulumi.StringOutput)
 }
 
-func (o GetImageCachesCachEventOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) string { return v.Message }).(pulumi.StringOutput)
+func (o GetImageCachesCacheEventOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.Message }).(pulumi.StringOutput)
 }
 
 // The name of event.
-func (o GetImageCachesCachEventOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) string { return v.Name }).(pulumi.StringOutput)
+func (o GetImageCachesCacheEventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The type of event.
-func (o GetImageCachesCachEventOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetImageCachesCachEvent) string { return v.Type }).(pulumi.StringOutput)
+func (o GetImageCachesCacheEventOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageCachesCacheEvent) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetImageCachesCachEventArrayOutput struct{ *pulumi.OutputState }
+type GetImageCachesCacheEventArrayOutput struct{ *pulumi.OutputState }
 
-func (GetImageCachesCachEventArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetImageCachesCachEvent)(nil)).Elem()
+func (GetImageCachesCacheEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImageCachesCacheEvent)(nil)).Elem()
 }
 
-func (o GetImageCachesCachEventArrayOutput) ToGetImageCachesCachEventArrayOutput() GetImageCachesCachEventArrayOutput {
+func (o GetImageCachesCacheEventArrayOutput) ToGetImageCachesCacheEventArrayOutput() GetImageCachesCacheEventArrayOutput {
 	return o
 }
 
-func (o GetImageCachesCachEventArrayOutput) ToGetImageCachesCachEventArrayOutputWithContext(ctx context.Context) GetImageCachesCachEventArrayOutput {
+func (o GetImageCachesCacheEventArrayOutput) ToGetImageCachesCacheEventArrayOutputWithContext(ctx context.Context) GetImageCachesCacheEventArrayOutput {
 	return o
 }
 
-func (o GetImageCachesCachEventArrayOutput) Index(i pulumi.IntInput) GetImageCachesCachEventOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageCachesCachEvent {
-		return vs[0].([]GetImageCachesCachEvent)[vs[1].(int)]
-	}).(GetImageCachesCachEventOutput)
+func (o GetImageCachesCacheEventArrayOutput) Index(i pulumi.IntInput) GetImageCachesCacheEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImageCachesCacheEvent {
+		return vs[0].([]GetImageCachesCacheEvent)[vs[1].(int)]
+	}).(GetImageCachesCacheEventOutput)
 }
 
 type GetVirtualNodesNode struct {
@@ -7484,10 +7484,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeArrayInput)(nil)).Elem(), GetContainerGroupsGroupVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathInput)(nil)).Elem(), GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayInput)(nil)).Elem(), GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachInput)(nil)).Elem(), GetImageCachesCachArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachArrayInput)(nil)).Elem(), GetImageCachesCachArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventInput)(nil)).Elem(), GetImageCachesCachEventArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCachEventArrayInput)(nil)).Elem(), GetImageCachesCachEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCacheInput)(nil)).Elem(), GetImageCachesCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCacheArrayInput)(nil)).Elem(), GetImageCachesCacheArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCacheEventInput)(nil)).Elem(), GetImageCachesCacheEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageCachesCacheEventArrayInput)(nil)).Elem(), GetImageCachesCacheEventArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeInput)(nil)).Elem(), GetVirtualNodesNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeArrayInput)(nil)).Elem(), GetVirtualNodesNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualNodesNodeEventInput)(nil)).Elem(), GetVirtualNodesNodeEventArgs{})
@@ -7596,10 +7596,10 @@ func init() {
 	pulumi.RegisterOutputType(GetContainerGroupsGroupVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathOutput{})
 	pulumi.RegisterOutputType(GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathArrayOutput{})
-	pulumi.RegisterOutputType(GetImageCachesCachOutput{})
-	pulumi.RegisterOutputType(GetImageCachesCachArrayOutput{})
-	pulumi.RegisterOutputType(GetImageCachesCachEventOutput{})
-	pulumi.RegisterOutputType(GetImageCachesCachEventArrayOutput{})
+	pulumi.RegisterOutputType(GetImageCachesCacheOutput{})
+	pulumi.RegisterOutputType(GetImageCachesCacheArrayOutput{})
+	pulumi.RegisterOutputType(GetImageCachesCacheEventOutput{})
+	pulumi.RegisterOutputType(GetImageCachesCacheEventArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetVirtualNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetVirtualNodesNodeEventOutput{})

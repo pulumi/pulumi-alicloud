@@ -3,7 +3,7 @@
 
 package com.pulumi.alicloud.eci.outputs;
 
-import com.pulumi.alicloud.eci.outputs.GetImageCachesCachEvent;
+import com.pulumi.alicloud.eci.outputs.GetImageCachesCacheEvent;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetImageCachesCach {
+public final class GetImageCachesCache {
     /**
      * @return The id of container group.
      * 
@@ -21,7 +21,7 @@ public final class GetImageCachesCach {
      * @return Image cache pulls image event information.
      * 
      */
-    private List<GetImageCachesCachEvent> events;
+    private List<GetImageCachesCacheEvent> events;
     /**
      * @return The time of expired.
      * 
@@ -63,7 +63,7 @@ public final class GetImageCachesCach {
      */
     private String status;
 
-    private GetImageCachesCach() {}
+    private GetImageCachesCache() {}
     /**
      * @return The id of container group.
      * 
@@ -75,7 +75,7 @@ public final class GetImageCachesCach {
      * @return Image cache pulls image event information.
      * 
      */
-    public List<GetImageCachesCachEvent> events() {
+    public List<GetImageCachesCacheEvent> events() {
         return this.events;
     }
     /**
@@ -139,13 +139,13 @@ public final class GetImageCachesCach {
         return new Builder();
     }
 
-    public static Builder builder(GetImageCachesCach defaults) {
+    public static Builder builder(GetImageCachesCache defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String containerGroupId;
-        private List<GetImageCachesCachEvent> events;
+        private List<GetImageCachesCacheEvent> events;
         private String expireDateTime;
         private String id;
         private String imageCacheId;
@@ -155,7 +155,7 @@ public final class GetImageCachesCach {
         private String snapshotId;
         private String status;
         public Builder() {}
-        public Builder(GetImageCachesCach defaults) {
+        public Builder(GetImageCachesCache defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerGroupId = defaults.containerGroupId;
     	      this.events = defaults.events;
@@ -172,26 +172,26 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder containerGroupId(String containerGroupId) {
             if (containerGroupId == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "containerGroupId");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "containerGroupId");
             }
             this.containerGroupId = containerGroupId;
             return this;
         }
         @CustomType.Setter
-        public Builder events(List<GetImageCachesCachEvent> events) {
+        public Builder events(List<GetImageCachesCacheEvent> events) {
             if (events == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "events");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "events");
             }
             this.events = events;
             return this;
         }
-        public Builder events(GetImageCachesCachEvent... events) {
+        public Builder events(GetImageCachesCacheEvent... events) {
             return events(List.of(events));
         }
         @CustomType.Setter
         public Builder expireDateTime(String expireDateTime) {
             if (expireDateTime == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "expireDateTime");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "expireDateTime");
             }
             this.expireDateTime = expireDateTime;
             return this;
@@ -199,7 +199,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "id");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "id");
             }
             this.id = id;
             return this;
@@ -207,7 +207,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder imageCacheId(String imageCacheId) {
             if (imageCacheId == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "imageCacheId");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "imageCacheId");
             }
             this.imageCacheId = imageCacheId;
             return this;
@@ -215,7 +215,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder imageCacheName(String imageCacheName) {
             if (imageCacheName == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "imageCacheName");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "imageCacheName");
             }
             this.imageCacheName = imageCacheName;
             return this;
@@ -223,7 +223,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder images(List<String> images) {
             if (images == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "images");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "images");
             }
             this.images = images;
             return this;
@@ -234,7 +234,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder progress(String progress) {
             if (progress == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "progress");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "progress");
             }
             this.progress = progress;
             return this;
@@ -242,7 +242,7 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             if (snapshotId == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "snapshotId");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "snapshotId");
             }
             this.snapshotId = snapshotId;
             return this;
@@ -250,13 +250,13 @@ public final class GetImageCachesCach {
         @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCach", "status");
+              throw new MissingRequiredPropertyException("GetImageCachesCache", "status");
             }
             this.status = status;
             return this;
         }
-        public GetImageCachesCach build() {
-            final var _resultValue = new GetImageCachesCach();
+        public GetImageCachesCache build() {
+            final var _resultValue = new GetImageCachesCache();
             _resultValue.containerGroupId = containerGroupId;
             _resultValue.events = events;
             _resultValue.expireDateTime = expireDateTime;

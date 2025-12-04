@@ -74,7 +74,7 @@ type GetImageCachesArgs struct {
 // A collection of values returned by getImageCaches.
 type GetImageCachesResult struct {
 	// A list of caches. Each element contains the following attributes:
-	Caches []GetImageCachesCach `pulumi:"caches"`
+	Caches []GetImageCachesCache `pulumi:"caches"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list ids of ECI Image Cache.
@@ -139,8 +139,8 @@ func (o GetImageCachesResultOutput) ToGetImageCachesResultOutputWithContext(ctx 
 }
 
 // A list of caches. Each element contains the following attributes:
-func (o GetImageCachesResultOutput) Caches() GetImageCachesCachArrayOutput {
-	return o.ApplyT(func(v GetImageCachesResult) []GetImageCachesCach { return v.Caches }).(GetImageCachesCachArrayOutput)
+func (o GetImageCachesResultOutput) Caches() GetImageCachesCacheArrayOutput {
+	return o.ApplyT(func(v GetImageCachesResult) []GetImageCachesCache { return v.Caches }).(GetImageCachesCacheArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

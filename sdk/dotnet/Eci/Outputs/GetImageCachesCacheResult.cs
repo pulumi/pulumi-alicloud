@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
 {
 
     [OutputType]
-    public sealed class GetImageCachesCachResult
+    public sealed class GetImageCachesCacheResult
     {
         /// <summary>
         /// The id of container group.
@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// <summary>
         /// Image cache pulls image event information.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetImageCachesCachEventResult> Events;
+        public readonly ImmutableArray<Outputs.GetImageCachesCacheEventResult> Events;
         /// <summary>
         /// The time of expired.
         /// </summary>
@@ -55,10 +55,10 @@ namespace Pulumi.AliCloud.Eci.Outputs
         public readonly string Status;
 
         [OutputConstructor]
-        private GetImageCachesCachResult(
+        private GetImageCachesCacheResult(
             string containerGroupId,
 
-            ImmutableArray<Outputs.GetImageCachesCachEventResult> events,
+            ImmutableArray<Outputs.GetImageCachesCacheEventResult> events,
 
             string expireDateTime,
 
