@@ -67,8 +67,8 @@ __all__ = [
     'GetContainerGroupsGroupInitContainerVolumeMountResult',
     'GetContainerGroupsGroupVolumeResult',
     'GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult',
-    'GetImageCachesCachResult',
-    'GetImageCachesCachEventResult',
+    'GetImageCachesCacheResult',
+    'GetImageCachesCacheEventResult',
     'GetVirtualNodesNodeResult',
     'GetVirtualNodesNodeEventResult',
     'GetZonesZoneResult',
@@ -3215,10 +3215,10 @@ class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult(dict):
 
 
 @pulumi.output_type
-class GetImageCachesCachResult(dict):
+class GetImageCachesCacheResult(dict):
     def __init__(__self__, *,
                  container_group_id: _builtins.str,
-                 events: Sequence['outputs.GetImageCachesCachEventResult'],
+                 events: Sequence['outputs.GetImageCachesCacheEventResult'],
                  expire_date_time: _builtins.str,
                  id: _builtins.str,
                  image_cache_id: _builtins.str,
@@ -3229,7 +3229,7 @@ class GetImageCachesCachResult(dict):
                  status: _builtins.str):
         """
         :param _builtins.str container_group_id: The id of container group.
-        :param Sequence['GetImageCachesCachEventArgs'] events: Image cache pulls image event information.
+        :param Sequence['GetImageCachesCacheEventArgs'] events: Image cache pulls image event information.
         :param _builtins.str expire_date_time: The time of expired.
         :param _builtins.str id: The ID of the ECI Image Cache.
         :param _builtins.str image_cache_id: The id of the ECI Image Cache.
@@ -3260,7 +3260,7 @@ class GetImageCachesCachResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Sequence['outputs.GetImageCachesCachEventResult']:
+    def events(self) -> Sequence['outputs.GetImageCachesCacheEventResult']:
         """
         Image cache pulls image event information.
         """
@@ -3332,7 +3332,7 @@ class GetImageCachesCachResult(dict):
 
 
 @pulumi.output_type
-class GetImageCachesCachEventResult(dict):
+class GetImageCachesCacheEventResult(dict):
     def __init__(__self__, *,
                  count: _builtins.int,
                  first_timestamp: _builtins.str,

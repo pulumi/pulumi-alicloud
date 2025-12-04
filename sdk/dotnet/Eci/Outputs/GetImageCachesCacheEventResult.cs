@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
 {
 
     [OutputType]
-    public sealed class GetImageCachesCachEventResult
+    public sealed class GetImageCachesCacheEventResult
     {
         /// <summary>
         /// Number of events.
@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         public readonly string Type;
 
         [OutputConstructor]
-        private GetImageCachesCachEventResult(
+        private GetImageCachesCacheEventResult(
             int count,
 
             string firstTimestamp,

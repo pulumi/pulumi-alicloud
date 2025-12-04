@@ -24120,7 +24120,7 @@ export namespace eci {
         path: string;
     }
 
-    export interface GetImageCachesCach {
+    export interface GetImageCachesCache {
         /**
          * The id of container group.
          */
@@ -24128,7 +24128,7 @@ export namespace eci {
         /**
          * Image cache pulls image event information.
          */
-        events: outputs.eci.GetImageCachesCachEvent[];
+        events: outputs.eci.GetImageCachesCacheEvent[];
         /**
          * The time of expired.
          */
@@ -24163,7 +24163,7 @@ export namespace eci {
         status: string;
     }
 
-    export interface GetImageCachesCachEvent {
+    export interface GetImageCachesCacheEvent {
         /**
          * Number of events.
          */

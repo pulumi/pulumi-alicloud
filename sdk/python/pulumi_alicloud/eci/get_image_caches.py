@@ -61,7 +61,7 @@ class GetImageCachesResult:
 
     @_builtins.property
     @pulumi.getter
-    def caches(self) -> Sequence['outputs.GetImageCachesCachResult']:
+    def caches(self) -> Sequence['outputs.GetImageCachesCacheResult']:
         """
         A list of caches. Each element contains the following attributes:
         """

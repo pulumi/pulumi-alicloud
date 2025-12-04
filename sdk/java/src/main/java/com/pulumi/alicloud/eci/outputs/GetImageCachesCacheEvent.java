@@ -10,7 +10,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetImageCachesCachEvent {
+public final class GetImageCachesCacheEvent {
     /**
      * @return Number of events.
      * 
@@ -38,7 +38,7 @@ public final class GetImageCachesCachEvent {
      */
     private String type;
 
-    private GetImageCachesCachEvent() {}
+    private GetImageCachesCacheEvent() {}
     /**
      * @return Number of events.
      * 
@@ -82,7 +82,7 @@ public final class GetImageCachesCachEvent {
         return new Builder();
     }
 
-    public static Builder builder(GetImageCachesCachEvent defaults) {
+    public static Builder builder(GetImageCachesCacheEvent defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -94,7 +94,7 @@ public final class GetImageCachesCachEvent {
         private String name;
         private String type;
         public Builder() {}
-        public Builder(GetImageCachesCachEvent defaults) {
+        public Builder(GetImageCachesCacheEvent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
     	      this.firstTimestamp = defaults.firstTimestamp;
@@ -107,7 +107,7 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder count(Integer count) {
             if (count == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "count");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "count");
             }
             this.count = count;
             return this;
@@ -115,7 +115,7 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder firstTimestamp(String firstTimestamp) {
             if (firstTimestamp == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "firstTimestamp");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "firstTimestamp");
             }
             this.firstTimestamp = firstTimestamp;
             return this;
@@ -123,7 +123,7 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder lastTimestamp(String lastTimestamp) {
             if (lastTimestamp == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "lastTimestamp");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "lastTimestamp");
             }
             this.lastTimestamp = lastTimestamp;
             return this;
@@ -131,7 +131,7 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder message(String message) {
             if (message == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "message");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "message");
             }
             this.message = message;
             return this;
@@ -139,7 +139,7 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "name");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "name");
             }
             this.name = name;
             return this;
@@ -147,13 +147,13 @@ public final class GetImageCachesCachEvent {
         @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
-              throw new MissingRequiredPropertyException("GetImageCachesCachEvent", "type");
+              throw new MissingRequiredPropertyException("GetImageCachesCacheEvent", "type");
             }
             this.type = type;
             return this;
         }
-        public GetImageCachesCachEvent build() {
-            final var _resultValue = new GetImageCachesCachEvent();
+        public GetImageCachesCacheEvent build() {
+            final var _resultValue = new GetImageCachesCacheEvent();
             _resultValue.count = count;
             _resultValue.firstTimestamp = firstTimestamp;
             _resultValue.lastTimestamp = lastTimestamp;

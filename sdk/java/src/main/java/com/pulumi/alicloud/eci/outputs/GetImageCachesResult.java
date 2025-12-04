@@ -3,7 +3,7 @@
 
 package com.pulumi.alicloud.eci.outputs;
 
-import com.pulumi.alicloud.eci.outputs.GetImageCachesCach;
+import com.pulumi.alicloud.eci.outputs.GetImageCachesCache;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -18,7 +18,7 @@ public final class GetImageCachesResult {
      * @return A list of caches. Each element contains the following attributes:
      * 
      */
-    private List<GetImageCachesCach> caches;
+    private List<GetImageCachesCache> caches;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -58,7 +58,7 @@ public final class GetImageCachesResult {
      * @return A list of caches. Each element contains the following attributes:
      * 
      */
-    public List<GetImageCachesCach> caches() {
+    public List<GetImageCachesCache> caches() {
         return this.caches;
     }
     /**
@@ -122,7 +122,7 @@ public final class GetImageCachesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetImageCachesCach> caches;
+        private List<GetImageCachesCache> caches;
         private String id;
         private List<String> ids;
         private @Nullable String image;
@@ -148,14 +148,14 @@ public final class GetImageCachesResult {
         }
 
         @CustomType.Setter
-        public Builder caches(List<GetImageCachesCach> caches) {
+        public Builder caches(List<GetImageCachesCache> caches) {
             if (caches == null) {
               throw new MissingRequiredPropertyException("GetImageCachesResult", "caches");
             }
             this.caches = caches;
             return this;
         }
-        public Builder caches(GetImageCachesCach... caches) {
+        public Builder caches(GetImageCachesCache... caches) {
             return caches(List.of(caches));
         }
         @CustomType.Setter
