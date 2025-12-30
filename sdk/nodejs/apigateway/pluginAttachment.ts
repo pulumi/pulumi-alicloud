@@ -72,6 +72,8 @@ import * as utilities from "../utilities";
  *     stageName: "RELEASE",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class PluginAttachment extends pulumi.CustomResource {
     /**

@@ -154,6 +154,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ram/roleAttachment:RoleAttachment")
 public class RoleAttachment extends com.pulumi.resources.CustomResource {

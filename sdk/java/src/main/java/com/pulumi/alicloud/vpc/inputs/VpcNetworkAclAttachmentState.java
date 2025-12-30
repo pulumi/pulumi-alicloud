@@ -16,14 +16,14 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
     public static final VpcNetworkAclAttachmentState Empty = new VpcNetworkAclAttachmentState();
 
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      * 
      */
     @Import(name="networkAclId")
     private @Nullable Output<String> networkAclId;
 
     /**
-     * @return The ID of the network ACL.
+     * @return The ID of the network ACL instance.
      * 
      */
     public Optional<Output<String>> networkAclId() {
@@ -31,14 +31,14 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
     }
 
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return The ID of the associated resource.
+     * @return The ID of the associated  vswitch instance.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -103,7 +103,7 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclId The ID of the network ACL.
+         * @param networkAclId The ID of the network ACL instance.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param networkAclId The ID of the network ACL.
+         * @param networkAclId The ID of the network ACL instance.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resourceId The ID of the associated resource.
+         * @param resourceId The ID of the associated  vswitch instance.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class VpcNetworkAclAttachmentState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param resourceId The ID of the associated resource.
+         * @param resourceId The ID of the associated  vswitch instance.
          * 
          * @return builder
          * 

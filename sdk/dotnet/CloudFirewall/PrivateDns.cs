@@ -82,6 +82,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Private Dns can be imported using the id, e.g.

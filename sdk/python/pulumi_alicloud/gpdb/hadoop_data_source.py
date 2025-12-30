@@ -675,6 +675,8 @@ class HadoopDataSource(pulumi.CustomResource):
             hadoop_hosts_address="aaa")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Hadoop Data Source can be imported using the id, e.g.
@@ -872,6 +874,8 @@ class HadoopDataSource(pulumi.CustomResource):
             db_instance_id=default_zoepvx.id,
             hadoop_hosts_address="aaa")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

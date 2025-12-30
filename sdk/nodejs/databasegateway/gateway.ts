@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.databasegateway.Gateway("example", {gatewayName: "example_value"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Database Gateway Gateway can be imported using the id, e.g.

@@ -427,6 +427,8 @@ class VPCRouteEntry(pulumi.CustomResource):
             nexthop_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Route Entry can be imported using the id, e.g.
@@ -520,6 +522,8 @@ class VPCRouteEntry(pulumi.CustomResource):
             nexthop_type="Instance",
             nexthop_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

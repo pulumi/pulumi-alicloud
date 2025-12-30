@@ -246,6 +246,8 @@ class Snapshot(pulumi.CustomResource):
             description="DbfsSnapshot")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Database File System (DBFS) Snapshot can be imported using the id, e.g.
@@ -294,6 +296,8 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name,
             description="DbfsSnapshot")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

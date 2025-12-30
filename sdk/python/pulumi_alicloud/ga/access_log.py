@@ -319,6 +319,8 @@ class AccessLog(pulumi.CustomResource):
             sls_region_id=region)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Access Log can be imported using the id, e.g.
@@ -413,6 +415,8 @@ class AccessLog(pulumi.CustomResource):
             sls_log_store_name=default_store.name,
             sls_region_id=region)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -256,6 +256,8 @@ class EnterpriseProxy(pulumi.CustomResource):
             tid=default_get_user_tenants.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise Proxy can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class EnterpriseProxy(pulumi.CustomResource):
             username="tfexamplename",
             tid=default_get_user_tenants.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

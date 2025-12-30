@@ -68,6 +68,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Waf Rule can be imported using the id, e.g.
@@ -97,9 +99,6 @@ namespace Pulumi.AliCloud.Esa
         [Output("rulesetId")]
         public Output<int?> RulesetId { get; private set; } = null!;
 
-        /// <summary>
-        /// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Shared` below.
-        /// </summary>
         [Output("shared")]
         public Output<Outputs.WafRuleShared?> Shared { get; private set; } = null!;
 
@@ -107,11 +106,8 @@ namespace Pulumi.AliCloud.Esa
         /// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
-        /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        /// </summary>
         [Output("siteVersion")]
         public Output<int?> SiteVersion { get; private set; } = null!;
 
@@ -185,9 +181,6 @@ namespace Pulumi.AliCloud.Esa
         [Input("rulesetId")]
         public Input<int>? RulesetId { get; set; }
 
-        /// <summary>
-        /// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Shared` below.
-        /// </summary>
         [Input("shared")]
         public Input<Inputs.WafRuleSharedArgs>? Shared { get; set; }
 
@@ -195,11 +188,8 @@ namespace Pulumi.AliCloud.Esa
         /// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
-        /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 
@@ -229,9 +219,6 @@ namespace Pulumi.AliCloud.Esa
         [Input("rulesetId")]
         public Input<int>? RulesetId { get; set; }
 
-        /// <summary>
-        /// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `Shared` below.
-        /// </summary>
         [Input("shared")]
         public Input<Inputs.WafRuleSharedGetArgs>? Shared { get; set; }
 
@@ -239,11 +226,8 @@ namespace Pulumi.AliCloud.Esa
         /// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
-        /// <summary>
-        /// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-        /// </summary>
         [Input("siteVersion")]
         public Input<int>? SiteVersion { get; set; }
 

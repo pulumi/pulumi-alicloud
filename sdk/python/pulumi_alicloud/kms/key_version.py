@@ -112,6 +112,8 @@ class KeyVersion(pulumi.CustomResource):
         keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alikms key version can be imported using the id, e.g.
@@ -148,6 +150,8 @@ class KeyVersion(pulumi.CustomResource):
         this = alicloud.kms.Key("this")
         keyversion = alicloud.kms.KeyVersion("keyversion", key_id=this.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

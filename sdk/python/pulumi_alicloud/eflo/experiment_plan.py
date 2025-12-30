@@ -323,6 +323,8 @@ class ExperimentPlan(pulumi.CustomResource):
             template_id=defaultp_szn7t.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Experiment Plan can be imported using the id, e.g.
@@ -417,6 +419,8 @@ class ExperimentPlan(pulumi.CustomResource):
             plan_name=name,
             template_id=defaultp_szn7t.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

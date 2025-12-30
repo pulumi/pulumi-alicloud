@@ -356,6 +356,8 @@ namespace Pulumi.AliCloud.Log
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Log alert can be imported using the id, e.g.

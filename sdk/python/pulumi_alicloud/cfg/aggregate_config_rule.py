@@ -632,6 +632,8 @@ class AggregateConfigRule(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Config Aggregate Config Rule can be imported using the id, e.g.
@@ -711,6 +713,8 @@ class AggregateConfigRule(pulumi.CustomResource):
                 "value": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

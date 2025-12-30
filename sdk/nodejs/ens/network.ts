@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ENS Network can be imported using the id, e.g.

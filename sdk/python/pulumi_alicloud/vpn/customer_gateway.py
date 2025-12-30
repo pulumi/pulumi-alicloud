@@ -288,6 +288,8 @@ class CustomerGateway(pulumi.CustomResource):
             customer_gateway_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN customer gateway can be imported using the id, e.g.
@@ -332,6 +334,8 @@ class CustomerGateway(pulumi.CustomResource):
             asn="1219002",
             customer_gateway_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -93,6 +93,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Waiting Room Rule can be imported using the id, e.g.
@@ -108,10 +110,10 @@ type WaitingRoomRule struct {
 	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// Rule enabled status, supporting:
-	// -'on': means enabled.
-	// -'off': means disabled.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
@@ -169,10 +171,10 @@ type waitingRoomRuleState struct {
 	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName *string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId *int `pulumi:"siteId"`
-	// Rule enabled status, supporting:
-	// -'on': means enabled.
-	// -'off': means disabled.
+	SiteId *string `pulumi:"siteId"`
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	Status *string `pulumi:"status"`
 	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
@@ -186,10 +188,10 @@ type WaitingRoomRuleState struct {
 	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntPtrInput
-	// Rule enabled status, supporting:
-	// -'on': means enabled.
-	// -'off': means disabled.
+	SiteId pulumi.StringPtrInput
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	Status pulumi.StringPtrInput
 	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringPtrInput
@@ -207,10 +209,10 @@ type waitingRoomRuleArgs struct {
 	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName string `pulumi:"ruleName"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId int `pulumi:"siteId"`
-	// Rule enabled status, supporting:
-	// -'on': means enabled.
-	// -'off': means disabled.
+	SiteId string `pulumi:"siteId"`
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	Status string `pulumi:"status"`
 	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId string `pulumi:"waitingRoomId"`
@@ -223,10 +225,10 @@ type WaitingRoomRuleArgs struct {
 	// Rule name, optional, used to query by waiting room bypass rule name.
 	RuleName pulumi.StringInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntInput
-	// Rule enabled status, supporting:
-	// -'on': means enabled.
-	// -'off': means disabled.
+	SiteId pulumi.StringInput
+	// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+	// - on: open.
+	// - off: close.
 	Status pulumi.StringInput
 	// Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
 	WaitingRoomId pulumi.StringInput
@@ -330,13 +332,13 @@ func (o WaitingRoomRuleOutput) RuleName() pulumi.StringOutput {
 }
 
 // The site ID, which can be obtained by calling the ListSites API.
-func (o WaitingRoomRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *WaitingRoomRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o WaitingRoomRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// Rule enabled status, supporting:
-// -'on': means enabled.
-// -'off': means disabled.
+// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+// - on: open.
+// - off: close.
 func (o WaitingRoomRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

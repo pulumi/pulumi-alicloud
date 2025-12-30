@@ -14,12 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcEndpointServicesService {
     /**
-     * @return Whether to automatically accept terminal node connections.
+     * @return Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
      * 
      */
     private Boolean autoAcceptConnection;
     /**
-     * @return The connection bandwidth.
+     * @return The default maximum bandwidth of the endpoint connection.
      * 
      */
     private Integer connectBandwidth;
@@ -29,51 +29,51 @@ public final class GetVpcEndpointServicesService {
      */
     private String id;
     /**
-     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+     * @return The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     private String serviceBusinessStatus;
     /**
-     * @return The description of the terminal node service.
+     * @return The description of the endpoint service.
      * 
      */
     private String serviceDescription;
     /**
-     * @return The domain of service.
+     * @return The domain name of the endpoint service.
      * 
      */
     private String serviceDomain;
     /**
-     * @return The ID of the Vpc Endpoint Service.
+     * @return The ID of the endpoint service.
      * 
      */
     private String serviceId;
     /**
-     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+     * @return The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     private String status;
     /**
-     * @return The tags of Vpc Endpoint Service.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The name of Vpc Endpoint Service.
+     * @return The name of the endpoint service.
      * 
      */
     private String vpcEndpointServiceName;
 
     private GetVpcEndpointServicesService() {}
     /**
-     * @return Whether to automatically accept terminal node connections.
+     * @return Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
      * 
      */
     public Boolean autoAcceptConnection() {
         return this.autoAcceptConnection;
     }
     /**
-     * @return The connection bandwidth.
+     * @return The default maximum bandwidth of the endpoint connection.
      * 
      */
     public Integer connectBandwidth() {
@@ -87,49 +87,49 @@ public final class GetVpcEndpointServicesService {
         return this.id;
     }
     /**
-     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+     * @return The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     public String serviceBusinessStatus() {
         return this.serviceBusinessStatus;
     }
     /**
-     * @return The description of the terminal node service.
+     * @return The description of the endpoint service.
      * 
      */
     public String serviceDescription() {
         return this.serviceDescription;
     }
     /**
-     * @return The domain of service.
+     * @return The domain name of the endpoint service.
      * 
      */
     public String serviceDomain() {
         return this.serviceDomain;
     }
     /**
-     * @return The ID of the Vpc Endpoint Service.
+     * @return The ID of the endpoint service.
      * 
      */
     public String serviceId() {
         return this.serviceId;
     }
     /**
-     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+     * @return The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tags of Vpc Endpoint Service.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The name of Vpc Endpoint Service.
+     * @return The name of the endpoint service.
      * 
      */
     public String vpcEndpointServiceName() {

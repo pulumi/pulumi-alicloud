@@ -232,6 +232,8 @@ class Alias(pulumi.CustomResource):
             service_version="1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute alias can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class Alias(pulumi.CustomResource):
             service_name=default_service.name,
             service_version="1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

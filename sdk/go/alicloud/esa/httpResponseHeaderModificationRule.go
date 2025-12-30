@@ -103,6 +103,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Http Response Header Modification Rule can be imported using the id, e.g.
@@ -128,7 +130,7 @@ type HttpResponseHeaderModificationRule struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
@@ -184,7 +186,7 @@ type httpResponseHeaderModificationRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
@@ -205,7 +207,7 @@ type HttpResponseHeaderModificationRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
@@ -228,7 +230,7 @@ type httpResponseHeaderModificationRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
@@ -248,7 +250,7 @@ type HttpResponseHeaderModificationRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
@@ -375,8 +377,8 @@ func (o HttpResponseHeaderModificationRuleOutput) Sequence() pulumi.IntOutput {
 }
 
 // The site ID.
-func (o HttpResponseHeaderModificationRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o HttpResponseHeaderModificationRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpResponseHeaderModificationRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

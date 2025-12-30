@@ -222,6 +222,8 @@ class Resource(pulumi.CustomResource):
             }))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Control Resource can be imported using the id, e.g.
@@ -279,6 +281,8 @@ class Resource(pulumi.CustomResource):
                 "MessageType": "1",
             }))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

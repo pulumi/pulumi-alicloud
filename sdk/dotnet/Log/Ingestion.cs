@@ -93,6 +93,8 @@ namespace Pulumi.AliCloud.Log
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Log ingestion can be imported using the id or name, e.g.

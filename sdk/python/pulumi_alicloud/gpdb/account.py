@@ -327,6 +327,8 @@ class Account(pulumi.CustomResource):
             account_description="tf_example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Account can be imported using the id, e.g.
@@ -405,6 +407,8 @@ class Account(pulumi.CustomResource):
             account_password="Example1234",
             account_description="tf_example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

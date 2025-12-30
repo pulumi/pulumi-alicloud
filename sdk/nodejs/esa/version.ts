@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a ESA Site Version resource.
+ * Provides a ESA Version resource.
  *
- * For information about ESA Site Version and how to use it, see [What is Site Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
+ * For information about ESA Version and how to use it, see [What is Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
  *
  * > **NOTE:** Available since v1.251.0.
  *
@@ -37,6 +37,8 @@ import * as utilities from "../utilities";
  *     originVersion: 0,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -89,9 +91,9 @@ export class Version extends pulumi.CustomResource {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
-     * The version number of the site configuration.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     declare public /*out*/ readonly siteVersion: pulumi.Output<number>;
     /**
@@ -157,9 +159,9 @@ export interface VersionState {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
-     * The version number of the site configuration.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
     siteVersion?: pulumi.Input<number>;
     /**
@@ -183,5 +185,5 @@ export interface VersionArgs {
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

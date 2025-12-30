@@ -98,6 +98,8 @@ import * as utilities from "../utilities";
  *     forceAttach: true,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class ServerGroupAttachment extends pulumi.CustomResource {
     /**

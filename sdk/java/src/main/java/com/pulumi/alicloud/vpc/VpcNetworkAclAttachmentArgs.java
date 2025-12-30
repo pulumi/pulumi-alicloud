@@ -15,14 +15,14 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
     public static final VpcNetworkAclAttachmentArgs Empty = new VpcNetworkAclAttachmentArgs();
 
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      * 
      */
     @Import(name="networkAclId", required=true)
     private Output<String> networkAclId;
 
     /**
-     * @return The ID of the network ACL.
+     * @return The ID of the network ACL instance.
      * 
      */
     public Output<String> networkAclId() {
@@ -30,14 +30,14 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return The ID of the associated resource.
+     * @return The ID of the associated  vswitch instance.
      * 
      */
     public Output<String> resourceId() {
@@ -86,7 +86,7 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param networkAclId The ID of the network ACL.
+         * @param networkAclId The ID of the network ACL instance.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param networkAclId The ID of the network ACL.
+         * @param networkAclId The ID of the network ACL instance.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId The ID of the associated resource.
+         * @param resourceId The ID of the associated  vswitch instance.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class VpcNetworkAclAttachmentArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourceId The ID of the associated resource.
+         * @param resourceId The ID of the associated  vswitch instance.
          * 
          * @return builder
          * 

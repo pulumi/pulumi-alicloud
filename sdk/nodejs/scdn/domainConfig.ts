@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * SCDN domain config can be imported using the id, e.g.

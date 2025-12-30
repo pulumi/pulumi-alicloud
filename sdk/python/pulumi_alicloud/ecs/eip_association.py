@@ -412,6 +412,8 @@ class EipAssociation(pulumi.CustomResource):
             instance_id=example_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Association can be imported using the id, e.g.
@@ -516,6 +518,8 @@ class EipAssociation(pulumi.CustomResource):
             allocation_id=example_eip_address.id,
             instance_id=example_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

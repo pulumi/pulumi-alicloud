@@ -275,6 +275,8 @@ class Database(pulumi.CustomResource):
             name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS database can be imported using the id, e.g.
@@ -349,6 +351,8 @@ class Database(pulumi.CustomResource):
             instance_id=default_instance.id,
             name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

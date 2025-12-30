@@ -183,6 +183,8 @@ class BgpPolicy(pulumi.CustomResource):
             policy_name="tf_exampleacc_bgp32594")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ddos Bgp Policy can be imported using the id, e.g.
@@ -247,6 +249,8 @@ class BgpPolicy(pulumi.CustomResource):
             type="l4",
             policy_name="tf_exampleacc_bgp32594")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

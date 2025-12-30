@@ -171,6 +171,8 @@ class MembershipAttachment(pulumi.CustomResource):
             sub_cluster_id=default_managed_kubernetes.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.
@@ -257,6 +259,8 @@ class MembershipAttachment(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             sub_cluster_id=default_managed_kubernetes.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

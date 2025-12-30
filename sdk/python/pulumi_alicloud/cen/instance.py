@@ -309,6 +309,8 @@ class Instance(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Cen Instance can be imported using the id, e.g.
@@ -357,6 +359,8 @@ class Instance(pulumi.CustomResource):
             cen_instance_name=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

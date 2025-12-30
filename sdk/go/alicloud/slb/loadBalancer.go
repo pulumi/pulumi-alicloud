@@ -92,6 +92,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Load balancer can be imported using the id, e.g.

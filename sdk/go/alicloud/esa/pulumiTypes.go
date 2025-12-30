@@ -13,6 +13,256 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModification struct {
+	// Request Header Name.
+	Name string `pulumi:"name"`
+	// Mode of operation. Value range:
+	Operation string `pulumi:"operation"`
+	// Value type. Value range:
+	Type *string `pulumi:"type"`
+	// Request header value
+	Value *string `pulumi:"value"`
+}
+
+// HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput is an input type that accepts HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs and HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput values.
+// You can construct a concrete instance of `HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput` via:
+//
+//	HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs{...}
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput interface {
+	pulumi.Input
+
+	ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput
+	ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput
+}
+
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs struct {
+	// Request Header Name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Mode of operation. Value range:
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// Value type. Value range:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Request header value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (i HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return i.ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(context.Background())
+}
+
+func (i HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(ctx context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput)
+}
+
+// HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayInput is an input type that accepts HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray and HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput values.
+// You can construct a concrete instance of `HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayInput` via:
+//
+//	HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray{ HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs{...} }
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayInput interface {
+	pulumi.Input
+
+	ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput
+	ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput
+}
+
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray []HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput
+
+func (HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpIncomingRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (i HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return i.ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(context.Background())
+}
+
+func (i HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(ctx context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput)
+}
+
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput struct{ *pulumi.OutputState }
+
+func (HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return o
+}
+
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutputWithContext(ctx context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return o
+}
+
+// Request Header Name.
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpIncomingRequestHeaderModificationRuleRequestHeaderModification) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mode of operation. Value range:
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpIncomingRequestHeaderModificationRuleRequestHeaderModification) string { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Value type. Value range:
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpIncomingRequestHeaderModificationRuleRequestHeaderModification) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Request header value
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpIncomingRequestHeaderModificationRuleRequestHeaderModification) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpIncomingRequestHeaderModificationRuleRequestHeaderModification)(nil)).Elem()
+}
+
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput() HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) ToHttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutputWithContext(ctx context.Context) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput) Index(i pulumi.IntInput) HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpIncomingRequestHeaderModificationRuleRequestHeaderModification {
+		return vs[0].([]HttpIncomingRequestHeaderModificationRuleRequestHeaderModification)[vs[1].(int)]
+	}).(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput)
+}
+
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModification struct {
+	// The response header name.
+	Name string `pulumi:"name"`
+	// Operation method. Possible values:
+	Operation string `pulumi:"operation"`
+	// The value type. Value range:
+	Type *string `pulumi:"type"`
+	// The response header value.
+	Value *string `pulumi:"value"`
+}
+
+// HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationInput is an input type that accepts HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs and HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput values.
+// You can construct a concrete instance of `HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationInput` via:
+//
+//	HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs{...}
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationInput interface {
+	pulumi.Input
+
+	ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput
+	ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput
+}
+
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs struct {
+	// The response header name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operation method. Possible values:
+	Operation pulumi.StringInput `pulumi:"operation"`
+	// The value type. Value range:
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The response header value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpIncomingResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (i HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return i.ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(context.Background())
+}
+
+func (i HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(ctx context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput)
+}
+
+// HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayInput is an input type that accepts HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray and HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput values.
+// You can construct a concrete instance of `HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayInput` via:
+//
+//	HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray{ HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs{...} }
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayInput interface {
+	pulumi.Input
+
+	ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput
+	ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput
+}
+
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray []HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationInput
+
+func (HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpIncomingResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (i HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return i.ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(context.Background())
+}
+
+func (i HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(ctx context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput)
+}
+
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput struct{ *pulumi.OutputState }
+
+func (HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpIncomingResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return o
+}
+
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutputWithContext(ctx context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return o
+}
+
+// The response header name.
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpIncomingResponseHeaderModificationRuleResponseHeaderModification) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operation method. Possible values:
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpIncomingResponseHeaderModificationRuleResponseHeaderModification) string {
+		return v.Operation
+	}).(pulumi.StringOutput)
+}
+
+// The value type. Value range:
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpIncomingResponseHeaderModificationRuleResponseHeaderModification) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The response header value.
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpIncomingResponseHeaderModificationRuleResponseHeaderModification) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpIncomingResponseHeaderModificationRuleResponseHeaderModification)(nil)).Elem()
+}
+
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput() HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) ToHttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutputWithContext(ctx context.Context) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput {
+	return o
+}
+
+func (o HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput) Index(i pulumi.IntInput) HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
+		return vs[0].([]HttpIncomingResponseHeaderModificationRuleResponseHeaderModification)[vs[1].(int)]
+	}).(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput)
+}
+
 type HttpRequestHeaderModificationRuleRequestHeaderModification struct {
 	// Request Header Name.
 	Name string `pulumi:"name"`
@@ -3801,7 +4051,14 @@ type WafRuleConfig struct {
 	Notes *string `pulumi:"notes"`
 	// Configuration of the rate limiting rule. See `rateLimit` below.
 	RateLimit *WafRuleConfigRateLimit `pulumi:"rateLimit"`
-	// The overall security protection level of WAF. See `securityLevel` below.
+	// The overall security protection level of WAF.
+	// Valid values:
+	// - off
+	// - essentiallyOff
+	// - low
+	// - medium
+	// - high
+	// - underAttack See `securityLevel` below.
 	SecurityLevel *WafRuleConfigSecurityLevel `pulumi:"securityLevel"`
 	// Configuration items for token verification mechanisms.
 	Sigchls []string `pulumi:"sigchls"`
@@ -3851,7 +4108,14 @@ type WafRuleConfigArgs struct {
 	Notes pulumi.StringPtrInput `pulumi:"notes"`
 	// Configuration of the rate limiting rule. See `rateLimit` below.
 	RateLimit WafRuleConfigRateLimitPtrInput `pulumi:"rateLimit"`
-	// The overall security protection level of WAF. See `securityLevel` below.
+	// The overall security protection level of WAF.
+	// Valid values:
+	// - off
+	// - essentiallyOff
+	// - low
+	// - medium
+	// - high
+	// - underAttack See `securityLevel` below.
 	SecurityLevel WafRuleConfigSecurityLevelPtrInput `pulumi:"securityLevel"`
 	// Configuration items for token verification mechanisms.
 	Sigchls pulumi.StringArrayInput `pulumi:"sigchls"`
@@ -4002,7 +4266,14 @@ func (o WafRuleConfigOutput) RateLimit() WafRuleConfigRateLimitPtrOutput {
 	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigRateLimit { return v.RateLimit }).(WafRuleConfigRateLimitPtrOutput)
 }
 
-// The overall security protection level of WAF. See `securityLevel` below.
+// The overall security protection level of WAF.
+// Valid values:
+// - off
+// - essentiallyOff
+// - low
+// - medium
+// - high
+// - underAttack See `securityLevel` below.
 func (o WafRuleConfigOutput) SecurityLevel() WafRuleConfigSecurityLevelPtrOutput {
 	return o.ApplyT(func(v WafRuleConfig) *WafRuleConfigSecurityLevel { return v.SecurityLevel }).(WafRuleConfigSecurityLevelPtrOutput)
 }
@@ -4176,7 +4447,14 @@ func (o WafRuleConfigPtrOutput) RateLimit() WafRuleConfigRateLimitPtrOutput {
 	}).(WafRuleConfigRateLimitPtrOutput)
 }
 
-// The overall security protection level of WAF. See `securityLevel` below.
+// The overall security protection level of WAF.
+// Valid values:
+// - off
+// - essentiallyOff
+// - low
+// - medium
+// - high
+// - underAttack See `securityLevel` below.
 func (o WafRuleConfigPtrOutput) SecurityLevel() WafRuleConfigSecurityLevelPtrOutput {
 	return o.ApplyT(func(v *WafRuleConfig) *WafRuleConfigSecurityLevel {
 		if v == nil {
@@ -8610,6 +8888,10 @@ func (o GetSitesSiteArrayOutput) Index(i pulumi.IntInput) GetSitesSiteOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationInput)(nil)).Elem(), HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationInput)(nil)).Elem(), HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayInput)(nil)).Elem(), HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestHeaderModificationRuleRequestHeaderModificationArrayInput)(nil)).Elem(), HttpRequestHeaderModificationRuleRequestHeaderModificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpResponseHeaderModificationRuleResponseHeaderModificationInput)(nil)).Elem(), HttpResponseHeaderModificationRuleResponseHeaderModificationArgs{})
@@ -8708,6 +8990,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomHostNameAndPathArrayInput)(nil)).Elem(), WaitingRoomHostNameAndPathArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
+	pulumi.RegisterOutputType(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationOutput{})
+	pulumi.RegisterOutputType(HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
+	pulumi.RegisterOutputType(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationOutput{})
+	pulumi.RegisterOutputType(HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArrayOutput{})
 	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationOutput{})
 	pulumi.RegisterOutputType(HttpRequestHeaderModificationRuleRequestHeaderModificationArrayOutput{})
 	pulumi.RegisterOutputType(HttpResponseHeaderModificationRuleResponseHeaderModificationOutput{})

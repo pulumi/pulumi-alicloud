@@ -399,6 +399,8 @@ class Exchange(pulumi.CustomResource):
             x_delayed_type="DIRECT")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RabbitMQ (AMQP) Exchange can be imported using the id, e.g.
@@ -482,6 +484,8 @@ class Exchange(pulumi.CustomResource):
             alternate_exchange="bakExchange",
             x_delayed_type="DIRECT")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

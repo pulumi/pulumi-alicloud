@@ -284,6 +284,8 @@ class SecurityPolicy(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NLB Security Policy can be imported using the id, e.g.
@@ -350,6 +352,8 @@ class SecurityPolicy(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

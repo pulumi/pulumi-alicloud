@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a ESA Site Version resource.
+// Provides a ESA Version resource.
 //
-// For information about ESA Site Version and how to use it, see [What is Site Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
+// For information about ESA Version and how to use it, see [What is Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
 //
 // > **NOTE:** Available since v1.251.0.
 //
@@ -70,6 +70,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Site Version can be imported using the id, e.g.
@@ -87,8 +89,8 @@ type Version struct {
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	OriginVersion pulumi.IntOutput `pulumi:"originVersion"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The version number of the site configuration.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntOutput `pulumi:"siteVersion"`
 	// Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -137,8 +139,8 @@ type versionState struct {
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	OriginVersion *int `pulumi:"originVersion"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId *int `pulumi:"siteId"`
-	// The version number of the site configuration.
+	SiteId *string `pulumi:"siteId"`
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
 	Status *string `pulumi:"status"`
@@ -152,8 +154,8 @@ type VersionState struct {
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	OriginVersion pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntPtrInput
-	// The version number of the site configuration.
+	SiteId pulumi.StringPtrInput
+	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Site version status:：`online`.：`configuring`._faild`：`configureFaild`.
 	Status pulumi.StringPtrInput
@@ -169,7 +171,7 @@ type versionArgs struct {
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	OriginVersion int `pulumi:"originVersion"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a Version resource.
@@ -179,7 +181,7 @@ type VersionArgs struct {
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	OriginVersion pulumi.IntInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (VersionArgs) ElementType() reflect.Type {
@@ -285,11 +287,11 @@ func (o VersionOutput) OriginVersion() pulumi.IntOutput {
 }
 
 // The site ID, which can be obtained by calling the ListSites API.
-func (o VersionOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *Version) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o VersionOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// The version number of the site configuration.
+// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 func (o VersionOutput) SiteVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *Version) pulumi.IntOutput { return v.SiteVersion }).(pulumi.IntOutput)
 }

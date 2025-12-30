@@ -57,6 +57,8 @@ namespace Pulumi.AliCloud.Ram
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RAM User Group Attachment can be imported using the id, e.g.

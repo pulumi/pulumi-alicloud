@@ -43,6 +43,8 @@ namespace Pulumi.AliCloud.CloudConnect
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// The cloud connect network instance can be imported using the id, e.g.

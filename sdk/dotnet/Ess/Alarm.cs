@@ -145,6 +145,8 @@ namespace Pulumi.AliCloud.Ess
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Module Support
     /// 
     /// You can use to the existing autoscaling-rule module

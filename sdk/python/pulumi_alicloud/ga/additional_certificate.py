@@ -292,6 +292,8 @@ class AdditionalCertificate(pulumi.CustomResource):
             listener_id=default_listener.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.
@@ -437,6 +439,8 @@ class AdditionalCertificate(pulumi.CustomResource):
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

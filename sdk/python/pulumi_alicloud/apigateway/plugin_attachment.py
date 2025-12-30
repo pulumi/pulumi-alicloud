@@ -235,6 +235,8 @@ class PluginAttachment(pulumi.CustomResource):
             stage_name="RELEASE")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_id: The api_id that plugin attaches to.
@@ -315,6 +317,8 @@ class PluginAttachment(pulumi.CustomResource):
             plugin_id=example_plugin.id,
             stage_name="RELEASE")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param PluginAttachmentArgs args: The arguments to use to populate this resource's properties.

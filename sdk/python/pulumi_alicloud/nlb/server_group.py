@@ -675,6 +675,8 @@ class ServerGroup(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Network Load Balancer (NLB) Server Group can be imported using the id, e.g.
@@ -779,6 +781,8 @@ class ServerGroup(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

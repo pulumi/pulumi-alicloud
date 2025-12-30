@@ -612,6 +612,8 @@ class PrivateDns(pulumi.CustomResource):
             member_uid=current.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Private Dns can be imported using the id, e.g.
@@ -694,6 +696,8 @@ class PrivateDns(pulumi.CustomResource):
             standby_vswitch_ip="172.16.4.1",
             member_uid=current.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

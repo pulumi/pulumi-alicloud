@@ -26,15 +26,17 @@ class PcaCertificateArgs:
                  state: pulumi.Input[_builtins.str],
                  years: pulumi.Input[_builtins.int],
                  algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PcaCertificate resource.
         :param pulumi.Input[_builtins.str] common_name: The common name or abbreviation of the organization. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-               Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
                > **NOTE:**  It is recommended to set to `5` to `10` years.
         :param pulumi.Input[_builtins.str] algorithm: The key algorithm type of the root CA certificate. The key algorithm is expressed using the '_< key length>' format. Value:
@@ -47,6 +49,8 @@ class PcaCertificateArgs:
                - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
                The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\\_1024**, **RSA\\_2048**, or **RSA\\_4096**.
         :param pulumi.Input[_builtins.str] country_code: The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
+        :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "locality", locality)
@@ -56,8 +60,14 @@ class PcaCertificateArgs:
         pulumi.set(__self__, "years", years)
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
@@ -111,8 +121,7 @@ class PcaCertificateArgs:
     @pulumi.getter
     def state(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         """
         return pulumi.get(self, "state")
 
@@ -154,6 +163,15 @@ class PcaCertificateArgs:
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "alias_name")
+
+    @alias_name.setter
+    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alias_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -165,18 +183,45 @@ class PcaCertificateArgs:
     def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A resource property field representing the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _PcaCertificateState:
     def __init__(__self__, *,
                  algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
                  common_name: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  locality: Optional[pulumi.Input[_builtins.str]] = None,
                  organization: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PcaCertificate resources.
@@ -194,14 +239,17 @@ class _PcaCertificateState:
         :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-               Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] status: The status of the CA certificate.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
                > **NOTE:**  It is recommended to set to `5` to `10` years.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
+        if alias_name is not None:
+            pulumi.set(__self__, "alias_name", alias_name)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
         if country_code is not None:
@@ -212,10 +260,14 @@ class _PcaCertificateState:
             pulumi.set(__self__, "organization", organization)
         if organization_unit is not None:
             pulumi.set(__self__, "organization_unit", organization_unit)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if years is not None:
             pulumi.set(__self__, "years", years)
 
@@ -238,6 +290,15 @@ class _PcaCertificateState:
     @algorithm.setter
     def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "alias_name")
+
+    @alias_name.setter
+    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
@@ -300,11 +361,22 @@ class _PcaCertificateState:
         pulumi.set(self, "organization_unit", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A resource property field representing the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         """
         return pulumi.get(self, "state")
 
@@ -323,6 +395,18 @@ class _PcaCertificateState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
@@ -345,12 +429,15 @@ class PcaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
                  common_name: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  locality: Optional[pulumi.Input[_builtins.str]] = None,
                  organization: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  years: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
@@ -379,6 +466,8 @@ class PcaCertificate(pulumi.CustomResource):
             algorithm="RSA_2048")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -403,8 +492,9 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-               Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
                > **NOTE:**  It is recommended to set to `5` to `10` years.
         """
@@ -440,6 +530,8 @@ class PcaCertificate(pulumi.CustomResource):
             algorithm="RSA_2048")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -464,12 +556,15 @@ class PcaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
                  common_name: Optional[pulumi.Input[_builtins.str]] = None,
                  country_code: Optional[pulumi.Input[_builtins.str]] = None,
                  locality: Optional[pulumi.Input[_builtins.str]] = None,
                  organization: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  years: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -481,6 +576,7 @@ class PcaCertificate(pulumi.CustomResource):
             __props__ = PcaCertificateArgs.__new__(PcaCertificateArgs)
 
             __props__.__dict__["algorithm"] = algorithm
+            __props__.__dict__["alias_name"] = alias_name
             if common_name is None and not opts.urn:
                 raise TypeError("Missing required property 'common_name'")
             __props__.__dict__["common_name"] = common_name
@@ -494,9 +590,11 @@ class PcaCertificate(pulumi.CustomResource):
             if organization_unit is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_unit'")
             __props__.__dict__["organization_unit"] = organization_unit
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if state is None and not opts.urn:
                 raise TypeError("Missing required property 'state'")
             __props__.__dict__["state"] = state
+            __props__.__dict__["tags"] = tags
             if years is None and not opts.urn:
                 raise TypeError("Missing required property 'years'")
             __props__.__dict__["years"] = years
@@ -512,13 +610,16 @@ class PcaCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+            alias_name: Optional[pulumi.Input[_builtins.str]] = None,
             common_name: Optional[pulumi.Input[_builtins.str]] = None,
             country_code: Optional[pulumi.Input[_builtins.str]] = None,
             locality: Optional[pulumi.Input[_builtins.str]] = None,
             organization: Optional[pulumi.Input[_builtins.str]] = None,
             organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             years: Optional[pulumi.Input[_builtins.int]] = None) -> 'PcaCertificate':
         """
         Get an existing PcaCertificate resource's state with the given name, id, and optional extra
@@ -541,9 +642,10 @@ class PcaCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] locality: Name of the city where the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization: The name of the organization (corresponding to your enterprise or company) associated with the root CA certificate. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] organization_unit: The name of the department or branch under the organization. Support the use of Chinese, English characters.
-        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-               Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        :param pulumi.Input[_builtins.str] resource_group_id: A resource property field representing the resource group.
+        :param pulumi.Input[_builtins.str] state: The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         :param pulumi.Input[_builtins.str] status: The status of the CA certificate.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource.
         :param pulumi.Input[_builtins.int] years: The validity period of the root CA certificate, in years.
                > **NOTE:**  It is recommended to set to `5` to `10` years.
         """
@@ -552,13 +654,16 @@ class PcaCertificate(pulumi.CustomResource):
         __props__ = _PcaCertificateState.__new__(_PcaCertificateState)
 
         __props__.__dict__["algorithm"] = algorithm
+        __props__.__dict__["alias_name"] = alias_name
         __props__.__dict__["common_name"] = common_name
         __props__.__dict__["country_code"] = country_code
         __props__.__dict__["locality"] = locality
         __props__.__dict__["organization"] = organization
         __props__.__dict__["organization_unit"] = organization_unit
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["state"] = state
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["years"] = years
         return PcaCertificate(resource_name, opts=opts, __props__=__props__)
 
@@ -577,6 +682,11 @@ class PcaCertificate(pulumi.CustomResource):
         The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\\_1024**, **RSA\\_2048**, or **RSA\\_4096**.
         """
         return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="aliasName")
+    def alias_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "alias_name")
 
     @_builtins.property
     @pulumi.getter(name="commonName")
@@ -619,11 +729,18 @@ class PcaCertificate(pulumi.CustomResource):
         return pulumi.get(self, "organization_unit")
 
     @_builtins.property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        A resource property field representing the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         """
         return pulumi.get(self, "state")
 
@@ -634,6 +751,14 @@ class PcaCertificate(pulumi.CustomResource):
         The status of the CA certificate.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

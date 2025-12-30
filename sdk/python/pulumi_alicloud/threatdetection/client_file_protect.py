@@ -328,6 +328,8 @@ class ClientFileProtect(pulumi.CustomResource):
             rule_name="rule_example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Client File Protect can be imported using the id, e.g.
@@ -382,6 +384,8 @@ class ClientFileProtect(pulumi.CustomResource):
             switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
             rule_name="rule_example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

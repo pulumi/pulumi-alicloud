@@ -295,6 +295,8 @@ class DnatEntry(pulumi.CustomResource):
             internal_port="any")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag DnatEntry can be imported using the id, e.g.
@@ -349,6 +351,8 @@ class DnatEntry(pulumi.CustomResource):
             internal_ip="172.16.0.4",
             internal_port="any")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

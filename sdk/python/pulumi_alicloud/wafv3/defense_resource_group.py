@@ -232,6 +232,8 @@ class DefenseResourceGroup(pulumi.CustomResource):
             instance_id=default_ha_f1f_d.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAFV3 Defense Resource Group can be imported using the id, e.g.
@@ -315,6 +317,8 @@ class DefenseResourceGroup(pulumi.CustomResource):
             description="example",
             instance_id=default_ha_f1f_d.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

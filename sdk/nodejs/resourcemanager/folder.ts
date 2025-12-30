@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.resourcemanager.Folder("example", {folderName: `${name}-${_default.result}`});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Resource Manager Folder can be imported using the id, e.g.

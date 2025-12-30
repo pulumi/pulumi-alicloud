@@ -828,6 +828,8 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN Gateway Vpn Attachment can be imported using the id, e.g.
@@ -1032,6 +1034,8 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             network_type="public",
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

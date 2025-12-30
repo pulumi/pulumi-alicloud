@@ -40,6 +40,8 @@ namespace Pulumi.AliCloud.Message
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Message Service Topic can be imported using the id, e.g.

@@ -883,6 +883,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             resource_group_id=default_get_resource_groups.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Network Interface can be imported using the id, e.g.
@@ -968,6 +970,8 @@ class EcsNetworkInterface(pulumi.CustomResource):
             },
             resource_group_id=default_get_resource_groups.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

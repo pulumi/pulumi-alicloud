@@ -430,6 +430,8 @@ class Topic(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alikafka Topic can be imported using the id, e.g.
@@ -524,6 +526,8 @@ class Topic(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

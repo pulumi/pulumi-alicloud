@@ -119,6 +119,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Monitor Service Monitoring Agent Process can be imported using the id, e.g.

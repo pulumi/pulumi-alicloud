@@ -43,6 +43,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Threat Detection Honeypot Preset can be imported using the id, e.g.

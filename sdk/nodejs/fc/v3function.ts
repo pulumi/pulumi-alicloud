@@ -90,6 +90,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -126,9 +128,6 @@ export class V3Function extends pulumi.CustomResource {
         return obj['__pulumiType'] === V3Function.__pulumiType;
     }
 
-    /**
-     * Function code ZIP package. code and customContainerConfig. See `code` below.
-     */
     declare public readonly code: pulumi.Output<outputs.fc.V3FunctionCode | undefined>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
@@ -187,13 +186,17 @@ export class V3Function extends pulumi.CustomResource {
      */
     declare public readonly handler: pulumi.Output<string>;
     /**
+     * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     */
+    declare public readonly idleTimeout: pulumi.Output<number | undefined>;
+    /**
      * Maximum instance concurrency.
      */
     declare public readonly instanceConcurrency: pulumi.Output<number>;
     /**
      * Instance isolation mode
      */
-    declare public readonly instanceIsolationMode: pulumi.Output<string | undefined>;
+    declare public readonly instanceIsolationMode: pulumi.Output<string>;
     /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
      */
@@ -243,7 +246,7 @@ export class V3Function extends pulumi.CustomResource {
      */
     declare public readonly ossMountConfig: pulumi.Output<outputs.fc.V3FunctionOssMountConfig>;
     /**
-     * Resource Group ID.
+     * Resource Group ID
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
@@ -251,13 +254,13 @@ export class V3Function extends pulumi.CustomResource {
      */
     declare public readonly role: pulumi.Output<string | undefined>;
     /**
-     * Function runtime type.
+     * Function runtime type
      */
     declare public readonly runtime: pulumi.Output<string>;
     /**
      * The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
      */
-    declare public readonly sessionAffinity: pulumi.Output<string | undefined>;
+    declare public readonly sessionAffinity: pulumi.Output<string>;
     /**
      * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
      */
@@ -319,6 +322,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["functionName"] = state?.functionName;
             resourceInputs["gpuConfig"] = state?.gpuConfig;
             resourceInputs["handler"] = state?.handler;
+            resourceInputs["idleTimeout"] = state?.idleTimeout;
             resourceInputs["instanceConcurrency"] = state?.instanceConcurrency;
             resourceInputs["instanceIsolationMode"] = state?.instanceIsolationMode;
             resourceInputs["instanceLifecycleConfig"] = state?.instanceLifecycleConfig;
@@ -364,6 +368,7 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["functionName"] = args?.functionName;
             resourceInputs["gpuConfig"] = args?.gpuConfig;
             resourceInputs["handler"] = args?.handler;
+            resourceInputs["idleTimeout"] = args?.idleTimeout;
             resourceInputs["instanceConcurrency"] = args?.instanceConcurrency;
             resourceInputs["instanceIsolationMode"] = args?.instanceIsolationMode;
             resourceInputs["instanceLifecycleConfig"] = args?.instanceLifecycleConfig;
@@ -404,9 +409,6 @@ export class V3Function extends pulumi.CustomResource {
  * Input properties used for looking up and filtering V3Function resources.
  */
 export interface V3FunctionState {
-    /**
-     * Function code ZIP package. code and customContainerConfig. See `code` below.
-     */
     code?: pulumi.Input<inputs.fc.V3FunctionCode>;
     /**
      * The code package size of the function returned by the system, in byte Example : 1024
@@ -465,6 +467,10 @@ export interface V3FunctionState {
      */
     handler?: pulumi.Input<string>;
     /**
+     * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     */
+    idleTimeout?: pulumi.Input<number>;
+    /**
      * Maximum instance concurrency.
      */
     instanceConcurrency?: pulumi.Input<number>;
@@ -521,7 +527,7 @@ export interface V3FunctionState {
      */
     ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
     /**
-     * Resource Group ID.
+     * Resource Group ID
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -529,7 +535,7 @@ export interface V3FunctionState {
      */
     role?: pulumi.Input<string>;
     /**
-     * Function runtime type.
+     * Function runtime type
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -574,9 +580,6 @@ export interface V3FunctionState {
  * The set of arguments for constructing a V3Function resource.
  */
 export interface V3FunctionArgs {
-    /**
-     * Function code ZIP package. code and customContainerConfig. See `code` below.
-     */
     code?: pulumi.Input<inputs.fc.V3FunctionCode>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
@@ -619,6 +622,10 @@ export interface V3FunctionArgs {
      */
     handler: pulumi.Input<string>;
     /**
+     * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     */
+    idleTimeout?: pulumi.Input<number>;
+    /**
      * Maximum instance concurrency.
      */
     instanceConcurrency?: pulumi.Input<number>;
@@ -659,7 +666,7 @@ export interface V3FunctionArgs {
      */
     ossMountConfig?: pulumi.Input<inputs.fc.V3FunctionOssMountConfig>;
     /**
-     * Resource Group ID.
+     * Resource Group ID
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -667,7 +674,7 @@ export interface V3FunctionArgs {
      */
     role?: pulumi.Input<string>;
     /**
-     * Function runtime type.
+     * Function runtime type
      */
     runtime: pulumi.Input<string>;
     /**

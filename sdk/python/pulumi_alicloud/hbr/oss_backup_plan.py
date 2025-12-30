@@ -435,6 +435,8 @@ class OssBackupPlan(pulumi.CustomResource):
             retention="2")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         HBR Oss Backup Plan can be imported using the id, e.g.
@@ -498,6 +500,8 @@ class OssBackupPlan(pulumi.CustomResource):
             backup_type="COMPLETE",
             retention="2")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

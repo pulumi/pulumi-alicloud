@@ -192,6 +192,8 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             group_name=group.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Group Policy Attachment can be imported using the id, e.g.
@@ -262,6 +264,8 @@ class GroupPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             group_name=group.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

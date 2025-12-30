@@ -41,6 +41,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * File Storage (NAS) Snapshot can be imported using the id, e.g.

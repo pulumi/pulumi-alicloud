@@ -441,6 +441,8 @@ class Ingress(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless App Engine (SAE) Ingress can be imported using the id, e.g.
@@ -541,6 +543,8 @@ class Ingress(pulumi.CustomResource):
                 "container_port": 443,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

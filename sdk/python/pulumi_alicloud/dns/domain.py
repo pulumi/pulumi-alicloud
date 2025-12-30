@@ -194,6 +194,8 @@ class Domain(pulumi.CustomResource):
             group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS can be imported using the id or domain name, e.g.
@@ -232,6 +234,8 @@ class Domain(pulumi.CustomResource):
             name="starmove.com",
             group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

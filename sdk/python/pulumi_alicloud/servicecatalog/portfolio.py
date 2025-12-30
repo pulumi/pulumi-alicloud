@@ -192,6 +192,8 @@ class Portfolio(pulumi.CustomResource):
             provider_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Catalog Portfolio can be imported using the id, e.g.
@@ -235,6 +237,8 @@ class Portfolio(pulumi.CustomResource):
             portfolio_name=name,
             provider_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

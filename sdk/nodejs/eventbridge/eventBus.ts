@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Event Bridge Event Bus can be imported using the id, e.g.

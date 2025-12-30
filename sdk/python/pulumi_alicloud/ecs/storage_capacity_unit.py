@@ -281,6 +281,8 @@ class StorageCapacityUnit(pulumi.CustomResource):
             storage_capacity_unit_name="tftestname")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Storage Capacity Unit can be imported using the id, e.g.
@@ -326,6 +328,8 @@ class StorageCapacityUnit(pulumi.CustomResource):
             description="tftestdescription",
             storage_capacity_unit_name="tftestname")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -130,6 +130,8 @@ class MscSubWebhook(pulumi.CustomResource):
             webhook_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Msc Sub Webhook can be imported using the id, e.g.
@@ -175,6 +177,8 @@ class MscSubWebhook(pulumi.CustomResource):
                 args=[token]).result,
             webhook_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

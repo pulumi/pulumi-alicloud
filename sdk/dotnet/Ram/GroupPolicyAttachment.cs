@@ -75,6 +75,8 @@ namespace Pulumi.AliCloud.Ram
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RAM Group Policy Attachment can be imported using the id, e.g.

@@ -21,6 +21,7 @@ class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
@@ -29,6 +30,7 @@ class InstanceArgs:
                  modify_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -44,6 +46,7 @@ class InstanceArgs:
                - Subscription: Pre-paid.
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
                - professional: professional Edition
@@ -59,6 +62,7 @@ class InstanceArgs:
                - Downgrade: Downgrading.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         :param pulumi.Input[_builtins.str] period_cycle: Prepaid cycle units. Value: Month, Year.
+        :param pulumi.Input[_builtins.int] provisioned_capacity: The provisioned TPS capacity for reserved + elastic instances.
         :param pulumi.Input[_builtins.str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -72,6 +76,8 @@ class InstanceArgs:
         pulumi.set(__self__, "payment_type", payment_type)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -88,6 +94,8 @@ class InstanceArgs:
             pulumi.set(__self__, "period", period)
         if period_cycle is not None:
             pulumi.set(__self__, "period_cycle", period_cycle)
+        if provisioned_capacity is not None:
+            pulumi.set(__self__, "provisioned_capacity", provisioned_capacity)
         if queue_capacity is not None:
             pulumi.set(__self__, "queue_capacity", queue_capacity)
         if renewal_duration is not None:
@@ -132,6 +140,18 @@ class InstanceArgs:
     @auto_renew.setter
     def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deployment architecture for Serverless instances. Valid values:
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -235,6 +255,18 @@ class InstanceArgs:
     @period_cycle.setter
     def period_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "period_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedCapacity")
+    def provisioned_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The provisioned TPS capacity for reserved + elastic instances.
+        """
+        return pulumi.get(self, "provisioned_capacity")
+
+    @provisioned_capacity.setter
+    def provisioned_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "provisioned_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCapacity")
@@ -350,6 +382,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  create_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
@@ -359,6 +392,7 @@ class _InstanceState:
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -373,6 +407,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
+        :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
                - professional: professional Edition
@@ -391,6 +426,7 @@ class _InstanceState:
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         :param pulumi.Input[_builtins.str] period_cycle: Prepaid cycle units. Value: Month, Year.
+        :param pulumi.Input[_builtins.int] provisioned_capacity: The provisioned TPS capacity for reserved + elastic instances.
         :param pulumi.Input[_builtins.str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -406,6 +442,8 @@ class _InstanceState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -424,6 +462,8 @@ class _InstanceState:
             pulumi.set(__self__, "period", period)
         if period_cycle is not None:
             pulumi.set(__self__, "period_cycle", period_cycle)
+        if provisioned_capacity is not None:
+            pulumi.set(__self__, "provisioned_capacity", provisioned_capacity)
         if queue_capacity is not None:
             pulumi.set(__self__, "queue_capacity", queue_capacity)
         if renewal_duration is not None:
@@ -468,6 +508,18 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The deployment architecture for Serverless instances. Valid values:
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -585,6 +637,18 @@ class _InstanceState:
     @period_cycle.setter
     def period_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "period_cycle", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedCapacity")
+    def provisioned_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The provisioned TPS capacity for reserved + elastic instances.
+        """
+        return pulumi.get(self, "provisioned_capacity")
+
+    @provisioned_capacity.setter
+    def provisioned_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "provisioned_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCapacity")
@@ -714,6 +778,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
@@ -723,6 +788,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -745,6 +811,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
+        :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
                - professional: professional Edition
@@ -763,6 +830,7 @@ class Instance(pulumi.CustomResource):
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         :param pulumi.Input[_builtins.str] period_cycle: Prepaid cycle units. Value: Month, Year.
+        :param pulumi.Input[_builtins.int] provisioned_capacity: The provisioned TPS capacity for reserved + elastic instances.
         :param pulumi.Input[_builtins.str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -804,6 +872,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
+                 edition: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_type: Optional[pulumi.Input[_builtins.str]] = None,
                  max_connections: Optional[pulumi.Input[_builtins.int]] = None,
@@ -813,6 +882,7 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
                  queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -832,6 +902,7 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["auto_renew"] = auto_renew
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["max_connections"] = max_connections
@@ -843,6 +914,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["period_cycle"] = period_cycle
+            __props__.__dict__["provisioned_capacity"] = provisioned_capacity
             __props__.__dict__["queue_capacity"] = queue_capacity
             __props__.__dict__["renewal_duration"] = renewal_duration
             __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
@@ -866,6 +938,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
             create_time: Optional[pulumi.Input[_builtins.int]] = None,
+            edition: Optional[pulumi.Input[_builtins.str]] = None,
             instance_name: Optional[pulumi.Input[_builtins.str]] = None,
             instance_type: Optional[pulumi.Input[_builtins.str]] = None,
             max_connections: Optional[pulumi.Input[_builtins.int]] = None,
@@ -875,6 +948,7 @@ class Instance(pulumi.CustomResource):
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
+            provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
             queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
             renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
             renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
@@ -894,6 +968,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renew: Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         :param pulumi.Input[_builtins.int] create_time: OrderCreateTime.
+        :param pulumi.Input[_builtins.str] edition: The deployment architecture for Serverless instances. Valid values:
         :param pulumi.Input[_builtins.str] instance_name: The instance name.
         :param pulumi.Input[_builtins.str] instance_type: Instance type. Valid values: 
                - professional: professional Edition
@@ -912,6 +987,7 @@ class Instance(pulumi.CustomResource):
                - PayAsYouGo: Post-paid, and for serverless Edition.
         :param pulumi.Input[_builtins.int] period: Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         :param pulumi.Input[_builtins.str] period_cycle: Prepaid cycle units. Value: Month, Year.
+        :param pulumi.Input[_builtins.int] provisioned_capacity: The provisioned TPS capacity for reserved + elastic instances.
         :param pulumi.Input[_builtins.str] queue_capacity: Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         :param pulumi.Input[_builtins.int] renewal_duration: The number of automatic renewal cycles.
         :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
@@ -929,6 +1005,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["max_connections"] = max_connections
@@ -938,6 +1015,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["period_cycle"] = period_cycle
+        __props__.__dict__["provisioned_capacity"] = provisioned_capacity
         __props__.__dict__["queue_capacity"] = queue_capacity
         __props__.__dict__["renewal_duration"] = renewal_duration
         __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
@@ -965,6 +1043,14 @@ class Instance(pulumi.CustomResource):
         OrderCreateTime.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[_builtins.str]:
+        """
+        The deployment architecture for Serverless instances. Valid values:
+        """
+        return pulumi.get(self, "edition")
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
@@ -1048,6 +1134,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "period_cycle")
 
     @_builtins.property
+    @pulumi.getter(name="provisionedCapacity")
+    def provisioned_capacity(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The provisioned TPS capacity for reserved + elastic instances.
+        """
+        return pulumi.get(self, "provisioned_capacity")
+
+    @_builtins.property
     @pulumi.getter(name="queueCapacity")
     def queue_capacity(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1113,7 +1207,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="supportTracing")
-    def support_tracing(self) -> pulumi.Output[_builtins.bool]:
+    def support_tracing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         """

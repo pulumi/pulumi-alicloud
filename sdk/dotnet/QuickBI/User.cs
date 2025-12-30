@@ -40,6 +40,8 @@ namespace Pulumi.AliCloud.QuickBI
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Quick BI User can be imported using the id, e.g.

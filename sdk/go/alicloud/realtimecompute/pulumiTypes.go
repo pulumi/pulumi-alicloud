@@ -13,6 +13,3929 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DeploymentArtifact struct {
+	// JarArtifact See `jarArtifact` below.
+	JarArtifact *DeploymentArtifactJarArtifact `pulumi:"jarArtifact"`
+	// Artifact type
+	Kind string `pulumi:"kind"`
+	// PythonArtifact See `pythonArtifact` below.
+	PythonArtifact *DeploymentArtifactPythonArtifact `pulumi:"pythonArtifact"`
+	// SqlArtifact See `sqlArtifact` below.
+	SqlArtifact *DeploymentArtifactSqlArtifact `pulumi:"sqlArtifact"`
+}
+
+// DeploymentArtifactInput is an input type that accepts DeploymentArtifactArgs and DeploymentArtifactOutput values.
+// You can construct a concrete instance of `DeploymentArtifactInput` via:
+//
+//	DeploymentArtifactArgs{...}
+type DeploymentArtifactInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactOutput() DeploymentArtifactOutput
+	ToDeploymentArtifactOutputWithContext(context.Context) DeploymentArtifactOutput
+}
+
+type DeploymentArtifactArgs struct {
+	// JarArtifact See `jarArtifact` below.
+	JarArtifact DeploymentArtifactJarArtifactPtrInput `pulumi:"jarArtifact"`
+	// Artifact type
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// PythonArtifact See `pythonArtifact` below.
+	PythonArtifact DeploymentArtifactPythonArtifactPtrInput `pulumi:"pythonArtifact"`
+	// SqlArtifact See `sqlArtifact` below.
+	SqlArtifact DeploymentArtifactSqlArtifactPtrInput `pulumi:"sqlArtifact"`
+}
+
+func (DeploymentArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifact)(nil)).Elem()
+}
+
+func (i DeploymentArtifactArgs) ToDeploymentArtifactOutput() DeploymentArtifactOutput {
+	return i.ToDeploymentArtifactOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactArgs) ToDeploymentArtifactOutputWithContext(ctx context.Context) DeploymentArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactOutput)
+}
+
+func (i DeploymentArtifactArgs) ToDeploymentArtifactPtrOutput() DeploymentArtifactPtrOutput {
+	return i.ToDeploymentArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactArgs) ToDeploymentArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactOutput).ToDeploymentArtifactPtrOutputWithContext(ctx)
+}
+
+// DeploymentArtifactPtrInput is an input type that accepts DeploymentArtifactArgs, DeploymentArtifactPtr and DeploymentArtifactPtrOutput values.
+// You can construct a concrete instance of `DeploymentArtifactPtrInput` via:
+//
+//	        DeploymentArtifactArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentArtifactPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactPtrOutput() DeploymentArtifactPtrOutput
+	ToDeploymentArtifactPtrOutputWithContext(context.Context) DeploymentArtifactPtrOutput
+}
+
+type deploymentArtifactPtrType DeploymentArtifactArgs
+
+func DeploymentArtifactPtr(v *DeploymentArtifactArgs) DeploymentArtifactPtrInput {
+	return (*deploymentArtifactPtrType)(v)
+}
+
+func (*deploymentArtifactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifact)(nil)).Elem()
+}
+
+func (i *deploymentArtifactPtrType) ToDeploymentArtifactPtrOutput() DeploymentArtifactPtrOutput {
+	return i.ToDeploymentArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentArtifactPtrType) ToDeploymentArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactPtrOutput)
+}
+
+type DeploymentArtifactOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactOutput) ToDeploymentArtifactOutput() DeploymentArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactOutput) ToDeploymentArtifactOutputWithContext(ctx context.Context) DeploymentArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactOutput) ToDeploymentArtifactPtrOutput() DeploymentArtifactPtrOutput {
+	return o.ToDeploymentArtifactPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentArtifactOutput) ToDeploymentArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentArtifact) *DeploymentArtifact {
+		return &v
+	}).(DeploymentArtifactPtrOutput)
+}
+
+// JarArtifact See `jarArtifact` below.
+func (o DeploymentArtifactOutput) JarArtifact() DeploymentArtifactJarArtifactPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifact) *DeploymentArtifactJarArtifact { return v.JarArtifact }).(DeploymentArtifactJarArtifactPtrOutput)
+}
+
+// Artifact type
+func (o DeploymentArtifactOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentArtifact) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// PythonArtifact See `pythonArtifact` below.
+func (o DeploymentArtifactOutput) PythonArtifact() DeploymentArtifactPythonArtifactPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifact) *DeploymentArtifactPythonArtifact { return v.PythonArtifact }).(DeploymentArtifactPythonArtifactPtrOutput)
+}
+
+// SqlArtifact See `sqlArtifact` below.
+func (o DeploymentArtifactOutput) SqlArtifact() DeploymentArtifactSqlArtifactPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifact) *DeploymentArtifactSqlArtifact { return v.SqlArtifact }).(DeploymentArtifactSqlArtifactPtrOutput)
+}
+
+type DeploymentArtifactPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactPtrOutput) ToDeploymentArtifactPtrOutput() DeploymentArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactPtrOutput) ToDeploymentArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactPtrOutput) Elem() DeploymentArtifactOutput {
+	return o.ApplyT(func(v *DeploymentArtifact) DeploymentArtifact {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentArtifact
+		return ret
+	}).(DeploymentArtifactOutput)
+}
+
+// JarArtifact See `jarArtifact` below.
+func (o DeploymentArtifactPtrOutput) JarArtifact() DeploymentArtifactJarArtifactPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifact) *DeploymentArtifactJarArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.JarArtifact
+	}).(DeploymentArtifactJarArtifactPtrOutput)
+}
+
+// Artifact type
+func (o DeploymentArtifactPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// PythonArtifact See `pythonArtifact` below.
+func (o DeploymentArtifactPtrOutput) PythonArtifact() DeploymentArtifactPythonArtifactPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifact) *DeploymentArtifactPythonArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.PythonArtifact
+	}).(DeploymentArtifactPythonArtifactPtrOutput)
+}
+
+// SqlArtifact See `sqlArtifact` below.
+func (o DeploymentArtifactPtrOutput) SqlArtifact() DeploymentArtifactSqlArtifactPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifact) *DeploymentArtifactSqlArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.SqlArtifact
+	}).(DeploymentArtifactSqlArtifactPtrOutput)
+}
+
+type DeploymentArtifactJarArtifact struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies []string `pulumi:"additionalDependencies"`
+	// Main class; you must specify the fully qualified class name
+	EntryClass *string `pulumi:"entryClass"`
+	// Full URL path of the JAR job
+	JarUri *string `pulumi:"jarUri"`
+	// Startup arguments
+	MainArgs *string `pulumi:"mainArgs"`
+}
+
+// DeploymentArtifactJarArtifactInput is an input type that accepts DeploymentArtifactJarArtifactArgs and DeploymentArtifactJarArtifactOutput values.
+// You can construct a concrete instance of `DeploymentArtifactJarArtifactInput` via:
+//
+//	DeploymentArtifactJarArtifactArgs{...}
+type DeploymentArtifactJarArtifactInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactJarArtifactOutput() DeploymentArtifactJarArtifactOutput
+	ToDeploymentArtifactJarArtifactOutputWithContext(context.Context) DeploymentArtifactJarArtifactOutput
+}
+
+type DeploymentArtifactJarArtifactArgs struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies pulumi.StringArrayInput `pulumi:"additionalDependencies"`
+	// Main class; you must specify the fully qualified class name
+	EntryClass pulumi.StringPtrInput `pulumi:"entryClass"`
+	// Full URL path of the JAR job
+	JarUri pulumi.StringPtrInput `pulumi:"jarUri"`
+	// Startup arguments
+	MainArgs pulumi.StringPtrInput `pulumi:"mainArgs"`
+}
+
+func (DeploymentArtifactJarArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactJarArtifact)(nil)).Elem()
+}
+
+func (i DeploymentArtifactJarArtifactArgs) ToDeploymentArtifactJarArtifactOutput() DeploymentArtifactJarArtifactOutput {
+	return i.ToDeploymentArtifactJarArtifactOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactJarArtifactArgs) ToDeploymentArtifactJarArtifactOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactJarArtifactOutput)
+}
+
+func (i DeploymentArtifactJarArtifactArgs) ToDeploymentArtifactJarArtifactPtrOutput() DeploymentArtifactJarArtifactPtrOutput {
+	return i.ToDeploymentArtifactJarArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactJarArtifactArgs) ToDeploymentArtifactJarArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactJarArtifactOutput).ToDeploymentArtifactJarArtifactPtrOutputWithContext(ctx)
+}
+
+// DeploymentArtifactJarArtifactPtrInput is an input type that accepts DeploymentArtifactJarArtifactArgs, DeploymentArtifactJarArtifactPtr and DeploymentArtifactJarArtifactPtrOutput values.
+// You can construct a concrete instance of `DeploymentArtifactJarArtifactPtrInput` via:
+//
+//	        DeploymentArtifactJarArtifactArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentArtifactJarArtifactPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactJarArtifactPtrOutput() DeploymentArtifactJarArtifactPtrOutput
+	ToDeploymentArtifactJarArtifactPtrOutputWithContext(context.Context) DeploymentArtifactJarArtifactPtrOutput
+}
+
+type deploymentArtifactJarArtifactPtrType DeploymentArtifactJarArtifactArgs
+
+func DeploymentArtifactJarArtifactPtr(v *DeploymentArtifactJarArtifactArgs) DeploymentArtifactJarArtifactPtrInput {
+	return (*deploymentArtifactJarArtifactPtrType)(v)
+}
+
+func (*deploymentArtifactJarArtifactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactJarArtifact)(nil)).Elem()
+}
+
+func (i *deploymentArtifactJarArtifactPtrType) ToDeploymentArtifactJarArtifactPtrOutput() DeploymentArtifactJarArtifactPtrOutput {
+	return i.ToDeploymentArtifactJarArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentArtifactJarArtifactPtrType) ToDeploymentArtifactJarArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactJarArtifactPtrOutput)
+}
+
+type DeploymentArtifactJarArtifactOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactJarArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactJarArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactJarArtifactOutput) ToDeploymentArtifactJarArtifactOutput() DeploymentArtifactJarArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactJarArtifactOutput) ToDeploymentArtifactJarArtifactOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactJarArtifactOutput) ToDeploymentArtifactJarArtifactPtrOutput() DeploymentArtifactJarArtifactPtrOutput {
+	return o.ToDeploymentArtifactJarArtifactPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentArtifactJarArtifactOutput) ToDeploymentArtifactJarArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentArtifactJarArtifact) *DeploymentArtifactJarArtifact {
+		return &v
+	}).(DeploymentArtifactJarArtifactPtrOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactJarArtifactOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentArtifactJarArtifact) []string { return v.AdditionalDependencies }).(pulumi.StringArrayOutput)
+}
+
+// Main class; you must specify the fully qualified class name
+func (o DeploymentArtifactJarArtifactOutput) EntryClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactJarArtifact) *string { return v.EntryClass }).(pulumi.StringPtrOutput)
+}
+
+// Full URL path of the JAR job
+func (o DeploymentArtifactJarArtifactOutput) JarUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactJarArtifact) *string { return v.JarUri }).(pulumi.StringPtrOutput)
+}
+
+// Startup arguments
+func (o DeploymentArtifactJarArtifactOutput) MainArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactJarArtifact) *string { return v.MainArgs }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentArtifactJarArtifactPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactJarArtifactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactJarArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactJarArtifactPtrOutput) ToDeploymentArtifactJarArtifactPtrOutput() DeploymentArtifactJarArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactJarArtifactPtrOutput) ToDeploymentArtifactJarArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactJarArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactJarArtifactPtrOutput) Elem() DeploymentArtifactJarArtifactOutput {
+	return o.ApplyT(func(v *DeploymentArtifactJarArtifact) DeploymentArtifactJarArtifact {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentArtifactJarArtifact
+		return ret
+	}).(DeploymentArtifactJarArtifactOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactJarArtifactPtrOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentArtifactJarArtifact) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalDependencies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Main class; you must specify the fully qualified class name
+func (o DeploymentArtifactJarArtifactPtrOutput) EntryClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactJarArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full URL path of the JAR job
+func (o DeploymentArtifactJarArtifactPtrOutput) JarUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactJarArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JarUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Startup arguments
+func (o DeploymentArtifactJarArtifactPtrOutput) MainArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactJarArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainArgs
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentArtifactPythonArtifact struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies []string `pulumi:"additionalDependencies"`
+	// URL paths of dependent Python archive files
+	AdditionalPythonArchives []string `pulumi:"additionalPythonArchives"`
+	// URL paths of dependent Python library files
+	AdditionalPythonLibraries []string `pulumi:"additionalPythonLibraries"`
+	// Entry module for Python
+	EntryModule *string `pulumi:"entryModule"`
+	// Startup arguments
+	MainArgs *string `pulumi:"mainArgs"`
+	// Full URL path of the Python job
+	PythonArtifactUri *string `pulumi:"pythonArtifactUri"`
+}
+
+// DeploymentArtifactPythonArtifactInput is an input type that accepts DeploymentArtifactPythonArtifactArgs and DeploymentArtifactPythonArtifactOutput values.
+// You can construct a concrete instance of `DeploymentArtifactPythonArtifactInput` via:
+//
+//	DeploymentArtifactPythonArtifactArgs{...}
+type DeploymentArtifactPythonArtifactInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactPythonArtifactOutput() DeploymentArtifactPythonArtifactOutput
+	ToDeploymentArtifactPythonArtifactOutputWithContext(context.Context) DeploymentArtifactPythonArtifactOutput
+}
+
+type DeploymentArtifactPythonArtifactArgs struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies pulumi.StringArrayInput `pulumi:"additionalDependencies"`
+	// URL paths of dependent Python archive files
+	AdditionalPythonArchives pulumi.StringArrayInput `pulumi:"additionalPythonArchives"`
+	// URL paths of dependent Python library files
+	AdditionalPythonLibraries pulumi.StringArrayInput `pulumi:"additionalPythonLibraries"`
+	// Entry module for Python
+	EntryModule pulumi.StringPtrInput `pulumi:"entryModule"`
+	// Startup arguments
+	MainArgs pulumi.StringPtrInput `pulumi:"mainArgs"`
+	// Full URL path of the Python job
+	PythonArtifactUri pulumi.StringPtrInput `pulumi:"pythonArtifactUri"`
+}
+
+func (DeploymentArtifactPythonArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactPythonArtifact)(nil)).Elem()
+}
+
+func (i DeploymentArtifactPythonArtifactArgs) ToDeploymentArtifactPythonArtifactOutput() DeploymentArtifactPythonArtifactOutput {
+	return i.ToDeploymentArtifactPythonArtifactOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactPythonArtifactArgs) ToDeploymentArtifactPythonArtifactOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactPythonArtifactOutput)
+}
+
+func (i DeploymentArtifactPythonArtifactArgs) ToDeploymentArtifactPythonArtifactPtrOutput() DeploymentArtifactPythonArtifactPtrOutput {
+	return i.ToDeploymentArtifactPythonArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactPythonArtifactArgs) ToDeploymentArtifactPythonArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactPythonArtifactOutput).ToDeploymentArtifactPythonArtifactPtrOutputWithContext(ctx)
+}
+
+// DeploymentArtifactPythonArtifactPtrInput is an input type that accepts DeploymentArtifactPythonArtifactArgs, DeploymentArtifactPythonArtifactPtr and DeploymentArtifactPythonArtifactPtrOutput values.
+// You can construct a concrete instance of `DeploymentArtifactPythonArtifactPtrInput` via:
+//
+//	        DeploymentArtifactPythonArtifactArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentArtifactPythonArtifactPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactPythonArtifactPtrOutput() DeploymentArtifactPythonArtifactPtrOutput
+	ToDeploymentArtifactPythonArtifactPtrOutputWithContext(context.Context) DeploymentArtifactPythonArtifactPtrOutput
+}
+
+type deploymentArtifactPythonArtifactPtrType DeploymentArtifactPythonArtifactArgs
+
+func DeploymentArtifactPythonArtifactPtr(v *DeploymentArtifactPythonArtifactArgs) DeploymentArtifactPythonArtifactPtrInput {
+	return (*deploymentArtifactPythonArtifactPtrType)(v)
+}
+
+func (*deploymentArtifactPythonArtifactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactPythonArtifact)(nil)).Elem()
+}
+
+func (i *deploymentArtifactPythonArtifactPtrType) ToDeploymentArtifactPythonArtifactPtrOutput() DeploymentArtifactPythonArtifactPtrOutput {
+	return i.ToDeploymentArtifactPythonArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentArtifactPythonArtifactPtrType) ToDeploymentArtifactPythonArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactPythonArtifactPtrOutput)
+}
+
+type DeploymentArtifactPythonArtifactOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactPythonArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactPythonArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactPythonArtifactOutput) ToDeploymentArtifactPythonArtifactOutput() DeploymentArtifactPythonArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactPythonArtifactOutput) ToDeploymentArtifactPythonArtifactOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactPythonArtifactOutput) ToDeploymentArtifactPythonArtifactPtrOutput() DeploymentArtifactPythonArtifactPtrOutput {
+	return o.ToDeploymentArtifactPythonArtifactPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentArtifactPythonArtifactOutput) ToDeploymentArtifactPythonArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentArtifactPythonArtifact) *DeploymentArtifactPythonArtifact {
+		return &v
+	}).(DeploymentArtifactPythonArtifactPtrOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactPythonArtifactOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) []string { return v.AdditionalDependencies }).(pulumi.StringArrayOutput)
+}
+
+// URL paths of dependent Python archive files
+func (o DeploymentArtifactPythonArtifactOutput) AdditionalPythonArchives() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) []string { return v.AdditionalPythonArchives }).(pulumi.StringArrayOutput)
+}
+
+// URL paths of dependent Python library files
+func (o DeploymentArtifactPythonArtifactOutput) AdditionalPythonLibraries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) []string { return v.AdditionalPythonLibraries }).(pulumi.StringArrayOutput)
+}
+
+// Entry module for Python
+func (o DeploymentArtifactPythonArtifactOutput) EntryModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) *string { return v.EntryModule }).(pulumi.StringPtrOutput)
+}
+
+// Startup arguments
+func (o DeploymentArtifactPythonArtifactOutput) MainArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) *string { return v.MainArgs }).(pulumi.StringPtrOutput)
+}
+
+// Full URL path of the Python job
+func (o DeploymentArtifactPythonArtifactOutput) PythonArtifactUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactPythonArtifact) *string { return v.PythonArtifactUri }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentArtifactPythonArtifactPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactPythonArtifactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactPythonArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactPythonArtifactPtrOutput) ToDeploymentArtifactPythonArtifactPtrOutput() DeploymentArtifactPythonArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactPythonArtifactPtrOutput) ToDeploymentArtifactPythonArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactPythonArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactPythonArtifactPtrOutput) Elem() DeploymentArtifactPythonArtifactOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) DeploymentArtifactPythonArtifact {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentArtifactPythonArtifact
+		return ret
+	}).(DeploymentArtifactPythonArtifactOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactPythonArtifactPtrOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalDependencies
+	}).(pulumi.StringArrayOutput)
+}
+
+// URL paths of dependent Python archive files
+func (o DeploymentArtifactPythonArtifactPtrOutput) AdditionalPythonArchives() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPythonArchives
+	}).(pulumi.StringArrayOutput)
+}
+
+// URL paths of dependent Python library files
+func (o DeploymentArtifactPythonArtifactPtrOutput) AdditionalPythonLibraries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPythonLibraries
+	}).(pulumi.StringArrayOutput)
+}
+
+// Entry module for Python
+func (o DeploymentArtifactPythonArtifactPtrOutput) EntryModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntryModule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Startup arguments
+func (o DeploymentArtifactPythonArtifactPtrOutput) MainArgs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainArgs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full URL path of the Python job
+func (o DeploymentArtifactPythonArtifactPtrOutput) PythonArtifactUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactPythonArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonArtifactUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentArtifactSqlArtifact struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies []string `pulumi:"additionalDependencies"`
+	// Text content of the SQL job
+	SqlScript *string `pulumi:"sqlScript"`
+}
+
+// DeploymentArtifactSqlArtifactInput is an input type that accepts DeploymentArtifactSqlArtifactArgs and DeploymentArtifactSqlArtifactOutput values.
+// You can construct a concrete instance of `DeploymentArtifactSqlArtifactInput` via:
+//
+//	DeploymentArtifactSqlArtifactArgs{...}
+type DeploymentArtifactSqlArtifactInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactSqlArtifactOutput() DeploymentArtifactSqlArtifactOutput
+	ToDeploymentArtifactSqlArtifactOutputWithContext(context.Context) DeploymentArtifactSqlArtifactOutput
+}
+
+type DeploymentArtifactSqlArtifactArgs struct {
+	// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+	AdditionalDependencies pulumi.StringArrayInput `pulumi:"additionalDependencies"`
+	// Text content of the SQL job
+	SqlScript pulumi.StringPtrInput `pulumi:"sqlScript"`
+}
+
+func (DeploymentArtifactSqlArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactSqlArtifact)(nil)).Elem()
+}
+
+func (i DeploymentArtifactSqlArtifactArgs) ToDeploymentArtifactSqlArtifactOutput() DeploymentArtifactSqlArtifactOutput {
+	return i.ToDeploymentArtifactSqlArtifactOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactSqlArtifactArgs) ToDeploymentArtifactSqlArtifactOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactSqlArtifactOutput)
+}
+
+func (i DeploymentArtifactSqlArtifactArgs) ToDeploymentArtifactSqlArtifactPtrOutput() DeploymentArtifactSqlArtifactPtrOutput {
+	return i.ToDeploymentArtifactSqlArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentArtifactSqlArtifactArgs) ToDeploymentArtifactSqlArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactSqlArtifactOutput).ToDeploymentArtifactSqlArtifactPtrOutputWithContext(ctx)
+}
+
+// DeploymentArtifactSqlArtifactPtrInput is an input type that accepts DeploymentArtifactSqlArtifactArgs, DeploymentArtifactSqlArtifactPtr and DeploymentArtifactSqlArtifactPtrOutput values.
+// You can construct a concrete instance of `DeploymentArtifactSqlArtifactPtrInput` via:
+//
+//	        DeploymentArtifactSqlArtifactArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentArtifactSqlArtifactPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentArtifactSqlArtifactPtrOutput() DeploymentArtifactSqlArtifactPtrOutput
+	ToDeploymentArtifactSqlArtifactPtrOutputWithContext(context.Context) DeploymentArtifactSqlArtifactPtrOutput
+}
+
+type deploymentArtifactSqlArtifactPtrType DeploymentArtifactSqlArtifactArgs
+
+func DeploymentArtifactSqlArtifactPtr(v *DeploymentArtifactSqlArtifactArgs) DeploymentArtifactSqlArtifactPtrInput {
+	return (*deploymentArtifactSqlArtifactPtrType)(v)
+}
+
+func (*deploymentArtifactSqlArtifactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactSqlArtifact)(nil)).Elem()
+}
+
+func (i *deploymentArtifactSqlArtifactPtrType) ToDeploymentArtifactSqlArtifactPtrOutput() DeploymentArtifactSqlArtifactPtrOutput {
+	return i.ToDeploymentArtifactSqlArtifactPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentArtifactSqlArtifactPtrType) ToDeploymentArtifactSqlArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentArtifactSqlArtifactPtrOutput)
+}
+
+type DeploymentArtifactSqlArtifactOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactSqlArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentArtifactSqlArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactSqlArtifactOutput) ToDeploymentArtifactSqlArtifactOutput() DeploymentArtifactSqlArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactSqlArtifactOutput) ToDeploymentArtifactSqlArtifactOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactOutput {
+	return o
+}
+
+func (o DeploymentArtifactSqlArtifactOutput) ToDeploymentArtifactSqlArtifactPtrOutput() DeploymentArtifactSqlArtifactPtrOutput {
+	return o.ToDeploymentArtifactSqlArtifactPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentArtifactSqlArtifactOutput) ToDeploymentArtifactSqlArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentArtifactSqlArtifact) *DeploymentArtifactSqlArtifact {
+		return &v
+	}).(DeploymentArtifactSqlArtifactPtrOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactSqlArtifactOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeploymentArtifactSqlArtifact) []string { return v.AdditionalDependencies }).(pulumi.StringArrayOutput)
+}
+
+// Text content of the SQL job
+func (o DeploymentArtifactSqlArtifactOutput) SqlScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentArtifactSqlArtifact) *string { return v.SqlScript }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentArtifactSqlArtifactPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentArtifactSqlArtifactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentArtifactSqlArtifact)(nil)).Elem()
+}
+
+func (o DeploymentArtifactSqlArtifactPtrOutput) ToDeploymentArtifactSqlArtifactPtrOutput() DeploymentArtifactSqlArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactSqlArtifactPtrOutput) ToDeploymentArtifactSqlArtifactPtrOutputWithContext(ctx context.Context) DeploymentArtifactSqlArtifactPtrOutput {
+	return o
+}
+
+func (o DeploymentArtifactSqlArtifactPtrOutput) Elem() DeploymentArtifactSqlArtifactOutput {
+	return o.ApplyT(func(v *DeploymentArtifactSqlArtifact) DeploymentArtifactSqlArtifact {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentArtifactSqlArtifact
+		return ret
+	}).(DeploymentArtifactSqlArtifactOutput)
+}
+
+// Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+func (o DeploymentArtifactSqlArtifactPtrOutput) AdditionalDependencies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeploymentArtifactSqlArtifact) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalDependencies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Text content of the SQL job
+func (o DeploymentArtifactSqlArtifactPtrOutput) SqlScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentArtifactSqlArtifact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlScript
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentBatchResourceSetting struct {
+	// Resource settings for basic mode See `basicResourceSetting` below.
+	BasicResourceSetting *DeploymentBatchResourceSettingBasicResourceSetting `pulumi:"basicResourceSetting"`
+	// Maximum number of slots
+	MaxSlot *int `pulumi:"maxSlot"`
+}
+
+// DeploymentBatchResourceSettingInput is an input type that accepts DeploymentBatchResourceSettingArgs and DeploymentBatchResourceSettingOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingInput` via:
+//
+//	DeploymentBatchResourceSettingArgs{...}
+type DeploymentBatchResourceSettingInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingOutput() DeploymentBatchResourceSettingOutput
+	ToDeploymentBatchResourceSettingOutputWithContext(context.Context) DeploymentBatchResourceSettingOutput
+}
+
+type DeploymentBatchResourceSettingArgs struct {
+	// Resource settings for basic mode See `basicResourceSetting` below.
+	BasicResourceSetting DeploymentBatchResourceSettingBasicResourceSettingPtrInput `pulumi:"basicResourceSetting"`
+	// Maximum number of slots
+	MaxSlot pulumi.IntPtrInput `pulumi:"maxSlot"`
+}
+
+func (DeploymentBatchResourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSetting)(nil)).Elem()
+}
+
+func (i DeploymentBatchResourceSettingArgs) ToDeploymentBatchResourceSettingOutput() DeploymentBatchResourceSettingOutput {
+	return i.ToDeploymentBatchResourceSettingOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingArgs) ToDeploymentBatchResourceSettingOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingOutput)
+}
+
+func (i DeploymentBatchResourceSettingArgs) ToDeploymentBatchResourceSettingPtrOutput() DeploymentBatchResourceSettingPtrOutput {
+	return i.ToDeploymentBatchResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingArgs) ToDeploymentBatchResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingOutput).ToDeploymentBatchResourceSettingPtrOutputWithContext(ctx)
+}
+
+// DeploymentBatchResourceSettingPtrInput is an input type that accepts DeploymentBatchResourceSettingArgs, DeploymentBatchResourceSettingPtr and DeploymentBatchResourceSettingPtrOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingPtrInput` via:
+//
+//	        DeploymentBatchResourceSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentBatchResourceSettingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingPtrOutput() DeploymentBatchResourceSettingPtrOutput
+	ToDeploymentBatchResourceSettingPtrOutputWithContext(context.Context) DeploymentBatchResourceSettingPtrOutput
+}
+
+type deploymentBatchResourceSettingPtrType DeploymentBatchResourceSettingArgs
+
+func DeploymentBatchResourceSettingPtr(v *DeploymentBatchResourceSettingArgs) DeploymentBatchResourceSettingPtrInput {
+	return (*deploymentBatchResourceSettingPtrType)(v)
+}
+
+func (*deploymentBatchResourceSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSetting)(nil)).Elem()
+}
+
+func (i *deploymentBatchResourceSettingPtrType) ToDeploymentBatchResourceSettingPtrOutput() DeploymentBatchResourceSettingPtrOutput {
+	return i.ToDeploymentBatchResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentBatchResourceSettingPtrType) ToDeploymentBatchResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingPtrOutput)
+}
+
+type DeploymentBatchResourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingOutput) ToDeploymentBatchResourceSettingOutput() DeploymentBatchResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingOutput) ToDeploymentBatchResourceSettingOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingOutput) ToDeploymentBatchResourceSettingPtrOutput() DeploymentBatchResourceSettingPtrOutput {
+	return o.ToDeploymentBatchResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentBatchResourceSettingOutput) ToDeploymentBatchResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentBatchResourceSetting) *DeploymentBatchResourceSetting {
+		return &v
+	}).(DeploymentBatchResourceSettingPtrOutput)
+}
+
+// Resource settings for basic mode See `basicResourceSetting` below.
+func (o DeploymentBatchResourceSettingOutput) BasicResourceSetting() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSetting) *DeploymentBatchResourceSettingBasicResourceSetting {
+		return v.BasicResourceSetting
+	}).(DeploymentBatchResourceSettingBasicResourceSettingPtrOutput)
+}
+
+// Maximum number of slots
+func (o DeploymentBatchResourceSettingOutput) MaxSlot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSetting) *int { return v.MaxSlot }).(pulumi.IntPtrOutput)
+}
+
+type DeploymentBatchResourceSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingPtrOutput) ToDeploymentBatchResourceSettingPtrOutput() DeploymentBatchResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingPtrOutput) ToDeploymentBatchResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingPtrOutput) Elem() DeploymentBatchResourceSettingOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSetting) DeploymentBatchResourceSetting {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentBatchResourceSetting
+		return ret
+	}).(DeploymentBatchResourceSettingOutput)
+}
+
+// Resource settings for basic mode See `basicResourceSetting` below.
+func (o DeploymentBatchResourceSettingPtrOutput) BasicResourceSetting() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSetting) *DeploymentBatchResourceSettingBasicResourceSetting {
+		if v == nil {
+			return nil
+		}
+		return v.BasicResourceSetting
+	}).(DeploymentBatchResourceSettingBasicResourceSettingPtrOutput)
+}
+
+// Maximum number of slots
+func (o DeploymentBatchResourceSettingPtrOutput) MaxSlot() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSlot
+	}).(pulumi.IntPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSetting struct {
+	JobmanagerResourceSettingSpec  *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec  `pulumi:"jobmanagerResourceSettingSpec"`
+	Parallelism                    *int                                                                              `pulumi:"parallelism"`
+	TaskmanagerResourceSettingSpec *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec `pulumi:"taskmanagerResourceSettingSpec"`
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingArgs and DeploymentBatchResourceSettingBasicResourceSettingOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingInput` via:
+//
+//	DeploymentBatchResourceSettingBasicResourceSettingArgs{...}
+type DeploymentBatchResourceSettingBasicResourceSettingInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingOutput() DeploymentBatchResourceSettingBasicResourceSettingOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingOutput
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingArgs struct {
+	JobmanagerResourceSettingSpec  DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput  `pulumi:"jobmanagerResourceSettingSpec"`
+	Parallelism                    pulumi.IntPtrInput                                                                       `pulumi:"parallelism"`
+	TaskmanagerResourceSettingSpec DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput `pulumi:"taskmanagerResourceSettingSpec"`
+}
+
+func (DeploymentBatchResourceSettingBasicResourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingArgs) ToDeploymentBatchResourceSettingBasicResourceSettingOutput() DeploymentBatchResourceSettingBasicResourceSettingOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingArgs) ToDeploymentBatchResourceSettingBasicResourceSettingOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingOutput)
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingArgs) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingArgs) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingOutput).ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(ctx)
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingPtrInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingArgs, DeploymentBatchResourceSettingBasicResourceSettingPtr and DeploymentBatchResourceSettingBasicResourceSettingPtrOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingPtrInput` via:
+//
+//	        DeploymentBatchResourceSettingBasicResourceSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentBatchResourceSettingBasicResourceSettingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingPtrOutput
+}
+
+type deploymentBatchResourceSettingBasicResourceSettingPtrType DeploymentBatchResourceSettingBasicResourceSettingArgs
+
+func DeploymentBatchResourceSettingBasicResourceSettingPtr(v *DeploymentBatchResourceSettingBasicResourceSettingArgs) DeploymentBatchResourceSettingBasicResourceSettingPtrInput {
+	return (*deploymentBatchResourceSettingBasicResourceSettingPtrType)(v)
+}
+
+func (*deploymentBatchResourceSettingBasicResourceSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) ToDeploymentBatchResourceSettingBasicResourceSettingOutput() DeploymentBatchResourceSettingBasicResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) ToDeploymentBatchResourceSettingBasicResourceSettingOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o.ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentBatchResourceSettingBasicResourceSetting) *DeploymentBatchResourceSettingBasicResourceSetting {
+		return &v
+	}).(DeploymentBatchResourceSettingBasicResourceSettingPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) JobmanagerResourceSettingSpec() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSetting) *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSetting) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingOutput) TaskmanagerResourceSettingSpec() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSetting) *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		return v.TaskmanagerResourceSettingSpec
+	}).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) Elem() DeploymentBatchResourceSettingBasicResourceSettingOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSetting) DeploymentBatchResourceSettingBasicResourceSetting {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentBatchResourceSettingBasicResourceSetting
+		return ret
+	}).(DeploymentBatchResourceSettingBasicResourceSettingOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) JobmanagerResourceSettingSpec() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSetting) *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingPtrOutput) TaskmanagerResourceSettingSpec() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSetting) *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.TaskmanagerResourceSettingSpec
+	}).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec struct {
+	Cpu    *float64 `pulumi:"cpu"`
+	Memory *string  `pulumi:"memory"`
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs and DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput` via:
+//
+//	DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{...}
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs struct {
+	Cpu    pulumi.Float64PtrInput `pulumi:"cpu"`
+	Memory pulumi.StringPtrInput  `pulumi:"memory"`
+}
+
+func (DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput).ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx)
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs, DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtr and DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput` via:
+//
+//	        DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput
+}
+
+type deploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs
+
+func DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtr(v *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput {
+	return (*deploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType)(v)
+}
+
+func (*deploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		return &v
+	}).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Elem() DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec
+		return ret
+	}).(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec struct {
+	Cpu    *float64 `pulumi:"cpu"`
+	Memory *string  `pulumi:"memory"`
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs and DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput` via:
+//
+//	DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{...}
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs struct {
+	Cpu    pulumi.Float64PtrInput `pulumi:"cpu"`
+	Memory pulumi.StringPtrInput  `pulumi:"memory"`
+}
+
+func (DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput)
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput).ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx)
+}
+
+// DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput is an input type that accepts DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs, DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtr and DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput values.
+// You can construct a concrete instance of `DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput` via:
+//
+//	        DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput
+	ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput
+}
+
+type deploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs
+
+func DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtr(v *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput {
+	return (*deploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType)(v)
+}
+
+func (*deploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		return &v
+	}).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *float64 {
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ToDeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Elem() DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec
+		return ret
+	}).(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentDeploymentTarget struct {
+	// Deployment mode, valid values: PER_JOB or SESSION
+	Mode string `pulumi:"mode"`
+	// Deployment target name
+	Name string `pulumi:"name"`
+}
+
+// DeploymentDeploymentTargetInput is an input type that accepts DeploymentDeploymentTargetArgs and DeploymentDeploymentTargetOutput values.
+// You can construct a concrete instance of `DeploymentDeploymentTargetInput` via:
+//
+//	DeploymentDeploymentTargetArgs{...}
+type DeploymentDeploymentTargetInput interface {
+	pulumi.Input
+
+	ToDeploymentDeploymentTargetOutput() DeploymentDeploymentTargetOutput
+	ToDeploymentDeploymentTargetOutputWithContext(context.Context) DeploymentDeploymentTargetOutput
+}
+
+type DeploymentDeploymentTargetArgs struct {
+	// Deployment mode, valid values: PER_JOB or SESSION
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Deployment target name
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (DeploymentDeploymentTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDeploymentTarget)(nil)).Elem()
+}
+
+func (i DeploymentDeploymentTargetArgs) ToDeploymentDeploymentTargetOutput() DeploymentDeploymentTargetOutput {
+	return i.ToDeploymentDeploymentTargetOutputWithContext(context.Background())
+}
+
+func (i DeploymentDeploymentTargetArgs) ToDeploymentDeploymentTargetOutputWithContext(ctx context.Context) DeploymentDeploymentTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDeploymentTargetOutput)
+}
+
+func (i DeploymentDeploymentTargetArgs) ToDeploymentDeploymentTargetPtrOutput() DeploymentDeploymentTargetPtrOutput {
+	return i.ToDeploymentDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentDeploymentTargetArgs) ToDeploymentDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDeploymentTargetOutput).ToDeploymentDeploymentTargetPtrOutputWithContext(ctx)
+}
+
+// DeploymentDeploymentTargetPtrInput is an input type that accepts DeploymentDeploymentTargetArgs, DeploymentDeploymentTargetPtr and DeploymentDeploymentTargetPtrOutput values.
+// You can construct a concrete instance of `DeploymentDeploymentTargetPtrInput` via:
+//
+//	        DeploymentDeploymentTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentDeploymentTargetPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentDeploymentTargetPtrOutput() DeploymentDeploymentTargetPtrOutput
+	ToDeploymentDeploymentTargetPtrOutputWithContext(context.Context) DeploymentDeploymentTargetPtrOutput
+}
+
+type deploymentDeploymentTargetPtrType DeploymentDeploymentTargetArgs
+
+func DeploymentDeploymentTargetPtr(v *DeploymentDeploymentTargetArgs) DeploymentDeploymentTargetPtrInput {
+	return (*deploymentDeploymentTargetPtrType)(v)
+}
+
+func (*deploymentDeploymentTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentDeploymentTarget)(nil)).Elem()
+}
+
+func (i *deploymentDeploymentTargetPtrType) ToDeploymentDeploymentTargetPtrOutput() DeploymentDeploymentTargetPtrOutput {
+	return i.ToDeploymentDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentDeploymentTargetPtrType) ToDeploymentDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentDeploymentTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDeploymentTargetPtrOutput)
+}
+
+type DeploymentDeploymentTargetOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDeploymentTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDeploymentTarget)(nil)).Elem()
+}
+
+func (o DeploymentDeploymentTargetOutput) ToDeploymentDeploymentTargetOutput() DeploymentDeploymentTargetOutput {
+	return o
+}
+
+func (o DeploymentDeploymentTargetOutput) ToDeploymentDeploymentTargetOutputWithContext(ctx context.Context) DeploymentDeploymentTargetOutput {
+	return o
+}
+
+func (o DeploymentDeploymentTargetOutput) ToDeploymentDeploymentTargetPtrOutput() DeploymentDeploymentTargetPtrOutput {
+	return o.ToDeploymentDeploymentTargetPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentDeploymentTargetOutput) ToDeploymentDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentDeploymentTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentDeploymentTarget) *DeploymentDeploymentTarget {
+		return &v
+	}).(DeploymentDeploymentTargetPtrOutput)
+}
+
+// Deployment mode, valid values: PER_JOB or SESSION
+func (o DeploymentDeploymentTargetOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentDeploymentTarget) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Deployment target name
+func (o DeploymentDeploymentTargetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentDeploymentTarget) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type DeploymentDeploymentTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDeploymentTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentDeploymentTarget)(nil)).Elem()
+}
+
+func (o DeploymentDeploymentTargetPtrOutput) ToDeploymentDeploymentTargetPtrOutput() DeploymentDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o DeploymentDeploymentTargetPtrOutput) ToDeploymentDeploymentTargetPtrOutputWithContext(ctx context.Context) DeploymentDeploymentTargetPtrOutput {
+	return o
+}
+
+func (o DeploymentDeploymentTargetPtrOutput) Elem() DeploymentDeploymentTargetOutput {
+	return o.ApplyT(func(v *DeploymentDeploymentTarget) DeploymentDeploymentTarget {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentDeploymentTarget
+		return ret
+	}).(DeploymentDeploymentTargetOutput)
+}
+
+// Deployment mode, valid values: PER_JOB or SESSION
+func (o DeploymentDeploymentTargetPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deployment target name
+func (o DeploymentDeploymentTargetPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentDeploymentTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentLocalVariable struct {
+	// Job variable name
+	Name *string `pulumi:"name"`
+	// Job variable value
+	Value *string `pulumi:"value"`
+}
+
+// DeploymentLocalVariableInput is an input type that accepts DeploymentLocalVariableArgs and DeploymentLocalVariableOutput values.
+// You can construct a concrete instance of `DeploymentLocalVariableInput` via:
+//
+//	DeploymentLocalVariableArgs{...}
+type DeploymentLocalVariableInput interface {
+	pulumi.Input
+
+	ToDeploymentLocalVariableOutput() DeploymentLocalVariableOutput
+	ToDeploymentLocalVariableOutputWithContext(context.Context) DeploymentLocalVariableOutput
+}
+
+type DeploymentLocalVariableArgs struct {
+	// Job variable name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Job variable value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DeploymentLocalVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLocalVariable)(nil)).Elem()
+}
+
+func (i DeploymentLocalVariableArgs) ToDeploymentLocalVariableOutput() DeploymentLocalVariableOutput {
+	return i.ToDeploymentLocalVariableOutputWithContext(context.Background())
+}
+
+func (i DeploymentLocalVariableArgs) ToDeploymentLocalVariableOutputWithContext(ctx context.Context) DeploymentLocalVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLocalVariableOutput)
+}
+
+// DeploymentLocalVariableArrayInput is an input type that accepts DeploymentLocalVariableArray and DeploymentLocalVariableArrayOutput values.
+// You can construct a concrete instance of `DeploymentLocalVariableArrayInput` via:
+//
+//	DeploymentLocalVariableArray{ DeploymentLocalVariableArgs{...} }
+type DeploymentLocalVariableArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentLocalVariableArrayOutput() DeploymentLocalVariableArrayOutput
+	ToDeploymentLocalVariableArrayOutputWithContext(context.Context) DeploymentLocalVariableArrayOutput
+}
+
+type DeploymentLocalVariableArray []DeploymentLocalVariableInput
+
+func (DeploymentLocalVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentLocalVariable)(nil)).Elem()
+}
+
+func (i DeploymentLocalVariableArray) ToDeploymentLocalVariableArrayOutput() DeploymentLocalVariableArrayOutput {
+	return i.ToDeploymentLocalVariableArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentLocalVariableArray) ToDeploymentLocalVariableArrayOutputWithContext(ctx context.Context) DeploymentLocalVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLocalVariableArrayOutput)
+}
+
+type DeploymentLocalVariableOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLocalVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLocalVariable)(nil)).Elem()
+}
+
+func (o DeploymentLocalVariableOutput) ToDeploymentLocalVariableOutput() DeploymentLocalVariableOutput {
+	return o
+}
+
+func (o DeploymentLocalVariableOutput) ToDeploymentLocalVariableOutputWithContext(ctx context.Context) DeploymentLocalVariableOutput {
+	return o
+}
+
+// Job variable name
+func (o DeploymentLocalVariableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLocalVariable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Job variable value
+func (o DeploymentLocalVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLocalVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentLocalVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLocalVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentLocalVariable)(nil)).Elem()
+}
+
+func (o DeploymentLocalVariableArrayOutput) ToDeploymentLocalVariableArrayOutput() DeploymentLocalVariableArrayOutput {
+	return o
+}
+
+func (o DeploymentLocalVariableArrayOutput) ToDeploymentLocalVariableArrayOutputWithContext(ctx context.Context) DeploymentLocalVariableArrayOutput {
+	return o
+}
+
+func (o DeploymentLocalVariableArrayOutput) Index(i pulumi.IntInput) DeploymentLocalVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentLocalVariable {
+		return vs[0].([]DeploymentLocalVariable)[vs[1].(int)]
+	}).(DeploymentLocalVariableOutput)
+}
+
+type DeploymentLogging struct {
+	// Custom log template
+	Log4j2ConfigurationTemplate *string `pulumi:"log4j2ConfigurationTemplate"`
+	// log4j configuration   See `log4jLoggers` below.
+	Log4jLoggers []DeploymentLoggingLog4jLogger `pulumi:"log4jLoggers"`
+	// Log retention policy   See `logReservePolicy` below.
+	LogReservePolicy *DeploymentLoggingLogReservePolicy `pulumi:"logReservePolicy"`
+	// Default system log template
+	LoggingProfile *string `pulumi:"loggingProfile"`
+}
+
+// DeploymentLoggingInput is an input type that accepts DeploymentLoggingArgs and DeploymentLoggingOutput values.
+// You can construct a concrete instance of `DeploymentLoggingInput` via:
+//
+//	DeploymentLoggingArgs{...}
+type DeploymentLoggingInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingOutput() DeploymentLoggingOutput
+	ToDeploymentLoggingOutputWithContext(context.Context) DeploymentLoggingOutput
+}
+
+type DeploymentLoggingArgs struct {
+	// Custom log template
+	Log4j2ConfigurationTemplate pulumi.StringPtrInput `pulumi:"log4j2ConfigurationTemplate"`
+	// log4j configuration   See `log4jLoggers` below.
+	Log4jLoggers DeploymentLoggingLog4jLoggerArrayInput `pulumi:"log4jLoggers"`
+	// Log retention policy   See `logReservePolicy` below.
+	LogReservePolicy DeploymentLoggingLogReservePolicyPtrInput `pulumi:"logReservePolicy"`
+	// Default system log template
+	LoggingProfile pulumi.StringPtrInput `pulumi:"loggingProfile"`
+}
+
+func (DeploymentLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLogging)(nil)).Elem()
+}
+
+func (i DeploymentLoggingArgs) ToDeploymentLoggingOutput() DeploymentLoggingOutput {
+	return i.ToDeploymentLoggingOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingArgs) ToDeploymentLoggingOutputWithContext(ctx context.Context) DeploymentLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingOutput)
+}
+
+func (i DeploymentLoggingArgs) ToDeploymentLoggingPtrOutput() DeploymentLoggingPtrOutput {
+	return i.ToDeploymentLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingArgs) ToDeploymentLoggingPtrOutputWithContext(ctx context.Context) DeploymentLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingOutput).ToDeploymentLoggingPtrOutputWithContext(ctx)
+}
+
+// DeploymentLoggingPtrInput is an input type that accepts DeploymentLoggingArgs, DeploymentLoggingPtr and DeploymentLoggingPtrOutput values.
+// You can construct a concrete instance of `DeploymentLoggingPtrInput` via:
+//
+//	        DeploymentLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentLoggingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingPtrOutput() DeploymentLoggingPtrOutput
+	ToDeploymentLoggingPtrOutputWithContext(context.Context) DeploymentLoggingPtrOutput
+}
+
+type deploymentLoggingPtrType DeploymentLoggingArgs
+
+func DeploymentLoggingPtr(v *DeploymentLoggingArgs) DeploymentLoggingPtrInput {
+	return (*deploymentLoggingPtrType)(v)
+}
+
+func (*deploymentLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentLogging)(nil)).Elem()
+}
+
+func (i *deploymentLoggingPtrType) ToDeploymentLoggingPtrOutput() DeploymentLoggingPtrOutput {
+	return i.ToDeploymentLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentLoggingPtrType) ToDeploymentLoggingPtrOutputWithContext(ctx context.Context) DeploymentLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingPtrOutput)
+}
+
+type DeploymentLoggingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLogging)(nil)).Elem()
+}
+
+func (o DeploymentLoggingOutput) ToDeploymentLoggingOutput() DeploymentLoggingOutput {
+	return o
+}
+
+func (o DeploymentLoggingOutput) ToDeploymentLoggingOutputWithContext(ctx context.Context) DeploymentLoggingOutput {
+	return o
+}
+
+func (o DeploymentLoggingOutput) ToDeploymentLoggingPtrOutput() DeploymentLoggingPtrOutput {
+	return o.ToDeploymentLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentLoggingOutput) ToDeploymentLoggingPtrOutputWithContext(ctx context.Context) DeploymentLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentLogging) *DeploymentLogging {
+		return &v
+	}).(DeploymentLoggingPtrOutput)
+}
+
+// Custom log template
+func (o DeploymentLoggingOutput) Log4j2ConfigurationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLogging) *string { return v.Log4j2ConfigurationTemplate }).(pulumi.StringPtrOutput)
+}
+
+// log4j configuration   See `log4jLoggers` below.
+func (o DeploymentLoggingOutput) Log4jLoggers() DeploymentLoggingLog4jLoggerArrayOutput {
+	return o.ApplyT(func(v DeploymentLogging) []DeploymentLoggingLog4jLogger { return v.Log4jLoggers }).(DeploymentLoggingLog4jLoggerArrayOutput)
+}
+
+// Log retention policy   See `logReservePolicy` below.
+func (o DeploymentLoggingOutput) LogReservePolicy() DeploymentLoggingLogReservePolicyPtrOutput {
+	return o.ApplyT(func(v DeploymentLogging) *DeploymentLoggingLogReservePolicy { return v.LogReservePolicy }).(DeploymentLoggingLogReservePolicyPtrOutput)
+}
+
+// Default system log template
+func (o DeploymentLoggingOutput) LoggingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLogging) *string { return v.LoggingProfile }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentLogging)(nil)).Elem()
+}
+
+func (o DeploymentLoggingPtrOutput) ToDeploymentLoggingPtrOutput() DeploymentLoggingPtrOutput {
+	return o
+}
+
+func (o DeploymentLoggingPtrOutput) ToDeploymentLoggingPtrOutputWithContext(ctx context.Context) DeploymentLoggingPtrOutput {
+	return o
+}
+
+func (o DeploymentLoggingPtrOutput) Elem() DeploymentLoggingOutput {
+	return o.ApplyT(func(v *DeploymentLogging) DeploymentLogging {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentLogging
+		return ret
+	}).(DeploymentLoggingOutput)
+}
+
+// Custom log template
+func (o DeploymentLoggingPtrOutput) Log4j2ConfigurationTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Log4j2ConfigurationTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// log4j configuration   See `log4jLoggers` below.
+func (o DeploymentLoggingPtrOutput) Log4jLoggers() DeploymentLoggingLog4jLoggerArrayOutput {
+	return o.ApplyT(func(v *DeploymentLogging) []DeploymentLoggingLog4jLogger {
+		if v == nil {
+			return nil
+		}
+		return v.Log4jLoggers
+	}).(DeploymentLoggingLog4jLoggerArrayOutput)
+}
+
+// Log retention policy   See `logReservePolicy` below.
+func (o DeploymentLoggingPtrOutput) LogReservePolicy() DeploymentLoggingLogReservePolicyPtrOutput {
+	return o.ApplyT(func(v *DeploymentLogging) *DeploymentLoggingLogReservePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.LogReservePolicy
+	}).(DeploymentLoggingLogReservePolicyPtrOutput)
+}
+
+// Default system log template
+func (o DeploymentLoggingPtrOutput) LoggingProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentLogging) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingProfile
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentLoggingLog4jLogger struct {
+	// Log output level
+	LoggerLevel *string `pulumi:"loggerLevel"`
+	// Class name for log output
+	LoggerName *string `pulumi:"loggerName"`
+}
+
+// DeploymentLoggingLog4jLoggerInput is an input type that accepts DeploymentLoggingLog4jLoggerArgs and DeploymentLoggingLog4jLoggerOutput values.
+// You can construct a concrete instance of `DeploymentLoggingLog4jLoggerInput` via:
+//
+//	DeploymentLoggingLog4jLoggerArgs{...}
+type DeploymentLoggingLog4jLoggerInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingLog4jLoggerOutput() DeploymentLoggingLog4jLoggerOutput
+	ToDeploymentLoggingLog4jLoggerOutputWithContext(context.Context) DeploymentLoggingLog4jLoggerOutput
+}
+
+type DeploymentLoggingLog4jLoggerArgs struct {
+	// Log output level
+	LoggerLevel pulumi.StringPtrInput `pulumi:"loggerLevel"`
+	// Class name for log output
+	LoggerName pulumi.StringPtrInput `pulumi:"loggerName"`
+}
+
+func (DeploymentLoggingLog4jLoggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLoggingLog4jLogger)(nil)).Elem()
+}
+
+func (i DeploymentLoggingLog4jLoggerArgs) ToDeploymentLoggingLog4jLoggerOutput() DeploymentLoggingLog4jLoggerOutput {
+	return i.ToDeploymentLoggingLog4jLoggerOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingLog4jLoggerArgs) ToDeploymentLoggingLog4jLoggerOutputWithContext(ctx context.Context) DeploymentLoggingLog4jLoggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingLog4jLoggerOutput)
+}
+
+// DeploymentLoggingLog4jLoggerArrayInput is an input type that accepts DeploymentLoggingLog4jLoggerArray and DeploymentLoggingLog4jLoggerArrayOutput values.
+// You can construct a concrete instance of `DeploymentLoggingLog4jLoggerArrayInput` via:
+//
+//	DeploymentLoggingLog4jLoggerArray{ DeploymentLoggingLog4jLoggerArgs{...} }
+type DeploymentLoggingLog4jLoggerArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingLog4jLoggerArrayOutput() DeploymentLoggingLog4jLoggerArrayOutput
+	ToDeploymentLoggingLog4jLoggerArrayOutputWithContext(context.Context) DeploymentLoggingLog4jLoggerArrayOutput
+}
+
+type DeploymentLoggingLog4jLoggerArray []DeploymentLoggingLog4jLoggerInput
+
+func (DeploymentLoggingLog4jLoggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentLoggingLog4jLogger)(nil)).Elem()
+}
+
+func (i DeploymentLoggingLog4jLoggerArray) ToDeploymentLoggingLog4jLoggerArrayOutput() DeploymentLoggingLog4jLoggerArrayOutput {
+	return i.ToDeploymentLoggingLog4jLoggerArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingLog4jLoggerArray) ToDeploymentLoggingLog4jLoggerArrayOutputWithContext(ctx context.Context) DeploymentLoggingLog4jLoggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingLog4jLoggerArrayOutput)
+}
+
+type DeploymentLoggingLog4jLoggerOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingLog4jLoggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLoggingLog4jLogger)(nil)).Elem()
+}
+
+func (o DeploymentLoggingLog4jLoggerOutput) ToDeploymentLoggingLog4jLoggerOutput() DeploymentLoggingLog4jLoggerOutput {
+	return o
+}
+
+func (o DeploymentLoggingLog4jLoggerOutput) ToDeploymentLoggingLog4jLoggerOutputWithContext(ctx context.Context) DeploymentLoggingLog4jLoggerOutput {
+	return o
+}
+
+// Log output level
+func (o DeploymentLoggingLog4jLoggerOutput) LoggerLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLoggingLog4jLogger) *string { return v.LoggerLevel }).(pulumi.StringPtrOutput)
+}
+
+// Class name for log output
+func (o DeploymentLoggingLog4jLoggerOutput) LoggerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentLoggingLog4jLogger) *string { return v.LoggerName }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentLoggingLog4jLoggerArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingLog4jLoggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentLoggingLog4jLogger)(nil)).Elem()
+}
+
+func (o DeploymentLoggingLog4jLoggerArrayOutput) ToDeploymentLoggingLog4jLoggerArrayOutput() DeploymentLoggingLog4jLoggerArrayOutput {
+	return o
+}
+
+func (o DeploymentLoggingLog4jLoggerArrayOutput) ToDeploymentLoggingLog4jLoggerArrayOutputWithContext(ctx context.Context) DeploymentLoggingLog4jLoggerArrayOutput {
+	return o
+}
+
+func (o DeploymentLoggingLog4jLoggerArrayOutput) Index(i pulumi.IntInput) DeploymentLoggingLog4jLoggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentLoggingLog4jLogger {
+		return vs[0].([]DeploymentLoggingLog4jLogger)[vs[1].(int)]
+	}).(DeploymentLoggingLog4jLoggerOutput)
+}
+
+type DeploymentLoggingLogReservePolicy struct {
+	// Number of days to retain logs after log retention is enabled
+	ExpirationDays *int `pulumi:"expirationDays"`
+	// Whether to enable log retention
+	OpenHistory *bool `pulumi:"openHistory"`
+}
+
+// DeploymentLoggingLogReservePolicyInput is an input type that accepts DeploymentLoggingLogReservePolicyArgs and DeploymentLoggingLogReservePolicyOutput values.
+// You can construct a concrete instance of `DeploymentLoggingLogReservePolicyInput` via:
+//
+//	DeploymentLoggingLogReservePolicyArgs{...}
+type DeploymentLoggingLogReservePolicyInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingLogReservePolicyOutput() DeploymentLoggingLogReservePolicyOutput
+	ToDeploymentLoggingLogReservePolicyOutputWithContext(context.Context) DeploymentLoggingLogReservePolicyOutput
+}
+
+type DeploymentLoggingLogReservePolicyArgs struct {
+	// Number of days to retain logs after log retention is enabled
+	ExpirationDays pulumi.IntPtrInput `pulumi:"expirationDays"`
+	// Whether to enable log retention
+	OpenHistory pulumi.BoolPtrInput `pulumi:"openHistory"`
+}
+
+func (DeploymentLoggingLogReservePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLoggingLogReservePolicy)(nil)).Elem()
+}
+
+func (i DeploymentLoggingLogReservePolicyArgs) ToDeploymentLoggingLogReservePolicyOutput() DeploymentLoggingLogReservePolicyOutput {
+	return i.ToDeploymentLoggingLogReservePolicyOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingLogReservePolicyArgs) ToDeploymentLoggingLogReservePolicyOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingLogReservePolicyOutput)
+}
+
+func (i DeploymentLoggingLogReservePolicyArgs) ToDeploymentLoggingLogReservePolicyPtrOutput() DeploymentLoggingLogReservePolicyPtrOutput {
+	return i.ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentLoggingLogReservePolicyArgs) ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingLogReservePolicyOutput).ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(ctx)
+}
+
+// DeploymentLoggingLogReservePolicyPtrInput is an input type that accepts DeploymentLoggingLogReservePolicyArgs, DeploymentLoggingLogReservePolicyPtr and DeploymentLoggingLogReservePolicyPtrOutput values.
+// You can construct a concrete instance of `DeploymentLoggingLogReservePolicyPtrInput` via:
+//
+//	        DeploymentLoggingLogReservePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentLoggingLogReservePolicyPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentLoggingLogReservePolicyPtrOutput() DeploymentLoggingLogReservePolicyPtrOutput
+	ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(context.Context) DeploymentLoggingLogReservePolicyPtrOutput
+}
+
+type deploymentLoggingLogReservePolicyPtrType DeploymentLoggingLogReservePolicyArgs
+
+func DeploymentLoggingLogReservePolicyPtr(v *DeploymentLoggingLogReservePolicyArgs) DeploymentLoggingLogReservePolicyPtrInput {
+	return (*deploymentLoggingLogReservePolicyPtrType)(v)
+}
+
+func (*deploymentLoggingLogReservePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentLoggingLogReservePolicy)(nil)).Elem()
+}
+
+func (i *deploymentLoggingLogReservePolicyPtrType) ToDeploymentLoggingLogReservePolicyPtrOutput() DeploymentLoggingLogReservePolicyPtrOutput {
+	return i.ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentLoggingLogReservePolicyPtrType) ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentLoggingLogReservePolicyPtrOutput)
+}
+
+type DeploymentLoggingLogReservePolicyOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingLogReservePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentLoggingLogReservePolicy)(nil)).Elem()
+}
+
+func (o DeploymentLoggingLogReservePolicyOutput) ToDeploymentLoggingLogReservePolicyOutput() DeploymentLoggingLogReservePolicyOutput {
+	return o
+}
+
+func (o DeploymentLoggingLogReservePolicyOutput) ToDeploymentLoggingLogReservePolicyOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyOutput {
+	return o
+}
+
+func (o DeploymentLoggingLogReservePolicyOutput) ToDeploymentLoggingLogReservePolicyPtrOutput() DeploymentLoggingLogReservePolicyPtrOutput {
+	return o.ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentLoggingLogReservePolicyOutput) ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentLoggingLogReservePolicy) *DeploymentLoggingLogReservePolicy {
+		return &v
+	}).(DeploymentLoggingLogReservePolicyPtrOutput)
+}
+
+// Number of days to retain logs after log retention is enabled
+func (o DeploymentLoggingLogReservePolicyOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentLoggingLogReservePolicy) *int { return v.ExpirationDays }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable log retention
+func (o DeploymentLoggingLogReservePolicyOutput) OpenHistory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeploymentLoggingLogReservePolicy) *bool { return v.OpenHistory }).(pulumi.BoolPtrOutput)
+}
+
+type DeploymentLoggingLogReservePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentLoggingLogReservePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentLoggingLogReservePolicy)(nil)).Elem()
+}
+
+func (o DeploymentLoggingLogReservePolicyPtrOutput) ToDeploymentLoggingLogReservePolicyPtrOutput() DeploymentLoggingLogReservePolicyPtrOutput {
+	return o
+}
+
+func (o DeploymentLoggingLogReservePolicyPtrOutput) ToDeploymentLoggingLogReservePolicyPtrOutputWithContext(ctx context.Context) DeploymentLoggingLogReservePolicyPtrOutput {
+	return o
+}
+
+func (o DeploymentLoggingLogReservePolicyPtrOutput) Elem() DeploymentLoggingLogReservePolicyOutput {
+	return o.ApplyT(func(v *DeploymentLoggingLogReservePolicy) DeploymentLoggingLogReservePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentLoggingLogReservePolicy
+		return ret
+	}).(DeploymentLoggingLogReservePolicyOutput)
+}
+
+// Number of days to retain logs after log retention is enabled
+func (o DeploymentLoggingLogReservePolicyPtrOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentLoggingLogReservePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable log retention
+func (o DeploymentLoggingLogReservePolicyPtrOutput) OpenHistory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeploymentLoggingLogReservePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OpenHistory
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeploymentStreamingResourceSetting struct {
+	// Resource settings for basic mode See `basicResourceSetting` below.
+	BasicResourceSetting *DeploymentStreamingResourceSettingBasicResourceSetting `pulumi:"basicResourceSetting"`
+	// Expert mode resource settings See `expertResourceSetting` below.
+	ExpertResourceSetting *DeploymentStreamingResourceSettingExpertResourceSetting `pulumi:"expertResourceSetting"`
+	// Resource mode used in streaming mode, valid values: BASIC or EXPERT
+	ResourceSettingMode *string `pulumi:"resourceSettingMode"`
+}
+
+// DeploymentStreamingResourceSettingInput is an input type that accepts DeploymentStreamingResourceSettingArgs and DeploymentStreamingResourceSettingOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingInput` via:
+//
+//	DeploymentStreamingResourceSettingArgs{...}
+type DeploymentStreamingResourceSettingInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingOutput() DeploymentStreamingResourceSettingOutput
+	ToDeploymentStreamingResourceSettingOutputWithContext(context.Context) DeploymentStreamingResourceSettingOutput
+}
+
+type DeploymentStreamingResourceSettingArgs struct {
+	// Resource settings for basic mode See `basicResourceSetting` below.
+	BasicResourceSetting DeploymentStreamingResourceSettingBasicResourceSettingPtrInput `pulumi:"basicResourceSetting"`
+	// Expert mode resource settings See `expertResourceSetting` below.
+	ExpertResourceSetting DeploymentStreamingResourceSettingExpertResourceSettingPtrInput `pulumi:"expertResourceSetting"`
+	// Resource mode used in streaming mode, valid values: BASIC or EXPERT
+	ResourceSettingMode pulumi.StringPtrInput `pulumi:"resourceSettingMode"`
+}
+
+func (DeploymentStreamingResourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSetting)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingArgs) ToDeploymentStreamingResourceSettingOutput() DeploymentStreamingResourceSettingOutput {
+	return i.ToDeploymentStreamingResourceSettingOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingArgs) ToDeploymentStreamingResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingOutput)
+}
+
+func (i DeploymentStreamingResourceSettingArgs) ToDeploymentStreamingResourceSettingPtrOutput() DeploymentStreamingResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingArgs) ToDeploymentStreamingResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingOutput).ToDeploymentStreamingResourceSettingPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingPtrInput is an input type that accepts DeploymentStreamingResourceSettingArgs, DeploymentStreamingResourceSettingPtr and DeploymentStreamingResourceSettingPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingPtrOutput() DeploymentStreamingResourceSettingPtrOutput
+	ToDeploymentStreamingResourceSettingPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingPtrOutput
+}
+
+type deploymentStreamingResourceSettingPtrType DeploymentStreamingResourceSettingArgs
+
+func DeploymentStreamingResourceSettingPtr(v *DeploymentStreamingResourceSettingArgs) DeploymentStreamingResourceSettingPtrInput {
+	return (*deploymentStreamingResourceSettingPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSetting)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingPtrType) ToDeploymentStreamingResourceSettingPtrOutput() DeploymentStreamingResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingPtrType) ToDeploymentStreamingResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingOutput) ToDeploymentStreamingResourceSettingOutput() DeploymentStreamingResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingOutput) ToDeploymentStreamingResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingOutput) ToDeploymentStreamingResourceSettingPtrOutput() DeploymentStreamingResourceSettingPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingOutput) ToDeploymentStreamingResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSetting) *DeploymentStreamingResourceSetting {
+		return &v
+	}).(DeploymentStreamingResourceSettingPtrOutput)
+}
+
+// Resource settings for basic mode See `basicResourceSetting` below.
+func (o DeploymentStreamingResourceSettingOutput) BasicResourceSetting() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSetting {
+		return v.BasicResourceSetting
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput)
+}
+
+// Expert mode resource settings See `expertResourceSetting` below.
+func (o DeploymentStreamingResourceSettingOutput) ExpertResourceSetting() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSetting) *DeploymentStreamingResourceSettingExpertResourceSetting {
+		return v.ExpertResourceSetting
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput)
+}
+
+// Resource mode used in streaming mode, valid values: BASIC or EXPERT
+func (o DeploymentStreamingResourceSettingOutput) ResourceSettingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSetting) *string { return v.ResourceSettingMode }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingPtrOutput() DeploymentStreamingResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingPtrOutput) Elem() DeploymentStreamingResourceSettingOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSetting) DeploymentStreamingResourceSetting {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSetting
+		return ret
+	}).(DeploymentStreamingResourceSettingOutput)
+}
+
+// Resource settings for basic mode See `basicResourceSetting` below.
+func (o DeploymentStreamingResourceSettingPtrOutput) BasicResourceSetting() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSetting {
+		if v == nil {
+			return nil
+		}
+		return v.BasicResourceSetting
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput)
+}
+
+// Expert mode resource settings See `expertResourceSetting` below.
+func (o DeploymentStreamingResourceSettingPtrOutput) ExpertResourceSetting() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSetting) *DeploymentStreamingResourceSettingExpertResourceSetting {
+		if v == nil {
+			return nil
+		}
+		return v.ExpertResourceSetting
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput)
+}
+
+// Resource mode used in streaming mode, valid values: BASIC or EXPERT
+func (o DeploymentStreamingResourceSettingPtrOutput) ResourceSettingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceSettingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSetting struct {
+	JobmanagerResourceSettingSpec  *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec  `pulumi:"jobmanagerResourceSettingSpec"`
+	Parallelism                    *int                                                                                  `pulumi:"parallelism"`
+	TaskmanagerResourceSettingSpec *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec `pulumi:"taskmanagerResourceSettingSpec"`
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingArgs and DeploymentStreamingResourceSettingBasicResourceSettingOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingInput` via:
+//
+//	DeploymentStreamingResourceSettingBasicResourceSettingArgs{...}
+type DeploymentStreamingResourceSettingBasicResourceSettingInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingOutput() DeploymentStreamingResourceSettingBasicResourceSettingOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingOutput
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingArgs struct {
+	JobmanagerResourceSettingSpec  DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput  `pulumi:"jobmanagerResourceSettingSpec"`
+	Parallelism                    pulumi.IntPtrInput                                                                           `pulumi:"parallelism"`
+	TaskmanagerResourceSettingSpec DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput `pulumi:"taskmanagerResourceSettingSpec"`
+}
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingOutput() DeploymentStreamingResourceSettingBasicResourceSettingOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingOutput)
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingOutput).ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingPtrInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingArgs, DeploymentStreamingResourceSettingBasicResourceSettingPtr and DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingBasicResourceSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingBasicResourceSettingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput
+}
+
+type deploymentStreamingResourceSettingBasicResourceSettingPtrType DeploymentStreamingResourceSettingBasicResourceSettingArgs
+
+func DeploymentStreamingResourceSettingBasicResourceSettingPtr(v *DeploymentStreamingResourceSettingBasicResourceSettingArgs) DeploymentStreamingResourceSettingBasicResourceSettingPtrInput {
+	return (*deploymentStreamingResourceSettingBasicResourceSettingPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingBasicResourceSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingOutput() DeploymentStreamingResourceSettingBasicResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSettingBasicResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSetting {
+		return &v
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) JobmanagerResourceSettingSpec() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSetting) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingOutput) TaskmanagerResourceSettingSpec() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		return v.TaskmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) Elem() DeploymentStreamingResourceSettingBasicResourceSettingOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSetting) DeploymentStreamingResourceSettingBasicResourceSetting {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSettingBasicResourceSetting
+		return ret
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) JobmanagerResourceSettingSpec() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSetting) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Parallelism
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput) TaskmanagerResourceSettingSpec() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSetting) *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.TaskmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec struct {
+	Cpu    *float64 `pulumi:"cpu"`
+	Memory *string  `pulumi:"memory"`
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs and DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput` via:
+//
+//	DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{...}
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs struct {
+	Cpu    pulumi.Float64PtrInput `pulumi:"cpu"`
+	Memory pulumi.StringPtrInput  `pulumi:"memory"`
+}
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput).ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs, DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtr and DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput
+}
+
+type deploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs
+
+func DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtr(v *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput {
+	return (*deploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		return &v
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Elem() DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec
+		return ret
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec struct {
+	Cpu    *float64 `pulumi:"cpu"`
+	Memory *string  `pulumi:"memory"`
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs and DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput` via:
+//
+//	DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{...}
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs struct {
+	Cpu    pulumi.Float64PtrInput `pulumi:"cpu"`
+	Memory pulumi.StringPtrInput  `pulumi:"memory"`
+}
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput)
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput).ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput is an input type that accepts DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs, DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtr and DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput
+	ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput
+}
+
+type deploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs
+
+func DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtr(v *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput {
+	return (*deploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		return &v
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *float64 {
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Elem() DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec
+		return ret
+	}).(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSetting struct {
+	JobmanagerResourceSettingSpec *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec `pulumi:"jobmanagerResourceSettingSpec"`
+	// Resource plan for expert mode
+	ResourcePlan *string `pulumi:"resourcePlan"`
+}
+
+// DeploymentStreamingResourceSettingExpertResourceSettingInput is an input type that accepts DeploymentStreamingResourceSettingExpertResourceSettingArgs and DeploymentStreamingResourceSettingExpertResourceSettingOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingExpertResourceSettingInput` via:
+//
+//	DeploymentStreamingResourceSettingExpertResourceSettingArgs{...}
+type DeploymentStreamingResourceSettingExpertResourceSettingInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingExpertResourceSettingOutput() DeploymentStreamingResourceSettingExpertResourceSettingOutput
+	ToDeploymentStreamingResourceSettingExpertResourceSettingOutputWithContext(context.Context) DeploymentStreamingResourceSettingExpertResourceSettingOutput
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingArgs struct {
+	JobmanagerResourceSettingSpec DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput `pulumi:"jobmanagerResourceSettingSpec"`
+	// Resource plan for expert mode
+	ResourcePlan pulumi.StringPtrInput `pulumi:"resourcePlan"`
+}
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSetting)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingOutput() DeploymentStreamingResourceSettingExpertResourceSettingOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingOutput)
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingOutput).ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingExpertResourceSettingPtrInput is an input type that accepts DeploymentStreamingResourceSettingExpertResourceSettingArgs, DeploymentStreamingResourceSettingExpertResourceSettingPtr and DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingExpertResourceSettingPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingExpertResourceSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingExpertResourceSettingPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput
+	ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput
+}
+
+type deploymentStreamingResourceSettingExpertResourceSettingPtrType DeploymentStreamingResourceSettingExpertResourceSettingArgs
+
+func DeploymentStreamingResourceSettingExpertResourceSettingPtr(v *DeploymentStreamingResourceSettingExpertResourceSettingArgs) DeploymentStreamingResourceSettingExpertResourceSettingPtrInput {
+	return (*deploymentStreamingResourceSettingExpertResourceSettingPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingExpertResourceSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingExpertResourceSetting)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingExpertResourceSettingPtrType) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingExpertResourceSettingPtrType) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingOutput() DeploymentStreamingResourceSettingExpertResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSettingExpertResourceSetting) *DeploymentStreamingResourceSettingExpertResourceSetting {
+		return &v
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) JobmanagerResourceSettingSpec() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingExpertResourceSetting) *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+// Resource plan for expert mode
+func (o DeploymentStreamingResourceSettingExpertResourceSettingOutput) ResourcePlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingExpertResourceSetting) *string { return v.ResourcePlan }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingExpertResourceSetting)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) Elem() DeploymentStreamingResourceSettingExpertResourceSettingOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSetting) DeploymentStreamingResourceSettingExpertResourceSetting {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSettingExpertResourceSetting
+		return ret
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) JobmanagerResourceSettingSpec() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSetting) *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.JobmanagerResourceSettingSpec
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+// Resource plan for expert mode
+func (o DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput) ResourcePlan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePlan
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec struct {
+	Cpu    *float64 `pulumi:"cpu"`
+	Memory *string  `pulumi:"memory"`
+}
+
+// DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecInput is an input type that accepts DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs and DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecInput` via:
+//
+//	DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs{...}
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput
+	ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs struct {
+	Cpu    pulumi.Float64PtrInput `pulumi:"cpu"`
+	Memory pulumi.StringPtrInput  `pulumi:"memory"`
+}
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput).ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx)
+}
+
+// DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput is an input type that accepts DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs, DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtr and DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput values.
+// You can construct a concrete instance of `DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput` via:
+//
+//	        DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput
+	ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput
+}
+
+type deploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrType DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs
+
+func DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtr(v *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput {
+	return (*deploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrType)(v)
+}
+
+func (*deploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (i *deploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return i.ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrType) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+		return &v
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec)(nil)).Elem()
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) ToDeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutputWithContext(ctx context.Context) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput {
+	return o
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) Elem() DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec
+		return ret
+	}).(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLocalVariable struct {
+	// Local variables name
+	Name *string `pulumi:"name"`
+	// Local variables value
+	Value *string `pulumi:"value"`
+}
+
+// JobLocalVariableInput is an input type that accepts JobLocalVariableArgs and JobLocalVariableOutput values.
+// You can construct a concrete instance of `JobLocalVariableInput` via:
+//
+//	JobLocalVariableArgs{...}
+type JobLocalVariableInput interface {
+	pulumi.Input
+
+	ToJobLocalVariableOutput() JobLocalVariableOutput
+	ToJobLocalVariableOutputWithContext(context.Context) JobLocalVariableOutput
+}
+
+type JobLocalVariableArgs struct {
+	// Local variables name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Local variables value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (JobLocalVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLocalVariable)(nil)).Elem()
+}
+
+func (i JobLocalVariableArgs) ToJobLocalVariableOutput() JobLocalVariableOutput {
+	return i.ToJobLocalVariableOutputWithContext(context.Background())
+}
+
+func (i JobLocalVariableArgs) ToJobLocalVariableOutputWithContext(ctx context.Context) JobLocalVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLocalVariableOutput)
+}
+
+// JobLocalVariableArrayInput is an input type that accepts JobLocalVariableArray and JobLocalVariableArrayOutput values.
+// You can construct a concrete instance of `JobLocalVariableArrayInput` via:
+//
+//	JobLocalVariableArray{ JobLocalVariableArgs{...} }
+type JobLocalVariableArrayInput interface {
+	pulumi.Input
+
+	ToJobLocalVariableArrayOutput() JobLocalVariableArrayOutput
+	ToJobLocalVariableArrayOutputWithContext(context.Context) JobLocalVariableArrayOutput
+}
+
+type JobLocalVariableArray []JobLocalVariableInput
+
+func (JobLocalVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobLocalVariable)(nil)).Elem()
+}
+
+func (i JobLocalVariableArray) ToJobLocalVariableArrayOutput() JobLocalVariableArrayOutput {
+	return i.ToJobLocalVariableArrayOutputWithContext(context.Background())
+}
+
+func (i JobLocalVariableArray) ToJobLocalVariableArrayOutputWithContext(ctx context.Context) JobLocalVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLocalVariableArrayOutput)
+}
+
+type JobLocalVariableOutput struct{ *pulumi.OutputState }
+
+func (JobLocalVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLocalVariable)(nil)).Elem()
+}
+
+func (o JobLocalVariableOutput) ToJobLocalVariableOutput() JobLocalVariableOutput {
+	return o
+}
+
+func (o JobLocalVariableOutput) ToJobLocalVariableOutputWithContext(ctx context.Context) JobLocalVariableOutput {
+	return o
+}
+
+// Local variables name
+func (o JobLocalVariableOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLocalVariable) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Local variables value
+func (o JobLocalVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobLocalVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type JobLocalVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (JobLocalVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobLocalVariable)(nil)).Elem()
+}
+
+func (o JobLocalVariableArrayOutput) ToJobLocalVariableArrayOutput() JobLocalVariableArrayOutput {
+	return o
+}
+
+func (o JobLocalVariableArrayOutput) ToJobLocalVariableArrayOutputWithContext(ctx context.Context) JobLocalVariableArrayOutput {
+	return o
+}
+
+func (o JobLocalVariableArrayOutput) Index(i pulumi.IntInput) JobLocalVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobLocalVariable {
+		return vs[0].([]JobLocalVariable)[vs[1].(int)]
+	}).(JobLocalVariableOutput)
+}
+
+type JobRestoreStrategy struct {
+	// Stateless startup
+	AllowNonRestoredState *bool `pulumi:"allowNonRestoredState"`
+	// Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+	JobStartTimeInMs *int `pulumi:"jobStartTimeInMs"`
+	// Restore type
+	Kind *string `pulumi:"kind"`
+	// SavepointId
+	SavepointId *string `pulumi:"savepointId"`
+}
+
+// JobRestoreStrategyInput is an input type that accepts JobRestoreStrategyArgs and JobRestoreStrategyOutput values.
+// You can construct a concrete instance of `JobRestoreStrategyInput` via:
+//
+//	JobRestoreStrategyArgs{...}
+type JobRestoreStrategyInput interface {
+	pulumi.Input
+
+	ToJobRestoreStrategyOutput() JobRestoreStrategyOutput
+	ToJobRestoreStrategyOutputWithContext(context.Context) JobRestoreStrategyOutput
+}
+
+type JobRestoreStrategyArgs struct {
+	// Stateless startup
+	AllowNonRestoredState pulumi.BoolPtrInput `pulumi:"allowNonRestoredState"`
+	// Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+	JobStartTimeInMs pulumi.IntPtrInput `pulumi:"jobStartTimeInMs"`
+	// Restore type
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// SavepointId
+	SavepointId pulumi.StringPtrInput `pulumi:"savepointId"`
+}
+
+func (JobRestoreStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRestoreStrategy)(nil)).Elem()
+}
+
+func (i JobRestoreStrategyArgs) ToJobRestoreStrategyOutput() JobRestoreStrategyOutput {
+	return i.ToJobRestoreStrategyOutputWithContext(context.Background())
+}
+
+func (i JobRestoreStrategyArgs) ToJobRestoreStrategyOutputWithContext(ctx context.Context) JobRestoreStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRestoreStrategyOutput)
+}
+
+func (i JobRestoreStrategyArgs) ToJobRestoreStrategyPtrOutput() JobRestoreStrategyPtrOutput {
+	return i.ToJobRestoreStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i JobRestoreStrategyArgs) ToJobRestoreStrategyPtrOutputWithContext(ctx context.Context) JobRestoreStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRestoreStrategyOutput).ToJobRestoreStrategyPtrOutputWithContext(ctx)
+}
+
+// JobRestoreStrategyPtrInput is an input type that accepts JobRestoreStrategyArgs, JobRestoreStrategyPtr and JobRestoreStrategyPtrOutput values.
+// You can construct a concrete instance of `JobRestoreStrategyPtrInput` via:
+//
+//	        JobRestoreStrategyArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobRestoreStrategyPtrInput interface {
+	pulumi.Input
+
+	ToJobRestoreStrategyPtrOutput() JobRestoreStrategyPtrOutput
+	ToJobRestoreStrategyPtrOutputWithContext(context.Context) JobRestoreStrategyPtrOutput
+}
+
+type jobRestoreStrategyPtrType JobRestoreStrategyArgs
+
+func JobRestoreStrategyPtr(v *JobRestoreStrategyArgs) JobRestoreStrategyPtrInput {
+	return (*jobRestoreStrategyPtrType)(v)
+}
+
+func (*jobRestoreStrategyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRestoreStrategy)(nil)).Elem()
+}
+
+func (i *jobRestoreStrategyPtrType) ToJobRestoreStrategyPtrOutput() JobRestoreStrategyPtrOutput {
+	return i.ToJobRestoreStrategyPtrOutputWithContext(context.Background())
+}
+
+func (i *jobRestoreStrategyPtrType) ToJobRestoreStrategyPtrOutputWithContext(ctx context.Context) JobRestoreStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobRestoreStrategyPtrOutput)
+}
+
+type JobRestoreStrategyOutput struct{ *pulumi.OutputState }
+
+func (JobRestoreStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobRestoreStrategy)(nil)).Elem()
+}
+
+func (o JobRestoreStrategyOutput) ToJobRestoreStrategyOutput() JobRestoreStrategyOutput {
+	return o
+}
+
+func (o JobRestoreStrategyOutput) ToJobRestoreStrategyOutputWithContext(ctx context.Context) JobRestoreStrategyOutput {
+	return o
+}
+
+func (o JobRestoreStrategyOutput) ToJobRestoreStrategyPtrOutput() JobRestoreStrategyPtrOutput {
+	return o.ToJobRestoreStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o JobRestoreStrategyOutput) ToJobRestoreStrategyPtrOutputWithContext(ctx context.Context) JobRestoreStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobRestoreStrategy) *JobRestoreStrategy {
+		return &v
+	}).(JobRestoreStrategyPtrOutput)
+}
+
+// Stateless startup
+func (o JobRestoreStrategyOutput) AllowNonRestoredState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobRestoreStrategy) *bool { return v.AllowNonRestoredState }).(pulumi.BoolPtrOutput)
+}
+
+// Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+func (o JobRestoreStrategyOutput) JobStartTimeInMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobRestoreStrategy) *int { return v.JobStartTimeInMs }).(pulumi.IntPtrOutput)
+}
+
+// Restore type
+func (o JobRestoreStrategyOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobRestoreStrategy) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// SavepointId
+func (o JobRestoreStrategyOutput) SavepointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobRestoreStrategy) *string { return v.SavepointId }).(pulumi.StringPtrOutput)
+}
+
+type JobRestoreStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (JobRestoreStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobRestoreStrategy)(nil)).Elem()
+}
+
+func (o JobRestoreStrategyPtrOutput) ToJobRestoreStrategyPtrOutput() JobRestoreStrategyPtrOutput {
+	return o
+}
+
+func (o JobRestoreStrategyPtrOutput) ToJobRestoreStrategyPtrOutputWithContext(ctx context.Context) JobRestoreStrategyPtrOutput {
+	return o
+}
+
+func (o JobRestoreStrategyPtrOutput) Elem() JobRestoreStrategyOutput {
+	return o.ApplyT(func(v *JobRestoreStrategy) JobRestoreStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret JobRestoreStrategy
+		return ret
+	}).(JobRestoreStrategyOutput)
+}
+
+// Stateless startup
+func (o JobRestoreStrategyPtrOutput) AllowNonRestoredState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobRestoreStrategy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowNonRestoredState
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+func (o JobRestoreStrategyPtrOutput) JobStartTimeInMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobRestoreStrategy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.JobStartTimeInMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Restore type
+func (o JobRestoreStrategyPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobRestoreStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// SavepointId
+func (o JobRestoreStrategyPtrOutput) SavepointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobRestoreStrategy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SavepointId
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobStatus struct {
+	// Job current status
+	CurrentJobStatus *string `pulumi:"currentJobStatus"`
+	// Job failure information
+	Failure *JobStatusFailure `pulumi:"failure"`
+	// Job Run Health Score
+	HealthScore *int `pulumi:"healthScore"`
+	// Risk level, which indicates the risk level of the operation status of the job.
+	RiskLevel *string `pulumi:"riskLevel"`
+	// job running status, which has value when the job is Running.
+	Running *JobStatusRunning `pulumi:"running"`
+}
+
+// JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
+// You can construct a concrete instance of `JobStatusInput` via:
+//
+//	JobStatusArgs{...}
+type JobStatusInput interface {
+	pulumi.Input
+
+	ToJobStatusOutput() JobStatusOutput
+	ToJobStatusOutputWithContext(context.Context) JobStatusOutput
+}
+
+type JobStatusArgs struct {
+	// Job current status
+	CurrentJobStatus pulumi.StringPtrInput `pulumi:"currentJobStatus"`
+	// Job failure information
+	Failure JobStatusFailurePtrInput `pulumi:"failure"`
+	// Job Run Health Score
+	HealthScore pulumi.IntPtrInput `pulumi:"healthScore"`
+	// Risk level, which indicates the risk level of the operation status of the job.
+	RiskLevel pulumi.StringPtrInput `pulumi:"riskLevel"`
+	// job running status, which has value when the job is Running.
+	Running JobStatusRunningPtrInput `pulumi:"running"`
+}
+
+func (JobStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (i JobStatusArgs) ToJobStatusOutput() JobStatusOutput {
+	return i.ToJobStatusOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
+}
+
+func (i JobStatusArgs) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput).ToJobStatusPtrOutputWithContext(ctx)
+}
+
+// JobStatusPtrInput is an input type that accepts JobStatusArgs, JobStatusPtr and JobStatusPtrOutput values.
+// You can construct a concrete instance of `JobStatusPtrInput` via:
+//
+//	        JobStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobStatusPtrInput interface {
+	pulumi.Input
+
+	ToJobStatusPtrOutput() JobStatusPtrOutput
+	ToJobStatusPtrOutputWithContext(context.Context) JobStatusPtrOutput
+}
+
+type jobStatusPtrType JobStatusArgs
+
+func JobStatusPtr(v *JobStatusArgs) JobStatusPtrInput {
+	return (*jobStatusPtrType)(v)
+}
+
+func (*jobStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return i.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusPtrType) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusPtrOutput)
+}
+
+type JobStatusOutput struct{ *pulumi.OutputState }
+
+func (JobStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o.ToJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatus) *JobStatus {
+		return &v
+	}).(JobStatusPtrOutput)
+}
+
+// Job current status
+func (o JobStatusOutput) CurrentJobStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.CurrentJobStatus }).(pulumi.StringPtrOutput)
+}
+
+// Job failure information
+func (o JobStatusOutput) Failure() JobStatusFailurePtrOutput {
+	return o.ApplyT(func(v JobStatus) *JobStatusFailure { return v.Failure }).(JobStatusFailurePtrOutput)
+}
+
+// Job Run Health Score
+func (o JobStatusOutput) HealthScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatus) *int { return v.HealthScore }).(pulumi.IntPtrOutput)
+}
+
+// Risk level, which indicates the risk level of the operation status of the job.
+func (o JobStatusOutput) RiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.RiskLevel }).(pulumi.StringPtrOutput)
+}
+
+// job running status, which has value when the job is Running.
+func (o JobStatusOutput) Running() JobStatusRunningPtrOutput {
+	return o.ApplyT(func(v JobStatus) *JobStatusRunning { return v.Running }).(JobStatusRunningPtrOutput)
+}
+
+type JobStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutput() JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) ToJobStatusPtrOutputWithContext(ctx context.Context) JobStatusPtrOutput {
+	return o
+}
+
+func (o JobStatusPtrOutput) Elem() JobStatusOutput {
+	return o.ApplyT(func(v *JobStatus) JobStatus {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatus
+		return ret
+	}).(JobStatusOutput)
+}
+
+// Job current status
+func (o JobStatusPtrOutput) CurrentJobStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentJobStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Job failure information
+func (o JobStatusPtrOutput) Failure() JobStatusFailurePtrOutput {
+	return o.ApplyT(func(v *JobStatus) *JobStatusFailure {
+		if v == nil {
+			return nil
+		}
+		return v.Failure
+	}).(JobStatusFailurePtrOutput)
+}
+
+// Job Run Health Score
+func (o JobStatusPtrOutput) HealthScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HealthScore
+	}).(pulumi.IntPtrOutput)
+}
+
+// Risk level, which indicates the risk level of the operation status of the job.
+func (o JobStatusPtrOutput) RiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RiskLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// job running status, which has value when the job is Running.
+func (o JobStatusPtrOutput) Running() JobStatusRunningPtrOutput {
+	return o.ApplyT(func(v *JobStatus) *JobStatusRunning {
+		if v == nil {
+			return nil
+		}
+		return v.Running
+	}).(JobStatusRunningPtrOutput)
+}
+
+type JobStatusFailure struct {
+	// Job failure time
+	FailedAt *int `pulumi:"failedAt"`
+	// Failure Information Details
+	Message *string `pulumi:"message"`
+	// Failure Reason
+	Reason *string `pulumi:"reason"`
+}
+
+// JobStatusFailureInput is an input type that accepts JobStatusFailureArgs and JobStatusFailureOutput values.
+// You can construct a concrete instance of `JobStatusFailureInput` via:
+//
+//	JobStatusFailureArgs{...}
+type JobStatusFailureInput interface {
+	pulumi.Input
+
+	ToJobStatusFailureOutput() JobStatusFailureOutput
+	ToJobStatusFailureOutputWithContext(context.Context) JobStatusFailureOutput
+}
+
+type JobStatusFailureArgs struct {
+	// Job failure time
+	FailedAt pulumi.IntPtrInput `pulumi:"failedAt"`
+	// Failure Information Details
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Failure Reason
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (JobStatusFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusFailure)(nil)).Elem()
+}
+
+func (i JobStatusFailureArgs) ToJobStatusFailureOutput() JobStatusFailureOutput {
+	return i.ToJobStatusFailureOutputWithContext(context.Background())
+}
+
+func (i JobStatusFailureArgs) ToJobStatusFailureOutputWithContext(ctx context.Context) JobStatusFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusFailureOutput)
+}
+
+func (i JobStatusFailureArgs) ToJobStatusFailurePtrOutput() JobStatusFailurePtrOutput {
+	return i.ToJobStatusFailurePtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusFailureArgs) ToJobStatusFailurePtrOutputWithContext(ctx context.Context) JobStatusFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusFailureOutput).ToJobStatusFailurePtrOutputWithContext(ctx)
+}
+
+// JobStatusFailurePtrInput is an input type that accepts JobStatusFailureArgs, JobStatusFailurePtr and JobStatusFailurePtrOutput values.
+// You can construct a concrete instance of `JobStatusFailurePtrInput` via:
+//
+//	        JobStatusFailureArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobStatusFailurePtrInput interface {
+	pulumi.Input
+
+	ToJobStatusFailurePtrOutput() JobStatusFailurePtrOutput
+	ToJobStatusFailurePtrOutputWithContext(context.Context) JobStatusFailurePtrOutput
+}
+
+type jobStatusFailurePtrType JobStatusFailureArgs
+
+func JobStatusFailurePtr(v *JobStatusFailureArgs) JobStatusFailurePtrInput {
+	return (*jobStatusFailurePtrType)(v)
+}
+
+func (*jobStatusFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusFailure)(nil)).Elem()
+}
+
+func (i *jobStatusFailurePtrType) ToJobStatusFailurePtrOutput() JobStatusFailurePtrOutput {
+	return i.ToJobStatusFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusFailurePtrType) ToJobStatusFailurePtrOutputWithContext(ctx context.Context) JobStatusFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusFailurePtrOutput)
+}
+
+type JobStatusFailureOutput struct{ *pulumi.OutputState }
+
+func (JobStatusFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusFailure)(nil)).Elem()
+}
+
+func (o JobStatusFailureOutput) ToJobStatusFailureOutput() JobStatusFailureOutput {
+	return o
+}
+
+func (o JobStatusFailureOutput) ToJobStatusFailureOutputWithContext(ctx context.Context) JobStatusFailureOutput {
+	return o
+}
+
+func (o JobStatusFailureOutput) ToJobStatusFailurePtrOutput() JobStatusFailurePtrOutput {
+	return o.ToJobStatusFailurePtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusFailureOutput) ToJobStatusFailurePtrOutputWithContext(ctx context.Context) JobStatusFailurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusFailure) *JobStatusFailure {
+		return &v
+	}).(JobStatusFailurePtrOutput)
+}
+
+// Job failure time
+func (o JobStatusFailureOutput) FailedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusFailure) *int { return v.FailedAt }).(pulumi.IntPtrOutput)
+}
+
+// Failure Information Details
+func (o JobStatusFailureOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusFailure) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Failure Reason
+func (o JobStatusFailureOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusFailure) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type JobStatusFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusFailure)(nil)).Elem()
+}
+
+func (o JobStatusFailurePtrOutput) ToJobStatusFailurePtrOutput() JobStatusFailurePtrOutput {
+	return o
+}
+
+func (o JobStatusFailurePtrOutput) ToJobStatusFailurePtrOutputWithContext(ctx context.Context) JobStatusFailurePtrOutput {
+	return o
+}
+
+func (o JobStatusFailurePtrOutput) Elem() JobStatusFailureOutput {
+	return o.ApplyT(func(v *JobStatusFailure) JobStatusFailure {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatusFailure
+		return ret
+	}).(JobStatusFailureOutput)
+}
+
+// Job failure time
+func (o JobStatusFailurePtrOutput) FailedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusFailure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// Failure Information Details
+func (o JobStatusFailurePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusFailure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Failure Reason
+func (o JobStatusFailurePtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusFailure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobStatusRunning struct {
+	// Number of job restarts
+	ObservedFlinkJobRestarts *int `pulumi:"observedFlinkJobRestarts"`
+	// Flink job status
+	ObservedFlinkJobStatus *string `pulumi:"observedFlinkJobStatus"`
+}
+
+// JobStatusRunningInput is an input type that accepts JobStatusRunningArgs and JobStatusRunningOutput values.
+// You can construct a concrete instance of `JobStatusRunningInput` via:
+//
+//	JobStatusRunningArgs{...}
+type JobStatusRunningInput interface {
+	pulumi.Input
+
+	ToJobStatusRunningOutput() JobStatusRunningOutput
+	ToJobStatusRunningOutputWithContext(context.Context) JobStatusRunningOutput
+}
+
+type JobStatusRunningArgs struct {
+	// Number of job restarts
+	ObservedFlinkJobRestarts pulumi.IntPtrInput `pulumi:"observedFlinkJobRestarts"`
+	// Flink job status
+	ObservedFlinkJobStatus pulumi.StringPtrInput `pulumi:"observedFlinkJobStatus"`
+}
+
+func (JobStatusRunningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusRunning)(nil)).Elem()
+}
+
+func (i JobStatusRunningArgs) ToJobStatusRunningOutput() JobStatusRunningOutput {
+	return i.ToJobStatusRunningOutputWithContext(context.Background())
+}
+
+func (i JobStatusRunningArgs) ToJobStatusRunningOutputWithContext(ctx context.Context) JobStatusRunningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusRunningOutput)
+}
+
+func (i JobStatusRunningArgs) ToJobStatusRunningPtrOutput() JobStatusRunningPtrOutput {
+	return i.ToJobStatusRunningPtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusRunningArgs) ToJobStatusRunningPtrOutputWithContext(ctx context.Context) JobStatusRunningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusRunningOutput).ToJobStatusRunningPtrOutputWithContext(ctx)
+}
+
+// JobStatusRunningPtrInput is an input type that accepts JobStatusRunningArgs, JobStatusRunningPtr and JobStatusRunningPtrOutput values.
+// You can construct a concrete instance of `JobStatusRunningPtrInput` via:
+//
+//	        JobStatusRunningArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobStatusRunningPtrInput interface {
+	pulumi.Input
+
+	ToJobStatusRunningPtrOutput() JobStatusRunningPtrOutput
+	ToJobStatusRunningPtrOutputWithContext(context.Context) JobStatusRunningPtrOutput
+}
+
+type jobStatusRunningPtrType JobStatusRunningArgs
+
+func JobStatusRunningPtr(v *JobStatusRunningArgs) JobStatusRunningPtrInput {
+	return (*jobStatusRunningPtrType)(v)
+}
+
+func (*jobStatusRunningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusRunning)(nil)).Elem()
+}
+
+func (i *jobStatusRunningPtrType) ToJobStatusRunningPtrOutput() JobStatusRunningPtrOutput {
+	return i.ToJobStatusRunningPtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusRunningPtrType) ToJobStatusRunningPtrOutputWithContext(ctx context.Context) JobStatusRunningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusRunningPtrOutput)
+}
+
+type JobStatusRunningOutput struct{ *pulumi.OutputState }
+
+func (JobStatusRunningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusRunning)(nil)).Elem()
+}
+
+func (o JobStatusRunningOutput) ToJobStatusRunningOutput() JobStatusRunningOutput {
+	return o
+}
+
+func (o JobStatusRunningOutput) ToJobStatusRunningOutputWithContext(ctx context.Context) JobStatusRunningOutput {
+	return o
+}
+
+func (o JobStatusRunningOutput) ToJobStatusRunningPtrOutput() JobStatusRunningPtrOutput {
+	return o.ToJobStatusRunningPtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusRunningOutput) ToJobStatusRunningPtrOutputWithContext(ctx context.Context) JobStatusRunningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobStatusRunning) *JobStatusRunning {
+		return &v
+	}).(JobStatusRunningPtrOutput)
+}
+
+// Number of job restarts
+func (o JobStatusRunningOutput) ObservedFlinkJobRestarts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobStatusRunning) *int { return v.ObservedFlinkJobRestarts }).(pulumi.IntPtrOutput)
+}
+
+// Flink job status
+func (o JobStatusRunningOutput) ObservedFlinkJobStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusRunning) *string { return v.ObservedFlinkJobStatus }).(pulumi.StringPtrOutput)
+}
+
+type JobStatusRunningPtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusRunningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusRunning)(nil)).Elem()
+}
+
+func (o JobStatusRunningPtrOutput) ToJobStatusRunningPtrOutput() JobStatusRunningPtrOutput {
+	return o
+}
+
+func (o JobStatusRunningPtrOutput) ToJobStatusRunningPtrOutputWithContext(ctx context.Context) JobStatusRunningPtrOutput {
+	return o
+}
+
+func (o JobStatusRunningPtrOutput) Elem() JobStatusRunningOutput {
+	return o.ApplyT(func(v *JobStatusRunning) JobStatusRunning {
+		if v != nil {
+			return *v
+		}
+		var ret JobStatusRunning
+		return ret
+	}).(JobStatusRunningOutput)
+}
+
+// Number of job restarts
+func (o JobStatusRunningPtrOutput) ObservedFlinkJobRestarts() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobStatusRunning) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedFlinkJobRestarts
+	}).(pulumi.IntPtrOutput)
+}
+
+// Flink job status
+func (o JobStatusRunningPtrOutput) ObservedFlinkJobStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusRunning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObservedFlinkJobStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 type VvpInstanceResourceSpec struct {
 	// CPU number.
 	Cpu *int `pulumi:"cpu"`
@@ -444,12 +4367,108 @@ func (o VvpInstanceStorageOssPtrOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactInput)(nil)).Elem(), DeploymentArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactPtrInput)(nil)).Elem(), DeploymentArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactJarArtifactInput)(nil)).Elem(), DeploymentArtifactJarArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactJarArtifactPtrInput)(nil)).Elem(), DeploymentArtifactJarArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactPythonArtifactInput)(nil)).Elem(), DeploymentArtifactPythonArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactPythonArtifactPtrInput)(nil)).Elem(), DeploymentArtifactPythonArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactSqlArtifactInput)(nil)).Elem(), DeploymentArtifactSqlArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentArtifactSqlArtifactPtrInput)(nil)).Elem(), DeploymentArtifactSqlArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingInput)(nil)).Elem(), DeploymentBatchResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingPtrInput)(nil)).Elem(), DeploymentBatchResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingPtrInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput)(nil)).Elem(), DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentDeploymentTargetInput)(nil)).Elem(), DeploymentDeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentDeploymentTargetPtrInput)(nil)).Elem(), DeploymentDeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLocalVariableInput)(nil)).Elem(), DeploymentLocalVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLocalVariableArrayInput)(nil)).Elem(), DeploymentLocalVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingInput)(nil)).Elem(), DeploymentLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingPtrInput)(nil)).Elem(), DeploymentLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingLog4jLoggerInput)(nil)).Elem(), DeploymentLoggingLog4jLoggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingLog4jLoggerArrayInput)(nil)).Elem(), DeploymentLoggingLog4jLoggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingLogReservePolicyInput)(nil)).Elem(), DeploymentLoggingLogReservePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentLoggingLogReservePolicyPtrInput)(nil)).Elem(), DeploymentLoggingLogReservePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingInput)(nil)).Elem(), DeploymentStreamingResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingInput)(nil)).Elem(), DeploymentStreamingResourceSettingExpertResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingExpertResourceSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecInput)(nil)).Elem(), DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrInput)(nil)).Elem(), DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLocalVariableInput)(nil)).Elem(), JobLocalVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLocalVariableArrayInput)(nil)).Elem(), JobLocalVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRestoreStrategyInput)(nil)).Elem(), JobRestoreStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobRestoreStrategyPtrInput)(nil)).Elem(), JobRestoreStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusInput)(nil)).Elem(), JobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusPtrInput)(nil)).Elem(), JobStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusFailureInput)(nil)).Elem(), JobStatusFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusFailurePtrInput)(nil)).Elem(), JobStatusFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusRunningInput)(nil)).Elem(), JobStatusRunningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusRunningPtrInput)(nil)).Elem(), JobStatusRunningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceResourceSpecInput)(nil)).Elem(), VvpInstanceResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceResourceSpecPtrInput)(nil)).Elem(), VvpInstanceResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageInput)(nil)).Elem(), VvpInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStoragePtrInput)(nil)).Elem(), VvpInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageOssInput)(nil)).Elem(), VvpInstanceStorageOssArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VvpInstanceStorageOssPtrInput)(nil)).Elem(), VvpInstanceStorageOssArgs{})
+	pulumi.RegisterOutputType(DeploymentArtifactOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactJarArtifactOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactJarArtifactPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactPythonArtifactOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactPythonArtifactPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactSqlArtifactOutput{})
+	pulumi.RegisterOutputType(DeploymentArtifactSqlArtifactPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput{})
+	pulumi.RegisterOutputType(DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentDeploymentTargetOutput{})
+	pulumi.RegisterOutputType(DeploymentDeploymentTargetPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentLocalVariableOutput{})
+	pulumi.RegisterOutputType(DeploymentLocalVariableArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingLog4jLoggerOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingLog4jLoggerArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingLogReservePolicyOutput{})
+	pulumi.RegisterOutputType(DeploymentLoggingLogReservePolicyPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpecPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpecPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingExpertResourceSettingOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingExpertResourceSettingPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecOutput{})
+	pulumi.RegisterOutputType(DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpecPtrOutput{})
+	pulumi.RegisterOutputType(JobLocalVariableOutput{})
+	pulumi.RegisterOutputType(JobLocalVariableArrayOutput{})
+	pulumi.RegisterOutputType(JobRestoreStrategyOutput{})
+	pulumi.RegisterOutputType(JobRestoreStrategyPtrOutput{})
+	pulumi.RegisterOutputType(JobStatusOutput{})
+	pulumi.RegisterOutputType(JobStatusPtrOutput{})
+	pulumi.RegisterOutputType(JobStatusFailureOutput{})
+	pulumi.RegisterOutputType(JobStatusFailurePtrOutput{})
+	pulumi.RegisterOutputType(JobStatusRunningOutput{})
+	pulumi.RegisterOutputType(JobStatusRunningPtrOutput{})
 	pulumi.RegisterOutputType(VvpInstanceResourceSpecOutput{})
 	pulumi.RegisterOutputType(VvpInstanceResourceSpecPtrOutput{})
 	pulumi.RegisterOutputType(VvpInstanceStorageOutput{})

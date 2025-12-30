@@ -64,6 +64,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Bgp Network can be imported using the id, e.g.

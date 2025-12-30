@@ -101,6 +101,8 @@ namespace Pulumi.AliCloud.AliKafka
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Alikafka Topic can be imported using the id, e.g.

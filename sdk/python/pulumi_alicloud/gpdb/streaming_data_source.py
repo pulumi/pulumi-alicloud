@@ -364,6 +364,8 @@ class StreamingDataSource(pulumi.CustomResource):
             service_id=defaultwruvdv.service_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Streaming Data Source can be imported using the id, e.g.
@@ -464,6 +466,8 @@ class StreamingDataSource(pulumi.CustomResource):
             data_source_description="example-kafka",
             service_id=defaultwruvdv.service_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

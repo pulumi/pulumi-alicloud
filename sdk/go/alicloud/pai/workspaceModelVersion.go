@@ -121,6 +121,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // PAI Workspace Model Version can be imported using the id, e.g.

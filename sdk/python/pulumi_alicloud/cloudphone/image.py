@@ -162,6 +162,8 @@ class Image(pulumi.CustomResource):
             instance_id=default04hh_xk.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Phone Image can be imported using the id, e.g.
@@ -223,6 +225,8 @@ class Image(pulumi.CustomResource):
             image_name="ImageName",
             instance_id=default04hh_xk.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

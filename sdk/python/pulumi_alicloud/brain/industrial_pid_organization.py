@@ -122,6 +122,8 @@ class IndustrialPidOrganization(pulumi.CustomResource):
         example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Brain Industrial Pid Organization can be imported using the id, e.g.
@@ -158,6 +160,8 @@ class IndustrialPidOrganization(pulumi.CustomResource):
 
         example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

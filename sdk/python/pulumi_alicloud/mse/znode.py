@@ -211,6 +211,8 @@ class Znode(pulumi.CustomResource):
             path="/example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Microservice Engine (MSE) Znode can be imported using the id, e.g.
@@ -273,6 +275,8 @@ class Znode(pulumi.CustomResource):
             data="terraform-example",
             path="/example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

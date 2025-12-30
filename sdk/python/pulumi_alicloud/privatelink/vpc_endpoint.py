@@ -690,6 +690,8 @@ class VpcEndpoint(pulumi.CustomResource):
             protected_enabled=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Link Vpc Endpoint can be imported using the id, e.g.
@@ -780,6 +782,8 @@ class VpcEndpoint(pulumi.CustomResource):
             service_id="epsrv-k1apjysze8u1l9t6uyg9",
             protected_enabled=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

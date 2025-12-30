@@ -155,6 +155,8 @@ class AlertResource(pulumi.CustomResource):
             lang="cn")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log alert resource can be imported using the id, e.g.
@@ -192,6 +194,8 @@ class AlertResource(pulumi.CustomResource):
             type="user",
             lang="cn")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

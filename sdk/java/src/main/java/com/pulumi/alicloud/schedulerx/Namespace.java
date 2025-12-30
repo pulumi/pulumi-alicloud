@@ -15,6 +15,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Schedulerx Namespace resource.
+ * 
+ * For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+ * 
+ * &gt; **NOTE:** Available since v1.173.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.schedulerx.Namespace;
+ * import com.pulumi.alicloud.schedulerx.NamespaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Namespace("default", NamespaceArgs.builder()
+ *             .namespaceName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Schedulerx Namespace can be imported using the id, e.g.
@@ -55,14 +101,14 @@ public class Namespace extends com.pulumi.resources.CustomResource {
         return this.namespaceName;
     }
     /**
-     * Namespace uid.
+     * namespace uid
      * 
      */
     @Export(name="namespaceUid", refs={String.class}, tree="[0]")
     private Output<String> namespaceUid;
 
     /**
-     * @return Namespace uid.
+     * @return namespace uid
      * 
      */
     public Output<String> namespaceUid() {

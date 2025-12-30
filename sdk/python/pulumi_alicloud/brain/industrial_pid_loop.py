@@ -304,6 +304,8 @@ class IndustrialPidLoop(pulumi.CustomResource):
             pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Brain Industrial Pid Loop can be imported using the id, e.g.
@@ -351,6 +353,8 @@ class IndustrialPidLoop(pulumi.CustomResource):
             pid_loop_type="0",
             pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

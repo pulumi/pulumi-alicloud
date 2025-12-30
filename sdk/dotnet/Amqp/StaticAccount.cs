@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.Amqp
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Amqp Static Account can be imported using the id, e.g.

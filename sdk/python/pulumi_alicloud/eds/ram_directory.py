@@ -255,6 +255,8 @@ class RamDirectory(pulumi.CustomResource):
             vswitch_ids=[default_switch.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Ram Directory can be imported using the id, e.g.
@@ -313,6 +315,8 @@ class RamDirectory(pulumi.CustomResource):
             ram_directory_name=name,
             vswitch_ids=[default_switch.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

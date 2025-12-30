@@ -226,6 +226,8 @@ class AlertContact(pulumi.CustomResource):
             phone_num="1381111****")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -269,6 +271,8 @@ class AlertContact(pulumi.CustomResource):
             email="someone@example.com",
             phone_num="1381111****")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

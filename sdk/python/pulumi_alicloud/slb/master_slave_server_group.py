@@ -278,6 +278,8 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             established_timeout=600)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer master slave server group can be imported using the id, e.g.
@@ -404,6 +406,8 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             health_check_uri="/console",
             established_timeout=600)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -34,6 +34,12 @@ namespace Pulumi.AliCloud.Amqp
         public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The deployment architecture for Serverless instances. Valid values:
+        /// </summary>
+        [Output("edition")]
+        public Output<string> Edition { get; private set; } = null!;
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Output("instanceName")]
@@ -97,6 +103,12 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string?> PeriodCycle { get; private set; } = null!;
 
         /// <summary>
+        /// The provisioned TPS capacity for reserved + elastic instances.
+        /// </summary>
+        [Output("provisionedCapacity")]
+        public Output<int?> ProvisionedCapacity { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         /// </summary>
         [Output("queueCapacity")]
@@ -148,7 +160,7 @@ namespace Pulumi.AliCloud.Amqp
         /// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         /// </summary>
         [Output("supportTracing")]
-        public Output<bool> SupportTracing { get; private set; } = null!;
+        public Output<bool?> SupportTracing { get; private set; } = null!;
 
         /// <summary>
         /// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
@@ -207,6 +219,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
+        /// The deployment architecture for Serverless instances. Valid values:
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         /// <summary>
         /// The instance name.
@@ -270,6 +288,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("periodCycle")]
         public Input<string>? PeriodCycle { get; set; }
+
+        /// <summary>
+        /// The provisioned TPS capacity for reserved + elastic instances.
+        /// </summary>
+        [Input("provisionedCapacity")]
+        public Input<int>? ProvisionedCapacity { get; set; }
 
         /// <summary>
         /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
@@ -346,6 +370,12 @@ namespace Pulumi.AliCloud.Amqp
         public Input<int>? CreateTime { get; set; }
 
         /// <summary>
+        /// The deployment architecture for Serverless instances. Valid values:
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// The instance name.
         /// </summary>
         [Input("instanceName")]
@@ -407,6 +437,12 @@ namespace Pulumi.AliCloud.Amqp
         /// </summary>
         [Input("periodCycle")]
         public Input<string>? PeriodCycle { get; set; }
+
+        /// <summary>
+        /// The provisioned TPS capacity for reserved + elastic instances.
+        /// </summary>
+        [Input("provisionedCapacity")]
+        public Input<int>? ProvisionedCapacity { get; set; }
 
         /// <summary>
         /// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.

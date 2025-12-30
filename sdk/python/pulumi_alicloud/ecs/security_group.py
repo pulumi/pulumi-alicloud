@@ -412,6 +412,8 @@ class SecurityGroup(pulumi.CustomResource):
             vpc_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing security-group module
@@ -480,6 +482,8 @@ class SecurityGroup(pulumi.CustomResource):
             security_group_name="terraform-example",
             vpc_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

@@ -99,6 +99,8 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Module Support
     /// 
     /// You can use the existing ecs-instance module

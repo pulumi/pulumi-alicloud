@@ -204,6 +204,8 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
             cidr_block="47.118.126.0/25")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Public Ip Address Pool Cidr Block can be imported using the id, e.g.
@@ -255,6 +257,8 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
             public_ip_address_pool_id=default_public_ip_address_pool.id,
             cidr_block="47.118.126.0/25")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

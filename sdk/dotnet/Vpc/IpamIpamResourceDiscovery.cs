@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipam Ipam Resource Discovery can be imported using the id, e.g.

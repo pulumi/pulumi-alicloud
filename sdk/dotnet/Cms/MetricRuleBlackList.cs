@@ -104,6 +104,8 @@ namespace Pulumi.AliCloud.Cms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.

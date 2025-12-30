@@ -83,6 +83,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.

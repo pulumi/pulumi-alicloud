@@ -239,6 +239,8 @@ class Fileset(pulumi.CustomResource):
             file_system_path="/example_path/")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Fileset can be imported using the id, e.g.
@@ -297,6 +299,8 @@ class Fileset(pulumi.CustomResource):
             description="terraform-example",
             file_system_path="/example_path/")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

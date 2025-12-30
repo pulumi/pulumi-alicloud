@@ -360,6 +360,8 @@ class RouteEntry(pulumi.CustomResource):
             nexthop_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing vpc module
@@ -455,6 +457,8 @@ class RouteEntry(pulumi.CustomResource):
             nexthop_type="Instance",
             nexthop_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

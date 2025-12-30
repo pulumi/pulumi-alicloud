@@ -38,12 +38,38 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
     /**
      * Engine
      * 
+     * Enumeration value:
+     * - `TABLE`: Wide table engine
+     * - `TSDB`: Time series Engine
+     * - `LSEARCH`: Search engine
+     * - `LTS`: LTS engine
+     * - `LVECTOR`: Vector engine
+     * - `LCOLUMN`: Column-store engine
+     * - `LAI`: AI engine
+     * - `FILE`: The underlying file engine
+     * - `LMESSAGE`: Message engine
+     * - `LROW`: Wide table Engine 3.0
+     * - `LSTREAM`: Stream engine
+     * 
      */
     @Import(name="engineType", required=true)
     private Output<String> engineType;
 
     /**
      * @return Engine
+     * 
+     * Enumeration value:
+     * - `TABLE`: Wide table engine
+     * - `TSDB`: Time series Engine
+     * - `LSEARCH`: Search engine
+     * - `LTS`: LTS engine
+     * - `LVECTOR`: Vector engine
+     * - `LCOLUMN`: Column-store engine
+     * - `LAI`: AI engine
+     * - `FILE`: The underlying file engine
+     * - `LMESSAGE`: Message engine
+     * - `LROW`: Wide table Engine 3.0
+     * - `LSTREAM`: Stream engine
      * 
      */
     public Output<String> engineType() {
@@ -173,6 +199,19 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
         /**
          * @param engineType Engine
          * 
+         * Enumeration value:
+         * - `TABLE`: Wide table engine
+         * - `TSDB`: Time series Engine
+         * - `LSEARCH`: Search engine
+         * - `LTS`: LTS engine
+         * - `LVECTOR`: Vector engine
+         * - `LCOLUMN`: Column-store engine
+         * - `LAI`: AI engine
+         * - `FILE`: The underlying file engine
+         * - `LMESSAGE`: Message engine
+         * - `LROW`: Wide table Engine 3.0
+         * - `LSTREAM`: Stream engine
+         * 
          * @return builder
          * 
          */
@@ -183,6 +222,19 @@ public final class InstanceV2EngineListArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param engineType Engine
+         * 
+         * Enumeration value:
+         * - `TABLE`: Wide table engine
+         * - `TSDB`: Time series Engine
+         * - `LSEARCH`: Search engine
+         * - `LTS`: LTS engine
+         * - `LVECTOR`: Vector engine
+         * - `LCOLUMN`: Column-store engine
+         * - `LAI`: AI engine
+         * - `FILE`: The underlying file engine
+         * - `LMESSAGE`: Message engine
+         * - `LROW`: Wide table Engine 3.0
+         * - `LSTREAM`: Stream engine
          * 
          * @return builder
          * 

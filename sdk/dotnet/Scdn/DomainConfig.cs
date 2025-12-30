@@ -67,6 +67,8 @@ namespace Pulumi.AliCloud.Scdn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SCDN domain config can be imported using the id, e.g.

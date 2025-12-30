@@ -274,6 +274,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             sls_region=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CDN Real Time Log Delivery can be imported using the id, e.g.
@@ -351,6 +353,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             project=default_project.project_name,
             sls_region=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Drds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DRDS Polardb X Instance can be imported using the id, e.g.

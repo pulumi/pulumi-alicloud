@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -66,6 +65,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Client Certificate can be imported using the id, e.g.
@@ -108,12 +109,16 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
     /**
      * Certificate signing request content.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="csr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csr;
 
     /**
      * @return Certificate signing request content.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> csr() {
@@ -122,12 +127,16 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
     /**
      * The private key algorithm type.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="pkeyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pkeyType;
 
     /**
      * @return The private key algorithm type.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> pkeyType() {
@@ -137,14 +146,14 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
      * Site Id
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return Site Id
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
@@ -164,12 +173,16 @@ public class ClientCertificate extends com.pulumi.resources.CustomResource {
     /**
      * Certificate validity period.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="validityDays", refs={String.class}, tree="[0]")
     private Output<String> validityDays;
 
     /**
      * @return Certificate validity period.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<String> validityDays() {

@@ -193,6 +193,8 @@ class V3FunctionVersion(pulumi.CustomResource):
             description="version1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Function Version can be imported using the id, e.g.
@@ -252,6 +254,8 @@ class V3FunctionVersion(pulumi.CustomResource):
             function_name=function.function_name,
             description="version1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

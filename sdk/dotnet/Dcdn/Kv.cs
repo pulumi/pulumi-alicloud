@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.Dcdn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Dcdn Kv can be imported using the id, e.g.

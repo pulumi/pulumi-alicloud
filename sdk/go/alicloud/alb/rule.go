@@ -201,6 +201,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Application Load Balancer (ALB) Rule can be imported using the id, e.g.

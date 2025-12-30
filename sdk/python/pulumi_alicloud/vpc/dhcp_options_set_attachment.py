@@ -184,6 +184,8 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Dhcp Options Set Attachment can be imported using the id, e.g.
@@ -235,6 +237,8 @@ class DhcpOptionsSetAttachment(pulumi.CustomResource):
             vpc_id=example.id,
             dhcp_options_set_id=example_dhcp_options_set.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -213,6 +213,8 @@ class AccountPrivilege(pulumi.CustomResource):
             db_names=[default_database.db_name])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB account privilege can be imported using the id, e.g.
@@ -278,6 +280,8 @@ class AccountPrivilege(pulumi.CustomResource):
             account_privilege="ReadOnly",
             db_names=[default_database.db_name])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

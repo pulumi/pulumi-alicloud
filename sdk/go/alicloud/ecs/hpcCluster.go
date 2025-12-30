@@ -46,6 +46,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECS Hpc Cluster can be imported using the id, e.g.

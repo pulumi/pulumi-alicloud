@@ -106,6 +106,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ALIKAFKA GROUP can be imported using the id, e.g.

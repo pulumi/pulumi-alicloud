@@ -74,6 +74,8 @@ namespace Pulumi.AliCloud.Governance
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Governance Baseline can be imported using the id, e.g.

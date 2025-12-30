@@ -594,6 +594,8 @@ class Api(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.
@@ -672,6 +674,8 @@ class Api(pulumi.CustomResource):
                 "TEST",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

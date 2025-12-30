@@ -201,6 +201,8 @@ class List(pulumi.CustomResource):
             name="resource_example_ip_list")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA List can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class List(pulumi.CustomResource):
             ],
             name="resource_example_ip_list")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

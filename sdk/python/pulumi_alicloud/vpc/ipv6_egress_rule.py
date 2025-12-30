@@ -303,6 +303,8 @@ class Ipv6EgressRule(pulumi.CustomResource):
             instance_type="Ipv6Address")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ipv6 Egress Rule can be imported using the id, e.g.
@@ -393,6 +395,8 @@ class Ipv6EgressRule(pulumi.CustomResource):
             ipv6_gateway_id=default_ipv6_internet_bandwidth.ipv6_gateway_id,
             instance_type="Ipv6Address")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

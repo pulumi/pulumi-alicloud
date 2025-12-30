@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ga Accelerator can be imported using the id, e.g.

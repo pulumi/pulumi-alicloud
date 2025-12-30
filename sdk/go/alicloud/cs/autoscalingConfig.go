@@ -188,6 +188,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type AutoscalingConfig struct {
 	pulumi.CustomResourceState
 

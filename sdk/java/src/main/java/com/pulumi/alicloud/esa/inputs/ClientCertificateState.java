@@ -5,7 +5,6 @@ package com.pulumi.alicloud.esa.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,12 +48,16 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     /**
      * Certificate signing request content.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="csr")
     private @Nullable Output<String> csr;
 
     /**
      * @return Certificate signing request content.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> csr() {
@@ -64,12 +67,16 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     /**
      * The private key algorithm type.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="pkeyType")
     private @Nullable Output<String> pkeyType;
 
     /**
      * @return The private key algorithm type.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> pkeyType() {
@@ -81,13 +88,13 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return Site Id
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -109,12 +116,16 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
     /**
      * Certificate validity period.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="validityDays")
     private @Nullable Output<String> validityDays;
 
     /**
      * @return Certificate validity period.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> validityDays() {
@@ -196,6 +207,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         /**
          * @param csr Certificate signing request content.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -207,6 +220,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         /**
          * @param csr Certificate signing request content.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -216,6 +231,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
 
         /**
          * @param pkeyType The private key algorithm type.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -227,6 +244,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
 
         /**
          * @param pkeyType The private key algorithm type.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -241,7 +260,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -252,7 +271,7 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
@@ -280,6 +299,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
         /**
          * @param validityDays Certificate validity period.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -290,6 +311,8 @@ public final class ClientCertificateState extends com.pulumi.resources.ResourceA
 
         /**
          * @param validityDays Certificate validity period.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

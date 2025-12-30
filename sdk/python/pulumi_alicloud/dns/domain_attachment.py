@@ -124,6 +124,8 @@ class DomainAttachment(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -163,6 +165,8 @@ class DomainAttachment(pulumi.CustomResource):
                 "test222.abc",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

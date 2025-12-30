@@ -4138,6 +4138,143 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type NodePoolAutoMode struct {
+	// Whether to enable auto mode. Valid values:
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// NodePoolAutoModeInput is an input type that accepts NodePoolAutoModeArgs and NodePoolAutoModeOutput values.
+// You can construct a concrete instance of `NodePoolAutoModeInput` via:
+//
+//	NodePoolAutoModeArgs{...}
+type NodePoolAutoModeInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoModeOutput() NodePoolAutoModeOutput
+	ToNodePoolAutoModeOutputWithContext(context.Context) NodePoolAutoModeOutput
+}
+
+type NodePoolAutoModeArgs struct {
+	// Whether to enable auto mode. Valid values:
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (NodePoolAutoModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoMode)(nil)).Elem()
+}
+
+func (i NodePoolAutoModeArgs) ToNodePoolAutoModeOutput() NodePoolAutoModeOutput {
+	return i.ToNodePoolAutoModeOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoModeArgs) ToNodePoolAutoModeOutputWithContext(ctx context.Context) NodePoolAutoModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoModeOutput)
+}
+
+func (i NodePoolAutoModeArgs) ToNodePoolAutoModePtrOutput() NodePoolAutoModePtrOutput {
+	return i.ToNodePoolAutoModePtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoModeArgs) ToNodePoolAutoModePtrOutputWithContext(ctx context.Context) NodePoolAutoModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoModeOutput).ToNodePoolAutoModePtrOutputWithContext(ctx)
+}
+
+// NodePoolAutoModePtrInput is an input type that accepts NodePoolAutoModeArgs, NodePoolAutoModePtr and NodePoolAutoModePtrOutput values.
+// You can construct a concrete instance of `NodePoolAutoModePtrInput` via:
+//
+//	        NodePoolAutoModeArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolAutoModePtrInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoModePtrOutput() NodePoolAutoModePtrOutput
+	ToNodePoolAutoModePtrOutputWithContext(context.Context) NodePoolAutoModePtrOutput
+}
+
+type nodePoolAutoModePtrType NodePoolAutoModeArgs
+
+func NodePoolAutoModePtr(v *NodePoolAutoModeArgs) NodePoolAutoModePtrInput {
+	return (*nodePoolAutoModePtrType)(v)
+}
+
+func (*nodePoolAutoModePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoMode)(nil)).Elem()
+}
+
+func (i *nodePoolAutoModePtrType) ToNodePoolAutoModePtrOutput() NodePoolAutoModePtrOutput {
+	return i.ToNodePoolAutoModePtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolAutoModePtrType) ToNodePoolAutoModePtrOutputWithContext(ctx context.Context) NodePoolAutoModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoModePtrOutput)
+}
+
+type NodePoolAutoModeOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoMode)(nil)).Elem()
+}
+
+func (o NodePoolAutoModeOutput) ToNodePoolAutoModeOutput() NodePoolAutoModeOutput {
+	return o
+}
+
+func (o NodePoolAutoModeOutput) ToNodePoolAutoModeOutputWithContext(ctx context.Context) NodePoolAutoModeOutput {
+	return o
+}
+
+func (o NodePoolAutoModeOutput) ToNodePoolAutoModePtrOutput() NodePoolAutoModePtrOutput {
+	return o.ToNodePoolAutoModePtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoModeOutput) ToNodePoolAutoModePtrOutputWithContext(ctx context.Context) NodePoolAutoModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoMode) *NodePoolAutoMode {
+		return &v
+	}).(NodePoolAutoModePtrOutput)
+}
+
+// Whether to enable auto mode. Valid values:
+func (o NodePoolAutoModeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoMode) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolAutoModePtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoMode)(nil)).Elem()
+}
+
+func (o NodePoolAutoModePtrOutput) ToNodePoolAutoModePtrOutput() NodePoolAutoModePtrOutput {
+	return o
+}
+
+func (o NodePoolAutoModePtrOutput) ToNodePoolAutoModePtrOutputWithContext(ctx context.Context) NodePoolAutoModePtrOutput {
+	return o
+}
+
+func (o NodePoolAutoModePtrOutput) Elem() NodePoolAutoModeOutput {
+	return o.ApplyT(func(v *NodePoolAutoMode) NodePoolAutoMode {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoMode
+		return ret
+	}).(NodePoolAutoModeOutput)
+}
+
+// Whether to enable auto mode. Valid values:
+func (o NodePoolAutoModePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoMode) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type NodePoolDataDisk struct {
 	// Whether to automatically mount the data disk. Valid values: true and false.
 	AutoFormat *string `pulumi:"autoFormat"`
@@ -4508,6 +4645,406 @@ func (o NodePoolEfloNodeGroupPtrOutput) GroupId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type NodePoolInstanceMetadataOptions struct {
+	// ECS instance metadata access mode configuration. Value range:
+	//
+	// - 'optional': Compatible with both normal mode and reinforced mode.
+	// - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+	//
+	// Default value: 'optional '.
+	//
+	// This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+	HttpTokens *string `pulumi:"httpTokens"`
+}
+
+// NodePoolInstanceMetadataOptionsInput is an input type that accepts NodePoolInstanceMetadataOptionsArgs and NodePoolInstanceMetadataOptionsOutput values.
+// You can construct a concrete instance of `NodePoolInstanceMetadataOptionsInput` via:
+//
+//	NodePoolInstanceMetadataOptionsArgs{...}
+type NodePoolInstanceMetadataOptionsInput interface {
+	pulumi.Input
+
+	ToNodePoolInstanceMetadataOptionsOutput() NodePoolInstanceMetadataOptionsOutput
+	ToNodePoolInstanceMetadataOptionsOutputWithContext(context.Context) NodePoolInstanceMetadataOptionsOutput
+}
+
+type NodePoolInstanceMetadataOptionsArgs struct {
+	// ECS instance metadata access mode configuration. Value range:
+	//
+	// - 'optional': Compatible with both normal mode and reinforced mode.
+	// - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+	//
+	// Default value: 'optional '.
+	//
+	// This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+	HttpTokens pulumi.StringPtrInput `pulumi:"httpTokens"`
+}
+
+func (NodePoolInstanceMetadataOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i NodePoolInstanceMetadataOptionsArgs) ToNodePoolInstanceMetadataOptionsOutput() NodePoolInstanceMetadataOptionsOutput {
+	return i.ToNodePoolInstanceMetadataOptionsOutputWithContext(context.Background())
+}
+
+func (i NodePoolInstanceMetadataOptionsArgs) ToNodePoolInstanceMetadataOptionsOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolInstanceMetadataOptionsOutput)
+}
+
+func (i NodePoolInstanceMetadataOptionsArgs) ToNodePoolInstanceMetadataOptionsPtrOutput() NodePoolInstanceMetadataOptionsPtrOutput {
+	return i.ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolInstanceMetadataOptionsArgs) ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolInstanceMetadataOptionsOutput).ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(ctx)
+}
+
+// NodePoolInstanceMetadataOptionsPtrInput is an input type that accepts NodePoolInstanceMetadataOptionsArgs, NodePoolInstanceMetadataOptionsPtr and NodePoolInstanceMetadataOptionsPtrOutput values.
+// You can construct a concrete instance of `NodePoolInstanceMetadataOptionsPtrInput` via:
+//
+//	        NodePoolInstanceMetadataOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolInstanceMetadataOptionsPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolInstanceMetadataOptionsPtrOutput() NodePoolInstanceMetadataOptionsPtrOutput
+	ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(context.Context) NodePoolInstanceMetadataOptionsPtrOutput
+}
+
+type nodePoolInstanceMetadataOptionsPtrType NodePoolInstanceMetadataOptionsArgs
+
+func NodePoolInstanceMetadataOptionsPtr(v *NodePoolInstanceMetadataOptionsArgs) NodePoolInstanceMetadataOptionsPtrInput {
+	return (*nodePoolInstanceMetadataOptionsPtrType)(v)
+}
+
+func (*nodePoolInstanceMetadataOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (i *nodePoolInstanceMetadataOptionsPtrType) ToNodePoolInstanceMetadataOptionsPtrOutput() NodePoolInstanceMetadataOptionsPtrOutput {
+	return i.ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolInstanceMetadataOptionsPtrType) ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolInstanceMetadataOptionsPtrOutput)
+}
+
+type NodePoolInstanceMetadataOptionsOutput struct{ *pulumi.OutputState }
+
+func (NodePoolInstanceMetadataOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o NodePoolInstanceMetadataOptionsOutput) ToNodePoolInstanceMetadataOptionsOutput() NodePoolInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o NodePoolInstanceMetadataOptionsOutput) ToNodePoolInstanceMetadataOptionsOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsOutput {
+	return o
+}
+
+func (o NodePoolInstanceMetadataOptionsOutput) ToNodePoolInstanceMetadataOptionsPtrOutput() NodePoolInstanceMetadataOptionsPtrOutput {
+	return o.ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolInstanceMetadataOptionsOutput) ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolInstanceMetadataOptions) *NodePoolInstanceMetadataOptions {
+		return &v
+	}).(NodePoolInstanceMetadataOptionsPtrOutput)
+}
+
+// ECS instance metadata access mode configuration. Value range:
+//
+// - 'optional': Compatible with both normal mode and reinforced mode.
+// - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+//
+// Default value: 'optional '.
+//
+// This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+func (o NodePoolInstanceMetadataOptionsOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolInstanceMetadataOptions) *string { return v.HttpTokens }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolInstanceMetadataOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolInstanceMetadataOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolInstanceMetadataOptions)(nil)).Elem()
+}
+
+func (o NodePoolInstanceMetadataOptionsPtrOutput) ToNodePoolInstanceMetadataOptionsPtrOutput() NodePoolInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolInstanceMetadataOptionsPtrOutput) ToNodePoolInstanceMetadataOptionsPtrOutputWithContext(ctx context.Context) NodePoolInstanceMetadataOptionsPtrOutput {
+	return o
+}
+
+func (o NodePoolInstanceMetadataOptionsPtrOutput) Elem() NodePoolInstanceMetadataOptionsOutput {
+	return o.ApplyT(func(v *NodePoolInstanceMetadataOptions) NodePoolInstanceMetadataOptions {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolInstanceMetadataOptions
+		return ret
+	}).(NodePoolInstanceMetadataOptionsOutput)
+}
+
+// ECS instance metadata access mode configuration. Value range:
+//
+// - 'optional': Compatible with both normal mode and reinforced mode.
+// - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+//
+// Default value: 'optional '.
+//
+// This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+func (o NodePoolInstanceMetadataOptionsPtrOutput) HttpTokens() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolInstanceMetadataOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpTokens
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolInstancePattern struct {
+	// The number of vCPU cores of the instance type. Example value: 8.
+	Cores *int `pulumi:"cores"`
+	// The CPU architecture of the instance. Value range:
+	// - X86
+	// - ARM
+	CpuArchitectures []string `pulumi:"cpuArchitectures"`
+	// Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+	// - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+	// - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+	ExcludedInstanceTypes []string `pulumi:"excludedInstanceTypes"`
+	// Instance classification. Value range:
+	// - General-purpose: Universal.
+	// - Compute-optimized: Compute type.
+	// - Memory-optimized: Memory type.
+	// - Big data: Big data type.
+	// - Local SSDs: Local SSD type.
+	// - High Clock Speed: High frequency type.
+	// - Enhanced: Enhanced.
+	// - Shared: Shared.
+	// - ECS Bare Metal: elastic Bare Metal server.
+	// - High Performance Compute: High Performance Compute.
+	InstanceCategories []string `pulumi:"instanceCategories"`
+	// Instance specification family level, value range:
+	// - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+	// - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+	InstanceFamilyLevel string `pulumi:"instanceFamilyLevel"`
+	// Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+	InstanceTypeFamilies []string `pulumi:"instanceTypeFamilies"`
+	// The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+	MaxCpuCores *int `pulumi:"maxCpuCores"`
+	// The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+	MaxMemorySize *float64 `pulumi:"maxMemorySize"`
+	// The memory size of the instance type, in GiB. Example value: 8.
+	Memory *float64 `pulumi:"memory"`
+	// The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+	MinCpuCores *int `pulumi:"minCpuCores"`
+	// The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+	MinMemorySize *float64 `pulumi:"minMemorySize"`
+}
+
+// NodePoolInstancePatternInput is an input type that accepts NodePoolInstancePatternArgs and NodePoolInstancePatternOutput values.
+// You can construct a concrete instance of `NodePoolInstancePatternInput` via:
+//
+//	NodePoolInstancePatternArgs{...}
+type NodePoolInstancePatternInput interface {
+	pulumi.Input
+
+	ToNodePoolInstancePatternOutput() NodePoolInstancePatternOutput
+	ToNodePoolInstancePatternOutputWithContext(context.Context) NodePoolInstancePatternOutput
+}
+
+type NodePoolInstancePatternArgs struct {
+	// The number of vCPU cores of the instance type. Example value: 8.
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// The CPU architecture of the instance. Value range:
+	// - X86
+	// - ARM
+	CpuArchitectures pulumi.StringArrayInput `pulumi:"cpuArchitectures"`
+	// Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+	// - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+	// - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+	ExcludedInstanceTypes pulumi.StringArrayInput `pulumi:"excludedInstanceTypes"`
+	// Instance classification. Value range:
+	// - General-purpose: Universal.
+	// - Compute-optimized: Compute type.
+	// - Memory-optimized: Memory type.
+	// - Big data: Big data type.
+	// - Local SSDs: Local SSD type.
+	// - High Clock Speed: High frequency type.
+	// - Enhanced: Enhanced.
+	// - Shared: Shared.
+	// - ECS Bare Metal: elastic Bare Metal server.
+	// - High Performance Compute: High Performance Compute.
+	InstanceCategories pulumi.StringArrayInput `pulumi:"instanceCategories"`
+	// Instance specification family level, value range:
+	// - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+	// - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+	InstanceFamilyLevel pulumi.StringInput `pulumi:"instanceFamilyLevel"`
+	// Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+	InstanceTypeFamilies pulumi.StringArrayInput `pulumi:"instanceTypeFamilies"`
+	// The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+	MaxCpuCores pulumi.IntPtrInput `pulumi:"maxCpuCores"`
+	// The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+	MaxMemorySize pulumi.Float64PtrInput `pulumi:"maxMemorySize"`
+	// The memory size of the instance type, in GiB. Example value: 8.
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
+	// The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+	MinCpuCores pulumi.IntPtrInput `pulumi:"minCpuCores"`
+	// The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+	MinMemorySize pulumi.Float64PtrInput `pulumi:"minMemorySize"`
+}
+
+func (NodePoolInstancePatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolInstancePattern)(nil)).Elem()
+}
+
+func (i NodePoolInstancePatternArgs) ToNodePoolInstancePatternOutput() NodePoolInstancePatternOutput {
+	return i.ToNodePoolInstancePatternOutputWithContext(context.Background())
+}
+
+func (i NodePoolInstancePatternArgs) ToNodePoolInstancePatternOutputWithContext(ctx context.Context) NodePoolInstancePatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolInstancePatternOutput)
+}
+
+// NodePoolInstancePatternArrayInput is an input type that accepts NodePoolInstancePatternArray and NodePoolInstancePatternArrayOutput values.
+// You can construct a concrete instance of `NodePoolInstancePatternArrayInput` via:
+//
+//	NodePoolInstancePatternArray{ NodePoolInstancePatternArgs{...} }
+type NodePoolInstancePatternArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolInstancePatternArrayOutput() NodePoolInstancePatternArrayOutput
+	ToNodePoolInstancePatternArrayOutputWithContext(context.Context) NodePoolInstancePatternArrayOutput
+}
+
+type NodePoolInstancePatternArray []NodePoolInstancePatternInput
+
+func (NodePoolInstancePatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolInstancePattern)(nil)).Elem()
+}
+
+func (i NodePoolInstancePatternArray) ToNodePoolInstancePatternArrayOutput() NodePoolInstancePatternArrayOutput {
+	return i.ToNodePoolInstancePatternArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolInstancePatternArray) ToNodePoolInstancePatternArrayOutputWithContext(ctx context.Context) NodePoolInstancePatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolInstancePatternArrayOutput)
+}
+
+type NodePoolInstancePatternOutput struct{ *pulumi.OutputState }
+
+func (NodePoolInstancePatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolInstancePattern)(nil)).Elem()
+}
+
+func (o NodePoolInstancePatternOutput) ToNodePoolInstancePatternOutput() NodePoolInstancePatternOutput {
+	return o
+}
+
+func (o NodePoolInstancePatternOutput) ToNodePoolInstancePatternOutputWithContext(ctx context.Context) NodePoolInstancePatternOutput {
+	return o
+}
+
+// The number of vCPU cores of the instance type. Example value: 8.
+func (o NodePoolInstancePatternOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// The CPU architecture of the instance. Value range:
+// - X86
+// - ARM
+func (o NodePoolInstancePatternOutput) CpuArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) []string { return v.CpuArchitectures }).(pulumi.StringArrayOutput)
+}
+
+// Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+// - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+// - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+func (o NodePoolInstancePatternOutput) ExcludedInstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) []string { return v.ExcludedInstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+// Instance classification. Value range:
+// - General-purpose: Universal.
+// - Compute-optimized: Compute type.
+// - Memory-optimized: Memory type.
+// - Big data: Big data type.
+// - Local SSDs: Local SSD type.
+// - High Clock Speed: High frequency type.
+// - Enhanced: Enhanced.
+// - Shared: Shared.
+// - ECS Bare Metal: elastic Bare Metal server.
+// - High Performance Compute: High Performance Compute.
+func (o NodePoolInstancePatternOutput) InstanceCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) []string { return v.InstanceCategories }).(pulumi.StringArrayOutput)
+}
+
+// Instance specification family level, value range:
+// - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+// - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+func (o NodePoolInstancePatternOutput) InstanceFamilyLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) string { return v.InstanceFamilyLevel }).(pulumi.StringOutput)
+}
+
+// Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+func (o NodePoolInstancePatternOutput) InstanceTypeFamilies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) []string { return v.InstanceTypeFamilies }).(pulumi.StringArrayOutput)
+}
+
+// The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+func (o NodePoolInstancePatternOutput) MaxCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *int { return v.MaxCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+func (o NodePoolInstancePatternOutput) MaxMemorySize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *float64 { return v.MaxMemorySize }).(pulumi.Float64PtrOutput)
+}
+
+// The memory size of the instance type, in GiB. Example value: 8.
+func (o NodePoolInstancePatternOutput) Memory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+func (o NodePoolInstancePatternOutput) MinCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *int { return v.MinCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+func (o NodePoolInstancePatternOutput) MinMemorySize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NodePoolInstancePattern) *float64 { return v.MinMemorySize }).(pulumi.Float64PtrOutput)
+}
+
+type NodePoolInstancePatternArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolInstancePatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolInstancePattern)(nil)).Elem()
+}
+
+func (o NodePoolInstancePatternArrayOutput) ToNodePoolInstancePatternArrayOutput() NodePoolInstancePatternArrayOutput {
+	return o
+}
+
+func (o NodePoolInstancePatternArrayOutput) ToNodePoolInstancePatternArrayOutputWithContext(ctx context.Context) NodePoolInstancePatternArrayOutput {
+	return o
+}
+
+func (o NodePoolInstancePatternArrayOutput) Index(i pulumi.IntInput) NodePoolInstancePatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolInstancePattern {
+		return vs[0].([]NodePoolInstancePattern)[vs[1].(int)]
+	}).(NodePoolInstancePatternOutput)
+}
+
 type NodePoolKubeletConfiguration struct {
 	// Allowed sysctl mode whitelist.
 	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
@@ -4565,6 +5102,8 @@ type NodePoolKubeletConfiguration struct {
 	ReservedMemories []NodePoolKubeletConfigurationReservedMemory `pulumi:"reservedMemories"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls *string `pulumi:"serializeImagePulls"`
+	// Used to enable the kubelet server certificate signing and rotation via CSR.
+	ServerTlsBootstrap *bool `pulumi:"serverTlsBootstrap"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved map[string]string `pulumi:"systemReserved"`
 	// Name of the Topology Manager policy used.
@@ -4641,6 +5180,8 @@ type NodePoolKubeletConfigurationArgs struct {
 	ReservedMemories NodePoolKubeletConfigurationReservedMemoryArrayInput `pulumi:"reservedMemories"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls pulumi.StringPtrInput `pulumi:"serializeImagePulls"`
+	// Used to enable the kubelet server certificate signing and rotation via CSR.
+	ServerTlsBootstrap pulumi.BoolPtrInput `pulumi:"serverTlsBootstrap"`
 	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved pulumi.StringMapInput `pulumi:"systemReserved"`
 	// Name of the Topology Manager policy used.
@@ -4866,6 +5407,11 @@ func (o NodePoolKubeletConfigurationOutput) ReservedMemories() NodePoolKubeletCo
 // Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.SerializeImagePulls }).(pulumi.StringPtrOutput)
+}
+
+// Used to enable the kubelet server certificate signing and rotation via CSR.
+func (o NodePoolKubeletConfigurationOutput) ServerTlsBootstrap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodePoolKubeletConfiguration) *bool { return v.ServerTlsBootstrap }).(pulumi.BoolPtrOutput)
 }
 
 // Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
@@ -5185,6 +5731,16 @@ func (o NodePoolKubeletConfigurationPtrOutput) SerializeImagePulls() pulumi.Stri
 		}
 		return v.SerializeImagePulls
 	}).(pulumi.StringPtrOutput)
+}
+
+// Used to enable the kubelet server certificate signing and rotation via CSR.
+func (o NodePoolKubeletConfigurationPtrOutput) ServerTlsBootstrap() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolKubeletConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerTlsBootstrap
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
@@ -14097,10 +14653,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModeInput)(nil)).Elem(), NodePoolAutoModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoModePtrInput)(nil)).Elem(), NodePoolAutoModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskArrayInput)(nil)).Elem(), NodePoolDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolEfloNodeGroupInput)(nil)).Elem(), NodePoolEfloNodeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolEfloNodeGroupPtrInput)(nil)).Elem(), NodePoolEfloNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInstanceMetadataOptionsInput)(nil)).Elem(), NodePoolInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInstanceMetadataOptionsPtrInput)(nil)).Elem(), NodePoolInstanceMetadataOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInstancePatternInput)(nil)).Elem(), NodePoolInstancePatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInstancePatternArrayInput)(nil)).Elem(), NodePoolInstancePatternArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationPtrInput)(nil)).Elem(), NodePoolKubeletConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolKubeletConfigurationReservedMemoryInput)(nil)).Elem(), NodePoolKubeletConfigurationReservedMemoryArgs{})
@@ -14262,10 +14824,16 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoModeOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoModePtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolEfloNodeGroupOutput{})
 	pulumi.RegisterOutputType(NodePoolEfloNodeGroupPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolInstanceMetadataOptionsOutput{})
+	pulumi.RegisterOutputType(NodePoolInstanceMetadataOptionsPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolInstancePatternOutput{})
+	pulumi.RegisterOutputType(NodePoolInstancePatternArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolKubeletConfigurationReservedMemoryOutput{})

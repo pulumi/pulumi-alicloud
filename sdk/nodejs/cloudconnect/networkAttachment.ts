@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * The Cloud Connect Network Attachment can be imported using the instance_id, e.g.

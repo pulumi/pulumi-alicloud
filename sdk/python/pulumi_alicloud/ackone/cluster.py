@@ -248,6 +248,8 @@ class Cluster(pulumi.CustomResource):
             profile="XFlow")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ack One Cluster can be imported using the id, e.g.
@@ -306,6 +308,8 @@ class Cluster(pulumi.CustomResource):
             },
             profile="XFlow")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

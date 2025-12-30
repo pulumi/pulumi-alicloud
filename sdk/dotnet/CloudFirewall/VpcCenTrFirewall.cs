@@ -153,6 +153,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.

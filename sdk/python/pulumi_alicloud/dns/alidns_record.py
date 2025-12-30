@@ -428,6 +428,8 @@ class AlidnsRecord(pulumi.CustomResource):
             status="ENABLE")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns Domain Record can be imported using the id, e.g.
@@ -485,6 +487,8 @@ class AlidnsRecord(pulumi.CustomResource):
             remark="tf-example",
             status="ENABLE")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

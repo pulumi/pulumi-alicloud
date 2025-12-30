@@ -325,6 +325,8 @@ class StudioApplication(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Architect Design Tools Application can be imported using the id, e.g.
@@ -387,6 +389,8 @@ class StudioApplication(pulumi.CustomResource):
                 "test": "1",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

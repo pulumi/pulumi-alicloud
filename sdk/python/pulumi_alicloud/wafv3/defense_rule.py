@@ -436,6 +436,8 @@ class DefenseRule(pulumi.CustomResource):
             instance_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAFV3 Defense Rule can be imported using the id, e.g.
@@ -526,6 +528,8 @@ class DefenseRule(pulumi.CustomResource):
             },
             instance_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

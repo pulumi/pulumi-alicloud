@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Esa
     ///         HealthCheckType = "l7",
     ///         ServicePort = 80,
     ///         HealthCheckInterval = 5,
-    ///         EdgeContainerAppName = "terraform-app",
+    ///         EdgeContainerAppName = "terraform-app2",
     ///         HealthCheckHttpCode = "http_2xx",
     ///         HealthCheckUri = "/",
     ///         HealthCheckTimeout = 3,
@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.Esa
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
@@ -111,7 +113,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
 
         /// <summary>
@@ -175,7 +177,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         public EdgeContainerAppRecordArgs()
         {
@@ -207,7 +209,7 @@ namespace Pulumi.AliCloud.Esa
         /// The website ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         public EdgeContainerAppRecordState()
         {

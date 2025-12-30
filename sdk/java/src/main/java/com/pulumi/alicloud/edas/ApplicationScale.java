@@ -164,6 +164,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:edas/applicationScale:ApplicationScale")
 public class ApplicationScale extends com.pulumi.resources.CustomResource {

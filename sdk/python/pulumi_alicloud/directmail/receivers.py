@@ -179,6 +179,8 @@ class Receivers(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Direct Mail Receivers can be imported using the id, e.g.
@@ -225,6 +227,8 @@ class Receivers(pulumi.CustomResource):
             receivers_name=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

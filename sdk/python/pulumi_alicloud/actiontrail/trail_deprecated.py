@@ -66,8 +66,8 @@ class TrailDeprecatedArgs:
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -161,7 +161,7 @@ class TrailDeprecatedArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -326,8 +326,8 @@ class _TrailDeprecatedState:
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -432,7 +432,7 @@ class _TrailDeprecatedState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -603,6 +603,8 @@ class TrailDeprecated(pulumi.CustomResource):
             oss_key_prefix="at-product-account-audit-B")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Action trail can be imported using the id, e.g.
@@ -650,6 +652,8 @@ class TrailDeprecated(pulumi.CustomResource):
             role_name=attach["roleName"],
             oss_key_prefix="at-product-account-audit-B")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -837,7 +841,7 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the trail to be created, which must be unique for an account.
@@ -899,7 +903,7 @@ class TrailDeprecated(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def status(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "status")
 
     @_builtins.property

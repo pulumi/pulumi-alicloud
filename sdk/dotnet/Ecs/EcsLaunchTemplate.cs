@@ -141,6 +141,8 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECS Launch Template can be imported using the id, e.g.

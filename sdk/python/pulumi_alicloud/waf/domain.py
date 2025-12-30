@@ -669,6 +669,8 @@ class Domain(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAF domain can be imported using the id, e.g.
@@ -738,6 +740,8 @@ class Domain(pulumi.CustomResource):
                 "value": "http",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

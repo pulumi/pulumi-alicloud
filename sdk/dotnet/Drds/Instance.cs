@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Drds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Distributed Relational Database Service (DRDS) can be imported using the id, e.g.

@@ -19,6 +19,18 @@ __all__ = [
     'MilvusInstanceComponentArgsDict',
     'MilvusInstanceVswitchIdArgs',
     'MilvusInstanceVswitchIdArgsDict',
+    'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs',
+    'OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict',
+    'OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs',
+    'OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict',
+    'OpenApiExplorerApiMcpServerApiArgs',
+    'OpenApiExplorerApiMcpServerApiArgsDict',
+    'OpenApiExplorerApiMcpServerPromptArgs',
+    'OpenApiExplorerApiMcpServerPromptArgsDict',
+    'OpenApiExplorerApiMcpServerPromptArgumentArgs',
+    'OpenApiExplorerApiMcpServerPromptArgumentArgsDict',
+    'OpenApiExplorerApiMcpServerTerraformToolArgs',
+    'OpenApiExplorerApiMcpServerTerraformToolArgsDict',
     'ProviderAssumeRoleArgs',
     'ProviderAssumeRoleArgsDict',
     'ProviderAssumeRoleWithOidcArgs',
@@ -216,6 +228,609 @@ class MilvusInstanceVswitchIdArgs:
     @zone_id.setter
     def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict(TypedDict):
+        api_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The API name, such as ListApiMcpServers.
+        """
+        api_override_json: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+
+        > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+        """
+        api_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API version information, typically in date format, such as 2014-05-26.
+        """
+        const_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict']]]]
+        """
+        Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+        Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
+        """
+        enable_output_schema: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+
+        > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+        """
+        execute_cli_command: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+        - SSE protocol: up to 30 minutes
+        - Streamable HTTP protocol: up to 1 minute
+
+        For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+
+        > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+        """
+        product: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the cloud product, such as Ecs.
+        """
+elif False:
+    OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerAdditionalApiDescriptionArgs:
+    def __init__(__self__, *,
+                 api_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_override_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 const_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]] = None,
+                 enable_output_schema: Optional[pulumi.Input[_builtins.bool]] = None,
+                 execute_cli_command: Optional[pulumi.Input[_builtins.bool]] = None,
+                 product: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_name: The API name, such as ListApiMcpServers.
+        :param pulumi.Input[_builtins.str] api_override_json: API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+               
+               > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+        :param pulumi.Input[_builtins.str] api_version: API version information, typically in date format, such as 2014-05-26.
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]] const_parameters: Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+               Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
+        :param pulumi.Input[_builtins.bool] enable_output_schema: By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+               
+               > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+        :param pulumi.Input[_builtins.bool] execute_cli_command: Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+               - SSE protocol: up to 30 minutes
+               - Streamable HTTP protocol: up to 1 minute
+               
+               For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+               
+               > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+        :param pulumi.Input[_builtins.str] product: The name of the cloud product, such as Ecs.
+        """
+        if api_name is not None:
+            pulumi.set(__self__, "api_name", api_name)
+        if api_override_json is not None:
+            pulumi.set(__self__, "api_override_json", api_override_json)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if const_parameters is not None:
+            pulumi.set(__self__, "const_parameters", const_parameters)
+        if enable_output_schema is not None:
+            pulumi.set(__self__, "enable_output_schema", enable_output_schema)
+        if execute_cli_command is not None:
+            pulumi.set(__self__, "execute_cli_command", execute_cli_command)
+        if product is not None:
+            pulumi.set(__self__, "product", product)
+
+    @_builtins.property
+    @pulumi.getter(name="apiName")
+    def api_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The API name, such as ListApiMcpServers.
+        """
+        return pulumi.get(self, "api_name")
+
+    @api_name.setter
+    def api_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiOverrideJson")
+    def api_override_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+
+        > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+        """
+        return pulumi.get(self, "api_override_json")
+
+    @api_override_json.setter
+    def api_override_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_override_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API version information, typically in date format, such as 2014-05-26.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="constParameters")
+    def const_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]:
+        """
+        Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+        Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `const_parameters` below.
+        """
+        return pulumi.get(self, "const_parameters")
+
+    @const_parameters.setter
+    def const_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs']]]]):
+        pulumi.set(self, "const_parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableOutputSchema")
+    def enable_output_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+
+        > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+        """
+        return pulumi.get(self, "enable_output_schema")
+
+    @enable_output_schema.setter
+    def enable_output_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_output_schema", value)
+
+    @_builtins.property
+    @pulumi.getter(name="executeCliCommand")
+    def execute_cli_command(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+        - SSE protocol: up to 30 minutes
+        - Streamable HTTP protocol: up to 1 minute
+
+        For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+
+        > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+        """
+        return pulumi.get(self, "execute_cli_command")
+
+    @execute_cli_command.setter
+    def execute_cli_command(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "execute_cli_command", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the cloud product, such as Ecs.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "product", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+
+        For RPC-style APIs, examples include:
+        - Name: sets the Name parameter to a fixed value.
+
+        For ROA-style APIs, examples include:
+        - Name: sets a query or path parameter named Name to a fixed value;
+        - body.Name: sets the Name field within the request body to a fixed value.
+
+        Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+
+        > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        This property does not have a description in the spec, please add it before generating code.
+        """
+elif False:
+    OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameterArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+               
+               For RPC-style APIs, examples include:
+               - Name: sets the Name parameter to a fixed value.
+               
+               For ROA-style APIs, examples include:
+               - Name: sets a query or path parameter named Name to a fixed value;
+               - body.Name: sets the Name field within the request body to a fixed value.
+               
+               Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+               
+               > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+        :param pulumi.Input[_builtins.str] value: This property does not have a description in the spec, please add it before generating code.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+
+        For RPC-style APIs, examples include:
+        - Name: sets the Name parameter to a fixed value.
+
+        For ROA-style APIs, examples include:
+        - Name: sets a query or path parameter named Name to a fixed value;
+        - body.Name: sets the Name field within the request body to a fixed value.
+
+        Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+
+        > **NOTE:** x_mcp_region_id is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        This property does not have a description in the spec, please add it before generating code.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerApiArgsDict(TypedDict):
+        api_version: pulumi.Input[_builtins.str]
+        """
+        API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+        """
+        product: pulumi.Input[_builtins.str]
+        """
+        Product code, such as Ecs.
+        """
+        selectors: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+        """
+elif False:
+    OpenApiExplorerApiMcpServerApiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerApiArgs:
+    def __init__(__self__, *,
+                 api_version: pulumi.Input[_builtins.str],
+                 product: pulumi.Input[_builtins.str],
+                 selectors: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] api_version: API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+        :param pulumi.Input[_builtins.str] product: Product code, such as Ecs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selectors: Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+        """
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "selectors", selectors)
+
+    @_builtins.property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def product(self) -> pulumi.Input[_builtins.str]:
+        """
+        Product code, such as Ecs.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "product", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def selectors(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+        """
+        return pulumi.get(self, "selectors")
+
+    @selectors.setter
+    def selectors(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "selectors", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerPromptArgsDict(TypedDict):
+        arguments: NotRequired[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgsDict']]]]
+        """
+        Parameters for the prompt. See `arguments` below.
+        """
+        content: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the prompt parameter.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the prompt parameter.
+        """
+elif False:
+    OpenApiExplorerApiMcpServerPromptArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerPromptArgs:
+    def __init__(__self__, *,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]] = None,
+                 content: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]] arguments: Parameters for the prompt. See `arguments` below.
+        :param pulumi.Input[_builtins.str] content: Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+        :param pulumi.Input[_builtins.str] description: Description of the prompt parameter.
+        :param pulumi.Input[_builtins.str] name: Name of the prompt parameter.
+        """
+        if arguments is not None:
+            pulumi.set(__self__, "arguments", arguments)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]:
+        """
+        Parameters for the prompt. See `arguments` below.
+        """
+        return pulumi.get(self, "arguments")
+
+    @arguments.setter
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenApiExplorerApiMcpServerPromptArgumentArgs']]]]):
+        pulumi.set(self, "arguments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "content", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the prompt parameter.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the prompt parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerPromptArgumentArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the API MCP service.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+        """
+        required: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether the prompt parameter is required.
+        """
+elif False:
+    OpenApiExplorerApiMcpServerPromptArgumentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerPromptArgumentArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 required: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the API MCP service.
+        :param pulumi.Input[_builtins.str] name: Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+        :param pulumi.Input[_builtins.bool] required: Indicates whether the prompt parameter is required.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the API MCP service.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the prompt parameter is required.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "required", value)
+
+
+if not MYPY:
+    class OpenApiExplorerApiMcpServerTerraformToolArgsDict(TypedDict):
+        async_: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+        """
+        code: NotRequired[pulumi.Input[_builtins.str]]
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        destroy_policy: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+        - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+        - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+        - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    OpenApiExplorerApiMcpServerTerraformToolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class OpenApiExplorerApiMcpServerTerraformToolArgs:
+    def __init__(__self__, *,
+                 async_: Optional[pulumi.Input[_builtins.bool]] = None,
+                 code: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 destroy_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] async_: Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+        :param pulumi.Input[_builtins.str] destroy_policy: The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+               - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+               - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+               - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+        """
+        if async_ is not None:
+            pulumi.set(__self__, "async_", async_)
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destroy_policy is not None:
+            pulumi.set(__self__, "destroy_policy", destroy_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="async")
+    def async_(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+        """
+        return pulumi.get(self, "async_")
+
+    @async_.setter
+    def async_(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "async_", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destroyPolicy")
+    def destroy_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+        - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+        - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+        - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+        """
+        return pulumi.get(self, "destroy_policy")
+
+    @destroy_policy.setter
+    def destroy_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "destroy_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
 
 if not MYPY:

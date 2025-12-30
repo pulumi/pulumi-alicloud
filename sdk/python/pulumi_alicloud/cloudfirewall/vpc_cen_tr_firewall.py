@@ -552,6 +552,8 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait10_minutes]))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Cen Tr Firewall can be imported using the id, e.g.
@@ -690,6 +692,8 @@ class VpcCenTrFirewall(pulumi.CustomResource):
             route_mode="managed",
             opts = pulumi.ResourceOptions(depends_on=[wait10_minutes]))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -309,6 +309,8 @@ class GatewayVcoRoute(pulumi.CustomResource):
             route_dest="192.168.10.0/24")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN Gateway Vco Route can be imported using the id, e.g.
@@ -423,6 +425,8 @@ class GatewayVcoRoute(pulumi.CustomResource):
             weight=100,
             route_dest="192.168.10.0/24")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

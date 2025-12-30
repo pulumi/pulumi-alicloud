@@ -94,6 +94,8 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS MySQL database cluster node agent function can be imported using id, e.g.

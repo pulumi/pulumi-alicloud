@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.Ims
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// IMS Oidc Provider can be imported using the id, e.g.

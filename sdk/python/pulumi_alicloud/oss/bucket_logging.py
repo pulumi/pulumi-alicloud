@@ -203,6 +203,8 @@ class BucketLogging(pulumi.CustomResource):
             logging_role="example-role")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Logging can be imported using the id, e.g.
@@ -257,6 +259,8 @@ class BucketLogging(pulumi.CustomResource):
             target_prefix="log/",
             logging_role="example-role")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

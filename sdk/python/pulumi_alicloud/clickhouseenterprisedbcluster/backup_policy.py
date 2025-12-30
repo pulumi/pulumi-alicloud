@@ -218,6 +218,8 @@ class BackupPolicy(pulumi.CustomResource):
             db_instance_id=default1t_t_lwe.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Enterprise Db Cluster Backup Policy can be imported using the id, e.g.
@@ -289,6 +291,8 @@ class BackupPolicy(pulumi.CustomResource):
             backup_retention_period=7,
             db_instance_id=default1t_t_lwe.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

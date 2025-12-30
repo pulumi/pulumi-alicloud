@@ -248,6 +248,8 @@ class DynamicTagGroup(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Dynamic Tag Group can be imported using the id, e.g.
@@ -298,6 +300,8 @@ class DynamicTagGroup(pulumi.CustomResource):
                 "tag_value_match_function": "all",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -217,6 +217,8 @@ class Subscription(pulumi.CustomResource):
             comment="created by terraform")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Datahub subscription can be imported using the ID, e.g.
@@ -269,6 +271,8 @@ class Subscription(pulumi.CustomResource):
             topic_name=example_topic.name,
             comment="created by terraform")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

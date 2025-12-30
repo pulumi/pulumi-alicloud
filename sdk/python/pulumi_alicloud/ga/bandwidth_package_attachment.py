@@ -166,6 +166,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_bandwidth_package.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Bandwidth Package Attachment can be imported using the id, e.g.
@@ -215,6 +217,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

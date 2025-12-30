@@ -671,6 +671,8 @@ class EcsBackupPlan(pulumi.CustomResource):
             include="  [\\\\\\"/home/include\\\\\\"]\\n")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Notice
 
         **About Backup path rules:**
@@ -788,6 +790,8 @@ class EcsBackupPlan(pulumi.CustomResource):
             exclude="  [\\\\\\"/home/exclude\\\\\\"]\\n",
             include="  [\\\\\\"/home/include\\\\\\"]\\n")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Notice
 

@@ -33,6 +33,7 @@ __all__ = [
     'ClusterNodeGroupNode',
     'ExperimentPlanTemplateTemplatePipeline',
     'ExperimentPlanTemplateTemplatePipelineEnvParams',
+    'NodeDataDisk',
     'NodeGroupAttachmentDataDisk',
     'NodeGroupIpAllocationPolicy',
     'NodeGroupIpAllocationPolicyBondPolicy',
@@ -42,6 +43,13 @@ __all__ = [
     'NodeGroupIpAllocationPolicyNodePolicy',
     'NodeGroupIpAllocationPolicyNodePolicyBond',
     'NodeGroupNode',
+    'NodeIpAllocationPolicy',
+    'NodeIpAllocationPolicyBondPolicy',
+    'NodeIpAllocationPolicyBondPolicyBond',
+    'NodeIpAllocationPolicyMachineTypePolicy',
+    'NodeIpAllocationPolicyMachineTypePolicyBond',
+    'NodeIpAllocationPolicyNodePolicy',
+    'NodeIpAllocationPolicyNodePolicyBond',
     'ResourceMachineTypes',
     'ResourceUserAccessParam',
     'GetSubnetsSubnetResult',
@@ -1248,6 +1256,66 @@ class ExperimentPlanTemplateTemplatePipelineEnvParams(dict):
 
 
 @pulumi.output_type
+class NodeDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 category: Optional[_builtins.str] = None,
+                 performance_level: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str category: Data disk type
+        :param _builtins.str performance_level: Performance level
+        :param _builtins.int size: Data disk size
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[_builtins.str]:
+        """
+        Data disk type
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[_builtins.str]:
+        """
+        Performance level
+        """
+        return pulumi.get(self, "performance_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Data disk size
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
 class NodeGroupAttachmentDataDisk(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1706,6 +1774,319 @@ class NodeGroupNode(dict):
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bondPolicy":
+            suggest = "bond_policy"
+        elif key == "machineTypePolicies":
+            suggest = "machine_type_policies"
+        elif key == "nodePolicies":
+            suggest = "node_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeIpAllocationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeIpAllocationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeIpAllocationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bond_policy: Optional['outputs.NodeIpAllocationPolicyBondPolicy'] = None,
+                 machine_type_policies: Optional[Sequence['outputs.NodeIpAllocationPolicyMachineTypePolicy']] = None,
+                 node_policies: Optional[Sequence['outputs.NodeIpAllocationPolicyNodePolicy']] = None):
+        """
+        :param 'NodeIpAllocationPolicyBondPolicyArgs' bond_policy: Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        :param Sequence['NodeIpAllocationPolicyMachineTypePolicyArgs'] machine_type_policies: Model Assignment Policy See `machine_type_policy` below.
+        :param Sequence['NodeIpAllocationPolicyNodePolicyArgs'] node_policies: Node allocation policy See `node_policy` below.
+        """
+        if bond_policy is not None:
+            pulumi.set(__self__, "bond_policy", bond_policy)
+        if machine_type_policies is not None:
+            pulumi.set(__self__, "machine_type_policies", machine_type_policies)
+        if node_policies is not None:
+            pulumi.set(__self__, "node_policies", node_policies)
+
+    @_builtins.property
+    @pulumi.getter(name="bondPolicy")
+    def bond_policy(self) -> Optional['outputs.NodeIpAllocationPolicyBondPolicy']:
+        """
+        Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        """
+        return pulumi.get(self, "bond_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypePolicies")
+    def machine_type_policies(self) -> Optional[Sequence['outputs.NodeIpAllocationPolicyMachineTypePolicy']]:
+        """
+        Model Assignment Policy See `machine_type_policy` below.
+        """
+        return pulumi.get(self, "machine_type_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="nodePolicies")
+    def node_policies(self) -> Optional[Sequence['outputs.NodeIpAllocationPolicyNodePolicy']]:
+        """
+        Node allocation policy See `node_policy` below.
+        """
+        return pulumi.get(self, "node_policies")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyBondPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bondDefaultSubnet":
+            suggest = "bond_default_subnet"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeIpAllocationPolicyBondPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeIpAllocationPolicyBondPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeIpAllocationPolicyBondPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bond_default_subnet: Optional[_builtins.str] = None,
+                 bonds: Optional[Sequence['outputs.NodeIpAllocationPolicyBondPolicyBond']] = None):
+        """
+        :param _builtins.str bond_default_subnet: Default bond cluster subnet
+        :param Sequence['NodeIpAllocationPolicyBondPolicyBondArgs'] bonds: Bond information See `bonds` below.
+        """
+        if bond_default_subnet is not None:
+            pulumi.set(__self__, "bond_default_subnet", bond_default_subnet)
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+
+    @_builtins.property
+    @pulumi.getter(name="bondDefaultSubnet")
+    def bond_default_subnet(self) -> Optional[_builtins.str]:
+        """
+        Default bond cluster subnet
+        """
+        return pulumi.get(self, "bond_default_subnet")
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[Sequence['outputs.NodeIpAllocationPolicyBondPolicyBond']]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyBondPolicyBond(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 subnet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Bond Name
+        :param _builtins.str subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[_builtins.str]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyMachineTypePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeIpAllocationPolicyMachineTypePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeIpAllocationPolicyMachineTypePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeIpAllocationPolicyMachineTypePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bonds: Optional[Sequence['outputs.NodeIpAllocationPolicyMachineTypePolicyBond']] = None,
+                 machine_type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['NodeIpAllocationPolicyMachineTypePolicyBondArgs'] bonds: Bond information See `bonds` below.
+        :param _builtins.str machine_type: Model
+        """
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[Sequence['outputs.NodeIpAllocationPolicyMachineTypePolicyBond']]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        Model
+        """
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyMachineTypePolicyBond(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 subnet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Bond Name
+        :param _builtins.str subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[_builtins.str]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyNodePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeIpAllocationPolicyNodePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeIpAllocationPolicyNodePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeIpAllocationPolicyNodePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bonds: Optional[Sequence['outputs.NodeIpAllocationPolicyNodePolicyBond']] = None,
+                 hostname: Optional[_builtins.str] = None,
+                 node_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['NodeIpAllocationPolicyNodePolicyBondArgs'] bonds: Bond information See `bonds` below.
+        :param _builtins.str hostname: Host name
+        :param _builtins.str node_id: Node ID
+        """
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[Sequence['outputs.NodeIpAllocationPolicyNodePolicyBond']]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[_builtins.str]:
+        """
+        Host name
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[_builtins.str]:
+        """
+        Node ID
+        """
+        return pulumi.get(self, "node_id")
+
+
+@pulumi.output_type
+class NodeIpAllocationPolicyNodePolicyBond(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 subnet: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Bond Name
+        :param _builtins.str subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[_builtins.str]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
 
 
 @pulumi.output_type

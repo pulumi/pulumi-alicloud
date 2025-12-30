@@ -710,6 +710,8 @@ class Alarm(pulumi.CustomResource):
             evaluation_count=2)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing autoscaling-rule module
@@ -836,6 +838,8 @@ class Alarm(pulumi.CustomResource):
             comparison_operator=">=",
             evaluation_count=2)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

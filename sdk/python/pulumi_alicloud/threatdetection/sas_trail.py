@@ -96,6 +96,8 @@ class SasTrail(pulumi.CustomResource):
         default = alicloud.threatdetection.SasTrail("default")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Sas Trail can be imported using the id, e.g.
@@ -134,6 +136,8 @@ class SasTrail(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.threatdetection.SasTrail("default")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

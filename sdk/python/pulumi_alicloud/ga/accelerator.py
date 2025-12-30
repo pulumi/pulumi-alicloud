@@ -607,6 +607,8 @@ class Accelerator(pulumi.CustomResource):
             spec="1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Accelerator can be imported using the id, e.g.
@@ -668,6 +670,8 @@ class Accelerator(pulumi.CustomResource):
             auto_use_coupon=True,
             spec="1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

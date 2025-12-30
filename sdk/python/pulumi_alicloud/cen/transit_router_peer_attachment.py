@@ -792,6 +792,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             transit_router_attachment_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Peer Attachment can be imported using the id, e.g.
@@ -888,6 +890,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             transit_router_attachment_description=name,
             transit_router_attachment_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

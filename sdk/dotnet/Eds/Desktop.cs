@@ -91,6 +91,8 @@ namespace Pulumi.AliCloud.Eds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECD Desktop can be imported using the id, e.g.

@@ -178,6 +178,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.

@@ -5,9 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Actiontrail History Delivery Job resource.
+ * Provides a Action Trail History Delivery Job resource.
  *
- * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+ * Delivery History Tasks.
+ *
+ * For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
  *
  * > **NOTE:** Available since v1.139.0.
  *
@@ -24,32 +26,41 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
- * });
- * const example = alicloud.getRegions({
+ * const _default = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleGetAccount = alicloud.getAccount({});
- * const exampleProject = new alicloud.log.Project("example", {
- *     projectName: `${name}-${_default.result}`,
- *     description: "tf actiontrail example",
+ * const defaultGetAccount = alicloud.getAccount({});
+ * const defaultGetRoles = alicloud.ram.getRoles({
+ *     nameRegex: "AliyunServiceRoleForActionTrail",
  * });
- * const exampleTrail = new alicloud.actiontrail.Trail("example", {
- *     trailName: `${name}-${_default.result}`,
- *     slsProjectArn: pulumi.all([example, exampleGetAccount, exampleProject.name]).apply(([example, exampleGetAccount, name]) => `acs:log:${example.regions?.[0]?.id}:${exampleGetAccount.id}:project/${name}`),
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     description: name,
+ *     projectName: name,
  * });
- * const exampleHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("example", {trailName: exampleTrail.id});
+ * const defaultTrail = new alicloud.actiontrail.Trail("default", {
+ *     eventRw: "Write",
+ *     slsProjectArn: pulumi.all([_default, defaultGetAccount, defaultProject.projectName]).apply(([_default, defaultGetAccount, projectName]) => `acs:log:${_default.regions?.[0]?.id}:${defaultGetAccount.id}:project/${projectName}`),
+ *     trailName: name,
+ *     slsWriteRoleArn: defaultGetRoles.then(defaultGetRoles => defaultGetRoles.roles?.[0]?.arn),
+ *     trailRegion: "All",
+ *     isOrganizationTrail: false,
+ *     status: "Enable",
+ *     eventSelectors: JSON.stringify([{
+ *         ServiceName: "PDS",
+ *     }]),
+ *     dataEventTrailRegion: "cn-hangzhou",
+ * });
+ * const defaultHistoryDeliveryJob = new alicloud.actiontrail.HistoryDeliveryJob("default", {trailName: defaultTrail.id});
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
- * Actiontrail History Delivery Job can be imported using the id, e.g.
+ * Action Trail History Delivery Job can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
@@ -84,11 +95,15 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
     }
 
     /**
-     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * The creation time of the resource
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The status of the resource
      */
     declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      */
     declare public readonly trailName: pulumi.Output<string>;
 
@@ -105,6 +120,7 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HistoryDeliveryJobState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["status"] = state?.status;
             resourceInputs["trailName"] = state?.trailName;
         } else {
@@ -113,6 +129,7 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'trailName'");
             }
             resourceInputs["trailName"] = args?.trailName;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -125,11 +142,15 @@ export class HistoryDeliveryJob extends pulumi.CustomResource {
  */
 export interface HistoryDeliveryJobState {
     /**
-     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * The creation time of the resource
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The status of the resource
      */
     status?: pulumi.Input<number>;
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      */
     trailName?: pulumi.Input<string>;
 }
@@ -139,7 +160,7 @@ export interface HistoryDeliveryJobState {
  */
 export interface HistoryDeliveryJobArgs {
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      */
     trailName: pulumi.Input<string>;
 }

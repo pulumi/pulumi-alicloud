@@ -575,6 +575,8 @@ class RouterInterface(pulumi.CustomResource):
             description="test1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The router interface can be imported using the id, e.g.
@@ -633,6 +635,8 @@ class RouterInterface(pulumi.CustomResource):
             name="test1",
             description="test1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

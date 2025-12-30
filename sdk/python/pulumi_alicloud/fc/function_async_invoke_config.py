@@ -403,6 +403,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             qualifier="LATEST")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute Function Async Invoke Configs can be imported using the id, e.g.
@@ -527,6 +529,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             stateful_invocation=True,
             qualifier="LATEST")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

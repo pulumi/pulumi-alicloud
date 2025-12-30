@@ -499,6 +499,8 @@ class Project(pulumi.CustomResource):
             comment=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Project can be imported using the id, e.g.
@@ -555,6 +557,8 @@ class Project(pulumi.CustomResource):
             project_name=name,
             comment=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

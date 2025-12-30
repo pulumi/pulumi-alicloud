@@ -372,6 +372,8 @@ class Topic(pulumi.CustomResource):
             comment="created by terraform")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Datahub topic can be imported using the ID, e.g.
@@ -445,6 +447,8 @@ class Topic(pulumi.CustomResource):
             life_cycle=7,
             comment="created by terraform")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

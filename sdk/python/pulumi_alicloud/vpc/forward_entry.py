@@ -423,6 +423,8 @@ class ForwardEntry(pulumi.CustomResource):
             internal_port="8080")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Forward Entry can be imported using the id, e.g.
@@ -495,6 +497,8 @@ class ForwardEntry(pulumi.CustomResource):
             internal_ip="172.16.0.3",
             internal_port="8080")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

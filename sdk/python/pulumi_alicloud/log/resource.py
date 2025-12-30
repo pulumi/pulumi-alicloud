@@ -244,6 +244,8 @@ class Resource(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log resource can be imported using the id, e.g.
@@ -307,6 +309,8 @@ class Resource(pulumi.CustomResource):
             }
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -232,6 +232,8 @@ class Snapshot(pulumi.CustomResource):
             disk_id=disk.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Snapshot can be imported using the id, e.g.
@@ -283,6 +285,8 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name,
             disk_id=disk.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

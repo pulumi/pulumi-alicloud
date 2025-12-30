@@ -101,6 +101,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.

@@ -181,6 +181,8 @@ class Folder(pulumi.CustomResource):
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Folder can be imported using the id, e.g.
@@ -228,6 +230,8 @@ class Folder(pulumi.CustomResource):
             max=99999)
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

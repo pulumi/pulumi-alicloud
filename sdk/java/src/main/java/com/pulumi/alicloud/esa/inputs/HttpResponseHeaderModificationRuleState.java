@@ -117,13 +117,13 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -319,7 +319,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -330,7 +330,7 @@ public final class HttpResponseHeaderModificationRuleState extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

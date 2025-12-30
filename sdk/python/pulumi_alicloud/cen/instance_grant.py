@@ -171,6 +171,8 @@ class InstanceGrant(pulumi.CustomResource):
             cen_owner_id=your_account.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -226,6 +228,8 @@ class InstanceGrant(pulumi.CustomResource):
             child_instance_id=child_account_network.id,
             cen_owner_id=your_account.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

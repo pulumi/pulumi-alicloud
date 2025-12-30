@@ -91,6 +91,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Service Catalog Principal Portfolio Association can be imported using the id, e.g.

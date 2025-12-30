@@ -1075,6 +1075,8 @@ class Instance(pulumi.CustomResource):
             destination_region=default_get_regions.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dts Instance can be imported using the id, e.g.
@@ -1210,6 +1212,8 @@ class Instance(pulumi.CustomResource):
             destination_endpoint_engine_name="MySQL",
             destination_region=default_get_regions.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

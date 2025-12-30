@@ -224,6 +224,8 @@ class Policy(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Policy can be imported using the id, e.g.
@@ -275,6 +277,8 @@ class Policy(pulumi.CustomResource):
         \\t\\t}
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

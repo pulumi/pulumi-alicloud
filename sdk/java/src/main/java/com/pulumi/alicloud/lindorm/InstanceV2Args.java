@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.lindorm;
 
 import com.pulumi.alicloud.lindorm.inputs.InstanceV2EngineListArgs;
+import com.pulumi.alicloud.lindorm.inputs.InstanceV2WhiteIpListArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -53,13 +54,10 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * Deployment Scenario
      * 
-     * &gt; **NOTE:**  Enumeration value
-     * 
-     * &gt; **NOTE:**  - 1.0 Single AZ
-     * 
-     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-     * 
-     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -70,13 +68,10 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Deployment Scenario
      * 
-     * &gt; **NOTE:**  Enumeration value
-     * 
-     * &gt; **NOTE:**  - 1.0 Single AZ
-     * 
-     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-     * 
-     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -88,9 +83,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * Automatic renewal duration. Unit: Month.
      * 
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      * 
-     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -101,9 +96,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Automatic renewal duration. Unit: Month.
      * 
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      * 
-     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -128,6 +123,8 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     * 
      * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
@@ -135,7 +132,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> cloudStorageSize;
 
     /**
-     * @return &gt; **NOTE:**  Cloud storage capacity in GB
+     * @return The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     * 
+     * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     public Optional<Output<Integer>> cloudStorageSize() {
@@ -143,26 +142,24 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * &gt; **NOTE:** &gt;
+     * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      * 
-     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-     * 
-     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     * 
-     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      * 
      */
     @Import(name="cloudStorageType")
     private @Nullable Output<String> cloudStorageType;
 
     /**
-     * @return &gt; **NOTE:** &gt;
+     * @return Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      * 
-     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-     * 
-     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     * 
-     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      * 
      */
     public Optional<Output<String>> cloudStorageType() {
@@ -234,14 +231,22 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource
+     * Resource attribute fields representing payment types
+     * 
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      * 
      */
     @Import(name="paymentType", required=true)
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return Resource attribute fields representing payment types
+     * 
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      * 
      */
     public Output<String> paymentType() {
@@ -358,6 +363,21 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Instance whitelist list See `whiteIpList` below.
+     * 
+     */
+    @Import(name="whiteIpLists")
+    private @Nullable Output<List<InstanceV2WhiteIpListArgs>> whiteIpLists;
+
+    /**
+     * @return Instance whitelist list See `whiteIpList` below.
+     * 
+     */
+    public Optional<Output<List<InstanceV2WhiteIpListArgs>>> whiteIpLists() {
+        return Optional.ofNullable(this.whiteIpLists);
+    }
+
+    /**
      * The zone ID  of the resource
      * 
      */
@@ -394,6 +414,7 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         this.standbyZoneId = $.standbyZoneId;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.whiteIpLists = $.whiteIpLists;
         this.zoneId = $.zoneId;
     }
 
@@ -460,13 +481,10 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param archVersion Deployment Scenario
          * 
-         * &gt; **NOTE:**  Enumeration value
-         * 
-         * &gt; **NOTE:**  - 1.0 Single AZ
-         * 
-         * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-         * 
-         * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+         * Enumeration value:
+         * - **1.0**: Single Zone
+         * - **2.0**: Multi-AZ Basic Edition
+         * - **3.0**: Multi-AZ High Availability Edition
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -481,13 +499,10 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param archVersion Deployment Scenario
          * 
-         * &gt; **NOTE:**  Enumeration value
-         * 
-         * &gt; **NOTE:**  - 1.0 Single AZ
-         * 
-         * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-         * 
-         * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+         * Enumeration value:
+         * - **1.0**: Single Zone
+         * - **2.0**: Multi-AZ Basic Edition
+         * - **3.0**: Multi-AZ High Availability Edition
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -501,9 +516,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoRenewDuration Automatic renewal duration. Unit: Month.
          * 
-         * Value range: `1` to **12 * *.
+         * Value range: `1` to `12`.
          * 
-         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -518,9 +533,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         /**
          * @param autoRenewDuration Automatic renewal duration. Unit: Month.
          * 
-         * Value range: `1` to **12 * *.
+         * Value range: `1` to `12`.
          * 
-         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+         * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -553,7 +568,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageSize &gt; **NOTE:**  Cloud storage capacity in GB
+         * @param cloudStorageSize The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+         * 
+         * &gt; **NOTE:**  Cloud storage capacity in GB
          * 
          * @return builder
          * 
@@ -564,7 +581,9 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageSize &gt; **NOTE:**  Cloud storage capacity in GB
+         * @param cloudStorageSize The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+         * 
+         * &gt; **NOTE:**  Cloud storage capacity in GB
          * 
          * @return builder
          * 
@@ -574,13 +593,12 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageType &gt; **NOTE:** &gt;
+         * @param cloudStorageType Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
          * 
-         * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-         * 
-         * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-         * 
-         * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+         * Enumeration value:
+         * - `StandardStorage`: Standard cloud storage
+         * - **Performance storage**: Performance-based cloud storage
+         * - **Capacity Storage**: Capacity-based cloud storage
          * 
          * @return builder
          * 
@@ -591,13 +609,12 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudStorageType &gt; **NOTE:** &gt;
+         * @param cloudStorageType Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
          * 
-         * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-         * 
-         * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-         * 
-         * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+         * Enumeration value:
+         * - `StandardStorage`: Standard cloud storage
+         * - **Performance storage**: Performance-based cloud storage
+         * - **Capacity Storage**: Capacity-based cloud storage
          * 
          * @return builder
          * 
@@ -705,7 +722,11 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType Resource attribute fields representing payment types
+         * 
+         * Enumeration value:
+         * - `PREPAY`: Prepaid mode
+         * - `POSTPAY`: Postpay mode
          * 
          * @return builder
          * 
@@ -716,7 +737,11 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource
+         * @param paymentType Resource attribute fields representing payment types
+         * 
+         * Enumeration value:
+         * - `PREPAY`: Prepaid mode
+         * - `POSTPAY`: Postpay mode
          * 
          * @return builder
          * 
@@ -874,6 +899,37 @@ public final class InstanceV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param whiteIpLists Instance whitelist list See `whiteIpList` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteIpLists(@Nullable Output<List<InstanceV2WhiteIpListArgs>> whiteIpLists) {
+            $.whiteIpLists = whiteIpLists;
+            return this;
+        }
+
+        /**
+         * @param whiteIpLists Instance whitelist list See `whiteIpList` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteIpLists(List<InstanceV2WhiteIpListArgs> whiteIpLists) {
+            return whiteIpLists(Output.of(whiteIpLists));
+        }
+
+        /**
+         * @param whiteIpLists Instance whitelist list See `whiteIpList` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder whiteIpLists(InstanceV2WhiteIpListArgs... whiteIpLists) {
+            return whiteIpLists(List.of(whiteIpLists));
         }
 
         /**

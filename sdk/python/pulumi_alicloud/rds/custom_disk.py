@@ -652,6 +652,8 @@ class CustomDisk(pulumi.CustomResource):
             period_unit="1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Custom Disk can be imported using the id, e.g.
@@ -733,6 +735,8 @@ class CustomDisk(pulumi.CustomResource):
             auto_pay=True,
             period_unit="1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

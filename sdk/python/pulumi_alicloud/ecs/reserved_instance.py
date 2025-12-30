@@ -682,6 +682,8 @@ class ReservedInstance(pulumi.CustomResource):
             scope="Zone")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         reservedInstance can be imported using id, e.g.
@@ -741,6 +743,8 @@ class ReservedInstance(pulumi.CustomResource):
             zone_id=default.instance_types[0].availability_zones[0],
             scope="Zone")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

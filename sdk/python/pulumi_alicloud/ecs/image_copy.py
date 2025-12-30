@@ -421,6 +421,8 @@ class ImageCopy(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -507,6 +509,8 @@ class ImageCopy(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Attributes Reference0
 

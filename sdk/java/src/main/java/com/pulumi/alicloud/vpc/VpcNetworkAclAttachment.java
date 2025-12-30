@@ -14,7 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+ * Provides a VPC Network Acl Attachment resource.
+ * 
+ * Resources associated with network Acl.
  * 
  * For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
  * 
@@ -89,6 +91,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * VPC Network Acl Attachment can be imported using the id, e.g.
@@ -101,28 +105,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment")
 public class VpcNetworkAclAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      * 
      */
     @Export(name="networkAclId", refs={String.class}, tree="[0]")
     private Output<String> networkAclId;
 
     /**
-     * @return The ID of the network ACL.
+     * @return The ID of the network ACL instance.
      * 
      */
     public Output<String> networkAclId() {
         return this.networkAclId;
     }
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return The ID of the associated resource.
+     * @return The ID of the associated  vswitch instance.
      * 
      */
     public Output<String> resourceId() {

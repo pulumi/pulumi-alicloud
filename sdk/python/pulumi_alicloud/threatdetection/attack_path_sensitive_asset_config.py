@@ -100,6 +100,8 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
         }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Attack Path Sensitive Asset Config can be imported using the id, e.g.
@@ -144,6 +146,8 @@ class AttackPathSensitiveAssetConfig(pulumi.CustomResource):
             "region_id": "cn-hangzhou",
         }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

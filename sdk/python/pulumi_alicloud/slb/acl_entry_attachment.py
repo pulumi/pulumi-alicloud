@@ -158,6 +158,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             comment="second")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Acl entry attachment can be imported using the id, e.g.
@@ -199,6 +201,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

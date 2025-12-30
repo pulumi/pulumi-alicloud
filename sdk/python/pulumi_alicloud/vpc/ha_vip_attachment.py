@@ -285,6 +285,8 @@ class HAVipAttachment(pulumi.CustomResource):
             instance_id=example_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ha Vip Attachment can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class HAVipAttachment(pulumi.CustomResource):
             ha_vip_id=example_ha_vip.id,
             instance_id=example_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

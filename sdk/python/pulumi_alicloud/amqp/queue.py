@@ -26,36 +26,21 @@ class QueueArgs:
                  auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_state: Optional[pulumi.Input[_builtins.bool]] = None,
                  max_length: Optional[pulumi.Input[_builtins.str]] = None,
                  maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
                  message_ttl: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Queue resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
-               The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the virtual host.
-        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-               * false: The Auto Delete attribute is not configured.
-        :param pulumi.Input[_builtins.str] auto_expire_state: The validity period after which the queue is automatically deleted.
-               If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-               If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-               Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
-        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead letter routing key.
-        :param pulumi.Input[_builtins.bool] exclusive_state: Specifies whether the queue is an exclusive queue. Valid values:
-               * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-               * false: The queue is not an exclusive queue.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the queue to create.
+        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
+        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
+        :param pulumi.Input[_builtins.str] auto_expire_state: The auto-expiration time for the queue.
+        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange.
+        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead-letter routing key.
         :param pulumi.Input[_builtins.str] max_length: The maximum number of messages that can be stored in the queue.
-               If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
-        :param pulumi.Input[_builtins.int] maximum_priority: The highest priority supported by the queue. This parameter is set to a positive integer.
-               Valid values: 0 to 255. Recommended values: 1 to 10
-        :param pulumi.Input[_builtins.str] message_ttl: The message TTL of the queue.
-               If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-               Message TTL must be set to a non-negative integer, in milliseconds.
-               For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        :param pulumi.Input[_builtins.int] maximum_priority: The priority of the queue.
+        :param pulumi.Input[_builtins.str] message_ttl: The time to live (TTL) of a message in the queue.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "queue_name", queue_name)
@@ -68,8 +53,6 @@ class QueueArgs:
             pulumi.set(__self__, "dead_letter_exchange", dead_letter_exchange)
         if dead_letter_routing_key is not None:
             pulumi.set(__self__, "dead_letter_routing_key", dead_letter_routing_key)
-        if exclusive_state is not None:
-            pulumi.set(__self__, "exclusive_state", exclusive_state)
         if max_length is not None:
             pulumi.set(__self__, "max_length", max_length)
         if maximum_priority is not None:
@@ -81,7 +64,7 @@ class QueueArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -93,8 +76,7 @@ class QueueArgs:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the queue.
-        The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the queue to create.
         """
         return pulumi.get(self, "queue_name")
 
@@ -106,7 +88,7 @@ class QueueArgs:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the virtual host.
+        The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "virtual_host_name")
 
@@ -118,9 +100,7 @@ class QueueArgs:
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        * false: The Auto Delete attribute is not configured.
+        Specifies whether to automatically delete the queue. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
@@ -132,8 +112,7 @@ class QueueArgs:
     @pulumi.getter(name="autoExpireState")
     def auto_expire_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The validity period after which the queue is automatically deleted.
-        If the queue is not accessed within a specified period of time, it is automatically deleted.
+        The auto-expiration time for the queue.
         """
         return pulumi.get(self, "auto_expire_state")
 
@@ -145,9 +124,7 @@ class QueueArgs:
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        The dead-letter exchange.
         """
         return pulumi.get(self, "dead_letter_exchange")
 
@@ -159,7 +136,7 @@ class QueueArgs:
     @pulumi.getter(name="deadLetterRoutingKey")
     def dead_letter_routing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The dead letter routing key.
+        The dead-letter routing key.
         """
         return pulumi.get(self, "dead_letter_routing_key")
 
@@ -168,25 +145,10 @@ class QueueArgs:
         pulumi.set(self, "dead_letter_routing_key", value)
 
     @_builtins.property
-    @pulumi.getter(name="exclusiveState")
-    def exclusive_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the queue is an exclusive queue. Valid values:
-        * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        * false: The queue is not an exclusive queue.
-        """
-        return pulumi.get(self, "exclusive_state")
-
-    @exclusive_state.setter
-    def exclusive_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "exclusive_state", value)
-
-    @_builtins.property
     @pulumi.getter(name="maxLength")
     def max_length(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The maximum number of messages that can be stored in the queue.
-        If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         """
         return pulumi.get(self, "max_length")
 
@@ -198,8 +160,7 @@ class QueueArgs:
     @pulumi.getter(name="maximumPriority")
     def maximum_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The highest priority supported by the queue. This parameter is set to a positive integer.
-        Valid values: 0 to 255. Recommended values: 1 to 10
+        The priority of the queue.
         """
         return pulumi.get(self, "maximum_priority")
 
@@ -211,10 +172,7 @@ class QueueArgs:
     @pulumi.getter(name="messageTtl")
     def message_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The message TTL of the queue.
-        If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        Message TTL must be set to a non-negative integer, in milliseconds.
-        For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        The time to live (TTL) of a message in the queue.
         """
         return pulumi.get(self, "message_ttl")
 
@@ -230,7 +188,6 @@ class _QueueState:
                  auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_state: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  max_length: Optional[pulumi.Input[_builtins.str]] = None,
                  maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
@@ -239,30 +196,16 @@ class _QueueState:
                  virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
-        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-               * false: The Auto Delete attribute is not configured.
-        :param pulumi.Input[_builtins.str] auto_expire_state: The validity period after which the queue is automatically deleted.
-               If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-               If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-               Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
-        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead letter routing key.
-        :param pulumi.Input[_builtins.bool] exclusive_state: Specifies whether the queue is an exclusive queue. Valid values:
-               * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-               * false: The queue is not an exclusive queue.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
+        :param pulumi.Input[_builtins.str] auto_expire_state: The auto-expiration time for the queue.
+        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange.
+        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead-letter routing key.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         :param pulumi.Input[_builtins.str] max_length: The maximum number of messages that can be stored in the queue.
-               If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
-        :param pulumi.Input[_builtins.int] maximum_priority: The highest priority supported by the queue. This parameter is set to a positive integer.
-               Valid values: 0 to 255. Recommended values: 1 to 10
-        :param pulumi.Input[_builtins.str] message_ttl: The message TTL of the queue.
-               If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-               Message TTL must be set to a non-negative integer, in milliseconds.
-               For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
-               The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the virtual host.
+        :param pulumi.Input[_builtins.int] maximum_priority: The priority of the queue.
+        :param pulumi.Input[_builtins.str] message_ttl: The time to live (TTL) of a message in the queue.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the queue to create.
+        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         if auto_delete_state is not None:
             pulumi.set(__self__, "auto_delete_state", auto_delete_state)
@@ -272,8 +215,6 @@ class _QueueState:
             pulumi.set(__self__, "dead_letter_exchange", dead_letter_exchange)
         if dead_letter_routing_key is not None:
             pulumi.set(__self__, "dead_letter_routing_key", dead_letter_routing_key)
-        if exclusive_state is not None:
-            pulumi.set(__self__, "exclusive_state", exclusive_state)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if max_length is not None:
@@ -291,9 +232,7 @@ class _QueueState:
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        * false: The Auto Delete attribute is not configured.
+        Specifies whether to automatically delete the queue. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
@@ -305,8 +244,7 @@ class _QueueState:
     @pulumi.getter(name="autoExpireState")
     def auto_expire_state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The validity period after which the queue is automatically deleted.
-        If the queue is not accessed within a specified period of time, it is automatically deleted.
+        The auto-expiration time for the queue.
         """
         return pulumi.get(self, "auto_expire_state")
 
@@ -318,9 +256,7 @@ class _QueueState:
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        The dead-letter exchange.
         """
         return pulumi.get(self, "dead_letter_exchange")
 
@@ -332,7 +268,7 @@ class _QueueState:
     @pulumi.getter(name="deadLetterRoutingKey")
     def dead_letter_routing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The dead letter routing key.
+        The dead-letter routing key.
         """
         return pulumi.get(self, "dead_letter_routing_key")
 
@@ -341,24 +277,10 @@ class _QueueState:
         pulumi.set(self, "dead_letter_routing_key", value)
 
     @_builtins.property
-    @pulumi.getter(name="exclusiveState")
-    def exclusive_state(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the queue is an exclusive queue. Valid values:
-        * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        * false: The queue is not an exclusive queue.
-        """
-        return pulumi.get(self, "exclusive_state")
-
-    @exclusive_state.setter
-    def exclusive_state(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "exclusive_state", value)
-
-    @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -371,7 +293,6 @@ class _QueueState:
     def max_length(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The maximum number of messages that can be stored in the queue.
-        If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         """
         return pulumi.get(self, "max_length")
 
@@ -383,8 +304,7 @@ class _QueueState:
     @pulumi.getter(name="maximumPriority")
     def maximum_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The highest priority supported by the queue. This parameter is set to a positive integer.
-        Valid values: 0 to 255. Recommended values: 1 to 10
+        The priority of the queue.
         """
         return pulumi.get(self, "maximum_priority")
 
@@ -396,10 +316,7 @@ class _QueueState:
     @pulumi.getter(name="messageTtl")
     def message_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The message TTL of the queue.
-        If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        Message TTL must be set to a non-negative integer, in milliseconds.
-        For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        The time to live (TTL) of a message in the queue.
         """
         return pulumi.get(self, "message_ttl")
 
@@ -411,8 +328,7 @@ class _QueueState:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the queue.
-        The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the queue to create.
         """
         return pulumi.get(self, "queue_name")
 
@@ -424,7 +340,7 @@ class _QueueState:
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the virtual host.
+        The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "virtual_host_name")
 
@@ -443,7 +359,6 @@ class Queue(pulumi.CustomResource):
                  auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_state: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  max_length: Optional[pulumi.Input[_builtins.str]] = None,
                  maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
@@ -465,31 +380,36 @@ class Queue(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.amqp.Instance("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.amqp.Instance("default",
+            instance_name=f"{name}-{default['result']}",
             instance_type="enterprise",
             max_tps="3000",
+            max_connections=2000,
             queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
             payment_type="Subscription",
-            period=1)
+            renewal_status="AutoRenewal",
+            renewal_duration=1,
+            renewal_duration_unit="Year",
+            support_eip=True)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("default",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        example = alicloud.amqp.Queue("example",
-            instance_id=default.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            instance_id=default_instance.id,
+            virtual_host_name=f"{name}-{default['result']}")
+        default_queue = alicloud.amqp.Queue("default",
+            instance_id=default_instance.id,
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            queue_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -501,30 +421,16 @@ class Queue(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-               * false: The Auto Delete attribute is not configured.
-        :param pulumi.Input[_builtins.str] auto_expire_state: The validity period after which the queue is automatically deleted.
-               If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-               If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-               Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
-        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead letter routing key.
-        :param pulumi.Input[_builtins.bool] exclusive_state: Specifies whether the queue is an exclusive queue. Valid values:
-               * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-               * false: The queue is not an exclusive queue.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
+        :param pulumi.Input[_builtins.str] auto_expire_state: The auto-expiration time for the queue.
+        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange.
+        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead-letter routing key.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         :param pulumi.Input[_builtins.str] max_length: The maximum number of messages that can be stored in the queue.
-               If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
-        :param pulumi.Input[_builtins.int] maximum_priority: The highest priority supported by the queue. This parameter is set to a positive integer.
-               Valid values: 0 to 255. Recommended values: 1 to 10
-        :param pulumi.Input[_builtins.str] message_ttl: The message TTL of the queue.
-               If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-               Message TTL must be set to a non-negative integer, in milliseconds.
-               For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
-               The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the virtual host.
+        :param pulumi.Input[_builtins.int] maximum_priority: The priority of the queue.
+        :param pulumi.Input[_builtins.str] message_ttl: The time to live (TTL) of a message in the queue.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the queue to create.
+        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         ...
     @overload
@@ -546,31 +452,36 @@ class Queue(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.amqp.Instance("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_instance = alicloud.amqp.Instance("default",
+            instance_name=f"{name}-{default['result']}",
             instance_type="enterprise",
             max_tps="3000",
+            max_connections=2000,
             queue_capacity="200",
-            storage_size="700",
-            support_eip=False,
-            max_eip_tps="128",
             payment_type="Subscription",
-            period=1)
+            renewal_status="AutoRenewal",
+            renewal_duration=1,
+            renewal_duration_unit="Year",
+            support_eip=True)
         default_virtual_host = alicloud.amqp.VirtualHost("default",
-            instance_id=default.id,
-            virtual_host_name="tf-example")
-        default_exchange = alicloud.amqp.Exchange("default",
-            auto_delete_state=False,
-            exchange_name="tf-example",
-            exchange_type="DIRECT",
-            instance_id=default.id,
-            internal=False,
-            virtual_host_name=default_virtual_host.virtual_host_name)
-        example = alicloud.amqp.Queue("example",
-            instance_id=default.id,
-            queue_name="tf-example",
-            virtual_host_name=default_virtual_host.virtual_host_name)
+            instance_id=default_instance.id,
+            virtual_host_name=f"{name}-{default['result']}")
+        default_queue = alicloud.amqp.Queue("default",
+            instance_id=default_instance.id,
+            virtual_host_name=default_virtual_host.virtual_host_name,
+            queue_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -599,7 +510,6 @@ class Queue(pulumi.CustomResource):
                  auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
                  dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_state: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  max_length: Optional[pulumi.Input[_builtins.str]] = None,
                  maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
@@ -619,7 +529,6 @@ class Queue(pulumi.CustomResource):
             __props__.__dict__["auto_expire_state"] = auto_expire_state
             __props__.__dict__["dead_letter_exchange"] = dead_letter_exchange
             __props__.__dict__["dead_letter_routing_key"] = dead_letter_routing_key
-            __props__.__dict__["exclusive_state"] = exclusive_state
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -646,7 +555,6 @@ class Queue(pulumi.CustomResource):
             auto_expire_state: Optional[pulumi.Input[_builtins.str]] = None,
             dead_letter_exchange: Optional[pulumi.Input[_builtins.str]] = None,
             dead_letter_routing_key: Optional[pulumi.Input[_builtins.str]] = None,
-            exclusive_state: Optional[pulumi.Input[_builtins.bool]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             max_length: Optional[pulumi.Input[_builtins.str]] = None,
             maximum_priority: Optional[pulumi.Input[_builtins.int]] = None,
@@ -660,30 +568,16 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether the Auto Delete attribute is configured. Valid values:
-               * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-               * false: The Auto Delete attribute is not configured.
-        :param pulumi.Input[_builtins.str] auto_expire_state: The validity period after which the queue is automatically deleted.
-               If the queue is not accessed within a specified period of time, it is automatically deleted.
-        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-               If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-               Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
-        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead letter routing key.
-        :param pulumi.Input[_builtins.bool] exclusive_state: Specifies whether the queue is an exclusive queue. Valid values:
-               * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-               * false: The queue is not an exclusive queue.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.bool] auto_delete_state: Specifies whether to automatically delete the queue. Valid values:
+        :param pulumi.Input[_builtins.str] auto_expire_state: The auto-expiration time for the queue.
+        :param pulumi.Input[_builtins.str] dead_letter_exchange: The dead-letter exchange.
+        :param pulumi.Input[_builtins.str] dead_letter_routing_key: The dead-letter routing key.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         :param pulumi.Input[_builtins.str] max_length: The maximum number of messages that can be stored in the queue.
-               If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
-        :param pulumi.Input[_builtins.int] maximum_priority: The highest priority supported by the queue. This parameter is set to a positive integer.
-               Valid values: 0 to 255. Recommended values: 1 to 10
-        :param pulumi.Input[_builtins.str] message_ttl: The message TTL of the queue.
-               If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-               Message TTL must be set to a non-negative integer, in milliseconds.
-               For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
-        :param pulumi.Input[_builtins.str] queue_name: The name of the queue.
-               The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the virtual host.
+        :param pulumi.Input[_builtins.int] maximum_priority: The priority of the queue.
+        :param pulumi.Input[_builtins.str] message_ttl: The time to live (TTL) of a message in the queue.
+        :param pulumi.Input[_builtins.str] queue_name: The name of the queue to create.
+        :param pulumi.Input[_builtins.str] virtual_host_name: The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -693,7 +587,6 @@ class Queue(pulumi.CustomResource):
         __props__.__dict__["auto_expire_state"] = auto_expire_state
         __props__.__dict__["dead_letter_exchange"] = dead_letter_exchange
         __props__.__dict__["dead_letter_routing_key"] = dead_letter_routing_key
-        __props__.__dict__["exclusive_state"] = exclusive_state
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["max_length"] = max_length
         __props__.__dict__["maximum_priority"] = maximum_priority
@@ -706,9 +599,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="autoDeleteState")
     def auto_delete_state(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether the Auto Delete attribute is configured. Valid values:
-        * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        * false: The Auto Delete attribute is not configured.
+        Specifies whether to automatically delete the queue. Valid values:
         """
         return pulumi.get(self, "auto_delete_state")
 
@@ -716,8 +607,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="autoExpireState")
     def auto_expire_state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The validity period after which the queue is automatically deleted.
-        If the queue is not accessed within a specified period of time, it is automatically deleted.
+        The auto-expiration time for the queue.
         """
         return pulumi.get(self, "auto_expire_state")
 
@@ -725,9 +615,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="deadLetterExchange")
     def dead_letter_exchange(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        The dead-letter exchange.
         """
         return pulumi.get(self, "dead_letter_exchange")
 
@@ -735,25 +623,15 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="deadLetterRoutingKey")
     def dead_letter_routing_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The dead letter routing key.
+        The dead-letter routing key.
         """
         return pulumi.get(self, "dead_letter_routing_key")
-
-    @_builtins.property
-    @pulumi.getter(name="exclusiveState")
-    def exclusive_state(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the queue is an exclusive queue. Valid values:
-        * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        * false: The queue is not an exclusive queue.
-        """
-        return pulumi.get(self, "exclusive_state")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the instance.
+        The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -762,7 +640,6 @@ class Queue(pulumi.CustomResource):
     def max_length(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The maximum number of messages that can be stored in the queue.
-        If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         """
         return pulumi.get(self, "max_length")
 
@@ -770,8 +647,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="maximumPriority")
     def maximum_priority(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The highest priority supported by the queue. This parameter is set to a positive integer.
-        Valid values: 0 to 255. Recommended values: 1 to 10
+        The priority of the queue.
         """
         return pulumi.get(self, "maximum_priority")
 
@@ -779,10 +655,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="messageTtl")
     def message_ttl(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The message TTL of the queue.
-        If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        Message TTL must be set to a non-negative integer, in milliseconds.
-        For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        The time to live (TTL) of a message in the queue.
         """
         return pulumi.get(self, "message_ttl")
 
@@ -790,8 +663,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="queueName")
     def queue_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the queue.
-        The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        The name of the queue to create.
         """
         return pulumi.get(self, "queue_name")
 
@@ -799,7 +671,7 @@ class Queue(pulumi.CustomResource):
     @pulumi.getter(name="virtualHostName")
     def virtual_host_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the virtual host.
+        The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "virtual_host_name")
 

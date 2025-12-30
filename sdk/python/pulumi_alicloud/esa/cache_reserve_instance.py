@@ -304,6 +304,8 @@ class CacheReserveInstance(pulumi.CustomResource):
             auto_pay=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Cache Reserve Instance can be imported using the id, e.g.
@@ -356,6 +358,8 @@ class CacheReserveInstance(pulumi.CustomResource):
             payment_type="Subscription",
             auto_pay=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

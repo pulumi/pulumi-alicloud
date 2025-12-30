@@ -479,6 +479,8 @@ class DwResourceGroup(pulumi.CustomResource):
             payment_duration=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Dw Resource Group can be imported using the id, e.g.
@@ -554,6 +556,8 @@ class DwResourceGroup(pulumi.CustomResource):
             specification=500,
             payment_duration=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

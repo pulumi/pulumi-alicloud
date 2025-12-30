@@ -269,6 +269,8 @@ class HttpApi(pulumi.CustomResource):
             type="Rest")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         APIG Http Api can be imported using the id, e.g.
@@ -325,6 +327,8 @@ class HttpApi(pulumi.CustomResource):
             description="zhiwei_pop_examplecase",
             type="Rest")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

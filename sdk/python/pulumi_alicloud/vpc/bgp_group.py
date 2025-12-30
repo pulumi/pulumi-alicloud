@@ -458,6 +458,8 @@ class BgpGroup(pulumi.CustomResource):
             is_fake_asn=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Bgp Group can be imported using the id, e.g.
@@ -531,6 +533,8 @@ class BgpGroup(pulumi.CustomResource):
             router_id=example_virtual_border_router.id,
             is_fake_asn=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

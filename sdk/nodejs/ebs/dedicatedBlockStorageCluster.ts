@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.

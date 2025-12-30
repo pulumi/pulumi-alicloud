@@ -250,6 +250,8 @@ class Acl(pulumi.CustomResource):
             ip_version="ipv4")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Entry Block
 
         The entry mapping supports the following:
@@ -314,6 +316,8 @@ class Acl(pulumi.CustomResource):
             name="terraformslbaclconfig",
             ip_version="ipv4")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Entry Block
 

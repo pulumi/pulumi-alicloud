@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.rds.RdsServiceLinkedRole("default", {serviceName: "AliyunServiceRoleForRdsPgsqlOnEcs"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RDS Service Linked Role can be imported using the id, e.g.

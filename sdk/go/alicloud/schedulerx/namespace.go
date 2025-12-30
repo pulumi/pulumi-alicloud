@@ -12,6 +12,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Schedulerx Namespace resource.
+//
+// For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+//
+// > **NOTE:** Available since v1.173.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/schedulerx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := schedulerx.NewNamespace(ctx, "default", &schedulerx.NamespaceArgs{
+//				NamespaceName: pulumi.String(name),
+//				Description:   pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Schedulerx Namespace can be imported using the id, e.g.
@@ -26,7 +69,7 @@ type Namespace struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Namespace name.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
-	// Namespace uid.
+	// namespace uid
 	NamespaceUid pulumi.StringOutput `pulumi:"namespaceUid"`
 }
 
@@ -67,7 +110,7 @@ type namespaceState struct {
 	Description *string `pulumi:"description"`
 	// Namespace name.
 	NamespaceName *string `pulumi:"namespaceName"`
-	// Namespace uid.
+	// namespace uid
 	NamespaceUid *string `pulumi:"namespaceUid"`
 }
 
@@ -76,7 +119,7 @@ type NamespaceState struct {
 	Description pulumi.StringPtrInput
 	// Namespace name.
 	NamespaceName pulumi.StringPtrInput
-	// Namespace uid.
+	// namespace uid
 	NamespaceUid pulumi.StringPtrInput
 }
 
@@ -89,7 +132,7 @@ type namespaceArgs struct {
 	Description *string `pulumi:"description"`
 	// Namespace name.
 	NamespaceName string `pulumi:"namespaceName"`
-	// Namespace uid.
+	// namespace uid
 	NamespaceUid *string `pulumi:"namespaceUid"`
 }
 
@@ -99,7 +142,7 @@ type NamespaceArgs struct {
 	Description pulumi.StringPtrInput
 	// Namespace name.
 	NamespaceName pulumi.StringInput
-	// Namespace uid.
+	// namespace uid
 	NamespaceUid pulumi.StringPtrInput
 }
 
@@ -200,7 +243,7 @@ func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
-// Namespace uid.
+// namespace uid
 func (o NamespaceOutput) NamespaceUid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceUid }).(pulumi.StringOutput)
 }

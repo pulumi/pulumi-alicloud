@@ -55,6 +55,8 @@ namespace Pulumi.AliCloud.Dns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Alidns Domain Record can be imported using the id, e.g.

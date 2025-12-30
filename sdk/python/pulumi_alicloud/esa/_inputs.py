@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs',
+    'HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict',
+    'HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs',
+    'HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict',
     'HttpRequestHeaderModificationRuleRequestHeaderModificationArgs',
     'HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict',
     'HttpResponseHeaderModificationRuleResponseHeaderModificationArgs',
@@ -114,6 +118,186 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        Request Header Name.
+        """
+        operation: pulumi.Input[_builtins.str]
+        """
+        Mode of operation. Value range:
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value type. Value range:
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Request header value
+        """
+elif False:
+    HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HttpIncomingRequestHeaderModificationRuleRequestHeaderModificationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str],
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Request Header Name.
+        :param pulumi.Input[_builtins.str] operation: Mode of operation. Value range:
+        :param pulumi.Input[_builtins.str] type: Value type. Value range:
+        :param pulumi.Input[_builtins.str] value: Request header value
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Request Header Name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        """
+        Mode of operation. Value range:
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value type. Value range:
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Request header value
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        The response header name.
+        """
+        operation: pulumi.Input[_builtins.str]
+        """
+        Operation method. Possible values:
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The value type. Value range:
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The response header value.
+        """
+elif False:
+    HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HttpIncomingResponseHeaderModificationRuleResponseHeaderModificationArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 operation: pulumi.Input[_builtins.str],
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The response header name.
+        :param pulumi.Input[_builtins.str] operation: Operation method. Possible values:
+        :param pulumi.Input[_builtins.str] type: The value type. Value range:
+        :param pulumi.Input[_builtins.str] value: The response header value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operation", operation)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The response header name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operation method. Possible values:
+        """
+        return pulumi.get(self, "operation")
+
+    @operation.setter
+    def operation(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operation", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The value type. Value range:
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The response header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
 
 if not MYPY:
     class HttpRequestHeaderModificationRuleRequestHeaderModificationArgsDict(TypedDict):
@@ -2466,7 +2650,14 @@ if not MYPY:
         """
         security_level: NotRequired[pulumi.Input['WafRuleConfigSecurityLevelArgsDict']]
         """
-        The overall security protection level of WAF. See `security_level` below.
+        The overall security protection level of WAF.
+        Valid values:
+        - off
+        - essentially_off
+        - low
+        - medium
+        - high
+        - under_attack See `security_level` below.
         """
         sigchls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -2525,7 +2716,14 @@ class WafRuleConfigArgs:
         :param pulumi.Input[_builtins.str] name: The package name of an authorized application.
         :param pulumi.Input[_builtins.str] notes: Additional notes about this rule.
         :param pulumi.Input['WafRuleConfigRateLimitArgs'] rate_limit: Configuration of the rate limiting rule. See `rate_limit` below.
-        :param pulumi.Input['WafRuleConfigSecurityLevelArgs'] security_level: The overall security protection level of WAF. See `security_level` below.
+        :param pulumi.Input['WafRuleConfigSecurityLevelArgs'] security_level: The overall security protection level of WAF.
+               Valid values:
+               - off
+               - essentially_off
+               - low
+               - medium
+               - high
+               - under_attack See `security_level` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sigchls: Configuration items for token verification mechanisms.
         :param pulumi.Input[_builtins.str] status: The status of the managed rule: whether it is enabled or disabled.
         :param pulumi.Input['WafRuleConfigTimerArgs'] timer: Configuration for the time schedule when the rule takes effect. See `timer` below.
@@ -2717,7 +2915,14 @@ class WafRuleConfigArgs:
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[pulumi.Input['WafRuleConfigSecurityLevelArgs']]:
         """
-        The overall security protection level of WAF. See `security_level` below.
+        The overall security protection level of WAF.
+        Valid values:
+        - off
+        - essentially_off
+        - low
+        - medium
+        - high
+        - under_attack See `security_level` below.
         """
         return pulumi.get(self, "security_level")
 

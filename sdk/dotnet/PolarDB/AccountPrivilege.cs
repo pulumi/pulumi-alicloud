@@ -84,6 +84,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PolarDB account privilege can be imported using the id, e.g.

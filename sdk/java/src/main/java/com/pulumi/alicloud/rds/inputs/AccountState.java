@@ -45,6 +45,13 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.accountType);
     }
 
+    @Import(name="checkPolicy")
+    private @Nullable Output<Boolean> checkPolicy;
+
+    public Optional<Output<Boolean>> checkPolicy() {
+        return Optional.ofNullable(this.checkPolicy);
+    }
+
     @Import(name="dbInstanceId")
     private @Nullable Output<String> dbInstanceId;
 
@@ -226,6 +233,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
         this.accountType = $.accountType;
+        this.checkPolicy = $.checkPolicy;
         this.dbInstanceId = $.dbInstanceId;
         this.description = $.description;
         this.instanceId = $.instanceId;
@@ -290,6 +298,15 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder accountType(String accountType) {
             return accountType(Output.of(accountType));
+        }
+
+        public Builder checkPolicy(@Nullable Output<Boolean> checkPolicy) {
+            $.checkPolicy = checkPolicy;
+            return this;
+        }
+
+        public Builder checkPolicy(Boolean checkPolicy) {
+            return checkPolicy(Output.of(checkPolicy));
         }
 
         public Builder dbInstanceId(@Nullable Output<String> dbInstanceId) {

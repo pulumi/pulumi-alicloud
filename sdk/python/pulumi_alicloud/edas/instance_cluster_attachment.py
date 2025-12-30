@@ -202,6 +202,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             instance_ids=[default_instance.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the cluster that you want to create the application.
@@ -263,6 +265,8 @@ class InstanceClusterAttachment(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             instance_ids=[default_instance.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param InstanceClusterAttachmentArgs args: The arguments to use to populate this resource's properties.
