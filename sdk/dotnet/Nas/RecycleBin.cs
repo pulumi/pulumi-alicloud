@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.Nas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// File Storage (NAS) Recycle Bin can be imported using the id, e.g.

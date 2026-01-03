@@ -242,6 +242,8 @@ class Account(pulumi.CustomResource):
             password="1741835136")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RocketMQ Account can be imported using the id, e.g.
@@ -336,6 +338,8 @@ class Account(pulumi.CustomResource):
             username="tfexample",
             password="1741835136")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

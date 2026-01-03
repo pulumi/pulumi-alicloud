@@ -204,6 +204,8 @@ class ChartNamespace(pulumi.CustomResource):
             namespace_name=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CR Chart Namespace can be imported using the id, e.g.
@@ -259,6 +261,8 @@ class ChartNamespace(pulumi.CustomResource):
             instance_id=example.id,
             namespace_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

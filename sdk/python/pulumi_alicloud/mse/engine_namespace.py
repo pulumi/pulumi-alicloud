@@ -287,6 +287,8 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_desc="description")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
@@ -354,6 +356,8 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_id="terraform-example",
             namespace_desc="description")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

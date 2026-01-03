@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.Dts
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DTS Migration Instance can be imported using the id, e.g.

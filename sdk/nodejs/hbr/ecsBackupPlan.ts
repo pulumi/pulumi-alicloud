@@ -81,6 +81,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Notice
  *
  * **About Backup path rules:**

@@ -95,6 +95,8 @@ namespace Pulumi.AliCloud.Cas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SSL Certificates Certificate can be imported using the id, e.g.

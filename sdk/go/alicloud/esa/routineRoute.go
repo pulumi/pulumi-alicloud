@@ -80,6 +80,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Routine Route can be imported using the id, e.g.
@@ -96,6 +98,8 @@ type RoutineRoute struct {
 	Bypass pulumi.StringPtrOutput `pulumi:"bypass"`
 	// Config Id
 	ConfigId pulumi.IntOutput `pulumi:"configId"`
+	// Spare
+	Fallback pulumi.StringOutput `pulumi:"fallback"`
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
@@ -109,7 +113,7 @@ type RoutineRoute struct {
 	// Rule execution order.
 	Sequence pulumi.IntPtrOutput `pulumi:"sequence"`
 	// Site Id
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
 
 // NewRoutineRoute registers a new resource with the given unique name, arguments, and options.
@@ -154,6 +158,8 @@ type routineRouteState struct {
 	Bypass *string `pulumi:"bypass"`
 	// Config Id
 	ConfigId *int `pulumi:"configId"`
+	// Spare
+	Fallback *string `pulumi:"fallback"`
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
@@ -167,7 +173,7 @@ type routineRouteState struct {
 	// Rule execution order.
 	Sequence *int `pulumi:"sequence"`
 	// Site Id
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 }
 
 type RoutineRouteState struct {
@@ -177,6 +183,8 @@ type RoutineRouteState struct {
 	Bypass pulumi.StringPtrInput
 	// Config Id
 	ConfigId pulumi.IntPtrInput
+	// Spare
+	Fallback pulumi.StringPtrInput
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
@@ -190,7 +198,7 @@ type RoutineRouteState struct {
 	// Rule execution order.
 	Sequence pulumi.IntPtrInput
 	// Site Id
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (RoutineRouteState) ElementType() reflect.Type {
@@ -202,6 +210,8 @@ type routineRouteArgs struct {
 	// - on: Open
 	// - off: off
 	Bypass *string `pulumi:"bypass"`
+	// Spare
+	Fallback *string `pulumi:"fallback"`
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
@@ -215,7 +225,7 @@ type routineRouteArgs struct {
 	// Rule execution order.
 	Sequence *int `pulumi:"sequence"`
 	// Site Id
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a RoutineRoute resource.
@@ -224,6 +234,8 @@ type RoutineRouteArgs struct {
 	// - on: Open
 	// - off: off
 	Bypass pulumi.StringPtrInput
+	// Spare
+	Fallback pulumi.StringPtrInput
 	// Routing switch. Value range:
 	// - on: Open
 	// - off: off
@@ -237,7 +249,7 @@ type RoutineRouteArgs struct {
 	// Rule execution order.
 	Sequence pulumi.IntPtrInput
 	// Site Id
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (RoutineRouteArgs) ElementType() reflect.Type {
@@ -339,6 +351,11 @@ func (o RoutineRouteOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RoutineRoute) pulumi.IntOutput { return v.ConfigId }).(pulumi.IntOutput)
 }
 
+// Spare
+func (o RoutineRouteOutput) Fallback() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.Fallback }).(pulumi.StringOutput)
+}
+
 // Routing switch. Value range:
 // - on: Open
 // - off: off
@@ -367,8 +384,8 @@ func (o RoutineRouteOutput) Sequence() pulumi.IntPtrOutput {
 }
 
 // Site Id
-func (o RoutineRouteOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *RoutineRoute) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o RoutineRouteOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRoute) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 type RoutineRouteArrayOutput struct{ *pulumi.OutputState }

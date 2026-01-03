@@ -167,6 +167,8 @@ class InstanceAttachment(pulumi.CustomResource):
             ecs_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
@@ -233,6 +235,8 @@ class InstanceAttachment(pulumi.CustomResource):
             instance_id=default.instances[0].id,
             ecs_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

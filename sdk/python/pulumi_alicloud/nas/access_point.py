@@ -460,6 +460,8 @@ class AccessPoint(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Access Point can be imported using the id, e.g.
@@ -547,6 +549,8 @@ class AccessPoint(pulumi.CustomResource):
                 "permission": "0777",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

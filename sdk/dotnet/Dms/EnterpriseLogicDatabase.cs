@@ -41,6 +41,8 @@ namespace Pulumi.AliCloud.Dms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DMS Enterprise Logic Database can be imported using the id, e.g.

@@ -267,6 +267,8 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
             interval=30)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Scheduled Preload Execution can be imported using the id, e.g.
@@ -322,6 +324,8 @@ class ScheduledPreloadExecution(pulumi.CustomResource):
             scheduled_preload_job_id=default_scheduled_preload_job.scheduled_preload_job_id,
             interval=30)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

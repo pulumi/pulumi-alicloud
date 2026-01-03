@@ -2156,6 +2156,8 @@ class Kubernetes(pulumi.CustomResource):
             skip_set_certificate_authority=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Kubernetes cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2418,6 +2420,8 @@ class Kubernetes(pulumi.CustomResource):
             new_nat_gateway=True,
             skip_set_certificate_authority=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

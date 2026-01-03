@@ -100,6 +100,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type AppAttachment struct {
 	pulumi.CustomResourceState
 

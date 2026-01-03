@@ -247,6 +247,8 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
             bandwidth=20)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ipv6 Internet Bandwidth can be imported using the id, e.g.
@@ -330,6 +332,8 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth",
             bandwidth=20)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

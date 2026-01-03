@@ -2400,6 +2400,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             backup_id=example_rds_backup.backup_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Clone DB Instance can be imported using the id, e.g.
@@ -2600,6 +2602,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             backup_id=example_rds_backup.backup_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -4,6 +4,47 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Provides a ESA Routine Related Record resource.
+ *
+ * For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+ *
+ * > **NOTE:** Available since v1.265.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultRoutine = new alicloud.esa.Routine("default", {
+ *     description: "example-routine2",
+ *     name: "example-routine2",
+ * });
+ * const _default = alicloud.esa.getSites({
+ *     planSubscribeType: "enterpriseplan",
+ * });
+ * const defaultRoutineRelatedRecord = new alicloud.esa.RoutineRelatedRecord("default", {
+ *     name: defaultRoutine.id,
+ *     recordName: "tfexampleacc.com",
+ *     siteId: "618651327383200",
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
+ * ## Import
+ *
+ * ESA Routine Related Record can be imported using the id, e.g.
+ *
+ * ```sh
+ * $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example <name>:<record_id>
+ * ```
+ */
 export class RoutineRelatedRecord extends pulumi.CustomResource {
     /**
      * Get an existing RoutineRelatedRecord resource's state with the given name, ID, and optional extra
@@ -32,10 +73,22 @@ export class RoutineRelatedRecord extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoutineRelatedRecord.__pulumiType;
     }
 
+    /**
+     * The routine name.
+     */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The record ID.
+     */
     declare public /*out*/ readonly recordId: pulumi.Output<number>;
+    /**
+     * The record name.
+     */
     declare public readonly recordName: pulumi.Output<string>;
-    declare public readonly siteId: pulumi.Output<number>;
+    /**
+     * The website ID.
+     */
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a RoutineRelatedRecord resource with the given unique name, arguments, and options.
@@ -76,17 +129,38 @@ export class RoutineRelatedRecord extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoutineRelatedRecord resources.
  */
 export interface RoutineRelatedRecordState {
+    /**
+     * The routine name.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The record ID.
+     */
     recordId?: pulumi.Input<number>;
+    /**
+     * The record name.
+     */
     recordName?: pulumi.Input<string>;
-    siteId?: pulumi.Input<number>;
+    /**
+     * The website ID.
+     */
+    siteId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a RoutineRelatedRecord resource.
  */
 export interface RoutineRelatedRecordArgs {
+    /**
+     * The routine name.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The record name.
+     */
     recordName: pulumi.Input<string>;
-    siteId: pulumi.Input<number>;
+    /**
+     * The website ID.
+     */
+    siteId: pulumi.Input<string>;
 }

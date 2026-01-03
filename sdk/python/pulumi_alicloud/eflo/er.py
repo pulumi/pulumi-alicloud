@@ -276,6 +276,8 @@ class Er(pulumi.CustomResource):
             description="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Er can be imported using the id, e.g.
@@ -323,6 +325,8 @@ class Er(pulumi.CustomResource):
             master_zone_id="cn-hangzhou-a",
             description="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

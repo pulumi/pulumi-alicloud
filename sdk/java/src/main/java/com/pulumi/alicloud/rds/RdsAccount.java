@@ -63,13 +63,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine("MySQL")
- *             .engineVersion("5.6")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
  *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(default_.ids()[0])
+ *             .zoneId(default_.zones()[0].id())
  *             .engine("MySQL")
- *             .engineVersion("5.6")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("local_ssd")
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -86,11 +92,15 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
- *             .engineVersion("5.6")
- *             .instanceType(defaultGetInstanceClasses.instanceClasses()[1].instanceClass())
- *             .instanceStorage(10)
+ *             .engineVersion("8.0")
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
+ *             .instanceChargeType("Postpaid")
+ *             .monitoringPeriod(60)
+ *             .dbInstanceStorageType("local_ssd")
+ *             .dbIsIgnoreCase(false)
  *             .build());
  * 
  *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()
@@ -103,6 +113,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -214,6 +226,20 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accountType() {
         return this.accountType;
+    }
+    /**
+     * Whether to apply password policy
+     * 
+     */
+    @Export(name="checkPolicy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> checkPolicy;
+
+    /**
+     * @return Whether to apply password policy
+     * 
+     */
+    public Output<Optional<Boolean>> checkPolicy() {
+        return Codegen.optional(this.checkPolicy);
     }
     /**
      * The ID of the instance.
@@ -344,14 +370,14 @@ public class RdsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resetPermissionFlag);
     }
     /**
-     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {

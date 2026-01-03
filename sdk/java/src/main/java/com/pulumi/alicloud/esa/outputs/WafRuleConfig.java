@@ -81,7 +81,14 @@ public final class WafRuleConfig {
      */
     private @Nullable WafRuleConfigRateLimit rateLimit;
     /**
-     * @return The overall security protection level of WAF. See `securityLevel` below.
+     * @return The overall security protection level of WAF.
+     * Valid values:
+     * - off
+     * - essentiallyOff
+     * - low
+     * - medium
+     * - high
+     * - underAttack See `securityLevel` below.
      * 
      */
     private @Nullable WafRuleConfigSecurityLevel securityLevel;
@@ -197,7 +204,14 @@ public final class WafRuleConfig {
         return Optional.ofNullable(this.rateLimit);
     }
     /**
-     * @return The overall security protection level of WAF. See `securityLevel` below.
+     * @return The overall security protection level of WAF.
+     * Valid values:
+     * - off
+     * - essentiallyOff
+     * - low
+     * - medium
+     * - high
+     * - underAttack See `securityLevel` below.
      * 
      */
     public Optional<WafRuleConfigSecurityLevel> securityLevel() {

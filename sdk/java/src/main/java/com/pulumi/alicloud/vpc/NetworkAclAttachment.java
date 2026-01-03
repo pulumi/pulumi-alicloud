@@ -94,6 +94,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:vpc/networkAclAttachment:NetworkAclAttachment")
 public class NetworkAclAttachment extends com.pulumi.resources.CustomResource {

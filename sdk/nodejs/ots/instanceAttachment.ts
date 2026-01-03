@@ -50,6 +50,8 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**

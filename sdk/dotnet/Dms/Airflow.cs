@@ -81,6 +81,8 @@ namespace Pulumi.AliCloud.Dms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Dms Airflow can be imported using the id, e.g.

@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
     public sealed class GetVpcEndpointServicesServiceResult
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `True`, `False`.
         /// </summary>
         public readonly bool AutoAcceptConnection;
         /// <summary>
-        /// The connection bandwidth.
+        /// The default maximum bandwidth of the endpoint connection.
         /// </summary>
         public readonly int ConnectBandwidth;
         /// <summary>
@@ -26,31 +26,31 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         public readonly string ServiceBusinessStatus;
         /// <summary>
-        /// The description of the terminal node service.
+        /// The description of the endpoint service.
         /// </summary>
         public readonly string ServiceDescription;
         /// <summary>
-        /// The domain of service.
+        /// The domain name of the endpoint service.
         /// </summary>
         public readonly string ServiceDomain;
         /// <summary>
-        /// The ID of the Vpc Endpoint Service.
+        /// The ID of the endpoint service.
         /// </summary>
         public readonly string ServiceId;
         /// <summary>
-        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tags of Vpc Endpoint Service.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The name of Vpc Endpoint Service.
+        /// The name of the endpoint service.
         /// </summary>
         public readonly string VpcEndpointServiceName;
 

@@ -925,6 +925,8 @@ class Disk(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud disk can be imported using the id, e.g.
@@ -986,6 +988,8 @@ class Disk(pulumi.CustomResource):
                 "Name": "TerraformTest",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

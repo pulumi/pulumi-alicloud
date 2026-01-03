@@ -205,6 +205,8 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
             user_id=example_user.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Link Vpc Endpoint Service User can be imported using the id, e.g.
@@ -261,6 +263,8 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
             service_id=example.id,
             user_id=example_user.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

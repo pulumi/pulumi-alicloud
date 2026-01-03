@@ -1821,6 +1821,8 @@ class LaunchTemplate(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Launch Template can be imported using the id, e.g.
@@ -1950,6 +1952,8 @@ class LaunchTemplate(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

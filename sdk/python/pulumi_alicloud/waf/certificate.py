@@ -262,6 +262,8 @@ class Certificate(pulumi.CustomResource):
             certificate_id="your_certificate_id")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAF Certificate can be imported using the id, e.g.
@@ -311,6 +313,8 @@ class Certificate(pulumi.CustomResource):
             domain="your_domain_name",
             certificate_id="your_certificate_id")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -52,6 +52,8 @@ namespace Pulumi.AliCloud.Ram
     /// ```
     /// For not specified values sets defaults.
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RAM account password policy can be imported using the `id`, e.g.

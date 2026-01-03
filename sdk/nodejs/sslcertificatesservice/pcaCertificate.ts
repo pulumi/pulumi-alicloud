@@ -31,6 +31,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -79,6 +81,7 @@ export class PcaCertificate extends pulumi.CustomResource {
      * The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
      */
     declare public readonly algorithm: pulumi.Output<string>;
+    declare public readonly aliasName: pulumi.Output<string | undefined>;
     /**
      * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
      */
@@ -100,14 +103,21 @@ export class PcaCertificate extends pulumi.CustomResource {
      */
     declare public readonly organizationUnit: pulumi.Output<string>;
     /**
-     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+     * A resource property field representing the resource group.
+     */
+    declare public readonly resourceGroupId: pulumi.Output<string>;
+    /**
+     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
      */
     declare public readonly state: pulumi.Output<string>;
     /**
      * The status of the CA certificate.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The validity period of the root CA certificate, in years.
      * > **NOTE:**  It is recommended to set to `5` to `10` years.
@@ -128,13 +138,16 @@ export class PcaCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PcaCertificateState | undefined;
             resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["aliasName"] = state?.aliasName;
             resourceInputs["commonName"] = state?.commonName;
             resourceInputs["countryCode"] = state?.countryCode;
             resourceInputs["locality"] = state?.locality;
             resourceInputs["organization"] = state?.organization;
             resourceInputs["organizationUnit"] = state?.organizationUnit;
+            resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["state"] = state?.state;
             resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["years"] = state?.years;
         } else {
             const args = argsOrState as PcaCertificateArgs | undefined;
@@ -157,12 +170,15 @@ export class PcaCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'years'");
             }
             resourceInputs["algorithm"] = args?.algorithm;
+            resourceInputs["aliasName"] = args?.aliasName;
             resourceInputs["commonName"] = args?.commonName;
             resourceInputs["countryCode"] = args?.countryCode;
             resourceInputs["locality"] = args?.locality;
             resourceInputs["organization"] = args?.organization;
             resourceInputs["organizationUnit"] = args?.organizationUnit;
+            resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["state"] = args?.state;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["years"] = args?.years;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -187,6 +203,7 @@ export interface PcaCertificateState {
      * The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
      */
     algorithm?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string>;
     /**
      * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
      */
@@ -208,14 +225,21 @@ export interface PcaCertificateState {
      */
     organizationUnit?: pulumi.Input<string>;
     /**
-     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+     * A resource property field representing the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
      */
     state?: pulumi.Input<string>;
     /**
      * The status of the CA certificate.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The validity period of the root CA certificate, in years.
      * > **NOTE:**  It is recommended to set to `5` to `10` years.
@@ -239,6 +263,7 @@ export interface PcaCertificateArgs {
      * The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
      */
     algorithm?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string>;
     /**
      * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
      */
@@ -260,10 +285,17 @@ export interface PcaCertificateArgs {
      */
     organizationUnit: pulumi.Input<string>;
     /**
-     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+     * A resource property field representing the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
      */
     state: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The validity period of the root CA certificate, in years.
      * > **NOTE:**  It is recommended to set to `5` to `10` years.

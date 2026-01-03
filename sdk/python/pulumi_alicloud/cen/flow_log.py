@@ -482,6 +482,8 @@ class FlowLog(pulumi.CustomResource):
             log_store_name=default_store.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN Flow Log can be imported using the id, e.g.
@@ -548,6 +550,8 @@ class FlowLog(pulumi.CustomResource):
             project_name=default_project.name,
             log_store_name=default_store.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

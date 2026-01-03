@@ -217,6 +217,8 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
             default_visibility="PUBLIC")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Registry Enterprise Edition Namespace can be imported using the id, e.g.
@@ -278,6 +280,8 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
             auto_create=False,
             default_visibility="PUBLIC")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

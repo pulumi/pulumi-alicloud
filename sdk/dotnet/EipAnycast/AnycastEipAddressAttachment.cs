@@ -228,6 +228,8 @@ namespace Pulumi.AliCloud.EipAnycast
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.

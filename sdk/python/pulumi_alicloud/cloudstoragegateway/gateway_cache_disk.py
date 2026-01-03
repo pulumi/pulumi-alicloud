@@ -270,6 +270,8 @@ class GatewayCacheDisk(pulumi.CustomResource):
             cache_disk_size_in_gb=50)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway Cache Disk can be imported using the id, e.g.
@@ -343,6 +345,8 @@ class GatewayCacheDisk(pulumi.CustomResource):
             gateway_id=default_gateway.id,
             cache_disk_size_in_gb=50)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

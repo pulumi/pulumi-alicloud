@@ -260,6 +260,8 @@ class HostShareKey(pulumi.CustomResource):
             private_key=private_key)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Share Key can be imported using the id, e.g.
@@ -340,6 +342,8 @@ class HostShareKey(pulumi.CustomResource):
             instance_id=instance_id,
             private_key=private_key)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

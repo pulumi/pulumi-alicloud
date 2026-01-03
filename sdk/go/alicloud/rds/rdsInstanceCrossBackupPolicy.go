@@ -105,6 +105,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RDS remote disaster recovery policies can be imported using id or instance id, e.g.

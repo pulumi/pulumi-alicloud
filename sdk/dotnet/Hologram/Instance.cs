@@ -63,6 +63,12 @@ namespace Pulumi.AliCloud.Hologram
         public Output<int?> Duration { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
+        [Output("enableSsl")]
+        public Output<bool?> EnableSsl { get; private set; } = null!;
+
+        /// <summary>
         /// List of domain names. See `Endpoints` below.
         /// </summary>
         [Output("endpoints")]
@@ -245,6 +251,12 @@ namespace Pulumi.AliCloud.Hologram
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
+
         [Input("endpoints")]
         private InputList<Inputs.InstanceEndpointArgs>? _endpoints;
 
@@ -401,6 +413,12 @@ namespace Pulumi.AliCloud.Hologram
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable SSL encryption. Default Value: `False`. Valid values: `True`, `False`.
+        /// </summary>
+        [Input("enableSsl")]
+        public Input<bool>? EnableSsl { get; set; }
 
         [Input("endpoints")]
         private InputList<Inputs.InstanceEndpointGetArgs>? _endpoints;

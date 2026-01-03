@@ -528,6 +528,8 @@ class Account(pulumi.CustomResource):
             folder_id=example.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Account can be imported using the id, e.g.
@@ -596,6 +598,8 @@ class Account(pulumi.CustomResource):
             display_name=f"{display_name}-{default['result']}",
             folder_id=example.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

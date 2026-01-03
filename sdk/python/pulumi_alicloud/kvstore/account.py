@@ -397,6 +397,8 @@ class Account(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Tair (Redis OSS-Compatible) And Memcache (KVStore) Account can be imported using the id, e.g.
@@ -480,6 +482,8 @@ class Account(pulumi.CustomResource):
             account_password="YourPassword_123",
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

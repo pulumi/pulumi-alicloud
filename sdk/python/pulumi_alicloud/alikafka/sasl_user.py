@@ -23,16 +23,21 @@ class SaslUserArgs:
                  username: pulumi.Input[_builtins.str],
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SaslUser resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] username: The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
+               - SCRAM-SHA-512. This is the default value.
+               - SCRAM-SHA-256
+               > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "username", username)
@@ -40,6 +45,8 @@ class SaslUserArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if mechanism is not None:
+            pulumi.set(__self__, "mechanism", mechanism)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if type is not None:
@@ -49,7 +56,7 @@ class SaslUserArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -95,6 +102,21 @@ class SaslUserArgs:
 
     @_builtins.property
     @pulumi.getter
+    def mechanism(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The encryption method. Valid values:
+        - SCRAM-SHA-512. This is the default value.
+        - SCRAM-SHA-256
+        > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        """
+        return pulumi.get(self, "mechanism")
+
+    @mechanism.setter
+    def mechanism(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mechanism", value)
+
+    @_builtins.property
+    @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
@@ -109,7 +131,7 @@ class SaslUserArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        The authentication mechanism. Default value: `plain`. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -124,16 +146,21 @@ class _SaslUserState:
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SaslUser resources.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
+               - SCRAM-SHA-512. This is the default value.
+               - SCRAM-SHA-256
+               > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
         :param pulumi.Input[_builtins.str] username: The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         """
         if instance_id is not None:
@@ -142,6 +169,8 @@ class _SaslUserState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if mechanism is not None:
+            pulumi.set(__self__, "mechanism", mechanism)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if type is not None:
@@ -153,7 +182,7 @@ class _SaslUserState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -187,6 +216,21 @@ class _SaslUserState:
 
     @_builtins.property
     @pulumi.getter
+    def mechanism(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The encryption method. Valid values:
+        - SCRAM-SHA-512. This is the default value.
+        - SCRAM-SHA-256
+        > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        """
+        return pulumi.get(self, "mechanism")
+
+    @mechanism.setter
+    def mechanism(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mechanism", value)
+
+    @_builtins.property
+    @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
@@ -201,7 +245,7 @@ class _SaslUserState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        The authentication mechanism. Default value: `plain`. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -231,19 +275,17 @@ class SaslUser(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an Alikafka Sasl User resource.
+        Provides an AliKafka Sasl User resource.
+
+        For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         > **NOTE:** Available since v1.66.0.
-
-        > **NOTE:**  Only the following regions support create alikafka Sasl User.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         ## Example Usage
 
@@ -257,7 +299,7 @@ class SaslUser(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -292,9 +334,11 @@ class SaslUser(pulumi.CustomResource):
             password="tf_example123")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        Alikafka Sasl User can be imported using the id, e.g.
+        AliKafka Sasl User can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
@@ -302,11 +346,15 @@ class SaslUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
+               - SCRAM-SHA-512. This is the default value.
+               - SCRAM-SHA-256
+               > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
         :param pulumi.Input[_builtins.str] username: The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         """
         ...
@@ -316,14 +364,11 @@ class SaslUser(pulumi.CustomResource):
                  args: SaslUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Alikafka Sasl User resource.
+        Provides an AliKafka Sasl User resource.
+
+        For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         > **NOTE:** Available since v1.66.0.
-
-        > **NOTE:**  Only the following regions support create alikafka Sasl User.
-        [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-
-        For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         ## Example Usage
 
@@ -337,7 +382,7 @@ class SaslUser(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -372,9 +417,11 @@ class SaslUser(pulumi.CustomResource):
             password="tf_example123")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        Alikafka Sasl User can be imported using the id, e.g.
+        AliKafka Sasl User can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
@@ -398,6 +445,7 @@ class SaslUser(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mechanism: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -415,6 +463,7 @@ class SaslUser(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["mechanism"] = mechanism
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["type"] = type
             if username is None and not opts.urn:
@@ -435,6 +484,7 @@ class SaslUser(pulumi.CustomResource):
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mechanism: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             username: Optional[pulumi.Input[_builtins.str]] = None) -> 'SaslUser':
@@ -445,11 +495,15 @@ class SaslUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: ID of the ALIKAFKA Instance that owns the groups.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID.
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. You have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a user with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] mechanism: The encryption method. Valid values:
+               - SCRAM-SHA-512. This is the default value.
+               - SCRAM-SHA-256
+               > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
         :param pulumi.Input[_builtins.str] password: The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        :param pulumi.Input[_builtins.str] type: The authentication mechanism. Default value: `plain`. Valid values:
         :param pulumi.Input[_builtins.str] username: The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -459,6 +513,7 @@ class SaslUser(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["mechanism"] = mechanism
         __props__.__dict__["password"] = password
         __props__.__dict__["type"] = type
         __props__.__dict__["username"] = username
@@ -468,7 +523,7 @@ class SaslUser(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the ALIKAFKA Instance that owns the groups.
+        The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -490,7 +545,18 @@ class SaslUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def mechanism(self) -> pulumi.Output[_builtins.str]:
+        """
+        The encryption method. Valid values:
+        - SCRAM-SHA-512. This is the default value.
+        - SCRAM-SHA-256
+        > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        """
+        return pulumi.get(self, "mechanism")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[_builtins.str]:
         """
         The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
@@ -500,7 +566,7 @@ class SaslUser(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+        The authentication mechanism. Default value: `plain`. Valid values:
         """
         return pulumi.get(self, "type")
 

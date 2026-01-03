@@ -228,6 +228,8 @@ class BucketWebsite(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Website can be imported using the id, e.g.
@@ -304,6 +306,8 @@ class BucketWebsite(pulumi.CustomResource):
                 }],
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

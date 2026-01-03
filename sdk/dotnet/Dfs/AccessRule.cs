@@ -49,6 +49,8 @@ namespace Pulumi.AliCloud.Dfs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DFS Access Rule can be imported using the id, e.g.

@@ -129,6 +129,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=example_bandwidth_package.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN bandwidth package attachment resource can be imported using the id, e.g.
@@ -173,6 +175,8 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
             instance_id=example.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

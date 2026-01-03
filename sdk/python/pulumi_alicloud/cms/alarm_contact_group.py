@@ -188,6 +188,8 @@ class AlarmContactGroup(pulumi.CustomResource):
         example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CMS Alarm Contact Group can be imported using the id, e.g.
@@ -226,6 +228,8 @@ class AlarmContactGroup(pulumi.CustomResource):
 
         example = alicloud.cms.AlarmContactGroup("example", alarm_contact_group_name="tf-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

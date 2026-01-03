@@ -306,6 +306,8 @@ class DomainExtension(pulumi.CustomResource):
             server_certificate_id=domain_extension_server_certificate.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer domain_extension can be imported using the id, e.g.
@@ -433,6 +435,8 @@ class DomainExtension(pulumi.CustomResource):
             domain="www.test.com",
             server_certificate_id=domain_extension_server_certificate.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

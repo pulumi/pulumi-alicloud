@@ -47,6 +47,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Data Works Folder can be imported using the id, e.g.

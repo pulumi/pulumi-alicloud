@@ -97,6 +97,8 @@ namespace Pulumi.AliCloud.Log
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Logtial to machine group can be imported using the id, e.g.

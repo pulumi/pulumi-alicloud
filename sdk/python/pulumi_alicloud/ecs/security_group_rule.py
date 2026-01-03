@@ -524,6 +524,8 @@ class SecurityGroupRule(pulumi.CustomResource):
             cidr_ip="0.0.0.0/0")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing security-group module
@@ -592,6 +594,8 @@ class SecurityGroupRule(pulumi.CustomResource):
             security_group_id=default.id,
             cidr_ip="0.0.0.0/0")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

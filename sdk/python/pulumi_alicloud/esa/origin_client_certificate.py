@@ -21,14 +21,14 @@ class OriginClientCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[_builtins.str],
                  private_key: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a OriginClientCertificate resource.
         :param pulumi.Input[_builtins.str] certificate: The certificate content.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: The domain names to associate.
         :param pulumi.Input[_builtins.str] origin_client_certificate_name: The certificate name.
         """
@@ -66,14 +66,14 @@ class OriginClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -110,7 +110,7 @@ class _OriginClientCertificateState:
                  origin_client_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OriginClientCertificate resources.
@@ -120,7 +120,7 @@ class _OriginClientCertificateState:
         :param pulumi.Input[_builtins.str] origin_client_certificate_id: The certificate ID.
         :param pulumi.Input[_builtins.str] origin_client_certificate_name: The certificate name.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.str] status: The status of the certificate.
         """
         if certificate is not None:
@@ -214,14 +214,14 @@ class _OriginClientCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -247,7 +247,7 @@ class OriginClientCertificate(pulumi.CustomResource):
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Origin Client Certificate resource.
@@ -312,6 +312,8 @@ class OriginClientCertificate(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Origin Client Certificate can be imported using the id, e.g.
@@ -326,7 +328,7 @@ class OriginClientCertificate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: The domain names to associate.
         :param pulumi.Input[_builtins.str] origin_client_certificate_name: The certificate name.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         """
         ...
     @overload
@@ -397,6 +399,8 @@ class OriginClientCertificate(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Origin Client Certificate can be imported using the id, e.g.
@@ -424,7 +428,7 @@ class OriginClientCertificate(pulumi.CustomResource):
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,7 +470,7 @@ class OriginClientCertificate(pulumi.CustomResource):
             origin_client_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
             origin_client_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'OriginClientCertificate':
         """
         Get an existing OriginClientCertificate resource's state with the given name, id, and optional extra
@@ -481,7 +485,7 @@ class OriginClientCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] origin_client_certificate_id: The certificate ID.
         :param pulumi.Input[_builtins.str] origin_client_certificate_name: The certificate name.
         :param pulumi.Input[_builtins.str] private_key: The private key of the certificate.
-        :param pulumi.Input[_builtins.int] site_id: Site ID.
+        :param pulumi.Input[_builtins.str] site_id: Site ID.
         :param pulumi.Input[_builtins.str] status: The status of the certificate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -548,7 +552,7 @@ class OriginClientCertificate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site ID.
         """

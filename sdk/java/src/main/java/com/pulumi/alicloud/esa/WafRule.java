@@ -93,6 +93,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Waf Rule can be imported using the id, e.g.
@@ -146,17 +148,9 @@ public class WafRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> rulesetId() {
         return Codegen.optional(this.rulesetId);
     }
-    /**
-     * Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     * 
-     */
     @Export(name="shared", refs={WafRuleShared.class}, tree="[0]")
     private Output</* @Nullable */ WafRuleShared> shared;
 
-    /**
-     * @return Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     * 
-     */
     public Output<Optional<WafRuleShared>> shared() {
         return Codegen.optional(this.shared);
     }
@@ -164,27 +158,19 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
-    /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     * 
-     */
     @Export(name="siteVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> siteVersion;
 
-    /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     * 
-     */
     public Output<Optional<Integer>> siteVersion() {
         return Codegen.optional(this.siteVersion);
     }

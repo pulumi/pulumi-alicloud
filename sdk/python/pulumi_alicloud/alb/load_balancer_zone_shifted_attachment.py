@@ -222,6 +222,8 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
             load_balancer_id=default78_tiyg.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.
@@ -312,6 +314,8 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
             vswitch_id=default_dsy0_jj.id,
             load_balancer_id=default78_tiyg.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

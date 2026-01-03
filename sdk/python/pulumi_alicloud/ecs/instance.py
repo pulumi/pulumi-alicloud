@@ -3186,6 +3186,8 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3410,6 +3412,8 @@ class Instance(pulumi.CustomResource):
                 "kms_key_id": key.id,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

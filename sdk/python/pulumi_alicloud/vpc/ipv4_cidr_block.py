@@ -221,6 +221,8 @@ class Ipv4CidrBlock(pulumi.CustomResource):
             vpc_id=defaultvpc.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ipv4 Cidr Block can be imported using the id, e.g.
@@ -270,6 +272,8 @@ class Ipv4CidrBlock(pulumi.CustomResource):
             secondary_cidr_block="192.168.0.0/16",
             vpc_id=defaultvpc.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

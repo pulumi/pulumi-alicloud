@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.resourcemanager.ResourceShare("example", {resourceShareName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Resource Manager Resource Share can be imported using the id, e.g.

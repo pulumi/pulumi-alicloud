@@ -191,6 +191,8 @@ class ImageExport(pulumi.CustomResource):
             oss_prefix="ecsExport")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] image_id: The source image ID.
@@ -257,6 +259,8 @@ class ImageExport(pulumi.CustomResource):
             oss_bucket=default_bucket.id,
             oss_prefix="ecsExport")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param ImageExportArgs args: The arguments to use to populate this resource's properties.

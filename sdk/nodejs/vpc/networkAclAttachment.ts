@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class NetworkAclAttachment extends pulumi.CustomResource {
     /**

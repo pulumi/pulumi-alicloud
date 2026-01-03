@@ -269,6 +269,8 @@ class TopicSubscription(pulumi.CustomResource):
             notify_content_format="XML")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MNS Topic subscription can be imported using the id, e.g.
@@ -316,6 +318,8 @@ class TopicSubscription(pulumi.CustomResource):
             notify_strategy="BACKOFF_RETRY",
             notify_content_format="XML")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

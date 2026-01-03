@@ -221,6 +221,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * DTS Job Monitor Rule can be imported using the id, e.g.

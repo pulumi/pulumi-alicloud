@@ -134,6 +134,8 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
         default = alicloud.mongodb.PrivateSrvNetworkAddress("default", db_instance_id=default_hr_zmx_c.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Mongodb Private Srv Network Address can be imported using the id, e.g.
@@ -198,6 +200,8 @@ class PrivateSrvNetworkAddress(pulumi.CustomResource):
             zone_id=zone_id)
         default = alicloud.mongodb.PrivateSrvNetworkAddress("default", db_instance_id=default_hr_zmx_c.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

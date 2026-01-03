@@ -17,7 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB account resource and used to manage databases.
+ * Provides a Polar Db Account resource.
+ * 
+ * Database account information.
+ * 
+ * For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
  * 
  * &gt; **NOTE:** Available since v1.67.0.
  * 
@@ -93,82 +97,130 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * PolarDB account can be imported using the id, e.g.
+ * Polar Db Account can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:polardb/account:Account example &#34;pc-12345:tf_account&#34;
+ * $ pulumi import alicloud:polardb/account:Account example &lt;db_cluster_id&gt;:&lt;account_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:polardb/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
     /**
-     * Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The description of the database account.
      * 
      */
     @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
-     * @return Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * @return The description of the database account.
      * 
      */
     public Output<Optional<String>> accountDescription() {
         return Codegen.optional(this.accountDescription);
     }
     /**
-     * Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * The lock status of the account. Valid values:
+     * - `UnLock`: The account is not locked.
+     * - `Lock`: The account is locked.
+     * 
+     */
+    @Export(name="accountLockState", refs={String.class}, tree="[0]")
+    private Output<String> accountLockState;
+
+    /**
+     * @return The lock status of the account. Valid values:
+     * - `UnLock`: The account is not locked.
+     * - `Lock`: The account is locked.
+     * 
+     */
+    public Output<String> accountLockState() {
+        return this.accountLockState;
+    }
+    /**
+     * The account name. Must meet the following requirements:
+     * - Start with a lowercase letter and end with a letter or number.
+     * - Consists of lowercase letters, numbers, or underscores.
+     * - The length is 2 to 16 characters.
+     * - You cannot use some reserved usernames, such as root and admin.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+     * @return The account name. Must meet the following requirements:
+     * - Start with a lowercase letter and end with a letter or number.
+     * - Consists of lowercase letters, numbers, or underscores.
+     * - The length is 2 to 16 characters.
+     * - You cannot use some reserved usernames, such as root and admin.
      * 
      */
     public Output<String> accountName() {
         return this.accountName;
     }
     /**
-     * Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+     * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+     * - Be 8 to 32 characters in length.
+     * - Special characters include !{@literal @}#$%^&amp;*()_+-=.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
-    private Output<String> accountPassword;
+    private Output</* @Nullable */ String> accountPassword;
 
     /**
-     * @return Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+     * @return The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+     * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+     * - Be 8 to 32 characters in length.
+     * - Special characters include !{@literal @}#$%^&amp;*()_+-=.
      * 
      */
-    public Output<String> accountPassword() {
-        return this.accountPassword;
+    public Output<Optional<String>> accountPassword() {
+        return Codegen.optional(this.accountPassword);
     }
     /**
-     * Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+     * The time when the password for the database account expires.
+     * 
+     */
+    @Export(name="accountPasswordValidTime", refs={String.class}, tree="[0]")
+    private Output<String> accountPasswordValidTime;
+
+    /**
+     * @return The time when the password for the database account expires.
+     * 
+     */
+    public Output<String> accountPasswordValidTime() {
+        return this.accountPasswordValidTime;
+    }
+    /**
+     * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      * 
      */
     @Export(name="accountType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountType;
+    private Output<String> accountType;
 
     /**
-     * @return Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+     * @return The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      * 
      */
-    public Output<Optional<String>> accountType() {
-        return Codegen.optional(this.accountType);
+    public Output<String> accountType() {
+        return this.accountType;
     }
     /**
-     * The Id of cluster in which account belongs.
+     * The cluster ID.
      * 
      */
     @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
-     * @return The Id of cluster in which account belongs.
+     * @return The cluster ID.
      * 
      */
     public Output<String> dbClusterId() {
@@ -201,6 +253,20 @@ public class Account extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * (Available since v1.265.0) The status of the database account.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.265.0) The status of the database account.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

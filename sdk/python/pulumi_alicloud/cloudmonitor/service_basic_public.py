@@ -78,6 +78,8 @@ class ServiceBasicPublic(pulumi.CustomResource):
         default = alicloud.cloudmonitor.ServiceBasicPublic("default")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Basic Public can be imported using the id, e.g.
@@ -116,6 +118,8 @@ class ServiceBasicPublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceBasicPublic("default")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

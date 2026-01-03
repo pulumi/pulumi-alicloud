@@ -108,6 +108,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Resource `alicloud.rds.RdsDbProxy` should be created after `alicloud.rds.ReadOnlyInstance`, so the `DependsOn` statement is necessary.
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS database proxy feature can be imported using the id, e.g.

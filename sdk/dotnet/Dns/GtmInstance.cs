@@ -70,6 +70,8 @@ namespace Pulumi.AliCloud.Dns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Alidns Gtm Instance can be imported using the id, e.g.

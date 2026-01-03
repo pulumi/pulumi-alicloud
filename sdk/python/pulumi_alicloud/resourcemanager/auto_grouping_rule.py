@@ -491,6 +491,8 @@ class AutoGroupingRule(pulumi.CustomResource):
             rule_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Auto Grouping Rule can be imported using the id, e.g.
@@ -576,6 +578,8 @@ class AutoGroupingRule(pulumi.CustomResource):
             resource_types_scope="ecs.instance,vpc.vpc",
             rule_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

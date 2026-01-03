@@ -287,6 +287,8 @@ class MachineGroup(pulumi.CustomResource):
             machine_lists=["192.168.1.1"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Service (SLS) Machine Group can be imported using the id, e.g.
@@ -349,6 +351,8 @@ class MachineGroup(pulumi.CustomResource):
             },
             machine_lists=["192.168.1.1"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

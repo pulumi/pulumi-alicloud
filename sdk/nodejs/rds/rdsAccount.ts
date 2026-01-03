@@ -23,12 +23,18 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf_example";
  * const _default = alicloud.rds.getZones({
  *     engine: "MySQL",
- *     engineVersion: "5.6",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "local_ssd",
  * });
  * const defaultGetInstanceClasses = _default.then(_default => alicloud.rds.getInstanceClasses({
- *     zoneId: _default.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
  *     engine: "MySQL",
- *     engineVersion: "5.6",
+ *     engineVersion: "8.0",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "local_ssd",
+ *     instanceChargeType: "PostPaid",
  * }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
@@ -42,11 +48,15 @@ import * as utilities from "../utilities";
  * });
  * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[1]?.instanceClass),
- *     instanceStorage: 10,
+ *     engineVersion: "8.0",
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
+ *     instanceChargeType: "Postpaid",
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "local_ssd",
+ *     dbIsIgnoreCase: false,
  * });
  * const defaultRdsAccount = new alicloud.rds.RdsAccount("default", {
  *     dbInstanceId: defaultInstance.id,
@@ -54,6 +64,8 @@ import * as utilities from "../utilities";
  *     accountPassword: "Example1234",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -130,6 +142,10 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     declare public readonly accountType: pulumi.Output<string>;
     /**
+     * Whether to apply password policy
+     */
+    declare public readonly checkPolicy: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the instance.
      */
     declare public readonly dbInstanceId: pulumi.Output<string>;
@@ -170,9 +186,9 @@ export class RdsAccount extends pulumi.CustomResource {
      */
     declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
     /**
-     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * The status of the resource
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
@@ -199,6 +215,7 @@ export class RdsAccount extends pulumi.CustomResource {
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
             resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["checkPolicy"] = state?.checkPolicy;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -215,6 +232,7 @@ export class RdsAccount extends pulumi.CustomResource {
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["checkPolicy"] = args?.checkPolicy;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -223,8 +241,8 @@ export class RdsAccount extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["resetPermissionFlag"] = args?.resetPermissionFlag;
+            resourceInputs["status"] = args?.status;
             resourceInputs["type"] = args?.type;
-            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword", "password"] };
@@ -276,6 +294,10 @@ export interface RdsAccountState {
      */
     accountType?: pulumi.Input<string>;
     /**
+     * Whether to apply password policy
+     */
+    checkPolicy?: pulumi.Input<boolean>;
+    /**
      * The ID of the instance.
      */
     dbInstanceId?: pulumi.Input<string>;
@@ -316,7 +338,7 @@ export interface RdsAccountState {
      */
     resetPermissionFlag?: pulumi.Input<boolean>;
     /**
-     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
@@ -372,6 +394,10 @@ export interface RdsAccountArgs {
      */
     accountType?: pulumi.Input<string>;
     /**
+     * Whether to apply password policy
+     */
+    checkPolicy?: pulumi.Input<boolean>;
+    /**
      * The ID of the instance.
      */
     dbInstanceId?: pulumi.Input<string>;
@@ -411,6 +437,10 @@ export interface RdsAccountArgs {
      * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
      */
     resetPermissionFlag?: pulumi.Input<boolean>;
+    /**
+     * The status of the resource
+     */
+    status?: pulumi.Input<string>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *

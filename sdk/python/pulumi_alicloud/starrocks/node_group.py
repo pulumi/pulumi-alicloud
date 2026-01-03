@@ -802,6 +802,8 @@ class NodeGroup(pulumi.CustomResource):
             promotion_option_no="blank")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Star Rocks Node Group can be imported using the id, e.g.
@@ -937,6 +939,8 @@ class NodeGroup(pulumi.CustomResource):
             local_storage_instance_type="non_local_storage",
             promotion_option_no="blank")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

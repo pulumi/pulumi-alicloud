@@ -21,12 +21,12 @@ class EdgeContainerAppRecordArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  record_name: pulumi.Input[_builtins.str],
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgeContainerAppRecord resource.
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
-        :param pulumi.Input[_builtins.int] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "record_name", record_name)
@@ -59,14 +59,14 @@ class EdgeContainerAppRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -76,13 +76,13 @@ class _EdgeContainerAppRecordState:
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgeContainerAppRecord resources.
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] create_time: The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
-        :param pulumi.Input[_builtins.int] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -131,14 +131,14 @@ class _EdgeContainerAppRecordState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The website ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -150,7 +150,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Edge Container App Record resource.
@@ -186,7 +186,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
             health_check_type="l7",
             service_port=80,
             health_check_interval=5,
-            edge_container_app_name="terraform-app",
+            edge_container_app_name="terraform-app2",
             health_check_http_code="http_2xx",
             health_check_uri="/",
             health_check_timeout=3,
@@ -202,6 +202,8 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
             app_id=default_edge_container_app.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Edge Container App Record can be imported using the id, e.g.
@@ -214,7 +216,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
-        :param pulumi.Input[_builtins.int] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         ...
     @overload
@@ -256,7 +258,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
             health_check_type="l7",
             service_port=80,
             health_check_interval=5,
-            edge_container_app_name="terraform-app",
+            edge_container_app_name="terraform-app2",
             health_check_http_code="http_2xx",
             health_check_uri="/",
             health_check_timeout=3,
@@ -271,6 +273,8 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
             site_id=resource_site_origin_pool_test.id,
             app_id=default_edge_container_app.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -297,7 +301,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[_builtins.str]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -328,7 +332,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
             app_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             record_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'EdgeContainerAppRecord':
+            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EdgeContainerAppRecord':
         """
         Get an existing EdgeContainerAppRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -339,7 +343,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The application ID
         :param pulumi.Input[_builtins.str] create_time: The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         :param pulumi.Input[_builtins.str] record_name: The associated domain name.
-        :param pulumi.Input[_builtins.int] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -377,7 +381,7 @@ class EdgeContainerAppRecord(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The website ID.
         """

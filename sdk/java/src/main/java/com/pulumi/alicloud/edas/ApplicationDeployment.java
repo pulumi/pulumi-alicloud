@@ -148,6 +148,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:edas/applicationDeployment:ApplicationDeployment")
 public class ApplicationDeployment extends com.pulumi.resources.CustomResource {

@@ -409,6 +409,8 @@ class Disk(pulumi.CustomResource):
             ens_region_id="cn-chongqing-11")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Disk can be imported using the id, e.g.
@@ -466,6 +468,8 @@ class Disk(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             ens_region_id="cn-chongqing-11")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

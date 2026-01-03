@@ -19,6 +19,7 @@ from .milvus_instance import *
 from .msc_sub_contract import *
 from .msc_sub_subscription import *
 from .msc_sub_webhook import *
+from .open_api_explorer_api_mcp_server import *
 from .polar_db_extension import *
 from .provider import *
 from .star_rocks_instance import *
@@ -2332,6 +2333,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "config/reportTemplate",
+  "fqn": "pulumi_alicloud.config",
+  "classes": {
+   "alicloud:config/reportTemplate:ReportTemplate": "ReportTemplate"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "cr/chain",
   "fqn": "pulumi_alicloud.cr",
   "classes": {
@@ -2384,6 +2393,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cr",
   "classes": {
    "alicloud:cr/repo:Repo": "Repo"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/scanRule",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/scanRule:ScanRule": "ScanRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cr/storageDomainRoutingRule",
+  "fqn": "pulumi_alicloud.cr",
+  "classes": {
+   "alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule": "StorageDomainRoutingRule"
   }
  },
  {
@@ -2456,6 +2481,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cs",
   "classes": {
    "alicloud:cs/kubernetesPermission:KubernetesPermission": "KubernetesPermission"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "cs/kubernetesPolicyInstance",
+  "fqn": "pulumi_alicloud.cs",
+  "classes": {
+   "alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance": "KubernetesPolicyInstance"
   }
  },
  {
@@ -4044,10 +4077,26 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ehpc/clusterV2",
+  "fqn": "pulumi_alicloud.ehpc",
+  "classes": {
+   "alicloud:ehpc/clusterV2:ClusterV2": "ClusterV2"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ehpc/jobTemplate",
   "fqn": "pulumi_alicloud.ehpc",
   "classes": {
    "alicloud:ehpc/jobTemplate:JobTemplate": "JobTemplate"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ehpc/queue",
+  "fqn": "pulumi_alicloud.ehpc",
+  "classes": {
+   "alicloud:ehpc/queue:Queue": "Queue"
   }
  },
  {
@@ -4272,6 +4321,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.esa",
   "classes": {
    "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord": "EdgeContainerAppRecord"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/httpIncomingRequestHeaderModificationRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule": "HttpIncomingRequestHeaderModificationRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/httpIncomingResponseHeaderModificationRule",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/httpIncomingResponseHeaderModificationRule:HttpIncomingResponseHeaderModificationRule": "HttpIncomingResponseHeaderModificationRule"
   }
  },
  {
@@ -5388,6 +5453,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/supabaseProject",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/supabaseProject:SupabaseProject": "SupabaseProject"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "graphdatabase/dbInstance",
   "fqn": "pulumi_alicloud.graphdatabase",
   "classes": {
@@ -5608,6 +5681,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud",
   "classes": {
    "alicloud:index/mscSubWebhook:MscSubWebhook": "MscSubWebhook"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "index/openApiExplorerApiMcpServer",
+  "fqn": "pulumi_alicloud",
+  "classes": {
+   "alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer": "OpenApiExplorerApiMcpServer"
   }
  },
  {
@@ -6104,6 +6185,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.mongodb",
   "classes": {
    "alicloud:mongodb/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "mongodb/node",
+  "fqn": "pulumi_alicloud.mongodb",
+  "classes": {
+   "alicloud:mongodb/node:Node": "Node"
   }
  },
  {
@@ -6884,6 +6973,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "polardb/globalSecurityIpGroup",
+  "fqn": "pulumi_alicloud.polardb",
+  "classes": {
+   "alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup": "GlobalSecurityIpGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "polardb/parameterGroup",
   "fqn": "pulumi_alicloud.polardb",
   "classes": {
@@ -7436,10 +7533,34 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "realtimecompute/deployment",
+  "fqn": "pulumi_alicloud.realtimecompute",
+  "classes": {
+   "alicloud:realtimecompute/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "realtimecompute/job",
+  "fqn": "pulumi_alicloud.realtimecompute",
+  "classes": {
+   "alicloud:realtimecompute/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "realtimecompute/vvpInstance",
   "fqn": "pulumi_alicloud.realtimecompute",
   "classes": {
    "alicloud:realtimecompute/vvpInstance:VvpInstance": "VvpInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "redis/backup",
+  "fqn": "pulumi_alicloud.redis",
+  "classes": {
+   "alicloud:redis/backup:Backup": "Backup"
   }
  },
  {

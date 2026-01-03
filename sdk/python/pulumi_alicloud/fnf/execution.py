@@ -223,6 +223,8 @@ class Execution(pulumi.CustomResource):
             input="{\\"wait\\": 600}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless Workflow Execution can be imported using the id, e.g.
@@ -297,6 +299,8 @@ class Execution(pulumi.CustomResource):
             flow_name=default_flow.name,
             input="{\\"wait\\": 600}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -353,6 +353,8 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             cross_backup_region=regions.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS remote disaster recovery policies can be imported using id or instance id, e.g.
@@ -425,6 +427,8 @@ class RdsInstanceCrossBackupPolicy(pulumi.CustomResource):
             instance_id=default_instance.id,
             cross_backup_region=regions.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -189,6 +189,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ARMS Addon Release can be imported using the id, e.g.

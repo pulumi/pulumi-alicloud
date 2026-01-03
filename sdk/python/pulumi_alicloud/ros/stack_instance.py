@@ -393,6 +393,8 @@ class StackInstance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ROS Stack Instance can be imported using the id, e.g.
@@ -470,6 +472,8 @@ class StackInstance(pulumi.CustomResource):
                 "parameter_key": "VpcName",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

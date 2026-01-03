@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * const defaultDefaultPatchBaseline = new alicloud.oos.DefaultPatchBaseline("default", {patchBaselineName: _default.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Oos Default Patch Baseline can be imported using the id, e.g.

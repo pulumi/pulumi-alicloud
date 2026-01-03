@@ -104,6 +104,8 @@ import * as utilities from "../utilities";
  * export const outputCalicloudFcv3TriggerIntranet = alicloudFcv3Trigger["default"].httpTrigger[0].urlIntranet;
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * FCV3 Trigger can be imported using the id, e.g.

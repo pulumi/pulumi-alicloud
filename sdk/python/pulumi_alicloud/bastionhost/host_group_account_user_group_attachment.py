@@ -226,6 +226,8 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
             host_account_names=[default_host_account.host_account_name])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Host Account can be imported using the id, e.g.
@@ -305,6 +307,8 @@ class HostGroupAccountUserGroupAttachment(pulumi.CustomResource):
             host_group_id=default_host_group.host_group_id,
             host_account_names=[default_host_account.host_account_name])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

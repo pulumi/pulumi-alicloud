@@ -447,6 +447,8 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
             source_port_range="1/120")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Traffic Mirror Filter Ingress Rule can be imported using the id, e.g.
@@ -504,6 +506,8 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
             destination_port_range="1/120",
             source_port_range="1/120")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

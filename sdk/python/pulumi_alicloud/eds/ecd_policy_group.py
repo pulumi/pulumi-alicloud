@@ -720,6 +720,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Elastic Desktop Service (ECD) Policy Group can be imported using the id, e.g.
@@ -791,6 +793,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
                 "cidr_ip": "1.2.3.4/24",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

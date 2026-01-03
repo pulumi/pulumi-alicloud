@@ -398,6 +398,8 @@ class Ipv4Gateway(pulumi.CustomResource):
             vpc_id=default_network.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ipv4 Gateway can be imported using the id, e.g.
@@ -454,6 +456,8 @@ class Ipv4Gateway(pulumi.CustomResource):
             resource_group_id=default.id,
             vpc_id=default_network.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

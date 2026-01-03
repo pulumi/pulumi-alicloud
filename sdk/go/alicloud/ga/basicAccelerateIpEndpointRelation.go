@@ -147,6 +147,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.

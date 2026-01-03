@@ -270,6 +270,8 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
                 "igmpv2_support": "disable",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

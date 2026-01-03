@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GlobalSecurityIpGroup{}
 	case "alicloud:mongodb/instance:Instance":
 		r = &Instance{}
+	case "alicloud:mongodb/node:Node":
+		r = &Node{}
 	case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
 		r = &PrivateSrvNetworkAddress{}
 	case "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress":
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mongodb/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mongodb/node",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

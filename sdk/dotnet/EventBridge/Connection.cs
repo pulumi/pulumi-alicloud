@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.EventBridge
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Event Bridge Connection can be imported using the id, e.g.

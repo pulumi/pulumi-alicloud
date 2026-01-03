@@ -12,11 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
+// Provides a Polar Db Database resource.
+//
+// Manage linked databases.
+//
+// For information about Polar Db Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateDatabase).
 //
 // > **NOTE:** Available since v1.66.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -80,26 +86,38 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
-// PolarDB database can be imported using the id, e.g.
+// Polar Db Database can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+// $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>
 // ```
 type Database struct {
 	pulumi.CustomResourceState
 
-	// Account name authorized to access the database. Only supports PostgreSQL.
+	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName pulumi.StringPtrOutput `pulumi:"accountName"`
-	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
-	CharacterSetName pulumi.StringPtrOutput `pulumi:"characterSetName"`
-	// The Id of cluster that can run database.
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+	CharacterSetName pulumi.StringOutput `pulumi:"characterSetName"`
+	// The language that defines the collation rules in the database.
+	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Collate pulumi.StringPtrOutput `pulumi:"collate"`
+	// The language that indicates the character type of the database.
+	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Ctype pulumi.StringPtrOutput `pulumi:"ctype"`
+	// The ID of cluster.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
-	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
-	DbDescription pulumi.StringPtrOutput `pulumi:"dbDescription"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+	// The description of the database. The description must meet the following requirements:
+	// - It cannot start with `http://` or `https://`.
+	// - It must be 2 to 256 characters in length.
+	DbDescription pulumi.StringOutput `pulumi:"dbDescription"`
+	// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringOutput `pulumi:"dbName"`
+	// (Available since v1.265.0) The state of the database.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -138,29 +156,49 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// Account name authorized to access the database. Only supports PostgreSQL.
+	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName *string `pulumi:"accountName"`
-	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName *string `pulumi:"characterSetName"`
-	// The Id of cluster that can run database.
+	// The language that defines the collation rules in the database.
+	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Collate *string `pulumi:"collate"`
+	// The language that indicates the character type of the database.
+	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Ctype *string `pulumi:"ctype"`
+	// The ID of cluster.
 	DbClusterId *string `pulumi:"dbClusterId"`
-	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+	// The description of the database. The description must meet the following requirements:
+	// - It cannot start with `http://` or `https://`.
+	// - It must be 2 to 256 characters in length.
 	DbDescription *string `pulumi:"dbDescription"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+	// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName *string `pulumi:"dbName"`
+	// (Available since v1.265.0) The state of the database.
+	Status *string `pulumi:"status"`
 }
 
 type DatabaseState struct {
-	// Account name authorized to access the database. Only supports PostgreSQL.
+	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName pulumi.StringPtrInput
-	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName pulumi.StringPtrInput
-	// The Id of cluster that can run database.
+	// The language that defines the collation rules in the database.
+	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Collate pulumi.StringPtrInput
+	// The language that indicates the character type of the database.
+	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Ctype pulumi.StringPtrInput
+	// The ID of cluster.
 	DbClusterId pulumi.StringPtrInput
-	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+	// The description of the database. The description must meet the following requirements:
+	// - It cannot start with `http://` or `https://`.
+	// - It must be 2 to 256 characters in length.
 	DbDescription pulumi.StringPtrInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+	// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringPtrInput
+	// (Available since v1.265.0) The state of the database.
+	Status pulumi.StringPtrInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {
@@ -168,29 +206,45 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// Account name authorized to access the database. Only supports PostgreSQL.
+	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName *string `pulumi:"accountName"`
-	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName *string `pulumi:"characterSetName"`
-	// The Id of cluster that can run database.
+	// The language that defines the collation rules in the database.
+	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Collate *string `pulumi:"collate"`
+	// The language that indicates the character type of the database.
+	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Ctype *string `pulumi:"ctype"`
+	// The ID of cluster.
 	DbClusterId string `pulumi:"dbClusterId"`
-	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+	// The description of the database. The description must meet the following requirements:
+	// - It cannot start with `http://` or `https://`.
+	// - It must be 2 to 256 characters in length.
 	DbDescription *string `pulumi:"dbDescription"`
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+	// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName string `pulumi:"dbName"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// Account name authorized to access the database. Only supports PostgreSQL.
+	// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 	AccountName pulumi.StringPtrInput
-	// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
 	CharacterSetName pulumi.StringPtrInput
-	// The Id of cluster that can run database.
+	// The language that defines the collation rules in the database.
+	// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Collate pulumi.StringPtrInput
+	// The language that indicates the character type of the database.
+	// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	Ctype pulumi.StringPtrInput
+	// The ID of cluster.
 	DbClusterId pulumi.StringInput
-	// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+	// The description of the database. The description must meet the following requirements:
+	// - It cannot start with `http://` or `https://`.
+	// - It must be 2 to 256 characters in length.
 	DbDescription pulumi.StringPtrInput
-	// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+	// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 	DbName pulumi.StringInput
 }
 
@@ -281,29 +335,48 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
-// Account name authorized to access the database. Only supports PostgreSQL.
+// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
 func (o DatabaseOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
-// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`utf8mb4` only supports versions 5.5 and 5.6\).
-func (o DatabaseOutput) CharacterSetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.CharacterSetName }).(pulumi.StringPtrOutput)
+// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+func (o DatabaseOutput) CharacterSetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CharacterSetName }).(pulumi.StringOutput)
 }
 
-// The Id of cluster that can run database.
+// The language that defines the collation rules in the database.
+// > **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+func (o DatabaseOutput) Collate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Collate }).(pulumi.StringPtrOutput)
+}
+
+// The language that indicates the character type of the database.
+// > **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+func (o DatabaseOutput) Ctype() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Ctype }).(pulumi.StringPtrOutput)
+}
+
+// The ID of cluster.
 func (o DatabaseOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
 }
 
-// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
-func (o DatabaseOutput) DbDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DbDescription }).(pulumi.StringPtrOutput)
+// The description of the database. The description must meet the following requirements:
+// - It cannot start with `http://` or `https://`.
+// - It must be 2 to 256 characters in length.
+func (o DatabaseOutput) DbDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DbDescription }).(pulumi.StringOutput)
 }
 
-// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
 func (o DatabaseOutput) DbName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DbName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.265.0) The state of the database.
+func (o DatabaseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type DatabaseArrayOutput struct{ *pulumi.OutputState }

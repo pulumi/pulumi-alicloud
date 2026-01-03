@@ -106,6 +106,8 @@ class Instance(pulumi.CustomResource):
         example = alicloud.wafv3.Instance("example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Wafv3 Instance can be imported using the id, e.g.
@@ -140,6 +142,8 @@ class Instance(pulumi.CustomResource):
 
         example = alicloud.wafv3.Instance("example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

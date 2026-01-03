@@ -40,6 +40,8 @@ namespace Pulumi.AliCloud.ResourceManager
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Resource Manager Saved Query can be imported using the id, e.g.

@@ -156,6 +156,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:edas/slbAttachment:SlbAttachment")
 public class SlbAttachment extends com.pulumi.resources.CustomResource {

@@ -393,6 +393,8 @@ class ServerBackupPlan(pulumi.CustomResource):
             disabled=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Server Backup Plan can be imported using the id, e.g.
@@ -475,6 +477,8 @@ class ServerBackupPlan(pulumi.CustomResource):
             }],
             disabled=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

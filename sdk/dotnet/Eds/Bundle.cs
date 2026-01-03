@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Eds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECD Bundle can be imported using the id, e.g.

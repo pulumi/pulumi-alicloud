@@ -445,6 +445,8 @@ class NetworkAcl(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Network Acl can be imported using the id, e.g.
@@ -529,6 +531,8 @@ class NetworkAcl(pulumi.CustomResource):
                 "resource_type": "VSwitch",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

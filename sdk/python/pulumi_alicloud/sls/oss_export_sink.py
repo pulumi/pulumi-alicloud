@@ -310,6 +310,8 @@ class OssExportSink(pulumi.CustomResource):
             display_name="exampleterraform")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Service (SLS) Oss Export Sink can be imported using the id, e.g.
@@ -407,6 +409,8 @@ class OssExportSink(pulumi.CustomResource):
             job_name="export-oss-1731404933-00001",
             display_name="exampleterraform")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

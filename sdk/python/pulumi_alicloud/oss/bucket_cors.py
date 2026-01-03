@@ -177,6 +177,8 @@ class BucketCors(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Cors can be imported using the id, e.g.
@@ -235,6 +237,8 @@ class BucketCors(pulumi.CustomResource):
                 "max_age_seconds": 1000,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

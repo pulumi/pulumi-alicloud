@@ -230,6 +230,8 @@ class MonitorGroup(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Monitor Group can be imported using the id, e.g.
@@ -277,6 +279,8 @@ class MonitorGroup(pulumi.CustomResource):
                 "For": "Acceptance-example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

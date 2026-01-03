@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+// Provides a VPC Network Acl Attachment resource.
+//
+// Resources associated with network Acl.
 //
 // For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
 //
@@ -85,6 +87,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // VPC Network Acl Attachment can be imported using the id, e.g.
@@ -95,9 +99,9 @@ import (
 type VpcNetworkAclAttachment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the network ACL.
+	// The ID of the network ACL instance.
 	NetworkAclId pulumi.StringOutput `pulumi:"networkAclId"`
-	// The ID of the associated resource.
+	// The ID of the associated  vswitch instance.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The type of the associated resource. Valid values: `VSwitch`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
@@ -144,9 +148,9 @@ func GetVpcNetworkAclAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcNetworkAclAttachment resources.
 type vpcNetworkAclAttachmentState struct {
-	// The ID of the network ACL.
+	// The ID of the network ACL instance.
 	NetworkAclId *string `pulumi:"networkAclId"`
-	// The ID of the associated resource.
+	// The ID of the associated  vswitch instance.
 	ResourceId *string `pulumi:"resourceId"`
 	// The type of the associated resource. Valid values: `VSwitch`.
 	ResourceType *string `pulumi:"resourceType"`
@@ -155,9 +159,9 @@ type vpcNetworkAclAttachmentState struct {
 }
 
 type VpcNetworkAclAttachmentState struct {
-	// The ID of the network ACL.
+	// The ID of the network ACL instance.
 	NetworkAclId pulumi.StringPtrInput
-	// The ID of the associated resource.
+	// The ID of the associated  vswitch instance.
 	ResourceId pulumi.StringPtrInput
 	// The type of the associated resource. Valid values: `VSwitch`.
 	ResourceType pulumi.StringPtrInput
@@ -170,9 +174,9 @@ func (VpcNetworkAclAttachmentState) ElementType() reflect.Type {
 }
 
 type vpcNetworkAclAttachmentArgs struct {
-	// The ID of the network ACL.
+	// The ID of the network ACL instance.
 	NetworkAclId string `pulumi:"networkAclId"`
-	// The ID of the associated resource.
+	// The ID of the associated  vswitch instance.
 	ResourceId string `pulumi:"resourceId"`
 	// The type of the associated resource. Valid values: `VSwitch`.
 	ResourceType string `pulumi:"resourceType"`
@@ -180,9 +184,9 @@ type vpcNetworkAclAttachmentArgs struct {
 
 // The set of arguments for constructing a VpcNetworkAclAttachment resource.
 type VpcNetworkAclAttachmentArgs struct {
-	// The ID of the network ACL.
+	// The ID of the network ACL instance.
 	NetworkAclId pulumi.StringInput
-	// The ID of the associated resource.
+	// The ID of the associated  vswitch instance.
 	ResourceId pulumi.StringInput
 	// The type of the associated resource. Valid values: `VSwitch`.
 	ResourceType pulumi.StringInput
@@ -275,12 +279,12 @@ func (o VpcNetworkAclAttachmentOutput) ToVpcNetworkAclAttachmentOutputWithContex
 	return o
 }
 
-// The ID of the network ACL.
+// The ID of the network ACL instance.
 func (o VpcNetworkAclAttachmentOutput) NetworkAclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcNetworkAclAttachment) pulumi.StringOutput { return v.NetworkAclId }).(pulumi.StringOutput)
 }
 
-// The ID of the associated resource.
+// The ID of the associated  vswitch instance.
 func (o VpcNetworkAclAttachmentOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcNetworkAclAttachment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }

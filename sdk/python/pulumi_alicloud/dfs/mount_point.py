@@ -395,6 +395,8 @@ class MountPoint(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.
@@ -468,6 +470,8 @@ class MountPoint(pulumi.CustomResource):
             network_type="VPC",
             vswitch_id=default_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

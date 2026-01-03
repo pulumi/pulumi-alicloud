@@ -49,6 +49,8 @@ namespace Pulumi.AliCloud.Cen
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CEN bandwidth package attachment resource can be imported using the id, e.g.

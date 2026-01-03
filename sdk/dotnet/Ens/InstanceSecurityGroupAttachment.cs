@@ -66,6 +66,8 @@ namespace Pulumi.AliCloud.Ens
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ENS Instance Security Group Attachment can be imported using the id, e.g.

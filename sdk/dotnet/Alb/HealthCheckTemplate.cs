@@ -40,6 +40,8 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.

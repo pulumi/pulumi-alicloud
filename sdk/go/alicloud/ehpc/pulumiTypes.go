@@ -491,6 +491,2207 @@ func (o ClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) ClusterPos
 	}).(ClusterPostInstallScriptOutput)
 }
 
+type ClusterV2Addon struct {
+	// Customize the specific configuration information of the service component.
+	Name string `pulumi:"name"`
+	// Customize the resource configuration of the service component.
+	ResourcesSpec *string `pulumi:"resourcesSpec"`
+	// Customize the service configuration of the service component.
+	ServicesSpec *string `pulumi:"servicesSpec"`
+	// Customize the service component version.
+	Version string `pulumi:"version"`
+}
+
+// ClusterV2AddonInput is an input type that accepts ClusterV2AddonArgs and ClusterV2AddonOutput values.
+// You can construct a concrete instance of `ClusterV2AddonInput` via:
+//
+//	ClusterV2AddonArgs{...}
+type ClusterV2AddonInput interface {
+	pulumi.Input
+
+	ToClusterV2AddonOutput() ClusterV2AddonOutput
+	ToClusterV2AddonOutputWithContext(context.Context) ClusterV2AddonOutput
+}
+
+type ClusterV2AddonArgs struct {
+	// Customize the specific configuration information of the service component.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Customize the resource configuration of the service component.
+	ResourcesSpec pulumi.StringPtrInput `pulumi:"resourcesSpec"`
+	// Customize the service configuration of the service component.
+	ServicesSpec pulumi.StringPtrInput `pulumi:"servicesSpec"`
+	// Customize the service component version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ClusterV2AddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2Addon)(nil)).Elem()
+}
+
+func (i ClusterV2AddonArgs) ToClusterV2AddonOutput() ClusterV2AddonOutput {
+	return i.ToClusterV2AddonOutputWithContext(context.Background())
+}
+
+func (i ClusterV2AddonArgs) ToClusterV2AddonOutputWithContext(ctx context.Context) ClusterV2AddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2AddonOutput)
+}
+
+// ClusterV2AddonArrayInput is an input type that accepts ClusterV2AddonArray and ClusterV2AddonArrayOutput values.
+// You can construct a concrete instance of `ClusterV2AddonArrayInput` via:
+//
+//	ClusterV2AddonArray{ ClusterV2AddonArgs{...} }
+type ClusterV2AddonArrayInput interface {
+	pulumi.Input
+
+	ToClusterV2AddonArrayOutput() ClusterV2AddonArrayOutput
+	ToClusterV2AddonArrayOutputWithContext(context.Context) ClusterV2AddonArrayOutput
+}
+
+type ClusterV2AddonArray []ClusterV2AddonInput
+
+func (ClusterV2AddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2Addon)(nil)).Elem()
+}
+
+func (i ClusterV2AddonArray) ToClusterV2AddonArrayOutput() ClusterV2AddonArrayOutput {
+	return i.ToClusterV2AddonArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterV2AddonArray) ToClusterV2AddonArrayOutputWithContext(ctx context.Context) ClusterV2AddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2AddonArrayOutput)
+}
+
+type ClusterV2AddonOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2AddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2Addon)(nil)).Elem()
+}
+
+func (o ClusterV2AddonOutput) ToClusterV2AddonOutput() ClusterV2AddonOutput {
+	return o
+}
+
+func (o ClusterV2AddonOutput) ToClusterV2AddonOutputWithContext(ctx context.Context) ClusterV2AddonOutput {
+	return o
+}
+
+// Customize the specific configuration information of the service component.
+func (o ClusterV2AddonOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterV2Addon) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Customize the resource configuration of the service component.
+func (o ClusterV2AddonOutput) ResourcesSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2Addon) *string { return v.ResourcesSpec }).(pulumi.StringPtrOutput)
+}
+
+// Customize the service configuration of the service component.
+func (o ClusterV2AddonOutput) ServicesSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2Addon) *string { return v.ServicesSpec }).(pulumi.StringPtrOutput)
+}
+
+// Customize the service component version.
+func (o ClusterV2AddonOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterV2Addon) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ClusterV2AddonArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2AddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2Addon)(nil)).Elem()
+}
+
+func (o ClusterV2AddonArrayOutput) ToClusterV2AddonArrayOutput() ClusterV2AddonArrayOutput {
+	return o
+}
+
+func (o ClusterV2AddonArrayOutput) ToClusterV2AddonArrayOutputWithContext(ctx context.Context) ClusterV2AddonArrayOutput {
+	return o
+}
+
+func (o ClusterV2AddonArrayOutput) Index(i pulumi.IntInput) ClusterV2AddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2Addon {
+		return vs[0].([]ClusterV2Addon)[vs[1].(int)]
+	}).(ClusterV2AddonOutput)
+}
+
+type ClusterV2ClusterCredentials struct {
+	// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+	Password *string `pulumi:"password"`
+}
+
+// ClusterV2ClusterCredentialsInput is an input type that accepts ClusterV2ClusterCredentialsArgs and ClusterV2ClusterCredentialsOutput values.
+// You can construct a concrete instance of `ClusterV2ClusterCredentialsInput` via:
+//
+//	ClusterV2ClusterCredentialsArgs{...}
+type ClusterV2ClusterCredentialsInput interface {
+	pulumi.Input
+
+	ToClusterV2ClusterCredentialsOutput() ClusterV2ClusterCredentialsOutput
+	ToClusterV2ClusterCredentialsOutputWithContext(context.Context) ClusterV2ClusterCredentialsOutput
+}
+
+type ClusterV2ClusterCredentialsArgs struct {
+	// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+	Password pulumi.StringPtrInput `pulumi:"password"`
+}
+
+func (ClusterV2ClusterCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ClusterCredentials)(nil)).Elem()
+}
+
+func (i ClusterV2ClusterCredentialsArgs) ToClusterV2ClusterCredentialsOutput() ClusterV2ClusterCredentialsOutput {
+	return i.ToClusterV2ClusterCredentialsOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ClusterCredentialsArgs) ToClusterV2ClusterCredentialsOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ClusterCredentialsOutput)
+}
+
+func (i ClusterV2ClusterCredentialsArgs) ToClusterV2ClusterCredentialsPtrOutput() ClusterV2ClusterCredentialsPtrOutput {
+	return i.ToClusterV2ClusterCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ClusterCredentialsArgs) ToClusterV2ClusterCredentialsPtrOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ClusterCredentialsOutput).ToClusterV2ClusterCredentialsPtrOutputWithContext(ctx)
+}
+
+// ClusterV2ClusterCredentialsPtrInput is an input type that accepts ClusterV2ClusterCredentialsArgs, ClusterV2ClusterCredentialsPtr and ClusterV2ClusterCredentialsPtrOutput values.
+// You can construct a concrete instance of `ClusterV2ClusterCredentialsPtrInput` via:
+//
+//	        ClusterV2ClusterCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ClusterCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ClusterCredentialsPtrOutput() ClusterV2ClusterCredentialsPtrOutput
+	ToClusterV2ClusterCredentialsPtrOutputWithContext(context.Context) ClusterV2ClusterCredentialsPtrOutput
+}
+
+type clusterV2ClusterCredentialsPtrType ClusterV2ClusterCredentialsArgs
+
+func ClusterV2ClusterCredentialsPtr(v *ClusterV2ClusterCredentialsArgs) ClusterV2ClusterCredentialsPtrInput {
+	return (*clusterV2ClusterCredentialsPtrType)(v)
+}
+
+func (*clusterV2ClusterCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ClusterCredentials)(nil)).Elem()
+}
+
+func (i *clusterV2ClusterCredentialsPtrType) ToClusterV2ClusterCredentialsPtrOutput() ClusterV2ClusterCredentialsPtrOutput {
+	return i.ToClusterV2ClusterCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ClusterCredentialsPtrType) ToClusterV2ClusterCredentialsPtrOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ClusterCredentialsPtrOutput)
+}
+
+type ClusterV2ClusterCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ClusterCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ClusterCredentials)(nil)).Elem()
+}
+
+func (o ClusterV2ClusterCredentialsOutput) ToClusterV2ClusterCredentialsOutput() ClusterV2ClusterCredentialsOutput {
+	return o
+}
+
+func (o ClusterV2ClusterCredentialsOutput) ToClusterV2ClusterCredentialsOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsOutput {
+	return o
+}
+
+func (o ClusterV2ClusterCredentialsOutput) ToClusterV2ClusterCredentialsPtrOutput() ClusterV2ClusterCredentialsPtrOutput {
+	return o.ToClusterV2ClusterCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ClusterCredentialsOutput) ToClusterV2ClusterCredentialsPtrOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ClusterCredentials) *ClusterV2ClusterCredentials {
+		return &v
+	}).(ClusterV2ClusterCredentialsPtrOutput)
+}
+
+// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+func (o ClusterV2ClusterCredentialsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ClusterCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ClusterCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ClusterCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ClusterCredentials)(nil)).Elem()
+}
+
+func (o ClusterV2ClusterCredentialsPtrOutput) ToClusterV2ClusterCredentialsPtrOutput() ClusterV2ClusterCredentialsPtrOutput {
+	return o
+}
+
+func (o ClusterV2ClusterCredentialsPtrOutput) ToClusterV2ClusterCredentialsPtrOutputWithContext(ctx context.Context) ClusterV2ClusterCredentialsPtrOutput {
+	return o
+}
+
+func (o ClusterV2ClusterCredentialsPtrOutput) Elem() ClusterV2ClusterCredentialsOutput {
+	return o.ApplyT(func(v *ClusterV2ClusterCredentials) ClusterV2ClusterCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ClusterCredentials
+		return ret
+	}).(ClusterV2ClusterCredentialsOutput)
+}
+
+// The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+func (o ClusterV2ClusterCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ClusterCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2Manager struct {
+	// The configurations of the domain account service. See `directoryService` below.
+	DirectoryService *ClusterV2ManagerDirectoryService `pulumi:"directoryService"`
+	// The configurations of the domain name resolution service. See `dns` below.
+	Dns *ClusterV2ManagerDns `pulumi:"dns"`
+	// The hardware configurations of the management node. See `managerNode` below.
+	ManagerNode *ClusterV2ManagerManagerNode `pulumi:"managerNode"`
+	// The configurations of the scheduler service. See `scheduler` below.
+	Scheduler *ClusterV2ManagerScheduler `pulumi:"scheduler"`
+}
+
+// ClusterV2ManagerInput is an input type that accepts ClusterV2ManagerArgs and ClusterV2ManagerOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerInput` via:
+//
+//	ClusterV2ManagerArgs{...}
+type ClusterV2ManagerInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerOutput() ClusterV2ManagerOutput
+	ToClusterV2ManagerOutputWithContext(context.Context) ClusterV2ManagerOutput
+}
+
+type ClusterV2ManagerArgs struct {
+	// The configurations of the domain account service. See `directoryService` below.
+	DirectoryService ClusterV2ManagerDirectoryServicePtrInput `pulumi:"directoryService"`
+	// The configurations of the domain name resolution service. See `dns` below.
+	Dns ClusterV2ManagerDnsPtrInput `pulumi:"dns"`
+	// The hardware configurations of the management node. See `managerNode` below.
+	ManagerNode ClusterV2ManagerManagerNodePtrInput `pulumi:"managerNode"`
+	// The configurations of the scheduler service. See `scheduler` below.
+	Scheduler ClusterV2ManagerSchedulerPtrInput `pulumi:"scheduler"`
+}
+
+func (ClusterV2ManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2Manager)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerArgs) ToClusterV2ManagerOutput() ClusterV2ManagerOutput {
+	return i.ToClusterV2ManagerOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerArgs) ToClusterV2ManagerOutputWithContext(ctx context.Context) ClusterV2ManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerOutput)
+}
+
+func (i ClusterV2ManagerArgs) ToClusterV2ManagerPtrOutput() ClusterV2ManagerPtrOutput {
+	return i.ToClusterV2ManagerPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerArgs) ToClusterV2ManagerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerOutput).ToClusterV2ManagerPtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerPtrInput is an input type that accepts ClusterV2ManagerArgs, ClusterV2ManagerPtr and ClusterV2ManagerPtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerPtrInput` via:
+//
+//	        ClusterV2ManagerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerPtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerPtrOutput() ClusterV2ManagerPtrOutput
+	ToClusterV2ManagerPtrOutputWithContext(context.Context) ClusterV2ManagerPtrOutput
+}
+
+type clusterV2ManagerPtrType ClusterV2ManagerArgs
+
+func ClusterV2ManagerPtr(v *ClusterV2ManagerArgs) ClusterV2ManagerPtrInput {
+	return (*clusterV2ManagerPtrType)(v)
+}
+
+func (*clusterV2ManagerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2Manager)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerPtrType) ToClusterV2ManagerPtrOutput() ClusterV2ManagerPtrOutput {
+	return i.ToClusterV2ManagerPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerPtrType) ToClusterV2ManagerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerPtrOutput)
+}
+
+type ClusterV2ManagerOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2Manager)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerOutput) ToClusterV2ManagerOutput() ClusterV2ManagerOutput {
+	return o
+}
+
+func (o ClusterV2ManagerOutput) ToClusterV2ManagerOutputWithContext(ctx context.Context) ClusterV2ManagerOutput {
+	return o
+}
+
+func (o ClusterV2ManagerOutput) ToClusterV2ManagerPtrOutput() ClusterV2ManagerPtrOutput {
+	return o.ToClusterV2ManagerPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerOutput) ToClusterV2ManagerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2Manager) *ClusterV2Manager {
+		return &v
+	}).(ClusterV2ManagerPtrOutput)
+}
+
+// The configurations of the domain account service. See `directoryService` below.
+func (o ClusterV2ManagerOutput) DirectoryService() ClusterV2ManagerDirectoryServicePtrOutput {
+	return o.ApplyT(func(v ClusterV2Manager) *ClusterV2ManagerDirectoryService { return v.DirectoryService }).(ClusterV2ManagerDirectoryServicePtrOutput)
+}
+
+// The configurations of the domain name resolution service. See `dns` below.
+func (o ClusterV2ManagerOutput) Dns() ClusterV2ManagerDnsPtrOutput {
+	return o.ApplyT(func(v ClusterV2Manager) *ClusterV2ManagerDns { return v.Dns }).(ClusterV2ManagerDnsPtrOutput)
+}
+
+// The hardware configurations of the management node. See `managerNode` below.
+func (o ClusterV2ManagerOutput) ManagerNode() ClusterV2ManagerManagerNodePtrOutput {
+	return o.ApplyT(func(v ClusterV2Manager) *ClusterV2ManagerManagerNode { return v.ManagerNode }).(ClusterV2ManagerManagerNodePtrOutput)
+}
+
+// The configurations of the scheduler service. See `scheduler` below.
+func (o ClusterV2ManagerOutput) Scheduler() ClusterV2ManagerSchedulerPtrOutput {
+	return o.ApplyT(func(v ClusterV2Manager) *ClusterV2ManagerScheduler { return v.Scheduler }).(ClusterV2ManagerSchedulerPtrOutput)
+}
+
+type ClusterV2ManagerPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2Manager)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerPtrOutput) ToClusterV2ManagerPtrOutput() ClusterV2ManagerPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerPtrOutput) ToClusterV2ManagerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerPtrOutput) Elem() ClusterV2ManagerOutput {
+	return o.ApplyT(func(v *ClusterV2Manager) ClusterV2Manager {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2Manager
+		return ret
+	}).(ClusterV2ManagerOutput)
+}
+
+// The configurations of the domain account service. See `directoryService` below.
+func (o ClusterV2ManagerPtrOutput) DirectoryService() ClusterV2ManagerDirectoryServicePtrOutput {
+	return o.ApplyT(func(v *ClusterV2Manager) *ClusterV2ManagerDirectoryService {
+		if v == nil {
+			return nil
+		}
+		return v.DirectoryService
+	}).(ClusterV2ManagerDirectoryServicePtrOutput)
+}
+
+// The configurations of the domain name resolution service. See `dns` below.
+func (o ClusterV2ManagerPtrOutput) Dns() ClusterV2ManagerDnsPtrOutput {
+	return o.ApplyT(func(v *ClusterV2Manager) *ClusterV2ManagerDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(ClusterV2ManagerDnsPtrOutput)
+}
+
+// The hardware configurations of the management node. See `managerNode` below.
+func (o ClusterV2ManagerPtrOutput) ManagerNode() ClusterV2ManagerManagerNodePtrOutput {
+	return o.ApplyT(func(v *ClusterV2Manager) *ClusterV2ManagerManagerNode {
+		if v == nil {
+			return nil
+		}
+		return v.ManagerNode
+	}).(ClusterV2ManagerManagerNodePtrOutput)
+}
+
+// The configurations of the scheduler service. See `scheduler` below.
+func (o ClusterV2ManagerPtrOutput) Scheduler() ClusterV2ManagerSchedulerPtrOutput {
+	return o.ApplyT(func(v *ClusterV2Manager) *ClusterV2ManagerScheduler {
+		if v == nil {
+			return nil
+		}
+		return v.Scheduler
+	}).(ClusterV2ManagerSchedulerPtrOutput)
+}
+
+type ClusterV2ManagerDirectoryService struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    *string `pulumi:"type"`
+	Version *string `pulumi:"version"`
+}
+
+// ClusterV2ManagerDirectoryServiceInput is an input type that accepts ClusterV2ManagerDirectoryServiceArgs and ClusterV2ManagerDirectoryServiceOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerDirectoryServiceInput` via:
+//
+//	ClusterV2ManagerDirectoryServiceArgs{...}
+type ClusterV2ManagerDirectoryServiceInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerDirectoryServiceOutput() ClusterV2ManagerDirectoryServiceOutput
+	ToClusterV2ManagerDirectoryServiceOutputWithContext(context.Context) ClusterV2ManagerDirectoryServiceOutput
+}
+
+type ClusterV2ManagerDirectoryServiceArgs struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    pulumi.StringPtrInput `pulumi:"type"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClusterV2ManagerDirectoryServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerDirectoryService)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerDirectoryServiceArgs) ToClusterV2ManagerDirectoryServiceOutput() ClusterV2ManagerDirectoryServiceOutput {
+	return i.ToClusterV2ManagerDirectoryServiceOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerDirectoryServiceArgs) ToClusterV2ManagerDirectoryServiceOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDirectoryServiceOutput)
+}
+
+func (i ClusterV2ManagerDirectoryServiceArgs) ToClusterV2ManagerDirectoryServicePtrOutput() ClusterV2ManagerDirectoryServicePtrOutput {
+	return i.ToClusterV2ManagerDirectoryServicePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerDirectoryServiceArgs) ToClusterV2ManagerDirectoryServicePtrOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDirectoryServiceOutput).ToClusterV2ManagerDirectoryServicePtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerDirectoryServicePtrInput is an input type that accepts ClusterV2ManagerDirectoryServiceArgs, ClusterV2ManagerDirectoryServicePtr and ClusterV2ManagerDirectoryServicePtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerDirectoryServicePtrInput` via:
+//
+//	        ClusterV2ManagerDirectoryServiceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerDirectoryServicePtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerDirectoryServicePtrOutput() ClusterV2ManagerDirectoryServicePtrOutput
+	ToClusterV2ManagerDirectoryServicePtrOutputWithContext(context.Context) ClusterV2ManagerDirectoryServicePtrOutput
+}
+
+type clusterV2ManagerDirectoryServicePtrType ClusterV2ManagerDirectoryServiceArgs
+
+func ClusterV2ManagerDirectoryServicePtr(v *ClusterV2ManagerDirectoryServiceArgs) ClusterV2ManagerDirectoryServicePtrInput {
+	return (*clusterV2ManagerDirectoryServicePtrType)(v)
+}
+
+func (*clusterV2ManagerDirectoryServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerDirectoryService)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerDirectoryServicePtrType) ToClusterV2ManagerDirectoryServicePtrOutput() ClusterV2ManagerDirectoryServicePtrOutput {
+	return i.ToClusterV2ManagerDirectoryServicePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerDirectoryServicePtrType) ToClusterV2ManagerDirectoryServicePtrOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDirectoryServicePtrOutput)
+}
+
+type ClusterV2ManagerDirectoryServiceOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerDirectoryServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerDirectoryService)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerDirectoryServiceOutput) ToClusterV2ManagerDirectoryServiceOutput() ClusterV2ManagerDirectoryServiceOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDirectoryServiceOutput) ToClusterV2ManagerDirectoryServiceOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServiceOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDirectoryServiceOutput) ToClusterV2ManagerDirectoryServicePtrOutput() ClusterV2ManagerDirectoryServicePtrOutput {
+	return o.ToClusterV2ManagerDirectoryServicePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerDirectoryServiceOutput) ToClusterV2ManagerDirectoryServicePtrOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ManagerDirectoryService) *ClusterV2ManagerDirectoryService {
+		return &v
+	}).(ClusterV2ManagerDirectoryServicePtrOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerDirectoryServiceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerDirectoryService) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerDirectoryServiceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerDirectoryService) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ManagerDirectoryServicePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerDirectoryServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerDirectoryService)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerDirectoryServicePtrOutput) ToClusterV2ManagerDirectoryServicePtrOutput() ClusterV2ManagerDirectoryServicePtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDirectoryServicePtrOutput) ToClusterV2ManagerDirectoryServicePtrOutputWithContext(ctx context.Context) ClusterV2ManagerDirectoryServicePtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDirectoryServicePtrOutput) Elem() ClusterV2ManagerDirectoryServiceOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDirectoryService) ClusterV2ManagerDirectoryService {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ManagerDirectoryService
+		return ret
+	}).(ClusterV2ManagerDirectoryServiceOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerDirectoryServicePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDirectoryService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerDirectoryServicePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDirectoryService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ManagerDns struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    *string `pulumi:"type"`
+	Version *string `pulumi:"version"`
+}
+
+// ClusterV2ManagerDnsInput is an input type that accepts ClusterV2ManagerDnsArgs and ClusterV2ManagerDnsOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerDnsInput` via:
+//
+//	ClusterV2ManagerDnsArgs{...}
+type ClusterV2ManagerDnsInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerDnsOutput() ClusterV2ManagerDnsOutput
+	ToClusterV2ManagerDnsOutputWithContext(context.Context) ClusterV2ManagerDnsOutput
+}
+
+type ClusterV2ManagerDnsArgs struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    pulumi.StringPtrInput `pulumi:"type"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClusterV2ManagerDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerDns)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerDnsArgs) ToClusterV2ManagerDnsOutput() ClusterV2ManagerDnsOutput {
+	return i.ToClusterV2ManagerDnsOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerDnsArgs) ToClusterV2ManagerDnsOutputWithContext(ctx context.Context) ClusterV2ManagerDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDnsOutput)
+}
+
+func (i ClusterV2ManagerDnsArgs) ToClusterV2ManagerDnsPtrOutput() ClusterV2ManagerDnsPtrOutput {
+	return i.ToClusterV2ManagerDnsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerDnsArgs) ToClusterV2ManagerDnsPtrOutputWithContext(ctx context.Context) ClusterV2ManagerDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDnsOutput).ToClusterV2ManagerDnsPtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerDnsPtrInput is an input type that accepts ClusterV2ManagerDnsArgs, ClusterV2ManagerDnsPtr and ClusterV2ManagerDnsPtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerDnsPtrInput` via:
+//
+//	        ClusterV2ManagerDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerDnsPtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerDnsPtrOutput() ClusterV2ManagerDnsPtrOutput
+	ToClusterV2ManagerDnsPtrOutputWithContext(context.Context) ClusterV2ManagerDnsPtrOutput
+}
+
+type clusterV2ManagerDnsPtrType ClusterV2ManagerDnsArgs
+
+func ClusterV2ManagerDnsPtr(v *ClusterV2ManagerDnsArgs) ClusterV2ManagerDnsPtrInput {
+	return (*clusterV2ManagerDnsPtrType)(v)
+}
+
+func (*clusterV2ManagerDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerDns)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerDnsPtrType) ToClusterV2ManagerDnsPtrOutput() ClusterV2ManagerDnsPtrOutput {
+	return i.ToClusterV2ManagerDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerDnsPtrType) ToClusterV2ManagerDnsPtrOutputWithContext(ctx context.Context) ClusterV2ManagerDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerDnsPtrOutput)
+}
+
+type ClusterV2ManagerDnsOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerDns)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerDnsOutput) ToClusterV2ManagerDnsOutput() ClusterV2ManagerDnsOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDnsOutput) ToClusterV2ManagerDnsOutputWithContext(ctx context.Context) ClusterV2ManagerDnsOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDnsOutput) ToClusterV2ManagerDnsPtrOutput() ClusterV2ManagerDnsPtrOutput {
+	return o.ToClusterV2ManagerDnsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerDnsOutput) ToClusterV2ManagerDnsPtrOutputWithContext(ctx context.Context) ClusterV2ManagerDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ManagerDns) *ClusterV2ManagerDns {
+		return &v
+	}).(ClusterV2ManagerDnsPtrOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerDnsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerDns) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerDnsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerDns) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ManagerDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerDns)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerDnsPtrOutput) ToClusterV2ManagerDnsPtrOutput() ClusterV2ManagerDnsPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDnsPtrOutput) ToClusterV2ManagerDnsPtrOutputWithContext(ctx context.Context) ClusterV2ManagerDnsPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerDnsPtrOutput) Elem() ClusterV2ManagerDnsOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDns) ClusterV2ManagerDns {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ManagerDns
+		return ret
+	}).(ClusterV2ManagerDnsOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerDnsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerDnsPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ManagerManagerNode struct {
+	// Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+	// - true: Automatic renewal.
+	// - false: Do not renew automatically (default).
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The renewal duration of a single automatic renewal. Value range:
+	// - When PeriodUnit = Week: 1, 2, 3.
+	// - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+	//
+	// Default value: 1.
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// The duration of the preemptible instance, in hours. Value:
+	// - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+	// - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+	//
+	// Default value: 1.
+	Duration *int `pulumi:"duration"`
+	// EnableHT
+	EnableHt *bool `pulumi:"enableHt"`
+	// The expiration time of the management node.
+	ExpiredTime *string `pulumi:"expiredTime"`
+	// ImageId
+	ImageId *string `pulumi:"imageId"`
+	// The instance billing method of the management node. Valid values:
+	//
+	// - PostPaid: pay-as-you-go
+	// - PrePaid: subscription
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// The instance ID of the management node.
+	InstanceId *string `pulumi:"instanceId"`
+	// The instance type of the management node.
+	InstanceType *string `pulumi:"instanceType"`
+	// The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+	// - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+	// - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	Period *int `pulumi:"period"`
+	// The unit of duration of the year-to-month billing method. Value range:
+	// - Week.
+	// - Month (default).
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+	// - NoSpot: normal pay-as-you-go instances (default).
+	// - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+	// - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+	SpotStrategy *string `pulumi:"spotStrategy"`
+	// System disk configuration of the management node. See `systemDisk` below.
+	SystemDisk *ClusterV2ManagerManagerNodeSystemDisk `pulumi:"systemDisk"`
+}
+
+// ClusterV2ManagerManagerNodeInput is an input type that accepts ClusterV2ManagerManagerNodeArgs and ClusterV2ManagerManagerNodeOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerManagerNodeInput` via:
+//
+//	ClusterV2ManagerManagerNodeArgs{...}
+type ClusterV2ManagerManagerNodeInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerManagerNodeOutput() ClusterV2ManagerManagerNodeOutput
+	ToClusterV2ManagerManagerNodeOutputWithContext(context.Context) ClusterV2ManagerManagerNodeOutput
+}
+
+type ClusterV2ManagerManagerNodeArgs struct {
+	// Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+	// - true: Automatic renewal.
+	// - false: Do not renew automatically (default).
+	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
+	// The renewal duration of a single automatic renewal. Value range:
+	// - When PeriodUnit = Week: 1, 2, 3.
+	// - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+	//
+	// Default value: 1.
+	AutoRenewPeriod pulumi.IntPtrInput `pulumi:"autoRenewPeriod"`
+	// The duration of the preemptible instance, in hours. Value:
+	// - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+	// - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+	//
+	// Default value: 1.
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// EnableHT
+	EnableHt pulumi.BoolPtrInput `pulumi:"enableHt"`
+	// The expiration time of the management node.
+	ExpiredTime pulumi.StringPtrInput `pulumi:"expiredTime"`
+	// ImageId
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// The instance billing method of the management node. Valid values:
+	//
+	// - PostPaid: pay-as-you-go
+	// - PrePaid: subscription
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// The instance ID of the management node.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The instance type of the management node.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+	// - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+	// - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The unit of duration of the year-to-month billing method. Value range:
+	// - Week.
+	// - Month (default).
+	PeriodUnit pulumi.StringPtrInput `pulumi:"periodUnit"`
+	// Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+	SpotPriceLimit pulumi.Float64PtrInput `pulumi:"spotPriceLimit"`
+	// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+	// - NoSpot: normal pay-as-you-go instances (default).
+	// - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+	// - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
+	// System disk configuration of the management node. See `systemDisk` below.
+	SystemDisk ClusterV2ManagerManagerNodeSystemDiskPtrInput `pulumi:"systemDisk"`
+}
+
+func (ClusterV2ManagerManagerNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerManagerNode)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerManagerNodeArgs) ToClusterV2ManagerManagerNodeOutput() ClusterV2ManagerManagerNodeOutput {
+	return i.ToClusterV2ManagerManagerNodeOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerManagerNodeArgs) ToClusterV2ManagerManagerNodeOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodeOutput)
+}
+
+func (i ClusterV2ManagerManagerNodeArgs) ToClusterV2ManagerManagerNodePtrOutput() ClusterV2ManagerManagerNodePtrOutput {
+	return i.ToClusterV2ManagerManagerNodePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerManagerNodeArgs) ToClusterV2ManagerManagerNodePtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodeOutput).ToClusterV2ManagerManagerNodePtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerManagerNodePtrInput is an input type that accepts ClusterV2ManagerManagerNodeArgs, ClusterV2ManagerManagerNodePtr and ClusterV2ManagerManagerNodePtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerManagerNodePtrInput` via:
+//
+//	        ClusterV2ManagerManagerNodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerManagerNodePtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerManagerNodePtrOutput() ClusterV2ManagerManagerNodePtrOutput
+	ToClusterV2ManagerManagerNodePtrOutputWithContext(context.Context) ClusterV2ManagerManagerNodePtrOutput
+}
+
+type clusterV2ManagerManagerNodePtrType ClusterV2ManagerManagerNodeArgs
+
+func ClusterV2ManagerManagerNodePtr(v *ClusterV2ManagerManagerNodeArgs) ClusterV2ManagerManagerNodePtrInput {
+	return (*clusterV2ManagerManagerNodePtrType)(v)
+}
+
+func (*clusterV2ManagerManagerNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerManagerNode)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerManagerNodePtrType) ToClusterV2ManagerManagerNodePtrOutput() ClusterV2ManagerManagerNodePtrOutput {
+	return i.ToClusterV2ManagerManagerNodePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerManagerNodePtrType) ToClusterV2ManagerManagerNodePtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodePtrOutput)
+}
+
+type ClusterV2ManagerManagerNodeOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerManagerNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerManagerNode)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerManagerNodeOutput) ToClusterV2ManagerManagerNodeOutput() ClusterV2ManagerManagerNodeOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeOutput) ToClusterV2ManagerManagerNodeOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeOutput) ToClusterV2ManagerManagerNodePtrOutput() ClusterV2ManagerManagerNodePtrOutput {
+	return o.ToClusterV2ManagerManagerNodePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerManagerNodeOutput) ToClusterV2ManagerManagerNodePtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ManagerManagerNode) *ClusterV2ManagerManagerNode {
+		return &v
+	}).(ClusterV2ManagerManagerNodePtrOutput)
+}
+
+// Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+// - true: Automatic renewal.
+// - false: Do not renew automatically (default).
+func (o ClusterV2ManagerManagerNodeOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// The renewal duration of a single automatic renewal. Value range:
+// - When PeriodUnit = Week: 1, 2, 3.
+// - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+//
+// Default value: 1.
+func (o ClusterV2ManagerManagerNodeOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *int { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// The duration of the preemptible instance, in hours. Value:
+// - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+// - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+//
+// Default value: 1.
+func (o ClusterV2ManagerManagerNodeOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *int { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// EnableHT
+func (o ClusterV2ManagerManagerNodeOutput) EnableHt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *bool { return v.EnableHt }).(pulumi.BoolPtrOutput)
+}
+
+// The expiration time of the management node.
+func (o ClusterV2ManagerManagerNodeOutput) ExpiredTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.ExpiredTime }).(pulumi.StringPtrOutput)
+}
+
+// ImageId
+func (o ClusterV2ManagerManagerNodeOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// The instance billing method of the management node. Valid values:
+//
+// - PostPaid: pay-as-you-go
+// - PrePaid: subscription
+func (o ClusterV2ManagerManagerNodeOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// The instance ID of the management node.
+func (o ClusterV2ManagerManagerNodeOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The instance type of the management node.
+func (o ClusterV2ManagerManagerNodeOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+// - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+// - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+func (o ClusterV2ManagerManagerNodeOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The unit of duration of the year-to-month billing method. Value range:
+// - Week.
+// - Month (default).
+func (o ClusterV2ManagerManagerNodeOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+func (o ClusterV2ManagerManagerNodeOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *float64 { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+// - NoSpot: normal pay-as-you-go instances (default).
+// - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+// - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+func (o ClusterV2ManagerManagerNodeOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *string { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// System disk configuration of the management node. See `systemDisk` below.
+func (o ClusterV2ManagerManagerNodeOutput) SystemDisk() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNode) *ClusterV2ManagerManagerNodeSystemDisk { return v.SystemDisk }).(ClusterV2ManagerManagerNodeSystemDiskPtrOutput)
+}
+
+type ClusterV2ManagerManagerNodePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerManagerNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerManagerNode)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerManagerNodePtrOutput) ToClusterV2ManagerManagerNodePtrOutput() ClusterV2ManagerManagerNodePtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodePtrOutput) ToClusterV2ManagerManagerNodePtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodePtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodePtrOutput) Elem() ClusterV2ManagerManagerNodeOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) ClusterV2ManagerManagerNode {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ManagerManagerNode
+		return ret
+	}).(ClusterV2ManagerManagerNodeOutput)
+}
+
+// Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+// - true: Automatic renewal.
+// - false: Do not renew automatically (default).
+func (o ClusterV2ManagerManagerNodePtrOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRenew
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The renewal duration of a single automatic renewal. Value range:
+// - When PeriodUnit = Week: 1, 2, 3.
+// - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+//
+// Default value: 1.
+func (o ClusterV2ManagerManagerNodePtrOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoRenewPeriod
+	}).(pulumi.IntPtrOutput)
+}
+
+// The duration of the preemptible instance, in hours. Value:
+// - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+// - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+//
+// Default value: 1.
+func (o ClusterV2ManagerManagerNodePtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+// EnableHT
+func (o ClusterV2ManagerManagerNodePtrOutput) EnableHt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableHt
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The expiration time of the management node.
+func (o ClusterV2ManagerManagerNodePtrOutput) ExpiredTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpiredTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImageId
+func (o ClusterV2ManagerManagerNodePtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance billing method of the management node. Valid values:
+//
+// - PostPaid: pay-as-you-go
+// - PrePaid: subscription
+func (o ClusterV2ManagerManagerNodePtrOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceChargeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance ID of the management node.
+func (o ClusterV2ManagerManagerNodePtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance type of the management node.
+func (o ClusterV2ManagerManagerNodePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+// - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+// - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+func (o ClusterV2ManagerManagerNodePtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The unit of duration of the year-to-month billing method. Value range:
+// - Week.
+// - Month (default).
+func (o ClusterV2ManagerManagerNodePtrOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+func (o ClusterV2ManagerManagerNodePtrOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SpotPriceLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+// - NoSpot: normal pay-as-you-go instances (default).
+// - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+// - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+func (o ClusterV2ManagerManagerNodePtrOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpotStrategy
+	}).(pulumi.StringPtrOutput)
+}
+
+// System disk configuration of the management node. See `systemDisk` below.
+func (o ClusterV2ManagerManagerNodePtrOutput) SystemDisk() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNode) *ClusterV2ManagerManagerNodeSystemDisk {
+		if v == nil {
+			return nil
+		}
+		return v.SystemDisk
+	}).(ClusterV2ManagerManagerNodeSystemDiskPtrOutput)
+}
+
+type ClusterV2ManagerManagerNodeSystemDisk struct {
+	// Manage the system disk configuration of the node. Value range:
+	// - cloud_efficiency: The Ultra cloud disk.
+	// - cloud_ssd:SSD cloud disk.
+	// - cloud_essd:ESSD cloud disk.
+	// - cloud: ordinary cloud disk.
+	Category *string `pulumi:"category"`
+	// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+	// - PL0: maximum random read/write IOPS 10000 for a single disk.
+	// - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+	// - PL2: maximum random read/write IOPS 100000 for a single disk.
+	// - PL3: maximum random read/write IOPS 1 million for a single disk.
+	Level *string `pulumi:"level"`
+	// The system disk size of the management node. Unit: GiB. Value range:
+	// - Ordinary cloud tray: 20~500.
+	// - ESSD cloud disk:
+	// - PL0:1~2048.
+	// - PL1:20~2048.
+	// - PL2:461~2048.
+	// - PL3:1261~2048.
+	// - Other cloud disk types: 20~2048.
+	Size *int `pulumi:"size"`
+}
+
+// ClusterV2ManagerManagerNodeSystemDiskInput is an input type that accepts ClusterV2ManagerManagerNodeSystemDiskArgs and ClusterV2ManagerManagerNodeSystemDiskOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerManagerNodeSystemDiskInput` via:
+//
+//	ClusterV2ManagerManagerNodeSystemDiskArgs{...}
+type ClusterV2ManagerManagerNodeSystemDiskInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerManagerNodeSystemDiskOutput() ClusterV2ManagerManagerNodeSystemDiskOutput
+	ToClusterV2ManagerManagerNodeSystemDiskOutputWithContext(context.Context) ClusterV2ManagerManagerNodeSystemDiskOutput
+}
+
+type ClusterV2ManagerManagerNodeSystemDiskArgs struct {
+	// Manage the system disk configuration of the node. Value range:
+	// - cloud_efficiency: The Ultra cloud disk.
+	// - cloud_ssd:SSD cloud disk.
+	// - cloud_essd:ESSD cloud disk.
+	// - cloud: ordinary cloud disk.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+	// - PL0: maximum random read/write IOPS 10000 for a single disk.
+	// - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+	// - PL2: maximum random read/write IOPS 100000 for a single disk.
+	// - PL3: maximum random read/write IOPS 1 million for a single disk.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// The system disk size of the management node. Unit: GiB. Value range:
+	// - Ordinary cloud tray: 20~500.
+	// - ESSD cloud disk:
+	// - PL0:1~2048.
+	// - PL1:20~2048.
+	// - PL2:461~2048.
+	// - PL3:1261~2048.
+	// - Other cloud disk types: 20~2048.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (ClusterV2ManagerManagerNodeSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerManagerNodeSystemDisk)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerManagerNodeSystemDiskArgs) ToClusterV2ManagerManagerNodeSystemDiskOutput() ClusterV2ManagerManagerNodeSystemDiskOutput {
+	return i.ToClusterV2ManagerManagerNodeSystemDiskOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerManagerNodeSystemDiskArgs) ToClusterV2ManagerManagerNodeSystemDiskOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodeSystemDiskOutput)
+}
+
+func (i ClusterV2ManagerManagerNodeSystemDiskArgs) ToClusterV2ManagerManagerNodeSystemDiskPtrOutput() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return i.ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerManagerNodeSystemDiskArgs) ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodeSystemDiskOutput).ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerManagerNodeSystemDiskPtrInput is an input type that accepts ClusterV2ManagerManagerNodeSystemDiskArgs, ClusterV2ManagerManagerNodeSystemDiskPtr and ClusterV2ManagerManagerNodeSystemDiskPtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerManagerNodeSystemDiskPtrInput` via:
+//
+//	        ClusterV2ManagerManagerNodeSystemDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerManagerNodeSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerManagerNodeSystemDiskPtrOutput() ClusterV2ManagerManagerNodeSystemDiskPtrOutput
+	ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(context.Context) ClusterV2ManagerManagerNodeSystemDiskPtrOutput
+}
+
+type clusterV2ManagerManagerNodeSystemDiskPtrType ClusterV2ManagerManagerNodeSystemDiskArgs
+
+func ClusterV2ManagerManagerNodeSystemDiskPtr(v *ClusterV2ManagerManagerNodeSystemDiskArgs) ClusterV2ManagerManagerNodeSystemDiskPtrInput {
+	return (*clusterV2ManagerManagerNodeSystemDiskPtrType)(v)
+}
+
+func (*clusterV2ManagerManagerNodeSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerManagerNodeSystemDisk)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerManagerNodeSystemDiskPtrType) ToClusterV2ManagerManagerNodeSystemDiskPtrOutput() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return i.ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerManagerNodeSystemDiskPtrType) ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerManagerNodeSystemDiskPtrOutput)
+}
+
+type ClusterV2ManagerManagerNodeSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerManagerNodeSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerManagerNodeSystemDisk)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) ToClusterV2ManagerManagerNodeSystemDiskOutput() ClusterV2ManagerManagerNodeSystemDiskOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) ToClusterV2ManagerManagerNodeSystemDiskOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) ToClusterV2ManagerManagerNodeSystemDiskPtrOutput() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o.ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ManagerManagerNodeSystemDisk) *ClusterV2ManagerManagerNodeSystemDisk {
+		return &v
+	}).(ClusterV2ManagerManagerNodeSystemDiskPtrOutput)
+}
+
+// Manage the system disk configuration of the node. Value range:
+// - cloud_efficiency: The Ultra cloud disk.
+// - cloud_ssd:SSD cloud disk.
+// - cloud_essd:ESSD cloud disk.
+// - cloud: ordinary cloud disk.
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNodeSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+// - PL0: maximum random read/write IOPS 10000 for a single disk.
+// - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+// - PL2: maximum random read/write IOPS 100000 for a single disk.
+// - PL3: maximum random read/write IOPS 1 million for a single disk.
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNodeSystemDisk) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The system disk size of the management node. Unit: GiB. Value range:
+// - Ordinary cloud tray: 20~500.
+// - ESSD cloud disk:
+// - PL0:1~2048.
+// - PL1:20~2048.
+// - PL2:461~2048.
+// - PL3:1261~2048.
+// - Other cloud disk types: 20~2048.
+func (o ClusterV2ManagerManagerNodeSystemDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerManagerNodeSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type ClusterV2ManagerManagerNodeSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerManagerNodeSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerManagerNodeSystemDisk)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) ToClusterV2ManagerManagerNodeSystemDiskPtrOutput() ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) ToClusterV2ManagerManagerNodeSystemDiskPtrOutputWithContext(ctx context.Context) ClusterV2ManagerManagerNodeSystemDiskPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) Elem() ClusterV2ManagerManagerNodeSystemDiskOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNodeSystemDisk) ClusterV2ManagerManagerNodeSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ManagerManagerNodeSystemDisk
+		return ret
+	}).(ClusterV2ManagerManagerNodeSystemDiskOutput)
+}
+
+// Manage the system disk configuration of the node. Value range:
+// - cloud_efficiency: The Ultra cloud disk.
+// - cloud_ssd:SSD cloud disk.
+// - cloud_essd:ESSD cloud disk.
+// - cloud: ordinary cloud disk.
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNodeSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+// - PL0: maximum random read/write IOPS 10000 for a single disk.
+// - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+// - PL2: maximum random read/write IOPS 100000 for a single disk.
+// - PL3: maximum random read/write IOPS 1 million for a single disk.
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNodeSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system disk size of the management node. Unit: GiB. Value range:
+// - Ordinary cloud tray: 20~500.
+// - ESSD cloud disk:
+// - PL0:1~2048.
+// - PL1:20~2048.
+// - PL2:461~2048.
+// - PL3:1261~2048.
+// - Other cloud disk types: 20~2048.
+func (o ClusterV2ManagerManagerNodeSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerManagerNodeSystemDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterV2ManagerScheduler struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    *string `pulumi:"type"`
+	Version *string `pulumi:"version"`
+}
+
+// ClusterV2ManagerSchedulerInput is an input type that accepts ClusterV2ManagerSchedulerArgs and ClusterV2ManagerSchedulerOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerSchedulerInput` via:
+//
+//	ClusterV2ManagerSchedulerArgs{...}
+type ClusterV2ManagerSchedulerInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerSchedulerOutput() ClusterV2ManagerSchedulerOutput
+	ToClusterV2ManagerSchedulerOutputWithContext(context.Context) ClusterV2ManagerSchedulerOutput
+}
+
+type ClusterV2ManagerSchedulerArgs struct {
+	// The scheduler type. Valid values:
+	//
+	// - SLURM
+	// - PBS
+	// - OPENGRIDSCHEDULER
+	// - LSF_PLUGIN
+	// - PBS_PLUGIN
+	Type    pulumi.StringPtrInput `pulumi:"type"`
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClusterV2ManagerSchedulerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerScheduler)(nil)).Elem()
+}
+
+func (i ClusterV2ManagerSchedulerArgs) ToClusterV2ManagerSchedulerOutput() ClusterV2ManagerSchedulerOutput {
+	return i.ToClusterV2ManagerSchedulerOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerSchedulerArgs) ToClusterV2ManagerSchedulerOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerSchedulerOutput)
+}
+
+func (i ClusterV2ManagerSchedulerArgs) ToClusterV2ManagerSchedulerPtrOutput() ClusterV2ManagerSchedulerPtrOutput {
+	return i.ToClusterV2ManagerSchedulerPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterV2ManagerSchedulerArgs) ToClusterV2ManagerSchedulerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerSchedulerOutput).ToClusterV2ManagerSchedulerPtrOutputWithContext(ctx)
+}
+
+// ClusterV2ManagerSchedulerPtrInput is an input type that accepts ClusterV2ManagerSchedulerArgs, ClusterV2ManagerSchedulerPtr and ClusterV2ManagerSchedulerPtrOutput values.
+// You can construct a concrete instance of `ClusterV2ManagerSchedulerPtrInput` via:
+//
+//	        ClusterV2ManagerSchedulerArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterV2ManagerSchedulerPtrInput interface {
+	pulumi.Input
+
+	ToClusterV2ManagerSchedulerPtrOutput() ClusterV2ManagerSchedulerPtrOutput
+	ToClusterV2ManagerSchedulerPtrOutputWithContext(context.Context) ClusterV2ManagerSchedulerPtrOutput
+}
+
+type clusterV2ManagerSchedulerPtrType ClusterV2ManagerSchedulerArgs
+
+func ClusterV2ManagerSchedulerPtr(v *ClusterV2ManagerSchedulerArgs) ClusterV2ManagerSchedulerPtrInput {
+	return (*clusterV2ManagerSchedulerPtrType)(v)
+}
+
+func (*clusterV2ManagerSchedulerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerScheduler)(nil)).Elem()
+}
+
+func (i *clusterV2ManagerSchedulerPtrType) ToClusterV2ManagerSchedulerPtrOutput() ClusterV2ManagerSchedulerPtrOutput {
+	return i.ToClusterV2ManagerSchedulerPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterV2ManagerSchedulerPtrType) ToClusterV2ManagerSchedulerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2ManagerSchedulerPtrOutput)
+}
+
+type ClusterV2ManagerSchedulerOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerSchedulerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2ManagerScheduler)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerSchedulerOutput) ToClusterV2ManagerSchedulerOutput() ClusterV2ManagerSchedulerOutput {
+	return o
+}
+
+func (o ClusterV2ManagerSchedulerOutput) ToClusterV2ManagerSchedulerOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerOutput {
+	return o
+}
+
+func (o ClusterV2ManagerSchedulerOutput) ToClusterV2ManagerSchedulerPtrOutput() ClusterV2ManagerSchedulerPtrOutput {
+	return o.ToClusterV2ManagerSchedulerPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterV2ManagerSchedulerOutput) ToClusterV2ManagerSchedulerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterV2ManagerScheduler) *ClusterV2ManagerScheduler {
+		return &v
+	}).(ClusterV2ManagerSchedulerPtrOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerSchedulerOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerScheduler) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerSchedulerOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2ManagerScheduler) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2ManagerSchedulerPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2ManagerSchedulerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterV2ManagerScheduler)(nil)).Elem()
+}
+
+func (o ClusterV2ManagerSchedulerPtrOutput) ToClusterV2ManagerSchedulerPtrOutput() ClusterV2ManagerSchedulerPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerSchedulerPtrOutput) ToClusterV2ManagerSchedulerPtrOutputWithContext(ctx context.Context) ClusterV2ManagerSchedulerPtrOutput {
+	return o
+}
+
+func (o ClusterV2ManagerSchedulerPtrOutput) Elem() ClusterV2ManagerSchedulerOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerScheduler) ClusterV2ManagerScheduler {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterV2ManagerScheduler
+		return ret
+	}).(ClusterV2ManagerSchedulerOutput)
+}
+
+// The scheduler type. Valid values:
+//
+// - SLURM
+// - PBS
+// - OPENGRIDSCHEDULER
+// - LSF_PLUGIN
+// - PBS_PLUGIN
+func (o ClusterV2ManagerSchedulerPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerScheduler) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterV2ManagerSchedulerPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterV2ManagerScheduler) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2SharedStorage struct {
+	// The ID of the mounted file system.
+	FileSystemId *string `pulumi:"fileSystemId"`
+	// The local Mount directory where the file system is mounted.
+	MountDirectory *string `pulumi:"mountDirectory"`
+	// Storage mount options for the mounted file system.
+	MountOptions *string `pulumi:"mountOptions"`
+	// The mount point address of the mounted file system.
+	MountTargetDomain *string `pulumi:"mountTargetDomain"`
+	// The remote directory to which the mounted file system needs to be mounted.
+	NasDirectory *string `pulumi:"nasDirectory"`
+	// The protocol type of the mounted file system. Value range:
+	// - NFS
+	// - SMB
+	ProtocolType *string `pulumi:"protocolType"`
+}
+
+// ClusterV2SharedStorageInput is an input type that accepts ClusterV2SharedStorageArgs and ClusterV2SharedStorageOutput values.
+// You can construct a concrete instance of `ClusterV2SharedStorageInput` via:
+//
+//	ClusterV2SharedStorageArgs{...}
+type ClusterV2SharedStorageInput interface {
+	pulumi.Input
+
+	ToClusterV2SharedStorageOutput() ClusterV2SharedStorageOutput
+	ToClusterV2SharedStorageOutputWithContext(context.Context) ClusterV2SharedStorageOutput
+}
+
+type ClusterV2SharedStorageArgs struct {
+	// The ID of the mounted file system.
+	FileSystemId pulumi.StringPtrInput `pulumi:"fileSystemId"`
+	// The local Mount directory where the file system is mounted.
+	MountDirectory pulumi.StringPtrInput `pulumi:"mountDirectory"`
+	// Storage mount options for the mounted file system.
+	MountOptions pulumi.StringPtrInput `pulumi:"mountOptions"`
+	// The mount point address of the mounted file system.
+	MountTargetDomain pulumi.StringPtrInput `pulumi:"mountTargetDomain"`
+	// The remote directory to which the mounted file system needs to be mounted.
+	NasDirectory pulumi.StringPtrInput `pulumi:"nasDirectory"`
+	// The protocol type of the mounted file system. Value range:
+	// - NFS
+	// - SMB
+	ProtocolType pulumi.StringPtrInput `pulumi:"protocolType"`
+}
+
+func (ClusterV2SharedStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2SharedStorage)(nil)).Elem()
+}
+
+func (i ClusterV2SharedStorageArgs) ToClusterV2SharedStorageOutput() ClusterV2SharedStorageOutput {
+	return i.ToClusterV2SharedStorageOutputWithContext(context.Background())
+}
+
+func (i ClusterV2SharedStorageArgs) ToClusterV2SharedStorageOutputWithContext(ctx context.Context) ClusterV2SharedStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2SharedStorageOutput)
+}
+
+// ClusterV2SharedStorageArrayInput is an input type that accepts ClusterV2SharedStorageArray and ClusterV2SharedStorageArrayOutput values.
+// You can construct a concrete instance of `ClusterV2SharedStorageArrayInput` via:
+//
+//	ClusterV2SharedStorageArray{ ClusterV2SharedStorageArgs{...} }
+type ClusterV2SharedStorageArrayInput interface {
+	pulumi.Input
+
+	ToClusterV2SharedStorageArrayOutput() ClusterV2SharedStorageArrayOutput
+	ToClusterV2SharedStorageArrayOutputWithContext(context.Context) ClusterV2SharedStorageArrayOutput
+}
+
+type ClusterV2SharedStorageArray []ClusterV2SharedStorageInput
+
+func (ClusterV2SharedStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2SharedStorage)(nil)).Elem()
+}
+
+func (i ClusterV2SharedStorageArray) ToClusterV2SharedStorageArrayOutput() ClusterV2SharedStorageArrayOutput {
+	return i.ToClusterV2SharedStorageArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterV2SharedStorageArray) ToClusterV2SharedStorageArrayOutputWithContext(ctx context.Context) ClusterV2SharedStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2SharedStorageArrayOutput)
+}
+
+type ClusterV2SharedStorageOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2SharedStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2SharedStorage)(nil)).Elem()
+}
+
+func (o ClusterV2SharedStorageOutput) ToClusterV2SharedStorageOutput() ClusterV2SharedStorageOutput {
+	return o
+}
+
+func (o ClusterV2SharedStorageOutput) ToClusterV2SharedStorageOutputWithContext(ctx context.Context) ClusterV2SharedStorageOutput {
+	return o
+}
+
+// The ID of the mounted file system.
+func (o ClusterV2SharedStorageOutput) FileSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.FileSystemId }).(pulumi.StringPtrOutput)
+}
+
+// The local Mount directory where the file system is mounted.
+func (o ClusterV2SharedStorageOutput) MountDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.MountDirectory }).(pulumi.StringPtrOutput)
+}
+
+// Storage mount options for the mounted file system.
+func (o ClusterV2SharedStorageOutput) MountOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
+}
+
+// The mount point address of the mounted file system.
+func (o ClusterV2SharedStorageOutput) MountTargetDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.MountTargetDomain }).(pulumi.StringPtrOutput)
+}
+
+// The remote directory to which the mounted file system needs to be mounted.
+func (o ClusterV2SharedStorageOutput) NasDirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.NasDirectory }).(pulumi.StringPtrOutput)
+}
+
+// The protocol type of the mounted file system. Value range:
+// - NFS
+// - SMB
+func (o ClusterV2SharedStorageOutput) ProtocolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2SharedStorage) *string { return v.ProtocolType }).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2SharedStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2SharedStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2SharedStorage)(nil)).Elem()
+}
+
+func (o ClusterV2SharedStorageArrayOutput) ToClusterV2SharedStorageArrayOutput() ClusterV2SharedStorageArrayOutput {
+	return o
+}
+
+func (o ClusterV2SharedStorageArrayOutput) ToClusterV2SharedStorageArrayOutputWithContext(ctx context.Context) ClusterV2SharedStorageArrayOutput {
+	return o
+}
+
+func (o ClusterV2SharedStorageArrayOutput) Index(i pulumi.IntInput) ClusterV2SharedStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2SharedStorage {
+		return vs[0].([]ClusterV2SharedStorage)[vs[1].(int)]
+	}).(ClusterV2SharedStorageOutput)
+}
+
+type QueueComputeNode struct {
+	// AutoRenew
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// AutoRenewPeriod
+	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
+	// Duration
+	Duration *int `pulumi:"duration"`
+	// Whether HT is enabled for the computing node.
+	EnableHt *bool `pulumi:"enableHt"`
+	// ImageId
+	ImageId *string `pulumi:"imageId"`
+	// InstanceChargeType
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// InstanceTypes
+	InstanceType *string `pulumi:"instanceType"`
+	// Period
+	Period *int `pulumi:"period"`
+	// PeriodUnit
+	PeriodUnit *string `pulumi:"periodUnit"`
+	// SpotPriceLimit
+	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
+	// SpotStrategy
+	SpotStrategy *string `pulumi:"spotStrategy"`
+	// SystemDisk See `systemDisk` below.
+	SystemDisk *QueueComputeNodeSystemDisk `pulumi:"systemDisk"`
+}
+
+// QueueComputeNodeInput is an input type that accepts QueueComputeNodeArgs and QueueComputeNodeOutput values.
+// You can construct a concrete instance of `QueueComputeNodeInput` via:
+//
+//	QueueComputeNodeArgs{...}
+type QueueComputeNodeInput interface {
+	pulumi.Input
+
+	ToQueueComputeNodeOutput() QueueComputeNodeOutput
+	ToQueueComputeNodeOutputWithContext(context.Context) QueueComputeNodeOutput
+}
+
+type QueueComputeNodeArgs struct {
+	// AutoRenew
+	AutoRenew pulumi.BoolPtrInput `pulumi:"autoRenew"`
+	// AutoRenewPeriod
+	AutoRenewPeriod pulumi.IntPtrInput `pulumi:"autoRenewPeriod"`
+	// Duration
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// Whether HT is enabled for the computing node.
+	EnableHt pulumi.BoolPtrInput `pulumi:"enableHt"`
+	// ImageId
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// InstanceChargeType
+	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// InstanceTypes
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Period
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// PeriodUnit
+	PeriodUnit pulumi.StringPtrInput `pulumi:"periodUnit"`
+	// SpotPriceLimit
+	SpotPriceLimit pulumi.Float64PtrInput `pulumi:"spotPriceLimit"`
+	// SpotStrategy
+	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
+	// SystemDisk See `systemDisk` below.
+	SystemDisk QueueComputeNodeSystemDiskPtrInput `pulumi:"systemDisk"`
+}
+
+func (QueueComputeNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueComputeNode)(nil)).Elem()
+}
+
+func (i QueueComputeNodeArgs) ToQueueComputeNodeOutput() QueueComputeNodeOutput {
+	return i.ToQueueComputeNodeOutputWithContext(context.Background())
+}
+
+func (i QueueComputeNodeArgs) ToQueueComputeNodeOutputWithContext(ctx context.Context) QueueComputeNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueComputeNodeOutput)
+}
+
+// QueueComputeNodeArrayInput is an input type that accepts QueueComputeNodeArray and QueueComputeNodeArrayOutput values.
+// You can construct a concrete instance of `QueueComputeNodeArrayInput` via:
+//
+//	QueueComputeNodeArray{ QueueComputeNodeArgs{...} }
+type QueueComputeNodeArrayInput interface {
+	pulumi.Input
+
+	ToQueueComputeNodeArrayOutput() QueueComputeNodeArrayOutput
+	ToQueueComputeNodeArrayOutputWithContext(context.Context) QueueComputeNodeArrayOutput
+}
+
+type QueueComputeNodeArray []QueueComputeNodeInput
+
+func (QueueComputeNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueueComputeNode)(nil)).Elem()
+}
+
+func (i QueueComputeNodeArray) ToQueueComputeNodeArrayOutput() QueueComputeNodeArrayOutput {
+	return i.ToQueueComputeNodeArrayOutputWithContext(context.Background())
+}
+
+func (i QueueComputeNodeArray) ToQueueComputeNodeArrayOutputWithContext(ctx context.Context) QueueComputeNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueComputeNodeArrayOutput)
+}
+
+type QueueComputeNodeOutput struct{ *pulumi.OutputState }
+
+func (QueueComputeNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueComputeNode)(nil)).Elem()
+}
+
+func (o QueueComputeNodeOutput) ToQueueComputeNodeOutput() QueueComputeNodeOutput {
+	return o
+}
+
+func (o QueueComputeNodeOutput) ToQueueComputeNodeOutputWithContext(ctx context.Context) QueueComputeNodeOutput {
+	return o
+}
+
+// AutoRenew
+func (o QueueComputeNodeOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *bool { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
+// AutoRenewPeriod
+func (o QueueComputeNodeOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *int { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Duration
+func (o QueueComputeNodeOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *int { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// Whether HT is enabled for the computing node.
+func (o QueueComputeNodeOutput) EnableHt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *bool { return v.EnableHt }).(pulumi.BoolPtrOutput)
+}
+
+// ImageId
+func (o QueueComputeNodeOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// InstanceChargeType
+func (o QueueComputeNodeOutput) InstanceChargeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+// InstanceTypes
+func (o QueueComputeNodeOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Period
+func (o QueueComputeNodeOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// PeriodUnit
+func (o QueueComputeNodeOutput) PeriodUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *string { return v.PeriodUnit }).(pulumi.StringPtrOutput)
+}
+
+// SpotPriceLimit
+func (o QueueComputeNodeOutput) SpotPriceLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *float64 { return v.SpotPriceLimit }).(pulumi.Float64PtrOutput)
+}
+
+// SpotStrategy
+func (o QueueComputeNodeOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *string { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
+// SystemDisk See `systemDisk` below.
+func (o QueueComputeNodeOutput) SystemDisk() QueueComputeNodeSystemDiskPtrOutput {
+	return o.ApplyT(func(v QueueComputeNode) *QueueComputeNodeSystemDisk { return v.SystemDisk }).(QueueComputeNodeSystemDiskPtrOutput)
+}
+
+type QueueComputeNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (QueueComputeNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueueComputeNode)(nil)).Elem()
+}
+
+func (o QueueComputeNodeArrayOutput) ToQueueComputeNodeArrayOutput() QueueComputeNodeArrayOutput {
+	return o
+}
+
+func (o QueueComputeNodeArrayOutput) ToQueueComputeNodeArrayOutputWithContext(ctx context.Context) QueueComputeNodeArrayOutput {
+	return o
+}
+
+func (o QueueComputeNodeArrayOutput) Index(i pulumi.IntInput) QueueComputeNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueueComputeNode {
+		return vs[0].([]QueueComputeNode)[vs[1].(int)]
+	}).(QueueComputeNodeOutput)
+}
+
+type QueueComputeNodeSystemDisk struct {
+	// Category
+	Category *string `pulumi:"category"`
+	// Level
+	Level *string `pulumi:"level"`
+	// Size
+	Size *int `pulumi:"size"`
+}
+
+// QueueComputeNodeSystemDiskInput is an input type that accepts QueueComputeNodeSystemDiskArgs and QueueComputeNodeSystemDiskOutput values.
+// You can construct a concrete instance of `QueueComputeNodeSystemDiskInput` via:
+//
+//	QueueComputeNodeSystemDiskArgs{...}
+type QueueComputeNodeSystemDiskInput interface {
+	pulumi.Input
+
+	ToQueueComputeNodeSystemDiskOutput() QueueComputeNodeSystemDiskOutput
+	ToQueueComputeNodeSystemDiskOutputWithContext(context.Context) QueueComputeNodeSystemDiskOutput
+}
+
+type QueueComputeNodeSystemDiskArgs struct {
+	// Category
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Level
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// Size
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (QueueComputeNodeSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueComputeNodeSystemDisk)(nil)).Elem()
+}
+
+func (i QueueComputeNodeSystemDiskArgs) ToQueueComputeNodeSystemDiskOutput() QueueComputeNodeSystemDiskOutput {
+	return i.ToQueueComputeNodeSystemDiskOutputWithContext(context.Background())
+}
+
+func (i QueueComputeNodeSystemDiskArgs) ToQueueComputeNodeSystemDiskOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueComputeNodeSystemDiskOutput)
+}
+
+func (i QueueComputeNodeSystemDiskArgs) ToQueueComputeNodeSystemDiskPtrOutput() QueueComputeNodeSystemDiskPtrOutput {
+	return i.ToQueueComputeNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i QueueComputeNodeSystemDiskArgs) ToQueueComputeNodeSystemDiskPtrOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueComputeNodeSystemDiskOutput).ToQueueComputeNodeSystemDiskPtrOutputWithContext(ctx)
+}
+
+// QueueComputeNodeSystemDiskPtrInput is an input type that accepts QueueComputeNodeSystemDiskArgs, QueueComputeNodeSystemDiskPtr and QueueComputeNodeSystemDiskPtrOutput values.
+// You can construct a concrete instance of `QueueComputeNodeSystemDiskPtrInput` via:
+//
+//	        QueueComputeNodeSystemDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueComputeNodeSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToQueueComputeNodeSystemDiskPtrOutput() QueueComputeNodeSystemDiskPtrOutput
+	ToQueueComputeNodeSystemDiskPtrOutputWithContext(context.Context) QueueComputeNodeSystemDiskPtrOutput
+}
+
+type queueComputeNodeSystemDiskPtrType QueueComputeNodeSystemDiskArgs
+
+func QueueComputeNodeSystemDiskPtr(v *QueueComputeNodeSystemDiskArgs) QueueComputeNodeSystemDiskPtrInput {
+	return (*queueComputeNodeSystemDiskPtrType)(v)
+}
+
+func (*queueComputeNodeSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueComputeNodeSystemDisk)(nil)).Elem()
+}
+
+func (i *queueComputeNodeSystemDiskPtrType) ToQueueComputeNodeSystemDiskPtrOutput() QueueComputeNodeSystemDiskPtrOutput {
+	return i.ToQueueComputeNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *queueComputeNodeSystemDiskPtrType) ToQueueComputeNodeSystemDiskPtrOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueComputeNodeSystemDiskPtrOutput)
+}
+
+type QueueComputeNodeSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (QueueComputeNodeSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueComputeNodeSystemDisk)(nil)).Elem()
+}
+
+func (o QueueComputeNodeSystemDiskOutput) ToQueueComputeNodeSystemDiskOutput() QueueComputeNodeSystemDiskOutput {
+	return o
+}
+
+func (o QueueComputeNodeSystemDiskOutput) ToQueueComputeNodeSystemDiskOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskOutput {
+	return o
+}
+
+func (o QueueComputeNodeSystemDiskOutput) ToQueueComputeNodeSystemDiskPtrOutput() QueueComputeNodeSystemDiskPtrOutput {
+	return o.ToQueueComputeNodeSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o QueueComputeNodeSystemDiskOutput) ToQueueComputeNodeSystemDiskPtrOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueComputeNodeSystemDisk) *QueueComputeNodeSystemDisk {
+		return &v
+	}).(QueueComputeNodeSystemDiskPtrOutput)
+}
+
+// Category
+func (o QueueComputeNodeSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNodeSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Level
+func (o QueueComputeNodeSystemDiskOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueComputeNodeSystemDisk) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// Size
+func (o QueueComputeNodeSystemDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v QueueComputeNodeSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type QueueComputeNodeSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueComputeNodeSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueComputeNodeSystemDisk)(nil)).Elem()
+}
+
+func (o QueueComputeNodeSystemDiskPtrOutput) ToQueueComputeNodeSystemDiskPtrOutput() QueueComputeNodeSystemDiskPtrOutput {
+	return o
+}
+
+func (o QueueComputeNodeSystemDiskPtrOutput) ToQueueComputeNodeSystemDiskPtrOutputWithContext(ctx context.Context) QueueComputeNodeSystemDiskPtrOutput {
+	return o
+}
+
+func (o QueueComputeNodeSystemDiskPtrOutput) Elem() QueueComputeNodeSystemDiskOutput {
+	return o.ApplyT(func(v *QueueComputeNodeSystemDisk) QueueComputeNodeSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret QueueComputeNodeSystemDisk
+		return ret
+	}).(QueueComputeNodeSystemDiskOutput)
+}
+
+// Category
+func (o QueueComputeNodeSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueComputeNodeSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// Level
+func (o QueueComputeNodeSystemDiskPtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueComputeNodeSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size
+func (o QueueComputeNodeSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QueueComputeNodeSystemDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetClustersCluster struct {
 	// The server type of the account.
 	AccountType string `pulumi:"accountType"`
@@ -1353,6 +3554,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterApplicationArrayInput)(nil)).Elem(), ClusterApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPostInstallScriptInput)(nil)).Elem(), ClusterPostInstallScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPostInstallScriptArrayInput)(nil)).Elem(), ClusterPostInstallScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2AddonInput)(nil)).Elem(), ClusterV2AddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2AddonArrayInput)(nil)).Elem(), ClusterV2AddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ClusterCredentialsInput)(nil)).Elem(), ClusterV2ClusterCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ClusterCredentialsPtrInput)(nil)).Elem(), ClusterV2ClusterCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerInput)(nil)).Elem(), ClusterV2ManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerPtrInput)(nil)).Elem(), ClusterV2ManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerDirectoryServiceInput)(nil)).Elem(), ClusterV2ManagerDirectoryServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerDirectoryServicePtrInput)(nil)).Elem(), ClusterV2ManagerDirectoryServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerDnsInput)(nil)).Elem(), ClusterV2ManagerDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerDnsPtrInput)(nil)).Elem(), ClusterV2ManagerDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerManagerNodeInput)(nil)).Elem(), ClusterV2ManagerManagerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerManagerNodePtrInput)(nil)).Elem(), ClusterV2ManagerManagerNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerManagerNodeSystemDiskInput)(nil)).Elem(), ClusterV2ManagerManagerNodeSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerManagerNodeSystemDiskPtrInput)(nil)).Elem(), ClusterV2ManagerManagerNodeSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerSchedulerInput)(nil)).Elem(), ClusterV2ManagerSchedulerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2ManagerSchedulerPtrInput)(nil)).Elem(), ClusterV2ManagerSchedulerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2SharedStorageInput)(nil)).Elem(), ClusterV2SharedStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2SharedStorageArrayInput)(nil)).Elem(), ClusterV2SharedStorageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueComputeNodeInput)(nil)).Elem(), QueueComputeNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueComputeNodeArrayInput)(nil)).Elem(), QueueComputeNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueComputeNodeSystemDiskInput)(nil)).Elem(), QueueComputeNodeSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueComputeNodeSystemDiskPtrInput)(nil)).Elem(), QueueComputeNodeSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterInput)(nil)).Elem(), GetClustersClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterArrayInput)(nil)).Elem(), GetClustersClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClustersClusterApplicationInput)(nil)).Elem(), GetClustersClusterApplicationArgs{})
@@ -1369,6 +3592,28 @@ func init() {
 	pulumi.RegisterOutputType(ClusterApplicationArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPostInstallScriptOutput{})
 	pulumi.RegisterOutputType(ClusterPostInstallScriptArrayOutput{})
+	pulumi.RegisterOutputType(ClusterV2AddonOutput{})
+	pulumi.RegisterOutputType(ClusterV2AddonArrayOutput{})
+	pulumi.RegisterOutputType(ClusterV2ClusterCredentialsOutput{})
+	pulumi.RegisterOutputType(ClusterV2ClusterCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerPtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerDirectoryServiceOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerDirectoryServicePtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerDnsOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerDnsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerManagerNodeOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerManagerNodePtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerManagerNodeSystemDiskOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerManagerNodeSystemDiskPtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerSchedulerOutput{})
+	pulumi.RegisterOutputType(ClusterV2ManagerSchedulerPtrOutput{})
+	pulumi.RegisterOutputType(ClusterV2SharedStorageOutput{})
+	pulumi.RegisterOutputType(ClusterV2SharedStorageArrayOutput{})
+	pulumi.RegisterOutputType(QueueComputeNodeOutput{})
+	pulumi.RegisterOutputType(QueueComputeNodeArrayOutput{})
+	pulumi.RegisterOutputType(QueueComputeNodeSystemDiskOutput{})
+	pulumi.RegisterOutputType(QueueComputeNodeSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetClustersClusterApplicationOutput{})

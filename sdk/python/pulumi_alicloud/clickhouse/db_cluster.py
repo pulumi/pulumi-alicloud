@@ -931,6 +931,8 @@ class DbCluster(pulumi.CustomResource):
             resource_group_id=default.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House DBCluster can be imported using the id, e.g.
@@ -1020,6 +1022,8 @@ class DbCluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             resource_group_id=default.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

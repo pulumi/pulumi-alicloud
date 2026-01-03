@@ -63,6 +63,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // DdosCoo Instance can be imported using the id, e.g.

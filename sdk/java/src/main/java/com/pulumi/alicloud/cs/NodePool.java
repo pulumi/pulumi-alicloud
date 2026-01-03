@@ -6,8 +6,11 @@ package com.pulumi.alicloud.cs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.cs.NodePoolArgs;
 import com.pulumi.alicloud.cs.inputs.NodePoolState;
+import com.pulumi.alicloud.cs.outputs.NodePoolAutoMode;
 import com.pulumi.alicloud.cs.outputs.NodePoolDataDisk;
 import com.pulumi.alicloud.cs.outputs.NodePoolEfloNodeGroup;
+import com.pulumi.alicloud.cs.outputs.NodePoolInstanceMetadataOptions;
+import com.pulumi.alicloud.cs.outputs.NodePoolInstancePattern;
 import com.pulumi.alicloud.cs.outputs.NodePoolKubeletConfiguration;
 import com.pulumi.alicloud.cs.outputs.NodePoolLabel;
 import com.pulumi.alicloud.cs.outputs.NodePoolManagement;
@@ -30,291 +33,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetEnhancedNatAvailableZonesArgs;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.cs.ManagedKubernetes;
- * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.CidrsubnetArgs;
- * import com.pulumi.alicloud.ecs.KeyPair;
- * import com.pulumi.alicloud.ecs.KeyPairArgs;
- * import com.pulumi.alicloud.cs.NodePool;
- * import com.pulumi.alicloud.cs.NodePoolArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolLabelArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolTaintArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoRepairPolicyArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoUpgradePolicyArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolManagementAutoVulFixPolicyArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolScalingConfigArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolKubeletConfigurationArgs;
- * import com.pulumi.alicloud.cs.inputs.NodePoolRollingPolicyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .max(99999)
- *             .min(10000)
- *             .build());
- * 
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var enhanced = VpcFunctions.getEnhancedNatAvailableZones(GetEnhancedNatAvailableZonesArgs.builder()
- *             .build());
- * 
- *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(enhanced.zones()[0].zoneId())
- *             .cpuCoreCount(4)
- *             .memorySize(8)
- *             .kubernetesNodeRole("Worker")
- *             .systemDiskCategory("cloud_efficiency")
- *             .build());
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("10.4.0.0/16")
- *             .build());
- * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName(name)
- *             .cidrBlock("10.4.0.0/24")
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(enhanced.zones()[0].zoneId())
- *             .build());
- * 
- *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
- *             .namePrefix(String.format("terraform-example-%s", default_.result()))
- *             .clusterSpec("ack.pro.small")
- *             .workerVswitchIds(defaultSwitch.id())
- *             .newNatGateway(true)
- *             .podCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                 .input("10.0.0.0/8")
- *                 .newbits(8)
- *                 .netnum(36)
- *                 .build()).result())
- *             .serviceCidr(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                 .input("172.16.0.0/16")
- *                 .newbits(4)
- *                 .netnum(7)
- *                 .build()).result())
- *             .slbInternetEnabled(true)
- *             .enableRrsa(true)
- *             .build());
- * 
- *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
- *             .keyPairName(String.format("terraform-example-%s", default_.result()))
- *             .build());
- * 
- *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
- *             .nodePoolName(name)
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .labels(            
- *                 NodePoolLabelArgs.builder()
- *                     .key("test1")
- *                     .value("nodepool")
- *                     .build(),
- *                 NodePoolLabelArgs.builder()
- *                     .key("test2")
- *                     .value("nodepool")
- *                     .build())
- *             .taints(            
- *                 NodePoolTaintArgs.builder()
- *                     .key("tf")
- *                     .effect("NoSchedule")
- *                     .value("example")
- *                     .build(),
- *                 NodePoolTaintArgs.builder()
- *                     .key("tf2")
- *                     .effect("NoSchedule")
- *                     .value("example2")
- *                     .build())
- *             .build());
- * 
- *         //The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
- *         var desiredSize = new NodePool("desiredSize", NodePoolArgs.builder()
- *             .nodePoolName("desired_size")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .desiredSize("0")
- *             .build());
- * 
- *         // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
- *         var maintenance = new NodePool("maintenance", NodePoolArgs.builder()
- *             .nodePoolName("maintenance")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .desiredSize("1")
- *             .management(NodePoolManagementArgs.builder()
- *                 .enable(true)
- *                 .autoRepair(true)
- *                 .autoRepairPolicy(NodePoolManagementAutoRepairPolicyArgs.builder()
- *                     .restartNode(true)
- *                     .build())
- *                 .autoUpgrade(true)
- *                 .autoUpgradePolicy(NodePoolManagementAutoUpgradePolicyArgs.builder()
- *                     .autoUpgradeKubelet(true)
- *                     .build())
- *                 .autoVulFix(true)
- *                 .autoVulFixPolicy(NodePoolManagementAutoVulFixPolicyArgs.builder()
- *                     .vulLevel("asap")
- *                     .restartNode(true)
- *                     .build())
- *                 .maxUnavailable(1)
- *                 .build())
- *             .build());
- * 
- *         //Create a node pool with spot instance.
- *         var spotInstance = new NodePool("spotInstance", NodePoolArgs.builder()
- *             .nodePoolName("spot_instance")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(            
- *                 cloudEfficiency.instanceTypes()[0].id(),
- *                 cloudEfficiency.instanceTypes()[1].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .desiredSize("1")
- *             .spotStrategy("SpotWithPriceLimit")
- *             .spotPriceLimits(            
- *                 NodePoolSpotPriceLimitArgs.builder()
- *                     .instanceType(cloudEfficiency.instanceTypes()[0].id())
- *                     .priceLimit("0.70")
- *                     .build(),
- *                 NodePoolSpotPriceLimitArgs.builder()
- *                     .instanceType(cloudEfficiency.instanceTypes()[1].id())
- *                     .priceLimit("0.72")
- *                     .build())
- *             .build());
- * 
- *         //Use Spot instances to create a node pool with auto-scaling enabled
- *         var spotAutoScaling = new NodePool("spotAutoScaling", NodePoolArgs.builder()
- *             .nodePoolName("spot_auto_scaling")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .scalingConfig(NodePoolScalingConfigArgs.builder()
- *                 .minSize(1)
- *                 .maxSize(10)
- *                 .type("spot")
- *                 .build())
- *             .spotStrategy("SpotWithPriceLimit")
- *             .spotPriceLimits(NodePoolSpotPriceLimitArgs.builder()
- *                 .instanceType(cloudEfficiency.instanceTypes()[0].id())
- *                 .priceLimit("0.70")
- *                 .build())
- *             .build());
- * 
- *         //Create a `PrePaid` node pool.
- *         var prepaidNode = new NodePool("prepaidNode", NodePoolArgs.builder()
- *             .nodePoolName("prepaid_node")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .keyName(defaultKeyPair.keyPairName())
- *             .instanceChargeType("PrePaid")
- *             .period(1)
- *             .periodUnit("Month")
- *             .autoRenew(true)
- *             .autoRenewPeriod(1)
- *             .installCloudMonitor(true)
- *             .build());
- * 
- *         //#Create a node pool with customized kubelet parameters
- *         var customizedKubelet = new NodePool("customizedKubelet", NodePoolArgs.builder()
- *             .nodePoolName("customized_kubelet")
- *             .clusterId(defaultManagedKubernetes.id())
- *             .vswitchIds(defaultSwitch.id())
- *             .instanceTypes(cloudEfficiency.instanceTypes()[0].id())
- *             .systemDiskCategory("cloud_efficiency")
- *             .systemDiskSize(40)
- *             .instanceChargeType("PostPaid")
- *             .desiredSize("0")
- *             .kubeletConfiguration(NodePoolKubeletConfigurationArgs.builder()
- *                 .registryPullQps("10")
- *                 .registryBurst("5")
- *                 .eventRecordQps("10")
- *                 .eventBurst("5")
- *                 .serializeImagePulls("true")
- *                 .evictionHard(Map.ofEntries(
- *                     Map.entry("memory.available", "1024Mi"),
- *                     Map.entry("nodefs.available", "10%"),
- *                     Map.entry("nodefs.inodesFree", "5%"),
- *                     Map.entry("imagefs.available", "10%")
- *                 ))
- *                 .systemReserved(Map.ofEntries(
- *                     Map.entry("cpu", "1"),
- *                     Map.entry("memory", "1Gi"),
- *                     Map.entry("ephemeral-storage", "10Gi")
- *                 ))
- *                 .kubeReserved(Map.ofEntries(
- *                     Map.entry("cpu", "500m"),
- *                     Map.entry("memory", "1Gi")
- *                 ))
- *                 .containerLogMaxSize("200Mi")
- *                 .containerLogMaxFiles("3")
- *                 .maxPods("100")
- *                 .readOnlyPort("0")
- *                 .allowedUnsafeSysctls("net.ipv4.route.min_pmtu")
- *                 .build())
- *             .rollingPolicy(NodePoolRollingPolicyArgs.builder()
- *                 .maxParallelism(1)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -326,6 +44,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cs/nodePool:NodePool")
 public class NodePool extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     * 
+     */
+    @Export(name="autoMode", refs={NodePoolAutoMode.class}, tree="[0]")
+    private Output<NodePoolAutoMode> autoMode;
+
+    /**
+     * @return Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     * 
+     */
+    public Output<NodePoolAutoMode> autoMode() {
+        return this.autoMode;
+    }
     /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      * 
@@ -459,12 +191,16 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="efloNodeGroup", refs={NodePoolEfloNodeGroup.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolEfloNodeGroup> efloNodeGroup;
 
     /**
      * @return Lingjun node pool configuration. See `efloNodeGroup` below.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<NodePoolEfloNodeGroup>> efloNodeGroup() {
@@ -473,12 +209,16 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * Whether to force deletion.
      * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
+     * 
      */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
      * @return Whether to force deletion.
+     * 
+     * &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
      * 
      */
     public Output<Optional<Boolean>> forceDelete() {
@@ -524,7 +264,8 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      * 
      */
     @Export(name="imageType", refs={String.class}, tree="[0]")
@@ -542,7 +283,8 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      * 
      */
     public Output<String> imageType() {
@@ -575,6 +317,34 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
+    }
+    /**
+     * ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     * 
+     */
+    @Export(name="instanceMetadataOptions", refs={NodePoolInstanceMetadataOptions.class}, tree="[0]")
+    private Output<NodePoolInstanceMetadataOptions> instanceMetadataOptions;
+
+    /**
+     * @return ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     * 
+     */
+    public Output<NodePoolInstanceMetadataOptions> instanceMetadataOptions() {
+        return this.instanceMetadataOptions;
+    }
+    /**
+     * Instance property configuration. See `instancePatterns` below.
+     * 
+     */
+    @Export(name="instancePatterns", refs={List.class,NodePoolInstancePattern.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodePoolInstancePattern>> instancePatterns;
+
+    /**
+     * @return Instance property configuration. See `instancePatterns` below.
+     * 
+     */
+    public Output<Optional<List<NodePoolInstancePattern>>> instancePatterns() {
+        return Codegen.optional(this.instancePatterns);
     }
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1008,17 +778,9 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    /**
-     * Rotary configuration. See `rollingPolicy` below.
-     * 
-     */
     @Export(name="rollingPolicy", refs={NodePoolRollingPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolRollingPolicy> rollingPolicy;
 
-    /**
-     * @return Rotary configuration. See `rollingPolicy` below.
-     * 
-     */
     public Output<Optional<NodePoolRollingPolicy>> rollingPolicy() {
         return Codegen.optional(this.rollingPolicy);
     }
@@ -1448,17 +1210,9 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> unschedulable() {
         return Codegen.optional(this.unschedulable);
     }
-    /**
-     * Synchronously update node labels and taints.
-     * 
-     */
     @Export(name="updateNodes", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updateNodes;
 
-    /**
-     * @return Synchronously update node labels and taints.
-     * 
-     */
     public Output<Optional<Boolean>> updateNodes() {
         return Codegen.optional(this.updateNodes);
     }

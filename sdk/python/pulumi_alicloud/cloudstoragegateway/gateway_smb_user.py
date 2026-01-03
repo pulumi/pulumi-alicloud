@@ -188,6 +188,8 @@ class GatewaySmbUser(pulumi.CustomResource):
             gateway_id=default_gateway.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.
@@ -260,6 +262,8 @@ class GatewaySmbUser(pulumi.CustomResource):
             password="password",
             gateway_id=default_gateway.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

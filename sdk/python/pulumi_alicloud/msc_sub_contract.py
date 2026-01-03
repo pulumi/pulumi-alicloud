@@ -199,6 +199,8 @@ class MscSubContract(pulumi.CustomResource):
             mobile="15388888888")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Msc Sub Contact can be imported using the id, e.g.
@@ -245,6 +247,8 @@ class MscSubContract(pulumi.CustomResource):
             email="123@163.com",
             mobile="15388888888")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

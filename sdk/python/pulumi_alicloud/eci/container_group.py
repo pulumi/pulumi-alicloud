@@ -1193,6 +1193,8 @@ class ContainerGroup(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECI Container Group can be imported using the id, e.g.
@@ -1348,6 +1350,8 @@ class ContainerGroup(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

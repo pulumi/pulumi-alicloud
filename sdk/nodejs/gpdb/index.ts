@@ -115,6 +115,11 @@ export type StreamingJob = import("./streamingJob").StreamingJob;
 export const StreamingJob: typeof import("./streamingJob").StreamingJob = null as any;
 utilities.lazyLoad(exports, ["StreamingJob"], () => require("./streamingJob"));
 
+export { SupabaseProjectArgs, SupabaseProjectState } from "./supabaseProject";
+export type SupabaseProject = import("./supabaseProject").SupabaseProject;
+export const SupabaseProject: typeof import("./supabaseProject").SupabaseProject = null as any;
+utilities.lazyLoad(exports, ["SupabaseProject"], () => require("./supabaseProject"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -152,6 +157,8 @@ const _module = {
                 return new StreamingDataSource(name, <any>undefined, { urn })
             case "alicloud:gpdb/streamingJob:StreamingJob":
                 return new StreamingJob(name, <any>undefined, { urn })
+            case "alicloud:gpdb/supabaseProject:SupabaseProject":
+                return new SupabaseProject(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -173,3 +180,4 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/remoteAdbDataSource", _m
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingJob", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/supabaseProject", _module)

@@ -219,6 +219,8 @@ class BasicIpSet(pulumi.CustomResource):
             bandwidth=5)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Basic Ip Set can be imported using the id, e.g.
@@ -273,6 +275,8 @@ class BasicIpSet(pulumi.CustomResource):
             isp_type="BGP",
             bandwidth=5)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

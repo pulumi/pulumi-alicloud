@@ -12,13 +12,81 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a ESA Routine Related Record resource.
+//
+// For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+//
+// > **NOTE:** Available since v1.265.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/esa"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRoutine, err := esa.NewRoutine(ctx, "default", &esa.RoutineArgs{
+//				Description: pulumi.String("example-routine2"),
+//				Name:        pulumi.String("example-routine2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = esa.GetSites(ctx, &esa.GetSitesArgs{
+//				PlanSubscribeType: pulumi.StringRef("enterpriseplan"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = esa.NewRoutineRelatedRecord(ctx, "default", &esa.RoutineRelatedRecordArgs{
+//				Name:       defaultRoutine.ID(),
+//				RecordName: pulumi.String("tfexampleacc.com"),
+//				SiteId:     pulumi.String("618651327383200"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
+// ## Import
+//
+// ESA Routine Related Record can be imported using the id, e.g.
+//
+// ```sh
+// $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example <name>:<record_id>
+// ```
 type RoutineRelatedRecord struct {
 	pulumi.CustomResourceState
 
-	Name       pulumi.StringOutput `pulumi:"name"`
-	RecordId   pulumi.IntOutput    `pulumi:"recordId"`
+	// The routine name.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The record ID.
+	RecordId pulumi.IntOutput `pulumi:"recordId"`
+	// The record name.
 	RecordName pulumi.StringOutput `pulumi:"recordName"`
-	SiteId     pulumi.IntOutput    `pulumi:"siteId"`
+	// The website ID.
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
 
 // NewRoutineRelatedRecord registers a new resource with the given unique name, arguments, and options.
@@ -57,17 +125,25 @@ func GetRoutineRelatedRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoutineRelatedRecord resources.
 type routineRelatedRecordState struct {
-	Name       *string `pulumi:"name"`
-	RecordId   *int    `pulumi:"recordId"`
+	// The routine name.
+	Name *string `pulumi:"name"`
+	// The record ID.
+	RecordId *int `pulumi:"recordId"`
+	// The record name.
 	RecordName *string `pulumi:"recordName"`
-	SiteId     *int    `pulumi:"siteId"`
+	// The website ID.
+	SiteId *string `pulumi:"siteId"`
 }
 
 type RoutineRelatedRecordState struct {
-	Name       pulumi.StringPtrInput
-	RecordId   pulumi.IntPtrInput
+	// The routine name.
+	Name pulumi.StringPtrInput
+	// The record ID.
+	RecordId pulumi.IntPtrInput
+	// The record name.
 	RecordName pulumi.StringPtrInput
-	SiteId     pulumi.IntPtrInput
+	// The website ID.
+	SiteId pulumi.StringPtrInput
 }
 
 func (RoutineRelatedRecordState) ElementType() reflect.Type {
@@ -75,16 +151,22 @@ func (RoutineRelatedRecordState) ElementType() reflect.Type {
 }
 
 type routineRelatedRecordArgs struct {
-	Name       *string `pulumi:"name"`
-	RecordName string  `pulumi:"recordName"`
-	SiteId     int     `pulumi:"siteId"`
+	// The routine name.
+	Name *string `pulumi:"name"`
+	// The record name.
+	RecordName string `pulumi:"recordName"`
+	// The website ID.
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a RoutineRelatedRecord resource.
 type RoutineRelatedRecordArgs struct {
-	Name       pulumi.StringPtrInput
+	// The routine name.
+	Name pulumi.StringPtrInput
+	// The record name.
 	RecordName pulumi.StringInput
-	SiteId     pulumi.IntInput
+	// The website ID.
+	SiteId pulumi.StringInput
 }
 
 func (RoutineRelatedRecordArgs) ElementType() reflect.Type {
@@ -174,20 +256,24 @@ func (o RoutineRelatedRecordOutput) ToRoutineRelatedRecordOutputWithContext(ctx 
 	return o
 }
 
+// The routine name.
 func (o RoutineRelatedRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The record ID.
 func (o RoutineRelatedRecordOutput) RecordId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.IntOutput { return v.RecordId }).(pulumi.IntOutput)
 }
 
+// The record name.
 func (o RoutineRelatedRecordOutput) RecordName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.StringOutput { return v.RecordName }).(pulumi.StringOutput)
 }
 
-func (o RoutineRelatedRecordOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+// The website ID.
+func (o RoutineRelatedRecordOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoutineRelatedRecord) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 type RoutineRelatedRecordArrayOutput struct{ *pulumi.OutputState }

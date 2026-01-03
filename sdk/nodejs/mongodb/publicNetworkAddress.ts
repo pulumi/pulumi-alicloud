@@ -47,6 +47,8 @@ import * as utilities from "../utilities";
  * const defaultPublicNetworkAddress = new alicloud.mongodb.PublicNetworkAddress("default", {dbInstanceId: defaultInstance.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * MongoDB public network address can be imported using the id, e.g.

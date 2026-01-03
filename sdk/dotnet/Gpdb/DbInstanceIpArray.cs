@@ -85,6 +85,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// GPDB DB Instance IP Array can be imported using the id, e.g.

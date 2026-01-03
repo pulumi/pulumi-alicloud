@@ -259,6 +259,8 @@ class EditingProject(pulumi.CustomResource):
             division=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VOD Editing Project can be imported using the id, e.g.
@@ -320,6 +322,8 @@ class EditingProject(pulumi.CustomResource):
             cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
             division=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -470,6 +470,8 @@ class EventRule(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Event Rule can be imported using the id, e.g.
@@ -533,6 +535,8 @@ class EventRule(pulumi.CustomResource):
                 "event_type_lists": ["StatusNotification"],
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

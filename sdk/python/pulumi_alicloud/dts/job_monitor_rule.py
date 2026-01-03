@@ -323,6 +323,8 @@ class JobMonitorRule(pulumi.CustomResource):
             type="delay")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DTS Job Monitor Rule can be imported using the id, e.g.
@@ -465,6 +467,8 @@ class JobMonitorRule(pulumi.CustomResource):
             dts_job_id=example_migration_job.id,
             type="delay")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

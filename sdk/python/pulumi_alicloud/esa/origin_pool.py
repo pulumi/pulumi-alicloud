@@ -263,6 +263,8 @@ class OriginPool(pulumi.CustomResource):
             enabled=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Origin Pool can be imported using the id, e.g.
@@ -359,6 +361,8 @@ class OriginPool(pulumi.CustomResource):
             origin_pool_name="exampleoriginpool",
             enabled=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -53,6 +53,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -72,7 +74,8 @@ type PcaCertificate struct {
 	// - `ECC_512`: The signature algorithm is Sha256WithECDSA.
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	//   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
-	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
+	Algorithm pulumi.StringOutput    `pulumi:"algorithm"`
+	AliasName pulumi.StringPtrOutput `pulumi:"aliasName"`
 	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 	CommonName pulumi.StringOutput `pulumi:"commonName"`
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
@@ -83,11 +86,14 @@ type PcaCertificate struct {
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
 	OrganizationUnit pulumi.StringOutput `pulumi:"organizationUnit"`
+	// A resource property field representing the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-	// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The status of the CA certificate.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The validity period of the root CA certificate, in years.
 	// > **NOTE:**  It is recommended to set to `5` to `10` years.
 	Years pulumi.IntOutput `pulumi:"years"`
@@ -151,6 +157,7 @@ type pcaCertificateState struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	//   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
 	Algorithm *string `pulumi:"algorithm"`
+	AliasName *string `pulumi:"aliasName"`
 	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 	CommonName *string `pulumi:"commonName"`
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
@@ -161,11 +168,14 @@ type pcaCertificateState struct {
 	Organization *string `pulumi:"organization"`
 	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
 	OrganizationUnit *string `pulumi:"organizationUnit"`
+	// A resource property field representing the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-	// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 	State *string `pulumi:"state"`
 	// The status of the CA certificate.
 	Status *string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The validity period of the root CA certificate, in years.
 	// > **NOTE:**  It is recommended to set to `5` to `10` years.
 	Years *int `pulumi:"years"`
@@ -182,6 +192,7 @@ type PcaCertificateState struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	//   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
 	Algorithm pulumi.StringPtrInput
+	AliasName pulumi.StringPtrInput
 	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 	CommonName pulumi.StringPtrInput
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
@@ -192,11 +203,14 @@ type PcaCertificateState struct {
 	Organization pulumi.StringPtrInput
 	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
 	OrganizationUnit pulumi.StringPtrInput
+	// A resource property field representing the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-	// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 	State pulumi.StringPtrInput
 	// The status of the CA certificate.
 	Status pulumi.StringPtrInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// The validity period of the root CA certificate, in years.
 	// > **NOTE:**  It is recommended to set to `5` to `10` years.
 	Years pulumi.IntPtrInput
@@ -217,6 +231,7 @@ type pcaCertificateArgs struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	//   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
 	Algorithm *string `pulumi:"algorithm"`
+	AliasName *string `pulumi:"aliasName"`
 	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 	CommonName string `pulumi:"commonName"`
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
@@ -227,9 +242,12 @@ type pcaCertificateArgs struct {
 	Organization string `pulumi:"organization"`
 	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
 	OrganizationUnit string `pulumi:"organizationUnit"`
+	// A resource property field representing the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-	// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 	State string `pulumi:"state"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The validity period of the root CA certificate, in years.
 	// > **NOTE:**  It is recommended to set to `5` to `10` years.
 	Years int `pulumi:"years"`
@@ -247,6 +265,7 @@ type PcaCertificateArgs struct {
 	// - `SM2_256`: The corresponding signature algorithm is SM3WithSM2.
 	//   The encryption algorithm of the root CA certificate must be the same as the **certificate algorithm** of the private Root CA you purchased. Example: If the **certificate algorithm** selected when you purchase a private Root CA is `RSA`, the key algorithm of the root CA certificate must be **RSA\_1024**, **RSA\_2048**, or **RSA\_4096**.
 	Algorithm pulumi.StringPtrInput
+	AliasName pulumi.StringPtrInput
 	// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 	CommonName pulumi.StringInput
 	// The code of the country or region in which the organization is located, using a two-digit capital abbreviation. For example, `CN` represents China and `US` represents the United States.
@@ -257,9 +276,12 @@ type PcaCertificateArgs struct {
 	Organization pulumi.StringInput
 	// The name of the department or branch under the organization. Support the use of Chinese, English characters.
 	OrganizationUnit pulumi.StringInput
+	// A resource property field representing the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-	// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 	State pulumi.StringInput
+	// The tag of the resource.
+	Tags pulumi.StringMapInput
 	// The validity period of the root CA certificate, in years.
 	// > **NOTE:**  It is recommended to set to `5` to `10` years.
 	Years pulumi.IntInput
@@ -365,6 +387,10 @@ func (o PcaCertificateOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+func (o PcaCertificateOutput) AliasName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PcaCertificate) pulumi.StringPtrOutput { return v.AliasName }).(pulumi.StringPtrOutput)
+}
+
 // The common name or abbreviation of the organization. Support the use of Chinese, English characters.
 func (o PcaCertificateOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.CommonName }).(pulumi.StringOutput)
@@ -390,8 +416,12 @@ func (o PcaCertificateOutput) OrganizationUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.OrganizationUnit }).(pulumi.StringOutput)
 }
 
+// A resource property field representing the resource group.
+func (o PcaCertificateOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
 // The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
 func (o PcaCertificateOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -399,6 +429,11 @@ func (o PcaCertificateOutput) State() pulumi.StringOutput {
 // The status of the CA certificate.
 func (o PcaCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PcaCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o PcaCertificateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PcaCertificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The validity period of the root CA certificate, in years.

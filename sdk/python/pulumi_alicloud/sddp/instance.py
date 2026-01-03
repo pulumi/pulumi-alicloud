@@ -634,6 +634,8 @@ class Instance(pulumi.CustomResource):
             dataphin="yes")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Security Center Instance can be imported using the id, e.g.
@@ -692,6 +694,8 @@ class Instance(pulumi.CustomResource):
             udc="2000",
             dataphin="yes")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.directmail.Tag("example", {tagName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Direct Mail Tag can be imported using the id, e.g.

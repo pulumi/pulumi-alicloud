@@ -118,6 +118,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // GPDB Jdbc Data Source can be imported using the id, e.g.

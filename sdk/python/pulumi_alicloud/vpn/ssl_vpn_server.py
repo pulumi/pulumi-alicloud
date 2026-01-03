@@ -403,6 +403,8 @@ class SslVpnServer(pulumi.CustomResource):
             compress=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SSL-VPN server can be imported using the id, e.g.
@@ -473,6 +475,8 @@ class SslVpnServer(pulumi.CustomResource):
             port=1194,
             compress=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

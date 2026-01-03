@@ -249,6 +249,8 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             target_id=default_get_resource_directories.directories[0].master_account_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO Access Configuration Provisioning can be imported using the id, e.g.
@@ -319,6 +321,8 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
             target_type="RD-Account",
             target_id=default_get_resource_directories.directories[0].master_account_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

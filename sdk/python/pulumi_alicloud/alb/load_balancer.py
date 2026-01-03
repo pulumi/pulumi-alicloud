@@ -733,6 +733,8 @@ class LoadBalancer(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.
@@ -832,6 +834,8 @@ class LoadBalancer(pulumi.CustomResource):
                 "Created": "TF",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

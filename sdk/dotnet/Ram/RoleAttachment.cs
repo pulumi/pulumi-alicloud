@@ -130,6 +130,8 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:ram/roleAttachment:RoleAttachment")]
     public partial class RoleAttachment : global::Pulumi.CustomResource

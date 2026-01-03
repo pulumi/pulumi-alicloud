@@ -493,6 +493,8 @@ class BucketReplication(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Oss Bucket Replication can be imported using the id, e.g.
@@ -611,6 +613,8 @@ class BucketReplication(pulumi.CustomResource):
                 },
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

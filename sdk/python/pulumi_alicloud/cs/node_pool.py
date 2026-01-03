@@ -22,6 +22,7 @@ __all__ = ['NodePoolArgs', 'NodePool']
 class NodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
+                 auto_mode: Optional[pulumi.Input['NodePoolAutoModeArgs']] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  cis_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -37,6 +38,8 @@ class NodePoolArgs:
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']] = None,
+                 instance_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -99,6 +102,7 @@ class NodePoolArgs:
         """
         The set of arguments for constructing a NodePool resource.
         :param pulumi.Input[_builtins.str] cluster_id: The id of kubernetes cluster.
+        :param pulumi.Input['NodePoolAutoModeArgs'] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
@@ -108,7 +112,11 @@ class NodePoolArgs:
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input['NodePoolEfloNodeGroupArgs'] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[_builtins.str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
@@ -122,9 +130,12 @@ class NodePoolArgs:
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-               - `Custom`: Custom image.
+               - `Custom`：Custom image.
+               - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input['NodePoolInstanceMetadataOptionsArgs'] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -160,7 +171,6 @@ class NodePoolArgs:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -203,11 +213,12 @@ class NodePoolArgs:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
-        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        if auto_mode is not None:
+            pulumi.set(__self__, "auto_mode", auto_mode)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -241,6 +252,10 @@ class NodePoolArgs:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_patterns is not None:
+            pulumi.set(__self__, "instance_patterns", instance_patterns)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if instances is not None:
@@ -385,6 +400,18 @@ class NodePoolArgs:
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> Optional[pulumi.Input['NodePoolAutoModeArgs']]:
+        """
+        Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
+
+    @auto_mode.setter
+    def auto_mode(self, value: Optional[pulumi.Input['NodePoolAutoModeArgs']]):
+        pulumi.set(self, "auto_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -486,6 +513,8 @@ class NodePoolArgs:
     def eflo_node_group(self) -> Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]:
         """
         Lingjun node pool configuration. See `eflo_node_group` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "eflo_node_group")
 
@@ -498,6 +527,8 @@ class NodePoolArgs:
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether to force deletion.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete")
 
@@ -544,7 +575,8 @@ class NodePoolArgs:
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        - `Custom`: Custom image.
+        - `Custom`：Custom image.
+        - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -575,6 +607,30 @@ class NodePoolArgs:
     @instance_charge_type.setter
     def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']]:
+        """
+        ECS instance metadata access configuration. See `instance_metadata_options` below.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instancePatterns")
+    def instance_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]]:
+        """
+        Instance property configuration. See `instance_patterns` below.
+        """
+        return pulumi.get(self, "instance_patterns")
+
+    @instance_patterns.setter
+    def instance_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]]):
+        pulumi.set(self, "instance_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
@@ -925,9 +981,6 @@ class NodePoolArgs:
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
-        """
-        Rotary configuration. See `rolling_policy` below.
-        """
         return pulumi.get(self, "rolling_policy")
 
     @rolling_policy.setter
@@ -1277,9 +1330,6 @@ class NodePoolArgs:
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Synchronously update node labels and taints.
-        """
         return pulumi.get(self, "update_nodes")
 
     @update_nodes.setter
@@ -1314,6 +1364,7 @@ class NodePoolArgs:
 @pulumi.input_type
 class _NodePoolState:
     def __init__(__self__, *,
+                 auto_mode: Optional[pulumi.Input['NodePoolAutoModeArgs']] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  cis_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1330,6 +1381,8 @@ class _NodePoolState:
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']] = None,
+                 instance_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1393,6 +1446,7 @@ class _NodePoolState:
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
+        :param pulumi.Input['NodePoolAutoModeArgs'] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
@@ -1403,7 +1457,11 @@ class _NodePoolState:
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input['NodePoolEfloNodeGroupArgs'] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[_builtins.str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
@@ -1417,9 +1475,12 @@ class _NodePoolState:
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-               - `Custom`: Custom image.
+               - `Custom`：Custom image.
+               - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input['NodePoolInstanceMetadataOptionsArgs'] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -1456,7 +1517,6 @@ class _NodePoolState:
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input['NodePoolRollingPolicyArgs'] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input['NodePoolScalingConfigArgs'] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -1500,10 +1560,11 @@ class _NodePoolState:
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
-        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
+        if auto_mode is not None:
+            pulumi.set(__self__, "auto_mode", auto_mode)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
@@ -1539,6 +1600,10 @@ class _NodePoolState:
             pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_metadata_options is not None:
+            pulumi.set(__self__, "instance_metadata_options", instance_metadata_options)
+        if instance_patterns is not None:
+            pulumi.set(__self__, "instance_patterns", instance_patterns)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if instances is not None:
@@ -1675,6 +1740,18 @@ class _NodePoolState:
             pulumi.set(__self__, "vswitch_ids", vswitch_ids)
 
     @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> Optional[pulumi.Input['NodePoolAutoModeArgs']]:
+        """
+        Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
+
+    @auto_mode.setter
+    def auto_mode(self, value: Optional[pulumi.Input['NodePoolAutoModeArgs']]):
+        pulumi.set(self, "auto_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -1788,6 +1865,8 @@ class _NodePoolState:
     def eflo_node_group(self) -> Optional[pulumi.Input['NodePoolEfloNodeGroupArgs']]:
         """
         Lingjun node pool configuration. See `eflo_node_group` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "eflo_node_group")
 
@@ -1800,6 +1879,8 @@ class _NodePoolState:
     def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Whether to force deletion.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete")
 
@@ -1846,7 +1927,8 @@ class _NodePoolState:
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        - `Custom`: Custom image.
+        - `Custom`：Custom image.
+        - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -1877,6 +1959,30 @@ class _NodePoolState:
     @instance_charge_type.setter
     def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']]:
+        """
+        ECS instance metadata access configuration. See `instance_metadata_options` below.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @instance_metadata_options.setter
+    def instance_metadata_options(self, value: Optional[pulumi.Input['NodePoolInstanceMetadataOptionsArgs']]):
+        pulumi.set(self, "instance_metadata_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instancePatterns")
+    def instance_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]]:
+        """
+        Instance property configuration. See `instance_patterns` below.
+        """
+        return pulumi.get(self, "instance_patterns")
+
+    @instance_patterns.setter
+    def instance_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolInstancePatternArgs']]]]):
+        pulumi.set(self, "instance_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
@@ -2239,9 +2345,6 @@ class _NodePoolState:
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> Optional[pulumi.Input['NodePoolRollingPolicyArgs']]:
-        """
-        Rotary configuration. See `rolling_policy` below.
-        """
         return pulumi.get(self, "rolling_policy")
 
     @rolling_policy.setter
@@ -2603,9 +2706,6 @@ class _NodePoolState:
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Synchronously update node labels and taints.
-        """
         return pulumi.get(self, "update_nodes")
 
     @update_nodes.setter
@@ -2643,6 +2743,7 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_mode: Optional[pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  cis_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -2659,6 +2760,8 @@ class NodePool(pulumi.CustomResource):
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2720,218 +2823,6 @@ class NodePool(pulumi.CustomResource):
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-        import pulumi_std as std
-
-        default = random.index.Integer("default",
-            max=99999,
-            min=10000)
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Worker",
-            system_disk_category="cloud_efficiency")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=enhanced.zones[0].zone_id)
-        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
-            name_prefix=f"terraform-example-{default['result']}",
-            cluster_spec="ack.pro.small",
-            worker_vswitch_ids=[default_switch.id],
-            new_nat_gateway=True,
-            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
-                newbits=8,
-                netnum=36).result,
-            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
-                newbits=4,
-                netnum=7).result,
-            slb_internet_enabled=True,
-            enable_rrsa=True)
-        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
-        default_node_pool = alicloud.cs.NodePool("default",
-            node_pool_name=name,
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            labels=[
-                {
-                    "key": "test1",
-                    "value": "nodepool",
-                },
-                {
-                    "key": "test2",
-                    "value": "nodepool",
-                },
-            ],
-            taints=[
-                {
-                    "key": "tf",
-                    "effect": "NoSchedule",
-                    "value": "example",
-                },
-                {
-                    "key": "tf2",
-                    "effect": "NoSchedule",
-                    "value": "example2",
-                },
-            ])
-        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
-        desired_size = alicloud.cs.NodePool("desired_size",
-            node_pool_name="desired_size",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="0")
-        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
-        maintenance = alicloud.cs.NodePool("maintenance",
-            node_pool_name="maintenance",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="1",
-            management={
-                "enable": True,
-                "auto_repair": True,
-                "auto_repair_policy": {
-                    "restart_node": True,
-                },
-                "auto_upgrade": True,
-                "auto_upgrade_policy": {
-                    "auto_upgrade_kubelet": True,
-                },
-                "auto_vul_fix": True,
-                "auto_vul_fix_policy": {
-                    "vul_level": "asap",
-                    "restart_node": True,
-                },
-                "max_unavailable": 1,
-            })
-        #Create a node pool with spot instance.
-        spot_instance = alicloud.cs.NodePool("spot_instance",
-            node_pool_name="spot_instance",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[
-                cloud_efficiency.instance_types[0].id,
-                cloud_efficiency.instance_types[1].id,
-            ],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="1",
-            spot_strategy="SpotWithPriceLimit",
-            spot_price_limits=[
-                {
-                    "instance_type": cloud_efficiency.instance_types[0].id,
-                    "price_limit": "0.70",
-                },
-                {
-                    "instance_type": cloud_efficiency.instance_types[1].id,
-                    "price_limit": "0.72",
-                },
-            ])
-        #Use Spot instances to create a node pool with auto-scaling enabled
-        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
-            node_pool_name="spot_auto_scaling",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            scaling_config={
-                "min_size": 1,
-                "max_size": 10,
-                "type": "spot",
-            },
-            spot_strategy="SpotWithPriceLimit",
-            spot_price_limits=[{
-                "instance_type": cloud_efficiency.instance_types[0].id,
-                "price_limit": "0.70",
-            }])
-        #Create a `PrePaid` node pool.
-        prepaid_node = alicloud.cs.NodePool("prepaid_node",
-            node_pool_name="prepaid_node",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            instance_charge_type="PrePaid",
-            period=1,
-            period_unit="Month",
-            auto_renew=True,
-            auto_renew_period=1,
-            install_cloud_monitor=True)
-        ##Create a node pool with customized kubelet parameters
-        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
-            node_pool_name="customized_kubelet",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            instance_charge_type="PostPaid",
-            desired_size="0",
-            kubelet_configuration={
-                "registry_pull_qps": "10",
-                "registry_burst": "5",
-                "event_record_qps": "10",
-                "event_burst": "5",
-                "serialize_image_pulls": "true",
-                "eviction_hard": {
-                    "memory.available": "1024Mi",
-                    "nodefs.available": "10%",
-                    "nodefs.inodesFree": "5%",
-                    "imagefs.available": "10%",
-                },
-                "system_reserved": {
-                    "cpu": "1",
-                    "memory": "1Gi",
-                    "ephemeral-storage": "10Gi",
-                },
-                "kube_reserved": {
-                    "cpu": "500m",
-                    "memory": "1Gi",
-                },
-                "container_log_max_size": "200Mi",
-                "container_log_max_files": "3",
-                "max_pods": "100",
-                "read_only_port": "0",
-                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
-            },
-            rolling_policy={
-                "max_parallelism": 1,
-            })
-        ```
-
         ## Import
 
         Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -2942,6 +2833,7 @@ class NodePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
@@ -2952,7 +2844,11 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[_builtins.str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
@@ -2966,9 +2862,12 @@ class NodePool(pulumi.CustomResource):
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-               - `Custom`: Custom image.
+               - `Custom`：Custom image.
+               - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -3004,7 +2903,6 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -3047,7 +2945,6 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
-        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -3058,218 +2955,6 @@ class NodePool(pulumi.CustomResource):
                  args: NodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-        import pulumi_random as random
-        import pulumi_std as std
-
-        default = random.index.Integer("default",
-            max=99999,
-            min=10000)
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
-        cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
-            cpu_core_count=4,
-            memory_size=8,
-            kubernetes_node_role="Worker",
-            system_disk_category="cloud_efficiency")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
-            cidr_block="10.4.0.0/24",
-            vpc_id=default_network.id,
-            zone_id=enhanced.zones[0].zone_id)
-        default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
-            name_prefix=f"terraform-example-{default['result']}",
-            cluster_spec="ack.pro.small",
-            worker_vswitch_ids=[default_switch.id],
-            new_nat_gateway=True,
-            pod_cidr=std.cidrsubnet(input="10.0.0.0/8",
-                newbits=8,
-                netnum=36).result,
-            service_cidr=std.cidrsubnet(input="172.16.0.0/16",
-                newbits=4,
-                netnum=7).result,
-            slb_internet_enabled=True,
-            enable_rrsa=True)
-        default_key_pair = alicloud.ecs.KeyPair("default", key_pair_name=f"terraform-example-{default['result']}")
-        default_node_pool = alicloud.cs.NodePool("default",
-            node_pool_name=name,
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            labels=[
-                {
-                    "key": "test1",
-                    "value": "nodepool",
-                },
-                {
-                    "key": "test2",
-                    "value": "nodepool",
-                },
-            ],
-            taints=[
-                {
-                    "key": "tf",
-                    "effect": "NoSchedule",
-                    "value": "example",
-                },
-                {
-                    "key": "tf2",
-                    "effect": "NoSchedule",
-                    "value": "example2",
-                },
-            ])
-        #The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
-        desired_size = alicloud.cs.NodePool("desired_size",
-            node_pool_name="desired_size",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="0")
-        # Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
-        maintenance = alicloud.cs.NodePool("maintenance",
-            node_pool_name="maintenance",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="1",
-            management={
-                "enable": True,
-                "auto_repair": True,
-                "auto_repair_policy": {
-                    "restart_node": True,
-                },
-                "auto_upgrade": True,
-                "auto_upgrade_policy": {
-                    "auto_upgrade_kubelet": True,
-                },
-                "auto_vul_fix": True,
-                "auto_vul_fix_policy": {
-                    "vul_level": "asap",
-                    "restart_node": True,
-                },
-                "max_unavailable": 1,
-            })
-        #Create a node pool with spot instance.
-        spot_instance = alicloud.cs.NodePool("spot_instance",
-            node_pool_name="spot_instance",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[
-                cloud_efficiency.instance_types[0].id,
-                cloud_efficiency.instance_types[1].id,
-            ],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            desired_size="1",
-            spot_strategy="SpotWithPriceLimit",
-            spot_price_limits=[
-                {
-                    "instance_type": cloud_efficiency.instance_types[0].id,
-                    "price_limit": "0.70",
-                },
-                {
-                    "instance_type": cloud_efficiency.instance_types[1].id,
-                    "price_limit": "0.72",
-                },
-            ])
-        #Use Spot instances to create a node pool with auto-scaling enabled
-        spot_auto_scaling = alicloud.cs.NodePool("spot_auto_scaling",
-            node_pool_name="spot_auto_scaling",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            scaling_config={
-                "min_size": 1,
-                "max_size": 10,
-                "type": "spot",
-            },
-            spot_strategy="SpotWithPriceLimit",
-            spot_price_limits=[{
-                "instance_type": cloud_efficiency.instance_types[0].id,
-                "price_limit": "0.70",
-            }])
-        #Create a `PrePaid` node pool.
-        prepaid_node = alicloud.cs.NodePool("prepaid_node",
-            node_pool_name="prepaid_node",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            key_name=default_key_pair.key_pair_name,
-            instance_charge_type="PrePaid",
-            period=1,
-            period_unit="Month",
-            auto_renew=True,
-            auto_renew_period=1,
-            install_cloud_monitor=True)
-        ##Create a node pool with customized kubelet parameters
-        customized_kubelet = alicloud.cs.NodePool("customized_kubelet",
-            node_pool_name="customized_kubelet",
-            cluster_id=default_managed_kubernetes.id,
-            vswitch_ids=[default_switch.id],
-            instance_types=[cloud_efficiency.instance_types[0].id],
-            system_disk_category="cloud_efficiency",
-            system_disk_size=40,
-            instance_charge_type="PostPaid",
-            desired_size="0",
-            kubelet_configuration={
-                "registry_pull_qps": "10",
-                "registry_burst": "5",
-                "event_record_qps": "10",
-                "event_burst": "5",
-                "serialize_image_pulls": "true",
-                "eviction_hard": {
-                    "memory.available": "1024Mi",
-                    "nodefs.available": "10%",
-                    "nodefs.inodesFree": "5%",
-                    "imagefs.available": "10%",
-                },
-                "system_reserved": {
-                    "cpu": "1",
-                    "memory": "1Gi",
-                    "ephemeral-storage": "10Gi",
-                },
-                "kube_reserved": {
-                    "cpu": "500m",
-                    "memory": "1Gi",
-                },
-                "container_log_max_size": "200Mi",
-                "container_log_max_files": "3",
-                "max_pods": "100",
-                "read_only_port": "0",
-                "allowed_unsafe_sysctls": ["net.ipv4.route.min_pmtu"],
-            },
-            rolling_policy={
-                "max_parallelism": 1,
-            })
-        ```
-
         ## Import
 
         Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -3293,6 +2978,7 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_mode: Optional[pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
                  auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  cis_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3309,6 +2995,8 @@ class NodePool(pulumi.CustomResource):
                  image_type: Optional[pulumi.Input[_builtins.str]] = None,
                  install_cloud_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_metadata_options: Optional[pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
+                 instance_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3377,6 +3065,7 @@ class NodePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodePoolArgs.__new__(NodePoolArgs)
 
+            __props__.__dict__["auto_mode"] = auto_mode
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["cis_enabled"] = cis_enabled
@@ -3395,6 +3084,8 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["image_type"] = image_type
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+            __props__.__dict__["instance_patterns"] = instance_patterns
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["instances"] = instances
             __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -3468,6 +3159,7 @@ class NodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_mode: Optional[pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']]] = None,
             auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
             auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             cis_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -3484,6 +3176,8 @@ class NodePool(pulumi.CustomResource):
             image_type: Optional[pulumi.Input[_builtins.str]] = None,
             install_cloud_monitor: Optional[pulumi.Input[_builtins.bool]] = None,
             instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+            instance_metadata_options: Optional[pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']]] = None,
+            instance_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3552,6 +3246,7 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NodePoolAutoModeArgs', 'NodePoolAutoModeArgsDict']] auto_mode: Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
         :param pulumi.Input[_builtins.bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
@@ -3562,7 +3257,11 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deployment_set_id: The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
         :param pulumi.Input[_builtins.str] desired_size: Number of expected nodes in the node pool.
         :param pulumi.Input[Union['NodePoolEfloNodeGroupArgs', 'NodePoolEfloNodeGroupArgsDict']] eflo_node_group: Lingjun node pool configuration. See `eflo_node_group` below.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] force_delete: Whether to force deletion.
+               
+               > **NOTE:** This parameter only takes effect when deletion is triggered.
         :param pulumi.Input[_builtins.bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[_builtins.str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[_builtins.str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
@@ -3576,9 +3275,12 @@ class NodePool(pulumi.CustomResource):
                - `ContainerOS` : container-optimized image.
                - `Ubuntu`: Ubuntu image.
                - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-               - `Custom`: Custom image.
+               - `Custom`：Custom image.
+               - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         :param pulumi.Input[_builtins.bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[_builtins.str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
+        :param pulumi.Input[Union['NodePoolInstanceMetadataOptionsArgs', 'NodePoolInstanceMetadataOptionsArgsDict']] instance_metadata_options: ECS instance metadata access configuration. See `instance_metadata_options` below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolInstancePatternArgs', 'NodePoolInstancePatternArgsDict']]]] instance_patterns: Instance property configuration. See `instance_patterns` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
         :param pulumi.Input[_builtins.str] internet_charge_type: The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
@@ -3615,7 +3317,6 @@ class NodePool(pulumi.CustomResource):
                > **NOTE:**  This parameter is only supported for ACK-managed clusters of 1.22 or later versions.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Union['NodePoolRollingPolicyArgs', 'NodePoolRollingPolicyArgsDict']] rolling_policy: Rotary configuration. See `rolling_policy` below.
         :param pulumi.Input[_builtins.str] runtime_name: The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
         :param pulumi.Input[Union['NodePoolScalingConfigArgs', 'NodePoolScalingConfigArgsDict']] scaling_config: Automatic scaling configuration. See `scaling_config` below.
@@ -3659,7 +3360,6 @@ class NodePool(pulumi.CustomResource):
                -'ess': common node pool (including hosting function and auto scaling function).
                -'lingjun': Lingjun node pool.
         :param pulumi.Input[_builtins.bool] unschedulable: Whether the node after expansion can be scheduled.
-        :param pulumi.Input[_builtins.bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[_builtins.str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -3667,6 +3367,7 @@ class NodePool(pulumi.CustomResource):
 
         __props__ = _NodePoolState.__new__(_NodePoolState)
 
+        __props__.__dict__["auto_mode"] = auto_mode
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["cis_enabled"] = cis_enabled
@@ -3683,6 +3384,8 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["image_type"] = image_type
         __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
         __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["instance_metadata_options"] = instance_metadata_options
+        __props__.__dict__["instance_patterns"] = instance_patterns
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["instances"] = instances
         __props__.__dict__["internet_charge_type"] = internet_charge_type
@@ -3745,6 +3448,14 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return NodePool(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="autoMode")
+    def auto_mode(self) -> pulumi.Output['outputs.NodePoolAutoMode']:
+        """
+        Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `auto_mode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `auto_mode` below.
+        """
+        return pulumi.get(self, "auto_mode")
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
@@ -3824,6 +3535,8 @@ class NodePool(pulumi.CustomResource):
     def eflo_node_group(self) -> pulumi.Output[Optional['outputs.NodePoolEfloNodeGroup']]:
         """
         Lingjun node pool configuration. See `eflo_node_group` below.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "eflo_node_group")
 
@@ -3832,6 +3545,8 @@ class NodePool(pulumi.CustomResource):
     def force_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Whether to force deletion.
+
+        > **NOTE:** This parameter only takes effect when deletion is triggered.
         """
         return pulumi.get(self, "force_delete")
 
@@ -3866,7 +3581,8 @@ class NodePool(pulumi.CustomResource):
         - `ContainerOS` : container-optimized image.
         - `Ubuntu`: Ubuntu image.
         - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        - `Custom`: Custom image.
+        - `Custom`：Custom image.
+        - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -3885,6 +3601,22 @@ class NodePool(pulumi.CustomResource):
         Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         """
         return pulumi.get(self, "instance_charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadataOptions")
+    def instance_metadata_options(self) -> pulumi.Output['outputs.NodePoolInstanceMetadataOptions']:
+        """
+        ECS instance metadata access configuration. See `instance_metadata_options` below.
+        """
+        return pulumi.get(self, "instance_metadata_options")
+
+    @_builtins.property
+    @pulumi.getter(name="instancePatterns")
+    def instance_patterns(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolInstancePattern']]]:
+        """
+        Instance property configuration. See `instance_patterns` below.
+        """
+        return pulumi.get(self, "instance_patterns")
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
@@ -4131,9 +3863,6 @@ class NodePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="rollingPolicy")
     def rolling_policy(self) -> pulumi.Output[Optional['outputs.NodePoolRollingPolicy']]:
-        """
-        Rotary configuration. See `rolling_policy` below.
-        """
         return pulumi.get(self, "rolling_policy")
 
     @_builtins.property
@@ -4379,9 +4108,6 @@ class NodePool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updateNodes")
     def update_nodes(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Synchronously update node labels and taints.
-        """
         return pulumi.get(self, "update_nodes")
 
     @_builtins.property

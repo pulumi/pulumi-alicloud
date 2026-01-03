@@ -73,6 +73,8 @@ namespace Pulumi.AliCloud.SchedulerX
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Schedulerx App Group can be imported using the id, e.g.
@@ -102,7 +104,7 @@ namespace Pulumi.AliCloud.SchedulerX
         /// Application Version, 1: Basic Edition, 2: Professional Edition
         /// </summary>
         [Output("appVersion")]
-        public Output<string?> AppVersion { get; private set; } = null!;
+        public Output<string> AppVersion { get; private set; } = null!;
 
         /// <summary>
         /// Whether to delete the task in the application Group. The values are as follows:
@@ -140,7 +142,7 @@ namespace Pulumi.AliCloud.SchedulerX
         /// Application Grouping Configurable Maximum Number of Tasks
         /// </summary>
         [Output("maxJobs")]
-        public Output<int?> MaxJobs { get; private set; } = null!;
+        public Output<int> MaxJobs { get; private set; } = null!;
 
         /// <summary>
         /// Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.

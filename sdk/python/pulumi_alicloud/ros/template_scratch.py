@@ -349,6 +349,8 @@ class TemplateScratch(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ROS Template Scratch can be imported using the id, e.g.
@@ -402,6 +404,8 @@ class TemplateScratch(pulumi.CustomResource):
                 "resource_type_filters": ["ALIYUN::ECS::VPC"],
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

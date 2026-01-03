@@ -463,6 +463,8 @@ class NetworkOptimization(pulumi.CustomResource):
             rule_name="network_optimization")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Network Optimization can be imported using the id, e.g.
@@ -530,6 +532,8 @@ class NetworkOptimization(pulumi.CustomResource):
             upload_max_filesize="100",
             rule_name="network_optimization")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

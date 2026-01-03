@@ -726,6 +726,8 @@ namespace Pulumi.AliCloud.Oss
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS bucket can be imported using the bucket name, e.g.

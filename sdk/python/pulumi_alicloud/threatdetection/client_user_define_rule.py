@@ -626,6 +626,8 @@ class ClientUserDefineRule(pulumi.CustomResource):
             registry_key="123")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Client User Define Rule can be imported using the id, e.g.
@@ -701,6 +703,8 @@ class ClientUserDefineRule(pulumi.CustomResource):
             parent_cmdline="bash",
             registry_key="123")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -85,6 +85,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Video Processing can be imported using the id, e.g.
@@ -227,14 +229,14 @@ public class VideoProcessing extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleName);
     }
     /**
-     * Order of rule execution. The smaller the value, the higher the priority for execution.
+     * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     @Export(name="sequence", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sequence;
 
     /**
-     * @return Order of rule execution. The smaller the value, the higher the priority for execution.
+     * @return The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      * 
      */
     public Output<Optional<Integer>> sequence() {
@@ -244,14 +246,14 @@ public class VideoProcessing extends com.pulumi.resources.CustomResource {
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**

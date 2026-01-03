@@ -102,6 +102,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Waiting Room Rule can be imported using the id, e.g.
@@ -145,29 +147,29 @@ public class WaitingRoomRule extends com.pulumi.resources.CustomResource {
      * The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**
-     * Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Output<String> status() {

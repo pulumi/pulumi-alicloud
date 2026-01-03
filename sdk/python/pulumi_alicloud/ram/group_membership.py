@@ -145,6 +145,8 @@ class GroupMembership(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Group membership can be imported using the id, e.g.
@@ -205,6 +207,8 @@ class GroupMembership(pulumi.CustomResource):
                 user1.name,
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -125,6 +125,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ecs/ecsInstanceSet:EcsInstanceSet")
 public class EcsInstanceSet extends com.pulumi.resources.CustomResource {

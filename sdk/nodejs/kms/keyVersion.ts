@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  * const keyversion = new alicloud.kms.KeyVersion("keyversion", {keyId: _this.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Alikms key version can be imported using the id, e.g.

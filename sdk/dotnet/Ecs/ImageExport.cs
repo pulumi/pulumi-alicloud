@@ -108,6 +108,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/imageExport:ImageExport")]
     public partial class ImageExport : global::Pulumi.CustomResource

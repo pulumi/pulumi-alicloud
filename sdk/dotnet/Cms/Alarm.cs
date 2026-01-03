@@ -116,6 +116,8 @@ namespace Pulumi.AliCloud.Cms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Alarm can be imported using the id, e.g.

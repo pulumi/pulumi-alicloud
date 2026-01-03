@@ -212,6 +212,8 @@ class Image(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Image can be imported using the id, e.g.
@@ -290,6 +292,8 @@ class Image(pulumi.CustomResource):
             desktop_id=default_desktop.id,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

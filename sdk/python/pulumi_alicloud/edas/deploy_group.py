@@ -159,6 +159,8 @@ class DeployGroup(pulumi.CustomResource):
             group_name=f"{name}-{default_integer['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS deploy group can be imported using the id, e.g.
@@ -217,6 +219,8 @@ class DeployGroup(pulumi.CustomResource):
             app_id=default_application.id,
             group_name=f"{name}-{default_integer['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

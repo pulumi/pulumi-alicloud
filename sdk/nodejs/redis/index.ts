@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupArgs, BackupState } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+
 export { TairInstanceArgs, TairInstanceState } from "./tairInstance";
 export type TairInstance = import("./tairInstance").TairInstance;
 export const TairInstance: typeof import("./tairInstance").TairInstance = null as any;
@@ -15,6 +20,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:redis/backup:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "alicloud:redis/tairInstance:TairInstance":
                 return new TairInstance(name, <any>undefined, { urn })
             default:
@@ -22,4 +29,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "redis/backup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "redis/tairInstance", _module)

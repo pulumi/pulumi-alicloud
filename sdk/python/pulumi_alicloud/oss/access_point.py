@@ -261,6 +261,8 @@ class AccessPoint(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Access Point can be imported using the id, e.g.
@@ -318,6 +320,8 @@ class AccessPoint(pulumi.CustomResource):
                 "block_public_access": True,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

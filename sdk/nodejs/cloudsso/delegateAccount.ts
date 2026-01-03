@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  * const defaultDelegateAccount = new alicloud.cloudsso.DelegateAccount("default", {accountId: defaultDelegatedAdministrator.accountId});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud SSO Delegate Account can be imported using the id, e.g.

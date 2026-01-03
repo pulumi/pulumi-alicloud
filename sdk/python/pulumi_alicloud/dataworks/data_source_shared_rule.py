@@ -267,6 +267,8 @@ class DataSourceSharedRule(pulumi.CustomResource):
             env_type="Prod")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Data Source Shared Rule can be imported using the id, e.g.
@@ -354,6 +356,8 @@ class DataSourceSharedRule(pulumi.CustomResource):
             data_source_id=defaultvzu0w_g.data_source_id,
             env_type="Prod")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

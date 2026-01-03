@@ -119,6 +119,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Storage Gateway Gateway SMB User can be imported using the id, e.g.

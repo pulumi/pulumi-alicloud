@@ -677,6 +677,8 @@ class ChangeSet(pulumi.CustomResource):
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ROS Change Set can be imported using the id, e.g.
@@ -738,6 +740,8 @@ class ChangeSet(pulumi.CustomResource):
             description="Test From Terraform",
             template_body="{\\"ROSTemplateFormatVersion\\":\\"2015-09-01\\"}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -92,6 +92,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Monitor Service Group Metric Rule can be imported using the id, e.g.

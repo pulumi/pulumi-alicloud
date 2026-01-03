@@ -498,6 +498,8 @@ class NatFirewall(pulumi.CustomResource):
             vswitch_cidr="172.16.5.0/24")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Nat Firewall can be imported using the id, e.g.
@@ -592,6 +594,8 @@ class NatFirewall(pulumi.CustomResource):
             vpc_id=defaultik_z0g_d.id,
             vswitch_cidr="172.16.5.0/24")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

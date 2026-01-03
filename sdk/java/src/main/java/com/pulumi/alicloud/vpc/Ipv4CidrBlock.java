@@ -68,6 +68,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * VPC Ipv4 Cidr Block can be imported using the id, e.g.

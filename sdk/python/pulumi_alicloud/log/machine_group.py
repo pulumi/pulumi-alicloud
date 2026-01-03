@@ -232,6 +232,8 @@ class MachineGroup(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing sls-logtail module
@@ -288,6 +290,8 @@ class MachineGroup(pulumi.CustomResource):
                 "10.0.0.2",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

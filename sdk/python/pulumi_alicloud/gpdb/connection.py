@@ -216,6 +216,8 @@ class Connection(pulumi.CustomResource):
             connection_prefix="exampelcon")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for PostgreSQL's connection can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             connection_prefix="exampelcon")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

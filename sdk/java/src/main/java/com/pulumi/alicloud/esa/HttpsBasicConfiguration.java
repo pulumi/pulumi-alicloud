@@ -91,6 +91,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Https Basic Configuration can be imported using the id, e.g.
@@ -290,14 +292,14 @@ public class HttpsBasicConfiguration extends com.pulumi.resources.CustomResource
      * Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
     /**

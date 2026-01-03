@@ -228,6 +228,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.

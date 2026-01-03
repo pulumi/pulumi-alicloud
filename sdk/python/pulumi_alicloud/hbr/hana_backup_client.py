@@ -299,6 +299,8 @@ class HanaBackupClient(pulumi.CustomResource):
             use_https=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Backup Client can be imported using the id, e.g.
@@ -384,6 +386,8 @@ class HanaBackupClient(pulumi.CustomResource):
             alert_setting="INHERITED",
             use_https=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

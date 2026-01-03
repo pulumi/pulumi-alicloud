@@ -97,6 +97,8 @@ namespace Pulumi.AliCloud.Hbr
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Notice
     /// 
     /// &gt; **Note:** Please read the following precautions carefully before deleting a client:

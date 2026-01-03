@@ -82,6 +82,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Endpoint Group can be imported using the id, e.g.

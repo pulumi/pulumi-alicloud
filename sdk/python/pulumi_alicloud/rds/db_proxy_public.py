@@ -279,6 +279,8 @@ class DbProxyPublic(pulumi.CustomResource):
 
         > **NOTE:** Resource `rds.DbProxyPublic` should be created after `rds.RdsDbProxy`, so the `depends_on` statement is necessary.
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Database Proxy Public Network Address can be imported using the id, e.g.
@@ -379,6 +381,8 @@ class DbProxyPublic(pulumi.CustomResource):
         ```
 
         > **NOTE:** Resource `rds.DbProxyPublic` should be created after `rds.RdsDbProxy`, so the `depends_on` statement is necessary.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

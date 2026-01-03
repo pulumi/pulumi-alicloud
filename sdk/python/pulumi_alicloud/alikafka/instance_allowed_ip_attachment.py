@@ -232,6 +232,8 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             allowed_ip="114.237.9.78/32")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AliKafka Instance Allowed Ip Attachment can be imported using the id, e.g.
@@ -305,6 +307,8 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
             port_range="9092/9092",
             allowed_ip="114.237.9.78/32")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

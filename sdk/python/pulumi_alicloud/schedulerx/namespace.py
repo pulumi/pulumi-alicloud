@@ -26,7 +26,7 @@ class NamespaceArgs:
         The set of arguments for constructing a Namespace resource.
         :param pulumi.Input[_builtins.str] namespace_name: Namespace name.
         :param pulumi.Input[_builtins.str] description: Namespace description.
-        :param pulumi.Input[_builtins.str] namespace_uid: Namespace uid.
+        :param pulumi.Input[_builtins.str] namespace_uid: namespace uid
         """
         pulumi.set(__self__, "namespace_name", namespace_name)
         if description is not None:
@@ -62,7 +62,7 @@ class NamespaceArgs:
     @pulumi.getter(name="namespaceUid")
     def namespace_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Namespace uid.
+        namespace uid
         """
         return pulumi.get(self, "namespace_uid")
 
@@ -81,7 +81,7 @@ class _NamespaceState:
         Input properties used for looking up and filtering Namespace resources.
         :param pulumi.Input[_builtins.str] description: Namespace description.
         :param pulumi.Input[_builtins.str] namespace_name: Namespace name.
-        :param pulumi.Input[_builtins.str] namespace_uid: Namespace uid.
+        :param pulumi.Input[_builtins.str] namespace_uid: namespace uid
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -118,7 +118,7 @@ class _NamespaceState:
     @pulumi.getter(name="namespaceUid")
     def namespace_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Namespace uid.
+        namespace uid
         """
         return pulumi.get(self, "namespace_uid")
 
@@ -138,6 +138,31 @@ class Namespace(pulumi.CustomResource):
                  namespace_uid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Schedulerx Namespace resource.
+
+        For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+
+        > **NOTE:** Available since v1.173.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.schedulerx.Namespace("default",
+            namespace_name=name,
+            description=name)
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -150,7 +175,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Namespace description.
         :param pulumi.Input[_builtins.str] namespace_name: Namespace name.
-        :param pulumi.Input[_builtins.str] namespace_uid: Namespace uid.
+        :param pulumi.Input[_builtins.str] namespace_uid: namespace uid
         """
         ...
     @overload
@@ -159,6 +184,31 @@ class Namespace(pulumi.CustomResource):
                  args: NamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Schedulerx Namespace resource.
+
+        For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+
+        > **NOTE:** Available since v1.173.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.schedulerx.Namespace("default",
+            namespace_name=name,
+            description=name)
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Schedulerx Namespace can be imported using the id, e.g.
@@ -221,7 +271,7 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Namespace description.
         :param pulumi.Input[_builtins.str] namespace_name: Namespace name.
-        :param pulumi.Input[_builtins.str] namespace_uid: Namespace uid.
+        :param pulumi.Input[_builtins.str] namespace_uid: namespace uid
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -252,7 +302,7 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter(name="namespaceUid")
     def namespace_uid(self) -> pulumi.Output[_builtins.str]:
         """
-        Namespace uid.
+        namespace uid
         """
         return pulumi.get(self, "namespace_uid")
 

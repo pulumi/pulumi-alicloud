@@ -153,6 +153,8 @@ class Topic(pulumi.CustomResource):
             logging_enabled=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MNS Topic can be imported using the id or name, e.g.
@@ -187,6 +189,8 @@ class Topic(pulumi.CustomResource):
             maximum_message_size=65536,
             logging_enabled=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

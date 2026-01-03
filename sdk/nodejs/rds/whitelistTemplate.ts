@@ -23,6 +23,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * You can use the whitelist template ID to import whitelist templates, e.g.

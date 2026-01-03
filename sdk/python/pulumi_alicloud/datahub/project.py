@@ -161,6 +161,8 @@ class Project(pulumi.CustomResource):
             comment="created by terraform")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Datahub project can be imported using the *name* or ID, e.g.
@@ -203,6 +205,8 @@ class Project(pulumi.CustomResource):
             name=name,
             comment="created by terraform")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

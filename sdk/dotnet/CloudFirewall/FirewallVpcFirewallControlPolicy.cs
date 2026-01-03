@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.

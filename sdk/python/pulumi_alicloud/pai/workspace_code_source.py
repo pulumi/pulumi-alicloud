@@ -424,6 +424,8 @@ class WorkspaceCodeSource(pulumi.CustomResource):
             code_repo_user_name="user-01")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Code Source can be imported using the id, e.g.
@@ -488,6 +490,8 @@ class WorkspaceCodeSource(pulumi.CustomResource):
             code_branch="master",
             code_repo_user_name="user-01")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

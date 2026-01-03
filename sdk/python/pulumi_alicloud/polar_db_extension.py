@@ -274,6 +274,8 @@ class PolarDbExtension(pulumi.CustomResource):
             db_name=database.db_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Polar Db Extension can be imported using the id, e.g.
@@ -353,6 +355,8 @@ class PolarDbExtension(pulumi.CustomResource):
             account_name=account.account_name,
             db_name=database.db_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

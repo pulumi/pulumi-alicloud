@@ -747,6 +747,8 @@ class TrafficQosRule(pulumi.CustomResource):
             rule_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Traffic Qos Rule can be imported using the id, e.g.
@@ -869,6 +871,8 @@ class TrafficQosRule(pulumi.CustomResource):
             match_dscp=-1,
             rule_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

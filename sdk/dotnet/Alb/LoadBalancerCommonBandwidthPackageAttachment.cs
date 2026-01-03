@@ -117,6 +117,8 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.

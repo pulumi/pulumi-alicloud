@@ -326,6 +326,8 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             vpc_firewall_name="tf-vpc-firewall-name")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.
@@ -376,6 +378,8 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             vpc_region="cn-hangzhou",
             vpc_firewall_name="tf-vpc-firewall-name")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

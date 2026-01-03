@@ -86,6 +86,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Express Connect Bgp Group can be imported using the id, e.g.

@@ -243,6 +243,8 @@ class AuditLogConfig(pulumi.CustomResource):
             retention=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
@@ -318,6 +320,8 @@ class AuditLogConfig(pulumi.CustomResource):
             db_audit=True,
             retention=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

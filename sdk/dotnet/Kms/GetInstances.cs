@@ -119,7 +119,6 @@ namespace Pulumi.AliCloud.Kms
         ///         Spec = 1000,
         ///         RenewStatus = "ManualRenewal",
         ///         ProductVersion = "3",
-        ///         RenewPeriod = 3,
         ///         VpcId = vswitch.VpcId,
         ///         ZoneIds = new[]
         ///         {
@@ -286,7 +285,6 @@ namespace Pulumi.AliCloud.Kms
         ///         Spec = 1000,
         ///         RenewStatus = "ManualRenewal",
         ///         ProductVersion = "3",
-        ///         RenewPeriod = 3,
         ///         VpcId = vswitch.VpcId,
         ///         ZoneIds = new[]
         ///         {
@@ -453,7 +451,6 @@ namespace Pulumi.AliCloud.Kms
         ///         Spec = 1000,
         ///         RenewStatus = "ManualRenewal",
         ///         ProductVersion = "3",
-        ///         RenewPeriod = 3,
         ///         VpcId = vswitch.VpcId,
         ///         ZoneIds = new[]
         ///         {
@@ -529,16 +526,16 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
+        /// The name of the resource.
+        /// </summary>
+        [Input("instanceName")]
+        public string? InstanceName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
-
-        [Input("pageNumber")]
-        public int? PageNumber { get; set; }
-
-        [Input("pageSize")]
-        public int? PageSize { get; set; }
 
         public GetInstancesArgs()
         {
@@ -561,16 +558,16 @@ namespace Pulumi.AliCloud.Kms
         }
 
         /// <summary>
+        /// The name of the resource.
+        /// </summary>
+        [Input("instanceName")]
+        public Input<string>? InstanceName { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
-
-        [Input("pageNumber")]
-        public Input<int>? PageNumber { get; set; }
-
-        [Input("pageSize")]
-        public Input<int>? PageSize { get; set; }
 
         public GetInstancesInvokeArgs()
         {
@@ -590,13 +587,12 @@ namespace Pulumi.AliCloud.Kms
         /// A list of Instance IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? InstanceName;
         /// <summary>
         /// A list of Instance Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? OutputFile;
-        public readonly int? PageNumber;
-        public readonly int? PageSize;
 
         [OutputConstructor]
         private GetInstancesResult(
@@ -604,20 +600,17 @@ namespace Pulumi.AliCloud.Kms
 
             ImmutableArray<string> ids,
 
+            string? instanceName,
+
             ImmutableArray<Outputs.GetInstancesInstanceResult> instances,
 
-            string? outputFile,
-
-            int? pageNumber,
-
-            int? pageSize)
+            string? outputFile)
         {
             Id = id;
             Ids = ids;
+            InstanceName = instanceName;
             Instances = instances;
             OutputFile = outputFile;
-            PageNumber = pageNumber;
-            PageSize = pageSize;
         }
     }
 }

@@ -220,6 +220,8 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             load_balancer_id=default_load_balancer.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alb Load Balancer Common Bandwidth Package Attachment can be imported using the id, e.g.
@@ -307,6 +309,8 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_common_bandwith_package.id,
             load_balancer_id=default_load_balancer.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

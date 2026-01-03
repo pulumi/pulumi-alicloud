@@ -70,7 +70,7 @@ export class TransportLayerApplication extends pulumi.CustomResource {
     /**
      * Site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Status of the transport layer application, modification and deletion are not allowed.
      */
@@ -153,7 +153,7 @@ export interface TransportLayerApplicationState {
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Status of the transport layer application, modification and deletion are not allowed.
      */
@@ -187,5 +187,5 @@ export interface TransportLayerApplicationArgs {
     /**
      * Site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

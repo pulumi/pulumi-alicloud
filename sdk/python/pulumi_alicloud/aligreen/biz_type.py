@@ -230,6 +230,8 @@ class BizType(pulumi.CustomResource):
             biz_type_import="1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Biz Type can be imported using the id, e.g.
@@ -278,6 +280,8 @@ class BizType(pulumi.CustomResource):
             industry_info="社交-注册信息-昵称",
             biz_type_import="1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

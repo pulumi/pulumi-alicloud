@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * VPC Ipv4 Cidr Block can be imported using the id, e.g.

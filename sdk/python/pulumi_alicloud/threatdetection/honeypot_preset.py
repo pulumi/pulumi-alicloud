@@ -220,6 +220,8 @@ class HoneypotPreset(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Honeypot Preset can be imported using the id, e.g.
@@ -275,6 +277,8 @@ class HoneypotPreset(pulumi.CustomResource):
                 "trojan_git": "open",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

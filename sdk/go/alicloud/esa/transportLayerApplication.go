@@ -35,7 +35,7 @@ type TransportLayerApplication struct {
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
 	Rules TransportLayerApplicationRuleArrayOutput `pulumi:"rules"`
 	// Site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Status of the transport layer application, modification and deletion are not allowed.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -92,7 +92,7 @@ type transportLayerApplicationState struct {
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
 	Rules []TransportLayerApplicationRule `pulumi:"rules"`
 	// Site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Status of the transport layer application, modification and deletion are not allowed.
 	Status *string `pulumi:"status"`
 }
@@ -111,7 +111,7 @@ type TransportLayerApplicationState struct {
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
 	Rules TransportLayerApplicationRuleArrayInput
 	// Site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Status of the transport layer application, modification and deletion are not allowed.
 	Status pulumi.StringPtrInput
 }
@@ -132,7 +132,7 @@ type transportLayerApplicationArgs struct {
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
 	Rules []TransportLayerApplicationRule `pulumi:"rules"`
 	// Site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a TransportLayerApplication resource.
@@ -148,7 +148,7 @@ type TransportLayerApplicationArgs struct {
 	// The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
 	Rules TransportLayerApplicationRuleArrayInput
 	// Site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (TransportLayerApplicationArgs) ElementType() reflect.Type {
@@ -269,8 +269,8 @@ func (o TransportLayerApplicationOutput) Rules() TransportLayerApplicationRuleAr
 }
 
 // Site ID.
-func (o TransportLayerApplicationOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *TransportLayerApplication) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o TransportLayerApplicationOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransportLayerApplication) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Status of the transport layer application, modification and deletion are not allowed.

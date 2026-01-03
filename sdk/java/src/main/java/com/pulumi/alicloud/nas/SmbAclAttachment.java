@@ -75,6 +75,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:nas/smbAclAttachment:SmbAclAttachment")
 public class SmbAclAttachment extends com.pulumi.resources.CustomResource {

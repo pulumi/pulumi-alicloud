@@ -35,6 +35,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegistryEnterpriseInstance{}
 	case "alicloud:cr/repo:Repo":
 		r = &Repo{}
+	case "alicloud:cr/scanRule:ScanRule":
+		r = &ScanRule{}
+	case "alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule":
+		r = &StorageDomainRoutingRule{}
 	case "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc":
 		r = &VpcEndpointLinkedVpc{}
 	default:
@@ -83,6 +87,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cr/repo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/scanRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cr/storageDomainRoutingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

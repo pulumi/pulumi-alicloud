@@ -70,6 +70,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * CEN transit router route table propagation can be imported using the id, e.g.

@@ -195,6 +195,8 @@ class Page(pulumi.CustomResource):
             page_name="resource_example_html_page")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Page can be imported using the id, e.g.
@@ -241,6 +243,8 @@ class Page(pulumi.CustomResource):
             content="PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KICA8aGVhZD4KICAgIDx0aXRsZT40MDMgRm9yYmlkZGVuPC90aXRsZT4KICA8L2hlYWQ+CiAgPGJvZHk+CiAgICA8aDE+NDAzIEZvcmJpZGRlbjwvaDE+CiAgPC9ib2R5Pgo8L2h0bWw+",
             page_name="resource_example_html_page")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

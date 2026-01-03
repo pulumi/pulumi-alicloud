@@ -1170,6 +1170,8 @@ class MigrationJob(pulumi.CustomResource):
             data_synchronization=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Notice
 
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
@@ -1343,6 +1345,8 @@ class MigrationJob(pulumi.CustomResource):
             data_initialization=True,
             data_synchronization=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Notice
 

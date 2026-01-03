@@ -299,6 +299,8 @@ class IpamIpam(pulumi.CustomResource):
             operating_region_lists=["cn-hangzhou"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam can be imported using the id, e.g.
@@ -349,6 +351,8 @@ class IpamIpam(pulumi.CustomResource):
             ipam_name=name,
             operating_region_lists=["cn-hangzhou"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

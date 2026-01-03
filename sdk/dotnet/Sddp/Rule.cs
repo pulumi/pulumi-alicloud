@@ -54,6 +54,8 @@ namespace Pulumi.AliCloud.Sddp
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Data Security Center Rule can be imported using the id, e.g.

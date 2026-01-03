@@ -72,6 +72,8 @@ import * as utilities from "../utilities";
  * * If the addon already exists in the cluster and its version is different from the specified version, the addon will be upgraded.
  * * If the addon does not exist in the cluster, it will be installed.
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cluster addon can be imported by cluster id and addon name. Then write the addon.tf file according to the result of `pulumi preview`.

@@ -383,6 +383,8 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             server_ip="10.0.0.0")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Network Load Balancer (NLB) Server Group Server Attachment can be imported using the id, e.g.
@@ -463,6 +465,8 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             weight=100,
             server_ip="10.0.0.0")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

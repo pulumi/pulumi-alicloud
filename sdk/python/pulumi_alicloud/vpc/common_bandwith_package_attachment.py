@@ -272,6 +272,8 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             ip_type="EIP")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EIP Bandwidth Plan (CBWP) Common Bandwidth Package Attachment can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
             bandwidth_package_bandwidth="2",
             ip_type="EIP")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -300,6 +300,8 @@ class DbInstanceIpArray(pulumi.CustomResource):
             db_instance_id=default_h_kd_ds3.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB DB Instance IP Array can be imported using the id, e.g.
@@ -387,6 +389,8 @@ class DbInstanceIpArray(pulumi.CustomResource):
             db_instance_ip_array_name="taffy",
             db_instance_id=default_h_kd_ds3.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

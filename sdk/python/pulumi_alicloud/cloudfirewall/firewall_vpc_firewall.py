@@ -343,6 +343,8 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             status="open")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Firewall can be imported using the id, e.g.
@@ -409,6 +411,8 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             },
             status="open")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

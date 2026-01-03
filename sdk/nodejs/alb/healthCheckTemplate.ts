@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.alb.HealthCheckTemplate("example", {healthCheckTemplateName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.

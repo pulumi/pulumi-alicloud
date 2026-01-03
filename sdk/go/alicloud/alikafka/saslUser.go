@@ -12,14 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Alikafka Sasl User resource.
+// Provides an AliKafka Sasl User resource.
+//
+// For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 //
 // > **NOTE:** Available since v1.66.0.
-//
-// > **NOTE:**  Only the following regions support create alikafka Sasl User.
-// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-//
-// For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 //
 // ## Example Usage
 //
@@ -45,7 +42,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -114,9 +111,11 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
-// Alikafka Sasl User can be imported using the id, e.g.
+// AliKafka Sasl User can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:alikafka/saslUser:SaslUser example <instance_id>:<username>
@@ -124,15 +123,20 @@ import (
 type SaslUser struct {
 	pulumi.CustomResourceState
 
-	// ID of the ALIKAFKA Instance that owns the groups.
+	// The instance ID.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// The encryption method. Valid values:
+	// - SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-256
+	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	Mechanism pulumi.StringOutput `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	Password pulumi.StringOutput `pulumi:"password"`
+	// The authentication mechanism. Default value: `plain`. Valid values:
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -181,30 +185,40 @@ func GetSaslUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SaslUser resources.
 type saslUserState struct {
-	// ID of the ALIKAFKA Instance that owns the groups.
+	// The instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The encryption method. Valid values:
+	// - SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-256
+	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	Mechanism *string `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	// The authentication mechanism. Default value: `plain`. Valid values:
 	Type *string `pulumi:"type"`
 	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username *string `pulumi:"username"`
 }
 
 type SaslUserState struct {
-	// ID of the ALIKAFKA Instance that owns the groups.
+	// The instance ID.
 	InstanceId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The encryption method. Valid values:
+	// - SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-256
+	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	Mechanism pulumi.StringPtrInput
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	// The authentication mechanism. Default value: `plain`. Valid values:
 	Type pulumi.StringPtrInput
 	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringPtrInput
@@ -215,15 +229,20 @@ func (SaslUserState) ElementType() reflect.Type {
 }
 
 type saslUserArgs struct {
-	// ID of the ALIKAFKA Instance that owns the groups.
+	// The instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// The encryption method. Valid values:
+	// - SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-256
+	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	Mechanism *string `pulumi:"mechanism"`
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password *string `pulumi:"password"`
-	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	// The authentication mechanism. Default value: `plain`. Valid values:
 	Type *string `pulumi:"type"`
 	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username string `pulumi:"username"`
@@ -231,15 +250,20 @@ type saslUserArgs struct {
 
 // The set of arguments for constructing a SaslUser resource.
 type SaslUserArgs struct {
-	// ID of the ALIKAFKA Instance that owns the groups.
+	// The instance ID.
 	InstanceId pulumi.StringInput
 	// An KMS encrypts password used to a db account. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a user with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// The encryption method. Valid values:
+	// - SCRAM-SHA-512. This is the default value.
+	// - SCRAM-SHA-256
+	// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+	Mechanism pulumi.StringPtrInput
 	// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
 	Password pulumi.StringPtrInput
-	// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+	// The authentication mechanism. Default value: `plain`. Valid values:
 	Type pulumi.StringPtrInput
 	// The name of the SASL user. The length should between `1` to `64` characters. The characters can only contain `a`-`z`, `A`-`Z`, `0`-`9`, `_` and `-`.
 	Username pulumi.StringInput
@@ -332,7 +356,7 @@ func (o SaslUserOutput) ToSaslUserOutputWithContext(ctx context.Context) SaslUse
 	return o
 }
 
-// ID of the ALIKAFKA Instance that owns the groups.
+// The instance ID.
 func (o SaslUserOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -347,12 +371,20 @@ func (o SaslUserOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
-func (o SaslUserOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SaslUser) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+// The encryption method. Valid values:
+// - SCRAM-SHA-512. This is the default value.
+// - SCRAM-SHA-256
+// > **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+func (o SaslUserOutput) Mechanism() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Mechanism }).(pulumi.StringOutput)
 }
 
-// The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
+func (o SaslUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The authentication mechanism. Default value: `plain`. Valid values:
 func (o SaslUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SaslUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

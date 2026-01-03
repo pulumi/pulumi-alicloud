@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS database can be imported using the id, e.g.

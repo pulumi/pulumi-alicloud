@@ -32,17 +32,9 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final V3FunctionArgs Empty = new V3FunctionArgs();
 
-    /**
-     * Function code ZIP package. code and customContainerConfig. See `code` below.
-     * 
-     */
     @Import(name="code")
     private @Nullable Output<V3FunctionCodeArgs> code;
 
-    /**
-     * @return Function code ZIP package. code and customContainerConfig. See `code` below.
-     * 
-     */
     public Optional<Output<V3FunctionCodeArgs>> code() {
         return Optional.ofNullable(this.code);
     }
@@ -198,6 +190,21 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<Integer> idleTimeout;
+
+    /**
+     * @return Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     * 
+     */
+    public Optional<Output<Integer>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+
+    /**
      * Maximum instance concurrency.
      * 
      */
@@ -348,14 +355,14 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource Group ID.
+     * Resource Group ID
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return Resource Group ID.
+     * @return Resource Group ID
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -378,14 +385,14 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Function runtime type.
+     * Function runtime type
      * 
      */
     @Import(name="runtime", required=true)
     private Output<String> runtime;
 
     /**
-     * @return Function runtime type.
+     * @return Function runtime type
      * 
      */
     public Output<String> runtime() {
@@ -481,6 +488,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.functionName = $.functionName;
         this.gpuConfig = $.gpuConfig;
         this.handler = $.handler;
+        this.idleTimeout = $.idleTimeout;
         this.instanceConcurrency = $.instanceConcurrency;
         this.instanceIsolationMode = $.instanceIsolationMode;
         this.instanceLifecycleConfig = $.instanceLifecycleConfig;
@@ -519,23 +527,11 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
             $ = new V3FunctionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param code Function code ZIP package. code and customContainerConfig. See `code` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder code(@Nullable Output<V3FunctionCodeArgs> code) {
             $.code = code;
             return this;
         }
 
-        /**
-         * @param code Function code ZIP package. code and customContainerConfig. See `code` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder code(V3FunctionCodeArgs code) {
             return code(Output.of(code));
         }
@@ -748,6 +744,27 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder handler(String handler) {
             return handler(Output.of(handler));
+        }
+
+        /**
+         * @param idleTimeout Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<Integer> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(Integer idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
         }
 
         /**
@@ -971,7 +988,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource Group ID.
+         * @param resourceGroupId Resource Group ID
          * 
          * @return builder
          * 
@@ -982,7 +999,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource Group ID.
+         * @param resourceGroupId Resource Group ID
          * 
          * @return builder
          * 
@@ -1013,7 +1030,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime Function runtime type.
+         * @param runtime Function runtime type
          * 
          * @return builder
          * 
@@ -1024,7 +1041,7 @@ public final class V3FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runtime Function runtime type.
+         * @param runtime Function runtime type
          * 
          * @return builder
          * 

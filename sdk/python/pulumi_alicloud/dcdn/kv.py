@@ -167,6 +167,8 @@ class Kv(pulumi.CustomResource):
             namespace=default_kv_namespace.namespace)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dcdn Kv can be imported using the id, e.g.
@@ -218,6 +220,8 @@ class Kv(pulumi.CustomResource):
             key=f"{name}-{default['result']}",
             namespace=default_kv_namespace.namespace)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -373,6 +373,8 @@ class LoadBalancer(pulumi.CustomResource):
             address_ip_version="Ipv4")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GWLB Load Balancer can be imported using the id, e.g.
@@ -455,6 +457,8 @@ class LoadBalancer(pulumi.CustomResource):
             }],
             address_ip_version="Ipv4")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

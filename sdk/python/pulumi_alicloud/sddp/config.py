@@ -191,6 +191,8 @@ class Config(pulumi.CustomResource):
             value="10")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Security Center Config can be imported using the id, e.g.
@@ -231,6 +233,8 @@ class Config(pulumi.CustomResource):
             code="access_failed_cnt",
             value="10")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

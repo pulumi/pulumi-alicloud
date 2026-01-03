@@ -231,6 +231,8 @@ class DedicatedHostAccount(pulumi.CustomResource):
             account_type="Normal")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Account can be imported using the id, e.g.
@@ -314,6 +316,8 @@ class DedicatedHostAccount(pulumi.CustomResource):
             dedicated_host_id=default_dedicated_host.dedicated_host_id,
             account_type="Normal")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

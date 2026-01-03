@@ -161,6 +161,8 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:cs/autoscalingConfig:AutoscalingConfig")]
     public partial class AutoscalingConfig : global::Pulumi.CustomResource

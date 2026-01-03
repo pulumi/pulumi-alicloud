@@ -306,6 +306,8 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
             traffic_to_endpoint_policy="DenyAll")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Custom Routing Endpoint can be imported using the id, e.g.
@@ -391,6 +393,8 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
             type="PrivateSubNet",
             traffic_to_endpoint_policy="DenyAll")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -272,6 +272,8 @@ class Endpoint(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone Endpoint can be imported using the id, e.g.
@@ -348,6 +350,8 @@ class Endpoint(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

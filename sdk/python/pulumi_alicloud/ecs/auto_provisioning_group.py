@@ -747,6 +747,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS auto provisioning group can be imported using the id, e.g.
@@ -832,6 +834,8 @@ class AutoProvisioningGroup(pulumi.CustomResource):
                 "max_price": "2",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

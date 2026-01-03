@@ -97,6 +97,8 @@ namespace Pulumi.AliCloud.BastionHost
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Bastion Host Share Key can be imported using the id, e.g.

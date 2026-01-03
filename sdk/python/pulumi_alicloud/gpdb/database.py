@@ -317,6 +317,8 @@ class Database(pulumi.CustomResource):
             db_instance_id=default_tc08a9.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Database can be imported using the id, e.g.
@@ -390,6 +392,8 @@ class Database(pulumi.CustomResource):
             ctype="en_US.utf8",
             db_instance_id=default_tc08a9.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -361,6 +361,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.
@@ -437,6 +439,8 @@ class AggregateCompliancePack(pulumi.CustomResource):
                 "config_rule_id": default_aggregate_config_rule.config_rule_id,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

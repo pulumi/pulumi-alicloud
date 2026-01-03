@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  * const defaultBucketDataRedundancyTransition = new alicloud.oss.BucketDataRedundancyTransition("default", {bucket: createBucket.bucket});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * OSS Bucket Data Redundancy Transition can be imported using the id, e.g.

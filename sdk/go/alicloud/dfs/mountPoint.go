@@ -95,6 +95,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Apsara File Storage for HDFS (DFS) Mount Point can be imported using the id, e.g.

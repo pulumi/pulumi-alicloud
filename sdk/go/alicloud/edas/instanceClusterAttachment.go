@@ -127,6 +127,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type InstanceClusterAttachment struct {
 	pulumi.CustomResourceState
 

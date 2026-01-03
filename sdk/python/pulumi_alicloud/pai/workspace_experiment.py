@@ -215,6 +215,8 @@ class WorkspaceExperiment(pulumi.CustomResource):
             workspace_id=default_di9fs_l.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Experiment can be imported using the id, e.g.
@@ -266,6 +268,8 @@ class WorkspaceExperiment(pulumi.CustomResource):
             experiment_name=name,
             workspace_id=default_di9fs_l.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

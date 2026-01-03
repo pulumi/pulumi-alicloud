@@ -290,6 +290,8 @@ class FcTrigger(pulumi.CustomResource):
             trigger_arn=f"acs:fc:{default_get_regions.regions[0].id}:{default.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CDN Fc Trigger can be imported using the id, e.g.
@@ -339,6 +341,8 @@ class FcTrigger(pulumi.CustomResource):
             source_arn=f"acs:cdn:*:{default.id}:domain/example.com",
             trigger_arn=f"acs:fc:{default_get_regions.regions[0].id}:{default.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

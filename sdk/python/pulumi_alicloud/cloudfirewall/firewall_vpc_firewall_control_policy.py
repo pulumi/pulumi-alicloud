@@ -750,6 +750,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             vpc_firewall_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Vpc Firewall Control Policy can be imported using the id, e.g.
@@ -832,6 +834,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             member_uid=default.id,
             vpc_firewall_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

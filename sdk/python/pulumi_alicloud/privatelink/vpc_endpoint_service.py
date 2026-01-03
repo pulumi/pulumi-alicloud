@@ -531,6 +531,8 @@ class VpcEndpointService(pulumi.CustomResource):
             auto_accept_connection=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Link Vpc Endpoint Service can be imported using the id, e.g.
@@ -585,6 +587,8 @@ class VpcEndpointService(pulumi.CustomResource):
             connect_bandwidth=103,
             auto_accept_connection=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

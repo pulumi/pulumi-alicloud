@@ -63,17 +63,9 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rulesetId);
     }
 
-    /**
-     * Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     * 
-     */
     @Import(name="shared")
     private @Nullable Output<WafRuleSharedArgs> shared;
 
-    /**
-     * @return Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     * 
-     */
     public Optional<Output<WafRuleSharedArgs>> shared() {
         return Optional.ofNullable(this.shared);
     }
@@ -83,27 +75,19 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
-    /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     * 
-     */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
-    /**
-     * @return The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     * 
-     */
     public Optional<Output<Integer>> siteVersion() {
         return Optional.ofNullable(this.siteVersion);
     }
@@ -216,23 +200,11 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
             return rulesetId(Output.of(rulesetId));
         }
 
-        /**
-         * @param shared Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shared(@Nullable Output<WafRuleSharedArgs> shared) {
             $.shared = shared;
             return this;
         }
 
-        /**
-         * @param shared Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder shared(WafRuleSharedArgs shared) {
             return shared(Output.of(shared));
         }
@@ -243,7 +215,7 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -254,27 +226,15 @@ public final class WafRuleState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
-        /**
-         * @param siteVersion The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder siteVersion(@Nullable Output<Integer> siteVersion) {
             $.siteVersion = siteVersion;
             return this;
         }
 
-        /**
-         * @param siteVersion The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder siteVersion(Integer siteVersion) {
             return siteVersion(Output.of(siteVersion));
         }

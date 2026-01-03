@@ -58,6 +58,8 @@ namespace Pulumi.AliCloud.Tsdb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// TSDB Instance can be imported using the id, e.g.

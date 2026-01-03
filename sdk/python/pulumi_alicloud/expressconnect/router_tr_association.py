@@ -334,6 +334,8 @@ class RouterTrAssociation(pulumi.CustomResource):
             association_region_id="cn-hangzhou")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Express Connect Router Tr Association can be imported using the id, e.g.
@@ -407,6 +409,8 @@ class RouterTrAssociation(pulumi.CustomResource):
             transit_router_id=default_r_ycjsc.transit_router_id,
             association_region_id="cn-hangzhou")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

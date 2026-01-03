@@ -176,6 +176,8 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket User Defined Log Fields can be imported using the id, e.g.
@@ -234,6 +236,8 @@ class BucketUserDefinedLogFields(pulumi.CustomResource):
                 "example-header",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

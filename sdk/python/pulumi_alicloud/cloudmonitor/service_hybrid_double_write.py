@@ -196,6 +196,8 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
             user_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Hybrid Double Write can be imported using the id, e.g.
@@ -245,6 +247,8 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
             namespace=default_namespace.id,
             user_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

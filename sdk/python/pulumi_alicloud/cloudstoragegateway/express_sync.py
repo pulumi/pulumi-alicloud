@@ -285,6 +285,8 @@ class ExpressSync(pulumi.CustomResource):
             express_sync_name=f"{name}-{default_integer['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Express Sync can be imported using the id, e.g.
@@ -390,6 +392,8 @@ class ExpressSync(pulumi.CustomResource):
             description=name,
             express_sync_name=f"{name}-{default_integer['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

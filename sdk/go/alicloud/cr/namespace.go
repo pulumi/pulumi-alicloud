@@ -64,6 +64,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Container Registry namespace can be imported using the namespace, e.g.

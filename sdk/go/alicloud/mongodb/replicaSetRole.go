@@ -116,6 +116,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // MongoDB replica set role can be imported using the id, e.g. Composed of instance ID, network type and role ID with format `<db_instance_id>:<network_type>:<role_id>`.

@@ -253,6 +253,8 @@ class Role(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager can be imported using the id or role_name, e.g.
@@ -309,6 +311,8 @@ class Role(pulumi.CustomResource):
              }}
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

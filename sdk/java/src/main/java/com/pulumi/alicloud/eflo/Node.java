@@ -6,6 +6,8 @@ package com.pulumi.alicloud.eflo;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.eflo.NodeArgs;
 import com.pulumi.alicloud.eflo.inputs.NodeState;
+import com.pulumi.alicloud.eflo.outputs.NodeDataDisk;
+import com.pulumi.alicloud.eflo.outputs.NodeIpAllocationPolicy;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,74 +15,12 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Eflo Node resource.
- * 
- * Large computing node.
- * 
- * For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
- * 
- * &gt; **NOTE:** Available since v1.246.0.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.eflo.Node;
- * import com.pulumi.alicloud.eflo.NodeArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .build());
- * 
- *         var defaultNode = new Node("defaultNode", NodeArgs.builder()
- *             .period(36)
- *             .discountLevel("36")
- *             .billingCycle("1month")
- *             .classify("gpuserver")
- *             .zone("cn-hangzhou-b")
- *             .productForm("instance")
- *             .paymentRatio("0")
- *             .hpnZone("B1")
- *             .serverArch("bmserver")
- *             .computingServer("efg1.nvga1n")
- *             .stageNum("36")
- *             .renewalStatus("AutoRenewal")
- *             .renewPeriod(36)
- *             .status("Unused")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Eflo Node can be imported using the id, e.g.
@@ -95,12 +35,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Billing cycle
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="billingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingCycle;
 
     /**
      * @return Billing cycle
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> billingCycle() {
@@ -109,6 +53,8 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Classification
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="classify", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> classify;
@@ -116,12 +62,28 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * @return Classification
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Output<Optional<String>> classify() {
         return Codegen.optional(this.classify);
     }
     /**
-     * Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * Cluster id
+     * 
+     */
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
+    private Output<String> clusterId;
+
+    /**
+     * @return Cluster id
+     * 
+     */
+    public Output<String> clusterId() {
+        return this.clusterId;
+    }
+    /**
+     * Node Model
      * 
      * @deprecated
      * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
@@ -132,7 +94,7 @@ public class Node extends com.pulumi.resources.CustomResource {
     private Output<String> computingServer;
 
     /**
-     * @return Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * @return Node Model
      * 
      */
     public Output<String> computingServer() {
@@ -153,7 +115,23 @@ public class Node extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     * 
+     */
+    @Export(name="dataDisks", refs={List.class,NodeDataDisk.class}, tree="[0,1]")
+    private Output<List<NodeDataDisk>> dataDisks;
+
+    /**
+     * @return The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     * 
+     */
+    public Output<List<NodeDataDisk>> dataDisks() {
+        return this.dataDisks;
+    }
+    /**
      * Offer Information
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="discountLevel", refs={String.class}, tree="[0]")
@@ -162,9 +140,25 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * @return Offer Information
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Output<Optional<String>> discountLevel() {
         return Codegen.optional(this.discountLevel);
+    }
+    /**
+     * Host name
+     * 
+     */
+    @Export(name="hostname", refs={String.class}, tree="[0]")
+    private Output<String> hostname;
+
+    /**
+     * @return Host name
+     * 
+     */
+    public Output<String> hostname() {
+        return this.hostname;
     }
     /**
      * Cluster Number
@@ -195,6 +189,34 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.installPai);
     }
     /**
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     * 
+     */
+    @Export(name="ipAllocationPolicies", refs={List.class,NodeIpAllocationPolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodeIpAllocationPolicy>> ipAllocationPolicies;
+
+    /**
+     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     * 
+     */
+    public Output<Optional<List<NodeIpAllocationPolicy>>> ipAllocationPolicies() {
+        return Codegen.optional(this.ipAllocationPolicies);
+    }
+    /**
+     * Login Password
+     * 
+     */
+    @Export(name="loginPassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loginPassword;
+
+    /**
+     * @return Login Password
+     * 
+     */
+    public Output<Optional<String>> loginPassword() {
+        return Codegen.optional(this.loginPassword);
+    }
+    /**
      * Model
      * 
      */
@@ -209,7 +231,37 @@ public class Node extends com.pulumi.resources.CustomResource {
         return this.machineType;
     }
     /**
+     * node group id
+     * 
+     */
+    @Export(name="nodeGroupId", refs={String.class}, tree="[0]")
+    private Output<String> nodeGroupId;
+
+    /**
+     * @return node group id
+     * 
+     */
+    public Output<String> nodeGroupId() {
+        return this.nodeGroupId;
+    }
+    /**
+     * node type
+     * 
+     */
+    @Export(name="nodeType", refs={String.class}, tree="[0]")
+    private Output<String> nodeType;
+
+    /**
+     * @return node type
+     * 
+     */
+    public Output<String> nodeType() {
+        return this.nodeType;
+    }
+    /**
      * Down payment ratio
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Export(name="paymentRatio", refs={String.class}, tree="[0]")
@@ -217,6 +269,8 @@ public class Node extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Down payment ratio
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> paymentRatio() {
@@ -241,12 +295,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
      * @return Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -255,12 +313,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Form
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="productForm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productForm;
 
     /**
      * @return Form
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> productForm() {
@@ -337,12 +399,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Architecture
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="serverArch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverArch;
 
     /**
      * @return Architecture
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> serverArch() {
@@ -351,12 +417,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * Number of stages
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="stageNum", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stageNum;
 
     /**
      * @return Number of stages
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> stageNum() {
@@ -389,6 +459,48 @@ public class Node extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Custom Data
+     * 
+     */
+    @Export(name="userData", refs={String.class}, tree="[0]")
+    private Output<String> userData;
+
+    /**
+     * @return Custom Data
+     * 
+     */
+    public Output<String> userData() {
+        return this.userData;
+    }
+    /**
+     * VPC ID
+     * 
+     */
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
+    private Output<String> vpcId;
+
+    /**
+     * @return VPC ID
+     * 
+     */
+    public Output<String> vpcId() {
+        return this.vpcId;
+    }
+    /**
+     * Switch ID
+     * 
+     */
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
+    private Output<String> vswitchId;
+
+    /**
+     * @return Switch ID
+     * 
+     */
+    public Output<String> vswitchId() {
+        return this.vswitchId;
     }
     /**
      * Availability Zone
@@ -444,6 +556,9 @@ public class Node extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "loginPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

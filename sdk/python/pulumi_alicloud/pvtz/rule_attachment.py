@@ -187,6 +187,8 @@ class RuleAttachment(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone Rule Attachment can be imported using the id, e.g.
@@ -287,6 +289,8 @@ class RuleAttachment(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

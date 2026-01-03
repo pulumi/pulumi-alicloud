@@ -231,6 +231,8 @@ class ImageLib(pulumi.CustomResource):
             biz_types=[default_ualun_b.biz_type_name])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Image Lib can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class ImageLib(pulumi.CustomResource):
             image_lib_name=name,
             biz_types=[default_ualun_b.biz_type_name])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

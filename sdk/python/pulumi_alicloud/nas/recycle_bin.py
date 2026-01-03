@@ -147,6 +147,8 @@ class RecycleBin(pulumi.CustomResource):
             reserved_days=3)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Recycle Bin can be imported using the id, e.g.
@@ -192,6 +194,8 @@ class RecycleBin(pulumi.CustomResource):
             file_system_id=example_file_system.id,
             reserved_days=3)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

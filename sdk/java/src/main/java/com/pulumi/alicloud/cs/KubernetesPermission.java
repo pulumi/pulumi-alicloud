@@ -158,6 +158,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:cs/kubernetesPermission:KubernetesPermission")
 public class KubernetesPermission extends com.pulumi.resources.CustomResource {

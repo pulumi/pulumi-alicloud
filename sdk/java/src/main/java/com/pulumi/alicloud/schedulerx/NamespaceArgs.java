@@ -47,14 +47,14 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Namespace uid.
+     * namespace uid
      * 
      */
     @Import(name="namespaceUid")
     private @Nullable Output<String> namespaceUid;
 
     /**
-     * @return Namespace uid.
+     * @return namespace uid
      * 
      */
     public Optional<Output<String>> namespaceUid() {
@@ -130,7 +130,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceUid Namespace uid.
+         * @param namespaceUid namespace uid
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceUid Namespace uid.
+         * @param namespaceUid namespace uid
          * 
          * @return builder
          * 

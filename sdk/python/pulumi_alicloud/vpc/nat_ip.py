@@ -346,6 +346,8 @@ class NatIp(pulumi.CustomResource):
             nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Nat Ip can be imported using the id, e.g.
@@ -414,6 +416,8 @@ class NatIp(pulumi.CustomResource):
             nat_ip_name="example_value",
             nat_ip_cidr=example_nat_ip_cidr.nat_ip_cidr)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

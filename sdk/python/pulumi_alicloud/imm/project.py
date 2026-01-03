@@ -147,6 +147,8 @@ class Project(pulumi.CustomResource):
             service_role=role.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Intelligent Media Management Project can be imported using the id, e.g.
@@ -208,6 +210,8 @@ class Project(pulumi.CustomResource):
             project=name,
             service_role=role.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

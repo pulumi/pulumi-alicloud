@@ -244,6 +244,8 @@ class AccountPrivilege(pulumi.CustomResource):
             db_names=[__item.name for __item in db])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS account privilege can be imported using the id, e.g.
@@ -322,6 +324,8 @@ class AccountPrivilege(pulumi.CustomResource):
             privilege="ReadOnly",
             db_names=[__item.name for __item in db])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

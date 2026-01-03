@@ -152,6 +152,8 @@ class FaceConfig(pulumi.CustomResource):
                 args=[default["result"]]).result)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloudauth Face Config can be imported using the id, e.g.
@@ -203,6 +205,8 @@ class FaceConfig(pulumi.CustomResource):
             biz_type=std.format(input="type-%s",
                 args=[default["result"]]).result)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -54,6 +54,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OOS Patch Baseline can be imported using the id, e.g.

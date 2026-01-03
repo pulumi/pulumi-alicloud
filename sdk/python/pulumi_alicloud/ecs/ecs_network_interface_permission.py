@@ -233,6 +233,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             force=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Network Interface Permission can be imported using the id, e.g.
@@ -302,6 +304,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             permission="InstanceAttach",
             force=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -255,6 +255,8 @@ class Acl(pulumi.CustomResource):
             resource_group_id=default.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ALB Acl can be imported using the id, e.g.
@@ -298,6 +300,8 @@ class Acl(pulumi.CustomResource):
             acl_name="tf_example",
             resource_group_id=default.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

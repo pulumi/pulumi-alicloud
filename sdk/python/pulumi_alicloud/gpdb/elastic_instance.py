@@ -728,6 +728,8 @@ class ElasticInstance(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for PostgreSQL can be imported using the id, e.g.
@@ -804,6 +806,8 @@ class ElasticInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             vswitch_id=default_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

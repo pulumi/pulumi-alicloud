@@ -142,6 +142,8 @@ class WafDomain(pulumi.CustomResource):
             client_ip_tag="X-Forwarded-For")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN Waf Domain can be imported using the id, e.g.
@@ -198,6 +200,8 @@ class WafDomain(pulumi.CustomResource):
             domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

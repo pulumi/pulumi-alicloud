@@ -60,6 +60,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // The Sag DnatEntry can be imported using the id, e.g.

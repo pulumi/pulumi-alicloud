@@ -222,6 +222,8 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
             endpoint_id=default_basic_endpoint.endpoint_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation can be imported using the id, e.g.
@@ -312,6 +314,8 @@ class BasicAccelerateIpEndpointRelation(pulumi.CustomResource):
             accelerate_ip_id=default_basic_accelerate_ip.id,
             endpoint_id=default_basic_endpoint.endpoint_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

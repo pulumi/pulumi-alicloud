@@ -264,6 +264,8 @@ class RouterGrantAssociation(pulumi.CustomResource):
             instance_type="VPC")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Grant Association can be imported using the id, e.g.
@@ -328,6 +330,8 @@ class RouterGrantAssociation(pulumi.CustomResource):
             ecr_owner_ali_uid=ecr_owner_uid,
             instance_type="VPC")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

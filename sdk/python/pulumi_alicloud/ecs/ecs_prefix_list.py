@@ -228,6 +228,8 @@ class EcsPrefixList(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Prefix List can be imported using the id, e.g.
@@ -275,6 +277,8 @@ class EcsPrefixList(pulumi.CustomResource):
                 "description": "description",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

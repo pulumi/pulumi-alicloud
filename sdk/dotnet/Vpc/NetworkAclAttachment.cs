@@ -71,6 +71,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAclAttachment:NetworkAclAttachment")]
     public partial class NetworkAclAttachment : global::Pulumi.CustomResource

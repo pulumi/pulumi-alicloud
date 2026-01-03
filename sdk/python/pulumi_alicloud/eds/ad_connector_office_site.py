@@ -728,6 +728,8 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
             sub_domain_name="child.example.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Ad Connector Office Site can be imported using the id, e.g.
@@ -805,6 +807,8 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
             sub_domain_dns_addresses=["127.0.0.3"],
             sub_domain_name="child.example.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

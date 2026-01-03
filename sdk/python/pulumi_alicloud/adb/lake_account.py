@@ -328,6 +328,8 @@ class LakeAccount(pulumi.CustomResource):
             account_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB Lake Account can be imported using the id, e.g.
@@ -426,6 +428,8 @@ class LakeAccount(pulumi.CustomResource):
             ],
             account_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

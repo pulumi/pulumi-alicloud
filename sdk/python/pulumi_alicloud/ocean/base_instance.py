@@ -998,6 +998,8 @@ class BaseInstance(pulumi.CustomResource):
             instance_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ocean Base Instance can be imported using the id, e.g.
@@ -1129,6 +1131,8 @@ class BaseInstance(pulumi.CustomResource):
             series="normal",
             instance_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

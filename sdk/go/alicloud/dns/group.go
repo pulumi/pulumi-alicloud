@@ -41,6 +41,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type Group struct {
 	pulumi.CustomResourceState
 

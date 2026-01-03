@@ -19,17 +19,23 @@ __all__ = ['ClientCertificateArgs', 'ClientCertificate']
 @pulumi.input_type
 class ClientCertificateArgs:
     def __init__(__self__, *,
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.str],
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] validity_days: Certificate validity period.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pkey_type: The private key algorithm type.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The certificate status. Valid values: `revoked`, `active`.
         """
         pulumi.set(__self__, "site_id", site_id)
@@ -43,14 +49,14 @@ class ClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -58,6 +64,8 @@ class ClientCertificateArgs:
     def validity_days(self) -> pulumi.Input[_builtins.str]:
         """
         Certificate validity period.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "validity_days")
 
@@ -70,6 +78,8 @@ class ClientCertificateArgs:
     def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Certificate signing request content.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "csr")
 
@@ -82,6 +92,8 @@ class ClientCertificateArgs:
     def pkey_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The private key algorithm type.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pkey_type")
 
@@ -109,7 +121,7 @@ class _ClientCertificateState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  validity_days: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -117,10 +129,16 @@ class _ClientCertificateState:
         :param pulumi.Input[_builtins.str] client_cert_id: ClientCertificate Id
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pkey_type: The private key algorithm type.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: The certificate status. Valid values: `revoked`, `active`.
         :param pulumi.Input[_builtins.str] validity_days: Certificate validity period.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         if client_cert_id is not None:
             pulumi.set(__self__, "client_cert_id", client_cert_id)
@@ -166,6 +184,8 @@ class _ClientCertificateState:
     def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Certificate signing request content.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "csr")
 
@@ -178,6 +198,8 @@ class _ClientCertificateState:
     def pkey_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The private key algorithm type.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pkey_type")
 
@@ -187,14 +209,14 @@ class _ClientCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -214,6 +236,8 @@ class _ClientCertificateState:
     def validity_days(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Certificate validity period.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "validity_days")
 
@@ -230,7 +254,7 @@ class ClientCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  validity_days: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -257,6 +281,8 @@ class ClientCertificate(pulumi.CustomResource):
             validity_days="365")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Client Certificate can be imported using the id, e.g.
@@ -268,10 +294,16 @@ class ClientCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pkey_type: The private key algorithm type.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: The certificate status. Valid values: `revoked`, `active`.
         :param pulumi.Input[_builtins.str] validity_days: Certificate validity period.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         ...
     @overload
@@ -302,6 +334,8 @@ class ClientCertificate(pulumi.CustomResource):
             validity_days="365")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Client Certificate can be imported using the id, e.g.
@@ -327,7 +361,7 @@ class ClientCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  validity_days: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -364,7 +398,7 @@ class ClientCertificate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             csr: Optional[pulumi.Input[_builtins.str]] = None,
             pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             validity_days: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientCertificate':
         """
@@ -377,10 +411,16 @@ class ClientCertificate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_cert_id: ClientCertificate Id
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created.
         :param pulumi.Input[_builtins.str] csr: Certificate signing request content.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] pkey_type: The private key algorithm type.
-        :param pulumi.Input[_builtins.int] site_id: Site Id
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] site_id: Site Id
         :param pulumi.Input[_builtins.str] status: The certificate status. Valid values: `revoked`, `active`.
         :param pulumi.Input[_builtins.str] validity_days: Certificate validity period.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,6 +456,8 @@ class ClientCertificate(pulumi.CustomResource):
     def csr(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Certificate signing request content.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "csr")
 
@@ -424,12 +466,14 @@ class ClientCertificate(pulumi.CustomResource):
     def pkey_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The private key algorithm type.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "pkey_type")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         Site Id
         """
@@ -448,6 +492,8 @@ class ClientCertificate(pulumi.CustomResource):
     def validity_days(self) -> pulumi.Output[_builtins.str]:
         """
         Certificate validity period.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "validity_days")
 

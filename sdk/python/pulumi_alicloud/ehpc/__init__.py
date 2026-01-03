@@ -7,8 +7,10 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .cluster_v2 import *
 from .get_clusters import *
 from .get_job_templates import *
 from .job_template import *
+from .queue import *
 from ._inputs import *
 from . import outputs

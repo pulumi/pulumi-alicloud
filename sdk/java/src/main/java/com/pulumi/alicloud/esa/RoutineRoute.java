@@ -87,6 +87,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Routine Route can be imported using the id, e.g.
@@ -129,6 +131,20 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> configId() {
         return this.configId;
+    }
+    /**
+     * Spare
+     * 
+     */
+    @Export(name="fallback", refs={String.class}, tree="[0]")
+    private Output<String> fallback;
+
+    /**
+     * @return Spare
+     * 
+     */
+    public Output<String> fallback() {
+        return this.fallback;
     }
     /**
      * Routing switch. Value range:
@@ -208,14 +224,14 @@ public class RoutineRoute extends com.pulumi.resources.CustomResource {
      * Site Id
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return Site Id
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 

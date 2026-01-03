@@ -755,6 +755,8 @@ class EndpointGroup(pulumi.CustomResource):
             listener_id=default_listener.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Endpoint Group can be imported using the id, e.g.
@@ -857,6 +859,8 @@ class EndpointGroup(pulumi.CustomResource):
             endpoint_group_region=region,
             listener_id=default_listener.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

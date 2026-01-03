@@ -331,6 +331,8 @@ class CustomDomain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute custom domain can be imported using the id or the domain name, e.g.
@@ -447,6 +449,8 @@ class CustomDomain(pulumi.CustomResource):
         MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

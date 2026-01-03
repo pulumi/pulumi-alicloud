@@ -7,233 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
- * import * as std from "@pulumi/std";
- *
- * const _default = new random.index.Integer("default", {
- *     max: 99999,
- *     min: 10000,
- * });
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const enhanced = alicloud.vpc.getEnhancedNatAvailableZones({});
- * const cloudEfficiency = enhanced.then(enhanced => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: enhanced.zones?.[0]?.zoneId,
- *     cpuCoreCount: 4,
- *     memorySize: 8,
- *     kubernetesNodeRole: "Worker",
- *     systemDiskCategory: "cloud_efficiency",
- * }));
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
- *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetwork.id,
- *     zoneId: enhanced.then(enhanced => enhanced.zones?.[0]?.zoneId),
- * });
- * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
- *     namePrefix: `terraform-example-${_default.result}`,
- *     clusterSpec: "ack.pro.small",
- *     workerVswitchIds: [defaultSwitch.id],
- *     newNatGateway: true,
- *     podCidr: std.cidrsubnet({
- *         input: "10.0.0.0/8",
- *         newbits: 8,
- *         netnum: 36,
- *     }).then(invoke => invoke.result),
- *     serviceCidr: std.cidrsubnet({
- *         input: "172.16.0.0/16",
- *         newbits: 4,
- *         netnum: 7,
- *     }).then(invoke => invoke.result),
- *     slbInternetEnabled: true,
- *     enableRrsa: true,
- * });
- * const defaultKeyPair = new alicloud.ecs.KeyPair("default", {keyPairName: `terraform-example-${_default.result}`});
- * const defaultNodePool = new alicloud.cs.NodePool("default", {
- *     nodePoolName: name,
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     labels: [
- *         {
- *             key: "test1",
- *             value: "nodepool",
- *         },
- *         {
- *             key: "test2",
- *             value: "nodepool",
- *         },
- *     ],
- *     taints: [
- *         {
- *             key: "tf",
- *             effect: "NoSchedule",
- *             value: "example",
- *         },
- *         {
- *             key: "tf2",
- *             effect: "NoSchedule",
- *             value: "example2",
- *         },
- *     ],
- * });
- * //The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
- * const desiredSize = new alicloud.cs.NodePool("desired_size", {
- *     nodePoolName: "desired_size",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     desiredSize: "0",
- * });
- * // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
- * const maintenance = new alicloud.cs.NodePool("maintenance", {
- *     nodePoolName: "maintenance",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     desiredSize: "1",
- *     management: {
- *         enable: true,
- *         autoRepair: true,
- *         autoRepairPolicy: {
- *             restartNode: true,
- *         },
- *         autoUpgrade: true,
- *         autoUpgradePolicy: {
- *             autoUpgradeKubelet: true,
- *         },
- *         autoVulFix: true,
- *         autoVulFixPolicy: {
- *             vulLevel: "asap",
- *             restartNode: true,
- *         },
- *         maxUnavailable: 1,
- *     },
- * });
- * //Create a node pool with spot instance.
- * const spotInstance = new alicloud.cs.NodePool("spot_instance", {
- *     nodePoolName: "spot_instance",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [
- *         cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
- *         cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[1]?.id),
- *     ],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     desiredSize: "1",
- *     spotStrategy: "SpotWithPriceLimit",
- *     spotPriceLimits: [
- *         {
- *             instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
- *             priceLimit: "0.70",
- *         },
- *         {
- *             instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[1]?.id),
- *             priceLimit: "0.72",
- *         },
- *     ],
- * });
- * //Use Spot instances to create a node pool with auto-scaling enabled
- * const spotAutoScaling = new alicloud.cs.NodePool("spot_auto_scaling", {
- *     nodePoolName: "spot_auto_scaling",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     scalingConfig: {
- *         minSize: 1,
- *         maxSize: 10,
- *         type: "spot",
- *     },
- *     spotStrategy: "SpotWithPriceLimit",
- *     spotPriceLimits: [{
- *         instanceType: cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id),
- *         priceLimit: "0.70",
- *     }],
- * });
- * //Create a `PrePaid` node pool.
- * const prepaidNode = new alicloud.cs.NodePool("prepaid_node", {
- *     nodePoolName: "prepaid_node",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     keyName: defaultKeyPair.keyPairName,
- *     instanceChargeType: "PrePaid",
- *     period: 1,
- *     periodUnit: "Month",
- *     autoRenew: true,
- *     autoRenewPeriod: 1,
- *     installCloudMonitor: true,
- * });
- * //#Create a node pool with customized kubelet parameters
- * const customizedKubelet = new alicloud.cs.NodePool("customized_kubelet", {
- *     nodePoolName: "customized_kubelet",
- *     clusterId: defaultManagedKubernetes.id,
- *     vswitchIds: [defaultSwitch.id],
- *     instanceTypes: [cloudEfficiency.then(cloudEfficiency => cloudEfficiency.instanceTypes?.[0]?.id)],
- *     systemDiskCategory: "cloud_efficiency",
- *     systemDiskSize: 40,
- *     instanceChargeType: "PostPaid",
- *     desiredSize: "0",
- *     kubeletConfiguration: {
- *         registryPullQps: "10",
- *         registryBurst: "5",
- *         eventRecordQps: "10",
- *         eventBurst: "5",
- *         serializeImagePulls: "true",
- *         evictionHard: {
- *             "memory.available": "1024Mi",
- *             "nodefs.available": "10%",
- *             "nodefs.inodesFree": "5%",
- *             "imagefs.available": "10%",
- *         },
- *         systemReserved: {
- *             cpu: "1",
- *             memory: "1Gi",
- *             "ephemeral-storage": "10Gi",
- *         },
- *         kubeReserved: {
- *             cpu: "500m",
- *             memory: "1Gi",
- *         },
- *         containerLogMaxSize: "200Mi",
- *         containerLogMaxFiles: "3",
- *         maxPods: "100",
- *         readOnlyPort: "0",
- *         allowedUnsafeSysctls: ["net.ipv4.route.min_pmtu"],
- *     },
- *     rollingPolicy: {
- *         maxParallelism: 1,
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -270,6 +43,10 @@ export class NodePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodePool.__pulumiType;
     }
 
+    /**
+     * Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     */
+    declare public readonly autoMode: pulumi.Output<outputs.cs.NodePoolAutoMode>;
     /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
@@ -310,10 +87,14 @@ export class NodePool extends pulumi.CustomResource {
     declare public readonly desiredSize: pulumi.Output<string | undefined>;
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly efloNodeGroup: pulumi.Output<outputs.cs.NodePoolEfloNodeGroup | undefined>;
     /**
      * Whether to force deletion.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     /**
@@ -336,7 +117,8 @@ export class NodePool extends pulumi.CustomResource {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      */
     declare public readonly imageType: pulumi.Output<string>;
     /**
@@ -347,6 +129,14 @@ export class NodePool extends pulumi.CustomResource {
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
     declare public readonly instanceChargeType: pulumi.Output<string>;
+    /**
+     * ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     */
+    declare public readonly instanceMetadataOptions: pulumi.Output<outputs.cs.NodePoolInstanceMetadataOptions>;
+    /**
+     * Instance property configuration. See `instancePatterns` below.
+     */
+    declare public readonly instancePatterns: pulumi.Output<outputs.cs.NodePoolInstancePattern[] | undefined>;
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
@@ -476,9 +266,6 @@ export class NodePool extends pulumi.CustomResource {
      * The ID of the resource group
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
-    /**
-     * Rotary configuration. See `rollingPolicy` below.
-     */
     declare public readonly rollingPolicy: pulumi.Output<outputs.cs.NodePoolRollingPolicy | undefined>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -609,9 +396,6 @@ export class NodePool extends pulumi.CustomResource {
      * Whether the node after expansion can be scheduled.
      */
     declare public readonly unschedulable: pulumi.Output<boolean | undefined>;
-    /**
-     * Synchronously update node labels and taints.
-     */
     declare public readonly updateNodes: pulumi.Output<boolean | undefined>;
     /**
      * Node custom data, base64-encoded.
@@ -635,6 +419,7 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
+            resourceInputs["autoMode"] = state?.autoMode;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["autoRenewPeriod"] = state?.autoRenewPeriod;
             resourceInputs["cisEnabled"] = state?.cisEnabled;
@@ -651,6 +436,8 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["imageType"] = state?.imageType;
             resourceInputs["installCloudMonitor"] = state?.installCloudMonitor;
             resourceInputs["instanceChargeType"] = state?.instanceChargeType;
+            resourceInputs["instanceMetadataOptions"] = state?.instanceMetadataOptions;
+            resourceInputs["instancePatterns"] = state?.instancePatterns;
             resourceInputs["instanceTypes"] = state?.instanceTypes;
             resourceInputs["instances"] = state?.instances;
             resourceInputs["internetChargeType"] = state?.internetChargeType;
@@ -717,6 +504,7 @@ export class NodePool extends pulumi.CustomResource {
             if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
+            resourceInputs["autoMode"] = args?.autoMode;
             resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["autoRenewPeriod"] = args?.autoRenewPeriod;
             resourceInputs["cisEnabled"] = args?.cisEnabled;
@@ -733,6 +521,8 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["imageType"] = args?.imageType;
             resourceInputs["installCloudMonitor"] = args?.installCloudMonitor;
             resourceInputs["instanceChargeType"] = args?.instanceChargeType;
+            resourceInputs["instanceMetadataOptions"] = args?.instanceMetadataOptions;
+            resourceInputs["instancePatterns"] = args?.instancePatterns;
             resourceInputs["instanceTypes"] = args?.instanceTypes;
             resourceInputs["instances"] = args?.instances;
             resourceInputs["internetChargeType"] = args?.internetChargeType;
@@ -807,6 +597,10 @@ export class NodePool extends pulumi.CustomResource {
  */
 export interface NodePoolState {
     /**
+     * Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     */
+    autoMode?: pulumi.Input<inputs.cs.NodePoolAutoMode>;
+    /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
     autoRenew?: pulumi.Input<boolean>;
@@ -846,10 +640,14 @@ export interface NodePoolState {
     desiredSize?: pulumi.Input<string>;
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     efloNodeGroup?: pulumi.Input<inputs.cs.NodePoolEfloNodeGroup>;
     /**
      * Whether to force deletion.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -872,7 +670,8 @@ export interface NodePoolState {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -883,6 +682,14 @@ export interface NodePoolState {
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     */
+    instanceMetadataOptions?: pulumi.Input<inputs.cs.NodePoolInstanceMetadataOptions>;
+    /**
+     * Instance property configuration. See `instancePatterns` below.
+     */
+    instancePatterns?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolInstancePattern>[]>;
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
@@ -1012,9 +819,6 @@ export interface NodePoolState {
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
-    /**
-     * Rotary configuration. See `rollingPolicy` below.
-     */
     rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -1145,9 +949,6 @@ export interface NodePoolState {
      * Whether the node after expansion can be scheduled.
      */
     unschedulable?: pulumi.Input<boolean>;
-    /**
-     * Synchronously update node labels and taints.
-     */
     updateNodes?: pulumi.Input<boolean>;
     /**
      * Node custom data, base64-encoded.
@@ -1163,6 +964,10 @@ export interface NodePoolState {
  * The set of arguments for constructing a NodePool resource.
  */
 export interface NodePoolArgs {
+    /**
+     * Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `autoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `autoMode` below.
+     */
+    autoMode?: pulumi.Input<inputs.cs.NodePoolAutoMode>;
     /**
      * Whether to enable automatic renewal for nodes in the node pool takes effect only when `instanceChargeType` is set to `PrePaid`. Default value: `false`. Valid values:
      */
@@ -1203,10 +1008,14 @@ export interface NodePoolArgs {
     desiredSize?: pulumi.Input<string>;
     /**
      * Lingjun node pool configuration. See `efloNodeGroup` below.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     efloNodeGroup?: pulumi.Input<inputs.cs.NodePoolEfloNodeGroup>;
     /**
      * Whether to force deletion.
+     *
+     * > **NOTE:** This parameter only takes effect when deletion is triggered.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -1229,7 +1038,8 @@ export interface NodePoolArgs {
      * - `ContainerOS` : container-optimized image.
      * - `Ubuntu`: Ubuntu image.
      * - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-     * - `Custom`: Custom image.
+     * - `Custom`：Custom image.
+     * - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -1240,6 +1050,14 @@ export interface NodePoolArgs {
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `periodUnit`, `autoRenew` and `autoRenewPeriod` are required.
      */
     instanceChargeType?: pulumi.Input<string>;
+    /**
+     * ECS instance metadata access configuration. See `instanceMetadataOptions` below.
+     */
+    instanceMetadataOptions?: pulumi.Input<inputs.cs.NodePoolInstanceMetadataOptions>;
+    /**
+     * Instance property configuration. See `instancePatterns` below.
+     */
+    instancePatterns?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolInstancePattern>[]>;
     /**
      * In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
      */
@@ -1365,9 +1183,6 @@ export interface NodePoolArgs {
      * The ID of the resource group
      */
     resourceGroupId?: pulumi.Input<string>;
-    /**
-     * Rotary configuration. See `rollingPolicy` below.
-     */
     rollingPolicy?: pulumi.Input<inputs.cs.NodePoolRollingPolicy>;
     /**
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
@@ -1494,9 +1309,6 @@ export interface NodePoolArgs {
      * Whether the node after expansion can be scheduled.
      */
     unschedulable?: pulumi.Input<boolean>;
-    /**
-     * Synchronously update node labels and taints.
-     */
     updateNodes?: pulumi.Input<boolean>;
     /**
      * Node custom data, base64-encoded.

@@ -323,6 +323,8 @@ class EventSource(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Event Bridge Event Source can be imported using the id, e.g.
@@ -394,6 +396,8 @@ class EventSource(pulumi.CustomResource):
                 "QueueName": default_queue.name,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -571,6 +571,8 @@ class BucketObject(pulumi.CustomResource):
             content="the content that you want to upload.")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to "private".
@@ -640,6 +642,8 @@ class BucketObject(pulumi.CustomResource):
             key="example_key",
             content="the content that you want to upload.")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

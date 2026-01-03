@@ -472,6 +472,8 @@ class User(pulumi.CustomResource):
             user_name=f"{name}-{default_integer['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Sso User can be imported using the id, e.g.
@@ -539,6 +541,8 @@ class User(pulumi.CustomResource):
             directory_id=directory_id,
             user_name=f"{name}-{default_integer['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

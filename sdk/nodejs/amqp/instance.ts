@@ -50,6 +50,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
+     * The deployment architecture for Serverless instances. Valid values:
+     */
+    declare public readonly edition: pulumi.Output<string>;
+    /**
      * The instance name.
      */
     declare public readonly instanceName: pulumi.Output<string>;
@@ -95,6 +99,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly periodCycle: pulumi.Output<string | undefined>;
     /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     */
+    declare public readonly provisionedCapacity: pulumi.Output<number | undefined>;
+    /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */
     declare public readonly queueCapacity: pulumi.Output<string>;
@@ -129,7 +137,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      */
-    declare public readonly supportTracing: pulumi.Output<boolean>;
+    declare public readonly supportTracing: pulumi.Output<boolean | undefined>;
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
      */
@@ -150,6 +158,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["edition"] = state?.edition;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["maxConnections"] = state?.maxConnections;
@@ -159,6 +168,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
             resourceInputs["periodCycle"] = state?.periodCycle;
+            resourceInputs["provisionedCapacity"] = state?.provisionedCapacity;
             resourceInputs["queueCapacity"] = state?.queueCapacity;
             resourceInputs["renewalDuration"] = state?.renewalDuration;
             resourceInputs["renewalDurationUnit"] = state?.renewalDurationUnit;
@@ -175,6 +185,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'paymentType'");
             }
             resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["edition"] = args?.edition;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["maxConnections"] = args?.maxConnections;
@@ -184,6 +195,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
             resourceInputs["periodCycle"] = args?.periodCycle;
+            resourceInputs["provisionedCapacity"] = args?.provisionedCapacity;
             resourceInputs["queueCapacity"] = args?.queueCapacity;
             resourceInputs["renewalDuration"] = args?.renewalDuration;
             resourceInputs["renewalDurationUnit"] = args?.renewalDurationUnit;
@@ -213,6 +225,10 @@ export interface InstanceState {
      * OrderCreateTime.
      */
     createTime?: pulumi.Input<number>;
+    /**
+     * The deployment architecture for Serverless instances. Valid values:
+     */
+    edition?: pulumi.Input<string>;
     /**
      * The instance name.
      */
@@ -258,6 +274,10 @@ export interface InstanceState {
      * Prepaid cycle units. Value: Month, Year.
      */
     periodCycle?: pulumi.Input<string>;
+    /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     */
+    provisionedCapacity?: pulumi.Input<number>;
     /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */
@@ -309,6 +329,10 @@ export interface InstanceArgs {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
+     * The deployment architecture for Serverless instances. Valid values:
+     */
+    edition?: pulumi.Input<string>;
+    /**
      * The instance name.
      */
     instanceName?: pulumi.Input<string>;
@@ -353,6 +377,10 @@ export interface InstanceArgs {
      * Prepaid cycle units. Value: Month, Year.
      */
     periodCycle?: pulumi.Input<string>;
+    /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     */
+    provisionedCapacity?: pulumi.Input<number>;
     /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      */

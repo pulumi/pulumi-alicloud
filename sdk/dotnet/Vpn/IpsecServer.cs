@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.Vpn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// VPN Ipsec Server can be imported using the id, e.g.

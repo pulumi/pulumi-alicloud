@@ -1167,6 +1167,8 @@ class K8sApplication(pulumi.CustomResource):
             application_descriotion=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS k8s application can be imported as below, e.g.
@@ -1283,6 +1285,8 @@ class K8sApplication(pulumi.CustomResource):
             liveness="{\\"failureThreshold\\": 3,\\"initialDelaySeconds\\": 5,\\"successThreshold\\": 1,\\"timeoutSeconds\\": 1,\\"tcpSocket\\":{\\"port\\":18081}}",
             application_descriotion=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -89,7 +91,7 @@ export class VirtualBorderRouter extends pulumi.CustomResource {
      * - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      */
-    declare public readonly bandwidth: pulumi.Output<number | undefined>;
+    declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The circuit code provided by the operator for the physical connection.
      */

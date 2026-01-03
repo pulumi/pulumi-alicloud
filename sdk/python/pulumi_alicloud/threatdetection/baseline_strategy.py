@@ -369,6 +369,8 @@ class BaselineStrategy(pulumi.CustomResource):
             risk_sub_type_name="hc_exploit_redis")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Baseline Strategy can be imported using the id, e.g.
@@ -426,6 +428,8 @@ class BaselineStrategy(pulumi.CustomResource):
             start_time="05:00:00",
             risk_sub_type_name="hc_exploit_redis")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

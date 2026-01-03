@@ -145,6 +145,8 @@ class NetworkAclAttachment(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_acl_id: The id of the network acl, the field can't be changed.
@@ -195,6 +197,8 @@ class NetworkAclAttachment(pulumi.CustomResource):
                 "resource_type": "VSwitch",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param NetworkAclAttachmentArgs args: The arguments to use to populate this resource's properties.

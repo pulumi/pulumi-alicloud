@@ -48,6 +48,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Vul Whitelist can be imported using the id, e.g.

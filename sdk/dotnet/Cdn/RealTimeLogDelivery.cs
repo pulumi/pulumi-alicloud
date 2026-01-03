@@ -87,6 +87,8 @@ namespace Pulumi.AliCloud.Cdn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CDN Real Time Log Delivery can be imported using the id, e.g.

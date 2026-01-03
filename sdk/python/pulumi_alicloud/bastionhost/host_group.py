@@ -192,6 +192,8 @@ class HostGroup(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Host Group can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class HostGroup(pulumi.CustomResource):
             host_group_name=name,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

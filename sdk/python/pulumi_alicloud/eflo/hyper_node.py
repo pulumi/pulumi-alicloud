@@ -502,6 +502,8 @@ class HyperNode(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Hyper Node can be imported using the id, e.g.
@@ -570,6 +572,8 @@ class HyperNode(pulumi.CustomResource):
                 "Env": "Product",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

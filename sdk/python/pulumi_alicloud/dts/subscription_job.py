@@ -1414,6 +1414,8 @@ class SubscriptionJob(pulumi.CustomResource):
             status="Normal")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DTS Subscription Job can be imported using the id, e.g.
@@ -1561,6 +1563,8 @@ class SubscriptionJob(pulumi.CustomResource):
             subscription_instance_vswitch_id=example_switch.id,
             status="Normal")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

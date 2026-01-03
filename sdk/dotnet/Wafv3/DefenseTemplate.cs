@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.Wafv3
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// WAFV3 Defense Template can be imported using the id, e.g.

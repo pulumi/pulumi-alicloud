@@ -156,6 +156,8 @@ class RouteTableAttachment(pulumi.CustomResource):
             route_table_id=foo_route_table.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Route Table Attachment can be imported using the id, e.g.
@@ -211,6 +213,8 @@ class RouteTableAttachment(pulumi.CustomResource):
             vswitch_id=foo_switch.id,
             route_table_id=foo_route_table.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

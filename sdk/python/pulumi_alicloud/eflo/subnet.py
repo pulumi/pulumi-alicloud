@@ -340,6 +340,8 @@ class Subnet(pulumi.CustomResource):
             vpd_id=default_vpd.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Subnet can be imported using the id, e.g.
@@ -396,6 +398,8 @@ class Subnet(pulumi.CustomResource):
             cidr="10.0.0.0/16",
             vpd_id=default_vpd.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

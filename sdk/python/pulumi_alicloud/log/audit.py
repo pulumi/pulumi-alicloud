@@ -367,6 +367,8 @@ class Audit(pulumi.CustomResource):
             resource_directory_type="custom")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log audit can be imported using the id, e.g.
@@ -553,6 +555,8 @@ class Audit(pulumi.CustomResource):
             multi_accounts=[],
             resource_directory_type="custom")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

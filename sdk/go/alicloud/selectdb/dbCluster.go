@@ -90,6 +90,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // SelectDB DBCluster can be imported using the id, e.g.

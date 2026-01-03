@@ -624,6 +624,8 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             transit_router_attachment_description="example-vpn-attachment")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Vpn Attachment can be imported using the id, e.g.
@@ -832,6 +834,8 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
             cen_id=default_m8_zo6_h.cen_id,
             transit_router_attachment_description="example-vpn-attachment")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
