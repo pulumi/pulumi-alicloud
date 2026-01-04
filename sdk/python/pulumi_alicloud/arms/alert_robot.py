@@ -236,6 +236,8 @@ class AlertRobot(pulumi.CustomResource):
             daily_noc_time="09:30,17:00")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Robot can be imported using the id, e.g.
@@ -292,6 +294,8 @@ class AlertRobot(pulumi.CustomResource):
             daily_noc=True,
             daily_noc_time="09:30,17:00")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

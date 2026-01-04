@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.MaxCompute
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Max Compute Role User Attachment can be imported using the id, e.g.

@@ -19,6 +19,19 @@ namespace Pulumi.AliCloud.Lindorm.Outputs
         public readonly ImmutableArray<Outputs.InstanceV2EngineListConnectAddressList> ConnectAddressLists;
         /// <summary>
         /// Engine
+        /// 
+        /// Enumeration value:
+        /// - `TABLE`: Wide table engine
+        /// - `TSDB`: Time series Engine
+        /// - `LSEARCH`: Search engine
+        /// - `LTS`: LTS engine
+        /// - `LVECTOR`: Vector engine
+        /// - `LCOLUMN`: Column-store engine
+        /// - `LAI`: AI engine
+        /// - `FILE`: The underlying file engine
+        /// - `LMESSAGE`: Message engine
+        /// - `LROW`: Wide table Engine 3.0
+        /// - `LSTREAM`: Stream engine
         /// </summary>
         public readonly string EngineType;
         /// <summary>

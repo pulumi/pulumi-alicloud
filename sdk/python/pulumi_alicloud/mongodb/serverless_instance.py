@@ -699,6 +699,8 @@ class ServerlessInstance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MongoDB Serverless Instance can be imported using the id, e.g.
@@ -782,6 +784,8 @@ class ServerlessInstance(pulumi.CustomResource):
                 "security_ip_list": "192.168.0.1",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

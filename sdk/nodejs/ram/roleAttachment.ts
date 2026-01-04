@@ -94,6 +94,8 @@ import * as utilities from "../utilities";
  *     instanceIds: [foo].map(__item => __item.id),
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class RoleAttachment extends pulumi.CustomResource {
     /**

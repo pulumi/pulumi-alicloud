@@ -318,6 +318,8 @@ class Group(pulumi.CustomResource):
             remark="dafault_ons_group_remark")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ONS GROUP can be imported using the id, e.g.
@@ -376,6 +378,8 @@ class Group(pulumi.CustomResource):
             instance_id=default_instance.id,
             remark="dafault_ons_group_remark")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

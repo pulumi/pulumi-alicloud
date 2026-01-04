@@ -10,11 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+    /// Provides a VPC Network Acl Attachment resource.
+    /// 
+    /// Resources associated with network Acl.
     /// 
     /// For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
     /// 
     /// &gt; **NOTE:** Available since v1.193.0.
+    /// 
+    /// &gt; **WARNING:** Do not mix the use of this resource with the `Resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
     /// 
     /// ## Example Usage
     /// 
@@ -66,6 +70,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// VPC Network Acl Attachment can be imported using the id, e.g.
@@ -78,13 +84,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class VpcNetworkAclAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the network ACL.
+        /// The ID of the network ACL instance.
         /// </summary>
         [Output("networkAclId")]
         public Output<string> NetworkAclId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the associated resource.
+        /// The ID of the associated  vswitch instance.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -148,13 +154,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class VpcNetworkAclAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the network ACL.
+        /// The ID of the network ACL instance.
         /// </summary>
         [Input("networkAclId", required: true)]
         public Input<string> NetworkAclId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the associated resource.
+        /// The ID of the associated  vswitch instance.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -174,13 +180,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class VpcNetworkAclAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the network ACL.
+        /// The ID of the network ACL instance.
         /// </summary>
         [Input("networkAclId")]
         public Input<string>? NetworkAclId { get; set; }
 
         /// <summary>
-        /// The ID of the associated resource.
+        /// The ID of the associated  vswitch instance.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }

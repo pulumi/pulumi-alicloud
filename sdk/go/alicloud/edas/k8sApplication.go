@@ -154,6 +154,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // EDAS k8s application can be imported as below, e.g.

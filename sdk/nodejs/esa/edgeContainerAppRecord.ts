@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     healthCheckType: "l7",
  *     servicePort: 80,
  *     healthCheckInterval: 5,
- *     edgeContainerAppName: "terraform-app",
+ *     edgeContainerAppName: "terraform-app2",
  *     healthCheckHttpCode: "http_2xx",
  *     healthCheckUri: "/",
  *     healthCheckTimeout: 3,
@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  *     appId: defaultEdgeContainerApp.id,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -109,7 +111,7 @@ export class EdgeContainerAppRecord extends pulumi.CustomResource {
     /**
      * The website ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a EdgeContainerAppRecord resource with the given unique name, arguments, and options.
@@ -165,7 +167,7 @@ export interface EdgeContainerAppRecordState {
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
 }
 
 /**
@@ -183,5 +185,5 @@ export interface EdgeContainerAppRecordArgs {
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
 }

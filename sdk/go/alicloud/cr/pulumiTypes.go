@@ -1161,6 +1161,121 @@ func (o RepoDomainListPtrOutput) Vpc() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type StorageDomainRoutingRuleRoute struct {
+	// Endpoint Type.
+	EndpointType string `pulumi:"endpointType"`
+	// Instance domain name.
+	InstanceDomain string `pulumi:"instanceDomain"`
+	// Storage domain name.
+	StorageDomain string `pulumi:"storageDomain"`
+}
+
+// StorageDomainRoutingRuleRouteInput is an input type that accepts StorageDomainRoutingRuleRouteArgs and StorageDomainRoutingRuleRouteOutput values.
+// You can construct a concrete instance of `StorageDomainRoutingRuleRouteInput` via:
+//
+//	StorageDomainRoutingRuleRouteArgs{...}
+type StorageDomainRoutingRuleRouteInput interface {
+	pulumi.Input
+
+	ToStorageDomainRoutingRuleRouteOutput() StorageDomainRoutingRuleRouteOutput
+	ToStorageDomainRoutingRuleRouteOutputWithContext(context.Context) StorageDomainRoutingRuleRouteOutput
+}
+
+type StorageDomainRoutingRuleRouteArgs struct {
+	// Endpoint Type.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// Instance domain name.
+	InstanceDomain pulumi.StringInput `pulumi:"instanceDomain"`
+	// Storage domain name.
+	StorageDomain pulumi.StringInput `pulumi:"storageDomain"`
+}
+
+func (StorageDomainRoutingRuleRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDomainRoutingRuleRoute)(nil)).Elem()
+}
+
+func (i StorageDomainRoutingRuleRouteArgs) ToStorageDomainRoutingRuleRouteOutput() StorageDomainRoutingRuleRouteOutput {
+	return i.ToStorageDomainRoutingRuleRouteOutputWithContext(context.Background())
+}
+
+func (i StorageDomainRoutingRuleRouteArgs) ToStorageDomainRoutingRuleRouteOutputWithContext(ctx context.Context) StorageDomainRoutingRuleRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDomainRoutingRuleRouteOutput)
+}
+
+// StorageDomainRoutingRuleRouteArrayInput is an input type that accepts StorageDomainRoutingRuleRouteArray and StorageDomainRoutingRuleRouteArrayOutput values.
+// You can construct a concrete instance of `StorageDomainRoutingRuleRouteArrayInput` via:
+//
+//	StorageDomainRoutingRuleRouteArray{ StorageDomainRoutingRuleRouteArgs{...} }
+type StorageDomainRoutingRuleRouteArrayInput interface {
+	pulumi.Input
+
+	ToStorageDomainRoutingRuleRouteArrayOutput() StorageDomainRoutingRuleRouteArrayOutput
+	ToStorageDomainRoutingRuleRouteArrayOutputWithContext(context.Context) StorageDomainRoutingRuleRouteArrayOutput
+}
+
+type StorageDomainRoutingRuleRouteArray []StorageDomainRoutingRuleRouteInput
+
+func (StorageDomainRoutingRuleRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageDomainRoutingRuleRoute)(nil)).Elem()
+}
+
+func (i StorageDomainRoutingRuleRouteArray) ToStorageDomainRoutingRuleRouteArrayOutput() StorageDomainRoutingRuleRouteArrayOutput {
+	return i.ToStorageDomainRoutingRuleRouteArrayOutputWithContext(context.Background())
+}
+
+func (i StorageDomainRoutingRuleRouteArray) ToStorageDomainRoutingRuleRouteArrayOutputWithContext(ctx context.Context) StorageDomainRoutingRuleRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageDomainRoutingRuleRouteArrayOutput)
+}
+
+type StorageDomainRoutingRuleRouteOutput struct{ *pulumi.OutputState }
+
+func (StorageDomainRoutingRuleRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageDomainRoutingRuleRoute)(nil)).Elem()
+}
+
+func (o StorageDomainRoutingRuleRouteOutput) ToStorageDomainRoutingRuleRouteOutput() StorageDomainRoutingRuleRouteOutput {
+	return o
+}
+
+func (o StorageDomainRoutingRuleRouteOutput) ToStorageDomainRoutingRuleRouteOutputWithContext(ctx context.Context) StorageDomainRoutingRuleRouteOutput {
+	return o
+}
+
+// Endpoint Type.
+func (o StorageDomainRoutingRuleRouteOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageDomainRoutingRuleRoute) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Instance domain name.
+func (o StorageDomainRoutingRuleRouteOutput) InstanceDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageDomainRoutingRuleRoute) string { return v.InstanceDomain }).(pulumi.StringOutput)
+}
+
+// Storage domain name.
+func (o StorageDomainRoutingRuleRouteOutput) StorageDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageDomainRoutingRuleRoute) string { return v.StorageDomain }).(pulumi.StringOutput)
+}
+
+type StorageDomainRoutingRuleRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageDomainRoutingRuleRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageDomainRoutingRuleRoute)(nil)).Elem()
+}
+
+func (o StorageDomainRoutingRuleRouteArrayOutput) ToStorageDomainRoutingRuleRouteArrayOutput() StorageDomainRoutingRuleRouteArrayOutput {
+	return o
+}
+
+func (o StorageDomainRoutingRuleRouteArrayOutput) ToStorageDomainRoutingRuleRouteArrayOutputWithContext(ctx context.Context) StorageDomainRoutingRuleRouteArrayOutput {
+	return o
+}
+
+func (o StorageDomainRoutingRuleRouteArrayOutput) Index(i pulumi.IntInput) StorageDomainRoutingRuleRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageDomainRoutingRuleRoute {
+		return vs[0].([]StorageDomainRoutingRuleRoute)[vs[1].(int)]
+	}).(StorageDomainRoutingRuleRouteOutput)
+}
+
 type GetChainsChain struct {
 	// The configuration of delivery chain.
 	ChainConfigs []GetChainsChainChainConfig `pulumi:"chainConfigs"`
@@ -3183,6 +3298,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryEnterpriseInstanceInstanceEndpointDomainArrayInput)(nil)).Elem(), RegistryEnterpriseInstanceInstanceEndpointDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListInput)(nil)).Elem(), RepoDomainListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoDomainListPtrInput)(nil)).Elem(), RepoDomainListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageDomainRoutingRuleRouteArrayInput)(nil)).Elem(), StorageDomainRoutingRuleRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainInput)(nil)).Elem(), GetChainsChainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainArrayInput)(nil)).Elem(), GetChainsChainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChainsChainChainConfigInput)(nil)).Elem(), GetChainsChainChainConfigArgs{})
@@ -3234,6 +3351,8 @@ func init() {
 	pulumi.RegisterOutputType(RegistryEnterpriseInstanceInstanceEndpointDomainArrayOutput{})
 	pulumi.RegisterOutputType(RepoDomainListOutput{})
 	pulumi.RegisterOutputType(RepoDomainListPtrOutput{})
+	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteOutput{})
+	pulumi.RegisterOutputType(StorageDomainRoutingRuleRouteArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainOutput{})
 	pulumi.RegisterOutputType(GetChainsChainArrayOutput{})
 	pulumi.RegisterOutputType(GetChainsChainChainConfigOutput{})

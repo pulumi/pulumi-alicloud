@@ -219,6 +219,8 @@ class FirewallRule(pulumi.CustomResource):
             remark=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Simple Application Server Firewall Rule can be imported using the id, e.g.
@@ -274,6 +276,8 @@ class FirewallRule(pulumi.CustomResource):
             port="9999",
             remark=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

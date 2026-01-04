@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Tag
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// TAG Policy can be imported using the id, e.g.

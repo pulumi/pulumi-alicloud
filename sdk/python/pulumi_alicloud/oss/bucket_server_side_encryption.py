@@ -210,6 +210,8 @@ class BucketServerSideEncryption(pulumi.CustomResource):
             sse_algorithm="KMS")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Server Side Encryption can be imported using the id, e.g.
@@ -271,6 +273,8 @@ class BucketServerSideEncryption(pulumi.CustomResource):
             bucket=create_bucket.bucket,
             sse_algorithm="KMS")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

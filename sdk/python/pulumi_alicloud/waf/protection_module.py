@@ -260,6 +260,8 @@ class ProtectionModule(pulumi.CustomResource):
             status=0)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.
@@ -326,6 +328,8 @@ class ProtectionModule(pulumi.CustomResource):
             mode=0,
             status=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

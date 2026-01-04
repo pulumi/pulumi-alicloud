@@ -116,6 +116,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Ga Endpoint Group can be imported using the id, e.g.

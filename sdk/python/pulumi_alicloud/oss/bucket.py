@@ -1164,6 +1164,8 @@ class Bucket(pulumi.CustomResource):
             resource_group_id=default.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS bucket can be imported using the bucket name, e.g.
@@ -1606,6 +1608,8 @@ class Bucket(pulumi.CustomResource):
             bucket=f"terraform-example-{default_integer['result']}",
             resource_group_id=default.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

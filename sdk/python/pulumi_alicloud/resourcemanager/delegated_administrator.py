@@ -124,6 +124,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
             service_principal="cloudfw.aliyuncs.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Delegated Administrator can be imported using the id, e.g.
@@ -163,6 +165,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
             account_id=default.accounts[0].account_id,
             service_principal="cloudfw.aliyuncs.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

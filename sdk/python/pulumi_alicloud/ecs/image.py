@@ -823,6 +823,8 @@ class Image(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Image can be imported using the id, e.g.
@@ -939,6 +941,8 @@ class Image(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

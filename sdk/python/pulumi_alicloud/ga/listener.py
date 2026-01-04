@@ -598,6 +598,8 @@ class Listener(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Listener can be imported using the id, e.g.
@@ -676,6 +678,8 @@ class Listener(pulumi.CustomResource):
                 "to_port": 80,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

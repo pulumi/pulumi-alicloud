@@ -341,6 +341,8 @@ class Domain(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SCDN Domain can be imported using the id, e.g.
@@ -395,6 +397,8 @@ class Domain(pulumi.CustomResource):
                 "type": "oss",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -808,6 +808,8 @@ class Alarm(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Alarm can be imported using the id, e.g.
@@ -911,6 +913,8 @@ class Alarm(pulumi.CustomResource):
                 "times": 2,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

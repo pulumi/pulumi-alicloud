@@ -470,6 +470,8 @@ class DhcpOptionsSet(pulumi.CustomResource):
             domain_name_servers="100.100.2.136")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Dhcp Options Set can be imported using the id, e.g.
@@ -534,6 +536,8 @@ class DhcpOptionsSet(pulumi.CustomResource):
             domain_name=domain,
             domain_name_servers="100.100.2.136")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

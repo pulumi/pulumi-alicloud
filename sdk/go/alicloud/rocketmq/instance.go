@@ -64,6 +64,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ONS INSTANCE can be imported using the id, e.g.

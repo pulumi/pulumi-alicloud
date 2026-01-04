@@ -6,6 +6,11 @@ package com.pulumi.alicloud.elasticsearch;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.elasticsearch.InstanceArgs;
 import com.pulumi.alicloud.elasticsearch.inputs.InstanceState;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceClientNodeConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceDataNodeConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceKibanaConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceMasterConfiguration;
+import com.pulumi.alicloud.elasticsearch.outputs.InstanceWarmNodeConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,26 +24,120 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Elasticsearch Instance resource.
+ * 
+ * For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
+ * 
+ * &gt; **NOTE:** Available since v1.30.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.elasticsearch.ElasticsearchFunctions;
+ * import com.pulumi.alicloud.elasticsearch.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.elasticsearch.Instance;
+ * import com.pulumi.alicloud.elasticsearch.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = ElasticsearchFunctions.getZones(GetZonesArgs.builder()
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.0.0.0/8")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .cidrBlock("10.1.0.0/16")
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .description(name)
+ *             .vswitchId(defaultSwitch.id())
+ *             .password("Examplw1234")
+ *             .version("7.10_with_X-Pack")
+ *             .instanceChargeType("PostPaid")
+ *             .dataNodeAmount(2)
+ *             .dataNodeSpec("elasticsearch.sn2ne.large")
+ *             .dataNodeDiskSize(20)
+ *             .dataNodeDiskType("cloud_ssd")
+ *             .kibanaNodeSpec("elasticsearch.sn2ne.large")
+ *             .dataNodeDiskPerformanceLevel("PL1")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * Elasticsearch can be imported using the id, e.g.
+ * Elasticsearch Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+ * $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:elasticsearch/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * Schema Type:
+     * 
+     */
+    @Export(name="archType", refs={String.class}, tree="[0]")
+    private Output<String> archType;
+
+    /**
+     * @return Schema Type:
+     * 
+     */
+    public Output<String> archType() {
+        return this.archType;
+    }
+    /**
+     * Renewal Period
      * 
      */
     @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
-     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * @return Renewal Period
      * 
      */
     public Output<Optional<Integer>> autoRenewDuration() {
@@ -47,35 +146,75 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
+     * @deprecated
+     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
     @Export(name="clientNodeAmount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> clientNodeAmount;
+    private Output<Integer> clientNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
      */
-    public Output<Optional<Integer>> clientNodeAmount() {
-        return Codegen.optional(this.clientNodeAmount);
+    public Output<Integer> clientNodeAmount() {
+        return this.clientNodeAmount;
+    }
+    /**
+     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * 
+     */
+    @Export(name="clientNodeConfiguration", refs={InstanceClientNodeConfiguration.class}, tree="[0]")
+    private Output<InstanceClientNodeConfiguration> clientNodeConfiguration;
+
+    /**
+     * @return Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * 
+     */
+    public Output<InstanceClientNodeConfiguration> clientNodeConfiguration() {
+        return this.clientNodeConfiguration;
     }
     /**
      * The client node spec. If specified, client node will be created.
      * 
+     * @deprecated
+     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
     @Export(name="clientNodeSpec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> clientNodeSpec;
+    private Output<String> clientNodeSpec;
 
     /**
      * @return The client node spec. If specified, client node will be created.
      * 
      */
-    public Output<Optional<String>> clientNodeSpec() {
-        return Codegen.optional(this.clientNodeSpec);
+    public Output<String> clientNodeSpec() {
+        return this.clientNodeSpec;
+    }
+    /**
+     * Instance creation time
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Instance creation time
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
+     * @deprecated
+     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
     @Export(name="dataNodeAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeAmount;
 
@@ -87,37 +226,63 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dataNodeAmount;
     }
     /**
-     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     * Elasticsearch data node information See `dataNodeConfiguration` below.
      * 
      */
+    @Export(name="dataNodeConfiguration", refs={InstanceDataNodeConfiguration.class}, tree="[0]")
+    private Output<InstanceDataNodeConfiguration> dataNodeConfiguration;
+
+    /**
+     * @return Elasticsearch data node information See `dataNodeConfiguration` below.
+     * 
+     */
+    public Output<InstanceDataNodeConfiguration> dataNodeConfiguration() {
+        return this.dataNodeConfiguration;
+    }
+    /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     * @deprecated
+     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
     @Export(name="dataNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> dataNodeDiskEncrypted;
+    private Output<Boolean> dataNodeDiskEncrypted;
 
     /**
      * @return If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
      */
-    public Output<Optional<Boolean>> dataNodeDiskEncrypted() {
-        return Codegen.optional(this.dataNodeDiskEncrypted);
+    public Output<Boolean> dataNodeDiskEncrypted() {
+        return this.dataNodeDiskEncrypted;
     }
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
     @Export(name="dataNodeDiskPerformanceLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dataNodeDiskPerformanceLevel;
+    private Output<String> dataNodeDiskPerformanceLevel;
 
     /**
      * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
      */
-    public Output<Optional<String>> dataNodeDiskPerformanceLevel() {
-        return Codegen.optional(this.dataNodeDiskPerformanceLevel);
+    public Output<String> dataNodeDiskPerformanceLevel() {
+        return this.dataNodeDiskPerformanceLevel;
     }
     /**
      * The single data node storage space.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
     @Export(name="dataNodeDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeDiskSize;
 
@@ -131,7 +296,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
     @Export(name="dataNodeDiskType", refs={String.class}, tree="[0]")
     private Output<String> dataNodeDiskType;
 
@@ -145,7 +314,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The data node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
     @Export(name="dataNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> dataNodeSpec;
 
@@ -157,98 +330,152 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dataNodeSpec;
     }
     /**
-     * The description of instance. It a string of 0 to 30 characters.
+     * Instance name
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of instance. It a string of 0 to 30 characters.
+     * @return Instance name
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Instance connection domain (only VPC network access supported).
+     * Elasticsearch cluster private domain name
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Instance connection domain (only VPC network access supported).
+     * @return Elasticsearch cluster private domain name
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * Whether to enable Kibana private network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     @Export(name="enableKibanaPrivateNetwork", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableKibanaPrivateNetwork;
+    private Output<Boolean> enableKibanaPrivateNetwork;
 
     /**
-     * @return Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * @return Whether to enable Kibana private network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
-    public Output<Optional<Boolean>> enableKibanaPrivateNetwork() {
-        return Codegen.optional(this.enableKibanaPrivateNetwork);
+    public Output<Boolean> enableKibanaPrivateNetwork() {
+        return this.enableKibanaPrivateNetwork;
     }
     /**
-     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * Does Kibana enable public access
      * 
      */
     @Export(name="enableKibanaPublicNetwork", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableKibanaPublicNetwork;
+    private Output<Boolean> enableKibanaPublicNetwork;
 
     /**
-     * @return Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * @return Does Kibana enable public access
      * 
      */
-    public Output<Optional<Boolean>> enableKibanaPublicNetwork() {
-        return Codegen.optional(this.enableKibanaPublicNetwork);
+    public Output<Boolean> enableKibanaPublicNetwork() {
+        return this.enableKibanaPublicNetwork;
     }
     /**
-     * Bool, default to false. When it set to true, the instance can enable public network access。
+     * Whether to enable Kibana public network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enablePublic;
+    private Output<Boolean> enablePublic;
 
     /**
-     * @return Bool, default to false. When it set to true, the instance can enable public network access。
+     * @return Whether to enable Kibana public network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
-    public Output<Optional<Boolean>> enablePublic() {
-        return Codegen.optional(this.enablePublic);
+    public Output<Boolean> enablePublic() {
+        return this.enablePublic;
+    }
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> force;
+
+    public Output<Optional<Boolean>> force() {
+        return Codegen.optional(this.force);
+    }
+    /**
+     * Version type.
+     * 
+     */
+    @Export(name="instanceCategory", refs={String.class}, tree="[0]")
+    private Output<String> instanceCategory;
+
+    /**
+     * @return Version type.
+     * 
+     */
+    public Output<String> instanceCategory() {
+        return this.instanceCategory;
     }
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceChargeType;
+    private Output<String> instanceChargeType;
 
     /**
      * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
      */
-    public Output<Optional<String>> instanceChargeType() {
-        return Codegen.optional(this.instanceChargeType);
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
     }
     /**
-     * Kibana console domain (Internet access supported).
+     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * 
+     */
+    @Export(name="kibanaConfiguration", refs={InstanceKibanaConfiguration.class}, tree="[0]")
+    private Output<InstanceKibanaConfiguration> kibanaConfiguration;
+
+    /**
+     * @return Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * 
+     */
+    public Output<InstanceKibanaConfiguration> kibanaConfiguration() {
+        return this.kibanaConfiguration;
+    }
+    /**
+     * Kibana address
      * 
      */
     @Export(name="kibanaDomain", refs={String.class}, tree="[0]")
     private Output<String> kibanaDomain;
 
     /**
-     * @return Kibana console domain (Internet access supported).
+     * @return Kibana address
      * 
      */
     public Output<String> kibanaDomain() {
@@ -257,7 +484,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
+     * @deprecated
+     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
     @Export(name="kibanaNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> kibanaNodeSpec;
 
@@ -269,56 +500,56 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.kibanaNodeSpec;
     }
     /**
-     * Kibana console port.
+     * The port assigned by the Kibana node.
      * 
      */
     @Export(name="kibanaPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> kibanaPort;
 
     /**
-     * @return Kibana console port.
+     * @return The port assigned by the Kibana node.
      * 
      */
     public Output<Integer> kibanaPort() {
         return this.kibanaPort;
     }
     /**
-     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * Kibana private network security group ID
      * 
      */
     @Export(name="kibanaPrivateSecurityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * @return Kibana private network security group ID
      * 
      */
     public Output<Optional<String>> kibanaPrivateSecurityGroupId() {
         return Codegen.optional(this.kibanaPrivateSecurityGroupId);
     }
     /**
-     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * Cluster Kibana node private network access whitelist
      * 
      */
     @Export(name="kibanaPrivateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * @return Cluster Kibana node private network access whitelist
      * 
      */
     public Output<List<String>> kibanaPrivateWhitelists() {
         return this.kibanaPrivateWhitelists;
     }
     /**
-     * Set the Kibana&#39;s IP whitelist in internet network.
+     * Kibana private network access whitelist
      * 
      */
     @Export(name="kibanaWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in internet network.
+     * @return Kibana private network access whitelist
      * 
      */
     public Output<List<String>> kibanaWhitelists() {
@@ -353,60 +584,102 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
      * 
      */
+    @Export(name="masterConfiguration", refs={InstanceMasterConfiguration.class}, tree="[0]")
+    private Output<InstanceMasterConfiguration> masterConfiguration;
+
+    /**
+     * @return Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * 
+     */
+    public Output<InstanceMasterConfiguration> masterConfiguration() {
+        return this.masterConfiguration;
+    }
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     * @deprecated
+     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
     @Export(name="masterNodeDiskType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> masterNodeDiskType;
+    private Output<String> masterNodeDiskType;
 
     /**
      * @return The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
      */
-    public Output<Optional<String>> masterNodeDiskType() {
-        return Codegen.optional(this.masterNodeDiskType);
+    public Output<String> masterNodeDiskType() {
+        return this.masterNodeDiskType;
     }
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      * 
+     * @deprecated
+     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
     @Export(name="masterNodeSpec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> masterNodeSpec;
+    private Output<String> masterNodeSpec;
 
     /**
      * @return The dedicated master node spec. If specified, dedicated master node will be created.
      * 
      */
-    public Output<Optional<String>> masterNodeSpec() {
-        return Codegen.optional(this.masterNodeSpec);
+    public Output<String> masterNodeSpec() {
+        return this.masterNodeSpec;
+    }
+    @Export(name="orderActionType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> orderActionType;
+
+    public Output<Optional<String>> orderActionType() {
+        return Codegen.optional(this.orderActionType);
     }
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+     * The access password of the instance.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+     * @return The access password of the instance.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> period;
+    private Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
-    public Output<Optional<Integer>> period() {
-        return Codegen.optional(this.period);
+    public Output<Integer> period() {
+        return this.period;
     }
     /**
      * Instance connection port.
@@ -423,168 +696,174 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * Set the instance&#39;s IP whitelist in VPC network.
+     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      * 
      */
     @Export(name="privateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateWhitelists;
 
     /**
-     * @return Set the instance&#39;s IP whitelist in VPC network.
+     * @return Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      * 
      */
     public Output<List<String>> privateWhitelists() {
         return this.privateWhitelists;
     }
     /**
-     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> protocol;
+    private Output<String> protocol;
 
     /**
-     * @return Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * @return Access protocol. Optional values: `HTTP` and **HTTPS * *.
      * 
      */
-    public Output<Optional<String>> protocol() {
-        return Codegen.optional(this.protocol);
+    public Output<String> protocol() {
+        return this.protocol;
     }
     /**
-     * Instance connection public domain.
+     * The public network address of the current instance.
      * 
      */
     @Export(name="publicDomain", refs={String.class}, tree="[0]")
     private Output<String> publicDomain;
 
     /**
-     * @return Instance connection public domain.
+     * @return The public network address of the current instance.
      * 
      */
     public Output<String> publicDomain() {
         return this.publicDomain;
     }
     /**
-     * Instance connection public port.
+     * Elasticsearch cluster public network access port
      * 
      */
     @Export(name="publicPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicPort;
 
     /**
-     * @return Instance connection public port.
+     * @return Elasticsearch cluster public network access port
      * 
      */
     public Output<Integer> publicPort() {
         return this.publicPort;
     }
     /**
-     * Set the instance&#39;s IP whitelist in internet network.
+     * Elasticseach public network access whitelist IP list
      * 
      */
     @Export(name="publicWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publicWhitelists;
 
     /**
-     * @return Set the instance&#39;s IP whitelist in internet network.
+     * @return Elasticseach public network access whitelist IP list
      * 
      */
     public Output<List<String>> publicWhitelists() {
         return this.publicWhitelists;
     }
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * Renewal Status
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> renewStatus;
+    private Output<String> renewStatus;
 
     /**
-     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * @return Renewal Status
      * 
      */
-    public Output<Optional<String>> renewStatus() {
-        return Codegen.optional(this.renewStatus);
+    public Output<String> renewStatus() {
+        return this.renewStatus;
     }
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * Renewal Period Unit
      * 
      */
     @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> renewalDurationUnit;
+    private Output<String> renewalDurationUnit;
 
     /**
-     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * @return Renewal Period Unit
      * 
      */
-    public Output<Optional<String>> renewalDurationUnit() {
-        return Codegen.optional(this.renewalDurationUnit);
+    public Output<String> renewalDurationUnit() {
+        return this.renewalDurationUnit;
     }
     /**
-     * The ID of resource group which the Elasticsearch instance belongs.
+     * Resource group to which the instance belongs
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of resource group which the Elasticsearch instance belongs.
+     * @return Resource group to which the instance belongs
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * Configuration information
      * 
      */
     @Export(name="settingConfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> settingConfig;
 
     /**
-     * @return The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * @return Configuration information
      * 
      */
     public Output<Map<String,String>> settingConfig() {
         return this.settingConfig;
     }
     /**
-     * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * Instance change status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * @return Instance change status
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * Collection of tag key-value pairs
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return Collection of tag key-value pairs
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    @Export(name="updateStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> updateStrategy;
+
+    public Output<Optional<String>> updateStrategy() {
+        return Codegen.optional(this.updateStrategy);
+    }
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * Instance version
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * @return Instance version
      * 
      */
     public Output<String> version() {
@@ -607,86 +886,124 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
     @Export(name="warmNodeAmount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> warmNodeAmount;
+    private Output<Integer> warmNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
      */
-    public Output<Optional<Integer>> warmNodeAmount() {
-        return Codegen.optional(this.warmNodeAmount);
+    public Output<Integer> warmNodeAmount() {
+        return this.warmNodeAmount;
+    }
+    /**
+     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * 
+     */
+    @Export(name="warmNodeConfiguration", refs={InstanceWarmNodeConfiguration.class}, tree="[0]")
+    private Output<InstanceWarmNodeConfiguration> warmNodeConfiguration;
+
+    /**
+     * @return Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * 
+     */
+    public Output<InstanceWarmNodeConfiguration> warmNodeConfiguration() {
+        return this.warmNodeConfiguration;
     }
     /**
      * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
     @Export(name="warmNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> warmNodeDiskEncrypted;
+    private Output<Boolean> warmNodeDiskEncrypted;
 
     /**
      * @return If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
      */
-    public Output<Optional<Boolean>> warmNodeDiskEncrypted() {
-        return Codegen.optional(this.warmNodeDiskEncrypted);
+    public Output<Boolean> warmNodeDiskEncrypted() {
+        return this.warmNodeDiskEncrypted;
     }
     /**
      * The single warm node storage space, should between 500 and 20480
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
     @Export(name="warmNodeDiskSize", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> warmNodeDiskSize;
+    private Output<Integer> warmNodeDiskSize;
 
     /**
      * @return The single warm node storage space, should between 500 and 20480
      * 
      */
-    public Output<Optional<Integer>> warmNodeDiskSize() {
-        return Codegen.optional(this.warmNodeDiskSize);
+    public Output<Integer> warmNodeDiskSize() {
+        return this.warmNodeDiskSize;
     }
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
     @Export(name="warmNodeDiskType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> warmNodeDiskType;
+    private Output<String> warmNodeDiskType;
 
     /**
      * @return The warm node disk type. Supported values:  cloud_efficiency.
      * 
      */
-    public Output<Optional<String>> warmNodeDiskType() {
-        return Codegen.optional(this.warmNodeDiskType);
+    public Output<String> warmNodeDiskType() {
+        return this.warmNodeDiskType;
     }
     /**
      * The warm node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
     @Export(name="warmNodeSpec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> warmNodeSpec;
+    private Output<String> warmNodeSpec;
 
     /**
      * @return The warm node specifications of the Elasticsearch instance.
      * 
      */
-    public Output<Optional<String>> warmNodeSpec() {
-        return Codegen.optional(this.warmNodeSpec);
+    public Output<String> warmNodeSpec() {
+        return this.warmNodeSpec;
     }
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * The number of zones in the Elasticsearch instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="zoneCount", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> zoneCount;
+    private Output<Integer> zoneCount;
 
     /**
-     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * @return The number of zones in the Elasticsearch instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    public Output<Optional<Integer>> zoneCount() {
-        return Codegen.optional(this.zoneCount);
+    public Output<Integer> zoneCount() {
+        return this.zoneCount;
     }
 
     /**

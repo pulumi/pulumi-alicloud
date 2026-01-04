@@ -34,12 +34,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.Integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.amqp.Instance;
  * import com.pulumi.alicloud.amqp.InstanceArgs;
  * import com.pulumi.alicloud.amqp.VirtualHost;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
- * import com.pulumi.alicloud.amqp.Exchange;
- * import com.pulumi.alicloud.amqp.ExchangeArgs;
  * import com.pulumi.alicloud.amqp.Queue;
  * import com.pulumi.alicloud.amqp.QueueArgs;
  * import java.util.List;
@@ -55,41 +55,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .instanceType("enterprise")
  *             .maxTps("3000")
+ *             .maxConnections(2000)
  *             .queueCapacity("200")
- *             .storageSize("700")
- *             .supportEip(false)
- *             .maxEipTps("128")
  *             .paymentType("Subscription")
- *             .period(1)
+ *             .renewalStatus("AutoRenewal")
+ *             .renewalDuration(1)
+ *             .renewalDurationUnit("Year")
+ *             .supportEip(true)
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
- *             .instanceId(default_.id())
- *             .virtualHostName("tf-example")
+ *             .instanceId(defaultInstance.id())
+ *             .virtualHostName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()
- *             .autoDeleteState(false)
- *             .exchangeName("tf-example")
- *             .exchangeType("DIRECT")
- *             .instanceId(default_.id())
- *             .internal(false)
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
+ *             .instanceId(defaultInstance.id())
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
- *             .build());
- * 
- *         var example = new Queue("example", QueueArgs.builder()
- *             .instanceId(default_.id())
- *             .queueName("tf-example")
- *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .queueName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -103,98 +105,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:amqp/queue:Queue")
 public class Queue extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-     * * false: The Auto Delete attribute is not configured.
+     * Specifies whether to automatically delete the queue. Valid values:
      * 
      */
     @Export(name="autoDeleteState", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDeleteState;
 
     /**
-     * @return Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-     * * false: The Auto Delete attribute is not configured.
+     * @return Specifies whether to automatically delete the queue. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoDeleteState() {
         return Codegen.optional(this.autoDeleteState);
     }
     /**
-     * The validity period after which the queue is automatically deleted.
-     * If the queue is not accessed within a specified period of time, it is automatically deleted.
+     * The auto-expiration time for the queue.
      * 
      */
     @Export(name="autoExpireState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoExpireState;
 
     /**
-     * @return The validity period after which the queue is automatically deleted.
-     * If the queue is not accessed within a specified period of time, it is automatically deleted.
+     * @return The auto-expiration time for the queue.
      * 
      */
     public Output<Optional<String>> autoExpireState() {
         return Codegen.optional(this.autoExpireState);
     }
     /**
-     * The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-     * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-     * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+     * The dead-letter exchange.
      * 
      */
     @Export(name="deadLetterExchange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deadLetterExchange;
 
     /**
-     * @return The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-     * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-     * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+     * @return The dead-letter exchange.
      * 
      */
     public Output<Optional<String>> deadLetterExchange() {
         return Codegen.optional(this.deadLetterExchange);
     }
     /**
-     * The dead letter routing key.
+     * The dead-letter routing key.
      * 
      */
     @Export(name="deadLetterRoutingKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deadLetterRoutingKey;
 
     /**
-     * @return The dead letter routing key.
+     * @return The dead-letter routing key.
      * 
      */
     public Output<Optional<String>> deadLetterRoutingKey() {
         return Codegen.optional(this.deadLetterRoutingKey);
     }
     /**
-     * Specifies whether the queue is an exclusive queue. Valid values:
-     * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-     * * false: The queue is not an exclusive queue.
-     * 
-     */
-    @Export(name="exclusiveState", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> exclusiveState;
-
-    /**
-     * @return Specifies whether the queue is an exclusive queue. Valid values:
-     * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-     * * false: The queue is not an exclusive queue.
-     * 
-     */
-    public Output<Optional<Boolean>> exclusiveState() {
-        return Codegen.optional(this.exclusiveState);
-    }
-    /**
-     * The ID of the instance.
+     * The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      * 
      */
     public Output<String> instanceId() {
@@ -202,7 +176,6 @@ public class Queue extends com.pulumi.resources.CustomResource {
     }
     /**
      * The maximum number of messages that can be stored in the queue.
-     * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      * 
      */
     @Export(name="maxLength", refs={String.class}, tree="[0]")
@@ -210,73 +183,62 @@ public class Queue extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The maximum number of messages that can be stored in the queue.
-     * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      * 
      */
     public Output<Optional<String>> maxLength() {
         return Codegen.optional(this.maxLength);
     }
     /**
-     * The highest priority supported by the queue. This parameter is set to a positive integer.
-     * Valid values: 0 to 255. Recommended values: 1 to 10
+     * The priority of the queue.
      * 
      */
     @Export(name="maximumPriority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumPriority;
 
     /**
-     * @return The highest priority supported by the queue. This parameter is set to a positive integer.
-     * Valid values: 0 to 255. Recommended values: 1 to 10
+     * @return The priority of the queue.
      * 
      */
     public Output<Optional<Integer>> maximumPriority() {
         return Codegen.optional(this.maximumPriority);
     }
     /**
-     * The message TTL of the queue.
-     * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-     * Message TTL must be set to a non-negative integer, in milliseconds.
-     * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+     * The time to live (TTL) of a message in the queue.
      * 
      */
     @Export(name="messageTtl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> messageTtl;
 
     /**
-     * @return The message TTL of the queue.
-     * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-     * Message TTL must be set to a non-negative integer, in milliseconds.
-     * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+     * @return The time to live (TTL) of a message in the queue.
      * 
      */
     public Output<Optional<String>> messageTtl() {
         return Codegen.optional(this.messageTtl);
     }
     /**
-     * The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * The name of the queue to create.
      * 
      */
     @Export(name="queueName", refs={String.class}, tree="[0]")
     private Output<String> queueName;
 
     /**
-     * @return The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * @return The name of the queue to create.
      * 
      */
     public Output<String> queueName() {
         return this.queueName;
     }
     /**
-     * The name of the virtual host.
+     * The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
      * 
      */
     @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**
-     * @return The name of the virtual host.
+     * @return The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
      * 
      */
     public Output<String> virtualHostName() {

@@ -357,6 +357,8 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Hybrid Monitor Sls Task can be imported using the id, e.g.
@@ -469,6 +471,8 @@ class HybridMonitorSlsTask(pulumi.CustomResource):
                 "value": "example_Value",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

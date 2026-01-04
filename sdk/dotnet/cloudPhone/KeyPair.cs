@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.cloudPhone
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Phone Key Pair can be imported using the id, e.g.

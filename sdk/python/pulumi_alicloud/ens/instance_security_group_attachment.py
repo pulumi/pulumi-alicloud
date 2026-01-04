@@ -148,6 +148,8 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             security_group_id=default_security_group.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Instance Security Group Attachment can be imported using the id, e.g.
@@ -210,6 +212,8 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             instance_id=default.id,
             security_group_id=default_security_group.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -284,6 +284,8 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
             to_port=2)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Custom Routing Endpoint Group Destination can be imported using the id, e.g.
@@ -357,6 +359,8 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
             from_port=1,
             to_port=2)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -570,6 +570,8 @@ class AggregateDelivery(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Config Aggregate Delivery can be imported using the id, e.g.
@@ -680,6 +682,8 @@ class AggregateDelivery(pulumi.CustomResource):
             delivery_channel_type="SLS",
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

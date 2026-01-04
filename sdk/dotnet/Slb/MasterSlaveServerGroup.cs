@@ -168,6 +168,8 @@ namespace Pulumi.AliCloud.Slb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Load balancer master slave server group can be imported using the id, e.g.

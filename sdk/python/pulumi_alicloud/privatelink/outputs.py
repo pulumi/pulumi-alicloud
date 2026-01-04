@@ -157,16 +157,16 @@ class GetVpcEndpointServicesServiceResult(dict):
                  tags: Mapping[str, _builtins.str],
                  vpc_endpoint_service_name: _builtins.str):
         """
-        :param _builtins.bool auto_accept_connection: Whether to automatically accept terminal node connections.
-        :param _builtins.int connect_bandwidth: The connection bandwidth.
+        :param _builtins.bool auto_accept_connection: Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
+        :param _builtins.int connect_bandwidth: The default maximum bandwidth of the endpoint connection.
         :param _builtins.str id: The ID of the Vpc Endpoint Service.
-        :param _builtins.str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
-        :param _builtins.str service_description: The description of the terminal node service.
-        :param _builtins.str service_domain: The domain of service.
-        :param _builtins.str service_id: The ID of the Vpc Endpoint Service.
-        :param _builtins.str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
-        :param Mapping[str, _builtins.str] tags: The tags of Vpc Endpoint Service.
-        :param _builtins.str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
+        :param _builtins.str service_business_status: The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        :param _builtins.str service_description: The description of the endpoint service.
+        :param _builtins.str service_domain: The domain name of the endpoint service.
+        :param _builtins.str service_id: The ID of the endpoint service.
+        :param _builtins.str status: The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+        :param _builtins.str vpc_endpoint_service_name: The name of the endpoint service.
         """
         pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
         pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
@@ -183,7 +183,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> _builtins.bool:
         """
-        Whether to automatically accept terminal node connections.
+        Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -191,7 +191,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="connectBandwidth")
     def connect_bandwidth(self) -> _builtins.int:
         """
-        The connection bandwidth.
+        The default maximum bandwidth of the endpoint connection.
         """
         return pulumi.get(self, "connect_bandwidth")
 
@@ -207,7 +207,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> _builtins.str:
         """
-        The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
         """
         return pulumi.get(self, "service_business_status")
 
@@ -215,7 +215,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="serviceDescription")
     def service_description(self) -> _builtins.str:
         """
-        The description of the terminal node service.
+        The description of the endpoint service.
         """
         return pulumi.get(self, "service_description")
 
@@ -223,7 +223,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="serviceDomain")
     def service_domain(self) -> _builtins.str:
         """
-        The domain of service.
+        The domain name of the endpoint service.
         """
         return pulumi.get(self, "service_domain")
 
@@ -231,7 +231,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> _builtins.str:
         """
-        The ID of the Vpc Endpoint Service.
+        The ID of the endpoint service.
         """
         return pulumi.get(self, "service_id")
 
@@ -239,7 +239,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
 
@@ -247,7 +247,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        The tags of Vpc Endpoint Service.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -255,7 +255,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="vpcEndpointServiceName")
     def vpc_endpoint_service_name(self) -> _builtins.str:
         """
-        The name of Vpc Endpoint Service.
+        The name of the endpoint service.
         """
         return pulumi.get(self, "vpc_endpoint_service_name")
 

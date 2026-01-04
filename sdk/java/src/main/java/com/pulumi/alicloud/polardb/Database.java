@@ -15,11 +15,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
+ * Provides a Polar Db Database resource.
+ * 
+ * Manage linked databases.
+ * 
+ * For information about Polar Db Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateDatabase).
  * 
  * &gt; **NOTE:** Available since v1.66.0.
  * 
  * ## Example Usage
+ * 
+ * Basic Usage
  * 
  * <pre>
  * {@code
@@ -89,86 +95,138 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * PolarDB database can be imported using the id, e.g.
+ * Polar Db Database can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:polardb/database:Database example &#34;pc-12345:tf_database&#34;
+ * $ pulumi import alicloud:polardb/database:Database example &lt;db_cluster_id&gt;:&lt;db_name&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:polardb/database:Database")
 public class Database extends com.pulumi.resources.CustomResource {
     /**
-     * Account name authorized to access the database. Only supports PostgreSQL.
+     * The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountName;
 
     /**
-     * @return Account name authorized to access the database. Only supports PostgreSQL.
+     * @return The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      * 
      */
     public Output<Optional<String>> accountName() {
         return Codegen.optional(this.accountName);
     }
     /**
-     * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      * 
      */
     @Export(name="characterSetName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> characterSetName;
+    private Output<String> characterSetName;
 
     /**
-     * @return Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * @return The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      * 
      */
-    public Output<Optional<String>> characterSetName() {
-        return Codegen.optional(this.characterSetName);
+    public Output<String> characterSetName() {
+        return this.characterSetName;
     }
     /**
-     * The Id of cluster that can run database.
+     * The language that defines the collation rules in the database.
+     * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    @Export(name="collate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> collate;
+
+    /**
+     * @return The language that defines the collation rules in the database.
+     * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    public Output<Optional<String>> collate() {
+        return Codegen.optional(this.collate);
+    }
+    /**
+     * The language that indicates the character type of the database.
+     * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    @Export(name="ctype", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ctype;
+
+    /**
+     * @return The language that indicates the character type of the database.
+     * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    public Output<Optional<String>> ctype() {
+        return Codegen.optional(this.ctype);
+    }
+    /**
+     * The ID of cluster.
      * 
      */
     @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
-     * @return The Id of cluster that can run database.
+     * @return The ID of cluster.
      * 
      */
     public Output<String> dbClusterId() {
         return this.dbClusterId;
     }
     /**
-     * Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+     * The description of the database. The description must meet the following requirements:
+     * - It cannot start with `http://` or `https://`.
+     * - It must be 2 to 256 characters in length.
      * 
      */
     @Export(name="dbDescription", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dbDescription;
+    private Output<String> dbDescription;
 
     /**
-     * @return Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+     * @return The description of the database. The description must meet the following requirements:
+     * - It cannot start with `http://` or `https://`.
+     * - It must be 2 to 256 characters in length.
      * 
      */
-    public Output<Optional<String>> dbDescription() {
-        return Codegen.optional(this.dbDescription);
+    public Output<String> dbDescription() {
+        return this.dbDescription;
     }
     /**
-     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+     * The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      * 
      */
     @Export(name="dbName", refs={String.class}, tree="[0]")
     private Output<String> dbName;
 
     /**
-     * @return Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+     * @return The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      * 
      */
     public Output<String> dbName() {
         return this.dbName;
+    }
+    /**
+     * (Available since v1.265.0) The state of the database.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.265.0) The state of the database.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

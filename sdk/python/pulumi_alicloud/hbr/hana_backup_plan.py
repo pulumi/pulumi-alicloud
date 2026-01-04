@@ -402,6 +402,8 @@ class HanaBackupPlan(pulumi.CustomResource):
             vault_id=example_hana_instance.vault_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Backup Plan can be imported using the id, e.g.
@@ -474,6 +476,8 @@ class HanaBackupPlan(pulumi.CustomResource):
             schedule="I|1602673264|P1D",
             vault_id=example_hana_instance.vault_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -273,6 +273,8 @@ class EndpointAddress(pulumi.CustomResource):
             net_type="Public")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB endpoint address can be imported using the id, e.g.
@@ -333,6 +335,8 @@ class EndpointAddress(pulumi.CustomResource):
             connection_prefix="polardbexample",
             net_type="Public")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

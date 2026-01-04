@@ -199,6 +199,8 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             load_balancer_id=create_alb.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer Security Group Attachment can be imported using the id, e.g.
@@ -280,6 +282,8 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             security_group_id=create_security_group.id,
             load_balancer_id=create_alb.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

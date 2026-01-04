@@ -39,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LifecyclePolicy{}
 	case "alicloud:nas/mountTarget:MountTarget":
 		r = &MountTarget{}
+	case "alicloud:nas/protocolMountTarget:ProtocolMountTarget":
+		r = &ProtocolMountTarget{}
+	case "alicloud:nas/protocolService:ProtocolService":
+		r = &ProtocolService{}
 	case "alicloud:nas/recycleBin:RecycleBin":
 		r = &RecycleBin{}
 	case "alicloud:nas/smbAclAttachment:SmbAclAttachment":
@@ -101,6 +105,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"nas/mountTarget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/protocolMountTarget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"nas/protocolService",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

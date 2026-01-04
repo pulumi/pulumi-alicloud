@@ -208,6 +208,8 @@ class ClientCaCertificate(pulumi.CustomResource):
             site_id=default.sites[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Client Ca Certificate can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class ClientCaCertificate(pulumi.CustomResource):
             client_ca_cert_name="example",
             site_id=default.sites[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -26,6 +26,8 @@ type Instance struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// OrderCreateTime.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
+	// The deployment architecture for Serverless instances. Valid values:
+	Edition pulumi.StringOutput `pulumi:"edition"`
 	// The instance name.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Instance type. Valid values:
@@ -53,6 +55,8 @@ type Instance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrOutput `pulumi:"periodCycle"`
+	// The provisioned TPS capacity for reserved + elastic instances.
+	ProvisionedCapacity pulumi.IntPtrOutput `pulumi:"provisionedCapacity"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringOutput `pulumi:"queueCapacity"`
 	// The number of automatic renewal cycles.
@@ -70,7 +74,7 @@ type Instance struct {
 	// Whether to support public network.
 	SupportEip pulumi.BoolPtrOutput `pulumi:"supportEip"`
 	// Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
-	SupportTracing pulumi.BoolOutput `pulumi:"supportTracing"`
+	SupportTracing pulumi.BoolPtrOutput `pulumi:"supportTracing"`
 	// Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
 	TracingStorageTime pulumi.IntOutput `pulumi:"tracingStorageTime"`
 }
@@ -112,6 +116,8 @@ type instanceState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// OrderCreateTime.
 	CreateTime *int `pulumi:"createTime"`
+	// The deployment architecture for Serverless instances. Valid values:
+	Edition *string `pulumi:"edition"`
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Valid values:
@@ -139,6 +145,8 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle *string `pulumi:"periodCycle"`
+	// The provisioned TPS capacity for reserved + elastic instances.
+	ProvisionedCapacity *int `pulumi:"provisionedCapacity"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity *string `pulumi:"queueCapacity"`
 	// The number of automatic renewal cycles.
@@ -166,6 +174,8 @@ type InstanceState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// OrderCreateTime.
 	CreateTime pulumi.IntPtrInput
+	// The deployment architecture for Serverless instances. Valid values:
+	Edition pulumi.StringPtrInput
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Valid values:
@@ -193,6 +203,8 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrInput
+	// The provisioned TPS capacity for reserved + elastic instances.
+	ProvisionedCapacity pulumi.IntPtrInput
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringPtrInput
 	// The number of automatic renewal cycles.
@@ -222,6 +234,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
 	AutoRenew *bool `pulumi:"autoRenew"`
+	// The deployment architecture for Serverless instances. Valid values:
+	Edition *string `pulumi:"edition"`
 	// The instance name.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Valid values:
@@ -249,6 +263,8 @@ type instanceArgs struct {
 	Period *int `pulumi:"period"`
 	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle *string `pulumi:"periodCycle"`
+	// The provisioned TPS capacity for reserved + elastic instances.
+	ProvisionedCapacity *int `pulumi:"provisionedCapacity"`
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity *string `pulumi:"queueCapacity"`
 	// The number of automatic renewal cycles.
@@ -273,6 +289,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
 	AutoRenew pulumi.BoolPtrInput
+	// The deployment architecture for Serverless instances. Valid values:
+	Edition pulumi.StringPtrInput
 	// The instance name.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Valid values:
@@ -300,6 +318,8 @@ type InstanceArgs struct {
 	Period pulumi.IntPtrInput
 	// Prepaid cycle units. Value: Month, Year.
 	PeriodCycle pulumi.StringPtrInput
+	// The provisioned TPS capacity for reserved + elastic instances.
+	ProvisionedCapacity pulumi.IntPtrInput
 	// Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 	QueueCapacity pulumi.StringPtrInput
 	// The number of automatic renewal cycles.
@@ -417,6 +437,11 @@ func (o InstanceOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
+// The deployment architecture for Serverless instances. Valid values:
+func (o InstanceOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
+}
+
 // The instance name.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
@@ -471,6 +496,11 @@ func (o InstanceOutput) PeriodCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PeriodCycle }).(pulumi.StringPtrOutput)
 }
 
+// The provisioned TPS capacity for reserved + elastic instances.
+func (o InstanceOutput) ProvisionedCapacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ProvisionedCapacity }).(pulumi.IntPtrOutput)
+}
+
 // Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
 func (o InstanceOutput) QueueCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.QueueCapacity }).(pulumi.StringOutput)
@@ -512,8 +542,8 @@ func (o InstanceOutput) SupportEip() pulumi.BoolPtrOutput {
 }
 
 // Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
-func (o InstanceOutput) SupportTracing() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SupportTracing }).(pulumi.BoolOutput)
+func (o InstanceOutput) SupportTracing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.SupportTracing }).(pulumi.BoolPtrOutput)
 }
 
 // Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.

@@ -285,6 +285,8 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             force_attach=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESS alb server groups can be imported using the id, e.g.
@@ -388,6 +390,8 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             weight=50,
             force_attach=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

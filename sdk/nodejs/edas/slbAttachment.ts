@@ -86,6 +86,8 @@ import * as utilities from "../utilities";
  *     type: defaultApplicationLoadBalancer.addressType,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class SlbAttachment extends pulumi.CustomResource {
     /**

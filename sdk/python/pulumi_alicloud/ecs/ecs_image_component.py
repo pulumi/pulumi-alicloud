@@ -418,6 +418,8 @@ class EcsImageComponent(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Image Component can be imported using the id, e.g.
@@ -488,6 +490,8 @@ class EcsImageComponent(pulumi.CustomResource):
                 "Created": "TF",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

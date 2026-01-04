@@ -705,6 +705,8 @@ class Domain(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN Domain can be imported using the id, e.g.
@@ -778,6 +780,8 @@ class Domain(pulumi.CustomResource):
                 "weight": "10",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

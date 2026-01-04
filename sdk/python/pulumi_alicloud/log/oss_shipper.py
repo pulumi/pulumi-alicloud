@@ -700,6 +700,8 @@ class OssShipper(pulumi.CustomResource):
             json_enable_tag=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log oss shipper can be imported using the id or name, e.g.
@@ -789,6 +791,8 @@ class OssShipper(pulumi.CustomResource):
             format="json",
             json_enable_tag=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

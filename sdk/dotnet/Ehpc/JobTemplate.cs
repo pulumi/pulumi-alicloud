@@ -37,6 +37,8 @@ namespace Pulumi.AliCloud.Ehpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ehpc Job Template can be imported using the id, e.g.

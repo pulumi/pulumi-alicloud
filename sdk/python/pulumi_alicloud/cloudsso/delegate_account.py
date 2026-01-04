@@ -99,6 +99,8 @@ class DelegateAccount(pulumi.CustomResource):
         default_delegate_account = alicloud.cloudsso.DelegateAccount("default", account_id=default_delegated_administrator.account_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO Delegate Account can be imported using the id, e.g.
@@ -144,6 +146,8 @@ class DelegateAccount(pulumi.CustomResource):
             service_principal="cloudsso.aliyuncs.com")
         default_delegate_account = alicloud.cloudsso.DelegateAccount("default", account_id=default_delegated_administrator.account_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

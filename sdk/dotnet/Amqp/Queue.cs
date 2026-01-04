@@ -25,46 +25,49 @@ namespace Pulumi.AliCloud.Amqp
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Amqp.Instance("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Amqp.Instance("default", new()
+    ///     {
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///         InstanceType = "enterprise",
     ///         MaxTps = "3000",
+    ///         MaxConnections = 2000,
     ///         QueueCapacity = "200",
-    ///         StorageSize = "700",
-    ///         SupportEip = false,
-    ///         MaxEipTps = "128",
     ///         PaymentType = "Subscription",
-    ///         Period = 1,
+    ///         RenewalStatus = "AutoRenewal",
+    ///         RenewalDuration = 1,
+    ///         RenewalDurationUnit = "Year",
+    ///         SupportEip = true,
     ///     });
     /// 
     ///     var defaultVirtualHost = new AliCloud.Amqp.VirtualHost("default", new()
     ///     {
-    ///         InstanceId = @default.Id,
-    ///         VirtualHostName = "tf-example",
+    ///         InstanceId = defaultInstance.Id,
+    ///         VirtualHostName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultExchange = new AliCloud.Amqp.Exchange("default", new()
+    ///     var defaultQueue = new AliCloud.Amqp.Queue("default", new()
     ///     {
-    ///         AutoDeleteState = false,
-    ///         ExchangeName = "tf-example",
-    ///         ExchangeType = "DIRECT",
-    ///         InstanceId = @default.Id,
-    ///         Internal = false,
+    ///         InstanceId = defaultInstance.Id,
     ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
-    ///     });
-    /// 
-    ///     var example = new AliCloud.Amqp.Queue("example", new()
-    ///     {
-    ///         InstanceId = @default.Id,
-    ///         QueueName = "tf-example",
-    ///         VirtualHostName = defaultVirtualHost.VirtualHostName,
+    ///         QueueName = $"{name}-{@default.Result}",
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
@@ -78,80 +81,61 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        /// * false: The Auto Delete attribute is not configured.
+        /// Specifies whether to automatically delete the queue. Valid values:
         /// </summary>
         [Output("autoDeleteState")]
         public Output<bool?> AutoDeleteState { get; private set; } = null!;
 
         /// <summary>
-        /// The validity period after which the queue is automatically deleted.
-        /// If the queue is not accessed within a specified period of time, it is automatically deleted.
+        /// The auto-expiration time for the queue.
         /// </summary>
         [Output("autoExpireState")]
         public Output<string?> AutoExpireState { get; private set; } = null!;
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        /// The dead-letter exchange.
         /// </summary>
         [Output("deadLetterExchange")]
         public Output<string?> DeadLetterExchange { get; private set; } = null!;
 
         /// <summary>
-        /// The dead letter routing key.
+        /// The dead-letter routing key.
         /// </summary>
         [Output("deadLetterRoutingKey")]
         public Output<string?> DeadLetterRoutingKey { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the queue is an exclusive queue. Valid values:
-        /// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        /// * false: The queue is not an exclusive queue.
-        /// </summary>
-        [Output("exclusiveState")]
-        public Output<bool?> ExclusiveState { get; private set; } = null!;
-
-        /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
         /// The maximum number of messages that can be stored in the queue.
-        /// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         /// </summary>
         [Output("maxLength")]
         public Output<string?> MaxLength { get; private set; } = null!;
 
         /// <summary>
-        /// The highest priority supported by the queue. This parameter is set to a positive integer.
-        /// Valid values: 0 to 255. Recommended values: 1 to 10
+        /// The priority of the queue.
         /// </summary>
         [Output("maximumPriority")]
         public Output<int?> MaximumPriority { get; private set; } = null!;
 
         /// <summary>
-        /// The message TTL of the queue.
-        /// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        /// Message TTL must be set to a non-negative integer, in milliseconds.
-        /// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        /// The time to live (TTL) of a message in the queue.
         /// </summary>
         [Output("messageTtl")]
         public Output<string?> MessageTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the queue.
-        /// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// The name of the queue to create.
         /// </summary>
         [Output("queueName")]
         public Output<string> QueueName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the virtual host.
+        /// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         /// </summary>
         [Output("virtualHostName")]
         public Output<string> VirtualHostName { get; private set; } = null!;
@@ -203,80 +187,61 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        /// * false: The Auto Delete attribute is not configured.
+        /// Specifies whether to automatically delete the queue. Valid values:
         /// </summary>
         [Input("autoDeleteState")]
         public Input<bool>? AutoDeleteState { get; set; }
 
         /// <summary>
-        /// The validity period after which the queue is automatically deleted.
-        /// If the queue is not accessed within a specified period of time, it is automatically deleted.
+        /// The auto-expiration time for the queue.
         /// </summary>
         [Input("autoExpireState")]
         public Input<string>? AutoExpireState { get; set; }
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        /// The dead-letter exchange.
         /// </summary>
         [Input("deadLetterExchange")]
         public Input<string>? DeadLetterExchange { get; set; }
 
         /// <summary>
-        /// The dead letter routing key.
+        /// The dead-letter routing key.
         /// </summary>
         [Input("deadLetterRoutingKey")]
         public Input<string>? DeadLetterRoutingKey { get; set; }
 
         /// <summary>
-        /// Specifies whether the queue is an exclusive queue. Valid values:
-        /// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        /// * false: The queue is not an exclusive queue.
-        /// </summary>
-        [Input("exclusiveState")]
-        public Input<bool>? ExclusiveState { get; set; }
-
-        /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// The maximum number of messages that can be stored in the queue.
-        /// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         /// </summary>
         [Input("maxLength")]
         public Input<string>? MaxLength { get; set; }
 
         /// <summary>
-        /// The highest priority supported by the queue. This parameter is set to a positive integer.
-        /// Valid values: 0 to 255. Recommended values: 1 to 10
+        /// The priority of the queue.
         /// </summary>
         [Input("maximumPriority")]
         public Input<int>? MaximumPriority { get; set; }
 
         /// <summary>
-        /// The message TTL of the queue.
-        /// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        /// Message TTL must be set to a non-negative integer, in milliseconds.
-        /// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        /// The time to live (TTL) of a message in the queue.
         /// </summary>
         [Input("messageTtl")]
         public Input<string>? MessageTtl { get; set; }
 
         /// <summary>
-        /// The name of the queue.
-        /// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// The name of the queue to create.
         /// </summary>
         [Input("queueName", required: true)]
         public Input<string> QueueName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the virtual host.
+        /// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         /// </summary>
         [Input("virtualHostName", required: true)]
         public Input<string> VirtualHostName { get; set; } = null!;
@@ -290,80 +255,61 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class QueueState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the Auto Delete attribute is configured. Valid values:
-        /// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-        /// * false: The Auto Delete attribute is not configured.
+        /// Specifies whether to automatically delete the queue. Valid values:
         /// </summary>
         [Input("autoDeleteState")]
         public Input<bool>? AutoDeleteState { get; set; }
 
         /// <summary>
-        /// The validity period after which the queue is automatically deleted.
-        /// If the queue is not accessed within a specified period of time, it is automatically deleted.
+        /// The auto-expiration time for the queue.
         /// </summary>
         [Input("autoExpireState")]
         public Input<string>? AutoExpireState { get; set; }
 
         /// <summary>
-        /// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages. 
-        /// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-        /// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+        /// The dead-letter exchange.
         /// </summary>
         [Input("deadLetterExchange")]
         public Input<string>? DeadLetterExchange { get; set; }
 
         /// <summary>
-        /// The dead letter routing key.
+        /// The dead-letter routing key.
         /// </summary>
         [Input("deadLetterRoutingKey")]
         public Input<string>? DeadLetterRoutingKey { get; set; }
 
         /// <summary>
-        /// Specifies whether the queue is an exclusive queue. Valid values:
-        /// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-        /// * false: The queue is not an exclusive queue.
-        /// </summary>
-        [Input("exclusiveState")]
-        public Input<bool>? ExclusiveState { get; set; }
-
-        /// <summary>
-        /// The ID of the instance.
+        /// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// The maximum number of messages that can be stored in the queue.
-        /// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
         /// </summary>
         [Input("maxLength")]
         public Input<string>? MaxLength { get; set; }
 
         /// <summary>
-        /// The highest priority supported by the queue. This parameter is set to a positive integer.
-        /// Valid values: 0 to 255. Recommended values: 1 to 10
+        /// The priority of the queue.
         /// </summary>
         [Input("maximumPriority")]
         public Input<int>? MaximumPriority { get; set; }
 
         /// <summary>
-        /// The message TTL of the queue.
-        /// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-        /// Message TTL must be set to a non-negative integer, in milliseconds.
-        /// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+        /// The time to live (TTL) of a message in the queue.
         /// </summary>
         [Input("messageTtl")]
         public Input<string>? MessageTtl { get; set; }
 
         /// <summary>
-        /// The name of the queue.
-        /// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+        /// The name of the queue to create.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }
 
         /// <summary>
-        /// The name of the virtual host.
+        /// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
         /// </summary>
         [Input("virtualHostName")]
         public Input<string>? VirtualHostName { get; set; }

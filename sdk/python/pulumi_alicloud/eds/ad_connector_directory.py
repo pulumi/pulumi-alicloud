@@ -492,6 +492,8 @@ class AdConnectorDirectory(pulumi.CustomResource):
             vswitch_ids=[default_switch.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Ad Connector Directory can be imported using the id, e.g.
@@ -567,6 +569,8 @@ class AdConnectorDirectory(pulumi.CustomResource):
             sub_domain_name="child.example.com",
             vswitch_ids=[default_switch.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

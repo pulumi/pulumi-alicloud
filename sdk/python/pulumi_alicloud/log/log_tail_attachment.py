@@ -199,6 +199,8 @@ class LogTailAttachment(pulumi.CustomResource):
             machine_group_name=example_machine_group.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Logtial to machine group can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class LogTailAttachment(pulumi.CustomResource):
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

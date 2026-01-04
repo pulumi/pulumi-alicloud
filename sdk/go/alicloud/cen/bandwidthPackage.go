@@ -22,13 +22,15 @@ import (
 type BandwidthPackage struct {
 	pulumi.CustomResourceState
 
+	// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
-	//
-	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-	//
-	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringOutput `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -92,13 +94,15 @@ func GetBandwidthPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BandwidthPackage resources.
 type bandwidthPackageState struct {
+	// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
-	//
-	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-	//
-	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName *string `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -130,13 +134,15 @@ type bandwidthPackageState struct {
 }
 
 type BandwidthPackageState struct {
+	// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	AutoRenew pulumi.BoolPtrInput
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntPtrInput
 	// The name of the bandwidth package. Defaults to null.
-	//
-	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-	//
-	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringPtrInput
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -172,13 +178,15 @@ func (BandwidthPackageState) ElementType() reflect.Type {
 }
 
 type bandwidthPackageArgs struct {
+	// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth int `pulumi:"bandwidth"`
 	// The name of the bandwidth package. Defaults to null.
-	//
-	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-	//
-	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName *string `pulumi:"cenBandwidthPackageName"`
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -207,13 +215,15 @@ type bandwidthPackageArgs struct {
 
 // The set of arguments for constructing a BandwidthPackage resource.
 type BandwidthPackageArgs struct {
+	// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+	//
+	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+	AutoRenew pulumi.BoolPtrInput
 	// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 	Bandwidth pulumi.IntInput
 	// The name of the bandwidth package. Defaults to null.
-	//
-	// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-	//
-	// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 	CenBandwidthPackageName pulumi.StringPtrInput
 	// Field `chargeType` has been deprecated from version 1.97.0. Use `paymentType` and instead.
 	//
@@ -327,16 +337,21 @@ func (o BandwidthPackageOutput) ToBandwidthPackageOutputWithContext(ctx context.
 	return o
 }
 
+// Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+//
+// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+func (o BandwidthPackageOutput) AutoRenew() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BandwidthPackage) pulumi.BoolPtrOutput { return v.AutoRenew }).(pulumi.BoolPtrOutput)
+}
+
 // The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
 func (o BandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // The name of the bandwidth package. Defaults to null.
-//
-// ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-//
-// ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
 func (o BandwidthPackageOutput) CenBandwidthPackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *BandwidthPackage) pulumi.StringOutput { return v.CenBandwidthPackageName }).(pulumi.StringOutput)
 }

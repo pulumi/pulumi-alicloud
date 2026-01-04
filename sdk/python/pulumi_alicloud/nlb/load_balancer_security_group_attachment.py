@@ -201,6 +201,8 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             load_balancer_id=default_load_balancer.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NLB Load Balancer Security Group Attachment can be imported using the id, e.g.
@@ -285,6 +287,8 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
             security_group_id=default_security_group.id,
             load_balancer_id=default_load_balancer.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

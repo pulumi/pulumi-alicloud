@@ -161,6 +161,8 @@ class AssociatedRule(pulumi.CustomResource):
             tag_keys=["user"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         TAG Associated Rule can be imported using the id, e.g.
@@ -205,6 +207,8 @@ class AssociatedRule(pulumi.CustomResource):
             associated_setting_name="rule:AttachEni-DetachEni-TagInstance:Ecs-Instance:Ecs-Eni",
             tag_keys=["user"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

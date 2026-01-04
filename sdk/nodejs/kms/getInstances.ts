@@ -78,7 +78,6 @@ import * as utilities from "../utilities";
  *     spec: 1000,
  *     renewStatus: "ManualRenewal",
  *     productVersion: "3",
- *     renewPeriod: 3,
  *     vpcId: vswitch.vpcId,
  *     zoneIds: [
  *         "cn-hangzhou-k",
@@ -121,9 +120,8 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:kms/getInstances:getInstances", {
         "ids": args.ids,
+        "instanceName": args.instanceName,
         "outputFile": args.outputFile,
-        "pageNumber": args.pageNumber,
-        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -136,11 +134,13 @@ export interface GetInstancesArgs {
      */
     ids?: string[];
     /**
+     * The name of the resource.
+     */
+    instanceName?: string;
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
-    pageNumber?: number;
-    pageSize?: number;
 }
 
 /**
@@ -155,13 +155,12 @@ export interface GetInstancesResult {
      * A list of Instance IDs.
      */
     readonly ids: string[];
+    readonly instanceName?: string;
     /**
      * A list of Instance Entries. Each element contains the following attributes:
      */
     readonly instances: outputs.kms.GetInstancesInstance[];
     readonly outputFile?: string;
-    readonly pageNumber?: number;
-    readonly pageSize?: number;
 }
 /**
  * This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
@@ -235,7 +234,6 @@ export interface GetInstancesResult {
  *     spec: 1000,
  *     renewStatus: "ManualRenewal",
  *     productVersion: "3",
- *     renewPeriod: 3,
  *     vpcId: vswitch.vpcId,
  *     zoneIds: [
  *         "cn-hangzhou-k",
@@ -278,9 +276,8 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getInstances:getInstances", {
         "ids": args.ids,
+        "instanceName": args.instanceName,
         "outputFile": args.outputFile,
-        "pageNumber": args.pageNumber,
-        "pageSize": args.pageSize,
     }, opts);
 }
 
@@ -293,9 +290,11 @@ export interface GetInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The name of the resource.
+     */
+    instanceName?: pulumi.Input<string>;
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
 }

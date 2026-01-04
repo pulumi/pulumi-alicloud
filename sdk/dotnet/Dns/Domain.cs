@@ -36,6 +36,8 @@ namespace Pulumi.AliCloud.Dns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DNS can be imported using the id or domain name, e.g.

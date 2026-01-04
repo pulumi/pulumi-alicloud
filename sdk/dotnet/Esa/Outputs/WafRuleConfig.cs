@@ -62,7 +62,14 @@ namespace Pulumi.AliCloud.Esa.Outputs
         /// </summary>
         public readonly Outputs.WafRuleConfigRateLimit? RateLimit;
         /// <summary>
-        /// The overall security protection level of WAF. See `SecurityLevel` below.
+        /// The overall security protection level of WAF.
+        /// Valid values:
+        /// - off
+        /// - EssentiallyOff
+        /// - low
+        /// - medium
+        /// - high
+        /// - UnderAttack See `SecurityLevel` below.
         /// </summary>
         public readonly Outputs.WafRuleConfigSecurityLevel? SecurityLevel;
         /// <summary>

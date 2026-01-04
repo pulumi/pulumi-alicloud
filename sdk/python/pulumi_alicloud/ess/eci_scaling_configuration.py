@@ -1567,6 +1567,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESS eci scaling configuration can be imported using the id, e.g.
@@ -1706,6 +1708,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                 "image": "registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

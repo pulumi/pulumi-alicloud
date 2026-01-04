@@ -319,6 +319,8 @@ class Order(pulumi.CustomResource):
             coupon_id="")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Market order can be imported using the id, e.g.
@@ -362,6 +364,8 @@ class Order(pulumi.CustomResource):
             package_version="yuncode2713600001",
             coupon_id="")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

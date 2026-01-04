@@ -351,6 +351,8 @@ class TransitRouter(pulumi.CustomResource):
             transit_router_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router can be imported using the id, e.g.
@@ -402,6 +404,8 @@ class TransitRouter(pulumi.CustomResource):
             cen_id=example.id,
             transit_router_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

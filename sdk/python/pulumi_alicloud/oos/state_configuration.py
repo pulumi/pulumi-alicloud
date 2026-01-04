@@ -396,6 +396,8 @@ class StateConfiguration(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS State Configuration can be imported using the id, e.g.
@@ -453,6 +455,8 @@ class StateConfiguration(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

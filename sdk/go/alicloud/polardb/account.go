@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a PolarDB account resource and used to manage databases.
+// Provides a Polar Db Account resource.
+//
+// Database account information.
+//
+// For information about Polar Db Account and how to use it, see [What is Account](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateAccount).
 //
 // > **NOTE:** Available since v1.67.0.
 //
@@ -82,30 +86,47 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
-// PolarDB account can be imported using the id, e.g.
+// Polar Db Account can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:polardb/account:Account example "pc-12345:tf_account"
+// $ pulumi import alicloud:polardb/account:Account example <db_cluster_id>:<account_name>
 // ```
 type Account struct {
 	pulumi.CustomResourceState
 
-	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the database account.
 	AccountDescription pulumi.StringPtrOutput `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The lock status of the account. Valid values:
+	// - `UnLock`: The account is not locked.
+	// - `Lock`: The account is locked.
+	AccountLockState pulumi.StringOutput `pulumi:"accountLockState"`
+	// The account name. Must meet the following requirements:
+	// - Start with a lowercase letter and end with a letter or number.
+	// - Consists of lowercase letters, numbers, or underscores.
+	// - The length is 2 to 16 characters.
+	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
-	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
-	// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
-	AccountType pulumi.StringPtrOutput `pulumi:"accountType"`
-	// The Id of cluster in which account belongs.
+	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Be 8 to 32 characters in length.
+	// - Special characters include !@#$%^&*()_+-=.
+	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
+	// The time when the password for the database account expires.
+	AccountPasswordValidTime pulumi.StringOutput `pulumi:"accountPasswordValidTime"`
+	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
+	AccountType pulumi.StringOutput `pulumi:"accountType"`
+	// The cluster ID.
 	DbClusterId pulumi.StringOutput `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// (Available since v1.265.0) The status of the database account.
+	Status pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -118,14 +139,11 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountName == nil {
 		return nil, errors.New("invalid value for required argument 'AccountName'")
 	}
-	if args.AccountPassword == nil {
-		return nil, errors.New("invalid value for required argument 'AccountPassword'")
-	}
 	if args.DbClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'DbClusterId'")
 	}
 	if args.AccountPassword != nil {
-		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringInput)
+		args.AccountPassword = pulumi.ToSecret(args.AccountPassword).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accountPassword",
@@ -154,37 +172,67 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
-	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the database account.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The lock status of the account. Valid values:
+	// - `UnLock`: The account is not locked.
+	// - `Lock`: The account is locked.
+	AccountLockState *string `pulumi:"accountLockState"`
+	// The account name. Must meet the following requirements:
+	// - Start with a lowercase letter and end with a letter or number.
+	// - Consists of lowercase letters, numbers, or underscores.
+	// - The length is 2 to 16 characters.
+	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName *string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Be 8 to 32 characters in length.
+	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword *string `pulumi:"accountPassword"`
-	// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+	// The time when the password for the database account expires.
+	AccountPasswordValidTime *string `pulumi:"accountPasswordValidTime"`
+	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType *string `pulumi:"accountType"`
-	// The Id of cluster in which account belongs.
+	// The cluster ID.
 	DbClusterId *string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// (Available since v1.265.0) The status of the database account.
+	Status *string `pulumi:"status"`
 }
 
 type AccountState struct {
-	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the database account.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The lock status of the account. Valid values:
+	// - `UnLock`: The account is not locked.
+	// - `Lock`: The account is locked.
+	AccountLockState pulumi.StringPtrInput
+	// The account name. Must meet the following requirements:
+	// - Start with a lowercase letter and end with a letter or number.
+	// - Consists of lowercase letters, numbers, or underscores.
+	// - The length is 2 to 16 characters.
+	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringPtrInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
+	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Be 8 to 32 characters in length.
+	// - Special characters include !@#$%^&*()_+-=.
 	AccountPassword pulumi.StringPtrInput
-	// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+	// The time when the password for the database account expires.
+	AccountPasswordValidTime pulumi.StringPtrInput
+	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType pulumi.StringPtrInput
-	// The Id of cluster in which account belongs.
+	// The cluster ID.
 	DbClusterId pulumi.StringPtrInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// (Available since v1.265.0) The status of the database account.
+	Status pulumi.StringPtrInput
 }
 
 func (AccountState) ElementType() reflect.Type {
@@ -192,15 +240,28 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
-	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the database account.
 	AccountDescription *string `pulumi:"accountDescription"`
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The lock status of the account. Valid values:
+	// - `UnLock`: The account is not locked.
+	// - `Lock`: The account is locked.
+	AccountLockState *string `pulumi:"accountLockState"`
+	// The account name. Must meet the following requirements:
+	// - Start with a lowercase letter and end with a letter or number.
+	// - Consists of lowercase letters, numbers, or underscores.
+	// - The length is 2 to 16 characters.
+	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName string `pulumi:"accountName"`
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
-	AccountPassword string `pulumi:"accountPassword"`
-	// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Be 8 to 32 characters in length.
+	// - Special characters include !@#$%^&*()_+-=.
+	AccountPassword *string `pulumi:"accountPassword"`
+	// The time when the password for the database account expires.
+	AccountPasswordValidTime *string `pulumi:"accountPasswordValidTime"`
+	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType *string `pulumi:"accountType"`
-	// The Id of cluster in which account belongs.
+	// The cluster ID.
 	DbClusterId string `pulumi:"dbClusterId"`
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
@@ -210,15 +271,28 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
-	// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+	// The description of the database account.
 	AccountDescription pulumi.StringPtrInput
-	// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+	// The lock status of the account. Valid values:
+	// - `UnLock`: The account is not locked.
+	// - `Lock`: The account is locked.
+	AccountLockState pulumi.StringPtrInput
+	// The account name. Must meet the following requirements:
+	// - Start with a lowercase letter and end with a letter or number.
+	// - Consists of lowercase letters, numbers, or underscores.
+	// - The length is 2 to 16 characters.
+	// - You cannot use some reserved usernames, such as root and admin.
 	AccountName pulumi.StringInput
-	// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
-	AccountPassword pulumi.StringInput
-	// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
+	// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+	// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// - Be 8 to 32 characters in length.
+	// - Special characters include !@#$%^&*()_+-=.
+	AccountPassword pulumi.StringPtrInput
+	// The time when the password for the database account expires.
+	AccountPasswordValidTime pulumi.StringPtrInput
+	// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
 	AccountType pulumi.StringPtrInput
-	// The Id of cluster in which account belongs.
+	// The cluster ID.
 	DbClusterId pulumi.StringInput
 	// An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
@@ -313,27 +387,46 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
-// Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+// The description of the database account.
 func (o AccountOutput) AccountDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountDescription }).(pulumi.StringPtrOutput)
 }
 
-// Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
+// The lock status of the account. Valid values:
+// - `UnLock`: The account is not locked.
+// - `Lock`: The account is locked.
+func (o AccountOutput) AccountLockState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountLockState }).(pulumi.StringOutput)
+}
+
+// The account name. Must meet the following requirements:
+// - Start with a lowercase letter and end with a letter or number.
+// - Consists of lowercase letters, numbers, or underscores.
+// - The length is 2 to 16 characters.
+// - You cannot use some reserved usernames, such as root and admin.
 func (o AccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
-// Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
-func (o AccountOutput) AccountPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPassword }).(pulumi.StringOutput)
+// The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
+// - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+// - Be 8 to 32 characters in length.
+// - Special characters include !@#$%^&*()_+-=.
+func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPassword }).(pulumi.StringPtrOutput)
 }
 
-// Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
-func (o AccountOutput) AccountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountType }).(pulumi.StringPtrOutput)
+// The time when the password for the database account expires.
+func (o AccountOutput) AccountPasswordValidTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountPasswordValidTime }).(pulumi.StringOutput)
 }
 
-// The Id of cluster in which account belongs.
+// The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
+func (o AccountOutput) AccountType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
+}
+
+// The cluster ID.
 func (o AccountOutput) DbClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DbClusterId }).(pulumi.StringOutput)
 }
@@ -346,6 +439,11 @@ func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o AccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// (Available since v1.265.0) The status of the database account.
+func (o AccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

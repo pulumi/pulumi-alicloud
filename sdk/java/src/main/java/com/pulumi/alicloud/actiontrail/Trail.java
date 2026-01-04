@@ -91,6 +91,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Actiontrail Trail can be imported using the id, e.g.
@@ -222,10 +224,10 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -343,14 +345,14 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
      * @return The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * The name of the trail to be created.

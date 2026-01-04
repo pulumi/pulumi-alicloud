@@ -524,6 +524,8 @@ class ZonalEndpoint(pulumi.CustomResource):
             read_write_mode="ReadWrite")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB Zonal endpoint can be imported using the id, e.g.
@@ -611,6 +613,8 @@ class ZonalEndpoint(pulumi.CustomResource):
             ],
             read_write_mode="ReadWrite")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

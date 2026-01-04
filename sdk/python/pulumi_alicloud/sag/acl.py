@@ -92,6 +92,8 @@ class Acl(pulumi.CustomResource):
         default = alicloud.sag.Acl("default", name="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag Acl can be imported using the id, e.g.
@@ -129,6 +131,8 @@ class Acl(pulumi.CustomResource):
 
         default = alicloud.sag.Acl("default", name="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

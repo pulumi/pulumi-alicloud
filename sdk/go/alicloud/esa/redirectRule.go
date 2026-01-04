@@ -91,6 +91,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Redirect Rule can be imported using the id, e.g.
@@ -119,7 +121,7 @@ type RedirectRule struct {
 	// Order of rule execution. The smaller the value, the higher the priority for execution.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
@@ -201,7 +203,7 @@ type redirectRuleState struct {
 	// Order of rule execution. The smaller the value, the higher the priority for execution.
 	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
@@ -239,7 +241,7 @@ type RedirectRuleState struct {
 	// Order of rule execution. The smaller the value, the higher the priority for execution.
 	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// The response code that you want to use to indicate URL redirection. Valid values:
@@ -279,7 +281,7 @@ type redirectRuleArgs struct {
 	// Order of rule execution. The smaller the value, the higher the priority for execution.
 	Sequence *int `pulumi:"sequence"`
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// The response code that you want to use to indicate URL redirection. Valid values:
@@ -316,7 +318,7 @@ type RedirectRuleArgs struct {
 	// Order of rule execution. The smaller the value, the higher the priority for execution.
 	Sequence pulumi.IntPtrInput
 	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// The response code that you want to use to indicate URL redirection. Valid values:
@@ -458,8 +460,8 @@ func (o RedirectRuleOutput) Sequence() pulumi.IntOutput {
 }
 
 // The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-func (o RedirectRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *RedirectRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o RedirectRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RedirectRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

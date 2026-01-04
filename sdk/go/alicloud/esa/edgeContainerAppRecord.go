@@ -70,7 +70,7 @@ import (
 //				HealthCheckType:      pulumi.String("l7"),
 //				ServicePort:          pulumi.Int(80),
 //				HealthCheckInterval:  pulumi.Int(5),
-//				EdgeContainerAppName: pulumi.String("terraform-app"),
+//				EdgeContainerAppName: pulumi.String("terraform-app2"),
 //				HealthCheckHttpCode:  pulumi.String("http_2xx"),
 //				HealthCheckUri:       pulumi.String("/"),
 //				HealthCheckTimeout:   pulumi.Int(3),
@@ -98,6 +98,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Edge Container App Record can be imported using the id, e.g.
@@ -115,7 +117,7 @@ type EdgeContainerAppRecord struct {
 	// The associated domain name.
 	RecordName pulumi.StringOutput `pulumi:"recordName"`
 	// The website ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 }
 
 // NewEdgeContainerAppRecord registers a new resource with the given unique name, arguments, and options.
@@ -161,7 +163,7 @@ type edgeContainerAppRecordState struct {
 	// The associated domain name.
 	RecordName *string `pulumi:"recordName"`
 	// The website ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 }
 
 type EdgeContainerAppRecordState struct {
@@ -172,7 +174,7 @@ type EdgeContainerAppRecordState struct {
 	// The associated domain name.
 	RecordName pulumi.StringPtrInput
 	// The website ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (EdgeContainerAppRecordState) ElementType() reflect.Type {
@@ -185,7 +187,7 @@ type edgeContainerAppRecordArgs struct {
 	// The associated domain name.
 	RecordName string `pulumi:"recordName"`
 	// The website ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a EdgeContainerAppRecord resource.
@@ -195,7 +197,7 @@ type EdgeContainerAppRecordArgs struct {
 	// The associated domain name.
 	RecordName pulumi.StringInput
 	// The website ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (EdgeContainerAppRecordArgs) ElementType() reflect.Type {
@@ -301,8 +303,8 @@ func (o EdgeContainerAppRecordOutput) RecordName() pulumi.StringOutput {
 }
 
 // The website ID.
-func (o EdgeContainerAppRecordOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *EdgeContainerAppRecord) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o EdgeContainerAppRecordOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeContainerAppRecord) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 type EdgeContainerAppRecordArrayOutput struct{ *pulumi.OutputState }

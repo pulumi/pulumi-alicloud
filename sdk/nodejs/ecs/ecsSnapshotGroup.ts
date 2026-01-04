@@ -80,6 +80,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ECS Snapshot Group can be imported using the id, e.g.

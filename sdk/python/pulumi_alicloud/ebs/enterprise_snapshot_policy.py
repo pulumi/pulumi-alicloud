@@ -456,6 +456,8 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EBS Enterprise Snapshot Policy can be imported using the id, e.g.
@@ -523,6 +525,8 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
                 "time_unit": "DAYS",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

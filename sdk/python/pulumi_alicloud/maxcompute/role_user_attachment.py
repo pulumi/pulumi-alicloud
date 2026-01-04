@@ -194,6 +194,8 @@ class RoleUserAttachment(pulumi.CustomResource):
             project_name=project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Role User Attachment can be imported using the id, e.g.
@@ -259,6 +261,8 @@ class RoleUserAttachment(pulumi.CustomResource):
             user=ram_role,
             project_name=project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

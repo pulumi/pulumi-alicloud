@@ -72,6 +72,8 @@ namespace Pulumi.AliCloud.cloudPhoneInstance
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Phone Instance Group can be imported using the id, e.g.

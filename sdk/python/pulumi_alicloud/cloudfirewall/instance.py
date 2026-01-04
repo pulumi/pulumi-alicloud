@@ -742,6 +742,8 @@ class Instance(pulumi.CustomResource):
             period=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Instance can be imported using the id, e.g.
@@ -815,6 +817,8 @@ class Instance(pulumi.CustomResource):
             cfw_log=False,
             period=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

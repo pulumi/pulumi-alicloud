@@ -539,6 +539,8 @@ class Endpoint(pulumi.CustomResource):
             endpoint_type="Custom")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB endpoint can be imported using the id, e.g.
@@ -604,6 +606,8 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             endpoint_type="Custom")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -177,6 +177,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // DTS Consumer Channel can be imported using the id, e.g.

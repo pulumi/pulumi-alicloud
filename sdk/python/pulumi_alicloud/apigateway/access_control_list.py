@@ -181,6 +181,8 @@ class AccessControlList(pulumi.CustomResource):
             address_ip_version="ipv4")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Access Control List can be imported using the id, e.g.
@@ -231,6 +233,8 @@ class AccessControlList(pulumi.CustomResource):
             access_control_list_name=name,
             address_ip_version="ipv4")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

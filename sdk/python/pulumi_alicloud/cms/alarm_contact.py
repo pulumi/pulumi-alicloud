@@ -296,6 +296,8 @@ class AlarmContact(pulumi.CustomResource):
             channels_mail="terraform@test.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alarm contact can be imported using the id, e.g.
@@ -341,6 +343,8 @@ class AlarmContact(pulumi.CustomResource):
             describe="For example",
             channels_mail="terraform@test.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

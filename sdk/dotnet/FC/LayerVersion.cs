@@ -60,6 +60,8 @@ namespace Pulumi.AliCloud.FC
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Function Compute Layer Version can be imported using the id, e.g.

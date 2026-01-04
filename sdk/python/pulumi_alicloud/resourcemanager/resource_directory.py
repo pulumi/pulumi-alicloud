@@ -242,6 +242,8 @@ class ResourceDirectory(pulumi.CustomResource):
         len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Resource Directory can be imported using the id, e.g.
@@ -289,6 +291,8 @@ class ResourceDirectory(pulumi.CustomResource):
 
         len(default.directories).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -299,6 +299,8 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.
@@ -386,6 +388,8 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             weight=0,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

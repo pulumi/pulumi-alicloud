@@ -39,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EdgeContainerApp{}
 	case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
 		r = &EdgeContainerAppRecord{}
+	case "alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule":
+		r = &HttpIncomingRequestHeaderModificationRule{}
+	case "alicloud:esa/httpIncomingResponseHeaderModificationRule:HttpIncomingResponseHeaderModificationRule":
+		r = &HttpIncomingResponseHeaderModificationRule{}
 	case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
 		r = &HttpRequestHeaderModificationRule{}
 	case "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule":
@@ -171,6 +175,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"esa/edgeContainerAppRecord",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/httpIncomingRequestHeaderModificationRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"esa/httpIncomingResponseHeaderModificationRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

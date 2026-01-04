@@ -389,6 +389,8 @@ class MountTarget(pulumi.CustomResource):
             network_type=example_access_group.access_group_type)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Mount Target can be imported using the id, e.g.
@@ -466,6 +468,8 @@ class MountTarget(pulumi.CustomResource):
             vpc_id=example.id,
             network_type=example_access_group.access_group_type)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

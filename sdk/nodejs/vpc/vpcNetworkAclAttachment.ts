@@ -5,11 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Network Acl Attachment resource. Resources associated with network Acl.
+ * Provides a VPC Network Acl Attachment resource.
+ *
+ * Resources associated with network Acl.
  *
  * For information about VPC Network Acl Attachment and how to use it, see [What is Network Acl Attachment](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/associatenetworkacl).
  *
  * > **NOTE:** Available since v1.193.0.
+ *
+ * > **WARNING:** Do not mix the use of this resource with the `resources` field in the `alicloud.vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
  *
  * ## Example Usage
  *
@@ -40,6 +44,8 @@ import * as utilities from "../utilities";
  *     resourceType: "VSwitch",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -78,11 +84,11 @@ export class VpcNetworkAclAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      */
     declare public readonly networkAclId: pulumi.Output<string>;
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -137,11 +143,11 @@ export class VpcNetworkAclAttachment extends pulumi.CustomResource {
  */
 export interface VpcNetworkAclAttachmentState {
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      */
     networkAclId?: pulumi.Input<string>;
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      */
     resourceId?: pulumi.Input<string>;
     /**
@@ -159,11 +165,11 @@ export interface VpcNetworkAclAttachmentState {
  */
 export interface VpcNetworkAclAttachmentArgs {
     /**
-     * The ID of the network ACL.
+     * The ID of the network ACL instance.
      */
     networkAclId: pulumi.Input<string>;
     /**
-     * The ID of the associated resource.
+     * The ID of the associated  vswitch instance.
      */
     resourceId: pulumi.Input<string>;
     /**

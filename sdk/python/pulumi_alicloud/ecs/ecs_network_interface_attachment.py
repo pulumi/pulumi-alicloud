@@ -264,6 +264,8 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Network Interface Attachment can be imported using the id, e.g.
@@ -347,6 +349,8 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             network_interface_id=default_ecs_network_interface.id,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

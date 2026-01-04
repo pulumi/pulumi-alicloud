@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Amqp
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.

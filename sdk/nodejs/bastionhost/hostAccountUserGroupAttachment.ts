@@ -69,6 +69,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Bastion Host Host Account can be imported using the id, e.g.

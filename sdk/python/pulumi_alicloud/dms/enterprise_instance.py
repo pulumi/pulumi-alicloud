@@ -1027,6 +1027,8 @@ class EnterpriseInstance(pulumi.CustomResource):
             ecs_region=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise can be imported using host and port, e.g.
@@ -1151,6 +1153,8 @@ class EnterpriseInstance(pulumi.CustomResource):
             export_timeout=600,
             ecs_region=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

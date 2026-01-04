@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Actiontrail Trail can be imported using the id, e.g.
@@ -119,7 +121,7 @@ export class Trail extends pulumi.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -155,7 +157,7 @@ export class Trail extends pulumi.CustomResource {
     /**
      * The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
      */
-    declare public readonly status: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * The name of the trail to be created.
      */
@@ -265,7 +267,7 @@ export interface TrailState {
     /**
      * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -349,7 +351,7 @@ export interface TrailArgs {
     /**
      * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string>;
     /**

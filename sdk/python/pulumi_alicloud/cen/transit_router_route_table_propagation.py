@@ -221,6 +221,8 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN transit router route table propagation can be imported using the id, e.g.
@@ -303,6 +305,8 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
             transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

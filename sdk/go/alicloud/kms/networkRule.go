@@ -58,6 +58,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // KMS Network Rule can be imported using the id, e.g.

@@ -59,15 +59,15 @@ namespace Pulumi.AliCloud
             set => _accountType.Set(value);
         }
 
-        private static readonly __Value<Pulumi.AliCloud.Config.Types.AssumeRole?> _assumeRole = new __Value<Pulumi.AliCloud.Config.Types.AssumeRole?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRole>("assumeRole"));
-        public static Pulumi.AliCloud.Config.Types.AssumeRole? AssumeRole
+        private static readonly __Value<Pulumi.AliCloud.config.Types.AssumeRole?> _assumeRole = new __Value<Pulumi.AliCloud.config.Types.AssumeRole?>(() => __config.GetObject<Pulumi.AliCloud.config.Types.AssumeRole>("assumeRole"));
+        public static Pulumi.AliCloud.config.Types.AssumeRole? AssumeRole
         {
             get => _assumeRole.Get();
             set => _assumeRole.Set(value);
         }
 
-        private static readonly __Value<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc?> _assumeRoleWithOidc = new __Value<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc>("assumeRoleWithOidc"));
-        public static Pulumi.AliCloud.Config.Types.AssumeRoleWithOidc? AssumeRoleWithOidc
+        private static readonly __Value<Pulumi.AliCloud.config.Types.AssumeRoleWithOidc?> _assumeRoleWithOidc = new __Value<Pulumi.AliCloud.config.Types.AssumeRoleWithOidc?>(() => __config.GetObject<Pulumi.AliCloud.config.Types.AssumeRoleWithOidc>("assumeRoleWithOidc"));
+        public static Pulumi.AliCloud.config.Types.AssumeRoleWithOidc? AssumeRoleWithOidc
         {
             get => _assumeRoleWithOidc.Get();
             set => _assumeRoleWithOidc.Set(value);
@@ -120,8 +120,8 @@ namespace Pulumi.AliCloud
             set => _ecsRoleName.Set(value);
         }
 
-        private static readonly __Value<ImmutableArray<Pulumi.AliCloud.Config.Types.Endpoints>> _endpoints = new __Value<ImmutableArray<Pulumi.AliCloud.Config.Types.Endpoints>>(() => __config.GetObject<ImmutableArray<Pulumi.AliCloud.Config.Types.Endpoints>>("endpoints"));
-        public static ImmutableArray<Pulumi.AliCloud.Config.Types.Endpoints> Endpoints
+        private static readonly __Value<ImmutableArray<Pulumi.AliCloud.config.Types.Endpoints>> _endpoints = new __Value<ImmutableArray<Pulumi.AliCloud.config.Types.Endpoints>>(() => __config.GetObject<ImmutableArray<Pulumi.AliCloud.config.Types.Endpoints>>("endpoints"));
+        public static ImmutableArray<Pulumi.AliCloud.config.Types.Endpoints> Endpoints
         {
             get => _endpoints.Get();
             set => _endpoints.Set(value);
@@ -239,8 +239,8 @@ namespace Pulumi.AliCloud
             set => _sharedCredentialsFile.Set(value);
         }
 
-        private static readonly __Value<Pulumi.AliCloud.Config.Types.SignVersion?> _signVersion = new __Value<Pulumi.AliCloud.Config.Types.SignVersion?>(() => __config.GetObject<Pulumi.AliCloud.Config.Types.SignVersion>("signVersion"));
-        public static Pulumi.AliCloud.Config.Types.SignVersion? SignVersion
+        private static readonly __Value<Pulumi.AliCloud.config.Types.SignVersion?> _signVersion = new __Value<Pulumi.AliCloud.config.Types.SignVersion?>(() => __config.GetObject<Pulumi.AliCloud.config.Types.SignVersion>("signVersion"));
+        public static Pulumi.AliCloud.config.Types.SignVersion? SignVersion
         {
             get => _signVersion.Get();
             set => _signVersion.Set(value);

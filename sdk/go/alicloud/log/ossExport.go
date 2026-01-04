@@ -95,6 +95,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Log oss export can be imported using the id or name, e.g.

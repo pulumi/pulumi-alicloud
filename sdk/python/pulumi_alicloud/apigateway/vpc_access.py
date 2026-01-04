@@ -209,6 +209,8 @@ class VpcAccess(pulumi.CustomResource):
             port=8080)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api gateway app can be imported using the id, e.g.
@@ -270,6 +272,8 @@ class VpcAccess(pulumi.CustomResource):
             instance_id=example_instance.id,
             port=8080)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

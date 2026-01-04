@@ -59,6 +59,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, e.g.

@@ -244,6 +244,8 @@ class FlowPipeline(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Pai Flow Pipeline can be imported using the id, e.g.
@@ -387,6 +389,8 @@ class FlowPipeline(pulumi.CustomResource):
           volumes: []
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

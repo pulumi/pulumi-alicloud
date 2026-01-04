@@ -85,6 +85,8 @@ namespace Pulumi.AliCloud.Oss
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OSS Bucket Website can be imported using the id, e.g.

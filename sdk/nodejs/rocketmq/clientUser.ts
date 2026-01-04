@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * The Sag ClientUser can be imported using the name, e.g.

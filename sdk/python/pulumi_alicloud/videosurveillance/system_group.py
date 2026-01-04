@@ -433,6 +433,8 @@ class SystemGroup(pulumi.CustomResource):
             push_domain="your_push_domain")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Video Surveillance System Group can be imported using the id, e.g.
@@ -480,6 +482,8 @@ class SystemGroup(pulumi.CustomResource):
             play_domain="your_plan_domain",
             push_domain="your_push_domain")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

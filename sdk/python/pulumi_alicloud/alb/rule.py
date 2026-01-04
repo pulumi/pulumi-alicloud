@@ -401,6 +401,8 @@ class Rule(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Rule can be imported using the id, e.g.
@@ -536,6 +538,8 @@ class Rule(pulumi.CustomResource):
                 "type": "ForwardGroup",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

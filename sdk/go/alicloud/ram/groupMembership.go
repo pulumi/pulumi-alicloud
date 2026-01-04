@@ -12,10 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RAM Group membership resource.
-//
-// > **NOTE:** Available since v1.0.0+.
-//
 // ## Example Usage
 //
 // ```go
@@ -106,6 +102,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //

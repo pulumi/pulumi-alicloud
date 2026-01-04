@@ -441,6 +441,8 @@ class ZoneRecord(pulumi.CustomResource):
             ttl=60)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone Record can be imported using the id, e.g.
@@ -487,6 +489,8 @@ class ZoneRecord(pulumi.CustomResource):
             value="bbb.test.com",
             ttl=60)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

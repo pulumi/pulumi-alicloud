@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,9 +44,13 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     declare public readonly bucket: pulumi.Output<string>;
+    /**
+     * TLS encryption algorithm suite configuration See `cipherSuit` below.
+     */
+    declare public readonly cipherSuit: pulumi.Output<outputs.oss.BucketHttpsConfigCipherSuit>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */
@@ -68,6 +74,7 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BucketHttpsConfigState | undefined;
             resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["cipherSuit"] = state?.cipherSuit;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["tlsVersions"] = state?.tlsVersions;
         } else {
@@ -79,6 +86,7 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'enable'");
             }
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["cipherSuit"] = args?.cipherSuit;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["tlsVersions"] = args?.tlsVersions;
         }
@@ -92,9 +100,13 @@ export class BucketHttpsConfig extends pulumi.CustomResource {
  */
 export interface BucketHttpsConfigState {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     bucket?: pulumi.Input<string>;
+    /**
+     * TLS encryption algorithm suite configuration See `cipherSuit` below.
+     */
+    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */
@@ -110,9 +122,13 @@ export interface BucketHttpsConfigState {
  */
 export interface BucketHttpsConfigArgs {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      */
     bucket: pulumi.Input<string>;
+    /**
+     * TLS encryption algorithm suite configuration See `cipherSuit` below.
+     */
+    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */

@@ -361,6 +361,8 @@ class VbrHealthCheck(pulumi.CustomResource):
             healthy_threshold=8)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN VBR HealthCheck can be imported using the id, e.g.
@@ -441,6 +443,8 @@ class VbrHealthCheck(pulumi.CustomResource):
             health_check_interval=2,
             healthy_threshold=8)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

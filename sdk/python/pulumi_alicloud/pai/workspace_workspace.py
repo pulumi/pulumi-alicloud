@@ -246,6 +246,8 @@ class WorkspaceWorkspace(pulumi.CustomResource):
             env_types=["prod"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Workspace can be imported using the id, e.g.
@@ -297,6 +299,8 @@ class WorkspaceWorkspace(pulumi.CustomResource):
             display_name=name,
             env_types=["prod"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -50,6 +50,8 @@ namespace Pulumi.AliCloud.Oos
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OOS State Configuration can be imported using the id, e.g.

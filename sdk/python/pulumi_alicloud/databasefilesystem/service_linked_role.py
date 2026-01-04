@@ -103,6 +103,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
         service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dbfs service-linked roles(SLR) can be imported using the id, e.g.
@@ -136,6 +138,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

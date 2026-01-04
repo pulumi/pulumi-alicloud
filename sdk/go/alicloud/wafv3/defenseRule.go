@@ -102,6 +102,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // WAFV3 Defense Rule can be imported using the id, e.g.

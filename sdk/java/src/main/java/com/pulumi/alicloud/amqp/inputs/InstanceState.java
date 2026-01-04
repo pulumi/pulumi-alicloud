@@ -48,6 +48,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * The instance name.
      * 
      */
@@ -198,6 +213,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> periodCycle() {
         return Optional.ofNullable(this.periodCycle);
+    }
+
+    /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    @Import(name="provisionedCapacity")
+    private @Nullable Output<Integer> provisionedCapacity;
+
+    /**
+     * @return The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedCapacity() {
+        return Optional.ofNullable(this.provisionedCapacity);
     }
 
     /**
@@ -355,6 +385,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.autoRenew = $.autoRenew;
         this.createTime = $.createTime;
+        this.edition = $.edition;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.maxConnections = $.maxConnections;
@@ -364,6 +395,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodCycle = $.periodCycle;
+        this.provisionedCapacity = $.provisionedCapacity;
         this.queueCapacity = $.queueCapacity;
         this.renewalDuration = $.renewalDuration;
         this.renewalDurationUnit = $.renewalDurationUnit;
@@ -434,6 +466,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(Integer createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param edition The deployment architecture for Serverless instances. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The deployment architecture for Serverless instances. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**
@@ -641,6 +694,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder periodCycle(String periodCycle) {
             return periodCycle(Output.of(periodCycle));
+        }
+
+        /**
+         * @param provisionedCapacity The provisioned TPS capacity for reserved + elastic instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedCapacity(@Nullable Output<Integer> provisionedCapacity) {
+            $.provisionedCapacity = provisionedCapacity;
+            return this;
+        }
+
+        /**
+         * @param provisionedCapacity The provisioned TPS capacity for reserved + elastic instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedCapacity(Integer provisionedCapacity) {
+            return provisionedCapacity(Output.of(provisionedCapacity));
         }
 
         /**

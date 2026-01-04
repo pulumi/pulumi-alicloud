@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("example", {transitRouterId: exampleTransitRouter.transitRouterId});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * CEN transit router route table  can be imported using the id, e.g.

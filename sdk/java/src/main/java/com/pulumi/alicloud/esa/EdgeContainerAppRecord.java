@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -78,7 +77,7 @@ import javax.annotation.Nullable;
  *             .healthCheckType("l7")
  *             .servicePort(80)
  *             .healthCheckInterval(5)
- *             .edgeContainerAppName("terraform-app")
+ *             .edgeContainerAppName("terraform-app2")
  *             .healthCheckHttpCode("http_2xx")
  *             .healthCheckUri("/")
  *             .healthCheckTimeout(3)
@@ -100,6 +99,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -158,14 +159,14 @@ public class EdgeContainerAppRecord extends com.pulumi.resources.CustomResource 
      * The website ID.
      * 
      */
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
     /**
      * @return The website ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 

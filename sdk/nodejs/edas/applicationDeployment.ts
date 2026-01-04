@@ -79,6 +79,8 @@ import * as utilities from "../utilities";
  *     warUrl: "http://edas-sz.oss-cn-shenzhen.aliyuncs.com/prod/demo/SPRING_CLOUD_CONSUMER.jar",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class ApplicationDeployment extends pulumi.CustomResource {
     /**

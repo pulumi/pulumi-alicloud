@@ -324,6 +324,8 @@ class AccessGroup(pulumi.CustomResource):
             file_system_type="extreme")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NAS Access Group can be imported using the id, e.g.
@@ -376,6 +378,8 @@ class AccessGroup(pulumi.CustomResource):
             description="terraform-example",
             file_system_type="extreme")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

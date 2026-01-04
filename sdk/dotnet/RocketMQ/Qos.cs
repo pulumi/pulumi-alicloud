@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.RocketMQ
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// The Sag Qos can be imported using the id, e.g.

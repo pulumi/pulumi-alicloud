@@ -210,6 +210,8 @@ namespace Pulumi.AliCloud.Emrv2
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Aliclioud E-MapReduce cluster can be imported using the id e.g.

@@ -149,6 +149,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -160,17 +162,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:fc/v3Function:V3Function")
 public class V3Function extends com.pulumi.resources.CustomResource {
-    /**
-     * Function code ZIP package. code and customContainerConfig. See `code` below.
-     * 
-     */
     @Export(name="code", refs={V3FunctionCode.class}, tree="[0]")
     private Output</* @Nullable */ V3FunctionCode> code;
 
-    /**
-     * @return Function code ZIP package. code and customContainerConfig. See `code` below.
-     * 
-     */
     public Output<Optional<V3FunctionCode>> code() {
         return Codegen.optional(this.code);
     }
@@ -371,6 +365,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.handler;
     }
     /**
+     * Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     * 
+     */
+    @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> idleTimeout;
+
+    /**
+     * @return Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+     * 
+     */
+    public Output<Optional<Integer>> idleTimeout() {
+        return Codegen.optional(this.idleTimeout);
+    }
+    /**
      * Maximum instance concurrency.
      * 
      */
@@ -389,14 +397,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="instanceIsolationMode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceIsolationMode;
+    private Output<String> instanceIsolationMode;
 
     /**
      * @return Instance isolation mode
      * 
      */
-    public Output<Optional<String>> instanceIsolationMode() {
-        return Codegen.optional(this.instanceIsolationMode);
+    public Output<String> instanceIsolationMode() {
+        return this.instanceIsolationMode;
     }
     /**
      * Instance lifecycle callback method configuration. See `instanceLifecycleConfig` below.
@@ -567,14 +575,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.ossMountConfig;
     }
     /**
-     * Resource Group ID.
+     * Resource Group ID
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return Resource Group ID.
+     * @return Resource Group ID
      * 
      */
     public Output<String> resourceGroupId() {
@@ -595,14 +603,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.role);
     }
     /**
-     * Function runtime type.
+     * Function runtime type
      * 
      */
     @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     /**
-     * @return Function runtime type.
+     * @return Function runtime type
      * 
      */
     public Output<String> runtime() {
@@ -613,14 +621,14 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sessionAffinity;
+    private Output<String> sessionAffinity;
 
     /**
      * @return The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
      * 
      */
-    public Output<Optional<String>> sessionAffinity() {
-        return Codegen.optional(this.sessionAffinity);
+    public Output<String> sessionAffinity() {
+        return this.sessionAffinity;
     }
     /**
      * When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.

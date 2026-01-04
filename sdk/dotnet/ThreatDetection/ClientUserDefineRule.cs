@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Client User Define Rule can be imported using the id, e.g.

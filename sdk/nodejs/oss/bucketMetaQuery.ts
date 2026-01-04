@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  * const defaultBucketMetaQuery = new alicloud.oss.BucketMetaQuery("default", {bucket: createBucket.bucket});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * OSS Bucket Meta Query can be imported using the id, e.g.

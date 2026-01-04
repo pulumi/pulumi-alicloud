@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MscSubSubscription{}
 	case "alicloud:index/mscSubWebhook:MscSubWebhook":
 		r = &MscSubWebhook{}
+	case "alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer":
+		r = &OpenApiExplorerApiMcpServer{}
 	case "alicloud:index/polarDbExtension:PolarDbExtension":
 		r = &PolarDbExtension{}
 	case "alicloud:index/starRocksInstance:StarRocksInstance":
@@ -82,6 +84,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"index/mscSubWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"index/openApiExplorerApiMcpServer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

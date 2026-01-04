@@ -15,9 +15,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Actiontrail History Delivery Job resource.
+ * Provides a Action Trail History Delivery Job resource.
  * 
- * For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+ * Delivery History Tasks.
+ * 
+ * For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
  * 
  * &gt; **NOTE:** Available since v1.139.0.
  * 
@@ -38,16 +40,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.Integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.ram.RamFunctions;
+ * import com.pulumi.alicloud.ram.inputs.GetRolesArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.actiontrail.Trail;
  * import com.pulumi.alicloud.actiontrail.TrailArgs;
  * import com.pulumi.alicloud.actiontrail.HistoryDeliveryJob;
  * import com.pulumi.alicloud.actiontrail.HistoryDeliveryJobArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,29 +66,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
- *         final var example = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var exampleGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ *         final var defaultGetAccount = AlicloudFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
- *             .projectName(String.format("%s-%s", name,default_.result()))
- *             .description("tf actiontrail example")
+ *         final var defaultGetRoles = RamFunctions.getRoles(GetRolesArgs.builder()
+ *             .nameRegex("AliyunServiceRoleForActionTrail")
  *             .build());
  * 
- *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()
- *             .trailName(String.format("%s-%s", name,default_.result()))
- *             .slsProjectArn(exampleProject.name().applyValue(_name -> String.format("acs:log:%s:%s:project/%s", example.regions()[0].id(),exampleGetAccount.id(),_name)))
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+ *             .description(name)
+ *             .projectName(name)
  *             .build());
  * 
- *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob("exampleHistoryDeliveryJob", HistoryDeliveryJobArgs.builder()
- *             .trailName(exampleTrail.id())
+ *         var defaultTrail = new Trail("defaultTrail", TrailArgs.builder()
+ *             .eventRw("Write")
+ *             .slsProjectArn(defaultProject.projectName().applyValue(_projectName -> String.format("acs:log:%s:%s:project/%s", default_.regions()[0].id(),defaultGetAccount.id(),_projectName)))
+ *             .trailName(name)
+ *             .slsWriteRoleArn(defaultGetRoles.roles()[0].arn())
+ *             .trailRegion("All")
+ *             .isOrganizationTrail(false)
+ *             .status("Enable")
+ *             .eventSelectors(serializeJson(
+ *                 jsonArray(jsonObject(
+ *                     jsonProperty("ServiceName", "PDS")
+ *                 ))))
+ *             .dataEventTrailRegion("cn-hangzhou")
+ *             .build());
+ * 
+ *         var defaultHistoryDeliveryJob = new HistoryDeliveryJob("defaultHistoryDeliveryJob", HistoryDeliveryJobArgs.builder()
+ *             .trailName(defaultTrail.id())
  *             .build());
  * 
  *     }
@@ -93,9 +105,11 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * Actiontrail History Delivery Job can be imported using the id, e.g.
+ * Action Trail History Delivery Job can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example &lt;id&gt;
@@ -105,28 +119,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob")
 public class HistoryDeliveryJob extends com.pulumi.resources.CustomResource {
     /**
-     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * The creation time of the resource
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
-     * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * @return The status of the resource
      * 
      */
     public Output<Integer> status() {
         return this.status;
     }
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      * 
      */
     @Export(name="trailName", refs={String.class}, tree="[0]")
     private Output<String> trailName;
 
     /**
-     * @return The name of the trail for which you want to create a historical event delivery task.
+     * @return The Track Name.
      * 
      */
     public Output<String> trailName() {

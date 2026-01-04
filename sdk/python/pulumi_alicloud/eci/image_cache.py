@@ -446,6 +446,8 @@ class ImageCache(pulumi.CustomResource):
             eip_instance_id=default_eip_address.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECI Image Cache can be imported using the id, e.g.
@@ -519,6 +521,8 @@ class ImageCache(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             eip_instance_id=default_eip_address.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

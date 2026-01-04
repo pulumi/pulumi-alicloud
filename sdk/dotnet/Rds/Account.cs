@@ -66,6 +66,8 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS account can be imported using the id, e.g.
@@ -88,6 +90,9 @@ namespace Pulumi.AliCloud.Rds
 
         [Output("accountType")]
         public Output<string> AccountType { get; private set; } = null!;
+
+        [Output("checkPolicy")]
+        public Output<bool?> CheckPolicy { get; private set; } = null!;
 
         [Output("dbInstanceId")]
         public Output<string> DbInstanceId { get; private set; } = null!;
@@ -216,6 +221,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
 
+        [Input("checkPolicy")]
+        public Input<bool>? CheckPolicy { get; set; }
+
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }
 
@@ -275,6 +283,9 @@ namespace Pulumi.AliCloud.Rds
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
 
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         /// <summary>
         /// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         /// - Normal: Common privilege.
@@ -313,6 +324,9 @@ namespace Pulumi.AliCloud.Rds
 
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
+
+        [Input("checkPolicy")]
+        public Input<bool>? CheckPolicy { get; set; }
 
         [Input("dbInstanceId")]
         public Input<string>? DbInstanceId { get; set; }

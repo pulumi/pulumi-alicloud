@@ -176,6 +176,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:cs/autoscalingConfig:AutoscalingConfig")
 public class AutoscalingConfig extends com.pulumi.resources.CustomResource {

@@ -305,6 +305,8 @@ class AlidnsInstance(pulumi.CustomResource):
             version_code="version_personal")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS instance be imported using the id, e.g.
@@ -350,6 +352,8 @@ class AlidnsInstance(pulumi.CustomResource):
             renewal_status="ManualRenewal",
             version_code="version_personal")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

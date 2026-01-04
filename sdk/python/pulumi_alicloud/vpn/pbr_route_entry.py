@@ -353,6 +353,8 @@ class PbrRouteEntry(pulumi.CustomResource):
             publish_vpc=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN Pbr route entry can be imported using the id, e.g.
@@ -481,6 +483,8 @@ class PbrRouteEntry(pulumi.CustomResource):
             weight=0,
             publish_vpc=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

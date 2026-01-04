@@ -70,6 +70,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Private Zone Endpoint can be imported using the id, e.g.

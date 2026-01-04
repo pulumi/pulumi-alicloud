@@ -253,6 +253,8 @@ class DiskAttachment(pulumi.CustomResource):
             instance_id=ecs_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -309,6 +311,8 @@ class DiskAttachment(pulumi.CustomResource):
             disk_id=ecs_disk.id,
             instance_id=ecs_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

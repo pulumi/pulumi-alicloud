@@ -317,6 +317,8 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             inter_region_traffic_qos_queue_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Inter Region Traffic Qos Queue can be imported using the id, e.g.
@@ -405,6 +407,8 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
             ],
             inter_region_traffic_qos_queue_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

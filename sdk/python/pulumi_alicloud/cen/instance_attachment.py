@@ -284,6 +284,8 @@ class InstanceAttachment(pulumi.CustomResource):
             child_instance_region_id=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -335,6 +337,8 @@ class InstanceAttachment(pulumi.CustomResource):
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

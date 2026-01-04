@@ -1093,6 +1093,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             enable_default_resource_group=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.
@@ -1171,6 +1173,8 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             enable_default_resource_group=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

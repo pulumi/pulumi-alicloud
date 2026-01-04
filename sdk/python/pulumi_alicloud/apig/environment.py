@@ -219,6 +219,8 @@ class Environment(pulumi.CustomResource):
             resource_group_id=default.ids[1])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         APIG Environment can be imported using the id, e.g.
@@ -289,6 +291,8 @@ class Environment(pulumi.CustomResource):
             gateway_id=defaultgateway.id,
             resource_group_id=default.ids[1])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

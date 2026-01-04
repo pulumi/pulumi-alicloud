@@ -51,29 +51,29 @@ public final class WaitingRoomRuleState extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Optional<Output<String>> status() {
@@ -187,7 +187,7 @@ public final class WaitingRoomRuleState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -198,14 +198,14 @@ public final class WaitingRoomRuleState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param status Rule enabled status, supporting:
-         * -&#39;on&#39;: means enabled.
-         * -&#39;off&#39;: means disabled.
+         * @param status Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -216,9 +216,9 @@ public final class WaitingRoomRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status Rule enabled status, supporting:
-         * -&#39;on&#39;: means enabled.
-         * -&#39;off&#39;: means disabled.
+         * @param status Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 

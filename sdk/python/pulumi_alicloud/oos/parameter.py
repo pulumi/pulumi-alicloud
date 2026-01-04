@@ -311,6 +311,8 @@ class Parameter(pulumi.CustomResource):
             resource_group_id=default.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Parameter can be imported using the id, e.g.
@@ -366,6 +368,8 @@ class Parameter(pulumi.CustomResource):
             },
             resource_group_id=default.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

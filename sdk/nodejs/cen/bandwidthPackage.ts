@@ -42,15 +42,19 @@ export class BandwidthPackage extends pulumi.CustomResource {
     }
 
     /**
+     * Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     */
+    declare public readonly autoRenew: pulumi.Output<boolean | undefined>;
+    /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
     declare public readonly bandwidth: pulumi.Output<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
-     *
-     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-     *
-     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     declare public readonly cenBandwidthPackageName: pulumi.Output<string>;
     /**
@@ -114,6 +118,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPackageState | undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["bandwidth"] = state?.bandwidth;
             resourceInputs["cenBandwidthPackageName"] = state?.cenBandwidthPackageName;
             resourceInputs["chargeType"] = state?.chargeType;
@@ -131,6 +136,7 @@ export class BandwidthPackage extends pulumi.CustomResource {
             if (args?.bandwidth === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
+            resourceInputs["autoRenew"] = args?.autoRenew;
             resourceInputs["bandwidth"] = args?.bandwidth;
             resourceInputs["cenBandwidthPackageName"] = args?.cenBandwidthPackageName;
             resourceInputs["chargeType"] = args?.chargeType;
@@ -154,15 +160,19 @@ export class BandwidthPackage extends pulumi.CustomResource {
  */
 export interface BandwidthPackageState {
     /**
+     * Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
     bandwidth?: pulumi.Input<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
-     *
-     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-     *
-     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     cenBandwidthPackageName?: pulumi.Input<string>;
     /**
@@ -219,15 +229,19 @@ export interface BandwidthPackageState {
  */
 export interface BandwidthPackageArgs {
     /**
+     * Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     *
+     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+     */
+    autoRenew?: pulumi.Input<boolean>;
+    /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
      */
     bandwidth: pulumi.Input<number>;
     /**
      * The name of the bandwidth package. Defaults to null.
-     *
-     * ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-     *
-     * ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      */
     cenBandwidthPackageName?: pulumi.Input<string>;
     /**

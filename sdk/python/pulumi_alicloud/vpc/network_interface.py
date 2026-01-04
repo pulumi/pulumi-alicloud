@@ -767,6 +767,8 @@ class NetworkInterface(pulumi.CustomResource):
             private_ips_count=3)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENI can be imported using the id, e.g.
@@ -831,6 +833,8 @@ class NetworkInterface(pulumi.CustomResource):
             private_ip="192.168.0.2",
             private_ips_count=3)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

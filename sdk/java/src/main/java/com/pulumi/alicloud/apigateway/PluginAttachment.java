@@ -117,6 +117,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:apigateway/pluginAttachment:PluginAttachment")
 public class PluginAttachment extends com.pulumi.resources.CustomResource {

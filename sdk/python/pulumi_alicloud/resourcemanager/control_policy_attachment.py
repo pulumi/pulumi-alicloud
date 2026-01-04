@@ -170,6 +170,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             target_id=default_folder.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Control Policy Attachment can be imported using the id, e.g.
@@ -243,6 +245,8 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             policy_id=default_control_policy.id,
             target_id=default_folder.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

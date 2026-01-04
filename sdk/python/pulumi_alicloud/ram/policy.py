@@ -539,6 +539,8 @@ class Policy(pulumi.CustomResource):
             description="this is a policy test")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Policy can be imported using the id, e.g.
@@ -615,6 +617,8 @@ class Policy(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

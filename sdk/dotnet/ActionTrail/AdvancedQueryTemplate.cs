@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.ActionTrail
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Actiontrail Advanced Query Template can be imported using the id, e.g.

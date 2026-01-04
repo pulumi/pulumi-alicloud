@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.RocketMQ
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ONS GROUP can be imported using the id, e.g.

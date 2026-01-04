@@ -12,6 +12,10 @@ import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBackupPoliciesPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetBaselineStrategiesPlainArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsPlainArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneyPotsPlainArgs;
 import com.pulumi.alicloud.threatdetection.inputs.GetHoneypotImagesArgs;
@@ -34,6 +38,8 @@ import com.pulumi.alicloud.threatdetection.outputs.GetAntiBruteForceRulesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetAssetsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetBackupPoliciesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetBaselineStrategiesResult;
+import com.pulumi.alicloud.threatdetection.outputs.GetCheckItemConfigsResult;
+import com.pulumi.alicloud.threatdetection.outputs.GetCheckStructuresResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneyPotsResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotImagesResult;
 import com.pulumi.alicloud.threatdetection.outputs.GetHoneypotNodesResult;
@@ -1485,6 +1491,594 @@ public final class ThreatdetectionFunctions {
      */
     public static CompletableFuture<GetBaselineStrategiesResult> getBaselineStrategiesPlain(GetBaselineStrategiesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckItemConfigsResult> getCheckItemConfigs() {
+        return getCheckItemConfigs(GetCheckItemConfigsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckItemConfigsResult> getCheckItemConfigsPlain() {
+        return getCheckItemConfigsPlain(GetCheckItemConfigsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckItemConfigsResult> getCheckItemConfigs(GetCheckItemConfigsArgs args) {
+        return getCheckItemConfigs(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckItemConfigsResult> getCheckItemConfigsPlain(GetCheckItemConfigsPlainArgs args) {
+        return getCheckItemConfigsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckItemConfigsResult> getCheckItemConfigs(GetCheckItemConfigsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getCheckItemConfigs:getCheckItemConfigs", TypeShape.of(GetCheckItemConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckItemConfigsResult> getCheckItemConfigs(GetCheckItemConfigsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getCheckItemConfigs:getCheckItemConfigs", TypeShape.of(GetCheckItemConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Item Config available to the user.[What is Check Item Config](https://next.api.alibabacloud.com/document/Sas/2018-12-03/ListCheckItem)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckItemConfigsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckItemConfigs(GetCheckItemConfigsArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckItemConfigExampleCheckId", default_.configs()[0].checkId());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckItemConfigsResult> getCheckItemConfigsPlain(GetCheckItemConfigsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getCheckItemConfigs:getCheckItemConfigs", TypeShape.of(GetCheckItemConfigsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckStructuresResult> getCheckStructures() {
+        return getCheckStructures(GetCheckStructuresArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckStructuresResult> getCheckStructuresPlain() {
+        return getCheckStructuresPlain(GetCheckStructuresPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckStructuresResult> getCheckStructures(GetCheckStructuresArgs args) {
+        return getCheckStructures(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckStructuresResult> getCheckStructuresPlain(GetCheckStructuresPlainArgs args) {
+        return getCheckStructuresPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckStructuresResult> getCheckStructures(GetCheckStructuresArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getCheckStructures:getCheckStructures", TypeShape.of(GetCheckStructuresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCheckStructuresResult> getCheckStructures(GetCheckStructuresArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("alicloud:threatdetection/getCheckStructures:getCheckStructures", TypeShape.of(GetCheckStructuresResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)
+     * 
+     * &gt; **NOTE:** Available since v1.267.0.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.threatdetection.ThreatdetectionFunctions;
+     * import com.pulumi.alicloud.threatdetection.inputs.GetCheckStructuresArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ThreatdetectionFunctions.getCheckStructures(GetCheckStructuresArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("alicloudThreatDetectionCheckStructureExampleStandardType", default_.structures()[0].standardType());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCheckStructuresResult> getCheckStructuresPlain(GetCheckStructuresPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getCheckStructures:getCheckStructures", TypeShape.of(GetCheckStructuresResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)

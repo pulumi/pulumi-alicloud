@@ -64,6 +64,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Container Registry repository can be imported using the `namespace/repository`, e.g.

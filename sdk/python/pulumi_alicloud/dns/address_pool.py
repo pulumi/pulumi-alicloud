@@ -263,6 +263,8 @@ class AddressPool(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns Address Pool can be imported using the id, e.g.
@@ -346,6 +348,8 @@ class AddressPool(pulumi.CustomResource):
                 "lba_weight": 1,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

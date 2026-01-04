@@ -356,6 +356,8 @@ class WebLockConfig(pulumi.CustomResource):
             defence_mode="audit")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Web Lock Config can be imported using the id, e.g.
@@ -406,6 +408,8 @@ class WebLockConfig(pulumi.CustomResource):
             dir="/tmp/",
             defence_mode="audit")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

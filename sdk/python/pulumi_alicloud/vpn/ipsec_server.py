@@ -411,6 +411,8 @@ class IpsecServer(pulumi.CustomResource):
             psk_enabled=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPN Ipsec Server can be imported using the id, e.g.
@@ -480,6 +482,8 @@ class IpsecServer(pulumi.CustomResource):
             vpn_gateway_id=default_gateway.id,
             psk_enabled=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

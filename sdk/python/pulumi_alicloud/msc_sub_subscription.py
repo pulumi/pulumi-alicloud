@@ -368,6 +368,8 @@ class MscSubSubscription(pulumi.CustomResource):
             webhook_status=0)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Msc Sub Subscription can be imported using the id, e.g.
@@ -417,6 +419,8 @@ class MscSubSubscription(pulumi.CustomResource):
             tts_status=1,
             webhook_status=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

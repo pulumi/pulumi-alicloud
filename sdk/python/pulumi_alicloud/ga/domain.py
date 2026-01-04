@@ -143,6 +143,8 @@ class Domain(pulumi.CustomResource):
             accelerator_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Domain can be imported using the id, e.g.
@@ -185,6 +187,8 @@ class Domain(pulumi.CustomResource):
             domain="changes.com.cn",
             accelerator_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

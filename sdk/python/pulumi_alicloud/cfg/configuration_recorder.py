@@ -181,6 +181,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
         ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alicloud Config Configuration Recorder can be imported using the id, e.g.
@@ -221,6 +223,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
             "ACS::ECS::Disk",
         ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

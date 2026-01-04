@@ -199,6 +199,8 @@ class KubernetesPermission(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]] permissions: A list of user permission. See `permissions` below.
@@ -302,6 +304,8 @@ class KubernetesPermission(pulumi.CustomResource):
                 "is_ram_role": False,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param KubernetesPermissionArgs args: The arguments to use to populate this resource's properties.

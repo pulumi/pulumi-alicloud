@@ -11,66 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Eflo Node resource.
-//
-// Large computing node.
-//
-// For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
-//
-// > **NOTE:** Available since v1.246.0.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eflo"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			_, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = eflo.NewNode(ctx, "default", &eflo.NodeArgs{
-//				Period:          pulumi.Int(36),
-//				DiscountLevel:   pulumi.String("36"),
-//				BillingCycle:    pulumi.String("1month"),
-//				Classify:        pulumi.String("gpuserver"),
-//				Zone:            pulumi.String("cn-hangzhou-b"),
-//				ProductForm:     pulumi.String("instance"),
-//				PaymentRatio:    pulumi.String("0"),
-//				HpnZone:         pulumi.String("B1"),
-//				ServerArch:      pulumi.String("bmserver"),
-//				ComputingServer: pulumi.String("efg1.nvga1n"),
-//				StageNum:        pulumi.String("36"),
-//				RenewalStatus:   pulumi.String("AutoRenewal"),
-//				RenewPeriod:     pulumi.Int(36),
-//				Status:          pulumi.String("Unused"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Eflo Node can be imported using the id, e.g.
@@ -82,31 +22,57 @@ type Node struct {
 	pulumi.CustomResourceState
 
 	// Billing cycle
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	BillingCycle pulumi.StringPtrOutput `pulumi:"billingCycle"`
 	// Classification
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Classify pulumi.StringPtrOutput `pulumi:"classify"`
-	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	// Cluster id
+	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Node Model
 	//
 	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer pulumi.StringOutput `pulumi:"computingServer"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+	DataDisks NodeDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Offer Information
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DiscountLevel pulumi.StringPtrOutput `pulumi:"discountLevel"`
+	// Host name
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Cluster Number
 	HpnZone pulumi.StringPtrOutput `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrOutput `pulumi:"installPai"`
+	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+	IpAllocationPolicies NodeIpAllocationPolicyArrayOutput `pulumi:"ipAllocationPolicies"`
+	// Login Password
+	LoginPassword pulumi.StringPtrOutput `pulumi:"loginPassword"`
 	// Model
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
+	// node group id
+	NodeGroupId pulumi.StringOutput `pulumi:"nodeGroupId"`
+	// node type
+	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Down payment ratio
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PaymentRatio pulumi.StringPtrOutput `pulumi:"paymentRatio"`
 	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
 	// The default is Subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Form
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ProductForm pulumi.StringPtrOutput `pulumi:"productForm"`
 	// The region ID of the resource
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
@@ -123,13 +89,23 @@ type Node struct {
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Architecture
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ServerArch pulumi.StringPtrOutput `pulumi:"serverArch"`
 	// Number of stages
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrOutput `pulumi:"stageNum"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Custom Data
+	UserData pulumi.StringOutput `pulumi:"userData"`
+	// VPC ID
+	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	// Switch ID
+	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// Availability Zone
 	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
@@ -141,6 +117,13 @@ func NewNode(ctx *pulumi.Context,
 		args = &NodeArgs{}
 	}
 
+	if args.LoginPassword != nil {
+		args.LoginPassword = pulumi.ToSecret(args.LoginPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"loginPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
 	err := ctx.RegisterResource("alicloud:eflo/node:Node", name, args, &resource, opts...)
@@ -165,31 +148,57 @@ func GetNode(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Node resources.
 type nodeState struct {
 	// Billing cycle
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	BillingCycle *string `pulumi:"billingCycle"`
 	// Classification
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Classify *string `pulumi:"classify"`
-	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	// Cluster id
+	ClusterId *string `pulumi:"clusterId"`
+	// Node Model
 	//
 	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer *string `pulumi:"computingServer"`
 	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
+	// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+	DataDisks []NodeDataDisk `pulumi:"dataDisks"`
 	// Offer Information
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DiscountLevel *string `pulumi:"discountLevel"`
+	// Host name
+	Hostname *string `pulumi:"hostname"`
 	// Cluster Number
 	HpnZone *string `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai *bool `pulumi:"installPai"`
+	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+	IpAllocationPolicies []NodeIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
 	// Model
 	MachineType *string `pulumi:"machineType"`
+	// node group id
+	NodeGroupId *string `pulumi:"nodeGroupId"`
+	// node type
+	NodeType *string `pulumi:"nodeType"`
 	// Down payment ratio
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PaymentRatio *string `pulumi:"paymentRatio"`
 	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
 	// The default is Subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
 	// Form
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ProductForm *string `pulumi:"productForm"`
 	// The region ID of the resource
 	RegionId *string `pulumi:"regionId"`
@@ -206,44 +215,80 @@ type nodeState struct {
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Architecture
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum *string `pulumi:"stageNum"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
+	// Custom Data
+	UserData *string `pulumi:"userData"`
+	// VPC ID
+	VpcId *string `pulumi:"vpcId"`
+	// Switch ID
+	VswitchId *string `pulumi:"vswitchId"`
 	// Availability Zone
 	Zone *string `pulumi:"zone"`
 }
 
 type NodeState struct {
 	// Billing cycle
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	BillingCycle pulumi.StringPtrInput
 	// Classification
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Classify pulumi.StringPtrInput
-	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	// Cluster id
+	ClusterId pulumi.StringPtrInput
+	// Node Model
 	//
 	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
+	// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+	DataDisks NodeDataDiskArrayInput
 	// Offer Information
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DiscountLevel pulumi.StringPtrInput
+	// Host name
+	Hostname pulumi.StringPtrInput
 	// Cluster Number
 	HpnZone pulumi.StringPtrInput
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrInput
+	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+	IpAllocationPolicies NodeIpAllocationPolicyArrayInput
+	// Login Password
+	LoginPassword pulumi.StringPtrInput
 	// Model
 	MachineType pulumi.StringPtrInput
+	// node group id
+	NodeGroupId pulumi.StringPtrInput
+	// node type
+	NodeType pulumi.StringPtrInput
 	// Down payment ratio
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PaymentRatio pulumi.StringPtrInput
 	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
 	// The default is Subscription.
 	PaymentType pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
 	// Form
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ProductForm pulumi.StringPtrInput
 	// The region ID of the resource
 	RegionId pulumi.StringPtrInput
@@ -260,13 +305,23 @@ type NodeState struct {
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Architecture
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
+	// Custom Data
+	UserData pulumi.StringPtrInput
+	// VPC ID
+	VpcId pulumi.StringPtrInput
+	// Switch ID
+	VswitchId pulumi.StringPtrInput
 	// Availability Zone
 	Zone pulumi.StringPtrInput
 }
@@ -277,29 +332,55 @@ func (NodeState) ElementType() reflect.Type {
 
 type nodeArgs struct {
 	// Billing cycle
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	BillingCycle *string `pulumi:"billingCycle"`
 	// Classification
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Classify *string `pulumi:"classify"`
-	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	// Cluster id
+	ClusterId *string `pulumi:"clusterId"`
+	// Node Model
 	//
 	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer *string `pulumi:"computingServer"`
+	// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+	DataDisks []NodeDataDisk `pulumi:"dataDisks"`
 	// Offer Information
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DiscountLevel *string `pulumi:"discountLevel"`
+	// Host name
+	Hostname *string `pulumi:"hostname"`
 	// Cluster Number
 	HpnZone *string `pulumi:"hpnZone"`
 	// Whether to buy PAI. default value `false`.
 	InstallPai *bool `pulumi:"installPai"`
+	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+	IpAllocationPolicies []NodeIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// Login Password
+	LoginPassword *string `pulumi:"loginPassword"`
 	// Model
 	MachineType *string `pulumi:"machineType"`
+	// node group id
+	NodeGroupId *string `pulumi:"nodeGroupId"`
+	// node type
+	NodeType *string `pulumi:"nodeType"`
 	// Down payment ratio
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PaymentRatio *string `pulumi:"paymentRatio"`
 	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
 	// The default is Subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period *int `pulumi:"period"`
 	// Form
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ProductForm *string `pulumi:"productForm"`
 	// Automatic renewal period, in months.
 	//
@@ -314,13 +395,23 @@ type nodeArgs struct {
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Architecture
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ServerArch *string `pulumi:"serverArch"`
 	// Number of stages
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum *string `pulumi:"stageNum"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
+	// Custom Data
+	UserData *string `pulumi:"userData"`
+	// VPC ID
+	VpcId *string `pulumi:"vpcId"`
+	// Switch ID
+	VswitchId *string `pulumi:"vswitchId"`
 	// Availability Zone
 	Zone *string `pulumi:"zone"`
 }
@@ -328,29 +419,55 @@ type nodeArgs struct {
 // The set of arguments for constructing a Node resource.
 type NodeArgs struct {
 	// Billing cycle
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	BillingCycle pulumi.StringPtrInput
 	// Classification
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Classify pulumi.StringPtrInput
-	// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+	// Cluster id
+	ClusterId pulumi.StringPtrInput
+	// Node Model
 	//
 	// Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 	ComputingServer pulumi.StringPtrInput
+	// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+	DataDisks NodeDataDiskArrayInput
 	// Offer Information
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	DiscountLevel pulumi.StringPtrInput
+	// Host name
+	Hostname pulumi.StringPtrInput
 	// Cluster Number
 	HpnZone pulumi.StringPtrInput
 	// Whether to buy PAI. default value `false`.
 	InstallPai pulumi.BoolPtrInput
+	// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+	IpAllocationPolicies NodeIpAllocationPolicyArrayInput
+	// Login Password
+	LoginPassword pulumi.StringPtrInput
 	// Model
 	MachineType pulumi.StringPtrInput
+	// node group id
+	NodeGroupId pulumi.StringPtrInput
+	// node type
+	NodeType pulumi.StringPtrInput
 	// Down payment ratio
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PaymentRatio pulumi.StringPtrInput
 	// The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
 	// The default is Subscription.
 	PaymentType pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Period pulumi.IntPtrInput
 	// Form
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ProductForm pulumi.StringPtrInput
 	// Automatic renewal period, in months.
 	//
@@ -365,13 +482,23 @@ type NodeArgs struct {
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Architecture
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ServerArch pulumi.StringPtrInput
 	// Number of stages
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
+	// Custom Data
+	UserData pulumi.StringPtrInput
+	// VPC ID
+	VpcId pulumi.StringPtrInput
+	// Switch ID
+	VswitchId pulumi.StringPtrInput
 	// Availability Zone
 	Zone pulumi.StringPtrInput
 }
@@ -464,16 +591,25 @@ func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 }
 
 // Billing cycle
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) BillingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.BillingCycle }).(pulumi.StringPtrOutput)
 }
 
 // Classification
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) Classify() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.Classify }).(pulumi.StringPtrOutput)
 }
 
-// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+// Cluster id
+func (o NodeOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Node Model
 //
 // Deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
 func (o NodeOutput) ComputingServer() pulumi.StringOutput {
@@ -485,9 +621,21 @@ func (o NodeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+func (o NodeOutput) DataDisks() NodeDataDiskArrayOutput {
+	return o.ApplyT(func(v *Node) NodeDataDiskArrayOutput { return v.DataDisks }).(NodeDataDiskArrayOutput)
+}
+
 // Offer Information
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) DiscountLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.DiscountLevel }).(pulumi.StringPtrOutput)
+}
+
+// Host name
+func (o NodeOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // Cluster Number
@@ -500,12 +648,34 @@ func (o NodeOutput) InstallPai() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.BoolPtrOutput { return v.InstallPai }).(pulumi.BoolPtrOutput)
 }
 
+// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+func (o NodeOutput) IpAllocationPolicies() NodeIpAllocationPolicyArrayOutput {
+	return o.ApplyT(func(v *Node) NodeIpAllocationPolicyArrayOutput { return v.IpAllocationPolicies }).(NodeIpAllocationPolicyArrayOutput)
+}
+
+// Login Password
+func (o NodeOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.LoginPassword }).(pulumi.StringPtrOutput)
+}
+
 // Model
 func (o NodeOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// node group id
+func (o NodeOutput) NodeGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.NodeGroupId }).(pulumi.StringOutput)
+}
+
+// node type
+func (o NodeOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
 // Down payment ratio
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) PaymentRatio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.PaymentRatio }).(pulumi.StringPtrOutput)
 }
@@ -517,11 +687,15 @@ func (o NodeOutput) PaymentType() pulumi.StringOutput {
 }
 
 // Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
 // Form
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) ProductForm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.ProductForm }).(pulumi.StringPtrOutput)
 }
@@ -553,11 +727,15 @@ func (o NodeOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // Architecture
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) ServerArch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.ServerArch }).(pulumi.StringPtrOutput)
 }
 
 // Number of stages
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o NodeOutput) StageNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringPtrOutput { return v.StageNum }).(pulumi.StringPtrOutput)
 }
@@ -570,6 +748,21 @@ func (o NodeOutput) Status() pulumi.StringOutput {
 // The tag of the resource
 func (o NodeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Custom Data
+func (o NodeOutput) UserData() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
+}
+
+// VPC ID
+func (o NodeOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// Switch ID
+func (o NodeOutput) VswitchId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
 // Availability Zone

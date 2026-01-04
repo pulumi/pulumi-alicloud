@@ -61,6 +61,8 @@ namespace Pulumi.AliCloud.Imm
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Intelligent Media Management Project can be imported using the id, e.g.

@@ -358,6 +358,8 @@ class ImageImport(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Image Import can be imported using the id, e.g.
@@ -433,6 +435,8 @@ class ImageImport(pulumi.CustomResource):
                 "disk_image_size": 5,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

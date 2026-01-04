@@ -55,6 +55,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Client Certificate can be imported using the id, e.g.
@@ -70,14 +72,20 @@ type ClientCertificate struct {
 	// The time when the certificate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Certificate signing request content.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Csr pulumi.StringPtrOutput `pulumi:"csr"`
 	// The private key algorithm type.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PkeyType pulumi.StringPtrOutput `pulumi:"pkeyType"`
 	// Site Id
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The certificate status. Valid values: `revoked`, `active`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Certificate validity period.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ValidityDays pulumi.StringOutput `pulumi:"validityDays"`
 }
 
@@ -122,14 +130,20 @@ type clientCertificateState struct {
 	// The time when the certificate was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Certificate signing request content.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Csr *string `pulumi:"csr"`
 	// The private key algorithm type.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PkeyType *string `pulumi:"pkeyType"`
 	// Site Id
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The certificate status. Valid values: `revoked`, `active`.
 	Status *string `pulumi:"status"`
 	// Certificate validity period.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ValidityDays *string `pulumi:"validityDays"`
 }
 
@@ -139,14 +153,20 @@ type ClientCertificateState struct {
 	// The time when the certificate was created.
 	CreateTime pulumi.StringPtrInput
 	// Certificate signing request content.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Csr pulumi.StringPtrInput
 	// The private key algorithm type.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PkeyType pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The certificate status. Valid values: `revoked`, `active`.
 	Status pulumi.StringPtrInput
 	// Certificate validity period.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ValidityDays pulumi.StringPtrInput
 }
 
@@ -156,28 +176,40 @@ func (ClientCertificateState) ElementType() reflect.Type {
 
 type clientCertificateArgs struct {
 	// Certificate signing request content.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Csr *string `pulumi:"csr"`
 	// The private key algorithm type.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PkeyType *string `pulumi:"pkeyType"`
 	// Site Id
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The certificate status. Valid values: `revoked`, `active`.
 	Status *string `pulumi:"status"`
 	// Certificate validity period.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ValidityDays string `pulumi:"validityDays"`
 }
 
 // The set of arguments for constructing a ClientCertificate resource.
 type ClientCertificateArgs struct {
 	// Certificate signing request content.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	Csr pulumi.StringPtrInput
 	// The private key algorithm type.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	PkeyType pulumi.StringPtrInput
 	// Site Id
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The certificate status. Valid values: `revoked`, `active`.
 	Status pulumi.StringPtrInput
 	// Certificate validity period.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ValidityDays pulumi.StringInput
 }
 
@@ -279,18 +311,22 @@ func (o ClientCertificateOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Certificate signing request content.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ClientCertificateOutput) Csr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientCertificate) pulumi.StringPtrOutput { return v.Csr }).(pulumi.StringPtrOutput)
 }
 
 // The private key algorithm type.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ClientCertificateOutput) PkeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientCertificate) pulumi.StringPtrOutput { return v.PkeyType }).(pulumi.StringPtrOutput)
 }
 
 // Site Id
-func (o ClientCertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *ClientCertificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o ClientCertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCertificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The certificate status. Valid values: `revoked`, `active`.
@@ -299,6 +335,8 @@ func (o ClientCertificateOutput) Status() pulumi.StringOutput {
 }
 
 // Certificate validity period.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o ClientCertificateOutput) ValidityDays() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCertificate) pulumi.StringOutput { return v.ValidityDays }).(pulumi.StringOutput)
 }

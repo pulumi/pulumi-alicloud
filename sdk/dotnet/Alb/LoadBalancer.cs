@@ -96,6 +96,8 @@ namespace Pulumi.AliCloud.Alb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Application Load Balancer (ALB) Load Balancer can be imported using the id, e.g.

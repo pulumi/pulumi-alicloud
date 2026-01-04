@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.Ebs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EBS Solution Instance can be imported using the id, e.g.

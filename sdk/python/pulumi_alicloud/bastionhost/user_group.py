@@ -192,6 +192,8 @@ class UserGroup(pulumi.CustomResource):
             user_group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host User Group can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class UserGroup(pulumi.CustomResource):
             instance_id=default_instance.id,
             user_group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

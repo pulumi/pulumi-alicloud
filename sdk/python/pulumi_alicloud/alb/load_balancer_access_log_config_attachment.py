@@ -228,6 +228,8 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
             log_project=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Load Balancer Access Log Config Attachment can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class LoadBalancerAccessLogConfigAttachment(pulumi.CustomResource):
             load_balancer_id=default_dysw_yo.id,
             log_project=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

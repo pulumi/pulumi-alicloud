@@ -44,6 +44,8 @@ namespace Pulumi.AliCloud.Dfs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DFS Access Group can be imported using the id, e.g.

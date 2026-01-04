@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -40,6 +42,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Eflo Hyper Node can be imported using the id, e.g.
@@ -77,17 +81,34 @@ export class HyperNode extends pulumi.CustomResource {
     }
 
     /**
+     * Cluster ID
+     */
+    declare public readonly clusterId: pulumi.Output<string | undefined>;
+    /**
      * The creation time of the resource
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    declare public readonly dataDisks: pulumi.Output<outputs.eflo.HyperNodeDataDisk[] | undefined>;
     /**
-     * Number of the cluster to which the supercompute node belongs
+     * The host name prefix of the sub computing node
+     */
+    declare public readonly hostname: pulumi.Output<string | undefined>;
+    /**
+     * Number of the cluster to which the hyper computing node belongs
      */
     declare public readonly hpnZone: pulumi.Output<string | undefined>;
     /**
-     * The model used by the super computing node
+     * Login Password of the sub computing node
+     */
+    declare public readonly loginPassword: pulumi.Output<string | undefined>;
+    /**
+     * The model used by the hyper computing node
      */
     declare public readonly machineType: pulumi.Output<string | undefined>;
+    /**
+     * Node group ID
+     */
+    declare public readonly nodeGroupId: pulumi.Output<string | undefined>;
     /**
      * The duration of the instance purchase, in units.
      *
@@ -115,11 +136,11 @@ export class HyperNode extends pulumi.CustomResource {
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
-     * Super Node Architecture
+     * Hyper Node Architecture
      */
     declare public readonly serverArch: pulumi.Output<string | undefined>;
     /**
-     * The number of installments of the supercomputing node of the fixed fee installment.
+     * The number of installments of the hyper computing node of the fixed fee installment.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -133,7 +154,19 @@ export class HyperNode extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The zone where the super compute node is located
+     * Custom user data for the sub computing node
+     */
+    declare public readonly userData: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the vpc to which the sub computing node
+     */
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the vswitch to which the sub computing node
+     */
+    declare public readonly vswitchId: pulumi.Output<string | undefined>;
+    /**
+     * The zone where the hyper compute node is located
      */
     declare public readonly zoneId: pulumi.Output<string | undefined>;
 
@@ -150,9 +183,14 @@ export class HyperNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HyperNodeState | undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataDisks"] = state?.dataDisks;
+            resourceInputs["hostname"] = state?.hostname;
             resourceInputs["hpnZone"] = state?.hpnZone;
+            resourceInputs["loginPassword"] = state?.loginPassword;
             resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["nodeGroupId"] = state?.nodeGroupId;
             resourceInputs["paymentDuration"] = state?.paymentDuration;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["regionId"] = state?.regionId;
@@ -163,14 +201,22 @@ export class HyperNode extends pulumi.CustomResource {
             resourceInputs["stageNum"] = state?.stageNum;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as HyperNodeArgs | undefined;
             if (args?.paymentType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
             }
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dataDisks"] = args?.dataDisks;
+            resourceInputs["hostname"] = args?.hostname;
             resourceInputs["hpnZone"] = args?.hpnZone;
+            resourceInputs["loginPassword"] = args?.loginPassword ? pulumi.secret(args.loginPassword) : undefined;
             resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["nodeGroupId"] = args?.nodeGroupId;
             resourceInputs["paymentDuration"] = args?.paymentDuration;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["renewalDuration"] = args?.renewalDuration;
@@ -179,12 +225,17 @@ export class HyperNode extends pulumi.CustomResource {
             resourceInputs["serverArch"] = args?.serverArch;
             resourceInputs["stageNum"] = args?.stageNum;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["loginPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HyperNode.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -194,17 +245,34 @@ export class HyperNode extends pulumi.CustomResource {
  */
 export interface HyperNodeState {
     /**
+     * Cluster ID
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
      * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
     /**
-     * Number of the cluster to which the supercompute node belongs
+     * The host name prefix of the sub computing node
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Number of the cluster to which the hyper computing node belongs
      */
     hpnZone?: pulumi.Input<string>;
     /**
-     * The model used by the super computing node
+     * Login Password of the sub computing node
+     */
+    loginPassword?: pulumi.Input<string>;
+    /**
+     * The model used by the hyper computing node
      */
     machineType?: pulumi.Input<string>;
+    /**
+     * Node group ID
+     */
+    nodeGroupId?: pulumi.Input<string>;
     /**
      * The duration of the instance purchase, in units.
      *
@@ -232,11 +300,11 @@ export interface HyperNodeState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Super Node Architecture
+     * Hyper Node Architecture
      */
     serverArch?: pulumi.Input<string>;
     /**
-     * The number of installments of the supercomputing node of the fixed fee installment.
+     * The number of installments of the hyper computing node of the fixed fee installment.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -250,7 +318,19 @@ export interface HyperNodeState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone where the super compute node is located
+     * Custom user data for the sub computing node
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * The ID of the vpc to which the sub computing node
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The ID of the vswitch to which the sub computing node
+     */
+    vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone where the hyper compute node is located
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -260,13 +340,30 @@ export interface HyperNodeState {
  */
 export interface HyperNodeArgs {
     /**
-     * Number of the cluster to which the supercompute node belongs
+     * Cluster ID
+     */
+    clusterId?: pulumi.Input<string>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
+    /**
+     * The host name prefix of the sub computing node
+     */
+    hostname?: pulumi.Input<string>;
+    /**
+     * Number of the cluster to which the hyper computing node belongs
      */
     hpnZone?: pulumi.Input<string>;
     /**
-     * The model used by the super computing node
+     * Login Password of the sub computing node
+     */
+    loginPassword?: pulumi.Input<string>;
+    /**
+     * The model used by the hyper computing node
      */
     machineType?: pulumi.Input<string>;
+    /**
+     * Node group ID
+     */
+    nodeGroupId?: pulumi.Input<string>;
     /**
      * The duration of the instance purchase, in units.
      *
@@ -290,11 +387,11 @@ export interface HyperNodeArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Super Node Architecture
+     * Hyper Node Architecture
      */
     serverArch?: pulumi.Input<string>;
     /**
-     * The number of installments of the supercomputing node of the fixed fee installment.
+     * The number of installments of the hyper computing node of the fixed fee installment.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -304,7 +401,19 @@ export interface HyperNodeArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The zone where the super compute node is located
+     * Custom user data for the sub computing node
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * The ID of the vpc to which the sub computing node
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The ID of the vswitch to which the sub computing node
+     */
+    vswitchId?: pulumi.Input<string>;
+    /**
+     * The zone where the hyper compute node is located
      */
     zoneId?: pulumi.Input<string>;
 }

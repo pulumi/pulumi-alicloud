@@ -464,6 +464,8 @@ class HoneypotProbe(pulumi.CustomResource):
             arp=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Honeypot Probe can be imported using the id, e.g.
@@ -522,6 +524,8 @@ class HoneypotProbe(pulumi.CustomResource):
             display_name="apispec",
             arp=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

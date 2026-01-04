@@ -137,6 +137,8 @@ namespace Pulumi.AliCloud.SchedulerX
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Schedulerx Job can be imported using the id, e.g.

@@ -91,7 +91,14 @@ namespace Pulumi.AliCloud.Esa.Inputs
         public Input<Inputs.WafRuleConfigRateLimitArgs>? RateLimit { get; set; }
 
         /// <summary>
-        /// The overall security protection level of WAF. See `SecurityLevel` below.
+        /// The overall security protection level of WAF.
+        /// Valid values:
+        /// - off
+        /// - EssentiallyOff
+        /// - low
+        /// - medium
+        /// - high
+        /// - UnderAttack See `SecurityLevel` below.
         /// </summary>
         [Input("securityLevel")]
         public Input<Inputs.WafRuleConfigSecurityLevelArgs>? SecurityLevel { get; set; }

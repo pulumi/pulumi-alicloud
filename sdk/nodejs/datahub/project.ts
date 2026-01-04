@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Datahub project can be imported using the *name* or ID, e.g.

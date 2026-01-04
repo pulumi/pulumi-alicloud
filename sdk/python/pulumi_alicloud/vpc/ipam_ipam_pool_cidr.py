@@ -158,6 +158,8 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
             ipam_pool_id=default_ipam_pool.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam Pool Cidr can be imported using the id, e.g.
@@ -209,6 +211,8 @@ class IpamIpamPoolCidr(pulumi.CustomResource):
             cidr="10.0.0.0/8",
             ipam_pool_id=default_ipam_pool.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

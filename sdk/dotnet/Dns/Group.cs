@@ -32,6 +32,8 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:dns/group:Group")]
     public partial class Group : global::Pulumi.CustomResource

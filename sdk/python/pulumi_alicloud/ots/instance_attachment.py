@@ -193,6 +193,8 @@ class InstanceAttachment(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_name: The name of the OTS instance.
@@ -246,6 +248,8 @@ class InstanceAttachment(pulumi.CustomResource):
             vpc_name="examplename",
             vswitch_id=default_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param InstanceAttachmentArgs args: The arguments to use to populate this resource's properties.

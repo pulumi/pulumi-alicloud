@@ -19,6 +19,8 @@ __all__ = [
     'AntiBruteForceRuleProtocolTypeArgsDict',
     'AttackPathSensitiveAssetConfigAttackPathAssetListArgs',
     'AttackPathSensitiveAssetConfigAttackPathAssetListArgsDict',
+    'CheckConfigSelectedCheckArgs',
+    'CheckConfigSelectedCheckArgsDict',
     'HoneypotPresetMetaArgs',
     'HoneypotPresetMetaArgsDict',
     'HoneypotProbeHoneypotBindListArgs',
@@ -208,6 +210,58 @@ class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
     @vendor.setter
     def vendor(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "vendor", value)
+
+
+if not MYPY:
+    class CheckConfigSelectedCheckArgsDict(TypedDict):
+        check_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The ID of the check item.
+        """
+        section_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The section ID of the check item.
+        """
+elif False:
+    CheckConfigSelectedCheckArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CheckConfigSelectedCheckArgs:
+    def __init__(__self__, *,
+                 check_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 section_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] check_id: The ID of the check item.
+        :param pulumi.Input[_builtins.int] section_id: The section ID of the check item.
+        """
+        if check_id is not None:
+            pulumi.set(__self__, "check_id", check_id)
+        if section_id is not None:
+            pulumi.set(__self__, "section_id", section_id)
+
+    @_builtins.property
+    @pulumi.getter(name="checkId")
+    def check_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the check item.
+        """
+        return pulumi.get(self, "check_id")
+
+    @check_id.setter
+    def check_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "check_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sectionId")
+    def section_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The section ID of the check item.
+        """
+        return pulumi.get(self, "section_id")
+
+    @section_id.setter
+    def section_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "section_id", value)
 
 
 if not MYPY:

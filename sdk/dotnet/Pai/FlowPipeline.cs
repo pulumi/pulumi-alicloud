@@ -150,6 +150,8 @@ namespace Pulumi.AliCloud.Pai
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Pai Flow Pipeline can be imported using the id, e.g.

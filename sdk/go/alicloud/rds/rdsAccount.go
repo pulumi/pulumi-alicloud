@@ -41,16 +41,22 @@ import (
 //				name = param
 //			}
 //			_default, err := rds.GetZones(ctx, &rds.GetZonesArgs{
-//				Engine:        pulumi.StringRef("MySQL"),
-//				EngineVersion: pulumi.StringRef("5.6"),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:        pulumi.StringRef(_default.Ids[0]),
-//				Engine:        pulumi.StringRef("MySQL"),
-//				EngineVersion: pulumi.StringRef("5.6"),
+//				ZoneId:                pulumi.StringRef(_default.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				Category:              pulumi.StringRef("HighAvailability"),
+//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -72,12 +78,16 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
-//				Engine:          pulumi.String("MySQL"),
-//				EngineVersion:   pulumi.String("5.6"),
-//				InstanceType:    pulumi.String(defaultGetInstanceClasses.InstanceClasses[1].InstanceClass),
-//				InstanceStorage: pulumi.Int(10),
-//				VswitchId:       defaultSwitch.ID(),
-//				InstanceName:    pulumi.String(name),
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				VswitchId:             defaultSwitch.ID(),
+//				InstanceName:          pulumi.String(name),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				MonitoringPeriod:      pulumi.Int(60),
+//				DbInstanceStorageType: pulumi.String("local_ssd"),
+//				DbIsIgnoreCase:        pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -95,6 +105,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
@@ -136,6 +148,8 @@ type RdsAccount struct {
 	//
 	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
+	// Whether to apply password policy
+	CheckPolicy pulumi.BoolPtrOutput `pulumi:"checkPolicy"`
 	// The ID of the instance.
 	DbInstanceId pulumi.StringOutput `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
@@ -160,7 +174,7 @@ type RdsAccount struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
-	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -241,6 +255,8 @@ type rdsAccountState struct {
 	//
 	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType *string `pulumi:"accountType"`
+	// Whether to apply password policy
+	CheckPolicy *bool `pulumi:"checkPolicy"`
 	// The ID of the instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
@@ -265,7 +281,7 @@ type rdsAccountState struct {
 	Password *string `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
-	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -306,6 +322,8 @@ type RdsAccountState struct {
 	//
 	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringPtrInput
+	// Whether to apply password policy
+	CheckPolicy pulumi.BoolPtrInput
 	// The ID of the instance.
 	DbInstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
@@ -330,7 +348,7 @@ type RdsAccountState struct {
 	Password pulumi.StringPtrInput
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
-	// The status of the resource. Valid values: `Available`, `Unavailable`.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
@@ -375,6 +393,8 @@ type rdsAccountArgs struct {
 	//
 	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType *string `pulumi:"accountType"`
+	// Whether to apply password policy
+	CheckPolicy *bool `pulumi:"checkPolicy"`
 	// The ID of the instance.
 	DbInstanceId *string `pulumi:"dbInstanceId"`
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
@@ -399,6 +419,8 @@ type rdsAccountArgs struct {
 	Password *string `pulumi:"password"`
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag *bool `pulumi:"resetPermissionFlag"`
+	// The status of the resource
+	Status *string `pulumi:"status"`
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -439,6 +461,8 @@ type RdsAccountArgs struct {
 	//
 	// > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
 	AccountType pulumi.StringPtrInput
+	// Whether to apply password policy
+	CheckPolicy pulumi.BoolPtrInput
 	// The ID of the instance.
 	DbInstanceId pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
@@ -463,6 +487,8 @@ type RdsAccountArgs struct {
 	Password pulumi.StringPtrInput
 	// Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
 	ResetPermissionFlag pulumi.BoolPtrInput
+	// The status of the resource
+	Status pulumi.StringPtrInput
 	// The attribute has been deprecated from 1.120.0 and using `accountType` instead.
 	//
 	// > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -600,6 +626,11 @@ func (o RdsAccountOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
 
+// Whether to apply password policy
+func (o RdsAccountOutput) CheckPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RdsAccount) pulumi.BoolPtrOutput { return v.CheckPolicy }).(pulumi.BoolPtrOutput)
+}
+
 // The ID of the instance.
 func (o RdsAccountOutput) DbInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.DbInstanceId }).(pulumi.StringOutput)
@@ -648,7 +679,7 @@ func (o RdsAccountOutput) ResetPermissionFlag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.BoolPtrOutput { return v.ResetPermissionFlag }).(pulumi.BoolPtrOutput)
 }
 
-// The status of the resource. Valid values: `Available`, `Unavailable`.
+// The status of the resource
 func (o RdsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsAccount) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+ * Provides a Eipanycast Anycast Eip Address resource.
+ * 
+ * Anycast Elastic IP Address.
  * 
  * For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
  * 
@@ -64,6 +66,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -119,14 +123,14 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Anycast EIP instance description.
+     * Anycast EIP instance description
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Anycast EIP instance description.
+     * @return Anycast EIP instance description
      * 
      */
     public Output<Optional<String>> description() {
@@ -147,14 +151,14 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
-     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
      * 
      */
     public Output<Optional<String>> paymentType() {

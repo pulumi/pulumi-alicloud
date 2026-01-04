@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StreamingDataSource{}
 	case "alicloud:gpdb/streamingJob:StreamingJob":
 		r = &StreamingJob{}
+	case "alicloud:gpdb/supabaseProject:SupabaseProject":
+		r = &SupabaseProject{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -144,6 +146,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/streamingJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/supabaseProject",
 		&module{version},
 	)
 }

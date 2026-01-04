@@ -118,6 +118,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="enableSsl")
+    private @Nullable Output<Boolean> enableSsl;
+
+    /**
+     * @return Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSsl() {
+        return Optional.ofNullable(this.enableSsl);
+    }
+
+    /**
      * List of domain names. See `endpoints` below.
      * 
      */
@@ -374,6 +389,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.cpu = $.cpu;
         this.createTime = $.createTime;
         this.duration = $.duration;
+        this.enableSsl = $.enableSsl;
         this.endpoints = $.endpoints;
         this.gatewayCount = $.gatewayCount;
         this.initialDatabases = $.initialDatabases;
@@ -534,6 +550,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(@Nullable Output<Boolean> enableSsl) {
+            $.enableSsl = enableSsl;
+            return this;
+        }
+
+        /**
+         * @param enableSsl Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSsl(Boolean enableSsl) {
+            return enableSsl(Output.of(enableSsl));
         }
 
         /**

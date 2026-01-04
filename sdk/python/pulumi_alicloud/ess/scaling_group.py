@@ -1567,6 +1567,8 @@ class ScalingGroup(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -1719,6 +1721,8 @@ class ScalingGroup(pulumi.CustomResource):
                 "NewestInstance",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

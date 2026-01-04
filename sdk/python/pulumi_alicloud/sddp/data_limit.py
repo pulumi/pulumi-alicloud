@@ -449,6 +449,8 @@ class DataLimit(pulumi.CustomResource):
             service_region_id=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Security Center Data Limit can be imported using the id, e.g.
@@ -556,6 +558,8 @@ class DataLimit(pulumi.CustomResource):
             port=3306,
             service_region_id=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

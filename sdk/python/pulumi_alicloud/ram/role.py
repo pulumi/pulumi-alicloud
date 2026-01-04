@@ -532,6 +532,8 @@ class Role(pulumi.CustomResource):
             description="this is a role test.")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Role can be imported using the id, e.g.
@@ -601,6 +603,8 @@ class Role(pulumi.CustomResource):
         \"\"\",
             description="this is a role test.")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

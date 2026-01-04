@@ -56,6 +56,8 @@ namespace Pulumi.AliCloud.Cen
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Enterprise Network (CEN) Transit Router Multicast Domain can be imported using the id, e.g.

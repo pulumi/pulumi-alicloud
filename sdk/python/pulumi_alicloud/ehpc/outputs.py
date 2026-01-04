@@ -20,6 +20,17 @@ __all__ = [
     'ClusterAdditionalVolumeRole',
     'ClusterApplication',
     'ClusterPostInstallScript',
+    'ClusterV2Addon',
+    'ClusterV2ClusterCredentials',
+    'ClusterV2Manager',
+    'ClusterV2ManagerDirectoryService',
+    'ClusterV2ManagerDns',
+    'ClusterV2ManagerManagerNode',
+    'ClusterV2ManagerManagerNodeSystemDisk',
+    'ClusterV2ManagerScheduler',
+    'ClusterV2SharedStorage',
+    'QueueComputeNode',
+    'QueueComputeNodeSystemDisk',
     'GetClustersClusterResult',
     'GetClustersClusterApplicationResult',
     'GetClustersClusterPostInstallScriptResult',
@@ -251,6 +262,954 @@ class ClusterPostInstallScript(dict):
         The URL that is used to download the script after the cluster is created.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ClusterV2Addon(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourcesSpec":
+            suggest = "resources_spec"
+        elif key == "servicesSpec":
+            suggest = "services_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2Addon. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2Addon.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2Addon.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 version: _builtins.str,
+                 resources_spec: Optional[_builtins.str] = None,
+                 services_spec: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Customize the specific configuration information of the service component.
+        :param _builtins.str version: Customize the service component version.
+        :param _builtins.str resources_spec: Customize the resource configuration of the service component.
+        :param _builtins.str services_spec: Customize the service configuration of the service component.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+        if resources_spec is not None:
+            pulumi.set(__self__, "resources_spec", resources_spec)
+        if services_spec is not None:
+            pulumi.set(__self__, "services_spec", services_spec)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Customize the specific configuration information of the service component.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Customize the service component version.
+        """
+        return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcesSpec")
+    def resources_spec(self) -> Optional[_builtins.str]:
+        """
+        Customize the resource configuration of the service component.
+        """
+        return pulumi.get(self, "resources_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="servicesSpec")
+    def services_spec(self) -> Optional[_builtins.str]:
+        """
+        Customize the service configuration of the service component.
+        """
+        return pulumi.get(self, "services_spec")
+
+
+@pulumi.output_type
+class ClusterV2ClusterCredentials(dict):
+    def __init__(__self__, *,
+                 password: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str password: The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+        """
+        return pulumi.get(self, "password")
+
+
+@pulumi.output_type
+class ClusterV2Manager(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "directoryService":
+            suggest = "directory_service"
+        elif key == "managerNode":
+            suggest = "manager_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2Manager. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2Manager.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2Manager.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 directory_service: Optional['outputs.ClusterV2ManagerDirectoryService'] = None,
+                 dns: Optional['outputs.ClusterV2ManagerDns'] = None,
+                 manager_node: Optional['outputs.ClusterV2ManagerManagerNode'] = None,
+                 scheduler: Optional['outputs.ClusterV2ManagerScheduler'] = None):
+        """
+        :param 'ClusterV2ManagerDirectoryServiceArgs' directory_service: The configurations of the domain account service. See `directory_service` below.
+        :param 'ClusterV2ManagerDnsArgs' dns: The configurations of the domain name resolution service. See `dns` below.
+        :param 'ClusterV2ManagerManagerNodeArgs' manager_node: The hardware configurations of the management node. See `manager_node` below.
+        :param 'ClusterV2ManagerSchedulerArgs' scheduler: The configurations of the scheduler service. See `scheduler` below.
+        """
+        if directory_service is not None:
+            pulumi.set(__self__, "directory_service", directory_service)
+        if dns is not None:
+            pulumi.set(__self__, "dns", dns)
+        if manager_node is not None:
+            pulumi.set(__self__, "manager_node", manager_node)
+        if scheduler is not None:
+            pulumi.set(__self__, "scheduler", scheduler)
+
+    @_builtins.property
+    @pulumi.getter(name="directoryService")
+    def directory_service(self) -> Optional['outputs.ClusterV2ManagerDirectoryService']:
+        """
+        The configurations of the domain account service. See `directory_service` below.
+        """
+        return pulumi.get(self, "directory_service")
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> Optional['outputs.ClusterV2ManagerDns']:
+        """
+        The configurations of the domain name resolution service. See `dns` below.
+        """
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter(name="managerNode")
+    def manager_node(self) -> Optional['outputs.ClusterV2ManagerManagerNode']:
+        """
+        The hardware configurations of the management node. See `manager_node` below.
+        """
+        return pulumi.get(self, "manager_node")
+
+    @_builtins.property
+    @pulumi.getter
+    def scheduler(self) -> Optional['outputs.ClusterV2ManagerScheduler']:
+        """
+        The configurations of the scheduler service. See `scheduler` below.
+        """
+        return pulumi.get(self, "scheduler")
+
+
+@pulumi.output_type
+class ClusterV2ManagerDirectoryService(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The scheduler type. Valid values:
+               
+               - SLURM
+               - PBS
+               - OPENGRIDSCHEDULER
+               - LSF_PLUGIN
+               - PBS_PLUGIN
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The scheduler type. Valid values:
+
+        - SLURM
+        - PBS
+        - OPENGRIDSCHEDULER
+        - LSF_PLUGIN
+        - PBS_PLUGIN
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ClusterV2ManagerDns(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The scheduler type. Valid values:
+               
+               - SLURM
+               - PBS
+               - OPENGRIDSCHEDULER
+               - LSF_PLUGIN
+               - PBS_PLUGIN
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The scheduler type. Valid values:
+
+        - SLURM
+        - PBS
+        - OPENGRIDSCHEDULER
+        - LSF_PLUGIN
+        - PBS_PLUGIN
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ClusterV2ManagerManagerNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRenew":
+            suggest = "auto_renew"
+        elif key == "autoRenewPeriod":
+            suggest = "auto_renew_period"
+        elif key == "enableHt":
+            suggest = "enable_ht"
+        elif key == "expiredTime":
+            suggest = "expired_time"
+        elif key == "imageId":
+            suggest = "image_id"
+        elif key == "instanceChargeType":
+            suggest = "instance_charge_type"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "periodUnit":
+            suggest = "period_unit"
+        elif key == "spotPriceLimit":
+            suggest = "spot_price_limit"
+        elif key == "spotStrategy":
+            suggest = "spot_strategy"
+        elif key == "systemDisk":
+            suggest = "system_disk"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2ManagerManagerNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2ManagerManagerNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2ManagerManagerNode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_renew: Optional[_builtins.bool] = None,
+                 auto_renew_period: Optional[_builtins.int] = None,
+                 duration: Optional[_builtins.int] = None,
+                 enable_ht: Optional[_builtins.bool] = None,
+                 expired_time: Optional[_builtins.str] = None,
+                 image_id: Optional[_builtins.str] = None,
+                 instance_charge_type: Optional[_builtins.str] = None,
+                 instance_id: Optional[_builtins.str] = None,
+                 instance_type: Optional[_builtins.str] = None,
+                 period: Optional[_builtins.int] = None,
+                 period_unit: Optional[_builtins.str] = None,
+                 spot_price_limit: Optional[_builtins.float] = None,
+                 spot_strategy: Optional[_builtins.str] = None,
+                 system_disk: Optional['outputs.ClusterV2ManagerManagerNodeSystemDisk'] = None):
+        """
+        :param _builtins.bool auto_renew: Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+               - true: Automatic renewal.
+               - false: Do not renew automatically (default).
+        :param _builtins.int auto_renew_period: The renewal duration of a single automatic renewal. Value range:
+               - When PeriodUnit = Week: 1, 2, 3.
+               - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+               
+               Default value: 1.
+        :param _builtins.int duration: The duration of the preemptible instance, in hours. Value:
+               - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+               - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+               
+               Default value: 1.
+        :param _builtins.bool enable_ht: EnableHT
+        :param _builtins.str expired_time: The expiration time of the management node.
+        :param _builtins.str image_id: ImageId
+        :param _builtins.str instance_charge_type: The instance billing method of the management node. Valid values:
+               
+               - PostPaid: pay-as-you-go
+               - PrePaid: subscription
+        :param _builtins.str instance_id: The instance ID of the management node.
+        :param _builtins.str instance_type: The instance type of the management node.
+        :param _builtins.int period: The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+               - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+               - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        :param _builtins.str period_unit: The unit of duration of the year-to-month billing method. Value range:
+               - Week.
+               - Month (default).
+        :param _builtins.float spot_price_limit: Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+        :param _builtins.str spot_strategy: The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+               - NoSpot: normal pay-as-you-go instances (default).
+               - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+               - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+        :param 'ClusterV2ManagerManagerNodeSystemDiskArgs' system_disk: System disk configuration of the management node. See `system_disk` below.
+        """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable_ht is not None:
+            pulumi.set(__self__, "enable_ht", enable_ht)
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
+        if system_disk is not None:
+            pulumi.set(__self__, "system_disk", system_disk)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[_builtins.bool]:
+        """
+        Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+        - true: Automatic renewal.
+        - false: Do not renew automatically (default).
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[_builtins.int]:
+        """
+        The renewal duration of a single automatic renewal. Value range:
+        - When PeriodUnit = Week: 1, 2, 3.
+        - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+
+        Default value: 1.
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.int]:
+        """
+        The duration of the preemptible instance, in hours. Value:
+        - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+        - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+
+        Default value: 1.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHt")
+    def enable_ht(self) -> Optional[_builtins.bool]:
+        """
+        EnableHT
+        """
+        return pulumi.get(self, "enable_ht")
+
+    @_builtins.property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[_builtins.str]:
+        """
+        The expiration time of the management node.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[_builtins.str]:
+        """
+        ImageId
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[_builtins.str]:
+        """
+        The instance billing method of the management node. Valid values:
+
+        - PostPaid: pay-as-you-go
+        - PrePaid: subscription
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[_builtins.str]:
+        """
+        The instance ID of the management node.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[_builtins.str]:
+        """
+        The instance type of the management node.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+        - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+        - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[_builtins.str]:
+        """
+        The unit of duration of the year-to-month billing method. Value range:
+        - Week.
+        - Month (default).
+        """
+        return pulumi.get(self, "period_unit")
+
+    @_builtins.property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> Optional[_builtins.float]:
+        """
+        Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[_builtins.str]:
+        """
+        The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+        - NoSpot: normal pay-as-you-go instances (default).
+        - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+        - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="systemDisk")
+    def system_disk(self) -> Optional['outputs.ClusterV2ManagerManagerNodeSystemDisk']:
+        """
+        System disk configuration of the management node. See `system_disk` below.
+        """
+        return pulumi.get(self, "system_disk")
+
+
+@pulumi.output_type
+class ClusterV2ManagerManagerNodeSystemDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[_builtins.str] = None,
+                 level: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str category: Manage the system disk configuration of the node. Value range:
+               - cloud_efficiency: The Ultra cloud disk.
+               - cloud_ssd:SSD cloud disk.
+               - cloud_essd:ESSD cloud disk.
+               - cloud: ordinary cloud disk.
+        :param _builtins.str level: When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+               - PL0: maximum random read/write IOPS 10000 for a single disk.
+               - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+               - PL2: maximum random read/write IOPS 100000 for a single disk.
+               - PL3: maximum random read/write IOPS 1 million for a single disk.
+        :param _builtins.int size: The system disk size of the management node. Unit: GiB. Value range:
+               - Ordinary cloud tray: 20~500.
+               - ESSD cloud disk:
+               - PL0:1~2048.
+               - PL1:20~2048.
+               - PL2:461~2048.
+               - PL3:1261~2048.
+               - Other cloud disk types: 20~2048.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[_builtins.str]:
+        """
+        Manage the system disk configuration of the node. Value range:
+        - cloud_efficiency: The Ultra cloud disk.
+        - cloud_ssd:SSD cloud disk.
+        - cloud_essd:ESSD cloud disk.
+        - cloud: ordinary cloud disk.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> Optional[_builtins.str]:
+        """
+        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+        - PL0: maximum random read/write IOPS 10000 for a single disk.
+        - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+        - PL2: maximum random read/write IOPS 100000 for a single disk.
+        - PL3: maximum random read/write IOPS 1 million for a single disk.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        The system disk size of the management node. Unit: GiB. Value range:
+        - Ordinary cloud tray: 20~500.
+        - ESSD cloud disk:
+        - PL0:1~2048.
+        - PL1:20~2048.
+        - PL2:461~2048.
+        - PL3:1261~2048.
+        - Other cloud disk types: 20~2048.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ClusterV2ManagerScheduler(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The scheduler type. Valid values:
+               
+               - SLURM
+               - PBS
+               - OPENGRIDSCHEDULER
+               - LSF_PLUGIN
+               - PBS_PLUGIN
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The scheduler type. Valid values:
+
+        - SLURM
+        - PBS
+        - OPENGRIDSCHEDULER
+        - LSF_PLUGIN
+        - PBS_PLUGIN
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ClusterV2SharedStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileSystemId":
+            suggest = "file_system_id"
+        elif key == "mountDirectory":
+            suggest = "mount_directory"
+        elif key == "mountOptions":
+            suggest = "mount_options"
+        elif key == "mountTargetDomain":
+            suggest = "mount_target_domain"
+        elif key == "nasDirectory":
+            suggest = "nas_directory"
+        elif key == "protocolType":
+            suggest = "protocol_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2SharedStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2SharedStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2SharedStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_system_id: Optional[_builtins.str] = None,
+                 mount_directory: Optional[_builtins.str] = None,
+                 mount_options: Optional[_builtins.str] = None,
+                 mount_target_domain: Optional[_builtins.str] = None,
+                 nas_directory: Optional[_builtins.str] = None,
+                 protocol_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str file_system_id: The ID of the mounted file system.
+        :param _builtins.str mount_directory: The local Mount directory where the file system is mounted.
+        :param _builtins.str mount_options: Storage mount options for the mounted file system.
+        :param _builtins.str mount_target_domain: The mount point address of the mounted file system.
+        :param _builtins.str nas_directory: The remote directory to which the mounted file system needs to be mounted.
+        :param _builtins.str protocol_type: The protocol type of the mounted file system. Value range:
+               - NFS
+               - SMB
+        """
+        if file_system_id is not None:
+            pulumi.set(__self__, "file_system_id", file_system_id)
+        if mount_directory is not None:
+            pulumi.set(__self__, "mount_directory", mount_directory)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
+        if mount_target_domain is not None:
+            pulumi.set(__self__, "mount_target_domain", mount_target_domain)
+        if nas_directory is not None:
+            pulumi.set(__self__, "nas_directory", nas_directory)
+        if protocol_type is not None:
+            pulumi.set(__self__, "protocol_type", protocol_type)
+
+    @_builtins.property
+    @pulumi.getter(name="fileSystemId")
+    def file_system_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the mounted file system.
+        """
+        return pulumi.get(self, "file_system_id")
+
+    @_builtins.property
+    @pulumi.getter(name="mountDirectory")
+    def mount_directory(self) -> Optional[_builtins.str]:
+        """
+        The local Mount directory where the file system is mounted.
+        """
+        return pulumi.get(self, "mount_directory")
+
+    @_builtins.property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[_builtins.str]:
+        """
+        Storage mount options for the mounted file system.
+        """
+        return pulumi.get(self, "mount_options")
+
+    @_builtins.property
+    @pulumi.getter(name="mountTargetDomain")
+    def mount_target_domain(self) -> Optional[_builtins.str]:
+        """
+        The mount point address of the mounted file system.
+        """
+        return pulumi.get(self, "mount_target_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="nasDirectory")
+    def nas_directory(self) -> Optional[_builtins.str]:
+        """
+        The remote directory to which the mounted file system needs to be mounted.
+        """
+        return pulumi.get(self, "nas_directory")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolType")
+    def protocol_type(self) -> Optional[_builtins.str]:
+        """
+        The protocol type of the mounted file system. Value range:
+        - NFS
+        - SMB
+        """
+        return pulumi.get(self, "protocol_type")
+
+
+@pulumi.output_type
+class QueueComputeNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoRenew":
+            suggest = "auto_renew"
+        elif key == "autoRenewPeriod":
+            suggest = "auto_renew_period"
+        elif key == "enableHt":
+            suggest = "enable_ht"
+        elif key == "imageId":
+            suggest = "image_id"
+        elif key == "instanceChargeType":
+            suggest = "instance_charge_type"
+        elif key == "instanceType":
+            suggest = "instance_type"
+        elif key == "periodUnit":
+            suggest = "period_unit"
+        elif key == "spotPriceLimit":
+            suggest = "spot_price_limit"
+        elif key == "spotStrategy":
+            suggest = "spot_strategy"
+        elif key == "systemDisk":
+            suggest = "system_disk"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueComputeNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueComputeNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueComputeNode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_renew: Optional[_builtins.bool] = None,
+                 auto_renew_period: Optional[_builtins.int] = None,
+                 duration: Optional[_builtins.int] = None,
+                 enable_ht: Optional[_builtins.bool] = None,
+                 image_id: Optional[_builtins.str] = None,
+                 instance_charge_type: Optional[_builtins.str] = None,
+                 instance_type: Optional[_builtins.str] = None,
+                 period: Optional[_builtins.int] = None,
+                 period_unit: Optional[_builtins.str] = None,
+                 spot_price_limit: Optional[_builtins.float] = None,
+                 spot_strategy: Optional[_builtins.str] = None,
+                 system_disk: Optional['outputs.QueueComputeNodeSystemDisk'] = None):
+        """
+        :param _builtins.bool auto_renew: AutoRenew
+        :param _builtins.int auto_renew_period: AutoRenewPeriod
+        :param _builtins.int duration: Duration
+        :param _builtins.bool enable_ht: Whether HT is enabled for the computing node.
+        :param _builtins.str image_id: ImageId
+        :param _builtins.str instance_charge_type: InstanceChargeType
+        :param _builtins.str instance_type: InstanceTypes
+        :param _builtins.int period: Period
+        :param _builtins.str period_unit: PeriodUnit
+        :param _builtins.float spot_price_limit: SpotPriceLimit
+        :param _builtins.str spot_strategy: SpotStrategy
+        :param 'QueueComputeNodeSystemDiskArgs' system_disk: SystemDisk See `system_disk` below.
+        """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
+        if auto_renew_period is not None:
+            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable_ht is not None:
+            pulumi.set(__self__, "enable_ht", enable_ht)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if period_unit is not None:
+            pulumi.set(__self__, "period_unit", period_unit)
+        if spot_price_limit is not None:
+            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
+        if system_disk is not None:
+            pulumi.set(__self__, "system_disk", system_disk)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[_builtins.bool]:
+        """
+        AutoRenew
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @_builtins.property
+    @pulumi.getter(name="autoRenewPeriod")
+    def auto_renew_period(self) -> Optional[_builtins.int]:
+        """
+        AutoRenewPeriod
+        """
+        return pulumi.get(self, "auto_renew_period")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.int]:
+        """
+        Duration
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enableHt")
+    def enable_ht(self) -> Optional[_builtins.bool]:
+        """
+        Whether HT is enabled for the computing node.
+        """
+        return pulumi.get(self, "enable_ht")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[_builtins.str]:
+        """
+        ImageId
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[_builtins.str]:
+        """
+        InstanceChargeType
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[_builtins.str]:
+        """
+        InstanceTypes
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        Period
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter(name="periodUnit")
+    def period_unit(self) -> Optional[_builtins.str]:
+        """
+        PeriodUnit
+        """
+        return pulumi.get(self, "period_unit")
+
+    @_builtins.property
+    @pulumi.getter(name="spotPriceLimit")
+    def spot_price_limit(self) -> Optional[_builtins.float]:
+        """
+        SpotPriceLimit
+        """
+        return pulumi.get(self, "spot_price_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[_builtins.str]:
+        """
+        SpotStrategy
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @_builtins.property
+    @pulumi.getter(name="systemDisk")
+    def system_disk(self) -> Optional['outputs.QueueComputeNodeSystemDisk']:
+        """
+        SystemDisk See `system_disk` below.
+        """
+        return pulumi.get(self, "system_disk")
+
+
+@pulumi.output_type
+class QueueComputeNodeSystemDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[_builtins.str] = None,
+                 level: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str category: Category
+        :param _builtins.str level: Level
+        :param _builtins.int size: Size
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if level is not None:
+            pulumi.set(__self__, "level", level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[_builtins.str]:
+        """
+        Category
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> Optional[_builtins.str]:
+        """
+        Level
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type

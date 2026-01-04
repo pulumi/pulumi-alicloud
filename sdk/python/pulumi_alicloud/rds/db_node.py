@@ -239,6 +239,8 @@ class DbNode(pulumi.CustomResource):
             zone_id=default_switch.zone_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS MySQL database cluster node agent function can be imported using id, e.g.
@@ -314,6 +316,8 @@ class DbNode(pulumi.CustomResource):
             class_code=default_instance.instance_type,
             zone_id=default_switch.zone_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

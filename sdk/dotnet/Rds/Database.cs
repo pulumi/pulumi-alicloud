@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+    /// Provides a RDS Database resource.
+    /// 
+    /// Supports creating a database under an instance.
+    /// 
+    /// For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
     /// 
     /// &gt; **NOTE:** Available since v1.5.0.
     /// 
@@ -29,7 +33,20 @@ namespace Pulumi.AliCloud.Rds
     ///     var @default = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceChargeType = "PostPaid",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -49,28 +66,33 @@ namespace Pulumi.AliCloud.Rds
     ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.s1.small",
-    ///         InstanceStorage = 10,
+    ///         EngineVersion = "8.0",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
+    ///         InstanceChargeType = "Postpaid",
     ///     });
     /// 
     ///     var defaultDatabase = new AliCloud.Rds.Database("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         Name = name,
+    ///         DataBaseName = name,
+    ///         CharacterSet = "utf8",
     ///     });
     /// 
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// RDS database can be imported using the id, e.g.
+    /// RDS Database can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+    /// $ pulumi import alicloud:rds/database:Database example &lt;instance_id&gt;:&lt;data_base_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:rds/database:Database")]
@@ -92,30 +114,41 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> CharacterSet { get; private set; } = null!;
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        /// 
-        /// &gt; **NOTE:** The value of "name" or "CharacterSet"  does not support modification.
-        /// </summary>
-        [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// The Id of instance that can run database.
-        /// </summary>
-        [Output("instanceId")]
-        public Output<string> InstanceId { get; private set; } = null!;
-
-        /// <summary>
-        /// The name of the database. 
-        /// * &gt; **NOTE:**
+        /// The name of the database.
+        /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
         /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
         /// The name must be unique within the instance.
         /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         /// </summary>
+        [Output("dataBaseName")]
+        public Output<string> DataBaseName { get; private set; } = null!;
+
+        /// <summary>
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -179,27 +212,32 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CharacterSet { get; set; }
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        /// 
-        /// &gt; **NOTE:** The value of "name" or "CharacterSet"  does not support modification.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The Id of instance that can run database.
-        /// </summary>
-        [Input("instanceId", required: true)]
-        public Input<string> InstanceId { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the database. 
-        /// * &gt; **NOTE:**
+        /// The name of the database.
+        /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
         /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
         /// The name must be unique within the instance.
         /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        /// </summary>
+        [Input("dataBaseName")]
+        public Input<string>? DataBaseName { get; set; }
+
+        /// <summary>
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        /// </summary>
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,30 +266,41 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? CharacterSet { get; set; }
 
         /// <summary>
-        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        /// 
-        /// &gt; **NOTE:** The value of "name" or "CharacterSet"  does not support modification.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The Id of instance that can run database.
-        /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
-        /// <summary>
-        /// The name of the database. 
-        /// * &gt; **NOTE:**
+        /// The name of the database.
+        /// &gt; **NOTE:**
         /// The name must be 2 to 64 characters in length.
         /// The name must start with a lowercase letter and end with a lowercase letter or digit.
         /// The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
         /// The name must be unique within the instance.
         /// For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
         /// </summary>
+        [Input("dataBaseName")]
+        public Input<string>? DataBaseName { get; set; }
+
+        /// <summary>
+        /// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The attribute has been deprecated from 1.267.0 and using `DataBaseName` instead.
+        /// &gt; **NOTE:** The value of "DataBaseName" or "CharacterSet"  does not support modification.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public DatabaseState()
         {

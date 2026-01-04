@@ -286,6 +286,8 @@ class Handshake(pulumi.CustomResource):
             note="test resource manager handshake")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Handshake can be imported using the id, e.g.
@@ -331,6 +333,8 @@ class Handshake(pulumi.CustomResource):
             target_type="Account",
             note="test resource manager handshake")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

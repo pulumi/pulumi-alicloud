@@ -91,6 +91,8 @@ namespace Pulumi.AliCloud.Cfg
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Config Aggregate Compliance Pack can be imported using the id, e.g.

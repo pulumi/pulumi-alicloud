@@ -375,6 +375,8 @@ class KeywordLib(pulumi.CustomResource):
             enable=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Keyword Lib can be imported using the id, e.g.
@@ -441,6 +443,8 @@ class KeywordLib(pulumi.CustomResource):
             lang="cn",
             enable=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

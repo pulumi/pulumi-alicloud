@@ -250,6 +250,8 @@ class Repo(pulumi.CustomResource):
             detail="this is a private repo")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Registry repository can be imported using the `namespace/repository`, e.g.
@@ -302,6 +304,8 @@ class Repo(pulumi.CustomResource):
             repo_type="PRIVATE",
             detail="this is a private repo")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

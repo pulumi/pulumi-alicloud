@@ -6,6 +6,7 @@ package com.pulumi.alicloud.oss;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.oss.BucketHttpsConfigArgs;
 import com.pulumi.alicloud.oss.inputs.BucketHttpsConfigState;
+import com.pulumi.alicloud.oss.outputs.BucketHttpsConfigCipherSuit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -29,18 +30,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:oss/bucketHttpsConfig:BucketHttpsConfig")
 public class BucketHttpsConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the bucket.
+     * The name of the bucket
      * 
      */
     @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket
      * 
      */
     public Output<String> bucket() {
         return this.bucket;
+    }
+    /**
+     * TLS encryption algorithm suite configuration See `cipherSuit` below.
+     * 
+     */
+    @Export(name="cipherSuit", refs={BucketHttpsConfigCipherSuit.class}, tree="[0]")
+    private Output<BucketHttpsConfigCipherSuit> cipherSuit;
+
+    /**
+     * @return TLS encryption algorithm suite configuration See `cipherSuit` below.
+     * 
+     */
+    public Output<BucketHttpsConfigCipherSuit> cipherSuit() {
+        return this.cipherSuit;
     }
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.

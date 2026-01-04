@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+// Provides a Eipanycast Anycast Eip Address resource.
+//
+// Anycast Elastic IP Address.
 //
 // For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
 //
@@ -57,6 +59,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Eipanycast Anycast Eip Address can be imported using the id, e.g.
@@ -73,11 +77,11 @@ type AnycastEipAddress struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// Anycast EIP instance creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Anycast EIP instance description.
+	// Anycast EIP instance description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -128,11 +132,11 @@ type anycastEipAddressState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// Anycast EIP instance creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// Anycast EIP instance description.
+	// Anycast EIP instance description
 	Description *string `pulumi:"description"`
 	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -151,11 +155,11 @@ type AnycastEipAddressState struct {
 	Bandwidth pulumi.IntPtrInput
 	// Anycast EIP instance creation time.
 	CreateTime pulumi.StringPtrInput
-	// Anycast EIP instance description.
+	// Anycast EIP instance description
 	Description pulumi.StringPtrInput
 	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrInput
-	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 	PaymentType pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -176,11 +180,11 @@ type anycastEipAddressArgs struct {
 	AnycastEipAddressName *string `pulumi:"anycastEipAddressName"`
 	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// Anycast EIP instance description.
+	// Anycast EIP instance description
 	Description *string `pulumi:"description"`
 	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -196,11 +200,11 @@ type AnycastEipAddressArgs struct {
 	AnycastEipAddressName pulumi.StringPtrInput
 	// The peak bandwidth of the Anycast EIP instance, in Mbps.
 	Bandwidth pulumi.IntPtrInput
-	// Anycast EIP instance description.
+	// Anycast EIP instance description
 	Description pulumi.StringPtrInput
 	// The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
 	InternetChargeType pulumi.StringPtrInput
-	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+	// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 	PaymentType pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
@@ -312,7 +316,7 @@ func (o AnycastEipAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Anycast EIP instance description.
+// Anycast EIP instance description
 func (o AnycastEipAddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -322,7 +326,7 @@ func (o AnycastEipAddressOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
 func (o AnycastEipAddressOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnycastEipAddress) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
 }

@@ -506,6 +506,8 @@ class V3Trigger(pulumi.CustomResource):
         pulumi.export("outputCalicloudFcv3TriggerIntranet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlIntranet"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Trigger can be imported using the id, e.g.
@@ -638,6 +640,8 @@ class V3Trigger(pulumi.CustomResource):
         pulumi.export("outputCalicloudFcv3TriggerInternet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlInternet"])
         pulumi.export("outputCalicloudFcv3TriggerIntranet", alicloud_fcv3_trigger["default"]["httpTrigger"][0]["urlIntranet"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

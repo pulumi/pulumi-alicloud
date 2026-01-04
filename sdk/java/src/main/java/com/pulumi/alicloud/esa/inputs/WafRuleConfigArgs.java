@@ -205,14 +205,28 @@ public final class WafRuleConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The overall security protection level of WAF. See `securityLevel` below.
+     * The overall security protection level of WAF.
+     * Valid values:
+     * - off
+     * - essentiallyOff
+     * - low
+     * - medium
+     * - high
+     * - underAttack See `securityLevel` below.
      * 
      */
     @Import(name="securityLevel")
     private @Nullable Output<WafRuleConfigSecurityLevelArgs> securityLevel;
 
     /**
-     * @return The overall security protection level of WAF. See `securityLevel` below.
+     * @return The overall security protection level of WAF.
+     * Valid values:
+     * - off
+     * - essentiallyOff
+     * - low
+     * - medium
+     * - high
+     * - underAttack See `securityLevel` below.
      * 
      */
     public Optional<Output<WafRuleConfigSecurityLevelArgs>> securityLevel() {
@@ -598,7 +612,14 @@ public final class WafRuleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityLevel The overall security protection level of WAF. See `securityLevel` below.
+         * @param securityLevel The overall security protection level of WAF.
+         * Valid values:
+         * - off
+         * - essentiallyOff
+         * - low
+         * - medium
+         * - high
+         * - underAttack See `securityLevel` below.
          * 
          * @return builder
          * 
@@ -609,7 +630,14 @@ public final class WafRuleConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityLevel The overall security protection level of WAF. See `securityLevel` below.
+         * @param securityLevel The overall security protection level of WAF.
+         * Valid values:
+         * - off
+         * - essentiallyOff
+         * - low
+         * - medium
+         * - high
+         * - underAttack See `securityLevel` below.
          * 
          * @return builder
          * 

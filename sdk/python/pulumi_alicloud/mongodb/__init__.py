@@ -17,6 +17,7 @@ from .get_sharding_network_public_addresses import *
 from .get_zones import *
 from .global_security_ip_group import *
 from .instance import *
+from .node import *
 from .private_srv_network_address import *
 from .public_network_address import *
 from .replica_set_role import *

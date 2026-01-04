@@ -542,6 +542,8 @@ class V3CustomDomain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Custom Domain can be imported using the id, e.g.
@@ -755,6 +757,8 @@ class V3CustomDomain(pulumi.CustomResource):
                 "enable_waf": False,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

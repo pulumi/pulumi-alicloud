@@ -43,6 +43,8 @@ __all__ = [
     'ImageFeaturesArgsDict',
     'ImageImportDiskDeviceMappingArgs',
     'ImageImportDiskDeviceMappingArgsDict',
+    'InstanceCpuOptionsArgs',
+    'InstanceCpuOptionsArgsDict',
     'InstanceDataDiskArgs',
     'InstanceDataDiskArgsDict',
     'InstanceImageOptionsArgs',
@@ -1652,6 +1654,78 @@ class ImageImportDiskDeviceMappingArgs:
     @oss_object.setter
     def oss_object(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "oss_object", value)
+
+
+if not MYPY:
+    class InstanceCpuOptionsArgsDict(TypedDict):
+        core_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of partitions in the storage set.
+        """
+        threads_per_core: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of threads per CPU core.
+        """
+        topology_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+        """
+elif False:
+    InstanceCpuOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceCpuOptionsArgs:
+    def __init__(__self__, *,
+                 core_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 threads_per_core: Optional[pulumi.Input[_builtins.int]] = None,
+                 topology_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] core_count: The maximum number of partitions in the storage set.
+        :param pulumi.Input[_builtins.int] threads_per_core: The number of threads per CPU core.
+        :param pulumi.Input[_builtins.str] topology_type: The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+        """
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if topology_type is not None:
+            pulumi.set(__self__, "topology_type", topology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of partitions in the storage set.
+        """
+        return pulumi.get(self, "core_count")
+
+    @core_count.setter
+    def core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "core_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of threads per CPU core.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "threads_per_core", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topologyType")
+    def topology_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+        """
+        return pulumi.get(self, "topology_type")
+
+    @topology_type.setter
+    def topology_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "topology_type", value)
 
 
 if not MYPY:

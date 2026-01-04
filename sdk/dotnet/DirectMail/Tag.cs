@@ -38,6 +38,8 @@ namespace Pulumi.AliCloud.DirectMail
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Direct Mail Tag can be imported using the id, e.g.

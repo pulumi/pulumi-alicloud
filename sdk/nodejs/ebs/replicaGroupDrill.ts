@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.ebs.ReplicaGroupDrill("default", {groupId: "pg-m1H9aaOUIGsDUwgZ"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EBS Replica Group Drill can be imported using the id, e.g.

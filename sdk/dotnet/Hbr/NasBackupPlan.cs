@@ -69,6 +69,8 @@ namespace Pulumi.AliCloud.Hbr
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// HBR Nas Backup Plan can be imported using the id, e.g.

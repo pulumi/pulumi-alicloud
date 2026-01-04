@@ -688,6 +688,8 @@ class BandwidthPackage(pulumi.CustomResource):
             auto_pay=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Bandwidth Package can be imported using the id, e.g.
@@ -751,6 +753,8 @@ class BandwidthPackage(pulumi.CustomResource):
             duration="1",
             auto_pay=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

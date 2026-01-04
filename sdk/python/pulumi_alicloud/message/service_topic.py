@@ -260,6 +260,8 @@ class ServiceTopic(pulumi.CustomResource):
             enable_logging=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Topic can be imported using the id, e.g.
@@ -308,6 +310,8 @@ class ServiceTopic(pulumi.CustomResource):
             max_message_size=16888,
             enable_logging=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

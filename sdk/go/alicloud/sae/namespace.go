@@ -72,6 +72,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Serverless App Engine (SAE) Namespace can be imported using the id, e.g.

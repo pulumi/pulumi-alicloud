@@ -396,6 +396,8 @@ class AclRule(pulumi.CustomResource):
             priority=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag Acl Rule can be imported using the id, e.g.
@@ -457,6 +459,8 @@ class AclRule(pulumi.CustomResource):
             dest_port_range="-1/-1",
             priority=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

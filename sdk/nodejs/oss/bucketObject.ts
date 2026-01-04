@@ -54,6 +54,8 @@ import * as utilities from "../utilities";
  *     content: "the content that you want to upload.",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class BucketObject extends pulumi.CustomResource {
     /**

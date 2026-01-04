@@ -367,6 +367,8 @@ class MonitorConfig(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS Monitor Config can be imported using the id, e.g.
@@ -460,6 +462,8 @@ class MonitorConfig(pulumi.CustomResource):
                 "isp_code": "465",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

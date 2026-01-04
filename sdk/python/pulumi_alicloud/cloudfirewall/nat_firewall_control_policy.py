@@ -1126,6 +1126,8 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
             domain_resolve_type=0)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Nat Firewall Control Policy can be imported using the id, e.g.
@@ -1335,6 +1337,8 @@ class NatFirewallControlPolicy(pulumi.CustomResource):
             dest_port_type="group",
             domain_resolve_type=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

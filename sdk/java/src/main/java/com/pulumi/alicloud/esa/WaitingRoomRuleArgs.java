@@ -6,7 +6,6 @@ package com.pulumi.alicloud.esa;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -50,29 +49,29 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
     /**
-     * Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return Rule enabled status, supporting:
-     * -&#39;on&#39;: means enabled.
-     * -&#39;off&#39;: means disabled.
+     * @return Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+     * - on: open.
+     * - off: close.
      * 
      */
     public Output<String> status() {
@@ -170,7 +169,7 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -181,14 +180,14 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param status Rule enabled status, supporting:
-         * -&#39;on&#39;: means enabled.
-         * -&#39;off&#39;: means disabled.
+         * @param status Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 
@@ -199,9 +198,9 @@ public final class WaitingRoomRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status Rule enabled status, supporting:
-         * -&#39;on&#39;: means enabled.
-         * -&#39;off&#39;: means disabled.
+         * @param status Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+         * - on: open.
+         * - off: close.
          * 
          * @return builder
          * 

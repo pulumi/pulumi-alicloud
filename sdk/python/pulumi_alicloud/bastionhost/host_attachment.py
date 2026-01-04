@@ -184,6 +184,8 @@ class HostAttachment(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Host Attachment can be imported using the id, e.g.
@@ -252,6 +254,8 @@ class HostAttachment(pulumi.CustomResource):
             host_id=default_host.host_id,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

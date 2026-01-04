@@ -210,6 +210,8 @@ class RamRoleAttachment(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Ram Role Attachment can be imported using the id, e.g.
@@ -303,6 +305,8 @@ class RamRoleAttachment(pulumi.CustomResource):
             ram_role_name=default_role.id,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

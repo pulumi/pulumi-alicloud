@@ -51,6 +51,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Brain Industrial Pid Loop can be imported using the id, e.g.

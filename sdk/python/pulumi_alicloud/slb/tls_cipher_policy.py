@@ -175,6 +175,8 @@ class TlsCipherPolicy(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SLB Tls Cipher Policy can be imported using the id, e.g.
@@ -218,6 +220,8 @@ class TlsCipherPolicy(pulumi.CustomResource):
                 "AES128-GCM-SHA256",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

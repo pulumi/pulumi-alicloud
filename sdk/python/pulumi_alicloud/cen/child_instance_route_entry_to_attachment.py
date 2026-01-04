@@ -300,6 +300,8 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
             child_instance_route_table_id=example_route_table.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cen Child Instance Route Entry To Attachment can be imported using the id, e.g.
@@ -389,6 +391,8 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
             destination_cidr_block="10.0.0.0/24",
             child_instance_route_table_id=example_route_table.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

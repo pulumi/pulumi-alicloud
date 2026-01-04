@@ -122,6 +122,8 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS database endpoint public address feature can be imported using the id, e.g.

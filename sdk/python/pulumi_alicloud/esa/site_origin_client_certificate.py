@@ -278,6 +278,8 @@ class SiteOriginClientCertificate(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Site Origin Client Certificate can be imported using the id, e.g.
@@ -360,6 +362,8 @@ class SiteOriginClientCertificate(pulumi.CustomResource):
         -----END RSA PRIVATE KEY-----
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

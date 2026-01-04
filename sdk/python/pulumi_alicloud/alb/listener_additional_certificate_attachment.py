@@ -299,6 +299,8 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
             listener_id=default_listener.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Listener Additional Certificate Attachment can be imported using the id, e.g.
@@ -481,6 +483,8 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
                 ]).apply(lambda invoke: invoke.result),
             listener_id=default_listener.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

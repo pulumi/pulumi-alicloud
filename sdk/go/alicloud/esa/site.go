@@ -83,6 +83,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Site can be imported using the id, e.g.
@@ -127,6 +129,8 @@ type Site struct {
 	// - 'x.x': Global.
 	// - 'Cn.cn ': Mainland China.
 	Ipv6Region pulumi.StringOutput `pulumi:"ipv6Region"`
+	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -217,6 +221,8 @@ type siteState struct {
 	// - 'x.x': Global.
 	// - 'Cn.cn ': Mainland China.
 	Ipv6Region *string `pulumi:"ipv6Region"`
+	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+	Paused *bool `pulumi:"paused"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -272,6 +278,8 @@ type SiteState struct {
 	// - 'x.x': Global.
 	// - 'Cn.cn ': Mainland China.
 	Ipv6Region pulumi.StringPtrInput
+	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+	Paused pulumi.BoolPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Release the search engine crawler configuration. Value:
@@ -329,6 +337,8 @@ type siteArgs struct {
 	// - 'x.x': Global.
 	// - 'Cn.cn ': Mainland China.
 	Ipv6Region *string `pulumi:"ipv6Region"`
+	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+	Paused *bool `pulumi:"paused"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Release the search engine crawler configuration. Value:
@@ -381,6 +391,8 @@ type SiteArgs struct {
 	// - 'x.x': Global.
 	// - 'Cn.cn ': Mainland China.
 	Ipv6Region pulumi.StringPtrInput
+	// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+	Paused pulumi.BoolPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
 	// Release the search engine crawler configuration. Value:
@@ -563,6 +575,11 @@ func (o SiteOutput) Ipv6Enable() pulumi.StringOutput {
 // - 'Cn.cn ': Mainland China.
 func (o SiteOutput) Ipv6Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Site) pulumi.StringOutput { return v.Ipv6Region }).(pulumi.StringOutput)
+}
+
+// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+func (o SiteOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Site) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the resource group

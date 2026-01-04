@@ -333,6 +333,8 @@ class Plugin(pulumi.CustomResource):
             plugin_type="routing")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Plugin can be imported using the id, e.g.
@@ -428,6 +430,8 @@ class Plugin(pulumi.CustomResource):
             }),
             plugin_type="routing")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

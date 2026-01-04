@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Log Service (SLS) Machine Group can be imported using the id, e.g.

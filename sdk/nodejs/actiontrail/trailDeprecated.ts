@@ -27,6 +27,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Action trail can be imported using the id, e.g.
@@ -83,7 +85,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -112,7 +114,7 @@ export class TrailDeprecated extends pulumi.CustomResource {
      * > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
      */
     declare public readonly slsWriteRoleArn: pulumi.Output<string>;
-    declare public readonly status: pulumi.Output<string | undefined>;
+    declare public readonly status: pulumi.Output<string>;
     declare public readonly trailName: pulumi.Output<string>;
     declare public readonly trailRegion: pulumi.Output<string>;
 
@@ -199,7 +201,7 @@ export interface TrailDeprecatedState {
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -253,7 +255,7 @@ export interface TrailDeprecatedArgs {
     /**
      * The name of the trail to be created, which must be unique for an account.
      *
-     * @deprecated Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
      */
     name?: pulumi.Input<string>;
     /**

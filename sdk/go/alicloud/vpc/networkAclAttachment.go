@@ -17,7 +17,9 @@ import (
 // > **DEPRECATED:**  This resource  has been deprecated from version `1.124.0`. Replace by `resources` with the resource alicloud_network_acl.
 // Note that because this resource conflicts with the `resources` attribute of `vpc.NetworkAcl`, this resource can no be used.
 //
-// > **NOTE:** Available in 1.44.0+. Currently, the resource are only available in Hongkong(cn-hongkong), and Indonesia(ap-southeast-1) regions.
+// > **WARNING:** Do not mix the use of this deprecated resource with the `resources` field in the `vpc.NetworkAcl` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. This resource is deprecated and should be replaced with the `resources` field in `vpc.NetworkAcl`.
+//
+// > **NOTE:** Available since v1.44.0.
 //
 // ## Example Usage
 //
@@ -88,6 +90,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type NetworkAclAttachment struct {
 	pulumi.CustomResourceState
 

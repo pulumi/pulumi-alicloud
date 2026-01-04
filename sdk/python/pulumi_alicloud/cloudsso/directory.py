@@ -409,6 +409,8 @@ class Directory(pulumi.CustomResource):
         default = alicloud.cloudsso.Directory("default", directory_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO Directory can be imported using the id, e.g.
@@ -457,6 +459,8 @@ class Directory(pulumi.CustomResource):
             name = "tf-example"
         default = alicloud.cloudsso.Directory("default", directory_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

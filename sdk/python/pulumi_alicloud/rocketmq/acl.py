@@ -354,6 +354,8 @@ class Acl(pulumi.CustomResource):
             ip_whitelists=["192.168.5.5"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RocketMQ Acl can be imported using the id, e.g.
@@ -461,6 +463,8 @@ class Acl(pulumi.CustomResource):
             decision="Deny",
             ip_whitelists=["192.168.5.5"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

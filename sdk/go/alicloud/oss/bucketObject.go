@@ -117,6 +117,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type BucketObject struct {
 	pulumi.CustomResourceState
 

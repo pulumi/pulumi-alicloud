@@ -82,6 +82,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Waiting Room Rule can be imported using the id, e.g.
@@ -109,12 +111,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// Rule enabled status, supporting:
-        /// -'on': means enabled.
-        /// -'off': means disabled.
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -193,12 +195,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Rule enabled status, supporting:
-        /// -'on': means enabled.
-        /// -'off': means disabled.
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -233,12 +235,12 @@ namespace Pulumi.AliCloud.Esa
         /// The site ID, which can be obtained by calling the ListSites API.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
-        /// Rule enabled status, supporting:
-        /// -'on': means enabled.
-        /// -'off': means disabled.
+        /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        /// - on: open.
+        /// - off: close.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

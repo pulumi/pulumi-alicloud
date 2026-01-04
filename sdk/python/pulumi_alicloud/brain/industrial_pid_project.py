@@ -156,6 +156,8 @@ class IndustrialPidProject(pulumi.CustomResource):
             pid_project_name="tf-testAcc")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Brain Industrial Pid Project can be imported using the id, e.g.
@@ -195,6 +197,8 @@ class IndustrialPidProject(pulumi.CustomResource):
             pid_organization_id="3e74e684-cbb5-xxxx",
             pid_project_name="tf-testAcc")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

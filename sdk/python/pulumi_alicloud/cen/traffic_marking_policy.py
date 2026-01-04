@@ -366,6 +366,8 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             transit_router_id=example_transit_router.transit_router_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Traffic Marking Policy can be imported using the id, e.g.
@@ -419,6 +421,8 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             traffic_marking_policy_name="tf_example",
             transit_router_id=example_transit_router.transit_router_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

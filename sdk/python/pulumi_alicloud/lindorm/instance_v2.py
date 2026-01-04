@@ -40,24 +40,25 @@ class InstanceV2Args:
                  primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None):
         """
         The set of arguments for constructing a InstanceV2 resource.
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
                
-               > **NOTE:**  Enumeration value
-               
-               > **NOTE:**  - 1.0 Single AZ
-               
-               > **NOTE:**  - 2.0 Multi-AZ Basic
-               
-               > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-               
+               Enumeration value:
+               - **1.0**: Single Zone
+               - **2.0**: Multi-AZ Basic Edition
+               - **3.0**: Multi-AZ High Availability Edition
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListArgs']]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
+               
+               Enumeration value:
+               - `PREPAY`: Prepaid mode
+               - `POSTPAY`: Postpay mode
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
@@ -65,21 +66,22 @@ class InstanceV2Args:
         :param pulumi.Input[_builtins.str] arbiter_zone_id: Coordination Zone ZoneId
         :param pulumi.Input[_builtins.str] auto_renew_duration: Automatic renewal duration. Unit: Month.
                
-               Value range: `1` to **12 * *.
+               Value range: `1` to `12`.
                
-               > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+               > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
-        :param pulumi.Input[_builtins.int] cloud_storage_size: > **NOTE:**  Cloud storage capacity in GB
-        :param pulumi.Input[_builtins.str] cloud_storage_type: > **NOTE:** >
+        :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - StandardStorage: Standard cloud storage
+               > **NOTE:**  Cloud storage capacity in GB
+        :param pulumi.Input[_builtins.str] cloud_storage_type: Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-               
-               > **NOTE:** - capacity storage: Capacity-based cloud storage
+               Enumeration value:
+               - `StandardStorage`: Standard cloud storage
+               - **Performance storage**: Performance-based cloud storage
+               - **Capacity Storage**: Capacity-based cloud storage
         :param pulumi.Input[_builtins.str] deletion_protection: Whether to enable deletion protection
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
@@ -91,6 +93,7 @@ class InstanceV2Args:
         :param pulumi.Input[_builtins.str] primary_zone_id: Primary zone ZoneID
         :param pulumi.Input[_builtins.str] standby_vswitch_id: Standby zone VswitchId
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         """
         pulumi.set(__self__, "arch_version", arch_version)
         pulumi.set(__self__, "engine_lists", engine_lists)
@@ -125,6 +128,8 @@ class InstanceV2Args:
             pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
         if standby_zone_id is not None:
             pulumi.set(__self__, "standby_zone_id", standby_zone_id)
+        if white_ip_lists is not None:
+            pulumi.set(__self__, "white_ip_lists", white_ip_lists)
 
     @_builtins.property
     @pulumi.getter(name="archVersion")
@@ -132,14 +137,10 @@ class InstanceV2Args:
         """
         Deployment Scenario
 
-        > **NOTE:**  Enumeration value
-
-        > **NOTE:**  - 1.0 Single AZ
-
-        > **NOTE:**  - 2.0 Multi-AZ Basic
-
-        > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-
+        Enumeration value:
+        - **1.0**: Single Zone
+        - **2.0**: Multi-AZ Basic Edition
+        - **3.0**: Multi-AZ High Availability Edition
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -177,7 +178,11 @@ class InstanceV2Args:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The payment type of the resource
+        Resource attribute fields representing payment types
+
+        Enumeration value:
+        - `PREPAY`: Prepaid mode
+        - `POSTPAY`: Postpay mode
         """
         return pulumi.get(self, "payment_type")
 
@@ -251,9 +256,9 @@ class InstanceV2Args:
         """
         Automatic renewal duration. Unit: Month.
 
-        Value range: `1` to **12 * *.
+        Value range: `1` to `12`.
 
-        > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -280,6 +285,8 @@ class InstanceV2Args:
     @pulumi.getter(name="cloudStorageSize")
     def cloud_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+
         > **NOTE:**  Cloud storage capacity in GB
         """
         return pulumi.get(self, "cloud_storage_size")
@@ -292,13 +299,12 @@ class InstanceV2Args:
     @pulumi.getter(name="cloudStorageType")
     def cloud_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        > **NOTE:** >
+        Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
-        > **NOTE:**  - StandardStorage: Standard cloud storage
-
-        > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-
-        > **NOTE:** - capacity storage: Capacity-based cloud storage
+        Enumeration value:
+        - `StandardStorage`: Standard cloud storage
+        - **Performance storage**: Performance-based cloud storage
+        - **Capacity Storage**: Capacity-based cloud storage
         """
         return pulumi.get(self, "cloud_storage_type")
 
@@ -394,6 +400,18 @@ class InstanceV2Args:
     def standby_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "standby_zone_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="whiteIpLists")
+    def white_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
+        """
+        Instance whitelist list See `white_ip_list` below.
+        """
+        return pulumi.get(self, "white_ip_lists")
+
+    @white_ip_lists.setter
+    def white_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
+        pulumi.set(self, "white_ip_lists", value)
+
 
 @pulumi.input_type
 class _InstanceV2State:
@@ -418,6 +436,7 @@ class _InstanceV2State:
                  standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceV2 resources.
@@ -425,40 +444,41 @@ class _InstanceV2State:
         :param pulumi.Input[_builtins.str] arbiter_zone_id: Coordination Zone ZoneId
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
                
-               > **NOTE:**  Enumeration value
-               
-               > **NOTE:**  - 1.0 Single AZ
-               
-               > **NOTE:**  - 2.0 Multi-AZ Basic
-               
-               > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-               
+               Enumeration value:
+               - **1.0**: Single Zone
+               - **2.0**: Multi-AZ Basic Edition
+               - **3.0**: Multi-AZ High Availability Edition
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] auto_renew_duration: Automatic renewal duration. Unit: Month.
                
-               Value range: `1` to **12 * *.
+               Value range: `1` to `12`.
                
-               > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+               > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
-        :param pulumi.Input[_builtins.int] cloud_storage_size: > **NOTE:**  Cloud storage capacity in GB
-        :param pulumi.Input[_builtins.str] cloud_storage_type: > **NOTE:** >
+        :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - StandardStorage: Standard cloud storage
+               > **NOTE:**  Cloud storage capacity in GB
+        :param pulumi.Input[_builtins.str] cloud_storage_type: Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-               
-               > **NOTE:** - capacity storage: Capacity-based cloud storage
+               Enumeration value:
+               - `StandardStorage`: Standard cloud storage
+               - **Performance storage**: Performance-based cloud storage
+               - **Capacity Storage**: Capacity-based cloud storage
         :param pulumi.Input[_builtins.str] deletion_protection: Whether to enable deletion protection
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListArgs']]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
+               
+               Enumeration value:
+               - `PREPAY`: Prepaid mode
+               - `POSTPAY`: Postpay mode
         :param pulumi.Input[_builtins.str] pricing_cycle: Purchase duration unit: Month, Year
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -469,6 +489,7 @@ class _InstanceV2State:
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
         """
         if arbiter_vswitch_id is not None:
@@ -511,6 +532,8 @@ class _InstanceV2State:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if white_ip_lists is not None:
+            pulumi.set(__self__, "white_ip_lists", white_ip_lists)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -544,14 +567,10 @@ class _InstanceV2State:
         """
         Deployment Scenario
 
-        > **NOTE:**  Enumeration value
-
-        > **NOTE:**  - 1.0 Single AZ
-
-        > **NOTE:**  - 2.0 Multi-AZ Basic
-
-        > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-
+        Enumeration value:
+        - **1.0**: Single Zone
+        - **2.0**: Multi-AZ Basic Edition
+        - **3.0**: Multi-AZ High Availability Edition
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -567,9 +586,9 @@ class _InstanceV2State:
         """
         Automatic renewal duration. Unit: Month.
 
-        Value range: `1` to **12 * *.
+        Value range: `1` to `12`.
 
-        > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -596,6 +615,8 @@ class _InstanceV2State:
     @pulumi.getter(name="cloudStorageSize")
     def cloud_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
+        The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+
         > **NOTE:**  Cloud storage capacity in GB
         """
         return pulumi.get(self, "cloud_storage_size")
@@ -608,13 +629,12 @@ class _InstanceV2State:
     @pulumi.getter(name="cloudStorageType")
     def cloud_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        > **NOTE:** >
+        Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
-        > **NOTE:**  - StandardStorage: Standard cloud storage
-
-        > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-
-        > **NOTE:** - capacity storage: Capacity-based cloud storage
+        Enumeration value:
+        - `StandardStorage`: Standard cloud storage
+        - **Performance storage**: Performance-based cloud storage
+        - **Capacity Storage**: Capacity-based cloud storage
         """
         return pulumi.get(self, "cloud_storage_type")
 
@@ -676,7 +696,11 @@ class _InstanceV2State:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The payment type of the resource
+        Resource attribute fields representing payment types
+
+        Enumeration value:
+        - `PREPAY`: Prepaid mode
+        - `POSTPAY`: Postpay mode
         """
         return pulumi.get(self, "payment_type")
 
@@ -783,6 +807,18 @@ class _InstanceV2State:
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="whiteIpLists")
+    def white_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
+        """
+        Instance whitelist list See `white_ip_list` below.
+        """
+        return pulumi.get(self, "white_ip_lists")
+
+    @white_ip_lists.setter
+    def white_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
+        pulumi.set(self, "white_ip_lists", value)
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -820,6 +856,7 @@ class InstanceV2(pulumi.CustomResource):
                  standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -882,6 +919,8 @@ class InstanceV2(pulumi.CustomResource):
             auto_renewal=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Lindorm Instance V2 can be imported using the id, e.g.
@@ -896,40 +935,41 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] arbiter_zone_id: Coordination Zone ZoneId
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
                
-               > **NOTE:**  Enumeration value
-               
-               > **NOTE:**  - 1.0 Single AZ
-               
-               > **NOTE:**  - 2.0 Multi-AZ Basic
-               
-               > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-               
+               Enumeration value:
+               - **1.0**: Single Zone
+               - **2.0**: Multi-AZ Basic Edition
+               - **3.0**: Multi-AZ High Availability Edition
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] auto_renew_duration: Automatic renewal duration. Unit: Month.
                
-               Value range: `1` to **12 * *.
+               Value range: `1` to `12`.
                
-               > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+               > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
-        :param pulumi.Input[_builtins.int] cloud_storage_size: > **NOTE:**  Cloud storage capacity in GB
-        :param pulumi.Input[_builtins.str] cloud_storage_type: > **NOTE:** >
+        :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - StandardStorage: Standard cloud storage
+               > **NOTE:**  Cloud storage capacity in GB
+        :param pulumi.Input[_builtins.str] cloud_storage_type: Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-               
-               > **NOTE:** - capacity storage: Capacity-based cloud storage
+               Enumeration value:
+               - `StandardStorage`: Standard cloud storage
+               - **Performance storage**: Performance-based cloud storage
+               - **Capacity Storage**: Capacity-based cloud storage
         :param pulumi.Input[_builtins.str] deletion_protection: Whether to enable deletion protection
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
+               
+               Enumeration value:
+               - `PREPAY`: Prepaid mode
+               - `POSTPAY`: Postpay mode
         :param pulumi.Input[_builtins.str] pricing_cycle: Purchase duration unit: Month, Year
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -939,6 +979,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
         """
         ...
@@ -1007,6 +1048,8 @@ class InstanceV2(pulumi.CustomResource):
             auto_renewal=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Lindorm Instance V2 can be imported using the id, e.g.
@@ -1049,6 +1092,7 @@ class InstanceV2(pulumi.CustomResource):
                  standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1090,6 +1134,7 @@ class InstanceV2(pulumi.CustomResource):
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["white_ip_lists"] = white_ip_lists
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -1124,6 +1169,7 @@ class InstanceV2(pulumi.CustomResource):
             standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+            white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceV2':
         """
         Get an existing InstanceV2 resource's state with the given name, id, and optional extra
@@ -1136,40 +1182,41 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] arbiter_zone_id: Coordination Zone ZoneId
         :param pulumi.Input[_builtins.str] arch_version: Deployment Scenario
                
-               > **NOTE:**  Enumeration value
-               
-               > **NOTE:**  - 1.0 Single AZ
-               
-               > **NOTE:**  - 2.0 Multi-AZ Basic
-               
-               > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-               
+               Enumeration value:
+               - **1.0**: Single Zone
+               - **2.0**: Multi-AZ Basic Edition
+               - **3.0**: Multi-AZ High Availability Edition
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] auto_renew_duration: Automatic renewal duration. Unit: Month.
                
-               Value range: `1` to **12 * *.
+               Value range: `1` to `12`.
                
-               > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+               > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
                
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether the instance is automatically renewed. Enumerated values:
-        :param pulumi.Input[_builtins.int] cloud_storage_size: > **NOTE:**  Cloud storage capacity in GB
-        :param pulumi.Input[_builtins.str] cloud_storage_type: > **NOTE:** >
+        :param pulumi.Input[_builtins.int] cloud_storage_size: The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - StandardStorage: Standard cloud storage
+               > **NOTE:**  Cloud storage capacity in GB
+        :param pulumi.Input[_builtins.str] cloud_storage_type: Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
                
-               > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-               
-               > **NOTE:** - capacity storage: Capacity-based cloud storage
+               Enumeration value:
+               - `StandardStorage`: Standard cloud storage
+               - **Performance storage**: Performance-based cloud storage
+               - **Capacity Storage**: Capacity-based cloud storage
         :param pulumi.Input[_builtins.str] deletion_protection: Whether to enable deletion protection
         :param pulumi.Input[_builtins.int] duration: The specified duration when the resource is purchased. Only the subscription instances are valid.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]] engine_lists: Engine List See `engine_list` below.
         :param pulumi.Input[_builtins.str] instance_alias: Instance name
-        :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
+        :param pulumi.Input[_builtins.str] payment_type: Resource attribute fields representing payment types
+               
+               Enumeration value:
+               - `PREPAY`: Prepaid mode
+               - `POSTPAY`: Postpay mode
         :param pulumi.Input[_builtins.str] pricing_cycle: Purchase duration unit: Month, Year
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -1180,6 +1227,7 @@ class InstanceV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] standby_zone_id: Standby zone ZoneID
         :param pulumi.Input[_builtins.str] vpc_id: VpcId
         :param pulumi.Input[_builtins.str] vswitch_id: VswitchId
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]] white_ip_lists: Instance whitelist list See `white_ip_list` below.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID  of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1206,6 +1254,7 @@ class InstanceV2(pulumi.CustomResource):
         __props__.__dict__["standby_zone_id"] = standby_zone_id
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
+        __props__.__dict__["white_ip_lists"] = white_ip_lists
         __props__.__dict__["zone_id"] = zone_id
         return InstanceV2(resource_name, opts=opts, __props__=__props__)
 
@@ -1231,14 +1280,10 @@ class InstanceV2(pulumi.CustomResource):
         """
         Deployment Scenario
 
-        > **NOTE:**  Enumeration value
-
-        > **NOTE:**  - 1.0 Single AZ
-
-        > **NOTE:**  - 2.0 Multi-AZ Basic
-
-        > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-
+        Enumeration value:
+        - **1.0**: Single Zone
+        - **2.0**: Multi-AZ Basic Edition
+        - **3.0**: Multi-AZ High Availability Edition
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -1250,9 +1295,9 @@ class InstanceV2(pulumi.CustomResource):
         """
         Automatic renewal duration. Unit: Month.
 
-        Value range: `1` to **12 * *.
+        Value range: `1` to `12`.
 
-        > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -1271,6 +1316,8 @@ class InstanceV2(pulumi.CustomResource):
     @pulumi.getter(name="cloudStorageSize")
     def cloud_storage_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
+        The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+
         > **NOTE:**  Cloud storage capacity in GB
         """
         return pulumi.get(self, "cloud_storage_size")
@@ -1279,13 +1326,12 @@ class InstanceV2(pulumi.CustomResource):
     @pulumi.getter(name="cloudStorageType")
     def cloud_storage_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        > **NOTE:** >
+        Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
-        > **NOTE:**  - StandardStorage: Standard cloud storage
-
-        > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-
-        > **NOTE:** - capacity storage: Capacity-based cloud storage
+        Enumeration value:
+        - `StandardStorage`: Standard cloud storage
+        - **Performance storage**: Performance-based cloud storage
+        - **Capacity Storage**: Capacity-based cloud storage
         """
         return pulumi.get(self, "cloud_storage_type")
 
@@ -1327,7 +1373,11 @@ class InstanceV2(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The payment type of the resource
+        Resource attribute fields representing payment types
+
+        Enumeration value:
+        - `PREPAY`: Prepaid mode
+        - `POSTPAY`: Postpay mode
         """
         return pulumi.get(self, "payment_type")
 
@@ -1396,6 +1446,14 @@ class InstanceV2(pulumi.CustomResource):
         VswitchId
         """
         return pulumi.get(self, "vswitch_id")
+
+    @_builtins.property
+    @pulumi.getter(name="whiteIpLists")
+    def white_ip_lists(self) -> pulumi.Output[Sequence['outputs.InstanceV2WhiteIpList']]:
+        """
+        Instance whitelist list See `white_ip_list` below.
+        """
+        return pulumi.get(self, "white_ip_lists")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")

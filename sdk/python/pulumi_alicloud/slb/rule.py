@@ -872,6 +872,8 @@ class Rule(pulumi.CustomResource):
             health_check="on")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer forwarding rule can be imported using the id, e.g.
@@ -1011,6 +1013,8 @@ class Rule(pulumi.CustomResource):
             health_check_domain="test",
             health_check="on")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

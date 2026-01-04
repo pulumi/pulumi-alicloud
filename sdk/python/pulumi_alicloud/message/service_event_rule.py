@@ -273,6 +273,8 @@ class ServiceEventRule(pulumi.CustomResource):
             rule_name=rule_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Event Rule can be imported using the id, e.g.
@@ -360,6 +362,8 @@ class ServiceEventRule(pulumi.CustomResource):
             },
             rule_name=rule_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

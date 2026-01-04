@@ -91,6 +91,8 @@ class Product(pulumi.CustomResource):
         example = alicloud.mhub.Product("example", product_name="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MHUB Product can be imported using the id, e.g.
@@ -128,6 +130,8 @@ class Product(pulumi.CustomResource):
 
         example = alicloud.mhub.Product("example", product_name="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

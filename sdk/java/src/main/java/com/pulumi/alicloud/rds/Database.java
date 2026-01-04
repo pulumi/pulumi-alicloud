@@ -15,7 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+ * Provides a RDS Database resource.
+ * 
+ * Supports creating a database under an instance.
+ * 
+ * For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
  * 
  * &gt; **NOTE:** Available since v1.5.0.
  * 
@@ -30,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.rds.RdsFunctions;
  * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -55,7 +60,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine("MySQL")
- *             .engineVersion("5.6")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .build());
+ * 
+ *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(default_.zones()[0].id())
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
@@ -72,16 +89,19 @@ import javax.annotation.Nullable;
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
- *             .engineVersion("5.6")
- *             .instanceType("rds.mysql.s1.small")
- *             .instanceStorage(10)
+ *             .engineVersion("8.0")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceType(defaultGetInstanceClasses.instanceClasses()[0].instanceClass())
+ *             .instanceStorage(defaultGetInstanceClasses.instanceClasses()[0].storageRange().min())
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
+ *             .instanceChargeType("Postpaid")
  *             .build());
  * 
  *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
  *             .instanceId(defaultInstance.id())
- *             .name(name)
+ *             .dataBaseName(name)
+ *             .characterSet("utf8")
  *             .build());
  * 
  *     }
@@ -89,12 +109,14 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * RDS database can be imported using the id, e.g.
+ * RDS Database can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:rds/database:Database example &#34;rm-12345:tf_database&#34;
+ * $ pulumi import alicloud:rds/database:Database example &lt;instance_id&gt;:&lt;data_base_name&gt;
  * ```
  * 
  */
@@ -133,9 +155,33 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.characterSet);
     }
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The name of the database.
+     * &gt; **NOTE:**
+     * The name must be 2 to 64 characters in length.
+     * The name must start with a lowercase letter and end with a lowercase letter or digit.
+     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+     * The name must be unique within the instance.
+     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
+     */
+    @Export(name="dataBaseName", refs={String.class}, tree="[0]")
+    private Output<String> dataBaseName;
+
+    /**
+     * @return The name of the database.
+     * &gt; **NOTE:**
+     * The name must be 2 to 64 characters in length.
+     * The name must start with a lowercase letter and end with a lowercase letter or digit.
+     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+     * The name must be unique within the instance.
+     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * 
+     */
+    public Output<String> dataBaseName() {
+        return this.dataBaseName;
+    }
+    /**
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -144,51 +190,57 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
-     * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The Id of instance that can run database.
+     * The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The Id of instance that can run database.
+     * @return The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The name of the database.
-     * * &gt; **NOTE:**
-     * The name must be 2 to 64 characters in length.
-     * The name must start with a lowercase letter and end with a lowercase letter or digit.
-     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-     * The name must be unique within the instance.
-     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the database.
-     * * &gt; **NOTE:**
-     * The name must be 2 to 64 characters in length.
-     * The name must start with a lowercase letter and end with a lowercase letter or digit.
-     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-     * The name must be unique within the instance.
-     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * @return The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The status of the resource
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
     }
 
     /**

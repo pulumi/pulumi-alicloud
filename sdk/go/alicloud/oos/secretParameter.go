@@ -69,6 +69,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.

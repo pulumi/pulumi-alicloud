@@ -52,6 +52,8 @@ namespace Pulumi.AliCloud.Aligreen
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Aligreen Image Lib can be imported using the id, e.g.

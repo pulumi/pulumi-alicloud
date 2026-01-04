@@ -399,6 +399,8 @@ class SecretParameter(pulumi.CustomResource):
             resource_group_id=example.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Operation Orchestration Service (OOS) Secret Parameter can be imported using the id, e.g.
@@ -461,6 +463,8 @@ class SecretParameter(pulumi.CustomResource):
             },
             resource_group_id=example.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

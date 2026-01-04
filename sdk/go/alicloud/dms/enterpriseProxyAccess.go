@@ -58,6 +58,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // DMS Enterprise Proxy Access can be imported using the id, e.g.

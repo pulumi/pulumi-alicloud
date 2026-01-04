@@ -73,6 +73,8 @@ namespace Pulumi.AliCloud.ActionTrail
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Actiontrail Trail can be imported using the id, e.g.
@@ -184,7 +186,7 @@ namespace Pulumi.AliCloud.ActionTrail
         /// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The name of the trail to be created.

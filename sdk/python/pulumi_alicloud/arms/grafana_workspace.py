@@ -619,6 +619,8 @@ class GrafanaWorkspace(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.
@@ -698,6 +700,8 @@ class GrafanaWorkspace(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

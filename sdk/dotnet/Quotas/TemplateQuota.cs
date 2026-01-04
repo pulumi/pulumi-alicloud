@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.Quotas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Quotas Template Quota can be imported using the id, e.g.

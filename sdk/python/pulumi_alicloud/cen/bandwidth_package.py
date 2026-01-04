@@ -20,6 +20,7 @@ __all__ = ['BandwidthPackageArgs', 'BandwidthPackage']
 class BandwidthPackageArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input[_builtins.int],
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,11 +33,12 @@ class BandwidthPackageArgs:
         """
         The set of arguments for constructing a BandwidthPackage resource.
         :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
-        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
                
                ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-               
-               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
+        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
@@ -48,6 +50,8 @@ class BandwidthPackageArgs:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if cen_bandwidth_package_name is not None:
             pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
         if charge_type is not None:
@@ -89,14 +93,26 @@ class BandwidthPackageArgs:
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
     @pulumi.getter(name="cenBandwidthPackageName")
     def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the bandwidth package. Defaults to null.
-
-        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-
-        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
@@ -208,6 +224,7 @@ class BandwidthPackageArgs:
 @pulumi.input_type
 class _BandwidthPackageState:
     def __init__(__self__, *,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -222,12 +239,13 @@ class _BandwidthPackageState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
-        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
                
                ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-               
-               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] expired_time: The time of the bandwidth package to expire.
@@ -240,6 +258,8 @@ class _BandwidthPackageState:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[_builtins.str] status: The association status of the bandwidth package.
         """
+        if auto_renew is not None:
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if cen_bandwidth_package_name is not None:
@@ -275,6 +295,22 @@ class _BandwidthPackageState:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @auto_renew.setter
+    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "auto_renew", value)
+
+    @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -291,10 +327,6 @@ class _BandwidthPackageState:
     def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The name of the bandwidth package. Defaults to null.
-
-        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-
-        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
@@ -433,6 +465,7 @@ class BandwidthPackage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -455,12 +488,13 @@ class BandwidthPackage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
-        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
                
                ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-               
-               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] geographic_region_a_id: The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
@@ -501,6 +535,7 @@ class BandwidthPackage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
                  bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
                  cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
                  charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -520,6 +555,7 @@ class BandwidthPackage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BandwidthPackageArgs.__new__(BandwidthPackageArgs)
 
+            __props__.__dict__["auto_renew"] = auto_renew
             if bandwidth is None and not opts.urn:
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
@@ -544,6 +580,7 @@ class BandwidthPackage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
             bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
             cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
             charge_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -563,12 +600,13 @@ class BandwidthPackage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
-        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
                
                ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-               
-               ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
+        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
+        :param pulumi.Input[_builtins.str] cen_bandwidth_package_name: The name of the bandwidth package. Defaults to null.
         :param pulumi.Input[_builtins.str] charge_type: Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         :param pulumi.Input[_builtins.str] description: The description of the bandwidth package. Default to null.
         :param pulumi.Input[_builtins.str] expired_time: The time of the bandwidth package to expire.
@@ -585,6 +623,7 @@ class BandwidthPackage(pulumi.CustomResource):
 
         __props__ = _BandwidthPackageState.__new__(_BandwidthPackageState)
 
+        __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["cen_bandwidth_package_name"] = cen_bandwidth_package_name
         __props__.__dict__["charge_type"] = charge_type
@@ -600,6 +639,18 @@ class BandwidthPackage(pulumi.CustomResource):
         return BandwidthPackage(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="autoRenew")
+    def auto_renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+
+        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        """
+        return pulumi.get(self, "auto_renew")
+
+    @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
@@ -612,10 +663,6 @@ class BandwidthPackage(pulumi.CustomResource):
     def cen_bandwidth_package_name(self) -> pulumi.Output[_builtins.str]:
         """
         The name of the bandwidth package. Defaults to null.
-
-        ->**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-
-        ->**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 

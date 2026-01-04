@@ -48,6 +48,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Action trail can be imported using the id, e.g.
@@ -72,7 +74,7 @@ type TrailDeprecated struct {
 	MnsTopicArn pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrOutput `pulumi:"ossBucketName"`
@@ -89,10 +91,10 @@ type TrailDeprecated struct {
 	// The unique ARN of the Log Service role.
 	//
 	// > **NOTE:** `slsProjectArn` and `slsWriteRoleArn` should be set or not set at the same time when actiontrail delivers logs.
-	SlsWriteRoleArn pulumi.StringOutput    `pulumi:"slsWriteRoleArn"`
-	Status          pulumi.StringPtrOutput `pulumi:"status"`
-	TrailName       pulumi.StringOutput    `pulumi:"trailName"`
-	TrailRegion     pulumi.StringOutput    `pulumi:"trailRegion"`
+	SlsWriteRoleArn pulumi.StringOutput `pulumi:"slsWriteRoleArn"`
+	Status          pulumi.StringOutput `pulumi:"status"`
+	TrailName       pulumi.StringOutput `pulumi:"trailName"`
+	TrailRegion     pulumi.StringOutput `pulumi:"trailRegion"`
 }
 
 // NewTrailDeprecated registers a new resource with the given unique name, arguments, and options.
@@ -137,7 +139,7 @@ type trailDeprecatedState struct {
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName *string `pulumi:"ossBucketName"`
@@ -173,7 +175,7 @@ type TrailDeprecatedState struct {
 	MnsTopicArn pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrInput
@@ -212,7 +214,7 @@ type trailDeprecatedArgs struct {
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// The name of the trail to be created, which must be unique for an account.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName *string `pulumi:"ossBucketName"`
@@ -247,7 +249,7 @@ type TrailDeprecatedArgs struct {
 	MnsTopicArn pulumi.StringPtrInput
 	// The name of the trail to be created, which must be unique for an account.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
 	OssBucketName pulumi.StringPtrInput
@@ -392,7 +394,7 @@ func (o TrailDeprecatedOutput) MnsTopicArn() pulumi.StringPtrOutput {
 
 // The name of the trail to be created, which must be unique for an account.
 //
-// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 func (o TrailDeprecatedOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -434,8 +436,8 @@ func (o TrailDeprecatedOutput) SlsWriteRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.SlsWriteRoleArn }).(pulumi.StringOutput)
 }
 
-func (o TrailDeprecatedOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o TrailDeprecatedOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrailDeprecated) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 func (o TrailDeprecatedOutput) TrailName() pulumi.StringOutput {

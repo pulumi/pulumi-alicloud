@@ -206,6 +206,8 @@ class PublishTask(pulumi.CustomResource):
             agent_key=default.agents[0].agent_key)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Chatbot Publish Task can be imported using the id, e.g.
@@ -246,6 +248,8 @@ class PublishTask(pulumi.CustomResource):
             biz_type="faq",
             agent_key=default.agents[0].agent_key)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

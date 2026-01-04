@@ -556,6 +556,8 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
             dataset_id=default_dataset.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Datasetversion can be imported using the id, e.g.
@@ -659,6 +661,8 @@ class WorkspaceDatasetversion(pulumi.CustomResource):
             property="DIRECTORY",
             dataset_id=default_dataset.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

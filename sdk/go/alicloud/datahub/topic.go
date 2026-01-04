@@ -82,6 +82,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Datahub topic can be imported using the ID, e.g.

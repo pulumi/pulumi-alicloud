@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.EipAnycast
 {
     /// <summary>
-    /// Provides a Eipanycast Anycast Eip Address resource. Anycast Elastic IP Address.
+    /// Provides a Eipanycast Anycast Eip Address resource.
+    /// 
+    /// Anycast Elastic IP Address.
     /// 
     /// For information about Eipanycast Anycast Eip Address and how to use it, see [What is Anycast Eip Address](https://www.alibabacloud.com/help/en/anycast-eip/latest/api-eipanycast-2020-03-09-allocateanycasteipaddress).
     /// 
@@ -43,6 +45,8 @@ namespace Pulumi.AliCloud.EipAnycast
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eipanycast Anycast Eip Address can be imported using the id, e.g.
@@ -73,7 +77,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Anycast EIP instance description.
+        /// Anycast EIP instance description
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -85,7 +89,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
@@ -173,7 +177,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance description.
+        /// Anycast EIP instance description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -185,7 +189,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -241,7 +245,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance description.
+        /// Anycast EIP instance description
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -253,7 +257,7 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

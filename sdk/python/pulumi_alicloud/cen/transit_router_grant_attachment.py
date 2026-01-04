@@ -230,6 +230,8 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
             order_type="PayByCenOwner")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Grant Attachment can be imported using the id, e.g.
@@ -281,6 +283,8 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

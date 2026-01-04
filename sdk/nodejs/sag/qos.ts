@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.sag.Qos("default", {name: "terraform-example"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * The Sag Qos can be imported using the id, e.g.

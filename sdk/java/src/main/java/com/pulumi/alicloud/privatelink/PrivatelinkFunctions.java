@@ -1022,7 +1022,7 @@ public final class PrivatelinkFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers", TypeShape.of(GetVpcEndpointServiceUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1054,17 +1054,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1075,7 +1076,7 @@ public final class PrivatelinkFunctions {
         return getVpcEndpointServices(GetVpcEndpointServicesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1107,17 +1108,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1128,7 +1130,7 @@ public final class PrivatelinkFunctions {
         return getVpcEndpointServicesPlain(GetVpcEndpointServicesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1160,17 +1162,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1181,7 +1184,7 @@ public final class PrivatelinkFunctions {
         return getVpcEndpointServices(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1213,17 +1216,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1234,7 +1238,7 @@ public final class PrivatelinkFunctions {
         return getVpcEndpointServicesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1266,17 +1270,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1287,7 +1292,7 @@ public final class PrivatelinkFunctions {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", TypeShape.of(GetVpcEndpointServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1319,17 +1324,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }
@@ -1340,7 +1346,7 @@ public final class PrivatelinkFunctions {
         return Deployment.getInstance().invoke("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", TypeShape.of(GetVpcEndpointServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+     * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available since v1.109.0.
      * 
@@ -1372,17 +1378,18 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
-     *             .serviceDescription("terraform-example")
-     *             .connectBandwidth(103)
-     *             .autoAcceptConnection(false)
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new VpcEndpointService("default", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription(name)
+     *             .autoAcceptConnection(true)
      *             .build());
      * 
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(exampleVpcEndpointService.id())
+     *         final var ids = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(_example -> _example.services()[0].id()));
+     *         ctx.export("privatelinkVpcEndpointServicesId0", ids.applyValue(_ids -> _ids.services()[0].id()));
      *     }
      * }
      * }

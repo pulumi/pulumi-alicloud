@@ -239,6 +239,8 @@ class WafRuleset(pulumi.CustomResource):
             name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Waf Ruleset can be imported using the id, e.g.
@@ -288,6 +290,8 @@ class WafRuleset(pulumi.CustomResource):
             site_version=0,
             name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

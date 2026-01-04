@@ -232,6 +232,8 @@ class AclAttachment(pulumi.CustomResource):
             acl_type="white")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Acl Attachment can be imported using the id, e.g.
@@ -300,6 +302,8 @@ class AclAttachment(pulumi.CustomResource):
             acl_id=default_acl.id,
             acl_type="white")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

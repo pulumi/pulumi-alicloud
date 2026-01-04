@@ -159,6 +159,8 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
             reserved_concurrency=100)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Concurrency Config can be imported using the id, e.g.
@@ -216,6 +218,8 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
             function_name=function.function_name,
             reserved_concurrency=100)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

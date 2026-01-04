@@ -308,6 +308,8 @@ class Remediation(pulumi.CustomResource):
             remediation_type="OOS")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Config Remediation can be imported using the id, e.g.
@@ -384,6 +386,8 @@ class Remediation(pulumi.CustomResource):
             params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
             remediation_type="OOS")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

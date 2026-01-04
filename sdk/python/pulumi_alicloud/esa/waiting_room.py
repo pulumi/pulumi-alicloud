@@ -672,6 +672,8 @@ class WaitingRoom(pulumi.CustomResource):
             cookie_name="__aliwaitingroom_example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Waiting Room can be imported using the id, e.g.
@@ -764,6 +766,8 @@ class WaitingRoom(pulumi.CustomResource):
             json_response_enable="off",
             cookie_name="__aliwaitingroom_example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

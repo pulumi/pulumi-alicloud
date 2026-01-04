@@ -21,11 +21,12 @@ class DatabaseArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  character_set: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_base_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
                - MySQL: [ utf8, gbk, latin1, utf8mb4 ] \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
                - SQLServer: [ Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ]
@@ -36,22 +37,27 @@ class DatabaseArgs:
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-               
-               > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[_builtins.str] name: The name of the database. 
-               * > **NOTE:**
+        :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
                The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
                The name must be unique within the instance.
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
+        if data_base_name is not None:
+            pulumi.set(__self__, "data_base_name", data_base_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -59,7 +65,7 @@ class DatabaseArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The Id of instance that can run database.
+        The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -89,12 +95,28 @@ class DatabaseArgs:
         pulumi.set(self, "character_set", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataBaseName")
+    def data_base_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the database.
+        > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        """
+        return pulumi.get(self, "data_base_name")
+
+    @data_base_name.setter
+    def data_base_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_base_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-
-        > **NOTE:** The value of "name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "description")
 
@@ -104,15 +126,11 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the database. 
-        * > **NOTE:**
-        The name must be 2 to 64 characters in length.
-        The name must start with a lowercase letter and end with a lowercase letter or digit.
-        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-        The name must be unique within the instance.
-        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+        > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
 
@@ -125,9 +143,11 @@ class DatabaseArgs:
 class _DatabaseState:
     def __init__(__self__, *,
                  character_set: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_base_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[_builtins.str] character_set: Character set. The value range is limited to the following:
@@ -140,26 +160,34 @@ class _DatabaseState:
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-               
-               > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[_builtins.str] name: The name of the database. 
-               * > **NOTE:**
+        :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
                The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
                The name must be unique within the instance.
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
+        if data_base_name is not None:
+            pulumi.set(__self__, "data_base_name", data_base_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="characterSet")
@@ -183,12 +211,28 @@ class _DatabaseState:
         pulumi.set(self, "character_set", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataBaseName")
+    def data_base_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the database.
+        > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        """
+        return pulumi.get(self, "data_base_name")
+
+    @data_base_name.setter
+    def data_base_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_base_name", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-
-        > **NOTE:** The value of "name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "description")
 
@@ -200,7 +244,7 @@ class _DatabaseState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Id of instance that can run database.
+        The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -210,21 +254,29 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the database. 
-        * > **NOTE:**
-        The name must be 2 to 64 characters in length.
-        The name must start with a lowercase letter and end with a lowercase letter or digit.
-        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-        The name must be unique within the instance.
-        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+        > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.type_token("alicloud:rds/database:Database")
@@ -234,12 +286,17 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  character_set: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_base_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+        Provides a RDS Database resource.
+
+        Supports creating a database under an instance.
+
+        For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
 
         > **NOTE:** Available since v1.5.0.
 
@@ -254,7 +311,16 @@ class Database(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -265,22 +331,27 @@ class Database(pulumi.CustomResource):
             vswitch_name=name)
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
-            instance_name=name)
+            instance_name=name,
+            instance_charge_type="Postpaid")
         default_database = alicloud.rds.Database("default",
             instance_id=default_instance.id,
-            name=name)
+            data_base_name=name,
+            character_set="utf8")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        RDS database can be imported using the id, e.g.
+        RDS Database can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+        $ pulumi import alicloud:rds/database:Database example <instance_id>:<data_base_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -295,17 +366,17 @@ class Database(pulumi.CustomResource):
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-               
-               > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[_builtins.str] name: The name of the database. 
-               * > **NOTE:**
+        :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
                The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
                The name must be unique within the instance.
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         ...
     @overload
@@ -314,7 +385,11 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an RDS database resource. A DB database deployed in a DB instance. A DB instance can own multiple databases, see [What is DB Database](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createdatabase).
+        Provides a RDS Database resource.
+
+        Supports creating a database under an instance.
+
+        For information about RDS Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/Rds/2014-08-15/CreateDatabase).
 
         > **NOTE:** Available since v1.5.0.
 
@@ -329,7 +404,16 @@ class Database(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.zones[0].id,
+            engine="MySQL",
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="cloud_essd",
+            instance_charge_type="PostPaid")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -340,22 +424,27 @@ class Database(pulumi.CustomResource):
             vswitch_name=name)
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
+            engine_version="8.0",
+            db_instance_storage_type="cloud_essd",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
-            instance_name=name)
+            instance_name=name,
+            instance_charge_type="Postpaid")
         default_database = alicloud.rds.Database("default",
             instance_id=default_instance.id,
-            name=name)
+            data_base_name=name,
+            character_set="utf8")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        RDS database can be imported using the id, e.g.
+        RDS Database can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:rds/database:Database example "rm-12345:tf_database"
+        $ pulumi import alicloud:rds/database:Database example <instance_id>:<data_base_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -374,6 +463,7 @@ class Database(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  character_set: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_base_name: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -387,11 +477,13 @@ class Database(pulumi.CustomResource):
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
             __props__.__dict__["character_set"] = character_set
+            __props__.__dict__["data_base_name"] = data_base_name
             __props__.__dict__["description"] = description
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["status"] = None
         super(Database, __self__).__init__(
             'alicloud:rds/database:Database',
             resource_name,
@@ -403,9 +495,11 @@ class Database(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             character_set: Optional[pulumi.Input[_builtins.str]] = None,
+            data_base_name: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            name: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -423,26 +517,29 @@ class Database(pulumi.CustomResource):
                - MariaDB: [ utf8, gbk, latin1, utf8mb4 ]
                
                More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
-        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-               
-               > **NOTE:** The value of "name" or "character_set"  does not support modification.
-        :param pulumi.Input[_builtins.str] instance_id: The Id of instance that can run database.
-        :param pulumi.Input[_builtins.str] name: The name of the database. 
-               * > **NOTE:**
+        :param pulumi.Input[_builtins.str] data_base_name: The name of the database.
+               > **NOTE:**
                The name must be 2 to 64 characters in length.
                The name must start with a lowercase letter and end with a lowercase letter or digit.
                The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
                The name must be unique within the instance.
                For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        :param pulumi.Input[_builtins.str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+        :param pulumi.Input[_builtins.str] instance_id: The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+               > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DatabaseState.__new__(_DatabaseState)
 
         __props__.__dict__["character_set"] = character_set
+        __props__.__dict__["data_base_name"] = data_base_name
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["status"] = status
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -463,12 +560,24 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "character_set")
 
     @_builtins.property
+    @pulumi.getter(name="dataBaseName")
+    def data_base_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of the database.
+        > **NOTE:**
+        The name must be 2 to 64 characters in length.
+        The name must start with a lowercase letter and end with a lowercase letter or digit.
+        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+        The name must be unique within the instance.
+        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        """
+        return pulumi.get(self, "data_base_name")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-
-        > **NOTE:** The value of "name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "description")
 
@@ -476,21 +585,25 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of instance that can run database.
+        The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the database. 
-        * > **NOTE:**
-        The name must be 2 to 64 characters in length.
-        The name must start with a lowercase letter and end with a lowercase letter or digit.
-        The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-        The name must be unique within the instance.
-        For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+        The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
+        > **NOTE:** The value of "data_base_name" or "character_set"  does not support modification.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
 

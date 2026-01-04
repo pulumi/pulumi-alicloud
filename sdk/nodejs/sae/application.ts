@@ -68,6 +68,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Serverless App Engine (SAE) Application can be imported using the id, e.g.

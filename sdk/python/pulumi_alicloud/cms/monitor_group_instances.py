@@ -139,6 +139,8 @@ class MonitorGroupInstances(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Monitor Group Instances can be imported using the id, e.g.
@@ -191,6 +193,8 @@ class MonitorGroupInstances(pulumi.CustomResource):
                 "category": "vpc",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -65,6 +65,8 @@ import * as utilities from "../utilities";
  *     instanceIds: [defaultInstance.id],
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class InstanceClusterAttachment extends pulumi.CustomResource {
     /**

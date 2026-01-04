@@ -124,6 +124,8 @@ namespace Pulumi.AliCloud.Sae
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Serverless App Engine (SAE) Ingress can be imported using the id, e.g.

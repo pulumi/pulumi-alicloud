@@ -503,6 +503,8 @@ class Instance(pulumi.CustomResource):
             instance_alias="tf-testaccTsdbInstance")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         TSDB Instance can be imported using the id, e.g.
@@ -585,6 +587,8 @@ class Instance(pulumi.CustomResource):
             engine_type="tsdb_tsdb",
             instance_alias="tf-testaccTsdbInstance")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

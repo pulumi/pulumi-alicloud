@@ -22,6 +22,8 @@ from .get_vpc_endpoint_linked_vpcs import *
 from .namespace import *
 from .registry_enterprise_instance import *
 from .repo import *
+from .scan_rule import *
+from .storage_domain_routing_rule import *
 from .vpc_endpoint_linked_vpc import *
 from ._inputs import *
 from . import outputs

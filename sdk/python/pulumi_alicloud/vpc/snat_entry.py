@@ -311,6 +311,8 @@ class SnatEntry(pulumi.CustomResource):
             snat_ip=default_eip_address.ip_address)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NAT Gateway Snat Entry can be imported using the id, e.g.
@@ -381,6 +383,8 @@ class SnatEntry(pulumi.CustomResource):
             source_vswitch_id=default_switch.id,
             snat_ip=default_eip_address.ip_address)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

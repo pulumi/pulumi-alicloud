@@ -164,6 +164,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ess/serverGroupAttachment:ServerGroupAttachment")
 public class ServerGroupAttachment extends com.pulumi.resources.CustomResource {

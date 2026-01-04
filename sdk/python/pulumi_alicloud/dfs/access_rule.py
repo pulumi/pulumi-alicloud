@@ -263,6 +263,8 @@ class AccessRule(pulumi.CustomResource):
             priority=10)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DFS Access Rule can be imported using the id, e.g.
@@ -315,6 +317,8 @@ class AccessRule(pulumi.CustomResource):
             rw_access_type="RDWR",
             priority=10)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

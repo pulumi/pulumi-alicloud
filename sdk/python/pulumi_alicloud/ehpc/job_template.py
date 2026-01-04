@@ -618,6 +618,8 @@ class JobTemplate(pulumi.CustomResource):
             command_line="./LammpsTest/lammps.pbs")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ehpc Job Template can be imported using the id, e.g.
@@ -671,6 +673,8 @@ class JobTemplate(pulumi.CustomResource):
             job_template_name="example_value",
             command_line="./LammpsTest/lammps.pbs")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

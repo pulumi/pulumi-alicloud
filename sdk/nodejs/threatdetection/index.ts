@@ -35,6 +35,11 @@ export type BaselineStrategy = import("./baselineStrategy").BaselineStrategy;
 export const BaselineStrategy: typeof import("./baselineStrategy").BaselineStrategy = null as any;
 utilities.lazyLoad(exports, ["BaselineStrategy"], () => require("./baselineStrategy"));
 
+export { CheckConfigArgs, CheckConfigState } from "./checkConfig";
+export type CheckConfig = import("./checkConfig").CheckConfig;
+export const CheckConfig: typeof import("./checkConfig").CheckConfig = null as any;
+utilities.lazyLoad(exports, ["CheckConfig"], () => require("./checkConfig"));
+
 export { ClientFileProtectArgs, ClientFileProtectState } from "./clientFileProtect";
 export type ClientFileProtect = import("./clientFileProtect").ClientFileProtect;
 export const ClientFileProtect: typeof import("./clientFileProtect").ClientFileProtect = null as any;
@@ -74,6 +79,16 @@ export { GetBaselineStrategiesArgs, GetBaselineStrategiesResult, GetBaselineStra
 export const getBaselineStrategies: typeof import("./getBaselineStrategies").getBaselineStrategies = null as any;
 export const getBaselineStrategiesOutput: typeof import("./getBaselineStrategies").getBaselineStrategiesOutput = null as any;
 utilities.lazyLoad(exports, ["getBaselineStrategies","getBaselineStrategiesOutput"], () => require("./getBaselineStrategies"));
+
+export { GetCheckItemConfigsArgs, GetCheckItemConfigsResult, GetCheckItemConfigsOutputArgs } from "./getCheckItemConfigs";
+export const getCheckItemConfigs: typeof import("./getCheckItemConfigs").getCheckItemConfigs = null as any;
+export const getCheckItemConfigsOutput: typeof import("./getCheckItemConfigs").getCheckItemConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getCheckItemConfigs","getCheckItemConfigsOutput"], () => require("./getCheckItemConfigs"));
+
+export { GetCheckStructuresArgs, GetCheckStructuresResult, GetCheckStructuresOutputArgs } from "./getCheckStructures";
+export const getCheckStructures: typeof import("./getCheckStructures").getCheckStructures = null as any;
+export const getCheckStructuresOutput: typeof import("./getCheckStructures").getCheckStructuresOutput = null as any;
+utilities.lazyLoad(exports, ["getCheckStructures","getCheckStructuresOutput"], () => require("./getCheckStructures"));
 
 export { GetHoneyPotsArgs, GetHoneyPotsResult, GetHoneyPotsOutputArgs } from "./getHoneyPots";
 export const getHoneyPots: typeof import("./getHoneyPots").getHoneyPots = null as any;
@@ -197,6 +212,8 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
                 return new BaselineStrategy(name, <any>undefined, { urn })
+            case "alicloud:threatdetection/checkConfig:CheckConfig":
+                return new CheckConfig(name, <any>undefined, { urn })
             case "alicloud:threatdetection/clientFileProtect:ClientFileProtect":
                 return new ClientFileProtect(name, <any>undefined, { urn })
             case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
@@ -240,6 +257,7 @@ pulumi.runtime.registerResourceModule("alicloud", "threatdetection/assetSelectio
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/attackPathSensitiveAssetConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/baselineStrategy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "threatdetection/checkConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientFileProtect", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/clientUserDefineRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "threatdetection/cycleTask", _module)

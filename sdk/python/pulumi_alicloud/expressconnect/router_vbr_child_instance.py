@@ -309,6 +309,8 @@ class RouterVbrChildInstance(pulumi.CustomResource):
             child_instance_owner_id=current.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Express Connect Router Vbr Child Instance can be imported using the id, e.g.
@@ -369,6 +371,8 @@ class RouterVbrChildInstance(pulumi.CustomResource):
             child_instance_type="VBR",
             child_instance_owner_id=current.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

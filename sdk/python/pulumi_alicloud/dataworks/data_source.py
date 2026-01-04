@@ -386,6 +386,8 @@ class DataSource(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Data Source can be imported using the id, e.g.
@@ -466,6 +468,8 @@ class DataSource(pulumi.CustomResource):
             project_id=defaultkguw4_r.id,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

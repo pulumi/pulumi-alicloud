@@ -68,6 +68,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Service Catalog Product Version can be imported using the id, e.g.

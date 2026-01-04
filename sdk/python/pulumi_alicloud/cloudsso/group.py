@@ -189,6 +189,8 @@ class Group(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO Group can be imported using the id, e.g.
@@ -245,6 +247,8 @@ class Group(pulumi.CustomResource):
             group_name=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -546,6 +546,8 @@ class CapacityReservation(pulumi.CustomResource):
             zone_ids=[default_get_zones.zones[0].id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ecs Capacity Reservation can be imported using the id, e.g.
@@ -608,6 +610,8 @@ class CapacityReservation(pulumi.CustomResource):
             },
             zone_ids=[default_get_zones.zones[0].id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

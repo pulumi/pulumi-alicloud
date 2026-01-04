@@ -41,6 +41,8 @@ namespace Pulumi.AliCloud.ApiGateway
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Api gateway group can be imported using the id, e.g.

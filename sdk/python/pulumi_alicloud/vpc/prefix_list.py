@@ -389,6 +389,8 @@ class PrefixList(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Prefix List can be imported using the id, e.g.
@@ -449,6 +451,8 @@ class PrefixList(pulumi.CustomResource):
                 "description": "test",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

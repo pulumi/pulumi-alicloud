@@ -96,10 +96,10 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
      * The name of the trail to be created, which must be unique for an account.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -107,10 +107,10 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
      * @return The name of the trail to be created, which must be unique for an account.
      * 
      * @deprecated
-     * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
      * 
      */
-    @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -385,10 +385,10 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -400,10 +400,10 @@ public final class TrailDeprecatedState extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          * @deprecated
-         * Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.95.0. New field &#39;trail_name&#39; instead.
          * 
          */
-        @Deprecated /* Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }

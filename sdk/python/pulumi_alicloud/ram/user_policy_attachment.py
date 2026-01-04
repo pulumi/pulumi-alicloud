@@ -195,6 +195,8 @@ class UserPolicyAttachment(pulumi.CustomResource):
             user_name=user.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM User Policy Attachment can be imported using the id, e.g.
@@ -268,6 +270,8 @@ class UserPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             user_name=user.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

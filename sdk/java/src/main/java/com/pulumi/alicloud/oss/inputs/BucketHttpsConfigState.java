@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.oss.inputs;
 
+import com.pulumi.alicloud.oss.inputs.BucketHttpsConfigCipherSuitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -18,18 +19,33 @@ public final class BucketHttpsConfigState extends com.pulumi.resources.ResourceA
     public static final BucketHttpsConfigState Empty = new BucketHttpsConfigState();
 
     /**
-     * The name of the bucket.
+     * The name of the bucket
      * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
-     * @return The name of the bucket.
+     * @return The name of the bucket
      * 
      */
     public Optional<Output<String>> bucket() {
         return Optional.ofNullable(this.bucket);
+    }
+
+    /**
+     * TLS encryption algorithm suite configuration See `cipherSuit` below.
+     * 
+     */
+    @Import(name="cipherSuit")
+    private @Nullable Output<BucketHttpsConfigCipherSuitArgs> cipherSuit;
+
+    /**
+     * @return TLS encryption algorithm suite configuration See `cipherSuit` below.
+     * 
+     */
+    public Optional<Output<BucketHttpsConfigCipherSuitArgs>> cipherSuit() {
+        return Optional.ofNullable(this.cipherSuit);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class BucketHttpsConfigState extends com.pulumi.resources.ResourceA
 
     private BucketHttpsConfigState(BucketHttpsConfigState $) {
         this.bucket = $.bucket;
+        this.cipherSuit = $.cipherSuit;
         this.enable = $.enable;
         this.tlsVersions = $.tlsVersions;
     }
@@ -89,7 +106,7 @@ public final class BucketHttpsConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bucket The name of the bucket.
+         * @param bucket The name of the bucket
          * 
          * @return builder
          * 
@@ -100,13 +117,34 @@ public final class BucketHttpsConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bucket The name of the bucket.
+         * @param bucket The name of the bucket
          * 
          * @return builder
          * 
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param cipherSuit TLS encryption algorithm suite configuration See `cipherSuit` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cipherSuit(@Nullable Output<BucketHttpsConfigCipherSuitArgs> cipherSuit) {
+            $.cipherSuit = cipherSuit;
+            return this;
+        }
+
+        /**
+         * @param cipherSuit TLS encryption algorithm suite configuration See `cipherSuit` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cipherSuit(BucketHttpsConfigCipherSuitArgs cipherSuit) {
+            return cipherSuit(Output.of(cipherSuit));
         }
 
         /**

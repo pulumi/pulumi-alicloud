@@ -531,6 +531,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             transit_router_attachment_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
@@ -603,6 +605,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             transit_router_attachment_name=name,
             transit_router_attachment_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

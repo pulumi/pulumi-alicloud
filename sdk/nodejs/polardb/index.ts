@@ -90,6 +90,11 @@ export type GlobalDatabaseNetwork = import("./globalDatabaseNetwork").GlobalData
 export const GlobalDatabaseNetwork: typeof import("./globalDatabaseNetwork").GlobalDatabaseNetwork = null as any;
 utilities.lazyLoad(exports, ["GlobalDatabaseNetwork"], () => require("./globalDatabaseNetwork"));
 
+export { GlobalSecurityIpGroupArgs, GlobalSecurityIpGroupState } from "./globalSecurityIpGroup";
+export type GlobalSecurityIpGroup = import("./globalSecurityIpGroup").GlobalSecurityIpGroup;
+export const GlobalSecurityIpGroup: typeof import("./globalSecurityIpGroup").GlobalSecurityIpGroup = null as any;
+utilities.lazyLoad(exports, ["GlobalSecurityIpGroup"], () => require("./globalSecurityIpGroup"));
+
 export { ParameterGroupArgs, ParameterGroupState } from "./parameterGroup";
 export type ParameterGroup = import("./parameterGroup").ParameterGroup;
 export const ParameterGroup: typeof import("./parameterGroup").ParameterGroup = null as any;
@@ -138,6 +143,8 @@ const _module = {
                 return new EndpointAddress(name, <any>undefined, { urn })
             case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
                 return new GlobalDatabaseNetwork(name, <any>undefined, { urn })
+            case "alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup":
+                return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:polardb/parameterGroup:ParameterGroup":
                 return new ParameterGroup(name, <any>undefined, { urn })
             case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
@@ -162,6 +169,7 @@ pulumi.runtime.registerResourceModule("alicloud", "polardb/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/endpointAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/globalDatabaseNetwork", _module)
+pulumi.runtime.registerResourceModule("alicloud", "polardb/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/parameterGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/primaryEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "polardb/zonalAccount", _module)

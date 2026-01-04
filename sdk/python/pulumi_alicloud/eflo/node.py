@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NodeArgs', 'Node']
 
@@ -21,11 +23,18 @@ class NodeArgs:
     def __init__(__self__, *,
                  billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
                  classify: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -37,21 +46,43 @@ class NodeArgs:
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster id
+        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
+        :param pulumi.Input[_builtins.str] node_group_id: node group id
+        :param pulumi.Input[_builtins.str] node_type: node type
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
                The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] product_form: Form
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -62,28 +93,49 @@ class NodeArgs:
                The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] user_data: Custom Data
+        :param pulumi.Input[_builtins.str] vpc_id: VPC ID
+        :param pulumi.Input[_builtins.str] vswitch_id: Switch ID
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
         if billing_cycle is not None:
             pulumi.set(__self__, "billing_cycle", billing_cycle)
         if classify is not None:
             pulumi.set(__self__, "classify", classify)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if computing_server is not None:
             warnings.warn("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""computing_server is deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
         if computing_server is not None:
             pulumi.set(__self__, "computing_server", computing_server)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
         if discount_level is not None:
             pulumi.set(__self__, "discount_level", discount_level)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
         if install_pai is not None:
             pulumi.set(__self__, "install_pai", install_pai)
+        if ip_allocation_policies is not None:
+            pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if node_group_id is not None:
+            pulumi.set(__self__, "node_group_id", node_group_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
         if payment_type is not None:
@@ -106,6 +158,12 @@ class NodeArgs:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -114,6 +172,8 @@ class NodeArgs:
     def billing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Billing cycle
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "billing_cycle")
 
@@ -126,6 +186,8 @@ class NodeArgs:
     def classify(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Classification
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "classify")
 
@@ -134,11 +196,23 @@ class NodeArgs:
         pulumi.set(self, "classify", value)
 
     @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster id
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="computingServer")
     @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
     def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        Node Model
         """
         return pulumi.get(self, "computing_server")
 
@@ -147,16 +221,42 @@ class NodeArgs:
         pulumi.set(self, "computing_server", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
+        """
+        The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @_builtins.property
     @pulumi.getter(name="discountLevel")
     def discount_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Offer Information
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "discount_level")
 
     @discount_level.setter
     def discount_level(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "discount_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
@@ -183,6 +283,30 @@ class NodeArgs:
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicies")
+    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
+        """
+        IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        """
+        return pulumi.get(self, "ip_allocation_policies")
+
+    @ip_allocation_policies.setter
+    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
+        pulumi.set(self, "ip_allocation_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "login_password", value)
+
+    @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -195,10 +319,36 @@ class NodeArgs:
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        node group id
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @node_group_id.setter
+    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        node type
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Down payment ratio
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "payment_ratio")
 
@@ -224,6 +374,8 @@ class NodeArgs:
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -236,6 +388,8 @@ class NodeArgs:
     def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Form
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "product_form")
 
@@ -290,6 +444,8 @@ class NodeArgs:
     def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Architecture
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "server_arch")
 
@@ -302,6 +458,8 @@ class NodeArgs:
     def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Number of stages
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "stage_num")
 
@@ -334,6 +492,42 @@ class NodeArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom Data
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        VPC ID
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Switch ID
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -351,12 +545,19 @@ class _NodeState:
     def __init__(__self__, *,
                  billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
                  classify: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -369,22 +570,44 @@ class _NodeState:
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster id
+        :param pulumi.Input[_builtins.str] computing_server: Node Model
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
+        :param pulumi.Input[_builtins.str] node_group_id: node group id
+        :param pulumi.Input[_builtins.str] node_type: node type
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
                The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] product_form: Form
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
@@ -396,15 +619,24 @@ class _NodeState:
                The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] user_data: Custom Data
+        :param pulumi.Input[_builtins.str] vpc_id: VPC ID
+        :param pulumi.Input[_builtins.str] vswitch_id: Switch ID
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
         if billing_cycle is not None:
             pulumi.set(__self__, "billing_cycle", billing_cycle)
         if classify is not None:
             pulumi.set(__self__, "classify", classify)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if computing_server is not None:
             warnings.warn("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""computing_server is deprecated: Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
@@ -412,14 +644,26 @@ class _NodeState:
             pulumi.set(__self__, "computing_server", computing_server)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
         if discount_level is not None:
             pulumi.set(__self__, "discount_level", discount_level)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
         if install_pai is not None:
             pulumi.set(__self__, "install_pai", install_pai)
+        if ip_allocation_policies is not None:
+            pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if node_group_id is not None:
+            pulumi.set(__self__, "node_group_id", node_group_id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
         if payment_ratio is not None:
             pulumi.set(__self__, "payment_ratio", payment_ratio)
         if payment_type is not None:
@@ -444,6 +688,12 @@ class _NodeState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -452,6 +702,8 @@ class _NodeState:
     def billing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Billing cycle
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "billing_cycle")
 
@@ -464,6 +716,8 @@ class _NodeState:
     def classify(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Classification
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "classify")
 
@@ -472,11 +726,23 @@ class _NodeState:
         pulumi.set(self, "classify", value)
 
     @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster id
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="computingServer")
     @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
     def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        Node Model
         """
         return pulumi.get(self, "computing_server")
 
@@ -497,16 +763,42 @@ class _NodeState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
+        """
+        The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @_builtins.property
     @pulumi.getter(name="discountLevel")
     def discount_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Offer Information
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "discount_level")
 
     @discount_level.setter
     def discount_level(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "discount_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
@@ -533,6 +825,30 @@ class _NodeState:
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicies")
+    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
+        """
+        IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        """
+        return pulumi.get(self, "ip_allocation_policies")
+
+    @ip_allocation_policies.setter
+    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
+        pulumi.set(self, "ip_allocation_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "login_password", value)
+
+    @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -545,10 +861,36 @@ class _NodeState:
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        node group id
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @node_group_id.setter
+    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        node type
+        """
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Down payment ratio
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "payment_ratio")
 
@@ -574,6 +916,8 @@ class _NodeState:
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -586,6 +930,8 @@ class _NodeState:
     def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Form
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "product_form")
 
@@ -652,6 +998,8 @@ class _NodeState:
     def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Architecture
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "server_arch")
 
@@ -664,6 +1012,8 @@ class _NodeState:
     def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Number of stages
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "stage_num")
 
@@ -696,6 +1046,42 @@ class _NodeState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom Data
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        VPC ID
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Switch ID
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -716,11 +1102,18 @@ class Node(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
                  classify: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -732,47 +1125,12 @@ class Node(pulumi.CustomResource):
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Eflo Node resource.
-
-        Large computing node.
-
-        For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
-
-        > **NOTE:** Available since v1.246.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        default_node = alicloud.eflo.Node("default",
-            period=36,
-            discount_level="36",
-            billing_cycle="1month",
-            classify="gpuserver",
-            zone="cn-hangzhou-b",
-            product_form="instance",
-            payment_ratio="0",
-            hpn_zone="B1",
-            server_arch="bmserver",
-            computing_server="efg1.nvga1n",
-            stage_num="36",
-            renewal_status="AutoRenewal",
-            renew_period=36,
-            status="Unused")
-        ```
-
         ## Import
 
         Eflo Node can be imported using the id, e.g.
@@ -784,17 +1142,36 @@ class Node(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster id
+        :param pulumi.Input[_builtins.str] computing_server: Node Model
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
+        :param pulumi.Input[_builtins.str] node_group_id: node group id
+        :param pulumi.Input[_builtins.str] node_type: node type
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
                The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] product_form: Form
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
                > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
@@ -805,9 +1182,16 @@ class Node(pulumi.CustomResource):
                The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] user_data: Custom Data
+        :param pulumi.Input[_builtins.str] vpc_id: VPC ID
+        :param pulumi.Input[_builtins.str] vswitch_id: Switch ID
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
         ...
@@ -817,44 +1201,6 @@ class Node(pulumi.CustomResource):
                  args: Optional[NodeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Eflo Node resource.
-
-        Large computing node.
-
-        For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
-
-        > **NOTE:** Available since v1.246.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.resourcemanager.get_resource_groups()
-        default_node = alicloud.eflo.Node("default",
-            period=36,
-            discount_level="36",
-            billing_cycle="1month",
-            classify="gpuserver",
-            zone="cn-hangzhou-b",
-            product_form="instance",
-            payment_ratio="0",
-            hpn_zone="B1",
-            server_arch="bmserver",
-            computing_server="efg1.nvga1n",
-            stage_num="36",
-            renewal_status="AutoRenewal",
-            renew_period=36,
-            status="Unused")
-        ```
-
         ## Import
 
         Eflo Node can be imported using the id, e.g.
@@ -880,11 +1226,18 @@ class Node(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
                  classify: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  computing_server: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
                  discount_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -896,6 +1249,9 @@ class Node(pulumi.CustomResource):
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -908,11 +1264,18 @@ class Node(pulumi.CustomResource):
 
             __props__.__dict__["billing_cycle"] = billing_cycle
             __props__.__dict__["classify"] = classify
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["computing_server"] = computing_server
+            __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["discount_level"] = discount_level
+            __props__.__dict__["hostname"] = hostname
             __props__.__dict__["hpn_zone"] = hpn_zone
             __props__.__dict__["install_pai"] = install_pai
+            __props__.__dict__["ip_allocation_policies"] = ip_allocation_policies
+            __props__.__dict__["login_password"] = None if login_password is None else pulumi.Output.secret(login_password)
             __props__.__dict__["machine_type"] = machine_type
+            __props__.__dict__["node_group_id"] = node_group_id
+            __props__.__dict__["node_type"] = node_type
             __props__.__dict__["payment_ratio"] = payment_ratio
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
@@ -924,9 +1287,14 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["stage_num"] = stage_num
             __props__.__dict__["status"] = status
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["user_data"] = user_data
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["loginPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Node, __self__).__init__(
             'alicloud:eflo/node:Node',
             resource_name,
@@ -939,12 +1307,19 @@ class Node(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
             classify: Optional[pulumi.Input[_builtins.str]] = None,
+            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             computing_server: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
             discount_level: Optional[pulumi.Input[_builtins.str]] = None,
+            hostname: Optional[pulumi.Input[_builtins.str]] = None,
             hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
             install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
+            ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+            login_password: Optional[pulumi.Input[_builtins.str]] = None,
             machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+            node_type: Optional[pulumi.Input[_builtins.str]] = None,
             payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
@@ -957,6 +1332,9 @@ class Node(pulumi.CustomResource):
             stage_num: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: Optional[pulumi.Input[_builtins.str]] = None,
+            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
@@ -966,18 +1344,37 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_cycle: Billing cycle
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] classify: Classification
-        :param pulumi.Input[_builtins.str] computing_server: Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster id
+        :param pulumi.Input[_builtins.str] computing_server: Node Model
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]] data_disks: The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         :param pulumi.Input[_builtins.str] discount_level: Offer Information
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] hpn_zone: Cluster Number
         :param pulumi.Input[_builtins.bool] install_pai: Whether to buy PAI. default value `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]] ip_allocation_policies: IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        :param pulumi.Input[_builtins.str] login_password: Login Password
         :param pulumi.Input[_builtins.str] machine_type: Model
+        :param pulumi.Input[_builtins.str] node_group_id: node group id
+        :param pulumi.Input[_builtins.str] node_type: node type
         :param pulumi.Input[_builtins.str] payment_ratio: Down payment ratio
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] payment_type: The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
                The default is Subscription.
         :param pulumi.Input[_builtins.int] period: Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] product_form: Form
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] region_id: The region ID of the resource
         :param pulumi.Input[_builtins.int] renew_period: Automatic renewal period, in months.
                
@@ -989,9 +1386,16 @@ class Node(pulumi.CustomResource):
                The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
         :param pulumi.Input[_builtins.str] server_arch: Architecture
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] stage_num: Number of stages
+               
+               > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
+        :param pulumi.Input[_builtins.str] user_data: Custom Data
+        :param pulumi.Input[_builtins.str] vpc_id: VPC ID
+        :param pulumi.Input[_builtins.str] vswitch_id: Switch ID
         :param pulumi.Input[_builtins.str] zone: Availability Zone
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1000,12 +1404,19 @@ class Node(pulumi.CustomResource):
 
         __props__.__dict__["billing_cycle"] = billing_cycle
         __props__.__dict__["classify"] = classify
+        __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["computing_server"] = computing_server
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["discount_level"] = discount_level
+        __props__.__dict__["hostname"] = hostname
         __props__.__dict__["hpn_zone"] = hpn_zone
         __props__.__dict__["install_pai"] = install_pai
+        __props__.__dict__["ip_allocation_policies"] = ip_allocation_policies
+        __props__.__dict__["login_password"] = login_password
         __props__.__dict__["machine_type"] = machine_type
+        __props__.__dict__["node_group_id"] = node_group_id
+        __props__.__dict__["node_type"] = node_type
         __props__.__dict__["payment_ratio"] = payment_ratio
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
@@ -1018,6 +1429,9 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["stage_num"] = stage_num
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone"] = zone
         return Node(resource_name, opts=opts, __props__=__props__)
 
@@ -1026,6 +1440,8 @@ class Node(pulumi.CustomResource):
     def billing_cycle(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Billing cycle
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "billing_cycle")
 
@@ -1034,15 +1450,25 @@ class Node(pulumi.CustomResource):
     def classify(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Classification
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "classify")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Cluster id
+        """
+        return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
     @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
     def computing_server(self) -> pulumi.Output[_builtins.str]:
         """
-        Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        Node Model
         """
         return pulumi.get(self, "computing_server")
 
@@ -1055,12 +1481,30 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> pulumi.Output[Sequence['outputs.NodeDataDisk']]:
+        """
+        The data disk of the cloud disk to be attached to the node. See `data_disk` below.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @_builtins.property
     @pulumi.getter(name="discountLevel")
     def discount_level(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Offer Information
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "discount_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Output[_builtins.str]:
+        """
+        Host name
+        """
+        return pulumi.get(self, "hostname")
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
@@ -1079,6 +1523,22 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "install_pai")
 
     @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicies")
+    def ip_allocation_policies(self) -> pulumi.Output[Optional[Sequence['outputs.NodeIpAllocationPolicy']]]:
+        """
+        IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
+        """
+        return pulumi.get(self, "ip_allocation_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Login Password
+        """
+        return pulumi.get(self, "login_password")
+
+    @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1087,10 +1547,28 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "machine_type")
 
     @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        node group id
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        node type
+        """
+        return pulumi.get(self, "node_type")
+
+    @_builtins.property
     @pulumi.getter(name="paymentRatio")
     def payment_ratio(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Down payment ratio
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "payment_ratio")
 
@@ -1108,6 +1586,8 @@ class Node(pulumi.CustomResource):
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "period")
 
@@ -1116,6 +1596,8 @@ class Node(pulumi.CustomResource):
     def product_form(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Form
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "product_form")
 
@@ -1162,6 +1644,8 @@ class Node(pulumi.CustomResource):
     def server_arch(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Architecture
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "server_arch")
 
@@ -1170,6 +1654,8 @@ class Node(pulumi.CustomResource):
     def stage_num(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Number of stages
+
+        > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
         return pulumi.get(self, "stage_num")
 
@@ -1188,6 +1674,30 @@ class Node(pulumi.CustomResource):
         The tag of the resource
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> pulumi.Output[_builtins.str]:
+        """
+        Custom Data
+        """
+        return pulumi.get(self, "user_data")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        VPC ID
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Switch ID
+        """
+        return pulumi.get(self, "vswitch_id")
 
     @_builtins.property
     @pulumi.getter

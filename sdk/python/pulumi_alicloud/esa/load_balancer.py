@@ -620,6 +620,8 @@ class LoadBalancer(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Load Balancer can be imported using the id, e.g.
@@ -709,6 +711,8 @@ class LoadBalancer(pulumi.CustomResource):
                 "interval": 60,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -91,6 +91,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, e.g.

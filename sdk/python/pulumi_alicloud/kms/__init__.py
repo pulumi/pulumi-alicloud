@@ -25,5 +25,6 @@ from .key_version import *
 from .network_rule import *
 from .policy import *
 from .secret import *
+from .value_added_service import *
 from ._inputs import *
 from . import outputs

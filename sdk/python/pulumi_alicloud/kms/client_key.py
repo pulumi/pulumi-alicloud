@@ -249,6 +249,8 @@ class ClientKey(pulumi.CustomResource):
             private_key_data_file="./private_key_data_file.txt")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KMS Client Key can be imported using the id, e.g.
@@ -303,6 +305,8 @@ class ClientKey(pulumi.CustomResource):
             not_after="2028-09-01T14:11:22Z",
             private_key_data_file="./private_key_data_file.txt")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -483,6 +483,8 @@ class DbCluster(pulumi.CustomResource):
             payment_type="PayAsYouGo")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SelectDB DBCluster can be imported using the id, e.g.
@@ -546,6 +548,8 @@ class DbCluster(pulumi.CustomResource):
             cache_size=400,
             payment_type="PayAsYouGo")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -35,6 +35,8 @@ __all__ = [
     'RegistryEnterpriseInstanceInstanceEndpointDomainArgsDict',
     'RepoDomainListArgs',
     'RepoDomainListArgsDict',
+    'StorageDomainRoutingRuleRouteArgs',
+    'StorageDomainRoutingRuleRouteArgsDict',
 ]
 
 MYPY = False
@@ -603,5 +605,74 @@ class RepoDomainListArgs:
     @vpc.setter
     def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vpc", value)
+
+
+if not MYPY:
+    class StorageDomainRoutingRuleRouteArgsDict(TypedDict):
+        endpoint_type: pulumi.Input[_builtins.str]
+        """
+        Endpoint Type.
+        """
+        instance_domain: pulumi.Input[_builtins.str]
+        """
+        Instance domain name.
+        """
+        storage_domain: pulumi.Input[_builtins.str]
+        """
+        Storage domain name.
+        """
+elif False:
+    StorageDomainRoutingRuleRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StorageDomainRoutingRuleRouteArgs:
+    def __init__(__self__, *,
+                 endpoint_type: pulumi.Input[_builtins.str],
+                 instance_domain: pulumi.Input[_builtins.str],
+                 storage_domain: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] endpoint_type: Endpoint Type.
+        :param pulumi.Input[_builtins.str] instance_domain: Instance domain name.
+        :param pulumi.Input[_builtins.str] storage_domain: Storage domain name.
+        """
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "instance_domain", instance_domain)
+        pulumi.set(__self__, "storage_domain", storage_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Endpoint Type.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceDomain")
+    def instance_domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        Instance domain name.
+        """
+        return pulumi.get(self, "instance_domain")
+
+    @instance_domain.setter
+    def instance_domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_domain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageDomain")
+    def storage_domain(self) -> pulumi.Input[_builtins.str]:
+        """
+        Storage domain name.
+        """
+        return pulumi.get(self, "storage_domain")
+
+    @storage_domain.setter
+    def storage_domain(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "storage_domain", value)
 
 

@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:edas/applicationDeployment:ApplicationDeployment")]
     public partial class ApplicationDeployment : global::Pulumi.CustomResource

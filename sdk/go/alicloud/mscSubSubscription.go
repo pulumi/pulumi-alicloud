@@ -49,6 +49,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Msc Sub Subscription can be imported using the id, e.g.

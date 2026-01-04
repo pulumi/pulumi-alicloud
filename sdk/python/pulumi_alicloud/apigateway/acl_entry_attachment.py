@@ -162,6 +162,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             comment="test comment")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Acl Entry Attachment can be imported using the id, e.g.
@@ -207,6 +209,8 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="128.0.0.1/32",
             comment="test comment")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

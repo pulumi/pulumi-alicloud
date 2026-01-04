@@ -66,6 +66,8 @@ namespace Pulumi.AliCloud.Ebs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.

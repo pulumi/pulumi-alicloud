@@ -1610,6 +1610,8 @@ class EcsInstanceSet(pulumi.CustomResource):
             zone_id=default.zones[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] amount: The number of instances that you want to create. Valid values: `1` to `100`.
@@ -1730,6 +1732,8 @@ class EcsInstanceSet(pulumi.CustomResource):
             security_group_ids=[__item.id for __item in [default_security_group]],
             zone_id=default.zones[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param EcsInstanceSetArgs args: The arguments to use to populate this resource's properties.

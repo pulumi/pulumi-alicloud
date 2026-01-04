@@ -72,6 +72,8 @@ namespace Pulumi.AliCloud.Cen
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CEN Transit Router Ecr Attachment can be imported using the id, e.g.

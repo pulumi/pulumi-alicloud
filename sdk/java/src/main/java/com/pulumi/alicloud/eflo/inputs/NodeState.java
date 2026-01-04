@@ -3,11 +3,14 @@
 
 package com.pulumi.alicloud.eflo.inputs;
 
+import com.pulumi.alicloud.eflo.inputs.NodeDataDiskArgs;
+import com.pulumi.alicloud.eflo.inputs.NodeIpAllocationPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,12 +24,16 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Billing cycle
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="billingCycle")
     private @Nullable Output<String> billingCycle;
 
     /**
      * @return Billing cycle
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> billingCycle() {
@@ -36,6 +43,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Classification
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="classify")
     private @Nullable Output<String> classify;
@@ -43,13 +52,30 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Classification
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Optional<Output<String>> classify() {
         return Optional.ofNullable(this.classify);
     }
 
     /**
-     * Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * Cluster id
+     * 
+     */
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
+
+    /**
+     * @return Cluster id
+     * 
+     */
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * Node Model
      * 
      * @deprecated
      * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
@@ -60,7 +86,7 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> computingServer;
 
     /**
-     * @return Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+     * @return Node Model
      * 
      * @deprecated
      * Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
@@ -87,7 +113,24 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     * 
+     */
+    @Import(name="dataDisks")
+    private @Nullable Output<List<NodeDataDiskArgs>> dataDisks;
+
+    /**
+     * @return The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     * 
+     */
+    public Optional<Output<List<NodeDataDiskArgs>>> dataDisks() {
+        return Optional.ofNullable(this.dataDisks);
+    }
+
+    /**
      * Offer Information
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="discountLevel")
@@ -96,9 +139,26 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Offer Information
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     public Optional<Output<String>> discountLevel() {
         return Optional.ofNullable(this.discountLevel);
+    }
+
+    /**
+     * Host name
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return Host name
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     /**
@@ -132,6 +192,36 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     * 
+     */
+    @Import(name="ipAllocationPolicies")
+    private @Nullable Output<List<NodeIpAllocationPolicyArgs>> ipAllocationPolicies;
+
+    /**
+     * @return IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     * 
+     */
+    public Optional<Output<List<NodeIpAllocationPolicyArgs>>> ipAllocationPolicies() {
+        return Optional.ofNullable(this.ipAllocationPolicies);
+    }
+
+    /**
+     * Login Password
+     * 
+     */
+    @Import(name="loginPassword")
+    private @Nullable Output<String> loginPassword;
+
+    /**
+     * @return Login Password
+     * 
+     */
+    public Optional<Output<String>> loginPassword() {
+        return Optional.ofNullable(this.loginPassword);
+    }
+
+    /**
      * Model
      * 
      */
@@ -147,7 +237,39 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * node group id
+     * 
+     */
+    @Import(name="nodeGroupId")
+    private @Nullable Output<String> nodeGroupId;
+
+    /**
+     * @return node group id
+     * 
+     */
+    public Optional<Output<String>> nodeGroupId() {
+        return Optional.ofNullable(this.nodeGroupId);
+    }
+
+    /**
+     * node type
+     * 
+     */
+    @Import(name="nodeType")
+    private @Nullable Output<String> nodeType;
+
+    /**
+     * @return node type
+     * 
+     */
+    public Optional<Output<String>> nodeType() {
+        return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
      * Down payment ratio
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     @Import(name="paymentRatio")
@@ -155,6 +277,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Down payment ratio
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> paymentRatio() {
@@ -181,12 +305,16 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
      * @return Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -196,12 +324,16 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Form
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="productForm")
     private @Nullable Output<String> productForm;
 
     /**
      * @return Form
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> productForm() {
@@ -283,12 +415,16 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Architecture
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="serverArch")
     private @Nullable Output<String> serverArch;
 
     /**
      * @return Architecture
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> serverArch() {
@@ -298,12 +434,16 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * Number of stages
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="stageNum")
     private @Nullable Output<String> stageNum;
 
     /**
      * @return Number of stages
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> stageNum() {
@@ -341,6 +481,51 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Custom Data
+     * 
+     */
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    /**
+     * @return Custom Data
+     * 
+     */
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
+    /**
+     * VPC ID
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return VPC ID
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * Switch ID
+     * 
+     */
+    @Import(name="vswitchId")
+    private @Nullable Output<String> vswitchId;
+
+    /**
+     * @return Switch ID
+     * 
+     */
+    public Optional<Output<String>> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
      * Availability Zone
      * 
      */
@@ -360,12 +545,19 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     private NodeState(NodeState $) {
         this.billingCycle = $.billingCycle;
         this.classify = $.classify;
+        this.clusterId = $.clusterId;
         this.computingServer = $.computingServer;
         this.createTime = $.createTime;
+        this.dataDisks = $.dataDisks;
         this.discountLevel = $.discountLevel;
+        this.hostname = $.hostname;
         this.hpnZone = $.hpnZone;
         this.installPai = $.installPai;
+        this.ipAllocationPolicies = $.ipAllocationPolicies;
+        this.loginPassword = $.loginPassword;
         this.machineType = $.machineType;
+        this.nodeGroupId = $.nodeGroupId;
+        this.nodeType = $.nodeType;
         this.paymentRatio = $.paymentRatio;
         this.paymentType = $.paymentType;
         this.period = $.period;
@@ -378,6 +570,9 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         this.stageNum = $.stageNum;
         this.status = $.status;
         this.tags = $.tags;
+        this.userData = $.userData;
+        this.vpcId = $.vpcId;
+        this.vswitchId = $.vswitchId;
         this.zone = $.zone;
     }
 
@@ -402,6 +597,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param billingCycle Billing cycle
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -413,6 +610,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param billingCycle Billing cycle
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -422,6 +621,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param classify Classification
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -434,6 +635,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param classify Classification
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -442,7 +645,28 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computingServer Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * @param clusterId Cluster id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterId(@Nullable Output<String> clusterId) {
+            $.clusterId = clusterId;
+            return this;
+        }
+
+        /**
+         * @param clusterId Cluster id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterId(String clusterId) {
+            return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param computingServer Node Model
          * 
          * @return builder
          * 
@@ -457,7 +681,7 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computingServer Node Model. Field &#39;computing_server&#39; has been deprecated from provider version 1.261.0. New field &#39;machine_type&#39; instead.
+         * @param computingServer Node Model
          * 
          * @return builder
          * 
@@ -492,7 +716,40 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(@Nullable Output<List<NodeDataDiskArgs>> dataDisks) {
+            $.dataDisks = dataDisks;
+            return this;
+        }
+
+        /**
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(List<NodeDataDiskArgs> dataDisks) {
+            return dataDisks(Output.of(dataDisks));
+        }
+
+        /**
+         * @param dataDisks The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDisks(NodeDataDiskArgs... dataDisks) {
+            return dataDisks(List.of(dataDisks));
+        }
+
+        /**
          * @param discountLevel Offer Information
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -505,11 +762,34 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param discountLevel Offer Information
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
         public Builder discountLevel(String discountLevel) {
             return discountLevel(Output.of(discountLevel));
+        }
+
+        /**
+         * @param hostname Host name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname Host name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
         }
 
         /**
@@ -555,6 +835,58 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllocationPolicies(@Nullable Output<List<NodeIpAllocationPolicyArgs>> ipAllocationPolicies) {
+            $.ipAllocationPolicies = ipAllocationPolicies;
+            return this;
+        }
+
+        /**
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllocationPolicies(List<NodeIpAllocationPolicyArgs> ipAllocationPolicies) {
+            return ipAllocationPolicies(Output.of(ipAllocationPolicies));
+        }
+
+        /**
+         * @param ipAllocationPolicies IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllocationPolicies(NodeIpAllocationPolicyArgs... ipAllocationPolicies) {
+            return ipAllocationPolicies(List.of(ipAllocationPolicies));
+        }
+
+        /**
+         * @param loginPassword Login Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(@Nullable Output<String> loginPassword) {
+            $.loginPassword = loginPassword;
+            return this;
+        }
+
+        /**
+         * @param loginPassword Login Password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(String loginPassword) {
+            return loginPassword(Output.of(loginPassword));
+        }
+
+        /**
          * @param machineType Model
          * 
          * @return builder
@@ -576,7 +908,51 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nodeGroupId node group id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
+            $.nodeGroupId = nodeGroupId;
+            return this;
+        }
+
+        /**
+         * @param nodeGroupId node group id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupId(String nodeGroupId) {
+            return nodeGroupId(Output.of(nodeGroupId));
+        }
+
+        /**
+         * @param nodeType node type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(@Nullable Output<String> nodeType) {
+            $.nodeType = nodeType;
+            return this;
+        }
+
+        /**
+         * @param nodeType node type
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeType(String nodeType) {
+            return nodeType(Output.of(nodeType));
+        }
+
+        /**
          * @param paymentRatio Down payment ratio
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -588,6 +964,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param paymentRatio Down payment ratio
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -622,6 +1000,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param period Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -633,6 +1013,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param period Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -642,6 +1024,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param productForm Form
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -653,6 +1037,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param productForm Form
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -760,6 +1146,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serverArch Architecture
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -771,6 +1159,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serverArch Architecture
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -780,6 +1170,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param stageNum Number of stages
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -791,6 +1183,8 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param stageNum Number of stages
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 
@@ -839,6 +1233,69 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param userData Custom Data
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        /**
+         * @param userData Custom Data
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
+        }
+
+        /**
+         * @param vpcId VPC ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId VPC ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vswitchId Switch ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(@Nullable Output<String> vswitchId) {
+            $.vswitchId = vswitchId;
+            return this;
+        }
+
+        /**
+         * @param vswitchId Switch ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(String vswitchId) {
+            return vswitchId(Output.of(vswitchId));
         }
 
         /**

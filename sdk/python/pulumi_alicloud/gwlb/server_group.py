@@ -594,6 +594,8 @@ class ServerGroup(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GWLB Server Group can be imported using the id, e.g.
@@ -726,6 +728,8 @@ class ServerGroup(pulumi.CustomResource):
             },
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
