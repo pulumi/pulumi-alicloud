@@ -409,6 +409,8 @@ class Instance(pulumi.CustomResource):
             specification="drds.sn1.4c8g.8C16G")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Distributed Relational Database Service (DRDS) can be imported using the id, e.g.
@@ -479,6 +481,8 @@ class Instance(pulumi.CustomResource):
             instance_series=instance_series,
             specification="drds.sn1.4c8g.8C16G")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

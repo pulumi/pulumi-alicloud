@@ -5,7 +5,6 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -76,6 +75,38 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
      */
     public Optional<Output<String>> applicationName() {
         return Optional.ofNullable(this.applicationName);
+    }
+
+    /**
+     * The list of application types that the access control policy supports.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     * 
+     */
+    @Import(name="applicationNameLists")
+    private @Nullable Output<List<String>> applicationNameLists;
+
+    /**
+     * @return The list of application types that the access control policy supports.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     * 
+     */
+    public Optional<Output<List<String>>> applicationNameLists() {
+        return Optional.ofNullable(this.applicationNameLists);
+    }
+
+    /**
+     * (Available since v1.267.0) The time when the policy was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.267.0) The time when the policy was created.
+     * 
+     */
+    public Optional<Output<Integer>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -220,6 +251,36 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
+     * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     * 
+     */
+    @Import(name="domainResolveType")
+    private @Nullable Output<String> domainResolveType;
+
+    /**
+     * @return The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     * 
+     */
+    public Optional<Output<String>> domainResolveType() {
+        return Optional.ofNullable(this.domainResolveType);
+    }
+
+    /**
+     * The end time of the policy validity period.
+     * 
+     */
+    @Import(name="endTime")
+    private @Nullable Output<Integer> endTime;
+
+    /**
+     * @return The end time of the policy validity period.
+     * 
+     */
+    public Optional<Output<Integer>> endTime() {
+        return Optional.ofNullable(this.endTime);
+    }
+
+    /**
      * Control strategy of hits per second.
      * 
      */
@@ -299,14 +360,78 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
      * 
      */
     @Import(name="release")
-    private @Nullable Output<Boolean> release;
+    private @Nullable Output<String> release;
 
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
-    public Optional<Output<Boolean>> release() {
+    public Optional<Output<String>> release() {
         return Optional.ofNullable(this.release);
+    }
+
+    /**
+     * The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * 
+     */
+    @Import(name="repeatDays")
+    private @Nullable Output<List<Integer>> repeatDays;
+
+    /**
+     * @return The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * 
+     */
+    public Optional<Output<List<Integer>>> repeatDays() {
+        return Optional.ofNullable(this.repeatDays);
+    }
+
+    /**
+     * The recurring end time of the policy validity period.
+     * 
+     */
+    @Import(name="repeatEndTime")
+    private @Nullable Output<String> repeatEndTime;
+
+    /**
+     * @return The recurring end time of the policy validity period.
+     * 
+     */
+    public Optional<Output<String>> repeatEndTime() {
+        return Optional.ofNullable(this.repeatEndTime);
+    }
+
+    /**
+     * The recurring start time of the policy validity period.
+     * 
+     */
+    @Import(name="repeatStartTime")
+    private @Nullable Output<String> repeatStartTime;
+
+    /**
+     * @return The recurring start time of the policy validity period.
+     * 
+     */
+    public Optional<Output<String>> repeatStartTime() {
+        return Optional.ofNullable(this.repeatStartTime);
+    }
+
+    /**
+     * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     * 
+     */
+    @Import(name="repeatType")
+    private @Nullable Output<String> repeatType;
+
+    /**
+     * @return The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     * 
+     */
+    public Optional<Output<String>> repeatType() {
+        return Optional.ofNullable(this.repeatType);
     }
 
     /**
@@ -370,6 +495,21 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
     }
 
     /**
+     * The start time of the policy validity period.
+     * 
+     */
+    @Import(name="startTime")
+    private @Nullable Output<Integer> startTime;
+
+    /**
+     * @return The start time of the policy validity period.
+     * 
+     */
+    public Optional<Output<Integer>> startTime() {
+        return Optional.ofNullable(this.startTime);
+    }
+
+    /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -395,6 +535,8 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         this.aclUuid = $.aclUuid;
         this.applicationId = $.applicationId;
         this.applicationName = $.applicationName;
+        this.applicationNameLists = $.applicationNameLists;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.destPort = $.destPort;
         this.destPortGroup = $.destPortGroup;
@@ -404,16 +546,23 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         this.destinationGroupCidrs = $.destinationGroupCidrs;
         this.destinationGroupType = $.destinationGroupType;
         this.destinationType = $.destinationType;
+        this.domainResolveType = $.domainResolveType;
+        this.endTime = $.endTime;
         this.hitTimes = $.hitTimes;
         this.lang = $.lang;
         this.memberUid = $.memberUid;
         this.order = $.order;
         this.proto = $.proto;
         this.release = $.release;
+        this.repeatDays = $.repeatDays;
+        this.repeatEndTime = $.repeatEndTime;
+        this.repeatStartTime = $.repeatStartTime;
+        this.repeatType = $.repeatType;
         this.source = $.source;
         this.sourceGroupCidrs = $.sourceGroupCidrs;
         this.sourceGroupType = $.sourceGroupType;
         this.sourceType = $.sourceType;
+        this.startTime = $.startTime;
         this.vpcFirewallId = $.vpcFirewallId;
     }
 
@@ -517,6 +666,61 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
          */
         public Builder applicationName(String applicationName) {
             return applicationName(Output.of(applicationName));
+        }
+
+        /**
+         * @param applicationNameLists The list of application types that the access control policy supports.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(@Nullable Output<List<String>> applicationNameLists) {
+            $.applicationNameLists = applicationNameLists;
+            return this;
+        }
+
+        /**
+         * @param applicationNameLists The list of application types that the access control policy supports.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(List<String> applicationNameLists) {
+            return applicationNameLists(Output.of(applicationNameLists));
+        }
+
+        /**
+         * @param applicationNameLists The list of application types that the access control policy supports.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(String... applicationNameLists) {
+            return applicationNameLists(List.of(applicationNameLists));
+        }
+
+        /**
+         * @param createTime (Available since v1.267.0) The time when the policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<Integer> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.267.0) The time when the policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Integer createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -735,6 +939,48 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
         }
 
         /**
+         * @param domainResolveType The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainResolveType(@Nullable Output<String> domainResolveType) {
+            $.domainResolveType = domainResolveType;
+            return this;
+        }
+
+        /**
+         * @param domainResolveType The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainResolveType(String domainResolveType) {
+            return domainResolveType(Output.of(domainResolveType));
+        }
+
+        /**
+         * @param endTime The end time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endTime(@Nullable Output<Integer> endTime) {
+            $.endTime = endTime;
+            return this;
+        }
+
+        /**
+         * @param endTime The end time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endTime(Integer endTime) {
+            return endTime(Output.of(endTime));
+        }
+
+        /**
          * @param hitTimes Control strategy of hits per second.
          * 
          * @return builder
@@ -845,7 +1091,7 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder release(@Nullable Output<Boolean> release) {
+        public Builder release(@Nullable Output<String> release) {
             $.release = release;
             return this;
         }
@@ -856,8 +1102,108 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
          * @return builder
          * 
          */
-        public Builder release(Boolean release) {
+        public Builder release(String release) {
             return release(Output.of(release));
+        }
+
+        /**
+         * @param repeatDays The days of the week or month on which the policy is recurrently active. Valid values:
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(@Nullable Output<List<Integer>> repeatDays) {
+            $.repeatDays = repeatDays;
+            return this;
+        }
+
+        /**
+         * @param repeatDays The days of the week or month on which the policy is recurrently active. Valid values:
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(List<Integer> repeatDays) {
+            return repeatDays(Output.of(repeatDays));
+        }
+
+        /**
+         * @param repeatDays The days of the week or month on which the policy is recurrently active. Valid values:
+         * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(Integer... repeatDays) {
+            return repeatDays(List.of(repeatDays));
+        }
+
+        /**
+         * @param repeatEndTime The recurring end time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatEndTime(@Nullable Output<String> repeatEndTime) {
+            $.repeatEndTime = repeatEndTime;
+            return this;
+        }
+
+        /**
+         * @param repeatEndTime The recurring end time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatEndTime(String repeatEndTime) {
+            return repeatEndTime(Output.of(repeatEndTime));
+        }
+
+        /**
+         * @param repeatStartTime The recurring start time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatStartTime(@Nullable Output<String> repeatStartTime) {
+            $.repeatStartTime = repeatStartTime;
+            return this;
+        }
+
+        /**
+         * @param repeatStartTime The recurring start time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatStartTime(String repeatStartTime) {
+            return repeatStartTime(Output.of(repeatStartTime));
+        }
+
+        /**
+         * @param repeatType The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatType(@Nullable Output<String> repeatType) {
+            $.repeatType = repeatType;
+            return this;
+        }
+
+        /**
+         * @param repeatType The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatType(String repeatType) {
+            return repeatType(Output.of(repeatType));
         }
 
         /**
@@ -952,6 +1298,27 @@ public final class FirewallVpcFirewallControlPolicyState extends com.pulumi.reso
          */
         public Builder sourceType(String sourceType) {
             return sourceType(Output.of(sourceType));
+        }
+
+        /**
+         * @param startTime The start time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(@Nullable Output<Integer> startTime) {
+            $.startTime = startTime;
+            return this;
+        }
+
+        /**
+         * @param startTime The start time of the policy validity period.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(Integer startTime) {
+            return startTime(Output.of(startTime));
         }
 
         /**

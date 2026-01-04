@@ -138,6 +138,8 @@ class Gateway(pulumi.CustomResource):
         example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Database Gateway Gateway can be imported using the id, e.g.
@@ -174,6 +176,8 @@ class Gateway(pulumi.CustomResource):
 
         example = alicloud.databasegateway.Gateway("example", gateway_name="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

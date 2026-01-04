@@ -23,6 +23,7 @@ class AccountArgs:
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class AccountArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
@@ -54,6 +56,8 @@ class AccountArgs:
             pulumi.set(__self__, "account_password", account_password)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
+        if check_policy is not None:
+            pulumi.set(__self__, "check_policy", check_policy)
         if db_instance_id is not None:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
         if description is not None:
@@ -82,6 +86,8 @@ class AccountArgs:
             pulumi.set(__self__, "password", password)
         if reset_permission_flag is not None:
             pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
@@ -123,6 +129,15 @@ class AccountArgs:
     @account_type.setter
     def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "check_policy")
+
+    @check_policy.setter
+    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "check_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
@@ -220,6 +235,15 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -243,6 +267,7 @@ class _AccountState:
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -275,6 +300,8 @@ class _AccountState:
             pulumi.set(__self__, "account_password", account_password)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
+        if check_policy is not None:
+            pulumi.set(__self__, "check_policy", check_policy)
         if db_instance_id is not None:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
         if description is not None:
@@ -346,6 +373,15 @@ class _AccountState:
     @account_type.setter
     def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "check_policy")
+
+    @check_policy.setter
+    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "check_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
@@ -478,6 +514,7 @@ class Account(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -486,6 +523,7 @@ class Account(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -527,6 +565,8 @@ class Account(pulumi.CustomResource):
             name="tftestnormal",
             password="Test12345")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -596,6 +636,8 @@ class Account(pulumi.CustomResource):
             password="Test12345")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS account can be imported using the id, e.g.
@@ -623,6 +665,7 @@ class Account(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +674,7 @@ class Account(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -645,6 +689,7 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_type"] = account_type
+            __props__.__dict__["check_policy"] = check_policy
             __props__.__dict__["db_instance_id"] = db_instance_id
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_id"] = instance_id
@@ -653,8 +698,8 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["reset_permission_flag"] = reset_permission_flag
+            __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
-            __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
@@ -671,6 +716,7 @@ class Account(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[_builtins.str]] = None,
             account_password: Optional[pulumi.Input[_builtins.str]] = None,
             account_type: Optional[pulumi.Input[_builtins.str]] = None,
+            check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
             db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -708,6 +754,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
         __props__.__dict__["account_type"] = account_type
+        __props__.__dict__["check_policy"] = check_policy
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
@@ -739,6 +786,11 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountType")
     def account_type(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_type")
+
+    @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "check_policy")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")

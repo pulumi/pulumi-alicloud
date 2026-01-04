@@ -257,6 +257,8 @@ class NatIpCidr(pulumi.CustomResource):
             nat_ip_cidr="192.168.0.0/16")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Nat Ip Cidr can be imported using the id, e.g.
@@ -316,6 +318,8 @@ class NatIpCidr(pulumi.CustomResource):
             nat_ip_cidr_name="terraform-example",
             nat_ip_cidr="192.168.0.0/16")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

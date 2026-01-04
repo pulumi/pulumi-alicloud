@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a File Storage (NAS) Fileset resource.
  *
+ * Fileset of CPFS file system.
+ *
  * For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
  *
  * > **NOTE:** Available since v1.153.0.
@@ -48,6 +50,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * File Storage (NAS) Fileset can be imported using the id, e.g.
@@ -85,11 +89,21 @@ export class Fileset extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The time when Fileset was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     */
+    declare public readonly deletionProtection: pulumi.Output<boolean>;
+    /**
+     * Description of Fileset.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     declare public readonly dryRun: pulumi.Output<boolean | undefined>;
     /**
@@ -97,15 +111,15 @@ export class Fileset extends pulumi.CustomResource {
      */
     declare public readonly fileSystemId: pulumi.Output<string>;
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      */
     declare public readonly fileSystemPath: pulumi.Output<string>;
     /**
-     * The first ID of the resource.
+     * Fileset ID
      */
     declare public /*out*/ readonly filesetId: pulumi.Output<string>;
     /**
-     * The status of the fileset.
+     * The status of Fileset. Includes:
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -122,6 +136,8 @@ export class Fileset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilesetState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["dryRun"] = state?.dryRun;
             resourceInputs["fileSystemId"] = state?.fileSystemId;
@@ -136,10 +152,12 @@ export class Fileset extends pulumi.CustomResource {
             if (args?.fileSystemPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemPath'");
             }
+            resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["dryRun"] = args?.dryRun;
             resourceInputs["fileSystemId"] = args?.fileSystemId;
             resourceInputs["fileSystemPath"] = args?.fileSystemPath;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["filesetId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -153,11 +171,21 @@ export class Fileset extends pulumi.CustomResource {
  */
 export interface FilesetState {
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The time when Fileset was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     */
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Description of Fileset.
      */
     description?: pulumi.Input<string>;
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -165,15 +193,15 @@ export interface FilesetState {
      */
     fileSystemId?: pulumi.Input<string>;
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      */
     fileSystemPath?: pulumi.Input<string>;
     /**
-     * The first ID of the resource.
+     * Fileset ID
      */
     filesetId?: pulumi.Input<string>;
     /**
-     * The status of the fileset.
+     * The status of Fileset. Includes:
      */
     status?: pulumi.Input<string>;
 }
@@ -183,11 +211,17 @@ export interface FilesetState {
  */
 export interface FilesetArgs {
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     */
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Description of Fileset.
      */
     description?: pulumi.Input<string>;
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -195,7 +229,7 @@ export interface FilesetArgs {
      */
     fileSystemId: pulumi.Input<string>;
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      */
     fileSystemPath: pulumi.Input<string>;
 }

@@ -21,6 +21,8 @@ import * as utilities from "../utilities";
  *     plaintext: "example",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class Ciphertext extends pulumi.CustomResource {
     /**

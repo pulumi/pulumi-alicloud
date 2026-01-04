@@ -120,6 +120,8 @@ namespace Pulumi.AliCloud.FC
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -131,9 +133,6 @@ namespace Pulumi.AliCloud.FC
     [AliCloudResourceType("alicloud:fc/v3Function:V3Function")]
     public partial class V3Function : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
-        /// </summary>
         [Output("code")]
         public Output<Outputs.V3FunctionCode?> Code { get; private set; } = null!;
 
@@ -222,6 +221,12 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Handler { get; private set; } = null!;
 
         /// <summary>
+        /// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        /// </summary>
+        [Output("idleTimeout")]
+        public Output<int?> IdleTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum instance concurrency.
         /// </summary>
         [Output("instanceConcurrency")]
@@ -231,7 +236,7 @@ namespace Pulumi.AliCloud.FC
         /// Instance isolation mode
         /// </summary>
         [Output("instanceIsolationMode")]
-        public Output<string?> InstanceIsolationMode { get; private set; } = null!;
+        public Output<string> InstanceIsolationMode { get; private set; } = null!;
 
         /// <summary>
         /// Instance lifecycle callback method configuration. See `InstanceLifecycleConfig` below.
@@ -306,7 +311,7 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3FunctionOssMountConfig> OssMountConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Resource Group ID.
+        /// Resource Group ID
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -318,7 +323,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Function runtime type.
+        /// Function runtime type
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -327,7 +332,7 @@ namespace Pulumi.AliCloud.FC
         /// The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         /// </summary>
         [Output("sessionAffinity")]
-        public Output<string?> SessionAffinity { get; private set; } = null!;
+        public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
         /// When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
@@ -423,9 +428,6 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V3FunctionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
-        /// </summary>
         [Input("code")]
         public Input<Inputs.V3FunctionCodeArgs>? Code { get; set; }
 
@@ -496,6 +498,12 @@ namespace Pulumi.AliCloud.FC
         public Input<string> Handler { get; set; } = null!;
 
         /// <summary>
+        /// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<int>? IdleTimeout { get; set; }
+
+        /// <summary>
         /// Maximum instance concurrency.
         /// </summary>
         [Input("instanceConcurrency")]
@@ -562,7 +570,7 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3FunctionOssMountConfigArgs>? OssMountConfig { get; set; }
 
         /// <summary>
-        /// Resource Group ID.
+        /// Resource Group ID
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -574,7 +582,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Function runtime type.
+        /// Function runtime type
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -623,9 +631,6 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V3FunctionState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Function code ZIP package. code and customContainerConfig. See `Code` below.
-        /// </summary>
         [Input("code")]
         public Input<Inputs.V3FunctionCodeGetArgs>? Code { get; set; }
 
@@ -720,6 +725,12 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Handler { get; set; }
 
         /// <summary>
+        /// Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<int>? IdleTimeout { get; set; }
+
+        /// <summary>
         /// Maximum instance concurrency.
         /// </summary>
         [Input("instanceConcurrency")]
@@ -810,7 +821,7 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3FunctionOssMountConfigGetArgs>? OssMountConfig { get; set; }
 
         /// <summary>
-        /// Resource Group ID.
+        /// Resource Group ID
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -822,7 +833,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Function runtime type.
+        /// Function runtime type
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

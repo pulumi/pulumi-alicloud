@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.dns.DomainGroup("default", {domainGroupName: "tf-example"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Alidns domain group can be imported using the id, e.g.

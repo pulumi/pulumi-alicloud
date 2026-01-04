@@ -1281,6 +1281,8 @@ class Custom(pulumi.CustomResource):
             dry_run=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Custom can be imported using the id, e.g.
@@ -1434,6 +1436,8 @@ class Custom(pulumi.CustomResource):
             deployment_set_id=deploymentsetid,
             dry_run=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

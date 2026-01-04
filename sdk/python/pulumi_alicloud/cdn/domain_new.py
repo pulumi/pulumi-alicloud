@@ -418,6 +418,8 @@ class DomainNew(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CDN Domain can be imported using the id, e.g.
@@ -478,6 +480,8 @@ class DomainNew(pulumi.CustomResource):
                 "weight": 15,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

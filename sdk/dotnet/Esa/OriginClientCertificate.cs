@@ -88,6 +88,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Origin Client Certificate can be imported using the id, e.g.
@@ -139,7 +141,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// The status of the certificate.
@@ -241,7 +243,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         public OriginClientCertificateArgs()
         {
@@ -307,7 +309,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// The status of the certificate.

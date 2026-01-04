@@ -10,6 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.SchedulerX
 {
     /// <summary>
+    /// Provides a Schedulerx Namespace resource.
+    /// 
+    /// For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+    /// 
+    /// &gt; **NOTE:** Available since v1.173.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.SchedulerX.Namespace("default", new()
+    ///     {
+    ///         NamespaceName = name,
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Schedulerx Namespace can be imported using the id, e.g.
@@ -34,7 +65,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// Namespace uid.
+        /// namespace uid
         /// </summary>
         [Output("namespaceUid")]
         public Output<string> NamespaceUid { get; private set; } = null!;
@@ -98,7 +129,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string> NamespaceName { get; set; } = null!;
 
         /// <summary>
-        /// Namespace uid.
+        /// namespace uid
         /// </summary>
         [Input("namespaceUid")]
         public Input<string>? NamespaceUid { get; set; }
@@ -124,7 +155,7 @@ namespace Pulumi.AliCloud.SchedulerX
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
-        /// Namespace uid.
+        /// namespace uid
         /// </summary>
         [Input("namespaceUid")]
         public Input<string>? NamespaceUid { get; set; }

@@ -899,6 +899,8 @@ class StarRocksInstance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Star Rocks Instance can be imported using the id, e.g.
@@ -1026,6 +1028,8 @@ class StarRocksInstance(pulumi.CustomResource):
                 "zone_id": "cn-hangzhou-h",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

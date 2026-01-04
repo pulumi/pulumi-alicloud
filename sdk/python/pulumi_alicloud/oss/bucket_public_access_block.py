@@ -134,6 +134,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
             block_public_access=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Public Access Block can be imported using the id, e.g.
@@ -183,6 +185,8 @@ class BucketPublicAccessBlock(pulumi.CustomResource):
             bucket=create_bucket.bucket,
             block_public_access=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

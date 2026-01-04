@@ -113,6 +113,8 @@ namespace Pulumi.AliCloud.DataWorks
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Data Works Data Source Shared Rule can be imported using the id, e.g.

@@ -614,6 +614,8 @@ class FlowLog(pulumi.CustomResource):
             traffic_type="All")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Flow Log can be imported using the id, e.g.
@@ -706,6 +708,8 @@ class FlowLog(pulumi.CustomResource):
             aggregation_interval="1",
             traffic_type="All")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

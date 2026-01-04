@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.threatdetection.SasTrail("default", {});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Threat Detection Sas Trail can be imported using the id, e.g.

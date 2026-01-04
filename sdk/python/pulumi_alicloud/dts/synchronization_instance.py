@@ -538,6 +538,8 @@ class SynchronizationInstance(pulumi.CustomResource):
             sync_architecture="oneway")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DTS Synchronization Instance can be imported using the id, e.g.
@@ -594,6 +596,8 @@ class SynchronizationInstance(pulumi.CustomResource):
             instance_class="small",
             sync_architecture="oneway")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

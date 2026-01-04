@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  * const defaultK8sCluster = new alicloud.edas.K8sCluster("default", {csClusterId: defaultNodePool.clusterId});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EDAS cluster can be imported using the id, e.g.

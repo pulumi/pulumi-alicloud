@@ -953,6 +953,8 @@ class LoadBalancer(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Network Load Balancer (NLB) Load Balancer can be imported using the id, e.g.
@@ -1119,6 +1121,8 @@ class LoadBalancer(pulumi.CustomResource):
             ],
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -277,6 +277,8 @@ class IpSet(pulumi.CustomResource):
             accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ga Ip Set can be imported using the id, e.g.
@@ -338,6 +340,8 @@ class IpSet(pulumi.CustomResource):
             bandwidth=5,
             accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

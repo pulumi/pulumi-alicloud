@@ -440,6 +440,8 @@ class RewriteUrlRule(pulumi.CustomResource):
             uri="/image/example.jpg")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Rewrite Url Rule can be imported using the id, e.g.
@@ -516,6 +518,8 @@ class RewriteUrlRule(pulumi.CustomResource):
             rule="http.host eq \\"video.example.com\\"",
             uri="/image/example.jpg")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

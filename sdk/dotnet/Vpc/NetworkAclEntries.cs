@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAclEntries:NetworkAclEntries")]
     public partial class NetworkAclEntries : global::Pulumi.CustomResource

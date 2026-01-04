@@ -55,6 +55,8 @@ namespace Pulumi.AliCloud.Dns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Alidns Domain Record can be imported using the id, e.g.
@@ -115,7 +117,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<int?> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        /// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -227,7 +229,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        /// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -301,7 +303,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+        /// The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

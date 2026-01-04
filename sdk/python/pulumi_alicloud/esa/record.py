@@ -486,6 +486,8 @@ class Record(pulumi.CustomResource):
             record_type="SRV")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Record can be imported using the id, e.g.
@@ -565,6 +567,8 @@ class Record(pulumi.CustomResource):
             site_id=default_site.id,
             record_type="SRV")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

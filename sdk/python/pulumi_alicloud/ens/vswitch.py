@@ -266,6 +266,8 @@ class Vswitch(pulumi.CustomResource):
             network_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Vswitch can be imported using the id, e.g.
@@ -319,6 +321,8 @@ class Vswitch(pulumi.CustomResource):
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             network_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

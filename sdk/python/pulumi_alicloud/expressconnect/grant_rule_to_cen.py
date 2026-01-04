@@ -193,6 +193,8 @@ class GrantRuleToCen(pulumi.CustomResource):
             instance_id=default_virtual_border_router.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Grant Rule To Cen can be imported using the id, e.g.
@@ -254,6 +256,8 @@ class GrantRuleToCen(pulumi.CustomResource):
             cen_owner_id=default.id,
             instance_id=default_virtual_border_router.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

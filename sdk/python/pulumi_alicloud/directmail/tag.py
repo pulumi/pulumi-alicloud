@@ -93,6 +93,8 @@ class Tag(pulumi.CustomResource):
         example = alicloud.directmail.Tag("example", tag_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Direct Mail Tag can be imported using the id, e.g.
@@ -132,6 +134,8 @@ class Tag(pulumi.CustomResource):
             name = "example"
         example = alicloud.directmail.Tag("example", tag_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

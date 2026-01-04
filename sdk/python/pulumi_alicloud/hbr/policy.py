@@ -236,6 +236,8 @@ class Policy(pulumi.CustomResource):
             policy_description="policy example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Policy can be imported using the id, e.g.
@@ -297,6 +299,8 @@ class Policy(pulumi.CustomResource):
             }],
             policy_description="policy example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

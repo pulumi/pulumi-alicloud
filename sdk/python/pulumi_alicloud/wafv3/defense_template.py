@@ -410,6 +410,8 @@ class DefenseTemplate(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         WAFV3 Defense Template can be imported using the id, e.g.
@@ -468,6 +470,8 @@ class DefenseTemplate(pulumi.CustomResource):
             resource_manager_resource_group_id="example",
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

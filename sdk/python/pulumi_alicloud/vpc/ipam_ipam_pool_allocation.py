@@ -304,6 +304,8 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
             ipam_pool_id=default_ipam_pool_cidr.ipam_pool_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam Pool Allocation can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
             cidr="10.0.0.0/20",
             ipam_pool_id=default_ipam_pool_cidr.ipam_pool_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

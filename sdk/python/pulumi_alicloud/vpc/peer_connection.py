@@ -606,6 +606,8 @@ class PeerConnection(pulumi.CustomResource):
             description="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Peer Peer Connection can be imported using the id, e.g.
@@ -690,6 +692,8 @@ class PeerConnection(pulumi.CustomResource):
             accepting_vpc_id=accepting_vpc.id,
             description="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

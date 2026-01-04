@@ -246,6 +246,8 @@ class Vsc(pulumi.CustomResource):
             vsc_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Vsc can be imported using the id, e.g.
@@ -294,6 +296,8 @@ class Vsc(pulumi.CustomResource):
             node_id="e01-cn-9me49omda01",
             vsc_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

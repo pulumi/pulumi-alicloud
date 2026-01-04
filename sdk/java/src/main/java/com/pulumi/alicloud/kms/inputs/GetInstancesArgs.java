@@ -5,7 +5,6 @@ package com.pulumi.alicloud.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +32,21 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The name of the resource.
+     * 
+     */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return The name of the resource.
+     * 
+     */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
      * File name where to save data source results (after running `pulumi preview`).
      * 
      */
@@ -47,27 +61,12 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
-    @Import(name="pageNumber")
-    private @Nullable Output<Integer> pageNumber;
-
-    public Optional<Output<Integer>> pageNumber() {
-        return Optional.ofNullable(this.pageNumber);
-    }
-
-    @Import(name="pageSize")
-    private @Nullable Output<Integer> pageSize;
-
-    public Optional<Output<Integer>> pageSize() {
-        return Optional.ofNullable(this.pageSize);
-    }
-
     private GetInstancesArgs() {}
 
     private GetInstancesArgs(GetInstancesArgs $) {
         this.ids = $.ids;
+        this.instanceName = $.instanceName;
         this.outputFile = $.outputFile;
-        this.pageNumber = $.pageNumber;
-        this.pageSize = $.pageSize;
     }
 
     public static Builder builder() {
@@ -120,6 +119,27 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param instanceName The name of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
+            $.instanceName = instanceName;
+            return this;
+        }
+
+        /**
+         * @param instanceName The name of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceName(String instanceName) {
+            return instanceName(Output.of(instanceName));
+        }
+
+        /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
          * @return builder
@@ -138,24 +158,6 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder outputFile(String outputFile) {
             return outputFile(Output.of(outputFile));
-        }
-
-        public Builder pageNumber(@Nullable Output<Integer> pageNumber) {
-            $.pageNumber = pageNumber;
-            return this;
-        }
-
-        public Builder pageNumber(Integer pageNumber) {
-            return pageNumber(Output.of(pageNumber));
-        }
-
-        public Builder pageSize(@Nullable Output<Integer> pageSize) {
-            $.pageSize = pageSize;
-            return this;
-        }
-
-        public Builder pageSize(Integer pageSize) {
-            return pageSize(Output.of(pageSize));
         }
 
         public GetInstancesArgs build() {

@@ -203,6 +203,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ARMS Prometheus Monitoring can be imported using the id, e.g.

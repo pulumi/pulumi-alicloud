@@ -49,6 +49,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // VPN customer gateway can be imported using the id, e.g.

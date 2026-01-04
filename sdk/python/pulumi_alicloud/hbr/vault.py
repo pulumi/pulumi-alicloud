@@ -423,6 +423,8 @@ class Vault(pulumi.CustomResource):
         example = alicloud.hbr.Vault("example", vault_name=f"example_value_{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.
@@ -476,6 +478,8 @@ class Vault(pulumi.CustomResource):
             max=99999)
         example = alicloud.hbr.Vault("example", vault_name=f"example_value_{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -215,6 +215,8 @@ namespace Pulumi.AliCloud.Log
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Log audit can be imported using the id, e.g.

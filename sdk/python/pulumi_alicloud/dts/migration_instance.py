@@ -422,6 +422,8 @@ class MigrationInstance(pulumi.CustomResource):
             sync_architecture="oneway")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DTS Migration Instance can be imported using the id, e.g.
@@ -474,6 +476,8 @@ class MigrationInstance(pulumi.CustomResource):
             instance_class="small",
             sync_architecture="oneway")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

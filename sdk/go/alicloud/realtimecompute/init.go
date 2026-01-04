@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:realtimecompute/deployment:Deployment":
+		r = &Deployment{}
+	case "alicloud:realtimecompute/job:Job":
+		r = &Job{}
 	case "alicloud:realtimecompute/vvpInstance:VvpInstance":
 		r = &VvpInstance{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"realtimecompute/deployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"realtimecompute/job",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"realtimecompute/vvpInstance",

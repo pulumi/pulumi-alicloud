@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.CloudSso
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud SSO Delegate Account can be imported using the id, e.g.

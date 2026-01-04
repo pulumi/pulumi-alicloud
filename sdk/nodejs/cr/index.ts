@@ -85,6 +85,16 @@ export type Repo = import("./repo").Repo;
 export const Repo: typeof import("./repo").Repo = null as any;
 utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
 
+export { ScanRuleArgs, ScanRuleState } from "./scanRule";
+export type ScanRule = import("./scanRule").ScanRule;
+export const ScanRule: typeof import("./scanRule").ScanRule = null as any;
+utilities.lazyLoad(exports, ["ScanRule"], () => require("./scanRule"));
+
+export { StorageDomainRoutingRuleArgs, StorageDomainRoutingRuleState } from "./storageDomainRoutingRule";
+export type StorageDomainRoutingRule = import("./storageDomainRoutingRule").StorageDomainRoutingRule;
+export const StorageDomainRoutingRule: typeof import("./storageDomainRoutingRule").StorageDomainRoutingRule = null as any;
+utilities.lazyLoad(exports, ["StorageDomainRoutingRule"], () => require("./storageDomainRoutingRule"));
+
 export { VpcEndpointLinkedVpcArgs, VpcEndpointLinkedVpcState } from "./vpcEndpointLinkedVpc";
 export type VpcEndpointLinkedVpc = import("./vpcEndpointLinkedVpc").VpcEndpointLinkedVpc;
 export const VpcEndpointLinkedVpc: typeof import("./vpcEndpointLinkedVpc").VpcEndpointLinkedVpc = null as any;
@@ -109,6 +119,10 @@ const _module = {
                 return new RegistryEnterpriseInstance(name, <any>undefined, { urn })
             case "alicloud:cr/repo:Repo":
                 return new Repo(name, <any>undefined, { urn })
+            case "alicloud:cr/scanRule:ScanRule":
+                return new ScanRule(name, <any>undefined, { urn })
+            case "alicloud:cr/storageDomainRoutingRule:StorageDomainRoutingRule":
+                return new StorageDomainRoutingRule(name, <any>undefined, { urn })
             case "alicloud:cr/vpcEndpointLinkedVpc:VpcEndpointLinkedVpc":
                 return new VpcEndpointLinkedVpc(name, <any>undefined, { urn })
             default:
@@ -123,4 +137,6 @@ pulumi.runtime.registerResourceModule("alicloud", "cr/endpointAclPolicy", _modul
 pulumi.runtime.registerResourceModule("alicloud", "cr/namespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/registryEnterpriseInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/repo", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/scanRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cr/storageDomainRoutingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cr/vpcEndpointLinkedVpc", _module)

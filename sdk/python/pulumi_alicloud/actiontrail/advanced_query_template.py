@@ -163,6 +163,8 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
             template_sql="*")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Actiontrail Advanced Query Template can be imported using the id, e.g.
@@ -209,6 +211,8 @@ class AdvancedQueryTemplate(pulumi.CustomResource):
             template_name="exampleTemplateName",
             template_sql="*")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

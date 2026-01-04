@@ -74,8 +74,8 @@ class TrailArgs:
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -187,7 +187,7 @@ class TrailArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
@@ -372,8 +372,8 @@ class _TrailState:
         if mns_topic_arn is not None:
             pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
         if name is not None:
-            warnings.warn("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if oss_bucket_name is not None:
@@ -499,7 +499,7 @@ class _TrailState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
@@ -693,6 +693,8 @@ class Trail(pulumi.CustomResource):
             sls_project_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default.regions[0].id}:{default_get_account.id}:project/{project_name}"))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Actiontrail Trail can be imported using the id, e.g.
@@ -763,6 +765,8 @@ class Trail(pulumi.CustomResource):
             sls_write_role_arn=default_get_roles.roles[0].arn,
             sls_project_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default.regions[0].id}:{default_get_account.id}:project/{project_name}"))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -980,7 +984,7 @@ class Trail(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.""")
+    @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.""")
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Field `name` has been deprecated from provider version 1.95.0. New field `trail_name` instead.
@@ -1046,7 +1050,7 @@ class Trail(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
         """

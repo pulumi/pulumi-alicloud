@@ -43,6 +43,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Wafv3 Instance can be imported using the id, e.g.

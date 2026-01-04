@@ -125,6 +125,8 @@ class HpcCluster(pulumi.CustomResource):
             description="For Terraform Test")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Hpc Cluster can be imported using the id, e.g.
@@ -163,6 +165,8 @@ class HpcCluster(pulumi.CustomResource):
             name="tf-testAcc",
             description="For Terraform Test")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

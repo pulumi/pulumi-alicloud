@@ -253,6 +253,8 @@ class Callback(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aligreen Callback can be imported using the id, e.g.
@@ -311,6 +313,8 @@ class Callback(pulumi.CustomResource):
                 "pass",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

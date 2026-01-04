@@ -1385,6 +1385,8 @@ class Cluster(pulumi.CustomResource):
             related_cluster_id=related_cluster_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Aliclioud E-MapReduce cluster can be imported using the id e.g.
@@ -1884,6 +1886,8 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!",
             related_cluster_id=related_cluster_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

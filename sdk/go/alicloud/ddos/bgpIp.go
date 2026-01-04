@@ -78,6 +78,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.

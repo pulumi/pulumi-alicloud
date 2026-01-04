@@ -166,6 +166,8 @@ class NetworkRule(pulumi.CustomResource):
             network_rule_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KMS Network Rule can be imported using the id, e.g.
@@ -214,6 +216,8 @@ class NetworkRule(pulumi.CustomResource):
             ],
             network_rule_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

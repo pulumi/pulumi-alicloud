@@ -231,6 +231,8 @@ class Notification(pulumi.CustomResource):
             notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default.regions[0].id}:{default_get_account.id}:queue/{name}"))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ess notification can be imported using the id, e.g.
@@ -305,6 +307,8 @@ class Notification(pulumi.CustomResource):
             ],
             notification_arn=default_queue.name.apply(lambda name: f"acs:ess:{default.regions[0].id}:{default_get_account.id}:queue/{name}"))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

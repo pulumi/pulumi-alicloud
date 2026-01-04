@@ -499,6 +499,8 @@ class Table(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OTS table can be imported using id, e.g.
@@ -594,6 +596,8 @@ class Table(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

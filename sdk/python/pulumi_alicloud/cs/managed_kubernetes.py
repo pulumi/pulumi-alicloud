@@ -2057,6 +2057,8 @@ class ManagedKubernetes(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -2435,6 +2437,8 @@ class ManagedKubernetes(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -2909,7 +2913,7 @@ class ManagedKubernetes(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether to enable cluster deletion protection.
         """

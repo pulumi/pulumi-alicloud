@@ -286,6 +286,8 @@ class NasFileSystem(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Nas File System can be imported using the id, e.g.
@@ -342,6 +344,8 @@ class NasFileSystem(pulumi.CustomResource):
             office_site_id=default_simple_office_site.id,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

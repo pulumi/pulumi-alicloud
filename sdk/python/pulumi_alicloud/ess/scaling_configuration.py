@@ -2003,6 +2003,8 @@ class ScalingConfiguration(pulumi.CustomResource):
             active=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -2163,6 +2165,8 @@ class ScalingConfiguration(pulumi.CustomResource):
             force_delete=True,
             active=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

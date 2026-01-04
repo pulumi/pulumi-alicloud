@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.brain.IndustrialPidOrganization("example", {pidOrganizationName: "tf-testAcc"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Brain Industrial Pid Organization can be imported using the id, e.g.

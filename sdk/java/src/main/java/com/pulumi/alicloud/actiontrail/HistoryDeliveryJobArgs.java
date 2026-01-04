@@ -15,14 +15,14 @@ public final class HistoryDeliveryJobArgs extends com.pulumi.resources.ResourceA
     public static final HistoryDeliveryJobArgs Empty = new HistoryDeliveryJobArgs();
 
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      * 
      */
     @Import(name="trailName", required=true)
     private Output<String> trailName;
 
     /**
-     * @return The name of the trail for which you want to create a historical event delivery task.
+     * @return The Track Name.
      * 
      */
     public Output<String> trailName() {
@@ -54,7 +54,7 @@ public final class HistoryDeliveryJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param trailName The name of the trail for which you want to create a historical event delivery task.
+         * @param trailName The Track Name.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class HistoryDeliveryJobArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param trailName The name of the trail for which you want to create a historical event delivery task.
+         * @param trailName The Track Name.
          * 
          * @return builder
          * 

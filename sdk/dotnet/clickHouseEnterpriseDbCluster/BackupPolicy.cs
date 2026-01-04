@@ -68,6 +68,8 @@ namespace Pulumi.AliCloud.clickHouseEnterpriseDbCluster
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Click House Enterprise Db Cluster Backup Policy can be imported using the id, e.g.

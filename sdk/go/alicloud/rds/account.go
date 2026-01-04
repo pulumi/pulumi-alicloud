@@ -88,6 +88,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RDS account can be imported using the id, e.g.
@@ -98,11 +100,12 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
-	AccountDescription pulumi.StringOutput `pulumi:"accountDescription"`
-	AccountName        pulumi.StringOutput `pulumi:"accountName"`
-	AccountPassword    pulumi.StringOutput `pulumi:"accountPassword"`
-	AccountType        pulumi.StringOutput `pulumi:"accountType"`
-	DbInstanceId       pulumi.StringOutput `pulumi:"dbInstanceId"`
+	AccountDescription pulumi.StringOutput  `pulumi:"accountDescription"`
+	AccountName        pulumi.StringOutput  `pulumi:"accountName"`
+	AccountPassword    pulumi.StringOutput  `pulumi:"accountPassword"`
+	AccountType        pulumi.StringOutput  `pulumi:"accountType"`
+	CheckPolicy        pulumi.BoolPtrOutput `pulumi:"checkPolicy"`
+	DbInstanceId       pulumi.StringOutput  `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
 	// Deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
@@ -180,6 +183,7 @@ type accountState struct {
 	AccountName        *string `pulumi:"accountName"`
 	AccountPassword    *string `pulumi:"accountPassword"`
 	AccountType        *string `pulumi:"accountType"`
+	CheckPolicy        *bool   `pulumi:"checkPolicy"`
 	DbInstanceId       *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
@@ -218,6 +222,7 @@ type AccountState struct {
 	AccountName        pulumi.StringPtrInput
 	AccountPassword    pulumi.StringPtrInput
 	AccountType        pulumi.StringPtrInput
+	CheckPolicy        pulumi.BoolPtrInput
 	DbInstanceId       pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
@@ -260,6 +265,7 @@ type accountArgs struct {
 	AccountName        *string `pulumi:"accountName"`
 	AccountPassword    *string `pulumi:"accountPassword"`
 	AccountType        *string `pulumi:"accountType"`
+	CheckPolicy        *bool   `pulumi:"checkPolicy"`
 	DbInstanceId       *string `pulumi:"dbInstanceId"`
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
@@ -282,6 +288,7 @@ type accountArgs struct {
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password            *string `pulumi:"password"`
 	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
+	Status              *string `pulumi:"status"`
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -298,6 +305,7 @@ type AccountArgs struct {
 	AccountName        pulumi.StringPtrInput
 	AccountPassword    pulumi.StringPtrInput
 	AccountType        pulumi.StringPtrInput
+	CheckPolicy        pulumi.BoolPtrInput
 	DbInstanceId       pulumi.StringPtrInput
 	// Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
 	//
@@ -320,6 +328,7 @@ type AccountArgs struct {
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password            pulumi.StringPtrInput
 	ResetPermissionFlag pulumi.BoolPtrInput
+	Status              pulumi.StringPtrInput
 	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
@@ -431,6 +440,10 @@ func (o AccountOutput) AccountPassword() pulumi.StringOutput {
 
 func (o AccountOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
+}
+
+func (o AccountOutput) CheckPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.CheckPolicy }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccountOutput) DbInstanceId() pulumi.StringOutput {

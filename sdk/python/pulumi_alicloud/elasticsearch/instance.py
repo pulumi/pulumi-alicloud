@@ -13,37 +13,47 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 data_node_amount: pulumi.Input[_builtins.int],
-                 data_node_disk_size: pulumi.Input[_builtins.int],
-                 data_node_disk_type: pulumi.Input[_builtins.str],
-                 data_node_spec: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 client_node_configuration: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']] = None,
                  client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_node_configuration: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 kibana_configuration: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']] = None,
                  kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: Optional[pulumi.Input['InstanceMasterConfigurationArgs']] = None,
                  master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -53,7 +63,9 @@ class InstanceArgs:
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 warm_node_configuration: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']] = None,
                  warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -61,63 +73,112 @@ class InstanceArgs:
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[_builtins.str] version: Instance version
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
+        :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
+        :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+        :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
-        :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
-        :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
-        :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
-        :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
-        :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
-        :param pulumi.Input[_builtins.str] description: The description of instance. It a string of 0 to 30 characters.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
-        :param pulumi.Input[_builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
+        :param pulumi.Input[_builtins.str] description: Instance name
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[_builtins.str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[_builtins.str] password: The access password of the instance.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
+        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
-        pulumi.set(__self__, "data_node_amount", data_node_amount)
-        pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
-        pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
-        pulumi.set(__self__, "data_node_spec", data_node_spec)
         pulumi.set(__self__, "version", version)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if auto_renew_duration is not None:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
+            warnings.warn("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""client_node_amount is deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
+        if client_node_amount is not None:
             pulumi.set(__self__, "client_node_amount", client_node_amount)
+        if client_node_configuration is not None:
+            pulumi.set(__self__, "client_node_configuration", client_node_configuration)
+        if client_node_spec is not None:
+            warnings.warn("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""client_node_spec is deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
         if client_node_spec is not None:
             pulumi.set(__self__, "client_node_spec", client_node_spec)
+        if data_node_amount is not None:
+            warnings.warn("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_amount is deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
+        if data_node_amount is not None:
+            pulumi.set(__self__, "data_node_amount", data_node_amount)
+        if data_node_configuration is not None:
+            pulumi.set(__self__, "data_node_configuration", data_node_configuration)
+        if data_node_disk_encrypted is not None:
+            warnings.warn("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_encrypted is deprecated: Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
         if data_node_disk_encrypted is not None:
             pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
         if data_node_disk_performance_level is not None:
+            warnings.warn("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_performance_level is deprecated: Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
+        if data_node_disk_performance_level is not None:
             pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
+        if data_node_disk_size is not None:
+            warnings.warn("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_size is deprecated: Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
+        if data_node_disk_size is not None:
+            pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
+        if data_node_disk_type is not None:
+            warnings.warn("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_type is deprecated: Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
+        if data_node_disk_type is not None:
+            pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
+        if data_node_spec is not None:
+            warnings.warn("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_spec is deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
+        if data_node_spec is not None:
+            pulumi.set(__self__, "data_node_spec", data_node_spec)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_kibana_private_network is not None:
@@ -126,8 +187,20 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_kibana_public_network", enable_kibana_public_network)
         if enable_public is not None:
             pulumi.set(__self__, "enable_public", enable_public)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if instance_category is not None:
+            pulumi.set(__self__, "instance_category", instance_category)
+        if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if kibana_configuration is not None:
+            pulumi.set(__self__, "kibana_configuration", kibana_configuration)
+        if kibana_node_spec is not None:
+            warnings.warn("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""kibana_node_spec is deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
         if kibana_node_spec is not None:
             pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_private_security_group_id is not None:
@@ -140,12 +213,24 @@ class InstanceArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if master_configuration is not None:
+            pulumi.set(__self__, "master_configuration", master_configuration)
+        if master_node_disk_type is not None:
+            warnings.warn("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""master_node_disk_type is deprecated: Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
         if master_node_disk_type is not None:
             pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
+            warnings.warn("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""master_node_spec is deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
+        if master_node_spec is not None:
             pulumi.set(__self__, "master_node_spec", master_node_spec)
+        if order_action_type is not None:
+            pulumi.set(__self__, "order_action_type", order_action_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if private_whitelists is not None:
@@ -164,72 +249,43 @@ class InstanceArgs:
             pulumi.set(__self__, "setting_config", setting_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
+        if warm_node_amount is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_amount is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
         if warm_node_amount is not None:
             pulumi.set(__self__, "warm_node_amount", warm_node_amount)
+        if warm_node_configuration is not None:
+            pulumi.set(__self__, "warm_node_configuration", warm_node_configuration)
+        if warm_node_disk_encrypted is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_encrypted is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
         if warm_node_disk_encrypted is not None:
             pulumi.set(__self__, "warm_node_disk_encrypted", warm_node_disk_encrypted)
         if warm_node_disk_size is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_size is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
+        if warm_node_disk_size is not None:
             pulumi.set(__self__, "warm_node_disk_size", warm_node_disk_size)
         if warm_node_disk_type is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_type is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
+        if warm_node_disk_type is not None:
             pulumi.set(__self__, "warm_node_disk_type", warm_node_disk_type)
+        if warm_node_spec is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_spec is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
         if warm_node_spec is not None:
             pulumi.set(__self__, "warm_node_spec", warm_node_spec)
         if zone_count is not None:
             pulumi.set(__self__, "zone_count", zone_count)
 
     @_builtins.property
-    @pulumi.getter(name="dataNodeAmount")
-    def data_node_amount(self) -> pulumi.Input[_builtins.int]:
-        """
-        The Elasticsearch cluster's data node quantity, between 2 and 50.
-        """
-        return pulumi.get(self, "data_node_amount")
-
-    @data_node_amount.setter
-    def data_node_amount(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "data_node_amount", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dataNodeDiskSize")
-    def data_node_disk_size(self) -> pulumi.Input[_builtins.int]:
-        """
-        The single data node storage space.
-        """
-        return pulumi.get(self, "data_node_disk_size")
-
-    @data_node_disk_size.setter
-    def data_node_disk_size(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "data_node_disk_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dataNodeDiskType")
-    def data_node_disk_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
-        """
-        return pulumi.get(self, "data_node_disk_type")
-
-    @data_node_disk_type.setter
-    def data_node_disk_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "data_node_disk_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dataNodeSpec")
-    def data_node_spec(self) -> pulumi.Input[_builtins.str]:
-        """
-        The data node specifications of the Elasticsearch instance.
-        """
-        return pulumi.get(self, "data_node_spec")
-
-    @data_node_spec.setter
-    def data_node_spec(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "data_node_spec", value)
-
-    @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[_builtins.str]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        Instance version
         """
         return pulumi.get(self, "version")
 
@@ -253,7 +309,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        Renewal Period
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -263,6 +319,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientNodeAmount")
+    @_utilities.deprecated("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
     def client_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -274,7 +331,20 @@ class InstanceArgs:
         pulumi.set(self, "client_node_amount", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientNodeConfiguration")
+    def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
+        """
+        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        """
+        return pulumi.get(self, "client_node_configuration")
+
+    @client_node_configuration.setter
+    def client_node_configuration(self, value: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]):
+        pulumi.set(self, "client_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="clientNodeSpec")
+    @_utilities.deprecated("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
     def client_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The client node spec. If specified, client node will be created.
@@ -286,7 +356,33 @@ class InstanceArgs:
         pulumi.set(self, "client_node_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataNodeAmount")
+    @_utilities.deprecated("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
+    def data_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The Elasticsearch cluster's data node quantity, between 2 and 50.
+        """
+        return pulumi.get(self, "data_node_amount")
+
+    @data_node_amount.setter
+    def data_node_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "data_node_amount", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataNodeConfiguration")
+    def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
+        """
+        Elasticsearch data node information See `data_node_configuration` below.
+        """
+        return pulumi.get(self, "data_node_configuration")
+
+    @data_node_configuration.setter
+    def data_node_configuration(self, value: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]):
+        pulumi.set(self, "data_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataNodeDiskEncrypted")
+    @_utilities.deprecated("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
     def data_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -299,6 +395,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskPerformanceLevel")
+    @_utilities.deprecated("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
     def data_node_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
@@ -310,10 +407,49 @@ class InstanceArgs:
         pulumi.set(self, "data_node_disk_performance_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataNodeDiskSize")
+    @_utilities.deprecated("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
+    def data_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The single data node storage space.
+        """
+        return pulumi.get(self, "data_node_disk_size")
+
+    @data_node_disk_size.setter
+    def data_node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "data_node_disk_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataNodeDiskType")
+    @_utilities.deprecated("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
+    def data_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+        """
+        return pulumi.get(self, "data_node_disk_type")
+
+    @data_node_disk_type.setter
+    def data_node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_node_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataNodeSpec")
+    @_utilities.deprecated("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
+    def data_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The data node specifications of the Elasticsearch instance.
+        """
+        return pulumi.get(self, "data_node_spec")
+
+    @data_node_spec.setter
+    def data_node_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "data_node_spec", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of instance. It a string of 0 to 30 characters.
+        Instance name
         """
         return pulumi.get(self, "description")
 
@@ -325,7 +461,11 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to false. When it set to true, the instance can close kibana private network access。
+        Whether to enable Kibana private network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
@@ -337,7 +477,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        Does Kibana enable public access
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
@@ -349,7 +489,11 @@ class InstanceArgs:
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to false. When it set to true, the instance can enable public network access。
+        Whether to enable Kibana public network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_public")
 
@@ -358,7 +502,29 @@ class InstanceArgs:
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCategory")
+    def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version type.
+        """
+        return pulumi.get(self, "instance_category")
+
+    @instance_category.setter
+    def instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_category", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -370,7 +536,20 @@ class InstanceArgs:
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="kibanaConfiguration")
+    def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
+        """
+        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        """
+        return pulumi.get(self, "kibana_configuration")
+
+    @kibana_configuration.setter
+    def kibana_configuration(self, value: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]):
+        pulumi.set(self, "kibana_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="kibanaNodeSpec")
+    @_utilities.deprecated("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
     def kibana_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -385,7 +564,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        Kibana private network security group ID
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -397,7 +576,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        Cluster Kibana node private network access whitelist
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -409,7 +588,7 @@ class InstanceArgs:
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the Kibana's IP whitelist in internet network.
+        Kibana private network access whitelist
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -442,7 +621,20 @@ class InstanceArgs:
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
+    @pulumi.getter(name="masterConfiguration")
+    def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
+        """
+        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        """
+        return pulumi.get(self, "master_configuration")
+
+    @master_configuration.setter
+    def master_configuration(self, value: Optional[pulumi.Input['InstanceMasterConfigurationArgs']]):
+        pulumi.set(self, "master_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="masterNodeDiskType")
+    @_utilities.deprecated("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
     def master_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
@@ -455,6 +647,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="masterNodeSpec")
+    @_utilities.deprecated("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
     def master_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
@@ -466,10 +659,19 @@ class InstanceArgs:
         pulumi.set(self, "master_node_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="orderActionType")
+    def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "order_action_type")
+
+    @order_action_type.setter
+    def order_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "order_action_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+        The access password of the instance.
         """
         return pulumi.get(self, "password")
 
@@ -478,10 +680,22 @@ class InstanceArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
         return pulumi.get(self, "period")
 
@@ -493,7 +707,7 @@ class InstanceArgs:
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the instance's IP whitelist in VPC network.
+        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
         """
         return pulumi.get(self, "private_whitelists")
 
@@ -505,7 +719,7 @@ class InstanceArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        Access protocol. Optional values: `HTTP` and **HTTPS * *.
         """
         return pulumi.get(self, "protocol")
 
@@ -517,7 +731,7 @@ class InstanceArgs:
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the instance's IP whitelist in internet network.
+        Elasticseach public network access whitelist IP list
         """
         return pulumi.get(self, "public_whitelists")
 
@@ -529,7 +743,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        Renewal Status
         """
         return pulumi.get(self, "renew_status")
 
@@ -541,7 +755,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        Renewal Period Unit
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -553,7 +767,7 @@ class InstanceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of resource group which the Elasticsearch instance belongs.
+        Resource group to which the instance belongs
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -565,7 +779,7 @@ class InstanceArgs:
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        Configuration information
         """
         return pulumi.get(self, "setting_config")
 
@@ -577,7 +791,7 @@ class InstanceArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        Collection of tag key-value pairs
         """
         return pulumi.get(self, "tags")
 
@@ -586,7 +800,17 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
+    @_builtins.property
     @pulumi.getter(name="warmNodeAmount")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
     def warm_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The Elasticsearch cluster's warm node quantity, between 3 and 50.
@@ -598,7 +822,20 @@ class InstanceArgs:
         pulumi.set(self, "warm_node_amount", value)
 
     @_builtins.property
+    @pulumi.getter(name="warmNodeConfiguration")
+    def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
+        """
+        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        """
+        return pulumi.get(self, "warm_node_configuration")
+
+    @warm_node_configuration.setter
+    def warm_node_configuration(self, value: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]):
+        pulumi.set(self, "warm_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="warmNodeDiskEncrypted")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
     def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
@@ -611,6 +848,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskSize")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
     def warm_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The single warm node storage space, should between 500 and 20480
@@ -623,6 +861,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskType")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
     def warm_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The warm node disk type. Supported values:  cloud_efficiency.
@@ -635,6 +874,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeSpec")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
     def warm_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The warm node specifications of the Elasticsearch instance.
@@ -649,7 +889,9 @@ class InstanceArgs:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        The number of zones in the Elasticsearch instance.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_count")
 
@@ -661,10 +903,14 @@ class InstanceArgs:
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
+                 arch_type: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 client_node_configuration: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']] = None,
                  client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_node_configuration: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
@@ -675,7 +921,10 @@ class _InstanceState:
                  enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 kibana_configuration: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']] = None,
                  kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
@@ -684,9 +933,12 @@ class _InstanceState:
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: Optional[pulumi.Input['InstanceMasterConfigurationArgs']] = None,
                  master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -700,9 +952,11 @@ class _InstanceState:
                  setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 warm_node_configuration: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']] = None,
                  warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -710,70 +964,121 @@ class _InstanceState:
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] arch_type: Schema Type:
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input['InstanceClientNodeConfigurationArgs'] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
+        :param pulumi.Input[_builtins.str] create_time: Instance creation time
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input['InstanceDataNodeConfigurationArgs'] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: The description of instance. It a string of 0 to 30 characters.
-        :param pulumi.Input[_builtins.str] domain: Instance connection domain (only VPC network access supported).
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
-        :param pulumi.Input[_builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
+        :param pulumi.Input[_builtins.str] description: Instance name
+        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana console domain (Internet access supported).
+        :param pulumi.Input['InstanceKibanaConfigurationArgs'] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.int] kibana_port: Kibana console port.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input['InstanceMasterConfigurationArgs'] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[_builtins.str] password: The access password of the instance.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[_builtins.str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[_builtins.str] public_domain: Instance connection public domain.
-        :param pulumi.Input[_builtins.int] public_port: Instance connection public port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[_builtins.str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        :param pulumi.Input[_builtins.str] public_domain: The public network address of the current instance.
+        :param pulumi.Input[_builtins.int] public_port: Elasticsearch cluster public network access port
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
+        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
+        :param pulumi.Input[_builtins.str] status: Instance change status
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input['InstanceWarmNodeConfigurationArgs'] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        if arch_type is not None:
+            pulumi.set(__self__, "arch_type", arch_type)
         if auto_renew_duration is not None:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if client_node_amount is not None:
+            warnings.warn("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""client_node_amount is deprecated: Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
+        if client_node_amount is not None:
             pulumi.set(__self__, "client_node_amount", client_node_amount)
+        if client_node_configuration is not None:
+            pulumi.set(__self__, "client_node_configuration", client_node_configuration)
+        if client_node_spec is not None:
+            warnings.warn("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""client_node_spec is deprecated: Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
         if client_node_spec is not None:
             pulumi.set(__self__, "client_node_spec", client_node_spec)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if data_node_amount is not None:
+            warnings.warn("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_amount is deprecated: Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
         if data_node_amount is not None:
             pulumi.set(__self__, "data_node_amount", data_node_amount)
+        if data_node_configuration is not None:
+            pulumi.set(__self__, "data_node_configuration", data_node_configuration)
+        if data_node_disk_encrypted is not None:
+            warnings.warn("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_encrypted is deprecated: Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
         if data_node_disk_encrypted is not None:
             pulumi.set(__self__, "data_node_disk_encrypted", data_node_disk_encrypted)
         if data_node_disk_performance_level is not None:
+            warnings.warn("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_performance_level is deprecated: Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
+        if data_node_disk_performance_level is not None:
             pulumi.set(__self__, "data_node_disk_performance_level", data_node_disk_performance_level)
+        if data_node_disk_size is not None:
+            warnings.warn("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_size is deprecated: Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
         if data_node_disk_size is not None:
             pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
         if data_node_disk_type is not None:
+            warnings.warn("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_disk_type is deprecated: Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
+        if data_node_disk_type is not None:
             pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
+        if data_node_spec is not None:
+            warnings.warn("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""data_node_spec is deprecated: Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
         if data_node_spec is not None:
             pulumi.set(__self__, "data_node_spec", data_node_spec)
         if description is not None:
@@ -786,10 +1091,22 @@ class _InstanceState:
             pulumi.set(__self__, "enable_kibana_public_network", enable_kibana_public_network)
         if enable_public is not None:
             pulumi.set(__self__, "enable_public", enable_public)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
+        if instance_category is not None:
+            pulumi.set(__self__, "instance_category", instance_category)
+        if instance_charge_type is not None:
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if kibana_configuration is not None:
+            pulumi.set(__self__, "kibana_configuration", kibana_configuration)
         if kibana_domain is not None:
             pulumi.set(__self__, "kibana_domain", kibana_domain)
+        if kibana_node_spec is not None:
+            warnings.warn("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""kibana_node_spec is deprecated: Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
         if kibana_node_spec is not None:
             pulumi.set(__self__, "kibana_node_spec", kibana_node_spec)
         if kibana_port is not None:
@@ -804,12 +1121,24 @@ class _InstanceState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if master_configuration is not None:
+            pulumi.set(__self__, "master_configuration", master_configuration)
+        if master_node_disk_type is not None:
+            warnings.warn("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""master_node_disk_type is deprecated: Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
         if master_node_disk_type is not None:
             pulumi.set(__self__, "master_node_disk_type", master_node_disk_type)
         if master_node_spec is not None:
+            warnings.warn("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""master_node_spec is deprecated: Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
+        if master_node_spec is not None:
             pulumi.set(__self__, "master_node_spec", master_node_spec)
+        if order_action_type is not None:
+            pulumi.set(__self__, "order_action_type", order_action_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if payment_type is not None:
+            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if port is not None:
@@ -836,28 +1165,59 @@ class _InstanceState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if warm_node_amount is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_amount is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
+        if warm_node_amount is not None:
             pulumi.set(__self__, "warm_node_amount", warm_node_amount)
+        if warm_node_configuration is not None:
+            pulumi.set(__self__, "warm_node_configuration", warm_node_configuration)
+        if warm_node_disk_encrypted is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_encrypted is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
         if warm_node_disk_encrypted is not None:
             pulumi.set(__self__, "warm_node_disk_encrypted", warm_node_disk_encrypted)
         if warm_node_disk_size is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_size is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
+        if warm_node_disk_size is not None:
             pulumi.set(__self__, "warm_node_disk_size", warm_node_disk_size)
         if warm_node_disk_type is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_disk_type is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
+        if warm_node_disk_type is not None:
             pulumi.set(__self__, "warm_node_disk_type", warm_node_disk_type)
+        if warm_node_spec is not None:
+            warnings.warn("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""", DeprecationWarning)
+            pulumi.log.warn("""warm_node_spec is deprecated: Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
         if warm_node_spec is not None:
             pulumi.set(__self__, "warm_node_spec", warm_node_spec)
         if zone_count is not None:
             pulumi.set(__self__, "zone_count", zone_count)
 
     @_builtins.property
+    @pulumi.getter(name="archType")
+    def arch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Schema Type:
+        """
+        return pulumi.get(self, "arch_type")
+
+    @arch_type.setter
+    def arch_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "arch_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        Renewal Period
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -867,6 +1227,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="clientNodeAmount")
+    @_utilities.deprecated("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
     def client_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The Elasticsearch cluster's client node quantity, between 2 and 25.
@@ -878,7 +1239,20 @@ class _InstanceState:
         pulumi.set(self, "client_node_amount", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientNodeConfiguration")
+    def client_node_configuration(self) -> Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]:
+        """
+        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        """
+        return pulumi.get(self, "client_node_configuration")
+
+    @client_node_configuration.setter
+    def client_node_configuration(self, value: Optional[pulumi.Input['InstanceClientNodeConfigurationArgs']]):
+        pulumi.set(self, "client_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="clientNodeSpec")
+    @_utilities.deprecated("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
     def client_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The client node spec. If specified, client node will be created.
@@ -890,7 +1264,20 @@ class _InstanceState:
         pulumi.set(self, "client_node_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Instance creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataNodeAmount")
+    @_utilities.deprecated("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
     def data_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
@@ -902,7 +1289,20 @@ class _InstanceState:
         pulumi.set(self, "data_node_amount", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataNodeConfiguration")
+    def data_node_configuration(self) -> Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]:
+        """
+        Elasticsearch data node information See `data_node_configuration` below.
+        """
+        return pulumi.get(self, "data_node_configuration")
+
+    @data_node_configuration.setter
+    def data_node_configuration(self, value: Optional[pulumi.Input['InstanceDataNodeConfigurationArgs']]):
+        pulumi.set(self, "data_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="dataNodeDiskEncrypted")
+    @_utilities.deprecated("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
     def data_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
@@ -915,6 +1315,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskPerformanceLevel")
+    @_utilities.deprecated("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
     def data_node_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
@@ -927,6 +1328,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskSize")
+    @_utilities.deprecated("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
     def data_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The single data node storage space.
@@ -939,6 +1341,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskType")
+    @_utilities.deprecated("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
     def data_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -951,6 +1354,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="dataNodeSpec")
+    @_utilities.deprecated("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
     def data_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The data node specifications of the Elasticsearch instance.
@@ -965,7 +1369,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of instance. It a string of 0 to 30 characters.
+        Instance name
         """
         return pulumi.get(self, "description")
 
@@ -977,7 +1381,7 @@ class _InstanceState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance connection domain (only VPC network access supported).
+        Elasticsearch cluster private domain name
         """
         return pulumi.get(self, "domain")
 
@@ -989,7 +1393,11 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPrivateNetwork")
     def enable_kibana_private_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to false. When it set to true, the instance can close kibana private network access。
+        Whether to enable Kibana private network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
@@ -1001,7 +1409,7 @@ class _InstanceState:
     @pulumi.getter(name="enableKibanaPublicNetwork")
     def enable_kibana_public_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        Does Kibana enable public access
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
@@ -1013,7 +1421,11 @@ class _InstanceState:
     @pulumi.getter(name="enablePublic")
     def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Bool, default to false. When it set to true, the instance can enable public network access。
+        Whether to enable Kibana public network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_public")
 
@@ -1022,7 +1434,29 @@ class _InstanceState:
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCategory")
+    def instance_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Version type.
+        """
+        return pulumi.get(self, "instance_category")
+
+    @instance_category.setter
+    def instance_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_category", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
@@ -1034,10 +1468,22 @@ class _InstanceState:
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="kibanaConfiguration")
+    def kibana_configuration(self) -> Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]:
+        """
+        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        """
+        return pulumi.get(self, "kibana_configuration")
+
+    @kibana_configuration.setter
+    def kibana_configuration(self, value: Optional[pulumi.Input['InstanceKibanaConfigurationArgs']]):
+        pulumi.set(self, "kibana_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Kibana console domain (Internet access supported).
+        Kibana address
         """
         return pulumi.get(self, "kibana_domain")
 
@@ -1047,6 +1493,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="kibanaNodeSpec")
+    @_utilities.deprecated("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
     def kibana_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -1061,7 +1508,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaPort")
     def kibana_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Kibana console port.
+        The port assigned by the Kibana node.
         """
         return pulumi.get(self, "kibana_port")
 
@@ -1073,7 +1520,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        Kibana private network security group ID
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -1085,7 +1532,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        Cluster Kibana node private network access whitelist
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -1097,7 +1544,7 @@ class _InstanceState:
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the Kibana's IP whitelist in internet network.
+        Kibana private network access whitelist
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -1130,7 +1577,20 @@ class _InstanceState:
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
+    @pulumi.getter(name="masterConfiguration")
+    def master_configuration(self) -> Optional[pulumi.Input['InstanceMasterConfigurationArgs']]:
+        """
+        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        """
+        return pulumi.get(self, "master_configuration")
+
+    @master_configuration.setter
+    def master_configuration(self, value: Optional[pulumi.Input['InstanceMasterConfigurationArgs']]):
+        pulumi.set(self, "master_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="masterNodeDiskType")
+    @_utilities.deprecated("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
     def master_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
@@ -1143,6 +1603,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="masterNodeSpec")
+    @_utilities.deprecated("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
     def master_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
@@ -1154,10 +1615,19 @@ class _InstanceState:
         pulumi.set(self, "master_node_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="orderActionType")
+    def order_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "order_action_type")
+
+    @order_action_type.setter
+    def order_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "order_action_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+        The access password of the instance.
         """
         return pulumi.get(self, "password")
 
@@ -1166,10 +1636,22 @@ class _InstanceState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "payment_type", value)
+
+    @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
         return pulumi.get(self, "period")
 
@@ -1193,7 +1675,7 @@ class _InstanceState:
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the instance's IP whitelist in VPC network.
+        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
         """
         return pulumi.get(self, "private_whitelists")
 
@@ -1205,7 +1687,7 @@ class _InstanceState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        Access protocol. Optional values: `HTTP` and **HTTPS * *.
         """
         return pulumi.get(self, "protocol")
 
@@ -1217,7 +1699,7 @@ class _InstanceState:
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Instance connection public domain.
+        The public network address of the current instance.
         """
         return pulumi.get(self, "public_domain")
 
@@ -1229,7 +1711,7 @@ class _InstanceState:
     @pulumi.getter(name="publicPort")
     def public_port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Instance connection public port.
+        Elasticsearch cluster public network access port
         """
         return pulumi.get(self, "public_port")
 
@@ -1241,7 +1723,7 @@ class _InstanceState:
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Set the instance's IP whitelist in internet network.
+        Elasticseach public network access whitelist IP list
         """
         return pulumi.get(self, "public_whitelists")
 
@@ -1253,7 +1735,7 @@ class _InstanceState:
     @pulumi.getter(name="renewStatus")
     def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        Renewal Status
         """
         return pulumi.get(self, "renew_status")
 
@@ -1265,7 +1747,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalDurationUnit")
     def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        Renewal Period Unit
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -1277,7 +1759,7 @@ class _InstanceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of resource group which the Elasticsearch instance belongs.
+        Resource group to which the instance belongs
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1289,7 +1771,7 @@ class _InstanceState:
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        Configuration information
         """
         return pulumi.get(self, "setting_config")
 
@@ -1301,7 +1783,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+        Instance change status
         """
         return pulumi.get(self, "status")
 
@@ -1313,7 +1795,7 @@ class _InstanceState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A mapping of tags to assign to the resource.
+        Collection of tag key-value pairs
         """
         return pulumi.get(self, "tags")
 
@@ -1322,10 +1804,19 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
+    @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        Instance version
         """
         return pulumi.get(self, "version")
 
@@ -1347,6 +1838,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeAmount")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
     def warm_node_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The Elasticsearch cluster's warm node quantity, between 3 and 50.
@@ -1358,7 +1850,20 @@ class _InstanceState:
         pulumi.set(self, "warm_node_amount", value)
 
     @_builtins.property
+    @pulumi.getter(name="warmNodeConfiguration")
+    def warm_node_configuration(self) -> Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]:
+        """
+        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        """
+        return pulumi.get(self, "warm_node_configuration")
+
+    @warm_node_configuration.setter
+    def warm_node_configuration(self, value: Optional[pulumi.Input['InstanceWarmNodeConfigurationArgs']]):
+        pulumi.set(self, "warm_node_configuration", value)
+
+    @_builtins.property
     @pulumi.getter(name="warmNodeDiskEncrypted")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
     def warm_node_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
@@ -1371,6 +1876,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskSize")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
     def warm_node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The single warm node storage space, should between 500 and 20480
@@ -1383,6 +1889,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskType")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
     def warm_node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The warm node disk type. Supported values:  cloud_efficiency.
@@ -1395,6 +1902,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="warmNodeSpec")
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
     def warm_node_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The warm node specifications of the Elasticsearch instance.
@@ -1409,7 +1917,9 @@ class _InstanceState:
     @pulumi.getter(name="zoneCount")
     def zone_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        The number of zones in the Elasticsearch instance.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_count")
 
@@ -1426,8 +1936,10 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
                  client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1437,16 +1949,22 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
                  kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
                  master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1456,9 +1974,11 @@ class Instance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
                  warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1466,56 +1986,120 @@ class Instance(pulumi.CustomResource):
                  zone_count: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Provides a Elasticsearch Instance resource.
+
+        For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
+
+        > **NOTE:** Available since v1.30.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.elasticsearch.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_instance = alicloud.elasticsearch.Instance("default",
+            description=name,
+            vswitch_id=default_switch.id,
+            password="Examplw1234",
+            version="7.10_with_X-Pack",
+            instance_charge_type="PostPaid",
+            data_node_amount=2,
+            data_node_spec="elasticsearch.sn2ne.large",
+            data_node_disk_size=20,
+            data_node_disk_type="cloud_ssd",
+            kibana_node_spec="elasticsearch.sn2ne.large",
+            data_node_disk_performance_level="PL1",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        Elasticsearch can be imported using the id, e.g.
+        Elasticsearch Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+        $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: The description of instance. It a string of 0 to 30 characters.
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
-        :param pulumi.Input[_builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
+        :param pulumi.Input[_builtins.str] description: Instance name
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[_builtins.str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        :param pulumi.Input[_builtins.str] password: The access password of the instance.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
+        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -1524,12 +2108,59 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Elasticsearch Instance resource.
+
+        For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
+
+        > **NOTE:** Available since v1.30.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.elasticsearch.get_zones()
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.0.0.0/8")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            cidr_block="10.1.0.0/16",
+            vpc_id=default_network.id,
+            zone_id=default.zones[0].id)
+        default_instance = alicloud.elasticsearch.Instance("default",
+            description=name,
+            vswitch_id=default_switch.id,
+            password="Examplw1234",
+            version="7.10_with_X-Pack",
+            instance_charge_type="PostPaid",
+            data_node_amount=2,
+            data_node_spec="elasticsearch.sn2ne.large",
+            data_node_disk_size=20,
+            data_node_disk_type="cloud_ssd",
+            kibana_node_spec="elasticsearch.sn2ne.large",
+            data_node_disk_performance_level="PL1",
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        Elasticsearch can be imported using the id, e.g.
+        Elasticsearch Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+        $ pulumi import alicloud:elasticsearch/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -1549,8 +2180,10 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
                  client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
                  data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
                  data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1560,16 +2193,22 @@ class Instance(pulumi.CustomResource):
                  enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 force: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_category: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
                  kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kibana_private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
                  master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
                  master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+                 order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1579,9 +2218,11 @@ class Instance(pulumi.CustomResource):
                  resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
                  vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+                 warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
                  warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
                  warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1598,35 +2239,35 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["client_node_amount"] = client_node_amount
+            __props__.__dict__["client_node_configuration"] = client_node_configuration
             __props__.__dict__["client_node_spec"] = client_node_spec
-            if data_node_amount is None and not opts.urn:
-                raise TypeError("Missing required property 'data_node_amount'")
             __props__.__dict__["data_node_amount"] = data_node_amount
+            __props__.__dict__["data_node_configuration"] = data_node_configuration
             __props__.__dict__["data_node_disk_encrypted"] = data_node_disk_encrypted
             __props__.__dict__["data_node_disk_performance_level"] = data_node_disk_performance_level
-            if data_node_disk_size is None and not opts.urn:
-                raise TypeError("Missing required property 'data_node_disk_size'")
             __props__.__dict__["data_node_disk_size"] = data_node_disk_size
-            if data_node_disk_type is None and not opts.urn:
-                raise TypeError("Missing required property 'data_node_disk_type'")
             __props__.__dict__["data_node_disk_type"] = data_node_disk_type
-            if data_node_spec is None and not opts.urn:
-                raise TypeError("Missing required property 'data_node_spec'")
             __props__.__dict__["data_node_spec"] = data_node_spec
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_kibana_private_network"] = enable_kibana_private_network
             __props__.__dict__["enable_kibana_public_network"] = enable_kibana_public_network
             __props__.__dict__["enable_public"] = enable_public
+            __props__.__dict__["force"] = force
+            __props__.__dict__["instance_category"] = instance_category
             __props__.__dict__["instance_charge_type"] = instance_charge_type
+            __props__.__dict__["kibana_configuration"] = kibana_configuration
             __props__.__dict__["kibana_node_spec"] = kibana_node_spec
             __props__.__dict__["kibana_private_security_group_id"] = kibana_private_security_group_id
             __props__.__dict__["kibana_private_whitelists"] = kibana_private_whitelists
             __props__.__dict__["kibana_whitelists"] = kibana_whitelists
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["master_configuration"] = master_configuration
             __props__.__dict__["master_node_disk_type"] = master_node_disk_type
             __props__.__dict__["master_node_spec"] = master_node_spec
+            __props__.__dict__["order_action_type"] = order_action_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["private_whitelists"] = private_whitelists
             __props__.__dict__["protocol"] = protocol
@@ -1636,6 +2277,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["setting_config"] = setting_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["update_strategy"] = update_strategy
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
@@ -1643,11 +2285,14 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["warm_node_amount"] = warm_node_amount
+            __props__.__dict__["warm_node_configuration"] = warm_node_configuration
             __props__.__dict__["warm_node_disk_encrypted"] = warm_node_disk_encrypted
             __props__.__dict__["warm_node_disk_size"] = warm_node_disk_size
             __props__.__dict__["warm_node_disk_type"] = warm_node_disk_type
             __props__.__dict__["warm_node_spec"] = warm_node_spec
             __props__.__dict__["zone_count"] = zone_count
+            __props__.__dict__["arch_type"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["domain"] = None
             __props__.__dict__["kibana_domain"] = None
             __props__.__dict__["kibana_port"] = None
@@ -1667,10 +2312,14 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            arch_type: Optional[pulumi.Input[_builtins.str]] = None,
             auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
             client_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+            client_node_configuration: Optional[pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']]] = None,
             client_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             data_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+            data_node_configuration: Optional[pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']]] = None,
             data_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
             data_node_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
             data_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1681,7 +2330,10 @@ class Instance(pulumi.CustomResource):
             enable_kibana_private_network: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_kibana_public_network: Optional[pulumi.Input[_builtins.bool]] = None,
             enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
+            force: Optional[pulumi.Input[_builtins.bool]] = None,
+            instance_category: Optional[pulumi.Input[_builtins.str]] = None,
             instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
+            kibana_configuration: Optional[pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']]] = None,
             kibana_domain: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
             kibana_port: Optional[pulumi.Input[_builtins.int]] = None,
@@ -1690,9 +2342,12 @@ class Instance(pulumi.CustomResource):
             kibana_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_configuration: Optional[pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']]] = None,
             master_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
             master_node_spec: Optional[pulumi.Input[_builtins.str]] = None,
+            order_action_type: Optional[pulumi.Input[_builtins.str]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
+            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             period: Optional[pulumi.Input[_builtins.int]] = None,
             port: Optional[pulumi.Input[_builtins.int]] = None,
             private_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1706,9 +2361,11 @@ class Instance(pulumi.CustomResource):
             setting_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
             version: Optional[pulumi.Input[_builtins.str]] = None,
             vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             warm_node_amount: Optional[pulumi.Input[_builtins.int]] = None,
+            warm_node_configuration: Optional[pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']]] = None,
             warm_node_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
             warm_node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
             warm_node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1721,62 +2378,85 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_renew_duration: Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        :param pulumi.Input[_builtins.str] arch_type: Schema Type:
+        :param pulumi.Input[_builtins.int] auto_renew_duration: Renewal Period
         :param pulumi.Input[_builtins.int] client_node_amount: The Elasticsearch cluster's client node quantity, between 2 and 25.
+        :param pulumi.Input[Union['InstanceClientNodeConfigurationArgs', 'InstanceClientNodeConfigurationArgsDict']] client_node_configuration: Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
         :param pulumi.Input[_builtins.str] client_node_spec: The client node spec. If specified, client node will be created.
+        :param pulumi.Input[_builtins.str] create_time: Instance creation time
         :param pulumi.Input[_builtins.int] data_node_amount: The Elasticsearch cluster's data node quantity, between 2 and 50.
+        :param pulumi.Input[Union['InstanceDataNodeConfigurationArgs', 'InstanceDataNodeConfigurationArgsDict']] data_node_configuration: Elasticsearch data node information See `data_node_configuration` below.
         :param pulumi.Input[_builtins.bool] data_node_disk_encrypted: If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.str] data_node_disk_performance_level: Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         :param pulumi.Input[_builtins.int] data_node_disk_size: The single data node storage space.
         :param pulumi.Input[_builtins.str] data_node_disk_type: The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
         :param pulumi.Input[_builtins.str] data_node_spec: The data node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.str] description: The description of instance. It a string of 0 to 30 characters.
-        :param pulumi.Input[_builtins.str] domain: Instance connection domain (only VPC network access supported).
-        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Bool, default to false. When it set to true, the instance can close kibana private network access。
-        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Bool, default to true. When it set to false, the instance can enable kibana public network access。
-        :param pulumi.Input[_builtins.bool] enable_public: Bool, default to false. When it set to true, the instance can enable public network access。
+        :param pulumi.Input[_builtins.str] description: Instance name
+        :param pulumi.Input[_builtins.str] domain: Elasticsearch cluster private domain name
+        :param pulumi.Input[_builtins.bool] enable_kibana_private_network: Whether to enable Kibana private network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.bool] enable_kibana_public_network: Does Kibana enable public access
+        :param pulumi.Input[_builtins.bool] enable_public: Whether to enable Kibana public network access.
+               
+               The meaning of the value is as follows:
+               - true: On.
+               - false: does not open.
+        :param pulumi.Input[_builtins.str] instance_category: Version type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
-        :param pulumi.Input[_builtins.str] kibana_domain: Kibana console domain (Internet access supported).
+        :param pulumi.Input[Union['InstanceKibanaConfigurationArgs', 'InstanceKibanaConfigurationArgsDict']] kibana_configuration: Elasticsearch Kibana node settings See `kibana_configuration` below.
+        :param pulumi.Input[_builtins.str] kibana_domain: Kibana address
         :param pulumi.Input[_builtins.str] kibana_node_spec: The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        :param pulumi.Input[_builtins.int] kibana_port: Kibana console port.
-        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Set the Kibana's IP whitelist in internet network.
+        :param pulumi.Input[_builtins.int] kibana_port: The port assigned by the Kibana node.
+        :param pulumi.Input[_builtins.str] kibana_private_security_group_id: Kibana private network security group ID
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_private_whitelists: Cluster Kibana node private network access whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] kibana_whitelists: Kibana private network access whitelist
         :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Union['InstanceMasterConfigurationArgs', 'InstanceMasterConfigurationArgsDict']] master_configuration: Elasticsearch proprietary master node configuration information See `master_configuration` below.
         :param pulumi.Input[_builtins.str] master_node_disk_type: The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         :param pulumi.Input[_builtins.str] master_node_spec: The dedicated master node spec. If specified, dedicated master node will be created.
-        :param pulumi.Input[_builtins.str] password: The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
-        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        :param pulumi.Input[_builtins.str] password: The access password of the instance.
+        :param pulumi.Input[_builtins.str] payment_type: The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        :param pulumi.Input[_builtins.int] period: The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         :param pulumi.Input[_builtins.int] port: Instance connection port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Set the instance's IP whitelist in VPC network.
-        :param pulumi.Input[_builtins.str] protocol: Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        :param pulumi.Input[_builtins.str] public_domain: Instance connection public domain.
-        :param pulumi.Input[_builtins.int] public_port: Instance connection public port.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Set the instance's IP whitelist in internet network.
-        :param pulumi.Input[_builtins.str] renew_status: The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
-        :param pulumi.Input[_builtins.str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
-        :param pulumi.Input[_builtins.str] resource_group_id: The ID of resource group which the Elasticsearch instance belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        :param pulumi.Input[_builtins.str] status: The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[_builtins.str] version: Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_whitelists: Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        :param pulumi.Input[_builtins.str] protocol: Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        :param pulumi.Input[_builtins.str] public_domain: The public network address of the current instance.
+        :param pulumi.Input[_builtins.int] public_port: Elasticsearch cluster public network access port
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_whitelists: Elasticseach public network access whitelist IP list
+        :param pulumi.Input[_builtins.str] renew_status: Renewal Status
+        :param pulumi.Input[_builtins.str] renewal_duration_unit: Renewal Period Unit
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource group to which the instance belongs
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] setting_config: Configuration information
+        :param pulumi.Input[_builtins.str] status: Instance change status
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Collection of tag key-value pairs
+        :param pulumi.Input[_builtins.str] version: Instance version
         :param pulumi.Input[_builtins.str] vswitch_id: The ID of VSwitch.
         :param pulumi.Input[_builtins.int] warm_node_amount: The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        :param pulumi.Input[Union['InstanceWarmNodeConfigurationArgs', 'InstanceWarmNodeConfigurationArgsDict']] warm_node_configuration: Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
         :param pulumi.Input[_builtins.bool] warm_node_disk_encrypted: If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         :param pulumi.Input[_builtins.int] warm_node_disk_size: The single warm node storage space, should between 500 and 20480
         :param pulumi.Input[_builtins.str] warm_node_disk_type: The warm node disk type. Supported values:  cloud_efficiency.
         :param pulumi.Input[_builtins.str] warm_node_spec: The warm node specifications of the Elasticsearch instance.
-        :param pulumi.Input[_builtins.int] zone_count: The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        :param pulumi.Input[_builtins.int] zone_count: The number of zones in the Elasticsearch instance.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InstanceState.__new__(_InstanceState)
 
+        __props__.__dict__["arch_type"] = arch_type
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["client_node_amount"] = client_node_amount
+        __props__.__dict__["client_node_configuration"] = client_node_configuration
         __props__.__dict__["client_node_spec"] = client_node_spec
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_node_amount"] = data_node_amount
+        __props__.__dict__["data_node_configuration"] = data_node_configuration
         __props__.__dict__["data_node_disk_encrypted"] = data_node_disk_encrypted
         __props__.__dict__["data_node_disk_performance_level"] = data_node_disk_performance_level
         __props__.__dict__["data_node_disk_size"] = data_node_disk_size
@@ -1787,7 +2467,10 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["enable_kibana_private_network"] = enable_kibana_private_network
         __props__.__dict__["enable_kibana_public_network"] = enable_kibana_public_network
         __props__.__dict__["enable_public"] = enable_public
+        __props__.__dict__["force"] = force
+        __props__.__dict__["instance_category"] = instance_category
         __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["kibana_configuration"] = kibana_configuration
         __props__.__dict__["kibana_domain"] = kibana_domain
         __props__.__dict__["kibana_node_spec"] = kibana_node_spec
         __props__.__dict__["kibana_port"] = kibana_port
@@ -1796,9 +2479,12 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["kibana_whitelists"] = kibana_whitelists
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["master_configuration"] = master_configuration
         __props__.__dict__["master_node_disk_type"] = master_node_disk_type
         __props__.__dict__["master_node_spec"] = master_node_spec
+        __props__.__dict__["order_action_type"] = order_action_type
         __props__.__dict__["password"] = password
+        __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
         __props__.__dict__["private_whitelists"] = private_whitelists
@@ -1812,9 +2498,11 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["setting_config"] = setting_config
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["update_strategy"] = update_strategy
         __props__.__dict__["version"] = version
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["warm_node_amount"] = warm_node_amount
+        __props__.__dict__["warm_node_configuration"] = warm_node_configuration
         __props__.__dict__["warm_node_disk_encrypted"] = warm_node_disk_encrypted
         __props__.__dict__["warm_node_disk_size"] = warm_node_disk_size
         __props__.__dict__["warm_node_disk_type"] = warm_node_disk_type
@@ -1823,31 +2511,58 @@ class Instance(pulumi.CustomResource):
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="archType")
+    def arch_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Schema Type:
+        """
+        return pulumi.get(self, "arch_type")
+
+    @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
+        Renewal Period
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @_builtins.property
     @pulumi.getter(name="clientNodeAmount")
-    def client_node_amount(self) -> pulumi.Output[Optional[_builtins.int]]:
+    @_utilities.deprecated("""Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead.""")
+    def client_node_amount(self) -> pulumi.Output[_builtins.int]:
         """
         The Elasticsearch cluster's client node quantity, between 2 and 25.
         """
         return pulumi.get(self, "client_node_amount")
 
     @_builtins.property
+    @pulumi.getter(name="clientNodeConfiguration")
+    def client_node_configuration(self) -> pulumi.Output['outputs.InstanceClientNodeConfiguration']:
+        """
+        Elasticsearch cluster coordination node configuration See `client_node_configuration` below.
+        """
+        return pulumi.get(self, "client_node_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="clientNodeSpec")
-    def client_node_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead.""")
+    def client_node_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The client node spec. If specified, client node will be created.
         """
         return pulumi.get(self, "client_node_spec")
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Instance creation time
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter(name="dataNodeAmount")
+    @_utilities.deprecated("""Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead.""")
     def data_node_amount(self) -> pulumi.Output[_builtins.int]:
         """
         The Elasticsearch cluster's data node quantity, between 2 and 50.
@@ -1855,8 +2570,17 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "data_node_amount")
 
     @_builtins.property
+    @pulumi.getter(name="dataNodeConfiguration")
+    def data_node_configuration(self) -> pulumi.Output['outputs.InstanceDataNodeConfiguration']:
+        """
+        Elasticsearch data node information See `data_node_configuration` below.
+        """
+        return pulumi.get(self, "data_node_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="dataNodeDiskEncrypted")
-    def data_node_disk_encrypted(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    @_utilities.deprecated("""Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead.""")
+    def data_node_disk_encrypted(self) -> pulumi.Output[_builtins.bool]:
         """
         If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
         """
@@ -1864,7 +2588,8 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskPerformanceLevel")
-    def data_node_disk_performance_level(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead.""")
+    def data_node_disk_performance_level(self) -> pulumi.Output[_builtins.str]:
         """
         Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
         """
@@ -1872,6 +2597,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskSize")
+    @_utilities.deprecated("""Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead.""")
     def data_node_disk_size(self) -> pulumi.Output[_builtins.int]:
         """
         The single data node storage space.
@@ -1880,6 +2606,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dataNodeDiskType")
+    @_utilities.deprecated("""Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead.""")
     def data_node_disk_type(self) -> pulumi.Output[_builtins.str]:
         """
         The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
@@ -1888,6 +2615,7 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="dataNodeSpec")
+    @_utilities.deprecated("""Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead.""")
     def data_node_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The data node specifications of the Elasticsearch instance.
@@ -1898,7 +2626,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description of instance. It a string of 0 to 30 characters.
+        Instance name
         """
         return pulumi.get(self, "description")
 
@@ -1906,52 +2634,83 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance connection domain (only VPC network access supported).
+        Elasticsearch cluster private domain name
         """
         return pulumi.get(self, "domain")
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPrivateNetwork")
-    def enable_kibana_private_network(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_kibana_private_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Bool, default to false. When it set to true, the instance can close kibana private network access。
+        Whether to enable Kibana private network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_kibana_private_network")
 
     @_builtins.property
     @pulumi.getter(name="enableKibanaPublicNetwork")
-    def enable_kibana_public_network(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_kibana_public_network(self) -> pulumi.Output[_builtins.bool]:
         """
-        Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        Does Kibana enable public access
         """
         return pulumi.get(self, "enable_kibana_public_network")
 
     @_builtins.property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def enable_public(self) -> pulumi.Output[_builtins.bool]:
         """
-        Bool, default to false. When it set to true, the instance can enable public network access。
+        Whether to enable Kibana public network access.
+
+        The meaning of the value is as follows:
+        - true: On.
+        - false: does not open.
         """
         return pulumi.get(self, "enable_public")
 
     @_builtins.property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "force")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCategory")
+    def instance_category(self) -> pulumi.Output[_builtins.str]:
+        """
+        Version type.
+        """
+        return pulumi.get(self, "instance_category")
+
+    @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead.""")
+    def instance_charge_type(self) -> pulumi.Output[_builtins.str]:
         """
         Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @_builtins.property
+    @pulumi.getter(name="kibanaConfiguration")
+    def kibana_configuration(self) -> pulumi.Output['outputs.InstanceKibanaConfiguration']:
+        """
+        Elasticsearch Kibana node settings See `kibana_configuration` below.
+        """
+        return pulumi.get(self, "kibana_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="kibanaDomain")
     def kibana_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Kibana console domain (Internet access supported).
+        Kibana address
         """
         return pulumi.get(self, "kibana_domain")
 
     @_builtins.property
     @pulumi.getter(name="kibanaNodeSpec")
+    @_utilities.deprecated("""Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead.""")
     def kibana_node_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -1962,7 +2721,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaPort")
     def kibana_port(self) -> pulumi.Output[_builtins.int]:
         """
-        Kibana console port.
+        The port assigned by the Kibana node.
         """
         return pulumi.get(self, "kibana_port")
 
@@ -1970,7 +2729,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaPrivateSecurityGroupId")
     def kibana_private_security_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        the security group id associated with Kibana private network, this param is required when `enable_kibana_private_network` set true, and the security group id should in the same VPC as `vswitch_id`
+        Kibana private network security group ID
         """
         return pulumi.get(self, "kibana_private_security_group_id")
 
@@ -1978,7 +2737,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaPrivateWhitelists")
     def kibana_private_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibana_private_security_group_id` instead
+        Cluster Kibana node private network access whitelist
         """
         return pulumi.get(self, "kibana_private_whitelists")
 
@@ -1986,7 +2745,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="kibanaWhitelists")
     def kibana_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Set the Kibana's IP whitelist in internet network.
+        Kibana private network access whitelist
         """
         return pulumi.get(self, "kibana_whitelists")
 
@@ -2007,8 +2766,17 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "kms_encryption_context")
 
     @_builtins.property
+    @pulumi.getter(name="masterConfiguration")
+    def master_configuration(self) -> pulumi.Output['outputs.InstanceMasterConfiguration']:
+        """
+        Elasticsearch proprietary master node configuration information See `master_configuration` below.
+        """
+        return pulumi.get(self, "master_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="masterNodeDiskType")
-    def master_node_disk_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead.""")
+    def master_node_disk_type(self) -> pulumi.Output[_builtins.str]:
         """
         The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         """
@@ -2016,25 +2784,39 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="masterNodeSpec")
-    def master_node_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead.""")
+    def master_node_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The dedicated master node spec. If specified, dedicated master node will be created.
         """
         return pulumi.get(self, "master_node_spec")
 
     @_builtins.property
+    @pulumi.getter(name="orderActionType")
+    def order_action_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "order_action_type")
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&*()_+-=`).
+        The access password of the instance.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
-    @pulumi.getter
-    def period(self) -> pulumi.Output[Optional[_builtins.int]]:
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+        """
+        return pulumi.get(self, "payment_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> pulumi.Output[_builtins.int]:
+        """
+        The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         """
         return pulumi.get(self, "period")
 
@@ -2050,15 +2832,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="privateWhitelists")
     def private_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Set the instance's IP whitelist in VPC network.
+        Elasticsearch private network whitelist. (Same as EsIpWhitelist)
         """
         return pulumi.get(self, "private_whitelists")
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def protocol(self) -> pulumi.Output[_builtins.str]:
         """
-        Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        Access protocol. Optional values: `HTTP` and **HTTPS * *.
         """
         return pulumi.get(self, "protocol")
 
@@ -2066,7 +2848,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicDomain")
     def public_domain(self) -> pulumi.Output[_builtins.str]:
         """
-        Instance connection public domain.
+        The public network address of the current instance.
         """
         return pulumi.get(self, "public_domain")
 
@@ -2074,7 +2856,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicPort")
     def public_port(self) -> pulumi.Output[_builtins.int]:
         """
-        Instance connection public port.
+        Elasticsearch cluster public network access port
         """
         return pulumi.get(self, "public_port")
 
@@ -2082,23 +2864,23 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="publicWhitelists")
     def public_whitelists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Set the instance's IP whitelist in internet network.
+        Elasticseach public network access whitelist IP list
         """
         return pulumi.get(self, "public_whitelists")
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def renew_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
+        Renewal Status
         """
         return pulumi.get(self, "renew_status")
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Output[_builtins.str]:
         """
-        Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        Renewal Period Unit
         """
         return pulumi.get(self, "renewal_duration_unit")
 
@@ -2106,7 +2888,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of resource group which the Elasticsearch instance belongs.
+        Resource group to which the instance belongs
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -2114,7 +2896,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="settingConfig")
     def setting_config(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
-        The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        Configuration information
         """
         return pulumi.get(self, "setting_config")
 
@@ -2122,7 +2904,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+        Instance change status
         """
         return pulumi.get(self, "status")
 
@@ -2130,15 +2912,20 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        A mapping of tags to assign to the resource.
+        Collection of tag key-value pairs
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "update_strategy")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
         """
-        Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        Instance version
         """
         return pulumi.get(self, "version")
 
@@ -2152,15 +2939,25 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="warmNodeAmount")
-    def warm_node_amount(self) -> pulumi.Output[Optional[_builtins.int]]:
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead.""")
+    def warm_node_amount(self) -> pulumi.Output[_builtins.int]:
         """
         The Elasticsearch cluster's warm node quantity, between 3 and 50.
         """
         return pulumi.get(self, "warm_node_amount")
 
     @_builtins.property
+    @pulumi.getter(name="warmNodeConfiguration")
+    def warm_node_configuration(self) -> pulumi.Output['outputs.InstanceWarmNodeConfiguration']:
+        """
+        Elasticsearch cluster cold data node configuration See `warm_node_configuration` below.
+        """
+        return pulumi.get(self, "warm_node_configuration")
+
+    @_builtins.property
     @pulumi.getter(name="warmNodeDiskEncrypted")
-    def warm_node_disk_encrypted(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead.""")
+    def warm_node_disk_encrypted(self) -> pulumi.Output[_builtins.bool]:
         """
         If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
         """
@@ -2168,7 +2965,8 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskSize")
-    def warm_node_disk_size(self) -> pulumi.Output[Optional[_builtins.int]]:
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead.""")
+    def warm_node_disk_size(self) -> pulumi.Output[_builtins.int]:
         """
         The single warm node storage space, should between 500 and 20480
         """
@@ -2176,7 +2974,8 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="warmNodeDiskType")
-    def warm_node_disk_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead.""")
+    def warm_node_disk_type(self) -> pulumi.Output[_builtins.str]:
         """
         The warm node disk type. Supported values:  cloud_efficiency.
         """
@@ -2184,7 +2983,8 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="warmNodeSpec")
-    def warm_node_spec(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @_utilities.deprecated("""Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead.""")
+    def warm_node_spec(self) -> pulumi.Output[_builtins.str]:
         """
         The warm node specifications of the Elasticsearch instance.
         """
@@ -2192,9 +2992,11 @@ class Instance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="zoneCount")
-    def zone_count(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def zone_count(self) -> pulumi.Output[_builtins.int]:
         """
-        The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
+        The number of zones in the Elasticsearch instance.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "zone_count")
 

@@ -217,6 +217,8 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
             transit_router_attachment_id=default_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
@@ -301,6 +303,8 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
             transit_router_route_table_id=default_transit_router_route_table.transit_router_route_table_id,
             transit_router_attachment_id=default_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

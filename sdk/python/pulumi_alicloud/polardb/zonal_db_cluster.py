@@ -786,6 +786,8 @@ class ZonalDbCluster(pulumi.CustomResource):
             db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB zonal cluster can be imported using the id, e.g.
@@ -876,6 +878,8 @@ class ZonalDbCluster(pulumi.CustomResource):
             vswitch_id=default_vswitch.id,
             db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config if v != None}) for node, config in db_cluster_nodes_configs})
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

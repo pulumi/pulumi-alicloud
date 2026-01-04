@@ -144,6 +144,8 @@ class V3VpcBinding(pulumi.CustomResource):
             vpc_id=vpc.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Vpc Binding can be imported using the id, e.g.
@@ -202,6 +204,8 @@ class V3VpcBinding(pulumi.CustomResource):
             function_name=function.function_name,
             vpc_id=vpc.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

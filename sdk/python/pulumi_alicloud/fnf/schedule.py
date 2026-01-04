@@ -300,6 +300,8 @@ class Schedule(pulumi.CustomResource):
             schedule_name="tf-exampleFnFSchedule983041")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless Workflow Schedule can be imported using the id, e.g.
@@ -356,6 +358,8 @@ class Schedule(pulumi.CustomResource):
             payload="{\\"tf-example\\": \\"example success\\"}",
             schedule_name="tf-exampleFnFSchedule983041")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

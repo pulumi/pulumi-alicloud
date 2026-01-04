@@ -107,6 +107,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) A Script can be imported using the id, e.g.

@@ -201,6 +201,8 @@ class Connection(pulumi.CustomResource):
             port="6370")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
@@ -270,6 +272,8 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             port="6370")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

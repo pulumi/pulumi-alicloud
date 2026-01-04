@@ -137,6 +137,8 @@ class NetworkAttachment(pulumi.CustomResource):
             sag_id=sag_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Cloud Connect Network Attachment can be imported using the instance_id, e.g.
@@ -189,6 +191,8 @@ class NetworkAttachment(pulumi.CustomResource):
             ccn_id=default.id,
             sag_id=sag_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -188,6 +188,8 @@ class PolicyVersion(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Policy Version can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class PolicyVersion(pulumi.CustomResource):
         \\t\\t}
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -244,6 +244,8 @@ class Snapshot(pulumi.CustomResource):
             source_disk_type="SYSTEM")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Snapshot can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=name,
             source_disk_type="SYSTEM")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

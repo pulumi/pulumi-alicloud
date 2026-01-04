@@ -55,6 +55,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Ga Domain can be imported using the id, e.g.

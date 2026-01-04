@@ -2,46 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Eflo Node resource.
- *
- * Large computing node.
- *
- * For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
- *
- * > **NOTE:** Available since v1.246.0.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = alicloud.resourcemanager.getResourceGroups({});
- * const defaultNode = new alicloud.eflo.Node("default", {
- *     period: 36,
- *     discountLevel: "36",
- *     billingCycle: "1month",
- *     classify: "gpuserver",
- *     zone: "cn-hangzhou-b",
- *     productForm: "instance",
- *     paymentRatio: "0",
- *     hpnZone: "B1",
- *     serverArch: "bmserver",
- *     computingServer: "efg1.nvga1n",
- *     stageNum: "36",
- *     renewalStatus: "AutoRenewal",
- *     renewPeriod: 36,
- *     status: "Unused",
- * });
- * ```
- *
  * ## Import
  *
  * Eflo Node can be imported using the id, e.g.
@@ -80,14 +45,22 @@ export class Node extends pulumi.CustomResource {
 
     /**
      * Billing cycle
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly billingCycle: pulumi.Output<string | undefined>;
     /**
      * Classification
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly classify: pulumi.Output<string | undefined>;
     /**
-     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     * Cluster id
+     */
+    declare public readonly clusterId: pulumi.Output<string>;
+    /**
+     * Node Model
      *
      * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
@@ -97,9 +70,19 @@ export class Node extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     */
+    declare public readonly dataDisks: pulumi.Output<outputs.eflo.NodeDataDisk[]>;
+    /**
      * Offer Information
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly discountLevel: pulumi.Output<string | undefined>;
+    /**
+     * Host name
+     */
+    declare public readonly hostname: pulumi.Output<string>;
     /**
      * Cluster Number
      */
@@ -109,11 +92,29 @@ export class Node extends pulumi.CustomResource {
      */
     declare public readonly installPai: pulumi.Output<boolean | undefined>;
     /**
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     */
+    declare public readonly ipAllocationPolicies: pulumi.Output<outputs.eflo.NodeIpAllocationPolicy[] | undefined>;
+    /**
+     * Login Password
+     */
+    declare public readonly loginPassword: pulumi.Output<string | undefined>;
+    /**
      * Model
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
+     * node group id
+     */
+    declare public readonly nodeGroupId: pulumi.Output<string>;
+    /**
+     * node type
+     */
+    declare public readonly nodeType: pulumi.Output<string>;
+    /**
      * Down payment ratio
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly paymentRatio: pulumi.Output<string | undefined>;
     /**
@@ -123,10 +124,14 @@ export class Node extends pulumi.CustomResource {
     declare public readonly paymentType: pulumi.Output<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Form
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly productForm: pulumi.Output<string | undefined>;
     /**
@@ -153,10 +158,14 @@ export class Node extends pulumi.CustomResource {
     declare public readonly resourceGroupId: pulumi.Output<string>;
     /**
      * Architecture
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly serverArch: pulumi.Output<string | undefined>;
     /**
      * Number of stages
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly stageNum: pulumi.Output<string | undefined>;
     /**
@@ -167,6 +176,18 @@ export class Node extends pulumi.CustomResource {
      * The tag of the resource
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Custom Data
+     */
+    declare public readonly userData: pulumi.Output<string>;
+    /**
+     * VPC ID
+     */
+    declare public readonly vpcId: pulumi.Output<string>;
+    /**
+     * Switch ID
+     */
+    declare public readonly vswitchId: pulumi.Output<string>;
     /**
      * Availability Zone
      */
@@ -187,12 +208,19 @@ export class Node extends pulumi.CustomResource {
             const state = argsOrState as NodeState | undefined;
             resourceInputs["billingCycle"] = state?.billingCycle;
             resourceInputs["classify"] = state?.classify;
+            resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["computingServer"] = state?.computingServer;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataDisks"] = state?.dataDisks;
             resourceInputs["discountLevel"] = state?.discountLevel;
+            resourceInputs["hostname"] = state?.hostname;
             resourceInputs["hpnZone"] = state?.hpnZone;
             resourceInputs["installPai"] = state?.installPai;
+            resourceInputs["ipAllocationPolicies"] = state?.ipAllocationPolicies;
+            resourceInputs["loginPassword"] = state?.loginPassword;
             resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["nodeGroupId"] = state?.nodeGroupId;
+            resourceInputs["nodeType"] = state?.nodeType;
             resourceInputs["paymentRatio"] = state?.paymentRatio;
             resourceInputs["paymentType"] = state?.paymentType;
             resourceInputs["period"] = state?.period;
@@ -205,16 +233,26 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["stageNum"] = state?.stageNum;
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vswitchId"] = state?.vswitchId;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as NodeArgs | undefined;
             resourceInputs["billingCycle"] = args?.billingCycle;
             resourceInputs["classify"] = args?.classify;
+            resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["computingServer"] = args?.computingServer;
+            resourceInputs["dataDisks"] = args?.dataDisks;
             resourceInputs["discountLevel"] = args?.discountLevel;
+            resourceInputs["hostname"] = args?.hostname;
             resourceInputs["hpnZone"] = args?.hpnZone;
             resourceInputs["installPai"] = args?.installPai;
+            resourceInputs["ipAllocationPolicies"] = args?.ipAllocationPolicies;
+            resourceInputs["loginPassword"] = args?.loginPassword ? pulumi.secret(args.loginPassword) : undefined;
             resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["nodeGroupId"] = args?.nodeGroupId;
+            resourceInputs["nodeType"] = args?.nodeType;
             resourceInputs["paymentRatio"] = args?.paymentRatio;
             resourceInputs["paymentType"] = args?.paymentType;
             resourceInputs["period"] = args?.period;
@@ -226,11 +264,16 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["stageNum"] = args?.stageNum;
             resourceInputs["status"] = args?.status;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vswitchId"] = args?.vswitchId;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["loginPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Node.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -241,14 +284,22 @@ export class Node extends pulumi.CustomResource {
 export interface NodeState {
     /**
      * Billing cycle
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     billingCycle?: pulumi.Input<string>;
     /**
      * Classification
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     classify?: pulumi.Input<string>;
     /**
-     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     * Cluster id
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * Node Model
      *
      * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
@@ -258,9 +309,19 @@ export interface NodeState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     */
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeDataDisk>[]>;
+    /**
      * Offer Information
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     discountLevel?: pulumi.Input<string>;
+    /**
+     * Host name
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * Cluster Number
      */
@@ -270,11 +331,29 @@ export interface NodeState {
      */
     installPai?: pulumi.Input<boolean>;
     /**
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     */
+    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicy>[]>;
+    /**
+     * Login Password
+     */
+    loginPassword?: pulumi.Input<string>;
+    /**
      * Model
      */
     machineType?: pulumi.Input<string>;
     /**
+     * node group id
+     */
+    nodeGroupId?: pulumi.Input<string>;
+    /**
+     * node type
+     */
+    nodeType?: pulumi.Input<string>;
+    /**
      * Down payment ratio
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     paymentRatio?: pulumi.Input<string>;
     /**
@@ -284,10 +363,14 @@ export interface NodeState {
     paymentType?: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**
      * Form
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     productForm?: pulumi.Input<string>;
     /**
@@ -314,10 +397,14 @@ export interface NodeState {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Architecture
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     serverArch?: pulumi.Input<string>;
     /**
      * Number of stages
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     stageNum?: pulumi.Input<string>;
     /**
@@ -328,6 +415,18 @@ export interface NodeState {
      * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom Data
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * VPC ID
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * Switch ID
+     */
+    vswitchId?: pulumi.Input<string>;
     /**
      * Availability Zone
      */
@@ -340,22 +439,40 @@ export interface NodeState {
 export interface NodeArgs {
     /**
      * Billing cycle
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     billingCycle?: pulumi.Input<string>;
     /**
      * Classification
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     classify?: pulumi.Input<string>;
     /**
-     * Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+     * Cluster id
+     */
+    clusterId?: pulumi.Input<string>;
+    /**
+     * Node Model
      *
      * @deprecated Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
      */
     computingServer?: pulumi.Input<string>;
     /**
+     * The data disk of the cloud disk to be attached to the node. See `dataDisk` below.
+     */
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.NodeDataDisk>[]>;
+    /**
      * Offer Information
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     discountLevel?: pulumi.Input<string>;
+    /**
+     * Host name
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * Cluster Number
      */
@@ -365,11 +482,29 @@ export interface NodeArgs {
      */
     installPai?: pulumi.Input<boolean>;
     /**
+     * IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ipAllocationPolicy` below.
+     */
+    ipAllocationPolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicy>[]>;
+    /**
+     * Login Password
+     */
+    loginPassword?: pulumi.Input<string>;
+    /**
      * Model
      */
     machineType?: pulumi.Input<string>;
     /**
+     * node group id
+     */
+    nodeGroupId?: pulumi.Input<string>;
+    /**
+     * node type
+     */
+    nodeType?: pulumi.Input<string>;
+    /**
      * Down payment ratio
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     paymentRatio?: pulumi.Input<string>;
     /**
@@ -379,10 +514,14 @@ export interface NodeArgs {
     paymentType?: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     period?: pulumi.Input<number>;
     /**
      * Form
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     productForm?: pulumi.Input<string>;
     /**
@@ -405,10 +544,14 @@ export interface NodeArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Architecture
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     serverArch?: pulumi.Input<string>;
     /**
      * Number of stages
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     stageNum?: pulumi.Input<string>;
     /**
@@ -419,6 +562,18 @@ export interface NodeArgs {
      * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Custom Data
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * VPC ID
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * Switch ID
+     */
+    vswitchId?: pulumi.Input<string>;
     /**
      * Availability Zone
      */

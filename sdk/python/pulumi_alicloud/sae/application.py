@@ -2516,6 +2516,8 @@ class Application(pulumi.CustomResource):
             memory=2048)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless App Engine (SAE) Application can be imported using the id, e.g.
@@ -2674,6 +2676,8 @@ class Application(pulumi.CustomResource):
             cpu=500,
             memory=2048)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

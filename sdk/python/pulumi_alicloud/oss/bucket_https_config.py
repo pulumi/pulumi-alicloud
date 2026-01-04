@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BucketHttpsConfigArgs', 'BucketHttpsConfig']
 
@@ -21,15 +23,19 @@ class BucketHttpsConfigArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  enable: pulumi.Input[_builtins.bool],
+                 cipher_suit: Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BucketHttpsConfig resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
+        :param pulumi.Input['BucketHttpsConfigCipherSuitArgs'] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "enable", enable)
+        if cipher_suit is not None:
+            pulumi.set(__self__, "cipher_suit", cipher_suit)
         if tls_versions is not None:
             pulumi.set(__self__, "tls_versions", tls_versions)
 
@@ -37,7 +43,7 @@ class BucketHttpsConfigArgs:
     @pulumi.getter
     def bucket(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
@@ -58,6 +64,18 @@ class BucketHttpsConfigArgs:
         pulumi.set(self, "enable", value)
 
     @_builtins.property
+    @pulumi.getter(name="cipherSuit")
+    def cipher_suit(self) -> Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']]:
+        """
+        TLS encryption algorithm suite configuration See `cipher_suit` below.
+        """
+        return pulumi.get(self, "cipher_suit")
+
+    @cipher_suit.setter
+    def cipher_suit(self, value: Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']]):
+        pulumi.set(self, "cipher_suit", value)
+
+    @_builtins.property
     @pulumi.getter(name="tlsVersions")
     def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -74,16 +92,20 @@ class BucketHttpsConfigArgs:
 class _BucketHttpsConfigState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 cipher_suit: Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BucketHttpsConfig resources.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input['BucketHttpsConfigCipherSuitArgs'] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
+        if cipher_suit is not None:
+            pulumi.set(__self__, "cipher_suit", cipher_suit)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if tls_versions is not None:
@@ -93,13 +115,25 @@ class _BucketHttpsConfigState:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
     def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cipherSuit")
+    def cipher_suit(self) -> Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']]:
+        """
+        TLS encryption algorithm suite configuration See `cipher_suit` below.
+        """
+        return pulumi.get(self, "cipher_suit")
+
+    @cipher_suit.setter
+    def cipher_suit(self, value: Optional[pulumi.Input['BucketHttpsConfigCipherSuitArgs']]):
+        pulumi.set(self, "cipher_suit", value)
 
     @_builtins.property
     @pulumi.getter
@@ -133,6 +167,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 cipher_suit: Optional[pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -147,7 +182,8 @@ class BucketHttpsConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """
@@ -182,6 +218,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[_builtins.str]] = None,
+                 cipher_suit: Optional[pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
                  enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -196,6 +233,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["cipher_suit"] = cipher_suit
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
             __props__.__dict__["enable"] = enable
@@ -211,6 +249,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[_builtins.str]] = None,
+            cipher_suit: Optional[pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']]] = None,
             enable: Optional[pulumi.Input[_builtins.bool]] = None,
             tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BucketHttpsConfig':
         """
@@ -220,7 +259,8 @@ class BucketHttpsConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket.
+        :param pulumi.Input[_builtins.str] bucket: The name of the bucket
+        :param pulumi.Input[Union['BucketHttpsConfigCipherSuitArgs', 'BucketHttpsConfigCipherSuitArgsDict']] cipher_suit: TLS encryption algorithm suite configuration See `cipher_suit` below.
         :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: Specifies the TLS versions allowed to access this buckets.
         """
@@ -229,6 +269,7 @@ class BucketHttpsConfig(pulumi.CustomResource):
         __props__ = _BucketHttpsConfigState.__new__(_BucketHttpsConfigState)
 
         __props__.__dict__["bucket"] = bucket
+        __props__.__dict__["cipher_suit"] = cipher_suit
         __props__.__dict__["enable"] = enable
         __props__.__dict__["tls_versions"] = tls_versions
         return BucketHttpsConfig(resource_name, opts=opts, __props__=__props__)
@@ -237,9 +278,17 @@ class BucketHttpsConfig(pulumi.CustomResource):
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the bucket.
+        The name of the bucket
         """
         return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="cipherSuit")
+    def cipher_suit(self) -> pulumi.Output['outputs.BucketHttpsConfigCipherSuit']:
+        """
+        TLS encryption algorithm suite configuration See `cipher_suit` below.
+        """
+        return pulumi.get(self, "cipher_suit")
 
     @_builtins.property
     @pulumi.getter

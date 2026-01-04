@@ -172,6 +172,8 @@ class ShortUrl(pulumi.CustomResource):
             source_url="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SMS Short Url can be imported using the id, e.g.
@@ -212,6 +214,8 @@ class ShortUrl(pulumi.CustomResource):
             short_url_name="example_value",
             source_url="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

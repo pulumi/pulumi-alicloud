@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.lindorm.InstanceV2Args;
 import com.pulumi.alicloud.lindorm.inputs.InstanceV2State;
 import com.pulumi.alicloud.lindorm.outputs.InstanceV2EngineList;
+import com.pulumi.alicloud.lindorm.outputs.InstanceV2WhiteIpList;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -113,6 +114,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Lindorm Instance V2 can be imported using the id, e.g.
@@ -155,13 +158,10 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     /**
      * Deployment Scenario
      * 
-     * &gt; **NOTE:**  Enumeration value
-     * 
-     * &gt; **NOTE:**  - 1.0 Single AZ
-     * 
-     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-     * 
-     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -172,13 +172,10 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Deployment Scenario
      * 
-     * &gt; **NOTE:**  Enumeration value
-     * 
-     * &gt; **NOTE:**  - 1.0 Single AZ
-     * 
-     * &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-     * 
-     * &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -189,9 +186,9 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     /**
      * Automatic renewal duration. Unit: Month.
      * 
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      * 
-     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -202,9 +199,9 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return Automatic renewal duration. Unit: Month.
      * 
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      * 
-     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -227,6 +224,8 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewal);
     }
     /**
+     * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     * 
      * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
@@ -234,33 +233,33 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> cloudStorageSize;
 
     /**
-     * @return &gt; **NOTE:**  Cloud storage capacity in GB
+     * @return The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     * 
+     * &gt; **NOTE:**  Cloud storage capacity in GB
      * 
      */
     public Output<Optional<Integer>> cloudStorageSize() {
         return Codegen.optional(this.cloudStorageSize);
     }
     /**
-     * &gt; **NOTE:** &gt;
+     * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      * 
-     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-     * 
-     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     * 
-     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      * 
      */
     @Export(name="cloudStorageType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudStorageType;
 
     /**
-     * @return &gt; **NOTE:** &gt;
+     * @return Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      * 
-     * &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-     * 
-     * &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     * 
-     * &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      * 
      */
     public Output<Optional<String>> cloudStorageType() {
@@ -327,14 +326,22 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
         return this.instanceAlias;
     }
     /**
-     * The payment type of the resource
+     * Resource attribute fields representing payment types
+     * 
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource
+     * @return Resource attribute fields representing payment types
+     * 
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      * 
      */
     public Output<String> paymentType() {
@@ -455,6 +462,20 @@ public class InstanceV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
+    }
+    /**
+     * Instance whitelist list See `whiteIpList` below.
+     * 
+     */
+    @Export(name="whiteIpLists", refs={List.class,InstanceV2WhiteIpList.class}, tree="[0,1]")
+    private Output<List<InstanceV2WhiteIpList>> whiteIpLists;
+
+    /**
+     * @return Instance whitelist list See `whiteIpList` below.
+     * 
+     */
+    public Output<List<InstanceV2WhiteIpList>> whiteIpLists() {
+        return this.whiteIpLists;
     }
     /**
      * The zone ID  of the resource

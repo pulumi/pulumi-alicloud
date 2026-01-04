@@ -33,6 +33,8 @@ import * as utilities from "../utilities";
  * }]});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Threat Detection Attack Path Sensitive Asset Config can be imported using the id, e.g.

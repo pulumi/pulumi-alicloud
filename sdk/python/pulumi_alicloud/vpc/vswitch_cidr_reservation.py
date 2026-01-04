@@ -370,6 +370,8 @@ class VswitchCidrReservation(pulumi.CustomResource):
             cidr_reservation_type="Prefix")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Vswitch Cidr Reservation can be imported using the id, e.g.
@@ -430,6 +432,8 @@ class VswitchCidrReservation(pulumi.CustomResource):
             vswitch_cidr_reservation_name=name,
             cidr_reservation_type="Prefix")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

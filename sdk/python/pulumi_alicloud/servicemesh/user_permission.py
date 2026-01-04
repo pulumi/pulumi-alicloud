@@ -158,6 +158,8 @@ class UserPermission(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Mesh User Permission can be imported using the id, e.g.
@@ -228,6 +230,8 @@ class UserPermission(pulumi.CustomResource):
                 "is_custom": True,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

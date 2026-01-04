@@ -307,6 +307,8 @@ class OidcProvider(pulumi.CustomResource):
             issuer_url="https://oauth.aliyun.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         IMS Oidc Provider can be imported using the id, e.g.
@@ -366,6 +368,8 @@ class OidcProvider(pulumi.CustomResource):
             description=oidc_provider_name,
             issuer_url="https://oauth.aliyun.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

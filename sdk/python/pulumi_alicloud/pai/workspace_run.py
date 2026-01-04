@@ -224,6 +224,8 @@ class WorkspaceRun(pulumi.CustomResource):
             experiment_id=default_q_rw_wbv.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Run can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class WorkspaceRun(pulumi.CustomResource):
             run_name=name,
             experiment_id=default_q_rw_wbv.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -255,6 +255,8 @@ class ApplicationScale(pulumi.CustomResource):
         ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application that you want to deploy.
@@ -338,6 +340,8 @@ class ApplicationScale(pulumi.CustomResource):
         ).apply(lambda resolved_outputs: resolved_outputs['ecu_map'][resolved_outputs['id']])
         ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param ApplicationScaleArgs args: The arguments to use to populate this resource's properties.

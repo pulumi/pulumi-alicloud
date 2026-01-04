@@ -34,6 +34,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * The instance name.
      * 
      */
@@ -187,6 +202,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    @Import(name="provisionedCapacity")
+    private @Nullable Output<Integer> provisionedCapacity;
+
+    /**
+     * @return The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedCapacity() {
+        return Optional.ofNullable(this.provisionedCapacity);
+    }
+
+    /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      * 
      */
@@ -325,6 +355,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.autoRenew = $.autoRenew;
+        this.edition = $.edition;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.maxConnections = $.maxConnections;
@@ -334,6 +365,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.periodCycle = $.periodCycle;
+        this.provisionedCapacity = $.provisionedCapacity;
         this.queueCapacity = $.queueCapacity;
         this.renewalDuration = $.renewalDuration;
         this.renewalDurationUnit = $.renewalDurationUnit;
@@ -382,6 +414,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param edition The deployment architecture for Serverless instances. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The deployment architecture for Serverless instances. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**
@@ -589,6 +642,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder periodCycle(String periodCycle) {
             return periodCycle(Output.of(periodCycle));
+        }
+
+        /**
+         * @param provisionedCapacity The provisioned TPS capacity for reserved + elastic instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedCapacity(@Nullable Output<Integer> provisionedCapacity) {
+            $.provisionedCapacity = provisionedCapacity;
+            return this;
+        }
+
+        /**
+         * @param provisionedCapacity The provisioned TPS capacity for reserved + elastic instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedCapacity(Integer provisionedCapacity) {
+            return provisionedCapacity(Output.of(provisionedCapacity));
         }
 
         /**

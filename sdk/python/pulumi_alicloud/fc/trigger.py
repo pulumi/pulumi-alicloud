@@ -877,6 +877,8 @@ class Trigger(pulumi.CustomResource):
             }))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing fc module
@@ -1407,6 +1409,8 @@ class Trigger(pulumi.CustomResource):
                 },
             }))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

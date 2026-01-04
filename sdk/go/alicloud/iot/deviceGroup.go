@@ -52,6 +52,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Iot Device Group can be imported using the id, e.g.

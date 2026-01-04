@@ -923,6 +923,8 @@ class Job(pulumi.CustomResource):
             execute_mode="batch")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Schedulerx Job can be imported using the id, e.g.
@@ -1069,6 +1071,8 @@ class Job(pulumi.CustomResource):
             fail_times=1,
             execute_mode="batch")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

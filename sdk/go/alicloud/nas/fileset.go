@@ -14,6 +14,8 @@ import (
 
 // Provides a File Storage (NAS) Fileset resource.
 //
+// Fileset of CPFS file system.
+//
 // For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
 //
 // > **NOTE:** Available since v1.153.0.
@@ -83,6 +85,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // File Storage (NAS) Fileset can be imported using the id, e.g.
@@ -93,17 +97,23 @@ import (
 type Fileset struct {
 	pulumi.CustomResourceState
 
-	// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The time when Fileset was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+	// - true: Enable instance release protection.
+	// - false (default): Turn off instance release protection
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
+	// Description of Fileset.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
-	// The path of the fileset.
+	// The path of Fileset.
 	FileSystemPath pulumi.StringOutput `pulumi:"fileSystemPath"`
-	// The first ID of the resource.
+	// Fileset ID
 	FilesetId pulumi.StringOutput `pulumi:"filesetId"`
-	// The status of the fileset.
+	// The status of Fileset. Includes:
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -143,32 +153,44 @@ func GetFileset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Fileset resources.
 type filesetState struct {
-	// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The time when Fileset was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+	// - true: Enable instance release protection.
+	// - false (default): Turn off instance release protection
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Description of Fileset.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
-	// The path of the fileset.
+	// The path of Fileset.
 	FileSystemPath *string `pulumi:"fileSystemPath"`
-	// The first ID of the resource.
+	// Fileset ID
 	FilesetId *string `pulumi:"filesetId"`
-	// The status of the fileset.
+	// The status of Fileset. Includes:
 	Status *string `pulumi:"status"`
 }
 
 type FilesetState struct {
-	// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The time when Fileset was created.
+	CreateTime pulumi.StringPtrInput
+	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+	// - true: Enable instance release protection.
+	// - false (default): Turn off instance release protection
+	DeletionProtection pulumi.BoolPtrInput
+	// Description of Fileset.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
-	// The path of the fileset.
+	// The path of Fileset.
 	FileSystemPath pulumi.StringPtrInput
-	// The first ID of the resource.
+	// Fileset ID
 	FilesetId pulumi.StringPtrInput
-	// The status of the fileset.
+	// The status of Fileset. Includes:
 	Status pulumi.StringPtrInput
 }
 
@@ -177,25 +199,33 @@ func (FilesetState) ElementType() reflect.Type {
 }
 
 type filesetArgs struct {
-	// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+	// - true: Enable instance release protection.
+	// - false (default): Turn off instance release protection
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// Description of Fileset.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
-	// The path of the fileset.
+	// The path of Fileset.
 	FileSystemPath string `pulumi:"fileSystemPath"`
 }
 
 // The set of arguments for constructing a Fileset resource.
 type FilesetArgs struct {
-	// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+	// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+	// - true: Enable instance release protection.
+	// - false (default): Turn off instance release protection
+	DeletionProtection pulumi.BoolPtrInput
+	// Description of Fileset.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
-	// The path of the fileset.
+	// The path of Fileset.
 	FileSystemPath pulumi.StringInput
 }
 
@@ -286,12 +316,24 @@ func (o FilesetOutput) ToFilesetOutputWithContext(ctx context.Context) FilesetOu
 	return o
 }
 
-// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+// The time when Fileset was created.
+func (o FilesetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+// - true: Enable instance release protection.
+// - false (default): Turn off instance release protection
+func (o FilesetOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Fileset) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// Description of Fileset.
 func (o FilesetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dry run.
+// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 func (o FilesetOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -301,17 +343,17 @@ func (o FilesetOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FileSystemId }).(pulumi.StringOutput)
 }
 
-// The path of the fileset.
+// The path of Fileset.
 func (o FilesetOutput) FileSystemPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FileSystemPath }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource.
+// Fileset ID
 func (o FilesetOutput) FilesetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.FilesetId }).(pulumi.StringOutput)
 }
 
-// The status of the fileset.
+// The status of Fileset. Includes:
 func (o FilesetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fileset) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

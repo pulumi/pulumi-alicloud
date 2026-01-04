@@ -115,6 +115,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Bastion Host Host Attachment can be imported using the id, e.g.

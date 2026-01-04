@@ -76,6 +76,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Cache Rule can be imported using the id, e.g.
@@ -126,12 +128,12 @@ type CacheRule struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrOutput `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Query string sorting, disabled by default. Possible values:
@@ -217,12 +219,12 @@ type cacheRuleState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Query string sorting, disabled by default. Possible values:
@@ -276,12 +278,12 @@ type CacheRuleState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the [ListSites] API.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Query string sorting, disabled by default. Possible values:
@@ -337,12 +339,12 @@ type cacheRuleArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale *string `pulumi:"serveStale"`
 	// The site ID, which can be obtained by calling the [ListSites] API.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Query string sorting, disabled by default. Possible values:
@@ -395,12 +397,12 @@ type CacheRuleArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Serve stale cache. When enabled, the node can still respond to user requests with expired cached files when the origin server is unavailable. Value range:
 	ServeStale pulumi.StringPtrInput
 	// The site ID, which can be obtained by calling the [ListSites] API.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Query string sorting, disabled by default. Possible values:
@@ -597,7 +599,7 @@ func (o CacheRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Order of rule execution. The smaller the value, the higher the priority for execution.
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 func (o CacheRuleOutput) Sequence() pulumi.IntOutput {
 	return o.ApplyT(func(v *CacheRule) pulumi.IntOutput { return v.Sequence }).(pulumi.IntOutput)
 }
@@ -608,8 +610,8 @@ func (o CacheRuleOutput) ServeStale() pulumi.StringPtrOutput {
 }
 
 // The site ID, which can be obtained by calling the [ListSites] API.
-func (o CacheRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *CacheRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o CacheRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CacheRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

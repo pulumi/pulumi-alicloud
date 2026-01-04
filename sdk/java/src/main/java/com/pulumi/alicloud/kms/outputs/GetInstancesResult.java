@@ -6,7 +6,6 @@ package com.pulumi.alicloud.kms.outputs;
 import com.pulumi.alicloud.kms.outputs.GetInstancesInstance;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,14 +24,13 @@ public final class GetInstancesResult {
      * 
      */
     private List<String> ids;
+    private @Nullable String instanceName;
     /**
      * @return A list of Instance Entries. Each element contains the following attributes:
      * 
      */
     private List<GetInstancesInstance> instances;
     private @Nullable String outputFile;
-    private @Nullable Integer pageNumber;
-    private @Nullable Integer pageSize;
 
     private GetInstancesResult() {}
     /**
@@ -49,6 +47,9 @@ public final class GetInstancesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<String> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
     /**
      * @return A list of Instance Entries. Each element contains the following attributes:
      * 
@@ -58,12 +59,6 @@ public final class GetInstancesResult {
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
-    }
-    public Optional<Integer> pageNumber() {
-        return Optional.ofNullable(this.pageNumber);
-    }
-    public Optional<Integer> pageSize() {
-        return Optional.ofNullable(this.pageSize);
     }
 
     public static Builder builder() {
@@ -77,19 +72,17 @@ public final class GetInstancesResult {
     public static final class Builder {
         private String id;
         private List<String> ids;
+        private @Nullable String instanceName;
         private List<GetInstancesInstance> instances;
         private @Nullable String outputFile;
-        private @Nullable Integer pageNumber;
-        private @Nullable Integer pageSize;
         public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.instanceName = defaults.instanceName;
     	      this.instances = defaults.instances;
     	      this.outputFile = defaults.outputFile;
-    	      this.pageNumber = defaults.pageNumber;
-    	      this.pageSize = defaults.pageSize;
         }
 
         @CustomType.Setter
@@ -112,6 +105,12 @@ public final class GetInstancesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder instanceName(@Nullable String instanceName) {
+
+            this.instanceName = instanceName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             if (instances == null) {
               throw new MissingRequiredPropertyException("GetInstancesResult", "instances");
@@ -128,26 +127,13 @@ public final class GetInstancesResult {
             this.outputFile = outputFile;
             return this;
         }
-        @CustomType.Setter
-        public Builder pageNumber(@Nullable Integer pageNumber) {
-
-            this.pageNumber = pageNumber;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder pageSize(@Nullable Integer pageSize) {
-
-            this.pageSize = pageSize;
-            return this;
-        }
         public GetInstancesResult build() {
             final var _resultValue = new GetInstancesResult();
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.instanceName = instanceName;
             _resultValue.instances = instances;
             _resultValue.outputFile = outputFile;
-            _resultValue.pageNumber = pageNumber;
-            _resultValue.pageSize = pageSize;
             return _resultValue;
         }
     }

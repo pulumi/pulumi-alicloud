@@ -160,6 +160,8 @@ class ImageSharePermission(pulumi.CustomResource):
             account_id=another_uid)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Attributes Reference0
 
          The following attributes are exported:
@@ -241,6 +243,8 @@ class ImageSharePermission(pulumi.CustomResource):
             image_id=default_image.id,
             account_id=another_uid)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Attributes Reference0
 

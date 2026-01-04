@@ -33,6 +33,7 @@ class V3FunctionArgs:
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  function_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
+                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_lifecycle_config: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']] = None,
@@ -53,8 +54,7 @@ class V3FunctionArgs:
         """
         The set of arguments for constructing a V3Function resource.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
-        :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input['V3FunctionCustomContainerConfigArgs'] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         :param pulumi.Input['V3FunctionCustomDnsArgs'] custom_dns: Function custom DNS configuration See `custom_dns` below.
@@ -64,6 +64,7 @@ class V3FunctionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
+        :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
@@ -74,7 +75,7 @@ class V3FunctionArgs:
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input['V3FunctionNasConfigArgs'] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
@@ -104,6 +105,8 @@ class V3FunctionArgs:
             pulumi.set(__self__, "function_name", function_name)
         if gpu_config is not None:
             pulumi.set(__self__, "gpu_config", gpu_config)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if instance_concurrency is not None:
             pulumi.set(__self__, "instance_concurrency", instance_concurrency)
         if instance_isolation_mode is not None:
@@ -155,7 +158,7 @@ class V3FunctionArgs:
     @pulumi.getter
     def runtime(self) -> pulumi.Input[_builtins.str]:
         """
-        Function runtime type.
+        Function runtime type
         """
         return pulumi.get(self, "runtime")
 
@@ -166,9 +169,6 @@ class V3FunctionArgs:
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
-        """
-        Function code ZIP package. code and customContainerConfig. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -282,6 +282,18 @@ class V3FunctionArgs:
     @gpu_config.setter
     def gpu_config(self, value: Optional[pulumi.Input['V3FunctionGpuConfigArgs']]):
         pulumi.set(self, "gpu_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
@@ -407,7 +419,7 @@ class V3FunctionArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource Group ID.
+        Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -506,6 +518,7 @@ class _V3FunctionState:
                  function_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
                  handler: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_lifecycle_config: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']] = None,
@@ -534,7 +547,6 @@ class _V3FunctionState:
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3Function resources.
-        :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
         :param pulumi.Input[_builtins.int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the function.
@@ -549,6 +561,7 @@ class _V3FunctionState:
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
+        :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
@@ -563,9 +576,9 @@ class _V3FunctionState:
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input['V3FunctionNasConfigArgs'] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[_builtins.str] state: Function Status
@@ -606,6 +619,8 @@ class _V3FunctionState:
             pulumi.set(__self__, "gpu_config", gpu_config)
         if handler is not None:
             pulumi.set(__self__, "handler", handler)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if instance_concurrency is not None:
             pulumi.set(__self__, "instance_concurrency", instance_concurrency)
         if instance_isolation_mode is not None:
@@ -662,9 +677,6 @@ class _V3FunctionState:
     @_builtins.property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input['V3FunctionCodeArgs']]:
-        """
-        Function code ZIP package. code and customContainerConfig. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -840,6 +852,18 @@ class _V3FunctionState:
         pulumi.set(self, "handler", value)
 
     @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
     def instance_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -1011,7 +1035,7 @@ class _V3FunctionState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Resource Group ID.
+        Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1035,7 +1059,7 @@ class _V3FunctionState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Function runtime type.
+        Function runtime type
         """
         return pulumi.get(self, "runtime")
 
@@ -1169,6 +1193,7 @@ class V3Function(pulumi.CustomResource):
                  function_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
                  handler: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
@@ -1272,6 +1297,8 @@ class V3Function(pulumi.CustomResource):
             internet_access=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -1282,7 +1309,6 @@ class V3Function(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
         :param pulumi.Input[Union['V3FunctionCustomDnsArgs', 'V3FunctionCustomDnsArgsDict']] custom_dns: Function custom DNS configuration See `custom_dns` below.
@@ -1293,6 +1319,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
+        :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
         :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
@@ -1303,9 +1330,9 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
@@ -1402,6 +1429,8 @@ class V3Function(pulumi.CustomResource):
             internet_access=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute Service V3 (FCV3) Function can be imported using the id, e.g.
@@ -1436,6 +1465,7 @@ class V3Function(pulumi.CustomResource):
                  function_name: Optional[pulumi.Input[_builtins.str]] = None,
                  gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
                  handler: Optional[pulumi.Input[_builtins.str]] = None,
+                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
@@ -1476,6 +1506,7 @@ class V3Function(pulumi.CustomResource):
             if handler is None and not opts.urn:
                 raise TypeError("Missing required property 'handler'")
             __props__.__dict__["handler"] = handler
+            __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["instance_concurrency"] = instance_concurrency
             __props__.__dict__["instance_isolation_mode"] = instance_isolation_mode
             __props__.__dict__["instance_lifecycle_config"] = instance_lifecycle_config
@@ -1533,6 +1564,7 @@ class V3Function(pulumi.CustomResource):
             function_name: Optional[pulumi.Input[_builtins.str]] = None,
             gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
             handler: Optional[pulumi.Input[_builtins.str]] = None,
+            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
             instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
             instance_isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
             instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
@@ -1566,7 +1598,6 @@ class V3Function(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
         :param pulumi.Input[_builtins.int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[_builtins.float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the function.
@@ -1581,6 +1612,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
+        :param pulumi.Input[_builtins.int] idle_timeout: Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
         :param pulumi.Input[_builtins.int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[_builtins.str] instance_isolation_mode: Instance isolation mode
         :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
@@ -1595,9 +1627,9 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
         :param pulumi.Input[Union['V3FunctionNasConfigArgs', 'V3FunctionNasConfigArgsDict']] nas_config: NAS configuration. After this parameter is configured, the function can access the specified NAS resource. See `nas_config` below.
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
-        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID.
+        :param pulumi.Input[_builtins.str] resource_group_id: Resource Group ID
         :param pulumi.Input[_builtins.str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
-        :param pulumi.Input[_builtins.str] runtime: Function runtime type.
+        :param pulumi.Input[_builtins.str] runtime: Function runtime type
         :param pulumi.Input[_builtins.str] session_affinity: The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         :param pulumi.Input[_builtins.str] session_affinity_config: When you set the sessionAffinity affinity type, you need to set the relevant affinity configuration. For example, the MCP_SSE affinity needs to fill in the mcpssessionaffinityconfig configuration. The Cookie affinity needs to be filled with the CookieSessionAffinityConfig configuration, and the Header Field affinity needs to be filled with the HeaderFieldSessionAffinityConfig configuration.
         :param pulumi.Input[_builtins.str] state: Function Status
@@ -1627,6 +1659,7 @@ class V3Function(pulumi.CustomResource):
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["gpu_config"] = gpu_config
         __props__.__dict__["handler"] = handler
+        __props__.__dict__["idle_timeout"] = idle_timeout
         __props__.__dict__["instance_concurrency"] = instance_concurrency
         __props__.__dict__["instance_isolation_mode"] = instance_isolation_mode
         __props__.__dict__["instance_lifecycle_config"] = instance_lifecycle_config
@@ -1658,9 +1691,6 @@ class V3Function(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def code(self) -> pulumi.Output[Optional['outputs.V3FunctionCode']]:
-        """
-        Function code ZIP package. code and customContainerConfig. See `code` below.
-        """
         return pulumi.get(self, "code")
 
     @_builtins.property
@@ -1776,6 +1806,14 @@ class V3Function(pulumi.CustomResource):
         return pulumi.get(self, "handler")
 
     @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Destroy an instance when the instance no-request duration exceeds this attribute. - 1 means that the threshold is cleared and the system default behavior is used.
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
     def instance_concurrency(self) -> pulumi.Output[_builtins.int]:
         """
@@ -1785,7 +1823,7 @@ class V3Function(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="instanceIsolationMode")
-    def instance_isolation_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def instance_isolation_mode(self) -> pulumi.Output[_builtins.str]:
         """
         Instance isolation mode
         """
@@ -1891,7 +1929,7 @@ class V3Function(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource Group ID.
+        Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1907,13 +1945,13 @@ class V3Function(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
         """
-        Function runtime type.
+        Function runtime type
         """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Output[_builtins.str]:
         """
         The affinity policy of the function compute call request. To implement the request affinity of the MCP SSE protocol, set it to MCP_SSE. If Cookie affinity is used, it can be set to GENERATED_COOKIE. If Header affinity is used, it can be set to HEADER_FIELD. If it is not set or set to NONE, the affinity effect is not set, and the request is routed according to the default scheduling policy of the function calculation system.
         """

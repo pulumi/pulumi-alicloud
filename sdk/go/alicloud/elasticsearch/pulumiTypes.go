@@ -13,6 +13,1014 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceClientNodeConfiguration struct {
+	// Number of disks in the Elasticsearch cluster coordination node
+	Amount *int `pulumi:"amount"`
+	// Elasticsearch cluster coordinates node disk size
+	Disk *int `pulumi:"disk"`
+	// Elasticsearch cluster coordination node disk type
+	DiskType *string `pulumi:"diskType"`
+	// Elasticsearch cluster coordination node specification
+	Spec *string `pulumi:"spec"`
+}
+
+// InstanceClientNodeConfigurationInput is an input type that accepts InstanceClientNodeConfigurationArgs and InstanceClientNodeConfigurationOutput values.
+// You can construct a concrete instance of `InstanceClientNodeConfigurationInput` via:
+//
+//	InstanceClientNodeConfigurationArgs{...}
+type InstanceClientNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceClientNodeConfigurationOutput() InstanceClientNodeConfigurationOutput
+	ToInstanceClientNodeConfigurationOutputWithContext(context.Context) InstanceClientNodeConfigurationOutput
+}
+
+type InstanceClientNodeConfigurationArgs struct {
+	// Number of disks in the Elasticsearch cluster coordination node
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Elasticsearch cluster coordinates node disk size
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Elasticsearch cluster coordination node disk type
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Elasticsearch cluster coordination node specification
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+}
+
+func (InstanceClientNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClientNodeConfiguration)(nil)).Elem()
+}
+
+func (i InstanceClientNodeConfigurationArgs) ToInstanceClientNodeConfigurationOutput() InstanceClientNodeConfigurationOutput {
+	return i.ToInstanceClientNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceClientNodeConfigurationArgs) ToInstanceClientNodeConfigurationOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClientNodeConfigurationOutput)
+}
+
+func (i InstanceClientNodeConfigurationArgs) ToInstanceClientNodeConfigurationPtrOutput() InstanceClientNodeConfigurationPtrOutput {
+	return i.ToInstanceClientNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceClientNodeConfigurationArgs) ToInstanceClientNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClientNodeConfigurationOutput).ToInstanceClientNodeConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceClientNodeConfigurationPtrInput is an input type that accepts InstanceClientNodeConfigurationArgs, InstanceClientNodeConfigurationPtr and InstanceClientNodeConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceClientNodeConfigurationPtrInput` via:
+//
+//	        InstanceClientNodeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceClientNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceClientNodeConfigurationPtrOutput() InstanceClientNodeConfigurationPtrOutput
+	ToInstanceClientNodeConfigurationPtrOutputWithContext(context.Context) InstanceClientNodeConfigurationPtrOutput
+}
+
+type instanceClientNodeConfigurationPtrType InstanceClientNodeConfigurationArgs
+
+func InstanceClientNodeConfigurationPtr(v *InstanceClientNodeConfigurationArgs) InstanceClientNodeConfigurationPtrInput {
+	return (*instanceClientNodeConfigurationPtrType)(v)
+}
+
+func (*instanceClientNodeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClientNodeConfiguration)(nil)).Elem()
+}
+
+func (i *instanceClientNodeConfigurationPtrType) ToInstanceClientNodeConfigurationPtrOutput() InstanceClientNodeConfigurationPtrOutput {
+	return i.ToInstanceClientNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceClientNodeConfigurationPtrType) ToInstanceClientNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceClientNodeConfigurationPtrOutput)
+}
+
+type InstanceClientNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceClientNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceClientNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceClientNodeConfigurationOutput) ToInstanceClientNodeConfigurationOutput() InstanceClientNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceClientNodeConfigurationOutput) ToInstanceClientNodeConfigurationOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceClientNodeConfigurationOutput) ToInstanceClientNodeConfigurationPtrOutput() InstanceClientNodeConfigurationPtrOutput {
+	return o.ToInstanceClientNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceClientNodeConfigurationOutput) ToInstanceClientNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceClientNodeConfiguration) *InstanceClientNodeConfiguration {
+		return &v
+	}).(InstanceClientNodeConfigurationPtrOutput)
+}
+
+// Number of disks in the Elasticsearch cluster coordination node
+func (o InstanceClientNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceClientNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster coordinates node disk size
+func (o InstanceClientNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceClientNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster coordination node disk type
+func (o InstanceClientNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceClientNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster coordination node specification
+func (o InstanceClientNodeConfigurationOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceClientNodeConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+type InstanceClientNodeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceClientNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceClientNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceClientNodeConfigurationPtrOutput) ToInstanceClientNodeConfigurationPtrOutput() InstanceClientNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceClientNodeConfigurationPtrOutput) ToInstanceClientNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceClientNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceClientNodeConfigurationPtrOutput) Elem() InstanceClientNodeConfigurationOutput {
+	return o.ApplyT(func(v *InstanceClientNodeConfiguration) InstanceClientNodeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceClientNodeConfiguration
+		return ret
+	}).(InstanceClientNodeConfigurationOutput)
+}
+
+// Number of disks in the Elasticsearch cluster coordination node
+func (o InstanceClientNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster coordinates node disk size
+func (o InstanceClientNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster coordination node disk type
+func (o InstanceClientNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster coordination node specification
+func (o InstanceClientNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceClientNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceDataNodeConfiguration struct {
+	// Number of data nodes in the Elasticsearch cluster
+	Amount *int `pulumi:"amount"`
+	// Elasticsearch data node disk size
+	Disk *int `pulumi:"disk"`
+	// Whether the Elasticsearch data node disk is encrypted
+	DiskEncryption *bool `pulumi:"diskEncryption"`
+	// Elasticsearch cluster data node disk type
+	DiskType *string `pulumi:"diskType"`
+	// Elasticsearch cluster data node Essd disk level
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Elasticsearch data node specification
+	Spec string `pulumi:"spec"`
+}
+
+// InstanceDataNodeConfigurationInput is an input type that accepts InstanceDataNodeConfigurationArgs and InstanceDataNodeConfigurationOutput values.
+// You can construct a concrete instance of `InstanceDataNodeConfigurationInput` via:
+//
+//	InstanceDataNodeConfigurationArgs{...}
+type InstanceDataNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceDataNodeConfigurationOutput() InstanceDataNodeConfigurationOutput
+	ToInstanceDataNodeConfigurationOutputWithContext(context.Context) InstanceDataNodeConfigurationOutput
+}
+
+type InstanceDataNodeConfigurationArgs struct {
+	// Number of data nodes in the Elasticsearch cluster
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Elasticsearch data node disk size
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Whether the Elasticsearch data node disk is encrypted
+	DiskEncryption pulumi.BoolPtrInput `pulumi:"diskEncryption"`
+	// Elasticsearch cluster data node disk type
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Elasticsearch cluster data node Essd disk level
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Elasticsearch data node specification
+	Spec pulumi.StringInput `pulumi:"spec"`
+}
+
+func (InstanceDataNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDataNodeConfiguration)(nil)).Elem()
+}
+
+func (i InstanceDataNodeConfigurationArgs) ToInstanceDataNodeConfigurationOutput() InstanceDataNodeConfigurationOutput {
+	return i.ToInstanceDataNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceDataNodeConfigurationArgs) ToInstanceDataNodeConfigurationOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataNodeConfigurationOutput)
+}
+
+func (i InstanceDataNodeConfigurationArgs) ToInstanceDataNodeConfigurationPtrOutput() InstanceDataNodeConfigurationPtrOutput {
+	return i.ToInstanceDataNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceDataNodeConfigurationArgs) ToInstanceDataNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataNodeConfigurationOutput).ToInstanceDataNodeConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceDataNodeConfigurationPtrInput is an input type that accepts InstanceDataNodeConfigurationArgs, InstanceDataNodeConfigurationPtr and InstanceDataNodeConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceDataNodeConfigurationPtrInput` via:
+//
+//	        InstanceDataNodeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceDataNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceDataNodeConfigurationPtrOutput() InstanceDataNodeConfigurationPtrOutput
+	ToInstanceDataNodeConfigurationPtrOutputWithContext(context.Context) InstanceDataNodeConfigurationPtrOutput
+}
+
+type instanceDataNodeConfigurationPtrType InstanceDataNodeConfigurationArgs
+
+func InstanceDataNodeConfigurationPtr(v *InstanceDataNodeConfigurationArgs) InstanceDataNodeConfigurationPtrInput {
+	return (*instanceDataNodeConfigurationPtrType)(v)
+}
+
+func (*instanceDataNodeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDataNodeConfiguration)(nil)).Elem()
+}
+
+func (i *instanceDataNodeConfigurationPtrType) ToInstanceDataNodeConfigurationPtrOutput() InstanceDataNodeConfigurationPtrOutput {
+	return i.ToInstanceDataNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceDataNodeConfigurationPtrType) ToInstanceDataNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceDataNodeConfigurationPtrOutput)
+}
+
+type InstanceDataNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceDataNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceDataNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceDataNodeConfigurationOutput) ToInstanceDataNodeConfigurationOutput() InstanceDataNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceDataNodeConfigurationOutput) ToInstanceDataNodeConfigurationOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceDataNodeConfigurationOutput) ToInstanceDataNodeConfigurationPtrOutput() InstanceDataNodeConfigurationPtrOutput {
+	return o.ToInstanceDataNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceDataNodeConfigurationOutput) ToInstanceDataNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDataNodeConfiguration) *InstanceDataNodeConfiguration {
+		return &v
+	}).(InstanceDataNodeConfigurationPtrOutput)
+}
+
+// Number of data nodes in the Elasticsearch cluster
+func (o InstanceDataNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch data node disk size
+func (o InstanceDataNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Whether the Elasticsearch data node disk is encrypted
+func (o InstanceDataNodeConfigurationOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) *bool { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// Elasticsearch cluster data node disk type
+func (o InstanceDataNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster data node Essd disk level
+func (o InstanceDataNodeConfigurationOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch data node specification
+func (o InstanceDataNodeConfigurationOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceDataNodeConfiguration) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+type InstanceDataNodeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceDataNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceDataNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceDataNodeConfigurationPtrOutput) ToInstanceDataNodeConfigurationPtrOutput() InstanceDataNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceDataNodeConfigurationPtrOutput) ToInstanceDataNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceDataNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceDataNodeConfigurationPtrOutput) Elem() InstanceDataNodeConfigurationOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) InstanceDataNodeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceDataNodeConfiguration
+		return ret
+	}).(InstanceDataNodeConfigurationOutput)
+}
+
+// Number of data nodes in the Elasticsearch cluster
+func (o InstanceDataNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch data node disk size
+func (o InstanceDataNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether the Elasticsearch data node disk is encrypted
+func (o InstanceDataNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Elasticsearch cluster data node disk type
+func (o InstanceDataNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster data node Essd disk level
+func (o InstanceDataNodeConfigurationPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerformanceLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch data node specification
+func (o InstanceDataNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceDataNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceKibanaConfiguration struct {
+	// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+	Amount *int `pulumi:"amount"`
+	// Elasticsearch Kibana node disk size
+	Disk *int `pulumi:"disk"`
+	// Elasticsearch Kibana node disk specifications
+	Spec string `pulumi:"spec"`
+}
+
+// InstanceKibanaConfigurationInput is an input type that accepts InstanceKibanaConfigurationArgs and InstanceKibanaConfigurationOutput values.
+// You can construct a concrete instance of `InstanceKibanaConfigurationInput` via:
+//
+//	InstanceKibanaConfigurationArgs{...}
+type InstanceKibanaConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceKibanaConfigurationOutput() InstanceKibanaConfigurationOutput
+	ToInstanceKibanaConfigurationOutputWithContext(context.Context) InstanceKibanaConfigurationOutput
+}
+
+type InstanceKibanaConfigurationArgs struct {
+	// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Elasticsearch Kibana node disk size
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Elasticsearch Kibana node disk specifications
+	Spec pulumi.StringInput `pulumi:"spec"`
+}
+
+func (InstanceKibanaConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceKibanaConfiguration)(nil)).Elem()
+}
+
+func (i InstanceKibanaConfigurationArgs) ToInstanceKibanaConfigurationOutput() InstanceKibanaConfigurationOutput {
+	return i.ToInstanceKibanaConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceKibanaConfigurationArgs) ToInstanceKibanaConfigurationOutputWithContext(ctx context.Context) InstanceKibanaConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceKibanaConfigurationOutput)
+}
+
+func (i InstanceKibanaConfigurationArgs) ToInstanceKibanaConfigurationPtrOutput() InstanceKibanaConfigurationPtrOutput {
+	return i.ToInstanceKibanaConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceKibanaConfigurationArgs) ToInstanceKibanaConfigurationPtrOutputWithContext(ctx context.Context) InstanceKibanaConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceKibanaConfigurationOutput).ToInstanceKibanaConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceKibanaConfigurationPtrInput is an input type that accepts InstanceKibanaConfigurationArgs, InstanceKibanaConfigurationPtr and InstanceKibanaConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceKibanaConfigurationPtrInput` via:
+//
+//	        InstanceKibanaConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceKibanaConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceKibanaConfigurationPtrOutput() InstanceKibanaConfigurationPtrOutput
+	ToInstanceKibanaConfigurationPtrOutputWithContext(context.Context) InstanceKibanaConfigurationPtrOutput
+}
+
+type instanceKibanaConfigurationPtrType InstanceKibanaConfigurationArgs
+
+func InstanceKibanaConfigurationPtr(v *InstanceKibanaConfigurationArgs) InstanceKibanaConfigurationPtrInput {
+	return (*instanceKibanaConfigurationPtrType)(v)
+}
+
+func (*instanceKibanaConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceKibanaConfiguration)(nil)).Elem()
+}
+
+func (i *instanceKibanaConfigurationPtrType) ToInstanceKibanaConfigurationPtrOutput() InstanceKibanaConfigurationPtrOutput {
+	return i.ToInstanceKibanaConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceKibanaConfigurationPtrType) ToInstanceKibanaConfigurationPtrOutputWithContext(ctx context.Context) InstanceKibanaConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceKibanaConfigurationPtrOutput)
+}
+
+type InstanceKibanaConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceKibanaConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceKibanaConfiguration)(nil)).Elem()
+}
+
+func (o InstanceKibanaConfigurationOutput) ToInstanceKibanaConfigurationOutput() InstanceKibanaConfigurationOutput {
+	return o
+}
+
+func (o InstanceKibanaConfigurationOutput) ToInstanceKibanaConfigurationOutputWithContext(ctx context.Context) InstanceKibanaConfigurationOutput {
+	return o
+}
+
+func (o InstanceKibanaConfigurationOutput) ToInstanceKibanaConfigurationPtrOutput() InstanceKibanaConfigurationPtrOutput {
+	return o.ToInstanceKibanaConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceKibanaConfigurationOutput) ToInstanceKibanaConfigurationPtrOutputWithContext(ctx context.Context) InstanceKibanaConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceKibanaConfiguration) *InstanceKibanaConfiguration {
+		return &v
+	}).(InstanceKibanaConfigurationPtrOutput)
+}
+
+// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+func (o InstanceKibanaConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceKibanaConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch Kibana node disk size
+func (o InstanceKibanaConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceKibanaConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch Kibana node disk specifications
+func (o InstanceKibanaConfigurationOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceKibanaConfiguration) string { return v.Spec }).(pulumi.StringOutput)
+}
+
+type InstanceKibanaConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceKibanaConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceKibanaConfiguration)(nil)).Elem()
+}
+
+func (o InstanceKibanaConfigurationPtrOutput) ToInstanceKibanaConfigurationPtrOutput() InstanceKibanaConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceKibanaConfigurationPtrOutput) ToInstanceKibanaConfigurationPtrOutputWithContext(ctx context.Context) InstanceKibanaConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceKibanaConfigurationPtrOutput) Elem() InstanceKibanaConfigurationOutput {
+	return o.ApplyT(func(v *InstanceKibanaConfiguration) InstanceKibanaConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceKibanaConfiguration
+		return ret
+	}).(InstanceKibanaConfigurationOutput)
+}
+
+// The number of disks of the Elasticsearch Kibana node. The default value is 1.
+func (o InstanceKibanaConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceKibanaConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch Kibana node disk size
+func (o InstanceKibanaConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceKibanaConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch Kibana node disk specifications
+func (o InstanceKibanaConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceKibanaConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceMasterConfiguration struct {
+	// Elasticsearch proprietary master node number of disks
+	Amount *int `pulumi:"amount"`
+	// Elasticsearch proprietary master node disk size
+	Disk *int `pulumi:"disk"`
+	// Elasticsearch proprietary master node disk type
+	DiskType *string `pulumi:"diskType"`
+	// Elasticsearch proprietary master node specifications
+	Spec *string `pulumi:"spec"`
+}
+
+// InstanceMasterConfigurationInput is an input type that accepts InstanceMasterConfigurationArgs and InstanceMasterConfigurationOutput values.
+// You can construct a concrete instance of `InstanceMasterConfigurationInput` via:
+//
+//	InstanceMasterConfigurationArgs{...}
+type InstanceMasterConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceMasterConfigurationOutput() InstanceMasterConfigurationOutput
+	ToInstanceMasterConfigurationOutputWithContext(context.Context) InstanceMasterConfigurationOutput
+}
+
+type InstanceMasterConfigurationArgs struct {
+	// Elasticsearch proprietary master node number of disks
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Elasticsearch proprietary master node disk size
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Elasticsearch proprietary master node disk type
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Elasticsearch proprietary master node specifications
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+}
+
+func (InstanceMasterConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMasterConfiguration)(nil)).Elem()
+}
+
+func (i InstanceMasterConfigurationArgs) ToInstanceMasterConfigurationOutput() InstanceMasterConfigurationOutput {
+	return i.ToInstanceMasterConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceMasterConfigurationArgs) ToInstanceMasterConfigurationOutputWithContext(ctx context.Context) InstanceMasterConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMasterConfigurationOutput)
+}
+
+func (i InstanceMasterConfigurationArgs) ToInstanceMasterConfigurationPtrOutput() InstanceMasterConfigurationPtrOutput {
+	return i.ToInstanceMasterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMasterConfigurationArgs) ToInstanceMasterConfigurationPtrOutputWithContext(ctx context.Context) InstanceMasterConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMasterConfigurationOutput).ToInstanceMasterConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceMasterConfigurationPtrInput is an input type that accepts InstanceMasterConfigurationArgs, InstanceMasterConfigurationPtr and InstanceMasterConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceMasterConfigurationPtrInput` via:
+//
+//	        InstanceMasterConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMasterConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMasterConfigurationPtrOutput() InstanceMasterConfigurationPtrOutput
+	ToInstanceMasterConfigurationPtrOutputWithContext(context.Context) InstanceMasterConfigurationPtrOutput
+}
+
+type instanceMasterConfigurationPtrType InstanceMasterConfigurationArgs
+
+func InstanceMasterConfigurationPtr(v *InstanceMasterConfigurationArgs) InstanceMasterConfigurationPtrInput {
+	return (*instanceMasterConfigurationPtrType)(v)
+}
+
+func (*instanceMasterConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMasterConfiguration)(nil)).Elem()
+}
+
+func (i *instanceMasterConfigurationPtrType) ToInstanceMasterConfigurationPtrOutput() InstanceMasterConfigurationPtrOutput {
+	return i.ToInstanceMasterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMasterConfigurationPtrType) ToInstanceMasterConfigurationPtrOutputWithContext(ctx context.Context) InstanceMasterConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMasterConfigurationPtrOutput)
+}
+
+type InstanceMasterConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceMasterConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMasterConfiguration)(nil)).Elem()
+}
+
+func (o InstanceMasterConfigurationOutput) ToInstanceMasterConfigurationOutput() InstanceMasterConfigurationOutput {
+	return o
+}
+
+func (o InstanceMasterConfigurationOutput) ToInstanceMasterConfigurationOutputWithContext(ctx context.Context) InstanceMasterConfigurationOutput {
+	return o
+}
+
+func (o InstanceMasterConfigurationOutput) ToInstanceMasterConfigurationPtrOutput() InstanceMasterConfigurationPtrOutput {
+	return o.ToInstanceMasterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMasterConfigurationOutput) ToInstanceMasterConfigurationPtrOutputWithContext(ctx context.Context) InstanceMasterConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMasterConfiguration) *InstanceMasterConfiguration {
+		return &v
+	}).(InstanceMasterConfigurationPtrOutput)
+}
+
+// Elasticsearch proprietary master node number of disks
+func (o InstanceMasterConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMasterConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch proprietary master node disk size
+func (o InstanceMasterConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceMasterConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch proprietary master node disk type
+func (o InstanceMasterConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMasterConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch proprietary master node specifications
+func (o InstanceMasterConfigurationOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMasterConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+type InstanceMasterConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMasterConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMasterConfiguration)(nil)).Elem()
+}
+
+func (o InstanceMasterConfigurationPtrOutput) ToInstanceMasterConfigurationPtrOutput() InstanceMasterConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceMasterConfigurationPtrOutput) ToInstanceMasterConfigurationPtrOutputWithContext(ctx context.Context) InstanceMasterConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceMasterConfigurationPtrOutput) Elem() InstanceMasterConfigurationOutput {
+	return o.ApplyT(func(v *InstanceMasterConfiguration) InstanceMasterConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMasterConfiguration
+		return ret
+	}).(InstanceMasterConfigurationOutput)
+}
+
+// Elasticsearch proprietary master node number of disks
+func (o InstanceMasterConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMasterConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch proprietary master node disk size
+func (o InstanceMasterConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceMasterConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch proprietary master node disk type
+func (o InstanceMasterConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMasterConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch proprietary master node specifications
+func (o InstanceMasterConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMasterConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceWarmNodeConfiguration struct {
+	// Elasticsearch cluster cold data node disk number
+	Amount *int `pulumi:"amount"`
+	// Elasticsearch cluster cold data node disk size
+	Disk *int `pulumi:"disk"`
+	// Elasticsearch cluster cold data node Disk encryption
+	DiskEncryption *bool `pulumi:"diskEncryption"`
+	// Elasticsearch cluster cold data node disk type
+	DiskType *string `pulumi:"diskType"`
+	// Elasticsearch cluster cold data node Disk Specification
+	Spec *string `pulumi:"spec"`
+}
+
+// InstanceWarmNodeConfigurationInput is an input type that accepts InstanceWarmNodeConfigurationArgs and InstanceWarmNodeConfigurationOutput values.
+// You can construct a concrete instance of `InstanceWarmNodeConfigurationInput` via:
+//
+//	InstanceWarmNodeConfigurationArgs{...}
+type InstanceWarmNodeConfigurationInput interface {
+	pulumi.Input
+
+	ToInstanceWarmNodeConfigurationOutput() InstanceWarmNodeConfigurationOutput
+	ToInstanceWarmNodeConfigurationOutputWithContext(context.Context) InstanceWarmNodeConfigurationOutput
+}
+
+type InstanceWarmNodeConfigurationArgs struct {
+	// Elasticsearch cluster cold data node disk number
+	Amount pulumi.IntPtrInput `pulumi:"amount"`
+	// Elasticsearch cluster cold data node disk size
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Elasticsearch cluster cold data node Disk encryption
+	DiskEncryption pulumi.BoolPtrInput `pulumi:"diskEncryption"`
+	// Elasticsearch cluster cold data node disk type
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Elasticsearch cluster cold data node Disk Specification
+	Spec pulumi.StringPtrInput `pulumi:"spec"`
+}
+
+func (InstanceWarmNodeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWarmNodeConfiguration)(nil)).Elem()
+}
+
+func (i InstanceWarmNodeConfigurationArgs) ToInstanceWarmNodeConfigurationOutput() InstanceWarmNodeConfigurationOutput {
+	return i.ToInstanceWarmNodeConfigurationOutputWithContext(context.Background())
+}
+
+func (i InstanceWarmNodeConfigurationArgs) ToInstanceWarmNodeConfigurationOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWarmNodeConfigurationOutput)
+}
+
+func (i InstanceWarmNodeConfigurationArgs) ToInstanceWarmNodeConfigurationPtrOutput() InstanceWarmNodeConfigurationPtrOutput {
+	return i.ToInstanceWarmNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceWarmNodeConfigurationArgs) ToInstanceWarmNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWarmNodeConfigurationOutput).ToInstanceWarmNodeConfigurationPtrOutputWithContext(ctx)
+}
+
+// InstanceWarmNodeConfigurationPtrInput is an input type that accepts InstanceWarmNodeConfigurationArgs, InstanceWarmNodeConfigurationPtr and InstanceWarmNodeConfigurationPtrOutput values.
+// You can construct a concrete instance of `InstanceWarmNodeConfigurationPtrInput` via:
+//
+//	        InstanceWarmNodeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceWarmNodeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToInstanceWarmNodeConfigurationPtrOutput() InstanceWarmNodeConfigurationPtrOutput
+	ToInstanceWarmNodeConfigurationPtrOutputWithContext(context.Context) InstanceWarmNodeConfigurationPtrOutput
+}
+
+type instanceWarmNodeConfigurationPtrType InstanceWarmNodeConfigurationArgs
+
+func InstanceWarmNodeConfigurationPtr(v *InstanceWarmNodeConfigurationArgs) InstanceWarmNodeConfigurationPtrInput {
+	return (*instanceWarmNodeConfigurationPtrType)(v)
+}
+
+func (*instanceWarmNodeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceWarmNodeConfiguration)(nil)).Elem()
+}
+
+func (i *instanceWarmNodeConfigurationPtrType) ToInstanceWarmNodeConfigurationPtrOutput() InstanceWarmNodeConfigurationPtrOutput {
+	return i.ToInstanceWarmNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceWarmNodeConfigurationPtrType) ToInstanceWarmNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWarmNodeConfigurationPtrOutput)
+}
+
+type InstanceWarmNodeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (InstanceWarmNodeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWarmNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceWarmNodeConfigurationOutput) ToInstanceWarmNodeConfigurationOutput() InstanceWarmNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceWarmNodeConfigurationOutput) ToInstanceWarmNodeConfigurationOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationOutput {
+	return o
+}
+
+func (o InstanceWarmNodeConfigurationOutput) ToInstanceWarmNodeConfigurationPtrOutput() InstanceWarmNodeConfigurationPtrOutput {
+	return o.ToInstanceWarmNodeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceWarmNodeConfigurationOutput) ToInstanceWarmNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceWarmNodeConfiguration) *InstanceWarmNodeConfiguration {
+		return &v
+	}).(InstanceWarmNodeConfigurationPtrOutput)
+}
+
+// Elasticsearch cluster cold data node disk number
+func (o InstanceWarmNodeConfigurationOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *int { return v.Amount }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster cold data node disk size
+func (o InstanceWarmNodeConfigurationOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster cold data node Disk encryption
+func (o InstanceWarmNodeConfigurationOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *bool { return v.DiskEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// Elasticsearch cluster cold data node disk type
+func (o InstanceWarmNodeConfigurationOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster cold data node Disk Specification
+func (o InstanceWarmNodeConfigurationOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceWarmNodeConfiguration) *string { return v.Spec }).(pulumi.StringPtrOutput)
+}
+
+type InstanceWarmNodeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceWarmNodeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceWarmNodeConfiguration)(nil)).Elem()
+}
+
+func (o InstanceWarmNodeConfigurationPtrOutput) ToInstanceWarmNodeConfigurationPtrOutput() InstanceWarmNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceWarmNodeConfigurationPtrOutput) ToInstanceWarmNodeConfigurationPtrOutputWithContext(ctx context.Context) InstanceWarmNodeConfigurationPtrOutput {
+	return o
+}
+
+func (o InstanceWarmNodeConfigurationPtrOutput) Elem() InstanceWarmNodeConfigurationOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) InstanceWarmNodeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceWarmNodeConfiguration
+		return ret
+	}).(InstanceWarmNodeConfigurationOutput)
+}
+
+// Elasticsearch cluster cold data node disk number
+func (o InstanceWarmNodeConfigurationPtrOutput) Amount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster cold data node disk size
+func (o InstanceWarmNodeConfigurationPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Elasticsearch cluster cold data node Disk encryption
+func (o InstanceWarmNodeConfigurationPtrOutput) DiskEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiskEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Elasticsearch cluster cold data node disk type
+func (o InstanceWarmNodeConfigurationPtrOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Elasticsearch cluster cold data node Disk Specification
+func (o InstanceWarmNodeConfigurationPtrOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceWarmNodeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetInstancesInstance struct {
 	CreatedAt          string            `pulumi:"createdAt"`
 	DataNodeAmount     int               `pulumi:"dataNodeAmount"`
@@ -286,10 +1294,30 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientNodeConfigurationInput)(nil)).Elem(), InstanceClientNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientNodeConfigurationPtrInput)(nil)).Elem(), InstanceClientNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataNodeConfigurationInput)(nil)).Elem(), InstanceDataNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataNodeConfigurationPtrInput)(nil)).Elem(), InstanceDataNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKibanaConfigurationInput)(nil)).Elem(), InstanceKibanaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceKibanaConfigurationPtrInput)(nil)).Elem(), InstanceKibanaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMasterConfigurationInput)(nil)).Elem(), InstanceMasterConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMasterConfigurationPtrInput)(nil)).Elem(), InstanceMasterConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWarmNodeConfigurationInput)(nil)).Elem(), InstanceWarmNodeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWarmNodeConfigurationPtrInput)(nil)).Elem(), InstanceWarmNodeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(InstanceClientNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceClientNodeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceDataNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceDataNodeConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceKibanaConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceKibanaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMasterConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceMasterConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(InstanceWarmNodeConfigurationOutput{})
+	pulumi.RegisterOutputType(InstanceWarmNodeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})

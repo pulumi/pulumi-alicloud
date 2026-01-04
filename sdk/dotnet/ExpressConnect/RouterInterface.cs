@@ -95,6 +95,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Router Interface can be imported using the id, e.g.

@@ -252,6 +252,8 @@ class ResourceGroup(pulumi.CustomResource):
             display_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Resource Group can be imported using the id, e.g.
@@ -296,6 +298,8 @@ class ResourceGroup(pulumi.CustomResource):
             resource_group_name=name,
             display_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

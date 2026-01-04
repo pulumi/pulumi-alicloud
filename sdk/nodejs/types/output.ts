@@ -217,6 +217,136 @@ export interface MilvusInstanceVswitchId {
     zoneId?: string;
 }
 
+export interface OpenApiExplorerApiMcpServerAdditionalApiDescription {
+    /**
+     * The API name, such as ListApiMcpServers.
+     */
+    apiName?: string;
+    /**
+     * API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+     *
+     * > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+     */
+    apiOverrideJson?: string;
+    /**
+     * API version information, typically in date format, such as 2014-05-26.
+     */
+    apiVersion?: string;
+    /**
+     * Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+     * Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
+     */
+    constParameters?: outputs.OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter[];
+    /**
+     * By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+     *
+     * > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+     */
+    enableOutputSchema?: boolean;
+    /**
+     * Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+     * - SSE protocol: up to 30 minutes
+     * - Streamable HTTP protocol: up to 1 minute
+     *
+     * For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+     *
+     * > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+     */
+    executeCliCommand?: boolean;
+    /**
+     * The name of the cloud product, such as Ecs.
+     */
+    product?: string;
+}
+
+export interface OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
+    /**
+     * Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+     *
+     * For RPC-style APIs, examples include:
+     * - Name: sets the Name parameter to a fixed value.
+     *
+     * For ROA-style APIs, examples include:
+     * - Name: sets a query or path parameter named Name to a fixed value;
+     * - body.Name: sets the Name field within the request body to a fixed value.
+     *
+     * Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+     *
+     * > **NOTE:** xMcpRegionId is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+     */
+    key?: string;
+    /**
+     * This property does not have a description in the spec, please add it before generating code.
+     */
+    value?: string;
+}
+
+export interface OpenApiExplorerApiMcpServerApi {
+    /**
+     * API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+     */
+    apiVersion: string;
+    /**
+     * Product code, such as Ecs.
+     */
+    product: string;
+    /**
+     * Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+     */
+    selectors: string[];
+}
+
+export interface OpenApiExplorerApiMcpServerPrompt {
+    /**
+     * Parameters for the prompt. See `arguments` below.
+     */
+    arguments?: outputs.OpenApiExplorerApiMcpServerPromptArgument[];
+    /**
+     * Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+     */
+    content?: string;
+    /**
+     * Description of the prompt parameter.
+     */
+    description?: string;
+    /**
+     * Name of the prompt parameter.
+     */
+    name?: string;
+}
+
+export interface OpenApiExplorerApiMcpServerPromptArgument {
+    /**
+     * Description of the API MCP service.
+     */
+    description?: string;
+    /**
+     * Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+     */
+    name?: string;
+    /**
+     * Indicates whether the prompt parameter is required.
+     */
+    required?: boolean;
+}
+
+export interface OpenApiExplorerApiMcpServerTerraformTool {
+    /**
+     * Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+     */
+    async?: boolean;
+    code?: string;
+    description?: string;
+    /**
+     * The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+     * - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+     * - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+     * - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+     */
+    destroyPolicy?: string;
+    name?: string;
+}
+
 export interface StarRocksInstanceBackendNodeGroup {
     /**
      * Number of CUs. CU (Compute Unit) is the basic measurement unit of the service, where 1 CU = 1 CPU core + 4 GiB memory.
@@ -15025,6 +15155,24 @@ export namespace config {
         wafOpenapi?: string;
     }
 
+    export interface ReportTemplateReportScope {
+        /**
+         * Key for reporting scope, currently supported:
+         * - AggregatorId
+         * - CompliancePackId
+         * - RuleId
+         */
+        key?: string;
+        /**
+         * The matching logic. Currently, only In is supported.
+         */
+        matchType?: string;
+        /**
+         * The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+         */
+        value?: string;
+    }
+
     export interface SignVersion {
         oss?: string;
         sls?: string;
@@ -15481,6 +15629,21 @@ export namespace cr {
          * Domain of vpc endpoint.
          */
         vpc: string;
+    }
+
+    export interface StorageDomainRoutingRuleRoute {
+        /**
+         * Endpoint Type.
+         */
+        endpointType: string;
+        /**
+         * Instance domain name.
+         */
+        instanceDomain: string;
+        /**
+         * Storage domain name.
+         */
+        storageDomain: string;
     }
 
 }
@@ -17551,6 +17714,13 @@ export namespace cs {
         rrsaOidcIssuerUrl: string;
     }
 
+    export interface NodePoolAutoMode {
+        /**
+         * Whether to enable auto mode. Valid values:
+         */
+        enabled?: boolean;
+    }
+
     export interface NodePoolDataDisk {
         /**
          * Whether to automatically mount the data disk. Valid values: true and false.
@@ -17619,6 +17789,83 @@ export namespace cs {
          * When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
          */
         groupId?: string;
+    }
+
+    export interface NodePoolInstanceMetadataOptions {
+        /**
+         * ECS instance metadata access mode configuration. Value range:
+         *
+         * - 'optional': Compatible with both normal mode and reinforced mode.
+         * - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+         *
+         * Default value: 'optional '.
+         *
+         * This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+         */
+        httpTokens?: string;
+    }
+
+    export interface NodePoolInstancePattern {
+        /**
+         * The number of vCPU cores of the instance type. Example value: 8.
+         */
+        cores?: number;
+        /**
+         * The CPU architecture of the instance. Value range:
+         * - X86
+         * - ARM
+         */
+        cpuArchitectures?: string[];
+        /**
+         * Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+         * - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+         * - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+         */
+        excludedInstanceTypes?: string[];
+        /**
+         * Instance classification. Value range:
+         * - General-purpose: Universal.
+         * - Compute-optimized: Compute type.
+         * - Memory-optimized: Memory type.
+         * - Big data: Big data type.
+         * - Local SSDs: Local SSD type.
+         * - High Clock Speed: High frequency type.
+         * - Enhanced: Enhanced.
+         * - Shared: Shared.
+         * - ECS Bare Metal: elastic Bare Metal server.
+         * - High Performance Compute: High Performance Compute.
+         */
+        instanceCategories?: string[];
+        /**
+         * Instance specification family level, value range:
+         * - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+         * - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+         */
+        instanceFamilyLevel: string;
+        /**
+         * Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+         */
+        instanceTypeFamilies?: string[];
+        /**
+         * The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+         */
+        maxCpuCores?: number;
+        /**
+         * The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+         */
+        maxMemorySize?: number;
+        /**
+         * The memory size of the instance type, in GiB. Example value: 8.
+         */
+        memory?: number;
+        /**
+         * The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+         */
+        minCpuCores?: number;
+        /**
+         * The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+         */
+        minMemorySize?: number;
     }
 
     export interface NodePoolKubeletConfiguration {
@@ -17734,6 +17981,10 @@ export namespace cs {
          * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
          */
         serializeImagePulls?: string;
+        /**
+         * Used to enable the kubelet server certificate signing and rotation via CSR.
+         */
+        serverTlsBootstrap?: boolean;
         /**
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
@@ -27838,6 +28089,21 @@ export namespace ecs {
         ossObject?: string;
     }
 
+    export interface InstanceCpuOptions {
+        /**
+         * The maximum number of partitions in the storage set.
+         */
+        coreCount: number;
+        /**
+         * The number of threads per CPU core.
+         */
+        threadsPerCore: number;
+        /**
+         * The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+         */
+        topologyType: string;
+    }
+
     export interface InstanceDataDisk {
         /**
          * The ID of the automatic snapshot policy applied to the system disk.
@@ -29966,6 +30232,51 @@ export namespace eflo {
         vpdName: string;
     }
 
+    export interface HyperNodeDataDisk {
+        /**
+         * Whether to enable Burst (performance Burst).
+         */
+        burstingEnabled?: boolean;
+        /**
+         * The disk type. Value range:
+         * - cloud_essd:ESSD cloud disk.
+         */
+        category?: string;
+        /**
+         * Whether the data disk is unsubscribed and deleted with the node.
+         */
+        deleteWithNode?: boolean;
+        /**
+         * When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+         * - PL0: maximum random read/write IOPS 10000 for a single disk.
+         * - PL1: maximum random read/write IOPS 50000 for a single disk.
+         */
+        performanceLevel?: string;
+        /**
+         * ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+         */
+        provisionedIops?: number;
+        /**
+         * The size of the disk. The unit is GiB.
+         */
+        size?: number;
+    }
+
+    export interface NodeDataDisk {
+        /**
+         * Data disk type
+         */
+        category?: string;
+        /**
+         * Performance level
+         */
+        performanceLevel?: string;
+        /**
+         * Data disk size
+         */
+        size?: number;
+    }
+
     export interface NodeGroupAttachmentDataDisk {
         /**
          * Type
@@ -30084,6 +30395,91 @@ export namespace eflo {
          * Switch ID
          */
         vswitchId?: string;
+    }
+
+    export interface NodeIpAllocationPolicy {
+        /**
+         * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+         */
+        bondPolicy?: outputs.eflo.NodeIpAllocationPolicyBondPolicy;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: outputs.eflo.NodeIpAllocationPolicyMachineTypePolicy[];
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: outputs.eflo.NodeIpAllocationPolicyNodePolicy[];
+    }
+
+    export interface NodeIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: string;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeIpAllocationPolicyBondPolicyBond[];
+    }
+
+    export interface NodeIpAllocationPolicyBondPolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface NodeIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeIpAllocationPolicyMachineTypePolicyBond[];
+        /**
+         * Model
+         */
+        machineType?: string;
+    }
+
+    export interface NodeIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
+    }
+
+    export interface NodeIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: outputs.eflo.NodeIpAllocationPolicyNodePolicyBond[];
+        /**
+         * Host name
+         */
+        hostname?: string;
+        /**
+         * Node ID
+         */
+        nodeId?: string;
+    }
+
+    export interface NodeIpAllocationPolicyNodePolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: string;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: string;
     }
 
     export interface ResourceMachineTypes {
@@ -30217,6 +30613,231 @@ export namespace ehpc {
          * The URL that is used to download the script after the cluster is created.
          */
         url?: string;
+    }
+
+    export interface ClusterV2Addon {
+        /**
+         * Customize the specific configuration information of the service component.
+         */
+        name: string;
+        /**
+         * Customize the resource configuration of the service component.
+         */
+        resourcesSpec?: string;
+        /**
+         * Customize the service configuration of the service component.
+         */
+        servicesSpec?: string;
+        /**
+         * Customize the service component version.
+         */
+        version: string;
+    }
+
+    export interface ClusterV2ClusterCredentials {
+        /**
+         * The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+         */
+        password?: string;
+    }
+
+    export interface ClusterV2Manager {
+        /**
+         * The configurations of the domain account service. See `directoryService` below.
+         */
+        directoryService?: outputs.ehpc.ClusterV2ManagerDirectoryService;
+        /**
+         * The configurations of the domain name resolution service. See `dns` below.
+         */
+        dns?: outputs.ehpc.ClusterV2ManagerDns;
+        /**
+         * The hardware configurations of the management node. See `managerNode` below.
+         */
+        managerNode?: outputs.ehpc.ClusterV2ManagerManagerNode;
+        /**
+         * The configurations of the scheduler service. See `scheduler` below.
+         */
+        scheduler?: outputs.ehpc.ClusterV2ManagerScheduler;
+    }
+
+    export interface ClusterV2ManagerDirectoryService {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: string;
+        version?: string;
+    }
+
+    export interface ClusterV2ManagerDns {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: string;
+        version?: string;
+    }
+
+    export interface ClusterV2ManagerManagerNode {
+        /**
+         * Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+         * - true: Automatic renewal.
+         * - false: Do not renew automatically (default).
+         */
+        autoRenew?: boolean;
+        /**
+         * The renewal duration of a single automatic renewal. Value range:
+         * - When PeriodUnit = Week: 1, 2, 3.
+         * - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+         *
+         * Default value: 1.
+         */
+        autoRenewPeriod?: number;
+        /**
+         * The duration of the preemptible instance, in hours. Value:
+         * - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+         * - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+         *
+         * Default value: 1.
+         */
+        duration: number;
+        /**
+         * EnableHT
+         */
+        enableHt?: boolean;
+        /**
+         * The expiration time of the management node.
+         */
+        expiredTime: string;
+        /**
+         * ImageId
+         */
+        imageId?: string;
+        /**
+         * The instance billing method of the management node. Valid values:
+         *
+         * - PostPaid: pay-as-you-go
+         * - PrePaid: subscription
+         */
+        instanceChargeType?: string;
+        /**
+         * The instance ID of the management node.
+         */
+        instanceId: string;
+        /**
+         * The instance type of the management node.
+         */
+        instanceType?: string;
+        /**
+         * The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+         * - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+         * - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+         */
+        period?: number;
+        /**
+         * The unit of duration of the year-to-month billing method. Value range:
+         * - Week.
+         * - Month (default).
+         */
+        periodUnit?: string;
+        /**
+         * Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+         */
+        spotPriceLimit?: number;
+        /**
+         * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+         * - NoSpot: normal pay-as-you-go instances (default).
+         * - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+         * - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+         */
+        spotStrategy?: string;
+        /**
+         * System disk configuration of the management node. See `systemDisk` below.
+         */
+        systemDisk?: outputs.ehpc.ClusterV2ManagerManagerNodeSystemDisk;
+    }
+
+    export interface ClusterV2ManagerManagerNodeSystemDisk {
+        /**
+         * Manage the system disk configuration of the node. Value range:
+         * - cloud_efficiency: The Ultra cloud disk.
+         * - cloud_ssd:SSD cloud disk.
+         * - cloud_essd:ESSD cloud disk.
+         * - cloud: ordinary cloud disk.
+         */
+        category?: string;
+        /**
+         * When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+         * - PL0: maximum random read/write IOPS 10000 for a single disk.
+         * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+         * - PL2: maximum random read/write IOPS 100000 for a single disk.
+         * - PL3: maximum random read/write IOPS 1 million for a single disk.
+         */
+        level?: string;
+        /**
+         * The system disk size of the management node. Unit: GiB. Value range:
+         * - Ordinary cloud tray: 20~500.
+         * - ESSD cloud disk:
+         * - PL0:1~2048.
+         * - PL1:20~2048.
+         * - PL2:461~2048.
+         * - PL3:1261~2048.
+         * - Other cloud disk types: 20~2048.
+         */
+        size?: number;
+    }
+
+    export interface ClusterV2ManagerScheduler {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: string;
+        version?: string;
+    }
+
+    export interface ClusterV2SharedStorage {
+        /**
+         * The ID of the mounted file system.
+         */
+        fileSystemId?: string;
+        /**
+         * The local Mount directory where the file system is mounted.
+         */
+        mountDirectory?: string;
+        /**
+         * Storage mount options for the mounted file system.
+         */
+        mountOptions?: string;
+        /**
+         * The mount point address of the mounted file system.
+         */
+        mountTargetDomain?: string;
+        /**
+         * The remote directory to which the mounted file system needs to be mounted.
+         */
+        nasDirectory?: string;
+        /**
+         * The protocol type of the mounted file system. Value range:
+         * - NFS
+         * - SMB
+         */
+        protocolType?: string;
     }
 
     export interface GetClustersCluster {
@@ -30452,6 +31073,72 @@ export namespace ehpc {
         variables: string;
     }
 
+    export interface QueueComputeNode {
+        /**
+         * AutoRenew
+         */
+        autoRenew?: boolean;
+        /**
+         * AutoRenewPeriod
+         */
+        autoRenewPeriod?: number;
+        /**
+         * Duration
+         */
+        duration?: number;
+        /**
+         * Whether HT is enabled for the computing node.
+         */
+        enableHt: boolean;
+        /**
+         * ImageId
+         */
+        imageId?: string;
+        /**
+         * InstanceChargeType
+         */
+        instanceChargeType?: string;
+        /**
+         * InstanceTypes
+         */
+        instanceType?: string;
+        /**
+         * Period
+         */
+        period?: number;
+        /**
+         * PeriodUnit
+         */
+        periodUnit?: string;
+        /**
+         * SpotPriceLimit
+         */
+        spotPriceLimit?: number;
+        /**
+         * SpotStrategy
+         */
+        spotStrategy: string;
+        /**
+         * SystemDisk See `systemDisk` below.
+         */
+        systemDisk?: outputs.ehpc.QueueComputeNodeSystemDisk;
+    }
+
+    export interface QueueComputeNodeSystemDisk {
+        /**
+         * Category
+         */
+        category?: string;
+        /**
+         * Level
+         */
+        level?: string;
+        /**
+         * Size
+         */
+        size?: number;
+    }
+
 }
 
 export namespace eipanycast {
@@ -30568,6 +31255,109 @@ export namespace elasticsearch {
          * A list of zone ids in which the multi zone.
          */
         multiZoneIds: string[];
+    }
+
+    export interface InstanceClientNodeConfiguration {
+        /**
+         * Number of disks in the Elasticsearch cluster coordination node
+         */
+        amount?: number;
+        /**
+         * Elasticsearch cluster coordinates node disk size
+         */
+        disk: number;
+        /**
+         * Elasticsearch cluster coordination node disk type
+         */
+        diskType?: string;
+        /**
+         * Elasticsearch cluster coordination node specification
+         */
+        spec?: string;
+    }
+
+    export interface InstanceDataNodeConfiguration {
+        /**
+         * Number of data nodes in the Elasticsearch cluster
+         */
+        amount: number;
+        /**
+         * Elasticsearch data node disk size
+         */
+        disk?: number;
+        /**
+         * Whether the Elasticsearch data node disk is encrypted
+         */
+        diskEncryption: boolean;
+        /**
+         * Elasticsearch cluster data node disk type
+         */
+        diskType: string;
+        /**
+         * Elasticsearch cluster data node Essd disk level
+         */
+        performanceLevel: string;
+        /**
+         * Elasticsearch data node specification
+         */
+        spec: string;
+    }
+
+    export interface InstanceKibanaConfiguration {
+        /**
+         * The number of disks of the Elasticsearch Kibana node. The default value is 1.
+         */
+        amount: number;
+        /**
+         * Elasticsearch Kibana node disk size
+         */
+        disk: number;
+        /**
+         * Elasticsearch Kibana node disk specifications
+         */
+        spec: string;
+    }
+
+    export interface InstanceMasterConfiguration {
+        /**
+         * Elasticsearch proprietary master node number of disks
+         */
+        amount?: number;
+        /**
+         * Elasticsearch proprietary master node disk size
+         */
+        disk?: number;
+        /**
+         * Elasticsearch proprietary master node disk type
+         */
+        diskType?: string;
+        /**
+         * Elasticsearch proprietary master node specifications
+         */
+        spec?: string;
+    }
+
+    export interface InstanceWarmNodeConfiguration {
+        /**
+         * Elasticsearch cluster cold data node disk number
+         */
+        amount?: number;
+        /**
+         * Elasticsearch cluster cold data node disk size
+         */
+        disk?: number;
+        /**
+         * Elasticsearch cluster cold data node Disk encryption
+         */
+        diskEncryption?: boolean;
+        /**
+         * Elasticsearch cluster cold data node disk type
+         */
+        diskType?: string;
+        /**
+         * Elasticsearch cluster cold data node Disk Specification
+         */
+        spec?: string;
     }
 
 }
@@ -32124,6 +32914,44 @@ export namespace esa {
         status: string;
     }
 
+    export interface HttpIncomingRequestHeaderModificationRuleRequestHeaderModification {
+        /**
+         * Request Header Name.
+         */
+        name: string;
+        /**
+         * Mode of operation. Value range:
+         */
+        operation: string;
+        /**
+         * Value type. Value range:
+         */
+        type?: string;
+        /**
+         * Request header value
+         */
+        value?: string;
+    }
+
+    export interface HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
+        /**
+         * The response header name.
+         */
+        name: string;
+        /**
+         * Operation method. Possible values:
+         */
+        operation: string;
+        /**
+         * The value type. Value range:
+         */
+        type?: string;
+        /**
+         * The response header value.
+         */
+        value?: string;
+    }
+
     export interface HttpRequestHeaderModificationRuleRequestHeaderModification {
         /**
          * Request Header Name.
@@ -32603,7 +33431,14 @@ export namespace esa {
          */
         rateLimit?: outputs.esa.WafRuleConfigRateLimit;
         /**
-         * The overall security protection level of WAF. See `securityLevel` below.
+         * The overall security protection level of WAF.
+         * Valid values:
+         * - off
+         * - essentiallyOff
+         * - low
+         * - medium
+         * - high
+         * - underAttack See `securityLevel` below.
          */
         securityLevel?: outputs.esa.WafRuleConfigSecurityLevel;
         /**
@@ -36849,7 +37684,7 @@ export namespace fc {
         /**
          * Function custom health check configuration See `healthCheckConfig` below.
          */
-        healthCheckConfig?: outputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig;
+        healthCheckConfig: outputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig;
         /**
          * The container Image address.
          */
@@ -36874,12 +37709,12 @@ export namespace fc {
     }
 
     export interface V3FunctionCustomContainerConfigHealthCheckConfig {
-        failureThreshold?: number;
-        httpGetUrl?: string;
-        initialDelaySeconds?: number;
-        periodSeconds?: number;
-        successThreshold?: number;
-        timeoutSeconds?: number;
+        failureThreshold: number;
+        httpGetUrl: string;
+        initialDelaySeconds: number;
+        periodSeconds: number;
+        successThreshold: number;
+        timeoutSeconds: number;
     }
 
     export interface V3FunctionCustomDns {
@@ -36920,7 +37755,7 @@ export namespace fc {
         /**
          * Function custom health check configuration. See `healthCheckConfig` below.
          */
-        healthCheckConfig?: outputs.fc.V3FunctionCustomRuntimeConfigHealthCheckConfig;
+        healthCheckConfig: outputs.fc.V3FunctionCustomRuntimeConfigHealthCheckConfig;
         /**
          * The listening port of the HTTP Server.
          */
@@ -36929,11 +37764,11 @@ export namespace fc {
 
     export interface V3FunctionCustomRuntimeConfigHealthCheckConfig {
         failureThreshold: number;
-        httpGetUrl?: string;
-        initialDelaySeconds?: number;
-        periodSeconds?: number;
-        successThreshold?: number;
-        timeoutSeconds?: number;
+        httpGetUrl: string;
+        initialDelaySeconds: number;
+        periodSeconds: number;
+        successThreshold: number;
+        timeoutSeconds: number;
     }
 
     export interface V3FunctionGpuConfig {
@@ -37091,11 +37926,11 @@ export namespace fc {
         /**
          * Security group ID
          */
-        securityGroupId?: string;
+        securityGroupId: string;
         /**
          * VPC network ID
          */
-        vpcId?: string;
+        vpcId: string;
         /**
          * Switch List
          */
@@ -41949,6 +42784,19 @@ export namespace lindorm {
         connectAddressLists: outputs.lindorm.InstanceV2EngineListConnectAddressList[];
         /**
          * Engine
+         *
+         * Enumeration value:
+         * - `TABLE`: Wide table engine
+         * - `TSDB`: Time series Engine
+         * - `LSEARCH`: Search engine
+         * - `LTS`: LTS engine
+         * - `LVECTOR`: Vector engine
+         * - `LCOLUMN`: Column-store engine
+         * - `LAI`: AI engine
+         * - `FILE`: The underlying file engine
+         * - `LMESSAGE`: Message engine
+         * - `LROW`: Wide table Engine 3.0
+         * - `LSTREAM`: Stream engine
          */
         engineType: string;
         /**
@@ -42015,6 +42863,41 @@ export namespace lindorm {
         nodeDiskType?: string;
         /**
          * Node Specifications
+         * - Valid values when selecting cloud storage:
+         * - **lindorm.c.2xlarge**, 8 cores 16GB
+         * - **lindorm.g.2xlarge**, 8 cores 32GB
+         * - **lindorm.c.4xlarge**, 16 cores 32GB
+         * - **lindorm.g.4xlarge**, 16 cores 64GB
+         * - **lindorm.c.8xlarge**, 32 core 64GB
+         * - **lindorm.g.8xlarge**, 32 core 128GB
+         * - **lindorm.g.8xlarge**, 8 cores 64GB
+         * - **lindorm.r.4xlarge**, 16 cores 128GB
+         * - **lindorm.r.8xlarge**, 32 cores 256GB
+         * - Valid values when local disk storage is selected:
+         * - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+         * - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+         * - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+         * - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+         * - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+         * - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+         * - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+         * - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+         * - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+         * - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+         * - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+         * - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+         * - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+         * - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+         * - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+         * - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+         * - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+         * - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+         * - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+         * - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+         * - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+         * - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+         * - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+         * - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
          */
         nodeSpec: string;
         /**
@@ -42029,6 +42912,17 @@ export namespace lindorm {
          * Node Status
          */
         status: string;
+    }
+
+    export interface InstanceV2WhiteIpList {
+        /**
+         * Group Name
+         */
+        groupName: string;
+        /**
+         * Whitelist information
+         */
+        ipList: string;
     }
 
 }
@@ -46314,6 +47208,29 @@ export namespace oss {
         maxAgeSeconds?: number;
     }
 
+    export interface BucketHttpsConfigCipherSuit {
+        /**
+         * This field is used to configure custom encryption algorithm suites for TLS 1.2.
+         */
+        customCipherSuites?: string[];
+        /**
+         * Configures TLS encryption algorithm suites. Valid values:
+         * true: strong encryption algorithm suites or custom encryption algorithm suites.
+         * false: all encryption algorithm suites (default).
+         */
+        enable: boolean;
+        /**
+         * Specifies whether to use strong encryption algorithm suites. Valid values:
+         * true: uses strong encryption algorithm suites.
+         * false: uses custom encryption algorithm suites.
+         */
+        strongCipherSuite?: boolean;
+        /**
+         * Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+         */
+        tls13CustomCipherSuites?: string[];
+    }
+
     export interface BucketLifecycleRule {
         /**
          * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
@@ -48331,11 +49248,11 @@ export namespace privatelink {
 
     export interface GetVpcEndpointServicesService {
         /**
-         * Whether to automatically accept terminal node connections.
+         * Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
          */
         autoAcceptConnection: boolean;
         /**
-         * The connection bandwidth.
+         * The default maximum bandwidth of the endpoint connection.
          */
         connectBandwidth: number;
         /**
@@ -48343,31 +49260,31 @@ export namespace privatelink {
          */
         id: string;
         /**
-         * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+         * The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
          */
         serviceBusinessStatus: string;
         /**
-         * The description of the terminal node service.
+         * The description of the endpoint service.
          */
         serviceDescription: string;
         /**
-         * The domain of service.
+         * The domain name of the endpoint service.
          */
         serviceDomain: string;
         /**
-         * The ID of the Vpc Endpoint Service.
+         * The ID of the endpoint service.
          */
         serviceId: string;
         /**
-         * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+         * The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
          */
         status: string;
         /**
-         * The tags of Vpc Endpoint Service.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
         /**
-         * The name of Vpc Endpoint Service.
+         * The name of the endpoint service.
          */
         vpcEndpointServiceName: string;
     }
@@ -50712,6 +51629,295 @@ export namespace rds {
 }
 
 export namespace realtimecompute {
+    export interface DeploymentArtifact {
+        /**
+         * JarArtifact See `jarArtifact` below.
+         */
+        jarArtifact?: outputs.realtimecompute.DeploymentArtifactJarArtifact;
+        /**
+         * Artifact type
+         */
+        kind: string;
+        /**
+         * PythonArtifact See `pythonArtifact` below.
+         */
+        pythonArtifact?: outputs.realtimecompute.DeploymentArtifactPythonArtifact;
+        /**
+         * SqlArtifact See `sqlArtifact` below.
+         */
+        sqlArtifact?: outputs.realtimecompute.DeploymentArtifactSqlArtifact;
+    }
+
+    export interface DeploymentArtifactJarArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: string[];
+        /**
+         * Main class; you must specify the fully qualified class name
+         */
+        entryClass?: string;
+        /**
+         * Full URL path of the JAR job
+         */
+        jarUri?: string;
+        /**
+         * Startup arguments
+         */
+        mainArgs?: string;
+    }
+
+    export interface DeploymentArtifactPythonArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: string[];
+        /**
+         * URL paths of dependent Python archive files
+         */
+        additionalPythonArchives?: string[];
+        /**
+         * URL paths of dependent Python library files
+         */
+        additionalPythonLibraries?: string[];
+        /**
+         * Entry module for Python
+         */
+        entryModule?: string;
+        /**
+         * Startup arguments
+         */
+        mainArgs?: string;
+        /**
+         * Full URL path of the Python job
+         */
+        pythonArtifactUri?: string;
+    }
+
+    export interface DeploymentArtifactSqlArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: string[];
+        /**
+         * Text content of the SQL job
+         */
+        sqlScript?: string;
+    }
+
+    export interface DeploymentBatchResourceSetting {
+        /**
+         * Resource settings for basic mode See `basicResourceSetting` below.
+         */
+        basicResourceSetting?: outputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSetting;
+        /**
+         * Maximum number of slots
+         */
+        maxSlot?: number;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSetting {
+        jobmanagerResourceSettingSpec?: outputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec;
+        parallelism?: number;
+        taskmanagerResourceSettingSpec?: outputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+        cpu?: number;
+        memory?: string;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+        cpu?: number;
+        memory?: string;
+    }
+
+    export interface DeploymentDeploymentTarget {
+        /**
+         * Deployment mode, valid values: PER_JOB or SESSION
+         */
+        mode: string;
+        /**
+         * Deployment target name
+         */
+        name: string;
+    }
+
+    export interface DeploymentLocalVariable {
+        /**
+         * Job variable name
+         */
+        name?: string;
+        /**
+         * Job variable value
+         */
+        value?: string;
+    }
+
+    export interface DeploymentLogging {
+        /**
+         * Custom log template
+         */
+        log4j2ConfigurationTemplate: string;
+        /**
+         * log4j configuration   See `log4jLoggers` below.
+         */
+        log4jLoggers: outputs.realtimecompute.DeploymentLoggingLog4jLogger[];
+        /**
+         * Log retention policy   See `logReservePolicy` below.
+         */
+        logReservePolicy: outputs.realtimecompute.DeploymentLoggingLogReservePolicy;
+        /**
+         * Default system log template
+         */
+        loggingProfile: string;
+    }
+
+    export interface DeploymentLoggingLog4jLogger {
+        /**
+         * Log output level
+         */
+        loggerLevel: string;
+        /**
+         * Class name for log output
+         */
+        loggerName: string;
+    }
+
+    export interface DeploymentLoggingLogReservePolicy {
+        /**
+         * Number of days to retain logs after log retention is enabled
+         */
+        expirationDays: number;
+        /**
+         * Whether to enable log retention
+         */
+        openHistory: boolean;
+    }
+
+    export interface DeploymentStreamingResourceSetting {
+        /**
+         * Resource settings for basic mode See `basicResourceSetting` below.
+         */
+        basicResourceSetting: outputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSetting;
+        /**
+         * Expert mode resource settings See `expertResourceSetting` below.
+         */
+        expertResourceSetting: outputs.realtimecompute.DeploymentStreamingResourceSettingExpertResourceSetting;
+        /**
+         * Resource mode used in streaming mode, valid values: BASIC or EXPERT
+         */
+        resourceSettingMode: string;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSetting {
+        jobmanagerResourceSettingSpec: outputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec;
+        parallelism: number;
+        taskmanagerResourceSettingSpec: outputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+        cpu: number;
+        memory: string;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+        cpu: number;
+        memory: string;
+    }
+
+    export interface DeploymentStreamingResourceSettingExpertResourceSetting {
+        jobmanagerResourceSettingSpec?: outputs.realtimecompute.DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec;
+        /**
+         * Resource plan for expert mode
+         */
+        resourcePlan?: string;
+    }
+
+    export interface DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+        cpu?: number;
+        memory?: string;
+    }
+
+    export interface JobLocalVariable {
+        /**
+         * Local variables name
+         */
+        name?: string;
+        /**
+         * Local variables value
+         */
+        value?: string;
+    }
+
+    export interface JobRestoreStrategy {
+        /**
+         * Stateless startup
+         */
+        allowNonRestoredState?: boolean;
+        /**
+         * Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+         */
+        jobStartTimeInMs?: number;
+        /**
+         * Restore type
+         */
+        kind?: string;
+        /**
+         * SavepointId
+         */
+        savepointId?: string;
+    }
+
+    export interface JobStatus {
+        /**
+         * Job current status
+         */
+        currentJobStatus: string;
+        /**
+         * Job failure information
+         */
+        failure: outputs.realtimecompute.JobStatusFailure;
+        /**
+         * Job Run Health Score
+         */
+        healthScore: number;
+        /**
+         * Risk level, which indicates the risk level of the operation status of the job.
+         */
+        riskLevel: string;
+        /**
+         * job running status, which has value when the job is Running.
+         */
+        running: outputs.realtimecompute.JobStatusRunning;
+    }
+
+    export interface JobStatusFailure {
+        /**
+         * Job failure time
+         */
+        failedAt: number;
+        /**
+         * Failure Information Details
+         */
+        message: string;
+        /**
+         * Failure Reason
+         */
+        reason: string;
+    }
+
+    export interface JobStatusRunning {
+        /**
+         * Number of job restarts
+         */
+        observedFlinkJobRestarts: number;
+        /**
+         * Flink job status
+         */
+        observedFlinkJobStatus: string;
+    }
+
     export interface VvpInstanceResourceSpec {
         /**
          * CPU number.
@@ -58406,6 +59612,17 @@ export namespace threatdetection {
         vendor: number;
     }
 
+    export interface CheckConfigSelectedCheck {
+        /**
+         * The ID of the check item.
+         */
+        checkId?: number;
+        /**
+         * The section ID of the check item.
+         */
+        sectionId?: number;
+    }
+
     export interface GetAntiBruteForceRulesRule {
         /**
          * The ID of the defense rule.
@@ -58564,6 +59781,147 @@ export namespace threatdetection {
          */
         startTime: string;
         targetType: string;
+    }
+
+    export interface GetCheckItemConfigsConfig {
+        /**
+         * The ID of the check item
+         */
+        checkId: number;
+        /**
+         * The name of the check item.
+         */
+        checkShowName: string;
+        /**
+         * The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+         */
+        checkType: string;
+        /**
+         * The custom configuration items of the check item.
+         */
+        customConfigs: outputs.threatdetection.GetCheckItemConfigsConfigCustomConfig[];
+        /**
+         * The description of the check item.
+         */
+        description: outputs.threatdetection.GetCheckItemConfigsConfigDescription;
+        /**
+         * The estimated quota that will be consumed by this check item.
+         */
+        estimatedCount: number;
+        /**
+         * The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+         */
+        instanceSubType: string;
+        /**
+         * The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+         */
+        instanceType: string;
+        /**
+         * The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+         */
+        riskLevel: string;
+        /**
+         * The IDs of the sections associated with the check items.
+         */
+        sectionIds: number[];
+        /**
+         * The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+         */
+        vendor: string;
+    }
+
+    export interface GetCheckItemConfigsConfigCustomConfig {
+        /**
+         * The default value of the custom configuration item. The value is a string.
+         */
+        defaultValue: string;
+        /**
+         * The name of the custom configuration item, which is unique in a check item.
+         */
+        name: string;
+        /**
+         * The display name of the custom configuration item for internationalization.
+         */
+        showName: string;
+        /**
+         * The type of the custom configuration item. The value is a JSON string.
+         */
+        typeDefine: string;
+        /**
+         * The content of the description for the check item when the Type parameter is text.
+         */
+        value: string;
+    }
+
+    export interface GetCheckItemConfigsConfigDescription {
+        /**
+         * The type of the description of the check item. Valid value:*   **text**.
+         */
+        type: string;
+        /**
+         * The content of the description for the check item when the Type parameter is text.
+         */
+        value: string;
+    }
+
+    export interface GetCheckStructuresStructure {
+        /**
+         * The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+         */
+        standardType: string;
+        /**
+         * The structure information about the check items of the business type.
+         */
+        standards: outputs.threatdetection.GetCheckStructuresStructureStandard[];
+    }
+
+    export interface GetCheckStructuresStructureStandard {
+        /**
+         * The ID of the section for the check item.
+         */
+        id: number;
+        /**
+         * The standards of the check items.
+         */
+        requirements: outputs.threatdetection.GetCheckStructuresStructureStandardRequirement[];
+        /**
+         * The display name of the standard for the check item.
+         */
+        showName: string;
+        /**
+         * The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+         */
+        type: string;
+    }
+
+    export interface GetCheckStructuresStructureStandardRequirement {
+        /**
+         * The ID of the section for the check item.
+         */
+        id: number;
+        /**
+         * The information about the sections of check items.
+         */
+        sections: outputs.threatdetection.GetCheckStructuresStructureStandardRequirementSection[];
+        /**
+         * The display name of the standard for the check item.
+         */
+        showName: string;
+        /**
+         * The total number of check items for the requirement.
+         */
+        totalCheckCount: number;
+    }
+
+    export interface GetCheckStructuresStructureStandardRequirementSection {
+        /**
+         * The ID of the section for the check item.
+         */
+        id: number;
+        /**
+         * The display name of the standard for the check item.
+         */
+        showName: string;
     }
 
     export interface GetHoneyPotsPot {

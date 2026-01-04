@@ -94,6 +94,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Schedulerx App Group can be imported using the id, e.g.
@@ -142,14 +144,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="appVersion", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> appVersion;
+    private Output<String> appVersion;
 
     /**
      * @return Application Version, 1: Basic Edition, 2: Professional Edition
      * 
      */
-    public Output<Optional<String>> appVersion() {
-        return Codegen.optional(this.appVersion);
+    public Output<String> appVersion() {
+        return this.appVersion;
     }
     /**
      * Whether to delete the task in the application Group. The values are as follows:
@@ -230,14 +232,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxJobs", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> maxJobs;
+    private Output<Integer> maxJobs;
 
     /**
      * @return Application Grouping Configurable Maximum Number of Tasks
      * 
      */
-    public Output<Optional<Integer>> maxJobs() {
-        return Codegen.optional(this.maxJobs);
+    public Output<Integer> maxJobs() {
+        return this.maxJobs;
     }
     /**
      * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.

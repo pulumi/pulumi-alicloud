@@ -113,6 +113,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * SLS Scheduled SQL can be imported using the id, e.g.

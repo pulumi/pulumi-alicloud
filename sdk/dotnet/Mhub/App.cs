@@ -48,6 +48,8 @@ namespace Pulumi.AliCloud.Mhub
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MHUB App can be imported using the id, e.g.

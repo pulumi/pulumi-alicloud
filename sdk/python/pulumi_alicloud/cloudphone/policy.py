@@ -311,6 +311,8 @@ class Policy(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Phone Policy can be imported using the id, e.g.
@@ -373,6 +375,8 @@ class Policy(pulumi.CustomResource):
                 "proxy_password": "123456",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

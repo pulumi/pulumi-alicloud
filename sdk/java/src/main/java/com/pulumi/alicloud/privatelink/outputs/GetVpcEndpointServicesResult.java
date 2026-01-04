@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetVpcEndpointServicesResult {
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Indicates whether endpoint connection requests are automatically accepted.
      * 
      */
     private @Nullable Boolean autoAcceptConnection;
@@ -35,34 +35,34 @@ public final class GetVpcEndpointServicesResult {
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return The business status of the terminal node service..
+     * @return The service state of the endpoint service.
      * 
      */
     private @Nullable String serviceBusinessStatus;
     /**
-     * @return A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     * @return A list of Vpc Endpoint Services. Each element contains the following attributes:
      * 
      */
     private List<GetVpcEndpointServicesService> services;
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The state of the endpoint service.
      * 
      */
     private @Nullable String status;
     /**
-     * @return The tags of Vpc Endpoint Service.
+     * @return The tags added to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
     /**
-     * @return The name of Vpc Endpoint Service.
+     * @return The name of the endpoint service.
      * 
      */
     private @Nullable String vpcEndpointServiceName;
 
     private GetVpcEndpointServicesResult() {}
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Indicates whether endpoint connection requests are automatically accepted.
      * 
      */
     public Optional<Boolean> autoAcceptConnection() {
@@ -92,35 +92,35 @@ public final class GetVpcEndpointServicesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The business status of the terminal node service..
+     * @return The service state of the endpoint service.
      * 
      */
     public Optional<String> serviceBusinessStatus() {
         return Optional.ofNullable(this.serviceBusinessStatus);
     }
     /**
-     * @return A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     * @return A list of Vpc Endpoint Services. Each element contains the following attributes:
      * 
      */
     public List<GetVpcEndpointServicesService> services() {
         return this.services;
     }
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The state of the endpoint service.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The tags of Vpc Endpoint Service.
+     * @return The tags added to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
     /**
-     * @return The name of Vpc Endpoint Service.
+     * @return The name of the endpoint service.
      * 
      */
     public Optional<String> vpcEndpointServiceName() {

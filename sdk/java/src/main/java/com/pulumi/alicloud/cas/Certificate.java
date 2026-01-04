@@ -126,6 +126,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * @deprecated
  * This resource has been deprecated in favour of ServiceCertificate
  * 

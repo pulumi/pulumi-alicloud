@@ -431,6 +431,8 @@ class MetricRuleTemplate(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.
@@ -496,6 +498,8 @@ class MetricRuleTemplate(pulumi.CustomResource):
                 },
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

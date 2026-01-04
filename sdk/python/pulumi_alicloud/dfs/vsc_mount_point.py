@@ -208,6 +208,8 @@ class VscMountPoint(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Apsara File Storage for HDFS (DFS) Vsc Mount Point can be imported using the id, e.g.
@@ -264,6 +266,8 @@ class VscMountPoint(pulumi.CustomResource):
             alias_prefix=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

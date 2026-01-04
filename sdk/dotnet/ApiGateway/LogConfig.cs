@@ -63,6 +63,8 @@ namespace Pulumi.AliCloud.ApiGateway
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Api Gateway Log Config can be imported using the id, e.g.

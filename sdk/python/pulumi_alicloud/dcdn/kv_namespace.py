@@ -147,6 +147,8 @@ class KvNamespace(pulumi.CustomResource):
             namespace=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dcdn Kv Namespace can be imported using the id, e.g.
@@ -193,6 +195,8 @@ class KvNamespace(pulumi.CustomResource):
             description=name,
             namespace=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

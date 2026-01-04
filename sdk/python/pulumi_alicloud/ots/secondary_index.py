@@ -346,6 +346,8 @@ class SecondaryIndex(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OTS secondary index can be imported using id, e.g.
@@ -451,6 +453,8 @@ class SecondaryIndex(pulumi.CustomResource):
                 "col3",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

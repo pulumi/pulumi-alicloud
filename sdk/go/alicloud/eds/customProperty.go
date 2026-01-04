@@ -53,6 +53,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECD Custom Property can be imported using the id, e.g.

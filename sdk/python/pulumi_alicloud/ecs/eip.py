@@ -851,6 +851,8 @@ class Eip(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing eip module
@@ -910,6 +912,8 @@ class Eip(pulumi.CustomResource):
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

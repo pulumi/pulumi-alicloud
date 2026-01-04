@@ -241,6 +241,8 @@ namespace Pulumi.AliCloud.Arms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ARMS Synthetic Task can be imported using the id, e.g.

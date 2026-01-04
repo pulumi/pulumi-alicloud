@@ -222,6 +222,8 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
             share_name=default_gateway_file_share.gateway_file_share_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Express Sync Share Attachment can be imported using the id, e.g.
@@ -328,6 +330,8 @@ class ExpressSyncShareAttachment(pulumi.CustomResource):
             gateway_id=default_gateway.id,
             share_name=default_gateway_file_share.gateway_file_share_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

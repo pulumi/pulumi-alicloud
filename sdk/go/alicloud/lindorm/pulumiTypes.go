@@ -17,6 +17,19 @@ type InstanceV2EngineList struct {
 	// Connect Address List
 	ConnectAddressLists []InstanceV2EngineListConnectAddressList `pulumi:"connectAddressLists"`
 	// Engine
+	//
+	// Enumeration value:
+	// - `TABLE`: Wide table engine
+	// - `TSDB`: Time series Engine
+	// - `LSEARCH`: Search engine
+	// - `LTS`: LTS engine
+	// - `LVECTOR`: Vector engine
+	// - `LCOLUMN`: Column-store engine
+	// - `LAI`: AI engine
+	// - `FILE`: The underlying file engine
+	// - `LMESSAGE`: Message engine
+	// - `LROW`: Wide table Engine 3.0
+	// - `LSTREAM`: Stream engine
 	EngineType string `pulumi:"engineType"`
 	// Whether it is the latest version
 	IsLastVersion *bool `pulumi:"isLastVersion"`
@@ -43,6 +56,19 @@ type InstanceV2EngineListArgs struct {
 	// Connect Address List
 	ConnectAddressLists InstanceV2EngineListConnectAddressListArrayInput `pulumi:"connectAddressLists"`
 	// Engine
+	//
+	// Enumeration value:
+	// - `TABLE`: Wide table engine
+	// - `TSDB`: Time series Engine
+	// - `LSEARCH`: Search engine
+	// - `LTS`: LTS engine
+	// - `LVECTOR`: Vector engine
+	// - `LCOLUMN`: Column-store engine
+	// - `LAI`: AI engine
+	// - `FILE`: The underlying file engine
+	// - `LMESSAGE`: Message engine
+	// - `LROW`: Wide table Engine 3.0
+	// - `LSTREAM`: Stream engine
 	EngineType pulumi.StringInput `pulumi:"engineType"`
 	// Whether it is the latest version
 	IsLastVersion pulumi.BoolPtrInput `pulumi:"isLastVersion"`
@@ -111,6 +137,19 @@ func (o InstanceV2EngineListOutput) ConnectAddressLists() InstanceV2EngineListCo
 }
 
 // Engine
+//
+// Enumeration value:
+// - `TABLE`: Wide table engine
+// - `TSDB`: Time series Engine
+// - `LSEARCH`: Search engine
+// - `LTS`: LTS engine
+// - `LVECTOR`: Vector engine
+// - `LCOLUMN`: Column-store engine
+// - `LAI`: AI engine
+// - `FILE`: The underlying file engine
+// - `LMESSAGE`: Message engine
+// - `LROW`: Wide table Engine 3.0
+// - `LSTREAM`: Stream engine
 func (o InstanceV2EngineListOutput) EngineType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceV2EngineList) string { return v.EngineType }).(pulumi.StringOutput)
 }
@@ -286,6 +325,41 @@ type InstanceV2EngineListNodeGroup struct {
 	// Node Disk Type
 	NodeDiskType *string `pulumi:"nodeDiskType"`
 	// Node Specifications
+	// - Valid values when selecting cloud storage:
+	// - **lindorm.c.2xlarge**, 8 cores 16GB
+	// - **lindorm.g.2xlarge**, 8 cores 32GB
+	// - **lindorm.c.4xlarge**, 16 cores 32GB
+	// - **lindorm.g.4xlarge**, 16 cores 64GB
+	// - **lindorm.c.8xlarge**, 32 core 64GB
+	// - **lindorm.g.8xlarge**, 32 core 128GB
+	// - **lindorm.g.8xlarge**, 8 cores 64GB
+	// - **lindorm.r.4xlarge**, 16 cores 128GB
+	// - **lindorm.r.8xlarge**, 32 cores 256GB
+	// - Valid values when local disk storage is selected:
+	// - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+	// - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+	// - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+	// - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+	// - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+	// - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+	// - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+	// - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+	// - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+	// - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+	// - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+	// - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+	// - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+	// - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+	// - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+	// - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+	// - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+	// - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+	// - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+	// - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+	// - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+	// - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+	// - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+	// - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
 	NodeSpec string `pulumi:"nodeSpec"`
 	// Resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -322,6 +396,41 @@ type InstanceV2EngineListNodeGroupArgs struct {
 	// Node Disk Type
 	NodeDiskType pulumi.StringPtrInput `pulumi:"nodeDiskType"`
 	// Node Specifications
+	// - Valid values when selecting cloud storage:
+	// - **lindorm.c.2xlarge**, 8 cores 16GB
+	// - **lindorm.g.2xlarge**, 8 cores 32GB
+	// - **lindorm.c.4xlarge**, 16 cores 32GB
+	// - **lindorm.g.4xlarge**, 16 cores 64GB
+	// - **lindorm.c.8xlarge**, 32 core 64GB
+	// - **lindorm.g.8xlarge**, 32 core 128GB
+	// - **lindorm.g.8xlarge**, 8 cores 64GB
+	// - **lindorm.r.4xlarge**, 16 cores 128GB
+	// - **lindorm.r.8xlarge**, 32 cores 256GB
+	// - Valid values when local disk storage is selected:
+	// - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+	// - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+	// - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+	// - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+	// - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+	// - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+	// - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+	// - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+	// - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+	// - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+	// - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+	// - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+	// - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+	// - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+	// - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+	// - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+	// - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+	// - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+	// - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+	// - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+	// - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+	// - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+	// - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+	// - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
 	NodeSpec pulumi.StringInput `pulumi:"nodeSpec"`
 	// Resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -418,6 +527,41 @@ func (o InstanceV2EngineListNodeGroupOutput) NodeDiskType() pulumi.StringPtrOutp
 }
 
 // Node Specifications
+// - Valid values when selecting cloud storage:
+// - **lindorm.c.2xlarge**, 8 cores 16GB
+// - **lindorm.g.2xlarge**, 8 cores 32GB
+// - **lindorm.c.4xlarge**, 16 cores 32GB
+// - **lindorm.g.4xlarge**, 16 cores 64GB
+// - **lindorm.c.8xlarge**, 32 core 64GB
+// - **lindorm.g.8xlarge**, 32 core 128GB
+// - **lindorm.g.8xlarge**, 8 cores 64GB
+// - **lindorm.r.4xlarge**, 16 cores 128GB
+// - **lindorm.r.8xlarge**, 32 cores 256GB
+// - Valid values when local disk storage is selected:
+// - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+// - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+// - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+// - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+// - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+// - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+// - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+// - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+// - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+// - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+// - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+// - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+// - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+// - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+// - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+// - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+// - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+// - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+// - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+// - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+// - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+// - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+// - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+// - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
 func (o InstanceV2EngineListNodeGroupOutput) NodeSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceV2EngineListNodeGroup) string { return v.NodeSpec }).(pulumi.StringOutput)
 }
@@ -455,6 +599,112 @@ func (o InstanceV2EngineListNodeGroupArrayOutput) Index(i pulumi.IntInput) Insta
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceV2EngineListNodeGroup {
 		return vs[0].([]InstanceV2EngineListNodeGroup)[vs[1].(int)]
 	}).(InstanceV2EngineListNodeGroupOutput)
+}
+
+type InstanceV2WhiteIpList struct {
+	// Group Name
+	GroupName string `pulumi:"groupName"`
+	// Whitelist information
+	IpList string `pulumi:"ipList"`
+}
+
+// InstanceV2WhiteIpListInput is an input type that accepts InstanceV2WhiteIpListArgs and InstanceV2WhiteIpListOutput values.
+// You can construct a concrete instance of `InstanceV2WhiteIpListInput` via:
+//
+//	InstanceV2WhiteIpListArgs{...}
+type InstanceV2WhiteIpListInput interface {
+	pulumi.Input
+
+	ToInstanceV2WhiteIpListOutput() InstanceV2WhiteIpListOutput
+	ToInstanceV2WhiteIpListOutputWithContext(context.Context) InstanceV2WhiteIpListOutput
+}
+
+type InstanceV2WhiteIpListArgs struct {
+	// Group Name
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Whitelist information
+	IpList pulumi.StringInput `pulumi:"ipList"`
+}
+
+func (InstanceV2WhiteIpListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2WhiteIpList)(nil)).Elem()
+}
+
+func (i InstanceV2WhiteIpListArgs) ToInstanceV2WhiteIpListOutput() InstanceV2WhiteIpListOutput {
+	return i.ToInstanceV2WhiteIpListOutputWithContext(context.Background())
+}
+
+func (i InstanceV2WhiteIpListArgs) ToInstanceV2WhiteIpListOutputWithContext(ctx context.Context) InstanceV2WhiteIpListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2WhiteIpListOutput)
+}
+
+// InstanceV2WhiteIpListArrayInput is an input type that accepts InstanceV2WhiteIpListArray and InstanceV2WhiteIpListArrayOutput values.
+// You can construct a concrete instance of `InstanceV2WhiteIpListArrayInput` via:
+//
+//	InstanceV2WhiteIpListArray{ InstanceV2WhiteIpListArgs{...} }
+type InstanceV2WhiteIpListArrayInput interface {
+	pulumi.Input
+
+	ToInstanceV2WhiteIpListArrayOutput() InstanceV2WhiteIpListArrayOutput
+	ToInstanceV2WhiteIpListArrayOutputWithContext(context.Context) InstanceV2WhiteIpListArrayOutput
+}
+
+type InstanceV2WhiteIpListArray []InstanceV2WhiteIpListInput
+
+func (InstanceV2WhiteIpListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2WhiteIpList)(nil)).Elem()
+}
+
+func (i InstanceV2WhiteIpListArray) ToInstanceV2WhiteIpListArrayOutput() InstanceV2WhiteIpListArrayOutput {
+	return i.ToInstanceV2WhiteIpListArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceV2WhiteIpListArray) ToInstanceV2WhiteIpListArrayOutputWithContext(ctx context.Context) InstanceV2WhiteIpListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceV2WhiteIpListArrayOutput)
+}
+
+type InstanceV2WhiteIpListOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2WhiteIpListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceV2WhiteIpList)(nil)).Elem()
+}
+
+func (o InstanceV2WhiteIpListOutput) ToInstanceV2WhiteIpListOutput() InstanceV2WhiteIpListOutput {
+	return o
+}
+
+func (o InstanceV2WhiteIpListOutput) ToInstanceV2WhiteIpListOutputWithContext(ctx context.Context) InstanceV2WhiteIpListOutput {
+	return o
+}
+
+// Group Name
+func (o InstanceV2WhiteIpListOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceV2WhiteIpList) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Whitelist information
+func (o InstanceV2WhiteIpListOutput) IpList() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceV2WhiteIpList) string { return v.IpList }).(pulumi.StringOutput)
+}
+
+type InstanceV2WhiteIpListArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceV2WhiteIpListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceV2WhiteIpList)(nil)).Elem()
+}
+
+func (o InstanceV2WhiteIpListArrayOutput) ToInstanceV2WhiteIpListArrayOutput() InstanceV2WhiteIpListArrayOutput {
+	return o
+}
+
+func (o InstanceV2WhiteIpListArrayOutput) ToInstanceV2WhiteIpListArrayOutputWithContext(ctx context.Context) InstanceV2WhiteIpListArrayOutput {
+	return o
+}
+
+func (o InstanceV2WhiteIpListArrayOutput) Index(i pulumi.IntInput) InstanceV2WhiteIpListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceV2WhiteIpList {
+		return vs[0].([]InstanceV2WhiteIpList)[vs[1].(int)]
+	}).(InstanceV2WhiteIpListOutput)
 }
 
 type GetInstancesInstance struct {
@@ -858,6 +1108,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListConnectAddressListArrayInput)(nil)).Elem(), InstanceV2EngineListConnectAddressListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListNodeGroupInput)(nil)).Elem(), InstanceV2EngineListNodeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2EngineListNodeGroupArrayInput)(nil)).Elem(), InstanceV2EngineListNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2WhiteIpListInput)(nil)).Elem(), InstanceV2WhiteIpListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceV2WhiteIpListArrayInput)(nil)).Elem(), InstanceV2WhiteIpListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceInput)(nil)).Elem(), GetInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterOutputType(InstanceV2EngineListOutput{})
@@ -866,6 +1118,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceV2EngineListConnectAddressListArrayOutput{})
 	pulumi.RegisterOutputType(InstanceV2EngineListNodeGroupOutput{})
 	pulumi.RegisterOutputType(InstanceV2EngineListNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(InstanceV2WhiteIpListOutput{})
+	pulumi.RegisterOutputType(InstanceV2WhiteIpListArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 }

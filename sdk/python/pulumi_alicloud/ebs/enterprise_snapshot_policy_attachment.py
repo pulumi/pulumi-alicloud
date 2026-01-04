@@ -147,6 +147,8 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
             disk_id=default_jk_w46o.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EBS Enterprise Snapshot Policy Attachment can be imported using the id, e.g.
@@ -208,6 +210,8 @@ class EnterpriseSnapshotPolicyAttachment(pulumi.CustomResource):
             policy_id=default_pe3jj_r.id,
             disk_id=default_jk_w46o.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

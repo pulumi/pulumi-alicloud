@@ -68,6 +68,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Https Basic Configuration can be imported using the id, e.g.
@@ -164,7 +166,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable TLS1.0. Default is disabled. Possible values:
@@ -323,7 +325,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Whether to enable TLS1.0. Default is disabled. Possible values:
@@ -450,7 +452,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site ID, which can be obtained by calling the ListSites interface.
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// Whether to enable TLS1.0. Default is disabled. Possible values:

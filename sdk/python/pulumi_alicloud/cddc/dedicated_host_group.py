@@ -373,6 +373,8 @@ class DedicatedHostGroup(pulumi.CustomResource):
             dedicated_host_group_desc=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ApsaraDB for MyBase Dedicated Host Group can be imported using the id, e.g.
@@ -434,6 +436,8 @@ class DedicatedHostGroup(pulumi.CustomResource):
             host_replace_policy="Manual",
             dedicated_host_group_desc=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -259,6 +259,8 @@ class NatGateway(pulumi.CustomResource):
             nat_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Nat Gateway can be imported using the id, e.g.
@@ -322,6 +324,8 @@ class NatGateway(pulumi.CustomResource):
             instance_type="enat.default",
             nat_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

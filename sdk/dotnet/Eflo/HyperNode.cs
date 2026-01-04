@@ -53,6 +53,8 @@ namespace Pulumi.AliCloud.Eflo
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eflo Hyper Node can be imported using the id, e.g.
@@ -65,22 +67,49 @@ namespace Pulumi.AliCloud.Eflo
     public partial class HyperNode : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Cluster ID
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string?> ClusterId { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        [Output("dataDisks")]
+        public Output<ImmutableArray<Outputs.HyperNodeDataDisk>> DataDisks { get; private set; } = null!;
+
         /// <summary>
-        /// Number of the cluster to which the supercompute node belongs
+        /// The host name prefix of the sub computing node
+        /// </summary>
+        [Output("hostname")]
+        public Output<string?> Hostname { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of the cluster to which the hyper computing node belongs
         /// </summary>
         [Output("hpnZone")]
         public Output<string?> HpnZone { get; private set; } = null!;
 
         /// <summary>
-        /// The model used by the super computing node
+        /// Login Password of the sub computing node
+        /// </summary>
+        [Output("loginPassword")]
+        public Output<string?> LoginPassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The model used by the hyper computing node
         /// </summary>
         [Output("machineType")]
         public Output<string?> MachineType { get; private set; } = null!;
+
+        /// <summary>
+        /// Node group ID
+        /// </summary>
+        [Output("nodeGroupId")]
+        public Output<string?> NodeGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The duration of the instance purchase, in units.
@@ -121,13 +150,13 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Super Node Architecture
+        /// Hyper Node Architecture
         /// </summary>
         [Output("serverArch")]
         public Output<string?> ServerArch { get; private set; } = null!;
 
         /// <summary>
-        /// The number of installments of the supercomputing node of the fixed fee installment.
+        /// The number of installments of the hyper computing node of the fixed fee installment.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -147,7 +176,25 @@ namespace Pulumi.AliCloud.Eflo
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The zone where the super compute node is located
+        /// Custom user data for the sub computing node
+        /// </summary>
+        [Output("userData")]
+        public Output<string?> UserData { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the vpc to which the sub computing node
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the vswitch to which the sub computing node
+        /// </summary>
+        [Output("vswitchId")]
+        public Output<string?> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone where the hyper compute node is located
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -175,6 +222,10 @@ namespace Pulumi.AliCloud.Eflo
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "loginPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -199,16 +250,58 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class HyperNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of the cluster to which the supercompute node belongs
+        /// Cluster ID
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        [Input("dataDisks")]
+        private InputList<Inputs.HyperNodeDataDiskArgs>? _dataDisks;
+        public InputList<Inputs.HyperNodeDataDiskArgs> DataDisks
+        {
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.HyperNodeDataDiskArgs>());
+            set => _dataDisks = value;
+        }
+
+        /// <summary>
+        /// The host name prefix of the sub computing node
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Number of the cluster to which the hyper computing node belongs
         /// </summary>
         [Input("hpnZone")]
         public Input<string>? HpnZone { get; set; }
 
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
         /// <summary>
-        /// The model used by the super computing node
+        /// Login Password of the sub computing node
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The model used by the hyper computing node
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// Node group ID
+        /// </summary>
+        [Input("nodeGroupId")]
+        public Input<string>? NodeGroupId { get; set; }
 
         /// <summary>
         /// The duration of the instance purchase, in units.
@@ -243,13 +336,13 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Super Node Architecture
+        /// Hyper Node Architecture
         /// </summary>
         [Input("serverArch")]
         public Input<string>? ServerArch { get; set; }
 
         /// <summary>
-        /// The number of installments of the supercomputing node of the fixed fee installment.
+        /// The number of installments of the hyper computing node of the fixed fee installment.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -269,7 +362,25 @@ namespace Pulumi.AliCloud.Eflo
         }
 
         /// <summary>
-        /// The zone where the super compute node is located
+        /// Custom user data for the sub computing node
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// The ID of the vpc to which the sub computing node
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The ID of the vswitch to which the sub computing node
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The zone where the hyper compute node is located
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -283,22 +394,64 @@ namespace Pulumi.AliCloud.Eflo
     public sealed class HyperNodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Cluster ID
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
         /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("dataDisks")]
+        private InputList<Inputs.HyperNodeDataDiskGetArgs>? _dataDisks;
+        public InputList<Inputs.HyperNodeDataDiskGetArgs> DataDisks
+        {
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.HyperNodeDataDiskGetArgs>());
+            set => _dataDisks = value;
+        }
+
         /// <summary>
-        /// Number of the cluster to which the supercompute node belongs
+        /// The host name prefix of the sub computing node
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
+        /// <summary>
+        /// Number of the cluster to which the hyper computing node belongs
         /// </summary>
         [Input("hpnZone")]
         public Input<string>? HpnZone { get; set; }
 
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
         /// <summary>
-        /// The model used by the super computing node
+        /// Login Password of the sub computing node
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The model used by the hyper computing node
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// Node group ID
+        /// </summary>
+        [Input("nodeGroupId")]
+        public Input<string>? NodeGroupId { get; set; }
 
         /// <summary>
         /// The duration of the instance purchase, in units.
@@ -339,13 +492,13 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Super Node Architecture
+        /// Hyper Node Architecture
         /// </summary>
         [Input("serverArch")]
         public Input<string>? ServerArch { get; set; }
 
         /// <summary>
-        /// The number of installments of the supercomputing node of the fixed fee installment.
+        /// The number of installments of the hyper computing node of the fixed fee installment.
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -371,7 +524,25 @@ namespace Pulumi.AliCloud.Eflo
         }
 
         /// <summary>
-        /// The zone where the super compute node is located
+        /// Custom user data for the sub computing node
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// The ID of the vpc to which the sub computing node
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// The ID of the vswitch to which the sub computing node
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The zone where the hyper compute node is located
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

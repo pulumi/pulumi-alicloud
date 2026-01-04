@@ -148,6 +148,8 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
         default_bucket_data_redundancy_transition = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Data Redundancy Transition can be imported using the id, e.g.
@@ -194,6 +196,8 @@ class BucketDataRedundancyTransition(pulumi.CustomResource):
             bucket=f"{name}-{default['result']}")
         default_bucket_data_redundancy_transition = alicloud.oss.BucketDataRedundancyTransition("default", bucket=create_bucket.bucket)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

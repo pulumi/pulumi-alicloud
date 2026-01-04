@@ -22,8 +22,10 @@ import (
 type BucketHttpsConfig struct {
 	pulumi.CustomResourceState
 
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// TLS encryption algorithm suite configuration See `cipherSuit` below.
+	CipherSuit BucketHttpsConfigCipherSuitOutput `pulumi:"cipherSuit"`
 	// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
 	// Specifies the TLS versions allowed to access this buckets.
@@ -66,8 +68,10 @@ func GetBucketHttpsConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketHttpsConfig resources.
 type bucketHttpsConfigState struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket *string `pulumi:"bucket"`
+	// TLS encryption algorithm suite configuration See `cipherSuit` below.
+	CipherSuit *BucketHttpsConfigCipherSuit `pulumi:"cipherSuit"`
 	// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
 	Enable *bool `pulumi:"enable"`
 	// Specifies the TLS versions allowed to access this buckets.
@@ -75,8 +79,10 @@ type bucketHttpsConfigState struct {
 }
 
 type BucketHttpsConfigState struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringPtrInput
+	// TLS encryption algorithm suite configuration See `cipherSuit` below.
+	CipherSuit BucketHttpsConfigCipherSuitPtrInput
 	// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
 	Enable pulumi.BoolPtrInput
 	// Specifies the TLS versions allowed to access this buckets.
@@ -88,8 +94,10 @@ func (BucketHttpsConfigState) ElementType() reflect.Type {
 }
 
 type bucketHttpsConfigArgs struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket string `pulumi:"bucket"`
+	// TLS encryption algorithm suite configuration See `cipherSuit` below.
+	CipherSuit *BucketHttpsConfigCipherSuit `pulumi:"cipherSuit"`
 	// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
 	Enable bool `pulumi:"enable"`
 	// Specifies the TLS versions allowed to access this buckets.
@@ -98,8 +106,10 @@ type bucketHttpsConfigArgs struct {
 
 // The set of arguments for constructing a BucketHttpsConfig resource.
 type BucketHttpsConfigArgs struct {
-	// The name of the bucket.
+	// The name of the bucket
 	Bucket pulumi.StringInput
+	// TLS encryption algorithm suite configuration See `cipherSuit` below.
+	CipherSuit BucketHttpsConfigCipherSuitPtrInput
 	// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
 	Enable pulumi.BoolInput
 	// Specifies the TLS versions allowed to access this buckets.
@@ -193,9 +203,14 @@ func (o BucketHttpsConfigOutput) ToBucketHttpsConfigOutputWithContext(ctx contex
 	return o
 }
 
-// The name of the bucket.
+// The name of the bucket
 func (o BucketHttpsConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketHttpsConfig) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// TLS encryption algorithm suite configuration See `cipherSuit` below.
+func (o BucketHttpsConfigOutput) CipherSuit() BucketHttpsConfigCipherSuitOutput {
+	return o.ApplyT(func(v *BucketHttpsConfig) BucketHttpsConfigCipherSuitOutput { return v.CipherSuit }).(BucketHttpsConfigCipherSuitOutput)
 }
 
 // Specifies whether to enable TLS version management for the bucket. Valid values: true, false.

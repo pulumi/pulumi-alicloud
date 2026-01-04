@@ -27,25 +27,22 @@ class GetInstancesResult:
     """
     A collection of values returned by getInstances.
     """
-    def __init__(__self__, id=None, ids=None, instances=None, output_file=None, page_number=None, page_size=None):
+    def __init__(__self__, id=None, ids=None, instance_name=None, instances=None, output_file=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if instance_name and not isinstance(instance_name, str):
+            raise TypeError("Expected argument 'instance_name' to be a str")
+        pulumi.set(__self__, "instance_name", instance_name)
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
         pulumi.set(__self__, "output_file", output_file)
-        if page_number and not isinstance(page_number, int):
-            raise TypeError("Expected argument 'page_number' to be a int")
-        pulumi.set(__self__, "page_number", page_number)
-        if page_size and not isinstance(page_size, int):
-            raise TypeError("Expected argument 'page_size' to be a int")
-        pulumi.set(__self__, "page_size", page_size)
 
     @_builtins.property
     @pulumi.getter
@@ -64,6 +61,11 @@ class GetInstancesResult:
         return pulumi.get(self, "ids")
 
     @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "instance_name")
+
+    @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
         """
@@ -76,16 +78,6 @@ class GetInstancesResult:
     def output_file(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "output_file")
 
-    @_builtins.property
-    @pulumi.getter(name="pageNumber")
-    def page_number(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "page_number")
-
-    @_builtins.property
-    @pulumi.getter(name="pageSize")
-    def page_size(self) -> Optional[_builtins.int]:
-        return pulumi.get(self, "page_size")
-
 
 class AwaitableGetInstancesResult(GetInstancesResult):
     # pylint: disable=using-constant-test
@@ -95,16 +87,14 @@ class AwaitableGetInstancesResult(GetInstancesResult):
         return GetInstancesResult(
             id=self.id,
             ids=self.ids,
+            instance_name=self.instance_name,
             instances=self.instances,
-            output_file=self.output_file,
-            page_number=self.page_number,
-            page_size=self.page_size)
+            output_file=self.output_file)
 
 
 def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
+                  instance_name: Optional[_builtins.str] = None,
                   output_file: Optional[_builtins.str] = None,
-                  page_number: Optional[_builtins.int] = None,
-                  page_size: Optional[_builtins.int] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
     This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
@@ -165,7 +155,6 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
         spec=1000,
         renew_status="ManualRenewal",
         product_version="3",
-        renew_period=3,
         vpc_id=vswitch.vpc_id,
         zone_ids=[
             "cn-hangzhou-k",
@@ -202,27 +191,25 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
 
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_name: The name of the resource.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['instanceName'] = instance_name
     __args__['outputFile'] = output_file
-    __args__['pageNumber'] = page_number
-    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
         instances=pulumi.get(__ret__, 'instances'),
-        output_file=pulumi.get(__ret__, 'output_file'),
-        page_number=pulumi.get(__ret__, 'page_number'),
-        page_size=pulumi.get(__ret__, 'page_size'))
+        output_file=pulumi.get(__ret__, 'output_file'))
 def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+                         instance_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides Kms Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/)
@@ -283,7 +270,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
         spec=1000,
         renew_status="ManualRenewal",
         product_version="3",
-        renew_period=3,
         vpc_id=vswitch.vpc_id,
         zone_ids=[
             "cn-hangzhou-k",
@@ -320,19 +306,18 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.
 
 
     :param Sequence[_builtins.str] ids: A list of Instance IDs.
+    :param _builtins.str instance_name: The name of the resource.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
     __args__['ids'] = ids
+    __args__['instanceName'] = instance_name
     __args__['outputFile'] = output_file
-    __args__['pageNumber'] = page_number
-    __args__['pageSize'] = page_size
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        instance_name=pulumi.get(__response__, 'instance_name'),
         instances=pulumi.get(__response__, 'instances'),
-        output_file=pulumi.get(__response__, 'output_file'),
-        page_number=pulumi.get(__response__, 'page_number'),
-        page_size=pulumi.get(__response__, 'page_size')))
+        output_file=pulumi.get(__response__, 'output_file')))

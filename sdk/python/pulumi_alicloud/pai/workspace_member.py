@@ -206,6 +206,8 @@ class WorkspaceMember(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Member can be imported using the id, e.g.
@@ -264,6 +266,8 @@ class WorkspaceMember(pulumi.CustomResource):
                 "PAI.LabelManager",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

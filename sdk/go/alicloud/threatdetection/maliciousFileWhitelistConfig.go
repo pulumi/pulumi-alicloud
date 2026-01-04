@@ -57,6 +57,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Threat Detection Malicious File Whitelist Config can be imported using the id, e.g.

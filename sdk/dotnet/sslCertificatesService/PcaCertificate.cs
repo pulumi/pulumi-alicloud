@@ -43,6 +43,8 @@ namespace Pulumi.AliCloud.sslCertificatesService
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -67,6 +69,9 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// </summary>
         [Output("algorithm")]
         public Output<string> Algorithm { get; private set; } = null!;
+
+        [Output("aliasName")]
+        public Output<string?> AliasName { get; private set; } = null!;
 
         /// <summary>
         /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
@@ -99,8 +104,13 @@ namespace Pulumi.AliCloud.sslCertificatesService
         public Output<string> OrganizationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        /// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        /// A resource property field representing the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -110,6 +120,12 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The validity period of the root CA certificate, in years.
@@ -178,6 +194,9 @@ namespace Pulumi.AliCloud.sslCertificatesService
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
+        [Input("aliasName")]
+        public Input<string>? AliasName { get; set; }
+
         /// <summary>
         /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
         /// </summary>
@@ -209,11 +228,28 @@ namespace Pulumi.AliCloud.sslCertificatesService
         public Input<string> OrganizationUnit { get; set; } = null!;
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        /// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        /// A resource property field representing the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The validity period of the root CA certificate, in years.
@@ -243,6 +279,9 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
+
+        [Input("aliasName")]
+        public Input<string>? AliasName { get; set; }
 
         /// <summary>
         /// The common name or abbreviation of the organization. Support the use of Chinese, English characters.
@@ -275,8 +314,13 @@ namespace Pulumi.AliCloud.sslCertificatesService
         public Input<string>? OrganizationUnit { get; set; }
 
         /// <summary>
-        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters. 
-        /// Name of the province or state where the organization is located. Support the use of Chinese, English characters.
+        /// A resource property field representing the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -286,6 +330,18 @@ namespace Pulumi.AliCloud.sslCertificatesService
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The validity period of the root CA certificate, in years.

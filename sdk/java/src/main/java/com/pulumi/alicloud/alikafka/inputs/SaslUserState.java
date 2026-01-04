@@ -17,14 +17,14 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     public static final SaslUserState Empty = new SaslUserState();
 
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return ID of the ALIKAFKA Instance that owns the groups.
+     * @return The instance ID.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -62,6 +62,27 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     * 
+     */
+    @Import(name="mechanism")
+    private @Nullable Output<String> mechanism;
+
+    /**
+     * @return The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     * 
+     */
+    public Optional<Output<String>> mechanism() {
+        return Optional.ofNullable(this.mechanism);
+    }
+
+    /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
@@ -77,14 +98,14 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * The authentication mechanism. Default value: `plain`. Valid values:
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * @return The authentication mechanism. Default value: `plain`. Valid values:
      * 
      */
     public Optional<Output<String>> type() {
@@ -112,6 +133,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.mechanism = $.mechanism;
         this.password = $.password;
         this.type = $.type;
         this.username = $.username;
@@ -136,7 +158,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the ALIKAFKA Instance that owns the groups.
+         * @param instanceId The instance ID.
          * 
          * @return builder
          * 
@@ -147,7 +169,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId ID of the ALIKAFKA Instance that owns the groups.
+         * @param instanceId The instance ID.
          * 
          * @return builder
          * 
@@ -199,6 +221,33 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param mechanism The encryption method. Valid values:
+         * - SCRAM-SHA-512. This is the default value.
+         * - SCRAM-SHA-256
+         * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mechanism(@Nullable Output<String> mechanism) {
+            $.mechanism = mechanism;
+            return this;
+        }
+
+        /**
+         * @param mechanism The encryption method. Valid values:
+         * - SCRAM-SHA-512. This is the default value.
+         * - SCRAM-SHA-256
+         * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mechanism(String mechanism) {
+            return mechanism(Output.of(mechanism));
+        }
+
+        /**
          * @param password The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
          * 
          * @return builder
@@ -220,7 +269,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+         * @param type The authentication mechanism. Default value: `plain`. Valid values:
          * 
          * @return builder
          * 
@@ -231,7 +280,7 @@ public final class SaslUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+         * @param type The authentication mechanism. Default value: `plain`. Valid values:
          * 
          * @return builder
          * 

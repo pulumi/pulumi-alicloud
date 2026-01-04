@@ -182,6 +182,8 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             disk_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Disk Instance Attachment can be imported using the id, e.g.
@@ -247,6 +249,8 @@ class DiskInstanceAttachment(pulumi.CustomResource):
             delete_with_instance="false",
             disk_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

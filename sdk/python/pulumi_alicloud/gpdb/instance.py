@@ -1533,6 +1533,8 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for PostgreSQL can be imported using the id, e.g.
@@ -1644,6 +1646,8 @@ class Instance(pulumi.CustomResource):
                 "security_ip_list": "127.0.0.1",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

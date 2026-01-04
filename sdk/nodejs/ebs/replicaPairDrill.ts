@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.ebs.ReplicaPairDrill("default", {pairId: "pair-cn-wwo3kjfq5001"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * EBS Replica Pair Drill can be imported using the id, e.g.

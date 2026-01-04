@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ClusterV2Args, ClusterV2State } from "./clusterV2";
+export type ClusterV2 = import("./clusterV2").ClusterV2;
+export const ClusterV2: typeof import("./clusterV2").ClusterV2 = null as any;
+utilities.lazyLoad(exports, ["ClusterV2"], () => require("./clusterV2"));
+
 export { GetClustersArgs, GetClustersResult, GetClustersOutputArgs } from "./getClusters";
 export const getClusters: typeof import("./getClusters").getClusters = null as any;
 export const getClustersOutput: typeof import("./getClusters").getClustersOutput = null as any;
@@ -25,6 +30,11 @@ export type JobTemplate = import("./jobTemplate").JobTemplate;
 export const JobTemplate: typeof import("./jobTemplate").JobTemplate = null as any;
 utilities.lazyLoad(exports, ["JobTemplate"], () => require("./jobTemplate"));
 
+export { QueueArgs, QueueState } from "./queue";
+export type Queue = import("./queue").Queue;
+export const Queue: typeof import("./queue").Queue = null as any;
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -32,12 +42,18 @@ const _module = {
         switch (type) {
             case "alicloud:ehpc/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "alicloud:ehpc/clusterV2:ClusterV2":
+                return new ClusterV2(name, <any>undefined, { urn })
             case "alicloud:ehpc/jobTemplate:JobTemplate":
                 return new JobTemplate(name, <any>undefined, { urn })
+            case "alicloud:ehpc/queue:Queue":
+                return new Queue(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/cluster", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ehpc/clusterV2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ehpc/jobTemplate", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ehpc/queue", _module)

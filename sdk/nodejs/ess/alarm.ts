@@ -107,6 +107,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Module Support
  *
  * You can use to the existing autoscaling-rule module

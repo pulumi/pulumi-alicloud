@@ -28,6 +28,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * TAG Associated Rule can be imported using the id, e.g.

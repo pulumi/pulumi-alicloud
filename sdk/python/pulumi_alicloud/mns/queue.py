@@ -255,6 +255,8 @@ class Queue(pulumi.CustomResource):
             polling_wait_seconds=0)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MNS QUEUE can be imported using the id or name, e.g.
@@ -295,6 +297,8 @@ class Queue(pulumi.CustomResource):
             visibility_timeout=30,
             polling_wait_seconds=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

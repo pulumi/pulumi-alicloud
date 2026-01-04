@@ -69,10 +69,16 @@ __all__ = [
     'ManagedKubernetesOperationPolicyClusterAutoUpgradeArgsDict',
     'ManagedKubernetesRrsaMetadataArgs',
     'ManagedKubernetesRrsaMetadataArgsDict',
+    'NodePoolAutoModeArgs',
+    'NodePoolAutoModeArgsDict',
     'NodePoolDataDiskArgs',
     'NodePoolDataDiskArgsDict',
     'NodePoolEfloNodeGroupArgs',
     'NodePoolEfloNodeGroupArgsDict',
+    'NodePoolInstanceMetadataOptionsArgs',
+    'NodePoolInstanceMetadataOptionsArgsDict',
+    'NodePoolInstancePatternArgs',
+    'NodePoolInstancePatternArgsDict',
     'NodePoolKubeletConfigurationArgs',
     'NodePoolKubeletConfigurationArgsDict',
     'NodePoolKubeletConfigurationReservedMemoryArgs',
@@ -3100,6 +3106,38 @@ class ManagedKubernetesRrsaMetadataArgs:
 
 
 if not MYPY:
+    class NodePoolAutoModeArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable auto mode. Valid values:
+        """
+elif False:
+    NodePoolAutoModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolAutoModeArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether to enable auto mode. Valid values:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable auto mode. Valid values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class NodePoolDataDiskArgsDict(TypedDict):
         auto_format: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -3444,6 +3482,338 @@ class NodePoolEfloNodeGroupArgs:
 
 
 if not MYPY:
+    class NodePoolInstanceMetadataOptionsArgsDict(TypedDict):
+        http_tokens: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ECS instance metadata access mode configuration. Value range:
+
+        - 'optional': Compatible with both normal mode and reinforced mode.
+        - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+
+        Default value: 'optional '.
+
+        This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+        """
+elif False:
+    NodePoolInstanceMetadataOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolInstanceMetadataOptionsArgs:
+    def __init__(__self__, *,
+                 http_tokens: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] http_tokens: ECS instance metadata access mode configuration. Value range:
+               
+               - 'optional': Compatible with both normal mode and reinforced mode.
+               - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+               
+               Default value: 'optional '.
+               
+               This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+        """
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
+
+    @_builtins.property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ECS instance metadata access mode configuration. Value range:
+
+        - 'optional': Compatible with both normal mode and reinforced mode.
+        - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+
+        Default value: 'optional '.
+
+        This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_tokens", value)
+
+
+if not MYPY:
+    class NodePoolInstancePatternArgsDict(TypedDict):
+        instance_family_level: pulumi.Input[_builtins.str]
+        """
+        Instance specification family level, value range:
+        - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+        - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+        """
+        cores: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The number of vCPU cores of the instance type. Example value: 8.
+        """
+        cpu_architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        The CPU architecture of the instance. Value range:
+        - X86
+        - ARM
+        """
+        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+        - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+        - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+        """
+        instance_categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Instance classification. Value range:
+        - General-purpose: Universal.
+        - Compute-optimized: Compute type.
+        - Memory-optimized: Memory type.
+        - Big data: Big data type.
+        - Local SSDs: Local SSD type.
+        - High Clock Speed: High frequency type.
+        - Enhanced: Enhanced.
+        - Shared: Shared.
+        - ECS Bare Metal: elastic Bare Metal server.
+        - High Performance Compute: High Performance Compute.
+        """
+        instance_type_families: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+        """
+        max_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        """
+        max_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        """
+        memory: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The memory size of the instance type, in GiB. Example value: 8.
+        """
+        min_cpu_cores: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        """
+        min_memory_size: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        """
+elif False:
+    NodePoolInstancePatternArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolInstancePatternArgs:
+    def __init__(__self__, *,
+                 instance_family_level: pulumi.Input[_builtins.str],
+                 cores: Optional[pulumi.Input[_builtins.int]] = None,
+                 cpu_architectures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excluded_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_type_families: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_cpu_cores: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_memory_size: Optional[pulumi.Input[_builtins.float]] = None,
+                 memory: Optional[pulumi.Input[_builtins.float]] = None,
+                 min_cpu_cores: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_memory_size: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] instance_family_level: Instance specification family level, value range:
+               - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+               - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+        :param pulumi.Input[_builtins.int] cores: The number of vCPU cores of the instance type. Example value: 8.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cpu_architectures: The CPU architecture of the instance. Value range:
+               - X86
+               - ARM
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_instance_types: Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+               - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+               - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_categories: Instance classification. Value range:
+               - General-purpose: Universal.
+               - Compute-optimized: Compute type.
+               - Memory-optimized: Memory type.
+               - Big data: Big data type.
+               - Local SSDs: Local SSD type.
+               - High Clock Speed: High frequency type.
+               - Enhanced: Enhanced.
+               - Shared: Shared.
+               - ECS Bare Metal: elastic Bare Metal server.
+               - High Performance Compute: High Performance Compute.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_type_families: Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+        :param pulumi.Input[_builtins.int] max_cpu_cores: The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        :param pulumi.Input[_builtins.float] max_memory_size: The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        :param pulumi.Input[_builtins.float] memory: The memory size of the instance type, in GiB. Example value: 8.
+        :param pulumi.Input[_builtins.int] min_cpu_cores: The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        :param pulumi.Input[_builtins.float] min_memory_size: The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        """
+        pulumi.set(__self__, "instance_family_level", instance_family_level)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if cpu_architectures is not None:
+            pulumi.set(__self__, "cpu_architectures", cpu_architectures)
+        if excluded_instance_types is not None:
+            pulumi.set(__self__, "excluded_instance_types", excluded_instance_types)
+        if instance_categories is not None:
+            pulumi.set(__self__, "instance_categories", instance_categories)
+        if instance_type_families is not None:
+            pulumi.set(__self__, "instance_type_families", instance_type_families)
+        if max_cpu_cores is not None:
+            pulumi.set(__self__, "max_cpu_cores", max_cpu_cores)
+        if max_memory_size is not None:
+            pulumi.set(__self__, "max_memory_size", max_memory_size)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if min_cpu_cores is not None:
+            pulumi.set(__self__, "min_cpu_cores", min_cpu_cores)
+        if min_memory_size is not None:
+            pulumi.set(__self__, "min_memory_size", min_memory_size)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> pulumi.Input[_builtins.str]:
+        """
+        Instance specification family level, value range:
+        - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+        - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @instance_family_level.setter
+    def instance_family_level(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_family_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The number of vCPU cores of the instance type. Example value: 8.
+        """
+        return pulumi.get(self, "cores")
+
+    @cores.setter
+    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuArchitectures")
+    def cpu_architectures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The CPU architecture of the instance. Value range:
+        - X86
+        - ARM
+        """
+        return pulumi.get(self, "cpu_architectures")
+
+    @cpu_architectures.setter
+    def cpu_architectures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cpu_architectures", value)
+
+    @_builtins.property
+    @pulumi.getter(name="excludedInstanceTypes")
+    def excluded_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+        - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+        - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+        """
+        return pulumi.get(self, "excluded_instance_types")
+
+    @excluded_instance_types.setter
+    def excluded_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excluded_instance_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceCategories")
+    def instance_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Instance classification. Value range:
+        - General-purpose: Universal.
+        - Compute-optimized: Compute type.
+        - Memory-optimized: Memory type.
+        - Big data: Big data type.
+        - Local SSDs: Local SSD type.
+        - High Clock Speed: High frequency type.
+        - Enhanced: Enhanced.
+        - Shared: Shared.
+        - ECS Bare Metal: elastic Bare Metal server.
+        - High Performance Compute: High Performance Compute.
+        """
+        return pulumi.get(self, "instance_categories")
+
+    @instance_categories.setter
+    def instance_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_categories", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceTypeFamilies")
+    def instance_type_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+        """
+        return pulumi.get(self, "instance_type_families")
+
+    @instance_type_families.setter
+    def instance_type_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_type_families", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxCpuCores")
+    def max_cpu_cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        """
+        return pulumi.get(self, "max_cpu_cores")
+
+    @max_cpu_cores.setter
+    def max_cpu_cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_cpu_cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxMemorySize")
+    def max_memory_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        """
+        return pulumi.get(self, "max_memory_size")
+
+    @max_memory_size.setter
+    def max_memory_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "max_memory_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The memory size of the instance type, in GiB. Example value: 8.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "memory", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuCores")
+    def min_cpu_cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+        """
+        return pulumi.get(self, "min_cpu_cores")
+
+    @min_cpu_cores.setter
+    def min_cpu_cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_cpu_cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minMemorySize")
+    def min_memory_size(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+        """
+        return pulumi.get(self, "min_memory_size")
+
+    @min_memory_size.setter
+    def min_memory_size(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "min_memory_size", value)
+
+
+if not MYPY:
     class NodePoolKubeletConfigurationArgsDict(TypedDict):
         allowed_unsafe_sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
@@ -3557,6 +3927,10 @@ if not MYPY:
         """
         Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         """
+        server_tls_bootstrap: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Used to enable the kubelet server certificate signing and rotation via CSR.
+        """
         system_reserved: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
@@ -3603,6 +3977,7 @@ class NodePoolKubeletConfigurationArgs:
                  registry_pull_qps: Optional[pulumi.Input[_builtins.str]] = None,
                  reserved_memories: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]]] = None,
                  serialize_image_pulls: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_tls_bootstrap: Optional[pulumi.Input[_builtins.bool]] = None,
                  system_reserved: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  topology_manager_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  tracing: Optional[pulumi.Input['NodePoolKubeletConfigurationTracingArgs']] = None):
@@ -3635,6 +4010,7 @@ class NodePoolKubeletConfigurationArgs:
         :param pulumi.Input[_builtins.str] registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolKubeletConfigurationReservedMemoryArgs']]] reserved_memories: Reserve memory for NUMA nodes. See `reserved_memory` below.
         :param pulumi.Input[_builtins.str] serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
+        :param pulumi.Input[_builtins.bool] server_tls_bootstrap: Used to enable the kubelet server certificate signing and rotation via CSR.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         :param pulumi.Input[_builtins.str] topology_manager_policy: Name of the Topology Manager policy used.
         :param pulumi.Input['NodePoolKubeletConfigurationTracingArgs'] tracing: OpenTelemetry tracks the configuration information for client settings versioning. See `tracing` below.
@@ -3695,6 +4071,8 @@ class NodePoolKubeletConfigurationArgs:
             pulumi.set(__self__, "reserved_memories", reserved_memories)
         if serialize_image_pulls is not None:
             pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
+        if server_tls_bootstrap is not None:
+            pulumi.set(__self__, "server_tls_bootstrap", server_tls_bootstrap)
         if system_reserved is not None:
             pulumi.set(__self__, "system_reserved", system_reserved)
         if topology_manager_policy is not None:
@@ -4037,6 +4415,18 @@ class NodePoolKubeletConfigurationArgs:
     @serialize_image_pulls.setter
     def serialize_image_pulls(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "serialize_image_pulls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverTlsBootstrap")
+    def server_tls_bootstrap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Used to enable the kubelet server certificate signing and rotation via CSR.
+        """
+        return pulumi.get(self, "server_tls_bootstrap")
+
+    @server_tls_bootstrap.setter
+    def server_tls_bootstrap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "server_tls_bootstrap", value)
 
     @_builtins.property
     @pulumi.getter(name="systemReserved")

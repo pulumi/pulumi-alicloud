@@ -166,6 +166,8 @@ class PolicyAttachment(pulumi.CustomResource):
             target_type="USER")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Tag Policy Attachment can be imported using the id, e.g.
@@ -216,6 +218,8 @@ class PolicyAttachment(pulumi.CustomResource):
             target_id=default.id,
             target_type="USER")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

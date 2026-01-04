@@ -17,14 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Alikafka Sasl User resource.
+ * Provides an AliKafka Sasl User resource.
+ * 
+ * For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  * 
  * &gt; **NOTE:** Available since v1.66.0.
- * 
- * &gt; **NOTE:**  Only the following regions support create alikafka Sasl User.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- * 
- * For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
  * 
  * ## Example Usage
  * 
@@ -65,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -120,9 +117,11 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
- * Alikafka Sasl User can be imported using the id, e.g.
+ * AliKafka Sasl User can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:alikafka/saslUser:SaslUser example &lt;instance_id&gt;:&lt;username&gt;
@@ -132,14 +131,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alikafka/saslUser:SaslUser")
 public class SaslUser extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the ALIKAFKA Instance that owns the groups.
+     * The instance ID.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return ID of the ALIKAFKA Instance that owns the groups.
+     * @return The instance ID.
      * 
      */
     public Output<String> instanceId() {
@@ -174,28 +173,48 @@ public class SaslUser extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
+     * The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     * 
+     */
+    @Export(name="mechanism", refs={String.class}, tree="[0]")
+    private Output<String> mechanism;
+
+    /**
+     * @return The encryption method. Valid values:
+     * - SCRAM-SHA-512. This is the default value.
+     * - SCRAM-SHA-256
+     * &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+     * 
+     */
+    public Output<String> mechanism() {
+        return this.mechanism;
+    }
+    /**
      * The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> password;
+    private Output<String> password;
 
     /**
      * @return The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `password` and `kmsEncryptedPassword` fields.
      * 
      */
-    public Output<Optional<String>> password() {
-        return Codegen.optional(this.password);
+    public Output<String> password() {
+        return this.password;
     }
     /**
-     * The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * The authentication mechanism. Default value: `plain`. Valid values:
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The authentication mechanism. Default value: `plain`. Valid values: `plain`, `scram`.
+     * @return The authentication mechanism. Default value: `plain`. Valid values:
      * 
      */
     public Output<String> type() {

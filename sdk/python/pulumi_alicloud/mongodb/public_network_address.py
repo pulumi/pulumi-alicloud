@@ -129,6 +129,8 @@ class PublicNetworkAddress(pulumi.CustomResource):
         default_public_network_address = alicloud.mongodb.PublicNetworkAddress("default", db_instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MongoDB public network address can be imported using the id, e.g.
@@ -186,6 +188,8 @@ class PublicNetworkAddress(pulumi.CustomResource):
             zone_id=zone_id)
         default_public_network_address = alicloud.mongodb.PublicNetworkAddress("default", db_instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

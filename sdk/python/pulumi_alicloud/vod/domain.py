@@ -422,6 +422,8 @@ class Domain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VOD Domain can be imported using the id, e.g.
@@ -479,6 +481,8 @@ class Domain(pulumi.CustomResource):
                 "For": "example",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

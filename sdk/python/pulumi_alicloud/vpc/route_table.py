@@ -370,6 +370,8 @@ class RouteTable(pulumi.CustomResource):
             associate_type="VSwitch")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Route Table can be imported using the id, e.g.
@@ -426,6 +428,8 @@ class RouteTable(pulumi.CustomResource):
             route_table_name=name,
             associate_type="VSwitch")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

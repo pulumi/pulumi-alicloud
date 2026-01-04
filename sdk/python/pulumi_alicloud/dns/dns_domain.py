@@ -321,6 +321,8 @@ class DnsDomain(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS domain can be imported using the id or domain name, e.g.
@@ -370,6 +372,8 @@ class DnsDomain(pulumi.CustomResource):
                 "Environment": "test",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

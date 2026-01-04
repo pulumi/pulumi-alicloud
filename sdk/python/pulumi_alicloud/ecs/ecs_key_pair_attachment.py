@@ -228,6 +228,8 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             instance_ids=[example_instance.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Key Pair Attachment can be imported using the id, e.g.
@@ -298,6 +300,8 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -264,6 +264,8 @@ class ServerGroup(pulumi.CustomResource):
             name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load Balancer Virtual Backend Server Group can be imported using the id, e.g.
@@ -333,6 +335,8 @@ class ServerGroup(pulumi.CustomResource):
             load_balancer_id=default_application_load_balancer.id,
             name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

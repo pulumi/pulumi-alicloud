@@ -873,6 +873,8 @@ class Listener(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Listener can be imported using the id, e.g.
@@ -1039,6 +1041,8 @@ class Listener(pulumi.CustomResource):
                 },
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

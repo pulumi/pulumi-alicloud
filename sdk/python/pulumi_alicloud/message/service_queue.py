@@ -381,6 +381,8 @@ class ServiceQueue(pulumi.CustomResource):
             visibility_timeout=30)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Queue can be imported using the id, e.g.
@@ -434,6 +436,8 @@ class ServiceQueue(pulumi.CustomResource):
             maximum_message_size=1126,
             visibility_timeout=30)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

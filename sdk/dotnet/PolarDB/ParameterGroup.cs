@@ -47,6 +47,8 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Polar Db Parameter Group can be imported using the id, e.g.

@@ -375,6 +375,8 @@ class RatePlanInstance(pulumi.CustomResource):
             auto_pay=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Rate Plan Instance can be imported using the id, e.g.
@@ -435,6 +437,8 @@ class RatePlanInstance(pulumi.CustomResource):
             plan_name="basic",
             auto_pay=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

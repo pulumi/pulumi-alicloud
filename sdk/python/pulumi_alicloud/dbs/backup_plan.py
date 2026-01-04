@@ -1369,6 +1369,8 @@ class BackupPlan(pulumi.CustomResource):
             backup_retention_period=740)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DBS Backup Plan can be imported using the id, e.g.
@@ -1504,6 +1506,8 @@ class BackupPlan(pulumi.CustomResource):
             backup_storage_type="system",
             backup_retention_period=740)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

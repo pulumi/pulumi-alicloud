@@ -91,6 +91,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
         default = alicloud.eventbridge.ServiceLinkedRole("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Event Bridge Service Linked Role can be imported using the id, e.g.
@@ -128,6 +130,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         default = alicloud.eventbridge.ServiceLinkedRole("default", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -267,6 +267,8 @@ class User(pulumi.CustomResource):
             comments="yoyoyo")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM User can be imported using the id, e.g.
@@ -319,6 +321,8 @@ class User(pulumi.CustomResource):
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

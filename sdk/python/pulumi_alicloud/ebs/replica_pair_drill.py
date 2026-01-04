@@ -125,6 +125,8 @@ class ReplicaPairDrill(pulumi.CustomResource):
         default = alicloud.ebs.ReplicaPairDrill("default", pair_id="pair-cn-wwo3kjfq5001")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EBS Replica Pair Drill can be imported using the id, e.g.
@@ -164,6 +166,8 @@ class ReplicaPairDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaPairDrill("default", pair_id="pair-cn-wwo3kjfq5001")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

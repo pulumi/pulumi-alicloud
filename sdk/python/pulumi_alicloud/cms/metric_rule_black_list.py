@@ -503,6 +503,8 @@ class MetricRuleBlackList(pulumi.CustomResource):
             metric_rule_black_list_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Metric Rule Black List can be imported using the id, e.g.
@@ -585,6 +587,8 @@ class MetricRuleBlackList(pulumi.CustomResource):
             enable_start_time="1689243209000",
             metric_rule_black_list_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

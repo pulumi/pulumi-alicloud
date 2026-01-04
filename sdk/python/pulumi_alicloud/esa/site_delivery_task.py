@@ -559,6 +559,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
             site_id=resource_site_http_example.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Site Delivery Task can be imported using the id, e.g.
@@ -650,6 +652,8 @@ class SiteDeliveryTask(pulumi.CustomResource):
             delivery_type="http",
             site_id=resource_site_http_example.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

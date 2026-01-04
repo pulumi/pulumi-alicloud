@@ -501,6 +501,8 @@ class FileSystem(pulumi.CustomResource):
             provisioned_throughput_in_mi_bps=512)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Apsara File Storage for HDFS (DFS) File System can be imported using the id, e.g.
@@ -561,6 +563,8 @@ class FileSystem(pulumi.CustomResource):
             space_capacity=1024,
             provisioned_throughput_in_mi_bps=512)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

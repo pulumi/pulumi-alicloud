@@ -126,6 +126,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? SerializeImagePulls;
         /// <summary>
+        /// Used to enable the kubelet server certificate signing and rotation via CSR.
+        /// </summary>
+        public readonly bool? ServerTlsBootstrap;
+        /// <summary>
         /// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? SystemReserved;
@@ -196,6 +200,8 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             string? serializeImagePulls,
 
+            bool? serverTlsBootstrap,
+
             ImmutableDictionary<string, string>? systemReserved,
 
             string? topologyManagerPolicy,
@@ -230,6 +236,7 @@ namespace Pulumi.AliCloud.CS.Outputs
             RegistryPullQps = registryPullQps;
             ReservedMemories = reservedMemories;
             SerializeImagePulls = serializeImagePulls;
+            ServerTlsBootstrap = serverTlsBootstrap;
             SystemReserved = systemReserved;
             TopologyManagerPolicy = topologyManagerPolicy;
             Tracing = tracing;

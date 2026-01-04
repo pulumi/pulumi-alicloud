@@ -76,6 +76,8 @@ namespace Pulumi.AliCloud.Nlb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Network Load Balancer (NLB) Server Group can be imported using the id, e.g.

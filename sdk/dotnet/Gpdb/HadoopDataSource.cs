@@ -246,6 +246,8 @@ namespace Pulumi.AliCloud.Gpdb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// GPDB Hadoop Data Source can be imported using the id, e.g.

@@ -185,6 +185,8 @@ class UserAttachment(pulumi.CustomResource):
             group_id=default_group.group_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO User Attachment can be imported using the id, e.g.
@@ -254,6 +256,8 @@ class UserAttachment(pulumi.CustomResource):
             user_id=default_user.user_id,
             group_id=default_group.group_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -63,6 +63,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Network Load Balancer (NLB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.

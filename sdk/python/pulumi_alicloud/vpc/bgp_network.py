@@ -191,6 +191,8 @@ class BgpNetwork(pulumi.CustomResource):
             router_id=default_virtual_border_router.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Bgp Network can be imported using the id, e.g.
@@ -249,6 +251,8 @@ class BgpNetwork(pulumi.CustomResource):
             dst_cidr_block="192.168.0.0/24",
             router_id=default_virtual_border_router.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

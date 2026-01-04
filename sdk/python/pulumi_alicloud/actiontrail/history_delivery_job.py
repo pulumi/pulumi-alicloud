@@ -22,7 +22,7 @@ class HistoryDeliveryJobArgs:
                  trail_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a HistoryDeliveryJob resource.
-        :param pulumi.Input[_builtins.str] trail_name: The name of the trail for which you want to create a historical event delivery task.
+        :param pulumi.Input[_builtins.str] trail_name: The Track Name.
         """
         pulumi.set(__self__, "trail_name", trail_name)
 
@@ -30,7 +30,7 @@ class HistoryDeliveryJobArgs:
     @pulumi.getter(name="trailName")
     def trail_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the trail for which you want to create a historical event delivery task.
+        The Track Name.
         """
         return pulumi.get(self, "trail_name")
 
@@ -42,23 +42,39 @@ class HistoryDeliveryJobArgs:
 @pulumi.input_type
 class _HistoryDeliveryJobState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.int]] = None,
                  trail_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HistoryDeliveryJob resources.
-        :param pulumi.Input[_builtins.int] status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
-        :param pulumi.Input[_builtins.str] trail_name: The name of the trail for which you want to create a historical event delivery task.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.int] status: The status of the resource
+        :param pulumi.Input[_builtins.str] trail_name: The Track Name.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if trail_name is not None:
             pulumi.set(__self__, "trail_name", trail_name)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -70,7 +86,7 @@ class _HistoryDeliveryJobState:
     @pulumi.getter(name="trailName")
     def trail_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the trail for which you want to create a historical event delivery task.
+        The Track Name.
         """
         return pulumi.get(self, "trail_name")
 
@@ -88,9 +104,11 @@ class HistoryDeliveryJob(pulumi.CustomResource):
                  trail_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Actiontrail History Delivery Job resource.
+        Provides a Action Trail History Delivery Job resource.
 
-        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+        Delivery History Tasks.
+
+        For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 
         > **NOTE:** Available since v1.139.0.
 
@@ -106,30 +124,39 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        example = alicloud.get_regions(current=True)
-        example_get_account = alicloud.get_account()
-        example_project = alicloud.log.Project("example",
-            project_name=f"{name}-{default['result']}",
-            description="tf actiontrail example")
-        example_trail = alicloud.actiontrail.Trail("example",
-            trail_name=f"{name}-{default['result']}",
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
-        example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("example", trail_name=example_trail.id)
+        default = alicloud.get_regions(current=True)
+        default_get_account = alicloud.get_account()
+        default_get_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        default_project = alicloud.log.Project("default",
+            description=name,
+            project_name=name)
+        default_trail = alicloud.actiontrail.Trail("default",
+            event_rw="Write",
+            sls_project_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default.regions[0].id}:{default_get_account.id}:project/{project_name}"),
+            trail_name=name,
+            sls_write_role_arn=default_get_roles.roles[0].arn,
+            trail_region="All",
+            is_organization_trail=False,
+            status="Enable",
+            event_selectors=json.dumps([{
+                "ServiceName": "PDS",
+            }]),
+            data_event_trail_region="cn-hangzhou")
+        default_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("default", trail_name=default_trail.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Actiontrail History Delivery Job can be imported using the id, e.g.
+        Action Trail History Delivery Job can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
@@ -137,7 +164,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] trail_name: The name of the trail for which you want to create a historical event delivery task.
+        :param pulumi.Input[_builtins.str] trail_name: The Track Name.
         """
         ...
     @overload
@@ -146,9 +173,11 @@ class HistoryDeliveryJob(pulumi.CustomResource):
                  args: HistoryDeliveryJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Actiontrail History Delivery Job resource.
+        Provides a Action Trail History Delivery Job resource.
 
-        For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+        Delivery History Tasks.
+
+        For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 
         > **NOTE:** Available since v1.139.0.
 
@@ -164,30 +193,39 @@ class HistoryDeliveryJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        example = alicloud.get_regions(current=True)
-        example_get_account = alicloud.get_account()
-        example_project = alicloud.log.Project("example",
-            project_name=f"{name}-{default['result']}",
-            description="tf actiontrail example")
-        example_trail = alicloud.actiontrail.Trail("example",
-            trail_name=f"{name}-{default['result']}",
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
-        example_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("example", trail_name=example_trail.id)
+        default = alicloud.get_regions(current=True)
+        default_get_account = alicloud.get_account()
+        default_get_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        default_project = alicloud.log.Project("default",
+            description=name,
+            project_name=name)
+        default_trail = alicloud.actiontrail.Trail("default",
+            event_rw="Write",
+            sls_project_arn=default_project.project_name.apply(lambda project_name: f"acs:log:{default.regions[0].id}:{default_get_account.id}:project/{project_name}"),
+            trail_name=name,
+            sls_write_role_arn=default_get_roles.roles[0].arn,
+            trail_region="All",
+            is_organization_trail=False,
+            status="Enable",
+            event_selectors=json.dumps([{
+                "ServiceName": "PDS",
+            }]),
+            data_event_trail_region="cn-hangzhou")
+        default_history_delivery_job = alicloud.actiontrail.HistoryDeliveryJob("default", trail_name=default_trail.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
-        Actiontrail History Delivery Job can be imported using the id, e.g.
+        Action Trail History Delivery Job can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
@@ -221,6 +259,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
             if trail_name is None and not opts.urn:
                 raise TypeError("Missing required property 'trail_name'")
             __props__.__dict__["trail_name"] = trail_name
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(HistoryDeliveryJob, __self__).__init__(
             'alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob',
@@ -232,6 +271,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.int]] = None,
             trail_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HistoryDeliveryJob':
         """
@@ -241,22 +281,32 @@ class HistoryDeliveryJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
-        :param pulumi.Input[_builtins.str] trail_name: The name of the trail for which you want to create a historical event delivery task.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
+        :param pulumi.Input[_builtins.int] status: The status of the resource
+        :param pulumi.Input[_builtins.str] trail_name: The Track Name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _HistoryDeliveryJobState.__new__(_HistoryDeliveryJobState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["status"] = status
         __props__.__dict__["trail_name"] = trail_name
         return HistoryDeliveryJob(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.int]:
         """
-        The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -264,7 +314,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
     @pulumi.getter(name="trailName")
     def trail_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the trail for which you want to create a historical event delivery task.
+        The Track Name.
         """
         return pulumi.get(self, "trail_name")
 

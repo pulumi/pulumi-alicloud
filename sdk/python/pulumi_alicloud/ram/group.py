@@ -234,6 +234,8 @@ class Group(pulumi.CustomResource):
             force=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Group can be imported using the id, e.g.
@@ -284,6 +286,8 @@ class Group(pulumi.CustomResource):
             comments=name,
             force=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

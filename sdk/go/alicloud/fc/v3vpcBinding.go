@@ -78,6 +78,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // FCV3 Vpc Binding can be imported using the id, e.g.

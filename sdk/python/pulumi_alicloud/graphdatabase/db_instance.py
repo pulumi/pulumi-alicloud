@@ -508,6 +508,8 @@ class DbInstance(pulumi.CustomResource):
             db_instance_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Graph Database Db Instance can be imported using the id, e.g.
@@ -566,6 +568,8 @@ class DbInstance(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             db_instance_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

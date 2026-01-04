@@ -63,6 +63,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Router Express Connect Router Vbr Child Instance can be imported using the id, e.g.

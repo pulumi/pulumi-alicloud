@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Routine Route can be imported using the id, e.g.
@@ -92,6 +94,10 @@ export class RoutineRoute extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly configId: pulumi.Output<number>;
     /**
+     * Spare
+     */
+    declare public readonly fallback: pulumi.Output<string>;
+    /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
@@ -116,7 +122,7 @@ export class RoutineRoute extends pulumi.CustomResource {
     /**
      * Site Id
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
 
     /**
      * Create a RoutineRoute resource with the given unique name, arguments, and options.
@@ -133,6 +139,7 @@ export class RoutineRoute extends pulumi.CustomResource {
             const state = argsOrState as RoutineRouteState | undefined;
             resourceInputs["bypass"] = state?.bypass;
             resourceInputs["configId"] = state?.configId;
+            resourceInputs["fallback"] = state?.fallback;
             resourceInputs["routeEnable"] = state?.routeEnable;
             resourceInputs["routeName"] = state?.routeName;
             resourceInputs["routineName"] = state?.routineName;
@@ -148,6 +155,7 @@ export class RoutineRoute extends pulumi.CustomResource {
                 throw new Error("Missing required property 'siteId'");
             }
             resourceInputs["bypass"] = args?.bypass;
+            resourceInputs["fallback"] = args?.fallback;
             resourceInputs["routeEnable"] = args?.routeEnable;
             resourceInputs["routeName"] = args?.routeName;
             resourceInputs["routineName"] = args?.routineName;
@@ -176,6 +184,10 @@ export interface RoutineRouteState {
      */
     configId?: pulumi.Input<number>;
     /**
+     * Spare
+     */
+    fallback?: pulumi.Input<string>;
+    /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
@@ -200,7 +212,7 @@ export interface RoutineRouteState {
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
 }
 
 /**
@@ -213,6 +225,10 @@ export interface RoutineRouteArgs {
      * - off: off
      */
     bypass?: pulumi.Input<string>;
+    /**
+     * Spare
+     */
+    fallback?: pulumi.Input<string>;
     /**
      * Routing switch. Value range:
      * - on: Open
@@ -238,5 +254,5 @@ export interface RoutineRouteArgs {
     /**
      * Site Id
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

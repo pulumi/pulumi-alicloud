@@ -606,6 +606,8 @@ class EdgeContainerApp(pulumi.CustomResource):
             health_check_type="l7")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Edge Container App can be imported using the id, e.g.
@@ -682,6 +684,8 @@ class EdgeContainerApp(pulumi.CustomResource):
             edge_container_app_name=name,
             health_check_type="l7")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

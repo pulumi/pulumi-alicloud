@@ -185,6 +185,8 @@ class SlsGroup(pulumi.CustomResource):
             sls_group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Sls Group can be imported using the id, e.g.
@@ -251,6 +253,8 @@ class SlsGroup(pulumi.CustomResource):
             sls_group_description=name,
             sls_group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

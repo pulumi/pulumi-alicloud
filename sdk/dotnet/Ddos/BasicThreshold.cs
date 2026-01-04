@@ -98,6 +98,8 @@ namespace Pulumi.AliCloud.Ddos
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ddos Basic Threshold can be imported using the id, e.g.

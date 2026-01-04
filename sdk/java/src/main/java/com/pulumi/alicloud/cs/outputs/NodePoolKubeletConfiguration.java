@@ -157,6 +157,11 @@ public final class NodePoolKubeletConfiguration {
      */
     private @Nullable String serializeImagePulls;
     /**
+     * @return Used to enable the kubelet server certificate signing and rotation via CSR.
+     * 
+     */
+    private @Nullable Boolean serverTlsBootstrap;
+    /**
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
@@ -370,6 +375,13 @@ public final class NodePoolKubeletConfiguration {
         return Optional.ofNullable(this.serializeImagePulls);
     }
     /**
+     * @return Used to enable the kubelet server certificate signing and rotation via CSR.
+     * 
+     */
+    public Optional<Boolean> serverTlsBootstrap() {
+        return Optional.ofNullable(this.serverTlsBootstrap);
+    }
+    /**
      * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
@@ -428,6 +440,7 @@ public final class NodePoolKubeletConfiguration {
         private @Nullable String registryPullQps;
         private @Nullable List<NodePoolKubeletConfigurationReservedMemory> reservedMemories;
         private @Nullable String serializeImagePulls;
+        private @Nullable Boolean serverTlsBootstrap;
         private @Nullable Map<String,String> systemReserved;
         private @Nullable String topologyManagerPolicy;
         private @Nullable NodePoolKubeletConfigurationTracing tracing;
@@ -462,6 +475,7 @@ public final class NodePoolKubeletConfiguration {
     	      this.registryPullQps = defaults.registryPullQps;
     	      this.reservedMemories = defaults.reservedMemories;
     	      this.serializeImagePulls = defaults.serializeImagePulls;
+    	      this.serverTlsBootstrap = defaults.serverTlsBootstrap;
     	      this.systemReserved = defaults.systemReserved;
     	      this.topologyManagerPolicy = defaults.topologyManagerPolicy;
     	      this.tracing = defaults.tracing;
@@ -645,6 +659,12 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverTlsBootstrap(@Nullable Boolean serverTlsBootstrap) {
+
+            this.serverTlsBootstrap = serverTlsBootstrap;
+            return this;
+        }
+        @CustomType.Setter
         public Builder systemReserved(@Nullable Map<String,String> systemReserved) {
 
             this.systemReserved = systemReserved;
@@ -692,6 +712,7 @@ public final class NodePoolKubeletConfiguration {
             _resultValue.registryPullQps = registryPullQps;
             _resultValue.reservedMemories = reservedMemories;
             _resultValue.serializeImagePulls = serializeImagePulls;
+            _resultValue.serverTlsBootstrap = serverTlsBootstrap;
             _resultValue.systemReserved = systemReserved;
             _resultValue.topologyManagerPolicy = topologyManagerPolicy;
             _resultValue.tracing = tracing;

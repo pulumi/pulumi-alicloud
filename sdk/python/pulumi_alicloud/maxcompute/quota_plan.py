@@ -225,6 +225,8 @@ class QuotaPlan(pulumi.CustomResource):
             plan_name="quota_plan")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Quota Plan can be imported using the id, e.g.
@@ -296,6 +298,8 @@ class QuotaPlan(pulumi.CustomResource):
             },
             plan_name="quota_plan")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -550,6 +550,8 @@ class BasicAccelerator(pulumi.CustomResource):
             auto_use_coupon="true")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Basic Accelerator can be imported using the id, e.g.
@@ -607,6 +609,8 @@ class BasicAccelerator(pulumi.CustomResource):
             auto_pay=True,
             auto_use_coupon="true")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

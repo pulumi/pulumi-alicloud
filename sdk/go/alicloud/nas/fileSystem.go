@@ -72,6 +72,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // File Storage (NAS) File System can be imported using the id, e.g.
@@ -116,11 +118,9 @@ type FileSystem struct {
 	// - standard (default): Universal NAS
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
-	FileSystemType pulumi.StringOutput `pulumi:"fileSystemType"`
-	// String of keytab file content encrypted by base64
-	Keytab pulumi.StringPtrOutput `pulumi:"keytab"`
-	// String of the keytab file content encrypted by MD5
-	KeytabMd5 pulumi.StringPtrOutput `pulumi:"keytabMd5"`
+	FileSystemType pulumi.StringOutput    `pulumi:"fileSystemType"`
+	Keytab         pulumi.StringPtrOutput `pulumi:"keytab"`
+	KeytabMd5      pulumi.StringPtrOutput `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringOutput `pulumi:"kmsKeyId"`
@@ -135,6 +135,10 @@ type FileSystem struct {
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// Recycle Bin See `recycleBin` below.
 	RecycleBin FileSystemRecycleBinOutput `pulumi:"recycleBin"`
+	// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+	RedundancyType pulumi.StringOutput `pulumi:"redundancyType"`
+	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+	RedundancyVswitchIds pulumi.StringArrayOutput `pulumi:"redundancyVswitchIds"`
 	// RegionId
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group.
@@ -144,6 +148,8 @@ type FileSystem struct {
 	// Only extreme NAS is supported.
 	//
 	// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -245,10 +251,8 @@ type fileSystemState struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType *string `pulumi:"fileSystemType"`
-	// String of keytab file content encrypted by base64
-	Keytab *string `pulumi:"keytab"`
-	// String of the keytab file content encrypted by MD5
-	KeytabMd5 *string `pulumi:"keytabMd5"`
+	Keytab         *string `pulumi:"keytab"`
+	KeytabMd5      *string `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -263,6 +267,10 @@ type fileSystemState struct {
 	ProtocolType *string `pulumi:"protocolType"`
 	// Recycle Bin See `recycleBin` below.
 	RecycleBin *FileSystemRecycleBin `pulumi:"recycleBin"`
+	// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+	RedundancyType *string `pulumi:"redundancyType"`
+	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+	RedundancyVswitchIds []string `pulumi:"redundancyVswitchIds"`
 	// RegionId
 	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group.
@@ -272,6 +280,8 @@ type fileSystemState struct {
 	// Only extreme NAS is supported.
 	//
 	// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status *string `pulumi:"status"`
@@ -338,10 +348,8 @@ type FileSystemState struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType pulumi.StringPtrInput
-	// String of keytab file content encrypted by base64
-	Keytab pulumi.StringPtrInput
-	// String of the keytab file content encrypted by MD5
-	KeytabMd5 pulumi.StringPtrInput
+	Keytab         pulumi.StringPtrInput
+	KeytabMd5      pulumi.StringPtrInput
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringPtrInput
@@ -356,6 +364,10 @@ type FileSystemState struct {
 	ProtocolType pulumi.StringPtrInput
 	// Recycle Bin See `recycleBin` below.
 	RecycleBin FileSystemRecycleBinPtrInput
+	// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+	RedundancyType pulumi.StringPtrInput
+	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+	RedundancyVswitchIds pulumi.StringArrayInput
 	// RegionId
 	RegionId pulumi.StringPtrInput
 	// The ID of the resource group.
@@ -365,6 +377,8 @@ type FileSystemState struct {
 	// Only extreme NAS is supported.
 	//
 	// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId pulumi.StringPtrInput
 	// File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
 	Status pulumi.StringPtrInput
@@ -433,10 +447,8 @@ type fileSystemArgs struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType *string `pulumi:"fileSystemType"`
-	// String of keytab file content encrypted by base64
-	Keytab *string `pulumi:"keytab"`
-	// String of the keytab file content encrypted by MD5
-	KeytabMd5 *string `pulumi:"keytabMd5"`
+	Keytab         *string `pulumi:"keytab"`
+	KeytabMd5      *string `pulumi:"keytabMd5"`
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -451,6 +463,10 @@ type fileSystemArgs struct {
 	ProtocolType string `pulumi:"protocolType"`
 	// Recycle Bin See `recycleBin` below.
 	RecycleBin *FileSystemRecycleBin `pulumi:"recycleBin"`
+	// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+	RedundancyType *string `pulumi:"redundancyType"`
+	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+	RedundancyVswitchIds []string `pulumi:"redundancyVswitchIds"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// SMB ACL See `smbAcl` below.
@@ -458,6 +474,8 @@ type fileSystemArgs struct {
 	// Only extreme NAS is supported.
 	//
 	// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The storage type.
 	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
@@ -521,10 +539,8 @@ type FileSystemArgs struct {
 	// - extreme: extreme NAS
 	// - cpfs: file storage CPFS
 	FileSystemType pulumi.StringPtrInput
-	// String of keytab file content encrypted by base64
-	Keytab pulumi.StringPtrInput
-	// String of the keytab file content encrypted by MD5
-	KeytabMd5 pulumi.StringPtrInput
+	Keytab         pulumi.StringPtrInput
+	KeytabMd5      pulumi.StringPtrInput
 	// The ID of the KMS key.
 	// This parameter is required only when EncryptType = 2.
 	KmsKeyId pulumi.StringPtrInput
@@ -539,6 +555,10 @@ type FileSystemArgs struct {
 	ProtocolType pulumi.StringInput
 	// Recycle Bin See `recycleBin` below.
 	RecycleBin FileSystemRecycleBinPtrInput
+	// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+	RedundancyType pulumi.StringPtrInput
+	// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+	RedundancyVswitchIds pulumi.StringArrayInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// SMB ACL See `smbAcl` below.
@@ -546,6 +566,8 @@ type FileSystemArgs struct {
 	// Only extreme NAS is supported.
 	//
 	// > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+	//
+	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	SnapshotId pulumi.StringPtrInput
 	// The storage type.
 	// - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
@@ -711,12 +733,10 @@ func (o FileSystemOutput) FileSystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.FileSystemType }).(pulumi.StringOutput)
 }
 
-// String of keytab file content encrypted by base64
 func (o FileSystemOutput) Keytab() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.Keytab }).(pulumi.StringPtrOutput)
 }
 
-// String of the keytab file content encrypted by MD5
 func (o FileSystemOutput) KeytabMd5() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.KeytabMd5 }).(pulumi.StringPtrOutput)
 }
@@ -750,6 +770,16 @@ func (o FileSystemOutput) RecycleBin() FileSystemRecycleBinOutput {
 	return o.ApplyT(func(v *FileSystem) FileSystemRecycleBinOutput { return v.RecycleBin }).(FileSystemRecycleBinOutput)
 }
 
+// Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+func (o FileSystemOutput) RedundancyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.RedundancyType }).(pulumi.StringOutput)
+}
+
+// Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+func (o FileSystemOutput) RedundancyVswitchIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FileSystem) pulumi.StringArrayOutput { return v.RedundancyVswitchIds }).(pulumi.StringArrayOutput)
+}
+
 // RegionId
 func (o FileSystemOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
@@ -768,6 +798,8 @@ func (o FileSystemOutput) SmbAcl() FileSystemSmbAclOutput {
 // Only extreme NAS is supported.
 //
 // > **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+//
+// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o FileSystemOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }

@@ -410,6 +410,8 @@ class EcsInvocation(pulumi.CustomResource):
             instance_ids=[default_instance.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Invocation can be imported using the id, e.g.
@@ -509,6 +511,8 @@ class EcsInvocation(pulumi.CustomResource):
             command_id=default_command.id,
             instance_ids=[default_instance.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

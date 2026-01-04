@@ -113,6 +113,8 @@ namespace Pulumi.AliCloud.Slb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Load Balancer Virtual Backend Server Group Server Attachment can be imported using the id, e.g.

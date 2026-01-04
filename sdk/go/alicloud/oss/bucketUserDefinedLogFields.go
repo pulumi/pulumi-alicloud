@@ -78,6 +78,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // OSS Bucket User Defined Log Fields can be imported using the id, e.g.

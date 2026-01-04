@@ -36,6 +36,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Alidns Domain Record can be imported using the id, e.g.
@@ -105,7 +107,7 @@ export class AlidnsRecord extends pulumi.CustomResource {
      */
     declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
-     * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+     * The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -209,7 +211,7 @@ export interface AlidnsRecordState {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+     * The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
      */
     type?: pulumi.Input<string>;
     /**
@@ -259,7 +261,7 @@ export interface AlidnsRecordArgs {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+     * The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
      */
     type: pulumi.Input<string>;
     /**

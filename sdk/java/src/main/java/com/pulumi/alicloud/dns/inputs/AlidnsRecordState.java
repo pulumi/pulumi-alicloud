@@ -137,14 +137,14 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+     * The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+     * @return The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
      * 
      */
     public Optional<Output<String>> type() {
@@ -384,7 +384,7 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+         * @param type The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class AlidnsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of domain record. Valid values: `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
+         * @param type The type of domain record. For more information, see [How to use it](https://www.alibabacloud.com/help/en/dns/dns-record-types).
          * 
          * @return builder
          * 

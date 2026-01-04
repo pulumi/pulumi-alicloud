@@ -351,6 +351,8 @@ class ResourceShare(pulumi.CustomResource):
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Resource Share can be imported using the id, e.g.
@@ -400,6 +402,8 @@ class ResourceShare(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

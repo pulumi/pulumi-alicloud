@@ -2106,6 +2106,8 @@ class Cluster(pulumi.CustomResource):
             zone_id=default.zones[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ehpc Cluster can be imported using the id, e.g.
@@ -2262,6 +2264,8 @@ class Cluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

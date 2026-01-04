@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Rdc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDC Organization can be imported using the id, e.g.

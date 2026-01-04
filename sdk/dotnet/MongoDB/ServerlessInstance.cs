@@ -79,6 +79,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MongoDB Serverless Instance can be imported using the id, e.g.

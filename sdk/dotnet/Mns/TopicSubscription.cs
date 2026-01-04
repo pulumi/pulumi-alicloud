@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Mns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MNS Topic subscription can be imported using the id, e.g.

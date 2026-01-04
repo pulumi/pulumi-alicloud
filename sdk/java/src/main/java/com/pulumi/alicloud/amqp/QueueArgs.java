@@ -19,18 +19,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     public static final QueueArgs Empty = new QueueArgs();
 
     /**
-     * Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-     * * false: The Auto Delete attribute is not configured.
+     * Specifies whether to automatically delete the queue. Valid values:
      * 
      */
     @Import(name="autoDeleteState")
     private @Nullable Output<Boolean> autoDeleteState;
 
     /**
-     * @return Specifies whether the Auto Delete attribute is configured. Valid values:
-     * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-     * * false: The Auto Delete attribute is not configured.
+     * @return Specifies whether to automatically delete the queue. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoDeleteState() {
@@ -38,16 +34,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The validity period after which the queue is automatically deleted.
-     * If the queue is not accessed within a specified period of time, it is automatically deleted.
+     * The auto-expiration time for the queue.
      * 
      */
     @Import(name="autoExpireState")
     private @Nullable Output<String> autoExpireState;
 
     /**
-     * @return The validity period after which the queue is automatically deleted.
-     * If the queue is not accessed within a specified period of time, it is automatically deleted.
+     * @return The auto-expiration time for the queue.
      * 
      */
     public Optional<Output<String>> autoExpireState() {
@@ -55,18 +49,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-     * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-     * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+     * The dead-letter exchange.
      * 
      */
     @Import(name="deadLetterExchange")
     private @Nullable Output<String> deadLetterExchange;
 
     /**
-     * @return The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-     * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-     * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+     * @return The dead-letter exchange.
      * 
      */
     public Optional<Output<String>> deadLetterExchange() {
@@ -74,14 +64,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dead letter routing key.
+     * The dead-letter routing key.
      * 
      */
     @Import(name="deadLetterRoutingKey")
     private @Nullable Output<String> deadLetterRoutingKey;
 
     /**
-     * @return The dead letter routing key.
+     * @return The dead-letter routing key.
      * 
      */
     public Optional<Output<String>> deadLetterRoutingKey() {
@@ -89,33 +79,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether the queue is an exclusive queue. Valid values:
-     * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-     * * false: The queue is not an exclusive queue.
-     * 
-     */
-    @Import(name="exclusiveState")
-    private @Nullable Output<Boolean> exclusiveState;
-
-    /**
-     * @return Specifies whether the queue is an exclusive queue. Valid values:
-     * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-     * * false: The queue is not an exclusive queue.
-     * 
-     */
-    public Optional<Output<Boolean>> exclusiveState() {
-        return Optional.ofNullable(this.exclusiveState);
-    }
-
-    /**
-     * The ID of the instance.
+     * The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      * 
      */
     public Output<String> instanceId() {
@@ -124,7 +95,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum number of messages that can be stored in the queue.
-     * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      * 
      */
     @Import(name="maxLength")
@@ -132,7 +102,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum number of messages that can be stored in the queue.
-     * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
      * 
      */
     public Optional<Output<String>> maxLength() {
@@ -140,16 +109,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The highest priority supported by the queue. This parameter is set to a positive integer.
-     * Valid values: 0 to 255. Recommended values: 1 to 10
+     * The priority of the queue.
      * 
      */
     @Import(name="maximumPriority")
     private @Nullable Output<Integer> maximumPriority;
 
     /**
-     * @return The highest priority supported by the queue. This parameter is set to a positive integer.
-     * Valid values: 0 to 255. Recommended values: 1 to 10
+     * @return The priority of the queue.
      * 
      */
     public Optional<Output<Integer>> maximumPriority() {
@@ -157,20 +124,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The message TTL of the queue.
-     * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-     * Message TTL must be set to a non-negative integer, in milliseconds.
-     * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+     * The time to live (TTL) of a message in the queue.
      * 
      */
     @Import(name="messageTtl")
     private @Nullable Output<String> messageTtl;
 
     /**
-     * @return The message TTL of the queue.
-     * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-     * Message TTL must be set to a non-negative integer, in milliseconds.
-     * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+     * @return The time to live (TTL) of a message in the queue.
      * 
      */
     public Optional<Output<String>> messageTtl() {
@@ -178,16 +139,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * The name of the queue to create.
      * 
      */
     @Import(name="queueName", required=true)
     private Output<String> queueName;
 
     /**
-     * @return The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+     * @return The name of the queue to create.
      * 
      */
     public Output<String> queueName() {
@@ -195,14 +154,14 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the virtual host.
+     * The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
      * 
      */
     @Import(name="virtualHostName", required=true)
     private Output<String> virtualHostName;
 
     /**
-     * @return The name of the virtual host.
+     * @return The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
      * 
      */
     public Output<String> virtualHostName() {
@@ -216,7 +175,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         this.autoExpireState = $.autoExpireState;
         this.deadLetterExchange = $.deadLetterExchange;
         this.deadLetterRoutingKey = $.deadLetterRoutingKey;
-        this.exclusiveState = $.exclusiveState;
         this.instanceId = $.instanceId;
         this.maxLength = $.maxLength;
         this.maximumPriority = $.maximumPriority;
@@ -244,9 +202,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDeleteState Specifies whether the Auto Delete attribute is configured. Valid values:
-         * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-         * * false: The Auto Delete attribute is not configured.
+         * @param autoDeleteState Specifies whether to automatically delete the queue. Valid values:
          * 
          * @return builder
          * 
@@ -257,9 +213,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoDeleteState Specifies whether the Auto Delete attribute is configured. Valid values:
-         * * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-         * * false: The Auto Delete attribute is not configured.
+         * @param autoDeleteState Specifies whether to automatically delete the queue. Valid values:
          * 
          * @return builder
          * 
@@ -269,8 +223,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoExpireState The validity period after which the queue is automatically deleted.
-         * If the queue is not accessed within a specified period of time, it is automatically deleted.
+         * @param autoExpireState The auto-expiration time for the queue.
          * 
          * @return builder
          * 
@@ -281,8 +234,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoExpireState The validity period after which the queue is automatically deleted.
-         * If the queue is not accessed within a specified period of time, it is automatically deleted.
+         * @param autoExpireState The auto-expiration time for the queue.
          * 
          * @return builder
          * 
@@ -292,9 +244,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterExchange The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-         * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-         * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+         * @param deadLetterExchange The dead-letter exchange.
          * 
          * @return builder
          * 
@@ -305,9 +255,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterExchange The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-         * If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-         * Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+         * @param deadLetterExchange The dead-letter exchange.
          * 
          * @return builder
          * 
@@ -317,7 +265,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterRoutingKey The dead letter routing key.
+         * @param deadLetterRoutingKey The dead-letter routing key.
          * 
          * @return builder
          * 
@@ -328,7 +276,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deadLetterRoutingKey The dead letter routing key.
+         * @param deadLetterRoutingKey The dead-letter routing key.
          * 
          * @return builder
          * 
@@ -338,32 +286,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveState Specifies whether the queue is an exclusive queue. Valid values:
-         * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-         * * false: The queue is not an exclusive queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder exclusiveState(@Nullable Output<Boolean> exclusiveState) {
-            $.exclusiveState = exclusiveState;
-            return this;
-        }
-
-        /**
-         * @param exclusiveState Specifies whether the queue is an exclusive queue. Valid values:
-         * * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-         * * false: The queue is not an exclusive queue.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder exclusiveState(Boolean exclusiveState) {
-            return exclusiveState(Output.of(exclusiveState));
-        }
-
-        /**
-         * @param instanceId The ID of the instance.
+         * @param instanceId The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
          * 
          * @return builder
          * 
@@ -374,7 +297,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the instance.
+         * @param instanceId The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
          * 
          * @return builder
          * 
@@ -385,7 +308,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxLength The maximum number of messages that can be stored in the queue.
-         * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
          * 
          * @return builder
          * 
@@ -397,7 +319,6 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maxLength The maximum number of messages that can be stored in the queue.
-         * If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
          * 
          * @return builder
          * 
@@ -407,8 +328,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumPriority The highest priority supported by the queue. This parameter is set to a positive integer.
-         * Valid values: 0 to 255. Recommended values: 1 to 10
+         * @param maximumPriority The priority of the queue.
          * 
          * @return builder
          * 
@@ -419,8 +339,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maximumPriority The highest priority supported by the queue. This parameter is set to a positive integer.
-         * Valid values: 0 to 255. Recommended values: 1 to 10
+         * @param maximumPriority The priority of the queue.
          * 
          * @return builder
          * 
@@ -430,10 +349,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageTtl The message TTL of the queue.
-         * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-         * Message TTL must be set to a non-negative integer, in milliseconds.
-         * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+         * @param messageTtl The time to live (TTL) of a message in the queue.
          * 
          * @return builder
          * 
@@ -444,10 +360,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param messageTtl The message TTL of the queue.
-         * If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-         * Message TTL must be set to a non-negative integer, in milliseconds.
-         * For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+         * @param messageTtl The time to live (TTL) of a message in the queue.
          * 
          * @return builder
          * 
@@ -457,8 +370,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueName The name of the queue.
-         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+         * @param queueName The name of the queue to create.
          * 
          * @return builder
          * 
@@ -469,8 +381,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueName The name of the queue.
-         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
+         * @param queueName The name of the queue to create.
          * 
          * @return builder
          * 
@@ -480,7 +391,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName The name of the virtual host.
+         * @param virtualHostName The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
          * 
          * @return builder
          * 
@@ -491,7 +402,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualHostName The name of the virtual host.
+         * @param virtualHostName The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs ({@literal @}). The name must be 1 to 255 characters in length.
          * 
          * @return builder
          * 

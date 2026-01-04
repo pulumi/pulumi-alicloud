@@ -459,6 +459,8 @@ class SimpleOfficeSite(pulumi.CustomResource):
             office_site_name=f"terraform-example-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Simple Office Site can be imported using the id, e.g.
@@ -512,6 +514,8 @@ class SimpleOfficeSite(pulumi.CustomResource):
             desktop_access_type="Internet",
             office_site_name=f"terraform-example-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

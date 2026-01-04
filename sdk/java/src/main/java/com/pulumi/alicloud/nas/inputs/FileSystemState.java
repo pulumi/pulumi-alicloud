@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,32 +147,16 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.fileSystemType);
     }
 
-    /**
-     * String of keytab file content encrypted by base64
-     * 
-     */
     @Import(name="keytab")
     private @Nullable Output<String> keytab;
 
-    /**
-     * @return String of keytab file content encrypted by base64
-     * 
-     */
     public Optional<Output<String>> keytab() {
         return Optional.ofNullable(this.keytab);
     }
 
-    /**
-     * String of the keytab file content encrypted by MD5
-     * 
-     */
     @Import(name="keytabMd5")
     private @Nullable Output<String> keytabMd5;
 
-    /**
-     * @return String of the keytab file content encrypted by MD5
-     * 
-     */
     public Optional<Output<String>> keytabMd5() {
         return Optional.ofNullable(this.keytabMd5);
     }
@@ -260,6 +245,36 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * 
+     */
+    @Import(name="redundancyType")
+    private @Nullable Output<String> redundancyType;
+
+    /**
+     * @return Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * 
+     */
+    public Optional<Output<String>> redundancyType() {
+        return Optional.ofNullable(this.redundancyType);
+    }
+
+    /**
+     * Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     * 
+     */
+    @Import(name="redundancyVswitchIds")
+    private @Nullable Output<List<String>> redundancyVswitchIds;
+
+    /**
+     * @return Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     * 
+     */
+    public Optional<Output<List<String>>> redundancyVswitchIds() {
+        return Optional.ofNullable(this.redundancyVswitchIds);
+    }
+
+    /**
      * RegionId
      * 
      */
@@ -309,6 +324,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
@@ -317,6 +334,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
      * @return Only extreme NAS is supported.
      * 
      * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -458,6 +477,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         this.options = $.options;
         this.protocolType = $.protocolType;
         this.recycleBin = $.recycleBin;
+        this.redundancyType = $.redundancyType;
+        this.redundancyVswitchIds = $.redundancyVswitchIds;
         this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.smbAcl = $.smbAcl;
@@ -643,44 +664,20 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
             return fileSystemType(Output.of(fileSystemType));
         }
 
-        /**
-         * @param keytab String of keytab file content encrypted by base64
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytab(@Nullable Output<String> keytab) {
             $.keytab = keytab;
             return this;
         }
 
-        /**
-         * @param keytab String of keytab file content encrypted by base64
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytab(String keytab) {
             return keytab(Output.of(keytab));
         }
 
-        /**
-         * @param keytabMd5 String of the keytab file content encrypted by MD5
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytabMd5(@Nullable Output<String> keytabMd5) {
             $.keytabMd5 = keytabMd5;
             return this;
         }
 
-        /**
-         * @param keytabMd5 String of the keytab file content encrypted by MD5
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytabMd5(String keytabMd5) {
             return keytabMd5(Output.of(keytabMd5));
         }
@@ -799,6 +796,58 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param redundancyType Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyType(@Nullable Output<String> redundancyType) {
+            $.redundancyType = redundancyType;
+            return this;
+        }
+
+        /**
+         * @param redundancyType Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyType(String redundancyType) {
+            return redundancyType(Output.of(redundancyType));
+        }
+
+        /**
+         * @param redundancyVswitchIds Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyVswitchIds(@Nullable Output<List<String>> redundancyVswitchIds) {
+            $.redundancyVswitchIds = redundancyVswitchIds;
+            return this;
+        }
+
+        /**
+         * @param redundancyVswitchIds Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyVswitchIds(List<String> redundancyVswitchIds) {
+            return redundancyVswitchIds(Output.of(redundancyVswitchIds));
+        }
+
+        /**
+         * @param redundancyVswitchIds Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyVswitchIds(String... redundancyVswitchIds) {
+            return redundancyVswitchIds(List.of(redundancyVswitchIds));
+        }
+
+        /**
          * @param regionId RegionId
          * 
          * @return builder
@@ -866,6 +915,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
          * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
          * @return builder
          * 
          */
@@ -878,6 +929,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
          * @param snapshotId Only extreme NAS is supported.
          * 
          * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
          * @return builder
          * 

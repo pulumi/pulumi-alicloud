@@ -89,6 +89,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Serverless App Engine (SAE) Config Map can be imported using the id, e.g.

@@ -17,14 +17,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseArgs Empty = new DatabaseArgs();
 
     /**
-     * Account name authorized to access the database. Only supports PostgreSQL.
+     * The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      * 
      */
     @Import(name="accountName")
     private @Nullable Output<String> accountName;
 
     /**
-     * @return Account name authorized to access the database. Only supports PostgreSQL.
+     * @return The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
      * 
      */
     public Optional<Output<String>> accountName() {
@@ -32,14 +32,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      * 
      */
     @Import(name="characterSetName")
     private @Nullable Output<String> characterSetName;
 
     /**
-     * @return Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+     * @return The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
      * 
      */
     public Optional<Output<String>> characterSetName() {
@@ -47,14 +47,48 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of cluster that can run database.
+     * The language that defines the collation rules in the database.
+     * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    @Import(name="collate")
+    private @Nullable Output<String> collate;
+
+    /**
+     * @return The language that defines the collation rules in the database.
+     * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    public Optional<Output<String>> collate() {
+        return Optional.ofNullable(this.collate);
+    }
+
+    /**
+     * The language that indicates the character type of the database.
+     * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    @Import(name="ctype")
+    private @Nullable Output<String> ctype;
+
+    /**
+     * @return The language that indicates the character type of the database.
+     * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+     * 
+     */
+    public Optional<Output<String>> ctype() {
+        return Optional.ofNullable(this.ctype);
+    }
+
+    /**
+     * The ID of cluster.
      * 
      */
     @Import(name="dbClusterId", required=true)
     private Output<String> dbClusterId;
 
     /**
-     * @return The Id of cluster that can run database.
+     * @return The ID of cluster.
      * 
      */
     public Output<String> dbClusterId() {
@@ -62,14 +96,18 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+     * The description of the database. The description must meet the following requirements:
+     * - It cannot start with `http://` or `https://`.
+     * - It must be 2 to 256 characters in length.
      * 
      */
     @Import(name="dbDescription")
     private @Nullable Output<String> dbDescription;
 
     /**
-     * @return Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+     * @return The description of the database. The description must meet the following requirements:
+     * - It cannot start with `http://` or `https://`.
+     * - It must be 2 to 256 characters in length.
      * 
      */
     public Optional<Output<String>> dbDescription() {
@@ -77,14 +115,14 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+     * The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      * 
      */
     @Import(name="dbName", required=true)
     private Output<String> dbName;
 
     /**
-     * @return Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+     * @return The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
      * 
      */
     public Output<String> dbName() {
@@ -96,6 +134,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private DatabaseArgs(DatabaseArgs $) {
         this.accountName = $.accountName;
         this.characterSetName = $.characterSetName;
+        this.collate = $.collate;
+        this.ctype = $.ctype;
         this.dbClusterId = $.dbClusterId;
         this.dbDescription = $.dbDescription;
         this.dbName = $.dbName;
@@ -120,7 +160,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName Account name authorized to access the database. Only supports PostgreSQL.
+         * @param accountName The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
          * 
          * @return builder
          * 
@@ -131,7 +171,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName Account name authorized to access the database. Only supports PostgreSQL.
+         * @param accountName The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `accountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
          * 
          * @return builder
          * 
@@ -141,7 +181,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param characterSetName Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+         * @param characterSetName The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
          * 
          * @return builder
          * 
@@ -152,7 +192,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param characterSetName Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is &#34;utf8&#34; \(`utf8mb4` only supports versions 5.5 and 5.6\).
+         * @param characterSetName The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
          * 
          * @return builder
          * 
@@ -162,7 +202,53 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId The Id of cluster that can run database.
+         * @param collate The language that defines the collation rules in the database.
+         * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collate(@Nullable Output<String> collate) {
+            $.collate = collate;
+            return this;
+        }
+
+        /**
+         * @param collate The language that defines the collation rules in the database.
+         * &gt; **NOTE:** The locale must be compatible with the character set set set by `characterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collate(String collate) {
+            return collate(Output.of(collate));
+        }
+
+        /**
+         * @param ctype The language that indicates the character type of the database.
+         * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ctype(@Nullable Output<String> ctype) {
+            $.ctype = ctype;
+            return this;
+        }
+
+        /**
+         * @param ctype The language that indicates the character type of the database.
+         * &gt; **NOTE:** The language must be compatible with the character set that is specified by `characterSetName`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ctype(String ctype) {
+            return ctype(Output.of(ctype));
+        }
+
+        /**
+         * @param dbClusterId The ID of cluster.
          * 
          * @return builder
          * 
@@ -173,7 +259,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterId The Id of cluster that can run database.
+         * @param dbClusterId The ID of cluster.
          * 
          * @return builder
          * 
@@ -183,7 +269,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbDescription Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+         * @param dbDescription The description of the database. The description must meet the following requirements:
+         * - It cannot start with `http://` or `https://`.
+         * - It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -194,7 +282,9 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbDescription Database description. It must start with a Chinese character or English letter, cannot start with &#34;http://&#34; or &#34;https://&#34;. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+         * @param dbDescription The description of the database. The description must meet the following requirements:
+         * - It cannot start with `http://` or `https://`.
+         * - It must be 2 to 256 characters in length.
          * 
          * @return builder
          * 
@@ -204,7 +294,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbName Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+         * @param dbName The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
          * 
          * @return builder
          * 
@@ -215,7 +305,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbName Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+         * @param dbName The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
          * 
          * @return builder
          * 

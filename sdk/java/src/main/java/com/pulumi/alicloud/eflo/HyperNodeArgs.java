@@ -3,11 +3,13 @@
 
 package com.pulumi.alicloud.eflo;
 
+import com.pulumi.alicloud.eflo.inputs.HyperNodeDataDiskArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,14 +21,51 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     public static final HyperNodeArgs Empty = new HyperNodeArgs();
 
     /**
-     * Number of the cluster to which the supercompute node belongs
+     * Cluster ID
+     * 
+     */
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
+
+    /**
+     * @return Cluster ID
+     * 
+     */
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
+    }
+
+    @Import(name="dataDisks")
+    private @Nullable Output<List<HyperNodeDataDiskArgs>> dataDisks;
+
+    public Optional<Output<List<HyperNodeDataDiskArgs>>> dataDisks() {
+        return Optional.ofNullable(this.dataDisks);
+    }
+
+    /**
+     * The host name prefix of the sub computing node
+     * 
+     */
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
+
+    /**
+     * @return The host name prefix of the sub computing node
+     * 
+     */
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
+    }
+
+    /**
+     * Number of the cluster to which the hyper computing node belongs
      * 
      */
     @Import(name="hpnZone")
     private @Nullable Output<String> hpnZone;
 
     /**
-     * @return Number of the cluster to which the supercompute node belongs
+     * @return Number of the cluster to which the hyper computing node belongs
      * 
      */
     public Optional<Output<String>> hpnZone() {
@@ -34,18 +73,48 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The model used by the super computing node
+     * Login Password of the sub computing node
+     * 
+     */
+    @Import(name="loginPassword")
+    private @Nullable Output<String> loginPassword;
+
+    /**
+     * @return Login Password of the sub computing node
+     * 
+     */
+    public Optional<Output<String>> loginPassword() {
+        return Optional.ofNullable(this.loginPassword);
+    }
+
+    /**
+     * The model used by the hyper computing node
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The model used by the super computing node
+     * @return The model used by the hyper computing node
      * 
      */
     public Optional<Output<String>> machineType() {
         return Optional.ofNullable(this.machineType);
+    }
+
+    /**
+     * Node group ID
+     * 
+     */
+    @Import(name="nodeGroupId")
+    private @Nullable Output<String> nodeGroupId;
+
+    /**
+     * @return Node group ID
+     * 
+     */
+    public Optional<Output<String>> nodeGroupId() {
+        return Optional.ofNullable(this.nodeGroupId);
     }
 
     /**
@@ -128,14 +197,14 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Super Node Architecture
+     * Hyper Node Architecture
      * 
      */
     @Import(name="serverArch")
     private @Nullable Output<String> serverArch;
 
     /**
-     * @return Super Node Architecture
+     * @return Hyper Node Architecture
      * 
      */
     public Optional<Output<String>> serverArch() {
@@ -143,7 +212,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of installments of the supercomputing node of the fixed fee installment.
+     * The number of installments of the hyper computing node of the fixed fee installment.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -152,7 +221,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> stageNum;
 
     /**
-     * @return The number of installments of the supercomputing node of the fixed fee installment.
+     * @return The number of installments of the hyper computing node of the fixed fee installment.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -177,14 +246,59 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone where the super compute node is located
+     * Custom user data for the sub computing node
+     * 
+     */
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    /**
+     * @return Custom user data for the sub computing node
+     * 
+     */
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
+    /**
+     * The ID of the vpc to which the sub computing node
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    /**
+     * @return The ID of the vpc to which the sub computing node
+     * 
+     */
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * The ID of the vswitch to which the sub computing node
+     * 
+     */
+    @Import(name="vswitchId")
+    private @Nullable Output<String> vswitchId;
+
+    /**
+     * @return The ID of the vswitch to which the sub computing node
+     * 
+     */
+    public Optional<Output<String>> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
+     * The zone where the hyper compute node is located
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone where the super compute node is located
+     * @return The zone where the hyper compute node is located
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -194,8 +308,13 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
     private HyperNodeArgs() {}
 
     private HyperNodeArgs(HyperNodeArgs $) {
+        this.clusterId = $.clusterId;
+        this.dataDisks = $.dataDisks;
+        this.hostname = $.hostname;
         this.hpnZone = $.hpnZone;
+        this.loginPassword = $.loginPassword;
         this.machineType = $.machineType;
+        this.nodeGroupId = $.nodeGroupId;
         this.paymentDuration = $.paymentDuration;
         this.paymentType = $.paymentType;
         this.renewalDuration = $.renewalDuration;
@@ -204,6 +323,9 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         this.serverArch = $.serverArch;
         this.stageNum = $.stageNum;
         this.tags = $.tags;
+        this.userData = $.userData;
+        this.vpcId = $.vpcId;
+        this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
     }
 
@@ -226,7 +348,62 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hpnZone Number of the cluster to which the supercompute node belongs
+         * @param clusterId Cluster ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterId(@Nullable Output<String> clusterId) {
+            $.clusterId = clusterId;
+            return this;
+        }
+
+        /**
+         * @param clusterId Cluster ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterId(String clusterId) {
+            return clusterId(Output.of(clusterId));
+        }
+
+        public Builder dataDisks(@Nullable Output<List<HyperNodeDataDiskArgs>> dataDisks) {
+            $.dataDisks = dataDisks;
+            return this;
+        }
+
+        public Builder dataDisks(List<HyperNodeDataDiskArgs> dataDisks) {
+            return dataDisks(Output.of(dataDisks));
+        }
+
+        public Builder dataDisks(HyperNodeDataDiskArgs... dataDisks) {
+            return dataDisks(List.of(dataDisks));
+        }
+
+        /**
+         * @param hostname The host name prefix of the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(@Nullable Output<String> hostname) {
+            $.hostname = hostname;
+            return this;
+        }
+
+        /**
+         * @param hostname The host name prefix of the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostname(String hostname) {
+            return hostname(Output.of(hostname));
+        }
+
+        /**
+         * @param hpnZone Number of the cluster to which the hyper computing node belongs
          * 
          * @return builder
          * 
@@ -237,7 +414,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hpnZone Number of the cluster to which the supercompute node belongs
+         * @param hpnZone Number of the cluster to which the hyper computing node belongs
          * 
          * @return builder
          * 
@@ -247,7 +424,28 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineType The model used by the super computing node
+         * @param loginPassword Login Password of the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(@Nullable Output<String> loginPassword) {
+            $.loginPassword = loginPassword;
+            return this;
+        }
+
+        /**
+         * @param loginPassword Login Password of the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loginPassword(String loginPassword) {
+            return loginPassword(Output.of(loginPassword));
+        }
+
+        /**
+         * @param machineType The model used by the hyper computing node
          * 
          * @return builder
          * 
@@ -258,13 +456,34 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machineType The model used by the super computing node
+         * @param machineType The model used by the hyper computing node
          * 
          * @return builder
          * 
          */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param nodeGroupId Node group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
+            $.nodeGroupId = nodeGroupId;
+            return this;
+        }
+
+        /**
+         * @param nodeGroupId Node group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeGroupId(String nodeGroupId) {
+            return nodeGroupId(Output.of(nodeGroupId));
         }
 
         /**
@@ -377,7 +596,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverArch Super Node Architecture
+         * @param serverArch Hyper Node Architecture
          * 
          * @return builder
          * 
@@ -388,7 +607,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverArch Super Node Architecture
+         * @param serverArch Hyper Node Architecture
          * 
          * @return builder
          * 
@@ -398,7 +617,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stageNum The number of installments of the supercomputing node of the fixed fee installment.
+         * @param stageNum The number of installments of the hyper computing node of the fixed fee installment.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -411,7 +630,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stageNum The number of installments of the supercomputing node of the fixed fee installment.
+         * @param stageNum The number of installments of the hyper computing node of the fixed fee installment.
          * 
          * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
          * 
@@ -444,7 +663,70 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone where the super compute node is located
+         * @param userData Custom user data for the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        /**
+         * @param userData Custom user data for the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
+        }
+
+        /**
+         * @param vpcId The ID of the vpc to which the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the vpc to which the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param vswitchId The ID of the vswitch to which the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(@Nullable Output<String> vswitchId) {
+            $.vswitchId = vswitchId;
+            return this;
+        }
+
+        /**
+         * @param vswitchId The ID of the vswitch to which the sub computing node
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(String vswitchId) {
+            return vswitchId(Output.of(vswitchId));
+        }
+
+        /**
+         * @param zoneId The zone where the hyper compute node is located
          * 
          * @return builder
          * 
@@ -455,7 +737,7 @@ public final class HyperNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone where the super compute node is located
+         * @param zoneId The zone where the hyper compute node is located
          * 
          * @return builder
          * 

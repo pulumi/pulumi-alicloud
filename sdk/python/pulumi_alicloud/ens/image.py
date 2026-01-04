@@ -242,6 +242,8 @@ class Image(pulumi.CustomResource):
             delete_after_image_upload="false")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Image can be imported using the id, e.g.
@@ -302,6 +304,8 @@ class Image(pulumi.CustomResource):
             instance_id=default.id,
             delete_after_image_upload="false")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

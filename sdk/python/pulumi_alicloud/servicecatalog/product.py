@@ -212,6 +212,8 @@ class Product(pulumi.CustomResource):
             product_type="Ros")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Catalog Product can be imported using the id, e.g.
@@ -260,6 +262,8 @@ class Product(pulumi.CustomResource):
             product_name=name,
             product_type="Ros")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

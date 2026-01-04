@@ -331,6 +331,8 @@ class BasicDefenseThreshold(pulumi.CustomResource):
             pps=90000)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ddos Basic Antiddos can be imported using the id, e.g.
@@ -386,6 +388,8 @@ class BasicDefenseThreshold(pulumi.CustomResource):
             bps=390,
             pps=90000)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

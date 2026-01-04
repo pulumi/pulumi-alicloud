@@ -66,7 +66,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> Optional[_builtins.bool]:
         """
-        Whether to automatically accept terminal node connections..
+        Indicates whether endpoint connection requests are automatically accepted.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -105,7 +105,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> Optional[_builtins.str]:
         """
-        The business status of the terminal node service..
+        The service state of the endpoint service.
         """
         return pulumi.get(self, "service_business_status")
 
@@ -113,7 +113,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter
     def services(self) -> Sequence['outputs.GetVpcEndpointServicesServiceResult']:
         """
-        A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+        A list of Vpc Endpoint Services. Each element contains the following attributes:
         """
         return pulumi.get(self, "services")
 
@@ -121,7 +121,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        The Status of Vpc Endpoint Service.
+        The state of the endpoint service.
         """
         return pulumi.get(self, "status")
 
@@ -129,7 +129,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The tags of Vpc Endpoint Service.
+        The tags added to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -137,7 +137,7 @@ class GetVpcEndpointServicesResult:
     @pulumi.getter(name="vpcEndpointServiceName")
     def vpc_endpoint_service_name(self) -> Optional[_builtins.str]:
         """
-        The name of Vpc Endpoint Service.
+        The name of the endpoint service.
         """
         return pulumi.get(self, "vpc_endpoint_service_name")
 
@@ -171,7 +171,7 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[_builtins.bool] =
                               vpc_endpoint_service_name: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcEndpointServicesResult:
     """
-    This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+    This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.109.0.
 
@@ -183,23 +183,26 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[_builtins.bool] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
-        service_description="terraform-example",
-        connect_bandwidth=103,
-        auto_accept_connection=False)
-    example = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[example_vpc_endpoint_service.id])
-    pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.privatelink.VpcEndpointService("default",
+        service_description=name,
+        auto_accept_connection=True)
+    ids = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[default.id])
+    pulumi.export("privatelinkVpcEndpointServicesId0", ids.services[0].id)
     ```
 
 
-    :param _builtins.bool auto_accept_connection: Whether to automatically accept terminal node connections.
+    :param _builtins.bool auto_accept_connection: Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
     :param Sequence[_builtins.str] ids: A list of Vpc Endpoint Service IDs.
     :param _builtins.str name_regex: A regex string to filter results by Vpc Endpoint Service name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
-    :param _builtins.str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
-    :param Mapping[str, _builtins.str] tags: The tags of Vpc Endpoint Service.
-    :param _builtins.str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
+    :param _builtins.str service_business_status: The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+    :param _builtins.str status: The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+    :param _builtins.str vpc_endpoint_service_name: The name of the endpoint service.
     """
     __args__ = dict()
     __args__['autoAcceptConnection'] = auto_accept_connection
@@ -235,7 +238,7 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
                                      vpc_endpoint_service_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointServicesResult]:
     """
-    This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+    This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
 
     > **NOTE:** Available since v1.109.0.
 
@@ -247,23 +250,26 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
-        service_description="terraform-example",
-        connect_bandwidth=103,
-        auto_accept_connection=False)
-    example = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[example_vpc_endpoint_service.id])
-    pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.privatelink.VpcEndpointService("default",
+        service_description=name,
+        auto_accept_connection=True)
+    ids = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[default.id])
+    pulumi.export("privatelinkVpcEndpointServicesId0", ids.services[0].id)
     ```
 
 
-    :param _builtins.bool auto_accept_connection: Whether to automatically accept terminal node connections.
+    :param _builtins.bool auto_accept_connection: Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
     :param Sequence[_builtins.str] ids: A list of Vpc Endpoint Service IDs.
     :param _builtins.str name_regex: A regex string to filter results by Vpc Endpoint Service name.
     :param _builtins.str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param _builtins.str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
-    :param _builtins.str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
-    :param Mapping[str, _builtins.str] tags: The tags of Vpc Endpoint Service.
-    :param _builtins.str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
+    :param _builtins.str service_business_status: The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
+    :param _builtins.str status: The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+    :param Mapping[str, _builtins.str] tags: A mapping of tags to assign to the resource.
+    :param _builtins.str vpc_endpoint_service_name: The name of the endpoint service.
     """
     __args__ = dict()
     __args__['autoAcceptConnection'] = auto_accept_connection

@@ -194,6 +194,8 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise Authority Template can be imported using the id, e.g.
@@ -239,6 +241,8 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             authority_template_name=name,
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

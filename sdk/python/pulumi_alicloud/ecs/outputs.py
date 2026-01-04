@@ -30,6 +30,7 @@ __all__ = [
     'ImageDiskDeviceMapping',
     'ImageFeatures',
     'ImageImportDiskDeviceMapping',
+    'InstanceCpuOptions',
     'InstanceDataDisk',
     'InstanceImageOptions',
     'InstanceMaintenanceTime',
@@ -1314,6 +1315,70 @@ class ImageImportDiskDeviceMapping(dict):
         The name (key) of the object that the uploaded image is stored as in the OSS bucket.
         """
         return pulumi.get(self, "oss_object")
+
+
+@pulumi.output_type
+class InstanceCpuOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreCount":
+            suggest = "core_count"
+        elif key == "threadsPerCore":
+            suggest = "threads_per_core"
+        elif key == "topologyType":
+            suggest = "topology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceCpuOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceCpuOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceCpuOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 core_count: Optional[_builtins.int] = None,
+                 threads_per_core: Optional[_builtins.int] = None,
+                 topology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int core_count: The maximum number of partitions in the storage set.
+        :param _builtins.int threads_per_core: The number of threads per CPU core.
+        :param _builtins.str topology_type: The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+        """
+        if core_count is not None:
+            pulumi.set(__self__, "core_count", core_count)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if topology_type is not None:
+            pulumi.set(__self__, "topology_type", topology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="coreCount")
+    def core_count(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of partitions in the storage set.
+        """
+        return pulumi.get(self, "core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[_builtins.int]:
+        """
+        The number of threads per CPU core.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @_builtins.property
+    @pulumi.getter(name="topologyType")
+    def topology_type(self) -> Optional[_builtins.str]:
+        """
+        The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+        """
+        return pulumi.get(self, "topology_type")
 
 
 @pulumi.output_type

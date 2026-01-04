@@ -395,6 +395,8 @@ class TemplateQuota(pulumi.CustomResource):
             quota_category="CommonQuota")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Quotas Template Quota can be imported using the id, e.g.
@@ -459,6 +461,8 @@ class TemplateQuota(pulumi.CustomResource):
             env_language="zh",
             quota_category="CommonQuota")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

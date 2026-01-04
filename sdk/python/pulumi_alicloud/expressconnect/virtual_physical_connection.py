@@ -679,6 +679,8 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             vpconn_ali_uid=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Virtual Physical Connection can be imported using the id, e.g.
@@ -742,6 +744,8 @@ class VirtualPhysicalConnection(pulumi.CustomResource):
             vlan_id=vlan_id["id"],
             vpconn_ali_uid=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

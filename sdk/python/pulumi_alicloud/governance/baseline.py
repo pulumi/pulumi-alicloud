@@ -209,6 +209,8 @@ class Baseline(pulumi.CustomResource):
             baseline_name=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Governance Baseline can be imported using the id, e.g.
@@ -291,6 +293,8 @@ class Baseline(pulumi.CustomResource):
             description=name,
             baseline_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

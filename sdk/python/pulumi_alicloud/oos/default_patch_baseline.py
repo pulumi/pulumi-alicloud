@@ -110,6 +110,8 @@ class DefaultPatchBaseline(pulumi.CustomResource):
         default_default_patch_baseline = alicloud.oos.DefaultPatchBaseline("default", patch_baseline_name=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Oos Default Patch Baseline can be imported using the id, e.g.
@@ -150,6 +152,8 @@ class DefaultPatchBaseline(pulumi.CustomResource):
             approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}")
         default_default_patch_baseline = alicloud.oos.DefaultPatchBaseline("default", patch_baseline_name=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

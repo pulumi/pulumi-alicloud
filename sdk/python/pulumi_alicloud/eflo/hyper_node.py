@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['HyperNodeArgs', 'HyperNode']
 
@@ -20,8 +22,13 @@ __all__ = ['HyperNodeArgs', 'HyperNode']
 class HyperNodeArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -29,30 +36,50 @@ class HyperNodeArgs:
                  server_arch: Optional[pulumi.Input[_builtins.str]] = None,
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a HyperNode resource.
         :param pulumi.Input[_builtins.str] payment_type: The payment type of the resource
-        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the supercompute node belongs
-        :param pulumi.Input[_builtins.str] machine_type: The model used by the super computing node
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
+        :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node
+        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the hyper computing node belongs
+        :param pulumi.Input[_builtins.str] login_password: Login Password of the sub computing node
+        :param pulumi.Input[_builtins.str] machine_type: The model used by the hyper computing node
+        :param pulumi.Input[_builtins.str] node_group_id: Node group ID
         :param pulumi.Input[_builtins.int] payment_duration: The duration of the instance purchase, in units.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.int] renewal_duration: Number of auto-renewal cycles
         :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] server_arch: Super Node Architecture
-        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the supercomputing node of the fixed fee installment.
+        :param pulumi.Input[_builtins.str] server_arch: Hyper Node Architecture
+        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the hyper computing node of the fixed fee installment.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone_id: The zone where the super compute node is located
+        :param pulumi.Input[_builtins.str] user_data: Custom user data for the sub computing node
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to which the sub computing node
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch to which the sub computing node
+        :param pulumi.Input[_builtins.str] zone_id: The zone where the hyper compute node is located
         """
         pulumi.set(__self__, "payment_type", payment_type)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if node_group_id is not None:
+            pulumi.set(__self__, "node_group_id", node_group_id)
         if payment_duration is not None:
             pulumi.set(__self__, "payment_duration", payment_duration)
         if renewal_duration is not None:
@@ -67,6 +94,12 @@ class HyperNodeArgs:
             pulumi.set(__self__, "stage_num", stage_num)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -83,10 +116,43 @@ class HyperNodeArgs:
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster ID
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]]:
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The host name prefix of the sub computing node
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
     @pulumi.getter(name="hpnZone")
     def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Number of the cluster to which the supercompute node belongs
+        Number of the cluster to which the hyper computing node belongs
         """
         return pulumi.get(self, "hpn_zone")
 
@@ -95,16 +161,40 @@ class HyperNodeArgs:
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Login Password of the sub computing node
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "login_password", value)
+
+    @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The model used by the super computing node
+        The model used by the hyper computing node
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
     def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node group ID
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @node_group_id.setter
+    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
@@ -160,7 +250,7 @@ class HyperNodeArgs:
     @pulumi.getter(name="serverArch")
     def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Super Node Architecture
+        Hyper Node Architecture
         """
         return pulumi.get(self, "server_arch")
 
@@ -172,7 +262,7 @@ class HyperNodeArgs:
     @pulumi.getter(name="stageNum")
     def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The number of installments of the supercomputing node of the fixed fee installment.
+        The number of installments of the hyper computing node of the fixed fee installment.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -195,10 +285,46 @@ class HyperNodeArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom user data for the sub computing node
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the vpc to which the sub computing node
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the vswitch to which the sub computing node
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The zone where the super compute node is located
+        The zone where the hyper compute node is located
         """
         return pulumi.get(self, "zone_id")
 
@@ -210,9 +336,14 @@ class HyperNodeArgs:
 @pulumi.input_type
 class _HyperNodeState:
     def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  region_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -223,12 +354,19 @@ class _HyperNodeState:
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HyperNode resources.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the supercompute node belongs
-        :param pulumi.Input[_builtins.str] machine_type: The model used by the super computing node
+        :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node
+        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the hyper computing node belongs
+        :param pulumi.Input[_builtins.str] login_password: Login Password of the sub computing node
+        :param pulumi.Input[_builtins.str] machine_type: The model used by the hyper computing node
+        :param pulumi.Input[_builtins.str] node_group_id: Node group ID
         :param pulumi.Input[_builtins.int] payment_duration: The duration of the instance purchase, in units.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -237,20 +375,33 @@ class _HyperNodeState:
         :param pulumi.Input[_builtins.int] renewal_duration: Number of auto-renewal cycles
         :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] server_arch: Super Node Architecture
-        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the supercomputing node of the fixed fee installment.
+        :param pulumi.Input[_builtins.str] server_arch: Hyper Node Architecture
+        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the hyper computing node of the fixed fee installment.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone_id: The zone where the super compute node is located
+        :param pulumi.Input[_builtins.str] user_data: Custom user data for the sub computing node
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to which the sub computing node
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch to which the sub computing node
+        :param pulumi.Input[_builtins.str] zone_id: The zone where the hyper compute node is located
         """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if data_disks is not None:
+            pulumi.set(__self__, "data_disks", data_disks)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if hpn_zone is not None:
             pulumi.set(__self__, "hpn_zone", hpn_zone)
+        if login_password is not None:
+            pulumi.set(__self__, "login_password", login_password)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if node_group_id is not None:
+            pulumi.set(__self__, "node_group_id", node_group_id)
         if payment_duration is not None:
             pulumi.set(__self__, "payment_duration", payment_duration)
         if payment_type is not None:
@@ -271,8 +422,26 @@ class _HyperNodeState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster ID
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -287,10 +456,31 @@ class _HyperNodeState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]]:
+        return pulumi.get(self, "data_disks")
+
+    @data_disks.setter
+    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HyperNodeDataDiskArgs']]]]):
+        pulumi.set(self, "data_disks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The host name prefix of the sub computing node
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
     @pulumi.getter(name="hpnZone")
     def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Number of the cluster to which the supercompute node belongs
+        Number of the cluster to which the hyper computing node belongs
         """
         return pulumi.get(self, "hpn_zone")
 
@@ -299,16 +489,40 @@ class _HyperNodeState:
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Login Password of the sub computing node
+        """
+        return pulumi.get(self, "login_password")
+
+    @login_password.setter
+    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "login_password", value)
+
+    @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The model used by the super computing node
+        The model used by the hyper computing node
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
     def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node group ID
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @node_group_id.setter
+    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
@@ -388,7 +602,7 @@ class _HyperNodeState:
     @pulumi.getter(name="serverArch")
     def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Super Node Architecture
+        Hyper Node Architecture
         """
         return pulumi.get(self, "server_arch")
 
@@ -400,7 +614,7 @@ class _HyperNodeState:
     @pulumi.getter(name="stageNum")
     def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The number of installments of the supercomputing node of the fixed fee installment.
+        The number of installments of the hyper computing node of the fixed fee installment.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -435,10 +649,46 @@ class _HyperNodeState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom user data for the sub computing node
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the vpc to which the sub computing node
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the vswitch to which the sub computing node
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The zone where the super compute node is located
+        The zone where the hyper compute node is located
         """
         return pulumi.get(self, "zone_id")
 
@@ -453,8 +703,13 @@ class HyperNode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
@@ -463,6 +718,9 @@ class HyperNode(pulumi.CustomResource):
                  server_arch: Optional[pulumi.Input[_builtins.str]] = None,
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -502,6 +760,8 @@ class HyperNode(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Hyper Node can be imported using the id, e.g.
@@ -512,8 +772,12 @@ class HyperNode(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the supercompute node belongs
-        :param pulumi.Input[_builtins.str] machine_type: The model used by the super computing node
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
+        :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node
+        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the hyper computing node belongs
+        :param pulumi.Input[_builtins.str] login_password: Login Password of the sub computing node
+        :param pulumi.Input[_builtins.str] machine_type: The model used by the hyper computing node
+        :param pulumi.Input[_builtins.str] node_group_id: Node group ID
         :param pulumi.Input[_builtins.int] payment_duration: The duration of the instance purchase, in units.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -521,12 +785,15 @@ class HyperNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] renewal_duration: Number of auto-renewal cycles
         :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] server_arch: Super Node Architecture
-        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the supercomputing node of the fixed fee installment.
+        :param pulumi.Input[_builtins.str] server_arch: Hyper Node Architecture
+        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the hyper computing node of the fixed fee installment.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone_id: The zone where the super compute node is located
+        :param pulumi.Input[_builtins.str] user_data: Custom user data for the sub computing node
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to which the sub computing node
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch to which the sub computing node
+        :param pulumi.Input[_builtins.str] zone_id: The zone where the hyper compute node is located
         """
         ...
     @overload
@@ -571,6 +838,8 @@ class HyperNode(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Hyper Node can be imported using the id, e.g.
@@ -594,8 +863,13 @@ class HyperNode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
                  hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
                  machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
                  payment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
@@ -604,6 +878,9 @@ class HyperNode(pulumi.CustomResource):
                  server_arch: Optional[pulumi.Input[_builtins.str]] = None,
                  stage_num: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -614,8 +891,13 @@ class HyperNode(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HyperNodeArgs.__new__(HyperNodeArgs)
 
+            __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["hostname"] = hostname
             __props__.__dict__["hpn_zone"] = hpn_zone
+            __props__.__dict__["login_password"] = None if login_password is None else pulumi.Output.secret(login_password)
             __props__.__dict__["machine_type"] = machine_type
+            __props__.__dict__["node_group_id"] = node_group_id
             __props__.__dict__["payment_duration"] = payment_duration
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
@@ -626,10 +908,15 @@ class HyperNode(pulumi.CustomResource):
             __props__.__dict__["server_arch"] = server_arch
             __props__.__dict__["stage_num"] = stage_num
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["user_data"] = user_data
+            __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["loginPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HyperNode, __self__).__init__(
             'alicloud:eflo/hyperNode:HyperNode',
             resource_name,
@@ -640,9 +927,14 @@ class HyperNode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HyperNodeDataDiskArgs', 'HyperNodeDataDiskArgsDict']]]]] = None,
+            hostname: Optional[pulumi.Input[_builtins.str]] = None,
             hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
+            login_password: Optional[pulumi.Input[_builtins.str]] = None,
             machine_type: Optional[pulumi.Input[_builtins.str]] = None,
+            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
             payment_type: Optional[pulumi.Input[_builtins.str]] = None,
             region_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -653,6 +945,9 @@ class HyperNode(pulumi.CustomResource):
             stage_num: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: Optional[pulumi.Input[_builtins.str]] = None,
+            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HyperNode':
         """
         Get an existing HyperNode resource's state with the given name, id, and optional extra
@@ -661,9 +956,13 @@ class HyperNode(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] cluster_id: Cluster ID
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource
-        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the supercompute node belongs
-        :param pulumi.Input[_builtins.str] machine_type: The model used by the super computing node
+        :param pulumi.Input[_builtins.str] hostname: The host name prefix of the sub computing node
+        :param pulumi.Input[_builtins.str] hpn_zone: Number of the cluster to which the hyper computing node belongs
+        :param pulumi.Input[_builtins.str] login_password: Login Password of the sub computing node
+        :param pulumi.Input[_builtins.str] machine_type: The model used by the hyper computing node
+        :param pulumi.Input[_builtins.str] node_group_id: Node group ID
         :param pulumi.Input[_builtins.int] payment_duration: The duration of the instance purchase, in units.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -672,21 +971,29 @@ class HyperNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] renewal_duration: Number of auto-renewal cycles
         :param pulumi.Input[_builtins.str] renewal_status: Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[_builtins.str] server_arch: Super Node Architecture
-        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the supercomputing node of the fixed fee installment.
+        :param pulumi.Input[_builtins.str] server_arch: Hyper Node Architecture
+        :param pulumi.Input[_builtins.str] stage_num: The number of installments of the hyper computing node of the fixed fee installment.
                
                > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tag of the resource
-        :param pulumi.Input[_builtins.str] zone_id: The zone where the super compute node is located
+        :param pulumi.Input[_builtins.str] user_data: Custom user data for the sub computing node
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to which the sub computing node
+        :param pulumi.Input[_builtins.str] vswitch_id: The ID of the vswitch to which the sub computing node
+        :param pulumi.Input[_builtins.str] zone_id: The zone where the hyper compute node is located
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _HyperNodeState.__new__(_HyperNodeState)
 
+        __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["hostname"] = hostname
         __props__.__dict__["hpn_zone"] = hpn_zone
+        __props__.__dict__["login_password"] = login_password
         __props__.__dict__["machine_type"] = machine_type
+        __props__.__dict__["node_group_id"] = node_group_id
         __props__.__dict__["payment_duration"] = payment_duration
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["region_id"] = region_id
@@ -697,8 +1004,19 @@ class HyperNode(pulumi.CustomResource):
         __props__.__dict__["stage_num"] = stage_num
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["user_data"] = user_data
+        __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
         return HyperNode(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Cluster ID
+        """
+        return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -709,20 +1027,49 @@ class HyperNode(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.HyperNodeDataDisk']]]:
+        return pulumi.get(self, "data_disks")
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The host name prefix of the sub computing node
+        """
+        return pulumi.get(self, "hostname")
+
+    @_builtins.property
     @pulumi.getter(name="hpnZone")
     def hpn_zone(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Number of the cluster to which the supercompute node belongs
+        Number of the cluster to which the hyper computing node belongs
         """
         return pulumi.get(self, "hpn_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="loginPassword")
+    def login_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Login Password of the sub computing node
+        """
+        return pulumi.get(self, "login_password")
 
     @_builtins.property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The model used by the super computing node
+        The model used by the hyper computing node
         """
         return pulumi.get(self, "machine_type")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Node group ID
+        """
+        return pulumi.get(self, "node_group_id")
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
@@ -778,7 +1125,7 @@ class HyperNode(pulumi.CustomResource):
     @pulumi.getter(name="serverArch")
     def server_arch(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Super Node Architecture
+        Hyper Node Architecture
         """
         return pulumi.get(self, "server_arch")
 
@@ -786,7 +1133,7 @@ class HyperNode(pulumi.CustomResource):
     @pulumi.getter(name="stageNum")
     def stage_num(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The number of installments of the supercomputing node of the fixed fee installment.
+        The number of installments of the hyper computing node of the fixed fee installment.
 
         > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         """
@@ -809,10 +1156,34 @@ class HyperNode(pulumi.CustomResource):
         return pulumi.get(self, "tags")
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom user data for the sub computing node
+        """
+        return pulumi.get(self, "user_data")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the vpc to which the sub computing node
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the vswitch to which the sub computing node
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The zone where the super compute node is located
+        The zone where the hyper compute node is located
         """
         return pulumi.get(self, "zone_id")
 

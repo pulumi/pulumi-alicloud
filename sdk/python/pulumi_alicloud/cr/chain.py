@@ -411,6 +411,8 @@ class Chain(pulumi.CustomResource):
             repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CR Chain can be imported using the id, e.g.
@@ -591,6 +593,8 @@ class Chain(pulumi.CustomResource):
             repo_name=default_registry_enterprise_repo.name,
             repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

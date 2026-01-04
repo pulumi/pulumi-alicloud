@@ -310,6 +310,8 @@ class SaslAcl(pulumi.CustomResource):
             acl_operation_type="Write")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ALIKAFKA GROUP can be imported using the id, e.g.
@@ -395,6 +397,8 @@ class SaslAcl(pulumi.CustomResource):
             acl_resource_pattern_type="LITERAL",
             acl_operation_type="Write")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -51,6 +51,21 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Spare
+     * 
+     */
+    @Import(name="fallback")
+    private @Nullable Output<String> fallback;
+
+    /**
+     * @return Spare
+     * 
+     */
+    public Optional<Output<String>> fallback() {
+        return Optional.ofNullable(this.fallback);
+    }
+
+    /**
      * Routing switch. Value range:
      * - on: Open
      * - off: off
@@ -134,13 +149,13 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return Site Id
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
@@ -149,6 +164,7 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
     private RoutineRouteState(RoutineRouteState $) {
         this.bypass = $.bypass;
         this.configId = $.configId;
+        this.fallback = $.fallback;
         this.routeEnable = $.routeEnable;
         this.routeName = $.routeName;
         this.routineName = $.routineName;
@@ -219,6 +235,27 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder configId(Integer configId) {
             return configId(Output.of(configId));
+        }
+
+        /**
+         * @param fallback Spare
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(@Nullable Output<String> fallback) {
+            $.fallback = fallback;
+            return this;
+        }
+
+        /**
+         * @param fallback Spare
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fallback(String fallback) {
+            return fallback(Output.of(fallback));
         }
 
         /**
@@ -336,7 +373,7 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -347,7 +384,7 @@ public final class RoutineRouteState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

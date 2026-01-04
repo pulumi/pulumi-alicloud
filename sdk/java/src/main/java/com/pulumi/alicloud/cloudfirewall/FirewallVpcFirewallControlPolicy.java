@@ -10,7 +10,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +18,8 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Cloud Firewall Vpc Firewall Control Policy resource.
+ * 
+ * VPC Control Policy.
  * 
  * For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
  * 
@@ -79,7 +80,7 @@ import javax.annotation.Nullable;
  *             .source("127.0.0.1/32")
  *             .destPortType("port")
  *             .proto("TCP")
- *             .release(true)
+ *             .release("true")
  *             .memberUid(default_.id())
  *             .vpcFirewallId(defaultInstance.id())
  *             .build());
@@ -88,6 +89,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -147,14 +150,44 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * 
      */
     @Export(name="applicationName", refs={String.class}, tree="[0]")
-    private Output<String> applicationName;
+    private Output</* @Nullable */ String> applicationName;
 
     /**
      * @return The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      * 
      */
-    public Output<String> applicationName() {
-        return this.applicationName;
+    public Output<Optional<String>> applicationName() {
+        return Codegen.optional(this.applicationName);
+    }
+    /**
+     * The list of application types that the access control policy supports.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     * 
+     */
+    @Export(name="applicationNameLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> applicationNameLists;
+
+    /**
+     * @return The list of application types that the access control policy supports.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `[&#34;ANY&#34;]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     * 
+     */
+    public Output<Optional<List<String>>> applicationNameLists() {
+        return Codegen.optional(this.applicationNameLists);
+    }
+    /**
+     * (Available since v1.267.0) The time when the policy was created.
+     * 
+     */
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> createTime;
+
+    /**
+     * @return (Available since v1.267.0) The time when the policy was created.
+     * 
+     */
+    public Output<Integer> createTime() {
+        return this.createTime;
     }
     /**
      * Access control over VPC firewalls description of the strategy information.
@@ -289,6 +322,34 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
         return this.destinationType;
     }
     /**
+     * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     * 
+     */
+    @Export(name="domainResolveType", refs={String.class}, tree="[0]")
+    private Output<String> domainResolveType;
+
+    /**
+     * @return The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     * 
+     */
+    public Output<String> domainResolveType() {
+        return this.domainResolveType;
+    }
+    /**
+     * The end time of the policy validity period.
+     * 
+     */
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> endTime;
+
+    /**
+     * @return The end time of the policy validity period.
+     * 
+     */
+    public Output<Optional<Integer>> endTime() {
+        return Codegen.optional(this.endTime);
+    }
+    /**
      * Control strategy of hits per second.
      * 
      */
@@ -362,15 +423,75 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
-    @Export(name="release", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> release;
+    @Export(name="release", refs={String.class}, tree="[0]")
+    private Output<String> release;
 
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      * 
      */
-    public Output<Boolean> release() {
+    public Output<String> release() {
         return this.release;
+    }
+    /**
+     * The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * 
+     */
+    @Export(name="repeatDays", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<Integer>> repeatDays;
+
+    /**
+     * @return The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     * 
+     */
+    public Output<Optional<List<Integer>>> repeatDays() {
+        return Codegen.optional(this.repeatDays);
+    }
+    /**
+     * The recurring end time of the policy validity period.
+     * 
+     */
+    @Export(name="repeatEndTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> repeatEndTime;
+
+    /**
+     * @return The recurring end time of the policy validity period.
+     * 
+     */
+    public Output<Optional<String>> repeatEndTime() {
+        return Codegen.optional(this.repeatEndTime);
+    }
+    /**
+     * The recurring start time of the policy validity period.
+     * 
+     */
+    @Export(name="repeatStartTime", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> repeatStartTime;
+
+    /**
+     * @return The recurring start time of the policy validity period.
+     * 
+     */
+    public Output<Optional<String>> repeatStartTime() {
+        return Codegen.optional(this.repeatStartTime);
+    }
+    /**
+     * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     * 
+     */
+    @Export(name="repeatType", refs={String.class}, tree="[0]")
+    private Output<String> repeatType;
+
+    /**
+     * @return The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     * 
+     */
+    public Output<String> repeatType() {
+        return this.repeatType;
     }
     /**
      * Access control over VPC firewalls strategy in the source address.
@@ -427,6 +548,20 @@ public class FirewallVpcFirewallControlPolicy extends com.pulumi.resources.Custo
      */
     public Output<String> sourceType() {
         return this.sourceType;
+    }
+    /**
+     * The start time of the policy validity period.
+     * 
+     */
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> startTime;
+
+    /**
+     * @return The start time of the policy validity period.
+     * 
+     */
+    public Output<Optional<Integer>> startTime() {
+        return Codegen.optional(this.startTime);
     }
     /**
      * The ID of the VPC firewall instance. Valid values:

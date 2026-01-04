@@ -1678,6 +1678,8 @@ class SynchronizationJob(pulumi.CustomResource):
             status="Synchronizing")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Notice
 
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
@@ -1882,6 +1884,8 @@ class SynchronizationJob(pulumi.CustomResource):
             data_synchronization=True,
             status="Synchronizing")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Notice
 

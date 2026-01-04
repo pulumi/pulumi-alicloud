@@ -211,6 +211,8 @@ class RouteEntry(pulumi.CustomResource):
             cidr_block=example_route_entry.destination_cidrblock)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -294,6 +296,8 @@ class RouteEntry(pulumi.CustomResource):
             route_table_id=example_network.route_table_id,
             cidr_block=example_route_entry.destination_cidrblock)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

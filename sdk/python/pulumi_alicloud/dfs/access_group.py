@@ -176,6 +176,8 @@ class AccessGroup(pulumi.CustomResource):
             network_type="VPC")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DFS Access Group can be imported using the id, e.g.
@@ -219,6 +221,8 @@ class AccessGroup(pulumi.CustomResource):
             access_group_name=f"tf-example-{default['result']}",
             network_type="VPC")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

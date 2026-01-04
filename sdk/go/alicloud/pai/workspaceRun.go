@@ -85,6 +85,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // PAI Workspace Run can be imported using the id, e.g.

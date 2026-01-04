@@ -152,6 +152,8 @@ namespace Pulumi.AliCloud.Ess
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESS attachment can be imported using the id or scaling group id, e.g.

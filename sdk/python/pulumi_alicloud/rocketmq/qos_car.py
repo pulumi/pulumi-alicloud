@@ -404,6 +404,8 @@ class QosCar(pulumi.CustomResource):
             percent_source_type="InternetUpBandwidth")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag Qos Car can be imported using the id, e.g.
@@ -463,6 +465,8 @@ class QosCar(pulumi.CustomResource):
             max_bandwidth_abs=20,
             percent_source_type="InternetUpBandwidth")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -90,6 +90,8 @@ namespace Pulumi.AliCloud.Gwlb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// GWLB Load Balancer can be imported using the id, e.g.

@@ -283,6 +283,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
             group_ip_address="239.1.1.1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cen Transit Router Multicast Domain Member can be imported using the id, e.g.
@@ -370,6 +372,8 @@ class TransitRouterMulticastDomainMember(pulumi.CustomResource):
             network_interface_id=example_ecs_network_interface.id,
             group_ip_address="239.1.1.1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

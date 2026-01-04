@@ -234,6 +234,8 @@ class Namespace(pulumi.CustomResource):
             enable_micro_registration=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless App Engine (SAE) Namespace can be imported using the id, e.g.
@@ -286,6 +288,8 @@ class Namespace(pulumi.CustomResource):
             namespace_description=name,
             enable_micro_registration=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

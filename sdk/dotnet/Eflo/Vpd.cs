@@ -44,6 +44,8 @@ namespace Pulumi.AliCloud.Eflo
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Eflo Vpd can be imported using the id, e.g.

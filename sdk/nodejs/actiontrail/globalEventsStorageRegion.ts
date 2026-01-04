@@ -20,6 +20,8 @@ import * as utilities from "../utilities";
  * const foo = new alicloud.actiontrail.GlobalEventsStorageRegion("foo", {storageRegion: "cn-hangzhou"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Global events storage region not can be imported.

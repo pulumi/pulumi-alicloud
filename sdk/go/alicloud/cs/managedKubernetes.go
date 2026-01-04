@@ -250,6 +250,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.
@@ -306,7 +308,7 @@ type ManagedKubernetes struct {
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ManagedKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
 	// Whether to enable cluster deletion protection.
-	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
 	// The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
@@ -1149,8 +1151,8 @@ func (o ManagedKubernetesOutput) DeleteOptions() ManagedKubernetesDeleteOptionAr
 }
 
 // Whether to enable cluster deletion protection.
-func (o ManagedKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+func (o ManagedKubernetesOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).

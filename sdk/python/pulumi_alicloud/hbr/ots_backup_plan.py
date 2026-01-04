@@ -530,6 +530,8 @@ class OtsBackupPlan(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         HBR Ots Backup Plan can be imported using the id, e.g.
@@ -643,6 +645,8 @@ class OtsBackupPlan(pulumi.CustomResource):
                 "backup_type": "COMPLETE",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

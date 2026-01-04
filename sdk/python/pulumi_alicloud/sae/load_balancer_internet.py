@@ -223,6 +223,8 @@ class LoadBalancerInternet(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The resource can be imported using the id, e.g.
@@ -311,6 +313,8 @@ class LoadBalancerInternet(pulumi.CustomResource):
                 "target_port": 8080,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

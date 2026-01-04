@@ -52,6 +52,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Event Bridge Event Bus can be imported using the id, e.g.

@@ -738,6 +738,8 @@ class GtmInstance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns Gtm Instance can be imported using the id, e.g.
@@ -817,6 +819,8 @@ class GtmInstance(pulumi.CustomResource):
                 "dingtalk_notice": True,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -281,6 +281,8 @@ class Instance(pulumi.CustomResource):
             remark=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ONS INSTANCE can be imported using the id, e.g.
@@ -333,6 +335,8 @@ class Instance(pulumi.CustomResource):
             instance_name=f"{name}-{default['result']}",
             remark=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

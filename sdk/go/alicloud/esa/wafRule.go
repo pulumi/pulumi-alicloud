@@ -77,6 +77,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Waf Rule can be imported using the id, e.g.
@@ -92,12 +94,10 @@ type WafRule struct {
 	// The phase in which the WAF processes this rule.
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId pulumi.IntPtrOutput `pulumi:"rulesetId"`
-	// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-	Shared WafRuleSharedPtrOutput `pulumi:"shared"`
+	RulesetId pulumi.IntPtrOutput    `pulumi:"rulesetId"`
+	Shared    WafRuleSharedPtrOutput `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	SiteId      pulumi.StringOutput `pulumi:"siteId"`
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// The unique identifier of the WAF rule.
 	WafRuleId pulumi.IntOutput `pulumi:"wafRuleId"`
@@ -144,13 +144,11 @@ type wafRuleState struct {
 	// The phase in which the WAF processes this rule.
 	Phase *string `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId *int `pulumi:"rulesetId"`
-	// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-	Shared *WafRuleShared `pulumi:"shared"`
+	RulesetId *int           `pulumi:"rulesetId"`
+	Shared    *WafRuleShared `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId *int `pulumi:"siteId"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteVersion *int `pulumi:"siteVersion"`
+	SiteId      *string `pulumi:"siteId"`
+	SiteVersion *int    `pulumi:"siteVersion"`
 	// The unique identifier of the WAF rule.
 	WafRuleId *int `pulumi:"wafRuleId"`
 }
@@ -162,11 +160,9 @@ type WafRuleState struct {
 	Phase pulumi.StringPtrInput
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
 	RulesetId pulumi.IntPtrInput
-	// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-	Shared WafRuleSharedPtrInput
+	Shared    WafRuleSharedPtrInput
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntPtrInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	SiteId      pulumi.StringPtrInput
 	SiteVersion pulumi.IntPtrInput
 	// The unique identifier of the WAF rule.
 	WafRuleId pulumi.IntPtrInput
@@ -182,13 +178,11 @@ type wafRuleArgs struct {
 	// The phase in which the WAF processes this rule.
 	Phase string `pulumi:"phase"`
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
-	RulesetId *int `pulumi:"rulesetId"`
-	// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-	Shared *WafRuleShared `pulumi:"shared"`
+	RulesetId *int           `pulumi:"rulesetId"`
+	Shared    *WafRuleShared `pulumi:"shared"`
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId int `pulumi:"siteId"`
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteVersion *int `pulumi:"siteVersion"`
+	SiteId      string `pulumi:"siteId"`
+	SiteVersion *int   `pulumi:"siteVersion"`
 }
 
 // The set of arguments for constructing a WafRule resource.
@@ -199,11 +193,9 @@ type WafRuleArgs struct {
 	Phase pulumi.StringInput
 	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
 	RulesetId pulumi.IntPtrInput
-	// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-	Shared WafRuleSharedPtrInput
+	Shared    WafRuleSharedPtrInput
 	// The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-	SiteId pulumi.IntInput
-	// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
+	SiteId      pulumi.StringInput
 	SiteVersion pulumi.IntPtrInput
 }
 
@@ -309,17 +301,15 @@ func (o WafRuleOutput) RulesetId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.IntPtrOutput { return v.RulesetId }).(pulumi.IntPtrOutput)
 }
 
-// Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
 func (o WafRuleOutput) Shared() WafRuleSharedPtrOutput {
 	return o.ApplyT(func(v *WafRule) WafRuleSharedPtrOutput { return v.Shared }).(WafRuleSharedPtrOutput)
 }
 
 // The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-func (o WafRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *WafRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o WafRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 func (o WafRuleOutput) SiteVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WafRule) pulumi.IntPtrOutput { return v.SiteVersion }).(pulumi.IntPtrOutput)
 }

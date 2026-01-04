@@ -680,6 +680,8 @@ class DdosCooInstance(pulumi.CustomResource):
             period=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DdosCoo Instance can be imported using the id, e.g.
@@ -747,6 +749,8 @@ class DdosCooInstance(pulumi.CustomResource):
             product_type="ddoscoo",
             period=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

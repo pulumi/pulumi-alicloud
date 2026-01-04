@@ -319,6 +319,8 @@ class ServerGroupAttachment(pulumi.CustomResource):
             force_attach=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] force_attach: If instances of scaling group are attached/removed from backend server when
@@ -417,6 +419,8 @@ class ServerGroupAttachment(pulumi.CustomResource):
             weight=50,
             force_attach=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param ServerGroupAttachmentArgs args: The arguments to use to populate this resource's properties.

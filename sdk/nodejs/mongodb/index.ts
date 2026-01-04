@@ -60,6 +60,11 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
+export { NodeArgs, NodeState } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
 export { PrivateSrvNetworkAddressArgs, PrivateSrvNetworkAddressState } from "./privateSrvNetworkAddress";
 export type PrivateSrvNetworkAddress = import("./privateSrvNetworkAddress").PrivateSrvNetworkAddress;
 export const PrivateSrvNetworkAddress: typeof import("./privateSrvNetworkAddress").PrivateSrvNetworkAddress = null as any;
@@ -108,6 +113,8 @@ const _module = {
                 return new GlobalSecurityIpGroup(name, <any>undefined, { urn })
             case "alicloud:mongodb/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "alicloud:mongodb/node:Node":
+                return new Node(name, <any>undefined, { urn })
             case "alicloud:mongodb/privateSrvNetworkAddress:PrivateSrvNetworkAddress":
                 return new PrivateSrvNetworkAddress(name, <any>undefined, { urn })
             case "alicloud:mongodb/publicNetworkAddress:PublicNetworkAddress":
@@ -131,6 +138,7 @@ pulumi.runtime.registerResourceModule("alicloud", "mongodb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/auditPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/globalSecurityIpGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/instance", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mongodb/node", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/privateSrvNetworkAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/publicNetworkAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mongodb/replicaSetRole", _module)

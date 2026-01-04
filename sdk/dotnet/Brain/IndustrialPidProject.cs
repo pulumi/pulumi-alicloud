@@ -37,6 +37,8 @@ namespace Pulumi.AliCloud.Brain
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Brain Industrial Pid Project can be imported using the id, e.g.

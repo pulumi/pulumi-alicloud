@@ -78,6 +78,8 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
         default = alicloud.cloudmonitor.ServiceEnterprisePublic("default")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Enterprise Public can be imported using the id, e.g.
@@ -116,6 +118,8 @@ class ServiceEnterprisePublic(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.cloudmonitor.ServiceEnterprisePublic("default")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

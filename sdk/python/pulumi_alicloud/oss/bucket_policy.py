@@ -146,6 +146,8 @@ class BucketPolicy(pulumi.CustomResource):
             bucket=create_bucket.bucket)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Policy can be imported using the id, e.g.
@@ -207,6 +209,8 @@ class BucketPolicy(pulumi.CustomResource):
             }),
             bucket=create_bucket.bucket)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

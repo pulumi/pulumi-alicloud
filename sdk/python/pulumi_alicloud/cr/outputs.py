@@ -26,6 +26,7 @@ __all__ = [
     'RegistryEnterpriseInstanceInstanceEndpoint',
     'RegistryEnterpriseInstanceInstanceEndpointDomain',
     'RepoDomainList',
+    'StorageDomainRoutingRuleRoute',
     'GetChainsChainResult',
     'GetChainsChainChainConfigResult',
     'GetChainsChainChainConfigNodeResult',
@@ -486,6 +487,67 @@ class RepoDomainList(dict):
         Domain of vpc endpoint.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class StorageDomainRoutingRuleRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointType":
+            suggest = "endpoint_type"
+        elif key == "instanceDomain":
+            suggest = "instance_domain"
+        elif key == "storageDomain":
+            suggest = "storage_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StorageDomainRoutingRuleRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StorageDomainRoutingRuleRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StorageDomainRoutingRuleRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint_type: _builtins.str,
+                 instance_domain: _builtins.str,
+                 storage_domain: _builtins.str):
+        """
+        :param _builtins.str endpoint_type: Endpoint Type.
+        :param _builtins.str instance_domain: Instance domain name.
+        :param _builtins.str storage_domain: Storage domain name.
+        """
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "instance_domain", instance_domain)
+        pulumi.set(__self__, "storage_domain", storage_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> _builtins.str:
+        """
+        Endpoint Type.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceDomain")
+    def instance_domain(self) -> _builtins.str:
+        """
+        Instance domain name.
+        """
+        return pulumi.get(self, "instance_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="storageDomain")
+    def storage_domain(self) -> _builtins.str:
+        """
+        Storage domain name.
+        """
+        return pulumi.get(self, "storage_domain")
 
 
 @pulumi.output_type

@@ -45,6 +45,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Site can be imported using the id, e.g.
@@ -146,6 +148,10 @@ export class Site extends pulumi.CustomResource {
      */
     declare public readonly ipv6Region: pulumi.Output<string>;
     /**
+     * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     */
+    declare public readonly paused: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the resource group
      */
     declare public readonly resourceGroupId: pulumi.Output<string>;
@@ -210,6 +216,7 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["ipv6Enable"] = state?.ipv6Enable;
             resourceInputs["ipv6Region"] = state?.ipv6Region;
+            resourceInputs["paused"] = state?.paused;
             resourceInputs["resourceGroupId"] = state?.resourceGroupId;
             resourceInputs["seoBypass"] = state?.seoBypass;
             resourceInputs["siteName"] = state?.siteName;
@@ -241,6 +248,7 @@ export class Site extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["ipv6Enable"] = args?.ipv6Enable;
             resourceInputs["ipv6Region"] = args?.ipv6Region;
+            resourceInputs["paused"] = args?.paused;
             resourceInputs["resourceGroupId"] = args?.resourceGroupId;
             resourceInputs["seoBypass"] = args?.seoBypass;
             resourceInputs["siteName"] = args?.siteName;
@@ -325,6 +333,10 @@ export interface SiteState {
      * - 'Cn.cn ': Mainland China.
      */
     ipv6Region?: pulumi.Input<string>;
+    /**
+     * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     */
+    paused?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group
      */
@@ -427,6 +439,10 @@ export interface SiteArgs {
      * - 'Cn.cn ': Mainland China.
      */
     ipv6Region?: pulumi.Input<string>;
+    /**
+     * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     */
+    paused?: pulumi.Input<boolean>;
     /**
      * The ID of the resource group
      */

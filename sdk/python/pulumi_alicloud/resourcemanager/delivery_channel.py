@@ -252,6 +252,8 @@ class DeliveryChannel(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Delivery Channel can be imported using the id, e.g.
@@ -321,6 +323,8 @@ class DeliveryChannel(pulumi.CustomResource):
                 },
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

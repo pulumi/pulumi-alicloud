@@ -334,6 +334,8 @@ class ParameterGroup(pulumi.CustomResource):
             description="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Polar Db Parameter Group can be imported using the id, e.g.
@@ -394,6 +396,8 @@ class ParameterGroup(pulumi.CustomResource):
             }],
             description="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

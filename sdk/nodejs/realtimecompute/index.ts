@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DeploymentArgs, DeploymentState } from "./deployment";
+export type Deployment = import("./deployment").Deployment;
+export const Deployment: typeof import("./deployment").Deployment = null as any;
+utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+
+export { JobArgs, JobState } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+
 export { VvpInstanceArgs, VvpInstanceState } from "./vvpInstance";
 export type VvpInstance = import("./vvpInstance").VvpInstance;
 export const VvpInstance: typeof import("./vvpInstance").VvpInstance = null as any;
@@ -15,6 +25,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:realtimecompute/deployment:Deployment":
+                return new Deployment(name, <any>undefined, { urn })
+            case "alicloud:realtimecompute/job:Job":
+                return new Job(name, <any>undefined, { urn })
             case "alicloud:realtimecompute/vvpInstance:VvpInstance":
                 return new VvpInstance(name, <any>undefined, { urn })
             default:
@@ -22,4 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/deployment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/job", _module)
 pulumi.runtime.registerResourceModule("alicloud", "realtimecompute/vvpInstance", _module)

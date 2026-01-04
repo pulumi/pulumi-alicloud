@@ -34,6 +34,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Dbfs service-linked roles(SLR) can be imported using the id, e.g.

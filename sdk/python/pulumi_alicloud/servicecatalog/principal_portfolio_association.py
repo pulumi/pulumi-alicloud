@@ -186,6 +186,8 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
             principal_type="RamRole")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Catalog Principal Portfolio Association can be imported using the id, e.g.
@@ -256,6 +258,8 @@ class PrincipalPortfolioAssociation(pulumi.CustomResource):
             portfolio_id=default_da_x_vx_i.id,
             principal_type="RamRole")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -286,6 +286,8 @@ class PrometheusMonitoring(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Prometheus Monitoring can be imported using the id, e.g.
@@ -408,6 +410,8 @@ class PrometheusMonitoring(pulumi.CustomResource):
               app: tomcat
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

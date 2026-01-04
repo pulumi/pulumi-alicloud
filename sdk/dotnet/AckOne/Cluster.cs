@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.AckOne
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ack One Cluster can be imported using the id, e.g.

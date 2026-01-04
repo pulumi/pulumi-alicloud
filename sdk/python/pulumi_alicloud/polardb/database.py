@@ -23,14 +23,22 @@ class DatabaseArgs:
                  db_name: pulumi.Input[_builtins.str],
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 collate: Optional[pulumi.Input[_builtins.str]] = None,
+                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
                  db_description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[_builtins.str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
-        :param pulumi.Input[_builtins.str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
-        :param pulumi.Input[_builtins.str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
-        :param pulumi.Input[_builtins.str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
+        :param pulumi.Input[_builtins.str] db_name: The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
+        :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+        :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
+               - It cannot start with `http://` or `https://`.
+               - It must be 2 to 256 characters in length.
         """
         pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         pulumi.set(__self__, "db_name", db_name)
@@ -38,6 +46,10 @@ class DatabaseArgs:
             pulumi.set(__self__, "account_name", account_name)
         if character_set_name is not None:
             pulumi.set(__self__, "character_set_name", character_set_name)
+        if collate is not None:
+            pulumi.set(__self__, "collate", collate)
+        if ctype is not None:
+            pulumi.set(__self__, "ctype", ctype)
         if db_description is not None:
             pulumi.set(__self__, "db_description", db_description)
 
@@ -45,7 +57,7 @@ class DatabaseArgs:
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The Id of cluster that can run database.
+        The ID of cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -57,7 +69,7 @@ class DatabaseArgs:
     @pulumi.getter(name="dbName")
     def db_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         return pulumi.get(self, "db_name")
 
@@ -69,7 +81,7 @@ class DatabaseArgs:
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account name authorized to access the database. Only supports PostgreSQL.
+        The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """
         return pulumi.get(self, "account_name")
 
@@ -81,7 +93,7 @@ class DatabaseArgs:
     @pulumi.getter(name="characterSetName")
     def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
+        The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         """
         return pulumi.get(self, "character_set_name")
 
@@ -90,10 +102,38 @@ class DatabaseArgs:
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language that defines the collation rules in the database.
+        > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "collate")
+
+    @collate.setter
+    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language that indicates the character type of the database.
+        > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "ctype")
+
+    @ctype.setter
+    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ctype", value)
+
+    @_builtins.property
     @pulumi.getter(name="dbDescription")
     def db_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        The description of the database. The description must meet the following requirements:
+        - It cannot start with `http://` or `https://`.
+        - It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "db_description")
 
@@ -107,33 +147,49 @@ class _DatabaseState:
     def __init__(__self__, *,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 collate: Optional[pulumi.Input[_builtins.str]] = None,
+                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  db_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
-        :param pulumi.Input[_builtins.str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
-        :param pulumi.Input[_builtins.str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[_builtins.str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
-        :param pulumi.Input[_builtins.str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
+        :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+        :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
+        :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
+               - It cannot start with `http://` or `https://`.
+               - It must be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] db_name: The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The state of the database.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
         if character_set_name is not None:
             pulumi.set(__self__, "character_set_name", character_set_name)
+        if collate is not None:
+            pulumi.set(__self__, "collate", collate)
+        if ctype is not None:
+            pulumi.set(__self__, "ctype", ctype)
         if db_cluster_id is not None:
             pulumi.set(__self__, "db_cluster_id", db_cluster_id)
         if db_description is not None:
             pulumi.set(__self__, "db_description", db_description)
         if db_name is not None:
             pulumi.set(__self__, "db_name", db_name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Account name authorized to access the database. Only supports PostgreSQL.
+        The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """
         return pulumi.get(self, "account_name")
 
@@ -145,7 +201,7 @@ class _DatabaseState:
     @pulumi.getter(name="characterSetName")
     def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
+        The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         """
         return pulumi.get(self, "character_set_name")
 
@@ -154,10 +210,36 @@ class _DatabaseState:
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language that defines the collation rules in the database.
+        > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "collate")
+
+    @collate.setter
+    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "collate", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The language that indicates the character type of the database.
+        > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "ctype")
+
+    @ctype.setter
+    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ctype", value)
+
+    @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Id of cluster that can run database.
+        The ID of cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
@@ -169,7 +251,9 @@ class _DatabaseState:
     @pulumi.getter(name="dbDescription")
     def db_description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        The description of the database. The description must meet the following requirements:
+        - It cannot start with `http://` or `https://`.
+        - It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "db_description")
 
@@ -181,13 +265,25 @@ class _DatabaseState:
     @pulumi.getter(name="dbName")
     def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         return pulumi.get(self, "db_name")
 
     @db_name.setter
     def db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "db_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (Available since v1.265.0) The state of the database.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.type_token("alicloud:polardb/database:Database")
@@ -198,16 +294,24 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 collate: Optional[pulumi.Input[_builtins.str]] = None,
+                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  db_description: Optional[pulumi.Input[_builtins.str]] = None,
                  db_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
+        Provides a Polar Db Database resource.
+
+        Manage linked databases.
+
+        For information about Polar Db Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateDatabase).
 
         > **NOTE:** Available since v1.66.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -237,21 +341,29 @@ class Database(pulumi.CustomResource):
             db_name="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        PolarDB database can be imported using the id, e.g.
+        Polar Db Database can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+        $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
-        :param pulumi.Input[_builtins.str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[_builtins.str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
-        :param pulumi.Input[_builtins.str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
+        :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+        :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
+        :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
+               - It cannot start with `http://` or `https://`.
+               - It must be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] db_name: The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         ...
     @overload
@@ -260,11 +372,17 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
+        Provides a Polar Db Database resource.
+
+        Manage linked databases.
+
+        For information about Polar Db Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateDatabase).
 
         > **NOTE:** Available since v1.66.0.
 
         ## Example Usage
+
+        Basic Usage
 
         ```python
         import pulumi
@@ -294,12 +412,14 @@ class Database(pulumi.CustomResource):
             db_name="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
-        PolarDB database can be imported using the id, e.g.
+        Polar Db Database can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+        $ pulumi import alicloud:polardb/database:Database example <db_cluster_id>:<db_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -319,6 +439,8 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 collate: Optional[pulumi.Input[_builtins.str]] = None,
+                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
                  db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                  db_description: Optional[pulumi.Input[_builtins.str]] = None,
                  db_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -333,6 +455,8 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["character_set_name"] = character_set_name
+            __props__.__dict__["collate"] = collate
+            __props__.__dict__["ctype"] = ctype
             if db_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'db_cluster_id'")
             __props__.__dict__["db_cluster_id"] = db_cluster_id
@@ -340,6 +464,7 @@ class Database(pulumi.CustomResource):
             if db_name is None and not opts.urn:
                 raise TypeError("Missing required property 'db_name'")
             __props__.__dict__["db_name"] = db_name
+            __props__.__dict__["status"] = None
         super(Database, __self__).__init__(
             'alicloud:polardb/database:Database',
             resource_name,
@@ -352,9 +477,12 @@ class Database(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_name: Optional[pulumi.Input[_builtins.str]] = None,
             character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
+            collate: Optional[pulumi.Input[_builtins.str]] = None,
+            ctype: Optional[pulumi.Input[_builtins.str]] = None,
             db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
             db_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            db_name: Optional[pulumi.Input[_builtins.str]] = None,
+            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -362,11 +490,18 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_name: Account name authorized to access the database. Only supports PostgreSQL.
-        :param pulumi.Input[_builtins.str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
-        :param pulumi.Input[_builtins.str] db_cluster_id: The Id of cluster that can run database.
-        :param pulumi.Input[_builtins.str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
-        :param pulumi.Input[_builtins.str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] account_name: The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
+        :param pulumi.Input[_builtins.str] character_set_name: The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
+        :param pulumi.Input[_builtins.str] collate: The language that defines the collation rules in the database.
+               > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] ctype: The language that indicates the character type of the database.
+               > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        :param pulumi.Input[_builtins.str] db_cluster_id: The ID of cluster.
+        :param pulumi.Input[_builtins.str] db_description: The description of the database. The description must meet the following requirements:
+               - It cannot start with `http://` or `https://`.
+               - It must be 2 to 256 characters in length.
+        :param pulumi.Input[_builtins.str] db_name: The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        :param pulumi.Input[_builtins.str] status: (Available since v1.265.0) The state of the database.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,40 +509,63 @@ class Database(pulumi.CustomResource):
 
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["character_set_name"] = character_set_name
+        __props__.__dict__["collate"] = collate
+        __props__.__dict__["ctype"] = ctype
         __props__.__dict__["db_cluster_id"] = db_cluster_id
         __props__.__dict__["db_description"] = db_description
         __props__.__dict__["db_name"] = db_name
+        __props__.__dict__["status"] = status
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Account name authorized to access the database. Only supports PostgreSQL.
+        The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """
         return pulumi.get(self, "account_name")
 
     @_builtins.property
     @pulumi.getter(name="characterSetName")
-    def character_set_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def character_set_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
+        The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         """
         return pulumi.get(self, "character_set_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def collate(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The language that defines the collation rules in the database.
+        > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "collate")
+
+    @_builtins.property
+    @pulumi.getter
+    def ctype(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The language that indicates the character type of the database.
+        > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        """
+        return pulumi.get(self, "ctype")
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Id of cluster that can run database.
+        The ID of cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="dbDescription")
-    def db_description(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def db_description(self) -> pulumi.Output[_builtins.str]:
         """
-        Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        The description of the database. The description must meet the following requirements:
+        - It cannot start with `http://` or `https://`.
+        - It must be 2 to 256 characters in length.
         """
         return pulumi.get(self, "db_description")
 
@@ -415,7 +573,15 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="dbName")
     def db_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         return pulumi.get(self, "db_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Available since v1.265.0) The state of the database.
+        """
+        return pulumi.get(self, "status")
 

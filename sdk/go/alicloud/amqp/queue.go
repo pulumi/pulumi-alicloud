@@ -27,48 +27,55 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/amqp"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
-//				InstanceType:  pulumi.String("enterprise"),
-//				MaxTps:        pulumi.String("3000"),
-//				QueueCapacity: pulumi.String("200"),
-//				StorageSize:   pulumi.String("700"),
-//				SupportEip:    pulumi.Bool(false),
-//				MaxEipTps:     pulumi.String("128"),
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
+//				InstanceName:        pulumi.Sprintf("%v-%v", name, _default.Result),
+//				InstanceType:        pulumi.String("enterprise"),
+//				MaxTps:              pulumi.String("3000"),
+//				MaxConnections:      pulumi.Int(2000),
+//				QueueCapacity:       pulumi.String("200"),
+//				PaymentType:         pulumi.String("Subscription"),
+//				RenewalStatus:       pulumi.String("AutoRenewal"),
+//				RenewalDuration:     pulumi.Int(1),
+//				RenewalDurationUnit: pulumi.String("Year"),
+//				SupportEip:          pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
-//				InstanceId:      _default.ID(),
-//				VirtualHostName: pulumi.String("tf-example"),
+//				InstanceId:      defaultInstance.ID(),
+//				VirtualHostName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
-//				AutoDeleteState: pulumi.Bool(false),
-//				ExchangeName:    pulumi.String("tf-example"),
-//				ExchangeType:    pulumi.String("DIRECT"),
-//				InstanceId:      _default.ID(),
-//				Internal:        pulumi.Bool(false),
+//			_, err = amqp.NewQueue(ctx, "default", &amqp.QueueArgs{
+//				InstanceId:      defaultInstance.ID(),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = amqp.NewQueue(ctx, "example", &amqp.QueueArgs{
-//				InstanceId:      _default.ID(),
-//				QueueName:       pulumi.String("tf-example"),
-//				VirtualHostName: defaultVirtualHost.VirtualHostName,
+//				QueueName:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -78,6 +85,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
@@ -89,40 +98,25 @@ import (
 type Queue struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether the Auto Delete attribute is configured. Valid values:
-	// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-	// * false: The Auto Delete attribute is not configured.
+	// Specifies whether to automatically delete the queue. Valid values:
 	AutoDeleteState pulumi.BoolPtrOutput `pulumi:"autoDeleteState"`
-	// The validity period after which the queue is automatically deleted.
-	// If the queue is not accessed within a specified period of time, it is automatically deleted.
+	// The auto-expiration time for the queue.
 	AutoExpireState pulumi.StringPtrOutput `pulumi:"autoExpireState"`
-	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-	// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-	// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+	// The dead-letter exchange.
 	DeadLetterExchange pulumi.StringPtrOutput `pulumi:"deadLetterExchange"`
-	// The dead letter routing key.
+	// The dead-letter routing key.
 	DeadLetterRoutingKey pulumi.StringPtrOutput `pulumi:"deadLetterRoutingKey"`
-	// Specifies whether the queue is an exclusive queue. Valid values:
-	// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-	// * false: The queue is not an exclusive queue.
-	ExclusiveState pulumi.BoolPtrOutput `pulumi:"exclusiveState"`
-	// The ID of the instance.
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The maximum number of messages that can be stored in the queue.
-	// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 	MaxLength pulumi.StringPtrOutput `pulumi:"maxLength"`
-	// The highest priority supported by the queue. This parameter is set to a positive integer.
-	// Valid values: 0 to 255. Recommended values: 1 to 10
+	// The priority of the queue.
 	MaximumPriority pulumi.IntPtrOutput `pulumi:"maximumPriority"`
-	// The message TTL of the queue.
-	// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-	// Message TTL must be set to a non-negative integer, in milliseconds.
-	// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+	// The time to live (TTL) of a message in the queue.
 	MessageTtl pulumi.StringPtrOutput `pulumi:"messageTtl"`
-	// The name of the queue.
-	// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+	// The name of the queue to create.
 	QueueName pulumi.StringOutput `pulumi:"queueName"`
-	// The name of the virtual host.
+	// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	VirtualHostName pulumi.StringOutput `pulumi:"virtualHostName"`
 }
 
@@ -165,78 +159,48 @@ func GetQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
-	// Specifies whether the Auto Delete attribute is configured. Valid values:
-	// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-	// * false: The Auto Delete attribute is not configured.
+	// Specifies whether to automatically delete the queue. Valid values:
 	AutoDeleteState *bool `pulumi:"autoDeleteState"`
-	// The validity period after which the queue is automatically deleted.
-	// If the queue is not accessed within a specified period of time, it is automatically deleted.
+	// The auto-expiration time for the queue.
 	AutoExpireState *string `pulumi:"autoExpireState"`
-	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-	// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-	// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+	// The dead-letter exchange.
 	DeadLetterExchange *string `pulumi:"deadLetterExchange"`
-	// The dead letter routing key.
+	// The dead-letter routing key.
 	DeadLetterRoutingKey *string `pulumi:"deadLetterRoutingKey"`
-	// Specifies whether the queue is an exclusive queue. Valid values:
-	// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-	// * false: The queue is not an exclusive queue.
-	ExclusiveState *bool `pulumi:"exclusiveState"`
-	// The ID of the instance.
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 	InstanceId *string `pulumi:"instanceId"`
 	// The maximum number of messages that can be stored in the queue.
-	// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 	MaxLength *string `pulumi:"maxLength"`
-	// The highest priority supported by the queue. This parameter is set to a positive integer.
-	// Valid values: 0 to 255. Recommended values: 1 to 10
+	// The priority of the queue.
 	MaximumPriority *int `pulumi:"maximumPriority"`
-	// The message TTL of the queue.
-	// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-	// Message TTL must be set to a non-negative integer, in milliseconds.
-	// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+	// The time to live (TTL) of a message in the queue.
 	MessageTtl *string `pulumi:"messageTtl"`
-	// The name of the queue.
-	// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+	// The name of the queue to create.
 	QueueName *string `pulumi:"queueName"`
-	// The name of the virtual host.
+	// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	VirtualHostName *string `pulumi:"virtualHostName"`
 }
 
 type QueueState struct {
-	// Specifies whether the Auto Delete attribute is configured. Valid values:
-	// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-	// * false: The Auto Delete attribute is not configured.
+	// Specifies whether to automatically delete the queue. Valid values:
 	AutoDeleteState pulumi.BoolPtrInput
-	// The validity period after which the queue is automatically deleted.
-	// If the queue is not accessed within a specified period of time, it is automatically deleted.
+	// The auto-expiration time for the queue.
 	AutoExpireState pulumi.StringPtrInput
-	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-	// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-	// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+	// The dead-letter exchange.
 	DeadLetterExchange pulumi.StringPtrInput
-	// The dead letter routing key.
+	// The dead-letter routing key.
 	DeadLetterRoutingKey pulumi.StringPtrInput
-	// Specifies whether the queue is an exclusive queue. Valid values:
-	// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-	// * false: The queue is not an exclusive queue.
-	ExclusiveState pulumi.BoolPtrInput
-	// The ID of the instance.
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 	InstanceId pulumi.StringPtrInput
 	// The maximum number of messages that can be stored in the queue.
-	// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 	MaxLength pulumi.StringPtrInput
-	// The highest priority supported by the queue. This parameter is set to a positive integer.
-	// Valid values: 0 to 255. Recommended values: 1 to 10
+	// The priority of the queue.
 	MaximumPriority pulumi.IntPtrInput
-	// The message TTL of the queue.
-	// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-	// Message TTL must be set to a non-negative integer, in milliseconds.
-	// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+	// The time to live (TTL) of a message in the queue.
 	MessageTtl pulumi.StringPtrInput
-	// The name of the queue.
-	// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+	// The name of the queue to create.
 	QueueName pulumi.StringPtrInput
-	// The name of the virtual host.
+	// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	VirtualHostName pulumi.StringPtrInput
 }
 
@@ -245,79 +209,49 @@ func (QueueState) ElementType() reflect.Type {
 }
 
 type queueArgs struct {
-	// Specifies whether the Auto Delete attribute is configured. Valid values:
-	// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-	// * false: The Auto Delete attribute is not configured.
+	// Specifies whether to automatically delete the queue. Valid values:
 	AutoDeleteState *bool `pulumi:"autoDeleteState"`
-	// The validity period after which the queue is automatically deleted.
-	// If the queue is not accessed within a specified period of time, it is automatically deleted.
+	// The auto-expiration time for the queue.
 	AutoExpireState *string `pulumi:"autoExpireState"`
-	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-	// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-	// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+	// The dead-letter exchange.
 	DeadLetterExchange *string `pulumi:"deadLetterExchange"`
-	// The dead letter routing key.
+	// The dead-letter routing key.
 	DeadLetterRoutingKey *string `pulumi:"deadLetterRoutingKey"`
-	// Specifies whether the queue is an exclusive queue. Valid values:
-	// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-	// * false: The queue is not an exclusive queue.
-	ExclusiveState *bool `pulumi:"exclusiveState"`
-	// The ID of the instance.
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 	InstanceId string `pulumi:"instanceId"`
 	// The maximum number of messages that can be stored in the queue.
-	// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 	MaxLength *string `pulumi:"maxLength"`
-	// The highest priority supported by the queue. This parameter is set to a positive integer.
-	// Valid values: 0 to 255. Recommended values: 1 to 10
+	// The priority of the queue.
 	MaximumPriority *int `pulumi:"maximumPriority"`
-	// The message TTL of the queue.
-	// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-	// Message TTL must be set to a non-negative integer, in milliseconds.
-	// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+	// The time to live (TTL) of a message in the queue.
 	MessageTtl *string `pulumi:"messageTtl"`
-	// The name of the queue.
-	// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+	// The name of the queue to create.
 	QueueName string `pulumi:"queueName"`
-	// The name of the virtual host.
+	// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	VirtualHostName string `pulumi:"virtualHostName"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
-	// Specifies whether the Auto Delete attribute is configured. Valid values:
-	// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-	// * false: The Auto Delete attribute is not configured.
+	// Specifies whether to automatically delete the queue. Valid values:
 	AutoDeleteState pulumi.BoolPtrInput
-	// The validity period after which the queue is automatically deleted.
-	// If the queue is not accessed within a specified period of time, it is automatically deleted.
+	// The auto-expiration time for the queue.
 	AutoExpireState pulumi.StringPtrInput
-	// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-	// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-	// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+	// The dead-letter exchange.
 	DeadLetterExchange pulumi.StringPtrInput
-	// The dead letter routing key.
+	// The dead-letter routing key.
 	DeadLetterRoutingKey pulumi.StringPtrInput
-	// Specifies whether the queue is an exclusive queue. Valid values:
-	// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-	// * false: The queue is not an exclusive queue.
-	ExclusiveState pulumi.BoolPtrInput
-	// The ID of the instance.
+	// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 	InstanceId pulumi.StringInput
 	// The maximum number of messages that can be stored in the queue.
-	// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 	MaxLength pulumi.StringPtrInput
-	// The highest priority supported by the queue. This parameter is set to a positive integer.
-	// Valid values: 0 to 255. Recommended values: 1 to 10
+	// The priority of the queue.
 	MaximumPriority pulumi.IntPtrInput
-	// The message TTL of the queue.
-	// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-	// Message TTL must be set to a non-negative integer, in milliseconds.
-	// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+	// The time to live (TTL) of a message in the queue.
 	MessageTtl pulumi.StringPtrInput
-	// The name of the queue.
-	// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+	// The name of the queue to create.
 	QueueName pulumi.StringInput
-	// The name of the virtual host.
+	// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 	VirtualHostName pulumi.StringInput
 }
 
@@ -408,70 +342,52 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return o
 }
 
-// Specifies whether the Auto Delete attribute is configured. Valid values:
-// * true: The Auto Delete attribute is configured. The queue is automatically deleted after the last subscription from consumers to this queue is canceled.
-// * false: The Auto Delete attribute is not configured.
+// Specifies whether to automatically delete the queue. Valid values:
 func (o QueueOutput) AutoDeleteState() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.BoolPtrOutput { return v.AutoDeleteState }).(pulumi.BoolPtrOutput)
 }
 
-// The validity period after which the queue is automatically deleted.
-// If the queue is not accessed within a specified period of time, it is automatically deleted.
+// The auto-expiration time for the queue.
 func (o QueueOutput) AutoExpireState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.AutoExpireState }).(pulumi.StringPtrOutput)
 }
 
-// The dead-letter exchange. A dead-letter exchange is used to receive rejected messages.
-// If a consumer rejects a message that cannot be retried, this message is routed to a specified dead-letter exchange.
-// Then, the dead-letter exchange routes the message to the queue that is bound to the dead-letter exchange.
+// The dead-letter exchange.
 func (o QueueOutput) DeadLetterExchange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.DeadLetterExchange }).(pulumi.StringPtrOutput)
 }
 
-// The dead letter routing key.
+// The dead-letter routing key.
 func (o QueueOutput) DeadLetterRoutingKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.DeadLetterRoutingKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the queue is an exclusive queue. Valid values:
-// * true: The queue is an exclusive queue. It can be used only for the connection that declares the exclusive queue. After the connection is closed, the exclusive queue is automatically deleted.
-// * false: The queue is not an exclusive queue.
-func (o QueueOutput) ExclusiveState() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Queue) pulumi.BoolPtrOutput { return v.ExclusiveState }).(pulumi.BoolPtrOutput)
-}
-
-// The ID of the instance.
+// The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
 func (o QueueOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // The maximum number of messages that can be stored in the queue.
-// If this threshold is exceeded, the earliest messages that are routed to the queue are discarded.
 func (o QueueOutput) MaxLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.MaxLength }).(pulumi.StringPtrOutput)
 }
 
-// The highest priority supported by the queue. This parameter is set to a positive integer.
-// Valid values: 0 to 255. Recommended values: 1 to 10
+// The priority of the queue.
 func (o QueueOutput) MaximumPriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntPtrOutput { return v.MaximumPriority }).(pulumi.IntPtrOutput)
 }
 
-// The message TTL of the queue.
-// If the retention period of a message in the queue exceeds the message TTL of the queue, the message expires.
-// Message TTL must be set to a non-negative integer, in milliseconds.
-// For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
+// The time to live (TTL) of a message in the queue.
 func (o QueueOutput) MessageTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.MessageTtl }).(pulumi.StringPtrOutput)
 }
 
-// The name of the queue.
-// The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+// The name of the queue to create.
 func (o QueueOutput) QueueName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
-// The name of the virtual host.
+// The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
 func (o QueueOutput) VirtualHostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.VirtualHostName }).(pulumi.StringOutput)
 }

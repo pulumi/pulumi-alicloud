@@ -29,6 +29,7 @@ from .kubernetes import *
 from .kubernetes_addon import *
 from .kubernetes_autoscaler import *
 from .kubernetes_permission import *
+from .kubernetes_policy_instance import *
 from .managed_kubernetes import *
 from .node_pool import *
 from .registry_enterprise_namespace import *

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public static class GetVpcEndpointServices
     {
         /// <summary>
-        /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+        /// This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.109.0.
         /// 
@@ -28,24 +28,25 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.PrivateLink.VpcEndpointService("default", new()
         ///     {
-        ///         ServiceDescription = "terraform-example",
-        ///         ConnectBandwidth = 103,
-        ///         AutoAcceptConnection = false,
+        ///         ServiceDescription = name,
+        ///         AutoAcceptConnection = true,
         ///     });
         /// 
-        ///     var example = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
+        ///     var ids = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             exampleVpcEndpointService.Id,
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPrivatelinkVpcEndpointServiceId"] = example.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
+        ///         ["privatelinkVpcEndpointServicesId0"] = ids.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -54,7 +55,7 @@ namespace Pulumi.AliCloud.PrivateLink
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+        /// This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.109.0.
         /// 
@@ -70,24 +71,25 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.PrivateLink.VpcEndpointService("default", new()
         ///     {
-        ///         ServiceDescription = "terraform-example",
-        ///         ConnectBandwidth = 103,
-        ///         AutoAcceptConnection = false,
+        ///         ServiceDescription = name,
+        ///         AutoAcceptConnection = true,
         ///     });
         /// 
-        ///     var example = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
+        ///     var ids = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             exampleVpcEndpointService.Id,
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPrivatelinkVpcEndpointServiceId"] = example.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
+        ///         ["privatelinkVpcEndpointServicesId0"] = ids.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -96,7 +98,7 @@ namespace Pulumi.AliCloud.PrivateLink
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointServicesResult>("alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices", args ?? new GetVpcEndpointServicesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+        /// This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available since v1.109.0.
         /// 
@@ -112,24 +114,25 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.PrivateLink.VpcEndpointService("default", new()
         ///     {
-        ///         ServiceDescription = "terraform-example",
-        ///         ConnectBandwidth = 103,
-        ///         AutoAcceptConnection = false,
+        ///         ServiceDescription = name,
+        ///         AutoAcceptConnection = true,
         ///     });
         /// 
-        ///     var example = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
+        ///     var ids = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             exampleVpcEndpointService.Id,
+        ///             @default.Id,
         ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstPrivatelinkVpcEndpointServiceId"] = example.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
+        ///         ["privatelinkVpcEndpointServicesId0"] = ids.Apply(getVpcEndpointServicesResult =&gt; getVpcEndpointServicesResult.Services[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -142,7 +145,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `True`, `False`.
         /// </summary>
         [Input("autoAcceptConnection")]
         public bool? AutoAcceptConnection { get; set; }
@@ -172,13 +175,13 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         [Input("serviceBusinessStatus")]
         public string? ServiceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -187,7 +190,7 @@ namespace Pulumi.AliCloud.PrivateLink
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// The tags of Vpc Endpoint Service.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -196,7 +199,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
 
         /// <summary>
-        /// The name of Vpc Endpoint Service.
+        /// The name of the endpoint service.
         /// </summary>
         [Input("vpcEndpointServiceName")]
         public string? VpcEndpointServiceName { get; set; }
@@ -210,7 +213,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections.
+        /// Specifies whether to automatically accept endpoint connection requests. Valid values: : `True`, `False`.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
@@ -240,13 +243,13 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+        /// The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         [Input("serviceBusinessStatus")]
         public Input<string>? ServiceBusinessStatus { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        /// The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -255,7 +258,7 @@ namespace Pulumi.AliCloud.PrivateLink
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tags of Vpc Endpoint Service.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -264,7 +267,7 @@ namespace Pulumi.AliCloud.PrivateLink
         }
 
         /// <summary>
-        /// The name of Vpc Endpoint Service.
+        /// The name of the endpoint service.
         /// </summary>
         [Input("vpcEndpointServiceName")]
         public Input<string>? VpcEndpointServiceName { get; set; }
@@ -280,7 +283,7 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class GetVpcEndpointServicesResult
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections..
+        /// Indicates whether endpoint connection requests are automatically accepted.
         /// </summary>
         public readonly bool? AutoAcceptConnection;
         /// <summary>
@@ -295,23 +298,23 @@ namespace Pulumi.AliCloud.PrivateLink
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// The business status of the terminal node service..
+        /// The service state of the endpoint service.
         /// </summary>
         public readonly string? ServiceBusinessStatus;
         /// <summary>
-        /// A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+        /// A list of Vpc Endpoint Services. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcEndpointServicesServiceResult> Services;
         /// <summary>
-        /// The Status of Vpc Endpoint Service.
+        /// The state of the endpoint service.
         /// </summary>
         public readonly string? Status;
         /// <summary>
-        /// The tags of Vpc Endpoint Service.
+        /// The tags added to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The name of Vpc Endpoint Service.
+        /// The name of the endpoint service.
         /// </summary>
         public readonly string? VpcEndpointServiceName;
 

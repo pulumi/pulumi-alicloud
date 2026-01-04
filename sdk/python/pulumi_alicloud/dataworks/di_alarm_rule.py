@@ -398,6 +398,8 @@ class DiAlarmRule(pulumi.CustomResource):
             di_alarm_rule_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Di Alarm Rule can be imported using the id, e.g.
@@ -541,6 +543,8 @@ class DiAlarmRule(pulumi.CustomResource):
             di_job_id=default_uw8inp.di_job_id,
             di_alarm_rule_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -125,6 +125,8 @@ namespace Pulumi.AliCloud.Ram
     ///     };
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
     public partial class AccessKey : global::Pulumi.CustomResource

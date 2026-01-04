@@ -345,6 +345,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Traffic Mirror Filter can be imported using the id, e.g.
@@ -419,6 +421,8 @@ class TrafficMirrorFilter(pulumi.CustomResource):
                 "source_port_range": "80/80",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

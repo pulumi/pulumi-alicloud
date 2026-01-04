@@ -297,6 +297,8 @@ class ScheduledSql(pulumi.CustomResource):
             project=default_k_ie4_kv.project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SLS Scheduled SQL can be imported using the id, e.g.
@@ -382,6 +384,8 @@ class ScheduledSql(pulumi.CustomResource):
             scheduled_sql_name=name,
             project=default_k_ie4_kv.project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

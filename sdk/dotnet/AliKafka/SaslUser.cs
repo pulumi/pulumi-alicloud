@@ -10,14 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an Alikafka Sasl User resource.
+    /// Provides an AliKafka Sasl User resource.
+    /// 
+    /// For information about AliKafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
-    /// 
-    /// &gt; **NOTE:**  Only the following regions support create alikafka Sasl User.
-    /// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-    /// 
-    /// For information about Alikafka Sasl User and how to use it, see [What is Sasl User](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
     /// 
     /// ## Example Usage
     /// 
@@ -33,7 +30,7 @@ namespace Pulumi.AliCloud.AliKafka
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -92,9 +89,11 @@ namespace Pulumi.AliCloud.AliKafka
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// Alikafka Sasl User can be imported using the id, e.g.
+    /// AliKafka Sasl User can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:alikafka/saslUser:SaslUser example &lt;instance_id&gt;:&lt;username&gt;
@@ -104,7 +103,7 @@ namespace Pulumi.AliCloud.AliKafka
     public partial class SaslUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The instance ID.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -122,13 +121,22 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// The encryption method. Valid values:
+        /// - SCRAM-SHA-512. This is the default value.
+        /// - SCRAM-SHA-256
+        /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        /// </summary>
+        [Output("mechanism")]
+        public Output<string> Mechanism { get; private set; } = null!;
+
+        /// <summary>
         /// The password of the SASL user. It may consist of letters, digits, or underlines, with a length of 1 to 64 characters. You have to specify one of `Password` and `KmsEncryptedPassword` fields.
         /// </summary>
         [Output("password")]
-        public Output<string?> Password { get; private set; } = null!;
+        public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values:
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -190,7 +198,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class SaslUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The instance ID.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -213,6 +221,15 @@ namespace Pulumi.AliCloud.AliKafka
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The encryption method. Valid values:
+        /// - SCRAM-SHA-512. This is the default value.
+        /// - SCRAM-SHA-256
+        /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        /// </summary>
+        [Input("mechanism")]
+        public Input<string>? Mechanism { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -230,7 +247,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -250,7 +267,7 @@ namespace Pulumi.AliCloud.AliKafka
     public sealed class SaslUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the ALIKAFKA Instance that owns the groups.
+        /// The instance ID.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -273,6 +290,15 @@ namespace Pulumi.AliCloud.AliKafka
             set => _kmsEncryptionContext = value;
         }
 
+        /// <summary>
+        /// The encryption method. Valid values:
+        /// - SCRAM-SHA-512. This is the default value.
+        /// - SCRAM-SHA-256
+        /// &gt; **NOTE:**   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        /// </summary>
+        [Input("mechanism")]
+        public Input<string>? Mechanism { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -290,7 +316,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The authentication mechanism. Default value: `Plain`. Valid values: `Plain`, `Scram`.
+        /// The authentication mechanism. Default value: `Plain`. Valid values:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

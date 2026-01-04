@@ -641,6 +641,8 @@ class DomainResource(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ddos Coo Domain Resource can be imported using the id, e.g.
@@ -746,6 +748,8 @@ class DomainResource(pulumi.CustomResource):
                 "proxy_type": "https",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

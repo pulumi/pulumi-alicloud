@@ -270,6 +270,8 @@ class Rule(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Zone Rule can be imported using the id, e.g.
@@ -359,6 +361,8 @@ class Rule(pulumi.CustomResource):
                 "port": 8080,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

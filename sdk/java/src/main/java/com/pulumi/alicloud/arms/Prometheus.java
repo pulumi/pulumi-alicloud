@@ -103,6 +103,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Application Real-Time Monitoring Service (ARMS) Prometheus can be imported using the id, e.g.

@@ -227,6 +227,8 @@ class Network(pulumi.CustomResource):
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Network can be imported using the id, e.g.
@@ -273,6 +275,8 @@ class Network(pulumi.CustomResource):
             cidr_block="192.168.2.0/24",
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

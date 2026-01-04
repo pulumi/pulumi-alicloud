@@ -662,6 +662,8 @@ class Secret(pulumi.CustomResource):
             force_delete_without_recovery=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KMS Secret can be imported using the id, e.g.
@@ -726,6 +728,8 @@ class Secret(pulumi.CustomResource):
             version_id="v1",
             force_delete_without_recovery=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

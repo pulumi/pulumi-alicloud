@@ -82,6 +82,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -118,7 +120,7 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> bandwidth;
+    private Output<Integer> bandwidth;
 
     /**
      * @return The bandwidth of the VBR instance. Unit: Mbps. Valid values:
@@ -126,8 +128,8 @@ public class VirtualBorderRouter extends com.pulumi.resources.CustomResource {
      * - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
      * 
      */
-    public Output<Optional<Integer>> bandwidth() {
-        return Codegen.optional(this.bandwidth);
+    public Output<Integer> bandwidth() {
+        return this.bandwidth;
     }
     /**
      * The circuit code provided by the operator for the physical connection.

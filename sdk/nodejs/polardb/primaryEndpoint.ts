@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  * const defaultPrimaryEndpoint = new alicloud.polardb.PrimaryEndpoint("default", {dbClusterId: defaultCluster.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * PolarDB endpoint can be imported using the id, e.g.

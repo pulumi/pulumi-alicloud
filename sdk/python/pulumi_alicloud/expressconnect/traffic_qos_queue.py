@@ -311,6 +311,8 @@ class TrafficQosQueue(pulumi.CustomResource):
             queue_type="Medium")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Traffic Qos Queue can be imported using the id, e.g.
@@ -379,6 +381,8 @@ class TrafficQosQueue(pulumi.CustomResource):
             queue_name=name,
             queue_type="Medium")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

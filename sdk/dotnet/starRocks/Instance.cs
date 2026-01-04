@@ -119,6 +119,8 @@ namespace Pulumi.AliCloud.starRocks
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Star Rocks Instance can be imported using the id, e.g.

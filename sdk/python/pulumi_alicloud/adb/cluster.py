@@ -1035,6 +1035,8 @@ class Cluster(pulumi.CustomResource):
             vswitch_id=default_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB cluster can be imported using the id, e.g.
@@ -1115,6 +1117,8 @@ class Cluster(pulumi.CustomResource):
             description=name,
             vswitch_id=default_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

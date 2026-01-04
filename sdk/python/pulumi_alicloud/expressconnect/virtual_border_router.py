@@ -885,6 +885,8 @@ class VirtualBorderRouter(pulumi.CustomResource):
             detect_multiplier=10)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -964,6 +966,8 @@ class VirtualBorderRouter(pulumi.CustomResource):
             min_tx_interval=1000,
             detect_multiplier=10)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -1169,7 +1173,7 @@ class VirtualBorderRouter(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Output[_builtins.int]:
         """
         The bandwidth of the VBR instance. Unit: Mbps. Valid values:
         - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.

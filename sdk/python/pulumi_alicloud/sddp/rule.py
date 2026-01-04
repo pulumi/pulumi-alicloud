@@ -553,6 +553,8 @@ class Rule(pulumi.CustomResource):
             product_code="OSS")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Security Center Rule can be imported using the id, e.g.
@@ -622,6 +624,8 @@ class Rule(pulumi.CustomResource):
             risk_level_id="4",
             product_code="OSS")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

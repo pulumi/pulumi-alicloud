@@ -10,11 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PolarDB
 {
     /// <summary>
-    /// Provides a PolarDB database resource. A database deployed in a PolarDB cluster. A PolarDB cluster can own multiple databases.
+    /// Provides a Polar Db Database resource.
+    /// 
+    /// Manage linked databases.
+    /// 
+    /// For information about Polar Db Database and how to use it, see [What is Database](https://next.api.alibabacloud.com/document/polardb/2017-08-01/CreateDatabase).
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
     /// 
     /// ## Example Usage
+    /// 
+    /// Basic Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -65,46 +71,70 @@ namespace Pulumi.AliCloud.PolarDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// PolarDB database can be imported using the id, e.g.
+    /// Polar Db Database can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:polardb/database:Database example "pc-12345:tf_database"
+    /// $ pulumi import alicloud:polardb/database:Database example &lt;db_cluster_id&gt;:&lt;db_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:polardb/database:Database")]
     public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `AccountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         /// </summary>
         [Output("accountName")]
         public Output<string?> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
+        /// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         /// </summary>
         [Output("characterSetName")]
-        public Output<string?> CharacterSetName { get; private set; } = null!;
+        public Output<string> CharacterSetName { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of cluster that can run database.
+        /// The language that defines the collation rules in the database.
+        /// &gt; **NOTE:** The locale must be compatible with the character set set set by `CharacterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Output("collate")]
+        public Output<string?> Collate { get; private set; } = null!;
+
+        /// <summary>
+        /// The language that indicates the character type of the database.
+        /// &gt; **NOTE:** The language must be compatible with the character set that is specified by `CharacterSetName`. The value that you specify must be the same as the value of `Collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Output("ctype")]
+        public Output<string?> Ctype { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of cluster.
         /// </summary>
         [Output("dbClusterId")]
         public Output<string> DbClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        /// The description of the database. The description must meet the following requirements:
+        /// - It cannot start with `http://` or `https://`.
+        /// - It must be 2 to 256 characters in length.
         /// </summary>
         [Output("dbDescription")]
-        public Output<string?> DbDescription { get; private set; } = null!;
+        public Output<string> DbDescription { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        /// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         /// </summary>
         [Output("dbName")]
         public Output<string> DbName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.265.0) The state of the database.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
 
 
         /// <summary>
@@ -153,31 +183,47 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `AccountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
+        /// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         /// </summary>
         [Input("characterSetName")]
         public Input<string>? CharacterSetName { get; set; }
 
         /// <summary>
-        /// The Id of cluster that can run database.
+        /// The language that defines the collation rules in the database.
+        /// &gt; **NOTE:** The locale must be compatible with the character set set set by `CharacterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Input("collate")]
+        public Input<string>? Collate { get; set; }
+
+        /// <summary>
+        /// The language that indicates the character type of the database.
+        /// &gt; **NOTE:** The language must be compatible with the character set that is specified by `CharacterSetName`. The value that you specify must be the same as the value of `Collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Input("ctype")]
+        public Input<string>? Ctype { get; set; }
+
+        /// <summary>
+        /// The ID of cluster.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        /// The description of the database. The description must meet the following requirements:
+        /// - It cannot start with `http://` or `https://`.
+        /// - It must be 2 to 256 characters in length.
         /// </summary>
         [Input("dbDescription")]
         public Input<string>? DbDescription { get; set; }
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        /// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         /// </summary>
         [Input("dbName", required: true)]
         public Input<string> DbName { get; set; } = null!;
@@ -191,34 +237,56 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account name authorized to access the database. Only supports PostgreSQL.
+        /// The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `AccountName` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \(`Utf8mb4` only supports versions 5.5 and 5.6\).
+        /// The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         /// </summary>
         [Input("characterSetName")]
         public Input<string>? CharacterSetName { get; set; }
 
         /// <summary>
-        /// The Id of cluster that can run database.
+        /// The language that defines the collation rules in the database.
+        /// &gt; **NOTE:** The locale must be compatible with the character set set set by `CharacterSetName`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Input("collate")]
+        public Input<string>? Collate { get; set; }
+
+        /// <summary>
+        /// The language that indicates the character type of the database.
+        /// &gt; **NOTE:** The language must be compatible with the character set that is specified by `CharacterSetName`. The value that you specify must be the same as the value of `Collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+        /// </summary>
+        [Input("ctype")]
+        public Input<string>? Ctype { get; set; }
+
+        /// <summary>
+        /// The ID of cluster.
         /// </summary>
         [Input("dbClusterId")]
         public Input<string>? DbClusterId { get; set; }
 
         /// <summary>
-        /// Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
+        /// The description of the database. The description must meet the following requirements:
+        /// - It cannot start with `http://` or `https://`.
+        /// - It must be 2 to 256 characters in length.
         /// </summary>
         [Input("dbDescription")]
         public Input<string>? DbDescription { get; set; }
 
         /// <summary>
-        /// Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
+        /// The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         /// </summary>
         [Input("dbName")]
         public Input<string>? DbName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.265.0) The state of the database.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public DatabaseState()
         {

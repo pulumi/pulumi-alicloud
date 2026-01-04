@@ -247,6 +247,8 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
             group_ip_address="224.1.0.0")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cen Transit Router Multicast Domain Peer Member can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
             group_ip_address="224.1.0.0")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

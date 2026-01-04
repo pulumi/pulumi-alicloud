@@ -181,6 +181,8 @@ class Namespace(pulumi.CustomResource):
             specification="cms.s1.large")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Namespace can be imported using the id, e.g.
@@ -226,6 +228,8 @@ class Namespace(pulumi.CustomResource):
             namespace="tf-example",
             specification="cms.s1.large")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

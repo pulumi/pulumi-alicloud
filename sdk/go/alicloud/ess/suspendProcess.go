@@ -138,6 +138,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESS suspend process can be imported using the id, e.g.

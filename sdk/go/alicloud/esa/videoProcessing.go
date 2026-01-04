@@ -78,6 +78,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Video Processing can be imported using the id, e.g.
@@ -108,10 +110,10 @@ type VideoProcessing struct {
 	RuleEnable pulumi.StringPtrOutput `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrOutput `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 	// Drag and drop the play function switch. Value range:
@@ -171,10 +173,10 @@ type videoProcessingState struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Drag and drop the play function switch. Value range:
@@ -202,10 +204,10 @@ type VideoProcessingState struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Drag and drop the play function switch. Value range:
@@ -235,10 +237,10 @@ type videoProcessingArgs struct {
 	RuleEnable *string `pulumi:"ruleEnable"`
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName *string `pulumi:"ruleName"`
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 	// Drag and drop the play function switch. Value range:
@@ -265,10 +267,10 @@ type VideoProcessingArgs struct {
 	RuleEnable pulumi.StringPtrInput
 	// Rule name. When adding global configuration, this parameter does not need to be set.
 	RuleName pulumi.StringPtrInput
-	// Order of rule execution. The smaller the value, the higher the priority for execution.
+	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID, which can be obtained by calling the ListSites API.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 	// Drag and drop the play function switch. Value range:
@@ -409,14 +411,14 @@ func (o VideoProcessingOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VideoProcessing) pulumi.StringPtrOutput { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// Order of rule execution. The smaller the value, the higher the priority for execution.
+// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 func (o VideoProcessingOutput) Sequence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VideoProcessing) pulumi.IntPtrOutput { return v.Sequence }).(pulumi.IntPtrOutput)
 }
 
 // The site ID, which can be obtained by calling the ListSites API.
-func (o VideoProcessingOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *VideoProcessing) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o VideoProcessingOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VideoProcessing) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
