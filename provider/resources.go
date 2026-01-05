@@ -665,7 +665,9 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_config_compliance_pack":           {Tok: resource(cfgMod, "CompliancePack")},
 			"alicloud_config_delivery":                  {Tok: resource(cfgMod, "Delivery")},
 			"alicloud_config_aggregate_delivery":        {Tok: resource(cfgMod, "AggregateDelivery")},
+			"alicloud_config_aggregate_remediation":     {Tok: resource(cfgMod, "AggregateRemediation")},
 			"alicloud_config_remediation":               {Tok: resource(cfgMod, "Remediation")},
+			"alicloud_config_report_template":           {Tok: resource(cfgMod, "ReportTemplate")},
 
 			// CR
 			"alicloud_cr_repo":                {Tok: resource(crMod, "Repo")},
@@ -1064,6 +1066,14 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_kms_ciphertext":  {Tok: resource(kmsMod, "Ciphertext")},
 			"alicloud_kms_secret":      {Tok: resource(kmsMod, "Secret")},
 			"alicloud_kms_alias":       {Tok: resource(kmsMod, "Alias")},
+			"alicloud_kms_value_added_service": {
+				Tok: resource(kmsMod, "ValueAddedService"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"value_added_service": {
+						CSharpName: "ServiceType",
+					},
+				},
+			},
 
 			// KVStore
 			"alicloud_kvstore_backup_policy":    {Tok: resource(kvstoreMod, "BackupPolicy")},
