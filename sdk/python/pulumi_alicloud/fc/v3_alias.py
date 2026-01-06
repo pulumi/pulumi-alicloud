@@ -269,6 +269,8 @@ class V3Alias(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Alias can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class V3Alias(pulumi.CustomResource):
                 "2": 0.5,
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

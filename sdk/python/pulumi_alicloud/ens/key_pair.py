@@ -127,6 +127,8 @@ class KeyPair(pulumi.CustomResource):
             version="2017-11-10")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Key Pair can be imported using the id, e.g.
@@ -169,6 +171,8 @@ class KeyPair(pulumi.CustomResource):
             key_pair_name=name,
             version="2017-11-10")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -539,6 +539,8 @@ class EcsSnapshot(pulumi.CustomResource):
             retention_days=20)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Snapshot can be imported using the id, e.g.
@@ -632,6 +634,8 @@ class EcsSnapshot(pulumi.CustomResource):
             category="standard",
             retention_days=20)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

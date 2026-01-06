@@ -161,6 +161,8 @@ class Folder(pulumi.CustomResource):
             folder_path="Business Flow/tfTestAcc/folderDi/tftest1")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Folder can be imported using the id, e.g.
@@ -199,6 +201,8 @@ class Folder(pulumi.CustomResource):
             project_id="320687",
             folder_path="Business Flow/tfTestAcc/folderDi/tftest1")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

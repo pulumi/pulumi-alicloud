@@ -74,6 +74,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -91,7 +93,7 @@ type VirtualBorderRouter struct {
 	// The bandwidth of the VBR instance. Unit: Mbps. Valid values:
 	// - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
 	// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
-	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
+	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The circuit code provided by the operator for the physical connection.
 	CircuitCode pulumi.StringPtrOutput `pulumi:"circuitCode"`
 	// (Available since v1.263.0) The creation time of the VBR.
@@ -516,8 +518,8 @@ func (o VirtualBorderRouterOutput) AssociatedPhysicalConnections() pulumi.String
 // The bandwidth of the VBR instance. Unit: Mbps. Valid values:
 // - When creating a VBR instance for an exclusive leased line, the values are `50`, `100`, `200`, `300`, `400`, `500`, `1000`, `2048`, `5120`, `8192`, `10240`, `20480`, `40960`, `50120`, `61440`, and `102400`.
 // - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
-func (o VirtualBorderRouterOutput) Bandwidth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
+func (o VirtualBorderRouterOutput) Bandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *VirtualBorderRouter) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
 // The circuit code provided by the operator for the physical connection.

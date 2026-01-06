@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -64,6 +65,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * SSL Certificates Pca Certificate can be imported using the id, e.g.
@@ -104,6 +107,12 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> algorithm() {
         return this.algorithm;
+    }
+    @Export(name="aliasName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> aliasName;
+
+    public Output<Optional<String>> aliasName() {
+        return Codegen.optional(this.aliasName);
     }
     /**
      * The common name or abbreviation of the organization. Support the use of Chinese, English characters.
@@ -176,8 +185,21 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
         return this.organizationUnit;
     }
     /**
+     * A resource property field representing the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return A resource property field representing the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -185,7 +207,6 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
      * 
      */
     public Output<String> state() {
@@ -204,6 +225,20 @@ public class PcaCertificate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The validity period of the root CA certificate, in years.

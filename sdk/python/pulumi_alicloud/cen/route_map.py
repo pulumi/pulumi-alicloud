@@ -1063,6 +1063,8 @@ class RouteMap(pulumi.CustomResource):
             prepend_as_paths=["65501"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN RouteMap can be imported using the id, e.g.
@@ -1180,6 +1182,8 @@ class RouteMap(pulumi.CustomResource):
             preference=20,
             prepend_as_paths=["65501"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

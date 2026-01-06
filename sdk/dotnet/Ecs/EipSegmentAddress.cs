@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EIP Segment Address can be imported using the id, e.g.

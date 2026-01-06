@@ -372,6 +372,8 @@ class SearchIndex(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OTS search index can be imported using id, e.g.
@@ -496,6 +498,8 @@ class SearchIndex(pulumi.CustomResource):
                 }],
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

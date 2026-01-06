@@ -21,17 +21,17 @@ class WaitingRoomRuleArgs:
     def __init__(__self__, *,
                  rule: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  status: pulumi.Input[_builtins.str],
                  waiting_room_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a WaitingRoomRule resource.
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.str] status: Rule enabled status, supporting:
-               -'on': means enabled.
-               -'off': means disabled.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] status: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         pulumi.set(__self__, "rule", rule)
@@ -66,23 +66,23 @@ class WaitingRoomRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.str]:
         """
-        Rule enabled status, supporting:
-        -'on': means enabled.
-        -'off': means disabled.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "status")
 
@@ -108,7 +108,7 @@ class _WaitingRoomRuleState:
     def __init__(__self__, *,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
                  waiting_room_rule_id: Optional[pulumi.Input[_builtins.int]] = None):
@@ -116,10 +116,10 @@ class _WaitingRoomRuleState:
         Input properties used for looking up and filtering WaitingRoomRule resources.
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.str] status: Rule enabled status, supporting:
-               -'on': means enabled.
-               -'off': means disabled.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] status: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         :param pulumi.Input[_builtins.int] waiting_room_rule_id: The rule ID, which can be used to query a specific rule.
         """
@@ -162,23 +162,23 @@ class _WaitingRoomRuleState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Rule enabled status, supporting:
-        -'on': means enabled.
-        -'off': means disabled.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "status")
 
@@ -219,7 +219,7 @@ class WaitingRoomRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -274,6 +274,8 @@ class WaitingRoomRule(pulumi.CustomResource):
             site_id=default_site.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Waiting Room Rule can be imported using the id, e.g.
@@ -286,10 +288,10 @@ class WaitingRoomRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.str] status: Rule enabled status, supporting:
-               -'on': means enabled.
-               -'off': means disabled.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] status: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         ...
@@ -349,6 +351,8 @@ class WaitingRoomRule(pulumi.CustomResource):
             site_id=default_site.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Waiting Room Rule can be imported using the id, e.g.
@@ -374,7 +378,7 @@ class WaitingRoomRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  rule: Optional[pulumi.Input[_builtins.str]] = None,
                  rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -414,7 +418,7 @@ class WaitingRoomRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             rule: Optional[pulumi.Input[_builtins.str]] = None,
             rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
             waiting_room_rule_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'WaitingRoomRule':
@@ -427,10 +431,10 @@ class WaitingRoomRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rule: The content of the rule, the implemented policy or conditional expression.
         :param pulumi.Input[_builtins.str] rule_name: Rule name, optional, used to query by waiting room bypass rule name.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.str] status: Rule enabled status, supporting:
-               -'on': means enabled.
-               -'off': means disabled.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] status: Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+               - on: open.
+               - off: close.
         :param pulumi.Input[_builtins.str] waiting_room_id: Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         :param pulumi.Input[_builtins.int] waiting_room_rule_id: The rule ID, which can be used to query a specific rule.
         """
@@ -464,7 +468,7 @@ class WaitingRoomRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
@@ -474,9 +478,9 @@ class WaitingRoomRule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Rule enabled status, supporting:
-        -'on': means enabled.
-        -'off': means disabled.
+        Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+        - on: open.
+        - off: close.
         """
         return pulumi.get(self, "status")
 

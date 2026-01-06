@@ -575,6 +575,8 @@ class IpamIpamPool(pulumi.CustomResource):
             ip_version="IPv4")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam Pool can be imported using the id, e.g.
@@ -646,6 +648,8 @@ class IpamIpamPool(pulumi.CustomResource):
             source_ipam_pool_id=parent_ipam_pool.id,
             ip_version="IPv4")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

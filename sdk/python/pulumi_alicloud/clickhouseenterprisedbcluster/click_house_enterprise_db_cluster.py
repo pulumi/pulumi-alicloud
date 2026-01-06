@@ -367,6 +367,8 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Enterprise D B Cluster can be imported using the id, e.g.
@@ -469,6 +471,8 @@ class ClickHouseEnterpriseDbCluster(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Actiontrail History Delivery Job resource.
+// Provides a Action Trail History Delivery Job resource.
 //
-// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+// Delivery History Tasks.
+//
+// For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
 //
 // > **NOTE:** Available since v1.139.0.
 //
@@ -33,12 +35,13 @@ import (
 //
 // import (
 //
+//	"encoding/json"
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/actiontrail"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -51,41 +54,56 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			example, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			defaultGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				ProjectName: pulumi.Sprintf("%v-%v", name, _default.Result),
-//				Description: pulumi.String("tf actiontrail example"),
+//			defaultGetRoles, err := ram.GetRoles(ctx, &ram.GetRolesArgs{
+//				NameRegex: pulumi.StringRef("AliyunServiceRoleForActionTrail"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Description: pulumi.String(name),
+//				ProjectName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTrail, err := actiontrail.NewTrail(ctx, "example", &actiontrail.TrailArgs{
-//				TrailName: pulumi.Sprintf("%v-%v", name, _default.Result),
-//				SlsProjectArn: exampleProject.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("acs:log:%v:%v:project/%v", example.Regions[0].Id, exampleGetAccount.Id, name), nil
+//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
+//				map[string]interface{}{
+//					"ServiceName": "PDS",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			defaultTrail, err := actiontrail.NewTrail(ctx, "default", &actiontrail.TrailArgs{
+//				EventRw: pulumi.String("Write"),
+//				SlsProjectArn: defaultProject.ProjectName.ApplyT(func(projectName string) (string, error) {
+//					return fmt.Sprintf("acs:log:%v:%v:project/%v", _default.Regions[0].Id, defaultGetAccount.Id, projectName), nil
 //				}).(pulumi.StringOutput),
+//				TrailName:            pulumi.String(name),
+//				SlsWriteRoleArn:      pulumi.String(defaultGetRoles.Roles[0].Arn),
+//				TrailRegion:          pulumi.String("All"),
+//				IsOrganizationTrail:  pulumi.Bool(false),
+//				Status:               pulumi.String("Enable"),
+//				EventSelectors:       pulumi.String(json0),
+//				DataEventTrailRegion: pulumi.String("cn-hangzhou"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "example", &actiontrail.HistoryDeliveryJobArgs{
-//				TrailName: exampleTrail.ID(),
+//			_, err = actiontrail.NewHistoryDeliveryJob(ctx, "default", &actiontrail.HistoryDeliveryJobArgs{
+//				TrailName: defaultTrail.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,9 +114,11 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
-// Actiontrail History Delivery Job can be imported using the id, e.g.
+// Action Trail History Delivery Job can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example <id>
@@ -106,9 +126,11 @@ import (
 type HistoryDeliveryJob struct {
 	pulumi.CustomResourceState
 
-	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The status of the resource
 	Status pulumi.IntOutput `pulumi:"status"`
-	// The name of the trail for which you want to create a historical event delivery task.
+	// The Track Name.
 	TrailName pulumi.StringOutput `pulumi:"trailName"`
 }
 
@@ -145,16 +167,20 @@ func GetHistoryDeliveryJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HistoryDeliveryJob resources.
 type historyDeliveryJobState struct {
-	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
+	// The status of the resource
 	Status *int `pulumi:"status"`
-	// The name of the trail for which you want to create a historical event delivery task.
+	// The Track Name.
 	TrailName *string `pulumi:"trailName"`
 }
 
 type HistoryDeliveryJobState struct {
-	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
+	// The status of the resource
 	Status pulumi.IntPtrInput
-	// The name of the trail for which you want to create a historical event delivery task.
+	// The Track Name.
 	TrailName pulumi.StringPtrInput
 }
 
@@ -163,13 +189,13 @@ func (HistoryDeliveryJobState) ElementType() reflect.Type {
 }
 
 type historyDeliveryJobArgs struct {
-	// The name of the trail for which you want to create a historical event delivery task.
+	// The Track Name.
 	TrailName string `pulumi:"trailName"`
 }
 
 // The set of arguments for constructing a HistoryDeliveryJob resource.
 type HistoryDeliveryJobArgs struct {
-	// The name of the trail for which you want to create a historical event delivery task.
+	// The Track Name.
 	TrailName pulumi.StringInput
 }
 
@@ -260,12 +286,17 @@ func (o HistoryDeliveryJobOutput) ToHistoryDeliveryJobOutputWithContext(ctx cont
 	return o
 }
 
-// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+// The creation time of the resource
+func (o HistoryDeliveryJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *HistoryDeliveryJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The status of the resource
 func (o HistoryDeliveryJobOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *HistoryDeliveryJob) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
-// The name of the trail for which you want to create a historical event delivery task.
+// The Track Name.
 func (o HistoryDeliveryJobOutput) TrailName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HistoryDeliveryJob) pulumi.StringOutput { return v.TrailName }).(pulumi.StringOutput)
 }

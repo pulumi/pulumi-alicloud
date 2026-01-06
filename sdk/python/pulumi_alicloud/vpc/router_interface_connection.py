@@ -270,6 +270,8 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The router interface connection can be imported using the id, e.g.
@@ -353,6 +355,8 @@ class RouterInterfaceConnection(pulumi.CustomResource):
             opposite_interface_id=opposite.id,
             opts = pulumi.ResourceOptions(depends_on=[bar_router_interface_connection]))
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -274,6 +274,8 @@ class CustomScenePolicy(pulumi.CustomResource):
             custom_scene_policy_name="example-policy")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Custom Scene Policy can be imported using the id, e.g.
@@ -332,6 +334,8 @@ class CustomScenePolicy(pulumi.CustomResource):
             template="promotion",
             custom_scene_policy_name="example-policy")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

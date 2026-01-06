@@ -235,6 +235,8 @@ class Activation(pulumi.CustomResource):
             time_to_live_in_hours=4)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Activation can be imported using the id, e.g.
@@ -281,6 +283,8 @@ class Activation(pulumi.CustomResource):
             ip_address_range="0.0.0.0/0",
             time_to_live_in_hours=4)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

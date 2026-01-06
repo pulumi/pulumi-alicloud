@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.hbr.Vault("example", {vaultName: `example_value_${_default.result}`});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Hybrid Backup Recovery (HBR) Vault can be imported using the id, e.g.

@@ -25,6 +25,7 @@ class InstanceArgs:
                  auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 cpu_options: Optional[pulumi.Input['InstanceCpuOptionsArgs']] = None,
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -111,6 +112,21 @@ class InstanceArgs:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+        :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -133,20 +149,6 @@ class InstanceArgs:
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -253,6 +255,8 @@ class InstanceArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if cpu_options is not None:
+            pulumi.set(__self__, "cpu_options", cpu_options)
         if credit_specification is not None:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
@@ -463,6 +467,32 @@ class InstanceArgs:
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
+    @pulumi.getter(name="cpuOptions")
+    def cpu_options(self) -> Optional[pulumi.Input['InstanceCpuOptionsArgs']]:
+        """
+        The options of cpu. See `cpu_options` below.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        """
+        return pulumi.get(self, "cpu_options")
+
+    @cpu_options.setter
+    def cpu_options(self, value: Optional[pulumi.Input['InstanceCpuOptionsArgs']]):
+        pulumi.set(self, "cpu_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="creditSpecification")
     def credit_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -653,20 +683,6 @@ class InstanceArgs:
     def image_options(self) -> Optional[pulumi.Input['InstanceImageOptionsArgs']]:
         """
         The options of images. See `image_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "image_options")
 
@@ -1438,6 +1454,7 @@ class _InstanceState:
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
+                 cpu_options: Optional[pulumi.Input['InstanceCpuOptionsArgs']] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
@@ -1536,6 +1553,21 @@ class _InstanceState:
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
+        :param pulumi.Input['InstanceCpuOptionsArgs'] cpu_options: The options of cpu. See `cpu_options` below.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
@@ -1561,20 +1593,6 @@ class _InstanceState:
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         :param pulumi.Input['InstanceImageOptionsArgs'] image_options: The options of images. See `image_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -1691,6 +1709,8 @@ class _InstanceState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if cpu_options is not None:
+            pulumi.set(__self__, "cpu_options", cpu_options)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if credit_specification is not None:
@@ -1935,6 +1955,32 @@ class _InstanceState:
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
+    @pulumi.getter(name="cpuOptions")
+    def cpu_options(self) -> Optional[pulumi.Input['InstanceCpuOptionsArgs']]:
+        """
+        The options of cpu. See `cpu_options` below.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        """
+        return pulumi.get(self, "cpu_options")
+
+    @cpu_options.setter
+    def cpu_options(self, value: Optional[pulumi.Input['InstanceCpuOptionsArgs']]):
+        pulumi.set(self, "cpu_options", value)
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -2161,20 +2207,6 @@ class _InstanceState:
     def image_options(self) -> Optional[pulumi.Input['InstanceImageOptionsArgs']]:
         """
         The options of images. See `image_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "image_options")
 
@@ -3044,6 +3076,7 @@ class Instance(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 cpu_options: Optional[pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3186,6 +3219,8 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3209,6 +3244,21 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
+        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[_builtins.str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -3231,20 +3281,6 @@ class Instance(pulumi.CustomResource):
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -3411,6 +3447,8 @@ class Instance(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use the existing ecs-instance module
@@ -3443,6 +3481,7 @@ class Instance(pulumi.CustomResource):
                  auto_release_time: Optional[pulumi.Input[_builtins.str]] = None,
                  auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 cpu_options: Optional[pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
                  credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3532,6 +3571,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["auto_release_time"] = auto_release_time
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["cpu_options"] = cpu_options
             __props__.__dict__["credit_specification"] = credit_specification
             __props__.__dict__["data_disks"] = data_disks
             __props__.__dict__["dedicated_host_id"] = dedicated_host_id
@@ -3637,6 +3677,7 @@ class Instance(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             cpu: Optional[pulumi.Input[_builtins.int]] = None,
+            cpu_options: Optional[pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
@@ -3740,6 +3781,21 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[_builtins.str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[_builtins.int] cpu: The number of vCPUs.
+        :param pulumi.Input[Union['InstanceCpuOptionsArgs', 'InstanceCpuOptionsArgsDict']] cpu_options: The options of cpu. See `cpu_options` below.
+               
+               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+               
+               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+               
+               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+               
+               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+               
+               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+               
+               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[_builtins.str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
@@ -3765,20 +3821,6 @@ class Instance(pulumi.CustomResource):
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[_builtins.str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect. If you do not use `launch_template_id` or `launch_template_name` to specify a launch template, you must specify `image_id`.
         :param pulumi.Input[Union['InstanceImageOptionsArgs', 'InstanceImageOptionsArgsDict']] image_options: The options of images. See `image_options` below.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[_builtins.bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[_builtins.str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`. **NOTE:** From version 1.243.0, the default value `PostPaid` will be removed.
                **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
@@ -3891,6 +3933,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["cpu_options"] = cpu_options
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["data_disks"] = data_disks
@@ -4024,6 +4067,28 @@ class Instance(pulumi.CustomResource):
         The number of vCPUs.
         """
         return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuOptions")
+    def cpu_options(self) -> pulumi.Output['outputs.InstanceCpuOptions']:
+        """
+        The options of cpu. See `cpu_options` below.
+
+        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+
+        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
+
+        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+
+        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+
+        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+
+        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        """
+        return pulumi.get(self, "cpu_options")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -4180,20 +4245,6 @@ class Instance(pulumi.CustomResource):
     def image_options(self) -> pulumi.Output['outputs.InstanceImageOptions']:
         """
         The options of images. See `image_options` below.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to `PrePaid` by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "image_options")
 

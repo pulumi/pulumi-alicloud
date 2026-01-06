@@ -250,6 +250,8 @@ class ZonalAccount(pulumi.CustomResource):
             account_password="Example1234")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB Zonal account can be imported using the id, e.g.
@@ -319,6 +321,8 @@ class ZonalAccount(pulumi.CustomResource):
             account_name="terraform_example",
             account_password="Example1234")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -88,6 +88,8 @@ namespace Pulumi.AliCloud.MongoDB
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MongoDB replica set role can be imported using the id, e.g. Composed of instance ID, network type and role ID with format `&lt;db_instance_id&gt;:&lt;network_type&gt;:&lt;role_id&gt;`.

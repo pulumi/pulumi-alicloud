@@ -51,6 +51,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Waf Rule can be imported using the id, e.g.
@@ -99,17 +101,11 @@ export class WafRule extends pulumi.CustomResource {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     declare public readonly rulesetId: pulumi.Output<number | undefined>;
-    /**
-     * Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     */
     declare public readonly shared: pulumi.Output<outputs.esa.WafRuleShared | undefined>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    declare public readonly siteId: pulumi.Output<number>;
-    /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     */
+    declare public readonly siteId: pulumi.Output<string>;
     declare public readonly siteVersion: pulumi.Output<number | undefined>;
     /**
      * The unique identifier of the WAF rule.
@@ -173,17 +169,11 @@ export interface WafRuleState {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     rulesetId?: pulumi.Input<number>;
-    /**
-     * Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     */
     shared?: pulumi.Input<inputs.esa.WafRuleShared>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<number>;
-    /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     */
+    siteId?: pulumi.Input<string>;
     siteVersion?: pulumi.Input<number>;
     /**
      * The unique identifier of the WAF rule.
@@ -207,16 +197,10 @@ export interface WafRuleArgs {
      * The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
      */
     rulesetId?: pulumi.Input<number>;
-    /**
-     * Shared configuration attributes used across multiple rules. **Note: The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.** See `shared` below.
-     */
     shared?: pulumi.Input<inputs.esa.WafRuleShared>;
     /**
      * The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId: pulumi.Input<number>;
-    /**
-     * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
-     */
+    siteId: pulumi.Input<string>;
     siteVersion?: pulumi.Input<number>;
 }

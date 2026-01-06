@@ -133,6 +133,8 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
             domain_names=[default_alidns_domain.domain_name])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS domain attachment can be imported using the id, e.g.
@@ -181,6 +183,8 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
             instance_id=default_alidns_instance.id,
             domain_names=[default_alidns_domain.domain_name])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

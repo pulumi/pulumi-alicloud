@@ -228,6 +228,8 @@ class BgpIp(pulumi.CustomResource):
             member_uid=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Anti-DDoS Pro (DdosBgp) Ip can be imported using the id, e.g.
@@ -283,6 +285,8 @@ class BgpIp(pulumi.CustomResource):
             ip=default_eip_address.ip_address,
             member_uid=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

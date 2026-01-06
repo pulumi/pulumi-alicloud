@@ -197,6 +197,8 @@ class InstanceMember(pulumi.CustomResource):
             member_uid=default_account.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Instance Member can be imported using the id, e.g.
@@ -244,6 +246,8 @@ class InstanceMember(pulumi.CustomResource):
             member_desc=f"{name}-{default['result']}",
             member_uid=default_account.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

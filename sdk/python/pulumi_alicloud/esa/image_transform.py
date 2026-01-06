@@ -323,6 +323,8 @@ class ImageTransform(pulumi.CustomResource):
             enable="off")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Image Transform can be imported using the id, e.g.
@@ -378,6 +380,8 @@ class ImageTransform(pulumi.CustomResource):
             rule_enable="off",
             enable="off")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

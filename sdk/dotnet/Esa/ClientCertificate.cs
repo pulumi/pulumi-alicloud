@@ -44,6 +44,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Client Certificate can be imported using the id, e.g.
@@ -69,12 +71,16 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Certificate signing request content.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("csr")]
         public Output<string?> Csr { get; private set; } = null!;
 
         /// <summary>
         /// The private key algorithm type.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("pkeyType")]
         public Output<string?> PkeyType { get; private set; } = null!;
@@ -83,7 +89,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
         /// The certificate status. Valid values: `Revoked`, `Active`.
@@ -93,6 +99,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Certificate validity period.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("validityDays")]
         public Output<string> ValidityDays { get; private set; } = null!;
@@ -145,12 +153,16 @@ namespace Pulumi.AliCloud.Esa
     {
         /// <summary>
         /// Certificate signing request content.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
 
         /// <summary>
         /// The private key algorithm type.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pkeyType")]
         public Input<string>? PkeyType { get; set; }
@@ -159,7 +171,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// The certificate status. Valid values: `Revoked`, `Active`.
@@ -169,6 +181,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Certificate validity period.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("validityDays", required: true)]
         public Input<string> ValidityDays { get; set; } = null!;
@@ -195,12 +209,16 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Certificate signing request content.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("csr")]
         public Input<string>? Csr { get; set; }
 
         /// <summary>
         /// The private key algorithm type.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("pkeyType")]
         public Input<string>? PkeyType { get; set; }
@@ -209,7 +227,7 @@ namespace Pulumi.AliCloud.Esa
         /// Site Id
         /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         /// <summary>
         /// The certificate status. Valid values: `Revoked`, `Active`.
@@ -219,6 +237,8 @@ namespace Pulumi.AliCloud.Esa
 
         /// <summary>
         /// Certificate validity period.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("validityDays")]
         public Input<string>? ValidityDays { get; set; }

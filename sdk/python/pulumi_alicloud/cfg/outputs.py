@@ -23,6 +23,7 @@ __all__ = [
     'CompliancePackConfigRule',
     'CompliancePackConfigRuleConfigRuleParameter',
     'CompliancePackConfigRuleId',
+    'ReportTemplateReportScope',
     'RuleCompliance',
     'GetAggregateCompliancePacksPackResult',
     'GetAggregateCompliancePacksPackConfigRuleResult',
@@ -374,6 +375,72 @@ class CompliancePackConfigRuleId(dict):
         The rule ID of Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
+
+
+@pulumi.output_type
+class ReportTemplateReportScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchType":
+            suggest = "match_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReportTemplateReportScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReportTemplateReportScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReportTemplateReportScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 match_type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Key for reporting scope, currently supported:
+               - AggregatorId
+               - CompliancePackId
+               - RuleId
+        :param _builtins.str match_type: The matching logic. Currently, only In is supported.
+        :param _builtins.str value: The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if match_type is not None:
+            pulumi.set(__self__, "match_type", match_type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Key for reporting scope, currently supported:
+        - AggregatorId
+        - CompliancePackId
+        - RuleId
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="matchType")
+    def match_type(self) -> Optional[_builtins.str]:
+        """
+        The matching logic. Currently, only In is supported.
+        """
+        return pulumi.get(self, "match_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -20,6 +20,8 @@ import (
 //
 // > **NOTE:** Available since v1.43.0.
 //
+// > **WARNING:** Do not mix the use of the `resources` field in this resource with the separate `vpc.VpcNetworkAclAttachment` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -106,6 +108,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //

@@ -338,6 +338,8 @@ class AccessRule(pulumi.CustomResource):
             file_system_type="extreme")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NAS Access Rule can be imported using the id, e.g.
@@ -398,6 +400,8 @@ class AccessRule(pulumi.CustomResource):
             priority=1,
             file_system_type="extreme")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

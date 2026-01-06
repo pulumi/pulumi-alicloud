@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Ess
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ess notification can be imported using the id, e.g.

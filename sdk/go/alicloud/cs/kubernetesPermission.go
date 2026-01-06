@@ -24,6 +24,8 @@ import (
 // > **NOTE:** Available since v1.122.0.
 //
 // ## Example Usage
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type KubernetesPermission struct {
 	pulumi.CustomResourceState
 

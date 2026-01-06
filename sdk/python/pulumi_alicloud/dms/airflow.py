@@ -607,6 +607,8 @@ class Airflow(pulumi.CustomResource):
             workspace_id=workspace.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dms Airflow can be imported using the id, e.g.
@@ -690,6 +692,8 @@ class Airflow(pulumi.CustomResource):
             vswitch_id=default_get_switches.ids[0],
             workspace_id=workspace.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

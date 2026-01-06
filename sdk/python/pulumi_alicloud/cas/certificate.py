@@ -441,6 +441,8 @@ class Certificate(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cert: Cert of the Certificate in which the Certificate will add.
@@ -534,6 +536,8 @@ class Certificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

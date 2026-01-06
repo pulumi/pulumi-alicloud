@@ -145,6 +145,8 @@ namespace Pulumi.AliCloud.Vpn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// VPN Pbr route entry can be imported using the id, e.g.

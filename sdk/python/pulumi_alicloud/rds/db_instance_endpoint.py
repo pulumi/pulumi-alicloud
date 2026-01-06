@@ -413,6 +413,8 @@ class DbInstanceEndpoint(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS database endpoint feature can be imported using the id, e.g.
@@ -503,6 +505,8 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                 "weight": 25,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

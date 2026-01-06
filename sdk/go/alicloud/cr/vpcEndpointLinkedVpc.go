@@ -101,6 +101,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // CR Vpc Endpoint Linked Vpc can be imported using the id, e.g.

@@ -183,6 +183,8 @@ class RoleAttachment(pulumi.CustomResource):
             instance_ids=[__item.id for __item in [foo]])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_ids: The list of ECS instance's IDs.
@@ -273,6 +275,8 @@ class RoleAttachment(pulumi.CustomResource):
             role_name=role.name,
             instance_ids=[__item.id for __item in [foo]])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param RoleAttachmentArgs args: The arguments to use to populate this resource's properties.

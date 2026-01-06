@@ -436,6 +436,8 @@ class Application(pulumi.CustomResource):
             package_type="JAR")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS application can be imported using the id, e.g.
@@ -500,6 +502,8 @@ class Application(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             package_type="JAR")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

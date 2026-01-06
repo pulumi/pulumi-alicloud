@@ -249,6 +249,8 @@ class K8sCluster(pulumi.CustomResource):
         default_k8s_cluster = alicloud.edas.K8sCluster("default", cs_cluster_id=default_node_pool.cluster_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS cluster can be imported using the id, e.g.
@@ -324,6 +326,8 @@ class K8sCluster(pulumi.CustomResource):
             desired_size="2")
         default_k8s_cluster = alicloud.edas.K8sCluster("default", cs_cluster_id=default_node_pool.cluster_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -321,6 +321,8 @@ class MessageContact(pulumi.CustomResource):
             message_contact_name="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Message Contact can be imported using the id, e.g.
@@ -386,6 +388,8 @@ class MessageContact(pulumi.CustomResource):
             email_address="resourceexample@126.com",
             message_contact_name="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

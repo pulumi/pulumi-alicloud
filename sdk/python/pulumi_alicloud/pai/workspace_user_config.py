@@ -193,6 +193,8 @@ class WorkspaceUserConfig(pulumi.CustomResource):
             config_value=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace User Config can be imported using the id, e.g.
@@ -238,6 +240,8 @@ class WorkspaceUserConfig(pulumi.CustomResource):
             config_key="customizePAIAssumedRole",
             config_value=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

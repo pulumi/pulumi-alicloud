@@ -33,14 +33,20 @@ namespace Pulumi.AliCloud.Rds
     ///     var @default = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
     ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
+    ///         EngineVersion = "8.0",
+    ///         Category = "HighAvailability",
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         InstanceChargeType = "PostPaid",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -60,11 +66,15 @@ namespace Pulumi.AliCloud.Rds
     ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[1]?.InstanceClass),
-    ///         InstanceStorage = 10,
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
+    ///         InstanceChargeType = "Postpaid",
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "local_ssd",
+    ///         DbIsIgnoreCase = false,
     ///     });
     /// 
     ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("default", new()
@@ -76,6 +86,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
@@ -135,6 +147,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> AccountType { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to apply password policy
+        /// </summary>
+        [Output("checkPolicy")]
+        public Output<bool?> CheckPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the instance.
         /// </summary>
         [Output("dbInstanceId")]
@@ -183,7 +201,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool?> ResetPermissionFlag { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Unavailable`.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -304,6 +322,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountType { get; set; }
 
         /// <summary>
+        /// Whether to apply password policy
+        /// </summary>
+        [Input("checkPolicy")]
+        public Input<bool>? CheckPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the instance.
         /// </summary>
         [Input("dbInstanceId")]
@@ -367,6 +391,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("resetPermissionFlag")]
         public Input<bool>? ResetPermissionFlag { get; set; }
+
+        /// <summary>
+        /// The status of the resource
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// The attribute has been deprecated from 1.120.0 and using `AccountType` instead.
@@ -441,6 +471,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? AccountType { get; set; }
 
         /// <summary>
+        /// Whether to apply password policy
+        /// </summary>
+        [Input("checkPolicy")]
+        public Input<bool>? CheckPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the instance.
         /// </summary>
         [Input("dbInstanceId")]
@@ -506,7 +542,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Unavailable`.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

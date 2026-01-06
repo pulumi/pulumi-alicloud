@@ -12,6 +12,7 @@ from .asset_selection_config import *
 from .attack_path_sensitive_asset_config import *
 from .backup_policy import *
 from .baseline_strategy import *
+from .check_config import *
 from .client_file_protect import *
 from .client_user_define_rule import *
 from .cycle_task import *
@@ -20,6 +21,8 @@ from .get_anti_brute_force_rules import *
 from .get_assets import *
 from .get_backup_policies import *
 from .get_baseline_strategies import *
+from .get_check_item_configs import *
+from .get_check_structures import *
 from .get_honey_pots import *
 from .get_honeypot_images import *
 from .get_honeypot_nodes import *

@@ -286,6 +286,8 @@ class Acl(pulumi.CustomResource):
             entry_description="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Acl can be imported using the id, e.g.
@@ -332,6 +334,8 @@ class Acl(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

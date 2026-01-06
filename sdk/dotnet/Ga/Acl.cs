@@ -44,6 +44,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Acl can be imported using the id, e.g.

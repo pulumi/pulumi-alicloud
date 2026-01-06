@@ -93,6 +93,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Actiontrail Trail can be imported using the id, e.g.
@@ -123,7 +125,7 @@ type Trail struct {
 	MnsTopicArn pulumi.StringPtrOutput `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs.
 	OssBucketName pulumi.StringPtrOutput `pulumi:"ossBucketName"`
@@ -142,7 +144,7 @@ type Trail struct {
 	// The ARN of the role that ActionTrail assumes to deliver operation events to the Simple Log Service project.
 	SlsWriteRoleArn pulumi.StringOutput `pulumi:"slsWriteRoleArn"`
 	// The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The name of the trail to be created.
 	TrailName pulumi.StringOutput `pulumi:"trailName"`
 	// The region of the trail.
@@ -199,7 +201,7 @@ type trailState struct {
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs.
 	OssBucketName *string `pulumi:"ossBucketName"`
@@ -246,7 +248,7 @@ type TrailState struct {
 	MnsTopicArn pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs.
 	OssBucketName pulumi.StringPtrInput
@@ -295,7 +297,7 @@ type trailArgs struct {
 	MnsTopicArn *string `pulumi:"mnsTopicArn"`
 	// Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name *string `pulumi:"name"`
 	// The OSS bucket to which the trail delivers logs.
 	OssBucketName *string `pulumi:"ossBucketName"`
@@ -339,7 +341,7 @@ type TrailArgs struct {
 	MnsTopicArn pulumi.StringPtrInput
 	// Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 	//
-	// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 	Name pulumi.StringPtrInput
 	// The OSS bucket to which the trail delivers logs.
 	OssBucketName pulumi.StringPtrInput
@@ -494,7 +496,7 @@ func (o TrailOutput) MnsTopicArn() pulumi.StringPtrOutput {
 
 // Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
 //
-// Deprecated: Field `name` has been deprecated from provider version 1.95.0. New field `trailName` instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.95.0. New field 'trail_name' instead.
 func (o TrailOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -537,8 +539,8 @@ func (o TrailOutput) SlsWriteRoleArn() pulumi.StringOutput {
 }
 
 // The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
-func (o TrailOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Trail) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o TrailOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trail) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The name of the trail to be created.

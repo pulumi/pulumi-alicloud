@@ -458,6 +458,8 @@ class Template(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Template can be imported using the id or template_name, e.g.
@@ -527,6 +529,8 @@ class Template(pulumi.CustomResource):
                 "For": "acceptance Test",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

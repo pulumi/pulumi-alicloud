@@ -57,6 +57,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Global Accelerator (GA) Basic Accelerate IP can be imported using the id, e.g.

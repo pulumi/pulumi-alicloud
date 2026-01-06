@@ -415,6 +415,8 @@ class Certificate(pulumi.CustomResource):
             type="lets_encrypt")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Certificate can be imported using the id, e.g.
@@ -465,6 +467,8 @@ class Certificate(pulumi.CustomResource):
             site_id=default.sites[0].id,
             type="lets_encrypt")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

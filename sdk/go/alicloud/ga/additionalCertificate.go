@@ -203,6 +203,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Global Accelerator (GA) Additional Certificate can be imported using the id, e.g.

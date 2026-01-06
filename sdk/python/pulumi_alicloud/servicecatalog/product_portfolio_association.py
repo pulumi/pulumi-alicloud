@@ -139,6 +139,8 @@ class ProductPortfolioAssociation(pulumi.CustomResource):
             product_id=default_ret_b_jw.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Service Catalog Product Portfolio Association can be imported using the id, e.g.
@@ -193,6 +195,8 @@ class ProductPortfolioAssociation(pulumi.CustomResource):
             portfolio_id=default0y_ag_j8.id,
             product_id=default_ret_b_jw.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

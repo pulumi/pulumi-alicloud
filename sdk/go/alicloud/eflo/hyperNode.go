@@ -66,6 +66,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Eflo Hyper Node can be imported using the id, e.g.
@@ -76,12 +78,21 @@ import (
 type HyperNode struct {
 	pulumi.CustomResourceState
 
+	// Cluster ID
+	ClusterId pulumi.StringPtrOutput `pulumi:"clusterId"`
 	// The creation time of the resource
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Number of the cluster to which the supercompute node belongs
+	CreateTime pulumi.StringOutput          `pulumi:"createTime"`
+	DataDisks  HyperNodeDataDiskArrayOutput `pulumi:"dataDisks"`
+	// The host name prefix of the sub computing node
+	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
+	// Number of the cluster to which the hyper computing node belongs
 	HpnZone pulumi.StringPtrOutput `pulumi:"hpnZone"`
-	// The model used by the super computing node
+	// Login Password of the sub computing node
+	LoginPassword pulumi.StringPtrOutput `pulumi:"loginPassword"`
+	// The model used by the hyper computing node
 	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
+	// Node group ID
+	NodeGroupId pulumi.StringPtrOutput `pulumi:"nodeGroupId"`
 	// The duration of the instance purchase, in units.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -96,9 +107,9 @@ type HyperNode struct {
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Super Node Architecture
+	// Hyper Node Architecture
 	ServerArch pulumi.StringPtrOutput `pulumi:"serverArch"`
-	// The number of installments of the supercomputing node of the fixed fee installment.
+	// The number of installments of the hyper computing node of the fixed fee installment.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrOutput `pulumi:"stageNum"`
@@ -106,7 +117,13 @@ type HyperNode struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The zone where the super compute node is located
+	// Custom user data for the sub computing node
+	UserData pulumi.StringPtrOutput `pulumi:"userData"`
+	// The ID of the vpc to which the sub computing node
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
+	// The ID of the vswitch to which the sub computing node
+	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
+	// The zone where the hyper compute node is located
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -120,6 +137,13 @@ func NewHyperNode(ctx *pulumi.Context,
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
 	}
+	if args.LoginPassword != nil {
+		args.LoginPassword = pulumi.ToSecret(args.LoginPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"loginPassword",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HyperNode
 	err := ctx.RegisterResource("alicloud:eflo/hyperNode:HyperNode", name, args, &resource, opts...)
@@ -143,12 +167,21 @@ func GetHyperNode(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HyperNode resources.
 type hyperNodeState struct {
+	// Cluster ID
+	ClusterId *string `pulumi:"clusterId"`
 	// The creation time of the resource
-	CreateTime *string `pulumi:"createTime"`
-	// Number of the cluster to which the supercompute node belongs
+	CreateTime *string             `pulumi:"createTime"`
+	DataDisks  []HyperNodeDataDisk `pulumi:"dataDisks"`
+	// The host name prefix of the sub computing node
+	Hostname *string `pulumi:"hostname"`
+	// Number of the cluster to which the hyper computing node belongs
 	HpnZone *string `pulumi:"hpnZone"`
-	// The model used by the super computing node
+	// Login Password of the sub computing node
+	LoginPassword *string `pulumi:"loginPassword"`
+	// The model used by the hyper computing node
 	MachineType *string `pulumi:"machineType"`
+	// Node group ID
+	NodeGroupId *string `pulumi:"nodeGroupId"`
 	// The duration of the instance purchase, in units.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -163,9 +196,9 @@ type hyperNodeState struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Super Node Architecture
+	// Hyper Node Architecture
 	ServerArch *string `pulumi:"serverArch"`
-	// The number of installments of the supercomputing node of the fixed fee installment.
+	// The number of installments of the hyper computing node of the fixed fee installment.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum *string `pulumi:"stageNum"`
@@ -173,17 +206,32 @@ type hyperNodeState struct {
 	Status *string `pulumi:"status"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The zone where the super compute node is located
+	// Custom user data for the sub computing node
+	UserData *string `pulumi:"userData"`
+	// The ID of the vpc to which the sub computing node
+	VpcId *string `pulumi:"vpcId"`
+	// The ID of the vswitch to which the sub computing node
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone where the hyper compute node is located
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type HyperNodeState struct {
+	// Cluster ID
+	ClusterId pulumi.StringPtrInput
 	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
-	// Number of the cluster to which the supercompute node belongs
+	DataDisks  HyperNodeDataDiskArrayInput
+	// The host name prefix of the sub computing node
+	Hostname pulumi.StringPtrInput
+	// Number of the cluster to which the hyper computing node belongs
 	HpnZone pulumi.StringPtrInput
-	// The model used by the super computing node
+	// Login Password of the sub computing node
+	LoginPassword pulumi.StringPtrInput
+	// The model used by the hyper computing node
 	MachineType pulumi.StringPtrInput
+	// Node group ID
+	NodeGroupId pulumi.StringPtrInput
 	// The duration of the instance purchase, in units.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -198,9 +246,9 @@ type HyperNodeState struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// Super Node Architecture
+	// Hyper Node Architecture
 	ServerArch pulumi.StringPtrInput
-	// The number of installments of the supercomputing node of the fixed fee installment.
+	// The number of installments of the hyper computing node of the fixed fee installment.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrInput
@@ -208,7 +256,13 @@ type HyperNodeState struct {
 	Status pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The zone where the super compute node is located
+	// Custom user data for the sub computing node
+	UserData pulumi.StringPtrInput
+	// The ID of the vpc to which the sub computing node
+	VpcId pulumi.StringPtrInput
+	// The ID of the vswitch to which the sub computing node
+	VswitchId pulumi.StringPtrInput
+	// The zone where the hyper compute node is located
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -217,10 +271,19 @@ func (HyperNodeState) ElementType() reflect.Type {
 }
 
 type hyperNodeArgs struct {
-	// Number of the cluster to which the supercompute node belongs
+	// Cluster ID
+	ClusterId *string             `pulumi:"clusterId"`
+	DataDisks []HyperNodeDataDisk `pulumi:"dataDisks"`
+	// The host name prefix of the sub computing node
+	Hostname *string `pulumi:"hostname"`
+	// Number of the cluster to which the hyper computing node belongs
 	HpnZone *string `pulumi:"hpnZone"`
-	// The model used by the super computing node
+	// Login Password of the sub computing node
+	LoginPassword *string `pulumi:"loginPassword"`
+	// The model used by the hyper computing node
 	MachineType *string `pulumi:"machineType"`
+	// Node group ID
+	NodeGroupId *string `pulumi:"nodeGroupId"`
 	// The duration of the instance purchase, in units.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -233,24 +296,39 @@ type hyperNodeArgs struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The ID of the resource group
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Super Node Architecture
+	// Hyper Node Architecture
 	ServerArch *string `pulumi:"serverArch"`
-	// The number of installments of the supercomputing node of the fixed fee installment.
+	// The number of installments of the hyper computing node of the fixed fee installment.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum *string `pulumi:"stageNum"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
-	// The zone where the super compute node is located
+	// Custom user data for the sub computing node
+	UserData *string `pulumi:"userData"`
+	// The ID of the vpc to which the sub computing node
+	VpcId *string `pulumi:"vpcId"`
+	// The ID of the vswitch to which the sub computing node
+	VswitchId *string `pulumi:"vswitchId"`
+	// The zone where the hyper compute node is located
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a HyperNode resource.
 type HyperNodeArgs struct {
-	// Number of the cluster to which the supercompute node belongs
+	// Cluster ID
+	ClusterId pulumi.StringPtrInput
+	DataDisks HyperNodeDataDiskArrayInput
+	// The host name prefix of the sub computing node
+	Hostname pulumi.StringPtrInput
+	// Number of the cluster to which the hyper computing node belongs
 	HpnZone pulumi.StringPtrInput
-	// The model used by the super computing node
+	// Login Password of the sub computing node
+	LoginPassword pulumi.StringPtrInput
+	// The model used by the hyper computing node
 	MachineType pulumi.StringPtrInput
+	// Node group ID
+	NodeGroupId pulumi.StringPtrInput
 	// The duration of the instance purchase, in units.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -263,15 +341,21 @@ type HyperNodeArgs struct {
 	RenewalStatus pulumi.StringPtrInput
 	// The ID of the resource group
 	ResourceGroupId pulumi.StringPtrInput
-	// Super Node Architecture
+	// Hyper Node Architecture
 	ServerArch pulumi.StringPtrInput
-	// The number of installments of the supercomputing node of the fixed fee installment.
+	// The number of installments of the hyper computing node of the fixed fee installment.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	StageNum pulumi.StringPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
-	// The zone where the super compute node is located
+	// Custom user data for the sub computing node
+	UserData pulumi.StringPtrInput
+	// The ID of the vpc to which the sub computing node
+	VpcId pulumi.StringPtrInput
+	// The ID of the vswitch to which the sub computing node
+	VswitchId pulumi.StringPtrInput
+	// The zone where the hyper compute node is located
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -362,19 +446,43 @@ func (o HyperNodeOutput) ToHyperNodeOutputWithContext(ctx context.Context) Hyper
 	return o
 }
 
+// Cluster ID
+func (o HyperNodeOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The creation time of the resource
 func (o HyperNodeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Number of the cluster to which the supercompute node belongs
+func (o HyperNodeOutput) DataDisks() HyperNodeDataDiskArrayOutput {
+	return o.ApplyT(func(v *HyperNode) HyperNodeDataDiskArrayOutput { return v.DataDisks }).(HyperNodeDataDiskArrayOutput)
+}
+
+// The host name prefix of the sub computing node
+func (o HyperNodeOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Number of the cluster to which the hyper computing node belongs
 func (o HyperNodeOutput) HpnZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.HpnZone }).(pulumi.StringPtrOutput)
 }
 
-// The model used by the super computing node
+// Login Password of the sub computing node
+func (o HyperNodeOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.LoginPassword }).(pulumi.StringPtrOutput)
+}
+
+// The model used by the hyper computing node
 func (o HyperNodeOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Node group ID
+func (o HyperNodeOutput) NodeGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.NodeGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The duration of the instance purchase, in units.
@@ -409,12 +517,12 @@ func (o HyperNodeOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Super Node Architecture
+// Hyper Node Architecture
 func (o HyperNodeOutput) ServerArch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.ServerArch }).(pulumi.StringPtrOutput)
 }
 
-// The number of installments of the supercomputing node of the fixed fee installment.
+// The number of installments of the hyper computing node of the fixed fee installment.
 //
 // > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o HyperNodeOutput) StageNum() pulumi.StringPtrOutput {
@@ -431,7 +539,22 @@ func (o HyperNodeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The zone where the super compute node is located
+// Custom user data for the sub computing node
+func (o HyperNodeOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the vpc to which the sub computing node
+func (o HyperNodeOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the vswitch to which the sub computing node
+func (o HyperNodeOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// The zone where the hyper compute node is located
 func (o HyperNodeOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperNode) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

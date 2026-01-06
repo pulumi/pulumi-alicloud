@@ -135,6 +135,8 @@ class UserGroupAttachment(pulumi.CustomResource):
             user_name=default_user.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM User Group Attachment can be imported using the id, e.g.
@@ -185,6 +187,8 @@ class UserGroupAttachment(pulumi.CustomResource):
             group_name=default_group.id,
             user_name=default_user.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

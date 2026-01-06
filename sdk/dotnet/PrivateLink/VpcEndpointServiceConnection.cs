@@ -100,6 +100,8 @@ namespace Pulumi.AliCloud.PrivateLink
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Private Link Vpc Endpoint Connection can be imported using the id, e.g.

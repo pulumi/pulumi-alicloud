@@ -74,6 +74,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * DNS Monitor Config can be imported using the id, e.g.

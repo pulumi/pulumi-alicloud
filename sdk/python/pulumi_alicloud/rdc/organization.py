@@ -191,6 +191,8 @@ class Organization(pulumi.CustomResource):
             source="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDC Organization can be imported using the id, e.g.
@@ -233,6 +235,8 @@ class Organization(pulumi.CustomResource):
             organization_name="example_value",
             source="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

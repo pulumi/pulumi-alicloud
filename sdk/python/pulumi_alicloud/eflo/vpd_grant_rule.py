@@ -201,6 +201,8 @@ class VpdGrantRule(pulumi.CustomResource):
             instance_id=default_vpd.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Vpd Grant Rule can be imported using the id, e.g.
@@ -254,6 +256,8 @@ class VpdGrantRule(pulumi.CustomResource):
             er_id=default_er.id,
             instance_id=default_vpd.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

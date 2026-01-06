@@ -294,6 +294,8 @@ class Vpd(pulumi.CustomResource):
             resource_group_id=default.groups[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Vpd can be imported using the id, e.g.
@@ -343,6 +345,8 @@ class Vpd(pulumi.CustomResource):
             vpd_name=name,
             resource_group_id=default.groups[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

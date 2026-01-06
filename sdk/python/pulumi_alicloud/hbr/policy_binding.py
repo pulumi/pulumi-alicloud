@@ -567,6 +567,8 @@ class PolicyBinding(pulumi.CustomResource):
             source="prefix-example-update/")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         HBR Policy Binding can be imported using the id, e.g.
@@ -653,6 +655,8 @@ class PolicyBinding(pulumi.CustomResource):
             policy_binding_description="policy binding example (update)",
             source="prefix-example-update/")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

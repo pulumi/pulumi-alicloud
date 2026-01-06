@@ -170,6 +170,8 @@ namespace Pulumi.AliCloud.Nlb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Network Load Balancer (NLB) Load Balancer can be imported using the id, e.g.

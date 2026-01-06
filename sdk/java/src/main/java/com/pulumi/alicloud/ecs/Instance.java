@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.InstanceArgs;
 import com.pulumi.alicloud.ecs.inputs.InstanceState;
+import com.pulumi.alicloud.ecs.outputs.InstanceCpuOptions;
 import com.pulumi.alicloud.ecs.outputs.InstanceDataDisk;
 import com.pulumi.alicloud.ecs.outputs.InstanceImageOptions;
 import com.pulumi.alicloud.ecs.outputs.InstanceMaintenanceTime;
@@ -127,6 +128,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Module Support
  * 
  * You can use the existing ecs-instance module
@@ -224,6 +227,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> cpu() {
         return this.cpu;
+    }
+    /**
+     * The options of cpu. See `cpuOptions` below.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    @Export(name="cpuOptions", refs={InstanceCpuOptions.class}, tree="[0]")
+    private Output<InstanceCpuOptions> cpuOptions;
+
+    /**
+     * @return The options of cpu. See `cpuOptions` below.
+     * 
+     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
+     * 
+     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
+     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
+     * 
+     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
+     * 
+     */
+    public Output<InstanceCpuOptions> cpuOptions() {
+        return this.cpuOptions;
     }
     /**
      * (Available since v1.232.0) The time when the instance was created.
@@ -492,40 +537,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The options of images. See `imageOptions` below.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Export(name="imageOptions", refs={InstanceImageOptions.class}, tree="[0]")
     private Output<InstanceImageOptions> imageOptions;
 
     /**
      * @return The options of images. See `imageOptions` below.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to `PrePaid` by specifying `period` and `periodUnit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internetMaxBandwidthOut&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internetMaxBandwidthOut&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<InstanceImageOptions> imageOptions() {

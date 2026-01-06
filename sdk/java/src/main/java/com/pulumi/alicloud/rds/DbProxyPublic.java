@@ -142,6 +142,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Resource `alicloud.rds.DbProxyPublic` should be created after `alicloud.rds.RdsDbProxy`, so the `dependsOn` statement is necessary.
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * RDS Database Proxy Public Network Address can be imported using the id, e.g.

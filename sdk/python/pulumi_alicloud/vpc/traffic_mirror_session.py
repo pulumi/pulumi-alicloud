@@ -560,6 +560,8 @@ class TrafficMirrorSession(pulumi.CustomResource):
             traffic_mirror_target_type="NetworkInterface")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Traffic Mirror Session can be imported using the id, e.g.
@@ -664,6 +666,8 @@ class TrafficMirrorSession(pulumi.CustomResource):
             traffic_mirror_filter_id=default_traffic_mirror_filter.id,
             traffic_mirror_target_type="NetworkInterface")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

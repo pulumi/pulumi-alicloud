@@ -300,6 +300,8 @@ class KeyPair(pulumi.CustomResource):
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Key pair can be imported using the name, e.g.
@@ -342,6 +344,8 @@ class KeyPair(pulumi.CustomResource):
             key_name="my_public_key",
             public_key="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

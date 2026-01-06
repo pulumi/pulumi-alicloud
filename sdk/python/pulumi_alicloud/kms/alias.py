@@ -146,6 +146,8 @@ class Alias(pulumi.CustomResource):
             key_id=this.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KMS alias can be imported using the id, e.g.
@@ -189,6 +191,8 @@ class Alias(pulumi.CustomResource):
             alias_name="alias/example_kms_alias",
             key_id=this.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

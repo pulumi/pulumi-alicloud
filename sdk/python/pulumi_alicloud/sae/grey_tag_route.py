@@ -287,6 +287,8 @@ class GreyTagRoute(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Serverless App Engine (SAE) GreyTagRoute can be imported using the id, e.g.
@@ -391,6 +393,8 @@ class GreyTagRoute(pulumi.CustomResource):
                 "version": "1.0.0",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

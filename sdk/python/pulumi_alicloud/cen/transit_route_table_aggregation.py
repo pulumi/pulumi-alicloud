@@ -321,6 +321,8 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             transit_route_table_aggregation_description="tf_example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Route Table Aggregation can be imported using the id, e.g.
@@ -383,6 +385,8 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
             transit_route_table_aggregation_name="tf_example",
             transit_route_table_aggregation_description="tf_example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

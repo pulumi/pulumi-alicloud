@@ -225,6 +225,8 @@ class LifecyclePolicy(pulumi.CustomResource):
             paths=["/"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
@@ -272,6 +274,8 @@ class LifecyclePolicy(pulumi.CustomResource):
             storage_type="InfrequentAccess",
             paths=["/"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

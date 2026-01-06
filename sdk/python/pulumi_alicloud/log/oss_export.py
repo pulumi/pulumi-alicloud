@@ -915,6 +915,8 @@ class OssExport(pulumi.CustomResource):
             time_zone="+0800")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log oss export can be imported using the id or name, e.g.
@@ -1011,6 +1013,8 @@ class OssExport(pulumi.CustomResource):
             log_read_role_arn="role_arn_for_sls_read",
             time_zone="+0800")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

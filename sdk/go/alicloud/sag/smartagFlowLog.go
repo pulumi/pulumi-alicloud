@@ -49,6 +49,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Smartag Flow Log can be imported using the id, e.g.

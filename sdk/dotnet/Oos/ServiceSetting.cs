@@ -58,6 +58,8 @@ namespace Pulumi.AliCloud.Oos
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// OOS Service Setting can be imported using the id, e.g.

@@ -172,6 +172,8 @@ class InstanceAclAttachment(pulumi.CustomResource):
             acl_type="white")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Instance Acl Attachment can be imported using the id, e.g.
@@ -228,6 +230,8 @@ class InstanceAclAttachment(pulumi.CustomResource):
             acl_id=default_access_control_list.id,
             acl_type="white")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

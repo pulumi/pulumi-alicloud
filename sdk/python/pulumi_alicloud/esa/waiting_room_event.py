@@ -770,6 +770,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
             session_duration="5")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Waiting Room Event can be imported using the id, e.g.
@@ -872,6 +874,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
             queuing_method="fifo",
             session_duration="5")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

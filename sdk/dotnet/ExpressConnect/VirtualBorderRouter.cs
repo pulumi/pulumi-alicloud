@@ -58,6 +58,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Virtual Border Router can be imported using the id, e.g.
@@ -81,7 +83,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// - When creating a VBR instance for a shared line, you do not need to configure it. The bandwidth of the VBR is the bandwidth set when creating a shared physical line.
         /// </summary>
         [Output("bandwidth")]
-        public Output<int?> Bandwidth { get; private set; } = null!;
+        public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
         /// The circuit code provided by the operator for the physical connection.

@@ -45,6 +45,136 @@ export interface MilvusInstanceVswitchId {
     zoneId?: pulumi.Input<string>;
 }
 
+export interface OpenApiExplorerApiMcpServerAdditionalApiDescription {
+    /**
+     * The API name, such as ListApiMcpServers.
+     */
+    apiName?: pulumi.Input<string>;
+    /**
+     * API structure definition information. You can use this parameter to directly modify the API description and parameter list. You can obtain the API definition information from an API endpoint such as https://api.aliyun.com/meta/v1/products/Ecs/versions/2014-05-26/apis/DescribeInstances/api.json.  
+     *
+     * > **NOTE:** Note that required parameters must not be removed; otherwise, calls by the large model will continuously fail due to missing required parameters.>
+     */
+    apiOverrideJson?: pulumi.Input<string>;
+    /**
+     * API version information, typically in date format, such as 2014-05-26.
+     */
+    apiVersion?: pulumi.Input<string>;
+    /**
+     * Constant configuration information. When the MCP Server needs to fix certain tool parameters to specific values, you can configure this parameter to enforce those fixed values.  
+     * Parameters configured as constants will not be returned as tool parameters through the MCP protocol. Large models cannot define these parameters. During execution, the MCP Server merges these constant values into the API call parameters.   See `constParameters` below.
+     */
+    constParameters?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter>[]>;
+    /**
+     * By default, this feature is disabled, and the MCP Server returns only the structure definition of input parameters. When enabled, the MCP Server returns the output parameter structure definition via the MCP protocol.  
+     *
+     * > **NOTE:** The output parameter structure may be complex. Enabling this feature significantly increases the MCP context size. Use this feature with caution.>
+     */
+    enableOutputSchema?: pulumi.Input<boolean>;
+    /**
+     * Call interception. When this parameter is enabled, the MCP Server returns the complete CLI command name instead of directly executing the API call. Use this option when the API call is long-running or requires interaction with local files. The MCP Server enforces theoretical time limits for single-tool invocations:  
+     * - SSE protocol: up to 30 minutes
+     * - Streamable HTTP protocol: up to 1 minute
+     *
+     * For tools whose single API execution exceeds 30 minutes, we recommend enabling this parameter. Install the CLI and complete account authentication on the machine initiating the call, then combine it with this tool for optimal results.
+     *
+     * > **NOTE:** The identity used to execute the CLI differs from the identity used by the MCP Server. Pay attention to the associated security risks.>
+     */
+    executeCliCommand?: pulumi.Input<boolean>;
+    /**
+     * The name of the cloud product, such as Ecs.
+     */
+    product?: pulumi.Input<string>;
+}
+
+export interface OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter {
+    /**
+     * Parameter location. Currently, except for ROA-style body parameters (which support up to two levels), nested parameter configurations beyond two levels are not supported. If you need to configure a composite data structure, set the Value to a JSON object.  
+     *
+     * For RPC-style APIs, examples include:
+     * - Name: sets the Name parameter to a fixed value.
+     *
+     * For ROA-style APIs, examples include:
+     * - Name: sets a query or path parameter named Name to a fixed value;
+     * - body.Name: sets the Name field within the request body to a fixed value.
+     *
+     * Configurations such as body.Name.Sub are not supported. If you need to set body.Name as a composite structure, specify the Value as a JSON object—for example, {"Sub": "xxx"}.
+     *
+     * > **NOTE:** xMcpRegionId is a built-in MCP parameter used to control the region and can also be configured as a fixed value to invoke services in a specified region.>
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * This property does not have a description in the spec, please add it before generating code.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface OpenApiExplorerApiMcpServerApi {
+    /**
+     * API version information, typically in date format—for example, the version for ECS is 2014-05-26.
+     */
+    apiVersion: pulumi.Input<string>;
+    /**
+     * Product code, such as Ecs.
+     */
+    product: pulumi.Input<string>;
+    /**
+     * Selectors in array format, where each item is an API name—for example, GetApiDefinition or ListApiDefinitions. You can obtain the complete list of supported APIs from the Alibaba Cloud Developer Portal.
+     */
+    selectors: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface OpenApiExplorerApiMcpServerPrompt {
+    /**
+     * Parameters for the prompt. See `arguments` below.
+     */
+    arguments?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerPromptArgument>[]>;
+    /**
+     * Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
+     */
+    content?: pulumi.Input<string>;
+    /**
+     * Description of the prompt parameter.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the prompt parameter.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface OpenApiExplorerApiMcpServerPromptArgument {
+    /**
+     * Description of the API MCP service.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Indicates whether the prompt parameter is required.
+     */
+    required?: pulumi.Input<boolean>;
+}
+
+export interface OpenApiExplorerApiMcpServerTerraformTool {
+    /**
+     * Specifies whether execution is asynchronous. If enabled, the system immediately proceeds to the next task after initiating a task, without waiting for each resource operation to complete.
+     */
+    async?: pulumi.Input<boolean>;
+    code?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    /**
+     * The cleanup policy applied to temporary resources after task completion, based on the task execution status:
+     * - NEVER: Do not delete any created resources, regardless of whether the task succeeds or fails.
+     * - ALWAYS: Immediately destroy all related resources upon task completion, regardless of success or failure.
+     * - ON_FAILURE: Delete related resources only if the task fails; retain them if the task succeeds.
+     */
+    destroyPolicy?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+}
+
 export interface ProviderAssumeRole {
     externalId?: pulumi.Input<string>;
     /**
@@ -3348,6 +3478,24 @@ export namespace cfg {
         configRuleId?: pulumi.Input<string>;
     }
 
+    export interface ReportTemplateReportScope {
+        /**
+         * Key for reporting scope, currently supported:
+         * - AggregatorId
+         * - CompliancePackId
+         * - RuleId
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The matching logic. Currently, only In is supported.
+         */
+        matchType?: pulumi.Input<string>;
+        /**
+         * The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface RuleCompliance {
         /**
          * The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
@@ -4880,6 +5028,24 @@ export namespace compute {
 }
 
 export namespace config {
+    export interface ReportTemplateReportScope {
+        /**
+         * Key for reporting scope, currently supported:
+         * - AggregatorId
+         * - CompliancePackId
+         * - RuleId
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * The matching logic. Currently, only In is supported.
+         */
+        matchType?: pulumi.Input<string>;
+        /**
+         * The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
+         */
+        value?: pulumi.Input<string>;
+    }
+
 }
 
 export namespace cr {
@@ -5001,6 +5167,21 @@ export namespace cr {
          * Domain of vpc endpoint.
          */
         vpc?: pulumi.Input<string>;
+    }
+
+    export interface StorageDomainRoutingRuleRoute {
+        /**
+         * Endpoint Type.
+         */
+        endpointType: pulumi.Input<string>;
+        /**
+         * Instance domain name.
+         */
+        instanceDomain: pulumi.Input<string>;
+        /**
+         * Storage domain name.
+         */
+        storageDomain: pulumi.Input<string>;
     }
 }
 
@@ -5736,6 +5917,13 @@ export namespace cs {
         rrsaOidcIssuerUrl?: pulumi.Input<string>;
     }
 
+    export interface NodePoolAutoMode {
+        /**
+         * Whether to enable auto mode. Valid values:
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface NodePoolDataDisk {
         /**
          * Whether to automatically mount the data disk. Valid values: true and false.
@@ -5804,6 +5992,83 @@ export namespace cs {
          * When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
          */
         groupId?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolInstanceMetadataOptions {
+        /**
+         * ECS instance metadata access mode configuration. Value range:
+         *
+         * - 'optional': Compatible with both normal mode and reinforced mode.
+         * - 'required': Enables only hardening mode (IMDSv2). When enabled, applications in the node cannot access the ECS instance metadata in normal mode. Ensure that the component and operating system versions in the cluster meet the minimum version requirements. For more information, see [accessing ECS instance metadata in hardened mode only](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/security-and-compliance/secure-access-to-ecs-instance-metadata).
+         *
+         * Default value: 'optional '.
+         *
+         * This parameter is only supported for ACK-managed clusters of 1.28 or later versions.
+         */
+        httpTokens?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolInstancePattern {
+        /**
+         * The number of vCPU cores of the instance type. Example value: 8.
+         */
+        cores?: pulumi.Input<number>;
+        /**
+         * The CPU architecture of the instance. Value range:
+         * - X86
+         * - ARM
+         */
+        cpuArchitectures?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance specifications to be excluded. You can exclude individual specifications or entire specification families by using the wildcard character (*). For example:
+         * - ecs.c6.large: indicates that the ecs.c6.large instance type is excluded.
+         * - ecs.c6. *: indicates that the instance specification of the entire c6 specification family is excluded.
+         */
+        excludedInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance classification. Value range:
+         * - General-purpose: Universal.
+         * - Compute-optimized: Compute type.
+         * - Memory-optimized: Memory type.
+         * - Big data: Big data type.
+         * - Local SSDs: Local SSD type.
+         * - High Clock Speed: High frequency type.
+         * - Enhanced: Enhanced.
+         * - Shared: Shared.
+         * - ECS Bare Metal: elastic Bare Metal server.
+         * - High Performance Compute: High Performance Compute.
+         */
+        instanceCategories?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Instance specification family level, value range:
+         * - EntryLevel: entry-level, that is, shared instance specifications. The cost is lower, but the stability of instance computing performance cannot be guaranteed. Applicable to business scenarios with low CPU usage. For more information, see Shared.
+         * - EnterpriseLevel: Enterprise level. Stable performance and exclusive resources, suitable for business scenarios that require high stability. For more information, see Instance Specification Family.
+         */
+        instanceFamilyLevel: pulumi.Input<string>;
+        /**
+         * Specifies the instance type family. Example values:["ecs.g8i","ecs.c8i"]
+         */
+        instanceTypeFamilies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The maximum number of vCPU cores of the instance type. Example value: 8. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+         */
+        maxCpuCores?: pulumi.Input<number>;
+        /**
+         * The maximum memory of the instance type. Unit: GiB, example value: 8,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+         */
+        maxMemorySize?: pulumi.Input<number>;
+        /**
+         * The memory size of the instance type, in GiB. Example value: 8.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
+         */
+        minCpuCores?: pulumi.Input<number>;
+        /**
+         * The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
+         */
+        minMemorySize?: pulumi.Input<number>;
     }
 
     export interface NodePoolKubeletConfiguration {
@@ -5919,6 +6184,10 @@ export namespace cs {
          * Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
          */
         serializeImagePulls?: pulumi.Input<string>;
+        /**
+         * Used to enable the kubelet server certificate signing and rotation via CSR.
+         */
+        serverTlsBootstrap?: pulumi.Input<boolean>;
         /**
          * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
@@ -8889,6 +9158,21 @@ export namespace ecs {
         ossObject?: pulumi.Input<string>;
     }
 
+    export interface InstanceCpuOptions {
+        /**
+         * The maximum number of partitions in the storage set.
+         */
+        coreCount?: pulumi.Input<number>;
+        /**
+         * The number of threads per CPU core.
+         */
+        threadsPerCore?: pulumi.Input<number>;
+        /**
+         * The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
+         */
+        topologyType?: pulumi.Input<string>;
+    }
+
     export interface InstanceDataDisk {
         /**
          * The ID of the automatic snapshot policy applied to the system disk.
@@ -9553,6 +9837,51 @@ export namespace eflo {
         workerNum: pulumi.Input<number>;
     }
 
+    export interface HyperNodeDataDisk {
+        /**
+         * Whether to enable Burst (performance Burst).
+         */
+        burstingEnabled?: pulumi.Input<boolean>;
+        /**
+         * The disk type. Value range:
+         * - cloud_essd:ESSD cloud disk.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Whether the data disk is unsubscribed and deleted with the node.
+         */
+        deleteWithNode?: pulumi.Input<boolean>;
+        /**
+         * When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+         * - PL0: maximum random read/write IOPS 10000 for a single disk.
+         * - PL1: maximum random read/write IOPS 50000 for a single disk.
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+         */
+        provisionedIops?: pulumi.Input<number>;
+        /**
+         * The size of the disk. The unit is GiB.
+         */
+        size?: pulumi.Input<number>;
+    }
+
+    export interface NodeDataDisk {
+        /**
+         * Data disk type
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Performance level
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * Data disk size
+         */
+        size?: pulumi.Input<number>;
+    }
+
     export interface NodeGroupAttachmentDataDisk {
         /**
          * Type
@@ -9671,6 +10000,91 @@ export namespace eflo {
          * Switch ID
          */
         vswitchId?: pulumi.Input<string>;
+    }
+
+    export interface NodeIpAllocationPolicy {
+        /**
+         * Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+         */
+        bondPolicy?: pulumi.Input<inputs.eflo.NodeIpAllocationPolicyBondPolicy>;
+        /**
+         * Model Assignment Policy See `machineTypePolicy` below.
+         */
+        machineTypePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicyMachineTypePolicy>[]>;
+        /**
+         * Node allocation policy See `nodePolicy` below.
+         */
+        nodePolicies?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicyNodePolicy>[]>;
+    }
+
+    export interface NodeIpAllocationPolicyBondPolicy {
+        /**
+         * Default bond cluster subnet
+         */
+        bondDefaultSubnet?: pulumi.Input<string>;
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicyBondPolicyBond>[]>;
+    }
+
+    export interface NodeIpAllocationPolicyBondPolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface NodeIpAllocationPolicyMachineTypePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicyMachineTypePolicyBond>[]>;
+        /**
+         * Model
+         */
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface NodeIpAllocationPolicyMachineTypePolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface NodeIpAllocationPolicyNodePolicy {
+        /**
+         * Bond information See `bonds` below.
+         */
+        bonds?: pulumi.Input<pulumi.Input<inputs.eflo.NodeIpAllocationPolicyNodePolicyBond>[]>;
+        /**
+         * Host name
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * Node ID
+         */
+        nodeId?: pulumi.Input<string>;
+    }
+
+    export interface NodeIpAllocationPolicyNodePolicyBond {
+        /**
+         * Bond Name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * IP source cluster subnet
+         */
+        subnet?: pulumi.Input<string>;
     }
 
     export interface ResourceMachineTypes {
@@ -9805,6 +10219,296 @@ export namespace ehpc {
         url?: pulumi.Input<string>;
     }
 
+    export interface ClusterV2Addon {
+        /**
+         * Customize the specific configuration information of the service component.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Customize the resource configuration of the service component.
+         */
+        resourcesSpec?: pulumi.Input<string>;
+        /**
+         * Customize the service configuration of the service component.
+         */
+        servicesSpec?: pulumi.Input<string>;
+        /**
+         * Customize the service component version.
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface ClusterV2ClusterCredentials {
+        /**
+         * The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
+         */
+        password?: pulumi.Input<string>;
+    }
+
+    export interface ClusterV2Manager {
+        /**
+         * The configurations of the domain account service. See `directoryService` below.
+         */
+        directoryService?: pulumi.Input<inputs.ehpc.ClusterV2ManagerDirectoryService>;
+        /**
+         * The configurations of the domain name resolution service. See `dns` below.
+         */
+        dns?: pulumi.Input<inputs.ehpc.ClusterV2ManagerDns>;
+        /**
+         * The hardware configurations of the management node. See `managerNode` below.
+         */
+        managerNode?: pulumi.Input<inputs.ehpc.ClusterV2ManagerManagerNode>;
+        /**
+         * The configurations of the scheduler service. See `scheduler` below.
+         */
+        scheduler?: pulumi.Input<inputs.ehpc.ClusterV2ManagerScheduler>;
+    }
+
+    export interface ClusterV2ManagerDirectoryService {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ClusterV2ManagerDns {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ClusterV2ManagerManagerNode {
+        /**
+         * Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
+         * - true: Automatic renewal.
+         * - false: Do not renew automatically (default).
+         */
+        autoRenew?: pulumi.Input<boolean>;
+        /**
+         * The renewal duration of a single automatic renewal. Value range:
+         * - When PeriodUnit = Week: 1, 2, 3.
+         * - When PeriodUnit = Month: 1, 2, 3, 6, 12, 24, 36, 48, 60.
+         *
+         * Default value: 1.
+         */
+        autoRenewPeriod?: pulumi.Input<number>;
+        /**
+         * The duration of the preemptible instance, in hours. Value:
+         * - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
+         * - 0: After creation, Alibaba Cloud does not guarantee the running time of the instance. The system compares the bid price with the market price in real time and checks the resource inventory to determine the holding and recycling of the instance.
+         *
+         * Default value: 1.
+         */
+        duration?: pulumi.Input<number>;
+        /**
+         * EnableHT
+         */
+        enableHt?: pulumi.Input<boolean>;
+        /**
+         * The expiration time of the management node.
+         */
+        expiredTime?: pulumi.Input<string>;
+        /**
+         * ImageId
+         */
+        imageId?: pulumi.Input<string>;
+        /**
+         * The instance billing method of the management node. Valid values:
+         *
+         * - PostPaid: pay-as-you-go
+         * - PrePaid: subscription
+         */
+        instanceChargeType?: pulumi.Input<string>;
+        /**
+         * The instance ID of the management node.
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * The instance type of the management node.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
+         * - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
+         * - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * The unit of duration of the year-to-month billing method. Value range:
+         * - Week.
+         * - Month (default).
+         */
+        periodUnit?: pulumi.Input<string>;
+        /**
+         * Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
+         */
+        spotPriceLimit?: pulumi.Input<number>;
+        /**
+         * The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
+         * - NoSpot: normal pay-as-you-go instances (default).
+         * - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
+         * - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
+         */
+        spotStrategy?: pulumi.Input<string>;
+        /**
+         * System disk configuration of the management node. See `systemDisk` below.
+         */
+        systemDisk?: pulumi.Input<inputs.ehpc.ClusterV2ManagerManagerNodeSystemDisk>;
+    }
+
+    export interface ClusterV2ManagerManagerNodeSystemDisk {
+        /**
+         * Manage the system disk configuration of the node. Value range:
+         * - cloud_efficiency: The Ultra cloud disk.
+         * - cloud_ssd:SSD cloud disk.
+         * - cloud_essd:ESSD cloud disk.
+         * - cloud: ordinary cloud disk.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+         * - PL0: maximum random read/write IOPS 10000 for a single disk.
+         * - PL1 (default): Maximum random read/write IOPS 50000 for a single disk.
+         * - PL2: maximum random read/write IOPS 100000 for a single disk.
+         * - PL3: maximum random read/write IOPS 1 million for a single disk.
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * The system disk size of the management node. Unit: GiB. Value range:
+         * - Ordinary cloud tray: 20~500.
+         * - ESSD cloud disk:
+         * - PL0:1~2048.
+         * - PL1:20~2048.
+         * - PL2:461~2048.
+         * - PL3:1261~2048.
+         * - Other cloud disk types: 20~2048.
+         */
+        size?: pulumi.Input<number>;
+    }
+
+    export interface ClusterV2ManagerScheduler {
+        /**
+         * The scheduler type. Valid values:
+         *
+         * - SLURM
+         * - PBS
+         * - OPENGRIDSCHEDULER
+         * - LSF_PLUGIN
+         * - PBS_PLUGIN
+         */
+        type?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface ClusterV2SharedStorage {
+        /**
+         * The ID of the mounted file system.
+         */
+        fileSystemId?: pulumi.Input<string>;
+        /**
+         * The local Mount directory where the file system is mounted.
+         */
+        mountDirectory?: pulumi.Input<string>;
+        /**
+         * Storage mount options for the mounted file system.
+         */
+        mountOptions?: pulumi.Input<string>;
+        /**
+         * The mount point address of the mounted file system.
+         */
+        mountTargetDomain?: pulumi.Input<string>;
+        /**
+         * The remote directory to which the mounted file system needs to be mounted.
+         */
+        nasDirectory?: pulumi.Input<string>;
+        /**
+         * The protocol type of the mounted file system. Value range:
+         * - NFS
+         * - SMB
+         */
+        protocolType?: pulumi.Input<string>;
+    }
+
+    export interface QueueComputeNode {
+        /**
+         * AutoRenew
+         */
+        autoRenew?: pulumi.Input<boolean>;
+        /**
+         * AutoRenewPeriod
+         */
+        autoRenewPeriod?: pulumi.Input<number>;
+        /**
+         * Duration
+         */
+        duration?: pulumi.Input<number>;
+        /**
+         * Whether HT is enabled for the computing node.
+         */
+        enableHt?: pulumi.Input<boolean>;
+        /**
+         * ImageId
+         */
+        imageId?: pulumi.Input<string>;
+        /**
+         * InstanceChargeType
+         */
+        instanceChargeType?: pulumi.Input<string>;
+        /**
+         * InstanceTypes
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * Period
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * PeriodUnit
+         */
+        periodUnit?: pulumi.Input<string>;
+        /**
+         * SpotPriceLimit
+         */
+        spotPriceLimit?: pulumi.Input<number>;
+        /**
+         * SpotStrategy
+         */
+        spotStrategy?: pulumi.Input<string>;
+        /**
+         * SystemDisk See `systemDisk` below.
+         */
+        systemDisk?: pulumi.Input<inputs.ehpc.QueueComputeNodeSystemDisk>;
+    }
+
+    export interface QueueComputeNodeSystemDisk {
+        /**
+         * Category
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Level
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * Size
+         */
+        size?: pulumi.Input<number>;
+    }
 }
 
 export namespace eipanycast {
@@ -9818,6 +10522,108 @@ export namespace eipanycast {
 }
 
 export namespace elasticsearch {
+    export interface InstanceClientNodeConfiguration {
+        /**
+         * Number of disks in the Elasticsearch cluster coordination node
+         */
+        amount?: pulumi.Input<number>;
+        /**
+         * Elasticsearch cluster coordinates node disk size
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Elasticsearch cluster coordination node disk type
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * Elasticsearch cluster coordination node specification
+         */
+        spec?: pulumi.Input<string>;
+    }
+
+    export interface InstanceDataNodeConfiguration {
+        /**
+         * Number of data nodes in the Elasticsearch cluster
+         */
+        amount?: pulumi.Input<number>;
+        /**
+         * Elasticsearch data node disk size
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Whether the Elasticsearch data node disk is encrypted
+         */
+        diskEncryption?: pulumi.Input<boolean>;
+        /**
+         * Elasticsearch cluster data node disk type
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * Elasticsearch cluster data node Essd disk level
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * Elasticsearch data node specification
+         */
+        spec: pulumi.Input<string>;
+    }
+
+    export interface InstanceKibanaConfiguration {
+        /**
+         * The number of disks of the Elasticsearch Kibana node. The default value is 1.
+         */
+        amount?: pulumi.Input<number>;
+        /**
+         * Elasticsearch Kibana node disk size
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Elasticsearch Kibana node disk specifications
+         */
+        spec: pulumi.Input<string>;
+    }
+
+    export interface InstanceMasterConfiguration {
+        /**
+         * Elasticsearch proprietary master node number of disks
+         */
+        amount?: pulumi.Input<number>;
+        /**
+         * Elasticsearch proprietary master node disk size
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Elasticsearch proprietary master node disk type
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * Elasticsearch proprietary master node specifications
+         */
+        spec?: pulumi.Input<string>;
+    }
+
+    export interface InstanceWarmNodeConfiguration {
+        /**
+         * Elasticsearch cluster cold data node disk number
+         */
+        amount?: pulumi.Input<number>;
+        /**
+         * Elasticsearch cluster cold data node disk size
+         */
+        disk?: pulumi.Input<number>;
+        /**
+         * Elasticsearch cluster cold data node Disk encryption
+         */
+        diskEncryption?: pulumi.Input<boolean>;
+        /**
+         * Elasticsearch cluster cold data node disk type
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * Elasticsearch cluster cold data node Disk Specification
+         */
+        spec?: pulumi.Input<string>;
+    }
 }
 
 export namespace emr {
@@ -10730,6 +11536,44 @@ export namespace ens {
 }
 
 export namespace esa {
+    export interface HttpIncomingRequestHeaderModificationRuleRequestHeaderModification {
+        /**
+         * Request Header Name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Mode of operation. Value range:
+         */
+        operation: pulumi.Input<string>;
+        /**
+         * Value type. Value range:
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Request header value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
+        /**
+         * The response header name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Operation method. Possible values:
+         */
+        operation: pulumi.Input<string>;
+        /**
+         * The value type. Value range:
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * The response header value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface HttpRequestHeaderModificationRuleRequestHeaderModification {
         /**
          * Request Header Name.
@@ -11209,7 +12053,14 @@ export namespace esa {
          */
         rateLimit?: pulumi.Input<inputs.esa.WafRuleConfigRateLimit>;
         /**
-         * The overall security protection level of WAF. See `securityLevel` below.
+         * The overall security protection level of WAF.
+         * Valid values:
+         * - off
+         * - essentiallyOff
+         * - low
+         * - medium
+         * - high
+         * - underAttack See `securityLevel` below.
          */
         securityLevel?: pulumi.Input<inputs.esa.WafRuleConfigSecurityLevel>;
         /**
@@ -14458,6 +15309,19 @@ export namespace lindorm {
         connectAddressLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2EngineListConnectAddressList>[]>;
         /**
          * Engine
+         *
+         * Enumeration value:
+         * - `TABLE`: Wide table engine
+         * - `TSDB`: Time series Engine
+         * - `LSEARCH`: Search engine
+         * - `LTS`: LTS engine
+         * - `LVECTOR`: Vector engine
+         * - `LCOLUMN`: Column-store engine
+         * - `LAI`: AI engine
+         * - `FILE`: The underlying file engine
+         * - `LMESSAGE`: Message engine
+         * - `LROW`: Wide table Engine 3.0
+         * - `LSTREAM`: Stream engine
          */
         engineType: pulumi.Input<string>;
         /**
@@ -14524,6 +15388,41 @@ export namespace lindorm {
         nodeDiskType?: pulumi.Input<string>;
         /**
          * Node Specifications
+         * - Valid values when selecting cloud storage:
+         * - **lindorm.c.2xlarge**, 8 cores 16GB
+         * - **lindorm.g.2xlarge**, 8 cores 32GB
+         * - **lindorm.c.4xlarge**, 16 cores 32GB
+         * - **lindorm.g.4xlarge**, 16 cores 64GB
+         * - **lindorm.c.8xlarge**, 32 core 64GB
+         * - **lindorm.g.8xlarge**, 32 core 128GB
+         * - **lindorm.g.8xlarge**, 8 cores 64GB
+         * - **lindorm.r.4xlarge**, 16 cores 128GB
+         * - **lindorm.r.8xlarge**, 32 cores 256GB
+         * - Valid values when local disk storage is selected:
+         * - **lindorm.d2s.5XLarge**, 20 core 88GB(D2S)
+         * - **lindorm.d2s.10XLarge**, 40 core 176GB(D2S)
+         * - **lindorm.d2c.6XLarge**, 24 core 88GB(D2C)
+         * - **lindorm.d2c.12XLarge**, 48 cores 176GB(D2C)
+         * - **lindorm.d2C.24XLarge**, 96 core 352GB(D2C)
+         * - **lindorm.d1.2xlarge**, 8 cores 32GB(D1NE)
+         * - **lindorm.d1.4xlarge**, 16 cores 64GB(D1NE)
+         * - **lindorm.d1.6xlarge**, 24 cores 96GB(D1NE)
+         * - **lindorm.sd3c.3XLarge**, 14 cores 56GB(D3C PRO)
+         * - **lindorm.sd3c.7XLarge**, 28 core 112GB(D3C PRO)
+         * - **lindorm.sd3c.14XLarge**, 56 core 224GB(D3C PRO)
+         * - **lindorm.d3s.2XLarge**, 8 core 32GB(D3S)
+         * - **lindorm.d3s.4XLarge**, 16 cores 64GB(D3S)
+         * - **lindorm.d3s.8XLarge**, 32 core 128GB(D3S)
+         * - **lindorm.d3s.12XLarge**, 48 cores 192GB(D3S)
+         * - **lindorm.d3s.16XLarge**, 64 cores 256GB(D3S)
+         * - **lindorm.i4.xlarge**, 4 core 32GB(I4)
+         * - **lindorm.i4.2xlarge**, 8 core 64GB(I4)
+         * - **lindorm.i4.4xlarge**, 16 cores 128GB(I4)
+         * - **lindorm.i4.8xlarge**, 32 cores 256GB(I4)
+         * - **lindorm.i2.xlarge**, 4 core 32GB(I2)
+         * - **lindorm.i2.2xlarge**, 8 core 64GB(I2)
+         * - **lindorm.i2.4xlarge**, 16 cores 128GB(I2)
+         * - **lindorm.i2.8xlarge**, 32 cores 256GB(I2)
          */
         nodeSpec: pulumi.Input<string>;
         /**
@@ -14538,6 +15437,17 @@ export namespace lindorm {
          * Node Status
          */
         status?: pulumi.Input<string>;
+    }
+
+    export interface InstanceV2WhiteIpList {
+        /**
+         * Group Name
+         */
+        groupName: pulumi.Input<string>;
+        /**
+         * Whitelist information
+         */
+        ipList: pulumi.Input<string>;
     }
 }
 
@@ -16028,6 +16938,29 @@ export namespace oss {
          * Specifies time in seconds that browser can cache the response for a preflight request.
          */
         maxAgeSeconds?: pulumi.Input<number>;
+    }
+
+    export interface BucketHttpsConfigCipherSuit {
+        /**
+         * This field is used to configure custom encryption algorithm suites for TLS 1.2.
+         */
+        customCipherSuites?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Configures TLS encryption algorithm suites. Valid values:
+         * true: strong encryption algorithm suites or custom encryption algorithm suites.
+         * false: all encryption algorithm suites (default).
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to use strong encryption algorithm suites. Valid values:
+         * true: uses strong encryption algorithm suites.
+         * false: uses custom encryption algorithm suites.
+         */
+        strongCipherSuite?: pulumi.Input<boolean>;
+        /**
+         * Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+         */
+        tls13CustomCipherSuites?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface BucketLifecycleRule {
@@ -17743,6 +18676,295 @@ export namespace rds {
 }
 
 export namespace realtimecompute {
+    export interface DeploymentArtifact {
+        /**
+         * JarArtifact See `jarArtifact` below.
+         */
+        jarArtifact?: pulumi.Input<inputs.realtimecompute.DeploymentArtifactJarArtifact>;
+        /**
+         * Artifact type
+         */
+        kind: pulumi.Input<string>;
+        /**
+         * PythonArtifact See `pythonArtifact` below.
+         */
+        pythonArtifact?: pulumi.Input<inputs.realtimecompute.DeploymentArtifactPythonArtifact>;
+        /**
+         * SqlArtifact See `sqlArtifact` below.
+         */
+        sqlArtifact?: pulumi.Input<inputs.realtimecompute.DeploymentArtifactSqlArtifact>;
+    }
+
+    export interface DeploymentArtifactJarArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Main class; you must specify the fully qualified class name
+         */
+        entryClass?: pulumi.Input<string>;
+        /**
+         * Full URL path of the JAR job
+         */
+        jarUri?: pulumi.Input<string>;
+        /**
+         * Startup arguments
+         */
+        mainArgs?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentArtifactPythonArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * URL paths of dependent Python archive files
+         */
+        additionalPythonArchives?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * URL paths of dependent Python library files
+         */
+        additionalPythonLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Entry module for Python
+         */
+        entryModule?: pulumi.Input<string>;
+        /**
+         * Startup arguments
+         */
+        mainArgs?: pulumi.Input<string>;
+        /**
+         * Full URL path of the Python job
+         */
+        pythonArtifactUri?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentArtifactSqlArtifact {
+        /**
+         * Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
+         */
+        additionalDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Text content of the SQL job
+         */
+        sqlScript?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentBatchResourceSetting {
+        /**
+         * Resource settings for basic mode See `basicResourceSetting` below.
+         */
+        basicResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSetting>;
+        /**
+         * Maximum number of slots
+         */
+        maxSlot?: pulumi.Input<number>;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSetting {
+        jobmanagerResourceSettingSpec?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec>;
+        parallelism?: pulumi.Input<number>;
+        taskmanagerResourceSettingSpec?: pulumi.Input<inputs.realtimecompute.DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec>;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+        cpu?: pulumi.Input<number>;
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+        cpu?: pulumi.Input<number>;
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentDeploymentTarget {
+        /**
+         * Deployment mode, valid values: PER_JOB or SESSION
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * Deployment target name
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface DeploymentLocalVariable {
+        /**
+         * Job variable name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Job variable value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentLogging {
+        /**
+         * Custom log template
+         */
+        log4j2ConfigurationTemplate?: pulumi.Input<string>;
+        /**
+         * log4j configuration   See `log4jLoggers` below.
+         */
+        log4jLoggers?: pulumi.Input<pulumi.Input<inputs.realtimecompute.DeploymentLoggingLog4jLogger>[]>;
+        /**
+         * Log retention policy   See `logReservePolicy` below.
+         */
+        logReservePolicy?: pulumi.Input<inputs.realtimecompute.DeploymentLoggingLogReservePolicy>;
+        /**
+         * Default system log template
+         */
+        loggingProfile?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentLoggingLog4jLogger {
+        /**
+         * Log output level
+         */
+        loggerLevel?: pulumi.Input<string>;
+        /**
+         * Class name for log output
+         */
+        loggerName?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentLoggingLogReservePolicy {
+        /**
+         * Number of days to retain logs after log retention is enabled
+         */
+        expirationDays?: pulumi.Input<number>;
+        /**
+         * Whether to enable log retention
+         */
+        openHistory?: pulumi.Input<boolean>;
+    }
+
+    export interface DeploymentStreamingResourceSetting {
+        /**
+         * Resource settings for basic mode See `basicResourceSetting` below.
+         */
+        basicResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSetting>;
+        /**
+         * Expert mode resource settings See `expertResourceSetting` below.
+         */
+        expertResourceSetting?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSettingExpertResourceSetting>;
+        /**
+         * Resource mode used in streaming mode, valid values: BASIC or EXPERT
+         */
+        resourceSettingMode?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSetting {
+        jobmanagerResourceSettingSpec?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec>;
+        parallelism?: pulumi.Input<number>;
+        taskmanagerResourceSettingSpec?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec>;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec {
+        cpu?: pulumi.Input<number>;
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentStreamingResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec {
+        cpu?: pulumi.Input<number>;
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentStreamingResourceSettingExpertResourceSetting {
+        jobmanagerResourceSettingSpec?: pulumi.Input<inputs.realtimecompute.DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec>;
+        /**
+         * Resource plan for expert mode
+         */
+        resourcePlan?: pulumi.Input<string>;
+    }
+
+    export interface DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec {
+        cpu?: pulumi.Input<number>;
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface JobLocalVariable {
+        /**
+         * Local variables name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Local variables value
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface JobRestoreStrategy {
+        /**
+         * Stateless startup
+         */
+        allowNonRestoredState?: pulumi.Input<boolean>;
+        /**
+         * Stateless start time. When stateless start is selected, you can set this parameter to enable all source tables that support startTime to read data from this time.
+         */
+        jobStartTimeInMs?: pulumi.Input<number>;
+        /**
+         * Restore type
+         */
+        kind?: pulumi.Input<string>;
+        /**
+         * SavepointId
+         */
+        savepointId?: pulumi.Input<string>;
+    }
+
+    export interface JobStatus {
+        /**
+         * Job current status
+         */
+        currentJobStatus?: pulumi.Input<string>;
+        /**
+         * Job failure information
+         */
+        failure?: pulumi.Input<inputs.realtimecompute.JobStatusFailure>;
+        /**
+         * Job Run Health Score
+         */
+        healthScore?: pulumi.Input<number>;
+        /**
+         * Risk level, which indicates the risk level of the operation status of the job.
+         */
+        riskLevel?: pulumi.Input<string>;
+        /**
+         * job running status, which has value when the job is Running.
+         */
+        running?: pulumi.Input<inputs.realtimecompute.JobStatusRunning>;
+    }
+
+    export interface JobStatusFailure {
+        /**
+         * Job failure time
+         */
+        failedAt?: pulumi.Input<number>;
+        /**
+         * Failure Information Details
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * Failure Reason
+         */
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface JobStatusRunning {
+        /**
+         * Number of job restarts
+         */
+        observedFlinkJobRestarts?: pulumi.Input<number>;
+        /**
+         * Flink job status
+         */
+        observedFlinkJobStatus?: pulumi.Input<string>;
+    }
+
     export interface VvpInstanceResourceSpec {
         /**
          * CPU number.
@@ -20511,6 +21733,17 @@ export namespace threatdetection {
          * Cloud product asset vendor. Valid values: `0`.
          */
         vendor: pulumi.Input<number>;
+    }
+
+    export interface CheckConfigSelectedCheck {
+        /**
+         * The ID of the check item.
+         */
+        checkId?: pulumi.Input<number>;
+        /**
+         * The section ID of the check item.
+         */
+        sectionId?: pulumi.Input<number>;
     }
 
     export interface HoneypotPresetMeta {

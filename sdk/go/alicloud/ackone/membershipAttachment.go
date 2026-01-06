@@ -156,6 +156,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Ack One Membership Attachment can be imported using the id, which consists of cluster_id and sub_cluster_id, e.g.

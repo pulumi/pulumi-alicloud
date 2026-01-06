@@ -203,6 +203,8 @@ class Application(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Application can be imported using the id, e.g.
@@ -256,6 +258,8 @@ class Application(pulumi.CustomResource):
                 "Created": "TF",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

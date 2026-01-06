@@ -160,6 +160,8 @@ class DomainGroup(pulumi.CustomResource):
         default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns domain group can be imported using the id, e.g.
@@ -193,6 +195,8 @@ class DomainGroup(pulumi.CustomResource):
 
         default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

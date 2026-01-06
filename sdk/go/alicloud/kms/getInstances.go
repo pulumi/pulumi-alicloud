@@ -144,7 +144,6 @@ import (
 // Spec: pulumi.Int(1000),
 // RenewStatus: pulumi.String("ManualRenewal"),
 // ProductVersion: pulumi.String("3"),
-// RenewPeriod: pulumi.Int(3),
 // VpcId: vswitch.VpcId,
 // ZoneIds: pulumi.StringArray{
 // pulumi.String("cn-hangzhou-k"),
@@ -207,10 +206,10 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	// A list of Instance IDs.
 	Ids []string `pulumi:"ids"`
+	// The name of the resource.
+	InstanceName *string `pulumi:"instanceName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	PageNumber *int    `pulumi:"pageNumber"`
-	PageSize   *int    `pulumi:"pageSize"`
 }
 
 // A collection of values returned by getInstances.
@@ -218,12 +217,11 @@ type GetInstancesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of Instance IDs.
-	Ids []string `pulumi:"ids"`
+	Ids          []string `pulumi:"ids"`
+	InstanceName *string  `pulumi:"instanceName"`
 	// A list of Instance Entries. Each element contains the following attributes:
 	Instances  []GetInstancesInstance `pulumi:"instances"`
 	OutputFile *string                `pulumi:"outputFile"`
-	PageNumber *int                   `pulumi:"pageNumber"`
-	PageSize   *int                   `pulumi:"pageSize"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -239,10 +237,10 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 type GetInstancesOutputArgs struct {
 	// A list of Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
+	// The name of the resource.
+	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
-	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -274,6 +272,10 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+func (o GetInstancesResultOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
+}
+
 // A list of Instance Entries. Each element contains the following attributes:
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
@@ -281,14 +283,6 @@ func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 
 func (o GetInstancesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
-}
-
-func (o GetInstancesResultOutput) PageNumber() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetInstancesResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
-}
-
-func (o GetInstancesResultOutput) PageSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetInstancesResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
 func init() {

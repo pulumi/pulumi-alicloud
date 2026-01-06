@@ -861,6 +861,8 @@ class Instance(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Instance can be imported using the id, e.g.
@@ -979,6 +981,8 @@ class Instance(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

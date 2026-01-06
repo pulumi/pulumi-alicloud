@@ -597,6 +597,8 @@ class AppGroup(pulumi.CustomResource):
             schedule_busy_workers=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Schedulerx App Group can be imported using the id, e.g.
@@ -683,6 +685,8 @@ class AppGroup(pulumi.CustomResource):
             enable_log=False,
             schedule_busy_workers=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -847,7 +851,7 @@ class AppGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="appVersion")
-    def app_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def app_version(self) -> pulumi.Output[_builtins.str]:
         """
         Application Version, 1: Basic Edition, 2: Professional Edition
         """
@@ -897,7 +901,7 @@ class AppGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="maxJobs")
-    def max_jobs(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def max_jobs(self) -> pulumi.Output[_builtins.int]:
         """
         Application Grouping Configurable Maximum Number of Tasks
         """

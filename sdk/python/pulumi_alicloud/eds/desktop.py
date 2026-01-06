@@ -718,6 +718,8 @@ class Desktop(pulumi.CustomResource):
             desktop_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Desktop can be imported using the id, e.g.
@@ -808,6 +810,8 @@ class Desktop(pulumi.CustomResource):
             bundle_id=default.bundles[1].id,
             desktop_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

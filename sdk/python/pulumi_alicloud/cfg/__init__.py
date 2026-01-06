@@ -9,6 +9,7 @@ import typing
 from .aggregate_compliance_pack import *
 from .aggregate_config_rule import *
 from .aggregate_delivery import *
+from .aggregate_remediation import *
 from .aggregator import *
 from .compliance_pack import *
 from .configuration_recorder import *
@@ -24,6 +25,7 @@ from .get_deliveries import *
 from .get_delivery_channels import *
 from .get_rules import *
 from .remediation import *
+from .report_template import *
 from .rule import *
 from ._inputs import *
 from . import outputs

@@ -399,6 +399,8 @@ class DataFlow(pulumi.CustomResource):
             throughput=600)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         File Storage (NAS) Data Flow can be imported using the id, e.g.
@@ -492,6 +494,8 @@ class DataFlow(pulumi.CustomResource):
                 ]).apply(lambda invoke: invoke.result),
             throughput=600)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

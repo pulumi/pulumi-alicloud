@@ -150,6 +150,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type ApplicationDeployment struct {
 	pulumi.CustomResourceState
 

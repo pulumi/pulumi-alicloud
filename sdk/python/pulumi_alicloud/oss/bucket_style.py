@@ -219,6 +219,8 @@ class BucketStyle(pulumi.CustomResource):
             category="document")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Style can be imported using the id, e.g.
@@ -274,6 +276,8 @@ class BucketStyle(pulumi.CustomResource):
             content="image/resize,p_75,w_75",
             category="document")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

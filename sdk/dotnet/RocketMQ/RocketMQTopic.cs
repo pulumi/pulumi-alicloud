@@ -113,6 +113,8 @@ namespace Pulumi.AliCloud.RocketMQ
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RocketMQ Topic can be imported using the id, e.g.

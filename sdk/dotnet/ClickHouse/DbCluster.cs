@@ -70,6 +70,8 @@ namespace Pulumi.AliCloud.ClickHouse
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Click House DBCluster can be imported using the id, e.g.

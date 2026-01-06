@@ -111,6 +111,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Lindorm Instance V2 can be imported using the id, e.g.
@@ -127,35 +129,33 @@ type InstanceV2 struct {
 	ArbiterZoneId pulumi.StringPtrOutput `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
 	//
-	// > **NOTE:**  Enumeration value
-	//
-	// > **NOTE:**  - 1.0 Single AZ
-	//
-	// > **NOTE:**  - 2.0 Multi-AZ Basic
-	//
-	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	// Enumeration value:
+	// - **1.0**: Single Zone
+	// - **2.0**: Multi-AZ Basic Edition
+	// - **3.0**: Multi-AZ High Availability Edition
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringOutput `pulumi:"archVersion"`
 	// Automatic renewal duration. Unit: Month.
 	//
-	// Value range: `1` to **12 * *.
+	// Value range: `1` to `12`.
 	//
-	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	AutoRenewDuration pulumi.StringPtrOutput `pulumi:"autoRenewDuration"`
 	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrOutput `pulumi:"autoRenewal"`
+	// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+	//
 	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrOutput `pulumi:"cloudStorageSize"`
-	// > **NOTE:** >
+	// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 	//
-	// > **NOTE:**  - StandardStorage: Standard cloud storage
-	//
-	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-	//
-	// > **NOTE:** - capacity storage: Capacity-based cloud storage
+	// Enumeration value:
+	// - `StandardStorage`: Standard cloud storage
+	// - **Performance storage**: Performance-based cloud storage
+	// - **Capacity Storage**: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrOutput `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
@@ -167,7 +167,11 @@ type InstanceV2 struct {
 	EngineLists InstanceV2EngineListArrayOutput `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias pulumi.StringOutput `pulumi:"instanceAlias"`
-	// The payment type of the resource
+	// Resource attribute fields representing payment types
+	//
+	// Enumeration value:
+	// - `PREPAY`: Prepaid mode
+	// - `POSTPAY`: Postpay mode
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Purchase duration unit: Month, Year
 	//
@@ -187,6 +191,8 @@ type InstanceV2 struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// VswitchId
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
+	// Instance whitelist list See `whiteIpList` below.
+	WhiteIpLists InstanceV2WhiteIpListArrayOutput `pulumi:"whiteIpLists"`
 	// The zone ID  of the resource
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -248,35 +254,33 @@ type instanceV2State struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
 	//
-	// > **NOTE:**  Enumeration value
-	//
-	// > **NOTE:**  - 1.0 Single AZ
-	//
-	// > **NOTE:**  - 2.0 Multi-AZ Basic
-	//
-	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	// Enumeration value:
+	// - **1.0**: Single Zone
+	// - **2.0**: Multi-AZ Basic Edition
+	// - **3.0**: Multi-AZ High Availability Edition
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion *string `pulumi:"archVersion"`
 	// Automatic renewal duration. Unit: Month.
 	//
-	// Value range: `1` to **12 * *.
+	// Value range: `1` to `12`.
 	//
-	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	AutoRenewDuration *string `pulumi:"autoRenewDuration"`
 	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal *bool `pulumi:"autoRenewal"`
+	// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+	//
 	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize *int `pulumi:"cloudStorageSize"`
-	// > **NOTE:** >
+	// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 	//
-	// > **NOTE:**  - StandardStorage: Standard cloud storage
-	//
-	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-	//
-	// > **NOTE:** - capacity storage: Capacity-based cloud storage
+	// Enumeration value:
+	// - `StandardStorage`: Standard cloud storage
+	// - **Performance storage**: Performance-based cloud storage
+	// - **Capacity Storage**: Capacity-based cloud storage
 	CloudStorageType *string `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection *string `pulumi:"deletionProtection"`
@@ -288,7 +292,11 @@ type instanceV2State struct {
 	EngineLists []InstanceV2EngineList `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias *string `pulumi:"instanceAlias"`
-	// The payment type of the resource
+	// Resource attribute fields representing payment types
+	//
+	// Enumeration value:
+	// - `PREPAY`: Prepaid mode
+	// - `POSTPAY`: Postpay mode
 	PaymentType *string `pulumi:"paymentType"`
 	// Purchase duration unit: Month, Year
 	//
@@ -308,6 +316,8 @@ type instanceV2State struct {
 	VpcId *string `pulumi:"vpcId"`
 	// VswitchId
 	VswitchId *string `pulumi:"vswitchId"`
+	// Instance whitelist list See `whiteIpList` below.
+	WhiteIpLists []InstanceV2WhiteIpList `pulumi:"whiteIpLists"`
 	// The zone ID  of the resource
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -319,35 +329,33 @@ type InstanceV2State struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// Deployment Scenario
 	//
-	// > **NOTE:**  Enumeration value
-	//
-	// > **NOTE:**  - 1.0 Single AZ
-	//
-	// > **NOTE:**  - 2.0 Multi-AZ Basic
-	//
-	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	// Enumeration value:
+	// - **1.0**: Single Zone
+	// - **2.0**: Multi-AZ Basic Edition
+	// - **3.0**: Multi-AZ High Availability Edition
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringPtrInput
 	// Automatic renewal duration. Unit: Month.
 	//
-	// Value range: `1` to **12 * *.
+	// Value range: `1` to `12`.
 	//
-	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	AutoRenewDuration pulumi.StringPtrInput
 	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrInput
+	// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+	//
 	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrInput
-	// > **NOTE:** >
+	// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 	//
-	// > **NOTE:**  - StandardStorage: Standard cloud storage
-	//
-	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-	//
-	// > **NOTE:** - capacity storage: Capacity-based cloud storage
+	// Enumeration value:
+	// - `StandardStorage`: Standard cloud storage
+	// - **Performance storage**: Performance-based cloud storage
+	// - **Capacity Storage**: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrInput
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringPtrInput
@@ -359,7 +367,11 @@ type InstanceV2State struct {
 	EngineLists InstanceV2EngineListArrayInput
 	// Instance name
 	InstanceAlias pulumi.StringPtrInput
-	// The payment type of the resource
+	// Resource attribute fields representing payment types
+	//
+	// Enumeration value:
+	// - `PREPAY`: Prepaid mode
+	// - `POSTPAY`: Postpay mode
 	PaymentType pulumi.StringPtrInput
 	// Purchase duration unit: Month, Year
 	//
@@ -379,6 +391,8 @@ type InstanceV2State struct {
 	VpcId pulumi.StringPtrInput
 	// VswitchId
 	VswitchId pulumi.StringPtrInput
+	// Instance whitelist list See `whiteIpList` below.
+	WhiteIpLists InstanceV2WhiteIpListArrayInput
 	// The zone ID  of the resource
 	ZoneId pulumi.StringPtrInput
 }
@@ -394,35 +408,33 @@ type instanceV2Args struct {
 	ArbiterZoneId *string `pulumi:"arbiterZoneId"`
 	// Deployment Scenario
 	//
-	// > **NOTE:**  Enumeration value
-	//
-	// > **NOTE:**  - 1.0 Single AZ
-	//
-	// > **NOTE:**  - 2.0 Multi-AZ Basic
-	//
-	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	// Enumeration value:
+	// - **1.0**: Single Zone
+	// - **2.0**: Multi-AZ Basic Edition
+	// - **3.0**: Multi-AZ High Availability Edition
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion string `pulumi:"archVersion"`
 	// Automatic renewal duration. Unit: Month.
 	//
-	// Value range: `1` to **12 * *.
+	// Value range: `1` to `12`.
 	//
-	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	AutoRenewDuration *string `pulumi:"autoRenewDuration"`
 	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal *bool `pulumi:"autoRenewal"`
+	// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+	//
 	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize *int `pulumi:"cloudStorageSize"`
-	// > **NOTE:** >
+	// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 	//
-	// > **NOTE:**  - StandardStorage: Standard cloud storage
-	//
-	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-	//
-	// > **NOTE:** - capacity storage: Capacity-based cloud storage
+	// Enumeration value:
+	// - `StandardStorage`: Standard cloud storage
+	// - **Performance storage**: Performance-based cloud storage
+	// - **Capacity Storage**: Capacity-based cloud storage
 	CloudStorageType *string `pulumi:"cloudStorageType"`
 	// Whether to enable deletion protection
 	DeletionProtection *string `pulumi:"deletionProtection"`
@@ -434,7 +446,11 @@ type instanceV2Args struct {
 	EngineLists []InstanceV2EngineList `pulumi:"engineLists"`
 	// Instance name
 	InstanceAlias string `pulumi:"instanceAlias"`
-	// The payment type of the resource
+	// Resource attribute fields representing payment types
+	//
+	// Enumeration value:
+	// - `PREPAY`: Prepaid mode
+	// - `POSTPAY`: Postpay mode
 	PaymentType string `pulumi:"paymentType"`
 	// Purchase duration unit: Month, Year
 	//
@@ -452,6 +468,8 @@ type instanceV2Args struct {
 	VpcId string `pulumi:"vpcId"`
 	// VswitchId
 	VswitchId string `pulumi:"vswitchId"`
+	// Instance whitelist list See `whiteIpList` below.
+	WhiteIpLists []InstanceV2WhiteIpList `pulumi:"whiteIpLists"`
 	// The zone ID  of the resource
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -464,35 +482,33 @@ type InstanceV2Args struct {
 	ArbiterZoneId pulumi.StringPtrInput
 	// Deployment Scenario
 	//
-	// > **NOTE:**  Enumeration value
-	//
-	// > **NOTE:**  - 1.0 Single AZ
-	//
-	// > **NOTE:**  - 2.0 Multi-AZ Basic
-	//
-	// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+	// Enumeration value:
+	// - **1.0**: Single Zone
+	// - **2.0**: Multi-AZ Basic Edition
+	// - **3.0**: Multi-AZ High Availability Edition
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	ArchVersion pulumi.StringInput
 	// Automatic renewal duration. Unit: Month.
 	//
-	// Value range: `1` to **12 * *.
+	// Value range: `1` to `12`.
 	//
-	// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+	// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 	//
 	// > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 	AutoRenewDuration pulumi.StringPtrInput
 	// Whether the instance is automatically renewed. Enumerated values:
 	AutoRenewal pulumi.BoolPtrInput
+	// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+	//
 	// > **NOTE:**  Cloud storage capacity in GB
 	CloudStorageSize pulumi.IntPtrInput
-	// > **NOTE:** >
+	// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 	//
-	// > **NOTE:**  - StandardStorage: Standard cloud storage
-	//
-	// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-	//
-	// > **NOTE:** - capacity storage: Capacity-based cloud storage
+	// Enumeration value:
+	// - `StandardStorage`: Standard cloud storage
+	// - **Performance storage**: Performance-based cloud storage
+	// - **Capacity Storage**: Capacity-based cloud storage
 	CloudStorageType pulumi.StringPtrInput
 	// Whether to enable deletion protection
 	DeletionProtection pulumi.StringPtrInput
@@ -504,7 +520,11 @@ type InstanceV2Args struct {
 	EngineLists InstanceV2EngineListArrayInput
 	// Instance name
 	InstanceAlias pulumi.StringInput
-	// The payment type of the resource
+	// Resource attribute fields representing payment types
+	//
+	// Enumeration value:
+	// - `PREPAY`: Prepaid mode
+	// - `POSTPAY`: Postpay mode
 	PaymentType pulumi.StringInput
 	// Purchase duration unit: Month, Year
 	//
@@ -522,6 +542,8 @@ type InstanceV2Args struct {
 	VpcId pulumi.StringInput
 	// VswitchId
 	VswitchId pulumi.StringInput
+	// Instance whitelist list See `whiteIpList` below.
+	WhiteIpLists InstanceV2WhiteIpListArrayInput
 	// The zone ID  of the resource
 	ZoneId pulumi.StringInput
 }
@@ -625,13 +647,10 @@ func (o InstanceV2Output) ArbiterZoneId() pulumi.StringPtrOutput {
 
 // Deployment Scenario
 //
-// > **NOTE:**  Enumeration value
-//
-// > **NOTE:**  - 1.0 Single AZ
-//
-// > **NOTE:**  - 2.0 Multi-AZ Basic
-//
-// > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
+// Enumeration value:
+// - **1.0**: Single Zone
+// - **2.0**: Multi-AZ Basic Edition
+// - **3.0**: Multi-AZ High Availability Edition
 //
 // > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o InstanceV2Output) ArchVersion() pulumi.StringOutput {
@@ -640,9 +659,9 @@ func (o InstanceV2Output) ArchVersion() pulumi.StringOutput {
 
 // Automatic renewal duration. Unit: Month.
 //
-// Value range: `1` to **12 * *.
+// Value range: `1` to `12`.
 //
-// > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+// > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
 //
 // > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
 func (o InstanceV2Output) AutoRenewDuration() pulumi.StringPtrOutput {
@@ -654,18 +673,19 @@ func (o InstanceV2Output) AutoRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.BoolPtrOutput { return v.AutoRenewal }).(pulumi.BoolPtrOutput)
 }
 
+// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+//
 // > **NOTE:**  Cloud storage capacity in GB
 func (o InstanceV2Output) CloudStorageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.IntPtrOutput { return v.CloudStorageSize }).(pulumi.IntPtrOutput)
 }
 
-// > **NOTE:** >
+// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 //
-// > **NOTE:**  - StandardStorage: Standard cloud storage
-//
-// > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-//
-// > **NOTE:** - capacity storage: Capacity-based cloud storage
+// Enumeration value:
+// - `StandardStorage`: Standard cloud storage
+// - **Performance storage**: Performance-based cloud storage
+// - **Capacity Storage**: Capacity-based cloud storage
 func (o InstanceV2Output) CloudStorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringPtrOutput { return v.CloudStorageType }).(pulumi.StringPtrOutput)
 }
@@ -692,7 +712,11 @@ func (o InstanceV2Output) InstanceAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.InstanceAlias }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource
+// Resource attribute fields representing payment types
+//
+// Enumeration value:
+// - `PREPAY`: Prepaid mode
+// - `POSTPAY`: Postpay mode
 func (o InstanceV2Output) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -737,6 +761,11 @@ func (o InstanceV2Output) VpcId() pulumi.StringOutput {
 // VswitchId
 func (o InstanceV2Output) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceV2) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
+}
+
+// Instance whitelist list See `whiteIpList` below.
+func (o InstanceV2Output) WhiteIpLists() InstanceV2WhiteIpListArrayOutput {
+	return o.ApplyT(func(v *InstanceV2) InstanceV2WhiteIpListArrayOutput { return v.WhiteIpLists }).(InstanceV2WhiteIpListArrayOutput)
 }
 
 // The zone ID  of the resource

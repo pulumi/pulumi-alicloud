@@ -389,6 +389,8 @@ class Instance(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OTS instance can be imported using instance id or name, e.g.
@@ -457,6 +459,8 @@ class Instance(pulumi.CustomResource):
                 "For": "Building table",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

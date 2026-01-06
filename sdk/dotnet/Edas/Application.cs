@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Edas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// EDAS application can be imported using the id, e.g.

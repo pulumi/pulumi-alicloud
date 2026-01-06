@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'AntiBruteForceRuleProtocolType',
     'AttackPathSensitiveAssetConfigAttackPathAssetList',
+    'CheckConfigSelectedCheck',
     'HoneypotPresetMeta',
     'HoneypotProbeHoneypotBindList',
     'HoneypotProbeHoneypotBindListBindPortList',
@@ -26,6 +27,13 @@ __all__ = [
     'GetAssetsAssetResult',
     'GetBackupPoliciesPolicyResult',
     'GetBaselineStrategiesStrategyResult',
+    'GetCheckItemConfigsConfigResult',
+    'GetCheckItemConfigsConfigCustomConfigResult',
+    'GetCheckItemConfigsConfigDescriptionResult',
+    'GetCheckStructuresStructureResult',
+    'GetCheckStructuresStructureStandardResult',
+    'GetCheckStructuresStructureStandardRequirementResult',
+    'GetCheckStructuresStructureStandardRequirementSectionResult',
     'GetHoneyPotsPotResult',
     'GetHoneypotImagesImageResult',
     'GetHoneypotNodesNodeResult',
@@ -182,6 +190,56 @@ class AttackPathSensitiveAssetConfigAttackPathAssetList(dict):
         Cloud product asset vendor. Valid values: `0`.
         """
         return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class CheckConfigSelectedCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkId":
+            suggest = "check_id"
+        elif key == "sectionId":
+            suggest = "section_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CheckConfigSelectedCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CheckConfigSelectedCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CheckConfigSelectedCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 check_id: Optional[_builtins.int] = None,
+                 section_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int check_id: The ID of the check item.
+        :param _builtins.int section_id: The section ID of the check item.
+        """
+        if check_id is not None:
+            pulumi.set(__self__, "check_id", check_id)
+        if section_id is not None:
+            pulumi.set(__self__, "section_id", section_id)
+
+    @_builtins.property
+    @pulumi.getter(name="checkId")
+    def check_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the check item.
+        """
+        return pulumi.get(self, "check_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sectionId")
+    def section_id(self) -> Optional[_builtins.int]:
+        """
+        The section ID of the check item.
+        """
+        return pulumi.get(self, "section_id")
 
 
 @pulumi.output_type
@@ -874,6 +932,385 @@ class GetBaselineStrategiesStrategyResult(dict):
     @pulumi.getter(name="targetType")
     def target_type(self) -> _builtins.str:
         return pulumi.get(self, "target_type")
+
+
+@pulumi.output_type
+class GetCheckItemConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 check_id: _builtins.int,
+                 check_show_name: _builtins.str,
+                 check_type: _builtins.str,
+                 custom_configs: Sequence['outputs.GetCheckItemConfigsConfigCustomConfigResult'],
+                 description: 'outputs.GetCheckItemConfigsConfigDescriptionResult',
+                 estimated_count: _builtins.int,
+                 instance_sub_type: _builtins.str,
+                 instance_type: _builtins.str,
+                 risk_level: _builtins.str,
+                 section_ids: Sequence[_builtins.int],
+                 vendor: _builtins.str):
+        """
+        :param _builtins.int check_id: The ID of the check item
+        :param _builtins.str check_show_name: The name of the check item.
+        :param _builtins.str check_type: The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+        :param Sequence['GetCheckItemConfigsConfigCustomConfigArgs'] custom_configs: The custom configuration items of the check item.
+        :param 'GetCheckItemConfigsConfigDescriptionArgs' description: The description of the check item.
+        :param _builtins.int estimated_count: The estimated quota that will be consumed by this check item.
+        :param _builtins.str instance_sub_type: The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+        :param _builtins.str instance_type: The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+        :param _builtins.str risk_level: The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+        :param Sequence[_builtins.int] section_ids: The IDs of the sections associated with the check items.
+        :param _builtins.str vendor: The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+        """
+        pulumi.set(__self__, "check_id", check_id)
+        pulumi.set(__self__, "check_show_name", check_show_name)
+        pulumi.set(__self__, "check_type", check_type)
+        pulumi.set(__self__, "custom_configs", custom_configs)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "estimated_count", estimated_count)
+        pulumi.set(__self__, "instance_sub_type", instance_sub_type)
+        pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "risk_level", risk_level)
+        pulumi.set(__self__, "section_ids", section_ids)
+        pulumi.set(__self__, "vendor", vendor)
+
+    @_builtins.property
+    @pulumi.getter(name="checkId")
+    def check_id(self) -> _builtins.int:
+        """
+        The ID of the check item
+        """
+        return pulumi.get(self, "check_id")
+
+    @_builtins.property
+    @pulumi.getter(name="checkShowName")
+    def check_show_name(self) -> _builtins.str:
+        """
+        The name of the check item.
+        """
+        return pulumi.get(self, "check_show_name")
+
+    @_builtins.property
+    @pulumi.getter(name="checkType")
+    def check_type(self) -> _builtins.str:
+        """
+        The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+        """
+        return pulumi.get(self, "check_type")
+
+    @_builtins.property
+    @pulumi.getter(name="customConfigs")
+    def custom_configs(self) -> Sequence['outputs.GetCheckItemConfigsConfigCustomConfigResult']:
+        """
+        The custom configuration items of the check item.
+        """
+        return pulumi.get(self, "custom_configs")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> 'outputs.GetCheckItemConfigsConfigDescriptionResult':
+        """
+        The description of the check item.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="estimatedCount")
+    def estimated_count(self) -> _builtins.int:
+        """
+        The estimated quota that will be consumed by this check item.
+        """
+        return pulumi.get(self, "estimated_count")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceSubType")
+    def instance_sub_type(self) -> _builtins.str:
+        """
+        The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+        """
+        return pulumi.get(self, "instance_sub_type")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> _builtins.str:
+        """
+        The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+        """
+        return pulumi.get(self, "instance_type")
+
+    @_builtins.property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> _builtins.str:
+        """
+        The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+        """
+        return pulumi.get(self, "risk_level")
+
+    @_builtins.property
+    @pulumi.getter(name="sectionIds")
+    def section_ids(self) -> Sequence[_builtins.int]:
+        """
+        The IDs of the sections associated with the check items.
+        """
+        return pulumi.get(self, "section_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.str:
+        """
+        The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+        """
+        return pulumi.get(self, "vendor")
+
+
+@pulumi.output_type
+class GetCheckItemConfigsConfigCustomConfigResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.str,
+                 name: _builtins.str,
+                 show_name: _builtins.str,
+                 type_define: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str default_value: The default value of the custom configuration item. The value is a string.
+        :param _builtins.str name: The name of the custom configuration item, which is unique in a check item.
+        :param _builtins.str show_name: The display name of the custom configuration item for internationalization.
+        :param _builtins.str type_define: The type of the custom configuration item. The value is a JSON string.
+        :param _builtins.str value: The content of the description for the check item when the Type parameter is text.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "show_name", show_name)
+        pulumi.set(__self__, "type_define", type_define)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        The default value of the custom configuration item. The value is a string.
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the custom configuration item, which is unique in a check item.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="showName")
+    def show_name(self) -> _builtins.str:
+        """
+        The display name of the custom configuration item for internationalization.
+        """
+        return pulumi.get(self, "show_name")
+
+    @_builtins.property
+    @pulumi.getter(name="typeDefine")
+    def type_define(self) -> _builtins.str:
+        """
+        The type of the custom configuration item. The value is a JSON string.
+        """
+        return pulumi.get(self, "type_define")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The content of the description for the check item when the Type parameter is text.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCheckItemConfigsConfigDescriptionResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str type: The type of the description of the check item. Valid value:*   **text**.
+        :param _builtins.str value: The content of the description for the check item when the Type parameter is text.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the description of the check item. Valid value:*   **text**.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The content of the description for the check item when the Type parameter is text.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCheckStructuresStructureResult(dict):
+    def __init__(__self__, *,
+                 standard_type: _builtins.str,
+                 standards: Sequence['outputs.GetCheckStructuresStructureStandardResult']):
+        """
+        :param _builtins.str standard_type: The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+        :param Sequence['GetCheckStructuresStructureStandardArgs'] standards: The structure information about the check items of the business type.
+        """
+        pulumi.set(__self__, "standard_type", standard_type)
+        pulumi.set(__self__, "standards", standards)
+
+    @_builtins.property
+    @pulumi.getter(name="standardType")
+    def standard_type(self) -> _builtins.str:
+        """
+        The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+        """
+        return pulumi.get(self, "standard_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def standards(self) -> Sequence['outputs.GetCheckStructuresStructureStandardResult']:
+        """
+        The structure information about the check items of the business type.
+        """
+        return pulumi.get(self, "standards")
+
+
+@pulumi.output_type
+class GetCheckStructuresStructureStandardResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 requirements: Sequence['outputs.GetCheckStructuresStructureStandardRequirementResult'],
+                 show_name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.int id: The ID of the section for the check item.
+        :param Sequence['GetCheckStructuresStructureStandardRequirementArgs'] requirements: The standards of the check items.
+        :param _builtins.str show_name: The display name of the standard for the check item.
+        :param _builtins.str type: The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "requirements", requirements)
+        pulumi.set(__self__, "show_name", show_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the section for the check item.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def requirements(self) -> Sequence['outputs.GetCheckStructuresStructureStandardRequirementResult']:
+        """
+        The standards of the check items.
+        """
+        return pulumi.get(self, "requirements")
+
+    @_builtins.property
+    @pulumi.getter(name="showName")
+    def show_name(self) -> _builtins.str:
+        """
+        The display name of the standard for the check item.
+        """
+        return pulumi.get(self, "show_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCheckStructuresStructureStandardRequirementResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 sections: Sequence['outputs.GetCheckStructuresStructureStandardRequirementSectionResult'],
+                 show_name: _builtins.str,
+                 total_check_count: _builtins.int):
+        """
+        :param _builtins.int id: The ID of the section for the check item.
+        :param Sequence['GetCheckStructuresStructureStandardRequirementSectionArgs'] sections: The information about the sections of check items.
+        :param _builtins.str show_name: The display name of the standard for the check item.
+        :param _builtins.int total_check_count: The total number of check items for the requirement.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "sections", sections)
+        pulumi.set(__self__, "show_name", show_name)
+        pulumi.set(__self__, "total_check_count", total_check_count)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the section for the check item.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def sections(self) -> Sequence['outputs.GetCheckStructuresStructureStandardRequirementSectionResult']:
+        """
+        The information about the sections of check items.
+        """
+        return pulumi.get(self, "sections")
+
+    @_builtins.property
+    @pulumi.getter(name="showName")
+    def show_name(self) -> _builtins.str:
+        """
+        The display name of the standard for the check item.
+        """
+        return pulumi.get(self, "show_name")
+
+    @_builtins.property
+    @pulumi.getter(name="totalCheckCount")
+    def total_check_count(self) -> _builtins.int:
+        """
+        The total number of check items for the requirement.
+        """
+        return pulumi.get(self, "total_check_count")
+
+
+@pulumi.output_type
+class GetCheckStructuresStructureStandardRequirementSectionResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 show_name: _builtins.str):
+        """
+        :param _builtins.int id: The ID of the section for the check item.
+        :param _builtins.str show_name: The display name of the standard for the check item.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "show_name", show_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the section for the check item.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="showName")
+    def show_name(self) -> _builtins.str:
+        """
+        The display name of the standard for the check item.
+        """
+        return pulumi.get(self, "show_name")
 
 
 @pulumi.output_type

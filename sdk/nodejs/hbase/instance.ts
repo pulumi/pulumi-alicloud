@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  *
  * this is a example for class netType instance. you can find more detail with the examples/hbase dir.
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * HBase can be imported using the id, e.g.

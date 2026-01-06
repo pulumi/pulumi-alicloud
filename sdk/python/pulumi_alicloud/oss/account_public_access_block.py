@@ -93,6 +93,8 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
         default = alicloud.oss.AccountPublicAccessBlock("default", block_public_access=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Account Public Access Block can be imported using the id, e.g.
@@ -132,6 +134,8 @@ class AccountPublicAccessBlock(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.oss.AccountPublicAccessBlock("default", block_public_access=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

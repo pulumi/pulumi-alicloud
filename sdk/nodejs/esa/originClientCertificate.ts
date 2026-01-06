@@ -71,6 +71,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Origin Client Certificate can be imported using the id, e.g.
@@ -134,7 +136,7 @@ export class OriginClientCertificate extends pulumi.CustomResource {
     /**
      * Site ID.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The status of the certificate.
      */
@@ -219,7 +221,7 @@ export interface OriginClientCertificateState {
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The status of the certificate.
      */
@@ -249,5 +251,5 @@ export interface OriginClientCertificateArgs {
     /**
      * Site ID.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
 }

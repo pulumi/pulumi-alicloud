@@ -946,6 +946,8 @@ class ControlPolicy(pulumi.CustomResource):
             proto="ANY")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Control Policy can be imported using the id, e.g.
@@ -1032,6 +1034,8 @@ class ControlPolicy(pulumi.CustomResource):
             destination_type="net",
             proto="ANY")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

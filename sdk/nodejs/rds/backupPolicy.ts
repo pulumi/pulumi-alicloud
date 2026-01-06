@@ -44,6 +44,8 @@ import * as utilities from "../utilities";
  * const policy = new alicloud.rds.BackupPolicy("policy", {instanceId: instance.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RDS backup policy can be imported using the id or instance id, e.g.

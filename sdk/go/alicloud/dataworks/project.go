@@ -74,6 +74,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Data Works Project can be imported using the id, e.g.

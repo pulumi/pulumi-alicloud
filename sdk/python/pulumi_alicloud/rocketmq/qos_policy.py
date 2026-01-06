@@ -445,6 +445,8 @@ class QosPolicy(pulumi.CustomResource):
                 replace="+0800").result)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag Qos Policy can be imported using the id, e.g.
@@ -517,6 +519,8 @@ class QosPolicy(pulumi.CustomResource):
                 search="Z",
                 replace="+0800").result)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

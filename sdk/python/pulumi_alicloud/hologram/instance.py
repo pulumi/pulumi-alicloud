@@ -29,6 +29,7 @@ class InstanceArgs:
                  cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
                  duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
                  gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
@@ -65,6 +66,7 @@ class InstanceArgs:
                - 128 core 512 GB (number of compute nodes: 8)
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
@@ -95,6 +97,8 @@ class InstanceArgs:
             pulumi.set(__self__, "cpu", cpu)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
         if gateway_count is not None:
@@ -227,6 +231,18 @@ class InstanceArgs:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter
@@ -364,6 +380,7 @@ class _InstanceState:
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
                  gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
@@ -397,6 +414,7 @@ class _InstanceState:
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
@@ -435,6 +453,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if enable_ssl is not None:
+            pulumi.set(__self__, "enable_ssl", enable_ssl)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
         if gateway_count is not None:
@@ -536,6 +556,18 @@ class _InstanceState:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter
@@ -740,6 +772,7 @@ class Instance(pulumi.CustomResource):
                  cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
                  duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
                  gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
@@ -781,6 +814,7 @@ class Instance(pulumi.CustomResource):
                - 128 core 512 GB (number of compute nodes: 8)
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
@@ -842,6 +876,7 @@ class Instance(pulumi.CustomResource):
                  cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
                  duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
                  gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
                  initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
@@ -869,6 +904,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["cold_storage_size"] = cold_storage_size
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["duration"] = duration
+            __props__.__dict__["enable_ssl"] = enable_ssl
             __props__.__dict__["endpoints"] = endpoints
             __props__.__dict__["gateway_count"] = gateway_count
             __props__.__dict__["initial_databases"] = initial_databases
@@ -908,6 +944,7 @@ class Instance(pulumi.CustomResource):
             cpu: Optional[pulumi.Input[_builtins.int]] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             duration: Optional[pulumi.Input[_builtins.int]] = None,
+            enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
             endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
             gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
             initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
@@ -946,6 +983,7 @@ class Instance(pulumi.CustomResource):
                > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
         :param pulumi.Input[_builtins.str] create_time: The creation time of the resource.
         :param pulumi.Input[_builtins.int] duration: The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
+        :param pulumi.Input[_builtins.bool] enable_ssl: Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]] endpoints: List of domain names. See `endpoints` below.
         :param pulumi.Input[_builtins.int] gateway_count: Number of gateway nodes.
         :param pulumi.Input[_builtins.str] initial_databases: Initialize the database and split multiple database names ",".
@@ -983,6 +1021,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["duration"] = duration
+        __props__.__dict__["enable_ssl"] = enable_ssl
         __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["gateway_count"] = gateway_count
         __props__.__dict__["initial_databases"] = initial_databases
@@ -1050,6 +1089,14 @@ class Instance(pulumi.CustomResource):
         The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         """
         return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "enable_ssl")
 
     @_builtins.property
     @pulumi.getter

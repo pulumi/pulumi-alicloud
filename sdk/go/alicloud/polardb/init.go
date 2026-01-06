@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointAddress{}
 	case "alicloud:polardb/globalDatabaseNetwork:GlobalDatabaseNetwork":
 		r = &GlobalDatabaseNetwork{}
+	case "alicloud:polardb/globalSecurityIpGroup:GlobalSecurityIpGroup":
+		r = &GlobalSecurityIpGroup{}
 	case "alicloud:polardb/parameterGroup:ParameterGroup":
 		r = &ParameterGroup{}
 	case "alicloud:polardb/primaryEndpoint:PrimaryEndpoint":
@@ -105,6 +107,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"polardb/globalDatabaseNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"polardb/globalSecurityIpGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

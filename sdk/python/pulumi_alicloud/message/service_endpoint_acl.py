@@ -159,6 +159,8 @@ class ServiceEndpointAcl(pulumi.CustomResource):
             acl_strategy="allow")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Message Service Endpoint Acl can be imported using the id, e.g.
@@ -203,6 +205,8 @@ class ServiceEndpointAcl(pulumi.CustomResource):
             endpoint_type=default.id,
             acl_strategy="allow")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -129,6 +129,8 @@ class AlertContactGroup(pulumi.CustomResource):
             contact_ids=[example.id])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact Group can be imported using the id, e.g.
@@ -172,6 +174,8 @@ class AlertContactGroup(pulumi.CustomResource):
             alert_contact_group_name="example_value",
             contact_ids=[example.id])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

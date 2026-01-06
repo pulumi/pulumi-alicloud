@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,29 @@ import javax.annotation.Nullable;
 public final class BandwidthPackageState extends com.pulumi.resources.ResourceArgs {
 
     public static final BandwidthPackageState Empty = new BandwidthPackageState();
+
+    /**
+     * Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     */
+    @Import(name="autoRenew")
+    private @Nullable Output<Boolean> autoRenew;
+
+    /**
+     * @return Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
+     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRenew() {
+        return Optional.ofNullable(this.autoRenew);
+    }
 
     /**
      * The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
@@ -35,20 +59,12 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     /**
      * The name of the bandwidth package. Defaults to null.
      * 
-     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-     * 
-     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
-     * 
      */
     @Import(name="cenBandwidthPackageName")
     private @Nullable Output<String> cenBandwidthPackageName;
 
     /**
      * @return The name of the bandwidth package. Defaults to null.
-     * 
-     * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-     * 
-     * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
      * 
      */
     public Optional<Output<String>> cenBandwidthPackageName() {
@@ -234,6 +250,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     private BandwidthPackageState() {}
 
     private BandwidthPackageState(BandwidthPackageState $) {
+        this.autoRenew = $.autoRenew;
         this.bandwidth = $.bandwidth;
         this.cenBandwidthPackageName = $.cenBandwidthPackageName;
         this.chargeType = $.chargeType;
@@ -267,6 +284,35 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param autoRenew Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
+            $.autoRenew = autoRenew;
+            return this;
+        }
+
+        /**
+         * @param autoRenew Whether to enable auto-renewal for the bandwidth package. Only applicable when `paymentType` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
+         * 
+         * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+         * 
+         * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRenew(Boolean autoRenew) {
+            return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
          * @param bandwidth The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
          * 
          * @return builder
@@ -290,10 +336,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         /**
          * @param cenBandwidthPackageName The name of the bandwidth package. Defaults to null.
          * 
-         * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-         * 
-         * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
-         * 
          * @return builder
          * 
          */
@@ -304,10 +346,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param cenBandwidthPackageName The name of the bandwidth package. Defaults to null.
-         * 
-         * -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can&#39;t be deleted before expired time.
-         * 
-         * -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
          * 
          * @return builder
          * 

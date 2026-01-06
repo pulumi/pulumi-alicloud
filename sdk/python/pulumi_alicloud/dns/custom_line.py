@@ -194,6 +194,8 @@ class CustomLine(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Alidns Custom Line can be imported using the id, e.g.
@@ -238,6 +240,8 @@ class CustomLine(pulumi.CustomResource):
                 "end_ip": "192.0.2.125",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

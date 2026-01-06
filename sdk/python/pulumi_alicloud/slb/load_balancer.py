@@ -850,6 +850,8 @@ class LoadBalancer(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Load balancer can be imported using the id, e.g.
@@ -949,6 +951,8 @@ class LoadBalancer(pulumi.CustomResource):
                 "tag_j": "10",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -66,6 +66,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Vpc Ipam Ipam Scope can be imported using the id, e.g.

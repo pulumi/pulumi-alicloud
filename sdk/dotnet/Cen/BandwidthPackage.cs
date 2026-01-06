@@ -22,6 +22,16 @@ namespace Pulumi.AliCloud.Cen
     public partial class BandwidthPackage : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to enable auto-renewal for the bandwidth package. Only applicable when `PaymentType` is `PrePaid`. Valid values: `True`, `False`. Default to `False`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Output("autoRenew")]
+        public Output<bool?> AutoRenew { get; private set; } = null!;
+
+        /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         /// </summary>
         [Output("bandwidth")]
@@ -29,10 +39,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
-        /// 
-        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-        /// 
-        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Output("cenBandwidthPackageName")]
         public Output<string> CenBandwidthPackageName { get; private set; } = null!;
@@ -145,6 +151,16 @@ namespace Pulumi.AliCloud.Cen
     public sealed class BandwidthPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable auto-renewal for the bandwidth package. Only applicable when `PaymentType` is `PrePaid`. Valid values: `True`, `False`. Default to `False`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         /// </summary>
         [Input("bandwidth", required: true)]
@@ -152,10 +168,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
-        /// 
-        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-        /// 
-        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Input("cenBandwidthPackageName")]
         public Input<string>? CenBandwidthPackageName { get; set; }
@@ -225,6 +237,16 @@ namespace Pulumi.AliCloud.Cen
     public sealed class BandwidthPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable auto-renewal for the bandwidth package. Only applicable when `PaymentType` is `PrePaid`. Valid values: `True`, `False`. Default to `False`.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+        /// 
+        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
+        /// </summary>
+        [Input("autoRenew")]
+        public Input<bool>? AutoRenew { get; set; }
+
+        /// <summary>
         /// The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         /// </summary>
         [Input("bandwidth")]
@@ -232,10 +254,6 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The name of the bandwidth package. Defaults to null.
-        /// 
-        /// -&gt;**NOTE:** PrePaid mode will deduct fees from the account directly and the bandwidth package can't be deleted before expired time.
-        /// 
-        /// -&gt;**NOTE:** The PostPaid mode is only for test. Please open a ticket if you need.
         /// </summary>
         [Input("cenBandwidthPackageName")]
         public Input<string>? CenBandwidthPackageName { get; set; }

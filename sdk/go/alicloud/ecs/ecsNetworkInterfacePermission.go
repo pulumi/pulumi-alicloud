@@ -117,6 +117,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ECS Network Interface Permission can be imported using the id, e.g.

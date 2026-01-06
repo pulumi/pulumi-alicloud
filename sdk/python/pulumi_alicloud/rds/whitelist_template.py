@@ -129,6 +129,8 @@ class WhitelistTemplate(pulumi.CustomResource):
             template_name="example-whitelist")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         You can use the whitelist template ID to import whitelist templates, e.g.
@@ -167,6 +169,8 @@ class WhitelistTemplate(pulumi.CustomResource):
             ip_white_list="172.16.0.0",
             template_name="example-whitelist")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

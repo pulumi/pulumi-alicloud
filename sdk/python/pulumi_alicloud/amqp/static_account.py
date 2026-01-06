@@ -236,6 +236,8 @@ class StaticAccount(pulumi.CustomResource):
             secret_key=secret_key)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Amqp Static Account can be imported using the id, e.g.
@@ -292,6 +294,8 @@ class StaticAccount(pulumi.CustomResource):
             access_key=access_key,
             secret_key=secret_key)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

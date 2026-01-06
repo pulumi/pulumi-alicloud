@@ -180,6 +180,8 @@ class RemoteWrite(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Remote Write can be imported using the id, e.g.
@@ -259,6 +261,8 @@ class RemoteWrite(pulumi.CustomResource):
             action: keep
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

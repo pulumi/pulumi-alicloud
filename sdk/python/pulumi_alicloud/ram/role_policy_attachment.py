@@ -208,6 +208,8 @@ class RolePolicyAttachment(pulumi.CustomResource):
             role_name=role.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RAM Role Policy Attachment can be imported using the id, e.g.
@@ -294,6 +296,8 @@ class RolePolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             role_name=role.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

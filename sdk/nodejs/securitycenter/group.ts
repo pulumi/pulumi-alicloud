@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const example = new alicloud.securitycenter.Group("example", {groupName: name});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Security Center Group can be imported using the id, e.g.

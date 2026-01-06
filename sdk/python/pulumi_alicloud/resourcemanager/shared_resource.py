@@ -234,6 +234,8 @@ class SharedResource(pulumi.CustomResource):
             resource_type="VSwitch")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Shared Resource can be imported using the id, e.g.
@@ -299,6 +301,8 @@ class SharedResource(pulumi.CustomResource):
             resource_id=default_switch.id,
             resource_type="VSwitch")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

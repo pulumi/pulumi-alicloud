@@ -126,6 +126,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Ehpc Cluster can be imported using the id, e.g.

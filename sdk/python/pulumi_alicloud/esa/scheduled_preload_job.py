@@ -277,6 +277,8 @@ class ScheduledPreloadJob(pulumi.CustomResource):
             url_list="http://example.gositecdn.cn/example/example.txt")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Scheduled Preload Job can be imported using the id, e.g.
@@ -330,6 +332,8 @@ class ScheduledPreloadJob(pulumi.CustomResource):
             scheduled_preload_job_name="example_scheduledpreloadexecution_job",
             url_list="http://example.gositecdn.cn/example/example.txt")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

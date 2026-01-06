@@ -96,6 +96,8 @@ namespace Pulumi.AliCloud.Pai
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PAI Workspace Datasetversion can be imported using the id, e.g.

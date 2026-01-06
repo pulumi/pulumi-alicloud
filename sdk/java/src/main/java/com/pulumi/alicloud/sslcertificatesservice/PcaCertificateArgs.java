@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,6 +47,13 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> algorithm() {
         return Optional.ofNullable(this.algorithm);
+    }
+
+    @Import(name="aliasName")
+    private @Nullable Output<String> aliasName;
+
+    public Optional<Output<String>> aliasName() {
+        return Optional.ofNullable(this.aliasName);
     }
 
     /**
@@ -124,8 +132,22 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A resource property field representing the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return A resource property field representing the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
      * 
      */
     @Import(name="state", required=true)
@@ -133,11 +155,25 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-     * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+
+    /**
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -161,12 +197,15 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
 
     private PcaCertificateArgs(PcaCertificateArgs $) {
         this.algorithm = $.algorithm;
+        this.aliasName = $.aliasName;
         this.commonName = $.commonName;
         this.countryCode = $.countryCode;
         this.locality = $.locality;
         this.organization = $.organization;
         this.organizationUnit = $.organizationUnit;
+        this.resourceGroupId = $.resourceGroupId;
         this.state = $.state;
+        this.tags = $.tags;
         this.years = $.years;
     }
 
@@ -223,6 +262,15 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder algorithm(String algorithm) {
             return algorithm(Output.of(algorithm));
+        }
+
+        public Builder aliasName(@Nullable Output<String> aliasName) {
+            $.aliasName = aliasName;
+            return this;
+        }
+
+        public Builder aliasName(String aliasName) {
+            return aliasName(Output.of(aliasName));
         }
 
         /**
@@ -331,8 +379,28 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param resourceGroupId A resource property field representing the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId A resource property field representing the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param state The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-         * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
          * 
          * @return builder
          * 
@@ -344,13 +412,33 @@ public final class PcaCertificateArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param state The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
-         * Name of the province or state where the organization is located. Support the use of Chinese, English characters.
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

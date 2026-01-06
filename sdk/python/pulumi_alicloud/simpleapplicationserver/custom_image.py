@@ -249,6 +249,8 @@ class CustomImage(pulumi.CustomResource):
             description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Simple Application Server Custom Image can be imported using the id, e.g.
@@ -312,6 +314,8 @@ class CustomImage(pulumi.CustomResource):
             status="Share",
             description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

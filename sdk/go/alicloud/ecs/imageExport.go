@@ -132,6 +132,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type ImageExport struct {
 	pulumi.CustomResourceState
 

@@ -84,6 +84,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RabbitMQ (AMQP) Exchange can be imported using the id, e.g.

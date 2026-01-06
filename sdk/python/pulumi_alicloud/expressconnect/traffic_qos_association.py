@@ -182,6 +182,8 @@ class TrafficQosAssociation(pulumi.CustomResource):
             instance_type="PHYSICALCONNECTION")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Traffic Qos Association can be imported using the id, e.g.
@@ -230,6 +232,8 @@ class TrafficQosAssociation(pulumi.CustomResource):
             qos_id=create_qos.id,
             instance_type="PHYSICALCONNECTION")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

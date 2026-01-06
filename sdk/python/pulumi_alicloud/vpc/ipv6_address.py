@@ -348,6 +348,8 @@ class Ipv6Address(pulumi.CustomResource):
             ipv6_address_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ipv6 Address can be imported using the id, e.g.
@@ -412,6 +414,8 @@ class Ipv6Address(pulumi.CustomResource):
             ipv6_address_description="create_description",
             ipv6_address_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

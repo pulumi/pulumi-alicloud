@@ -5,6 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a Schedulerx Namespace resource.
+ *
+ * For information about Schedulerx Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/schedulerx/schedulerx-serverless/developer-reference/api-schedulerx2-2019-04-30-listnamespaces).
+ *
+ * > **NOTE:** Available since v1.173.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.schedulerx.Namespace("default", {
+ *     namespaceName: name,
+ *     description: name,
+ * });
+ * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Schedulerx Namespace can be imported using the id, e.g.
@@ -50,7 +74,7 @@ export class Namespace extends pulumi.CustomResource {
      */
     declare public readonly namespaceName: pulumi.Output<string>;
     /**
-     * Namespace uid.
+     * namespace uid
      */
     declare public readonly namespaceUid: pulumi.Output<string>;
 
@@ -97,7 +121,7 @@ export interface NamespaceState {
      */
     namespaceName?: pulumi.Input<string>;
     /**
-     * Namespace uid.
+     * namespace uid
      */
     namespaceUid?: pulumi.Input<string>;
 }
@@ -115,7 +139,7 @@ export interface NamespaceArgs {
      */
     namespaceName: pulumi.Input<string>;
     /**
-     * Namespace uid.
+     * namespace uid
      */
     namespaceUid?: pulumi.Input<string>;
 }

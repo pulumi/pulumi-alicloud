@@ -20,10 +20,13 @@ __all__ = ['RoutineRelatedRecordArgs', 'RoutineRelatedRecord']
 class RoutineRelatedRecordArgs:
     def __init__(__self__, *,
                  record_name: pulumi.Input[_builtins.str],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoutineRelatedRecord resource.
+        :param pulumi.Input[_builtins.str] record_name: The record name.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
+        :param pulumi.Input[_builtins.str] name: The routine name.
         """
         pulumi.set(__self__, "record_name", record_name)
         pulumi.set(__self__, "site_id", site_id)
@@ -33,6 +36,9 @@ class RoutineRelatedRecordArgs:
     @_builtins.property
     @pulumi.getter(name="recordName")
     def record_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The record name.
+        """
         return pulumi.get(self, "record_name")
 
     @record_name.setter
@@ -41,16 +47,22 @@ class RoutineRelatedRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The website ID.
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The routine name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -64,9 +76,13 @@ class _RoutineRelatedRecordState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_id: Optional[pulumi.Input[_builtins.int]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutineRelatedRecord resources.
+        :param pulumi.Input[_builtins.str] name: The routine name.
+        :param pulumi.Input[_builtins.int] record_id: The record ID.
+        :param pulumi.Input[_builtins.str] record_name: The record name.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -80,6 +96,9 @@ class _RoutineRelatedRecordState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The routine name.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -89,6 +108,9 @@ class _RoutineRelatedRecordState:
     @_builtins.property
     @pulumi.getter(name="recordId")
     def record_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The record ID.
+        """
         return pulumi.get(self, "record_id")
 
     @record_id.setter
@@ -98,6 +120,9 @@ class _RoutineRelatedRecordState:
     @_builtins.property
     @pulumi.getter(name="recordName")
     def record_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The record name.
+        """
         return pulumi.get(self, "record_name")
 
     @record_name.setter
@@ -106,11 +131,14 @@ class _RoutineRelatedRecordState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The website ID.
+        """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
 
@@ -122,12 +150,52 @@ class RoutineRelatedRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a RoutineRelatedRecord resource with the given unique name, props, and options.
+        Provides a ESA Routine Related Record resource.
+
+        For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+
+        > **NOTE:** Available since v1.265.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_routine = alicloud.esa.Routine("default",
+            description="example-routine2",
+            name="example-routine2")
+        default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_routine_related_record = alicloud.esa.RoutineRelatedRecord("default",
+            name=default_routine.id,
+            record_name="tfexampleacc.com",
+            site_id="618651327383200")
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        ESA Routine Related Record can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example <name>:<record_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: The routine name.
+        :param pulumi.Input[_builtins.str] record_name: The record name.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         ...
     @overload
@@ -136,7 +204,44 @@ class RoutineRelatedRecord(pulumi.CustomResource):
                  args: RoutineRelatedRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RoutineRelatedRecord resource with the given unique name, props, and options.
+        Provides a ESA Routine Related Record resource.
+
+        For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+
+        > **NOTE:** Available since v1.265.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_routine = alicloud.esa.Routine("default",
+            description="example-routine2",
+            name="example-routine2")
+        default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
+        default_routine_related_record = alicloud.esa.RoutineRelatedRecord("default",
+            name=default_routine.id,
+            record_name="tfexampleacc.com",
+            site_id="618651327383200")
+        ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
+
+        ## Import
+
+        ESA Routine Related Record can be imported using the id, e.g.
+
+        ```sh
+        $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example <name>:<record_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoutineRelatedRecordArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -154,7 +259,7 @@ class RoutineRelatedRecord(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -185,7 +290,7 @@ class RoutineRelatedRecord(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             record_id: Optional[pulumi.Input[_builtins.int]] = None,
             record_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'RoutineRelatedRecord':
+            site_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RoutineRelatedRecord':
         """
         Get an existing RoutineRelatedRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,6 +298,10 @@ class RoutineRelatedRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] name: The routine name.
+        :param pulumi.Input[_builtins.int] record_id: The record ID.
+        :param pulumi.Input[_builtins.str] record_name: The record name.
+        :param pulumi.Input[_builtins.str] site_id: The website ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -207,20 +316,32 @@ class RoutineRelatedRecord(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The routine name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="recordId")
     def record_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The record ID.
+        """
         return pulumi.get(self, "record_id")
 
     @_builtins.property
     @pulumi.getter(name="recordName")
     def record_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The record name.
+        """
         return pulumi.get(self, "record_name")
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The website ID.
+        """
         return pulumi.get(self, "site_id")
 

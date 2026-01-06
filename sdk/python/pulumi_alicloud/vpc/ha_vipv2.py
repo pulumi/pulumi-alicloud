@@ -463,6 +463,8 @@ class HaVipv2(pulumi.CustomResource):
             resource_group_id=default_rg.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Ha Vip can be imported using the id, e.g.
@@ -534,6 +536,8 @@ class HaVipv2(pulumi.CustomResource):
             ip_address="192.168.1.101",
             resource_group_id=default_rg.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

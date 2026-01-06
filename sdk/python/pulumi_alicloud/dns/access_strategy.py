@@ -712,6 +712,8 @@ class AccessStrategy(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DNS Access Strategy can be imported using the id, e.g.
@@ -829,6 +831,8 @@ class AccessStrategy(pulumi.CustomResource):
                 "line_code": "default",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

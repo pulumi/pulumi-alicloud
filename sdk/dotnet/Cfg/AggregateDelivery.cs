@@ -108,6 +108,8 @@ namespace Pulumi.AliCloud.Cfg
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Config Aggregate Delivery can be imported using the id, e.g.

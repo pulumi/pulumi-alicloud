@@ -49,6 +49,8 @@ namespace Pulumi.AliCloud.Arms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Application Real-Time Monitoring Service (ARMS) Grafana Workspace can be imported using the id, e.g.

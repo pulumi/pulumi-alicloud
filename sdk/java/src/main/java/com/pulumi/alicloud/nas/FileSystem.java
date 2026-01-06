@@ -16,6 +16,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -85,6 +86,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 
@@ -217,31 +220,15 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     public Output<String> fileSystemType() {
         return this.fileSystemType;
     }
-    /**
-     * String of keytab file content encrypted by base64
-     * 
-     */
     @Export(name="keytab", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keytab;
 
-    /**
-     * @return String of keytab file content encrypted by base64
-     * 
-     */
     public Output<Optional<String>> keytab() {
         return Codegen.optional(this.keytab);
     }
-    /**
-     * String of the keytab file content encrypted by MD5
-     * 
-     */
     @Export(name="keytabMd5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keytabMd5;
 
-    /**
-     * @return String of the keytab file content encrypted by MD5
-     * 
-     */
     public Output<Optional<String>> keytabMd5() {
         return Codegen.optional(this.keytabMd5);
     }
@@ -324,6 +311,34 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return this.recycleBin;
     }
     /**
+     * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * 
+     */
+    @Export(name="redundancyType", refs={String.class}, tree="[0]")
+    private Output<String> redundancyType;
+
+    /**
+     * @return Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
+     * 
+     */
+    public Output<String> redundancyType() {
+        return this.redundancyType;
+    }
+    /**
+     * Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     * 
+     */
+    @Export(name="redundancyVswitchIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> redundancyVswitchIds;
+
+    /**
+     * @return Redundancy vSwitch ID list. Only set when the file system&#39;s storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
+     * 
+     */
+    public Output<Optional<List<String>>> redundancyVswitchIds() {
+        return Codegen.optional(this.redundancyVswitchIds);
+    }
+    /**
      * RegionId
      * 
      */
@@ -370,6 +385,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
      * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
+     * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
@@ -378,6 +395,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
      * @return Only extreme NAS is supported.
      * 
      * &gt; **NOTE:** A file system is created from a snapshot. The version of the created file system is the same as that of the snapshot source file system. For example, if the source file system version of the snapshot is 1 and you need to create A file system of version 2, you can first create A file system A from the snapshot, then create A file system B that meets the configuration of version 2, copy the data in file system A to file system B, and migrate the business to file system B after the copy is completed.
+     * 
+     * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
      */
     public Output<Optional<String>> snapshotId() {

@@ -126,6 +126,8 @@ class MetaTag(pulumi.CustomResource):
             values=["Desc2"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Tag Meta Tag can be imported using the id, e.g.
@@ -167,6 +169,8 @@ class MetaTag(pulumi.CustomResource):
             key="Name1",
             values=["Desc2"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

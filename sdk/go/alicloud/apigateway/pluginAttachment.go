@@ -116,6 +116,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type PluginAttachment struct {
 	pulumi.CustomResourceState
 

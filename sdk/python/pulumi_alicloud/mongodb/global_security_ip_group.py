@@ -153,6 +153,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
             global_security_ip_list="192.168.1.1,192.168.1.2,192.168.1.3")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Mongodb Global Security IP Group can be imported using the id, e.g.
@@ -199,6 +201,8 @@ class GlobalSecurityIpGroup(pulumi.CustomResource):
             global_ig_name=name,
             global_security_ip_list="192.168.1.1,192.168.1.2,192.168.1.3")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

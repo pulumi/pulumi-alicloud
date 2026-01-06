@@ -20,12 +20,12 @@ __all__ = ['VersionArgs', 'Version']
 class VersionArgs:
     def __init__(__self__, *,
                  origin_version: pulumi.Input[_builtins.int],
-                 site_id: pulumi.Input[_builtins.int],
+                 site_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Version resource.
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
         """
         pulumi.set(__self__, "origin_version", origin_version)
@@ -47,14 +47,14 @@ class VersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Input[_builtins.int]:
+    def site_id(self) -> pulumi.Input[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: pulumi.Input[_builtins.int]):
+    def site_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
@@ -76,7 +76,7 @@ class _VersionState:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  site_version: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -84,8 +84,8 @@ class _VersionState:
         :param pulumi.Input[_builtins.str] create_time: The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] status: Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
         """
         if create_time is not None:
@@ -139,21 +139,21 @@ class _VersionState:
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The version number of the site configuration.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
@@ -182,12 +182,12 @@ class Version(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides a ESA Site Version resource.
+        Provides a ESA Version resource.
 
-        For information about ESA Site Version and how to use it, see [What is Site Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
+        For information about ESA Version and how to use it, see [What is Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
 
         > **NOTE:** Available since v1.251.0.
 
@@ -215,6 +215,8 @@ class Version(pulumi.CustomResource):
             description="example",
             origin_version=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -228,7 +230,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
         """
         ...
     @overload
@@ -237,9 +239,9 @@ class Version(pulumi.CustomResource):
                  args: VersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a ESA Site Version resource.
+        Provides a ESA Version resource.
 
-        For information about ESA Site Version and how to use it, see [What is Site Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
+        For information about ESA Version and how to use it, see [What is Version](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CloneVersion).
 
         > **NOTE:** Available since v1.251.0.
 
@@ -267,6 +269,8 @@ class Version(pulumi.CustomResource):
             description="example",
             origin_version=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -293,7 +297,7 @@ class Version(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  origin_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,7 +330,7 @@ class Version(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             origin_version: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.int]] = None,
+            site_id: Optional[pulumi.Input[_builtins.str]] = None,
             site_version: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Version':
         """
@@ -339,8 +343,8 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time. The date format follows ISO8601 notation and uses UTC time. The format is yyyy-MM-ddTHH:mm:ssZ.
         :param pulumi.Input[_builtins.str] description: The Site version's description.
         :param pulumi.Input[_builtins.int] origin_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-        :param pulumi.Input[_builtins.int] site_id: The site ID, which can be obtained by calling the ListSites API.
-        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration.
+        :param pulumi.Input[_builtins.str] site_id: The site ID, which can be obtained by calling the ListSites API.
+        :param pulumi.Input[_builtins.int] site_version: The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         :param pulumi.Input[_builtins.str] status: Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -381,7 +385,7 @@ class Version(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[_builtins.int]:
+    def site_id(self) -> pulumi.Output[_builtins.str]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
@@ -391,7 +395,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="siteVersion")
     def site_version(self) -> pulumi.Output[_builtins.int]:
         """
-        The version number of the site configuration.
+        The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 

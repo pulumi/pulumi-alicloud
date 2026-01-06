@@ -203,6 +203,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
         default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Service Linked Role can be imported using the id, e.g.
@@ -240,6 +242,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -165,6 +165,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type ApplicationScale struct {
 	pulumi.CustomResourceState
 

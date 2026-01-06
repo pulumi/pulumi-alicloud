@@ -2141,6 +2141,8 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             vswitch_id=example_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Upgrade DB Instance can be imported using the id, e.g.
@@ -2333,6 +2335,8 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             db_instance_description="terraform-example",
             vswitch_id=example_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

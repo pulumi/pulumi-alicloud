@@ -129,6 +129,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Bastion Host User can be imported using the id, e.g.

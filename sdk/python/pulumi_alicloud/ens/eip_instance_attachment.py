@@ -265,6 +265,8 @@ class EipInstanceAttachment(pulumi.CustomResource):
             standby=False)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ens Eip Instance Attachment can be imported using the id, e.g.
@@ -347,6 +349,8 @@ class EipInstanceAttachment(pulumi.CustomResource):
             instance_type="EnsInstance",
             standby=False)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

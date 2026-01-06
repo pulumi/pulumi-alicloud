@@ -80,6 +80,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Max Compute Quota Plan can be imported using the id, e.g.

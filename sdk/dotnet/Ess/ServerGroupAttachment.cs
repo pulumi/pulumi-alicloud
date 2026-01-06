@@ -139,6 +139,8 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:ess/serverGroupAttachment:ServerGroupAttachment")]
     public partial class ServerGroupAttachment : global::Pulumi.CustomResource

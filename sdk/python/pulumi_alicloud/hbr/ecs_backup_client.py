@@ -454,6 +454,8 @@ class EcsBackupClient(pulumi.CustomResource):
             proxy_password="password")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Notice
 
         > **Note:** Please read the following precautions carefully before deleting a client:
@@ -544,6 +546,8 @@ class EcsBackupClient(pulumi.CustomResource):
             proxy_user="user",
             proxy_password="password")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Notice
 

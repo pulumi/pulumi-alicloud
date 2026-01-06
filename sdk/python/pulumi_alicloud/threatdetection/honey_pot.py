@@ -262,6 +262,8 @@ class HoneyPot(pulumi.CustomResource):
             node_id=default_honeypot_node.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Honey Pot can be imported using the id, e.g.
@@ -313,6 +315,8 @@ class HoneyPot(pulumi.CustomResource):
             honeypot_name=name,
             node_id=default_honeypot_node.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

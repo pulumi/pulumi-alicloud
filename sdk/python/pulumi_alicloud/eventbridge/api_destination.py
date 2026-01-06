@@ -223,6 +223,8 @@ class ApiDestination(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Event Bridge Api Destination can be imported using the id, e.g.
@@ -280,6 +282,8 @@ class ApiDestination(pulumi.CustomResource):
                 "method": "POST",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -267,6 +267,8 @@ class ExternalDataService(pulumi.CustomResource):
             service_spec="8")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for PostgreSQL (GPDB) External Data Service can be imported using the id, e.g.
@@ -338,6 +340,8 @@ class ExternalDataService(pulumi.CustomResource):
             service_description="example",
             service_spec="8")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

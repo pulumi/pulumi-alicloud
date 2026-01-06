@@ -659,6 +659,8 @@ class WorkspaceDataset(pulumi.CustomResource):
             user_id="1511928242963727")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PAI Workspace Dataset can be imported using the id, e.g.
@@ -764,6 +766,8 @@ class WorkspaceDataset(pulumi.CustomResource):
             source_id="d-xxxxx_v1",
             user_id="1511928242963727")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

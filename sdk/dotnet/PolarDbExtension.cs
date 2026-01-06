@@ -92,6 +92,8 @@ namespace Pulumi.AliCloud
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Polar Db Extension can be imported using the id, e.g.

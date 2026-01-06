@@ -7,7 +7,6 @@ import com.pulumi.alicloud.esa.inputs.TransportLayerApplicationRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -99,13 +98,13 @@ public final class TransportLayerApplicationArgs extends com.pulumi.resources.Re
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return Site ID.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
@@ -259,7 +258,7 @@ public final class TransportLayerApplicationArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -270,7 +269,7 @@ public final class TransportLayerApplicationArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

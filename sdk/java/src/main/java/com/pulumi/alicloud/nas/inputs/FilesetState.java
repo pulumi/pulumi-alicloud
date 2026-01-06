@@ -17,14 +17,48 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     public static final FilesetState Empty = new FilesetState();
 
     /**
-     * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * The time when Fileset was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when Fileset was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+     * - true: Enable instance release protection.
+     * - false (default): Turn off instance release protection
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
+     * Description of Fileset.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+     * @return Description of Fileset.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +66,14 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -62,14 +96,14 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path of the fileset.
+     * The path of Fileset.
      * 
      */
     @Import(name="fileSystemPath")
     private @Nullable Output<String> fileSystemPath;
 
     /**
-     * @return The path of the fileset.
+     * @return The path of Fileset.
      * 
      */
     public Optional<Output<String>> fileSystemPath() {
@@ -77,14 +111,14 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The first ID of the resource.
+     * Fileset ID
      * 
      */
     @Import(name="filesetId")
     private @Nullable Output<String> filesetId;
 
     /**
-     * @return The first ID of the resource.
+     * @return Fileset ID
      * 
      */
     public Optional<Output<String>> filesetId() {
@@ -92,14 +126,14 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the fileset.
+     * The status of Fileset. Includes:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the fileset.
+     * @return The status of Fileset. Includes:
      * 
      */
     public Optional<Output<String>> status() {
@@ -109,6 +143,8 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
     private FilesetState() {}
 
     private FilesetState(FilesetState $) {
+        this.createTime = $.createTime;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.fileSystemId = $.fileSystemId;
@@ -136,7 +172,53 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param createTime The time when Fileset was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when Fileset was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionProtection The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+         * - true: Enable instance release protection.
+         * - false (default): Turn off instance release protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+         * - true: Enable instance release protection.
+         * - false (default): Turn off instance release protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param description Description of Fileset.
          * 
          * @return builder
          * 
@@ -147,7 +229,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+         * @param description Description of Fileset.
          * 
          * @return builder
          * 
@@ -157,7 +239,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -168,7 +250,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -199,7 +281,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemPath The path of the fileset.
+         * @param fileSystemPath The path of Fileset.
          * 
          * @return builder
          * 
@@ -210,7 +292,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemPath The path of the fileset.
+         * @param fileSystemPath The path of Fileset.
          * 
          * @return builder
          * 
@@ -220,7 +302,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesetId The first ID of the resource.
+         * @param filesetId Fileset ID
          * 
          * @return builder
          * 
@@ -231,7 +313,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filesetId The first ID of the resource.
+         * @param filesetId Fileset ID
          * 
          * @return builder
          * 
@@ -241,7 +323,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the fileset.
+         * @param status The status of Fileset. Includes:
          * 
          * @return builder
          * 
@@ -252,7 +334,7 @@ public final class FilesetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the fileset.
+         * @param status The status of Fileset. Includes:
          * 
          * @return builder
          * 

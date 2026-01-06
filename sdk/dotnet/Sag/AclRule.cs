@@ -54,6 +54,8 @@ namespace Pulumi.AliCloud.Sag
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// The Sag Acl Rule can be imported using the id, e.g.

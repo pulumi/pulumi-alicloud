@@ -599,6 +599,8 @@ class Group(pulumi.CustomResource):
             office_site_id=default_h2a5_ks.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Phone Instance Group can be imported using the id, e.g.
@@ -689,6 +691,8 @@ class Group(pulumi.CustomResource):
             policy_group_id=defaultj_z1gi0.id,
             office_site_id=default_h2a5_ks.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -201,6 +201,8 @@ class ProjectMember(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Project Member can be imported using the id, e.g.
@@ -267,6 +269,8 @@ class ProjectMember(pulumi.CustomResource):
                 "code": admin_code,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

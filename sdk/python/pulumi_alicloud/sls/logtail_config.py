@@ -413,6 +413,8 @@ class LogtailConfig(pulumi.CustomResource):
             input_type="file")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Service (SLS) Logtail Config can be imported using the id, e.g.
@@ -514,6 +516,8 @@ class LogtailConfig(pulumi.CustomResource):
             logtail_config_name="tfaccsls62147",
             input_type="file")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -43,6 +43,8 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 	Duration pulumi.IntPtrOutput `pulumi:"duration"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrOutput `pulumi:"enableSsl"`
 	// List of domain names. See `endpoints` below.
 	Endpoints InstanceEndpointArrayOutput `pulumi:"endpoints"`
 	// Number of gateway nodes.
@@ -150,6 +152,8 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 	Duration *int `pulumi:"duration"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
 	// List of domain names. See `endpoints` below.
 	Endpoints []InstanceEndpoint `pulumi:"endpoints"`
 	// Number of gateway nodes.
@@ -216,6 +220,8 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 	Duration pulumi.IntPtrInput
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
 	// List of domain names. See `endpoints` below.
 	Endpoints InstanceEndpointArrayInput
 	// Number of gateway nodes.
@@ -284,6 +290,8 @@ type instanceArgs struct {
 	Cpu *int `pulumi:"cpu"`
 	// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 	Duration *int `pulumi:"duration"`
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl *bool `pulumi:"enableSsl"`
 	// List of domain names. See `endpoints` below.
 	Endpoints []InstanceEndpoint `pulumi:"endpoints"`
 	// Number of gateway nodes.
@@ -347,6 +355,8 @@ type InstanceArgs struct {
 	Cpu pulumi.IntPtrInput
 	// The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 	Duration pulumi.IntPtrInput
+	// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+	EnableSsl pulumi.BoolPtrInput
 	// List of domain names. See `endpoints` below.
 	Endpoints InstanceEndpointArrayInput
 	// Number of gateway nodes.
@@ -510,6 +520,11 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
 func (o InstanceOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+func (o InstanceOutput) EnableSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableSsl }).(pulumi.BoolPtrOutput)
 }
 
 // List of domain names. See `endpoints` below.

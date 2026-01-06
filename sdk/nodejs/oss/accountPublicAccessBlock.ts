@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.oss.AccountPublicAccessBlock("default", {blockPublicAccess: true});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * OSS Account Public Access Block can be imported using the id, e.g.

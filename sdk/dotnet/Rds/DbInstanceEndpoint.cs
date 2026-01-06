@@ -112,6 +112,8 @@ namespace Pulumi.AliCloud.Rds
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS database endpoint feature can be imported using the id, e.g.

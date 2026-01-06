@@ -302,6 +302,8 @@ namespace Pulumi.AliCloud.CR
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// CR Chain can be imported using the id, e.g.

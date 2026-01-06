@@ -49,6 +49,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Simple Application Server Snapshot can be imported using the id, e.g.

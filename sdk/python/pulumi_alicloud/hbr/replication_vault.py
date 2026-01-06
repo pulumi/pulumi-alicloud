@@ -334,6 +334,8 @@ class ReplicationVault(pulumi.CustomResource):
             description="terraform-example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Replication Vault can be imported using the id, e.g.
@@ -392,6 +394,8 @@ class ReplicationVault(pulumi.CustomResource):
             vault_storage_class="STANDARD",
             description="terraform-example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

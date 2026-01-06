@@ -356,6 +356,8 @@ class DispatchRule(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Alert Contact can be imported using the id, e.g.
@@ -451,6 +453,8 @@ class DispatchRule(pulumi.CustomResource):
                 "robot_content": "example_robot_content",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

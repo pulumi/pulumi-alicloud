@@ -503,6 +503,8 @@ class HanaInstance(pulumi.CustomResource):
             vault_id=example_vault.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
@@ -568,6 +570,8 @@ class HanaInstance(pulumi.CustomResource):
             validate_certificate=False,
             vault_id=example_vault.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

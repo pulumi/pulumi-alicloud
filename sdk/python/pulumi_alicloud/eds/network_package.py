@@ -164,6 +164,8 @@ class NetworkPackage(pulumi.CustomResource):
             office_site_id=default_simple_office_site.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Network Package can be imported using the id, e.g.
@@ -211,6 +213,8 @@ class NetworkPackage(pulumi.CustomResource):
             bandwidth=10,
             office_site_id=default_simple_office_site.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

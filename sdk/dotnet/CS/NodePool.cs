@@ -10,338 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CS
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Max = 99999,
-    ///         Min = 10000,
-    ///     });
-    /// 
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var enhanced = AliCloud.Vpc.GetEnhancedNatAvailableZones.Invoke();
-    /// 
-    ///     var cloudEfficiency = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
-    ///     {
-    ///         AvailabilityZone = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-    ///         CpuCoreCount = 4,
-    ///         MemorySize = 8,
-    ///         KubernetesNodeRole = "Worker",
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
-    ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-    ///     });
-    /// 
-    ///     var defaultManagedKubernetes = new AliCloud.CS.ManagedKubernetes("default", new()
-    ///     {
-    ///         NamePrefix = $"terraform-example-{@default.Result}",
-    ///         ClusterSpec = "ack.pro.small",
-    ///         WorkerVswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         NewNatGateway = true,
-    ///         PodCidr = Std.Cidrsubnet.Invoke(new()
-    ///         {
-    ///             Input = "10.0.0.0/8",
-    ///             Newbits = 8,
-    ///             Netnum = 36,
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ServiceCidr = Std.Cidrsubnet.Invoke(new()
-    ///         {
-    ///             Input = "172.16.0.0/16",
-    ///             Newbits = 4,
-    ///             Netnum = 7,
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         SlbInternetEnabled = true,
-    ///         EnableRrsa = true,
-    ///     });
-    /// 
-    ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
-    ///     {
-    ///         KeyPairName = $"terraform-example-{@default.Result}",
-    ///     });
-    /// 
-    ///     var defaultNodePool = new AliCloud.CS.NodePool("default", new()
-    ///     {
-    ///         NodePoolName = name,
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         Labels = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
-    ///             {
-    ///                 Key = "test1",
-    ///                 Value = "nodepool",
-    ///             },
-    ///             new AliCloud.CS.Inputs.NodePoolLabelArgs
-    ///             {
-    ///                 Key = "test2",
-    ///                 Value = "nodepool",
-    ///             },
-    ///         },
-    ///         Taints = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
-    ///             {
-    ///                 Key = "tf",
-    ///                 Effect = "NoSchedule",
-    ///                 Value = "example",
-    ///             },
-    ///             new AliCloud.CS.Inputs.NodePoolTaintArgs
-    ///             {
-    ///                 Key = "tf2",
-    ///                 Effect = "NoSchedule",
-    ///                 Value = "example2",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //The parameter `node_count` is deprecated from version 1.158.0. Please use the new parameter `desired_size` instead, you can update it as follows.
-    ///     var desiredSize = new AliCloud.CS.NodePool("desired_size", new()
-    ///     {
-    ///         NodePoolName = "desired_size",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         DesiredSize = "0",
-    ///     });
-    /// 
-    ///     // Create a managed node pool. If you need to enable maintenance window, you need to set the maintenance window in `alicloud_cs_managed_kubernetes`.
-    ///     var maintenance = new AliCloud.CS.NodePool("maintenance", new()
-    ///     {
-    ///         NodePoolName = "maintenance",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         DesiredSize = "1",
-    ///         Management = new AliCloud.CS.Inputs.NodePoolManagementArgs
-    ///         {
-    ///             Enable = true,
-    ///             AutoRepair = true,
-    ///             AutoRepairPolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoRepairPolicyArgs
-    ///             {
-    ///                 RestartNode = true,
-    ///             },
-    ///             AutoUpgrade = true,
-    ///             AutoUpgradePolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoUpgradePolicyArgs
-    ///             {
-    ///                 AutoUpgradeKubelet = true,
-    ///             },
-    ///             AutoVulFix = true,
-    ///             AutoVulFixPolicy = new AliCloud.CS.Inputs.NodePoolManagementAutoVulFixPolicyArgs
-    ///             {
-    ///                 VulLevel = "asap",
-    ///                 RestartNode = true,
-    ///             },
-    ///             MaxUnavailable = 1,
-    ///         },
-    ///     });
-    /// 
-    ///     //Create a node pool with spot instance.
-    ///     var spotInstance = new AliCloud.CS.NodePool("spot_instance", new()
-    ///     {
-    ///         NodePoolName = "spot_instance",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         DesiredSize = "1",
-    ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SpotPriceLimits = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///             {
-    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///                 PriceLimit = "0.70",
-    ///             },
-    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///             {
-    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.Id),
-    ///                 PriceLimit = "0.72",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Use Spot instances to create a node pool with auto-scaling enabled
-    ///     var spotAutoScaling = new AliCloud.CS.NodePool("spot_auto_scaling", new()
-    ///     {
-    ///         NodePoolName = "spot_auto_scaling",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         ScalingConfig = new AliCloud.CS.Inputs.NodePoolScalingConfigArgs
-    ///         {
-    ///             MinSize = 1,
-    ///             MaxSize = 10,
-    ///             Type = "spot",
-    ///         },
-    ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SpotPriceLimits = new[]
-    ///         {
-    ///             new AliCloud.CS.Inputs.NodePoolSpotPriceLimitArgs
-    ///             {
-    ///                 InstanceType = cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///                 PriceLimit = "0.70",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Create a `PrePaid` node pool.
-    ///     var prepaidNode = new AliCloud.CS.NodePool("prepaid_node", new()
-    ///     {
-    ///         NodePoolName = "prepaid_node",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         KeyName = defaultKeyPair.KeyPairName,
-    ///         InstanceChargeType = "PrePaid",
-    ///         Period = 1,
-    ///         PeriodUnit = "Month",
-    ///         AutoRenew = true,
-    ///         AutoRenewPeriod = 1,
-    ///         InstallCloudMonitor = true,
-    ///     });
-    /// 
-    ///     //#Create a node pool with customized kubelet parameters
-    ///     var customizedKubelet = new AliCloud.CS.NodePool("customized_kubelet", new()
-    ///     {
-    ///         NodePoolName = "customized_kubelet",
-    ///         ClusterId = defaultManagedKubernetes.Id,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///         InstanceTypes = new[]
-    ///         {
-    ///             cloudEfficiency.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         },
-    ///         SystemDiskCategory = "cloud_efficiency",
-    ///         SystemDiskSize = 40,
-    ///         InstanceChargeType = "PostPaid",
-    ///         DesiredSize = "0",
-    ///         KubeletConfiguration = new AliCloud.CS.Inputs.NodePoolKubeletConfigurationArgs
-    ///         {
-    ///             RegistryPullQps = "10",
-    ///             RegistryBurst = "5",
-    ///             EventRecordQps = "10",
-    ///             EventBurst = "5",
-    ///             SerializeImagePulls = "true",
-    ///             EvictionHard = 
-    ///             {
-    ///                 { "memory.available", "1024Mi" },
-    ///                 { "nodefs.available", "10%" },
-    ///                 { "nodefs.inodesFree", "5%" },
-    ///                 { "imagefs.available", "10%" },
-    ///             },
-    ///             SystemReserved = 
-    ///             {
-    ///                 { "cpu", "1" },
-    ///                 { "memory", "1Gi" },
-    ///                 { "ephemeral-storage", "10Gi" },
-    ///             },
-    ///             KubeReserved = 
-    ///             {
-    ///                 { "cpu", "500m" },
-    ///                 { "memory", "1Gi" },
-    ///             },
-    ///             ContainerLogMaxSize = "200Mi",
-    ///             ContainerLogMaxFiles = "3",
-    ///             MaxPods = "100",
-    ///             ReadOnlyPort = "0",
-    ///             AllowedUnsafeSysctls = new[]
-    ///             {
-    ///                 "net.ipv4.route.min_pmtu",
-    ///             },
-    ///         },
-    ///         RollingPolicy = new AliCloud.CS.Inputs.NodePoolRollingPolicyArgs
-    ///         {
-    ///             MaxParallelism = 1,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Container Service for Kubernetes (ACK) Nodepool can be imported using the id, e.g.
@@ -353,6 +21,12 @@ namespace Pulumi.AliCloud.CS
     [AliCloudResourceType("alicloud:cs/nodePool:NodePool")]
     public partial class NodePool : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `AutoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `AutoMode` below.
+        /// </summary>
+        [Output("autoMode")]
+        public Output<Outputs.NodePoolAutoMode> AutoMode { get; private set; } = null!;
+
         /// <summary>
         /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
@@ -409,12 +83,16 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Lingjun node pool configuration. See `EfloNodeGroup` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("efloNodeGroup")]
         public Output<Outputs.NodePoolEfloNodeGroup?> EfloNodeGroup { get; private set; } = null!;
 
         /// <summary>
         /// Whether to force deletion.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
@@ -443,7 +121,8 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        /// - `Custom`: Custom image.
+        /// - `Custom`：Custom image.
+        /// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         /// </summary>
         [Output("imageType")]
         public Output<string> ImageType { get; private set; } = null!;
@@ -459,6 +138,18 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// ECS instance metadata access configuration. See `InstanceMetadataOptions` below.
+        /// </summary>
+        [Output("instanceMetadataOptions")]
+        public Output<Outputs.NodePoolInstanceMetadataOptions> InstanceMetadataOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance property configuration. See `InstancePatterns` below.
+        /// </summary>
+        [Output("instancePatterns")]
+        public Output<ImmutableArray<Outputs.NodePoolInstancePattern>> InstancePatterns { get; private set; } = null!;
 
         /// <summary>
         /// In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -641,9 +332,6 @@ namespace Pulumi.AliCloud.CS
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// Rotary configuration. See `RollingPolicy` below.
-        /// </summary>
         [Output("rollingPolicy")]
         public Output<Outputs.NodePoolRollingPolicy?> RollingPolicy { get; private set; } = null!;
 
@@ -830,9 +518,6 @@ namespace Pulumi.AliCloud.CS
         [Output("unschedulable")]
         public Output<bool?> Unschedulable { get; private set; } = null!;
 
-        /// <summary>
-        /// Synchronously update node labels and taints.
-        /// </summary>
         [Output("updateNodes")]
         public Output<bool?> UpdateNodes { get; private set; } = null!;
 
@@ -900,6 +585,12 @@ namespace Pulumi.AliCloud.CS
     public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `AutoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `AutoMode` below.
+        /// </summary>
+        [Input("autoMode")]
+        public Input<Inputs.NodePoolAutoModeArgs>? AutoMode { get; set; }
+
+        /// <summary>
         /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
         [Input("autoRenew")]
@@ -961,12 +652,16 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Lingjun node pool configuration. See `EfloNodeGroup` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("efloNodeGroup")]
         public Input<Inputs.NodePoolEfloNodeGroupArgs>? EfloNodeGroup { get; set; }
 
         /// <summary>
         /// Whether to force deletion.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -995,7 +690,8 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        /// - `Custom`: Custom image.
+        /// - `Custom`：Custom image.
+        /// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1011,6 +707,24 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// ECS instance metadata access configuration. See `InstanceMetadataOptions` below.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.NodePoolInstanceMetadataOptionsArgs>? InstanceMetadataOptions { get; set; }
+
+        [Input("instancePatterns")]
+        private InputList<Inputs.NodePoolInstancePatternArgs>? _instancePatterns;
+
+        /// <summary>
+        /// Instance property configuration. See `InstancePatterns` below.
+        /// </summary>
+        public InputList<Inputs.NodePoolInstancePatternArgs> InstancePatterns
+        {
+            get => _instancePatterns ?? (_instancePatterns = new InputList<Inputs.NodePoolInstancePatternArgs>());
+            set => _instancePatterns = value;
+        }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -1237,9 +951,6 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        /// <summary>
-        /// Rotary configuration. See `RollingPolicy` below.
-        /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyArgs>? RollingPolicy { get; set; }
 
@@ -1450,9 +1161,6 @@ namespace Pulumi.AliCloud.CS
         [Input("unschedulable")]
         public Input<bool>? Unschedulable { get; set; }
 
-        /// <summary>
-        /// Synchronously update node labels and taints.
-        /// </summary>
         [Input("updateNodes")]
         public Input<bool>? UpdateNodes { get; set; }
 
@@ -1482,6 +1190,12 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class NodePoolState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to enable auto mode. When enabled, the system will automatically manage the node pool with optimized default configurations. **Note:** When `AutoMode` is enabled, many parameters will be automatically set to default values and cannot be modified. See `auto_mode.enable` below for details. See `AutoMode` below.
+        /// </summary>
+        [Input("autoMode")]
+        public Input<Inputs.NodePoolAutoModeGetArgs>? AutoMode { get; set; }
+
         /// <summary>
         /// Whether to enable automatic renewal for nodes in the node pool takes effect only when `InstanceChargeType` is set to `PrePaid`. Default value: `False`. Valid values:
         /// </summary>
@@ -1544,12 +1258,16 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Lingjun node pool configuration. See `EfloNodeGroup` below.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("efloNodeGroup")]
         public Input<Inputs.NodePoolEfloNodeGroupGetArgs>? EfloNodeGroup { get; set; }
 
         /// <summary>
         /// Whether to force deletion.
+        /// 
+        /// &gt; **NOTE:** This parameter only takes effect when deletion is triggered.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -1578,7 +1296,8 @@ namespace Pulumi.AliCloud.CS
         /// - `ContainerOS` : container-optimized image.
         /// - `Ubuntu`: Ubuntu image.
         /// - `AliyunLinux3ContainerOptimized`: Alinux3 container-optimized image.
-        /// - `Custom`: Custom image.
+        /// - `Custom`：Custom image.
+        /// - `AliyunLinux4ContainerOptimized`：Alinux4 container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1594,6 +1313,24 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// ECS instance metadata access configuration. See `InstanceMetadataOptions` below.
+        /// </summary>
+        [Input("instanceMetadataOptions")]
+        public Input<Inputs.NodePoolInstanceMetadataOptionsGetArgs>? InstanceMetadataOptions { get; set; }
+
+        [Input("instancePatterns")]
+        private InputList<Inputs.NodePoolInstancePatternGetArgs>? _instancePatterns;
+
+        /// <summary>
+        /// Instance property configuration. See `InstancePatterns` below.
+        /// </summary>
+        public InputList<Inputs.NodePoolInstancePatternGetArgs> InstancePatterns
+        {
+            get => _instancePatterns ?? (_instancePatterns = new InputList<Inputs.NodePoolInstancePatternGetArgs>());
+            set => _instancePatterns = value;
+        }
 
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
@@ -1826,9 +1563,6 @@ namespace Pulumi.AliCloud.CS
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
-        /// <summary>
-        /// Rotary configuration. See `RollingPolicy` below.
-        /// </summary>
         [Input("rollingPolicy")]
         public Input<Inputs.NodePoolRollingPolicyGetArgs>? RollingPolicy { get; set; }
 
@@ -2045,9 +1779,6 @@ namespace Pulumi.AliCloud.CS
         [Input("unschedulable")]
         public Input<bool>? Unschedulable { get; set; }
 
-        /// <summary>
-        /// Synchronously update node labels and taints.
-        /// </summary>
         [Input("updateNodes")]
         public Input<bool>? UpdateNodes { get; set; }
 

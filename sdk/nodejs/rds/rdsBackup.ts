@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  * const exampleRdsBackup = new alicloud.rds.RdsBackup("example", {dbInstanceId: example.id});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RDS Backup can be imported using the id, e.g.

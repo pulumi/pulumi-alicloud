@@ -80,6 +80,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Api gateway api can be imported using the id.Format to `<API Group Id>:<API Id>` e.g.

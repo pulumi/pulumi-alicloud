@@ -48,6 +48,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // RDS record can be imported using the id, e.g.

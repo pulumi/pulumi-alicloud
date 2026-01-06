@@ -581,6 +581,8 @@ class HealthCheckTemplate(pulumi.CustomResource):
         example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Application Load Balancer (ALB) Health Check Template can be imported using the id, e.g.
@@ -642,6 +644,8 @@ class HealthCheckTemplate(pulumi.CustomResource):
             name = "terraform-example"
         example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

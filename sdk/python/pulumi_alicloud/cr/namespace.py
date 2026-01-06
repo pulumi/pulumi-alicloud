@@ -165,6 +165,8 @@ class Namespace(pulumi.CustomResource):
             default_visibility="PUBLIC")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Container Registry namespace can be imported using the namespace, e.g.
@@ -213,6 +215,8 @@ class Namespace(pulumi.CustomResource):
             auto_create=False,
             default_visibility="PUBLIC")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

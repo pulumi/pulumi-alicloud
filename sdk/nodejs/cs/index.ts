@@ -120,6 +120,11 @@ export type KubernetesPermission = import("./kubernetesPermission").KubernetesPe
 export const KubernetesPermission: typeof import("./kubernetesPermission").KubernetesPermission = null as any;
 utilities.lazyLoad(exports, ["KubernetesPermission"], () => require("./kubernetesPermission"));
 
+export { KubernetesPolicyInstanceArgs, KubernetesPolicyInstanceState } from "./kubernetesPolicyInstance";
+export type KubernetesPolicyInstance = import("./kubernetesPolicyInstance").KubernetesPolicyInstance;
+export const KubernetesPolicyInstance: typeof import("./kubernetesPolicyInstance").KubernetesPolicyInstance = null as any;
+utilities.lazyLoad(exports, ["KubernetesPolicyInstance"], () => require("./kubernetesPolicyInstance"));
+
 export { ManagedKubernetesArgs, ManagedKubernetesState } from "./managedKubernetes";
 export type ManagedKubernetes = import("./managedKubernetes").ManagedKubernetes;
 export const ManagedKubernetes: typeof import("./managedKubernetes").ManagedKubernetes = null as any;
@@ -176,6 +181,8 @@ const _module = {
                 return new KubernetesAutoscaler(name, <any>undefined, { urn })
             case "alicloud:cs/kubernetesPermission:KubernetesPermission":
                 return new KubernetesPermission(name, <any>undefined, { urn })
+            case "alicloud:cs/kubernetesPolicyInstance:KubernetesPolicyInstance":
+                return new KubernetesPolicyInstance(name, <any>undefined, { urn })
             case "alicloud:cs/managedKubernetes:ManagedKubernetes":
                 return new ManagedKubernetes(name, <any>undefined, { urn })
             case "alicloud:cs/nodePool:NodePool":
@@ -203,6 +210,7 @@ pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesAddon", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesAutoscaler", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesPermission", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cs/kubernetesPolicyInstance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/managedKubernetes", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/nodePool", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cs/registryEnterpriseNamespace", _module)

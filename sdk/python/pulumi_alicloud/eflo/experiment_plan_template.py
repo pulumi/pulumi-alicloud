@@ -252,6 +252,8 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
             template_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eflo Experiment Plan Template can be imported using the id, e.g.
@@ -316,6 +318,8 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
             template_name=name,
             template_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

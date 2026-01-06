@@ -236,6 +236,8 @@ class BackupPolicy(pulumi.CustomResource):
             backup_retention_period=7)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Backup Policy can be imported using the id, e.g.
@@ -308,6 +310,8 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_time="00:00Z-01:00Z",
             backup_retention_period=7)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

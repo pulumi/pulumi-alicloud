@@ -130,6 +130,8 @@ class CustomProperty(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECD Custom Property can be imported using the id, e.g.
@@ -172,6 +174,8 @@ class CustomProperty(pulumi.CustomResource):
                 "property_value": "example_value",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

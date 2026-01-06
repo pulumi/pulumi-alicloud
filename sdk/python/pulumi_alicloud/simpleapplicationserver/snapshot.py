@@ -157,6 +157,8 @@ class Snapshot(pulumi.CustomResource):
             snapshot_name=f"{name}-{default_integer['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Simple Application Server Snapshot can be imported using the id, e.g.
@@ -213,6 +215,8 @@ class Snapshot(pulumi.CustomResource):
             disk_id=default_get_server_disks.ids[0],
             snapshot_name=f"{name}-{default_integer['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -208,6 +208,8 @@ class DomainConfig(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SCDN domain config can be imported using the id, e.g.
@@ -266,6 +268,8 @@ class DomainConfig(pulumi.CustomResource):
                 "arg_value": "110.110.110.110",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

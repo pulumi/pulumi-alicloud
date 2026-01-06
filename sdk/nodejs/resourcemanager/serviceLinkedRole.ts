@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.resourcemanager.ServiceLinkedRole("default", {serviceName: "ops.elasticsearch.aliyuncs.com"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Resource Manager Service Linked Role can be imported using the id, e.g.

@@ -594,6 +594,8 @@ class EcsImagePipeline(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Image Pipeline can be imported using the id, e.g.
@@ -681,6 +683,8 @@ class EcsImagePipeline(pulumi.CustomResource):
                 "For": "Acceptance-test",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

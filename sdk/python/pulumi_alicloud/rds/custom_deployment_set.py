@@ -301,6 +301,8 @@ class CustomDeploymentSet(pulumi.CustomResource):
             strategy="Availability")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Custom Deployment Set can be imported using the id, e.g.
@@ -364,6 +366,8 @@ class CustomDeploymentSet(pulumi.CustomResource):
             group_count=3,
             strategy="Availability")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

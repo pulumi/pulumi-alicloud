@@ -910,6 +910,8 @@ class ScalingRule(pulumi.CustomResource):
             adjustment_value=1)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing autoscaling-rule module
@@ -1031,6 +1033,8 @@ class ScalingRule(pulumi.CustomResource):
             adjustment_type="TotalCapacity",
             adjustment_value=1)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

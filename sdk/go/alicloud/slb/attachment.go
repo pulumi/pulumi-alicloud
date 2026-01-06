@@ -124,6 +124,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Load balancer attachment can be imported using the id or load balancer id, e.g.

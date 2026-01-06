@@ -122,6 +122,8 @@ class StorageBundle(pulumi.CustomResource):
         example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Storage Bundle can be imported using the id, e.g.
@@ -158,6 +160,8 @@ class StorageBundle(pulumi.CustomResource):
 
         example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

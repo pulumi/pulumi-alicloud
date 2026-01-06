@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Threat Detection Baseline Strategy can be imported using the id, e.g.

@@ -50,6 +50,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Https Basic Configuration can be imported using the id, e.g.
@@ -148,7 +150,7 @@ export class HttpsBasicConfiguration extends pulumi.CustomResource {
     /**
      * Site ID, which can be obtained by calling the ListSites interface.
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * Whether to enable TLS1.0. Default is disabled. Possible values:
      * - on: Enable.
@@ -296,7 +298,7 @@ export interface HttpsBasicConfigurationState {
     /**
      * Site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * Whether to enable TLS1.0. Default is disabled. Possible values:
      * - on: Enable.
@@ -385,7 +387,7 @@ export interface HttpsBasicConfigurationArgs {
     /**
      * Site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * Whether to enable TLS1.0. Default is disabled. Possible values:
      * - on: Enable.

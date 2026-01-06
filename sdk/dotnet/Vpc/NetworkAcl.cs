@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available since v1.43.0.
     /// 
+    /// &gt; **WARNING:** Do not mix the use of the `Resources` field in this resource with the separate `alicloud.vpc.VpcNetworkAclAttachment` resource to bind VSW (Virtual Switch) to the same ACL. Using both methods simultaneously can cause conflicts and result in repeated apply operations that toggle between binding and unbinding VSWs. Choose one method and stick with it to avoid these issues.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -92,6 +94,8 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 

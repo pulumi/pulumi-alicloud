@@ -456,6 +456,8 @@ class Environment(pulumi.CustomResource):
             environment_name=f"terraform-example-{default_integer['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Environment can be imported using the id, e.g.
@@ -569,6 +571,8 @@ class Environment(pulumi.CustomResource):
             environment_type="CS",
             environment_name=f"terraform-example-{default_integer['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

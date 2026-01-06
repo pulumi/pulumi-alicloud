@@ -155,6 +155,8 @@ namespace Pulumi.AliCloud.Pvtz
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Private Zone attachment can be imported using the id(same with `zone_id`), e.g.

@@ -76,6 +76,8 @@ namespace Pulumi.AliCloud.Ens
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ens Eip Instance Attachment can be imported using the id, e.g.

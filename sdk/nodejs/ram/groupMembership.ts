@@ -5,10 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a RAM Group membership resource.
- *
- * > **NOTE:** Available since v1.0.0+.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -53,6 +49,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *

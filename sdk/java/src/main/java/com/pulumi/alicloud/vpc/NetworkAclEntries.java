@@ -123,6 +123,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:vpc/networkAclEntries:NetworkAclEntries")
 public class NetworkAclEntries extends com.pulumi.resources.CustomResource {

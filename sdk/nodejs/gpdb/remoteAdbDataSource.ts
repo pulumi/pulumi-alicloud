@@ -93,6 +93,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * GPDB Remote ADB Data Source can be imported using the id, e.g.

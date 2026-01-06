@@ -371,6 +371,8 @@ class EnterpriseUser(pulumi.CustomResource):
             mobile="86-18688888888")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise User can be imported using the id, e.g.
@@ -424,6 +426,8 @@ class EnterpriseUser(pulumi.CustomResource):
             role_names=["DBA"],
             mobile="86-18688888888")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -119,6 +119,8 @@ namespace Pulumi.AliCloud.Hbr
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Notice
     /// 
     /// **About Backup path rules:**

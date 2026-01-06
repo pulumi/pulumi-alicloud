@@ -568,6 +568,8 @@ class User(pulumi.CustomResource):
             user_name=user.name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host User can be imported using the id, e.g.
@@ -676,6 +678,8 @@ class User(pulumi.CustomResource):
             source_user_id=default_get_account.id,
             user_name=user.name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

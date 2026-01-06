@@ -140,6 +140,8 @@ class KvNamespace(pulumi.CustomResource):
             kv_namespace="example_namespace")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Kv Namespace can be imported using the id, e.g.
@@ -178,6 +180,8 @@ class KvNamespace(pulumi.CustomResource):
             description="this is a example namespace.",
             kv_namespace="example_namespace")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -149,6 +149,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type AccessKey struct {
 	pulumi.CustomResourceState
 

@@ -51,6 +51,8 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:nas/smbAclAttachment:SmbAclAttachment")]
     public partial class SmbAclAttachment : global::Pulumi.CustomResource

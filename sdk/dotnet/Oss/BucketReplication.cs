@@ -138,6 +138,8 @@ namespace Pulumi.AliCloud.Oss
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Oss Bucket Replication can be imported using the id, e.g.

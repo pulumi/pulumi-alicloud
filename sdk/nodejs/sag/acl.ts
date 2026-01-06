@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.sag.Acl("default", {name: "terraform-example"});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * The Sag Acl can be imported using the id, e.g.

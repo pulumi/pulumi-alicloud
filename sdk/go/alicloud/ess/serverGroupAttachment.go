@@ -164,6 +164,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type ServerGroupAttachment struct {
 	pulumi.CustomResourceState
 

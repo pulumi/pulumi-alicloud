@@ -202,13 +202,13 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="siteId", required=true)
-    private Output<Integer> siteId;
+    private Output<String> siteId;
 
     /**
      * @return Site ID, which can be obtained by calling the ListSites interface.
      * 
      */
-    public Output<Integer> siteId() {
+    public Output<String> siteId() {
         return this.siteId;
     }
 
@@ -572,7 +572,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder siteId(Output<Integer> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -583,7 +583,7 @@ public final class HttpsBasicConfigurationArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 

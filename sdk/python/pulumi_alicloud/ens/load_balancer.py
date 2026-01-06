@@ -340,6 +340,8 @@ class LoadBalancer(pulumi.CustomResource):
             network_id=network.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Load Balancer can be imported using the id, e.g.
@@ -404,6 +406,8 @@ class LoadBalancer(pulumi.CustomResource):
             vswitch_id=switch.id,
             network_id=network.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -230,6 +230,8 @@ class Role(pulumi.CustomResource):
             role_name="tf_example112")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Max Compute Role can be imported using the id, e.g.
@@ -297,6 +299,8 @@ class Role(pulumi.CustomResource):
             }),
             role_name="tf_example112")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

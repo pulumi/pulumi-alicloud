@@ -214,6 +214,8 @@ class ConsumerGroup(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ALIKAFKA GROUP can be imported using the id, e.g.
@@ -279,6 +281,8 @@ class ConsumerGroup(pulumi.CustomResource):
             consumer_id=name,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

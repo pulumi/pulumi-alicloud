@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// VPC Ha Vip Attachment can be imported using the id, e.g.

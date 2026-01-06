@@ -1213,6 +1213,8 @@ class Listener(pulumi.CustomResource):
             comment="second")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Classic Load Balancer (SLB) Load Balancer Listener can be imported using the id, e.g.
@@ -1310,6 +1312,8 @@ class Listener(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

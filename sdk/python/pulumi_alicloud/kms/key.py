@@ -805,6 +805,8 @@ class Key(pulumi.CustomResource):
             pending_window_in_days=7)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         KMS Key can be imported using the id, e.g.
@@ -867,6 +869,8 @@ class Key(pulumi.CustomResource):
             status="Enabled",
             pending_window_in_days=7)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

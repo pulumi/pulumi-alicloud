@@ -20,6 +20,11 @@ export type AggregateDelivery = import("./aggregateDelivery").AggregateDelivery;
 export const AggregateDelivery: typeof import("./aggregateDelivery").AggregateDelivery = null as any;
 utilities.lazyLoad(exports, ["AggregateDelivery"], () => require("./aggregateDelivery"));
 
+export { AggregateRemediationArgs, AggregateRemediationState } from "./aggregateRemediation";
+export type AggregateRemediation = import("./aggregateRemediation").AggregateRemediation;
+export const AggregateRemediation: typeof import("./aggregateRemediation").AggregateRemediation = null as any;
+utilities.lazyLoad(exports, ["AggregateRemediation"], () => require("./aggregateRemediation"));
+
 export { AggregatorArgs, AggregatorState } from "./aggregator";
 export type Aggregator = import("./aggregator").Aggregator;
 export const Aggregator: typeof import("./aggregator").Aggregator = null as any;
@@ -95,6 +100,11 @@ export type Remediation = import("./remediation").Remediation;
 export const Remediation: typeof import("./remediation").Remediation = null as any;
 utilities.lazyLoad(exports, ["Remediation"], () => require("./remediation"));
 
+export { ReportTemplateArgs, ReportTemplateState } from "./reportTemplate";
+export type ReportTemplate = import("./reportTemplate").ReportTemplate;
+export const ReportTemplate: typeof import("./reportTemplate").ReportTemplate = null as any;
+utilities.lazyLoad(exports, ["ReportTemplate"], () => require("./reportTemplate"));
+
 export { RuleArgs, RuleState } from "./rule";
 export type Rule = import("./rule").Rule;
 export const Rule: typeof import("./rule").Rule = null as any;
@@ -111,6 +121,8 @@ const _module = {
                 return new AggregateConfigRule(name, <any>undefined, { urn })
             case "alicloud:cfg/aggregateDelivery:AggregateDelivery":
                 return new AggregateDelivery(name, <any>undefined, { urn })
+            case "alicloud:cfg/aggregateRemediation:AggregateRemediation":
+                return new AggregateRemediation(name, <any>undefined, { urn })
             case "alicloud:cfg/aggregator:Aggregator":
                 return new Aggregator(name, <any>undefined, { urn })
             case "alicloud:cfg/compliancePack:CompliancePack":
@@ -123,6 +135,8 @@ const _module = {
                 return new DeliveryChannel(name, <any>undefined, { urn })
             case "alicloud:cfg/remediation:Remediation":
                 return new Remediation(name, <any>undefined, { urn })
+            case "alicloud:cfg/reportTemplate:ReportTemplate":
+                return new ReportTemplate(name, <any>undefined, { urn })
             case "alicloud:cfg/rule:Rule":
                 return new Rule(name, <any>undefined, { urn })
             default:
@@ -133,10 +147,12 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateCompliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateConfigRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateDelivery", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregateRemediation", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/aggregator", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/compliancePack", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/configurationRecorder", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/delivery", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/deliveryChannel", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/remediation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "cfg/reportTemplate", _module)
 pulumi.runtime.registerResourceModule("alicloud", "cfg/rule", _module)

@@ -480,6 +480,8 @@ class CollectionPolicy(pulumi.CustomResource):
             enabled=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SLS Collection Policy can be imported using the id, e.g.
@@ -652,6 +654,8 @@ class CollectionPolicy(pulumi.CustomResource):
             policy_name="xc-example-oss-01",
             enabled=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

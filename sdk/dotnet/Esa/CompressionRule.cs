@@ -56,6 +56,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Compression Rule can be imported using the id, e.g.

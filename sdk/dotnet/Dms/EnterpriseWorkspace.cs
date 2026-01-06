@@ -55,6 +55,8 @@ namespace Pulumi.AliCloud.Dms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// DMS Enterprise Workspace can be imported using the id, e.g.

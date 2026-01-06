@@ -174,6 +174,8 @@ class LogConfig(pulumi.CustomResource):
             log_type="PROVIDER")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Api Gateway Log Config can be imported using the id, e.g.
@@ -232,6 +234,8 @@ class LogConfig(pulumi.CustomResource):
             sls_log_store=example_store.logstore_name,
             log_type="PROVIDER")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

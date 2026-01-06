@@ -226,6 +226,8 @@ class HoneypotNode(pulumi.CustomResource):
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Honeypot Node can be imported using the id, e.g.
@@ -271,6 +273,8 @@ class HoneypotNode(pulumi.CustomResource):
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

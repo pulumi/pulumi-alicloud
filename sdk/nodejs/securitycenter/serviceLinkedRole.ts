@@ -22,6 +22,8 @@ import * as utilities from "../utilities";
  * const serviceLinkedRole = new alicloud.securitycenter.ServiceLinkedRole("service_linked_role", {});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.

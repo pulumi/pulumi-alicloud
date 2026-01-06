@@ -344,6 +344,8 @@ class Binding(pulumi.CustomResource):
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RabbitMQ (AMQP) Binding can be imported using the id, e.g.
@@ -423,6 +425,8 @@ class Binding(pulumi.CustomResource):
             source_exchange=default_exchange.exchange_name,
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

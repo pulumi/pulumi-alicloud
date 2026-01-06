@@ -65,6 +65,8 @@ namespace Pulumi.AliCloud.Hbr
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Hybrid Backup Recovery (HBR) Hana Instance can be imported using the id, e.g.
