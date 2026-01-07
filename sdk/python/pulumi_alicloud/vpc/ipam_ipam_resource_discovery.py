@@ -279,6 +279,8 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
             ipam_resource_discovery_name="example_resource_discovery")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam Resource Discovery can be imported using the id, e.g.
@@ -328,6 +330,8 @@ class IpamIpamResourceDiscovery(pulumi.CustomResource):
             ipam_resource_discovery_description="This is a custom IPAM resource discovery.",
             ipam_resource_discovery_name="example_resource_discovery")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

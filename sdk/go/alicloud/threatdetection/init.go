@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
 		r = &BaselineStrategy{}
+	case "alicloud:threatdetection/checkConfig:CheckConfig":
+		r = &CheckConfig{}
 	case "alicloud:threatdetection/clientFileProtect:ClientFileProtect":
 		r = &ClientFileProtect{}
 	case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
@@ -106,6 +108,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"threatdetection/baselineStrategy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/checkConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

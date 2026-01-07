@@ -54,6 +54,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Schedulerx App Group can be imported using the id, e.g.
@@ -103,7 +105,7 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * Application Version, 1: Basic Edition, 2: Professional Edition
      */
-    declare public readonly appVersion: pulumi.Output<string | undefined>;
+    declare public readonly appVersion: pulumi.Output<string>;
     /**
      * Whether to delete the task in the application Group. The values are as follows:
      */
@@ -129,7 +131,7 @@ export class AppGroup extends pulumi.CustomResource {
     /**
      * Application Grouping Configurable Maximum Number of Tasks
      */
-    declare public readonly maxJobs: pulumi.Output<number | undefined>;
+    declare public readonly maxJobs: pulumi.Output<number>;
     /**
      * Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
      */

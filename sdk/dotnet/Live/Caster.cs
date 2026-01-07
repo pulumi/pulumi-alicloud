@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Live
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Live Caster can be imported using the id, e.g.

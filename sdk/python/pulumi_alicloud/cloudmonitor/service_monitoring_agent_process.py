@@ -206,6 +206,8 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
             process_user="root")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Monitoring Agent Process can be imported using the id, e.g.
@@ -279,6 +281,8 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
             process_name=name,
             process_user="root")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

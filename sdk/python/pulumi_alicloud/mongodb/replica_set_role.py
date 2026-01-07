@@ -295,6 +295,8 @@ class ReplicaSetRole(pulumi.CustomResource):
             network_type="Public")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         MongoDB replica set role can be imported using the id, e.g. Composed of instance ID, network type and role ID with format `<db_instance_id>:<network_type>:<role_id>`.
@@ -372,6 +374,8 @@ class ReplicaSetRole(pulumi.CustomResource):
             connection_port=3719,
             network_type="Public")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

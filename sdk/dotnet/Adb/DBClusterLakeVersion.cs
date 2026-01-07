@@ -56,6 +56,8 @@ namespace Pulumi.AliCloud.Adb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// AnalyticDB for MySQL (ADB) DB Cluster Lake Version can be imported using the id, e.g.

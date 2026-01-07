@@ -202,6 +202,8 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             vswitch_id=example_switch.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Multicast Domain Association can be imported using the id, e.g.
@@ -272,6 +274,8 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
             vswitch_id=example_switch.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

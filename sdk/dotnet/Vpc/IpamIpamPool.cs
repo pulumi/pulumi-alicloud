@@ -67,6 +67,8 @@ namespace Pulumi.AliCloud.Vpc
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Vpc Ipam Ipam Pool can be imported using the id, e.g.

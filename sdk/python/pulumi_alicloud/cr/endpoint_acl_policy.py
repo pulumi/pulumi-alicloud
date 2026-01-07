@@ -242,6 +242,8 @@ class EndpointAclPolicy(pulumi.CustomResource):
             endpoint_type="internet")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CR Endpoint Acl Policy can be imported using the id, e.g.
@@ -304,6 +306,8 @@ class EndpointAclPolicy(pulumi.CustomResource):
             module_name="Registry",
             endpoint_type="internet")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

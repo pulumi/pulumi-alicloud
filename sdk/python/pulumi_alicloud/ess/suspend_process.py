@@ -164,6 +164,8 @@ class SuspendProcess(pulumi.CustomResource):
             process="ScaleIn")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESS suspend process can be imported using the id, e.g.
@@ -243,6 +245,8 @@ class SuspendProcess(pulumi.CustomResource):
             scaling_group_id=default_scaling_configuration.scaling_group_id,
             process="ScaleIn")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -144,6 +144,8 @@ class VirtualHost(pulumi.CustomResource):
             virtual_host_name=f"{name}-{default['result']}")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RabbitMQ (AMQP) Virtual Host can be imported using the id, e.g.
@@ -203,6 +205,8 @@ class VirtualHost(pulumi.CustomResource):
             instance_id=default_instance.id,
             virtual_host_name=f"{name}-{default['result']}")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

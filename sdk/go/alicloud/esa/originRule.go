@@ -63,6 +63,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Origin Rule can be imported using the id, e.g.
@@ -118,7 +120,7 @@ type OriginRule struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// The site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrOutput `pulumi:"siteVersion"`
 }
@@ -201,7 +203,7 @@ type originRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
@@ -252,7 +254,7 @@ type OriginRuleState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
@@ -305,7 +307,7 @@ type originRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// The site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion *int `pulumi:"siteVersion"`
 }
@@ -355,7 +357,7 @@ type OriginRuleArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// The site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
 	SiteVersion pulumi.IntPtrInput
 }
@@ -555,8 +557,8 @@ func (o OriginRuleOutput) Sequence() pulumi.IntOutput {
 }
 
 // The site ID.
-func (o OriginRuleOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginRule) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o OriginRuleOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginRule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.

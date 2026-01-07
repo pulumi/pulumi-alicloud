@@ -165,6 +165,8 @@ class SharedTarget(pulumi.CustomResource):
             target_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Resource Manager Shared Target can be imported using the id, e.g.
@@ -213,6 +215,8 @@ class SharedTarget(pulumi.CustomResource):
             resource_share_id=default_resource_share.id,
             target_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

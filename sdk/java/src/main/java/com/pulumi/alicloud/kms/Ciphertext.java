@@ -59,6 +59,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:kms/ciphertext:Ciphertext")
 public class Ciphertext extends com.pulumi.resources.CustomResource {

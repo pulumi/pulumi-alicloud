@@ -75,6 +75,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly duration: pulumi.Output<number | undefined>;
     /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    declare public readonly enableSsl: pulumi.Output<boolean | undefined>;
+    /**
      * List of domain names. See `endpoints` below.
      */
     declare public readonly endpoints: pulumi.Output<outputs.hologram.InstanceEndpoint[]>;
@@ -165,6 +169,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cpu"] = state?.cpu;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["duration"] = state?.duration;
+            resourceInputs["enableSsl"] = state?.enableSsl;
             resourceInputs["endpoints"] = state?.endpoints;
             resourceInputs["gatewayCount"] = state?.gatewayCount;
             resourceInputs["initialDatabases"] = state?.initialDatabases;
@@ -198,6 +203,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["coldStorageSize"] = args?.coldStorageSize;
             resourceInputs["cpu"] = args?.cpu;
             resourceInputs["duration"] = args?.duration;
+            resourceInputs["enableSsl"] = args?.enableSsl;
             resourceInputs["endpoints"] = args?.endpoints;
             resourceInputs["gatewayCount"] = args?.gatewayCount;
             resourceInputs["initialDatabases"] = args?.initialDatabases;
@@ -255,6 +261,10 @@ export interface InstanceState {
      * The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
      */
     duration?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * List of domain names. See `endpoints` below.
      */
@@ -360,6 +370,10 @@ export interface InstanceArgs {
      * The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
      */
     duration?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
+     */
+    enableSsl?: pulumi.Input<boolean>;
     /**
      * List of domain names. See `endpoints` below.
      */

@@ -441,6 +441,21 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
+     * Used to enable the kubelet server certificate signing and rotation via CSR.
+     * 
+     */
+    @Import(name="serverTlsBootstrap")
+    private @Nullable Output<Boolean> serverTlsBootstrap;
+
+    /**
+     * @return Used to enable the kubelet server certificate signing and rotation via CSR.
+     * 
+     */
+    public Optional<Output<Boolean>> serverTlsBootstrap() {
+        return Optional.ofNullable(this.serverTlsBootstrap);
+    }
+
+    /**
      * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
@@ -516,6 +531,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         this.registryPullQps = $.registryPullQps;
         this.reservedMemories = $.reservedMemories;
         this.serializeImagePulls = $.serializeImagePulls;
+        this.serverTlsBootstrap = $.serverTlsBootstrap;
         this.systemReserved = $.systemReserved;
         this.topologyManagerPolicy = $.topologyManagerPolicy;
         this.tracing = $.tracing;
@@ -1155,6 +1171,27 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
          */
         public Builder serializeImagePulls(String serializeImagePulls) {
             return serializeImagePulls(Output.of(serializeImagePulls));
+        }
+
+        /**
+         * @param serverTlsBootstrap Used to enable the kubelet server certificate signing and rotation via CSR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverTlsBootstrap(@Nullable Output<Boolean> serverTlsBootstrap) {
+            $.serverTlsBootstrap = serverTlsBootstrap;
+            return this;
+        }
+
+        /**
+         * @param serverTlsBootstrap Used to enable the kubelet server certificate signing and rotation via CSR.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverTlsBootstrap(Boolean serverTlsBootstrap) {
+            return serverTlsBootstrap(Output.of(serverTlsBootstrap));
         }
 
         /**

@@ -285,6 +285,8 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
             repeat_weekdays=["2"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Dbfs Auto Snap Shot Policy can be imported using the id, e.g.
@@ -327,6 +329,8 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
             retention_days=1,
             repeat_weekdays=["2"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

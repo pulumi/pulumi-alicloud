@@ -336,6 +336,8 @@ class Topic(pulumi.CustomResource):
             remark="dafault_ons_topic_remark")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ONS TOPIC can be imported using the id, e.g.
@@ -399,6 +401,8 @@ class Topic(pulumi.CustomResource):
             message_type=0,
             remark="dafault_ons_topic_remark")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

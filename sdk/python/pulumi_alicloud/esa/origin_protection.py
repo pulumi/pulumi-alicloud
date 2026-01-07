@@ -146,6 +146,8 @@ class OriginProtection(pulumi.CustomResource):
             site_id=default_site.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Origin Protection can be imported using the id, e.g.
@@ -197,6 +199,8 @@ class OriginProtection(pulumi.CustomResource):
             origin_converge="on",
             site_id=default_site.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

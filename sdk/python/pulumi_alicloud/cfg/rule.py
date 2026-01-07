@@ -826,6 +826,8 @@ class Rule(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Config Rule can be imported using the id, e.g.
@@ -897,6 +899,8 @@ class Rule(pulumi.CustomResource):
                 "key2": "value2",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

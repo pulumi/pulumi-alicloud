@@ -313,6 +313,8 @@ class Account(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Enterprise Db Cluster Account can be imported using the id, e.g.
@@ -398,6 +400,8 @@ class Account(pulumi.CustomResource):
                 "allow_databases": ["*"],
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

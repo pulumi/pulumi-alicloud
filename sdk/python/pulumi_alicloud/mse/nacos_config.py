@@ -465,6 +465,8 @@ class NacosConfig(pulumi.CustomResource):
             desc="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Microservice Engine (MSE) Nacos Config can be imported using the id, e.g.
@@ -545,6 +547,8 @@ class NacosConfig(pulumi.CustomResource):
             app_name="example",
             desc="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -10,51 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eflo
 {
     /// <summary>
-    /// Provides a Eflo Node resource.
-    /// 
-    /// Large computing node.
-    /// 
-    /// For information about Eflo Node and how to use it, see [What is Node](https://next.api.alibabacloud.com/document/BssOpenApi/2017-12-14/CreateInstance).
-    /// 
-    /// &gt; **NOTE:** Available since v1.246.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
-    /// 
-    ///     var defaultNode = new AliCloud.Eflo.Node("default", new()
-    ///     {
-    ///         Period = 36,
-    ///         DiscountLevel = "36",
-    ///         BillingCycle = "1month",
-    ///         Classify = "gpuserver",
-    ///         Zone = "cn-hangzhou-b",
-    ///         ProductForm = "instance",
-    ///         PaymentRatio = "0",
-    ///         HpnZone = "B1",
-    ///         ServerArch = "bmserver",
-    ///         ComputingServer = "efg1.nvga1n",
-    ///         StageNum = "36",
-    ///         RenewalStatus = "AutoRenewal",
-    ///         RenewPeriod = 36,
-    ///         Status = "Unused",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Eflo Node can be imported using the id, e.g.
@@ -68,18 +23,28 @@ namespace Pulumi.AliCloud.Eflo
     {
         /// <summary>
         /// Billing cycle
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("billingCycle")]
         public Output<string?> BillingCycle { get; private set; } = null!;
 
         /// <summary>
         /// Classification
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("classify")]
         public Output<string?> Classify { get; private set; } = null!;
 
         /// <summary>
-        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        /// Cluster id
+        /// </summary>
+        [Output("clusterId")]
+        public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// Node Model
         /// </summary>
         [Output("computingServer")]
         public Output<string> ComputingServer { get; private set; } = null!;
@@ -91,10 +56,24 @@ namespace Pulumi.AliCloud.Eflo
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
+        /// </summary>
+        [Output("dataDisks")]
+        public Output<ImmutableArray<Outputs.NodeDataDisk>> DataDisks { get; private set; } = null!;
+
+        /// <summary>
         /// Offer Information
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("discountLevel")]
         public Output<string?> DiscountLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// Host name
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
         /// Cluster Number
@@ -109,13 +88,39 @@ namespace Pulumi.AliCloud.Eflo
         public Output<bool?> InstallPai { get; private set; } = null!;
 
         /// <summary>
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
+        /// </summary>
+        [Output("ipAllocationPolicies")]
+        public Output<ImmutableArray<Outputs.NodeIpAllocationPolicy>> IpAllocationPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        [Output("loginPassword")]
+        public Output<string?> LoginPassword { get; private set; } = null!;
+
+        /// <summary>
         /// Model
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
 
         /// <summary>
+        /// node group id
+        /// </summary>
+        [Output("nodeGroupId")]
+        public Output<string> NodeGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// node type
+        /// </summary>
+        [Output("nodeType")]
+        public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
         /// Down payment ratio
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("paymentRatio")]
         public Output<string?> PaymentRatio { get; private set; } = null!;
@@ -129,12 +134,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
         /// Form
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("productForm")]
         public Output<string?> ProductForm { get; private set; } = null!;
@@ -171,12 +180,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Architecture
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("serverArch")]
         public Output<string?> ServerArch { get; private set; } = null!;
 
         /// <summary>
         /// Number of stages
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Output("stageNum")]
         public Output<string?> StageNum { get; private set; } = null!;
@@ -192,6 +205,24 @@ namespace Pulumi.AliCloud.Eflo
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom Data
+        /// </summary>
+        [Output("userData")]
+        public Output<string> UserData { get; private set; } = null!;
+
+        /// <summary>
+        /// VPC ID
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// Switch ID
+        /// </summary>
+        [Output("vswitchId")]
+        public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
         /// Availability Zone
@@ -222,6 +253,10 @@ namespace Pulumi.AliCloud.Eflo
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "loginPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -247,27 +282,57 @@ namespace Pulumi.AliCloud.Eflo
     {
         /// <summary>
         /// Billing cycle
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("billingCycle")]
         public Input<string>? BillingCycle { get; set; }
 
         /// <summary>
         /// Classification
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("classify")]
         public Input<string>? Classify { get; set; }
 
         /// <summary>
-        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        /// Cluster id
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Node Model
         /// </summary>
         [Input("computingServer")]
         public Input<string>? ComputingServer { get; set; }
 
+        [Input("dataDisks")]
+        private InputList<Inputs.NodeDataDiskArgs>? _dataDisks;
+
+        /// <summary>
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
+        /// </summary>
+        public InputList<Inputs.NodeDataDiskArgs> DataDisks
+        {
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodeDataDiskArgs>());
+            set => _dataDisks = value;
+        }
+
         /// <summary>
         /// Offer Information
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("discountLevel")]
         public Input<string>? DiscountLevel { get; set; }
+
+        /// <summary>
+        /// Host name
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Cluster Number
@@ -281,6 +346,34 @@ namespace Pulumi.AliCloud.Eflo
         [Input("installPai")]
         public Input<bool>? InstallPai { get; set; }
 
+        [Input("ipAllocationPolicies")]
+        private InputList<Inputs.NodeIpAllocationPolicyArgs>? _ipAllocationPolicies;
+
+        /// <summary>
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
+        /// </summary>
+        public InputList<Inputs.NodeIpAllocationPolicyArgs> IpAllocationPolicies
+        {
+            get => _ipAllocationPolicies ?? (_ipAllocationPolicies = new InputList<Inputs.NodeIpAllocationPolicyArgs>());
+            set => _ipAllocationPolicies = value;
+        }
+
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Model
         /// </summary>
@@ -288,7 +381,21 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
+        /// node group id
+        /// </summary>
+        [Input("nodeGroupId")]
+        public Input<string>? NodeGroupId { get; set; }
+
+        /// <summary>
+        /// node type
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
         /// Down payment ratio
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("paymentRatio")]
         public Input<string>? PaymentRatio { get; set; }
@@ -302,12 +409,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
         /// Form
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("productForm")]
         public Input<string>? ProductForm { get; set; }
@@ -338,12 +449,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Architecture
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("serverArch")]
         public Input<string>? ServerArch { get; set; }
 
         /// <summary>
         /// Number of stages
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("stageNum")]
         public Input<string>? StageNum { get; set; }
@@ -367,6 +482,24 @@ namespace Pulumi.AliCloud.Eflo
         }
 
         /// <summary>
+        /// Custom Data
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// VPC ID
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// Switch ID
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
         /// Availability Zone
         /// </summary>
         [Input("zone")]
@@ -382,18 +515,28 @@ namespace Pulumi.AliCloud.Eflo
     {
         /// <summary>
         /// Billing cycle
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("billingCycle")]
         public Input<string>? BillingCycle { get; set; }
 
         /// <summary>
         /// Classification
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("classify")]
         public Input<string>? Classify { get; set; }
 
         /// <summary>
-        /// Node Model. Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.
+        /// Cluster id
+        /// </summary>
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Node Model
         /// </summary>
         [Input("computingServer")]
         public Input<string>? ComputingServer { get; set; }
@@ -404,11 +547,31 @@ namespace Pulumi.AliCloud.Eflo
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
+        [Input("dataDisks")]
+        private InputList<Inputs.NodeDataDiskGetArgs>? _dataDisks;
+
+        /// <summary>
+        /// The data disk of the cloud disk to be attached to the node. See `DataDisk` below.
+        /// </summary>
+        public InputList<Inputs.NodeDataDiskGetArgs> DataDisks
+        {
+            get => _dataDisks ?? (_dataDisks = new InputList<Inputs.NodeDataDiskGetArgs>());
+            set => _dataDisks = value;
+        }
+
         /// <summary>
         /// Offer Information
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("discountLevel")]
         public Input<string>? DiscountLevel { get; set; }
+
+        /// <summary>
+        /// Host name
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Cluster Number
@@ -422,6 +585,34 @@ namespace Pulumi.AliCloud.Eflo
         [Input("installPai")]
         public Input<bool>? InstallPai { get; set; }
 
+        [Input("ipAllocationPolicies")]
+        private InputList<Inputs.NodeIpAllocationPolicyGetArgs>? _ipAllocationPolicies;
+
+        /// <summary>
+        /// IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `IpAllocationPolicy` below.
+        /// </summary>
+        public InputList<Inputs.NodeIpAllocationPolicyGetArgs> IpAllocationPolicies
+        {
+            get => _ipAllocationPolicies ?? (_ipAllocationPolicies = new InputList<Inputs.NodeIpAllocationPolicyGetArgs>());
+            set => _ipAllocationPolicies = value;
+        }
+
+        [Input("loginPassword")]
+        private Input<string>? _loginPassword;
+
+        /// <summary>
+        /// Login Password
+        /// </summary>
+        public Input<string>? LoginPassword
+        {
+            get => _loginPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _loginPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Model
         /// </summary>
@@ -429,7 +620,21 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
+        /// node group id
+        /// </summary>
+        [Input("nodeGroupId")]
+        public Input<string>? NodeGroupId { get; set; }
+
+        /// <summary>
+        /// node type
+        /// </summary>
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
+
+        /// <summary>
         /// Down payment ratio
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("paymentRatio")]
         public Input<string>? PaymentRatio { get; set; }
@@ -443,12 +648,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
         /// Form
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("productForm")]
         public Input<string>? ProductForm { get; set; }
@@ -485,12 +694,16 @@ namespace Pulumi.AliCloud.Eflo
 
         /// <summary>
         /// Architecture
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("serverArch")]
         public Input<string>? ServerArch { get; set; }
 
         /// <summary>
         /// Number of stages
+        /// 
+        /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
         [Input("stageNum")]
         public Input<string>? StageNum { get; set; }
@@ -512,6 +725,24 @@ namespace Pulumi.AliCloud.Eflo
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Custom Data
+        /// </summary>
+        [Input("userData")]
+        public Input<string>? UserData { get; set; }
+
+        /// <summary>
+        /// VPC ID
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
+
+        /// <summary>
+        /// Switch ID
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
 
         /// <summary>
         /// Availability Zone

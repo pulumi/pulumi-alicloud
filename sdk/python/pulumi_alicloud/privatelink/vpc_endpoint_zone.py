@@ -289,6 +289,8 @@ class VpcEndpointZone(pulumi.CustomResource):
             zone_id=example.zones[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Link Vpc Endpoint Zone can be imported using the id, e.g.
@@ -365,6 +367,8 @@ class VpcEndpointZone(pulumi.CustomResource):
             vswitch_id=example_switch.id,
             zone_id=example.zones[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -221,6 +221,8 @@ class TrafficQos(pulumi.CustomResource):
             qos_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Traffic Qos can be imported using the id, e.g.
@@ -269,6 +271,8 @@ class TrafficQos(pulumi.CustomResource):
             qos_name=name,
             qos_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

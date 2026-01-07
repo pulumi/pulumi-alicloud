@@ -72,6 +72,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Click House Enterprise D B Cluster can be imported using the id, e.g.

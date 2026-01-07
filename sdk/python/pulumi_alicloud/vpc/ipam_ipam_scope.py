@@ -335,6 +335,8 @@ class IpamIpamScope(pulumi.CustomResource):
             ipam_scope_type="private")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Ipam Ipam Scope can be imported using the id, e.g.
@@ -393,6 +395,8 @@ class IpamIpamScope(pulumi.CustomResource):
             ipam_scope_description="This is a ipam scope.",
             ipam_scope_type="private")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

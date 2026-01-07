@@ -87,6 +87,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Https Basic Configuration can be imported using the id, e.g.
@@ -135,7 +137,7 @@ type HttpsBasicConfiguration struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntOutput `pulumi:"sequence"`
 	// Site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
 	// - off: Disable.
@@ -225,7 +227,7 @@ type httpsBasicConfigurationState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Site ID, which can be obtained by calling the ListSites interface.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
 	// - off: Disable.
@@ -283,7 +285,7 @@ type HttpsBasicConfigurationState struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
 	// - off: Disable.
@@ -343,7 +345,7 @@ type httpsBasicConfigurationArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence *int `pulumi:"sequence"`
 	// Site ID, which can be obtained by calling the ListSites interface.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
 	// - off: Disable.
@@ -400,7 +402,7 @@ type HttpsBasicConfigurationArgs struct {
 	// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
 	Sequence pulumi.IntPtrInput
 	// Site ID, which can be obtained by calling the ListSites interface.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 	// Whether to enable TLS1.0. Default is disabled. Possible values:
 	// - on: Enable.
 	// - off: Disable.
@@ -577,8 +579,8 @@ func (o HttpsBasicConfigurationOutput) Sequence() pulumi.IntOutput {
 }
 
 // Site ID, which can be obtained by calling the ListSites interface.
-func (o HttpsBasicConfigurationOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o HttpsBasicConfigurationOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsBasicConfiguration) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // Whether to enable TLS1.0. Default is disabled. Possible values:

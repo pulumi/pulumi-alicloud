@@ -265,6 +265,8 @@ class DomainConfig(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DCDN domain config can be imported using the id, e.g.
@@ -348,6 +350,8 @@ class DomainConfig(pulumi.CustomResource):
                 },
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

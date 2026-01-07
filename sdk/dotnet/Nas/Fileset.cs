@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Nas
     /// <summary>
     /// Provides a File Storage (NAS) Fileset resource.
     /// 
+    /// Fileset of CPFS file system.
+    /// 
     /// For information about File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
     /// 
     /// &gt; **NOTE:** Available since v1.153.0.
@@ -68,6 +70,8 @@ namespace Pulumi.AliCloud.Nas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// File Storage (NAS) Fileset can be imported using the id, e.g.
@@ -80,13 +84,27 @@ namespace Pulumi.AliCloud.Nas
     public partial class Fileset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The time when Fileset was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        /// - true: Enable instance release protection.
+        /// - false (default): Turn off instance release protection
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Description of Fileset.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -98,19 +116,19 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> FileSystemId { get; private set; } = null!;
 
         /// <summary>
-        /// The path of the fileset.
+        /// The path of Fileset.
         /// </summary>
         [Output("fileSystemPath")]
         public Output<string> FileSystemPath { get; private set; } = null!;
 
         /// <summary>
-        /// The first ID of the resource.
+        /// Fileset ID
         /// </summary>
         [Output("filesetId")]
         public Output<string> FilesetId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the fileset.
+        /// The status of Fileset. Includes:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -162,13 +180,21 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FilesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        /// - true: Enable instance release protection.
+        /// - false (default): Turn off instance release protection
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Description of Fileset.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -180,7 +206,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> FileSystemId { get; set; } = null!;
 
         /// <summary>
-        /// The path of the fileset.
+        /// The path of Fileset.
         /// </summary>
         [Input("fileSystemPath", required: true)]
         public Input<string> FileSystemPath { get; set; } = null!;
@@ -194,13 +220,27 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FilesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
+        /// The time when Fileset was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
+        /// - true: Enable instance release protection.
+        /// - false (default): Turn off instance release protection
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Description of Fileset.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `False`. Valid values: `True`, `False`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -212,19 +252,19 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? FileSystemId { get; set; }
 
         /// <summary>
-        /// The path of the fileset.
+        /// The path of Fileset.
         /// </summary>
         [Input("fileSystemPath")]
         public Input<string>? FileSystemPath { get; set; }
 
         /// <summary>
-        /// The first ID of the resource.
+        /// Fileset ID
         /// </summary>
         [Input("filesetId")]
         public Input<string>? FilesetId { get; set; }
 
         /// <summary>
-        /// The status of the fileset.
+        /// The status of Fileset. Includes:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

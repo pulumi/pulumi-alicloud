@@ -10,19 +10,86 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ElasticSearch
 {
     /// <summary>
+    /// Provides a Elasticsearch Instance resource.
+    /// 
+    /// For information about Elasticsearch Instance and how to use it, see [What is Instance](https://next.api.alibabacloud.com/document/elasticsearch/2017-06-13/createInstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.30.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = AliCloud.ElasticSearch.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.0.0.0/8",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "10.1.0.0/16",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.ElasticSearch.Instance("default", new()
+    ///     {
+    ///         Description = name,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Password = "Examplw1234",
+    ///         Version = "7.10_with_X-Pack",
+    ///         InstanceChargeType = "PostPaid",
+    ///         DataNodeAmount = 2,
+    ///         DataNodeSpec = "elasticsearch.sn2ne.large",
+    ///         DataNodeDiskSize = 20,
+    ///         DataNodeDiskType = "cloud_ssd",
+    ///         KibanaNodeSpec = "elasticsearch.sn2ne.large",
+    ///         DataNodeDiskPerformanceLevel = "PL1",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// Elasticsearch can be imported using the id, e.g.
+    /// Elasticsearch Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:elasticsearch/instance:Instance example es-cn-abcde123456
+    /// $ pulumi import alicloud:elasticsearch/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:elasticsearch/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
+        /// Schema Type:
+        /// </summary>
+        [Output("archType")]
+        public Output<string> ArchType { get; private set; } = null!;
+
+        /// <summary>
+        /// Renewal Period
         /// </summary>
         [Output("autoRenewDuration")]
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
@@ -31,13 +98,25 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// The Elasticsearch cluster's client node quantity, between 2 and 25.
         /// </summary>
         [Output("clientNodeAmount")]
-        public Output<int?> ClientNodeAmount { get; private set; } = null!;
+        public Output<int> ClientNodeAmount { get; private set; } = null!;
+
+        /// <summary>
+        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
+        /// </summary>
+        [Output("clientNodeConfiguration")]
+        public Output<Outputs.InstanceClientNodeConfiguration> ClientNodeConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The client node spec. If specified, client node will be created.
         /// </summary>
         [Output("clientNodeSpec")]
-        public Output<string?> ClientNodeSpec { get; private set; } = null!;
+        public Output<string> ClientNodeSpec { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance creation time
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The Elasticsearch cluster's data node quantity, between 2 and 50.
@@ -46,16 +125,22 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> DataNodeAmount { get; private set; } = null!;
 
         /// <summary>
+        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// </summary>
+        [Output("dataNodeConfiguration")]
+        public Output<Outputs.InstanceDataNodeConfiguration> DataNodeConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Output("dataNodeDiskEncrypted")]
-        public Output<bool?> DataNodeDiskEncrypted { get; private set; } = null!;
+        public Output<bool> DataNodeDiskEncrypted { get; private set; } = null!;
 
         /// <summary>
         /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
         /// </summary>
         [Output("dataNodeDiskPerformanceLevel")]
-        public Output<string?> DataNodeDiskPerformanceLevel { get; private set; } = null!;
+        public Output<string> DataNodeDiskPerformanceLevel { get; private set; } = null!;
 
         /// <summary>
         /// The single data node storage space.
@@ -76,43 +161,66 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> DataNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The description of instance. It a string of 0 to 30 characters.
+        /// Instance name
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Instance connection domain (only VPC network access supported).
+        /// Elasticsearch cluster private domain name
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
+        /// Whether to enable Kibana private network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
         /// </summary>
         [Output("enableKibanaPrivateNetwork")]
-        public Output<bool?> EnableKibanaPrivateNetwork { get; private set; } = null!;
+        public Output<bool> EnableKibanaPrivateNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        /// Does Kibana enable public access
         /// </summary>
         [Output("enableKibanaPublicNetwork")]
-        public Output<bool?> EnableKibanaPublicNetwork { get; private set; } = null!;
+        public Output<bool> EnableKibanaPublicNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Bool, default to false. When it set to true, the instance can enable public network access。
+        /// Whether to enable Kibana public network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
         /// </summary>
         [Output("enablePublic")]
-        public Output<bool?> EnablePublic { get; private set; } = null!;
+        public Output<bool> EnablePublic { get; private set; } = null!;
+
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
+        /// Version type.
+        /// </summary>
+        [Output("instanceCategory")]
+        public Output<string> InstanceCategory { get; private set; } = null!;
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
         /// </summary>
         [Output("instanceChargeType")]
-        public Output<string?> InstanceChargeType { get; private set; } = null!;
+        public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana console domain (Internet access supported).
+        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
+        /// </summary>
+        [Output("kibanaConfiguration")]
+        public Output<Outputs.InstanceKibanaConfiguration> KibanaConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// Kibana address
         /// </summary>
         [Output("kibanaDomain")]
         public Output<string> KibanaDomain { get; private set; } = null!;
@@ -124,25 +232,25 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<string> KibanaNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Kibana console port.
+        /// The port assigned by the Kibana node.
         /// </summary>
         [Output("kibanaPort")]
         public Output<int> KibanaPort { get; private set; } = null!;
 
         /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
+        /// Kibana private network security group ID
         /// </summary>
         [Output("kibanaPrivateSecurityGroupId")]
         public Output<string?> KibanaPrivateSecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
+        /// Cluster Kibana node private network access whitelist
         /// </summary>
         [Output("kibanaPrivateWhitelists")]
         public Output<ImmutableArray<string>> KibanaPrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in internet network.
+        /// Kibana private network access whitelist
         /// </summary>
         [Output("kibanaWhitelists")]
         public Output<ImmutableArray<string>> KibanaWhitelists { get; private set; } = null!;
@@ -160,28 +268,43 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// </summary>
+        [Output("masterConfiguration")]
+        public Output<Outputs.InstanceMasterConfiguration> MasterConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         /// </summary>
         [Output("masterNodeDiskType")]
-        public Output<string?> MasterNodeDiskType { get; private set; } = null!;
+        public Output<string> MasterNodeDiskType { get; private set; } = null!;
 
         /// <summary>
         /// The dedicated master node spec. If specified, dedicated master node will be created.
         /// </summary>
         [Output("masterNodeSpec")]
-        public Output<string?> MasterNodeSpec { get; private set; } = null!;
+        public Output<string> MasterNodeSpec { get; private set; } = null!;
+
+        [Output("orderActionType")]
+        public Output<string?> OrderActionType { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+        /// The access password of the instance.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// </summary>
+        [Output("paymentType")]
+        public Output<string> PaymentType { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         /// </summary>
         [Output("period")]
-        public Output<int?> Period { get; private set; } = null!;
+        public Output<int> Period { get; private set; } = null!;
 
         /// <summary>
         /// Instance connection port.
@@ -190,73 +313,76 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Set the instance's IP whitelist in VPC network.
+        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
         /// </summary>
         [Output("privateWhitelists")]
         public Output<ImmutableArray<string>> PrivateWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
         /// </summary>
         [Output("protocol")]
-        public Output<string?> Protocol { get; private set; } = null!;
+        public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Instance connection public domain.
+        /// The public network address of the current instance.
         /// </summary>
         [Output("publicDomain")]
         public Output<string> PublicDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Instance connection public port.
+        /// Elasticsearch cluster public network access port
         /// </summary>
         [Output("publicPort")]
         public Output<int> PublicPort { get; private set; } = null!;
 
         /// <summary>
-        /// Set the instance's IP whitelist in internet network.
+        /// Elasticseach public network access whitelist IP list
         /// </summary>
         [Output("publicWhitelists")]
         public Output<ImmutableArray<string>> PublicWhitelists { get; private set; } = null!;
 
         /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
+        /// Renewal Status
         /// </summary>
         [Output("renewStatus")]
-        public Output<string?> RenewStatus { get; private set; } = null!;
+        public Output<string> RenewStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        /// Renewal Period Unit
         /// </summary>
         [Output("renewalDurationUnit")]
-        public Output<string?> RenewalDurationUnit { get; private set; } = null!;
+        public Output<string> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of resource group which the Elasticsearch instance belongs.
+        /// Resource group to which the instance belongs
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        /// Configuration information
         /// </summary>
         [Output("settingConfig")]
         public Output<ImmutableDictionary<string, string>> SettingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The Elasticsearch instance status. Includes `Active`, `Activating`, `Inactive`. Some operations are denied when status is not `Active`.
+        /// Instance change status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// Collection of tag key-value pairs
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        [Output("updateStrategy")]
+        public Output<string?> UpdateStrategy { get; private set; } = null!;
+
         /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        /// Instance version
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -271,37 +397,45 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
         /// </summary>
         [Output("warmNodeAmount")]
-        public Output<int?> WarmNodeAmount { get; private set; } = null!;
+        public Output<int> WarmNodeAmount { get; private set; } = null!;
+
+        /// <summary>
+        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// </summary>
+        [Output("warmNodeConfiguration")]
+        public Output<Outputs.InstanceWarmNodeConfiguration> WarmNodeConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
         /// </summary>
         [Output("warmNodeDiskEncrypted")]
-        public Output<bool?> WarmNodeDiskEncrypted { get; private set; } = null!;
+        public Output<bool> WarmNodeDiskEncrypted { get; private set; } = null!;
 
         /// <summary>
         /// The single warm node storage space, should between 500 and 20480
         /// </summary>
         [Output("warmNodeDiskSize")]
-        public Output<int?> WarmNodeDiskSize { get; private set; } = null!;
+        public Output<int> WarmNodeDiskSize { get; private set; } = null!;
 
         /// <summary>
         /// The warm node disk type. Supported values:  cloud_efficiency.
         /// </summary>
         [Output("warmNodeDiskType")]
-        public Output<string?> WarmNodeDiskType { get; private set; } = null!;
+        public Output<string> WarmNodeDiskType { get; private set; } = null!;
 
         /// <summary>
         /// The warm node specifications of the Elasticsearch instance.
         /// </summary>
         [Output("warmNodeSpec")]
-        public Output<string?> WarmNodeSpec { get; private set; } = null!;
+        public Output<string> WarmNodeSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
+        /// The number of zones in the Elasticsearch instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("zoneCount")]
-        public Output<int?> ZoneCount { get; private set; } = null!;
+        public Output<int> ZoneCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -354,7 +488,7 @@ namespace Pulumi.AliCloud.ElasticSearch
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
+        /// Renewal Period
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -366,304 +500,10 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<int>? ClientNodeAmount { get; set; }
 
         /// <summary>
-        /// The client node spec. If specified, client node will be created.
+        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
         /// </summary>
-        [Input("clientNodeSpec")]
-        public Input<string>? ClientNodeSpec { get; set; }
-
-        /// <summary>
-        /// The Elasticsearch cluster's data node quantity, between 2 and 50.
-        /// </summary>
-        [Input("dataNodeAmount", required: true)]
-        public Input<int> DataNodeAmount { get; set; } = null!;
-
-        /// <summary>
-        /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
-        /// </summary>
-        [Input("dataNodeDiskEncrypted")]
-        public Input<bool>? DataNodeDiskEncrypted { get; set; }
-
-        /// <summary>
-        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
-        /// </summary>
-        [Input("dataNodeDiskPerformanceLevel")]
-        public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
-
-        /// <summary>
-        /// The single data node storage space.
-        /// </summary>
-        [Input("dataNodeDiskSize", required: true)]
-        public Input<int> DataNodeDiskSize { get; set; } = null!;
-
-        /// <summary>
-        /// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
-        /// </summary>
-        [Input("dataNodeDiskType", required: true)]
-        public Input<string> DataNodeDiskType { get; set; } = null!;
-
-        /// <summary>
-        /// The data node specifications of the Elasticsearch instance.
-        /// </summary>
-        [Input("dataNodeSpec", required: true)]
-        public Input<string> DataNodeSpec { get; set; } = null!;
-
-        /// <summary>
-        /// The description of instance. It a string of 0 to 30 characters.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
-        /// </summary>
-        [Input("enableKibanaPrivateNetwork")]
-        public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
-
-        /// <summary>
-        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
-        /// </summary>
-        [Input("enableKibanaPublicNetwork")]
-        public Input<bool>? EnableKibanaPublicNetwork { get; set; }
-
-        /// <summary>
-        /// Bool, default to false. When it set to true, the instance can enable public network access。
-        /// </summary>
-        [Input("enablePublic")]
-        public Input<bool>? EnablePublic { get; set; }
-
-        /// <summary>
-        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
-        /// </summary>
-        [Input("instanceChargeType")]
-        public Input<string>? InstanceChargeType { get; set; }
-
-        /// <summary>
-        /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
-        /// </summary>
-        [Input("kibanaNodeSpec")]
-        public Input<string>? KibanaNodeSpec { get; set; }
-
-        /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
-        /// </summary>
-        [Input("kibanaPrivateSecurityGroupId")]
-        public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
-
-        [Input("kibanaPrivateWhitelists")]
-        private InputList<string>? _kibanaPrivateWhitelists;
-
-        /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
-        /// </summary>
-        public InputList<string> KibanaPrivateWhitelists
-        {
-            get => _kibanaPrivateWhitelists ?? (_kibanaPrivateWhitelists = new InputList<string>());
-            set => _kibanaPrivateWhitelists = value;
-        }
-
-        [Input("kibanaWhitelists")]
-        private InputList<string>? _kibanaWhitelists;
-
-        /// <summary>
-        /// Set the Kibana's IP whitelist in internet network.
-        /// </summary>
-        public InputList<string> KibanaWhitelists
-        {
-            get => _kibanaWhitelists ?? (_kibanaWhitelists = new InputList<string>());
-            set => _kibanaWhitelists = value;
-        }
-
-        /// <summary>
-        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored, but you have to specify one of `Password` and `KmsEncryptedPassword` fields.
-        /// </summary>
-        [Input("kmsEncryptedPassword")]
-        public Input<string>? KmsEncryptedPassword { get; set; }
-
-        [Input("kmsEncryptionContext")]
-        private InputMap<string>? _kmsEncryptionContext;
-
-        /// <summary>
-        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
-        /// </summary>
-        public InputMap<string> KmsEncryptionContext
-        {
-            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
-            set => _kmsEncryptionContext = value;
-        }
-
-        /// <summary>
-        /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
-        /// </summary>
-        [Input("masterNodeDiskType")]
-        public Input<string>? MasterNodeDiskType { get; set; }
-
-        /// <summary>
-        /// The dedicated master node spec. If specified, dedicated master node will be created.
-        /// </summary>
-        [Input("masterNodeSpec")]
-        public Input<string>? MasterNodeSpec { get; set; }
-
-        [Input("password")]
-        private Input<string>? _password;
-
-        /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
-        /// </summary>
-        public Input<string>? Password
-        {
-            get => _password;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
-        /// </summary>
-        [Input("period")]
-        public Input<int>? Period { get; set; }
-
-        [Input("privateWhitelists")]
-        private InputList<string>? _privateWhitelists;
-
-        /// <summary>
-        /// Set the instance's IP whitelist in VPC network.
-        /// </summary>
-        public InputList<string> PrivateWhitelists
-        {
-            get => _privateWhitelists ?? (_privateWhitelists = new InputList<string>());
-            set => _privateWhitelists = value;
-        }
-
-        /// <summary>
-        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
-        /// </summary>
-        [Input("protocol")]
-        public Input<string>? Protocol { get; set; }
-
-        [Input("publicWhitelists")]
-        private InputList<string>? _publicWhitelists;
-
-        /// <summary>
-        /// Set the instance's IP whitelist in internet network.
-        /// </summary>
-        public InputList<string> PublicWhitelists
-        {
-            get => _publicWhitelists ?? (_publicWhitelists = new InputList<string>());
-            set => _publicWhitelists = value;
-        }
-
-        /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
-        /// </summary>
-        [Input("renewStatus")]
-        public Input<string>? RenewStatus { get; set; }
-
-        /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
-        /// </summary>
-        [Input("renewalDurationUnit")]
-        public Input<string>? RenewalDurationUnit { get; set; }
-
-        /// <summary>
-        /// The ID of resource group which the Elasticsearch instance belongs.
-        /// </summary>
-        [Input("resourceGroupId")]
-        public Input<string>? ResourceGroupId { get; set; }
-
-        [Input("settingConfig")]
-        private InputMap<string>? _settingConfig;
-
-        /// <summary>
-        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
-        /// </summary>
-        public InputMap<string> SettingConfig
-        {
-            get => _settingConfig ?? (_settingConfig = new InputMap<string>());
-            set => _settingConfig = value;
-        }
-
-        [Input("tags")]
-        private InputMap<string>? _tags;
-
-        /// <summary>
-        /// A mapping of tags to assign to the resource.
-        /// </summary>
-        public InputMap<string> Tags
-        {
-            get => _tags ?? (_tags = new InputMap<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
-        /// </summary>
-        [Input("version", required: true)]
-        public Input<string> Version { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of VSwitch.
-        /// </summary>
-        [Input("vswitchId", required: true)]
-        public Input<string> VswitchId { get; set; } = null!;
-
-        /// <summary>
-        /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
-        /// </summary>
-        [Input("warmNodeAmount")]
-        public Input<int>? WarmNodeAmount { get; set; }
-
-        /// <summary>
-        /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
-        /// </summary>
-        [Input("warmNodeDiskEncrypted")]
-        public Input<bool>? WarmNodeDiskEncrypted { get; set; }
-
-        /// <summary>
-        /// The single warm node storage space, should between 500 and 20480
-        /// </summary>
-        [Input("warmNodeDiskSize")]
-        public Input<int>? WarmNodeDiskSize { get; set; }
-
-        /// <summary>
-        /// The warm node disk type. Supported values:  cloud_efficiency.
-        /// </summary>
-        [Input("warmNodeDiskType")]
-        public Input<string>? WarmNodeDiskType { get; set; }
-
-        /// <summary>
-        /// The warm node specifications of the Elasticsearch instance.
-        /// </summary>
-        [Input("warmNodeSpec")]
-        public Input<string>? WarmNodeSpec { get; set; }
-
-        /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
-        /// </summary>
-        [Input("zoneCount")]
-        public Input<int>? ZoneCount { get; set; }
-
-        public InstanceArgs()
-        {
-        }
-        public static new InstanceArgs Empty => new InstanceArgs();
-    }
-
-    public sealed class InstanceState : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `InstanceChargeType` is `PrePaid` and `RenewStatus` is `AutoRenewal`.
-        /// </summary>
-        [Input("autoRenewDuration")]
-        public Input<int>? AutoRenewDuration { get; set; }
-
-        /// <summary>
-        /// The Elasticsearch cluster's client node quantity, between 2 and 25.
-        /// </summary>
-        [Input("clientNodeAmount")]
-        public Input<int>? ClientNodeAmount { get; set; }
+        [Input("clientNodeConfiguration")]
+        public Input<Inputs.InstanceClientNodeConfigurationArgs>? ClientNodeConfiguration { get; set; }
 
         /// <summary>
         /// The client node spec. If specified, client node will be created.
@@ -676,6 +516,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         /// </summary>
         [Input("dataNodeAmount")]
         public Input<int>? DataNodeAmount { get; set; }
+
+        /// <summary>
+        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// </summary>
+        [Input("dataNodeConfiguration")]
+        public Input<Inputs.InstanceDataNodeConfigurationArgs>? DataNodeConfiguration { get; set; }
 
         /// <summary>
         /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
@@ -708,34 +554,45 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? DataNodeSpec { get; set; }
 
         /// <summary>
-        /// The description of instance. It a string of 0 to 30 characters.
+        /// Instance name
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Instance connection domain (only VPC network access supported).
-        /// </summary>
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        /// <summary>
-        /// Bool, default to false. When it set to true, the instance can close kibana private network access。
+        /// Whether to enable Kibana private network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
         /// </summary>
         [Input("enableKibanaPrivateNetwork")]
         public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
 
         /// <summary>
-        /// Bool, default to true. When it set to false, the instance can enable kibana public network access。
+        /// Does Kibana enable public access
         /// </summary>
         [Input("enableKibanaPublicNetwork")]
         public Input<bool>? EnableKibanaPublicNetwork { get; set; }
 
         /// <summary>
-        /// Bool, default to false. When it set to true, the instance can enable public network access。
+        /// Whether to enable Kibana public network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
         /// </summary>
         [Input("enablePublic")]
         public Input<bool>? EnablePublic { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Version type.
+        /// </summary>
+        [Input("instanceCategory")]
+        public Input<string>? InstanceCategory { get; set; }
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
@@ -744,10 +601,10 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Kibana console domain (Internet access supported).
+        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
         /// </summary>
-        [Input("kibanaDomain")]
-        public Input<string>? KibanaDomain { get; set; }
+        [Input("kibanaConfiguration")]
+        public Input<Inputs.InstanceKibanaConfigurationArgs>? KibanaConfiguration { get; set; }
 
         /// <summary>
         /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
@@ -756,13 +613,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? KibanaNodeSpec { get; set; }
 
         /// <summary>
-        /// Kibana console port.
-        /// </summary>
-        [Input("kibanaPort")]
-        public Input<int>? KibanaPort { get; set; }
-
-        /// <summary>
-        /// the security group id associated with Kibana private network, this param is required when `EnableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `VswitchId`
+        /// Kibana private network security group ID
         /// </summary>
         [Input("kibanaPrivateSecurityGroupId")]
         public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
@@ -771,7 +622,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaPrivateWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in private network, This option has been abandoned on newly created instance, please use `KibanaPrivateSecurityGroupId` instead
+        /// Cluster Kibana node private network access whitelist
         /// </summary>
         public InputList<string> KibanaPrivateWhitelists
         {
@@ -783,7 +634,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputList<string>? _kibanaWhitelists;
 
         /// <summary>
-        /// Set the Kibana's IP whitelist in internet network.
+        /// Kibana private network access whitelist
         /// </summary>
         public InputList<string> KibanaWhitelists
         {
@@ -810,6 +661,12 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
+        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// </summary>
+        [Input("masterConfiguration")]
+        public Input<Inputs.InstanceMasterConfigurationArgs>? MasterConfiguration { get; set; }
+
+        /// <summary>
         /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
         /// </summary>
         [Input("masterNodeDiskType")]
@@ -821,11 +678,14 @@ namespace Pulumi.AliCloud.ElasticSearch
         [Input("masterNodeSpec")]
         public Input<string>? MasterNodeSpec { get; set; }
 
+        [Input("orderActionType")]
+        public Input<string>? OrderActionType { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+        /// The access password of the instance.
         /// </summary>
         public Input<string>? Password
         {
@@ -838,22 +698,22 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The duration that you will buy Elasticsearch instance (in month). It is valid when InstanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
-
-        /// <summary>
-        /// Instance connection port.
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
 
         [Input("privateWhitelists")]
         private InputList<string>? _privateWhitelists;
 
         /// <summary>
-        /// Set the instance's IP whitelist in VPC network.
+        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
         /// </summary>
         public InputList<string> PrivateWhitelists
         {
@@ -862,28 +722,16 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
-
-        /// <summary>
-        /// Instance connection public domain.
-        /// </summary>
-        [Input("publicDomain")]
-        public Input<string>? PublicDomain { get; set; }
-
-        /// <summary>
-        /// Instance connection public port.
-        /// </summary>
-        [Input("publicPort")]
-        public Input<int>? PublicPort { get; set; }
 
         [Input("publicWhitelists")]
         private InputList<string>? _publicWhitelists;
 
         /// <summary>
-        /// Set the instance's IP whitelist in internet network.
+        /// Elasticseach public network access whitelist IP list
         /// </summary>
         public InputList<string> PublicWhitelists
         {
@@ -892,19 +740,19 @@ namespace Pulumi.AliCloud.ElasticSearch
         }
 
         /// <summary>
-        /// The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `InstanceChargeType` must be `PrePaid`.
+        /// Renewal Status
         /// </summary>
         [Input("renewStatus")]
         public Input<string>? RenewStatus { get; set; }
 
         /// <summary>
-        /// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+        /// Renewal Period Unit
         /// </summary>
         [Input("renewalDurationUnit")]
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// The ID of resource group which the Elasticsearch instance belongs.
+        /// Resource group to which the instance belongs
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -913,7 +761,7 @@ namespace Pulumi.AliCloud.ElasticSearch
         private InputMap<string>? _settingConfig;
 
         /// <summary>
-        /// The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+        /// Configuration information
         /// </summary>
         public InputMap<string> SettingConfig
         {
@@ -921,17 +769,11 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _settingConfig = value;
         }
 
-        /// <summary>
-        /// The Elasticsearch instance status. Includes `Active`, `Activating`, `Inactive`. Some operations are denied when status is not `Active`.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
         [Input("tags")]
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// Collection of tag key-value pairs
         /// </summary>
         public InputMap<string> Tags
         {
@@ -939,23 +781,32 @@ namespace Pulumi.AliCloud.ElasticSearch
             set => _tags = value;
         }
 
+        [Input("updateStrategy")]
+        public Input<string>? UpdateStrategy { get; set; }
+
         /// <summary>
-        /// Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+        /// Instance version
         /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
+        [Input("version", required: true)]
+        public Input<string> Version { get; set; } = null!;
 
         /// <summary>
         /// The ID of VSwitch.
         /// </summary>
-        [Input("vswitchId")]
-        public Input<string>? VswitchId { get; set; }
+        [Input("vswitchId", required: true)]
+        public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
         /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
         /// </summary>
         [Input("warmNodeAmount")]
         public Input<int>? WarmNodeAmount { get; set; }
+
+        /// <summary>
+        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// </summary>
+        [Input("warmNodeConfiguration")]
+        public Input<Inputs.InstanceWarmNodeConfigurationArgs>? WarmNodeConfiguration { get; set; }
 
         /// <summary>
         /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
@@ -982,7 +833,424 @@ namespace Pulumi.AliCloud.ElasticSearch
         public Input<string>? WarmNodeSpec { get; set; }
 
         /// <summary>
-        /// The Multi-AZ supported for Elasticsearch, between 1 and 3. The `DataNodeAmount` value must be an integral multiple of the `ZoneCount` value.
+        /// The number of zones in the Elasticsearch instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("zoneCount")]
+        public Input<int>? ZoneCount { get; set; }
+
+        public InstanceArgs()
+        {
+        }
+        public static new InstanceArgs Empty => new InstanceArgs();
+    }
+
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Schema Type:
+        /// </summary>
+        [Input("archType")]
+        public Input<string>? ArchType { get; set; }
+
+        /// <summary>
+        /// Renewal Period
+        /// </summary>
+        [Input("autoRenewDuration")]
+        public Input<int>? AutoRenewDuration { get; set; }
+
+        /// <summary>
+        /// The Elasticsearch cluster's client node quantity, between 2 and 25.
+        /// </summary>
+        [Input("clientNodeAmount")]
+        public Input<int>? ClientNodeAmount { get; set; }
+
+        /// <summary>
+        /// Elasticsearch cluster coordination node configuration See `ClientNodeConfiguration` below.
+        /// </summary>
+        [Input("clientNodeConfiguration")]
+        public Input<Inputs.InstanceClientNodeConfigurationGetArgs>? ClientNodeConfiguration { get; set; }
+
+        /// <summary>
+        /// The client node spec. If specified, client node will be created.
+        /// </summary>
+        [Input("clientNodeSpec")]
+        public Input<string>? ClientNodeSpec { get; set; }
+
+        /// <summary>
+        /// Instance creation time
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The Elasticsearch cluster's data node quantity, between 2 and 50.
+        /// </summary>
+        [Input("dataNodeAmount")]
+        public Input<int>? DataNodeAmount { get; set; }
+
+        /// <summary>
+        /// Elasticsearch data node information See `DataNodeConfiguration` below.
+        /// </summary>
+        [Input("dataNodeConfiguration")]
+        public Input<Inputs.InstanceDataNodeConfigurationGetArgs>? DataNodeConfiguration { get; set; }
+
+        /// <summary>
+        /// If encrypt the data node disk. Valid values are `True`, `False`. Default to `False`.
+        /// </summary>
+        [Input("dataNodeDiskEncrypted")]
+        public Input<bool>? DataNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `DataNodeDiskType` muse be `CloudEssd`.
+        /// </summary>
+        [Input("dataNodeDiskPerformanceLevel")]
+        public Input<string>? DataNodeDiskPerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The single data node storage space.
+        /// </summary>
+        [Input("dataNodeDiskSize")]
+        public Input<int>? DataNodeDiskSize { get; set; }
+
+        /// <summary>
+        /// The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
+        /// </summary>
+        [Input("dataNodeDiskType")]
+        public Input<string>? DataNodeDiskType { get; set; }
+
+        /// <summary>
+        /// The data node specifications of the Elasticsearch instance.
+        /// </summary>
+        [Input("dataNodeSpec")]
+        public Input<string>? DataNodeSpec { get; set; }
+
+        /// <summary>
+        /// Instance name
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Elasticsearch cluster private domain name
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// Whether to enable Kibana private network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
+        /// </summary>
+        [Input("enableKibanaPrivateNetwork")]
+        public Input<bool>? EnableKibanaPrivateNetwork { get; set; }
+
+        /// <summary>
+        /// Does Kibana enable public access
+        /// </summary>
+        [Input("enableKibanaPublicNetwork")]
+        public Input<bool>? EnableKibanaPublicNetwork { get; set; }
+
+        /// <summary>
+        /// Whether to enable Kibana public network access.
+        /// 
+        /// The meaning of the value is as follows:
+        /// - true: On.
+        /// - false: does not open.
+        /// </summary>
+        [Input("enablePublic")]
+        public Input<bool>? EnablePublic { get; set; }
+
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
+
+        /// <summary>
+        /// Version type.
+        /// </summary>
+        [Input("instanceCategory")]
+        public Input<string>? InstanceCategory { get; set; }
+
+        /// <summary>
+        /// Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your InstanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `Period`.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Elasticsearch Kibana node settings See `KibanaConfiguration` below.
+        /// </summary>
+        [Input("kibanaConfiguration")]
+        public Input<Inputs.InstanceKibanaConfigurationGetArgs>? KibanaConfiguration { get; set; }
+
+        /// <summary>
+        /// Kibana address
+        /// </summary>
+        [Input("kibanaDomain")]
+        public Input<string>? KibanaDomain { get; set; }
+
+        /// <summary>
+        /// The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
+        /// </summary>
+        [Input("kibanaNodeSpec")]
+        public Input<string>? KibanaNodeSpec { get; set; }
+
+        /// <summary>
+        /// The port assigned by the Kibana node.
+        /// </summary>
+        [Input("kibanaPort")]
+        public Input<int>? KibanaPort { get; set; }
+
+        /// <summary>
+        /// Kibana private network security group ID
+        /// </summary>
+        [Input("kibanaPrivateSecurityGroupId")]
+        public Input<string>? KibanaPrivateSecurityGroupId { get; set; }
+
+        [Input("kibanaPrivateWhitelists")]
+        private InputList<string>? _kibanaPrivateWhitelists;
+
+        /// <summary>
+        /// Cluster Kibana node private network access whitelist
+        /// </summary>
+        public InputList<string> KibanaPrivateWhitelists
+        {
+            get => _kibanaPrivateWhitelists ?? (_kibanaPrivateWhitelists = new InputList<string>());
+            set => _kibanaPrivateWhitelists = value;
+        }
+
+        [Input("kibanaWhitelists")]
+        private InputList<string>? _kibanaWhitelists;
+
+        /// <summary>
+        /// Kibana private network access whitelist
+        /// </summary>
+        public InputList<string> KibanaWhitelists
+        {
+            get => _kibanaWhitelists ?? (_kibanaWhitelists = new InputList<string>());
+            set => _kibanaWhitelists = value;
+        }
+
+        /// <summary>
+        /// An KMS encrypts password used to an instance. If the `Password` is filled in, this field will be ignored, but you have to specify one of `Password` and `KmsEncryptedPassword` fields.
+        /// </summary>
+        [Input("kmsEncryptedPassword")]
+        public Input<string>? KmsEncryptedPassword { get; set; }
+
+        [Input("kmsEncryptionContext")]
+        private InputMap<string>? _kmsEncryptionContext;
+
+        /// <summary>
+        /// An KMS encryption context used to decrypt `KmsEncryptedPassword` before creating or updating instance with `KmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `KmsEncryptedPassword` is set.
+        /// </summary>
+        public InputMap<string> KmsEncryptionContext
+        {
+            get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
+            set => _kmsEncryptionContext = value;
+        }
+
+        /// <summary>
+        /// Elasticsearch proprietary master node configuration information See `MasterConfiguration` below.
+        /// </summary>
+        [Input("masterConfiguration")]
+        public Input<Inputs.InstanceMasterConfigurationGetArgs>? MasterConfiguration { get; set; }
+
+        /// <summary>
+        /// The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+        /// </summary>
+        [Input("masterNodeDiskType")]
+        public Input<string>? MasterNodeDiskType { get; set; }
+
+        /// <summary>
+        /// The dedicated master node spec. If specified, dedicated master node will be created.
+        /// </summary>
+        [Input("masterNodeSpec")]
+        public Input<string>? MasterNodeSpec { get; set; }
+
+        [Input("orderActionType")]
+        public Input<string>? OrderActionType { get; set; }
+
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// The access password of the instance.
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The payment method of the instance. Optional values: `Prepaid` (subscription) and `Postpaid` (pay-as-you-go)
+        /// </summary>
+        [Input("paymentType")]
+        public Input<string>? PaymentType { get; set; }
+
+        /// <summary>
+        /// The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+        /// </summary>
+        [Input("period")]
+        public Input<int>? Period { get; set; }
+
+        /// <summary>
+        /// Instance connection port.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        [Input("privateWhitelists")]
+        private InputList<string>? _privateWhitelists;
+
+        /// <summary>
+        /// Elasticsearch private network whitelist. (Same as EsIpWhitelist)
+        /// </summary>
+        public InputList<string> PrivateWhitelists
+        {
+            get => _privateWhitelists ?? (_privateWhitelists = new InputList<string>());
+            set => _privateWhitelists = value;
+        }
+
+        /// <summary>
+        /// Access protocol. Optional values: `HTTP` and **HTTPS * *.
+        /// </summary>
+        [Input("protocol")]
+        public Input<string>? Protocol { get; set; }
+
+        /// <summary>
+        /// The public network address of the current instance.
+        /// </summary>
+        [Input("publicDomain")]
+        public Input<string>? PublicDomain { get; set; }
+
+        /// <summary>
+        /// Elasticsearch cluster public network access port
+        /// </summary>
+        [Input("publicPort")]
+        public Input<int>? PublicPort { get; set; }
+
+        [Input("publicWhitelists")]
+        private InputList<string>? _publicWhitelists;
+
+        /// <summary>
+        /// Elasticseach public network access whitelist IP list
+        /// </summary>
+        public InputList<string> PublicWhitelists
+        {
+            get => _publicWhitelists ?? (_publicWhitelists = new InputList<string>());
+            set => _publicWhitelists = value;
+        }
+
+        /// <summary>
+        /// Renewal Status
+        /// </summary>
+        [Input("renewStatus")]
+        public Input<string>? RenewStatus { get; set; }
+
+        /// <summary>
+        /// Renewal Period Unit
+        /// </summary>
+        [Input("renewalDurationUnit")]
+        public Input<string>? RenewalDurationUnit { get; set; }
+
+        /// <summary>
+        /// Resource group to which the instance belongs
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("settingConfig")]
+        private InputMap<string>? _settingConfig;
+
+        /// <summary>
+        /// Configuration information
+        /// </summary>
+        public InputMap<string> SettingConfig
+        {
+            get => _settingConfig ?? (_settingConfig = new InputMap<string>());
+            set => _settingConfig = value;
+        }
+
+        /// <summary>
+        /// Instance change status
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Collection of tag key-value pairs
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        [Input("updateStrategy")]
+        public Input<string>? UpdateStrategy { get; set; }
+
+        /// <summary>
+        /// Instance version
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// The ID of VSwitch.
+        /// </summary>
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        /// <summary>
+        /// The Elasticsearch cluster's warm node quantity, between 3 and 50.
+        /// </summary>
+        [Input("warmNodeAmount")]
+        public Input<int>? WarmNodeAmount { get; set; }
+
+        /// <summary>
+        /// Elasticsearch cluster cold data node configuration See `WarmNodeConfiguration` below.
+        /// </summary>
+        [Input("warmNodeConfiguration")]
+        public Input<Inputs.InstanceWarmNodeConfigurationGetArgs>? WarmNodeConfiguration { get; set; }
+
+        /// <summary>
+        /// If encrypt the warm node disk. Valid values are `True`, `False`. Default to `False`.
+        /// </summary>
+        [Input("warmNodeDiskEncrypted")]
+        public Input<bool>? WarmNodeDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The single warm node storage space, should between 500 and 20480
+        /// </summary>
+        [Input("warmNodeDiskSize")]
+        public Input<int>? WarmNodeDiskSize { get; set; }
+
+        /// <summary>
+        /// The warm node disk type. Supported values:  cloud_efficiency.
+        /// </summary>
+        [Input("warmNodeDiskType")]
+        public Input<string>? WarmNodeDiskType { get; set; }
+
+        /// <summary>
+        /// The warm node specifications of the Elasticsearch instance.
+        /// </summary>
+        [Input("warmNodeSpec")]
+        public Input<string>? WarmNodeSpec { get; set; }
+
+        /// <summary>
+        /// The number of zones in the Elasticsearch instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("zoneCount")]
         public Input<int>? ZoneCount { get; set; }

@@ -270,6 +270,8 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             resource_type="slb")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
@@ -344,6 +346,8 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             resource_id=example_application_load_balancer.id,
             resource_type="slb")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -70,6 +70,8 @@ namespace Pulumi.AliCloud.Cfg
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Config Delivery can be imported using the id, e.g.

@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Chatbot
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Chatbot Publish Task can be imported using the id, e.g.

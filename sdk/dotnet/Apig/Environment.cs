@@ -88,6 +88,8 @@ namespace Pulumi.AliCloud.Apig
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// APIG Environment can be imported using the id, e.g.

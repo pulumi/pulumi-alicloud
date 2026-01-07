@@ -274,6 +274,8 @@ class ConsumerChannel(pulumi.CustomResource):
             consumer_group_password="example1234")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DTS Consumer Channel can be imported using the id, e.g.
@@ -385,6 +387,8 @@ class ConsumerChannel(pulumi.CustomResource):
             consumer_group_user_name="example",
             consumer_group_password="example1234")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

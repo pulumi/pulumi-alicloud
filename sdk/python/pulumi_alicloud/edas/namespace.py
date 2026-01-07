@@ -206,6 +206,8 @@ class Namespace(pulumi.CustomResource):
             namespace_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         EDAS Namespace can be imported using the id, e.g.
@@ -257,6 +259,8 @@ class Namespace(pulumi.CustomResource):
             namespace_logical_id=f"{region}:{name}",
             namespace_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

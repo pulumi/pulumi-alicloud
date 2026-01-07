@@ -57,6 +57,8 @@ namespace Pulumi.AliCloud.CloudControl
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Control Resource can be imported using the id, e.g.

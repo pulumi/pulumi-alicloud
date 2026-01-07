@@ -279,6 +279,8 @@ class ApplicationGroup(pulumi.CustomResource):
             import_tag_value="example_value")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Application Group can be imported using the id, e.g.
@@ -343,6 +345,8 @@ class ApplicationGroup(pulumi.CustomResource):
             import_tag_key="example_key",
             import_tag_value="example_value")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

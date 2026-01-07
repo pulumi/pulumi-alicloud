@@ -96,6 +96,8 @@ namespace Pulumi.AliCloud.Lindorm
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Lindorm Instance V2 can be imported using the id, e.g.
@@ -122,14 +124,10 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Deployment Scenario
         /// 
-        /// &gt; **NOTE:**  Enumeration value
-        /// 
-        /// &gt; **NOTE:**  - 1.0 Single AZ
-        /// 
-        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-        /// 
-        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-        /// 
+        /// Enumeration value:
+        /// - **1.0**: Single Zone
+        /// - **2.0**: Multi-AZ Basic Edition
+        /// - **3.0**: Multi-AZ High Availability Edition
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -139,9 +137,9 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Automatic renewal duration. Unit: Month.
         /// 
-        /// Value range: `1` to **12 * *.
+        /// Value range: `1` to `12`.
         /// 
-        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
         /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -156,19 +154,20 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<bool?> AutoRenewal { get; private set; } = null!;
 
         /// <summary>
+        /// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+        /// 
         /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Output("cloudStorageSize")]
         public Output<int?> CloudStorageSize { get; private set; } = null!;
 
         /// <summary>
-        /// &gt; **NOTE:** &gt;
+        /// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
         /// 
-        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-        /// 
-        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-        /// 
-        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+        /// Enumeration value:
+        /// - `StandardStorage`: Standard cloud storage
+        /// - **Performance storage**: Performance-based cloud storage
+        /// - **Capacity Storage**: Capacity-based cloud storage
         /// </summary>
         [Output("cloudStorageType")]
         public Output<string?> CloudStorageType { get; private set; } = null!;
@@ -200,7 +199,11 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> InstanceAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource
+        /// Resource attribute fields representing payment types
+        /// 
+        /// Enumeration value:
+        /// - `PREPAY`: Prepaid mode
+        /// - `POSTPAY`: Postpay mode
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -254,6 +257,12 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance whitelist list See `WhiteIpList` below.
+        /// </summary>
+        [Output("whiteIpLists")]
+        public Output<ImmutableArray<Outputs.InstanceV2WhiteIpList>> WhiteIpLists { get; private set; } = null!;
 
         /// <summary>
         /// The zone ID  of the resource
@@ -322,14 +331,10 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Deployment Scenario
         /// 
-        /// &gt; **NOTE:**  Enumeration value
-        /// 
-        /// &gt; **NOTE:**  - 1.0 Single AZ
-        /// 
-        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-        /// 
-        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-        /// 
+        /// Enumeration value:
+        /// - **1.0**: Single Zone
+        /// - **2.0**: Multi-AZ Basic Edition
+        /// - **3.0**: Multi-AZ High Availability Edition
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -339,9 +344,9 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Automatic renewal duration. Unit: Month.
         /// 
-        /// Value range: `1` to **12 * *.
+        /// Value range: `1` to `12`.
         /// 
-        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
         /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -356,19 +361,20 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? AutoRenewal { get; set; }
 
         /// <summary>
+        /// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+        /// 
         /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Input("cloudStorageSize")]
         public Input<int>? CloudStorageSize { get; set; }
 
         /// <summary>
-        /// &gt; **NOTE:** &gt;
+        /// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
         /// 
-        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-        /// 
-        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-        /// 
-        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+        /// Enumeration value:
+        /// - `StandardStorage`: Standard cloud storage
+        /// - **Performance storage**: Performance-based cloud storage
+        /// - **Capacity Storage**: Capacity-based cloud storage
         /// </summary>
         [Input("cloudStorageType")]
         public Input<string>? CloudStorageType { get; set; }
@@ -406,7 +412,11 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string> InstanceAlias { get; set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource
+        /// Resource attribute fields representing payment types
+        /// 
+        /// Enumeration value:
+        /// - `PREPAY`: Prepaid mode
+        /// - `POSTPAY`: Postpay mode
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
@@ -455,6 +465,18 @@ namespace Pulumi.AliCloud.Lindorm
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
+        [Input("whiteIpLists")]
+        private InputList<Inputs.InstanceV2WhiteIpListArgs>? _whiteIpLists;
+
+        /// <summary>
+        /// Instance whitelist list See `WhiteIpList` below.
+        /// </summary>
+        public InputList<Inputs.InstanceV2WhiteIpListArgs> WhiteIpLists
+        {
+            get => _whiteIpLists ?? (_whiteIpLists = new InputList<Inputs.InstanceV2WhiteIpListArgs>());
+            set => _whiteIpLists = value;
+        }
+
         /// <summary>
         /// The zone ID  of the resource
         /// </summary>
@@ -484,14 +506,10 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Deployment Scenario
         /// 
-        /// &gt; **NOTE:**  Enumeration value
-        /// 
-        /// &gt; **NOTE:**  - 1.0 Single AZ
-        /// 
-        /// &gt; **NOTE:**  - 2.0 Multi-AZ Basic
-        /// 
-        /// &gt; **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-        /// 
+        /// Enumeration value:
+        /// - **1.0**: Single Zone
+        /// - **2.0**: Multi-AZ Basic Edition
+        /// - **3.0**: Multi-AZ High Availability Edition
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
         /// </summary>
@@ -501,9 +519,9 @@ namespace Pulumi.AliCloud.Lindorm
         /// <summary>
         /// Automatic renewal duration. Unit: Month.
         /// 
-        /// Value range: `1` to **12 * *.
+        /// Value range: `1` to `12`.
         /// 
-        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+        /// &gt; **NOTE:**  This item takes effect only when `AutoRenewal` is `True`.
         /// 
         /// 
         /// &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -518,19 +536,20 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<bool>? AutoRenewal { get; set; }
 
         /// <summary>
+        /// The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+        /// 
         /// &gt; **NOTE:**  Cloud storage capacity in GB
         /// </summary>
         [Input("cloudStorageSize")]
         public Input<int>? CloudStorageSize { get; set; }
 
         /// <summary>
-        /// &gt; **NOTE:** &gt;
+        /// Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
         /// 
-        /// &gt; **NOTE:**  - StandardStorage: Standard cloud storage
-        /// 
-        /// &gt; **NOTE:**  - PerformanceStorage: performance-based cloud storage
-        /// 
-        /// &gt; **NOTE:** - capacity storage: Capacity-based cloud storage
+        /// Enumeration value:
+        /// - `StandardStorage`: Standard cloud storage
+        /// - **Performance storage**: Performance-based cloud storage
+        /// - **Capacity Storage**: Capacity-based cloud storage
         /// </summary>
         [Input("cloudStorageType")]
         public Input<string>? CloudStorageType { get; set; }
@@ -568,7 +587,11 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? InstanceAlias { get; set; }
 
         /// <summary>
-        /// The payment type of the resource
+        /// Resource attribute fields representing payment types
+        /// 
+        /// Enumeration value:
+        /// - `PREPAY`: Prepaid mode
+        /// - `POSTPAY`: Postpay mode
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -622,6 +645,18 @@ namespace Pulumi.AliCloud.Lindorm
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
+
+        [Input("whiteIpLists")]
+        private InputList<Inputs.InstanceV2WhiteIpListGetArgs>? _whiteIpLists;
+
+        /// <summary>
+        /// Instance whitelist list See `WhiteIpList` below.
+        /// </summary>
+        public InputList<Inputs.InstanceV2WhiteIpListGetArgs> WhiteIpLists
+        {
+            get => _whiteIpLists ?? (_whiteIpLists = new InputList<Inputs.InstanceV2WhiteIpListGetArgs>());
+            set => _whiteIpLists = value;
+        }
 
         /// <summary>
         /// The zone ID  of the resource

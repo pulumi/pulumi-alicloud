@@ -63,6 +63,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ga Ip Set can be imported using the id, e.g.

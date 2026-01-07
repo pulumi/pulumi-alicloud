@@ -115,6 +115,8 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECS Network Interface Attachment can be imported using the id, e.g.

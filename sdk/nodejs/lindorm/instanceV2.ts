@@ -68,6 +68,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Lindorm Instance V2 can be imported using the id, e.g.
@@ -115,14 +117,10 @@ export class InstanceV2 extends pulumi.CustomResource {
     /**
      * Deployment Scenario
      *
-     * > **NOTE:**  Enumeration value
-     *
-     * > **NOTE:**  - 1.0 Single AZ
-     *
-     * > **NOTE:**  - 2.0 Multi-AZ Basic
-     *
-     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-     *
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -130,9 +128,9 @@ export class InstanceV2 extends pulumi.CustomResource {
     /**
      * Automatic renewal duration. Unit: Month.
      *
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      *
-     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -143,17 +141,18 @@ export class InstanceV2 extends pulumi.CustomResource {
      */
     declare public readonly autoRenewal: pulumi.Output<boolean | undefined>;
     /**
+     * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     *
      * > **NOTE:**  Cloud storage capacity in GB
      */
     declare public readonly cloudStorageSize: pulumi.Output<number | undefined>;
     /**
-     * > **NOTE:** >
+     * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
-     * > **NOTE:**  - StandardStorage: Standard cloud storage
-     *
-     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     *
-     * > **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      */
     declare public readonly cloudStorageType: pulumi.Output<string | undefined>;
     /**
@@ -175,7 +174,11 @@ export class InstanceV2 extends pulumi.CustomResource {
      */
     declare public readonly instanceAlias: pulumi.Output<string>;
     /**
-     * The payment type of the resource
+     * Resource attribute fields representing payment types
+     *
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      */
     declare public readonly paymentType: pulumi.Output<string>;
     /**
@@ -212,6 +215,10 @@ export class InstanceV2 extends pulumi.CustomResource {
      * VswitchId
      */
     declare public readonly vswitchId: pulumi.Output<string>;
+    /**
+     * Instance whitelist list See `whiteIpList` below.
+     */
+    declare public readonly whiteIpLists: pulumi.Output<outputs.lindorm.InstanceV2WhiteIpList[]>;
     /**
      * The zone ID  of the resource
      */
@@ -250,6 +257,7 @@ export class InstanceV2 extends pulumi.CustomResource {
             resourceInputs["standbyZoneId"] = state?.standbyZoneId;
             resourceInputs["vpcId"] = state?.vpcId;
             resourceInputs["vswitchId"] = state?.vswitchId;
+            resourceInputs["whiteIpLists"] = state?.whiteIpLists;
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as InstanceV2Args | undefined;
@@ -293,6 +301,7 @@ export class InstanceV2 extends pulumi.CustomResource {
             resourceInputs["standbyZoneId"] = args?.standbyZoneId;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["vswitchId"] = args?.vswitchId;
+            resourceInputs["whiteIpLists"] = args?.whiteIpLists;
             resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["regionId"] = undefined /*out*/;
         }
@@ -316,14 +325,10 @@ export interface InstanceV2State {
     /**
      * Deployment Scenario
      *
-     * > **NOTE:**  Enumeration value
-     *
-     * > **NOTE:**  - 1.0 Single AZ
-     *
-     * > **NOTE:**  - 2.0 Multi-AZ Basic
-     *
-     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-     *
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -331,9 +336,9 @@ export interface InstanceV2State {
     /**
      * Automatic renewal duration. Unit: Month.
      *
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      *
-     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -344,17 +349,18 @@ export interface InstanceV2State {
      */
     autoRenewal?: pulumi.Input<boolean>;
     /**
+     * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     *
      * > **NOTE:**  Cloud storage capacity in GB
      */
     cloudStorageSize?: pulumi.Input<number>;
     /**
-     * > **NOTE:** >
+     * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
-     * > **NOTE:**  - StandardStorage: Standard cloud storage
-     *
-     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     *
-     * > **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      */
     cloudStorageType?: pulumi.Input<string>;
     /**
@@ -376,7 +382,11 @@ export interface InstanceV2State {
      */
     instanceAlias?: pulumi.Input<string>;
     /**
-     * The payment type of the resource
+     * Resource attribute fields representing payment types
+     *
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -414,6 +424,10 @@ export interface InstanceV2State {
      */
     vswitchId?: pulumi.Input<string>;
     /**
+     * Instance whitelist list See `whiteIpList` below.
+     */
+    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[]>;
+    /**
      * The zone ID  of the resource
      */
     zoneId?: pulumi.Input<string>;
@@ -434,14 +448,10 @@ export interface InstanceV2Args {
     /**
      * Deployment Scenario
      *
-     * > **NOTE:**  Enumeration value
-     *
-     * > **NOTE:**  - 1.0 Single AZ
-     *
-     * > **NOTE:**  - 2.0 Multi-AZ Basic
-     *
-     * > **NOTE:**  - 3.0 Multi-AZ High Availability Edition
-     *
+     * Enumeration value:
+     * - **1.0**: Single Zone
+     * - **2.0**: Multi-AZ Basic Edition
+     * - **3.0**: Multi-AZ High Availability Edition
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
@@ -449,9 +459,9 @@ export interface InstanceV2Args {
     /**
      * Automatic renewal duration. Unit: Month.
      *
-     * Value range: `1` to **12 * *.
+     * Value range: `1` to `12`.
      *
-     * > **NOTE:**  This item takes effect only when `AutoRenewal` is **true.
+     * > **NOTE:**  This item takes effect only when `AutoRenewal` is `true`.
      *
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
@@ -462,17 +472,18 @@ export interface InstanceV2Args {
      */
     autoRenewal?: pulumi.Input<boolean>;
     /**
+     * The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
+     *
      * > **NOTE:**  Cloud storage capacity in GB
      */
     cloudStorageSize?: pulumi.Input<number>;
     /**
-     * > **NOTE:** >
+     * Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
      *
-     * > **NOTE:**  - StandardStorage: Standard cloud storage
-     *
-     * > **NOTE:**  - PerformanceStorage: performance-based cloud storage
-     *
-     * > **NOTE:** - capacity storage: Capacity-based cloud storage
+     * Enumeration value:
+     * - `StandardStorage`: Standard cloud storage
+     * - **Performance storage**: Performance-based cloud storage
+     * - **Capacity Storage**: Capacity-based cloud storage
      */
     cloudStorageType?: pulumi.Input<string>;
     /**
@@ -494,7 +505,11 @@ export interface InstanceV2Args {
      */
     instanceAlias: pulumi.Input<string>;
     /**
-     * The payment type of the resource
+     * Resource attribute fields representing payment types
+     *
+     * Enumeration value:
+     * - `PREPAY`: Prepaid mode
+     * - `POSTPAY`: Postpay mode
      */
     paymentType: pulumi.Input<string>;
     /**
@@ -527,6 +542,10 @@ export interface InstanceV2Args {
      * VswitchId
      */
     vswitchId: pulumi.Input<string>;
+    /**
+     * Instance whitelist list See `whiteIpList` below.
+     */
+    whiteIpLists?: pulumi.Input<pulumi.Input<inputs.lindorm.InstanceV2WhiteIpList>[]>;
     /**
      * The zone ID  of the resource
      */

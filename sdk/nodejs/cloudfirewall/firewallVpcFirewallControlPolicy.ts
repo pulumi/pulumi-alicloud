@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a Cloud Firewall Vpc Firewall Control Policy resource.
  *
+ * VPC Control Policy.
+ *
  * For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
  *
  * > **NOTE:** Available since v1.194.0.
@@ -43,11 +45,13 @@ import * as utilities from "../utilities";
  *     source: "127.0.0.1/32",
  *     destPortType: "port",
  *     proto: "TCP",
- *     release: true,
+ *     release: "true",
  *     memberUid: _default.then(_default => _default.id),
  *     vpcFirewallId: defaultInstance.id,
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  *
  * ## Import
  *
@@ -100,7 +104,16 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     /**
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
-    declare public readonly applicationName: pulumi.Output<string>;
+    declare public readonly applicationName: pulumi.Output<string | undefined>;
+    /**
+     * The list of application types that the access control policy supports. 
+     * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     */
+    declare public readonly applicationNameLists: pulumi.Output<string[] | undefined>;
+    /**
+     * (Available since v1.267.0) The time when the policy was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
@@ -141,6 +154,14 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      */
     declare public readonly destinationType: pulumi.Output<string>;
     /**
+     * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     */
+    declare public readonly domainResolveType: pulumi.Output<string>;
+    /**
+     * The end time of the policy validity period.
+     */
+    declare public readonly endTime: pulumi.Output<number | undefined>;
+    /**
      * Control strategy of hits per second.
      */
     declare public /*out*/ readonly hitTimes: pulumi.Output<number>;
@@ -163,7 +184,25 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    declare public readonly release: pulumi.Output<boolean>;
+    declare public readonly release: pulumi.Output<string>;
+    /**
+     * The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     */
+    declare public readonly repeatDays: pulumi.Output<number[] | undefined>;
+    /**
+     * The recurring end time of the policy validity period.
+     */
+    declare public readonly repeatEndTime: pulumi.Output<string | undefined>;
+    /**
+     * The recurring start time of the policy validity period.
+     */
+    declare public readonly repeatStartTime: pulumi.Output<string | undefined>;
+    /**
+     * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     */
+    declare public readonly repeatType: pulumi.Output<string>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
@@ -180,6 +219,10 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      */
     declare public readonly sourceType: pulumi.Output<string>;
+    /**
+     * The start time of the policy validity period.
+     */
+    declare public readonly startTime: pulumi.Output<number | undefined>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
@@ -204,6 +247,8 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
             resourceInputs["aclUuid"] = state?.aclUuid;
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["applicationName"] = state?.applicationName;
+            resourceInputs["applicationNameLists"] = state?.applicationNameLists;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["destPort"] = state?.destPort;
             resourceInputs["destPortGroup"] = state?.destPortGroup;
@@ -213,24 +258,28 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
             resourceInputs["destinationGroupCidrs"] = state?.destinationGroupCidrs;
             resourceInputs["destinationGroupType"] = state?.destinationGroupType;
             resourceInputs["destinationType"] = state?.destinationType;
+            resourceInputs["domainResolveType"] = state?.domainResolveType;
+            resourceInputs["endTime"] = state?.endTime;
             resourceInputs["hitTimes"] = state?.hitTimes;
             resourceInputs["lang"] = state?.lang;
             resourceInputs["memberUid"] = state?.memberUid;
             resourceInputs["order"] = state?.order;
             resourceInputs["proto"] = state?.proto;
             resourceInputs["release"] = state?.release;
+            resourceInputs["repeatDays"] = state?.repeatDays;
+            resourceInputs["repeatEndTime"] = state?.repeatEndTime;
+            resourceInputs["repeatStartTime"] = state?.repeatStartTime;
+            resourceInputs["repeatType"] = state?.repeatType;
             resourceInputs["source"] = state?.source;
             resourceInputs["sourceGroupCidrs"] = state?.sourceGroupCidrs;
             resourceInputs["sourceGroupType"] = state?.sourceGroupType;
             resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["startTime"] = state?.startTime;
             resourceInputs["vpcFirewallId"] = state?.vpcFirewallId;
         } else {
             const args = argsOrState as FirewallVpcFirewallControlPolicyArgs | undefined;
             if (args?.aclAction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aclAction'");
-            }
-            if (args?.applicationName === undefined && !opts.urn) {
-                throw new Error("Missing required property 'applicationName'");
             }
             if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
@@ -258,22 +307,31 @@ export class FirewallVpcFirewallControlPolicy extends pulumi.CustomResource {
             }
             resourceInputs["aclAction"] = args?.aclAction;
             resourceInputs["applicationName"] = args?.applicationName;
+            resourceInputs["applicationNameLists"] = args?.applicationNameLists;
             resourceInputs["description"] = args?.description;
             resourceInputs["destPort"] = args?.destPort;
             resourceInputs["destPortGroup"] = args?.destPortGroup;
             resourceInputs["destPortType"] = args?.destPortType;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["destinationType"] = args?.destinationType;
+            resourceInputs["domainResolveType"] = args?.domainResolveType;
+            resourceInputs["endTime"] = args?.endTime;
             resourceInputs["lang"] = args?.lang;
             resourceInputs["memberUid"] = args?.memberUid;
             resourceInputs["order"] = args?.order;
             resourceInputs["proto"] = args?.proto;
             resourceInputs["release"] = args?.release;
+            resourceInputs["repeatDays"] = args?.repeatDays;
+            resourceInputs["repeatEndTime"] = args?.repeatEndTime;
+            resourceInputs["repeatStartTime"] = args?.repeatStartTime;
+            resourceInputs["repeatType"] = args?.repeatType;
             resourceInputs["source"] = args?.source;
             resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["startTime"] = args?.startTime;
             resourceInputs["vpcFirewallId"] = args?.vpcFirewallId;
             resourceInputs["aclUuid"] = undefined /*out*/;
             resourceInputs["applicationId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destPortGroupPorts"] = undefined /*out*/;
             resourceInputs["destinationGroupCidrs"] = undefined /*out*/;
             resourceInputs["destinationGroupType"] = undefined /*out*/;
@@ -306,6 +364,15 @@ export interface FirewallVpcFirewallControlPolicyState {
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
     applicationName?: pulumi.Input<string>;
+    /**
+     * The list of application types that the access control policy supports. 
+     * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     */
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * (Available since v1.267.0) The time when the policy was created.
+     */
+    createTime?: pulumi.Input<number>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
@@ -346,6 +413,14 @@ export interface FirewallVpcFirewallControlPolicyState {
      */
     destinationType?: pulumi.Input<string>;
     /**
+     * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     */
+    domainResolveType?: pulumi.Input<string>;
+    /**
+     * The end time of the policy validity period.
+     */
+    endTime?: pulumi.Input<number>;
+    /**
      * Control strategy of hits per second.
      */
     hitTimes?: pulumi.Input<number>;
@@ -368,7 +443,25 @@ export interface FirewallVpcFirewallControlPolicyState {
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    release?: pulumi.Input<boolean>;
+    release?: pulumi.Input<string>;
+    /**
+     * The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     */
+    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The recurring end time of the policy validity period.
+     */
+    repeatEndTime?: pulumi.Input<string>;
+    /**
+     * The recurring start time of the policy validity period.
+     */
+    repeatStartTime?: pulumi.Input<string>;
+    /**
+     * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     */
+    repeatType?: pulumi.Input<string>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
@@ -385,6 +478,10 @@ export interface FirewallVpcFirewallControlPolicyState {
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      */
     sourceType?: pulumi.Input<string>;
+    /**
+     * The start time of the policy validity period.
+     */
+    startTime?: pulumi.Input<number>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
@@ -404,7 +501,12 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
-    applicationName: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string>;
+    /**
+     * The list of application types that the access control policy supports. 
+     * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+     */
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
@@ -433,6 +535,14 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      */
     destinationType: pulumi.Input<string>;
     /**
+     * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+     */
+    domainResolveType?: pulumi.Input<string>;
+    /**
+     * The end time of the policy validity period.
+     */
+    endTime?: pulumi.Input<number>;
+    /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
     lang?: pulumi.Input<string>;
@@ -451,7 +561,25 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    release?: pulumi.Input<boolean>;
+    release?: pulumi.Input<string>;
+    /**
+     * The days of the week or month on which the policy is recurrently active. Valid values:
+     * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+     */
+    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The recurring end time of the policy validity period.
+     */
+    repeatEndTime?: pulumi.Input<string>;
+    /**
+     * The recurring start time of the policy validity period.
+     */
+    repeatStartTime?: pulumi.Input<string>;
+    /**
+     * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+     */
+    repeatType?: pulumi.Input<string>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
@@ -460,6 +588,10 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      */
     sourceType: pulumi.Input<string>;
+    /**
+     * The start time of the policy validity period.
+     */
+    startTime?: pulumi.Input<number>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.

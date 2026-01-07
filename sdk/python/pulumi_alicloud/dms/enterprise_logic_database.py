@@ -271,6 +271,8 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
             ])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise Logic Database can be imported using the id, e.g.
@@ -313,6 +315,8 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
                 "35617920",
             ])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

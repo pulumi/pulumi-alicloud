@@ -46,6 +46,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type Ciphertext struct {
 	pulumi.CustomResourceState
 

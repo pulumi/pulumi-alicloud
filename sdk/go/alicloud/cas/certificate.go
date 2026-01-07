@@ -118,6 +118,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // Deprecated: This resource has been deprecated in favour of ServiceCertificate
 type Certificate struct {
 	pulumi.CustomResourceState

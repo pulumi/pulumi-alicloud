@@ -123,6 +123,8 @@ class KeyPair(pulumi.CustomResource):
             public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Elastic Cloud Phone (ECP) Key Pair can be imported using the id, e.g.
@@ -161,6 +163,8 @@ class KeyPair(pulumi.CustomResource):
             key_pair_name="my-KeyPair",
             public_key_body="ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -78,6 +78,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Cloud Monitor Service Metric Rule Template can be imported using the id, e.g.

@@ -253,6 +253,8 @@ class AppTemplate(pulumi.CustomResource):
             scene="business")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Apsara Agile Live (IMP) App Template can be imported using the id, e.g.
@@ -301,6 +303,8 @@ class AppTemplate(pulumi.CustomResource):
             integration_mode="paasSDK",
             scene="business")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -537,6 +537,8 @@ class Switch(pulumi.CustomResource):
             zone_id=foo.zones[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         VPC Vswitch can be imported using the id, e.g.
@@ -635,6 +637,8 @@ class Switch(pulumi.CustomResource):
             cidr_block="192.163.0.0/24",
             zone_id=foo.zones[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

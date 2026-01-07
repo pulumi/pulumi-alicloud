@@ -396,6 +396,8 @@ class AppGroup(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Open Search App Group can be imported using the id, e.g.
@@ -451,6 +453,8 @@ class AppGroup(pulumi.CustomResource):
                 "spec": "opensearch.share.common",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

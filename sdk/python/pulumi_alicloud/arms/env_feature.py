@@ -253,6 +253,8 @@ class EnvFeature(pulumi.CustomResource):
             feature_version="1.1.17")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ARMS Env Feature can be imported using the id, e.g.
@@ -358,6 +360,8 @@ class EnvFeature(pulumi.CustomResource):
             environment_id=default_environment.id,
             feature_version="1.1.17")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

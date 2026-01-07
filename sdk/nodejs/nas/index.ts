@@ -110,6 +110,16 @@ export type MountTarget = import("./mountTarget").MountTarget;
 export const MountTarget: typeof import("./mountTarget").MountTarget = null as any;
 utilities.lazyLoad(exports, ["MountTarget"], () => require("./mountTarget"));
 
+export { ProtocolMountTargetArgs, ProtocolMountTargetState } from "./protocolMountTarget";
+export type ProtocolMountTarget = import("./protocolMountTarget").ProtocolMountTarget;
+export const ProtocolMountTarget: typeof import("./protocolMountTarget").ProtocolMountTarget = null as any;
+utilities.lazyLoad(exports, ["ProtocolMountTarget"], () => require("./protocolMountTarget"));
+
+export { ProtocolServiceArgs, ProtocolServiceState } from "./protocolService";
+export type ProtocolService = import("./protocolService").ProtocolService;
+export const ProtocolService: typeof import("./protocolService").ProtocolService = null as any;
+utilities.lazyLoad(exports, ["ProtocolService"], () => require("./protocolService"));
+
 export { RecycleBinArgs, RecycleBinState } from "./recycleBin";
 export type RecycleBin = import("./recycleBin").RecycleBin;
 export const RecycleBin: typeof import("./recycleBin").RecycleBin = null as any;
@@ -148,6 +158,10 @@ const _module = {
                 return new LifecyclePolicy(name, <any>undefined, { urn })
             case "alicloud:nas/mountTarget:MountTarget":
                 return new MountTarget(name, <any>undefined, { urn })
+            case "alicloud:nas/protocolMountTarget:ProtocolMountTarget":
+                return new ProtocolMountTarget(name, <any>undefined, { urn })
+            case "alicloud:nas/protocolService:ProtocolService":
+                return new ProtocolService(name, <any>undefined, { urn })
             case "alicloud:nas/recycleBin:RecycleBin":
                 return new RecycleBin(name, <any>undefined, { urn })
             case "alicloud:nas/smbAclAttachment:SmbAclAttachment":
@@ -168,6 +182,8 @@ pulumi.runtime.registerResourceModule("alicloud", "nas/fileSystem", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/fileset", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/lifecyclePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/mountTarget", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/protocolMountTarget", _module)
+pulumi.runtime.registerResourceModule("alicloud", "nas/protocolService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/recycleBin", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/smbAclAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "nas/snapshot", _module)

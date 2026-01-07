@@ -938,6 +938,8 @@ class RdsDbProxy(pulumi.CustomResource):
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS database proxy feature can be imported using the id, e.g.
@@ -1075,6 +1077,8 @@ class RdsDbProxy(pulumi.CustomResource):
         ```
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

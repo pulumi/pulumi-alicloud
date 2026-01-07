@@ -149,6 +149,8 @@ namespace Pulumi.AliCloud.FC
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Function Compute custom domain can be imported using the id or the domain name, e.g.

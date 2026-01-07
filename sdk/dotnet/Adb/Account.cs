@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Adb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ADB account can be imported using the id, e.g.

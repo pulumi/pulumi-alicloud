@@ -42,6 +42,8 @@ namespace Pulumi.AliCloud.Ga
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Ga Bandwidth Package can be imported using the id, e.g.

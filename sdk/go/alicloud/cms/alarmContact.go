@@ -47,6 +47,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Alarm contact can be imported using the id, e.g.

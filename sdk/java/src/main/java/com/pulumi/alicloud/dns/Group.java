@@ -52,6 +52,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:dns/group:Group")
 public class Group extends com.pulumi.resources.CustomResource {

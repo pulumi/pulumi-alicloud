@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Module Support
  *
  * You can use the existing sls-logtail module

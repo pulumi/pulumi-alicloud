@@ -94,6 +94,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Application Load Balancer (ALB) Load Balancer Access Log Config Attachment can be imported using the id, e.g.

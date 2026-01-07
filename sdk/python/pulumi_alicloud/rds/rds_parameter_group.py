@@ -238,6 +238,8 @@ class RdsParameterGroup(pulumi.CustomResource):
             parameter_group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Parameter Group can be imported using the id, e.g.
@@ -295,6 +297,8 @@ class RdsParameterGroup(pulumi.CustomResource):
             parameter_group_desc=name,
             parameter_group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

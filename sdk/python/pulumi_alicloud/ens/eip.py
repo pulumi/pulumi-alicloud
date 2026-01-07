@@ -330,6 +330,8 @@ class Eip(pulumi.CustomResource):
             internet_charge_type="95BandwidthByMonth")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Eip can be imported using the id, e.g.
@@ -384,6 +386,8 @@ class Eip(pulumi.CustomResource):
             eip_name=name,
             internet_charge_type="95BandwidthByMonth")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

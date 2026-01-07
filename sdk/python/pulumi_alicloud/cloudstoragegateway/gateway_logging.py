@@ -235,6 +235,8 @@ class GatewayLogging(pulumi.CustomResource):
             sls_project=default_project.project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway Logging can be imported using the id, e.g.
@@ -322,6 +324,8 @@ class GatewayLogging(pulumi.CustomResource):
             sls_logstore=default_store.logstore_name,
             sls_project=default_project.project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

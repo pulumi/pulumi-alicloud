@@ -441,6 +441,8 @@ class Snapshot(pulumi.CustomResource):
             })
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Snapshot can be imported using the id, e.g.
@@ -487,6 +489,8 @@ class Snapshot(pulumi.CustomResource):
                 "version": "1.2",
             })
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

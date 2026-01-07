@@ -142,6 +142,8 @@ namespace Pulumi.AliCloud.Gwlb
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// GWLB Listener can be imported using the id, e.g.

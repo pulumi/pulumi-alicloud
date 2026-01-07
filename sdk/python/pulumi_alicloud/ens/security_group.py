@@ -129,6 +129,8 @@ class SecurityGroup(pulumi.CustomResource):
             security_group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ENS Security Group can be imported using the id, e.g.
@@ -171,6 +173,8 @@ class SecurityGroup(pulumi.CustomResource):
             description=name,
             security_group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -2421,6 +2421,272 @@ func (o ExperimentPlanTemplateTemplatePipelineEnvParamsOutput) WorkerNum() pulum
 	return o.ApplyT(func(v ExperimentPlanTemplateTemplatePipelineEnvParams) int { return v.WorkerNum }).(pulumi.IntOutput)
 }
 
+type HyperNodeDataDisk struct {
+	// Whether to enable Burst (performance Burst).
+	BurstingEnabled *bool `pulumi:"burstingEnabled"`
+	// The disk type. Value range:
+	// - cloud_essd:ESSD cloud disk.
+	Category *string `pulumi:"category"`
+	// Whether the data disk is unsubscribed and deleted with the node.
+	DeleteWithNode *bool `pulumi:"deleteWithNode"`
+	// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+	// - PL0: maximum random read/write IOPS 10000 for a single disk.
+	// - PL1: maximum random read/write IOPS 50000 for a single disk.
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// The size of the disk. The unit is GiB.
+	Size *int `pulumi:"size"`
+}
+
+// HyperNodeDataDiskInput is an input type that accepts HyperNodeDataDiskArgs and HyperNodeDataDiskOutput values.
+// You can construct a concrete instance of `HyperNodeDataDiskInput` via:
+//
+//	HyperNodeDataDiskArgs{...}
+type HyperNodeDataDiskInput interface {
+	pulumi.Input
+
+	ToHyperNodeDataDiskOutput() HyperNodeDataDiskOutput
+	ToHyperNodeDataDiskOutputWithContext(context.Context) HyperNodeDataDiskOutput
+}
+
+type HyperNodeDataDiskArgs struct {
+	// Whether to enable Burst (performance Burst).
+	BurstingEnabled pulumi.BoolPtrInput `pulumi:"burstingEnabled"`
+	// The disk type. Value range:
+	// - cloud_essd:ESSD cloud disk.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Whether the data disk is unsubscribed and deleted with the node.
+	DeleteWithNode pulumi.BoolPtrInput `pulumi:"deleteWithNode"`
+	// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+	// - PL0: maximum random read/write IOPS 10000 for a single disk.
+	// - PL1: maximum random read/write IOPS 50000 for a single disk.
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// The size of the disk. The unit is GiB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (HyperNodeDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperNodeDataDisk)(nil)).Elem()
+}
+
+func (i HyperNodeDataDiskArgs) ToHyperNodeDataDiskOutput() HyperNodeDataDiskOutput {
+	return i.ToHyperNodeDataDiskOutputWithContext(context.Background())
+}
+
+func (i HyperNodeDataDiskArgs) ToHyperNodeDataDiskOutputWithContext(ctx context.Context) HyperNodeDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperNodeDataDiskOutput)
+}
+
+// HyperNodeDataDiskArrayInput is an input type that accepts HyperNodeDataDiskArray and HyperNodeDataDiskArrayOutput values.
+// You can construct a concrete instance of `HyperNodeDataDiskArrayInput` via:
+//
+//	HyperNodeDataDiskArray{ HyperNodeDataDiskArgs{...} }
+type HyperNodeDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToHyperNodeDataDiskArrayOutput() HyperNodeDataDiskArrayOutput
+	ToHyperNodeDataDiskArrayOutputWithContext(context.Context) HyperNodeDataDiskArrayOutput
+}
+
+type HyperNodeDataDiskArray []HyperNodeDataDiskInput
+
+func (HyperNodeDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperNodeDataDisk)(nil)).Elem()
+}
+
+func (i HyperNodeDataDiskArray) ToHyperNodeDataDiskArrayOutput() HyperNodeDataDiskArrayOutput {
+	return i.ToHyperNodeDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i HyperNodeDataDiskArray) ToHyperNodeDataDiskArrayOutputWithContext(ctx context.Context) HyperNodeDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperNodeDataDiskArrayOutput)
+}
+
+type HyperNodeDataDiskOutput struct{ *pulumi.OutputState }
+
+func (HyperNodeDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperNodeDataDisk)(nil)).Elem()
+}
+
+func (o HyperNodeDataDiskOutput) ToHyperNodeDataDiskOutput() HyperNodeDataDiskOutput {
+	return o
+}
+
+func (o HyperNodeDataDiskOutput) ToHyperNodeDataDiskOutputWithContext(ctx context.Context) HyperNodeDataDiskOutput {
+	return o
+}
+
+// Whether to enable Burst (performance Burst).
+func (o HyperNodeDataDiskOutput) BurstingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *bool { return v.BurstingEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The disk type. Value range:
+// - cloud_essd:ESSD cloud disk.
+func (o HyperNodeDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data disk is unsubscribed and deleted with the node.
+func (o HyperNodeDataDiskOutput) DeleteWithNode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *bool { return v.DeleteWithNode }).(pulumi.BoolPtrOutput)
+}
+
+// When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+// - PL0: maximum random read/write IOPS 10000 for a single disk.
+// - PL1: maximum random read/write IOPS 50000 for a single disk.
+func (o HyperNodeDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+func (o HyperNodeDataDiskOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// The size of the disk. The unit is GiB.
+func (o HyperNodeDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperNodeDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type HyperNodeDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperNodeDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperNodeDataDisk)(nil)).Elem()
+}
+
+func (o HyperNodeDataDiskArrayOutput) ToHyperNodeDataDiskArrayOutput() HyperNodeDataDiskArrayOutput {
+	return o
+}
+
+func (o HyperNodeDataDiskArrayOutput) ToHyperNodeDataDiskArrayOutputWithContext(ctx context.Context) HyperNodeDataDiskArrayOutput {
+	return o
+}
+
+func (o HyperNodeDataDiskArrayOutput) Index(i pulumi.IntInput) HyperNodeDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperNodeDataDisk {
+		return vs[0].([]HyperNodeDataDisk)[vs[1].(int)]
+	}).(HyperNodeDataDiskOutput)
+}
+
+type NodeDataDisk struct {
+	// Data disk type
+	Category *string `pulumi:"category"`
+	// Performance level
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Data disk size
+	Size *int `pulumi:"size"`
+}
+
+// NodeDataDiskInput is an input type that accepts NodeDataDiskArgs and NodeDataDiskOutput values.
+// You can construct a concrete instance of `NodeDataDiskInput` via:
+//
+//	NodeDataDiskArgs{...}
+type NodeDataDiskInput interface {
+	pulumi.Input
+
+	ToNodeDataDiskOutput() NodeDataDiskOutput
+	ToNodeDataDiskOutputWithContext(context.Context) NodeDataDiskOutput
+}
+
+type NodeDataDiskArgs struct {
+	// Data disk type
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Performance level
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Data disk size
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (NodeDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeDataDisk)(nil)).Elem()
+}
+
+func (i NodeDataDiskArgs) ToNodeDataDiskOutput() NodeDataDiskOutput {
+	return i.ToNodeDataDiskOutputWithContext(context.Background())
+}
+
+func (i NodeDataDiskArgs) ToNodeDataDiskOutputWithContext(ctx context.Context) NodeDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeDataDiskOutput)
+}
+
+// NodeDataDiskArrayInput is an input type that accepts NodeDataDiskArray and NodeDataDiskArrayOutput values.
+// You can construct a concrete instance of `NodeDataDiskArrayInput` via:
+//
+//	NodeDataDiskArray{ NodeDataDiskArgs{...} }
+type NodeDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToNodeDataDiskArrayOutput() NodeDataDiskArrayOutput
+	ToNodeDataDiskArrayOutputWithContext(context.Context) NodeDataDiskArrayOutput
+}
+
+type NodeDataDiskArray []NodeDataDiskInput
+
+func (NodeDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeDataDisk)(nil)).Elem()
+}
+
+func (i NodeDataDiskArray) ToNodeDataDiskArrayOutput() NodeDataDiskArrayOutput {
+	return i.ToNodeDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i NodeDataDiskArray) ToNodeDataDiskArrayOutputWithContext(ctx context.Context) NodeDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeDataDiskArrayOutput)
+}
+
+type NodeDataDiskOutput struct{ *pulumi.OutputState }
+
+func (NodeDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeDataDisk)(nil)).Elem()
+}
+
+func (o NodeDataDiskOutput) ToNodeDataDiskOutput() NodeDataDiskOutput {
+	return o
+}
+
+func (o NodeDataDiskOutput) ToNodeDataDiskOutputWithContext(ctx context.Context) NodeDataDiskOutput {
+	return o
+}
+
+// Data disk type
+func (o NodeDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Performance level
+func (o NodeDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Data disk size
+func (o NodeDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodeDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type NodeDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeDataDisk)(nil)).Elem()
+}
+
+func (o NodeDataDiskArrayOutput) ToNodeDataDiskArrayOutput() NodeDataDiskArrayOutput {
+	return o
+}
+
+func (o NodeDataDiskArrayOutput) ToNodeDataDiskArrayOutputWithContext(ctx context.Context) NodeDataDiskArrayOutput {
+	return o
+}
+
+func (o NodeDataDiskArrayOutput) Index(i pulumi.IntInput) NodeDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeDataDisk {
+		return vs[0].([]NodeDataDisk)[vs[1].(int)]
+	}).(NodeDataDiskOutput)
+}
+
 type NodeGroupAttachmentDataDisk struct {
 	// Type
 	Category *string `pulumi:"category"`
@@ -3484,6 +3750,818 @@ func (o NodeGroupNodeArrayOutput) Index(i pulumi.IntInput) NodeGroupNodeOutput {
 	}).(NodeGroupNodeOutput)
 }
 
+type NodeIpAllocationPolicy struct {
+	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+	BondPolicy *NodeIpAllocationPolicyBondPolicy `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies []NodeIpAllocationPolicyMachineTypePolicy `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies []NodeIpAllocationPolicyNodePolicy `pulumi:"nodePolicies"`
+}
+
+// NodeIpAllocationPolicyInput is an input type that accepts NodeIpAllocationPolicyArgs and NodeIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyInput` via:
+//
+//	NodeIpAllocationPolicyArgs{...}
+type NodeIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyOutput() NodeIpAllocationPolicyOutput
+	ToNodeIpAllocationPolicyOutputWithContext(context.Context) NodeIpAllocationPolicyOutput
+}
+
+type NodeIpAllocationPolicyArgs struct {
+	// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+	BondPolicy NodeIpAllocationPolicyBondPolicyPtrInput `pulumi:"bondPolicy"`
+	// Model Assignment Policy See `machineTypePolicy` below.
+	MachineTypePolicies NodeIpAllocationPolicyMachineTypePolicyArrayInput `pulumi:"machineTypePolicies"`
+	// Node allocation policy See `nodePolicy` below.
+	NodePolicies NodeIpAllocationPolicyNodePolicyArrayInput `pulumi:"nodePolicies"`
+}
+
+func (NodeIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyArgs) ToNodeIpAllocationPolicyOutput() NodeIpAllocationPolicyOutput {
+	return i.ToNodeIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyArgs) ToNodeIpAllocationPolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyOutput)
+}
+
+// NodeIpAllocationPolicyArrayInput is an input type that accepts NodeIpAllocationPolicyArray and NodeIpAllocationPolicyArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyArrayInput` via:
+//
+//	NodeIpAllocationPolicyArray{ NodeIpAllocationPolicyArgs{...} }
+type NodeIpAllocationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyArrayOutput() NodeIpAllocationPolicyArrayOutput
+	ToNodeIpAllocationPolicyArrayOutputWithContext(context.Context) NodeIpAllocationPolicyArrayOutput
+}
+
+type NodeIpAllocationPolicyArray []NodeIpAllocationPolicyInput
+
+func (NodeIpAllocationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyArray) ToNodeIpAllocationPolicyArrayOutput() NodeIpAllocationPolicyArrayOutput {
+	return i.ToNodeIpAllocationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyArray) ToNodeIpAllocationPolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyArrayOutput)
+}
+
+type NodeIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyOutput) ToNodeIpAllocationPolicyOutput() NodeIpAllocationPolicyOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyOutput) ToNodeIpAllocationPolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyOutput {
+	return o
+}
+
+// Specify the cluster subnet ID based on the bond name See `bondPolicy` below.
+func (o NodeIpAllocationPolicyOutput) BondPolicy() NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicy) *NodeIpAllocationPolicyBondPolicy { return v.BondPolicy }).(NodeIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Model Assignment Policy See `machineTypePolicy` below.
+func (o NodeIpAllocationPolicyOutput) MachineTypePolicies() NodeIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicy) []NodeIpAllocationPolicyMachineTypePolicy { return v.MachineTypePolicies }).(NodeIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+// Node allocation policy See `nodePolicy` below.
+func (o NodeIpAllocationPolicyOutput) NodePolicies() NodeIpAllocationPolicyNodePolicyArrayOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicy) []NodeIpAllocationPolicyNodePolicy { return v.NodePolicies }).(NodeIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type NodeIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyArrayOutput) ToNodeIpAllocationPolicyArrayOutput() NodeIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyArrayOutput) ToNodeIpAllocationPolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicy {
+		return vs[0].([]NodeIpAllocationPolicy)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicy struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet *string `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds []NodeIpAllocationPolicyBondPolicyBond `pulumi:"bonds"`
+}
+
+// NodeIpAllocationPolicyBondPolicyInput is an input type that accepts NodeIpAllocationPolicyBondPolicyArgs and NodeIpAllocationPolicyBondPolicyOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyBondPolicyInput` via:
+//
+//	NodeIpAllocationPolicyBondPolicyArgs{...}
+type NodeIpAllocationPolicyBondPolicyInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyBondPolicyOutput() NodeIpAllocationPolicyBondPolicyOutput
+	ToNodeIpAllocationPolicyBondPolicyOutputWithContext(context.Context) NodeIpAllocationPolicyBondPolicyOutput
+}
+
+type NodeIpAllocationPolicyBondPolicyArgs struct {
+	// Default bond cluster subnet
+	BondDefaultSubnet pulumi.StringPtrInput `pulumi:"bondDefaultSubnet"`
+	// Bond information See `bonds` below.
+	Bonds NodeIpAllocationPolicyBondPolicyBondArrayInput `pulumi:"bonds"`
+}
+
+func (NodeIpAllocationPolicyBondPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyBondPolicyArgs) ToNodeIpAllocationPolicyBondPolicyOutput() NodeIpAllocationPolicyBondPolicyOutput {
+	return i.ToNodeIpAllocationPolicyBondPolicyOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyBondPolicyArgs) ToNodeIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyBondPolicyOutput)
+}
+
+func (i NodeIpAllocationPolicyBondPolicyArgs) ToNodeIpAllocationPolicyBondPolicyPtrOutput() NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyBondPolicyArgs) ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyBondPolicyOutput).ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx)
+}
+
+// NodeIpAllocationPolicyBondPolicyPtrInput is an input type that accepts NodeIpAllocationPolicyBondPolicyArgs, NodeIpAllocationPolicyBondPolicyPtr and NodeIpAllocationPolicyBondPolicyPtrOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyBondPolicyPtrInput` via:
+//
+//	        NodeIpAllocationPolicyBondPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeIpAllocationPolicyBondPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyBondPolicyPtrOutput() NodeIpAllocationPolicyBondPolicyPtrOutput
+	ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Context) NodeIpAllocationPolicyBondPolicyPtrOutput
+}
+
+type nodeIpAllocationPolicyBondPolicyPtrType NodeIpAllocationPolicyBondPolicyArgs
+
+func NodeIpAllocationPolicyBondPolicyPtr(v *NodeIpAllocationPolicyBondPolicyArgs) NodeIpAllocationPolicyBondPolicyPtrInput {
+	return (*nodeIpAllocationPolicyBondPolicyPtrType)(v)
+}
+
+func (*nodeIpAllocationPolicyBondPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (i *nodeIpAllocationPolicyBondPolicyPtrType) ToNodeIpAllocationPolicyBondPolicyPtrOutput() NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return i.ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeIpAllocationPolicyBondPolicyPtrType) ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyBondPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyBondPolicyOutput) ToNodeIpAllocationPolicyBondPolicyOutput() NodeIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyOutput) ToNodeIpAllocationPolicyBondPolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyOutput) ToNodeIpAllocationPolicyBondPolicyPtrOutput() NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodeIpAllocationPolicyBondPolicyOutput) ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeIpAllocationPolicyBondPolicy) *NodeIpAllocationPolicyBondPolicy {
+		return &v
+	}).(NodeIpAllocationPolicyBondPolicyPtrOutput)
+}
+
+// Default bond cluster subnet
+func (o NodeIpAllocationPolicyBondPolicyOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyBondPolicy) *string { return v.BondDefaultSubnet }).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o NodeIpAllocationPolicyBondPolicyOutput) Bonds() NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyBondPolicy) []NodeIpAllocationPolicyBondPolicyBond { return v.Bonds }).(NodeIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyBondPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeIpAllocationPolicyBondPolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyBondPolicyPtrOutput) ToNodeIpAllocationPolicyBondPolicyPtrOutput() NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyPtrOutput) ToNodeIpAllocationPolicyBondPolicyPtrOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyPtrOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyPtrOutput) Elem() NodeIpAllocationPolicyBondPolicyOutput {
+	return o.ApplyT(func(v *NodeIpAllocationPolicyBondPolicy) NodeIpAllocationPolicyBondPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodeIpAllocationPolicyBondPolicy
+		return ret
+	}).(NodeIpAllocationPolicyBondPolicyOutput)
+}
+
+// Default bond cluster subnet
+func (o NodeIpAllocationPolicyBondPolicyPtrOutput) BondDefaultSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeIpAllocationPolicyBondPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BondDefaultSubnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bond information See `bonds` below.
+func (o NodeIpAllocationPolicyBondPolicyPtrOutput) Bonds() NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o.ApplyT(func(v *NodeIpAllocationPolicyBondPolicy) []NodeIpAllocationPolicyBondPolicyBond {
+		if v == nil {
+			return nil
+		}
+		return v.Bonds
+	}).(NodeIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicyBond struct {
+	// Bond Name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeIpAllocationPolicyBondPolicyBondInput is an input type that accepts NodeIpAllocationPolicyBondPolicyBondArgs and NodeIpAllocationPolicyBondPolicyBondOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyBondPolicyBondInput` via:
+//
+//	NodeIpAllocationPolicyBondPolicyBondArgs{...}
+type NodeIpAllocationPolicyBondPolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyBondPolicyBondOutput() NodeIpAllocationPolicyBondPolicyBondOutput
+	ToNodeIpAllocationPolicyBondPolicyBondOutputWithContext(context.Context) NodeIpAllocationPolicyBondPolicyBondOutput
+}
+
+type NodeIpAllocationPolicyBondPolicyBondArgs struct {
+	// Bond Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeIpAllocationPolicyBondPolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyBondPolicyBondArgs) ToNodeIpAllocationPolicyBondPolicyBondOutput() NodeIpAllocationPolicyBondPolicyBondOutput {
+	return i.ToNodeIpAllocationPolicyBondPolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyBondPolicyBondArgs) ToNodeIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyBondPolicyBondOutput)
+}
+
+// NodeIpAllocationPolicyBondPolicyBondArrayInput is an input type that accepts NodeIpAllocationPolicyBondPolicyBondArray and NodeIpAllocationPolicyBondPolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyBondPolicyBondArrayInput` via:
+//
+//	NodeIpAllocationPolicyBondPolicyBondArray{ NodeIpAllocationPolicyBondPolicyBondArgs{...} }
+type NodeIpAllocationPolicyBondPolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyBondPolicyBondArrayOutput() NodeIpAllocationPolicyBondPolicyBondArrayOutput
+	ToNodeIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Context) NodeIpAllocationPolicyBondPolicyBondArrayOutput
+}
+
+type NodeIpAllocationPolicyBondPolicyBondArray []NodeIpAllocationPolicyBondPolicyBondInput
+
+func (NodeIpAllocationPolicyBondPolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyBondPolicyBondArray) ToNodeIpAllocationPolicyBondPolicyBondArrayOutput() NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return i.ToNodeIpAllocationPolicyBondPolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyBondPolicyBondArray) ToNodeIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyBondPolicyBondArrayOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyBondPolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyBondPolicyBondOutput) ToNodeIpAllocationPolicyBondPolicyBondOutput() NodeIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyBondOutput) ToNodeIpAllocationPolicyBondPolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyBondOutput {
+	return o
+}
+
+// Bond Name
+func (o NodeIpAllocationPolicyBondPolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyBondPolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeIpAllocationPolicyBondPolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyBondPolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeIpAllocationPolicyBondPolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyBondPolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyBondPolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyBondPolicyBondArrayOutput) ToNodeIpAllocationPolicyBondPolicyBondArrayOutput() NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyBondArrayOutput) ToNodeIpAllocationPolicyBondPolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyBondPolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyBondPolicyBondArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyBondPolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicyBondPolicyBond {
+		return vs[0].([]NodeIpAllocationPolicyBondPolicyBond)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyBondPolicyBondOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds []NodeIpAllocationPolicyMachineTypePolicyBond `pulumi:"bonds"`
+	// Model
+	MachineType *string `pulumi:"machineType"`
+}
+
+// NodeIpAllocationPolicyMachineTypePolicyInput is an input type that accepts NodeIpAllocationPolicyMachineTypePolicyArgs and NodeIpAllocationPolicyMachineTypePolicyOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyMachineTypePolicyInput` via:
+//
+//	NodeIpAllocationPolicyMachineTypePolicyArgs{...}
+type NodeIpAllocationPolicyMachineTypePolicyInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyMachineTypePolicyOutput() NodeIpAllocationPolicyMachineTypePolicyOutput
+	ToNodeIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Context) NodeIpAllocationPolicyMachineTypePolicyOutput
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds NodeIpAllocationPolicyMachineTypePolicyBondArrayInput `pulumi:"bonds"`
+	// Model
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (NodeIpAllocationPolicyMachineTypePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyArgs) ToNodeIpAllocationPolicyMachineTypePolicyOutput() NodeIpAllocationPolicyMachineTypePolicyOutput {
+	return i.ToNodeIpAllocationPolicyMachineTypePolicyOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyArgs) ToNodeIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+// NodeIpAllocationPolicyMachineTypePolicyArrayInput is an input type that accepts NodeIpAllocationPolicyMachineTypePolicyArray and NodeIpAllocationPolicyMachineTypePolicyArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyMachineTypePolicyArrayInput` via:
+//
+//	NodeIpAllocationPolicyMachineTypePolicyArray{ NodeIpAllocationPolicyMachineTypePolicyArgs{...} }
+type NodeIpAllocationPolicyMachineTypePolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyMachineTypePolicyArrayOutput() NodeIpAllocationPolicyMachineTypePolicyArrayOutput
+	ToNodeIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Context) NodeIpAllocationPolicyMachineTypePolicyArrayOutput
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyArray []NodeIpAllocationPolicyMachineTypePolicyInput
+
+func (NodeIpAllocationPolicyMachineTypePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyArray) ToNodeIpAllocationPolicyMachineTypePolicyArrayOutput() NodeIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return i.ToNodeIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyArray) ToNodeIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyMachineTypePolicyArrayOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyMachineTypePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyOutput) ToNodeIpAllocationPolicyMachineTypePolicyOutput() NodeIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyOutput) ToNodeIpAllocationPolicyMachineTypePolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o NodeIpAllocationPolicyMachineTypePolicyOutput) Bonds() NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyMachineTypePolicy) []NodeIpAllocationPolicyMachineTypePolicyBond {
+		return v.Bonds
+	}).(NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+// Model
+func (o NodeIpAllocationPolicyMachineTypePolicyOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyMachineTypePolicy) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyMachineTypePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyMachineTypePolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyArrayOutput) ToNodeIpAllocationPolicyMachineTypePolicyArrayOutput() NodeIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyArrayOutput) ToNodeIpAllocationPolicyMachineTypePolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyMachineTypePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicyMachineTypePolicy {
+		return vs[0].([]NodeIpAllocationPolicyMachineTypePolicy)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyMachineTypePolicyOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyBond struct {
+	// Bond Name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeIpAllocationPolicyMachineTypePolicyBondInput is an input type that accepts NodeIpAllocationPolicyMachineTypePolicyBondArgs and NodeIpAllocationPolicyMachineTypePolicyBondOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyMachineTypePolicyBondInput` via:
+//
+//	NodeIpAllocationPolicyMachineTypePolicyBondArgs{...}
+type NodeIpAllocationPolicyMachineTypePolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyMachineTypePolicyBondOutput() NodeIpAllocationPolicyMachineTypePolicyBondOutput
+	ToNodeIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Context) NodeIpAllocationPolicyMachineTypePolicyBondOutput
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyBondArgs struct {
+	// Bond Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeIpAllocationPolicyMachineTypePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyBondArgs) ToNodeIpAllocationPolicyMachineTypePolicyBondOutput() NodeIpAllocationPolicyMachineTypePolicyBondOutput {
+	return i.ToNodeIpAllocationPolicyMachineTypePolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyBondArgs) ToNodeIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+// NodeIpAllocationPolicyMachineTypePolicyBondArrayInput is an input type that accepts NodeIpAllocationPolicyMachineTypePolicyBondArray and NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyMachineTypePolicyBondArrayInput` via:
+//
+//	NodeIpAllocationPolicyMachineTypePolicyBondArray{ NodeIpAllocationPolicyMachineTypePolicyBondArgs{...} }
+type NodeIpAllocationPolicyMachineTypePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput
+	ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Context) NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyBondArray []NodeIpAllocationPolicyMachineTypePolicyBondInput
+
+func (NodeIpAllocationPolicyMachineTypePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyBondArray) ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return i.ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyMachineTypePolicyBondArray) ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyMachineTypePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyBondOutput) ToNodeIpAllocationPolicyMachineTypePolicyBondOutput() NodeIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyBondOutput) ToNodeIpAllocationPolicyMachineTypePolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyBondOutput {
+	return o
+}
+
+// Bond Name
+func (o NodeIpAllocationPolicyMachineTypePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyMachineTypePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeIpAllocationPolicyMachineTypePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyMachineTypePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyMachineTypePolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutput() NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput) ToNodeIpAllocationPolicyMachineTypePolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyMachineTypePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicyMachineTypePolicyBond {
+		return vs[0].([]NodeIpAllocationPolicyMachineTypePolicyBond)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyMachineTypePolicyBondOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicy struct {
+	// Bond information See `bonds` below.
+	Bonds []NodeIpAllocationPolicyNodePolicyBond `pulumi:"bonds"`
+	// Host name
+	Hostname *string `pulumi:"hostname"`
+	// Node ID
+	NodeId *string `pulumi:"nodeId"`
+}
+
+// NodeIpAllocationPolicyNodePolicyInput is an input type that accepts NodeIpAllocationPolicyNodePolicyArgs and NodeIpAllocationPolicyNodePolicyOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyNodePolicyInput` via:
+//
+//	NodeIpAllocationPolicyNodePolicyArgs{...}
+type NodeIpAllocationPolicyNodePolicyInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyNodePolicyOutput() NodeIpAllocationPolicyNodePolicyOutput
+	ToNodeIpAllocationPolicyNodePolicyOutputWithContext(context.Context) NodeIpAllocationPolicyNodePolicyOutput
+}
+
+type NodeIpAllocationPolicyNodePolicyArgs struct {
+	// Bond information See `bonds` below.
+	Bonds NodeIpAllocationPolicyNodePolicyBondArrayInput `pulumi:"bonds"`
+	// Host name
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Node ID
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+}
+
+func (NodeIpAllocationPolicyNodePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyNodePolicyArgs) ToNodeIpAllocationPolicyNodePolicyOutput() NodeIpAllocationPolicyNodePolicyOutput {
+	return i.ToNodeIpAllocationPolicyNodePolicyOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyNodePolicyArgs) ToNodeIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyNodePolicyOutput)
+}
+
+// NodeIpAllocationPolicyNodePolicyArrayInput is an input type that accepts NodeIpAllocationPolicyNodePolicyArray and NodeIpAllocationPolicyNodePolicyArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyNodePolicyArrayInput` via:
+//
+//	NodeIpAllocationPolicyNodePolicyArray{ NodeIpAllocationPolicyNodePolicyArgs{...} }
+type NodeIpAllocationPolicyNodePolicyArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyNodePolicyArrayOutput() NodeIpAllocationPolicyNodePolicyArrayOutput
+	ToNodeIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Context) NodeIpAllocationPolicyNodePolicyArrayOutput
+}
+
+type NodeIpAllocationPolicyNodePolicyArray []NodeIpAllocationPolicyNodePolicyInput
+
+func (NodeIpAllocationPolicyNodePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyNodePolicyArray) ToNodeIpAllocationPolicyNodePolicyArrayOutput() NodeIpAllocationPolicyNodePolicyArrayOutput {
+	return i.ToNodeIpAllocationPolicyNodePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyNodePolicyArray) ToNodeIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyNodePolicyArrayOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyNodePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyNodePolicyOutput) ToNodeIpAllocationPolicyNodePolicyOutput() NodeIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyOutput) ToNodeIpAllocationPolicyNodePolicyOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyOutput {
+	return o
+}
+
+// Bond information See `bonds` below.
+func (o NodeIpAllocationPolicyNodePolicyOutput) Bonds() NodeIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyNodePolicy) []NodeIpAllocationPolicyNodePolicyBond { return v.Bonds }).(NodeIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+// Host name
+func (o NodeIpAllocationPolicyNodePolicyOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyNodePolicy) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Node ID
+func (o NodeIpAllocationPolicyNodePolicyOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyNodePolicy) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyNodePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyNodePolicy)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyNodePolicyArrayOutput) ToNodeIpAllocationPolicyNodePolicyArrayOutput() NodeIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyArrayOutput) ToNodeIpAllocationPolicyNodePolicyArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyNodePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicyNodePolicy {
+		return vs[0].([]NodeIpAllocationPolicyNodePolicy)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyNodePolicyOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicyBond struct {
+	// Bond Name
+	Name *string `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet *string `pulumi:"subnet"`
+}
+
+// NodeIpAllocationPolicyNodePolicyBondInput is an input type that accepts NodeIpAllocationPolicyNodePolicyBondArgs and NodeIpAllocationPolicyNodePolicyBondOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyNodePolicyBondInput` via:
+//
+//	NodeIpAllocationPolicyNodePolicyBondArgs{...}
+type NodeIpAllocationPolicyNodePolicyBondInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyNodePolicyBondOutput() NodeIpAllocationPolicyNodePolicyBondOutput
+	ToNodeIpAllocationPolicyNodePolicyBondOutputWithContext(context.Context) NodeIpAllocationPolicyNodePolicyBondOutput
+}
+
+type NodeIpAllocationPolicyNodePolicyBondArgs struct {
+	// Bond Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// IP source cluster subnet
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+}
+
+func (NodeIpAllocationPolicyNodePolicyBondArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyNodePolicyBondArgs) ToNodeIpAllocationPolicyNodePolicyBondOutput() NodeIpAllocationPolicyNodePolicyBondOutput {
+	return i.ToNodeIpAllocationPolicyNodePolicyBondOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyNodePolicyBondArgs) ToNodeIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyNodePolicyBondOutput)
+}
+
+// NodeIpAllocationPolicyNodePolicyBondArrayInput is an input type that accepts NodeIpAllocationPolicyNodePolicyBondArray and NodeIpAllocationPolicyNodePolicyBondArrayOutput values.
+// You can construct a concrete instance of `NodeIpAllocationPolicyNodePolicyBondArrayInput` via:
+//
+//	NodeIpAllocationPolicyNodePolicyBondArray{ NodeIpAllocationPolicyNodePolicyBondArgs{...} }
+type NodeIpAllocationPolicyNodePolicyBondArrayInput interface {
+	pulumi.Input
+
+	ToNodeIpAllocationPolicyNodePolicyBondArrayOutput() NodeIpAllocationPolicyNodePolicyBondArrayOutput
+	ToNodeIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Context) NodeIpAllocationPolicyNodePolicyBondArrayOutput
+}
+
+type NodeIpAllocationPolicyNodePolicyBondArray []NodeIpAllocationPolicyNodePolicyBondInput
+
+func (NodeIpAllocationPolicyNodePolicyBondArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (i NodeIpAllocationPolicyNodePolicyBondArray) ToNodeIpAllocationPolicyNodePolicyBondArrayOutput() NodeIpAllocationPolicyNodePolicyBondArrayOutput {
+	return i.ToNodeIpAllocationPolicyNodePolicyBondArrayOutputWithContext(context.Background())
+}
+
+func (i NodeIpAllocationPolicyNodePolicyBondArray) ToNodeIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyBondArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeIpAllocationPolicyNodePolicyBondArrayOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicyBondOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyNodePolicyBondOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyNodePolicyBondOutput) ToNodeIpAllocationPolicyNodePolicyBondOutput() NodeIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyBondOutput) ToNodeIpAllocationPolicyNodePolicyBondOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyBondOutput {
+	return o
+}
+
+// Bond Name
+func (o NodeIpAllocationPolicyNodePolicyBondOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyNodePolicyBond) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// IP source cluster subnet
+func (o NodeIpAllocationPolicyNodePolicyBondOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeIpAllocationPolicyNodePolicyBond) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+type NodeIpAllocationPolicyNodePolicyBondArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeIpAllocationPolicyNodePolicyBondArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeIpAllocationPolicyNodePolicyBond)(nil)).Elem()
+}
+
+func (o NodeIpAllocationPolicyNodePolicyBondArrayOutput) ToNodeIpAllocationPolicyNodePolicyBondArrayOutput() NodeIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyBondArrayOutput) ToNodeIpAllocationPolicyNodePolicyBondArrayOutputWithContext(ctx context.Context) NodeIpAllocationPolicyNodePolicyBondArrayOutput {
+	return o
+}
+
+func (o NodeIpAllocationPolicyNodePolicyBondArrayOutput) Index(i pulumi.IntInput) NodeIpAllocationPolicyNodePolicyBondOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeIpAllocationPolicyNodePolicyBond {
+		return vs[0].([]NodeIpAllocationPolicyNodePolicyBond)[vs[1].(int)]
+	}).(NodeIpAllocationPolicyNodePolicyBondOutput)
+}
+
 type ResourceMachineTypes struct {
 	// This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
 	BondNum *int `pulumi:"bondNum"`
@@ -4385,6 +5463,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineArrayInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentPlanTemplateTemplatePipelineEnvParamsInput)(nil)).Elem(), ExperimentPlanTemplateTemplatePipelineEnvParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperNodeDataDiskInput)(nil)).Elem(), HyperNodeDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperNodeDataDiskArrayInput)(nil)).Elem(), HyperNodeDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeDataDiskInput)(nil)).Elem(), NodeDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeDataDiskArrayInput)(nil)).Elem(), NodeDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAttachmentDataDiskInput)(nil)).Elem(), NodeGroupAttachmentDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAttachmentDataDiskArrayInput)(nil)).Elem(), NodeGroupAttachmentDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyInput)(nil)).Elem(), NodeGroupIpAllocationPolicyArgs{})
@@ -4403,6 +5485,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupIpAllocationPolicyNodePolicyBondArrayInput)(nil)).Elem(), NodeGroupIpAllocationPolicyNodePolicyBondArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeInput)(nil)).Elem(), NodeGroupNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupNodeArrayInput)(nil)).Elem(), NodeGroupNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyInput)(nil)).Elem(), NodeIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyArrayInput)(nil)).Elem(), NodeIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyInput)(nil)).Elem(), NodeIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyPtrInput)(nil)).Elem(), NodeIpAllocationPolicyBondPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyBondInput)(nil)).Elem(), NodeIpAllocationPolicyBondPolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyBondPolicyBondArrayInput)(nil)).Elem(), NodeIpAllocationPolicyBondPolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyInput)(nil)).Elem(), NodeIpAllocationPolicyMachineTypePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyArrayInput)(nil)).Elem(), NodeIpAllocationPolicyMachineTypePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyBondInput)(nil)).Elem(), NodeIpAllocationPolicyMachineTypePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyMachineTypePolicyBondArrayInput)(nil)).Elem(), NodeIpAllocationPolicyMachineTypePolicyBondArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyInput)(nil)).Elem(), NodeIpAllocationPolicyNodePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyArrayInput)(nil)).Elem(), NodeIpAllocationPolicyNodePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyBondInput)(nil)).Elem(), NodeIpAllocationPolicyNodePolicyBondArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeIpAllocationPolicyNodePolicyBondArrayInput)(nil)).Elem(), NodeIpAllocationPolicyNodePolicyBondArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceMachineTypesInput)(nil)).Elem(), ResourceMachineTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceMachineTypesPtrInput)(nil)).Elem(), ResourceMachineTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceUserAccessParamInput)(nil)).Elem(), ResourceUserAccessParamArgs{})
@@ -4444,6 +5540,10 @@ func init() {
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineOutput{})
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentPlanTemplateTemplatePipelineEnvParamsOutput{})
+	pulumi.RegisterOutputType(HyperNodeDataDiskOutput{})
+	pulumi.RegisterOutputType(HyperNodeDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(NodeDataDiskOutput{})
+	pulumi.RegisterOutputType(NodeDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupAttachmentDataDiskOutput{})
 	pulumi.RegisterOutputType(NodeGroupAttachmentDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyOutput{})
@@ -4462,6 +5562,20 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupIpAllocationPolicyNodePolicyBondArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupNodeOutput{})
 	pulumi.RegisterOutputType(NodeGroupNodeArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyBondPolicyOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyBondPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyBondPolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyBondPolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyMachineTypePolicyOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyMachineTypePolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyMachineTypePolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyMachineTypePolicyBondArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyNodePolicyOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyNodePolicyArrayOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyNodePolicyBondOutput{})
+	pulumi.RegisterOutputType(NodeIpAllocationPolicyNodePolicyBondArrayOutput{})
 	pulumi.RegisterOutputType(ResourceMachineTypesOutput{})
 	pulumi.RegisterOutputType(ResourceMachineTypesPtrOutput{})
 	pulumi.RegisterOutputType(ResourceUserAccessParamOutput{})

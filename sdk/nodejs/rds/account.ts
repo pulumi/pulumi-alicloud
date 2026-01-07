@@ -46,6 +46,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * RDS account can be imported using the id, e.g.
@@ -86,6 +88,7 @@ export class Account extends pulumi.CustomResource {
     declare public readonly accountName: pulumi.Output<string>;
     declare public readonly accountPassword: pulumi.Output<string>;
     declare public readonly accountType: pulumi.Output<string>;
+    declare public readonly checkPolicy: pulumi.Output<boolean | undefined>;
     declare public readonly dbInstanceId: pulumi.Output<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -120,7 +123,7 @@ export class Account extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string>;
     declare public readonly resetPermissionFlag: pulumi.Output<boolean | undefined>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
@@ -149,6 +152,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = state?.accountName;
             resourceInputs["accountPassword"] = state?.accountPassword;
             resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["checkPolicy"] = state?.checkPolicy;
             resourceInputs["dbInstanceId"] = state?.dbInstanceId;
             resourceInputs["description"] = state?.description;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -165,6 +169,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["accountType"] = args?.accountType;
+            resourceInputs["checkPolicy"] = args?.checkPolicy;
             resourceInputs["dbInstanceId"] = args?.dbInstanceId;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -173,8 +178,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["resetPermissionFlag"] = args?.resetPermissionFlag;
+            resourceInputs["status"] = args?.status;
             resourceInputs["type"] = args?.type;
-            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accountPassword", "password"] };
@@ -191,6 +196,7 @@ export interface AccountState {
     accountName?: pulumi.Input<string>;
     accountPassword?: pulumi.Input<string>;
     accountType?: pulumi.Input<string>;
+    checkPolicy?: pulumi.Input<boolean>;
     dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -246,6 +252,7 @@ export interface AccountArgs {
     accountName?: pulumi.Input<string>;
     accountPassword?: pulumi.Input<string>;
     accountType?: pulumi.Input<string>;
+    checkPolicy?: pulumi.Input<boolean>;
     dbInstanceId?: pulumi.Input<string>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
@@ -280,6 +287,7 @@ export interface AccountArgs {
      */
     password?: pulumi.Input<string>;
     resetPermissionFlag?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
     /**
      * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.

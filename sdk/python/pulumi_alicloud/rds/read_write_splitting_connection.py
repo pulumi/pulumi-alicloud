@@ -315,6 +315,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS read write splitting connection can be imported using the id, e.g.
@@ -401,6 +403,8 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         ```
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

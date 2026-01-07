@@ -103,6 +103,8 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")]
     public partial class InstanceClusterAttachment : global::Pulumi.CustomResource

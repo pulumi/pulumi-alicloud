@@ -84,6 +84,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Web Application Firewall(WAF) Protection Module can be imported using the id, e.g.

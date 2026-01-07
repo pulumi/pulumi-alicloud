@@ -327,6 +327,8 @@ class LifecycleHook(pulumi.CustomResource):
             notification_metadata="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Module Support
 
         You can use to the existing autoscaling module
@@ -414,6 +416,8 @@ class LifecycleHook(pulumi.CustomResource):
             heartbeat_timeout=400,
             notification_metadata="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Module Support
 

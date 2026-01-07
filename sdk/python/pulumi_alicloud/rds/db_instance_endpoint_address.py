@@ -289,6 +289,8 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
             port="3306")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS database endpoint public address feature can be imported using the id, e.g.
@@ -383,6 +385,8 @@ class DbInstanceEndpointAddress(pulumi.CustomResource):
             connection_string_prefix="tf-example-prefix",
             port="3306")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -74,6 +74,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
         service_linked_role = alicloud.securitycenter.ServiceLinkedRole("service_linked_role")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SecurityCenter service-linked roles(SLR) can be imported using the id, e.g.
@@ -108,6 +110,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         service_linked_role = alicloud.securitycenter.ServiceLinkedRole("service_linked_role")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

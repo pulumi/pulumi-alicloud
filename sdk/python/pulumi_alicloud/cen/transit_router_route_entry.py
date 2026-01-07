@@ -366,6 +366,8 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
             transit_router_route_entry_next_hop_id=example_transit_router_vbr_attachment.transit_router_attachment_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         CEN instance can be imported using the id, e.g.
@@ -447,6 +449,8 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
             transit_router_route_entry_description=name,
             transit_router_route_entry_next_hop_id=example_transit_router_vbr_attachment.transit_router_attachment_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

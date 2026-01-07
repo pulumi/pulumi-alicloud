@@ -85,6 +85,8 @@ namespace Pulumi.AliCloud.Eci
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ECI Image Cache can be imported using the id, e.g.

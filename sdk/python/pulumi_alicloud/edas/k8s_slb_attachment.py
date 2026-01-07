@@ -189,6 +189,8 @@ class K8sSlbAttachment(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.
@@ -290,6 +292,8 @@ class K8sSlbAttachment(pulumi.CustomResource):
                 }],
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -260,6 +260,8 @@ class ListenerAclAttachment(pulumi.CustomResource):
             acl_type="White")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ALB Listener Acl Attachment can be imported using the id, e.g.
@@ -382,6 +384,8 @@ class ListenerAclAttachment(pulumi.CustomResource):
             listener_id=default_listener.id,
             acl_type="White")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

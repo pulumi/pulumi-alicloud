@@ -9,20 +9,84 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AliCloud.Esa
 {
+    /// <summary>
+    /// Provides a ESA Routine Related Record resource.
+    /// 
+    /// For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+    /// 
+    /// &gt; **NOTE:** Available since v1.265.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRoutine = new AliCloud.Esa.Routine("default", new()
+    ///     {
+    ///         Description = "example-routine2",
+    ///         Name = "example-routine2",
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Esa.GetSites.Invoke(new()
+    ///     {
+    ///         PlanSubscribeType = "enterpriseplan",
+    ///     });
+    /// 
+    ///     var defaultRoutineRelatedRecord = new AliCloud.Esa.RoutineRelatedRecord("default", new()
+    ///     {
+    ///         Name = defaultRoutine.Id,
+    ///         RecordName = "tfexampleacc.com",
+    ///         SiteId = "618651327383200",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
+    /// ## Import
+    /// 
+    /// ESA Routine Related Record can be imported using the id, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example &lt;name&gt;:&lt;record_id&gt;
+    /// ```
+    /// </summary>
     [AliCloudResourceType("alicloud:esa/routineRelatedRecord:RoutineRelatedRecord")]
     public partial class RoutineRelatedRecord : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The routine name.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The record ID.
+        /// </summary>
         [Output("recordId")]
         public Output<int> RecordId { get; private set; } = null!;
 
+        /// <summary>
+        /// The record name.
+        /// </summary>
         [Output("recordName")]
         public Output<string> RecordName { get; private set; } = null!;
 
+        /// <summary>
+        /// The website ID.
+        /// </summary>
         [Output("siteId")]
-        public Output<int> SiteId { get; private set; } = null!;
+        public Output<string> SiteId { get; private set; } = null!;
 
 
         /// <summary>
@@ -70,14 +134,23 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RoutineRelatedRecordArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The routine name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The record name.
+        /// </summary>
         [Input("recordName", required: true)]
         public Input<string> RecordName { get; set; } = null!;
 
+        /// <summary>
+        /// The website ID.
+        /// </summary>
         [Input("siteId", required: true)]
-        public Input<int> SiteId { get; set; } = null!;
+        public Input<string> SiteId { get; set; } = null!;
 
         public RoutineRelatedRecordArgs()
         {
@@ -87,17 +160,29 @@ namespace Pulumi.AliCloud.Esa
 
     public sealed class RoutineRelatedRecordState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The routine name.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The record ID.
+        /// </summary>
         [Input("recordId")]
         public Input<int>? RecordId { get; set; }
 
+        /// <summary>
+        /// The record name.
+        /// </summary>
         [Input("recordName")]
         public Input<string>? RecordName { get; set; }
 
+        /// <summary>
+        /// The website ID.
+        /// </summary>
         [Input("siteId")]
-        public Input<int>? SiteId { get; set; }
+        public Input<string>? SiteId { get; set; }
 
         public RoutineRelatedRecordState()
         {

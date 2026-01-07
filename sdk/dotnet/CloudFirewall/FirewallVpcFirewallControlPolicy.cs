@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// <summary>
     /// Provides a Cloud Firewall Vpc Firewall Control Policy resource.
     /// 
+    /// VPC Control Policy.
+    /// 
     /// For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
     /// 
     /// &gt; **NOTE:** Available since v1.194.0.
@@ -57,13 +59,15 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         Source = "127.0.0.1/32",
     ///         DestPortType = "port",
     ///         Proto = "TCP",
-    ///         Release = true,
+    ///         Release = "true",
     ///         MemberUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         VpcFirewallId = defaultInstance.Id,
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// 
     /// ## Import
     /// 
@@ -98,7 +102,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
         /// </summary>
         [Output("applicationName")]
-        public Output<string> ApplicationName { get; private set; } = null!;
+        public Output<string?> ApplicationName { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of application types that the access control policy supports. 
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
+        /// </summary>
+        [Output("applicationNameLists")]
+        public Output<ImmutableArray<string>> ApplicationNameLists { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.267.0) The time when the policy was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<int> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Access control over VPC firewalls description of the strategy information.
@@ -158,6 +175,18 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> DestinationType { get; private set; } = null!;
 
         /// <summary>
+        /// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        /// </summary>
+        [Output("domainResolveType")]
+        public Output<string> DomainResolveType { get; private set; } = null!;
+
+        /// <summary>
+        /// The end time of the policy validity period.
+        /// </summary>
+        [Output("endTime")]
+        public Output<int?> EndTime { get; private set; } = null!;
+
+        /// <summary>
         /// Control strategy of hits per second.
         /// </summary>
         [Output("hitTimes")]
@@ -191,7 +220,33 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Output("release")]
-        public Output<bool> Release { get; private set; } = null!;
+        public Output<string> Release { get; private set; } = null!;
+
+        /// <summary>
+        /// The days of the week or month on which the policy is recurrently active. Valid values:
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// </summary>
+        [Output("repeatDays")]
+        public Output<ImmutableArray<int>> RepeatDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The recurring end time of the policy validity period.
+        /// </summary>
+        [Output("repeatEndTime")]
+        public Output<string?> RepeatEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The recurring start time of the policy validity period.
+        /// </summary>
+        [Output("repeatStartTime")]
+        public Output<string?> RepeatStartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        /// </summary>
+        [Output("repeatType")]
+        public Output<string> RepeatType { get; private set; } = null!;
 
         /// <summary>
         /// Access control over VPC firewalls strategy in the source address.
@@ -216,6 +271,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The start time of the policy validity period.
+        /// </summary>
+        [Output("startTime")]
+        public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC firewall instance. Valid values:
@@ -280,8 +341,21 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
         /// </summary>
-        [Input("applicationName", required: true)]
-        public Input<string> ApplicationName { get; set; } = null!;
+        [Input("applicationName")]
+        public Input<string>? ApplicationName { get; set; }
+
+        [Input("applicationNameLists")]
+        private InputList<string>? _applicationNameLists;
+
+        /// <summary>
+        /// The list of application types that the access control policy supports. 
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
+        /// </summary>
+        public InputList<string> ApplicationNameLists
+        {
+            get => _applicationNameLists ?? (_applicationNameLists = new InputList<string>());
+            set => _applicationNameLists = value;
+        }
 
         /// <summary>
         /// Access control over VPC firewalls description of the strategy information.
@@ -323,6 +397,18 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> DestinationType { get; set; } = null!;
 
         /// <summary>
+        /// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        /// </summary>
+        [Input("domainResolveType")]
+        public Input<string>? DomainResolveType { get; set; }
+
+        /// <summary>
+        /// The end time of the policy validity period.
+        /// </summary>
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
+
+        /// <summary>
         /// The language of the content within the request and response. Valid values: `Zh`, `En`.
         /// </summary>
         [Input("lang")]
@@ -350,7 +436,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Input("release")]
-        public Input<bool>? Release { get; set; }
+        public Input<string>? Release { get; set; }
+
+        [Input("repeatDays")]
+        private InputList<int>? _repeatDays;
+
+        /// <summary>
+        /// The days of the week or month on which the policy is recurrently active. Valid values:
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// </summary>
+        public InputList<int> RepeatDays
+        {
+            get => _repeatDays ?? (_repeatDays = new InputList<int>());
+            set => _repeatDays = value;
+        }
+
+        /// <summary>
+        /// The recurring end time of the policy validity period.
+        /// </summary>
+        [Input("repeatEndTime")]
+        public Input<string>? RepeatEndTime { get; set; }
+
+        /// <summary>
+        /// The recurring start time of the policy validity period.
+        /// </summary>
+        [Input("repeatStartTime")]
+        public Input<string>? RepeatStartTime { get; set; }
+
+        /// <summary>
+        /// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        /// </summary>
+        [Input("repeatType")]
+        public Input<string>? RepeatType { get; set; }
 
         /// <summary>
         /// Access control over VPC firewalls strategy in the source address.
@@ -363,6 +481,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
+
+        /// <summary>
+        /// The start time of the policy validity period.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
 
         /// <summary>
         /// The ID of the VPC firewall instance. Valid values:
@@ -403,6 +527,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("applicationName")]
         public Input<string>? ApplicationName { get; set; }
+
+        [Input("applicationNameLists")]
+        private InputList<string>? _applicationNameLists;
+
+        /// <summary>
+        /// The list of application types that the access control policy supports. 
+        /// &gt; **NOTE:** If `Proto` is set to `TCP`, you can set `ApplicationNameList` to any valid value. If `Proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `ApplicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `ApplicationNameList` and `ApplicationName`. If you specify both `ApplicationNameList` and `ApplicationName`, only the `ApplicationNameList` takes effect.
+        /// </summary>
+        public InputList<string> ApplicationNameLists
+        {
+            get => _applicationNameLists ?? (_applicationNameLists = new InputList<string>());
+            set => _applicationNameLists = value;
+        }
+
+        /// <summary>
+        /// (Available since v1.267.0) The time when the policy was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<int>? CreateTime { get; set; }
 
         /// <summary>
         /// Access control over VPC firewalls description of the strategy information.
@@ -474,6 +617,18 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? DestinationType { get; set; }
 
         /// <summary>
+        /// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        /// </summary>
+        [Input("domainResolveType")]
+        public Input<string>? DomainResolveType { get; set; }
+
+        /// <summary>
+        /// The end time of the policy validity period.
+        /// </summary>
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
+
+        /// <summary>
         /// Control strategy of hits per second.
         /// </summary>
         [Input("hitTimes")]
@@ -507,7 +662,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         /// </summary>
         [Input("release")]
-        public Input<bool>? Release { get; set; }
+        public Input<string>? Release { get; set; }
+
+        [Input("repeatDays")]
+        private InputList<int>? _repeatDays;
+
+        /// <summary>
+        /// The days of the week or month on which the policy is recurrently active. Valid values:
+        /// - If `RepeatType` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `RepeatType` is set to `Monthly`. Valid values: `1` to `31`.
+        /// </summary>
+        public InputList<int> RepeatDays
+        {
+            get => _repeatDays ?? (_repeatDays = new InputList<int>());
+            set => _repeatDays = value;
+        }
+
+        /// <summary>
+        /// The recurring end time of the policy validity period.
+        /// </summary>
+        [Input("repeatEndTime")]
+        public Input<string>? RepeatEndTime { get; set; }
+
+        /// <summary>
+        /// The recurring start time of the policy validity period.
+        /// </summary>
+        [Input("repeatStartTime")]
+        public Input<string>? RepeatStartTime { get; set; }
+
+        /// <summary>
+        /// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        /// </summary>
+        [Input("repeatType")]
+        public Input<string>? RepeatType { get; set; }
 
         /// <summary>
         /// Access control over VPC firewalls strategy in the source address.
@@ -538,6 +725,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
+
+        /// <summary>
+        /// The start time of the policy validity period.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
 
         /// <summary>
         /// The ID of the VPC firewall instance. Valid values:

@@ -54,6 +54,8 @@ namespace Pulumi.AliCloud.Datahub
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Datahub subscription can be imported using the ID, e.g.

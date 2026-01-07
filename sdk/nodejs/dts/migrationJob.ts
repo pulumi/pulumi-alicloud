@@ -141,6 +141,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Notice
  *
  * 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

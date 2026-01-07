@@ -333,6 +333,8 @@ class AddressBook(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Firewall Address Book can be imported using the id, e.g.
@@ -385,6 +387,8 @@ class AddressBook(pulumi.CustomResource):
                 "tag_value": "tfTestAcc0",
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

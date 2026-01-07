@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * VPC Dhcp Options Set can be imported using the id, e.g.

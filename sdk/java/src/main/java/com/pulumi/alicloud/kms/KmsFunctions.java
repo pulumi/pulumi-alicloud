@@ -703,7 +703,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -857,7 +856,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -1011,7 +1009,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -1165,7 +1162,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -1319,7 +1315,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -1473,7 +1468,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",
@@ -1627,7 +1621,6 @@ public final class KmsFunctions {
      *             .spec(1000)
      *             .renewStatus("ManualRenewal")
      *             .productVersion("3")
-     *             .renewPeriod(3)
      *             .vpcId(vswitch.vpcId())
      *             .zoneIds(            
      *                 "cn-hangzhou-k",

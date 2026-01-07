@@ -443,6 +443,8 @@ class RemoteAdbDataSource(pulumi.CustomResource):
             local_db_instance_id=default_et_ez_mf.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Remote ADB Data Source can be imported using the id, e.g.
@@ -551,6 +553,8 @@ class RemoteAdbDataSource(pulumi.CustomResource):
             manager_user_password="example_001",
             local_db_instance_id=default_et_ez_mf.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

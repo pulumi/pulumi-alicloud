@@ -322,6 +322,8 @@ class Tunnel(pulumi.CustomResource):
             tunnel_type="BaseAndStream")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OTS tunnel can be imported using id, e.g.
@@ -399,6 +401,8 @@ class Tunnel(pulumi.CustomResource):
             tunnel_name="tf_example",
             tunnel_type="BaseAndStream")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

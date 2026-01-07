@@ -106,6 +106,8 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `DependsOn` statement is necessary.
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// RDS read write splitting connection can be imported using the id, e.g.

@@ -980,6 +980,8 @@ class StreamingJob(pulumi.CustomResource):
         \"\"\")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Streaming Job can be imported using the id, e.g.
@@ -1160,6 +1162,8 @@ class StreamingJob(pulumi.CustomResource):
             group.id: ziyuan_example_01
         \"\"\")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -55,6 +55,16 @@ export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;
 utilities.lazyLoad(exports, ["getSites","getSitesOutput"], () => require("./getSites"));
 
+export { HttpIncomingRequestHeaderModificationRuleArgs, HttpIncomingRequestHeaderModificationRuleState } from "./httpIncomingRequestHeaderModificationRule";
+export type HttpIncomingRequestHeaderModificationRule = import("./httpIncomingRequestHeaderModificationRule").HttpIncomingRequestHeaderModificationRule;
+export const HttpIncomingRequestHeaderModificationRule: typeof import("./httpIncomingRequestHeaderModificationRule").HttpIncomingRequestHeaderModificationRule = null as any;
+utilities.lazyLoad(exports, ["HttpIncomingRequestHeaderModificationRule"], () => require("./httpIncomingRequestHeaderModificationRule"));
+
+export { HttpIncomingResponseHeaderModificationRuleArgs, HttpIncomingResponseHeaderModificationRuleState } from "./httpIncomingResponseHeaderModificationRule";
+export type HttpIncomingResponseHeaderModificationRule = import("./httpIncomingResponseHeaderModificationRule").HttpIncomingResponseHeaderModificationRule;
+export const HttpIncomingResponseHeaderModificationRule: typeof import("./httpIncomingResponseHeaderModificationRule").HttpIncomingResponseHeaderModificationRule = null as any;
+utilities.lazyLoad(exports, ["HttpIncomingResponseHeaderModificationRule"], () => require("./httpIncomingResponseHeaderModificationRule"));
+
 export { HttpRequestHeaderModificationRuleArgs, HttpRequestHeaderModificationRuleState } from "./httpRequestHeaderModificationRule";
 export type HttpRequestHeaderModificationRule = import("./httpRequestHeaderModificationRule").HttpRequestHeaderModificationRule;
 export const HttpRequestHeaderModificationRule: typeof import("./httpRequestHeaderModificationRule").HttpRequestHeaderModificationRule = null as any;
@@ -268,6 +278,10 @@ const _module = {
                 return new EdgeContainerApp(name, <any>undefined, { urn })
             case "alicloud:esa/edgeContainerAppRecord:EdgeContainerAppRecord":
                 return new EdgeContainerAppRecord(name, <any>undefined, { urn })
+            case "alicloud:esa/httpIncomingRequestHeaderModificationRule:HttpIncomingRequestHeaderModificationRule":
+                return new HttpIncomingRequestHeaderModificationRule(name, <any>undefined, { urn })
+            case "alicloud:esa/httpIncomingResponseHeaderModificationRule:HttpIncomingResponseHeaderModificationRule":
+                return new HttpIncomingResponseHeaderModificationRule(name, <any>undefined, { urn })
             case "alicloud:esa/httpRequestHeaderModificationRule:HttpRequestHeaderModificationRule":
                 return new HttpRequestHeaderModificationRule(name, <any>undefined, { urn })
             case "alicloud:esa/httpResponseHeaderModificationRule:HttpResponseHeaderModificationRule":
@@ -358,6 +372,8 @@ pulumi.runtime.registerResourceModule("alicloud", "esa/compressionRule", _module
 pulumi.runtime.registerResourceModule("alicloud", "esa/customScenePolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerApp", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/edgeContainerAppRecord", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/httpIncomingRequestHeaderModificationRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "esa/httpIncomingResponseHeaderModificationRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpRequestHeaderModificationRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpResponseHeaderModificationRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "esa/httpsApplicationConfiguration", _module)

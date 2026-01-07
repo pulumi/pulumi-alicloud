@@ -90,6 +90,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Database File System (DBFS) Instance Attachment can be imported using the id, e.g.

@@ -228,6 +228,8 @@ class ScimServerCredential(pulumi.CustomResource):
             credential_secret_file="./credential_secret_file.txt")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO SCIM Server Credential can be imported using the id, e.g.
@@ -274,6 +276,8 @@ class ScimServerCredential(pulumi.CustomResource):
             directory_id=default.directories[0].id,
             credential_secret_file="./credential_secret_file.txt")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

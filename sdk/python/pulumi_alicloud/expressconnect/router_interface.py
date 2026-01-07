@@ -1485,6 +1485,8 @@ class RouterInterface(pulumi.CustomResource):
             router_type="VBR")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Router Interface can be imported using the id, e.g.
@@ -1637,6 +1639,8 @@ class RouterInterface(pulumi.CustomResource):
             opposite_region_id="cn-hangzhou",
             router_type="VBR")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

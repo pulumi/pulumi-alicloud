@@ -46,6 +46,8 @@ namespace Pulumi.AliCloud.OpenSearch
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Open Search App Group can be imported using the id, e.g.

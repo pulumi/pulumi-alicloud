@@ -65,6 +65,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Service Catalog Provisioned Product can be imported using the id, e.g.

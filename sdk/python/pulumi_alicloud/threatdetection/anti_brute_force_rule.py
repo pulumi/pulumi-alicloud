@@ -292,6 +292,8 @@ class AntiBruteForceRule(pulumi.CustomResource):
             span=10)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Anti Brute Force Rule can be imported using the id, e.g.
@@ -340,6 +342,8 @@ class AntiBruteForceRule(pulumi.CustomResource):
             fail_count=80,
             span=10)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

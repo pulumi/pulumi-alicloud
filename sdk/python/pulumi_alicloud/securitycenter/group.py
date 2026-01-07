@@ -127,6 +127,8 @@ class Group(pulumi.CustomResource):
         example = alicloud.securitycenter.Group("example", group_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Security Center Group can be imported using the id, e.g.
@@ -167,6 +169,8 @@ class Group(pulumi.CustomResource):
             name = "tf_example"
         example = alicloud.securitycenter.Group("example", group_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

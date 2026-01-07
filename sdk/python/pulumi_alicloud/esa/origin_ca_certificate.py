@@ -234,6 +234,8 @@ class OriginCaCertificate(pulumi.CustomResource):
             name="example")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Origin Ca Certificate can be imported using the id, e.g.
@@ -303,6 +305,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         -----END CERTIFICATE-----\"\"\",
             name="example")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

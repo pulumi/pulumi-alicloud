@@ -67,6 +67,8 @@ namespace Pulumi.AliCloud.Cms
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.

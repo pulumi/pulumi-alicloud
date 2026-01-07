@@ -634,6 +634,8 @@ class DiskReplicaGroup(pulumi.CustomResource):
             rpo=900)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Elastic Block Storage(EBS) Disk Replica Group can be imported using the id, e.g.
@@ -721,6 +723,8 @@ class DiskReplicaGroup(pulumi.CustomResource):
             description=name,
             rpo=900)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

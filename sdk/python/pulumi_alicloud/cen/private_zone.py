@@ -229,6 +229,8 @@ class PrivateZone(pulumi.CustomResource):
             host_region_id=default.regions[0].id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Private Zone can be imported using the id, e.g.
@@ -289,6 +291,8 @@ class PrivateZone(pulumi.CustomResource):
             host_vpc_id=default_network.id,
             host_region_id=default.regions[0].id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

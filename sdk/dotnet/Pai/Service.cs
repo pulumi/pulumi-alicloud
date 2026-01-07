@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Pai
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// PAI Service can be imported using the id, e.g.

@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.BastionHost
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Bastion Host Host Group can be imported using the id, e.g.

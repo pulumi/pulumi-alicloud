@@ -379,6 +379,8 @@ class Index(pulumi.CustomResource):
             project_name=project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Log Service (SLS) Index can be imported using the id, e.g.
@@ -479,6 +481,8 @@ class Index(pulumi.CustomResource):
             logstore_name=default_store.logstore_name,
             project_name=project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

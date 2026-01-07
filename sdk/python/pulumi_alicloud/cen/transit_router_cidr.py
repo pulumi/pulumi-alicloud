@@ -257,6 +257,8 @@ class TransitRouterCidr(pulumi.CustomResource):
             publish_cidr_route=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Cidr can be imported using the id, e.g.
@@ -311,6 +313,8 @@ class TransitRouterCidr(pulumi.CustomResource):
             description="tf_example",
             publish_cidr_route=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

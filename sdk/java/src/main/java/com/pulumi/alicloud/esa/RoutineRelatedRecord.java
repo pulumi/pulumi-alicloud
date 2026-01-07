@@ -14,30 +14,132 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a ESA Routine Related Record resource.
+ * 
+ * For information about ESA Routine Related Record and how to use it, see [What is Routine Related Record](https://next.api.alibabacloud.com/document/ESA/2024-09-10/CreateRoutineRelatedRecord).
+ * 
+ * &gt; **NOTE:** Available since v1.265.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.esa.Routine;
+ * import com.pulumi.alicloud.esa.RoutineArgs;
+ * import com.pulumi.alicloud.esa.EsaFunctions;
+ * import com.pulumi.alicloud.esa.inputs.GetSitesArgs;
+ * import com.pulumi.alicloud.esa.RoutineRelatedRecord;
+ * import com.pulumi.alicloud.esa.RoutineRelatedRecordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultRoutine = new Routine("defaultRoutine", RoutineArgs.builder()
+ *             .description("example-routine2")
+ *             .name("example-routine2")
+ *             .build());
+ * 
+ *         final var default = EsaFunctions.getSites(GetSitesArgs.builder()
+ *             .planSubscribeType("enterpriseplan")
+ *             .build());
+ * 
+ *         var defaultRoutineRelatedRecord = new RoutineRelatedRecord("defaultRoutineRelatedRecord", RoutineRelatedRecordArgs.builder()
+ *             .name(defaultRoutine.id())
+ *             .recordName("tfexampleacc.com")
+ *             .siteId("618651327383200")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
+ * ## Import
+ * 
+ * ESA Routine Related Record can be imported using the id, e.g.
+ * 
+ * ```sh
+ * $ pulumi import alicloud:esa/routineRelatedRecord:RoutineRelatedRecord example &lt;name&gt;:&lt;record_id&gt;
+ * ```
+ * 
+ */
 @ResourceType(type="alicloud:esa/routineRelatedRecord:RoutineRelatedRecord")
 public class RoutineRelatedRecord extends com.pulumi.resources.CustomResource {
+    /**
+     * The routine name.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The routine name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The record ID.
+     * 
+     */
     @Export(name="recordId", refs={Integer.class}, tree="[0]")
     private Output<Integer> recordId;
 
+    /**
+     * @return The record ID.
+     * 
+     */
     public Output<Integer> recordId() {
         return this.recordId;
     }
+    /**
+     * The record name.
+     * 
+     */
     @Export(name="recordName", refs={String.class}, tree="[0]")
     private Output<String> recordName;
 
+    /**
+     * @return The record name.
+     * 
+     */
     public Output<String> recordName() {
         return this.recordName;
     }
-    @Export(name="siteId", refs={Integer.class}, tree="[0]")
-    private Output<Integer> siteId;
+    /**
+     * The website ID.
+     * 
+     */
+    @Export(name="siteId", refs={String.class}, tree="[0]")
+    private Output<String> siteId;
 
-    public Output<Integer> siteId() {
+    /**
+     * @return The website ID.
+     * 
+     */
+    public Output<String> siteId() {
         return this.siteId;
     }
 

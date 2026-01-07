@@ -318,6 +318,8 @@ class Record(pulumi.CustomResource):
             value="192.168.99.99")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS record can be imported using the id, e.g.
@@ -362,6 +364,8 @@ class Record(pulumi.CustomResource):
             type="A",
             value="192.168.99.99")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

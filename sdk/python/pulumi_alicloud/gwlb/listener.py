@@ -335,6 +335,8 @@ class Listener(pulumi.CustomResource):
             load_balancer_id=default_load_balancer.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GWLB Listener can be imported using the id, e.g.
@@ -451,6 +453,8 @@ class Listener(pulumi.CustomResource):
             server_group_id=default_server_group.id,
             load_balancer_id=default_load_balancer.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

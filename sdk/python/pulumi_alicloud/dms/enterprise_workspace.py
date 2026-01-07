@@ -185,6 +185,8 @@ class EnterpriseWorkspace(pulumi.CustomResource):
             vpc_id=vpc_create.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise Workspace can be imported using the id, e.g.
@@ -238,6 +240,8 @@ class EnterpriseWorkspace(pulumi.CustomResource):
             workspace_name=f"{name}-{default['result']}",
             vpc_id=vpc_create.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

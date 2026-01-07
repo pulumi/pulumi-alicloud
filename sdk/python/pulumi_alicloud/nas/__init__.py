@@ -27,6 +27,8 @@ from .get_snapshots import *
 from .get_zones import *
 from .lifecycle_policy import *
 from .mount_target import *
+from .protocol_mount_target import *
+from .protocol_service import *
 from .recycle_bin import *
 from .smb_acl_attachment import *
 from .snapshot import *

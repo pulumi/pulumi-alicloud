@@ -158,6 +158,8 @@ class VulWhitelist(pulumi.CustomResource):
             reason="tf-example-reason")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Vul Whitelist can be imported using the id, e.g.
@@ -198,6 +200,8 @@ class VulWhitelist(pulumi.CustomResource):
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
             reason="tf-example-reason")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

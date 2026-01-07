@@ -23,6 +23,7 @@ class RdsAccountArgs:
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class RdsAccountArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsAccount resource.
@@ -60,6 +62,7 @@ class RdsAccountArgs:
                * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
                
                > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
@@ -68,6 +71,7 @@ class RdsAccountArgs:
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -80,292 +84,8 @@ class RdsAccountArgs:
             pulumi.set(__self__, "account_password", account_password)
         if account_type is not None:
             pulumi.set(__self__, "account_type", account_type)
-        if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
-        if description is not None:
-            warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
-            pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if instance_id is not None:
-            warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
-        if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
-        if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
-        if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if password is not None:
-            warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
-            pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if reset_permission_flag is not None:
-            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
-        if type is not None:
-            warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
-
-        > **NOTE:** The name cannot start with http:// or https://.
-        """
-        return pulumi.get(self, "account_description")
-
-    @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the database account.
-        * The name must be unique.
-        * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
-        * The name must start with a letter and end with a letter or digit.
-        * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
-        * The length of the value must meet the following requirements:
-        * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
-        * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
-        * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
-        * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
-        * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
-        * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
-        * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        """
-        return pulumi.get(self, "account_name")
-
-    @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The password of the account.
-        * The value must be 8 to 32 characters in length.
-        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        * Special characters include ! @ # $ % ^ & * ( ) _ + - =
-        """
-        return pulumi.get(self, "account_password")
-
-    @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_password", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The account type. Valid values:
-        * Normal: standard account (default).
-        * Super: privileged account.
-        * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
-
-        > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        """
-        return pulumi.get(self, "account_type")
-
-    @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "account_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the instance.
-        """
-        return pulumi.get(self, "db_instance_id")
-
-    @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "db_instance_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute has been deprecated from 1.120.0 and using `account_description` instead.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="instanceId")
-    @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "instance_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        """
-        return pulumi.get(self, "kms_encrypted_password")
-
-    @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kms_encrypted_password", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        """
-        return pulumi.get(self, "kms_encryption_context")
-
-    @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "kms_encryption_context", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "password", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resetPermissionFlag")
-    def reset_permission_flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        """
-        return pulumi.get(self, "reset_permission_flag")
-
-    @reset_permission_flag.setter
-    def reset_permission_flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "reset_permission_flag", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute has been deprecated from 1.120.0 and using `account_type` instead.
-
-        > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class _RdsAccountState:
-    def __init__(__self__, *,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        Input properties used for looking up and filtering RdsAccount resources.
-        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
-               
-               > **NOTE:** The name cannot start with http:// or https://.
-        :param pulumi.Input[_builtins.str] account_name: The name of the database account.
-               * The name must be unique.
-               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
-               * The name must start with a letter and end with a letter or digit.
-               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
-               * The length of the value must meet the following requirements:
-               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
-               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
-               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
-               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
-               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
-               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
-               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] account_password: The password of the account.
-               * The value must be 8 to 32 characters in length.
-               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
-        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
-               * Normal: standard account (default).
-               * Super: privileged account.
-               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
-               
-               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
-        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
-        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
-        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
-        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
-        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
-        :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
-               
-               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
-        """
-        if account_description is not None:
-            pulumi.set(__self__, "account_description", account_description)
-        if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
-        if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
-        if account_type is not None:
-            pulumi.set(__self__, "account_type", account_type)
+        if check_policy is not None:
+            pulumi.set(__self__, "check_policy", check_policy)
         if db_instance_id is not None:
             pulumi.set(__self__, "db_instance_id", db_instance_id)
         if description is not None:
@@ -473,6 +193,18 @@ class _RdsAccountState:
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply password policy
+        """
+        return pulumi.get(self, "check_policy")
+
+    @check_policy.setter
+    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "check_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="dbInstanceId")
     def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -576,7 +308,323 @@ class _RdsAccountState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the resource. Valid values: `Available`, `Unavailable`.
+        The status of the resource
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+
+        > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class _RdsAccountState:
+    def __init__(__self__, *,
+                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering RdsAccount resources.
+        :param pulumi.Input[_builtins.str] account_description: The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+               
+               > **NOTE:** The name cannot start with http:// or https://.
+        :param pulumi.Input[_builtins.str] account_name: The name of the database account.
+               * The name must be unique.
+               * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+               * The name must start with a letter and end with a letter or digit.
+               * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+               * The length of the value must meet the following requirements:
+               * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+               * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+               * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+               * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+               * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+               * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+               * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[_builtins.str] account_password: The password of the account.
+               * The value must be 8 to 32 characters in length.
+               * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+               * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        :param pulumi.Input[_builtins.str] account_type: The account type. Valid values:
+               * Normal: standard account (default).
+               * Super: privileged account.
+               * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+               
+               > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy
+        :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
+        :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        :param pulumi.Input[_builtins.str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
+        :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
+               
+               > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
+        """
+        if account_description is not None:
+            pulumi.set(__self__, "account_description", account_description)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if account_password is not None:
+            pulumi.set(__self__, "account_password", account_password)
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if check_policy is not None:
+            pulumi.set(__self__, "check_policy", check_policy)
+        if db_instance_id is not None:
+            pulumi.set(__self__, "db_instance_id", db_instance_id)
+        if description is not None:
+            warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instance_id is not None:
+            warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if kms_encrypted_password is not None:
+            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+        if kms_encryption_context is not None:
+            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if name is not None:
+            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+            pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if reset_permission_flag is not None:
+            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="accountDescription")
+    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
+
+        > **NOTE:** The name cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "account_description")
+
+    @account_description.setter
+    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the database account.
+        * The name must be unique.
+        * The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
+        * The name must start with a letter and end with a letter or digit.
+        * For MySQL databases, the name of the privileged account cannot be the same as that of the standard account. For example, if the name of the privileged account is Test1, the name of the standard account cannot be test1.
+        * The length of the value must meet the following requirements:
+        * If the instance runs MySQL 5.7 or MySQL 8.0, the value must be 2 to 32 characters in length.
+        * If the instance runs MySQL 5.6, the value must be 2 to 16 characters in length.
+        * If the instance runs SQL Server, the value must be 2 to 64 characters in length.
+        * If the instance runs PostgreSQL with cloud disks, the value must be 2 to 63 characters in length.
+        * If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
+        * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
+        * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountPassword")
+    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The password of the account.
+        * The value must be 8 to 32 characters in length.
+        * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        * Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        """
+        return pulumi.get(self, "account_password")
+
+    @account_password.setter
+    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The account type. Valid values:
+        * Normal: standard account (default).
+        * Super: privileged account.
+        * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
+
+        > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        """
+        return pulumi.get(self, "account_type")
+
+    @account_type.setter
+    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply password policy
+        """
+        return pulumi.get(self, "check_policy")
+
+    @check_policy.setter
+    def check_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "check_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dbInstanceId")
+    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the instance.
+        """
+        return pulumi.get(self, "db_instance_id")
+
+    @db_instance_id.setter
+    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "db_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_description` instead.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    @_utilities.deprecated("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsEncryptedPassword")
+    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
+        """
+        return pulumi.get(self, "kms_encrypted_password")
+
+    @kms_encrypted_password.setter
+    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_encrypted_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsEncryptionContext")
+    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        """
+        return pulumi.get(self, "kms_encryption_context")
+
+    @kms_encryption_context.setter
+    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "kms_encryption_context", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_name` instead.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The attribute has been deprecated from 1.120.0 and using `account_password` instead.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resetPermissionFlag")
+    def reset_permission_flag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        """
+        return pulumi.get(self, "reset_permission_flag")
+
+    @reset_permission_flag.setter
+    def reset_permission_flag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "reset_permission_flag", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -610,6 +658,7 @@ class RdsAccount(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -618,6 +667,7 @@ class RdsAccount(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -640,10 +690,16 @@ class RdsAccount(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.zones[0].id,
             engine="MySQL",
-            engine_version="5.6")
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd",
+            instance_charge_type="PostPaid")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -654,16 +710,22 @@ class RdsAccount(pulumi.CustomResource):
             vswitch_name=name)
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
-            engine_version="5.6",
-            instance_type=default_get_instance_classes.instance_classes[1].instance_class,
-            instance_storage=10,
+            engine_version="8.0",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
-            instance_name=name)
+            instance_name=name,
+            instance_charge_type="Postpaid",
+            monitoring_period=60,
+            db_instance_storage_type="local_ssd",
+            db_is_ignore_case=False)
         default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name=name,
             account_password="Example1234")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -701,6 +763,7 @@ class RdsAccount(pulumi.CustomResource):
                * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
                
                > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
@@ -709,6 +772,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -739,10 +803,16 @@ class RdsAccount(pulumi.CustomResource):
         if name is None:
             name = "tf_example"
         default = alicloud.rds.get_zones(engine="MySQL",
-            engine_version="5.6")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd")
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.zones[0].id,
             engine="MySQL",
-            engine_version="5.6")
+            engine_version="8.0",
+            category="HighAvailability",
+            db_instance_storage_type="local_ssd",
+            instance_charge_type="PostPaid")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
@@ -753,16 +823,22 @@ class RdsAccount(pulumi.CustomResource):
             vswitch_name=name)
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
-            engine_version="5.6",
-            instance_type=default_get_instance_classes.instance_classes[1].instance_class,
-            instance_storage=10,
+            engine_version="8.0",
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
-            instance_name=name)
+            instance_name=name,
+            instance_charge_type="Postpaid",
+            monitoring_period=60,
+            db_instance_storage_type="local_ssd",
+            db_is_ignore_case=False)
         default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name=name,
             account_password="Example1234")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -791,6 +867,7 @@ class RdsAccount(pulumi.CustomResource):
                  account_name: Optional[pulumi.Input[_builtins.str]] = None,
                  account_password: Optional[pulumi.Input[_builtins.str]] = None,
                  account_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
                  db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -799,6 +876,7 @@ class RdsAccount(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  reset_permission_flag: Optional[pulumi.Input[_builtins.bool]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -813,6 +891,7 @@ class RdsAccount(pulumi.CustomResource):
             __props__.__dict__["account_name"] = account_name
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_type"] = account_type
+            __props__.__dict__["check_policy"] = check_policy
             __props__.__dict__["db_instance_id"] = db_instance_id
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_id"] = instance_id
@@ -821,8 +900,8 @@ class RdsAccount(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["reset_permission_flag"] = reset_permission_flag
+            __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
-            __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(RdsAccount, __self__).__init__(
@@ -839,6 +918,7 @@ class RdsAccount(pulumi.CustomResource):
             account_name: Optional[pulumi.Input[_builtins.str]] = None,
             account_password: Optional[pulumi.Input[_builtins.str]] = None,
             account_type: Optional[pulumi.Input[_builtins.str]] = None,
+            check_policy: Optional[pulumi.Input[_builtins.bool]] = None,
             db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -882,6 +962,7 @@ class RdsAccount(pulumi.CustomResource):
                * Sysadmin: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
                
                > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
+        :param pulumi.Input[_builtins.bool] check_policy: Whether to apply password policy
         :param pulumi.Input[_builtins.str] db_instance_id: The ID of the instance.
         :param pulumi.Input[_builtins.str] description: The attribute has been deprecated from 1.120.0 and using `account_description` instead.
         :param pulumi.Input[_builtins.str] instance_id: The attribute has been deprecated from 1.120.0 and using `db_instance_id` instead.
@@ -890,7 +971,7 @@ class RdsAccount(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The attribute has been deprecated from 1.120.0 and using `account_name` instead.
         :param pulumi.Input[_builtins.str] password: The attribute has been deprecated from 1.120.0 and using `account_password` instead.
         :param pulumi.Input[_builtins.bool] reset_permission_flag: Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
-        :param pulumi.Input[_builtins.str] status: The status of the resource. Valid values: `Available`, `Unavailable`.
+        :param pulumi.Input[_builtins.str] status: The status of the resource
         :param pulumi.Input[_builtins.str] type: The attribute has been deprecated from 1.120.0 and using `account_type` instead.
                
                > **NOTE**: Only MySQL engine is supported resets permissions of the privileged account.
@@ -903,6 +984,7 @@ class RdsAccount(pulumi.CustomResource):
         __props__.__dict__["account_name"] = account_name
         __props__.__dict__["account_password"] = account_password
         __props__.__dict__["account_type"] = account_type
+        __props__.__dict__["check_policy"] = check_policy
         __props__.__dict__["db_instance_id"] = db_instance_id
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
@@ -968,6 +1050,14 @@ class RdsAccount(pulumi.CustomResource):
         > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
         """
         return pulumi.get(self, "account_type")
+
+    @_builtins.property
+    @pulumi.getter(name="checkPolicy")
+    def check_policy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to apply password policy
+        """
+        return pulumi.get(self, "check_policy")
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
@@ -1041,7 +1131,7 @@ class RdsAccount(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the resource. Valid values: `Available`, `Unavailable`.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 

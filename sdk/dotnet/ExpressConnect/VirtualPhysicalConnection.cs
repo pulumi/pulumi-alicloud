@@ -58,6 +58,8 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Express Connect Virtual Physical Connection can be imported using the id, e.g.

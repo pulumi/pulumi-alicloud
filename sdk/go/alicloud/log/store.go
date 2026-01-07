@@ -178,6 +178,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Module Support
 //
 // You can use the existing sls module

@@ -6,12 +6,14 @@ package com.pulumi.alicloud.eflo;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.eflo.HyperNodeArgs;
 import com.pulumi.alicloud.eflo.inputs.HyperNodeState;
+import com.pulumi.alicloud.eflo.outputs.HyperNodeDataDisk;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -74,6 +76,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Eflo Hyper Node can be imported using the id, e.g.
@@ -85,6 +89,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:eflo/hyperNode:HyperNode")
 public class HyperNode extends com.pulumi.resources.CustomResource {
+    /**
+     * Cluster ID
+     * 
+     */
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clusterId;
+
+    /**
+     * @return Cluster ID
+     * 
+     */
+    public Output<Optional<String>> clusterId() {
+        return Codegen.optional(this.clusterId);
+    }
     /**
      * The creation time of the resource
      * 
@@ -99,33 +117,81 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    @Export(name="dataDisks", refs={List.class,HyperNodeDataDisk.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<HyperNodeDataDisk>> dataDisks;
+
+    public Output<Optional<List<HyperNodeDataDisk>>> dataDisks() {
+        return Codegen.optional(this.dataDisks);
+    }
     /**
-     * Number of the cluster to which the supercompute node belongs
+     * The host name prefix of the sub computing node
+     * 
+     */
+    @Export(name="hostname", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hostname;
+
+    /**
+     * @return The host name prefix of the sub computing node
+     * 
+     */
+    public Output<Optional<String>> hostname() {
+        return Codegen.optional(this.hostname);
+    }
+    /**
+     * Number of the cluster to which the hyper computing node belongs
      * 
      */
     @Export(name="hpnZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hpnZone;
 
     /**
-     * @return Number of the cluster to which the supercompute node belongs
+     * @return Number of the cluster to which the hyper computing node belongs
      * 
      */
     public Output<Optional<String>> hpnZone() {
         return Codegen.optional(this.hpnZone);
     }
     /**
-     * The model used by the super computing node
+     * Login Password of the sub computing node
+     * 
+     */
+    @Export(name="loginPassword", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> loginPassword;
+
+    /**
+     * @return Login Password of the sub computing node
+     * 
+     */
+    public Output<Optional<String>> loginPassword() {
+        return Codegen.optional(this.loginPassword);
+    }
+    /**
+     * The model used by the hyper computing node
      * 
      */
     @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> machineType;
 
     /**
-     * @return The model used by the super computing node
+     * @return The model used by the hyper computing node
      * 
      */
     public Output<Optional<String>> machineType() {
         return Codegen.optional(this.machineType);
+    }
+    /**
+     * Node group ID
+     * 
+     */
+    @Export(name="nodeGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> nodeGroupId;
+
+    /**
+     * @return Node group ID
+     * 
+     */
+    public Output<Optional<String>> nodeGroupId() {
+        return Codegen.optional(this.nodeGroupId);
     }
     /**
      * The duration of the instance purchase, in units.
@@ -216,21 +282,21 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Super Node Architecture
+     * Hyper Node Architecture
      * 
      */
     @Export(name="serverArch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverArch;
 
     /**
-     * @return Super Node Architecture
+     * @return Hyper Node Architecture
      * 
      */
     public Output<Optional<String>> serverArch() {
         return Codegen.optional(this.serverArch);
     }
     /**
-     * The number of installments of the supercomputing node of the fixed fee installment.
+     * The number of installments of the hyper computing node of the fixed fee installment.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -239,7 +305,7 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> stageNum;
 
     /**
-     * @return The number of installments of the supercomputing node of the fixed fee installment.
+     * @return The number of installments of the hyper computing node of the fixed fee installment.
      * 
      * &gt; **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      * 
@@ -276,14 +342,56 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The zone where the super compute node is located
+     * Custom user data for the sub computing node
+     * 
+     */
+    @Export(name="userData", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userData;
+
+    /**
+     * @return Custom user data for the sub computing node
+     * 
+     */
+    public Output<Optional<String>> userData() {
+        return Codegen.optional(this.userData);
+    }
+    /**
+     * The ID of the vpc to which the sub computing node
+     * 
+     */
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vpcId;
+
+    /**
+     * @return The ID of the vpc to which the sub computing node
+     * 
+     */
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
+    }
+    /**
+     * The ID of the vswitch to which the sub computing node
+     * 
+     */
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> vswitchId;
+
+    /**
+     * @return The ID of the vswitch to which the sub computing node
+     * 
+     */
+    public Output<Optional<String>> vswitchId() {
+        return Codegen.optional(this.vswitchId);
+    }
+    /**
+     * The zone where the hyper compute node is located
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone where the super compute node is located
+     * @return The zone where the hyper compute node is located
      * 
      */
     public Output<Optional<String>> zoneId() {
@@ -329,6 +437,9 @@ public class HyperNode extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "loginPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

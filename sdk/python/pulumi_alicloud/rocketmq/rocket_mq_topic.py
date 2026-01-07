@@ -324,6 +324,8 @@ class RocketMQTopic(pulumi.CustomResource):
             topic_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RocketMQ Topic can be imported using the id, e.g.
@@ -419,6 +421,8 @@ class RocketMQTopic(pulumi.CustomResource):
             message_type="NORMAL",
             topic_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -30,6 +30,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ESA Client Certificate can be imported using the id, e.g.
@@ -76,22 +78,28 @@ export class ClientCertificate extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Certificate signing request content.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly csr: pulumi.Output<string | undefined>;
     /**
      * The private key algorithm type.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly pkeyType: pulumi.Output<string | undefined>;
     /**
      * Site Id
      */
-    declare public readonly siteId: pulumi.Output<number>;
+    declare public readonly siteId: pulumi.Output<string>;
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
     declare public readonly status: pulumi.Output<string>;
     /**
      * Certificate validity period.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     declare public readonly validityDays: pulumi.Output<string>;
 
@@ -150,22 +158,28 @@ export interface ClientCertificateState {
     createTime?: pulumi.Input<string>;
     /**
      * Certificate signing request content.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     csr?: pulumi.Input<string>;
     /**
      * The private key algorithm type.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     pkeyType?: pulumi.Input<string>;
     /**
      * Site Id
      */
-    siteId?: pulumi.Input<number>;
+    siteId?: pulumi.Input<string>;
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
     status?: pulumi.Input<string>;
     /**
      * Certificate validity period.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     validityDays?: pulumi.Input<string>;
 }
@@ -176,22 +190,28 @@ export interface ClientCertificateState {
 export interface ClientCertificateArgs {
     /**
      * Certificate signing request content.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     csr?: pulumi.Input<string>;
     /**
      * The private key algorithm type.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     pkeyType?: pulumi.Input<string>;
     /**
      * Site Id
      */
-    siteId: pulumi.Input<number>;
+    siteId: pulumi.Input<string>;
     /**
      * The certificate status. Valid values: `revoked`, `active`.
      */
     status?: pulumi.Input<string>;
     /**
      * Certificate validity period.
+     *
+     * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
     validityDays: pulumi.Input<string>;
 }

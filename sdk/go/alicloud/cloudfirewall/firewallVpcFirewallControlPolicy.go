@@ -14,6 +14,8 @@ import (
 
 // Provides a Cloud Firewall Vpc Firewall Control Policy resource.
 //
+// VPC Control Policy.
+//
 // For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 //
 // > **NOTE:** Available since v1.194.0.
@@ -70,7 +72,7 @@ import (
 //				Source:          pulumi.String("127.0.0.1/32"),
 //				DestPortType:    pulumi.String("port"),
 //				Proto:           pulumi.String("TCP"),
-//				Release:         pulumi.Bool(true),
+//				Release:         pulumi.String("true"),
 //				MemberUid:       pulumi.String(_default.Id),
 //				VpcFirewallId:   defaultInstance.ID(),
 //			})
@@ -82,6 +84,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 //
 // ## Import
 //
@@ -100,7 +104,12 @@ type FirewallVpcFirewallControlPolicy struct {
 	// Policy specifies the application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-	ApplicationName pulumi.StringOutput `pulumi:"applicationName"`
+	ApplicationName pulumi.StringPtrOutput `pulumi:"applicationName"`
+	// The list of application types that the access control policy supports.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+	ApplicationNameLists pulumi.StringArrayOutput `pulumi:"applicationNameLists"`
+	// (Available since v1.267.0) The time when the policy was created.
+	CreateTime pulumi.IntOutput `pulumi:"createTime"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
@@ -122,6 +131,10 @@ type FirewallVpcFirewallControlPolicy struct {
 	DestinationGroupType pulumi.StringOutput `pulumi:"destinationGroupType"`
 	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
 	DestinationType pulumi.StringOutput `pulumi:"destinationType"`
+	// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+	DomainResolveType pulumi.StringOutput `pulumi:"domainResolveType"`
+	// The end time of the policy validity period.
+	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Control strategy of hits per second.
 	HitTimes pulumi.IntOutput `pulumi:"hitTimes"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -133,7 +146,17 @@ type FirewallVpcFirewallControlPolicy struct {
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringOutput `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-	Release pulumi.BoolOutput `pulumi:"release"`
+	Release pulumi.StringOutput `pulumi:"release"`
+	// The days of the week or month on which the policy is recurrently active. Valid values:
+	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	RepeatDays pulumi.IntArrayOutput `pulumi:"repeatDays"`
+	// The recurring end time of the policy validity period.
+	RepeatEndTime pulumi.StringPtrOutput `pulumi:"repeatEndTime"`
+	// The recurring start time of the policy validity period.
+	RepeatStartTime pulumi.StringPtrOutput `pulumi:"repeatStartTime"`
+	// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+	RepeatType pulumi.StringOutput `pulumi:"repeatType"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source pulumi.StringOutput `pulumi:"source"`
 	// SOURCE address of the address list.
@@ -142,6 +165,8 @@ type FirewallVpcFirewallControlPolicy struct {
 	SourceGroupType pulumi.StringOutput `pulumi:"sourceGroupType"`
 	// The type of the source address in the access control policy. Valid values: `net`, `group`.
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
+	// The start time of the policy validity period.
+	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// The ID of the VPC firewall instance. Valid values:
 	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
 	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -157,9 +182,6 @@ func NewFirewallVpcFirewallControlPolicy(ctx *pulumi.Context,
 
 	if args.AclAction == nil {
 		return nil, errors.New("invalid value for required argument 'AclAction'")
-	}
-	if args.ApplicationName == nil {
-		return nil, errors.New("invalid value for required argument 'ApplicationName'")
 	}
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
@@ -216,6 +238,11 @@ type firewallVpcFirewallControlPolicyState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName *string `pulumi:"applicationName"`
+	// The list of application types that the access control policy supports.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+	ApplicationNameLists []string `pulumi:"applicationNameLists"`
+	// (Available since v1.267.0) The time when the policy was created.
+	CreateTime *int `pulumi:"createTime"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description *string `pulumi:"description"`
 	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
@@ -237,6 +264,10 @@ type firewallVpcFirewallControlPolicyState struct {
 	DestinationGroupType *string `pulumi:"destinationGroupType"`
 	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
 	DestinationType *string `pulumi:"destinationType"`
+	// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+	DomainResolveType *string `pulumi:"domainResolveType"`
+	// The end time of the policy validity period.
+	EndTime *int `pulumi:"endTime"`
 	// Control strategy of hits per second.
 	HitTimes *int `pulumi:"hitTimes"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -248,7 +279,17 @@ type firewallVpcFirewallControlPolicyState struct {
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto *string `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-	Release *bool `pulumi:"release"`
+	Release *string `pulumi:"release"`
+	// The days of the week or month on which the policy is recurrently active. Valid values:
+	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	RepeatDays []int `pulumi:"repeatDays"`
+	// The recurring end time of the policy validity period.
+	RepeatEndTime *string `pulumi:"repeatEndTime"`
+	// The recurring start time of the policy validity period.
+	RepeatStartTime *string `pulumi:"repeatStartTime"`
+	// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+	RepeatType *string `pulumi:"repeatType"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source *string `pulumi:"source"`
 	// SOURCE address of the address list.
@@ -257,6 +298,8 @@ type firewallVpcFirewallControlPolicyState struct {
 	SourceGroupType *string `pulumi:"sourceGroupType"`
 	// The type of the source address in the access control policy. Valid values: `net`, `group`.
 	SourceType *string `pulumi:"sourceType"`
+	// The start time of the policy validity period.
+	StartTime *int `pulumi:"startTime"`
 	// The ID of the VPC firewall instance. Valid values:
 	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
 	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -272,6 +315,11 @@ type FirewallVpcFirewallControlPolicyState struct {
 	ApplicationId pulumi.StringPtrInput
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
 	ApplicationName pulumi.StringPtrInput
+	// The list of application types that the access control policy supports.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+	ApplicationNameLists pulumi.StringArrayInput
+	// (Available since v1.267.0) The time when the policy was created.
+	CreateTime pulumi.IntPtrInput
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringPtrInput
 	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
@@ -293,6 +341,10 @@ type FirewallVpcFirewallControlPolicyState struct {
 	DestinationGroupType pulumi.StringPtrInput
 	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
 	DestinationType pulumi.StringPtrInput
+	// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+	DomainResolveType pulumi.StringPtrInput
+	// The end time of the policy validity period.
+	EndTime pulumi.IntPtrInput
 	// Control strategy of hits per second.
 	HitTimes pulumi.IntPtrInput
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
@@ -304,7 +356,17 @@ type FirewallVpcFirewallControlPolicyState struct {
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringPtrInput
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-	Release pulumi.BoolPtrInput
+	Release pulumi.StringPtrInput
+	// The days of the week or month on which the policy is recurrently active. Valid values:
+	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	RepeatDays pulumi.IntArrayInput
+	// The recurring end time of the policy validity period.
+	RepeatEndTime pulumi.StringPtrInput
+	// The recurring start time of the policy validity period.
+	RepeatStartTime pulumi.StringPtrInput
+	// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+	RepeatType pulumi.StringPtrInput
 	// Access control over VPC firewalls strategy in the source address.
 	Source pulumi.StringPtrInput
 	// SOURCE address of the address list.
@@ -313,6 +375,8 @@ type FirewallVpcFirewallControlPolicyState struct {
 	SourceGroupType pulumi.StringPtrInput
 	// The type of the source address in the access control policy. Valid values: `net`, `group`.
 	SourceType pulumi.StringPtrInput
+	// The start time of the policy validity period.
+	StartTime pulumi.IntPtrInput
 	// The ID of the VPC firewall instance. Valid values:
 	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
 	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -327,7 +391,10 @@ type firewallVpcFirewallControlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction string `pulumi:"aclAction"`
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-	ApplicationName string `pulumi:"applicationName"`
+	ApplicationName *string `pulumi:"applicationName"`
+	// The list of application types that the access control policy supports.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+	ApplicationNameLists []string `pulumi:"applicationNameLists"`
 	// Access control over VPC firewalls description of the strategy information.
 	Description string `pulumi:"description"`
 	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
@@ -343,6 +410,10 @@ type firewallVpcFirewallControlPolicyArgs struct {
 	Destination string `pulumi:"destination"`
 	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
 	DestinationType string `pulumi:"destinationType"`
+	// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+	DomainResolveType *string `pulumi:"domainResolveType"`
+	// The end time of the policy validity period.
+	EndTime *int `pulumi:"endTime"`
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang *string `pulumi:"lang"`
 	// The UID of the member account of the current Alibaba cloud account.
@@ -352,11 +423,23 @@ type firewallVpcFirewallControlPolicyArgs struct {
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto string `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-	Release *bool `pulumi:"release"`
+	Release *string `pulumi:"release"`
+	// The days of the week or month on which the policy is recurrently active. Valid values:
+	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	RepeatDays []int `pulumi:"repeatDays"`
+	// The recurring end time of the policy validity period.
+	RepeatEndTime *string `pulumi:"repeatEndTime"`
+	// The recurring start time of the policy validity period.
+	RepeatStartTime *string `pulumi:"repeatStartTime"`
+	// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+	RepeatType *string `pulumi:"repeatType"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source string `pulumi:"source"`
 	// The type of the source address in the access control policy. Valid values: `net`, `group`.
 	SourceType string `pulumi:"sourceType"`
+	// The start time of the policy validity period.
+	StartTime *int `pulumi:"startTime"`
 	// The ID of the VPC firewall instance. Valid values:
 	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
 	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -368,7 +451,10 @@ type FirewallVpcFirewallControlPolicyArgs struct {
 	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringInput
 	// The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-	ApplicationName pulumi.StringInput
+	ApplicationName pulumi.StringPtrInput
+	// The list of application types that the access control policy supports.
+	// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+	ApplicationNameLists pulumi.StringArrayInput
 	// Access control over VPC firewalls description of the strategy information.
 	Description pulumi.StringInput
 	// The destination port in the access control policy. **Note:** If `destPortType` is set to `port`, you must specify this parameter.
@@ -384,6 +470,10 @@ type FirewallVpcFirewallControlPolicyArgs struct {
 	Destination pulumi.StringInput
 	// The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
 	DestinationType pulumi.StringInput
+	// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+	DomainResolveType pulumi.StringPtrInput
+	// The end time of the policy validity period.
+	EndTime pulumi.IntPtrInput
 	// The language of the content within the request and response. Valid values: `zh`, `en`.
 	Lang pulumi.StringPtrInput
 	// The UID of the member account of the current Alibaba cloud account.
@@ -393,11 +483,23 @@ type FirewallVpcFirewallControlPolicyArgs struct {
 	// The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringInput
 	// The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-	Release pulumi.BoolPtrInput
+	Release pulumi.StringPtrInput
+	// The days of the week or month on which the policy is recurrently active. Valid values:
+	// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+	// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+	RepeatDays pulumi.IntArrayInput
+	// The recurring end time of the policy validity period.
+	RepeatEndTime pulumi.StringPtrInput
+	// The recurring start time of the policy validity period.
+	RepeatStartTime pulumi.StringPtrInput
+	// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+	RepeatType pulumi.StringPtrInput
 	// Access control over VPC firewalls strategy in the source address.
 	Source pulumi.StringInput
 	// The type of the source address in the access control policy. Valid values: `net`, `group`.
 	SourceType pulumi.StringInput
+	// The start time of the policy validity period.
+	StartTime pulumi.IntPtrInput
 	// The ID of the VPC firewall instance. Valid values:
 	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
 	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -507,8 +609,19 @@ func (o FirewallVpcFirewallControlPolicyOutput) ApplicationId() pulumi.StringOut
 }
 
 // The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-func (o FirewallVpcFirewallControlPolicyOutput) ApplicationName() pulumi.StringOutput {
-	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.ApplicationName }).(pulumi.StringOutput)
+func (o FirewallVpcFirewallControlPolicyOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringPtrOutput { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The list of application types that the access control policy supports.
+// > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
+func (o FirewallVpcFirewallControlPolicyOutput) ApplicationNameLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringArrayOutput { return v.ApplicationNameLists }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.267.0) The time when the policy was created.
+func (o FirewallVpcFirewallControlPolicyOutput) CreateTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
 // Access control over VPC firewalls description of the strategy information.
@@ -559,6 +672,16 @@ func (o FirewallVpcFirewallControlPolicyOutput) DestinationType() pulumi.StringO
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.DestinationType }).(pulumi.StringOutput)
 }
 
+// The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+func (o FirewallVpcFirewallControlPolicyOutput) DomainResolveType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.DomainResolveType }).(pulumi.StringOutput)
+}
+
+// The end time of the policy validity period.
+func (o FirewallVpcFirewallControlPolicyOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
 // Control strategy of hits per second.
 func (o FirewallVpcFirewallControlPolicyOutput) HitTimes() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.IntOutput { return v.HitTimes }).(pulumi.IntOutput)
@@ -585,8 +708,30 @@ func (o FirewallVpcFirewallControlPolicyOutput) Proto() pulumi.StringOutput {
 }
 
 // The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
-func (o FirewallVpcFirewallControlPolicyOutput) Release() pulumi.BoolOutput {
-	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.BoolOutput { return v.Release }).(pulumi.BoolOutput)
+func (o FirewallVpcFirewallControlPolicyOutput) Release() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.Release }).(pulumi.StringOutput)
+}
+
+// The days of the week or month on which the policy is recurrently active. Valid values:
+// - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
+// - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
+func (o FirewallVpcFirewallControlPolicyOutput) RepeatDays() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.IntArrayOutput { return v.RepeatDays }).(pulumi.IntArrayOutput)
+}
+
+// The recurring end time of the policy validity period.
+func (o FirewallVpcFirewallControlPolicyOutput) RepeatEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringPtrOutput { return v.RepeatEndTime }).(pulumi.StringPtrOutput)
+}
+
+// The recurring start time of the policy validity period.
+func (o FirewallVpcFirewallControlPolicyOutput) RepeatStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringPtrOutput { return v.RepeatStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+func (o FirewallVpcFirewallControlPolicyOutput) RepeatType() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.RepeatType }).(pulumi.StringOutput)
 }
 
 // Access control over VPC firewalls strategy in the source address.
@@ -607,6 +752,11 @@ func (o FirewallVpcFirewallControlPolicyOutput) SourceGroupType() pulumi.StringO
 // The type of the source address in the access control policy. Valid values: `net`, `group`.
 func (o FirewallVpcFirewallControlPolicyOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// The start time of the policy validity period.
+func (o FirewallVpcFirewallControlPolicyOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallVpcFirewallControlPolicy) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the VPC firewall instance. Valid values:

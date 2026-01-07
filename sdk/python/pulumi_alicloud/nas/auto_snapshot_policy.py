@@ -305,6 +305,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             file_system_type="extreme")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         NAS Auto Snapshot Policy can be imported using the id, e.g.
@@ -370,6 +372,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             auto_snapshot_policy_name=name,
             file_system_type="extreme")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

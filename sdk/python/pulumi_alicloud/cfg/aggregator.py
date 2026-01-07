@@ -284,6 +284,8 @@ class Aggregator(pulumi.CustomResource):
             aggregator_type="CUSTOM")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Config (Config) Aggregator can be imported using the id, e.g.
@@ -341,6 +343,8 @@ class Aggregator(pulumi.CustomResource):
             description=name,
             aggregator_type="CUSTOM")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

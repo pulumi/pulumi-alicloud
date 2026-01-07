@@ -96,6 +96,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ots/instanceAttachment:InstanceAttachment")
 public class InstanceAttachment extends com.pulumi.resources.CustomResource {

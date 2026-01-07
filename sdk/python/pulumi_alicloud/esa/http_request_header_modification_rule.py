@@ -351,6 +351,8 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             site_version=0)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ESA Http Request Header Modification Rule can be imported using the id, e.g.
@@ -427,6 +429,8 @@ class HttpRequestHeaderModificationRule(pulumi.CustomResource):
             rule="(http.request.uri eq \\"/content?page=1234\\")",
             site_version=0)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -20,7 +20,6 @@ __all__ = ['FirewallVpcFirewallControlPolicyArgs', 'FirewallVpcFirewallControlPo
 class FirewallVpcFirewallControlPolicyArgs:
     def __init__(__self__, *,
                  acl_action: pulumi.Input[_builtins.str],
-                 application_name: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  destination: pulumi.Input[_builtins.str],
                  destination_type: pulumi.Input[_builtins.str],
@@ -29,16 +28,24 @@ class FirewallVpcFirewallControlPolicyArgs:
                  source: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
                  vpc_firewall_id: pulumi.Input[_builtins.str],
+                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  dest_port: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.bool]] = None):
+                 release: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewallControlPolicy resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
-        :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
         :param pulumi.Input[_builtins.str] destination: The destination address in the access control policy. Valid values:
                - If `destination_type` is set to `net`, the value of `destination` must be a CIDR block.
@@ -52,15 +59,26 @@ class FirewallVpcFirewallControlPolicyArgs:
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
+        :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
         :param pulumi.Input[_builtins.str] dest_port_type: The type of the destination port in the access control policy. Valid values: `port`, `group`.
+        :param pulumi.Input[_builtins.str] domain_resolve_type: The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account of the current Alibaba cloud account.
-        :param pulumi.Input[_builtins.bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of the week or month on which the policy is recurrently active. Valid values:
+               - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+               - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period.
         """
         pulumi.set(__self__, "acl_action", acl_action)
-        pulumi.set(__self__, "application_name", application_name)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "destination_type", destination_type)
@@ -69,18 +87,36 @@ class FirewallVpcFirewallControlPolicyArgs:
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_type", source_type)
         pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if application_name_lists is not None:
+            pulumi.set(__self__, "application_name_lists", application_name_lists)
         if dest_port is not None:
             pulumi.set(__self__, "dest_port", dest_port)
         if dest_port_group is not None:
             pulumi.set(__self__, "dest_port_group", dest_port_group)
         if dest_port_type is not None:
             pulumi.set(__self__, "dest_port_type", dest_port_type)
+        if domain_resolve_type is not None:
+            pulumi.set(__self__, "domain_resolve_type", domain_resolve_type)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
         if lang is not None:
             pulumi.set(__self__, "lang", lang)
         if member_uid is not None:
             pulumi.set(__self__, "member_uid", member_uid)
         if release is not None:
             pulumi.set(__self__, "release", release)
+        if repeat_days is not None:
+            pulumi.set(__self__, "repeat_days", repeat_days)
+        if repeat_end_time is not None:
+            pulumi.set(__self__, "repeat_end_time", repeat_end_time)
+        if repeat_start_time is not None:
+            pulumi.set(__self__, "repeat_start_time", repeat_start_time)
+        if repeat_type is not None:
+            pulumi.set(__self__, "repeat_type", repeat_type)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
 
     @_builtins.property
     @pulumi.getter(name="aclAction")
@@ -93,18 +129,6 @@ class FirewallVpcFirewallControlPolicyArgs:
     @acl_action.setter
     def acl_action(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "acl_action", value)
-
-    @_builtins.property
-    @pulumi.getter(name="applicationName")
-    def application_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
-        """
-        return pulumi.get(self, "application_name")
-
-    @application_name.setter
-    def application_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -208,6 +232,31 @@ class FirewallVpcFirewallControlPolicyArgs:
         pulumi.set(self, "vpc_firewall_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
+        """
+        return pulumi.get(self, "application_name")
+
+    @application_name.setter
+    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "application_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationNameLists")
+    def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of application types that the access control policy supports. 
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        """
+        return pulumi.get(self, "application_name_lists")
+
+    @application_name_lists.setter
+    def application_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "application_name_lists", value)
+
+    @_builtins.property
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -244,6 +293,30 @@ class FirewallVpcFirewallControlPolicyArgs:
         pulumi.set(self, "dest_port_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="domainResolveType")
+    def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        """
+        return pulumi.get(self, "domain_resolve_type")
+
+    @domain_resolve_type.setter
+    def domain_resolve_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_resolve_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The end time of the policy validity period.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -269,15 +342,77 @@ class FirewallVpcFirewallControlPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "release", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatDays")
+    def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The days of the week or month on which the policy is recurrently active. Valid values:
+        - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        """
+        return pulumi.get(self, "repeat_days")
+
+    @repeat_days.setter
+    def repeat_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "repeat_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatEndTime")
+    def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurring end time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_end_time")
+
+    @repeat_end_time.setter
+    def repeat_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatStartTime")
+    def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurring start time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_start_time")
+
+    @repeat_start_time.setter
+    def repeat_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatType")
+    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        """
+        return pulumi.get(self, "repeat_type")
+
+    @repeat_type.setter
+    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The start time of the policy validity period.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
@@ -287,6 +422,8 @@ class _FirewallVpcFirewallControlPolicyState:
                  acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  application_id: Optional[pulumi.Input[_builtins.str]] = None,
                  application_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
@@ -296,16 +433,23 @@ class _FirewallVpcFirewallControlPolicyState:
                  destination_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  destination_group_type: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  hit_times: Optional[pulumi.Input[_builtins.int]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None,
                  order: Optional[pulumi.Input[_builtins.int]] = None,
                  proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.bool]] = None,
+                 release: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  source_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  source_group_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallVpcFirewallControlPolicy resources.
@@ -313,6 +457,9 @@ class _FirewallVpcFirewallControlPolicyState:
         :param pulumi.Input[_builtins.str] acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param pulumi.Input[_builtins.str] application_id: Policy specifies the application ID.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.267.0) The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
@@ -325,16 +472,25 @@ class _FirewallVpcFirewallControlPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_group_cidrs: Destination address book defined in the address list.
         :param pulumi.Input[_builtins.str] destination_group_type: The destination address book type in the access control policy.
         :param pulumi.Input[_builtins.str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        :param pulumi.Input[_builtins.str] domain_resolve_type: The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period.
         :param pulumi.Input[_builtins.int] hit_times: Control strategy of hits per second.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[_builtins.str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[_builtins.bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of the week or month on which the policy is recurrently active. Valid values:
+               - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+               - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
         :param pulumi.Input[_builtins.str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_group_cidrs: SOURCE address of the address list.
         :param pulumi.Input[_builtins.str] source_group_type: The source address type in the access control policy.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
+        :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -347,6 +503,10 @@ class _FirewallVpcFirewallControlPolicyState:
             pulumi.set(__self__, "application_id", application_id)
         if application_name is not None:
             pulumi.set(__self__, "application_name", application_name)
+        if application_name_lists is not None:
+            pulumi.set(__self__, "application_name_lists", application_name_lists)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dest_port is not None:
@@ -365,6 +525,10 @@ class _FirewallVpcFirewallControlPolicyState:
             pulumi.set(__self__, "destination_group_type", destination_group_type)
         if destination_type is not None:
             pulumi.set(__self__, "destination_type", destination_type)
+        if domain_resolve_type is not None:
+            pulumi.set(__self__, "domain_resolve_type", domain_resolve_type)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
         if hit_times is not None:
             pulumi.set(__self__, "hit_times", hit_times)
         if lang is not None:
@@ -377,6 +541,14 @@ class _FirewallVpcFirewallControlPolicyState:
             pulumi.set(__self__, "proto", proto)
         if release is not None:
             pulumi.set(__self__, "release", release)
+        if repeat_days is not None:
+            pulumi.set(__self__, "repeat_days", repeat_days)
+        if repeat_end_time is not None:
+            pulumi.set(__self__, "repeat_end_time", repeat_end_time)
+        if repeat_start_time is not None:
+            pulumi.set(__self__, "repeat_start_time", repeat_start_time)
+        if repeat_type is not None:
+            pulumi.set(__self__, "repeat_type", repeat_type)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if source_group_cidrs is not None:
@@ -385,6 +557,8 @@ class _FirewallVpcFirewallControlPolicyState:
             pulumi.set(__self__, "source_group_type", source_group_type)
         if source_type is not None:
             pulumi.set(__self__, "source_type", source_type)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if vpc_firewall_id is not None:
             pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
 
@@ -435,6 +609,31 @@ class _FirewallVpcFirewallControlPolicyState:
     @application_name.setter
     def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "application_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationNameLists")
+    def application_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of application types that the access control policy supports. 
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        """
+        return pulumi.get(self, "application_name_lists")
+
+    @application_name_lists.setter
+    def application_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "application_name_lists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Available since v1.267.0) The time when the policy was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -548,6 +747,30 @@ class _FirewallVpcFirewallControlPolicyState:
         pulumi.set(self, "destination_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="domainResolveType")
+    def domain_resolve_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        """
+        return pulumi.get(self, "domain_resolve_type")
+
+    @domain_resolve_type.setter
+    def domain_resolve_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_resolve_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The end time of the policy validity period.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="hitTimes")
     def hit_times(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -609,15 +832,65 @@ class _FirewallVpcFirewallControlPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "release", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatDays")
+    def repeat_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The days of the week or month on which the policy is recurrently active. Valid values:
+        - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        """
+        return pulumi.get(self, "repeat_days")
+
+    @repeat_days.setter
+    def repeat_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "repeat_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatEndTime")
+    def repeat_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurring end time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_end_time")
+
+    @repeat_end_time.setter
+    def repeat_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatStartTime")
+    def repeat_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurring start time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_start_time")
+
+    @repeat_start_time.setter
+    def repeat_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repeatType")
+    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        """
+        return pulumi.get(self, "repeat_type")
+
+    @repeat_type.setter
+    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "repeat_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -668,6 +941,18 @@ class _FirewallVpcFirewallControlPolicyState:
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The start time of the policy validity period.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -690,23 +975,33 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_action: Optional[pulumi.Input[_builtins.str]] = None,
                  application_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
                  destination: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None,
                  order: Optional[pulumi.Input[_builtins.int]] = None,
                  proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.bool]] = None,
+                 release: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Firewall Control Policy resource.
+
+        VPC Control Policy.
 
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
@@ -745,10 +1040,12 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             source="127.0.0.1/32",
             dest_port_type="port",
             proto="TCP",
-            release=True,
+            release="true",
             member_uid=default.id,
             vpc_firewall_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -762,6 +1059,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
@@ -771,13 +1070,22 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
                - If `destination_type` is set to `group`, the value of `destination` must be an address book.
                - If `destination_type` is set to `domain`, the value of `destination` must be a domain name.
         :param pulumi.Input[_builtins.str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        :param pulumi.Input[_builtins.str] domain_resolve_type: The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[_builtins.str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[_builtins.bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of the week or month on which the policy is recurrently active. Valid values:
+               - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+               - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
         :param pulumi.Input[_builtins.str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
+        :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -790,6 +1098,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloud Firewall Vpc Firewall Control Policy resource.
+
+        VPC Control Policy.
 
         For information about Cloud Firewall Vpc Firewall Control Policy and how to use it, see [What is Vpc Firewall Control Policy](https://www.alibabacloud.com/help/en/cloud-firewall/latest/createvpcfirewallcontrolpolicy).
 
@@ -828,10 +1138,12 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             source="127.0.0.1/32",
             dest_port_type="port",
             proto="TCP",
-            release=True,
+            release="true",
             member_uid=default.id,
             vpc_firewall_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 
@@ -858,19 +1170,27 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl_action: Optional[pulumi.Input[_builtins.str]] = None,
                  application_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
                  dest_port_type: Optional[pulumi.Input[_builtins.str]] = None,
                  destination: Optional[pulumi.Input[_builtins.str]] = None,
                  destination_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
                  lang: Optional[pulumi.Input[_builtins.str]] = None,
                  member_uid: Optional[pulumi.Input[_builtins.str]] = None,
                  order: Optional[pulumi.Input[_builtins.int]] = None,
                  proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 release: Optional[pulumi.Input[_builtins.bool]] = None,
+                 release: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
                  vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -884,9 +1204,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             if acl_action is None and not opts.urn:
                 raise TypeError("Missing required property 'acl_action'")
             __props__.__dict__["acl_action"] = acl_action
-            if application_name is None and not opts.urn:
-                raise TypeError("Missing required property 'application_name'")
             __props__.__dict__["application_name"] = application_name
+            __props__.__dict__["application_name_lists"] = application_name_lists
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
@@ -899,6 +1218,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             if destination_type is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_type'")
             __props__.__dict__["destination_type"] = destination_type
+            __props__.__dict__["domain_resolve_type"] = domain_resolve_type
+            __props__.__dict__["end_time"] = end_time
             __props__.__dict__["lang"] = lang
             __props__.__dict__["member_uid"] = member_uid
             if order is None and not opts.urn:
@@ -908,17 +1229,23 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'proto'")
             __props__.__dict__["proto"] = proto
             __props__.__dict__["release"] = release
+            __props__.__dict__["repeat_days"] = repeat_days
+            __props__.__dict__["repeat_end_time"] = repeat_end_time
+            __props__.__dict__["repeat_start_time"] = repeat_start_time
+            __props__.__dict__["repeat_type"] = repeat_type
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             if source_type is None and not opts.urn:
                 raise TypeError("Missing required property 'source_type'")
             __props__.__dict__["source_type"] = source_type
+            __props__.__dict__["start_time"] = start_time
             if vpc_firewall_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_firewall_id'")
             __props__.__dict__["vpc_firewall_id"] = vpc_firewall_id
             __props__.__dict__["acl_uuid"] = None
             __props__.__dict__["application_id"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["dest_port_group_ports"] = None
             __props__.__dict__["destination_group_cidrs"] = None
             __props__.__dict__["destination_group_type"] = None
@@ -939,6 +1266,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
             application_id: Optional[pulumi.Input[_builtins.str]] = None,
             application_name: Optional[pulumi.Input[_builtins.str]] = None,
+            application_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: Optional[pulumi.Input[_builtins.int]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             dest_port: Optional[pulumi.Input[_builtins.str]] = None,
             dest_port_group: Optional[pulumi.Input[_builtins.str]] = None,
@@ -948,16 +1277,23 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
             destination_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             destination_group_type: Optional[pulumi.Input[_builtins.str]] = None,
             destination_type: Optional[pulumi.Input[_builtins.str]] = None,
+            domain_resolve_type: Optional[pulumi.Input[_builtins.str]] = None,
+            end_time: Optional[pulumi.Input[_builtins.int]] = None,
             hit_times: Optional[pulumi.Input[_builtins.int]] = None,
             lang: Optional[pulumi.Input[_builtins.str]] = None,
             member_uid: Optional[pulumi.Input[_builtins.str]] = None,
             order: Optional[pulumi.Input[_builtins.int]] = None,
             proto: Optional[pulumi.Input[_builtins.str]] = None,
-            release: Optional[pulumi.Input[_builtins.bool]] = None,
+            release: Optional[pulumi.Input[_builtins.str]] = None,
+            repeat_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            repeat_end_time: Optional[pulumi.Input[_builtins.str]] = None,
+            repeat_start_time: Optional[pulumi.Input[_builtins.str]] = None,
+            repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
             source: Optional[pulumi.Input[_builtins.str]] = None,
             source_group_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             source_group_type: Optional[pulumi.Input[_builtins.str]] = None,
             source_type: Optional[pulumi.Input[_builtins.str]] = None,
+            start_time: Optional[pulumi.Input[_builtins.int]] = None,
             vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallVpcFirewallControlPolicy':
         """
         Get an existing FirewallVpcFirewallControlPolicy resource's state with the given name, id, and optional extra
@@ -970,6 +1306,9 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] acl_uuid: Access control over VPC firewalls strategy unique identifier.
         :param pulumi.Input[_builtins.str] application_id: Policy specifies the application ID.
         :param pulumi.Input[_builtins.str] application_name: The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] application_name_lists: The list of application types that the access control policy supports. 
+               > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        :param pulumi.Input[_builtins.int] create_time: (Available since v1.267.0) The time when the policy was created.
         :param pulumi.Input[_builtins.str] description: Access control over VPC firewalls description of the strategy information.
         :param pulumi.Input[_builtins.str] dest_port: The destination port in the access control policy. **Note:** If `dest_port_type` is set to `port`, you must specify this parameter.
         :param pulumi.Input[_builtins.str] dest_port_group: Access control policy in the access traffic of the destination port address book name. **Note:** If `dest_port_type` is set to `group`, you must specify this parameter.
@@ -982,16 +1321,25 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_group_cidrs: Destination address book defined in the address list.
         :param pulumi.Input[_builtins.str] destination_group_type: The destination address book type in the access control policy.
         :param pulumi.Input[_builtins.str] destination_type: The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
+        :param pulumi.Input[_builtins.str] domain_resolve_type: The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        :param pulumi.Input[_builtins.int] end_time: The end time of the policy validity period.
         :param pulumi.Input[_builtins.int] hit_times: Control strategy of hits per second.
         :param pulumi.Input[_builtins.str] lang: The language of the content within the request and response. Valid values: `zh`, `en`.
         :param pulumi.Input[_builtins.str] member_uid: The UID of the member account of the current Alibaba cloud account.
         :param pulumi.Input[_builtins.int] order: The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
         :param pulumi.Input[_builtins.str] proto: The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
-        :param pulumi.Input[_builtins.bool] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[_builtins.str] release: The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] repeat_days: The days of the week or month on which the policy is recurrently active. Valid values:
+               - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+               - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        :param pulumi.Input[_builtins.str] repeat_end_time: The recurring end time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_start_time: The recurring start time of the policy validity period.
+        :param pulumi.Input[_builtins.str] repeat_type: The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
         :param pulumi.Input[_builtins.str] source: Access control over VPC firewalls strategy in the source address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_group_cidrs: SOURCE address of the address list.
         :param pulumi.Input[_builtins.str] source_group_type: The source address type in the access control policy.
         :param pulumi.Input[_builtins.str] source_type: The type of the source address in the access control policy. Valid values: `net`, `group`.
+        :param pulumi.Input[_builtins.int] start_time: The start time of the policy validity period.
         :param pulumi.Input[_builtins.str] vpc_firewall_id: The ID of the VPC firewall instance. Valid values:
                - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
                - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
@@ -1004,6 +1352,8 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         __props__.__dict__["acl_uuid"] = acl_uuid
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["application_name"] = application_name
+        __props__.__dict__["application_name_lists"] = application_name_lists
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["dest_port"] = dest_port
         __props__.__dict__["dest_port_group"] = dest_port_group
@@ -1013,16 +1363,23 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         __props__.__dict__["destination_group_cidrs"] = destination_group_cidrs
         __props__.__dict__["destination_group_type"] = destination_group_type
         __props__.__dict__["destination_type"] = destination_type
+        __props__.__dict__["domain_resolve_type"] = domain_resolve_type
+        __props__.__dict__["end_time"] = end_time
         __props__.__dict__["hit_times"] = hit_times
         __props__.__dict__["lang"] = lang
         __props__.__dict__["member_uid"] = member_uid
         __props__.__dict__["order"] = order
         __props__.__dict__["proto"] = proto
         __props__.__dict__["release"] = release
+        __props__.__dict__["repeat_days"] = repeat_days
+        __props__.__dict__["repeat_end_time"] = repeat_end_time
+        __props__.__dict__["repeat_start_time"] = repeat_start_time
+        __props__.__dict__["repeat_type"] = repeat_type
         __props__.__dict__["source"] = source
         __props__.__dict__["source_group_cidrs"] = source_group_cidrs
         __props__.__dict__["source_group_type"] = source_group_type
         __props__.__dict__["source_type"] = source_type
+        __props__.__dict__["start_time"] = start_time
         __props__.__dict__["vpc_firewall_id"] = vpc_firewall_id
         return FirewallVpcFirewallControlPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -1052,11 +1409,28 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> pulumi.Output[_builtins.str]:
+    def application_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
         """
         return pulumi.get(self, "application_name")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationNameLists")
+    def application_name_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        The list of application types that the access control policy supports. 
+        > **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        """
+        return pulumi.get(self, "application_name_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.int]:
+        """
+        (Available since v1.267.0) The time when the policy was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -1134,6 +1508,22 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         return pulumi.get(self, "destination_type")
 
     @_builtins.property
+    @pulumi.getter(name="domainResolveType")
+    def domain_resolve_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
+        """
+        return pulumi.get(self, "domain_resolve_type")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The end time of the policy validity period.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
     @pulumi.getter(name="hitTimes")
     def hit_times(self) -> pulumi.Output[_builtins.int]:
         """
@@ -1175,11 +1565,45 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> pulumi.Output[_builtins.bool]:
+    def release(self) -> pulumi.Output[_builtins.str]:
         """
         The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
         """
         return pulumi.get(self, "release")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatDays")
+    def repeat_days(self) -> pulumi.Output[Optional[Sequence[_builtins.int]]]:
+        """
+        The days of the week or month on which the policy is recurrently active. Valid values:
+        - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        """
+        return pulumi.get(self, "repeat_days")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatEndTime")
+    def repeat_end_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The recurring end time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatStartTime")
+    def repeat_start_time(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The recurring start time of the policy validity period.
+        """
+        return pulumi.get(self, "repeat_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="repeatType")
+    def repeat_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
+        """
+        return pulumi.get(self, "repeat_type")
 
     @_builtins.property
     @pulumi.getter
@@ -1212,6 +1636,14 @@ class FirewallVpcFirewallControlPolicy(pulumi.CustomResource):
         The type of the source address in the access control policy. Valid values: `net`, `group`.
         """
         return pulumi.get(self, "source_type")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The start time of the policy validity period.
+        """
+        return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallId")

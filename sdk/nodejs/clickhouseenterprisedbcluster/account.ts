@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Click House Enterprise Db Cluster Account can be imported using the id, e.g.

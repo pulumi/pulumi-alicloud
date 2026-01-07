@@ -24,6 +24,8 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.cloudmonitor.ServiceEnterprisePublic("default", {});
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Cloud Monitor Service Enterprise Public can be imported using the id, e.g.

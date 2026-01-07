@@ -94,6 +94,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsInstanceSet:EcsInstanceSet")]
     public partial class EcsInstanceSet : global::Pulumi.CustomResource

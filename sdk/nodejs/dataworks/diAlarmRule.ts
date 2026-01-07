@@ -126,6 +126,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Data Works Di Alarm Rule can be imported using the id, e.g.

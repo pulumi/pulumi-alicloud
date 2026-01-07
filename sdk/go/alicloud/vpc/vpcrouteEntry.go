@@ -120,6 +120,8 @@ import (
 // }
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // VPC Route Entry can be imported using the id, e.g.

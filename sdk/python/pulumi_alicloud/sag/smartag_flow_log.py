@@ -456,6 +456,8 @@ class SmartagFlowLog(pulumi.CustomResource):
             output_type="netflow")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Smartag Flow Log can be imported using the id, e.g.
@@ -506,6 +508,8 @@ class SmartagFlowLog(pulumi.CustomResource):
             netflow_version="V9",
             output_type="netflow")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

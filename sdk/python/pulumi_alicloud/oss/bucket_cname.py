@@ -294,6 +294,8 @@ class BucketCname(pulumi.CustomResource):
             domain=defaultn_hqm5p.domain_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OSS Bucket Cname can be imported using the id, e.g.
@@ -357,6 +359,8 @@ class BucketCname(pulumi.CustomResource):
             bucket=create_bucket.bucket,
             domain=defaultn_hqm5p.domain_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

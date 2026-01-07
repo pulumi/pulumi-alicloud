@@ -370,6 +370,8 @@ class LayerVersion(pulumi.CustomResource):
             oss_object_name=default_bucket_object.key)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Function Compute Layer Version can be imported using the id, e.g.
@@ -425,6 +427,8 @@ class LayerVersion(pulumi.CustomResource):
             oss_bucket_name=default_bucket.bucket,
             oss_object_name=default_bucket_object.key)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -314,6 +314,8 @@ class EcsDiskAttachment(pulumi.CustomResource):
             instance_id=default_instance.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The disk attachment can be imported using the id, e.g.
@@ -399,6 +401,8 @@ class EcsDiskAttachment(pulumi.CustomResource):
             disk_id=default_ecs_disk.id,
             instance_id=default_instance.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

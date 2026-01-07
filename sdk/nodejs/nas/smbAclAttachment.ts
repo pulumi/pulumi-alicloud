@@ -35,6 +35,8 @@ import * as utilities from "../utilities";
  *     keytabMd5: "E3CCF7E2416DF04FA958AA4513EA29E8",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class SmbAclAttachment extends pulumi.CustomResource {
     /**

@@ -90,6 +90,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Container Registry Enterprise Edition Repository can be imported using the id, e.g.

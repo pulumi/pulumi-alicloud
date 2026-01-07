@@ -58,6 +58,8 @@ import * as utilities from "../utilities";
  *
  * This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * If you need full function, please import Cassandra cluster first.

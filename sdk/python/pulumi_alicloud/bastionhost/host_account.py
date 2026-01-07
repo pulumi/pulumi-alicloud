@@ -332,6 +332,8 @@ class HostAccount(pulumi.CustomResource):
             password="YourPassword12345")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Bastion Host Host Account can be imported using the id, e.g.
@@ -405,6 +407,8 @@ class HostAccount(pulumi.CustomResource):
             protocol_name="SSH",
             password="YourPassword12345")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -481,6 +481,8 @@ class Account(pulumi.CustomResource):
             type=type)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Click House Account can be imported using the id, e.g.
@@ -558,6 +560,8 @@ class Account(pulumi.CustomResource):
             account_password="Example1234",
             type=type)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

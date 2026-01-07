@@ -100,6 +100,11 @@ export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
 utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
 
+export { ValueAddedServiceArgs, ValueAddedServiceState } from "./valueAddedService";
+export type ValueAddedService = import("./valueAddedService").ValueAddedService;
+export const ValueAddedService: typeof import("./valueAddedService").ValueAddedService = null as any;
+utilities.lazyLoad(exports, ["ValueAddedService"], () => require("./valueAddedService"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -125,6 +130,8 @@ const _module = {
                 return new Policy(name, <any>undefined, { urn })
             case "alicloud:kms/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "alicloud:kms/valueAddedService:ValueAddedService":
+                return new ValueAddedService(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -140,3 +147,4 @@ pulumi.runtime.registerResourceModule("alicloud", "kms/keyVersion", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/networkRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/policy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "kms/secret", _module)
+pulumi.runtime.registerResourceModule("alicloud", "kms/valueAddedService", _module)

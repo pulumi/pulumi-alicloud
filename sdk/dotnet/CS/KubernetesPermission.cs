@@ -141,6 +141,8 @@ namespace Pulumi.AliCloud.CS
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:cs/kubernetesPermission:KubernetesPermission")]
     public partial class KubernetesPermission : global::Pulumi.CustomResource

@@ -49,6 +49,10 @@ __all__ = [
     'ExperimentPlanTemplateTemplatePipelineArgsDict',
     'ExperimentPlanTemplateTemplatePipelineEnvParamsArgs',
     'ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict',
+    'HyperNodeDataDiskArgs',
+    'HyperNodeDataDiskArgsDict',
+    'NodeDataDiskArgs',
+    'NodeDataDiskArgsDict',
     'NodeGroupAttachmentDataDiskArgs',
     'NodeGroupAttachmentDataDiskArgsDict',
     'NodeGroupIpAllocationPolicyArgs',
@@ -67,6 +71,20 @@ __all__ = [
     'NodeGroupIpAllocationPolicyNodePolicyBondArgsDict',
     'NodeGroupNodeArgs',
     'NodeGroupNodeArgsDict',
+    'NodeIpAllocationPolicyArgs',
+    'NodeIpAllocationPolicyArgsDict',
+    'NodeIpAllocationPolicyBondPolicyArgs',
+    'NodeIpAllocationPolicyBondPolicyArgsDict',
+    'NodeIpAllocationPolicyBondPolicyBondArgs',
+    'NodeIpAllocationPolicyBondPolicyBondArgsDict',
+    'NodeIpAllocationPolicyMachineTypePolicyArgs',
+    'NodeIpAllocationPolicyMachineTypePolicyArgsDict',
+    'NodeIpAllocationPolicyMachineTypePolicyBondArgs',
+    'NodeIpAllocationPolicyMachineTypePolicyBondArgsDict',
+    'NodeIpAllocationPolicyNodePolicyArgs',
+    'NodeIpAllocationPolicyNodePolicyArgsDict',
+    'NodeIpAllocationPolicyNodePolicyBondArgs',
+    'NodeIpAllocationPolicyNodePolicyBondArgsDict',
     'ResourceMachineTypesArgs',
     'ResourceMachineTypesArgsDict',
     'ResourceUserAccessParamArgs',
@@ -1554,6 +1572,219 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
 
 
 if not MYPY:
+    class HyperNodeDataDiskArgsDict(TypedDict):
+        bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to enable Burst (performance Burst).
+        """
+        category: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The disk type. Value range:
+        - cloud_essd:ESSD cloud disk.
+        """
+        delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the data disk is unsubscribed and deleted with the node.
+        """
+        performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+        - PL0: maximum random read/write IOPS 10000 for a single disk.
+        - PL1: maximum random read/write IOPS 50000 for a single disk.
+        """
+        provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The size of the disk. The unit is GiB.
+        """
+elif False:
+    HyperNodeDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HyperNodeDataDiskArgs:
+    def __init__(__self__, *,
+                 bursting_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 category: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_node: Optional[pulumi.Input[_builtins.bool]] = None,
+                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable Burst (performance Burst).
+        :param pulumi.Input[_builtins.str] category: The disk type. Value range:
+               - cloud_essd:ESSD cloud disk.
+        :param pulumi.Input[_builtins.bool] delete_with_node: Whether the data disk is unsubscribed and deleted with the node.
+        :param pulumi.Input[_builtins.str] performance_level: When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+               - PL0: maximum random read/write IOPS 10000 for a single disk.
+               - PL1: maximum random read/write IOPS 50000 for a single disk.
+        :param pulumi.Input[_builtins.int] provisioned_iops: ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+        :param pulumi.Input[_builtins.int] size: The size of the disk. The unit is GiB.
+        """
+        if bursting_enabled is not None:
+            pulumi.set(__self__, "bursting_enabled", bursting_enabled)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if delete_with_node is not None:
+            pulumi.set(__self__, "delete_with_node", delete_with_node)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter(name="burstingEnabled")
+    def bursting_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to enable Burst (performance Burst).
+        """
+        return pulumi.get(self, "bursting_enabled")
+
+    @bursting_enabled.setter
+    def bursting_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "bursting_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The disk type. Value range:
+        - cloud_essd:ESSD cloud disk.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteWithNode")
+    def delete_with_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the data disk is unsubscribed and deleted with the node.
+        """
+        return pulumi.get(self, "delete_with_node")
+
+    @delete_with_node.setter
+    def delete_with_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_with_node", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
+        - PL0: maximum random read/write IOPS 10000 for a single disk.
+        - PL1: maximum random read/write IOPS 50000 for a single disk.
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The size of the disk. The unit is GiB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+if not MYPY:
+    class NodeDataDiskArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Data disk type
+        """
+        performance_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Performance level
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Data disk size
+        """
+elif False:
+    NodeDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeDataDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[_builtins.str]] = None,
+                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] category: Data disk type
+        :param pulumi.Input[_builtins.str] performance_level: Performance level
+        :param pulumi.Input[_builtins.int] size: Data disk size
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Data disk type
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "category", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Performance level
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Data disk size
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+if not MYPY:
     class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
         category: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2132,6 +2363,410 @@ class NodeGroupNodeArgs:
     @vswitch_id.setter
     def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyArgsDict(TypedDict):
+        bond_policy: NotRequired[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgsDict']]
+        """
+        Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        """
+        machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+        """
+        Model Assignment Policy See `machine_type_policy` below.
+        """
+        node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgsDict']]]]
+        """
+        Node allocation policy See `node_policy` below.
+        """
+elif False:
+    NodeIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyArgs:
+    def __init__(__self__, *,
+                 bond_policy: Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']] = None,
+                 machine_type_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
+                 node_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]] = None):
+        """
+        :param pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs'] bond_policy: Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]] machine_type_policies: Model Assignment Policy See `machine_type_policy` below.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]] node_policies: Node allocation policy See `node_policy` below.
+        """
+        if bond_policy is not None:
+            pulumi.set(__self__, "bond_policy", bond_policy)
+        if machine_type_policies is not None:
+            pulumi.set(__self__, "machine_type_policies", machine_type_policies)
+        if node_policies is not None:
+            pulumi.set(__self__, "node_policies", node_policies)
+
+    @_builtins.property
+    @pulumi.getter(name="bondPolicy")
+    def bond_policy(self) -> Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']]:
+        """
+        Specify the cluster subnet ID based on the bond name See `bond_policy` below.
+        """
+        return pulumi.get(self, "bond_policy")
+
+    @bond_policy.setter
+    def bond_policy(self, value: Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']]):
+        pulumi.set(self, "bond_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineTypePolicies")
+    def machine_type_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]:
+        """
+        Model Assignment Policy See `machine_type_policy` below.
+        """
+        return pulumi.get(self, "machine_type_policies")
+
+    @machine_type_policies.setter
+    def machine_type_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]):
+        pulumi.set(self, "machine_type_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodePolicies")
+    def node_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]:
+        """
+        Node allocation policy See `node_policy` below.
+        """
+        return pulumi.get(self, "node_policies")
+
+    @node_policies.setter
+    def node_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]):
+        pulumi.set(self, "node_policies", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
+        bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default bond cluster subnet
+        """
+        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgsDict']]]]
+        """
+        Bond information See `bonds` below.
+        """
+elif False:
+    NodeIpAllocationPolicyBondPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyBondPolicyArgs:
+    def __init__(__self__, *,
+                 bond_default_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bond_default_subnet: Default bond cluster subnet
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]] bonds: Bond information See `bonds` below.
+        """
+        if bond_default_subnet is not None:
+            pulumi.set(__self__, "bond_default_subnet", bond_default_subnet)
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+
+    @_builtins.property
+    @pulumi.getter(name="bondDefaultSubnet")
+    def bond_default_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default bond cluster subnet
+        """
+        return pulumi.get(self, "bond_default_subnet")
+
+    @bond_default_subnet.setter
+    def bond_default_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bond_default_subnet", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+    @bonds.setter
+    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]):
+        pulumi.set(self, "bonds", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Bond Name
+        """
+        subnet: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP source cluster subnet
+        """
+elif False:
+    NodeIpAllocationPolicyBondPolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyBondPolicyBondArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Bond Name
+        :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
+        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+        """
+        Bond information See `bonds` below.
+        """
+        machine_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Model
+        """
+elif False:
+    NodeIpAllocationPolicyMachineTypePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyMachineTypePolicyArgs:
+    def __init__(__self__, *,
+                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
+                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]] bonds: Bond information See `bonds` below.
+        :param pulumi.Input[_builtins.str] machine_type: Model
+        """
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+    @bonds.setter
+    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
+        pulumi.set(self, "bonds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Model
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "machine_type", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Bond Name
+        """
+        subnet: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP source cluster subnet
+        """
+elif False:
+    NodeIpAllocationPolicyMachineTypePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Bond Name
+        :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
+        bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgsDict']]]]
+        """
+        Bond information See `bonds` below.
+        """
+        hostname: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Host name
+        """
+        node_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Node ID
+        """
+elif False:
+    NodeIpAllocationPolicyNodePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyNodePolicyArgs:
+    def __init__(__self__, *,
+                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]] = None,
+                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]] bonds: Bond information See `bonds` below.
+        :param pulumi.Input[_builtins.str] hostname: Host name
+        :param pulumi.Input[_builtins.str] node_id: Node ID
+        """
+        if bonds is not None:
+            pulumi.set(__self__, "bonds", bonds)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]:
+        """
+        Bond information See `bonds` below.
+        """
+        return pulumi.get(self, "bonds")
+
+    @bonds.setter
+    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]):
+        pulumi.set(self, "bonds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Host name
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Node ID
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_id", value)
+
+
+if not MYPY:
+    class NodeIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Bond Name
+        """
+        subnet: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP source cluster subnet
+        """
+elif False:
+    NodeIpAllocationPolicyNodePolicyBondArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeIpAllocationPolicyNodePolicyBondArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Bond Name
+        :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bond Name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP source cluster subnet
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet", value)
 
 
 if not MYPY:

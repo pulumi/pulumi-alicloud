@@ -321,6 +321,112 @@ func (o AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput) Index(i pu
 	}).(AttackPathSensitiveAssetConfigAttackPathAssetListOutput)
 }
 
+type CheckConfigSelectedCheck struct {
+	// The ID of the check item.
+	CheckId *int `pulumi:"checkId"`
+	// The section ID of the check item.
+	SectionId *int `pulumi:"sectionId"`
+}
+
+// CheckConfigSelectedCheckInput is an input type that accepts CheckConfigSelectedCheckArgs and CheckConfigSelectedCheckOutput values.
+// You can construct a concrete instance of `CheckConfigSelectedCheckInput` via:
+//
+//	CheckConfigSelectedCheckArgs{...}
+type CheckConfigSelectedCheckInput interface {
+	pulumi.Input
+
+	ToCheckConfigSelectedCheckOutput() CheckConfigSelectedCheckOutput
+	ToCheckConfigSelectedCheckOutputWithContext(context.Context) CheckConfigSelectedCheckOutput
+}
+
+type CheckConfigSelectedCheckArgs struct {
+	// The ID of the check item.
+	CheckId pulumi.IntPtrInput `pulumi:"checkId"`
+	// The section ID of the check item.
+	SectionId pulumi.IntPtrInput `pulumi:"sectionId"`
+}
+
+func (CheckConfigSelectedCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CheckConfigSelectedCheck)(nil)).Elem()
+}
+
+func (i CheckConfigSelectedCheckArgs) ToCheckConfigSelectedCheckOutput() CheckConfigSelectedCheckOutput {
+	return i.ToCheckConfigSelectedCheckOutputWithContext(context.Background())
+}
+
+func (i CheckConfigSelectedCheckArgs) ToCheckConfigSelectedCheckOutputWithContext(ctx context.Context) CheckConfigSelectedCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CheckConfigSelectedCheckOutput)
+}
+
+// CheckConfigSelectedCheckArrayInput is an input type that accepts CheckConfigSelectedCheckArray and CheckConfigSelectedCheckArrayOutput values.
+// You can construct a concrete instance of `CheckConfigSelectedCheckArrayInput` via:
+//
+//	CheckConfigSelectedCheckArray{ CheckConfigSelectedCheckArgs{...} }
+type CheckConfigSelectedCheckArrayInput interface {
+	pulumi.Input
+
+	ToCheckConfigSelectedCheckArrayOutput() CheckConfigSelectedCheckArrayOutput
+	ToCheckConfigSelectedCheckArrayOutputWithContext(context.Context) CheckConfigSelectedCheckArrayOutput
+}
+
+type CheckConfigSelectedCheckArray []CheckConfigSelectedCheckInput
+
+func (CheckConfigSelectedCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CheckConfigSelectedCheck)(nil)).Elem()
+}
+
+func (i CheckConfigSelectedCheckArray) ToCheckConfigSelectedCheckArrayOutput() CheckConfigSelectedCheckArrayOutput {
+	return i.ToCheckConfigSelectedCheckArrayOutputWithContext(context.Background())
+}
+
+func (i CheckConfigSelectedCheckArray) ToCheckConfigSelectedCheckArrayOutputWithContext(ctx context.Context) CheckConfigSelectedCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CheckConfigSelectedCheckArrayOutput)
+}
+
+type CheckConfigSelectedCheckOutput struct{ *pulumi.OutputState }
+
+func (CheckConfigSelectedCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CheckConfigSelectedCheck)(nil)).Elem()
+}
+
+func (o CheckConfigSelectedCheckOutput) ToCheckConfigSelectedCheckOutput() CheckConfigSelectedCheckOutput {
+	return o
+}
+
+func (o CheckConfigSelectedCheckOutput) ToCheckConfigSelectedCheckOutputWithContext(ctx context.Context) CheckConfigSelectedCheckOutput {
+	return o
+}
+
+// The ID of the check item.
+func (o CheckConfigSelectedCheckOutput) CheckId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CheckConfigSelectedCheck) *int { return v.CheckId }).(pulumi.IntPtrOutput)
+}
+
+// The section ID of the check item.
+func (o CheckConfigSelectedCheckOutput) SectionId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CheckConfigSelectedCheck) *int { return v.SectionId }).(pulumi.IntPtrOutput)
+}
+
+type CheckConfigSelectedCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (CheckConfigSelectedCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CheckConfigSelectedCheck)(nil)).Elem()
+}
+
+func (o CheckConfigSelectedCheckArrayOutput) ToCheckConfigSelectedCheckArrayOutput() CheckConfigSelectedCheckArrayOutput {
+	return o
+}
+
+func (o CheckConfigSelectedCheckArrayOutput) ToCheckConfigSelectedCheckArrayOutputWithContext(ctx context.Context) CheckConfigSelectedCheckArrayOutput {
+	return o
+}
+
+func (o CheckConfigSelectedCheckArrayOutput) Index(i pulumi.IntInput) CheckConfigSelectedCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CheckConfigSelectedCheck {
+		return vs[0].([]CheckConfigSelectedCheck)[vs[1].(int)]
+	}).(CheckConfigSelectedCheckOutput)
+}
+
 type HoneypotPresetMeta struct {
 	// Burp counter.
 	Burp string `pulumi:"burp"`
@@ -1596,6 +1702,851 @@ func (o GetBaselineStrategiesStrategyArrayOutput) Index(i pulumi.IntInput) GetBa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBaselineStrategiesStrategy {
 		return vs[0].([]GetBaselineStrategiesStrategy)[vs[1].(int)]
 	}).(GetBaselineStrategiesStrategyOutput)
+}
+
+type GetCheckItemConfigsConfig struct {
+	// The ID of the check item
+	CheckId int `pulumi:"checkId"`
+	// The name of the check item.
+	CheckShowName string `pulumi:"checkShowName"`
+	// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+	CheckType string `pulumi:"checkType"`
+	// The custom configuration items of the check item.
+	CustomConfigs []GetCheckItemConfigsConfigCustomConfig `pulumi:"customConfigs"`
+	// The description of the check item.
+	Description GetCheckItemConfigsConfigDescription `pulumi:"description"`
+	// The estimated quota that will be consumed by this check item.
+	EstimatedCount int `pulumi:"estimatedCount"`
+	// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+	InstanceSubType string `pulumi:"instanceSubType"`
+	// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+	InstanceType string `pulumi:"instanceType"`
+	// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+	RiskLevel string `pulumi:"riskLevel"`
+	// The IDs of the sections associated with the check items.
+	SectionIds []int `pulumi:"sectionIds"`
+	// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+	Vendor string `pulumi:"vendor"`
+}
+
+// GetCheckItemConfigsConfigInput is an input type that accepts GetCheckItemConfigsConfigArgs and GetCheckItemConfigsConfigOutput values.
+// You can construct a concrete instance of `GetCheckItemConfigsConfigInput` via:
+//
+//	GetCheckItemConfigsConfigArgs{...}
+type GetCheckItemConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetCheckItemConfigsConfigOutput() GetCheckItemConfigsConfigOutput
+	ToGetCheckItemConfigsConfigOutputWithContext(context.Context) GetCheckItemConfigsConfigOutput
+}
+
+type GetCheckItemConfigsConfigArgs struct {
+	// The ID of the check item
+	CheckId pulumi.IntInput `pulumi:"checkId"`
+	// The name of the check item.
+	CheckShowName pulumi.StringInput `pulumi:"checkShowName"`
+	// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+	CheckType pulumi.StringInput `pulumi:"checkType"`
+	// The custom configuration items of the check item.
+	CustomConfigs GetCheckItemConfigsConfigCustomConfigArrayInput `pulumi:"customConfigs"`
+	// The description of the check item.
+	Description GetCheckItemConfigsConfigDescriptionInput `pulumi:"description"`
+	// The estimated quota that will be consumed by this check item.
+	EstimatedCount pulumi.IntInput `pulumi:"estimatedCount"`
+	// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+	InstanceSubType pulumi.StringInput `pulumi:"instanceSubType"`
+	// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+	RiskLevel pulumi.StringInput `pulumi:"riskLevel"`
+	// The IDs of the sections associated with the check items.
+	SectionIds pulumi.IntArrayInput `pulumi:"sectionIds"`
+	// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+	Vendor pulumi.StringInput `pulumi:"vendor"`
+}
+
+func (GetCheckItemConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfig)(nil)).Elem()
+}
+
+func (i GetCheckItemConfigsConfigArgs) ToGetCheckItemConfigsConfigOutput() GetCheckItemConfigsConfigOutput {
+	return i.ToGetCheckItemConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetCheckItemConfigsConfigArgs) ToGetCheckItemConfigsConfigOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckItemConfigsConfigOutput)
+}
+
+// GetCheckItemConfigsConfigArrayInput is an input type that accepts GetCheckItemConfigsConfigArray and GetCheckItemConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetCheckItemConfigsConfigArrayInput` via:
+//
+//	GetCheckItemConfigsConfigArray{ GetCheckItemConfigsConfigArgs{...} }
+type GetCheckItemConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckItemConfigsConfigArrayOutput() GetCheckItemConfigsConfigArrayOutput
+	ToGetCheckItemConfigsConfigArrayOutputWithContext(context.Context) GetCheckItemConfigsConfigArrayOutput
+}
+
+type GetCheckItemConfigsConfigArray []GetCheckItemConfigsConfigInput
+
+func (GetCheckItemConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckItemConfigsConfig)(nil)).Elem()
+}
+
+func (i GetCheckItemConfigsConfigArray) ToGetCheckItemConfigsConfigArrayOutput() GetCheckItemConfigsConfigArrayOutput {
+	return i.ToGetCheckItemConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckItemConfigsConfigArray) ToGetCheckItemConfigsConfigArrayOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckItemConfigsConfigArrayOutput)
+}
+
+type GetCheckItemConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCheckItemConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfig)(nil)).Elem()
+}
+
+func (o GetCheckItemConfigsConfigOutput) ToGetCheckItemConfigsConfigOutput() GetCheckItemConfigsConfigOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigOutput) ToGetCheckItemConfigsConfigOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigOutput {
+	return o
+}
+
+// The ID of the check item
+func (o GetCheckItemConfigsConfigOutput) CheckId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) int { return v.CheckId }).(pulumi.IntOutput)
+}
+
+// The name of the check item.
+func (o GetCheckItemConfigsConfigOutput) CheckShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.CheckShowName }).(pulumi.StringOutput)
+}
+
+// The source type of the Situation Awareness check item. Value:- **CUSTOM**: user-defined- **SYSTEM**: Predefined by the situational awareness platform
+func (o GetCheckItemConfigsConfigOutput) CheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.CheckType }).(pulumi.StringOutput)
+}
+
+// The custom configuration items of the check item.
+func (o GetCheckItemConfigsConfigOutput) CustomConfigs() GetCheckItemConfigsConfigCustomConfigArrayOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) []GetCheckItemConfigsConfigCustomConfig { return v.CustomConfigs }).(GetCheckItemConfigsConfigCustomConfigArrayOutput)
+}
+
+// The description of the check item.
+func (o GetCheckItemConfigsConfigOutput) Description() GetCheckItemConfigsConfigDescriptionOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) GetCheckItemConfigsConfigDescription { return v.Description }).(GetCheckItemConfigsConfigDescriptionOutput)
+}
+
+// The estimated quota that will be consumed by this check item.
+func (o GetCheckItemConfigsConfigOutput) EstimatedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) int { return v.EstimatedCount }).(pulumi.IntOutput)
+}
+
+// The asset subtype of the cloud service. Valid values:*   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:    *   **INSTANCE**    *   **DISK**    *   **SECURITY_GROUP***   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:    *   **REPOSITORY_ENTERPRISE**    *   **REPOSITORY_PERSON***   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:    *   **ALIAS**    *   **USER**    *   **POLICY**    *   **GROUP***   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:    *   **DOMAIN***   If **InstanceType** is set to other values, this parameter supports the following valid values:    *   **INSTANCE**
+func (o GetCheckItemConfigsConfigOutput) InstanceSubType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceSubType }).(pulumi.StringOutput)
+}
+
+// The asset type of the cloud service. Valid values:*   **ECS**: Elastic Compute Service (ECS).*   **SLB**: Server Load Balancer (SLB).*   **RDS**: ApsaraDB RDS.*   **MONGODB**: ApsaraDB for MongoDB (MongoDB).*   **KVSTORE**: ApsaraDB for Redis (Redis).*   **ACR**: Container Registry.*   **CSK**: Container Service for Kubernetes (ACK).*   **VPC**: Virtual Private Cloud (VPC).*   **ACTIONTRAIL**: ActionTrail.*   **CDN**: Alibaba Cloud CDN (CDN).*   **CAS**: Certificate Management Service (formerly SSL Certificates Service).*   **RDC**: Apsara Devops.*   **RAM**: Resource Access Management (RAM).*   **DDOS**: Anti-DDoS.*   **WAF**: Web Application Firewall (WAF).*   **OSS**: Object Storage Service (OSS).*   **POLARDB**: PolarDB.*   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.*   **MSE**: Microservices Engine (MSE).*   **NAS**: File Storage NAS (NAS).*   **SDDP**: Sensitive Data Discovery and Protection (SDDP).*   **EIP**: Elastic IP Address (EIP).
+func (o GetCheckItemConfigsConfigOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The risk level of the check item. Valid values:*   **HIGH***   **MEDIUM***   **LOW**
+func (o GetCheckItemConfigsConfigOutput) RiskLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.RiskLevel }).(pulumi.StringOutput)
+}
+
+// The IDs of the sections associated with the check items.
+func (o GetCheckItemConfigsConfigOutput) SectionIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) []int { return v.SectionIds }).(pulumi.IntArrayOutput)
+}
+
+// The type of the cloud asset. Valid values:*   **0**: an asset provided by Alibaba Cloud.*   **1**: an asset outside Alibaba Cloud.*   **2**: an asset in a data center.*   **3**, **4**, **5**, and **7**: other cloud asset.*   **8**: a simple application server.
+func (o GetCheckItemConfigsConfigOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfig) string { return v.Vendor }).(pulumi.StringOutput)
+}
+
+type GetCheckItemConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckItemConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckItemConfigsConfig)(nil)).Elem()
+}
+
+func (o GetCheckItemConfigsConfigArrayOutput) ToGetCheckItemConfigsConfigArrayOutput() GetCheckItemConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigArrayOutput) ToGetCheckItemConfigsConfigArrayOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetCheckItemConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckItemConfigsConfig {
+		return vs[0].([]GetCheckItemConfigsConfig)[vs[1].(int)]
+	}).(GetCheckItemConfigsConfigOutput)
+}
+
+type GetCheckItemConfigsConfigCustomConfig struct {
+	// The default value of the custom configuration item. The value is a string.
+	DefaultValue string `pulumi:"defaultValue"`
+	// The name of the custom configuration item, which is unique in a check item.
+	Name string `pulumi:"name"`
+	// The display name of the custom configuration item for internationalization.
+	ShowName string `pulumi:"showName"`
+	// The type of the custom configuration item. The value is a JSON string.
+	TypeDefine string `pulumi:"typeDefine"`
+	// The content of the description for the check item when the Type parameter is text.
+	Value string `pulumi:"value"`
+}
+
+// GetCheckItemConfigsConfigCustomConfigInput is an input type that accepts GetCheckItemConfigsConfigCustomConfigArgs and GetCheckItemConfigsConfigCustomConfigOutput values.
+// You can construct a concrete instance of `GetCheckItemConfigsConfigCustomConfigInput` via:
+//
+//	GetCheckItemConfigsConfigCustomConfigArgs{...}
+type GetCheckItemConfigsConfigCustomConfigInput interface {
+	pulumi.Input
+
+	ToGetCheckItemConfigsConfigCustomConfigOutput() GetCheckItemConfigsConfigCustomConfigOutput
+	ToGetCheckItemConfigsConfigCustomConfigOutputWithContext(context.Context) GetCheckItemConfigsConfigCustomConfigOutput
+}
+
+type GetCheckItemConfigsConfigCustomConfigArgs struct {
+	// The default value of the custom configuration item. The value is a string.
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+	// The name of the custom configuration item, which is unique in a check item.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The display name of the custom configuration item for internationalization.
+	ShowName pulumi.StringInput `pulumi:"showName"`
+	// The type of the custom configuration item. The value is a JSON string.
+	TypeDefine pulumi.StringInput `pulumi:"typeDefine"`
+	// The content of the description for the check item when the Type parameter is text.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCheckItemConfigsConfigCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfigCustomConfig)(nil)).Elem()
+}
+
+func (i GetCheckItemConfigsConfigCustomConfigArgs) ToGetCheckItemConfigsConfigCustomConfigOutput() GetCheckItemConfigsConfigCustomConfigOutput {
+	return i.ToGetCheckItemConfigsConfigCustomConfigOutputWithContext(context.Background())
+}
+
+func (i GetCheckItemConfigsConfigCustomConfigArgs) ToGetCheckItemConfigsConfigCustomConfigOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckItemConfigsConfigCustomConfigOutput)
+}
+
+// GetCheckItemConfigsConfigCustomConfigArrayInput is an input type that accepts GetCheckItemConfigsConfigCustomConfigArray and GetCheckItemConfigsConfigCustomConfigArrayOutput values.
+// You can construct a concrete instance of `GetCheckItemConfigsConfigCustomConfigArrayInput` via:
+//
+//	GetCheckItemConfigsConfigCustomConfigArray{ GetCheckItemConfigsConfigCustomConfigArgs{...} }
+type GetCheckItemConfigsConfigCustomConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckItemConfigsConfigCustomConfigArrayOutput() GetCheckItemConfigsConfigCustomConfigArrayOutput
+	ToGetCheckItemConfigsConfigCustomConfigArrayOutputWithContext(context.Context) GetCheckItemConfigsConfigCustomConfigArrayOutput
+}
+
+type GetCheckItemConfigsConfigCustomConfigArray []GetCheckItemConfigsConfigCustomConfigInput
+
+func (GetCheckItemConfigsConfigCustomConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckItemConfigsConfigCustomConfig)(nil)).Elem()
+}
+
+func (i GetCheckItemConfigsConfigCustomConfigArray) ToGetCheckItemConfigsConfigCustomConfigArrayOutput() GetCheckItemConfigsConfigCustomConfigArrayOutput {
+	return i.ToGetCheckItemConfigsConfigCustomConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckItemConfigsConfigCustomConfigArray) ToGetCheckItemConfigsConfigCustomConfigArrayOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigCustomConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckItemConfigsConfigCustomConfigArrayOutput)
+}
+
+type GetCheckItemConfigsConfigCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCheckItemConfigsConfigCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfigCustomConfig)(nil)).Elem()
+}
+
+func (o GetCheckItemConfigsConfigCustomConfigOutput) ToGetCheckItemConfigsConfigCustomConfigOutput() GetCheckItemConfigsConfigCustomConfigOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigCustomConfigOutput) ToGetCheckItemConfigsConfigCustomConfigOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigCustomConfigOutput {
+	return o
+}
+
+// The default value of the custom configuration item. The value is a string.
+func (o GetCheckItemConfigsConfigCustomConfigOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigCustomConfig) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+// The name of the custom configuration item, which is unique in a check item.
+func (o GetCheckItemConfigsConfigCustomConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigCustomConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The display name of the custom configuration item for internationalization.
+func (o GetCheckItemConfigsConfigCustomConfigOutput) ShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigCustomConfig) string { return v.ShowName }).(pulumi.StringOutput)
+}
+
+// The type of the custom configuration item. The value is a JSON string.
+func (o GetCheckItemConfigsConfigCustomConfigOutput) TypeDefine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigCustomConfig) string { return v.TypeDefine }).(pulumi.StringOutput)
+}
+
+// The content of the description for the check item when the Type parameter is text.
+func (o GetCheckItemConfigsConfigCustomConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigCustomConfig) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCheckItemConfigsConfigCustomConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckItemConfigsConfigCustomConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckItemConfigsConfigCustomConfig)(nil)).Elem()
+}
+
+func (o GetCheckItemConfigsConfigCustomConfigArrayOutput) ToGetCheckItemConfigsConfigCustomConfigArrayOutput() GetCheckItemConfigsConfigCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigCustomConfigArrayOutput) ToGetCheckItemConfigsConfigCustomConfigArrayOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigCustomConfigArrayOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigCustomConfigArrayOutput) Index(i pulumi.IntInput) GetCheckItemConfigsConfigCustomConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckItemConfigsConfigCustomConfig {
+		return vs[0].([]GetCheckItemConfigsConfigCustomConfig)[vs[1].(int)]
+	}).(GetCheckItemConfigsConfigCustomConfigOutput)
+}
+
+type GetCheckItemConfigsConfigDescription struct {
+	// The type of the description of the check item. Valid value:*   **text**.
+	Type string `pulumi:"type"`
+	// The content of the description for the check item when the Type parameter is text.
+	Value string `pulumi:"value"`
+}
+
+// GetCheckItemConfigsConfigDescriptionInput is an input type that accepts GetCheckItemConfigsConfigDescriptionArgs and GetCheckItemConfigsConfigDescriptionOutput values.
+// You can construct a concrete instance of `GetCheckItemConfigsConfigDescriptionInput` via:
+//
+//	GetCheckItemConfigsConfigDescriptionArgs{...}
+type GetCheckItemConfigsConfigDescriptionInput interface {
+	pulumi.Input
+
+	ToGetCheckItemConfigsConfigDescriptionOutput() GetCheckItemConfigsConfigDescriptionOutput
+	ToGetCheckItemConfigsConfigDescriptionOutputWithContext(context.Context) GetCheckItemConfigsConfigDescriptionOutput
+}
+
+type GetCheckItemConfigsConfigDescriptionArgs struct {
+	// The type of the description of the check item. Valid value:*   **text**.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The content of the description for the check item when the Type parameter is text.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCheckItemConfigsConfigDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfigDescription)(nil)).Elem()
+}
+
+func (i GetCheckItemConfigsConfigDescriptionArgs) ToGetCheckItemConfigsConfigDescriptionOutput() GetCheckItemConfigsConfigDescriptionOutput {
+	return i.ToGetCheckItemConfigsConfigDescriptionOutputWithContext(context.Background())
+}
+
+func (i GetCheckItemConfigsConfigDescriptionArgs) ToGetCheckItemConfigsConfigDescriptionOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckItemConfigsConfigDescriptionOutput)
+}
+
+type GetCheckItemConfigsConfigDescriptionOutput struct{ *pulumi.OutputState }
+
+func (GetCheckItemConfigsConfigDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckItemConfigsConfigDescription)(nil)).Elem()
+}
+
+func (o GetCheckItemConfigsConfigDescriptionOutput) ToGetCheckItemConfigsConfigDescriptionOutput() GetCheckItemConfigsConfigDescriptionOutput {
+	return o
+}
+
+func (o GetCheckItemConfigsConfigDescriptionOutput) ToGetCheckItemConfigsConfigDescriptionOutputWithContext(ctx context.Context) GetCheckItemConfigsConfigDescriptionOutput {
+	return o
+}
+
+// The type of the description of the check item. Valid value:*   **text**.
+func (o GetCheckItemConfigsConfigDescriptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigDescription) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The content of the description for the check item when the Type parameter is text.
+func (o GetCheckItemConfigsConfigDescriptionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckItemConfigsConfigDescription) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCheckStructuresStructure struct {
+	// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+	StandardType string `pulumi:"standardType"`
+	// The structure information about the check items of the business type.
+	Standards []GetCheckStructuresStructureStandard `pulumi:"standards"`
+}
+
+// GetCheckStructuresStructureInput is an input type that accepts GetCheckStructuresStructureArgs and GetCheckStructuresStructureOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureInput` via:
+//
+//	GetCheckStructuresStructureArgs{...}
+type GetCheckStructuresStructureInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureOutput() GetCheckStructuresStructureOutput
+	ToGetCheckStructuresStructureOutputWithContext(context.Context) GetCheckStructuresStructureOutput
+}
+
+type GetCheckStructuresStructureArgs struct {
+	// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+	StandardType pulumi.StringInput `pulumi:"standardType"`
+	// The structure information about the check items of the business type.
+	Standards GetCheckStructuresStructureStandardArrayInput `pulumi:"standards"`
+}
+
+func (GetCheckStructuresStructureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructure)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureArgs) ToGetCheckStructuresStructureOutput() GetCheckStructuresStructureOutput {
+	return i.ToGetCheckStructuresStructureOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureArgs) ToGetCheckStructuresStructureOutputWithContext(ctx context.Context) GetCheckStructuresStructureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureOutput)
+}
+
+// GetCheckStructuresStructureArrayInput is an input type that accepts GetCheckStructuresStructureArray and GetCheckStructuresStructureArrayOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureArrayInput` via:
+//
+//	GetCheckStructuresStructureArray{ GetCheckStructuresStructureArgs{...} }
+type GetCheckStructuresStructureArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureArrayOutput() GetCheckStructuresStructureArrayOutput
+	ToGetCheckStructuresStructureArrayOutputWithContext(context.Context) GetCheckStructuresStructureArrayOutput
+}
+
+type GetCheckStructuresStructureArray []GetCheckStructuresStructureInput
+
+func (GetCheckStructuresStructureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructure)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureArray) ToGetCheckStructuresStructureArrayOutput() GetCheckStructuresStructureArrayOutput {
+	return i.ToGetCheckStructuresStructureArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureArray) ToGetCheckStructuresStructureArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureArrayOutput)
+}
+
+type GetCheckStructuresStructureOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructure)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureOutput) ToGetCheckStructuresStructureOutput() GetCheckStructuresStructureOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureOutput) ToGetCheckStructuresStructureOutputWithContext(ctx context.Context) GetCheckStructuresStructureOutput {
+	return o
+}
+
+// The type of the check item.- **RISK**: security risk.- **IDENTITY_PERMISSION**: Cloud Infrastructure Entitlement Management (CIEM).- **COMPLIANCE**: security compliance.
+func (o GetCheckStructuresStructureOutput) StandardType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructure) string { return v.StandardType }).(pulumi.StringOutput)
+}
+
+// The structure information about the check items of the business type.
+func (o GetCheckStructuresStructureOutput) Standards() GetCheckStructuresStructureStandardArrayOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructure) []GetCheckStructuresStructureStandard { return v.Standards }).(GetCheckStructuresStructureStandardArrayOutput)
+}
+
+type GetCheckStructuresStructureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructure)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureArrayOutput) ToGetCheckStructuresStructureArrayOutput() GetCheckStructuresStructureArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureArrayOutput) ToGetCheckStructuresStructureArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureArrayOutput) Index(i pulumi.IntInput) GetCheckStructuresStructureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckStructuresStructure {
+		return vs[0].([]GetCheckStructuresStructure)[vs[1].(int)]
+	}).(GetCheckStructuresStructureOutput)
+}
+
+type GetCheckStructuresStructureStandard struct {
+	// The ID of the section for the check item.
+	Id int `pulumi:"id"`
+	// The standards of the check items.
+	Requirements []GetCheckStructuresStructureStandardRequirement `pulumi:"requirements"`
+	// The display name of the standard for the check item.
+	ShowName string `pulumi:"showName"`
+	// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+	Type string `pulumi:"type"`
+}
+
+// GetCheckStructuresStructureStandardInput is an input type that accepts GetCheckStructuresStructureStandardArgs and GetCheckStructuresStructureStandardOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardInput` via:
+//
+//	GetCheckStructuresStructureStandardArgs{...}
+type GetCheckStructuresStructureStandardInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardOutput() GetCheckStructuresStructureStandardOutput
+	ToGetCheckStructuresStructureStandardOutputWithContext(context.Context) GetCheckStructuresStructureStandardOutput
+}
+
+type GetCheckStructuresStructureStandardArgs struct {
+	// The ID of the section for the check item.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The standards of the check items.
+	Requirements GetCheckStructuresStructureStandardRequirementArrayInput `pulumi:"requirements"`
+	// The display name of the standard for the check item.
+	ShowName pulumi.StringInput `pulumi:"showName"`
+	// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCheckStructuresStructureStandardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandard)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardArgs) ToGetCheckStructuresStructureStandardOutput() GetCheckStructuresStructureStandardOutput {
+	return i.ToGetCheckStructuresStructureStandardOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardArgs) ToGetCheckStructuresStructureStandardOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardOutput)
+}
+
+// GetCheckStructuresStructureStandardArrayInput is an input type that accepts GetCheckStructuresStructureStandardArray and GetCheckStructuresStructureStandardArrayOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardArrayInput` via:
+//
+//	GetCheckStructuresStructureStandardArray{ GetCheckStructuresStructureStandardArgs{...} }
+type GetCheckStructuresStructureStandardArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardArrayOutput() GetCheckStructuresStructureStandardArrayOutput
+	ToGetCheckStructuresStructureStandardArrayOutputWithContext(context.Context) GetCheckStructuresStructureStandardArrayOutput
+}
+
+type GetCheckStructuresStructureStandardArray []GetCheckStructuresStructureStandardInput
+
+func (GetCheckStructuresStructureStandardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandard)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardArray) ToGetCheckStructuresStructureStandardArrayOutput() GetCheckStructuresStructureStandardArrayOutput {
+	return i.ToGetCheckStructuresStructureStandardArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardArray) ToGetCheckStructuresStructureStandardArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardArrayOutput)
+}
+
+type GetCheckStructuresStructureStandardOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandard)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardOutput) ToGetCheckStructuresStructureStandardOutput() GetCheckStructuresStructureStandardOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardOutput) ToGetCheckStructuresStructureStandardOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardOutput {
+	return o
+}
+
+// The ID of the section for the check item.
+func (o GetCheckStructuresStructureStandardOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandard) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The standards of the check items.
+func (o GetCheckStructuresStructureStandardOutput) Requirements() GetCheckStructuresStructureStandardRequirementArrayOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandard) []GetCheckStructuresStructureStandardRequirement {
+		return v.Requirements
+	}).(GetCheckStructuresStructureStandardRequirementArrayOutput)
+}
+
+// The display name of the standard for the check item.
+func (o GetCheckStructuresStructureStandardOutput) ShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandard) string { return v.ShowName }).(pulumi.StringOutput)
+}
+
+// The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
+func (o GetCheckStructuresStructureStandardOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandard) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCheckStructuresStructureStandardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandard)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardArrayOutput) ToGetCheckStructuresStructureStandardArrayOutput() GetCheckStructuresStructureStandardArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardArrayOutput) ToGetCheckStructuresStructureStandardArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardArrayOutput) Index(i pulumi.IntInput) GetCheckStructuresStructureStandardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckStructuresStructureStandard {
+		return vs[0].([]GetCheckStructuresStructureStandard)[vs[1].(int)]
+	}).(GetCheckStructuresStructureStandardOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirement struct {
+	// The ID of the section for the check item.
+	Id int `pulumi:"id"`
+	// The information about the sections of check items.
+	Sections []GetCheckStructuresStructureStandardRequirementSection `pulumi:"sections"`
+	// The display name of the standard for the check item.
+	ShowName string `pulumi:"showName"`
+	// The total number of check items for the requirement.
+	TotalCheckCount int `pulumi:"totalCheckCount"`
+}
+
+// GetCheckStructuresStructureStandardRequirementInput is an input type that accepts GetCheckStructuresStructureStandardRequirementArgs and GetCheckStructuresStructureStandardRequirementOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardRequirementInput` via:
+//
+//	GetCheckStructuresStructureStandardRequirementArgs{...}
+type GetCheckStructuresStructureStandardRequirementInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardRequirementOutput() GetCheckStructuresStructureStandardRequirementOutput
+	ToGetCheckStructuresStructureStandardRequirementOutputWithContext(context.Context) GetCheckStructuresStructureStandardRequirementOutput
+}
+
+type GetCheckStructuresStructureStandardRequirementArgs struct {
+	// The ID of the section for the check item.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The information about the sections of check items.
+	Sections GetCheckStructuresStructureStandardRequirementSectionArrayInput `pulumi:"sections"`
+	// The display name of the standard for the check item.
+	ShowName pulumi.StringInput `pulumi:"showName"`
+	// The total number of check items for the requirement.
+	TotalCheckCount pulumi.IntInput `pulumi:"totalCheckCount"`
+}
+
+func (GetCheckStructuresStructureStandardRequirementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandardRequirement)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardRequirementArgs) ToGetCheckStructuresStructureStandardRequirementOutput() GetCheckStructuresStructureStandardRequirementOutput {
+	return i.ToGetCheckStructuresStructureStandardRequirementOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardRequirementArgs) ToGetCheckStructuresStructureStandardRequirementOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardRequirementOutput)
+}
+
+// GetCheckStructuresStructureStandardRequirementArrayInput is an input type that accepts GetCheckStructuresStructureStandardRequirementArray and GetCheckStructuresStructureStandardRequirementArrayOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardRequirementArrayInput` via:
+//
+//	GetCheckStructuresStructureStandardRequirementArray{ GetCheckStructuresStructureStandardRequirementArgs{...} }
+type GetCheckStructuresStructureStandardRequirementArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardRequirementArrayOutput() GetCheckStructuresStructureStandardRequirementArrayOutput
+	ToGetCheckStructuresStructureStandardRequirementArrayOutputWithContext(context.Context) GetCheckStructuresStructureStandardRequirementArrayOutput
+}
+
+type GetCheckStructuresStructureStandardRequirementArray []GetCheckStructuresStructureStandardRequirementInput
+
+func (GetCheckStructuresStructureStandardRequirementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandardRequirement)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardRequirementArray) ToGetCheckStructuresStructureStandardRequirementArrayOutput() GetCheckStructuresStructureStandardRequirementArrayOutput {
+	return i.ToGetCheckStructuresStructureStandardRequirementArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardRequirementArray) ToGetCheckStructuresStructureStandardRequirementArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardRequirementArrayOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirementOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardRequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandardRequirement)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardRequirementOutput) ToGetCheckStructuresStructureStandardRequirementOutput() GetCheckStructuresStructureStandardRequirementOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementOutput) ToGetCheckStructuresStructureStandardRequirementOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementOutput {
+	return o
+}
+
+// The ID of the section for the check item.
+func (o GetCheckStructuresStructureStandardRequirementOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirement) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The information about the sections of check items.
+func (o GetCheckStructuresStructureStandardRequirementOutput) Sections() GetCheckStructuresStructureStandardRequirementSectionArrayOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirement) []GetCheckStructuresStructureStandardRequirementSection {
+		return v.Sections
+	}).(GetCheckStructuresStructureStandardRequirementSectionArrayOutput)
+}
+
+// The display name of the standard for the check item.
+func (o GetCheckStructuresStructureStandardRequirementOutput) ShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirement) string { return v.ShowName }).(pulumi.StringOutput)
+}
+
+// The total number of check items for the requirement.
+func (o GetCheckStructuresStructureStandardRequirementOutput) TotalCheckCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirement) int { return v.TotalCheckCount }).(pulumi.IntOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardRequirementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandardRequirement)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardRequirementArrayOutput) ToGetCheckStructuresStructureStandardRequirementArrayOutput() GetCheckStructuresStructureStandardRequirementArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementArrayOutput) ToGetCheckStructuresStructureStandardRequirementArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementArrayOutput) Index(i pulumi.IntInput) GetCheckStructuresStructureStandardRequirementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckStructuresStructureStandardRequirement {
+		return vs[0].([]GetCheckStructuresStructureStandardRequirement)[vs[1].(int)]
+	}).(GetCheckStructuresStructureStandardRequirementOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirementSection struct {
+	// The ID of the section for the check item.
+	Id int `pulumi:"id"`
+	// The display name of the standard for the check item.
+	ShowName string `pulumi:"showName"`
+}
+
+// GetCheckStructuresStructureStandardRequirementSectionInput is an input type that accepts GetCheckStructuresStructureStandardRequirementSectionArgs and GetCheckStructuresStructureStandardRequirementSectionOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardRequirementSectionInput` via:
+//
+//	GetCheckStructuresStructureStandardRequirementSectionArgs{...}
+type GetCheckStructuresStructureStandardRequirementSectionInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardRequirementSectionOutput() GetCheckStructuresStructureStandardRequirementSectionOutput
+	ToGetCheckStructuresStructureStandardRequirementSectionOutputWithContext(context.Context) GetCheckStructuresStructureStandardRequirementSectionOutput
+}
+
+type GetCheckStructuresStructureStandardRequirementSectionArgs struct {
+	// The ID of the section for the check item.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The display name of the standard for the check item.
+	ShowName pulumi.StringInput `pulumi:"showName"`
+}
+
+func (GetCheckStructuresStructureStandardRequirementSectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementSection)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardRequirementSectionArgs) ToGetCheckStructuresStructureStandardRequirementSectionOutput() GetCheckStructuresStructureStandardRequirementSectionOutput {
+	return i.ToGetCheckStructuresStructureStandardRequirementSectionOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardRequirementSectionArgs) ToGetCheckStructuresStructureStandardRequirementSectionOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementSectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardRequirementSectionOutput)
+}
+
+// GetCheckStructuresStructureStandardRequirementSectionArrayInput is an input type that accepts GetCheckStructuresStructureStandardRequirementSectionArray and GetCheckStructuresStructureStandardRequirementSectionArrayOutput values.
+// You can construct a concrete instance of `GetCheckStructuresStructureStandardRequirementSectionArrayInput` via:
+//
+//	GetCheckStructuresStructureStandardRequirementSectionArray{ GetCheckStructuresStructureStandardRequirementSectionArgs{...} }
+type GetCheckStructuresStructureStandardRequirementSectionArrayInput interface {
+	pulumi.Input
+
+	ToGetCheckStructuresStructureStandardRequirementSectionArrayOutput() GetCheckStructuresStructureStandardRequirementSectionArrayOutput
+	ToGetCheckStructuresStructureStandardRequirementSectionArrayOutputWithContext(context.Context) GetCheckStructuresStructureStandardRequirementSectionArrayOutput
+}
+
+type GetCheckStructuresStructureStandardRequirementSectionArray []GetCheckStructuresStructureStandardRequirementSectionInput
+
+func (GetCheckStructuresStructureStandardRequirementSectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandardRequirementSection)(nil)).Elem()
+}
+
+func (i GetCheckStructuresStructureStandardRequirementSectionArray) ToGetCheckStructuresStructureStandardRequirementSectionArrayOutput() GetCheckStructuresStructureStandardRequirementSectionArrayOutput {
+	return i.ToGetCheckStructuresStructureStandardRequirementSectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCheckStructuresStructureStandardRequirementSectionArray) ToGetCheckStructuresStructureStandardRequirementSectionArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementSectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCheckStructuresStructureStandardRequirementSectionArrayOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirementSectionOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardRequirementSectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementSection)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardRequirementSectionOutput) ToGetCheckStructuresStructureStandardRequirementSectionOutput() GetCheckStructuresStructureStandardRequirementSectionOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementSectionOutput) ToGetCheckStructuresStructureStandardRequirementSectionOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementSectionOutput {
+	return o
+}
+
+// The ID of the section for the check item.
+func (o GetCheckStructuresStructureStandardRequirementSectionOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirementSection) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The display name of the standard for the check item.
+func (o GetCheckStructuresStructureStandardRequirementSectionOutput) ShowName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCheckStructuresStructureStandardRequirementSection) string { return v.ShowName }).(pulumi.StringOutput)
+}
+
+type GetCheckStructuresStructureStandardRequirementSectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCheckStructuresStructureStandardRequirementSectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCheckStructuresStructureStandardRequirementSection)(nil)).Elem()
+}
+
+func (o GetCheckStructuresStructureStandardRequirementSectionArrayOutput) ToGetCheckStructuresStructureStandardRequirementSectionArrayOutput() GetCheckStructuresStructureStandardRequirementSectionArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementSectionArrayOutput) ToGetCheckStructuresStructureStandardRequirementSectionArrayOutputWithContext(ctx context.Context) GetCheckStructuresStructureStandardRequirementSectionArrayOutput {
+	return o
+}
+
+func (o GetCheckStructuresStructureStandardRequirementSectionArrayOutput) Index(i pulumi.IntInput) GetCheckStructuresStructureStandardRequirementSectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCheckStructuresStructureStandardRequirementSection {
+		return vs[0].([]GetCheckStructuresStructureStandardRequirementSection)[vs[1].(int)]
+	}).(GetCheckStructuresStructureStandardRequirementSectionOutput)
 }
 
 type GetHoneyPotsPot struct {
@@ -3236,6 +4187,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AntiBruteForceRuleProtocolTypePtrInput)(nil)).Elem(), AntiBruteForceRuleProtocolTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackPathSensitiveAssetConfigAttackPathAssetListArrayInput)(nil)).Elem(), AttackPathSensitiveAssetConfigAttackPathAssetListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CheckConfigSelectedCheckInput)(nil)).Elem(), CheckConfigSelectedCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CheckConfigSelectedCheckArrayInput)(nil)).Elem(), CheckConfigSelectedCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotPresetMetaInput)(nil)).Elem(), HoneypotPresetMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotPresetMetaPtrInput)(nil)).Elem(), HoneypotPresetMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListInput)(nil)).Elem(), HoneypotProbeHoneypotBindListArgs{})
@@ -3252,6 +4205,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPoliciesPolicyArrayInput)(nil)).Elem(), GetBackupPoliciesPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBaselineStrategiesStrategyInput)(nil)).Elem(), GetBaselineStrategiesStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBaselineStrategiesStrategyArrayInput)(nil)).Elem(), GetBaselineStrategiesStrategyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckItemConfigsConfigInput)(nil)).Elem(), GetCheckItemConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckItemConfigsConfigArrayInput)(nil)).Elem(), GetCheckItemConfigsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckItemConfigsConfigCustomConfigInput)(nil)).Elem(), GetCheckItemConfigsConfigCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckItemConfigsConfigCustomConfigArrayInput)(nil)).Elem(), GetCheckItemConfigsConfigCustomConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckItemConfigsConfigDescriptionInput)(nil)).Elem(), GetCheckItemConfigsConfigDescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureInput)(nil)).Elem(), GetCheckStructuresStructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureArrayInput)(nil)).Elem(), GetCheckStructuresStructureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardInput)(nil)).Elem(), GetCheckStructuresStructureStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardArrayInput)(nil)).Elem(), GetCheckStructuresStructureStandardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementInput)(nil)).Elem(), GetCheckStructuresStructureStandardRequirementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementArrayInput)(nil)).Elem(), GetCheckStructuresStructureStandardRequirementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementSectionInput)(nil)).Elem(), GetCheckStructuresStructureStandardRequirementSectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCheckStructuresStructureStandardRequirementSectionArrayInput)(nil)).Elem(), GetCheckStructuresStructureStandardRequirementSectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneyPotsPotInput)(nil)).Elem(), GetHoneyPotsPotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneyPotsPotArrayInput)(nil)).Elem(), GetHoneyPotsPotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHoneypotImagesImageInput)(nil)).Elem(), GetHoneypotImagesImageArgs{})
@@ -3278,6 +4244,8 @@ func init() {
 	pulumi.RegisterOutputType(AntiBruteForceRuleProtocolTypePtrOutput{})
 	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListOutput{})
 	pulumi.RegisterOutputType(AttackPathSensitiveAssetConfigAttackPathAssetListArrayOutput{})
+	pulumi.RegisterOutputType(CheckConfigSelectedCheckOutput{})
+	pulumi.RegisterOutputType(CheckConfigSelectedCheckArrayOutput{})
 	pulumi.RegisterOutputType(HoneypotPresetMetaOutput{})
 	pulumi.RegisterOutputType(HoneypotPresetMetaPtrOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListOutput{})
@@ -3294,6 +4262,19 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPoliciesPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBaselineStrategiesStrategyOutput{})
 	pulumi.RegisterOutputType(GetBaselineStrategiesStrategyArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckItemConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetCheckItemConfigsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckItemConfigsConfigCustomConfigOutput{})
+	pulumi.RegisterOutputType(GetCheckItemConfigsConfigCustomConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckItemConfigsConfigDescriptionOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardRequirementOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardRequirementArrayOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardRequirementSectionOutput{})
+	pulumi.RegisterOutputType(GetCheckStructuresStructureStandardRequirementSectionArrayOutput{})
 	pulumi.RegisterOutputType(GetHoneyPotsPotOutput{})
 	pulumi.RegisterOutputType(GetHoneyPotsPotArrayOutput{})
 	pulumi.RegisterOutputType(GetHoneypotImagesImageOutput{})

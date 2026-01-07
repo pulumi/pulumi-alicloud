@@ -392,6 +392,8 @@ class PrimaryEndpoint(pulumi.CustomResource):
         default_primary_endpoint = alicloud.polardb.PrimaryEndpoint("default", db_cluster_id=default_cluster.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         PolarDB endpoint can be imported using the id, e.g.
@@ -452,6 +454,8 @@ class PrimaryEndpoint(pulumi.CustomResource):
             description="terraform-example")
         default_primary_endpoint = alicloud.polardb.PrimaryEndpoint("default", db_cluster_id=default_cluster.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

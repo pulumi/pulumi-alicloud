@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+ * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.109.0.
  *
@@ -19,15 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("example", {
- *     serviceDescription: "terraform-example",
- *     connectBandwidth: 103,
- *     autoAcceptConnection: false,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.privatelink.VpcEndpointService("default", {
+ *     serviceDescription: name,
+ *     autoAcceptConnection: true,
  * });
- * const example = alicloud.privatelink.getVpcEndpointServicesOutput({
- *     ids: [exampleVpcEndpointService.id],
+ * const ids = alicloud.privatelink.getVpcEndpointServicesOutput({
+ *     ids: [_default.id],
  * });
- * export const firstPrivatelinkVpcEndpointServiceId = example.apply(example => example.services?.[0]?.id);
+ * export const privatelinkVpcEndpointServicesId0 = ids.apply(ids => ids.services?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServicesResult> {
@@ -50,7 +51,7 @@ export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?:
  */
 export interface GetVpcEndpointServicesArgs {
     /**
-     * Whether to automatically accept terminal node connections.
+     * Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
      */
     autoAcceptConnection?: boolean;
     /**
@@ -66,19 +67,19 @@ export interface GetVpcEndpointServicesArgs {
      */
     outputFile?: string;
     /**
-     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      */
     serviceBusinessStatus?: string;
     /**
-     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+     * The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
     status?: string;
     /**
-     * The tags of Vpc Endpoint Service.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: string};
     /**
-     * The name of Vpc Endpoint Service.
+     * The name of the endpoint service.
      */
     vpcEndpointServiceName?: string;
 }
@@ -88,7 +89,7 @@ export interface GetVpcEndpointServicesArgs {
  */
 export interface GetVpcEndpointServicesResult {
     /**
-     * Whether to automatically accept terminal node connections..
+     * Indicates whether endpoint connection requests are automatically accepted.
      */
     readonly autoAcceptConnection?: boolean;
     /**
@@ -103,28 +104,28 @@ export interface GetVpcEndpointServicesResult {
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * The business status of the terminal node service..
+     * The service state of the endpoint service.
      */
     readonly serviceBusinessStatus?: string;
     /**
-     * A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     * A list of Vpc Endpoint Services. Each element contains the following attributes:
      */
     readonly services: outputs.privatelink.GetVpcEndpointServicesService[];
     /**
-     * The Status of Vpc Endpoint Service.
+     * The state of the endpoint service.
      */
     readonly status?: string;
     /**
-     * The tags of Vpc Endpoint Service.
+     * The tags added to the resource.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * The name of Vpc Endpoint Service.
+     * The name of the endpoint service.
      */
     readonly vpcEndpointServiceName?: string;
 }
 /**
- * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
+ * This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available since v1.109.0.
  *
@@ -136,15 +137,16 @@ export interface GetVpcEndpointServicesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("example", {
- *     serviceDescription: "terraform-example",
- *     connectBandwidth: 103,
- *     autoAcceptConnection: false,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.privatelink.VpcEndpointService("default", {
+ *     serviceDescription: name,
+ *     autoAcceptConnection: true,
  * });
- * const example = alicloud.privatelink.getVpcEndpointServicesOutput({
- *     ids: [exampleVpcEndpointService.id],
+ * const ids = alicloud.privatelink.getVpcEndpointServicesOutput({
+ *     ids: [_default.id],
  * });
- * export const firstPrivatelinkVpcEndpointServiceId = example.apply(example => example.services?.[0]?.id);
+ * export const privatelinkVpcEndpointServicesId0 = ids.apply(ids => ids.services?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcEndpointServicesResult> {
@@ -167,7 +169,7 @@ export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutput
  */
 export interface GetVpcEndpointServicesOutputArgs {
     /**
-     * Whether to automatically accept terminal node connections.
+     * Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
      */
     autoAcceptConnection?: pulumi.Input<boolean>;
     /**
@@ -183,19 +185,19 @@ export interface GetVpcEndpointServicesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      */
     serviceBusinessStatus?: pulumi.Input<string>;
     /**
-     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+     * The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags of Vpc Endpoint Service.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of Vpc Endpoint Service.
+     * The name of the endpoint service.
      */
     vpcEndpointServiceName?: pulumi.Input<string>;
 }

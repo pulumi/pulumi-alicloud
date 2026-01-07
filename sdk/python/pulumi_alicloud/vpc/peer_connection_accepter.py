@@ -474,6 +474,8 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("default", instance_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Vpc Peer Peer Connection Accepter can be imported using the id, e.g.
@@ -546,6 +548,8 @@ class PeerConnectionAccepter(pulumi.CustomResource):
             description=name)
         default_peer_connection_accepter = alicloud.vpc.PeerConnectionAccepter("default", instance_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

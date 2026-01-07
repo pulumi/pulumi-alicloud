@@ -1638,6 +1638,8 @@ class Instance(pulumi.CustomResource):
             instance_storage="1920")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Lindorm Instance can be imported using the id, e.g.
@@ -1738,6 +1740,8 @@ class Instance(pulumi.CustomResource):
             table_engine_node_count=2,
             instance_storage="1920")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

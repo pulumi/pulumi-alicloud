@@ -309,6 +309,8 @@ class RdsBackup(pulumi.CustomResource):
         example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         RDS Backup can be imported using the id, e.g.
@@ -360,6 +362,8 @@ class RdsBackup(pulumi.CustomResource):
             db_instance_storage_type="local_ssd")
         example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

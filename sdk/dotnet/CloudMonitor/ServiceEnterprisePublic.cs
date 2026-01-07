@@ -35,6 +35,8 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Monitor Service Enterprise Public can be imported using the id, e.g.

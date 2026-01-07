@@ -134,6 +134,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  */
 @ResourceType(type="alicloud:ecs/imageExport:ImageExport")
 public class ImageExport extends com.pulumi.resources.CustomResource {

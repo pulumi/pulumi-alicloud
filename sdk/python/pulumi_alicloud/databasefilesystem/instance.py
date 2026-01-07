@@ -724,6 +724,8 @@ class Instance(pulumi.CustomResource):
             size=100)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DBFS Dbfs Instance can be imported using the id, e.g.
@@ -798,6 +800,8 @@ class Instance(pulumi.CustomResource):
             fs_name=name,
             size=100)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

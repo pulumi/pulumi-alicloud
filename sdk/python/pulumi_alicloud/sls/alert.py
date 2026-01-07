@@ -441,6 +441,8 @@ class Alert(pulumi.CustomResource):
             project_name=default_ins_mgl.project_name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         SLS Alert can be imported using the id, e.g.
@@ -622,6 +624,8 @@ class Alert(pulumi.CustomResource):
             alert_name=alert_name,
             project_name=default_ins_mgl.project_name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

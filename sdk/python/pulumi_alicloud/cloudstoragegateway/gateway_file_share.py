@@ -1210,6 +1210,8 @@ class GatewayFileShare(pulumi.CustomResource):
             lag_period=5)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway File Share can be imported using the id, e.g.
@@ -1331,6 +1333,8 @@ class GatewayFileShare(pulumi.CustomResource):
             squash="none",
             lag_period=5)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

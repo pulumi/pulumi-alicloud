@@ -334,6 +334,8 @@ class SlbAttachment(pulumi.CustomResource):
             type=default_application_load_balancer.address_type)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] app_id: The ID of the application to which you want to bind an SLB instance.
@@ -417,6 +419,8 @@ class SlbAttachment(pulumi.CustomResource):
             slb_ip=default_application_load_balancer.address,
             type=default_application_load_balancer.address_type)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         :param str resource_name: The name of the resource.
         :param SlbAttachmentArgs args: The arguments to use to populate this resource's properties.

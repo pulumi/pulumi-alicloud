@@ -58,6 +58,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // WAF Certificate can be imported using the id, e.g.

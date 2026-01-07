@@ -63,6 +63,8 @@ import * as utilities from "../utilities";
  *     stageName: "PRE",
  * });
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class AppAttachment extends pulumi.CustomResource {
     /**

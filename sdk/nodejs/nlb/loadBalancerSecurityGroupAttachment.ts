@@ -73,6 +73,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * NLB Load Balancer Security Group Attachment can be imported using the id, e.g.

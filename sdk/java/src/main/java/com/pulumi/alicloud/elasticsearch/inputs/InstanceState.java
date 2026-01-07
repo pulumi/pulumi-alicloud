@@ -3,6 +3,11 @@
 
 package com.pulumi.alicloud.elasticsearch.inputs;
 
+import com.pulumi.alicloud.elasticsearch.inputs.InstanceClientNodeConfigurationArgs;
+import com.pulumi.alicloud.elasticsearch.inputs.InstanceDataNodeConfigurationArgs;
+import com.pulumi.alicloud.elasticsearch.inputs.InstanceKibanaConfigurationArgs;
+import com.pulumi.alicloud.elasticsearch.inputs.InstanceMasterConfigurationArgs;
+import com.pulumi.alicloud.elasticsearch.inputs.InstanceWarmNodeConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -20,14 +25,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * Schema Type:
+     * 
+     */
+    @Import(name="archType")
+    private @Nullable Output<String> archType;
+
+    /**
+     * @return Schema Type:
+     * 
+     */
+    public Optional<Output<String>> archType() {
+        return Optional.ofNullable(this.archType);
+    }
+
+    /**
+     * Renewal Period
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+     * @return Renewal Period
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -37,59 +57,136 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
+     * @deprecated
+     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
     @Import(name="clientNodeAmount")
     private @Nullable Output<Integer> clientNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
+     * @deprecated
+     * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
     public Optional<Output<Integer>> clientNodeAmount() {
         return Optional.ofNullable(this.clientNodeAmount);
     }
 
     /**
-     * The client node spec. If specified, client node will be created.
+     * Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
      * 
      */
+    @Import(name="clientNodeConfiguration")
+    private @Nullable Output<InstanceClientNodeConfigurationArgs> clientNodeConfiguration;
+
+    /**
+     * @return Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+     * 
+     */
+    public Optional<Output<InstanceClientNodeConfigurationArgs>> clientNodeConfiguration() {
+        return Optional.ofNullable(this.clientNodeConfiguration);
+    }
+
+    /**
+     * The client node spec. If specified, client node will be created.
+     * 
+     * @deprecated
+     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
     @Import(name="clientNodeSpec")
     private @Nullable Output<String> clientNodeSpec;
 
     /**
      * @return The client node spec. If specified, client node will be created.
      * 
+     * @deprecated
+     * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
     public Optional<Output<String>> clientNodeSpec() {
         return Optional.ofNullable(this.clientNodeSpec);
     }
 
     /**
-     * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
+     * Instance creation time
      * 
      */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Instance creation time
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
+     * 
+     * @deprecated
+     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
     @Import(name="dataNodeAmount")
     private @Nullable Output<Integer> dataNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
+     * @deprecated
+     * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
     public Optional<Output<Integer>> dataNodeAmount() {
         return Optional.ofNullable(this.dataNodeAmount);
     }
 
     /**
-     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     * Elasticsearch data node information See `dataNodeConfiguration` below.
      * 
      */
+    @Import(name="dataNodeConfiguration")
+    private @Nullable Output<InstanceDataNodeConfigurationArgs> dataNodeConfiguration;
+
+    /**
+     * @return Elasticsearch data node information See `dataNodeConfiguration` below.
+     * 
+     */
+    public Optional<Output<InstanceDataNodeConfigurationArgs>> dataNodeConfiguration() {
+        return Optional.ofNullable(this.dataNodeConfiguration);
+    }
+
+    /**
+     * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     * @deprecated
+     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
     @Import(name="dataNodeDiskEncrypted")
     private @Nullable Output<Boolean> dataNodeDiskEncrypted;
 
     /**
      * @return If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
     public Optional<Output<Boolean>> dataNodeDiskEncrypted() {
         return Optional.ofNullable(this.dataNodeDiskEncrypted);
     }
@@ -97,14 +194,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
     @Import(name="dataNodeDiskPerformanceLevel")
     private @Nullable Output<String> dataNodeDiskPerformanceLevel;
 
     /**
      * @return Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `dataNodeDiskType` muse be `cloudEssd`.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
     public Optional<Output<String>> dataNodeDiskPerformanceLevel() {
         return Optional.ofNullable(this.dataNodeDiskPerformanceLevel);
     }
@@ -112,14 +217,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The single data node storage space.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
     @Import(name="dataNodeDiskSize")
     private @Nullable Output<Integer> dataNodeDiskSize;
 
     /**
      * @return The single data node storage space.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
     public Optional<Output<Integer>> dataNodeDiskSize() {
         return Optional.ofNullable(this.dataNodeDiskSize);
     }
@@ -127,14 +240,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
     @Import(name="dataNodeDiskType")
     private @Nullable Output<String> dataNodeDiskType;
 
     /**
      * @return The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
     public Optional<Output<String>> dataNodeDiskType() {
         return Optional.ofNullable(this.dataNodeDiskType);
     }
@@ -142,27 +263,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The data node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
     @Import(name="dataNodeSpec")
     private @Nullable Output<String> dataNodeSpec;
 
     /**
      * @return The data node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
     public Optional<Output<String>> dataNodeSpec() {
         return Optional.ofNullable(this.dataNodeSpec);
     }
 
     /**
-     * The description of instance. It a string of 0 to 30 characters.
+     * Instance name
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of instance. It a string of 0 to 30 characters.
+     * @return Instance name
      * 
      */
     public Optional<Output<String>> description() {
@@ -170,14 +299,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance connection domain (only VPC network access supported).
+     * Elasticsearch cluster private domain name
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return Instance connection domain (only VPC network access supported).
+     * @return Elasticsearch cluster private domain name
      * 
      */
     public Optional<Output<String>> domain() {
@@ -185,14 +314,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * Whether to enable Kibana private network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     @Import(name="enableKibanaPrivateNetwork")
     private @Nullable Output<Boolean> enableKibanaPrivateNetwork;
 
     /**
-     * @return Bool, default to false. When it set to true, the instance can close kibana private network access。
+     * @return Whether to enable Kibana private network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     public Optional<Output<Boolean>> enableKibanaPrivateNetwork() {
@@ -200,14 +337,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * Does Kibana enable public access
      * 
      */
     @Import(name="enableKibanaPublicNetwork")
     private @Nullable Output<Boolean> enableKibanaPublicNetwork;
 
     /**
-     * @return Bool, default to true. When it set to false, the instance can enable kibana public network access。
+     * @return Does Kibana enable public access
      * 
      */
     public Optional<Output<Boolean>> enableKibanaPublicNetwork() {
@@ -215,44 +352,97 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Bool, default to false. When it set to true, the instance can enable public network access。
+     * Whether to enable Kibana public network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     @Import(name="enablePublic")
     private @Nullable Output<Boolean> enablePublic;
 
     /**
-     * @return Bool, default to false. When it set to true, the instance can enable public network access。
+     * @return Whether to enable Kibana public network access.
+     * 
+     * The meaning of the value is as follows:
+     * - true: On.
+     * - false: does not open.
      * 
      */
     public Optional<Output<Boolean>> enablePublic() {
         return Optional.ofNullable(this.enablePublic);
     }
 
+    @Import(name="force")
+    private @Nullable Output<Boolean> force;
+
+    public Optional<Output<Boolean>> force() {
+        return Optional.ofNullable(this.force);
+    }
+
+    /**
+     * Version type.
+     * 
+     */
+    @Import(name="instanceCategory")
+    private @Nullable Output<String> instanceCategory;
+
+    /**
+     * @return Version type.
+     * 
+     */
+    public Optional<Output<String>> instanceCategory() {
+        return Optional.ofNullable(this.instanceCategory);
+    }
+
     /**
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
      * 
+     * @deprecated
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * Kibana console domain (Internet access supported).
+     * Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * 
+     */
+    @Import(name="kibanaConfiguration")
+    private @Nullable Output<InstanceKibanaConfigurationArgs> kibanaConfiguration;
+
+    /**
+     * @return Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+     * 
+     */
+    public Optional<Output<InstanceKibanaConfigurationArgs>> kibanaConfiguration() {
+        return Optional.ofNullable(this.kibanaConfiguration);
+    }
+
+    /**
+     * Kibana address
      * 
      */
     @Import(name="kibanaDomain")
     private @Nullable Output<String> kibanaDomain;
 
     /**
-     * @return Kibana console domain (Internet access supported).
+     * @return Kibana address
      * 
      */
     public Optional<Output<String>> kibanaDomain() {
@@ -262,27 +452,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
+     * @deprecated
+     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
     @Import(name="kibanaNodeSpec")
     private @Nullable Output<String> kibanaNodeSpec;
 
     /**
      * @return The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
+     * @deprecated
+     * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
     public Optional<Output<String>> kibanaNodeSpec() {
         return Optional.ofNullable(this.kibanaNodeSpec);
     }
 
     /**
-     * Kibana console port.
+     * The port assigned by the Kibana node.
      * 
      */
     @Import(name="kibanaPort")
     private @Nullable Output<Integer> kibanaPort;
 
     /**
-     * @return Kibana console port.
+     * @return The port assigned by the Kibana node.
      * 
      */
     public Optional<Output<Integer>> kibanaPort() {
@@ -290,14 +488,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * Kibana private network security group ID
      * 
      */
     @Import(name="kibanaPrivateSecurityGroupId")
     private @Nullable Output<String> kibanaPrivateSecurityGroupId;
 
     /**
-     * @return the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+     * @return Kibana private network security group ID
      * 
      */
     public Optional<Output<String>> kibanaPrivateSecurityGroupId() {
@@ -305,14 +503,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * Cluster Kibana node private network access whitelist
      * 
      */
     @Import(name="kibanaPrivateWhitelists")
     private @Nullable Output<List<String>> kibanaPrivateWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+     * @return Cluster Kibana node private network access whitelist
      * 
      */
     public Optional<Output<List<String>>> kibanaPrivateWhitelists() {
@@ -320,14 +518,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the Kibana&#39;s IP whitelist in internet network.
+     * Kibana private network access whitelist
      * 
      */
     @Import(name="kibanaWhitelists")
     private @Nullable Output<List<String>> kibanaWhitelists;
 
     /**
-     * @return Set the Kibana&#39;s IP whitelist in internet network.
+     * @return Kibana private network access whitelist
      * 
      */
     public Optional<Output<List<String>>> kibanaWhitelists() {
@@ -365,16 +563,39 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
      * 
      */
+    @Import(name="masterConfiguration")
+    private @Nullable Output<InstanceMasterConfigurationArgs> masterConfiguration;
+
+    /**
+     * @return Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+     * 
+     */
+    public Optional<Output<InstanceMasterConfigurationArgs>> masterConfiguration() {
+        return Optional.ofNullable(this.masterConfiguration);
+    }
+
+    /**
+     * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+     * 
+     * @deprecated
+     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
     @Import(name="masterNodeDiskType")
     private @Nullable Output<String> masterNodeDiskType;
 
     /**
      * @return The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
+     * @deprecated
+     * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
     public Optional<Output<String>> masterNodeDiskType() {
         return Optional.ofNullable(this.masterNodeDiskType);
     }
@@ -382,27 +603,42 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The dedicated master node spec. If specified, dedicated master node will be created.
      * 
+     * @deprecated
+     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
     @Import(name="masterNodeSpec")
     private @Nullable Output<String> masterNodeSpec;
 
     /**
      * @return The dedicated master node spec. If specified, dedicated master node will be created.
      * 
+     * @deprecated
+     * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
     public Optional<Output<String>> masterNodeSpec() {
         return Optional.ofNullable(this.masterNodeSpec);
     }
 
+    @Import(name="orderActionType")
+    private @Nullable Output<String> orderActionType;
+
+    public Optional<Output<String>> orderActionType() {
+        return Optional.ofNullable(this.orderActionType);
+    }
+
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+     * The access password of the instance.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+     * @return The access password of the instance.
      * 
      */
     public Optional<Output<String>> password() {
@@ -410,14 +646,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+     * @return The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -440,14 +691,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the instance&#39;s IP whitelist in VPC network.
+     * Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      * 
      */
     @Import(name="privateWhitelists")
     private @Nullable Output<List<String>> privateWhitelists;
 
     /**
-     * @return Set the instance&#39;s IP whitelist in VPC network.
+     * @return Elasticsearch private network whitelist. (Same as EsIpWhitelist)
      * 
      */
     public Optional<Output<List<String>>> privateWhitelists() {
@@ -455,14 +706,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * Access protocol. Optional values: `HTTP` and **HTTPS * *.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+     * @return Access protocol. Optional values: `HTTP` and **HTTPS * *.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -470,14 +721,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance connection public domain.
+     * The public network address of the current instance.
      * 
      */
     @Import(name="publicDomain")
     private @Nullable Output<String> publicDomain;
 
     /**
-     * @return Instance connection public domain.
+     * @return The public network address of the current instance.
      * 
      */
     public Optional<Output<String>> publicDomain() {
@@ -485,14 +736,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance connection public port.
+     * Elasticsearch cluster public network access port
      * 
      */
     @Import(name="publicPort")
     private @Nullable Output<Integer> publicPort;
 
     /**
-     * @return Instance connection public port.
+     * @return Elasticsearch cluster public network access port
      * 
      */
     public Optional<Output<Integer>> publicPort() {
@@ -500,14 +751,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set the instance&#39;s IP whitelist in internet network.
+     * Elasticseach public network access whitelist IP list
      * 
      */
     @Import(name="publicWhitelists")
     private @Nullable Output<List<String>> publicWhitelists;
 
     /**
-     * @return Set the instance&#39;s IP whitelist in internet network.
+     * @return Elasticseach public network access whitelist IP list
      * 
      */
     public Optional<Output<List<String>>> publicWhitelists() {
@@ -515,14 +766,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * Renewal Status
      * 
      */
     @Import(name="renewStatus")
     private @Nullable Output<String> renewStatus;
 
     /**
-     * @return The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+     * @return Renewal Status
      * 
      */
     public Optional<Output<String>> renewStatus() {
@@ -530,14 +781,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * Renewal Period Unit
      * 
      */
     @Import(name="renewalDurationUnit")
     private @Nullable Output<String> renewalDurationUnit;
 
     /**
-     * @return Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+     * @return Renewal Period Unit
      * 
      */
     public Optional<Output<String>> renewalDurationUnit() {
@@ -545,14 +796,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of resource group which the Elasticsearch instance belongs.
+     * Resource group to which the instance belongs
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of resource group which the Elasticsearch instance belongs.
+     * @return Resource group to which the instance belongs
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -560,14 +811,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * Configuration information
      * 
      */
     @Import(name="settingConfig")
     private @Nullable Output<Map<String,String>> settingConfig;
 
     /**
-     * @return The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+     * @return Configuration information
      * 
      */
     public Optional<Output<Map<String,String>>> settingConfig() {
@@ -575,14 +826,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * Instance change status
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+     * @return Instance change status
      * 
      */
     public Optional<Output<String>> status() {
@@ -590,29 +841,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * Collection of tag key-value pairs
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return Collection of tag key-value pairs
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="updateStrategy")
+    private @Nullable Output<String> updateStrategy;
+
+    public Optional<Output<String>> updateStrategy() {
+        return Optional.ofNullable(this.updateStrategy);
+    }
+
     /**
-     * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * Instance version
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+     * @return Instance version
      * 
      */
     public Optional<Output<String>> version() {
@@ -637,29 +895,60 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
     @Import(name="warmNodeAmount")
     private @Nullable Output<Integer> warmNodeAmount;
 
     /**
      * @return The Elasticsearch cluster&#39;s warm node quantity, between 3 and 50.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
     public Optional<Output<Integer>> warmNodeAmount() {
         return Optional.ofNullable(this.warmNodeAmount);
     }
 
     /**
-     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
      * 
      */
+    @Import(name="warmNodeConfiguration")
+    private @Nullable Output<InstanceWarmNodeConfigurationArgs> warmNodeConfiguration;
+
+    /**
+     * @return Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+     * 
+     */
+    public Optional<Output<InstanceWarmNodeConfigurationArgs>> warmNodeConfiguration() {
+        return Optional.ofNullable(this.warmNodeConfiguration);
+    }
+
+    /**
+     * If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
+     * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
     @Import(name="warmNodeDiskEncrypted")
     private @Nullable Output<Boolean> warmNodeDiskEncrypted;
 
     /**
      * @return If encrypt the warm node disk. Valid values are `true`, `false`. Default to `false`.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
     public Optional<Output<Boolean>> warmNodeDiskEncrypted() {
         return Optional.ofNullable(this.warmNodeDiskEncrypted);
     }
@@ -667,14 +956,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The single warm node storage space, should between 500 and 20480
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
     @Import(name="warmNodeDiskSize")
     private @Nullable Output<Integer> warmNodeDiskSize;
 
     /**
      * @return The single warm node storage space, should between 500 and 20480
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
     public Optional<Output<Integer>> warmNodeDiskSize() {
         return Optional.ofNullable(this.warmNodeDiskSize);
     }
@@ -682,14 +979,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The warm node disk type. Supported values:  cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
     @Import(name="warmNodeDiskType")
     private @Nullable Output<String> warmNodeDiskType;
 
     /**
      * @return The warm node disk type. Supported values:  cloud_efficiency.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
     public Optional<Output<String>> warmNodeDiskType() {
         return Optional.ofNullable(this.warmNodeDiskType);
     }
@@ -697,27 +1002,39 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The warm node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
     @Import(name="warmNodeSpec")
     private @Nullable Output<String> warmNodeSpec;
 
     /**
      * @return The warm node specifications of the Elasticsearch instance.
      * 
+     * @deprecated
+     * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
     public Optional<Output<String>> warmNodeSpec() {
         return Optional.ofNullable(this.warmNodeSpec);
     }
 
     /**
-     * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * The number of zones in the Elasticsearch instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="zoneCount")
     private @Nullable Output<Integer> zoneCount;
 
     /**
-     * @return The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+     * @return The number of zones in the Elasticsearch instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Integer>> zoneCount() {
@@ -727,10 +1044,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
+        this.archType = $.archType;
         this.autoRenewDuration = $.autoRenewDuration;
         this.clientNodeAmount = $.clientNodeAmount;
+        this.clientNodeConfiguration = $.clientNodeConfiguration;
         this.clientNodeSpec = $.clientNodeSpec;
+        this.createTime = $.createTime;
         this.dataNodeAmount = $.dataNodeAmount;
+        this.dataNodeConfiguration = $.dataNodeConfiguration;
         this.dataNodeDiskEncrypted = $.dataNodeDiskEncrypted;
         this.dataNodeDiskPerformanceLevel = $.dataNodeDiskPerformanceLevel;
         this.dataNodeDiskSize = $.dataNodeDiskSize;
@@ -741,7 +1062,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.enableKibanaPrivateNetwork = $.enableKibanaPrivateNetwork;
         this.enableKibanaPublicNetwork = $.enableKibanaPublicNetwork;
         this.enablePublic = $.enablePublic;
+        this.force = $.force;
+        this.instanceCategory = $.instanceCategory;
         this.instanceChargeType = $.instanceChargeType;
+        this.kibanaConfiguration = $.kibanaConfiguration;
         this.kibanaDomain = $.kibanaDomain;
         this.kibanaNodeSpec = $.kibanaNodeSpec;
         this.kibanaPort = $.kibanaPort;
@@ -750,9 +1074,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.kibanaWhitelists = $.kibanaWhitelists;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.masterConfiguration = $.masterConfiguration;
         this.masterNodeDiskType = $.masterNodeDiskType;
         this.masterNodeSpec = $.masterNodeSpec;
+        this.orderActionType = $.orderActionType;
         this.password = $.password;
+        this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
         this.privateWhitelists = $.privateWhitelists;
@@ -766,9 +1093,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.settingConfig = $.settingConfig;
         this.status = $.status;
         this.tags = $.tags;
+        this.updateStrategy = $.updateStrategy;
         this.version = $.version;
         this.vswitchId = $.vswitchId;
         this.warmNodeAmount = $.warmNodeAmount;
+        this.warmNodeConfiguration = $.warmNodeConfiguration;
         this.warmNodeDiskEncrypted = $.warmNodeDiskEncrypted;
         this.warmNodeDiskSize = $.warmNodeDiskSize;
         this.warmNodeDiskType = $.warmNodeDiskType;
@@ -795,7 +1124,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+         * @param archType Schema Type:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archType(@Nullable Output<String> archType) {
+            $.archType = archType;
+            return this;
+        }
+
+        /**
+         * @param archType Schema Type:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder archType(String archType) {
+            return archType(Output.of(archType));
+        }
+
+        /**
+         * @param autoRenewDuration Renewal Period
          * 
          * @return builder
          * 
@@ -806,7 +1156,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewDuration Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instanceChargeType` is `PrePaid` and `renewStatus` is `AutoRenewal`.
+         * @param autoRenewDuration Renewal Period
          * 
          * @return builder
          * 
@@ -820,7 +1170,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
         public Builder clientNodeAmount(@Nullable Output<Integer> clientNodeAmount) {
             $.clientNodeAmount = clientNodeAmount;
             return this;
@@ -831,9 +1185,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'client_node_amount' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.amount' instead. */
         public Builder clientNodeAmount(Integer clientNodeAmount) {
             return clientNodeAmount(Output.of(clientNodeAmount));
+        }
+
+        /**
+         * @param clientNodeConfiguration Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientNodeConfiguration(@Nullable Output<InstanceClientNodeConfigurationArgs> clientNodeConfiguration) {
+            $.clientNodeConfiguration = clientNodeConfiguration;
+            return this;
+        }
+
+        /**
+         * @param clientNodeConfiguration Elasticsearch cluster coordination node configuration See `clientNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientNodeConfiguration(InstanceClientNodeConfigurationArgs clientNodeConfiguration) {
+            return clientNodeConfiguration(Output.of(clientNodeConfiguration));
         }
 
         /**
@@ -841,7 +1220,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
         public Builder clientNodeSpec(@Nullable Output<String> clientNodeSpec) {
             $.clientNodeSpec = clientNodeSpec;
             return this;
@@ -852,9 +1235,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;client_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;client_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'client_node_spec' has been deprecated since provider version 1.262.0. New field 'client_node_configuration.spec' instead. */
         public Builder clientNodeSpec(String clientNodeSpec) {
             return clientNodeSpec(Output.of(clientNodeSpec));
+        }
+
+        /**
+         * @param createTime Instance creation time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Instance creation time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -862,7 +1270,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
         public Builder dataNodeAmount(@Nullable Output<Integer> dataNodeAmount) {
             $.dataNodeAmount = dataNodeAmount;
             return this;
@@ -873,9 +1285,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_amount' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.amount' instead. */
         public Builder dataNodeAmount(Integer dataNodeAmount) {
             return dataNodeAmount(Output.of(dataNodeAmount));
+        }
+
+        /**
+         * @param dataNodeConfiguration Elasticsearch data node information See `dataNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataNodeConfiguration(@Nullable Output<InstanceDataNodeConfigurationArgs> dataNodeConfiguration) {
+            $.dataNodeConfiguration = dataNodeConfiguration;
+            return this;
+        }
+
+        /**
+         * @param dataNodeConfiguration Elasticsearch data node information See `dataNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataNodeConfiguration(InstanceDataNodeConfigurationArgs dataNodeConfiguration) {
+            return dataNodeConfiguration(Output.of(dataNodeConfiguration));
         }
 
         /**
@@ -883,7 +1320,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
         public Builder dataNodeDiskEncrypted(@Nullable Output<Boolean> dataNodeDiskEncrypted) {
             $.dataNodeDiskEncrypted = dataNodeDiskEncrypted;
             return this;
@@ -894,7 +1335,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_encrypted&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_encrypted&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_encrypted' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_encrypted' instead. */
         public Builder dataNodeDiskEncrypted(Boolean dataNodeDiskEncrypted) {
             return dataNodeDiskEncrypted(Output.of(dataNodeDiskEncrypted));
         }
@@ -904,7 +1349,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
         public Builder dataNodeDiskPerformanceLevel(@Nullable Output<String> dataNodeDiskPerformanceLevel) {
             $.dataNodeDiskPerformanceLevel = dataNodeDiskPerformanceLevel;
             return this;
@@ -915,7 +1364,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_performance_level&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.performance_level&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_performance_level' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.performance_level' instead. */
         public Builder dataNodeDiskPerformanceLevel(String dataNodeDiskPerformanceLevel) {
             return dataNodeDiskPerformanceLevel(Output.of(dataNodeDiskPerformanceLevel));
         }
@@ -925,7 +1378,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
         public Builder dataNodeDiskSize(@Nullable Output<Integer> dataNodeDiskSize) {
             $.dataNodeDiskSize = dataNodeDiskSize;
             return this;
@@ -936,7 +1393,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_size&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_size' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk' instead. */
         public Builder dataNodeDiskSize(Integer dataNodeDiskSize) {
             return dataNodeDiskSize(Output.of(dataNodeDiskSize));
         }
@@ -946,7 +1407,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
         public Builder dataNodeDiskType(@Nullable Output<String> dataNodeDiskType) {
             $.dataNodeDiskType = dataNodeDiskType;
             return this;
@@ -957,7 +1422,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.disk_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_disk_type' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.disk_type' instead. */
         public Builder dataNodeDiskType(String dataNodeDiskType) {
             return dataNodeDiskType(Output.of(dataNodeDiskType));
         }
@@ -967,7 +1436,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
         public Builder dataNodeSpec(@Nullable Output<String> dataNodeSpec) {
             $.dataNodeSpec = dataNodeSpec;
             return this;
@@ -978,13 +1451,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;data_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;data_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'data_node_spec' has been deprecated since provider version 1.262.0. New field 'data_node_configuration.spec' instead. */
         public Builder dataNodeSpec(String dataNodeSpec) {
             return dataNodeSpec(Output.of(dataNodeSpec));
         }
 
         /**
-         * @param description The description of instance. It a string of 0 to 30 characters.
+         * @param description Instance name
          * 
          * @return builder
          * 
@@ -995,7 +1472,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of instance. It a string of 0 to 30 characters.
+         * @param description Instance name
          * 
          * @return builder
          * 
@@ -1005,7 +1482,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Instance connection domain (only VPC network access supported).
+         * @param domain Elasticsearch cluster private domain name
          * 
          * @return builder
          * 
@@ -1016,7 +1493,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain Instance connection domain (only VPC network access supported).
+         * @param domain Elasticsearch cluster private domain name
          * 
          * @return builder
          * 
@@ -1026,7 +1503,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPrivateNetwork Bool, default to false. When it set to true, the instance can close kibana private network access。
+         * @param enableKibanaPrivateNetwork Whether to enable Kibana private network access.
+         * 
+         * The meaning of the value is as follows:
+         * - true: On.
+         * - false: does not open.
          * 
          * @return builder
          * 
@@ -1037,7 +1518,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPrivateNetwork Bool, default to false. When it set to true, the instance can close kibana private network access。
+         * @param enableKibanaPrivateNetwork Whether to enable Kibana private network access.
+         * 
+         * The meaning of the value is as follows:
+         * - true: On.
+         * - false: does not open.
          * 
          * @return builder
          * 
@@ -1047,7 +1532,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPublicNetwork Bool, default to true. When it set to false, the instance can enable kibana public network access。
+         * @param enableKibanaPublicNetwork Does Kibana enable public access
          * 
          * @return builder
          * 
@@ -1058,7 +1543,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableKibanaPublicNetwork Bool, default to true. When it set to false, the instance can enable kibana public network access。
+         * @param enableKibanaPublicNetwork Does Kibana enable public access
          * 
          * @return builder
          * 
@@ -1068,7 +1553,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic Bool, default to false. When it set to true, the instance can enable public network access。
+         * @param enablePublic Whether to enable Kibana public network access.
+         * 
+         * The meaning of the value is as follows:
+         * - true: On.
+         * - false: does not open.
          * 
          * @return builder
          * 
@@ -1079,7 +1568,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic Bool, default to false. When it set to true, the instance can enable public network access。
+         * @param enablePublic Whether to enable Kibana public network access.
+         * 
+         * The meaning of the value is as follows:
+         * - true: On.
+         * - false: does not open.
          * 
          * @return builder
          * 
@@ -1088,12 +1581,46 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return enablePublic(Output.of(enablePublic));
         }
 
+        public Builder force(@Nullable Output<Boolean> force) {
+            $.force = force;
+            return this;
+        }
+
+        public Builder force(Boolean force) {
+            return force(Output.of(force));
+        }
+
+        /**
+         * @param instanceCategory Version type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCategory(@Nullable Output<String> instanceCategory) {
+            $.instanceCategory = instanceCategory;
+            return this;
+        }
+
+        /**
+         * @param instanceCategory Version type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceCategory(String instanceCategory) {
+            return instanceCategory(Output.of(instanceCategory));
+        }
+
         /**
          * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instanceChargeYpe from `PostPaid` to `PrePaid`, the following attributes are required: `period`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -1104,13 +1631,38 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.262.0. New field &#39;payment_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.262.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param kibanaDomain Kibana console domain (Internet access supported).
+         * @param kibanaConfiguration Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaConfiguration(@Nullable Output<InstanceKibanaConfigurationArgs> kibanaConfiguration) {
+            $.kibanaConfiguration = kibanaConfiguration;
+            return this;
+        }
+
+        /**
+         * @param kibanaConfiguration Elasticsearch Kibana node settings See `kibanaConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kibanaConfiguration(InstanceKibanaConfigurationArgs kibanaConfiguration) {
+            return kibanaConfiguration(Output.of(kibanaConfiguration));
+        }
+
+        /**
+         * @param kibanaDomain Kibana address
          * 
          * @return builder
          * 
@@ -1121,7 +1673,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaDomain Kibana console domain (Internet access supported).
+         * @param kibanaDomain Kibana address
          * 
          * @return builder
          * 
@@ -1135,7 +1687,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
         public Builder kibanaNodeSpec(@Nullable Output<String> kibanaNodeSpec) {
             $.kibanaNodeSpec = kibanaNodeSpec;
             return this;
@@ -1146,13 +1702,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;kibana_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;kibana_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'kibana_node_spec' has been deprecated since provider version 1.262.0. New field 'kibana_configuration.spec' instead. */
         public Builder kibanaNodeSpec(String kibanaNodeSpec) {
             return kibanaNodeSpec(Output.of(kibanaNodeSpec));
         }
 
         /**
-         * @param kibanaPort Kibana console port.
+         * @param kibanaPort The port assigned by the Kibana node.
          * 
          * @return builder
          * 
@@ -1163,7 +1723,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPort Kibana console port.
+         * @param kibanaPort The port assigned by the Kibana node.
          * 
          * @return builder
          * 
@@ -1173,7 +1733,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+         * @param kibanaPrivateSecurityGroupId Kibana private network security group ID
          * 
          * @return builder
          * 
@@ -1184,7 +1744,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateSecurityGroupId the security group id associated with Kibana private network, this param is required when `enableKibanaPrivateNetwork` set true, and the security group id should in the same VPC as `vswitchId`
+         * @param kibanaPrivateSecurityGroupId Kibana private network security group ID
          * 
          * @return builder
          * 
@@ -1194,7 +1754,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
          * 
          * @return builder
          * 
@@ -1205,7 +1765,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
          * 
          * @return builder
          * 
@@ -1215,7 +1775,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaPrivateWhitelists Set the Kibana&#39;s IP whitelist in private network, This option has been abandoned on newly created instance, please use `kibanaPrivateSecurityGroupId` instead
+         * @param kibanaPrivateWhitelists Cluster Kibana node private network access whitelist
          * 
          * @return builder
          * 
@@ -1225,7 +1785,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Set the Kibana&#39;s IP whitelist in internet network.
+         * @param kibanaWhitelists Kibana private network access whitelist
          * 
          * @return builder
          * 
@@ -1236,7 +1796,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Set the Kibana&#39;s IP whitelist in internet network.
+         * @param kibanaWhitelists Kibana private network access whitelist
          * 
          * @return builder
          * 
@@ -1246,7 +1806,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kibanaWhitelists Set the Kibana&#39;s IP whitelist in internet network.
+         * @param kibanaWhitelists Kibana private network access whitelist
          * 
          * @return builder
          * 
@@ -1298,11 +1858,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param masterNodeDiskType The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+         * @param masterConfiguration Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
          * 
          * @return builder
          * 
          */
+        public Builder masterConfiguration(@Nullable Output<InstanceMasterConfigurationArgs> masterConfiguration) {
+            $.masterConfiguration = masterConfiguration;
+            return this;
+        }
+
+        /**
+         * @param masterConfiguration Elasticsearch proprietary master node configuration information See `masterConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder masterConfiguration(InstanceMasterConfigurationArgs masterConfiguration) {
+            return masterConfiguration(Output.of(masterConfiguration));
+        }
+
+        /**
+         * @param masterNodeDiskType The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
         public Builder masterNodeDiskType(@Nullable Output<String> masterNodeDiskType) {
             $.masterNodeDiskType = masterNodeDiskType;
             return this;
@@ -1313,7 +1898,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;master_node_disk_type&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.disk_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'master_node_disk_type' has been deprecated since provider version 1.262.0. New field 'master_configuration.disk_type' instead. */
         public Builder masterNodeDiskType(String masterNodeDiskType) {
             return masterNodeDiskType(Output.of(masterNodeDiskType));
         }
@@ -1323,7 +1912,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
         public Builder masterNodeSpec(@Nullable Output<String> masterNodeSpec) {
             $.masterNodeSpec = masterNodeSpec;
             return this;
@@ -1334,13 +1927,26 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;master_node_spec&#39; has been deprecated since provider version 1.262.0. New field &#39;master_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'master_node_spec' has been deprecated since provider version 1.262.0. New field 'master_configuration.spec' instead. */
         public Builder masterNodeSpec(String masterNodeSpec) {
             return masterNodeSpec(Output.of(masterNodeSpec));
         }
 
+        public Builder orderActionType(@Nullable Output<String> orderActionType) {
+            $.orderActionType = orderActionType;
+            return this;
+        }
+
+        public Builder orderActionType(String orderActionType) {
+            return orderActionType(Output.of(orderActionType));
+        }
+
         /**
-         * @param password The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+         * @param password The access password of the instance.
          * 
          * @return builder
          * 
@@ -1351,7 +1957,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
+         * @param password The access password of the instance.
          * 
          * @return builder
          * 
@@ -1361,7 +1967,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+         * @param paymentType The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The payment method of the instance. Optional values: `prepaid` (subscription) and `postpaid` (pay-as-you-go)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
          * 
          * @return builder
          * 
@@ -1372,7 +1999,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
+         * @param period The duration that you will buy Elasticsearch instance (in month). It is valid when PaymentType is `Subscription`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
          * 
          * @return builder
          * 
@@ -1403,7 +2030,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Set the instance&#39;s IP whitelist in VPC network.
+         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
          * 
          * @return builder
          * 
@@ -1414,7 +2041,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Set the instance&#39;s IP whitelist in VPC network.
+         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
          * 
          * @return builder
          * 
@@ -1424,7 +2051,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWhitelists Set the instance&#39;s IP whitelist in VPC network.
+         * @param privateWhitelists Elasticsearch private network whitelist. (Same as EsIpWhitelist)
          * 
          * @return builder
          * 
@@ -1434,7 +2061,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+         * @param protocol Access protocol. Optional values: `HTTP` and **HTTPS * *.
          * 
          * @return builder
          * 
@@ -1445,7 +2072,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
+         * @param protocol Access protocol. Optional values: `HTTP` and **HTTPS * *.
          * 
          * @return builder
          * 
@@ -1455,7 +2082,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicDomain Instance connection public domain.
+         * @param publicDomain The public network address of the current instance.
          * 
          * @return builder
          * 
@@ -1466,7 +2093,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicDomain Instance connection public domain.
+         * @param publicDomain The public network address of the current instance.
          * 
          * @return builder
          * 
@@ -1476,7 +2103,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicPort Instance connection public port.
+         * @param publicPort Elasticsearch cluster public network access port
          * 
          * @return builder
          * 
@@ -1487,7 +2114,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicPort Instance connection public port.
+         * @param publicPort Elasticsearch cluster public network access port
          * 
          * @return builder
          * 
@@ -1497,7 +2124,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Set the instance&#39;s IP whitelist in internet network.
+         * @param publicWhitelists Elasticseach public network access whitelist IP list
          * 
          * @return builder
          * 
@@ -1508,7 +2135,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Set the instance&#39;s IP whitelist in internet network.
+         * @param publicWhitelists Elasticseach public network access whitelist IP list
          * 
          * @return builder
          * 
@@ -1518,7 +2145,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicWhitelists Set the instance&#39;s IP whitelist in internet network.
+         * @param publicWhitelists Elasticseach public network access whitelist IP list
          * 
          * @return builder
          * 
@@ -1528,7 +2155,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+         * @param renewStatus Renewal Status
          * 
          * @return builder
          * 
@@ -1539,7 +2166,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewStatus The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instanceChargeType` must be `PrePaid`.
+         * @param renewStatus Renewal Status
          * 
          * @return builder
          * 
@@ -1549,7 +2176,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+         * @param renewalDurationUnit Renewal Period Unit
          * 
          * @return builder
          * 
@@ -1560,7 +2187,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalDurationUnit Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
+         * @param renewalDurationUnit Renewal Period Unit
          * 
          * @return builder
          * 
@@ -1570,7 +2197,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of resource group which the Elasticsearch instance belongs.
+         * @param resourceGroupId Resource group to which the instance belongs
          * 
          * @return builder
          * 
@@ -1581,7 +2208,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of resource group which the Elasticsearch instance belongs.
+         * @param resourceGroupId Resource group to which the instance belongs
          * 
          * @return builder
          * 
@@ -1591,7 +2218,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settingConfig The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+         * @param settingConfig Configuration information
          * 
          * @return builder
          * 
@@ -1602,7 +2229,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param settingConfig The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
+         * @param settingConfig Configuration information
          * 
          * @return builder
          * 
@@ -1612,7 +2239,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+         * @param status Instance change status
          * 
          * @return builder
          * 
@@ -1623,7 +2250,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
+         * @param status Instance change status
          * 
          * @return builder
          * 
@@ -1633,7 +2260,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags Collection of tag key-value pairs
          * 
          * @return builder
          * 
@@ -1644,7 +2271,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags Collection of tag key-value pairs
          * 
          * @return builder
          * 
@@ -1653,8 +2280,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
+        public Builder updateStrategy(String updateStrategy) {
+            return updateStrategy(Output.of(updateStrategy));
+        }
+
         /**
-         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+         * @param version Instance version
          * 
          * @return builder
          * 
@@ -1665,7 +2301,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` , `7.7_with_X-Pack`, `7.10_with_X-Pack`, `7.16_with_X-Pack`, `8.5_with_X-Pack`, `8.9_with_X-Pack`, `8.13_with_X-Pack`.
+         * @param version Instance version
          * 
          * @return builder
          * 
@@ -1700,7 +2336,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
         public Builder warmNodeAmount(@Nullable Output<Integer> warmNodeAmount) {
             $.warmNodeAmount = warmNodeAmount;
             return this;
@@ -1711,9 +2351,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.amount&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.amount' instead. */
         public Builder warmNodeAmount(Integer warmNodeAmount) {
             return warmNodeAmount(Output.of(warmNodeAmount));
+        }
+
+        /**
+         * @param warmNodeConfiguration Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeConfiguration(@Nullable Output<InstanceWarmNodeConfigurationArgs> warmNodeConfiguration) {
+            $.warmNodeConfiguration = warmNodeConfiguration;
+            return this;
+        }
+
+        /**
+         * @param warmNodeConfiguration Elasticsearch cluster cold data node configuration See `warmNodeConfiguration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warmNodeConfiguration(InstanceWarmNodeConfigurationArgs warmNodeConfiguration) {
+            return warmNodeConfiguration(Output.of(warmNodeConfiguration));
         }
 
         /**
@@ -1721,7 +2386,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
         public Builder warmNodeDiskEncrypted(@Nullable Output<Boolean> warmNodeDiskEncrypted) {
             $.warmNodeDiskEncrypted = warmNodeDiskEncrypted;
             return this;
@@ -1732,7 +2401,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_encrypted&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_encrypted' instead. */
         public Builder warmNodeDiskEncrypted(Boolean warmNodeDiskEncrypted) {
             return warmNodeDiskEncrypted(Output.of(warmNodeDiskEncrypted));
         }
@@ -1742,7 +2415,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
         public Builder warmNodeDiskSize(@Nullable Output<Integer> warmNodeDiskSize) {
             $.warmNodeDiskSize = warmNodeDiskSize;
             return this;
@@ -1753,7 +2430,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk' instead. */
         public Builder warmNodeDiskSize(Integer warmNodeDiskSize) {
             return warmNodeDiskSize(Output.of(warmNodeDiskSize));
         }
@@ -1763,7 +2444,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
         public Builder warmNodeDiskType(@Nullable Output<String> warmNodeDiskType) {
             $.warmNodeDiskType = warmNodeDiskType;
             return this;
@@ -1774,7 +2459,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.disk_type&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.disk_type' instead. */
         public Builder warmNodeDiskType(String warmNodeDiskType) {
             return warmNodeDiskType(Output.of(warmNodeDiskType));
         }
@@ -1784,7 +2473,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
         public Builder warmNodeSpec(@Nullable Output<String> warmNodeSpec) {
             $.warmNodeSpec = warmNodeSpec;
             return this;
@@ -1795,13 +2488,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;warm_node_amount&#39; has been deprecated since provider version 1.262.0. New field &#39;warm_node_configuration.spec&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'warm_node_amount' has been deprecated since provider version 1.262.0. New field 'warm_node_configuration.spec' instead. */
         public Builder warmNodeSpec(String warmNodeSpec) {
             return warmNodeSpec(Output.of(warmNodeSpec));
         }
 
         /**
-         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+         * @param zoneCount The number of zones in the Elasticsearch instance.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -1812,7 +2511,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneCount The Multi-AZ supported for Elasticsearch, between 1 and 3. The `dataNodeAmount` value must be an integral multiple of the `zoneCount` value.
+         * @param zoneCount The number of zones in the Elasticsearch instance.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

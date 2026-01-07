@@ -59,6 +59,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * Alicloud Config Configuration Recorder can be imported using the id, e.g.

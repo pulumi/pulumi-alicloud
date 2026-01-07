@@ -15,10 +15,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RAM Group membership resource.
- * 
- * &gt; **NOTE:** Available since v1.0.0+.
- * 
  * ## Example Usage
  * 
  * <pre>
@@ -92,6 +88,8 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  * 
  * ## Import
  * 

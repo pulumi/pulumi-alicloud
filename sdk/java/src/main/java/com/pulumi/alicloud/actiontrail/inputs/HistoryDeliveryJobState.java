@@ -17,14 +17,29 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
     public static final HistoryDeliveryJobState Empty = new HistoryDeliveryJobState();
 
     /**
-     * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * The creation time of the resource
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -32,14 +47,14 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the trail for which you want to create a historical event delivery task.
+     * The Track Name.
      * 
      */
     @Import(name="trailName")
     private @Nullable Output<String> trailName;
 
     /**
-     * @return The name of the trail for which you want to create a historical event delivery task.
+     * @return The Track Name.
      * 
      */
     public Optional<Output<String>> trailName() {
@@ -49,6 +64,7 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
     private HistoryDeliveryJobState() {}
 
     private HistoryDeliveryJobState(HistoryDeliveryJobState $) {
+        this.createTime = $.createTime;
         this.status = $.status;
         this.trailName = $.trailName;
     }
@@ -72,7 +88,28 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -83,7 +120,7 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -93,7 +130,7 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trailName The name of the trail for which you want to create a historical event delivery task.
+         * @param trailName The Track Name.
          * 
          * @return builder
          * 
@@ -104,7 +141,7 @@ public final class HistoryDeliveryJobState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trailName The name of the trail for which you want to create a historical event delivery task.
+         * @param trailName The Track Name.
          * 
          * @return builder
          * 

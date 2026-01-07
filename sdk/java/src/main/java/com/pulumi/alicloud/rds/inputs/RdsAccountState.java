@@ -122,6 +122,21 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to apply password policy
+     * 
+     */
+    @Import(name="checkPolicy")
+    private @Nullable Output<Boolean> checkPolicy;
+
+    /**
+     * @return Whether to apply password policy
+     * 
+     */
+    public Optional<Output<Boolean>> checkPolicy() {
+        return Optional.ofNullable(this.checkPolicy);
+    }
+
+    /**
      * The ID of the instance.
      * 
      */
@@ -274,14 +289,14 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `Available`, `Unavailable`.
+     * The status of the resource
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Unavailable`.
+     * @return The status of the resource
      * 
      */
     public Optional<Output<String>> status() {
@@ -322,6 +337,7 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
         this.accountName = $.accountName;
         this.accountPassword = $.accountPassword;
         this.accountType = $.accountType;
+        this.checkPolicy = $.checkPolicy;
         this.dbInstanceId = $.dbInstanceId;
         this.description = $.description;
         this.instanceId = $.instanceId;
@@ -478,6 +494,27 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountType(String accountType) {
             return accountType(Output.of(accountType));
+        }
+
+        /**
+         * @param checkPolicy Whether to apply password policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkPolicy(@Nullable Output<Boolean> checkPolicy) {
+            $.checkPolicy = checkPolicy;
+            return this;
+        }
+
+        /**
+         * @param checkPolicy Whether to apply password policy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkPolicy(Boolean checkPolicy) {
+            return checkPolicy(Output.of(checkPolicy));
         }
 
         /**
@@ -681,7 +718,7 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
+         * @param status The status of the resource
          * 
          * @return builder
          * 
@@ -692,7 +729,7 @@ public final class RdsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Unavailable`.
+         * @param status The status of the resource
          * 
          * @return builder
          * 

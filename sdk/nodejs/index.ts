@@ -70,6 +70,11 @@ export type MscSubWebhook = import("./mscSubWebhook").MscSubWebhook;
 export const MscSubWebhook: typeof import("./mscSubWebhook").MscSubWebhook = null as any;
 utilities.lazyLoad(exports, ["MscSubWebhook"], () => require("./mscSubWebhook"));
 
+export { OpenApiExplorerApiMcpServerArgs, OpenApiExplorerApiMcpServerState } from "./openApiExplorerApiMcpServer";
+export type OpenApiExplorerApiMcpServer = import("./openApiExplorerApiMcpServer").OpenApiExplorerApiMcpServer;
+export const OpenApiExplorerApiMcpServer: typeof import("./openApiExplorerApiMcpServer").OpenApiExplorerApiMcpServer = null as any;
+utilities.lazyLoad(exports, ["OpenApiExplorerApiMcpServer"], () => require("./openApiExplorerApiMcpServer"));
+
 export { PolarDbExtensionArgs, PolarDbExtensionState } from "./polarDbExtension";
 export type PolarDbExtension = import("./polarDbExtension").PolarDbExtension;
 export const PolarDbExtension: typeof import("./polarDbExtension").PolarDbExtension = null as any;
@@ -120,6 +125,7 @@ import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
 import * as compute from "./compute";
 import * as config from "./config";
+import * as configaggregate from "./configaggregate";
 import * as cr from "./cr";
 import * as cs from "./cs";
 import * as das from "./das";
@@ -265,6 +271,7 @@ export {
     cms,
     compute,
     config,
+    configaggregate,
     cr,
     cs,
     das,
@@ -387,6 +394,8 @@ const _module = {
                 return new MscSubSubscription(name, <any>undefined, { urn })
             case "alicloud:index/mscSubWebhook:MscSubWebhook":
                 return new MscSubWebhook(name, <any>undefined, { urn })
+            case "alicloud:index/openApiExplorerApiMcpServer:OpenApiExplorerApiMcpServer":
+                return new OpenApiExplorerApiMcpServer(name, <any>undefined, { urn })
             case "alicloud:index/polarDbExtension:PolarDbExtension":
                 return new PolarDbExtension(name, <any>undefined, { urn })
             case "alicloud:index/starRocksInstance:StarRocksInstance":
@@ -400,6 +409,7 @@ pulumi.runtime.registerResourceModule("alicloud", "index/milvusInstance", _modul
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubContract", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubSubscription", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/mscSubWebhook", _module)
+pulumi.runtime.registerResourceModule("alicloud", "index/openApiExplorerApiMcpServer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/polarDbExtension", _module)
 pulumi.runtime.registerResourceModule("alicloud", "index/starRocksInstance", _module)
 pulumi.runtime.registerResourcePackage("alicloud", {

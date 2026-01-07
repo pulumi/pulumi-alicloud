@@ -634,6 +634,8 @@ class GatewayBlockVolume(pulumi.CustomResource):
             size=100)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Storage Gateway Gateway Block Volume can be imported using the id, e.g.
@@ -738,6 +740,8 @@ class GatewayBlockVolume(pulumi.CustomResource):
             protocol="iSCSI",
             size=100)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -294,6 +294,8 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
             }])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Global Accelerator (GA) Custom Routing Endpoint Traffic Policy can be imported using the id, e.g.
@@ -389,6 +391,8 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                 "to_port": 2,
             }])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

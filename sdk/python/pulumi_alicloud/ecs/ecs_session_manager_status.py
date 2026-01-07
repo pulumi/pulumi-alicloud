@@ -123,6 +123,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
             status="Disabled")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ECS Session Manager Status can be imported using the id, e.g.
@@ -161,6 +163,8 @@ class EcsSessionManagerStatus(pulumi.CustomResource):
             session_manager_status_name="sessionManagerStatus",
             status="Disabled")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

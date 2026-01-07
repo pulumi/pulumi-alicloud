@@ -520,6 +520,8 @@ class NasBackupPlan(pulumi.CustomResource):
             paths=["/"])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         HBR Nas Backup Plan can be imported using the id, e.g.
@@ -591,6 +593,8 @@ class NasBackupPlan(pulumi.CustomResource):
             retention="2",
             paths=["/"])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

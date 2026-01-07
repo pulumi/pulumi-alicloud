@@ -399,6 +399,8 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
             region_id="cn-heyuan")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Ebs Dedicated Block Storage Cluster can be imported using the id, e.g.
@@ -443,6 +445,8 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
             total_capacity="61440",
             region_id="cn-heyuan")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -86,6 +86,8 @@ namespace Pulumi.AliCloud.Vpn
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// SSL-VPN client certificates can be imported using the id, e.g.

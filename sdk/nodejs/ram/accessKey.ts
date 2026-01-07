@@ -95,6 +95,8 @@ import * as utilities from "../utilities";
  * });
  * export const encryptedSecret = encrypt.encryptedSecret;
  * ```
+ *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
  */
 export class AccessKey extends pulumi.CustomResource {
     /**

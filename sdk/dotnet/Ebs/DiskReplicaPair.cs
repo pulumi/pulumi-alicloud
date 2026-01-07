@@ -100,6 +100,8 @@ namespace Pulumi.AliCloud.Ebs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Elastic Block Storage(EBS) Disk Replica Pair can be imported using the id, e.g.

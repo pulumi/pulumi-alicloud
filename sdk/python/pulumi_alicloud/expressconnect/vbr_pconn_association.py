@@ -479,6 +479,8 @@ class VbrPconnAssociation(pulumi.CustomResource):
             peering_ipv6_subnet_mask="2408:4004:cc::/56")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Vbr Pconn Association can be imported using the id, e.g.
@@ -562,6 +564,8 @@ class VbrPconnAssociation(pulumi.CustomResource):
             peer_ipv6_gateway_ip="2408:4004:cc::4",
             peering_ipv6_subnet_mask="2408:4004:cc::/56")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

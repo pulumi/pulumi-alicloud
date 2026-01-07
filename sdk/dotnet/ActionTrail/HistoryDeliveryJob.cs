@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ActionTrail
 {
     /// <summary>
-    /// Provides a Actiontrail History Delivery Job resource.
+    /// Provides a Action Trail History Delivery Job resource.
     /// 
-    /// For information about Actiontrail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
+    /// Delivery History Tasks.
+    /// 
+    /// For information about Action Trail History Delivery Job and how to use it, see [What is History Delivery Job](https://www.alibabacloud.com/help/en/actiontrail/latest/api-actiontrail-2020-07-06-createdeliveryhistoryjob).
     /// 
     /// &gt; **NOTE:** Available since v1.139.0.
     /// 
@@ -29,56 +31,70 @@ namespace Pulumi.AliCloud.ActionTrail
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
-    ///     var example = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var exampleGetAccount = AliCloud.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("example", new()
+    ///     var defaultGetRoles = AliCloud.Ram.GetRoles.Invoke(new()
     ///     {
-    ///         ProjectName = $"{name}-{@default.Result}",
-    ///         Description = "tf actiontrail example",
+    ///         NameRegex = "AliyunServiceRoleForActionTrail",
     ///     });
     /// 
-    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("example", new()
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         TrailName = $"{name}-{@default.Result}",
-    ///         SlsProjectArn = Output.Tuple(example, exampleGetAccount, exampleProject.Name).Apply(values =&gt;
+    ///         Description = name,
+    ///         ProjectName = name,
+    ///     });
+    /// 
+    ///     var defaultTrail = new AliCloud.ActionTrail.Trail("default", new()
+    ///     {
+    ///         EventRw = "Write",
+    ///         SlsProjectArn = Output.Tuple(@default, defaultGetAccount, defaultProject.ProjectName).Apply(values =&gt;
     ///         {
-    ///             var example = values.Item1;
-    ///             var exampleGetAccount = values.Item2;
-    ///             var name = values.Item3;
-    ///             return $"acs:log:{example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///             var @default = values.Item1;
+    ///             var defaultGetAccount = values.Item2;
+    ///             var projectName = values.Item3;
+    ///             return $"acs:log:{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{projectName}";
     ///         }),
+    ///         TrailName = name,
+    ///         SlsWriteRoleArn = defaultGetRoles.Apply(getRolesResult =&gt; getRolesResult.Roles[0]?.Arn),
+    ///         TrailRegion = "All",
+    ///         IsOrganizationTrail = false,
+    ///         Status = "Enable",
+    ///         EventSelectors = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["ServiceName"] = "PDS",
+    ///             },
+    ///         }),
+    ///         DataEventTrailRegion = "cn-hangzhou",
     ///     });
     /// 
-    ///     var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("example", new()
+    ///     var defaultHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("default", new()
     ///     {
-    ///         TrailName = exampleTrail.Id,
+    ///         TrailName = defaultTrail.Id,
     ///     });
     /// 
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
-    /// Actiontrail History Delivery Job can be imported using the id, e.g.
+    /// Action Trail History Delivery Job can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:actiontrail/historyDeliveryJob:HistoryDeliveryJob example &lt;id&gt;
@@ -88,13 +104,19 @@ namespace Pulumi.AliCloud.ActionTrail
     public partial class HistoryDeliveryJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<int> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the trail for which you want to create a historical event delivery task.
+        /// The Track Name.
         /// </summary>
         [Output("trailName")]
         public Output<string> TrailName { get; private set; } = null!;
@@ -146,7 +168,7 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class HistoryDeliveryJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the trail for which you want to create a historical event delivery task.
+        /// The Track Name.
         /// </summary>
         [Input("trailName", required: true)]
         public Input<string> TrailName { get; set; } = null!;
@@ -160,13 +182,19 @@ namespace Pulumi.AliCloud.ActionTrail
     public sealed class HistoryDeliveryJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The name of the trail for which you want to create a historical event delivery task.
+        /// The Track Name.
         /// </summary>
         [Input("trailName")]
         public Input<string>? TrailName { get; set; }

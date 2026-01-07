@@ -337,6 +337,8 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
             user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         DMS Enterprise Proxy Access can be imported using the id, e.g.
@@ -381,6 +383,8 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
             proxy_id=ids.proxies[0].id,
             user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

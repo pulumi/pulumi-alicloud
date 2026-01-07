@@ -418,6 +418,8 @@ class UserProvisioning(pulumi.CustomResource):
             directory_id=default_user.directory_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud SSO User Provisioning can be imported using the id, e.g.
@@ -498,6 +500,8 @@ class UserProvisioning(pulumi.CustomResource):
             target_id=default.id,
             directory_id=default_user.directory_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

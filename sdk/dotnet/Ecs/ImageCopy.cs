@@ -102,6 +102,8 @@ namespace Pulumi.AliCloud.Ecs
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Attributes Reference0
     /// 
     ///  The following attributes are exported:

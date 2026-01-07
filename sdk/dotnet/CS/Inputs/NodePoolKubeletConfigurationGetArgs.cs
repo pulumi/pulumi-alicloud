@@ -228,6 +228,12 @@ namespace Pulumi.AliCloud.CS.Inputs
         [Input("serializeImagePulls")]
         public Input<string>? SerializeImagePulls { get; set; }
 
+        /// <summary>
+        /// Used to enable the kubelet server certificate signing and rotation via CSR.
+        /// </summary>
+        [Input("serverTlsBootstrap")]
+        public Input<bool>? ServerTlsBootstrap { get; set; }
+
         [Input("systemReserved")]
         private InputMap<string>? _systemReserved;
 

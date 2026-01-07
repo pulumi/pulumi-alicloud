@@ -158,6 +158,8 @@ import (
 //	}
 //
 // ```
+//
+// 📚 Need more examples? VIEW MORE EXAMPLES
 type SlbAttachment struct {
 	pulumi.CustomResourceState
 

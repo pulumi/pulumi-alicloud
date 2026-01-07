@@ -200,6 +200,8 @@ class HybridMonitorFcTask(pulumi.CustomResource):
             target_user_id=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Monitor Service Hybrid Monitor Fc Task can be imported using the id, e.g.
@@ -267,6 +269,8 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         \"\"\",
             target_user_id=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

@@ -35,6 +35,8 @@ namespace Pulumi.AliCloud.Kms
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:kms/ciphertext:Ciphertext")]
     public partial class Ciphertext : global::Pulumi.CustomResource

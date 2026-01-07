@@ -22,10 +22,16 @@ namespace Pulumi.AliCloud.Oss
     public partial class BucketHttpsConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// TLS encryption algorithm suite configuration See `CipherSuit` below.
+        /// </summary>
+        [Output("cipherSuit")]
+        public Output<Outputs.BucketHttpsConfigCipherSuit> CipherSuit { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
@@ -86,10 +92,16 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketHttpsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
+
+        /// <summary>
+        /// TLS encryption algorithm suite configuration See `CipherSuit` below.
+        /// </summary>
+        [Input("cipherSuit")]
+        public Input<Inputs.BucketHttpsConfigCipherSuitArgs>? CipherSuit { get; set; }
 
         /// <summary>
         /// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
@@ -118,10 +130,16 @@ namespace Pulumi.AliCloud.Oss
     public sealed class BucketHttpsConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the bucket.
+        /// The name of the bucket
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
+
+        /// <summary>
+        /// TLS encryption algorithm suite configuration See `CipherSuit` below.
+        /// </summary>
+        [Input("cipherSuit")]
+        public Input<Inputs.BucketHttpsConfigCipherSuitGetArgs>? CipherSuit { get; set; }
 
         /// <summary>
         /// Specifies whether to enable TLS version management for the bucket. Valid values: true, false.

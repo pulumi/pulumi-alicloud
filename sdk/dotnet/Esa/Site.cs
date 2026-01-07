@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Esa
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// ESA Site can be imported using the id, e.g.
@@ -166,6 +168,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Output("ipv6Region")]
         public Output<string> Ipv6Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        /// </summary>
+        [Output("paused")]
+        public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group
@@ -356,6 +364,12 @@ namespace Pulumi.AliCloud.Esa
         public Input<string>? Ipv6Region { get; set; }
 
         /// <summary>
+        /// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
+
+        /// <summary>
         /// The ID of the resource group
         /// </summary>
         [Input("resourceGroupId")]
@@ -510,6 +524,12 @@ namespace Pulumi.AliCloud.Esa
         /// </summary>
         [Input("ipv6Region")]
         public Input<string>? Ipv6Region { get; set; }
+
+        /// <summary>
+        /// Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// The ID of the resource group

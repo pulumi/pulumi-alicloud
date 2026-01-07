@@ -578,6 +578,8 @@ class Execution(pulumi.CustomResource):
             parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         OOS Execution can be imported using the id, e.g.
@@ -654,6 +656,8 @@ class Execution(pulumi.CustomResource):
             description="From TF Test",
             parameters="\\\\t\\\\t\\\\t\\\\t{\\\\\\"Status\\\\\\":\\\\\\"Running\\\\\\"}\\n")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

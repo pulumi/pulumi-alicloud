@@ -54,6 +54,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Cloud Firewall Vpc Firewall Cen can be imported using the id, e.g.

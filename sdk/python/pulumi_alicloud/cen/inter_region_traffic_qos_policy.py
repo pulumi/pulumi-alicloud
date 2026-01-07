@@ -256,6 +256,8 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             transit_router_id=defaultksqg_sa.transit_router_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Inter Region Traffic Qos Policy can be imported using the id, e.g.
@@ -315,6 +317,8 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             bandwidth_guarantee_mode="byBandwidthPercent",
             transit_router_id=defaultksqg_sa.transit_router_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

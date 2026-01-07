@@ -437,6 +437,8 @@ class Gateway(pulumi.CustomResource):
             vpc_id=example_network.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Microservice Engine (MSE) Gateway can be imported using the id, e.g.
@@ -501,6 +503,8 @@ class Gateway(pulumi.CustomResource):
             backup_vswitch_id=example_switch[1].id,
             vpc_id=example_network.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

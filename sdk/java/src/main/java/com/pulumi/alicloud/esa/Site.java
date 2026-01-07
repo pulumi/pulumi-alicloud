@@ -89,6 +89,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ * 
  * ## Import
  * 
  * ESA Site can be imported using the id, e.g.
@@ -317,6 +319,20 @@ public class Site extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipv6Region() {
         return this.ipv6Region;
+    }
+    /**
+     * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     * 
+     */
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> paused;
+
+    /**
+     * @return Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> paused() {
+        return Codegen.optional(this.paused);
     }
     /**
      * The ID of the resource group

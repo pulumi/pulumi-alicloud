@@ -57,6 +57,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    @Export(name="edition", refs={String.class}, tree="[0]")
+    private Output<String> edition;
+
+    /**
+     * @return The deployment architecture for Serverless instances. Valid values:
+     * 
+     */
+    public Output<String> edition() {
+        return this.edition;
+    }
+    /**
      * The instance name.
      * 
      */
@@ -201,6 +215,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.periodCycle);
     }
     /**
+     * The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    @Export(name="provisionedCapacity", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> provisionedCapacity;
+
+    /**
+     * @return The provisioned TPS capacity for reserved + elastic instances.
+     * 
+     */
+    public Output<Optional<Integer>> provisionedCapacity() {
+        return Codegen.optional(this.provisionedCapacity);
+    }
+    /**
      * Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
      * 
      */
@@ -317,14 +345,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="supportTracing", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> supportTracing;
+    private Output</* @Nullable */ Boolean> supportTracing;
 
     /**
      * @return Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
      * 
      */
-    public Output<Boolean> supportTracing() {
-        return this.supportTracing;
+    public Output<Optional<Boolean>> supportTracing() {
+        return Codegen.optional(this.supportTracing);
     }
     /**
      * Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.

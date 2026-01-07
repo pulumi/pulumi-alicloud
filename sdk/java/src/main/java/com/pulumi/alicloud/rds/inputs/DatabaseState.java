@@ -49,9 +49,34 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+     * The name of the database.
+     * &gt; **NOTE:**
+     * The name must be 2 to 64 characters in length.
+     * The name must start with a lowercase letter and end with a lowercase letter or digit.
+     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+     * The name must be unique within the instance.
+     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
+     */
+    @Import(name="dataBaseName")
+    private @Nullable Output<String> dataBaseName;
+
+    /**
+     * @return The name of the database.
+     * &gt; **NOTE:**
+     * The name must be 2 to 64 characters in length.
+     * The name must start with a lowercase letter and end with a lowercase letter or digit.
+     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+     * The name must be unique within the instance.
+     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * 
+     */
+    public Optional<Output<String>> dataBaseName() {
+        return Optional.ofNullable(this.dataBaseName);
+    }
+
+    /**
+     * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
      */
     @Import(name="description")
@@ -60,22 +85,20 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      * 
-     * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
-     * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * The Id of instance that can run database.
+     * The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The Id of instance that can run database.
+     * @return The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -83,39 +106,54 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the database.
-     * * &gt; **NOTE:**
-     * The name must be 2 to 64 characters in length.
-     * The name must start with a lowercase letter and end with a lowercase letter or digit.
-     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-     * The name must be unique within the instance.
-     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the database.
-     * * &gt; **NOTE:**
-     * The name must be 2 to 64 characters in length.
-     * The name must start with a lowercase letter and end with a lowercase letter or digit.
-     * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-     * The name must be unique within the instance.
-     * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+     * @return The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+     * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The status of the resource
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private DatabaseState() {}
 
     private DatabaseState(DatabaseState $) {
         this.characterSet = $.characterSet;
+        this.dataBaseName = $.dataBaseName;
         this.description = $.description;
         this.instanceId = $.instanceId;
         this.name = $.name;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -176,9 +214,40 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
+         * @param dataBaseName The name of the database.
+         * &gt; **NOTE:**
+         * The name must be 2 to 64 characters in length.
+         * The name must start with a lowercase letter and end with a lowercase letter or digit.
+         * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+         * The name must be unique within the instance.
+         * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
          * 
-         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
+         * @return builder
+         * 
+         */
+        public Builder dataBaseName(@Nullable Output<String> dataBaseName) {
+            $.dataBaseName = dataBaseName;
+            return this;
+        }
+
+        /**
+         * @param dataBaseName The name of the database.
+         * &gt; **NOTE:**
+         * The name must be 2 to 64 characters in length.
+         * The name must start with a lowercase letter and end with a lowercase letter or digit.
+         * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
+         * The name must be unique within the instance.
+         * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataBaseName(String dataBaseName) {
+            return dataBaseName(Output.of(dataBaseName));
+        }
+
+        /**
+         * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
          * 
          * @return builder
          * 
@@ -191,8 +260,6 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
          * 
-         * &gt; **NOTE:** The value of &#34;name&#34; or &#34;characterSet&#34;  does not support modification.
-         * 
          * @return builder
          * 
          */
@@ -201,7 +268,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The Id of instance that can run database.
+         * @param instanceId The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
          * 
          * @return builder
          * 
@@ -212,7 +279,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The Id of instance that can run database.
+         * @param instanceId The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
          * 
          * @return builder
          * 
@@ -222,36 +289,55 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the database.
-         * * &gt; **NOTE:**
-         * The name must be 2 to 64 characters in length.
-         * The name must start with a lowercase letter and end with a lowercase letter or digit.
-         * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-         * The name must be unique within the instance.
-         * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+         * @param name The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+         * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the database.
-         * * &gt; **NOTE:**
-         * The name must be 2 to 64 characters in length.
-         * The name must start with a lowercase letter and end with a lowercase letter or digit.
-         * The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
-         * The name must be unique within the instance.
-         * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
+         * @param name The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
+         * &gt; **NOTE:** The value of &#34;dataBaseName&#34; or &#34;characterSet&#34;  does not support modification.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated from provider version 1.266.0. New field &#39;data_base_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead. */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
+         * @param status The status of the resource
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public DatabaseState build() {

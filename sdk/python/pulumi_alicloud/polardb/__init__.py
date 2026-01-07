@@ -23,6 +23,7 @@ from .get_node_classes import *
 from .get_parameter_groups import *
 from .get_zones import *
 from .global_database_network import *
+from .global_security_ip_group import *
 from .parameter_group import *
 from .primary_endpoint import *
 from .zonal_account import *

@@ -223,6 +223,8 @@ class DbResourceGroup(pulumi.CustomResource):
             resource_group_name="yb_example_group")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         AnalyticDB for PostgreSQL (GPDB) Db Resource Group can be imported using the id, e.g.
@@ -298,6 +300,8 @@ class DbResourceGroup(pulumi.CustomResource):
             db_instance_id=default_jxw_sl_w.id,
             resource_group_name="yb_example_group")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

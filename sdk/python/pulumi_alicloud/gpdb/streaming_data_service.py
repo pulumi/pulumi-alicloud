@@ -265,6 +265,8 @@ class StreamingDataService(pulumi.CustomResource):
             service_spec="8")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         GPDB Streaming Data Service can be imported using the id, e.g.
@@ -334,6 +336,8 @@ class StreamingDataService(pulumi.CustomResource):
             service_description="example",
             service_spec="8")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

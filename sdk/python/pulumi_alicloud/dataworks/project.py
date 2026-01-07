@@ -368,6 +368,8 @@ class Project(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Data Works Project can be imported using the id, e.g.
@@ -428,6 +430,8 @@ class Project(pulumi.CustomResource):
             dev_environment_enabled=False,
             resource_group_id=default.ids[0])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

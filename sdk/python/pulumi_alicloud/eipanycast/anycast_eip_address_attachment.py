@@ -440,6 +440,8 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             anycast_id=default_ef_ybjy.anycast_id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Eipanycast Anycast Eip Address Attachment can be imported using the id, e.g.
@@ -591,6 +593,8 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id="cn-hangzhou",
             anycast_id=default_ef_ybjy.anycast_id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

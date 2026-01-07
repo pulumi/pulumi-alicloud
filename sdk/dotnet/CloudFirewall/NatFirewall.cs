@@ -108,6 +108,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Cloud Firewall Nat Firewall can be imported using the id, e.g.

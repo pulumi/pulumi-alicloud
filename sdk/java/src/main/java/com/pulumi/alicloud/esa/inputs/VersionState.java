@@ -66,25 +66,25 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="siteId")
-    private @Nullable Output<Integer> siteId;
+    private @Nullable Output<String> siteId;
 
     /**
      * @return The site ID, which can be obtained by calling the ListSites API.
      * 
      */
-    public Optional<Output<Integer>> siteId() {
+    public Optional<Output<String>> siteId() {
         return Optional.ofNullable(this.siteId);
     }
 
     /**
-     * The version number of the site configuration.
+     * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     @Import(name="siteVersion")
     private @Nullable Output<Integer> siteVersion;
 
     /**
-     * @return The version number of the site configuration.
+     * @return The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      * 
      */
     public Optional<Output<Integer>> siteVersion() {
@@ -204,7 +204,7 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(@Nullable Output<Integer> siteId) {
+        public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -215,12 +215,12 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder siteId(Integer siteId) {
+        public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
 
         /**
-         * @param siteVersion The version number of the site configuration.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class VersionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param siteVersion The version number of the site configuration.
+         * @param siteVersion The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
          * 
          * @return builder
          * 

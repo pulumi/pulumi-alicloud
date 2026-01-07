@@ -207,6 +207,8 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
             load_balancer_id=nlb.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Network Load Balancer (NLB) Load Balancer Zone Shifted Attachment can be imported using the id, e.g.
@@ -282,6 +284,8 @@ class LoadBalancerZoneShiftedAttachment(pulumi.CustomResource):
             vswitch_id=vsw1.id,
             load_balancer_id=nlb.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

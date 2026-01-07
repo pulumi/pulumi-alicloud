@@ -162,6 +162,8 @@ class SnatEntry(pulumi.CustomResource):
             snat_ip="192.0.0.2")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         The Sag SnatEntry can be imported using the id, e.g.
@@ -208,6 +210,8 @@ class SnatEntry(pulumi.CustomResource):
             cidr_block="192.168.7.0/24",
             snat_ip="192.0.0.2")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

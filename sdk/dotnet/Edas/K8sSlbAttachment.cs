@@ -153,6 +153,8 @@ namespace Pulumi.AliCloud.Edas
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Slb information of EDAS k8s application can be imported using the ID of an EDAS k8s application. e.g.

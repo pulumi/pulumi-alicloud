@@ -437,6 +437,8 @@ class V3ProvisionConfig(pulumi.CustomResource):
             always_allocate_cpu=True)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         FCV3 Provision Config can be imported using the id, e.g.
@@ -578,6 +580,8 @@ class V3ProvisionConfig(pulumi.CustomResource):
             function_name=function.function_name,
             always_allocate_cpu=True)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

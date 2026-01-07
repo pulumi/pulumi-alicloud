@@ -57,6 +57,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * Load Balancer Virtual Backend Server Group can be imported using the id, e.g.

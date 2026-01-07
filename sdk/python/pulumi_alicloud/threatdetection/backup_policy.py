@@ -239,6 +239,8 @@ class BackupPolicy(pulumi.CustomResource):
             uuid_lists=[default.ids[0]])
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Threat Detection Backup Policy can be imported using the id, e.g.
@@ -283,6 +285,8 @@ class BackupPolicy(pulumi.CustomResource):
             policy_version="2.0.0",
             uuid_lists=[default.ids[0]])
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

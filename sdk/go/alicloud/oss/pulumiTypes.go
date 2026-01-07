@@ -979,6 +979,216 @@ func (o BucketCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsRuleOutput
 	}).(BucketCorsRuleOutput)
 }
 
+type BucketHttpsConfigCipherSuit struct {
+	// This field is used to configure custom encryption algorithm suites for TLS 1.2.
+	CustomCipherSuites []string `pulumi:"customCipherSuites"`
+	// Configures TLS encryption algorithm suites. Valid values:
+	// true: strong encryption algorithm suites or custom encryption algorithm suites.
+	// false: all encryption algorithm suites (default).
+	Enable *bool `pulumi:"enable"`
+	// Specifies whether to use strong encryption algorithm suites. Valid values:
+	// true: uses strong encryption algorithm suites.
+	// false: uses custom encryption algorithm suites.
+	StrongCipherSuite *bool `pulumi:"strongCipherSuite"`
+	// Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+	Tls13CustomCipherSuites []string `pulumi:"tls13CustomCipherSuites"`
+}
+
+// BucketHttpsConfigCipherSuitInput is an input type that accepts BucketHttpsConfigCipherSuitArgs and BucketHttpsConfigCipherSuitOutput values.
+// You can construct a concrete instance of `BucketHttpsConfigCipherSuitInput` via:
+//
+//	BucketHttpsConfigCipherSuitArgs{...}
+type BucketHttpsConfigCipherSuitInput interface {
+	pulumi.Input
+
+	ToBucketHttpsConfigCipherSuitOutput() BucketHttpsConfigCipherSuitOutput
+	ToBucketHttpsConfigCipherSuitOutputWithContext(context.Context) BucketHttpsConfigCipherSuitOutput
+}
+
+type BucketHttpsConfigCipherSuitArgs struct {
+	// This field is used to configure custom encryption algorithm suites for TLS 1.2.
+	CustomCipherSuites pulumi.StringArrayInput `pulumi:"customCipherSuites"`
+	// Configures TLS encryption algorithm suites. Valid values:
+	// true: strong encryption algorithm suites or custom encryption algorithm suites.
+	// false: all encryption algorithm suites (default).
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Specifies whether to use strong encryption algorithm suites. Valid values:
+	// true: uses strong encryption algorithm suites.
+	// false: uses custom encryption algorithm suites.
+	StrongCipherSuite pulumi.BoolPtrInput `pulumi:"strongCipherSuite"`
+	// Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+	Tls13CustomCipherSuites pulumi.StringArrayInput `pulumi:"tls13CustomCipherSuites"`
+}
+
+func (BucketHttpsConfigCipherSuitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHttpsConfigCipherSuit)(nil)).Elem()
+}
+
+func (i BucketHttpsConfigCipherSuitArgs) ToBucketHttpsConfigCipherSuitOutput() BucketHttpsConfigCipherSuitOutput {
+	return i.ToBucketHttpsConfigCipherSuitOutputWithContext(context.Background())
+}
+
+func (i BucketHttpsConfigCipherSuitArgs) ToBucketHttpsConfigCipherSuitOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHttpsConfigCipherSuitOutput)
+}
+
+func (i BucketHttpsConfigCipherSuitArgs) ToBucketHttpsConfigCipherSuitPtrOutput() BucketHttpsConfigCipherSuitPtrOutput {
+	return i.ToBucketHttpsConfigCipherSuitPtrOutputWithContext(context.Background())
+}
+
+func (i BucketHttpsConfigCipherSuitArgs) ToBucketHttpsConfigCipherSuitPtrOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHttpsConfigCipherSuitOutput).ToBucketHttpsConfigCipherSuitPtrOutputWithContext(ctx)
+}
+
+// BucketHttpsConfigCipherSuitPtrInput is an input type that accepts BucketHttpsConfigCipherSuitArgs, BucketHttpsConfigCipherSuitPtr and BucketHttpsConfigCipherSuitPtrOutput values.
+// You can construct a concrete instance of `BucketHttpsConfigCipherSuitPtrInput` via:
+//
+//	        BucketHttpsConfigCipherSuitArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketHttpsConfigCipherSuitPtrInput interface {
+	pulumi.Input
+
+	ToBucketHttpsConfigCipherSuitPtrOutput() BucketHttpsConfigCipherSuitPtrOutput
+	ToBucketHttpsConfigCipherSuitPtrOutputWithContext(context.Context) BucketHttpsConfigCipherSuitPtrOutput
+}
+
+type bucketHttpsConfigCipherSuitPtrType BucketHttpsConfigCipherSuitArgs
+
+func BucketHttpsConfigCipherSuitPtr(v *BucketHttpsConfigCipherSuitArgs) BucketHttpsConfigCipherSuitPtrInput {
+	return (*bucketHttpsConfigCipherSuitPtrType)(v)
+}
+
+func (*bucketHttpsConfigCipherSuitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHttpsConfigCipherSuit)(nil)).Elem()
+}
+
+func (i *bucketHttpsConfigCipherSuitPtrType) ToBucketHttpsConfigCipherSuitPtrOutput() BucketHttpsConfigCipherSuitPtrOutput {
+	return i.ToBucketHttpsConfigCipherSuitPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketHttpsConfigCipherSuitPtrType) ToBucketHttpsConfigCipherSuitPtrOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHttpsConfigCipherSuitPtrOutput)
+}
+
+type BucketHttpsConfigCipherSuitOutput struct{ *pulumi.OutputState }
+
+func (BucketHttpsConfigCipherSuitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHttpsConfigCipherSuit)(nil)).Elem()
+}
+
+func (o BucketHttpsConfigCipherSuitOutput) ToBucketHttpsConfigCipherSuitOutput() BucketHttpsConfigCipherSuitOutput {
+	return o
+}
+
+func (o BucketHttpsConfigCipherSuitOutput) ToBucketHttpsConfigCipherSuitOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitOutput {
+	return o
+}
+
+func (o BucketHttpsConfigCipherSuitOutput) ToBucketHttpsConfigCipherSuitPtrOutput() BucketHttpsConfigCipherSuitPtrOutput {
+	return o.ToBucketHttpsConfigCipherSuitPtrOutputWithContext(context.Background())
+}
+
+func (o BucketHttpsConfigCipherSuitOutput) ToBucketHttpsConfigCipherSuitPtrOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketHttpsConfigCipherSuit) *BucketHttpsConfigCipherSuit {
+		return &v
+	}).(BucketHttpsConfigCipherSuitPtrOutput)
+}
+
+// This field is used to configure custom encryption algorithm suites for TLS 1.2.
+func (o BucketHttpsConfigCipherSuitOutput) CustomCipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketHttpsConfigCipherSuit) []string { return v.CustomCipherSuites }).(pulumi.StringArrayOutput)
+}
+
+// Configures TLS encryption algorithm suites. Valid values:
+// true: strong encryption algorithm suites or custom encryption algorithm suites.
+// false: all encryption algorithm suites (default).
+func (o BucketHttpsConfigCipherSuitOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketHttpsConfigCipherSuit) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use strong encryption algorithm suites. Valid values:
+// true: uses strong encryption algorithm suites.
+// false: uses custom encryption algorithm suites.
+func (o BucketHttpsConfigCipherSuitOutput) StrongCipherSuite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketHttpsConfigCipherSuit) *bool { return v.StrongCipherSuite }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+func (o BucketHttpsConfigCipherSuitOutput) Tls13CustomCipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketHttpsConfigCipherSuit) []string { return v.Tls13CustomCipherSuites }).(pulumi.StringArrayOutput)
+}
+
+type BucketHttpsConfigCipherSuitPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketHttpsConfigCipherSuitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHttpsConfigCipherSuit)(nil)).Elem()
+}
+
+func (o BucketHttpsConfigCipherSuitPtrOutput) ToBucketHttpsConfigCipherSuitPtrOutput() BucketHttpsConfigCipherSuitPtrOutput {
+	return o
+}
+
+func (o BucketHttpsConfigCipherSuitPtrOutput) ToBucketHttpsConfigCipherSuitPtrOutputWithContext(ctx context.Context) BucketHttpsConfigCipherSuitPtrOutput {
+	return o
+}
+
+func (o BucketHttpsConfigCipherSuitPtrOutput) Elem() BucketHttpsConfigCipherSuitOutput {
+	return o.ApplyT(func(v *BucketHttpsConfigCipherSuit) BucketHttpsConfigCipherSuit {
+		if v != nil {
+			return *v
+		}
+		var ret BucketHttpsConfigCipherSuit
+		return ret
+	}).(BucketHttpsConfigCipherSuitOutput)
+}
+
+// This field is used to configure custom encryption algorithm suites for TLS 1.2.
+func (o BucketHttpsConfigCipherSuitPtrOutput) CustomCipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketHttpsConfigCipherSuit) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCipherSuites
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures TLS encryption algorithm suites. Valid values:
+// true: strong encryption algorithm suites or custom encryption algorithm suites.
+// false: all encryption algorithm suites (default).
+func (o BucketHttpsConfigCipherSuitPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketHttpsConfigCipherSuit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use strong encryption algorithm suites. Valid values:
+// true: uses strong encryption algorithm suites.
+// false: uses custom encryption algorithm suites.
+func (o BucketHttpsConfigCipherSuitPtrOutput) StrongCipherSuite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketHttpsConfigCipherSuit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrongCipherSuite
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
+func (o BucketHttpsConfigCipherSuitPtrOutput) Tls13CustomCipherSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BucketHttpsConfigCipherSuit) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tls13CustomCipherSuites
+	}).(pulumi.StringArrayOutput)
+}
+
 type BucketLifecycleRule struct {
 	// Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abortMultipartUpload` below.
 	AbortMultipartUploads []BucketLifecycleRuleAbortMultipartUpload `pulumi:"abortMultipartUploads"`
@@ -9251,6 +9461,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleArrayInput)(nil)).Elem(), BucketCorsCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleArrayInput)(nil)).Elem(), BucketCorsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHttpsConfigCipherSuitInput)(nil)).Elem(), BucketHttpsConfigCipherSuitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHttpsConfigCipherSuitPtrInput)(nil)).Elem(), BucketHttpsConfigCipherSuitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleInput)(nil)).Elem(), BucketLifecycleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleArrayInput)(nil)).Elem(), BucketLifecycleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleAbortMultipartUploadInput)(nil)).Elem(), BucketLifecycleRuleAbortMultipartUploadArgs{})
@@ -9365,6 +9577,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketCorsCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleArrayOutput{})
+	pulumi.RegisterOutputType(BucketHttpsConfigCipherSuitOutput{})
+	pulumi.RegisterOutputType(BucketHttpsConfigCipherSuitPtrOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleAbortMultipartUploadOutput{})

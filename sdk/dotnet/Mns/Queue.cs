@@ -35,6 +35,8 @@ namespace Pulumi.AliCloud.Mns
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// MNS QUEUE can be imported using the id or name, e.g.

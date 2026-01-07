@@ -126,6 +126,8 @@ class EventBus(pulumi.CustomResource):
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Event Bridge Event Bus can be imported using the id, e.g.
@@ -166,6 +168,8 @@ class EventBus(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

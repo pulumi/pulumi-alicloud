@@ -585,6 +585,8 @@ class PhysicalConnection(pulumi.CustomResource):
             bandwidth="100")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Express Connect Physical Connection can be imported using the id, e.g.
@@ -666,6 +668,8 @@ class PhysicalConnection(pulumi.CustomResource):
             port_type="1000Base-LX",
             bandwidth="100")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

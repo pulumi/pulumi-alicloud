@@ -49,14 +49,14 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Anycast EIP instance description.
+     * Anycast EIP instance description
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Anycast EIP instance description.
+     * @return Anycast EIP instance description
      * 
      */
     public Optional<Output<String>> description() {
@@ -79,14 +79,14 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+     * @return The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -212,7 +212,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Anycast EIP instance description.
+         * @param description Anycast EIP instance description
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Anycast EIP instance description.
+         * @param description Anycast EIP instance description
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class AnycastEipAddressArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
+         * @param paymentType The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode
          * 
          * @return builder
          * 

@@ -858,6 +858,8 @@ class NatGateway(pulumi.CustomResource):
             nat_type="Enhanced")
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Nat gateway can be imported using the id, e.g.
@@ -973,6 +975,8 @@ class NatGateway(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             nat_type="Enhanced")
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

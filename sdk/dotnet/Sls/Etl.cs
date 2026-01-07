@@ -80,6 +80,8 @@ namespace Pulumi.AliCloud.Sls
     /// });
     /// ```
     /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
+    /// 
     /// ## Import
     /// 
     /// Log Service (SLS) Etl can be imported using the id, e.g.

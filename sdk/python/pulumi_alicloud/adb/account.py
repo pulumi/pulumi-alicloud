@@ -271,6 +271,8 @@ class Account(pulumi.CustomResource):
             account_description=name)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         ADB account can be imported using the id, e.g.
@@ -329,6 +331,8 @@ class Account(pulumi.CustomResource):
             account_password="tf_example123",
             account_description=name)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

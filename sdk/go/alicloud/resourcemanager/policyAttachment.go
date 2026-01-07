@@ -103,6 +103,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // Resource Manager Policy Attachment can be imported using the id, e.g.

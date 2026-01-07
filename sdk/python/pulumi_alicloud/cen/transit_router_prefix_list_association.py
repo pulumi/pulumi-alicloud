@@ -300,6 +300,8 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             owner_uid=default.id)
         ```
 
+        📚 Need more examples? VIEW MORE EXAMPLES
+
         ## Import
 
         Cloud Enterprise Network (CEN) Transit Router Prefix List Association can be imported using the id, e.g.
@@ -361,6 +363,8 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             next_hop_type="BlackHole",
             owner_uid=default.id)
         ```
+
+        📚 Need more examples? VIEW MORE EXAMPLES
 
         ## Import
 

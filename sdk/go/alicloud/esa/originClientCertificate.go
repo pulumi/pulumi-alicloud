@@ -103,6 +103,8 @@ import (
 //
 // ```
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // ESA Origin Client Certificate can be imported using the id, e.g.
@@ -126,7 +128,7 @@ type OriginClientCertificate struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// Site ID.
-	SiteId pulumi.IntOutput `pulumi:"siteId"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The status of the certificate.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -190,7 +192,7 @@ type originClientCertificateState struct {
 	// The private key of the certificate.
 	PrivateKey *string `pulumi:"privateKey"`
 	// Site ID.
-	SiteId *int `pulumi:"siteId"`
+	SiteId *string `pulumi:"siteId"`
 	// The status of the certificate.
 	Status *string `pulumi:"status"`
 }
@@ -209,7 +211,7 @@ type OriginClientCertificateState struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringPtrInput
 	// Site ID.
-	SiteId pulumi.IntPtrInput
+	SiteId pulumi.StringPtrInput
 	// The status of the certificate.
 	Status pulumi.StringPtrInput
 }
@@ -228,7 +230,7 @@ type originClientCertificateArgs struct {
 	// The private key of the certificate.
 	PrivateKey string `pulumi:"privateKey"`
 	// Site ID.
-	SiteId int `pulumi:"siteId"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a OriginClientCertificate resource.
@@ -242,7 +244,7 @@ type OriginClientCertificateArgs struct {
 	// The private key of the certificate.
 	PrivateKey pulumi.StringInput
 	// Site ID.
-	SiteId pulumi.IntInput
+	SiteId pulumi.StringInput
 }
 
 func (OriginClientCertificateArgs) ElementType() reflect.Type {
@@ -363,8 +365,8 @@ func (o OriginClientCertificateOutput) PrivateKey() pulumi.StringOutput {
 }
 
 // Site ID.
-func (o OriginClientCertificateOutput) SiteId() pulumi.IntOutput {
-	return o.ApplyT(func(v *OriginClientCertificate) pulumi.IntOutput { return v.SiteId }).(pulumi.IntOutput)
+func (o OriginClientCertificateOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginClientCertificate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // The status of the certificate.

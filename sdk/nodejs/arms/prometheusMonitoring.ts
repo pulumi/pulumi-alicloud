@@ -118,6 +118,8 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * 📚 Need more examples? VIEW MORE EXAMPLES
+ *
  * ## Import
  *
  * ARMS Prometheus Monitoring can be imported using the id, e.g.

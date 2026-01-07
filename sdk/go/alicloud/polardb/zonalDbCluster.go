@@ -22,6 +22,8 @@ import (
 //
 // # Create a PolarDB MySQL zonal cluster
 //
+// 📚 Need more examples? VIEW MORE EXAMPLES
+//
 // ## Import
 //
 // PolarDB zonal cluster can be imported using the id, e.g.

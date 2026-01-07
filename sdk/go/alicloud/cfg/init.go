@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AggregateConfigRule{}
 	case "alicloud:cfg/aggregateDelivery:AggregateDelivery":
 		r = &AggregateDelivery{}
+	case "alicloud:cfg/aggregateRemediation:AggregateRemediation":
+		r = &AggregateRemediation{}
 	case "alicloud:cfg/aggregator:Aggregator":
 		r = &Aggregator{}
 	case "alicloud:cfg/compliancePack:CompliancePack":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeliveryChannel{}
 	case "alicloud:cfg/remediation:Remediation":
 		r = &Remediation{}
+	case "alicloud:cfg/reportTemplate:ReportTemplate":
+		r = &ReportTemplate{}
 	case "alicloud:cfg/rule:Rule":
 		r = &Rule{}
 	default:
@@ -71,6 +75,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cfg/aggregateRemediation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cfg/aggregator",
 		&module{version},
 	)
@@ -97,6 +106,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"cfg/remediation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cfg/reportTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

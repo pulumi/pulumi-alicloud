@@ -99,6 +99,8 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// });
     /// ```
+    /// 
+    /// 📚 Need more examples? VIEW MORE EXAMPLES
     /// </summary>
     [AliCloudResourceType("alicloud:apigateway/pluginAttachment:PluginAttachment")]
     public partial class PluginAttachment : global::Pulumi.CustomResource
